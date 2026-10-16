@@ -12,15 +12,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsCreateEnvironmentVariableMetadata
         FIELDS = {
-          name: "name",
-          value: "value",
+          name: 'name',
+          value: 'value'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
           value
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ActionsCreateEnvironmentVariable.
@@ -52,13 +51,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsUpdateEnvironmentVariableMetadata
         FIELDS = {
-          name: "name",
-          value: "value",
+          name: 'name',
+          value: 'value'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ActionsUpdateEnvironmentVariable.
@@ -92,7 +89,7 @@ module OctridevGithub
         ALL = 'all'
         PRIVATE = 'private'
         SELECTED = 'selected'
-        VALUES = ['all', 'private', 'selected'].freeze
+        VALUES = %w[all private selected].freeze
         def self.from_value(value)
           value
         end
@@ -103,7 +100,7 @@ module OctridevGithub
         ALL = 'all'
         PRIVATE = 'private'
         SELECTED = 'selected'
-        VALUES = ['all', 'private', 'selected'].freeze
+        VALUES = %w[all private selected].freeze
         def self.from_value(value)
           value
         end
@@ -113,7 +110,7 @@ module OctridevGithub
       module ActionsListJobsForWorkflowRunParameter
         LATEST = 'latest'
         ALL = 'all'
-        VALUES = ['latest', 'all'].freeze
+        VALUES = %w[latest all].freeze
         def self.from_value(value)
           value
         end
@@ -123,7 +120,7 @@ module OctridevGithub
       module ActionsReviewPendingDeploymentsForRunState
         APPROVED = 'approved'
         REJECTED = 'rejected'
-        VALUES = ['approved', 'rejected'].freeze
+        VALUES = %w[approved rejected].freeze
         def self.from_value(value)
           value
         end
@@ -134,7 +131,7 @@ module OctridevGithub
         SELECTED = 'selected'
         ALL = 'all'
         PRIVATE = 'private'
-        VALUES = ['selected', 'all', 'private'].freeze
+        VALUES = %w[selected all private].freeze
         def self.from_value(value)
           value
         end
@@ -145,7 +142,7 @@ module OctridevGithub
         GITHUB = 'github'
         PARTNER = 'partner'
         CUSTOM = 'custom'
-        VALUES = ['github', 'partner', 'custom'].freeze
+        VALUES = %w[github partner custom].freeze
         def self.from_value(value)
           value
         end
@@ -156,7 +153,7 @@ module OctridevGithub
         GITHUB = 'github'
         PARTNER = 'partner'
         CUSTOM = 'custom'
-        VALUES = ['github', 'partner', 'custom'].freeze
+        VALUES = %w[github partner custom].freeze
         def self.from_value(value)
           value
         end
@@ -167,7 +164,7 @@ module OctridevGithub
         ALL = 'all'
         SELECTED = 'selected'
         NONE = 'none'
-        VALUES = ['all', 'selected', 'none'].freeze
+        VALUES = %w[all selected none].freeze
         def self.from_value(value)
           value
         end
@@ -178,7 +175,7 @@ module OctridevGithub
         ALL = 'all'
         PRIVATE = 'private'
         SELECTED = 'selected'
-        VALUES = ['all', 'private', 'selected'].freeze
+        VALUES = %w[all private selected].freeze
         def self.from_value(value)
           value
         end
@@ -189,7 +186,7 @@ module OctridevGithub
         SELECTED = 'selected'
         ALL = 'all'
         PRIVATE = 'private'
-        VALUES = ['selected', 'all', 'private'].freeze
+        VALUES = %w[selected all private].freeze
         def self.from_value(value)
           value
         end
@@ -203,20 +200,19 @@ module OctridevGithub
         enterprise:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/enterprises/",
+            '/enterprises/',
             SdkClient.encode_path_segment(enterprise),
-            "/actions/cache/retention-limit"
+            '/actions/cache/retention-limit'
           ].join,
           config: config,
           return_type: ::OctridevGithub::ActionsCacheRetentionLimitForEnterprise,
           decoder: :json,
           operation_id: 'actions_get_actions_cache_retention_limit_for_enterprise',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -232,22 +228,21 @@ module OctridevGithub
         max_cache_retention_days: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/enterprises/",
+            '/enterprises/',
             SdkClient.encode_path_segment(enterprise),
-            "/actions/cache/retention-limit"
+            '/actions/cache/retention-limit'
           ].join,
           config: config,
           body: {
-            'max_cache_retention_days' => max_cache_retention_days,
+            'max_cache_retention_days' => max_cache_retention_days
           },
           decoder: :empty,
           operation_id: 'actions_set_actions_cache_retention_limit_for_enterprise',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -259,20 +254,19 @@ module OctridevGithub
         enterprise:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/enterprises/",
+            '/enterprises/',
             SdkClient.encode_path_segment(enterprise),
-            "/actions/cache/storage-limit"
+            '/actions/cache/storage-limit'
           ].join,
           config: config,
           return_type: ::OctridevGithub::ActionsCacheStorageLimitForEnterprise,
           decoder: :json,
           operation_id: 'actions_get_actions_cache_storage_limit_for_enterprise',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -288,22 +282,21 @@ module OctridevGithub
         max_cache_size_gb: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/enterprises/",
+            '/enterprises/',
             SdkClient.encode_path_segment(enterprise),
-            "/actions/cache/storage-limit"
+            '/actions/cache/storage-limit'
           ].join,
           config: config,
           body: {
-            'max_cache_size_gb' => max_cache_size_gb,
+            'max_cache_size_gb' => max_cache_size_gb
           },
           decoder: :empty,
           operation_id: 'actions_set_actions_cache_storage_limit_for_enterprise',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -315,20 +308,19 @@ module OctridevGithub
         org:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/organizations/",
+            '/organizations/',
             SdkClient.encode_path_segment(org),
-            "/actions/cache/retention-limit"
+            '/actions/cache/retention-limit'
           ].join,
           config: config,
           return_type: ::OctridevGithub::ActionsCacheRetentionLimitForOrganization,
           decoder: :json,
           operation_id: 'actions_get_actions_cache_retention_limit_for_organization',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -344,22 +336,21 @@ module OctridevGithub
         max_cache_retention_days: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/organizations/",
+            '/organizations/',
             SdkClient.encode_path_segment(org),
-            "/actions/cache/retention-limit"
+            '/actions/cache/retention-limit'
           ].join,
           config: config,
           body: {
-            'max_cache_retention_days' => max_cache_retention_days,
+            'max_cache_retention_days' => max_cache_retention_days
           },
           decoder: :empty,
           operation_id: 'actions_set_actions_cache_retention_limit_for_organization',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -371,20 +362,19 @@ module OctridevGithub
         org:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/organizations/",
+            '/organizations/',
             SdkClient.encode_path_segment(org),
-            "/actions/cache/storage-limit"
+            '/actions/cache/storage-limit'
           ].join,
           config: config,
           return_type: ::OctridevGithub::ActionsCacheStorageLimitForOrganization,
           decoder: :json,
           operation_id: 'actions_get_actions_cache_storage_limit_for_organization',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -399,22 +389,21 @@ module OctridevGithub
         max_cache_size_gb: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/organizations/",
+            '/organizations/',
             SdkClient.encode_path_segment(org),
-            "/actions/cache/storage-limit"
+            '/actions/cache/storage-limit'
           ].join,
           config: config,
           body: {
-            'max_cache_size_gb' => max_cache_size_gb,
+            'max_cache_size_gb' => max_cache_size_gb
           },
           decoder: :empty,
           operation_id: 'actions_set_actions_cache_storage_limit_for_organization',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -426,19 +415,18 @@ module OctridevGithub
         org:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/cache/usage"
+            '/actions/cache/usage'
           ].join,
           config: config,
           return_type: ::OctridevGithub::ActionsCacheUsageOrgEnterprise,
           decoder: :json,
           operation_id: 'actions_get_actions_cache_usage_for_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -456,23 +444,22 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/cache/usage-by-repository"
+            '/actions/cache/usage-by-repository'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Actions::ActionsGetActionsCacheUsageByRepoForOrgResponse,
           decoder: :json,
           operation_id: 'actions_get_actions_cache_usage_by_repo_for_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -490,23 +477,22 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/hosted-runners"
+            '/actions/hosted-runners'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Actions::ActionsListHostedRunnersForOrgResponse,
           decoder: :json,
           operation_id: 'actions_list_hosted_runners_for_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -544,13 +530,12 @@ module OctridevGithub
         image_gen: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/hosted-runners"
+            '/actions/hosted-runners'
           ].join,
           config: config,
           body: {
@@ -560,12 +545,12 @@ module OctridevGithub
             'runner_group_id' => runner_group_id,
             'maximum_runners' => maximum_runners,
             'enable_static_ip' => enable_static_ip,
-            'image_gen' => image_gen,
+            'image_gen' => image_gen
           },
           return_type: ::OctridevGithub::ActionsHostedRunner,
           decoder: :json,
           operation_id: 'actions_create_hosted_runner_for_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

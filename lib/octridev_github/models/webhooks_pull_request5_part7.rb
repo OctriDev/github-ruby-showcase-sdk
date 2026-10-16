@@ -5,275 +5,276 @@
 
 # webhooks_pull_request5 domain models (part 7)
 module OctridevGithub
-# API model for WebhooksPullRequest5RequestedReviewersItemVariant0.
-class WebhooksPullRequest5RequestedReviewersItemVariant0
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhooksPullRequest5RequestedReviewersItemVariant0Metadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhooksPullRequest5RequestedReviewersItemVariant0Metadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhooksPullRequest5RequestedReviewersItemVariant0Metadata::DECODERS
+  # API model for WebhooksPullRequest5RequestedReviewersItemVariant0.
+  class WebhooksPullRequest5RequestedReviewersItemVariant0
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhooksPullRequest5RequestedReviewersItemVariant0Metadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhooksPullRequest5RequestedReviewersItemVariant0Metadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhooksPullRequest5RequestedReviewersItemVariant0Metadata::DECODERS
 
-  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-  attr_reader :avatar_url
-  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-  attr_reader :deleted
-  # @return [String] Optional `string` value serialized in the `email` wire field.
-  attr_reader :email
-  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-  attr_reader :events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-  attr_reader :followers_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-  attr_reader :following_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-  attr_reader :gists_url
-  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-  attr_reader :gravatar_id
-  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `login` wire field.
-  attr_reader :login
-  # @return [String] Optional `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-  attr_reader :organizations_url
-  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-  attr_reader :received_events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-  attr_reader :repos_url
-  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-  attr_reader :site_admin
-  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-  attr_reader :starred_url
-  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-  attr_reader :subscriptions_url
-  # @return [WebhooksPullRequest5RequestedReviewersItemVariant0Type] Optional enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
+    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+    attr_reader :avatar_url
+    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+    attr_reader :deleted
+    # @return [String] Optional `string` value serialized in the `email` wire field.
+    attr_reader :email
+    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+    attr_reader :events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+    attr_reader :followers_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+    attr_reader :following_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+    attr_reader :gists_url
+    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+    attr_reader :gravatar_id
+    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `login` wire field.
+    attr_reader :login
+    # @return [String] Optional `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Optional `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+    attr_reader :organizations_url
+    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+    attr_reader :received_events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+    attr_reader :repos_url
+    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+    attr_reader :site_admin
+    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+    attr_reader :starred_url
+    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+    attr_reader :subscriptions_url
+    # @return [WebhooksPullRequest5RequestedReviewersItemVariant0Type] Optional enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalWebhooksPullRequest5RequestedReviewersItemVariant1ParentMetadata
+    FIELDS = {
+      description: 'description',
+      html_url: 'html_url',
+      id: 'id',
+      members_url: 'members_url',
+      name: 'name',
+      node_id: 'node_id',
+      permission: 'permission',
+      privacy: 'privacy',
+      repositories_url: 'repositories_url',
+      slug: 'slug',
+      url: 'url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      description
+      html_url
+      id
+      members_url
+      name
+      node_id
+      permission
+      privacy
+      repositories_url
+      slug
+      url
+    ].freeze
+    DECODERS = {
+      privacy: lambda do |value|
+        ::OctridevGithub::WebhooksPullRequest5RequestedReviewersItemVariant1ParentPrivacy.from_value(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      description
+    ].freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for WebhooksPullRequest5RequestedReviewersItemVariant1Parent.
+  # Optional object value serialized in the `parent` wire field.
+  class WebhooksPullRequest5RequestedReviewersItemVariant1Parent
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhooksPullRequest5RequestedReviewersItemVariant1ParentMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhooksPullRequest5RequestedReviewersItemVariant1ParentMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhooksPullRequest5RequestedReviewersItemVariant1ParentMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalWebhooksPullRequest5RequestedReviewersItemVariant1ParentMetadata
-  FIELDS = {
-    description: "description",
-    html_url: "html_url",
-    id: "id",
-    members_url: "members_url",
-    name: "name",
-    node_id: "node_id",
-    permission: "permission",
-    privacy: "privacy",
-    repositories_url: "repositories_url",
-    slug: "slug",
-    url: "url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    description
-    html_url
-    id
-    members_url
-    name
-    node_id
-    permission
-    privacy
-    repositories_url
-    slug
-    url
-  ].freeze
-  DECODERS = {
-    privacy: lambda do |value|
-      ::OctridevGithub::WebhooksPullRequest5RequestedReviewersItemVariant1ParentPrivacy.from_value(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    description
-  ].freeze
-end
+    # @return [String] Description of the team
+    attr_reader :description
+    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Unique identifier of the team
+    attr_reader :id
+    # @return [String] Required `uri-template`-formatted value serialized in the `members_url` wire field.
+    attr_reader :members_url
+    # @return [String] Name of the team
+    attr_reader :name
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Permission that the team will have for its repositories
+    attr_reader :permission
+    # @return [WebhooksPullRequest5RequestedReviewersItemVariant1ParentPrivacy] Required enumerated value serialized in the `privacy` wire field.
+    attr_reader :privacy
+    # @return [String] Required `uri`-formatted value serialized in the `repositories_url` wire field.
+    attr_reader :repositories_url
+    # @return [String] Required `string` value serialized in the `slug` wire field.
+    attr_reader :slug
+    # @return [String] URL for the team
+    attr_reader :url
 
-# API model for WebhooksPullRequest5RequestedReviewersItemVariant1Parent.
-# Optional object value serialized in the `parent` wire field.
-class WebhooksPullRequest5RequestedReviewersItemVariant1Parent
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhooksPullRequest5RequestedReviewersItemVariant1ParentMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhooksPullRequest5RequestedReviewersItemVariant1ParentMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhooksPullRequest5RequestedReviewersItemVariant1ParentMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [String] Description of the team
-  attr_reader :description
-  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Unique identifier of the team
-  attr_reader :id
-  # @return [String] Required `uri-template`-formatted value serialized in the `members_url` wire field.
-  attr_reader :members_url
-  # @return [String] Name of the team
-  attr_reader :name
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Permission that the team will have for its repositories
-  attr_reader :permission
-  # @return [WebhooksPullRequest5RequestedReviewersItemVariant1ParentPrivacy] Required enumerated value serialized in the `privacy` wire field.
-  attr_reader :privacy
-  # @return [String] Required `uri`-formatted value serialized in the `repositories_url` wire field.
-  attr_reader :repositories_url
-  # @return [String] Required `string` value serialized in the `slug` wire field.
-  attr_reader :slug
-  # @return [String] URL for the team
-  attr_reader :url
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhooksPullRequest5RequestedReviewersItemVariant1ParentMetadata::NULLABLE_FIELDS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhooksPullRequest5RequestedReviewersItemVariant1ParentMetadata::NULLABLE_FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalWebhooksPullRequest5RequestedReviewersItemVariant1Metadata
+    FIELDS = {
+      deleted: 'deleted',
+      description: 'description',
+      html_url: 'html_url',
+      id: 'id',
+      members_url: 'members_url',
+      name: 'name',
+      node_id: 'node_id',
+      parent: 'parent',
+      permission: 'permission',
+      privacy: 'privacy',
+      repositories_url: 'repositories_url',
+      slug: 'slug',
+      url: 'url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      name
+    ].freeze
+    DECODERS = {
+      parent: lambda do |value|
+        ::OctridevGithub::WebhooksPullRequest5RequestedReviewersItemVariant1Parent.from_hash(value)
+      end,
+      privacy: lambda do |value|
+        ::OctridevGithub::WebhooksPullRequest5RequestedReviewersItemVariant1Privacy.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for WebhooksPullRequest5RequestedReviewersItemVariant1.
+  class WebhooksPullRequest5RequestedReviewersItemVariant1
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhooksPullRequest5RequestedReviewersItemVariant1Metadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhooksPullRequest5RequestedReviewersItemVariant1Metadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhooksPullRequest5RequestedReviewersItemVariant1Metadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalWebhooksPullRequest5RequestedReviewersItemVariant1Metadata
-  FIELDS = {
-    deleted: "deleted",
-    description: "description",
-    html_url: "html_url",
-    id: "id",
-    members_url: "members_url",
-    name: "name",
-    node_id: "node_id",
-    parent: "parent",
-    permission: "permission",
-    privacy: "privacy",
-    repositories_url: "repositories_url",
-    slug: "slug",
-    url: "url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    name
-  ].freeze
-  DECODERS = {
-    parent: lambda do |value|
-      ::OctridevGithub::WebhooksPullRequest5RequestedReviewersItemVariant1Parent.from_hash(value)
-    end,
-    privacy: lambda do |value|
-      ::OctridevGithub::WebhooksPullRequest5RequestedReviewersItemVariant1Privacy.from_value(value)
-    end,
-  }.freeze
-end
+    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+    attr_reader :deleted
+    # @return [String] Description of the team
+    attr_reader :description
+    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Unique identifier of the team
+    attr_reader :id
+    # @return [String] Optional `uri-template`-formatted value serialized in the `members_url` wire field.
+    attr_reader :members_url
+    # @return [String] Name of the team
+    attr_reader :name
+    # @return [String] Optional `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [WebhooksPullRequest5RequestedReviewersItemVariant1Parent] Optional object value serialized in the `parent` wire field.
+    attr_reader :parent
+    # @return [String] Permission that the team will have for its repositories
+    attr_reader :permission
+    # @return [WebhooksPullRequest5RequestedReviewersItemVariant1Privacy] Optional enumerated value serialized in the `privacy` wire field.
+    attr_reader :privacy
+    # @return [String] Optional `uri`-formatted value serialized in the `repositories_url` wire field.
+    attr_reader :repositories_url
+    # @return [String] Optional `string` value serialized in the `slug` wire field.
+    attr_reader :slug
+    # @return [String] URL for the team
+    attr_reader :url
 
-# API model for WebhooksPullRequest5RequestedReviewersItemVariant1.
-class WebhooksPullRequest5RequestedReviewersItemVariant1
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhooksPullRequest5RequestedReviewersItemVariant1Metadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhooksPullRequest5RequestedReviewersItemVariant1Metadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhooksPullRequest5RequestedReviewersItemVariant1Metadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-  attr_reader :deleted
-  # @return [String] Description of the team
-  attr_reader :description
-  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Unique identifier of the team
-  attr_reader :id
-  # @return [String] Optional `uri-template`-formatted value serialized in the `members_url` wire field.
-  attr_reader :members_url
-  # @return [String] Name of the team
-  attr_reader :name
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [WebhooksPullRequest5RequestedReviewersItemVariant1Parent] Optional object value serialized in the `parent` wire field.
-  attr_reader :parent
-  # @return [String] Permission that the team will have for its repositories
-  attr_reader :permission
-  # @return [WebhooksPullRequest5RequestedReviewersItemVariant1Privacy] Optional enumerated value serialized in the `privacy` wire field.
-  attr_reader :privacy
-  # @return [String] Optional `uri`-formatted value serialized in the `repositories_url` wire field.
-  attr_reader :repositories_url
-  # @return [String] Optional `string` value serialized in the `slug` wire field.
-  attr_reader :slug
-  # @return [String] URL for the team
-  attr_reader :url
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the WebhooksPullRequest5RequestedReviewersItem SDK namespace.
+  module WebhooksPullRequest5RequestedReviewersItem
+    def self.from_hash(hash)
+      shape_mapping = {
+        'login' => WebhooksPullRequest5RequestedReviewersItemVariant0
+      }
+      type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
+      decoded = type&.from_hash(hash)
+      return decoded unless type.nil?
+
+      WebhooksPullRequest5RequestedReviewersItemVariant1.from_hash(hash)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the WebhooksPullRequest5RequestedReviewersItemVariant0Type SDK namespace.
+  module WebhooksPullRequest5RequestedReviewersItemVariant0Type
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhooksPullRequest5RequestedReviewersItem SDK namespace.
-module WebhooksPullRequest5RequestedReviewersItem
-  def self.from_hash(hash)
-    shape_mapping = {
-      "login" => WebhooksPullRequest5RequestedReviewersItemVariant0,
-    }
-    type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
-    decoded = type&.from_hash(hash)
-    return decoded unless type.nil?
-    return WebhooksPullRequest5RequestedReviewersItemVariant1.from_hash(hash)
+  # Defines the WebhooksPullRequest5RequestedReviewersItemVariant1ParentPrivacy SDK namespace.
+  module WebhooksPullRequest5RequestedReviewersItemVariant1ParentPrivacy
+    OPEN = 'open'
+    CLOSED = 'closed'
+    SECRET = 'secret'
+    VALUES = %w[open closed secret].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhooksPullRequest5RequestedReviewersItemVariant0Type SDK namespace.
-module WebhooksPullRequest5RequestedReviewersItemVariant0Type
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhooksPullRequest5RequestedReviewersItemVariant1Privacy SDK namespace.
+  module WebhooksPullRequest5RequestedReviewersItemVariant1Privacy
+    OPEN = 'open'
+    CLOSED = 'closed'
+    SECRET = 'secret'
+    VALUES = %w[open closed secret].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the WebhooksPullRequest5RequestedReviewersItemVariant1ParentPrivacy SDK namespace.
-module WebhooksPullRequest5RequestedReviewersItemVariant1ParentPrivacy
-  OPEN = 'open'
-  CLOSED = 'closed'
-  SECRET = 'secret'
-  VALUES = ['open', 'closed', 'secret'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhooksPullRequest5RequestedReviewersItemVariant1Privacy SDK namespace.
-module WebhooksPullRequest5RequestedReviewersItemVariant1Privacy
-  OPEN = 'open'
-  CLOSED = 'closed'
-  SECRET = 'secret'
-  VALUES = ['open', 'closed', 'secret'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

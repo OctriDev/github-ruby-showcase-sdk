@@ -12,15 +12,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesCreateLabelMetadata
         FIELDS = {
-          name: "name",
-          color: "color",
-          description: "description",
+          name: 'name',
+          color: 'color',
+          description: 'description'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for IssuesCreateLabel.
@@ -54,15 +53,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesUpdateLabelMetadata
         FIELDS = {
-          new_name: "new_name",
-          color: "color",
-          description: "description",
-          archived: "archived",
+          new_name: 'new_name',
+          color: 'color',
+          description: 'description',
+          archived: 'archived'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for IssuesUpdateLabel.
@@ -98,10 +95,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesCreateMilestone277b065cMetadata
         FIELDS = {
-          title: "title",
-          state: "state",
-          description: "description",
-          due_on: "due_on",
+          title: 'title',
+          state: 'state',
+          description: 'description',
+          due_on: 'due_on'
         }.freeze
         REQUIRED_FIELDS = %i[
           title
@@ -109,7 +106,7 @@ module OctridevGithub
         DECODERS = {
           state: lambda do |value|
             ::OctridevGithub::Methods::Issues::IssuesCreateMilestoneState.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -146,17 +143,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesUpdateMilestone5179c53dMetadata
         FIELDS = {
-          title: "title",
-          state: "state",
-          description: "description",
-          due_on: "due_on",
+          title: 'title',
+          state: 'state',
+          description: 'description',
+          due_on: 'due_on'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           state: lambda do |value|
             ::OctridevGithub::Methods::Issues::IssuesUpdateMilestoneState.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -197,7 +193,7 @@ module OctridevGithub
         ADD_FIELD = 'add_field'
         ADD_ASSIGNEE = 'add_assignee'
         CLOSE_ISSUE = 'close_issue'
-        VALUES = ['set_type', 'add_label', 'add_field', 'add_assignee', 'close_issue'].freeze
+        VALUES = %w[set_type add_label add_field add_assignee close_issue].freeze
         def self.from_value(value)
           value
         end
@@ -208,7 +204,7 @@ module OctridevGithub
         OPEN = 'open'
         CLOSED = 'closed'
         ALL = 'all'
-        VALUES = ['open', 'closed', 'all'].freeze
+        VALUES = %w[open closed all].freeze
         def self.from_value(value)
           value
         end
@@ -222,7 +218,7 @@ module OctridevGithub
         SUBSCRIBED = 'subscribed'
         REPOS = 'repos'
         ALL = 'all'
-        VALUES = ['assigned', 'created', 'mentioned', 'subscribed', 'repos', 'all'].freeze
+        VALUES = %w[assigned created mentioned subscribed repos all].freeze
         def self.from_value(value)
           value
         end
@@ -232,7 +228,7 @@ module OctridevGithub
       module IssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItemIgnoredReason
         ALREADY_APPLIED = 'already_applied'
         ISSUE_ALREADY_CLOSED = 'issue_already_closed'
-        VALUES = ['already_applied', 'issue_already_closed'].freeze
+        VALUES = %w[already_applied issue_already_closed].freeze
         def self.from_value(value)
           value
         end
@@ -243,7 +239,7 @@ module OctridevGithub
         CREATED = 'created'
         UPDATED = 'updated'
         COMMENTS = 'comments'
-        VALUES = ['created', 'updated', 'comments'].freeze
+        VALUES = %w[created updated comments].freeze
         def self.from_value(value)
           value
         end
@@ -254,7 +250,7 @@ module OctridevGithub
         LOW = 'low'
         MEDIUM = 'medium'
         HIGH = 'high'
-        VALUES = ['low', 'medium', 'high'].freeze
+        VALUES = %w[low medium high].freeze
         def self.from_value(value)
           value
         end
@@ -265,7 +261,7 @@ module OctridevGithub
         OPEN = 'open'
         CLOSED = 'closed'
         ALL = 'all'
-        VALUES = ['open', 'closed', 'all'].freeze
+        VALUES = %w[open closed all].freeze
         def self.from_value(value)
           value
         end
@@ -276,7 +272,7 @@ module OctridevGithub
         LOW = 'low'
         MEDIUM = 'medium'
         HIGH = 'high'
-        VALUES = ['low', 'medium', 'high'].freeze
+        VALUES = %w[low medium high].freeze
         def self.from_value(value)
           value
         end
@@ -287,7 +283,7 @@ module OctridevGithub
         OPEN = 'open'
         CLOSED = 'closed'
         ALL = 'all'
-        VALUES = ['open', 'closed', 'all'].freeze
+        VALUES = %w[open closed all].freeze
         def self.from_value(value)
           value
         end
@@ -298,7 +294,7 @@ module OctridevGithub
         LOW = 'low'
         MEDIUM = 'medium'
         HIGH = 'high'
-        VALUES = ['low', 'medium', 'high'].freeze
+        VALUES = %w[low medium high].freeze
         def self.from_value(value)
           value
         end
@@ -312,7 +308,7 @@ module OctridevGithub
         SUBSCRIBED = 'subscribed'
         REPOS = 'repos'
         ALL = 'all'
-        VALUES = ['assigned', 'created', 'mentioned', 'subscribed', 'repos', 'all'].freeze
+        VALUES = %w[assigned created mentioned subscribed repos all].freeze
         def self.from_value(value)
           value
         end
@@ -323,7 +319,7 @@ module OctridevGithub
         LOW = 'low'
         MEDIUM = 'medium'
         HIGH = 'high'
-        VALUES = ['low', 'medium', 'high'].freeze
+        VALUES = %w[low medium high].freeze
         def self.from_value(value)
           value
         end
@@ -333,7 +329,7 @@ module OctridevGithub
       module IssuesUpdateResponseVariant1SuggestionsAssigneesItemIgnoredReason
         ALREADY_APPLIED = 'already_applied'
         ISSUE_ALREADY_CLOSED = 'issue_already_closed'
-        VALUES = ['already_applied', 'issue_already_closed'].freeze
+        VALUES = %w[already_applied issue_already_closed].freeze
         def self.from_value(value)
           value
         end
@@ -344,7 +340,7 @@ module OctridevGithub
         LOW = 'low'
         MEDIUM = 'medium'
         HIGH = 'high'
-        VALUES = ['low', 'medium', 'high'].freeze
+        VALUES = %w[low medium high].freeze
         def self.from_value(value)
           value
         end
@@ -354,7 +350,7 @@ module OctridevGithub
       module IssuesListMilestonesParameterF2551cbd
         DUE_ON = 'due_on'
         COMPLETENESS = 'completeness'
-        VALUES = ['due_on', 'completeness'].freeze
+        VALUES = %w[due_on completeness].freeze
         def self.from_value(value)
           value
         end
@@ -364,7 +360,7 @@ module OctridevGithub
       module IssuesUpdateMilestoneState
         OPEN = 'open'
         CLOSED = 'closed'
-        VALUES = ['open', 'closed'].freeze
+        VALUES = %w[open closed].freeze
         def self.from_value(value)
           value
         end
@@ -375,7 +371,7 @@ module OctridevGithub
         LOW = 'low'
         MEDIUM = 'medium'
         HIGH = 'high'
-        VALUES = ['low', 'medium', 'high'].freeze
+        VALUES = %w[low medium high].freeze
         def self.from_value(value)
           value
         end
@@ -398,7 +394,7 @@ module OctridevGithub
         LOW = 'low'
         MEDIUM = 'medium'
         HIGH = 'high'
-        VALUES = ['low', 'medium', 'high'].freeze
+        VALUES = %w[low medium high].freeze
         def self.from_value(value)
           value
         end
@@ -409,7 +405,7 @@ module OctridevGithub
         LOW = 'low'
         MEDIUM = 'medium'
         HIGH = 'high'
-        VALUES = ['low', 'medium', 'high'].freeze
+        VALUES = %w[low medium high].freeze
         def self.from_value(value)
           value
         end
@@ -419,7 +415,7 @@ module OctridevGithub
       module IssuesUpdateResponseVariant1SuggestionsTypeItemIgnoredReason
         ALREADY_APPLIED = 'already_applied'
         ISSUE_ALREADY_CLOSED = 'issue_already_closed'
-        VALUES = ['already_applied', 'issue_already_closed'].freeze
+        VALUES = %w[already_applied issue_already_closed].freeze
         def self.from_value(value)
           value
         end
@@ -430,7 +426,7 @@ module OctridevGithub
         LOW = 'low'
         MEDIUM = 'medium'
         HIGH = 'high'
-        VALUES = ['low', 'medium', 'high'].freeze
+        VALUES = %w[low medium high].freeze
         def self.from_value(value)
           value
         end
@@ -441,7 +437,7 @@ module OctridevGithub
         OPEN = 'open'
         CLOSED = 'closed'
         ALL = 'all'
-        VALUES = ['open', 'closed', 'all'].freeze
+        VALUES = %w[open closed all].freeze
         def self.from_value(value)
           value
         end
@@ -451,7 +447,7 @@ module OctridevGithub
       module IssuesUpdateResponseVariant1SuggestionsLabelsItemIgnoredReason
         ALREADY_APPLIED = 'already_applied'
         ISSUE_ALREADY_CLOSED = 'issue_already_closed'
-        VALUES = ['already_applied', 'issue_already_closed'].freeze
+        VALUES = %w[already_applied issue_already_closed].freeze
         def self.from_value(value)
           value
         end
@@ -462,7 +458,7 @@ module OctridevGithub
         LOW = 'low'
         MEDIUM = 'medium'
         HIGH = 'high'
-        VALUES = ['low', 'medium', 'high'].freeze
+        VALUES = %w[low medium high].freeze
         def self.from_value(value)
           value
         end
@@ -472,7 +468,7 @@ module OctridevGithub
       module IssuesCreateMilestoneState
         OPEN = 'open'
         CLOSED = 'closed'
-        VALUES = ['open', 'closed'].freeze
+        VALUES = %w[open closed].freeze
         def self.from_value(value)
           value
         end
@@ -482,7 +478,7 @@ module OctridevGithub
       module IssuesListCommentsForRepoParameter
         ASC = 'asc'
         DESC = 'desc'
-        VALUES = ['asc', 'desc'].freeze
+        VALUES = %w[asc desc].freeze
         def self.from_value(value)
           value
         end
@@ -496,7 +492,7 @@ module OctridevGithub
         SUBSCRIBED = 'subscribed'
         REPOS = 'repos'
         ALL = 'all'
-        VALUES = ['assigned', 'created', 'mentioned', 'subscribed', 'repos', 'all'].freeze
+        VALUES = %w[assigned created mentioned subscribed repos all].freeze
         def self.from_value(value)
           value
         end
@@ -506,7 +502,7 @@ module OctridevGithub
       module IssuesUpdateResponseVariant1SuggestionsStateItemIgnoredReason
         ALREADY_APPLIED = 'already_applied'
         ISSUE_ALREADY_CLOSED = 'issue_already_closed'
-        VALUES = ['already_applied', 'issue_already_closed'].freeze
+        VALUES = %w[already_applied issue_already_closed].freeze
         def self.from_value(value)
           value
         end
@@ -517,7 +513,7 @@ module OctridevGithub
         LOW = 'low'
         MEDIUM = 'medium'
         HIGH = 'high'
-        VALUES = ['low', 'medium', 'high'].freeze
+        VALUES = %w[low medium high].freeze
         def self.from_value(value)
           value
         end
@@ -528,7 +524,7 @@ module OctridevGithub
         CREATED = 'created'
         UPDATED = 'updated'
         COMMENTS = 'comments'
-        VALUES = ['created', 'updated', 'comments'].freeze
+        VALUES = %w[created updated comments].freeze
         def self.from_value(value)
           value
         end
@@ -543,8 +539,8 @@ module OctridevGithub
         REPLACED = 'replaced'
         INVALIDATED = 'invalidated'
         ALL = 'all'
-        VALUES = [
-          'pending', 'applied', 'approved', 'dismissed', 'replaced', 'invalidated', 'all'
+        VALUES = %w[
+          pending applied approved dismissed replaced invalidated all
         ].freeze
         def self.from_value(value)
           value
@@ -556,7 +552,7 @@ module OctridevGithub
         CREATED = 'created'
         UPDATED = 'updated'
         COMMENTS = 'comments'
-        VALUES = ['created', 'updated', 'comments'].freeze
+        VALUES = %w[created updated comments].freeze
         def self.from_value(value)
           value
         end
@@ -566,7 +562,7 @@ module OctridevGithub
       module IssuesUpdateState
         OPEN = 'open'
         CLOSED = 'closed'
-        VALUES = ['open', 'closed'].freeze
+        VALUES = %w[open closed].freeze
         def self.from_value(value)
           value
         end

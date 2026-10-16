@@ -12,105 +12,105 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAppsListInstallationReposForAuthenticatedUserResponseRepositoriesItemMetadata
         FIELDS = {
-          id: "id",
-          node_id: "node_id",
-          name: "name",
-          full_name: "full_name",
-          license: "license",
-          forks: "forks",
-          permissions: "permissions",
-          owner: "owner",
-          private: "private",
-          html_url: "html_url",
-          description: "description",
-          fork: "fork",
-          url: "url",
-          archive_url: "archive_url",
-          assignees_url: "assignees_url",
-          blobs_url: "blobs_url",
-          branches_url: "branches_url",
-          collaborators_url: "collaborators_url",
-          comments_url: "comments_url",
-          commits_url: "commits_url",
-          compare_url: "compare_url",
-          contents_url: "contents_url",
-          contributors_url: "contributors_url",
-          deployments_url: "deployments_url",
-          downloads_url: "downloads_url",
-          events_url: "events_url",
-          forks_url: "forks_url",
-          git_commits_url: "git_commits_url",
-          git_refs_url: "git_refs_url",
-          git_tags_url: "git_tags_url",
-          git_url: "git_url",
-          issue_comment_url: "issue_comment_url",
-          issue_events_url: "issue_events_url",
-          issues_url: "issues_url",
-          keys_url: "keys_url",
-          labels_url: "labels_url",
-          languages_url: "languages_url",
-          merges_url: "merges_url",
-          milestones_url: "milestones_url",
-          notifications_url: "notifications_url",
-          pulls_url: "pulls_url",
-          releases_url: "releases_url",
-          ssh_url: "ssh_url",
-          stargazers_url: "stargazers_url",
-          statuses_url: "statuses_url",
-          subscribers_url: "subscribers_url",
-          subscription_url: "subscription_url",
-          tags_url: "tags_url",
-          teams_url: "teams_url",
-          trees_url: "trees_url",
-          clone_url: "clone_url",
-          mirror_url: "mirror_url",
-          hooks_url: "hooks_url",
-          svn_url: "svn_url",
-          homepage: "homepage",
-          language: "language",
-          forks_count: "forks_count",
-          stargazers_count: "stargazers_count",
-          watchers_count: "watchers_count",
-          size: "size",
-          default_branch: "default_branch",
-          open_issues_count: "open_issues_count",
-          is_template: "is_template",
-          topics: "topics",
-          has_issues: "has_issues",
-          has_projects: "has_projects",
-          has_wiki: "has_wiki",
-          has_pages: "has_pages",
-          has_downloads: "has_downloads",
-          has_discussions: "has_discussions",
-          has_pull_requests: "has_pull_requests",
-          pull_request_creation_policy: "pull_request_creation_policy",
-          archived: "archived",
-          disabled: "disabled",
-          visibility: "visibility",
-          pushed_at: "pushed_at",
-          created_at: "created_at",
-          updated_at: "updated_at",
-          allow_rebase_merge: "allow_rebase_merge",
-          temp_clone_token: "temp_clone_token",
-          allow_squash_merge: "allow_squash_merge",
-          allow_auto_merge: "allow_auto_merge",
-          delete_branch_on_merge: "delete_branch_on_merge",
-          allow_update_branch: "allow_update_branch",
-          use_squash_pr_title_as_default: "use_squash_pr_title_as_default",
-          squash_merge_commit_title: "squash_merge_commit_title",
-          squash_merge_commit_message: "squash_merge_commit_message",
-          merge_commit_title: "merge_commit_title",
-          merge_commit_message: "merge_commit_message",
-          allow_merge_commit: "allow_merge_commit",
-          allow_forking: "allow_forking",
-          web_commit_signoff_required: "web_commit_signoff_required",
-          open_issues: "open_issues",
-          watchers: "watchers",
-          master_branch: "master_branch",
-          starred_at: "starred_at",
-          anonymous_access_enabled: "anonymous_access_enabled",
-          code_search_index_status: "code_search_index_status",
-          custom_properties: "custom_properties",
+          id: 'id',
+          node_id: 'node_id',
+          name: 'name',
+          full_name: 'full_name',
+          license: 'license',
+          forks: 'forks',
+          permissions: 'permissions',
+          owner: 'owner',
+          private: 'private',
+          html_url: 'html_url',
+          description: 'description',
+          fork: 'fork',
+          url: 'url',
+          archive_url: 'archive_url',
+          assignees_url: 'assignees_url',
+          blobs_url: 'blobs_url',
+          branches_url: 'branches_url',
+          collaborators_url: 'collaborators_url',
+          comments_url: 'comments_url',
+          commits_url: 'commits_url',
+          compare_url: 'compare_url',
+          contents_url: 'contents_url',
+          contributors_url: 'contributors_url',
+          deployments_url: 'deployments_url',
+          downloads_url: 'downloads_url',
+          events_url: 'events_url',
+          forks_url: 'forks_url',
+          git_commits_url: 'git_commits_url',
+          git_refs_url: 'git_refs_url',
+          git_tags_url: 'git_tags_url',
+          git_url: 'git_url',
+          issue_comment_url: 'issue_comment_url',
+          issue_events_url: 'issue_events_url',
+          issues_url: 'issues_url',
+          keys_url: 'keys_url',
+          labels_url: 'labels_url',
+          languages_url: 'languages_url',
+          merges_url: 'merges_url',
+          milestones_url: 'milestones_url',
+          notifications_url: 'notifications_url',
+          pulls_url: 'pulls_url',
+          releases_url: 'releases_url',
+          ssh_url: 'ssh_url',
+          stargazers_url: 'stargazers_url',
+          statuses_url: 'statuses_url',
+          subscribers_url: 'subscribers_url',
+          subscription_url: 'subscription_url',
+          tags_url: 'tags_url',
+          teams_url: 'teams_url',
+          trees_url: 'trees_url',
+          clone_url: 'clone_url',
+          mirror_url: 'mirror_url',
+          hooks_url: 'hooks_url',
+          svn_url: 'svn_url',
+          homepage: 'homepage',
+          language: 'language',
+          forks_count: 'forks_count',
+          stargazers_count: 'stargazers_count',
+          watchers_count: 'watchers_count',
+          size: 'size',
+          default_branch: 'default_branch',
+          open_issues_count: 'open_issues_count',
+          is_template: 'is_template',
+          topics: 'topics',
+          has_issues: 'has_issues',
+          has_projects: 'has_projects',
+          has_wiki: 'has_wiki',
+          has_pages: 'has_pages',
+          has_downloads: 'has_downloads',
+          has_discussions: 'has_discussions',
+          has_pull_requests: 'has_pull_requests',
+          pull_request_creation_policy: 'pull_request_creation_policy',
+          archived: 'archived',
+          disabled: 'disabled',
+          visibility: 'visibility',
+          pushed_at: 'pushed_at',
+          created_at: 'created_at',
+          updated_at: 'updated_at',
+          allow_rebase_merge: 'allow_rebase_merge',
+          temp_clone_token: 'temp_clone_token',
+          allow_squash_merge: 'allow_squash_merge',
+          allow_auto_merge: 'allow_auto_merge',
+          delete_branch_on_merge: 'delete_branch_on_merge',
+          allow_update_branch: 'allow_update_branch',
+          use_squash_pr_title_as_default: 'use_squash_pr_title_as_default',
+          squash_merge_commit_title: 'squash_merge_commit_title',
+          squash_merge_commit_message: 'squash_merge_commit_message',
+          merge_commit_title: 'merge_commit_title',
+          merge_commit_message: 'merge_commit_message',
+          allow_merge_commit: 'allow_merge_commit',
+          allow_forking: 'allow_forking',
+          web_commit_signoff_required: 'web_commit_signoff_required',
+          open_issues: 'open_issues',
+          watchers: 'watchers',
+          master_branch: 'master_branch',
+          starred_at: 'starred_at',
+          anonymous_access_enabled: 'anonymous_access_enabled',
+          code_search_index_status: 'code_search_index_status',
+          custom_properties: 'custom_properties'
         }.freeze
         REQUIRED_FIELDS = %i[
           id
@@ -214,7 +214,7 @@ module OctridevGithub
           end,
           code_search_index_status: lambda do |value|
             ::OctridevGithub::Methods::Apps::RepositoryCodeSearchIndexStatus.from_hash(value)
-          end,
+          end
         }.freeze
         NULLABLE_FIELDS = %i[
           license
@@ -451,9 +451,9 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAppsListInstallationReposForAuthenticatedUserResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          repository_selection: "repository_selection",
-          repositories: "repositories",
+          total_count: 'total_count',
+          repository_selection: 'repository_selection',
+          repositories: 'repositories'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -462,7 +462,7 @@ module OctridevGithub
         DECODERS = {
           repositories: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Apps::AppsListInstallationReposForAuthenticatedUserResponseRepositoriesItem.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -493,7 +493,7 @@ module OctridevGithub
       module AppsListAccountsForPlanParameter
         ASC = 'asc'
         DESC = 'desc'
-        VALUES = ['asc', 'desc'].freeze
+        VALUES = %w[asc desc].freeze
         def self.from_value(value)
           value
         end
@@ -503,7 +503,7 @@ module OctridevGithub
       module AppsListAccountsForPlanStubbedParameter
         ASC = 'asc'
         DESC = 'desc'
-        VALUES = ['asc', 'desc'].freeze
+        VALUES = %w[asc desc].freeze
         def self.from_value(value)
           value
         end
@@ -514,15 +514,14 @@ module OctridevGithub
         config:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/app",
+          '/app',
           config: config,
           return_type: ::OctridevGithub::Integration,
           decoder: :json,
           operation_id: 'apps_get_authenticated',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -534,20 +533,19 @@ module OctridevGithub
         code:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/app-manifests/",
+            '/app-manifests/',
             SdkClient.encode_path_segment(code),
-            "/conversions"
+            '/conversions'
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::Apps::AppsCreateFromManifestResponse,
           decoder: :json,
           operation_id: 'apps_create_from_manifest',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple }
         ).data
       end
 
@@ -556,15 +554,14 @@ module OctridevGithub
         config:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/app/hook/config",
+          '/app/hook/config',
           config: config,
           return_type: ::OctridevGithub::WebhookConfig,
           decoder: :json,
           operation_id: 'apps_get_webhook_config_for_app',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

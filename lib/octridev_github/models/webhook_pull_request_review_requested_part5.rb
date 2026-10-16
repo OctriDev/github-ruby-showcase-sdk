@@ -5,673 +5,666 @@
 
 # webhook_pull_request_review_requested domain models (part 5)
 module OctridevGithub
-# API model for WebhookPullRequestReviewRequestedVariant1PullRequestLinksHtml.
-class WebhookPullRequestReviewRequestedVariant1PullRequestLinksHtml
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksHtmlMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksHtmlMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksHtmlMetadata::DECODERS
+  # API model for WebhookPullRequestReviewRequestedVariant1PullRequestLinksHtml.
+  class WebhookPullRequestReviewRequestedVariant1PullRequestLinksHtml
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksHtmlMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksHtmlMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksHtmlMetadata::DECODERS
 
-  attr_reader :href
+    attr_reader :href
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksIssueMetadata
+    FIELDS = {
+      href: 'href'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      href
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for WebhookPullRequestReviewRequestedVariant1PullRequestLinksIssue.
+  class WebhookPullRequestReviewRequestedVariant1PullRequestLinksIssue
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksIssueMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksIssueMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksIssueMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksIssueMetadata
-  FIELDS = {
-    href: "href",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    href
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    attr_reader :href
 
-# API model for WebhookPullRequestReviewRequestedVariant1PullRequestLinksIssue.
-class WebhookPullRequestReviewRequestedVariant1PullRequestLinksIssue
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksIssueMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksIssueMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksIssueMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  attr_reader :href
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewCommentMetadata
+    FIELDS = {
+      href: 'href'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      href
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for WebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewComment.
+  class WebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewComment
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewCommentMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewCommentMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewCommentMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewCommentMetadata
-  FIELDS = {
-    href: "href",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    href
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    attr_reader :href
 
-# API model for WebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewComment.
-class WebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewComment
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewCommentMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewCommentMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewCommentMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  attr_reader :href
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewCommentsMetadata
+    FIELDS = {
+      href: 'href'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      href
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for WebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewComments.
+  class WebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewComments
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewCommentsMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewCommentsMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewCommentsMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewCommentsMetadata
-  FIELDS = {
-    href: "href",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    href
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    attr_reader :href
 
-# API model for WebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewComments.
-class WebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewComments
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewCommentsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewCommentsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewCommentsMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  attr_reader :href
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksSelfMetadata
+    FIELDS = {
+      href: 'href'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      href
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for WebhookPullRequestReviewRequestedVariant1PullRequestLinksSelf.
+  class WebhookPullRequestReviewRequestedVariant1PullRequestLinksSelf
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksSelfMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksSelfMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksSelfMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksSelfMetadata
-  FIELDS = {
-    href: "href",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    href
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    attr_reader :href
 
-# API model for WebhookPullRequestReviewRequestedVariant1PullRequestLinksSelf.
-class WebhookPullRequestReviewRequestedVariant1PullRequestLinksSelf
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksSelfMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksSelfMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksSelfMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  attr_reader :href
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksStatusesMetadata
+    FIELDS = {
+      href: 'href'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      href
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for WebhookPullRequestReviewRequestedVariant1PullRequestLinksStatuses.
+  class WebhookPullRequestReviewRequestedVariant1PullRequestLinksStatuses
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksStatusesMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksStatusesMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksStatusesMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksStatusesMetadata
-  FIELDS = {
-    href: "href",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    href
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    attr_reader :href
 
-# API model for WebhookPullRequestReviewRequestedVariant1PullRequestLinksStatuses.
-class WebhookPullRequestReviewRequestedVariant1PullRequestLinksStatuses
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksStatusesMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksStatusesMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksStatusesMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  attr_reader :href
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksMetadata
+    FIELDS = {
+      comments: 'comments',
+      commits: 'commits',
+      html: 'html',
+      issue: 'issue',
+      review_comment: 'review_comment',
+      review_comments: 'review_comments',
+      self_: 'self',
+      statuses: 'statuses'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      comments
+      commits
+      html
+      issue
+      review_comment
+      review_comments
+      self_
+      statuses
+    ].freeze
+    DECODERS = {
+      comments: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestLinksComments.from_hash(value)
+      end,
+      commits: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestLinksCommits.from_hash(value)
+      end,
+      html: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestLinksHtml.from_hash(value)
+      end,
+      issue: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestLinksIssue.from_hash(value)
+      end,
+      review_comment: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewComment.from_hash(value)
+      end,
+      review_comments: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewComments.from_hash(value)
+      end,
+      self_: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestLinksSelf.from_hash(value)
+      end,
+      statuses: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestLinksStatuses.from_hash(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for WebhookPullRequestReviewRequestedVariant1PullRequestLinks.
+  class WebhookPullRequestReviewRequestedVariant1PullRequestLinks
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksMetadata
-  FIELDS = {
-    comments: "comments",
-    commits: "commits",
-    html: "html",
-    issue: "issue",
-    review_comment: "review_comment",
-    review_comments: "review_comments",
-    self_: "self",
-    statuses: "statuses",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    comments
-    commits
-    html
-    issue
-    review_comment
-    review_comments
-    self_
-    statuses
-  ].freeze
-  DECODERS = {
-    comments: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestLinksComments.from_hash(value)
-    end,
-    commits: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestLinksCommits.from_hash(value)
-    end,
-    html: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestLinksHtml.from_hash(value)
-    end,
-    issue: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestLinksIssue.from_hash(value)
-    end,
-    review_comment: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewComment.from_hash(value)
-    end,
-    review_comments: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestLinksReviewComments.from_hash(value)
-    end,
-    self_: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestLinksSelf.from_hash(value)
-    end,
-    statuses: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestLinksStatuses.from_hash(value)
-    end,
-  }.freeze
-end
+    attr_reader :comments, :commits, :html, :issue, :review_comment, :review_comments, :self_,
+                :statuses
 
-# API model for WebhookPullRequestReviewRequestedVariant1PullRequestLinks.
-class WebhookPullRequestReviewRequestedVariant1PullRequestLinks
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestLinksMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  attr_reader :comments, :commits, :html, :issue, :review_comment, :review_comments, :self_,
-              :statuses
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAssigneeMetadata
+    FIELDS = {
+      avatar_url: 'avatar_url',
+      deleted: 'deleted',
+      email: 'email',
+      events_url: 'events_url',
+      followers_url: 'followers_url',
+      following_url: 'following_url',
+      gists_url: 'gists_url',
+      gravatar_id: 'gravatar_id',
+      html_url: 'html_url',
+      id: 'id',
+      login: 'login',
+      name: 'name',
+      node_id: 'node_id',
+      organizations_url: 'organizations_url',
+      received_events_url: 'received_events_url',
+      repos_url: 'repos_url',
+      site_admin: 'site_admin',
+      starred_url: 'starred_url',
+      subscriptions_url: 'subscriptions_url',
+      type: 'type',
+      url: 'url',
+      user_view_type: 'user_view_type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      login
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestAssigneeType.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for WebhookPullRequestReviewRequestedVariant1PullRequestAssignee.
+  class WebhookPullRequestReviewRequestedVariant1PullRequestAssignee
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAssigneeMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAssigneeMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAssigneeMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAssigneeMetadata
-  FIELDS = {
-    avatar_url: "avatar_url",
-    deleted: "deleted",
-    email: "email",
-    events_url: "events_url",
-    followers_url: "followers_url",
-    following_url: "following_url",
-    gists_url: "gists_url",
-    gravatar_id: "gravatar_id",
-    html_url: "html_url",
-    id: "id",
-    login: "login",
-    name: "name",
-    node_id: "node_id",
-    organizations_url: "organizations_url",
-    received_events_url: "received_events_url",
-    repos_url: "repos_url",
-    site_admin: "site_admin",
-    starred_url: "starred_url",
-    subscriptions_url: "subscriptions_url",
-    type: "type",
-    url: "url",
-    user_view_type: "user_view_type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    login
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestAssigneeType.from_value(value)
-    end,
-  }.freeze
-end
+    attr_reader :avatar_url, :deleted, :email, :events_url, :followers_url, :following_url, :gists_url,
+                :gravatar_id, :html_url, :id, :login, :name, :node_id, :organizations_url,
+                :received_events_url, :repos_url, :site_admin, :starred_url, :subscriptions_url, :type,
+                :url, :user_view_type
 
-# API model for WebhookPullRequestReviewRequestedVariant1PullRequestAssignee.
-class WebhookPullRequestReviewRequestedVariant1PullRequestAssignee
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAssigneeMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAssigneeMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAssigneeMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  attr_reader :avatar_url, :deleted, :email, :events_url, :followers_url, :following_url, :gists_url,
-              :gravatar_id, :html_url, :id, :login, :name, :node_id, :organizations_url,
-              :received_events_url, :repos_url, :site_admin, :starred_url, :subscriptions_url, :type,
-              :url, :user_view_type
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAssigneesItemMetadata
+    FIELDS = {
+      avatar_url: 'avatar_url',
+      deleted: 'deleted',
+      email: 'email',
+      events_url: 'events_url',
+      followers_url: 'followers_url',
+      following_url: 'following_url',
+      gists_url: 'gists_url',
+      gravatar_id: 'gravatar_id',
+      html_url: 'html_url',
+      id: 'id',
+      login: 'login',
+      name: 'name',
+      node_id: 'node_id',
+      organizations_url: 'organizations_url',
+      received_events_url: 'received_events_url',
+      repos_url: 'repos_url',
+      site_admin: 'site_admin',
+      starred_url: 'starred_url',
+      subscriptions_url: 'subscriptions_url',
+      type: 'type',
+      url: 'url',
+      user_view_type: 'user_view_type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      login
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestAssigneesItemType.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for WebhookPullRequestReviewRequestedVariant1PullRequestAssigneesItem.
+  class WebhookPullRequestReviewRequestedVariant1PullRequestAssigneesItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAssigneesItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAssigneesItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAssigneesItemMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAssigneesItemMetadata
-  FIELDS = {
-    avatar_url: "avatar_url",
-    deleted: "deleted",
-    email: "email",
-    events_url: "events_url",
-    followers_url: "followers_url",
-    following_url: "following_url",
-    gists_url: "gists_url",
-    gravatar_id: "gravatar_id",
-    html_url: "html_url",
-    id: "id",
-    login: "login",
-    name: "name",
-    node_id: "node_id",
-    organizations_url: "organizations_url",
-    received_events_url: "received_events_url",
-    repos_url: "repos_url",
-    site_admin: "site_admin",
-    starred_url: "starred_url",
-    subscriptions_url: "subscriptions_url",
-    type: "type",
-    url: "url",
-    user_view_type: "user_view_type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    login
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestAssigneesItemType.from_value(value)
-    end,
-  }.freeze
-end
+    attr_reader :avatar_url, :deleted, :email, :events_url, :followers_url, :following_url, :gists_url,
+                :gravatar_id, :html_url, :id, :login, :name, :node_id, :organizations_url,
+                :received_events_url, :repos_url, :site_admin, :starred_url, :subscriptions_url, :type,
+                :url, :user_view_type
 
-# API model for WebhookPullRequestReviewRequestedVariant1PullRequestAssigneesItem.
-class WebhookPullRequestReviewRequestedVariant1PullRequestAssigneesItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAssigneesItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAssigneesItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAssigneesItemMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  attr_reader :avatar_url, :deleted, :email, :events_url, :followers_url, :following_url, :gists_url,
-              :gravatar_id, :html_url, :id, :login, :name, :node_id, :organizations_url,
-              :received_events_url, :repos_url, :site_admin, :starred_url, :subscriptions_url, :type,
-              :url, :user_view_type
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeEnabledByMetadata
+    FIELDS = {
+      avatar_url: 'avatar_url',
+      deleted: 'deleted',
+      email: 'email',
+      events_url: 'events_url',
+      followers_url: 'followers_url',
+      following_url: 'following_url',
+      gists_url: 'gists_url',
+      gravatar_id: 'gravatar_id',
+      html_url: 'html_url',
+      id: 'id',
+      login: 'login',
+      name: 'name',
+      node_id: 'node_id',
+      organizations_url: 'organizations_url',
+      received_events_url: 'received_events_url',
+      repos_url: 'repos_url',
+      site_admin: 'site_admin',
+      starred_url: 'starred_url',
+      subscriptions_url: 'subscriptions_url',
+      type: 'type',
+      url: 'url',
+      user_view_type: 'user_view_type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      login
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeX84207bf002.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for WebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeEnabledBy.
+  class WebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeEnabledBy
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeEnabledByMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeEnabledByMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeEnabledByMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeEnabledByMetadata
-  FIELDS = {
-    avatar_url: "avatar_url",
-    deleted: "deleted",
-    email: "email",
-    events_url: "events_url",
-    followers_url: "followers_url",
-    following_url: "following_url",
-    gists_url: "gists_url",
-    gravatar_id: "gravatar_id",
-    html_url: "html_url",
-    id: "id",
-    login: "login",
-    name: "name",
-    node_id: "node_id",
-    organizations_url: "organizations_url",
-    received_events_url: "received_events_url",
-    repos_url: "repos_url",
-    site_admin: "site_admin",
-    starred_url: "starred_url",
-    subscriptions_url: "subscriptions_url",
-    type: "type",
-    url: "url",
-    user_view_type: "user_view_type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    login
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeX84207bf002.from_value(value)
-    end,
-  }.freeze
-end
+    attr_reader :avatar_url, :deleted, :email, :events_url, :followers_url, :following_url, :gists_url,
+                :gravatar_id, :html_url, :id, :login, :name, :node_id, :organizations_url,
+                :received_events_url, :repos_url, :site_admin, :starred_url, :subscriptions_url, :type,
+                :url, :user_view_type
 
-# API model for WebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeEnabledBy.
-class WebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeEnabledBy
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeEnabledByMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeEnabledByMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeEnabledByMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  attr_reader :avatar_url, :deleted, :email, :events_url, :followers_url, :following_url, :gists_url,
-              :gravatar_id, :html_url, :id, :login, :name, :node_id, :organizations_url,
-              :received_events_url, :repos_url, :site_admin, :starred_url, :subscriptions_url, :type,
-              :url, :user_view_type
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeMetadata
+    FIELDS = {
+      commit_message: 'commit_message',
+      commit_title: 'commit_title',
+      enabled_by: 'enabled_by',
+      merge_method: 'merge_method'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      commit_message
+      commit_title
+      enabled_by
+      merge_method
+    ].freeze
+    DECODERS = {
+      enabled_by: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeEnabledBy.from_hash(value)
+      end,
+      merge_method: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeMergeMethod.from_value(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      commit_message
+      commit_title
+      enabled_by
+    ].freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for WebhookPullRequestReviewRequestedVariant1PullRequestAutoMerge.
+  # The status of auto merging a pull request.
+  class WebhookPullRequestReviewRequestedVariant1PullRequestAutoMerge
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeMetadata
-  FIELDS = {
-    commit_message: "commit_message",
-    commit_title: "commit_title",
-    enabled_by: "enabled_by",
-    merge_method: "merge_method",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    commit_message
-    commit_title
-    enabled_by
-    merge_method
-  ].freeze
-  DECODERS = {
-    enabled_by: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeEnabledBy.from_hash(value)
-    end,
-    merge_method: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeMergeMethod.from_value(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    commit_message
-    commit_title
-    enabled_by
-  ].freeze
-end
+    attr_reader :enabled_by
+    # @return [String] Commit message for the merge commit.
+    attr_reader :commit_message
+    # @return [String] Title for the merge commit message.
+    attr_reader :commit_title
+    # @return [WebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeMergeMethod] The merge method to use.
+    attr_reader :merge_method
 
-# API model for WebhookPullRequestReviewRequestedVariant1PullRequestAutoMerge.
-# The status of auto merging a pull request.
-class WebhookPullRequestReviewRequestedVariant1PullRequestAutoMerge
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  attr_reader :enabled_by
-  # @return [String] Commit message for the merge commit.
-  attr_reader :commit_message
-  # @return [String] Title for the merge commit message.
-  attr_reader :commit_title
-  # @return [WebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeMergeMethod] The merge method to use.
-  attr_reader :merge_method
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeMetadata::NULLABLE_FIELDS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestAutoMergeMetadata::NULLABLE_FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoLicenseMetadata
+    FIELDS = {
+      key: 'key',
+      name: 'name',
+      node_id: 'node_id',
+      spdx_id: 'spdx_id',
+      url: 'url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      key
+      name
+      node_id
+      spdx_id
+      url
+    ].freeze
+    DECODERS = {}.freeze
+    NULLABLE_FIELDS = %i[
+      url
+    ].freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for WebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoLicense.
+  class WebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoLicense
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoLicenseMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoLicenseMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoLicenseMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoLicenseMetadata
-  FIELDS = {
-    key: "key",
-    name: "name",
-    node_id: "node_id",
-    spdx_id: "spdx_id",
-    url: "url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    key
-    name
-    node_id
-    spdx_id
-    url
-  ].freeze
-  DECODERS = {
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    url
-  ].freeze
-end
+    attr_reader :key, :name, :node_id, :spdx_id, :url
 
-# API model for WebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoLicense.
-class WebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoLicense
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoLicenseMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoLicenseMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoLicenseMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  attr_reader :key, :name, :node_id, :spdx_id, :url
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoLicenseMetadata::NULLABLE_FIELDS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoLicenseMetadata::NULLABLE_FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoOwnerMetadata
+    FIELDS = {
+      avatar_url: 'avatar_url',
+      deleted: 'deleted',
+      email: 'email',
+      events_url: 'events_url',
+      followers_url: 'followers_url',
+      following_url: 'following_url',
+      gists_url: 'gists_url',
+      gravatar_id: 'gravatar_id',
+      html_url: 'html_url',
+      id: 'id',
+      login: 'login',
+      name: 'name',
+      node_id: 'node_id',
+      organizations_url: 'organizations_url',
+      received_events_url: 'received_events_url',
+      repos_url: 'repos_url',
+      site_admin: 'site_admin',
+      starred_url: 'starred_url',
+      subscriptions_url: 'subscriptions_url',
+      type: 'type',
+      url: 'url',
+      user_view_type: 'user_view_type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      login
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoOwnerType.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for WebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoOwner.
+  class WebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoOwner
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoOwnerMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoOwnerMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoOwnerMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoOwnerMetadata
-  FIELDS = {
-    avatar_url: "avatar_url",
-    deleted: "deleted",
-    email: "email",
-    events_url: "events_url",
-    followers_url: "followers_url",
-    following_url: "following_url",
-    gists_url: "gists_url",
-    gravatar_id: "gravatar_id",
-    html_url: "html_url",
-    id: "id",
-    login: "login",
-    name: "name",
-    node_id: "node_id",
-    organizations_url: "organizations_url",
-    received_events_url: "received_events_url",
-    repos_url: "repos_url",
-    site_admin: "site_admin",
-    starred_url: "starred_url",
-    subscriptions_url: "subscriptions_url",
-    type: "type",
-    url: "url",
-    user_view_type: "user_view_type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    login
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoOwnerType.from_value(value)
-    end,
-  }.freeze
-end
+    attr_reader :avatar_url, :deleted, :email, :events_url, :followers_url, :following_url, :gists_url,
+                :gravatar_id, :html_url, :id, :login, :name, :node_id, :organizations_url,
+                :received_events_url, :repos_url, :site_admin, :starred_url, :subscriptions_url, :type,
+                :url, :user_view_type
 
-# API model for WebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoOwner.
-class WebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoOwner
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoOwnerMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoOwnerMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoOwnerMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  attr_reader :avatar_url, :deleted, :email, :events_url, :followers_url, :following_url, :gists_url,
-              :gravatar_id, :html_url, :id, :login, :name, :node_id, :organizations_url,
-              :received_events_url, :repos_url, :site_admin, :starred_url, :subscriptions_url, :type,
-              :url, :user_view_type
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoPermissionsMetadata
+    FIELDS = {
+      admin: 'admin',
+      maintain: 'maintain',
+      pull: 'pull',
+      push: 'push',
+      triage: 'triage'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      admin
+      pull
+      push
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # API model for WebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoPermissions.
+  class WebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoPermissions
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoPermissionsMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoPermissionsMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoPermissionsMetadata::DECODERS
+
+    attr_reader :admin, :maintain, :pull, :push, :triage
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoPermissionsMetadata
-  FIELDS = {
-    admin: "admin",
-    maintain: "maintain",
-    pull: "pull",
-    push: "push",
-    triage: "triage",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    admin
-    pull
-    push
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoPermissions.
-class WebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoPermissions
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoPermissionsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoPermissionsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestBaseRepoPermissionsMetadata::DECODERS
-
-  attr_reader :admin, :maintain, :pull, :push, :triage
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
 end

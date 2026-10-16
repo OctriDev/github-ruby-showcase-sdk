@@ -5,40 +5,39 @@
 
 # webhook_ping_form_encoded domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalWebhookPingFormEncodedMetadata
-  FIELDS = {
-    payload: "payload",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    payload
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookPingFormEncoded.
-# The webhooks ping payload encoded with URL encoding.
-class WebhookPingFormEncoded
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPingFormEncodedMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPingFormEncodedMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPingFormEncodedMetadata::DECODERS
-
-  # @return [String] A URL-encoded string of the ping JSON payload. The decoded payload is a JSON object.
-  attr_reader :payload
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPingFormEncodedMetadata
+    FIELDS = {
+      payload: 'payload'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      payload
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
+  # API model for WebhookPingFormEncoded.
+  # The webhooks ping payload encoded with URL encoding.
+  class WebhookPingFormEncoded
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPingFormEncodedMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPingFormEncodedMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPingFormEncodedMetadata::DECODERS
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+    # @return [String] A URL-encoded string of the ping JSON payload. The decoded payload is a JSON object.
+    attr_reader :payload
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
 end

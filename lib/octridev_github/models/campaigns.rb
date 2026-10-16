@@ -5,153 +5,152 @@
 
 # campaigns domain models
 module OctridevGithub
-# Defines the CampaignState SDK namespace.
-module CampaignState
-  OPEN = 'open'
-  CLOSED = 'closed'
-  VALUES = ['open', 'closed'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalCampaignSummaryAlertStatsMetadata
-  FIELDS = {
-    open_count: "open_count",
-    closed_count: "closed_count",
-    in_progress_count: "in_progress_count",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    open_count
-    closed_count
-    in_progress_count
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for CampaignSummaryAlertStats.
-# Optional object value serialized in the `alert_stats` wire field.
-class CampaignSummaryAlertStats
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalCampaignSummaryAlertStatsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalCampaignSummaryAlertStatsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalCampaignSummaryAlertStatsMetadata::DECODERS
-
-  # @return [Integer] The number of open alerts
-  attr_reader :open_count
-  # @return [Integer] The number of closed alerts
-  attr_reader :closed_count
-  # @return [Integer] The number of in-progress alerts
-  attr_reader :in_progress_count
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the CampaignState SDK namespace.
+  module CampaignState
+    OPEN = 'open'
+    CLOSED = 'closed'
+    VALUES = %w[open closed].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalCampaignSummaryAlertStatsMetadata
+    FIELDS = {
+      open_count: 'open_count',
+      closed_count: 'closed_count',
+      in_progress_count: 'in_progress_count'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      open_count
+      closed_count
+      in_progress_count
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for CampaignSummaryAlertStats.
+  # Optional object value serialized in the `alert_stats` wire field.
+  class CampaignSummaryAlertStats
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalCampaignSummaryAlertStatsMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalCampaignSummaryAlertStatsMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalCampaignSummaryAlertStatsMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalCampaignSummaryMetadata
-  FIELDS = {
-    number: "number",
-    created_at: "created_at",
-    updated_at: "updated_at",
-    name: "name",
-    description: "description",
-    managers: "managers",
-    team_managers: "team_managers",
-    published_at: "published_at",
-    ends_at: "ends_at",
-    closed_at: "closed_at",
-    state: "state",
-    contact_link: "contact_link",
-    alert_stats: "alert_stats",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    number
-    created_at
-    updated_at
-    description
-    managers
-    ends_at
-    state
-    contact_link
-  ].freeze
-  DECODERS = {
-    managers: lambda do |value|
-      value&.map { |item| ::OctridevGithub::SimpleUser.from_hash(item) }
-    end,
-    team_managers: lambda do |value|
-      value&.map { |item| ::OctridevGithub::Team.from_hash(item) }
-    end,
-    state: lambda do |value|
-      ::OctridevGithub::CampaignState.from_value(value)
-    end,
-    alert_stats: lambda do |value|
-      ::OctridevGithub::CampaignSummaryAlertStats.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    contact_link
-  ].freeze
-end
+    # @return [Integer] The number of open alerts
+    attr_reader :open_count
+    # @return [Integer] The number of closed alerts
+    attr_reader :closed_count
+    # @return [Integer] The number of in-progress alerts
+    attr_reader :in_progress_count
 
-# API model for CampaignSummary.
-# The campaign metadata and alert stats.
-class CampaignSummary
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalCampaignSummaryMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalCampaignSummaryMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalCampaignSummaryMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [Integer] The number of the newly created campaign
-  attr_reader :number
-  # @return [String] The date and time the campaign was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
-  attr_reader :created_at
-  # @return [String] The date and time the campaign was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
-  attr_reader :updated_at
-  # @return [String] The campaign name
-  attr_reader :name
-  # @return [String] The campaign description
-  attr_reader :description
-  # @return [Array_of_SimpleUser] The campaign managers
-  attr_reader :managers
-  # @return [Array_of_Team] The campaign team managers
-  attr_reader :team_managers
-  # @return [String] The date and time the campaign was published, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
-  attr_reader :published_at
-  # @return [String] The date and time the campaign has ended, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
-  attr_reader :ends_at
-  # @return [String] The date and time the campaign was closed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the campaign is still open.
-  attr_reader :closed_at
-  # @return [CampaignState] Indicates whether a campaign is open or closed
-  attr_reader :state
-  # @return [String] The contact link of the campaign.
-  attr_reader :contact_link
-  # @return [CampaignSummaryAlertStats] Optional object value serialized in the `alert_stats` wire field.
-  attr_reader :alert_stats
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalCampaignSummaryMetadata::NULLABLE_FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalCampaignSummaryMetadata
+    FIELDS = {
+      number: 'number',
+      created_at: 'created_at',
+      updated_at: 'updated_at',
+      name: 'name',
+      description: 'description',
+      managers: 'managers',
+      team_managers: 'team_managers',
+      published_at: 'published_at',
+      ends_at: 'ends_at',
+      closed_at: 'closed_at',
+      state: 'state',
+      contact_link: 'contact_link',
+      alert_stats: 'alert_stats'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      number
+      created_at
+      updated_at
+      description
+      managers
+      ends_at
+      state
+      contact_link
+    ].freeze
+    DECODERS = {
+      managers: lambda do |value|
+        value&.map { |item| ::OctridevGithub::SimpleUser.from_hash(item) }
+      end,
+      team_managers: lambda do |value|
+        value&.map { |item| ::OctridevGithub::Team.from_hash(item) }
+      end,
+      state: lambda do |value|
+        ::OctridevGithub::CampaignState.from_value(value)
+      end,
+      alert_stats: lambda do |value|
+        ::OctridevGithub::CampaignSummaryAlertStats.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      contact_link
+    ].freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # API model for CampaignSummary.
+  # The campaign metadata and alert stats.
+  class CampaignSummary
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalCampaignSummaryMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalCampaignSummaryMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalCampaignSummaryMetadata::DECODERS
+
+    # @return [Integer] The number of the newly created campaign
+    attr_reader :number
+    # @return [String] The date and time the campaign was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
+    attr_reader :created_at
+    # @return [String] The date and time the campaign was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
+    attr_reader :updated_at
+    # @return [String] The campaign name
+    attr_reader :name
+    # @return [String] The campaign description
+    attr_reader :description
+    # @return [Array_of_SimpleUser] The campaign managers
+    attr_reader :managers
+    # @return [Array_of_Team] The campaign team managers
+    attr_reader :team_managers
+    # @return [String] The date and time the campaign was published, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
+    attr_reader :published_at
+    # @return [String] The date and time the campaign has ended, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
+    attr_reader :ends_at
+    # @return [String] The date and time the campaign was closed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the campaign is still open.
+    attr_reader :closed_at
+    # @return [CampaignState] Indicates whether a campaign is open or closed
+    attr_reader :state
+    # @return [String] The contact link of the campaign.
+    attr_reader :contact_link
+    # @return [CampaignSummaryAlertStats] Optional object value serialized in the `alert_stats` wire field.
+    attr_reader :alert_stats
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalCampaignSummaryMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
 end

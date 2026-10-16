@@ -25,26 +25,25 @@ module OctridevGithub
         suggestion_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/issues/",
+            '/issues/',
             SdkClient.encode_path_segment(issue_number),
-            "/suggestions/",
+            '/suggestions/',
             SdkClient.encode_path_segment(suggestion_id),
-            "/dismiss"
+            '/dismiss'
           ].join,
           config: config,
           return_type: ::OctridevGithub::IssueSuggestion,
           decoder: :json,
           operation_id: 'issues_dismiss_suggestion',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -73,29 +72,28 @@ module OctridevGithub
         exclude: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/issues/",
+            '/issues/',
             SdkClient.encode_path_segment(issue_number),
-            "/timeline"
+            '/timeline'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'page' => QueryValue.new(page, style: 'form', explode: true),
-            'exclude' => QueryValue.new(exclude, style: 'form', explode: true),
+            'exclude' => QueryValue.new(exclude, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::TimelineIssueEvents],
           decoder: :json,
           operation_id: 'issues_list_events_for_timeline',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError },
+          errors: { '400' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -119,26 +117,25 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/labels"
+            '/labels'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::Label],
           decoder: :json,
           operation_id: 'issues_list_labels_for_repo',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -165,27 +162,26 @@ module OctridevGithub
         description: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/labels"
+            '/labels'
           ].join,
           config: config,
           body: {
             'name' => name,
             'color' => color,
-            'description' => description,
+            'description' => description
           },
           return_type: ::OctridevGithub::Label,
           decoder: :json,
           operation_id: 'issues_create_label',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -204,15 +200,14 @@ module OctridevGithub
         name:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/labels/",
+            '/labels/',
             SdkClient.encode_path_segment(name)
           ].join,
           config: config,
@@ -220,7 +215,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'issues_get_label',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -254,15 +249,14 @@ module OctridevGithub
         archived: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/labels/",
+            '/labels/',
             SdkClient.encode_path_segment(name)
           ].join,
           config: config,
@@ -270,12 +264,12 @@ module OctridevGithub
             'new_name' => new_name,
             'color' => color,
             'description' => description,
-            'archived' => archived,
+            'archived' => archived
           },
           return_type: ::OctridevGithub::Label,
           decoder: :json,
           operation_id: 'issues_update_label',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -294,21 +288,20 @@ module OctridevGithub
         name:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/labels/",
+            '/labels/',
             SdkClient.encode_path_segment(name)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'issues_delete_label',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -341,15 +334,14 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/milestones"
+            '/milestones'
           ].join,
           config: config,
           query: {
@@ -357,13 +349,13 @@ module OctridevGithub
             'sort' => QueryValue.new(sort, style: 'form', explode: true),
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::Milestone],
           decoder: :json,
           operation_id: 'issues_list_milestones',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -391,30 +383,29 @@ module OctridevGithub
         due_on: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.if_given(due_on) { Validation.validate_date_time('due_on', due_on) }
 
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/milestones"
+            '/milestones'
           ].join,
           config: config,
           body: {
             'title' => title,
             'state' => state,
             'description' => description,
-            'due_on' => due_on,
+            'due_on' => due_on
           },
           return_type: ::OctridevGithub::Milestone,
           decoder: :json,
           operation_id: 'issues_create_milestone',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -432,15 +423,14 @@ module OctridevGithub
         milestone_number:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/milestones/",
+            '/milestones/',
             SdkClient.encode_path_segment(milestone_number)
           ].join,
           config: config,
@@ -448,7 +438,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'issues_get_milestone',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -476,17 +466,16 @@ module OctridevGithub
         due_on: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.if_given(due_on) { Validation.validate_date_time('due_on', due_on) }
 
         SdkClient.request(
           'PATCH',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/milestones/",
+            '/milestones/',
             SdkClient.encode_path_segment(milestone_number)
           ].join,
           config: config,
@@ -494,12 +483,12 @@ module OctridevGithub
             'title' => title,
             'state' => state,
             'description' => description,
-            'due_on' => due_on,
+            'due_on' => due_on
           },
           return_type: ::OctridevGithub::Milestone,
           decoder: :json,
           operation_id: 'issues_update_milestone',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -517,22 +506,21 @@ module OctridevGithub
         milestone_number:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/milestones/",
+            '/milestones/',
             SdkClient.encode_path_segment(milestone_number)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'issues_delete_milestone',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

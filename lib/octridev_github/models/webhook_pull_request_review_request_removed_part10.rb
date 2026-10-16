@@ -5,14 +5,14 @@
 
 # webhook_pull_request_review_request_removed domain models (part 10)
 module OctridevGithub
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1RequestedTeamPrivacy SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1RequestedTeamPrivacy
-  OPEN = 'open'
-  CLOSED = 'closed'
-  SECRET = 'secret'
-  VALUES = ['open', 'closed', 'secret'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1RequestedTeamPrivacy SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1RequestedTeamPrivacy
+    OPEN = 'open'
+    CLOSED = 'closed'
+    SECRET = 'secret'
+    VALUES = %w[open closed secret].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 end

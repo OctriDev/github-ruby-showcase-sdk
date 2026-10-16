@@ -23,22 +23,21 @@ module OctridevGithub
         name:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/agents/variables/",
+            '/agents/variables/',
             SdkClient.encode_path_segment(name)
           ].join,
           config: config,
           return_type: ::OctridevGithub::ActionsVariable,
           decoder: :json,
           operation_id: 'agents_get_repo_variable',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -60,25 +59,24 @@ module OctridevGithub
         value: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/agents/variables/",
+            '/agents/variables/',
             SdkClient.encode_path_segment(name)
           ].join,
           config: config,
           body: {
             'name' => name2,
-            'value' => value,
+            'value' => value
           },
           decoder: :empty,
           operation_id: 'agents_update_repo_variable',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -96,21 +94,20 @@ module OctridevGithub
         name:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/agents/variables/",
+            '/agents/variables/',
             SdkClient.encode_path_segment(name)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'agents_delete_repo_variable',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

@@ -5,355 +5,355 @@
 
 # shared_simple domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalSimpleRepositoryMetadata
-  FIELDS = {
-    id: "id",
-    node_id: "node_id",
-    name: "name",
-    full_name: "full_name",
-    owner: "owner",
-    private: "private",
-    html_url: "html_url",
-    description: "description",
-    fork: "fork",
-    url: "url",
-    archive_url: "archive_url",
-    assignees_url: "assignees_url",
-    blobs_url: "blobs_url",
-    branches_url: "branches_url",
-    collaborators_url: "collaborators_url",
-    comments_url: "comments_url",
-    commits_url: "commits_url",
-    compare_url: "compare_url",
-    contents_url: "contents_url",
-    contributors_url: "contributors_url",
-    deployments_url: "deployments_url",
-    downloads_url: "downloads_url",
-    events_url: "events_url",
-    forks_url: "forks_url",
-    git_commits_url: "git_commits_url",
-    git_refs_url: "git_refs_url",
-    git_tags_url: "git_tags_url",
-    issue_comment_url: "issue_comment_url",
-    issue_events_url: "issue_events_url",
-    issues_url: "issues_url",
-    keys_url: "keys_url",
-    labels_url: "labels_url",
-    languages_url: "languages_url",
-    merges_url: "merges_url",
-    milestones_url: "milestones_url",
-    notifications_url: "notifications_url",
-    pulls_url: "pulls_url",
-    releases_url: "releases_url",
-    stargazers_url: "stargazers_url",
-    statuses_url: "statuses_url",
-    subscribers_url: "subscribers_url",
-    subscription_url: "subscription_url",
-    tags_url: "tags_url",
-    teams_url: "teams_url",
-    trees_url: "trees_url",
-    hooks_url: "hooks_url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    node_id
-    name
-    full_name
-    owner
-    private
-    html_url
-    description
-    fork
-    url
-    archive_url
-    assignees_url
-    blobs_url
-    branches_url
-    collaborators_url
-    comments_url
-    commits_url
-    compare_url
-    contents_url
-    contributors_url
-    deployments_url
-    downloads_url
-    events_url
-    forks_url
-    git_commits_url
-    git_refs_url
-    git_tags_url
-    issue_comment_url
-    issue_events_url
-    issues_url
-    keys_url
-    labels_url
-    languages_url
-    merges_url
-    milestones_url
-    notifications_url
-    pulls_url
-    releases_url
-    stargazers_url
-    statuses_url
-    subscribers_url
-    subscription_url
-    tags_url
-    teams_url
-    trees_url
-    hooks_url
-  ].freeze
-  DECODERS = {
-    owner: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    description
-  ].freeze
-end
-
-# API model for SimpleRepository.
-# A GitHub repository.
-class SimpleRepository
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalSimpleRepositoryMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalSimpleRepositoryMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalSimpleRepositoryMetadata::DECODERS
-
-  # @return [Integer] A unique identifier of the repository.
-  attr_reader :id
-  # @return [String] The GraphQL identifier of the repository.
-  attr_reader :node_id
-  # @return [String] The name of the repository.
-  attr_reader :name
-  # @return [String] The full, globally unique, name of the repository.
-  attr_reader :full_name
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :owner
-  # @return [Boolean] Whether the repository is private.
-  attr_reader :private
-  # @return [String] The URL to view the repository on GitHub.com.
-  attr_reader :html_url
-  # @return [String] The repository description.
-  attr_reader :description
-  # @return [Boolean] Whether the repository is a fork.
-  attr_reader :fork
-  # @return [String] The URL to get more information about the repository from the GitHub API.
-  attr_reader :url
-  # @return [String] A template for the API URL to download the repository as an archive.
-  attr_reader :archive_url
-  # @return [String] A template for the API URL to list the available assignees for issues in the repository.
-  attr_reader :assignees_url
-  # @return [String] A template for the API URL to create or retrieve a raw Git blob in the repository.
-  attr_reader :blobs_url
-  # @return [String] A template for the API URL to get information about branches in the repository.
-  attr_reader :branches_url
-  # @return [String] A template for the API URL to get information about collaborators of the repository.
-  attr_reader :collaborators_url
-  # @return [String] A template for the API URL to get information about comments on the repository.
-  attr_reader :comments_url
-  # @return [String] A template for the API URL to get information about commits on the repository.
-  attr_reader :commits_url
-  # @return [String] A template for the API URL to compare two commits or refs.
-  attr_reader :compare_url
-  # @return [String] A template for the API URL to get the contents of the repository.
-  attr_reader :contents_url
-  # @return [String] A template for the API URL to list the contributors to the repository.
-  attr_reader :contributors_url
-  # @return [String] The API URL to list the deployments of the repository.
-  attr_reader :deployments_url
-  # @return [String] The API URL to list the downloads on the repository.
-  attr_reader :downloads_url
-  # @return [String] The API URL to list the events of the repository.
-  attr_reader :events_url
-  # @return [String] The API URL to list the forks of the repository.
-  attr_reader :forks_url
-  # @return [String] A template for the API URL to get information about Git commits of the repository.
-  attr_reader :git_commits_url
-  # @return [String] A template for the API URL to get information about Git refs of the repository.
-  attr_reader :git_refs_url
-  # @return [String] A template for the API URL to get information about Git tags of the repository.
-  attr_reader :git_tags_url
-  # @return [String] A template for the API URL to get information about issue comments on the repository.
-  attr_reader :issue_comment_url
-  # @return [String] A template for the API URL to get information about issue events on the repository.
-  attr_reader :issue_events_url
-  # @return [String] A template for the API URL to get information about issues on the repository.
-  attr_reader :issues_url
-  # @return [String] A template for the API URL to get information about deploy keys on the repository.
-  attr_reader :keys_url
-  # @return [String] A template for the API URL to get information about labels of the repository.
-  attr_reader :labels_url
-  # @return [String] The API URL to get information about the languages of the repository.
-  attr_reader :languages_url
-  # @return [String] The API URL to merge branches in the repository.
-  attr_reader :merges_url
-  # @return [String] A template for the API URL to get information about milestones of the repository.
-  attr_reader :milestones_url
-  # @return [String] A template for the API URL to get information about notifications on the repository.
-  attr_reader :notifications_url
-  # @return [String] A template for the API URL to get information about pull requests on the repository.
-  attr_reader :pulls_url
-  # @return [String] A template for the API URL to get information about releases on the repository.
-  attr_reader :releases_url
-  # @return [String] The API URL to list the stargazers on the repository.
-  attr_reader :stargazers_url
-  # @return [String] A template for the API URL to get information about statuses of a commit.
-  attr_reader :statuses_url
-  # @return [String] The API URL to list the subscribers on the repository.
-  attr_reader :subscribers_url
-  # @return [String] The API URL to subscribe to notifications for this repository.
-  attr_reader :subscription_url
-  # @return [String] The API URL to get information about tags on the repository.
-  attr_reader :tags_url
-  # @return [String] The API URL to list the teams on the repository.
-  attr_reader :teams_url
-  # @return [String] A template for the API URL to create or retrieve a raw Git tree of the repository.
-  attr_reader :trees_url
-  # @return [String] The API URL to list the hooks on the repository.
-  attr_reader :hooks_url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalSimpleRepositoryMetadata
+    FIELDS = {
+      id: 'id',
+      node_id: 'node_id',
+      name: 'name',
+      full_name: 'full_name',
+      owner: 'owner',
+      private: 'private',
+      html_url: 'html_url',
+      description: 'description',
+      fork: 'fork',
+      url: 'url',
+      archive_url: 'archive_url',
+      assignees_url: 'assignees_url',
+      blobs_url: 'blobs_url',
+      branches_url: 'branches_url',
+      collaborators_url: 'collaborators_url',
+      comments_url: 'comments_url',
+      commits_url: 'commits_url',
+      compare_url: 'compare_url',
+      contents_url: 'contents_url',
+      contributors_url: 'contributors_url',
+      deployments_url: 'deployments_url',
+      downloads_url: 'downloads_url',
+      events_url: 'events_url',
+      forks_url: 'forks_url',
+      git_commits_url: 'git_commits_url',
+      git_refs_url: 'git_refs_url',
+      git_tags_url: 'git_tags_url',
+      issue_comment_url: 'issue_comment_url',
+      issue_events_url: 'issue_events_url',
+      issues_url: 'issues_url',
+      keys_url: 'keys_url',
+      labels_url: 'labels_url',
+      languages_url: 'languages_url',
+      merges_url: 'merges_url',
+      milestones_url: 'milestones_url',
+      notifications_url: 'notifications_url',
+      pulls_url: 'pulls_url',
+      releases_url: 'releases_url',
+      stargazers_url: 'stargazers_url',
+      statuses_url: 'statuses_url',
+      subscribers_url: 'subscribers_url',
+      subscription_url: 'subscription_url',
+      tags_url: 'tags_url',
+      teams_url: 'teams_url',
+      trees_url: 'trees_url',
+      hooks_url: 'hooks_url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      node_id
+      name
+      full_name
+      owner
+      private
+      html_url
+      description
+      fork
+      url
+      archive_url
+      assignees_url
+      blobs_url
+      branches_url
+      collaborators_url
+      comments_url
+      commits_url
+      compare_url
+      contents_url
+      contributors_url
+      deployments_url
+      downloads_url
+      events_url
+      forks_url
+      git_commits_url
+      git_refs_url
+      git_tags_url
+      issue_comment_url
+      issue_events_url
+      issues_url
+      keys_url
+      labels_url
+      languages_url
+      merges_url
+      milestones_url
+      notifications_url
+      pulls_url
+      releases_url
+      stargazers_url
+      statuses_url
+      subscribers_url
+      subscription_url
+      tags_url
+      teams_url
+      trees_url
+      hooks_url
+    ].freeze
+    DECODERS = {
+      owner: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      description
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalSimpleRepositoryMetadata::NULLABLE_FIELDS)
+  # API model for SimpleRepository.
+  # A GitHub repository.
+  class SimpleRepository
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalSimpleRepositoryMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalSimpleRepositoryMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalSimpleRepositoryMetadata::DECODERS
+
+    # @return [Integer] A unique identifier of the repository.
+    attr_reader :id
+    # @return [String] The GraphQL identifier of the repository.
+    attr_reader :node_id
+    # @return [String] The name of the repository.
+    attr_reader :name
+    # @return [String] The full, globally unique, name of the repository.
+    attr_reader :full_name
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :owner
+    # @return [Boolean] Whether the repository is private.
+    attr_reader :private
+    # @return [String] The URL to view the repository on GitHub.com.
+    attr_reader :html_url
+    # @return [String] The repository description.
+    attr_reader :description
+    # @return [Boolean] Whether the repository is a fork.
+    attr_reader :fork
+    # @return [String] The URL to get more information about the repository from the GitHub API.
+    attr_reader :url
+    # @return [String] A template for the API URL to download the repository as an archive.
+    attr_reader :archive_url
+    # @return [String] A template for the API URL to list the available assignees for issues in the repository.
+    attr_reader :assignees_url
+    # @return [String] A template for the API URL to create or retrieve a raw Git blob in the repository.
+    attr_reader :blobs_url
+    # @return [String] A template for the API URL to get information about branches in the repository.
+    attr_reader :branches_url
+    # @return [String] A template for the API URL to get information about collaborators of the repository.
+    attr_reader :collaborators_url
+    # @return [String] A template for the API URL to get information about comments on the repository.
+    attr_reader :comments_url
+    # @return [String] A template for the API URL to get information about commits on the repository.
+    attr_reader :commits_url
+    # @return [String] A template for the API URL to compare two commits or refs.
+    attr_reader :compare_url
+    # @return [String] A template for the API URL to get the contents of the repository.
+    attr_reader :contents_url
+    # @return [String] A template for the API URL to list the contributors to the repository.
+    attr_reader :contributors_url
+    # @return [String] The API URL to list the deployments of the repository.
+    attr_reader :deployments_url
+    # @return [String] The API URL to list the downloads on the repository.
+    attr_reader :downloads_url
+    # @return [String] The API URL to list the events of the repository.
+    attr_reader :events_url
+    # @return [String] The API URL to list the forks of the repository.
+    attr_reader :forks_url
+    # @return [String] A template for the API URL to get information about Git commits of the repository.
+    attr_reader :git_commits_url
+    # @return [String] A template for the API URL to get information about Git refs of the repository.
+    attr_reader :git_refs_url
+    # @return [String] A template for the API URL to get information about Git tags of the repository.
+    attr_reader :git_tags_url
+    # @return [String] A template for the API URL to get information about issue comments on the repository.
+    attr_reader :issue_comment_url
+    # @return [String] A template for the API URL to get information about issue events on the repository.
+    attr_reader :issue_events_url
+    # @return [String] A template for the API URL to get information about issues on the repository.
+    attr_reader :issues_url
+    # @return [String] A template for the API URL to get information about deploy keys on the repository.
+    attr_reader :keys_url
+    # @return [String] A template for the API URL to get information about labels of the repository.
+    attr_reader :labels_url
+    # @return [String] The API URL to get information about the languages of the repository.
+    attr_reader :languages_url
+    # @return [String] The API URL to merge branches in the repository.
+    attr_reader :merges_url
+    # @return [String] A template for the API URL to get information about milestones of the repository.
+    attr_reader :milestones_url
+    # @return [String] A template for the API URL to get information about notifications on the repository.
+    attr_reader :notifications_url
+    # @return [String] A template for the API URL to get information about pull requests on the repository.
+    attr_reader :pulls_url
+    # @return [String] A template for the API URL to get information about releases on the repository.
+    attr_reader :releases_url
+    # @return [String] The API URL to list the stargazers on the repository.
+    attr_reader :stargazers_url
+    # @return [String] A template for the API URL to get information about statuses of a commit.
+    attr_reader :statuses_url
+    # @return [String] The API URL to list the subscribers on the repository.
+    attr_reader :subscribers_url
+    # @return [String] The API URL to subscribe to notifications for this repository.
+    attr_reader :subscription_url
+    # @return [String] The API URL to get information about tags on the repository.
+    attr_reader :tags_url
+    # @return [String] The API URL to list the teams on the repository.
+    attr_reader :teams_url
+    # @return [String] A template for the API URL to create or retrieve a raw Git tree of the repository.
+    attr_reader :trees_url
+    # @return [String] The API URL to list the hooks on the repository.
+    attr_reader :hooks_url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalSimpleRepositoryMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalSimpleUserMetadata
-  FIELDS = {
-    name: "name",
-    email: "email",
-    login: "login",
-    id: "id",
-    node_id: "node_id",
-    avatar_url: "avatar_url",
-    gravatar_id: "gravatar_id",
-    url: "url",
-    html_url: "html_url",
-    followers_url: "followers_url",
-    following_url: "following_url",
-    gists_url: "gists_url",
-    starred_url: "starred_url",
-    subscriptions_url: "subscriptions_url",
-    organizations_url: "organizations_url",
-    repos_url: "repos_url",
-    events_url: "events_url",
-    received_events_url: "received_events_url",
-    type: "type",
-    site_admin: "site_admin",
-    starred_at: "starred_at",
-    user_view_type: "user_view_type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    login
-    id
-    node_id
-    avatar_url
-    gravatar_id
-    url
-    html_url
-    followers_url
-    following_url
-    gists_url
-    starred_url
-    subscriptions_url
-    organizations_url
-    repos_url
-    events_url
-    received_events_url
-    type
-    site_admin
-  ].freeze
-  DECODERS = {
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    gravatar_id
-  ].freeze
-end
-
-# API model for SimpleUser.
-# A GitHub user.
-class SimpleUser
-  include IntegrationInstallationRequestAccount
-  include NullableIntegrationOwner
-  include CopilotSpaceOwner
-  include PendingDeploymentReviewersItemReviewer
-  include IntegrationOwner
-  include CommitAuthor
-  include CommitCommitter
-  include InstallationAccount
-  include ReviewersItemReviewer
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalSimpleUserMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalSimpleUserMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalSimpleUserMetadata::DECODERS
-
-  # @return [String] Optional `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Optional `string` value serialized in the `email` wire field.
-  attr_reader :email
-  # @return [String] Required `string` value serialized in the `login` wire field.
-  attr_reader :login
-  # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Required `uri`-formatted value serialized in the `avatar_url` wire field.
-  attr_reader :avatar_url
-  # @return [String] Required `string` value serialized in the `gravatar_id` wire field.
-  attr_reader :gravatar_id
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [String] Required `uri`-formatted value serialized in the `followers_url` wire field.
-  attr_reader :followers_url
-  # @return [String] Required `string` value serialized in the `following_url` wire field.
-  attr_reader :following_url
-  # @return [String] Required `string` value serialized in the `gists_url` wire field.
-  attr_reader :gists_url
-  # @return [String] Required `string` value serialized in the `starred_url` wire field.
-  attr_reader :starred_url
-  # @return [String] Required `uri`-formatted value serialized in the `subscriptions_url` wire field.
-  attr_reader :subscriptions_url
-  # @return [String] Required `uri`-formatted value serialized in the `organizations_url` wire field.
-  attr_reader :organizations_url
-  # @return [String] Required `uri`-formatted value serialized in the `repos_url` wire field.
-  attr_reader :repos_url
-  # @return [String] Required `string` value serialized in the `events_url` wire field.
-  attr_reader :events_url
-  # @return [String] Required `uri`-formatted value serialized in the `received_events_url` wire field.
-  attr_reader :received_events_url
-  # @return [String] Required `string` value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [Boolean] Required `boolean` value serialized in the `site_admin` wire field.
-  attr_reader :site_admin
-  # @return [String] Optional `string` value serialized in the `starred_at` wire field.
-  attr_reader :starred_at
-  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-  attr_reader :user_view_type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalSimpleUserMetadata
+    FIELDS = {
+      name: 'name',
+      email: 'email',
+      login: 'login',
+      id: 'id',
+      node_id: 'node_id',
+      avatar_url: 'avatar_url',
+      gravatar_id: 'gravatar_id',
+      url: 'url',
+      html_url: 'html_url',
+      followers_url: 'followers_url',
+      following_url: 'following_url',
+      gists_url: 'gists_url',
+      starred_url: 'starred_url',
+      subscriptions_url: 'subscriptions_url',
+      organizations_url: 'organizations_url',
+      repos_url: 'repos_url',
+      events_url: 'events_url',
+      received_events_url: 'received_events_url',
+      type: 'type',
+      site_admin: 'site_admin',
+      starred_at: 'starred_at',
+      user_view_type: 'user_view_type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      login
+      id
+      node_id
+      avatar_url
+      gravatar_id
+      url
+      html_url
+      followers_url
+      following_url
+      gists_url
+      starred_url
+      subscriptions_url
+      organizations_url
+      repos_url
+      events_url
+      received_events_url
+      type
+      site_admin
+    ].freeze
+    DECODERS = {}.freeze
+    NULLABLE_FIELDS = %i[
+      gravatar_id
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalSimpleUserMetadata::NULLABLE_FIELDS)
-  end
+  # API model for SimpleUser.
+  # A GitHub user.
+  class SimpleUser
+    include IntegrationInstallationRequestAccount
+    include NullableIntegrationOwner
+    include CopilotSpaceOwner
+    include PendingDeploymentReviewersItemReviewer
+    include IntegrationOwner
+    include CommitAuthor
+    include CommitCommitter
+    include InstallationAccount
+    include ReviewersItemReviewer
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalSimpleUserMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalSimpleUserMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalSimpleUserMetadata::DECODERS
+
+    # @return [String] Optional `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Optional `string` value serialized in the `email` wire field.
+    attr_reader :email
+    # @return [String] Required `string` value serialized in the `login` wire field.
+    attr_reader :login
+    # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Required `uri`-formatted value serialized in the `avatar_url` wire field.
+    attr_reader :avatar_url
+    # @return [String] Required `string` value serialized in the `gravatar_id` wire field.
+    attr_reader :gravatar_id
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [String] Required `uri`-formatted value serialized in the `followers_url` wire field.
+    attr_reader :followers_url
+    # @return [String] Required `string` value serialized in the `following_url` wire field.
+    attr_reader :following_url
+    # @return [String] Required `string` value serialized in the `gists_url` wire field.
+    attr_reader :gists_url
+    # @return [String] Required `string` value serialized in the `starred_url` wire field.
+    attr_reader :starred_url
+    # @return [String] Required `uri`-formatted value serialized in the `subscriptions_url` wire field.
+    attr_reader :subscriptions_url
+    # @return [String] Required `uri`-formatted value serialized in the `organizations_url` wire field.
+    attr_reader :organizations_url
+    # @return [String] Required `uri`-formatted value serialized in the `repos_url` wire field.
+    attr_reader :repos_url
+    # @return [String] Required `string` value serialized in the `events_url` wire field.
+    attr_reader :events_url
+    # @return [String] Required `uri`-formatted value serialized in the `received_events_url` wire field.
+    attr_reader :received_events_url
+    # @return [String] Required `string` value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [Boolean] Required `boolean` value serialized in the `site_admin` wire field.
+    attr_reader :site_admin
+    # @return [String] Optional `string` value serialized in the `starred_at` wire field.
+    attr_reader :starred_at
+    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+    attr_reader :user_view_type
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalSimpleUserMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
 end

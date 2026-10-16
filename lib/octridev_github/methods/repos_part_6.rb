@@ -36,15 +36,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposListCustomDeploymentRuleIntegrationsResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          available_custom_deployment_protection_rule_integrations: "available_custom_deployment_protection_rule_integrations",
+          total_count: 'total_count',
+          available_custom_deployment_protection_rule_integrations: 'available_custom_deployment_protection_rule_integrations'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           available_custom_deployment_protection_rule_integrations: lambda do |value|
             value&.map { |item| ::OctridevGithub::CustomDeploymentRuleApp.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -76,14 +75,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreateForkMetadata
         FIELDS = {
-          organization: "organization",
-          name: "name",
-          default_branch_only: "default_branch_only",
+          organization: 'organization',
+          name: 'name',
+          default_branch_only: 'default_branch_only'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposCreateFork.
@@ -117,13 +114,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreateWebhookConfigMetadata
         FIELDS = {
-          url: "url",
-          content_type: "content_type",
-          secret: "secret",
-          insecure_ssl: "insecure_ssl",
+          url: 'url',
+          content_type: 'content_type',
+          secret: 'secret',
+          insecure_ssl: 'insecure_ssl'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           url: lambda do |value|
             ::OctridevGithub::WebhookConfigUrl.from_value(value)
@@ -136,7 +132,7 @@ module OctridevGithub
           end,
           insecure_ssl: lambda do |value|
             ::OctridevGithub::WebhookConfigInsecureSsl.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -173,17 +169,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreateWebhookMetadata
         FIELDS = {
-          name: "name",
-          config: "config",
-          events: "events",
-          active: "active",
+          name: 'name',
+          config: 'config',
+          events: 'events',
+          active: 'active'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           config: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposCreateWebhookConfig.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -220,18 +215,17 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateWebhookMetadata
         FIELDS = {
-          config: "config",
-          events: "events",
-          add_events: "add_events",
-          remove_events: "remove_events",
-          active: "active",
+          config: 'config',
+          events: 'events',
+          add_events: 'add_events',
+          remove_events: 'remove_events',
+          active: 'active'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           config: lambda do |value|
             ::OctridevGithub::WebhookConfig.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -270,13 +264,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateWebhookConfigForRepoMetadata
         FIELDS = {
-          url: "url",
-          content_type: "content_type",
-          secret: "secret",
-          insecure_ssl: "insecure_ssl",
+          url: 'url',
+          content_type: 'content_type',
+          secret: 'secret',
+          insecure_ssl: 'insecure_ssl'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           url: lambda do |value|
             ::OctridevGithub::WebhookConfigUrl.from_value(value)
@@ -289,7 +282,7 @@ module OctridevGithub
           end,
           insecure_ssl: lambda do |value|
             ::OctridevGithub::WebhookConfigInsecureSsl.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -325,14 +318,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateInvitationMetadata
         FIELDS = {
-          permissions: "permissions",
+          permissions: 'permissions'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           permissions: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposUpdateInvitationPermissions.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -363,15 +355,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreateDeployKeyMetadata
         FIELDS = {
-          title: "title",
-          key: "key",
-          read_only: "read_only",
+          title: 'title',
+          key: 'key',
+          read_only: 'read_only'
         }.freeze
         REQUIRED_FIELDS = %i[
           key
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposCreateDeployKey.
@@ -405,13 +396,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposMergeUpstreamMetadata
         FIELDS = {
-          branch: "branch",
+          branch: 'branch'
         }.freeze
         REQUIRED_FIELDS = %i[
           branch
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposMergeUpstream.
@@ -441,16 +431,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposMergeMetadata
         FIELDS = {
-          base: "base",
-          head: "head",
-          commit_message: "commit_message",
+          base: 'base',
+          head: 'head',
+          commit_message: 'commit_message'
         }.freeze
         REQUIRED_FIELDS = %i[
           base
           head
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposMerge.
@@ -484,8 +473,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreatePagesSiteSourceMetadata
         FIELDS = {
-          branch: "branch",
-          path: "path",
+          branch: 'branch',
+          path: 'path'
         }.freeze
         REQUIRED_FIELDS = %i[
           branch
@@ -493,7 +482,7 @@ module OctridevGithub
         DECODERS = {
           path: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposCreatePagesSiteSourcePath.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -527,18 +516,17 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreatePagesSiteMetadata
         FIELDS = {
-          build_type: "build_type",
-          source: "source",
+          build_type: 'build_type',
+          source: 'source'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           build_type: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposCreatePagesSiteBuildType.from_value(value)
           end,
           source: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposCreatePagesSiteSource.from_hash(value)
-          end,
+          end
         }.freeze
       end
     end

@@ -5,364 +5,361 @@
 
 # webhook_project_card_moved domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalWebhookProjectCardMovedChangesColumnIdMetadata
-  FIELDS = {
-    from: "from",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    from
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookProjectCardMovedChangesColumnId.
-# Required object value serialized in the `column_id` wire field.
-class WebhookProjectCardMovedChangesColumnId
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookProjectCardMovedChangesColumnIdMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookProjectCardMovedChangesColumnIdMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookProjectCardMovedChangesColumnIdMetadata::DECODERS
-
-  # @return [Integer] Required `integer` value serialized in the `from` wire field.
-  attr_reader :from
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookProjectCardMovedChangesColumnIdMetadata
+    FIELDS = {
+      from: 'from'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      from
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookProjectCardMovedChangesColumnId.
+  # Required object value serialized in the `column_id` wire field.
+  class WebhookProjectCardMovedChangesColumnId
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookProjectCardMovedChangesColumnIdMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookProjectCardMovedChangesColumnIdMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookProjectCardMovedChangesColumnIdMetadata::DECODERS
+
+    # @return [Integer] Required `integer` value serialized in the `from` wire field.
+    attr_reader :from
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookProjectCardMovedChangesMetadata
-  FIELDS = {
-    column_id: "column_id",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    column_id
-  ].freeze
-  DECODERS = {
-    column_id: lambda do |value|
-      ::OctridevGithub::WebhookProjectCardMovedChangesColumnId.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookProjectCardMovedChanges.
-# Optional object value serialized in the `changes` wire field.
-class WebhookProjectCardMovedChanges
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookProjectCardMovedChangesMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookProjectCardMovedChangesMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookProjectCardMovedChangesMetadata::DECODERS
-
-  # @return [WebhookProjectCardMovedChangesColumnId] Required object value serialized in the `column_id` wire field.
-  attr_reader :column_id
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookProjectCardMovedChangesMetadata
+    FIELDS = {
+      column_id: 'column_id'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      column_id
+    ].freeze
+    DECODERS = {
+      column_id: lambda do |value|
+        ::OctridevGithub::WebhookProjectCardMovedChangesColumnId.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookProjectCardMovedChanges.
+  # Optional object value serialized in the `changes` wire field.
+  class WebhookProjectCardMovedChanges
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookProjectCardMovedChangesMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookProjectCardMovedChangesMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookProjectCardMovedChangesMetadata::DECODERS
+
+    # @return [WebhookProjectCardMovedChangesColumnId] Required object value serialized in the `column_id` wire field.
+    attr_reader :column_id
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookProjectCardMovedProjectCardVariant1CreatorMetadata
-  FIELDS = {
-    avatar_url: "avatar_url",
-    events_url: "events_url",
-    followers_url: "followers_url",
-    following_url: "following_url",
-    gists_url: "gists_url",
-    gravatar_id: "gravatar_id",
-    html_url: "html_url",
-    id: "id",
-    login: "login",
-    node_id: "node_id",
-    organizations_url: "organizations_url",
-    received_events_url: "received_events_url",
-    repos_url: "repos_url",
-    site_admin: "site_admin",
-    starred_url: "starred_url",
-    subscriptions_url: "subscriptions_url",
-    type: "type",
-    url: "url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookProjectCardMovedProjectCardVariant1Creator.
-# Optional object value serialized in the `creator` wire field.
-class WebhookProjectCardMovedProjectCardVariant1Creator
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookProjectCardMovedProjectCardVariant1CreatorMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookProjectCardMovedProjectCardVariant1CreatorMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookProjectCardMovedProjectCardVariant1CreatorMetadata::DECODERS
-
-  # @return [String] Optional `string` value serialized in the `avatar_url` wire field.
-  attr_reader :avatar_url
-  # @return [String] Optional `string` value serialized in the `events_url` wire field.
-  attr_reader :events_url
-  # @return [String] Optional `string` value serialized in the `followers_url` wire field.
-  attr_reader :followers_url
-  # @return [String] Optional `string` value serialized in the `following_url` wire field.
-  attr_reader :following_url
-  # @return [String] Optional `string` value serialized in the `gists_url` wire field.
-  attr_reader :gists_url
-  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-  attr_reader :gravatar_id
-  # @return [String] Optional `string` value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Optional `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Optional `string` value serialized in the `login` wire field.
-  attr_reader :login
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Optional `string` value serialized in the `organizations_url` wire field.
-  attr_reader :organizations_url
-  # @return [String] Optional `string` value serialized in the `received_events_url` wire field.
-  attr_reader :received_events_url
-  # @return [String] Optional `string` value serialized in the `repos_url` wire field.
-  attr_reader :repos_url
-  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-  attr_reader :site_admin
-  # @return [String] Optional `string` value serialized in the `starred_url` wire field.
-  attr_reader :starred_url
-  # @return [String] Optional `string` value serialized in the `subscriptions_url` wire field.
-  attr_reader :subscriptions_url
-  # @return [String] Optional `string` value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [String] Optional `string` value serialized in the `url` wire field.
-  attr_reader :url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookProjectCardMovedProjectCardVariant1CreatorMetadata
+    FIELDS = {
+      avatar_url: 'avatar_url',
+      events_url: 'events_url',
+      followers_url: 'followers_url',
+      following_url: 'following_url',
+      gists_url: 'gists_url',
+      gravatar_id: 'gravatar_id',
+      html_url: 'html_url',
+      id: 'id',
+      login: 'login',
+      node_id: 'node_id',
+      organizations_url: 'organizations_url',
+      received_events_url: 'received_events_url',
+      repos_url: 'repos_url',
+      site_admin: 'site_admin',
+      starred_url: 'starred_url',
+      subscriptions_url: 'subscriptions_url',
+      type: 'type',
+      url: 'url'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookProjectCardMovedProjectCardVariant1Creator.
+  # Optional object value serialized in the `creator` wire field.
+  class WebhookProjectCardMovedProjectCardVariant1Creator
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookProjectCardMovedProjectCardVariant1CreatorMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookProjectCardMovedProjectCardVariant1CreatorMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookProjectCardMovedProjectCardVariant1CreatorMetadata::DECODERS
+
+    # @return [String] Optional `string` value serialized in the `avatar_url` wire field.
+    attr_reader :avatar_url
+    # @return [String] Optional `string` value serialized in the `events_url` wire field.
+    attr_reader :events_url
+    # @return [String] Optional `string` value serialized in the `followers_url` wire field.
+    attr_reader :followers_url
+    # @return [String] Optional `string` value serialized in the `following_url` wire field.
+    attr_reader :following_url
+    # @return [String] Optional `string` value serialized in the `gists_url` wire field.
+    attr_reader :gists_url
+    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+    attr_reader :gravatar_id
+    # @return [String] Optional `string` value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Optional `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Optional `string` value serialized in the `login` wire field.
+    attr_reader :login
+    # @return [String] Optional `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Optional `string` value serialized in the `organizations_url` wire field.
+    attr_reader :organizations_url
+    # @return [String] Optional `string` value serialized in the `received_events_url` wire field.
+    attr_reader :received_events_url
+    # @return [String] Optional `string` value serialized in the `repos_url` wire field.
+    attr_reader :repos_url
+    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+    attr_reader :site_admin
+    # @return [String] Optional `string` value serialized in the `starred_url` wire field.
+    attr_reader :starred_url
+    # @return [String] Optional `string` value serialized in the `subscriptions_url` wire field.
+    attr_reader :subscriptions_url
+    # @return [String] Optional `string` value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [String] Optional `string` value serialized in the `url` wire field.
+    attr_reader :url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookProjectCardMovedProjectCardMetadata
-  FIELDS = {
-    after_id: "after_id",
-    archived: "archived",
-    column_id: "column_id",
-    column_url: "column_url",
-    content_url: "content_url",
-    created_at: "created_at",
-    creator: "creator",
-    id: "id",
-    node_id: "node_id",
-    note: "note",
-    project_url: "project_url",
-    updated_at: "updated_at",
-    url: "url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    after_id
-    archived
-    column_id
-    column_url
-    created_at
-    creator
-    id
-    node_id
-    note
-    project_url
-    updated_at
-    url
-  ].freeze
-  DECODERS = {
-    creator: lambda do |value|
-      ::OctridevGithub::WebhookProjectCardMovedProjectCardVariant1Creator.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    after_id
-    creator
-    note
-  ].freeze
-end
-
-# API model for WebhookProjectCardMovedProjectCard.
-# Required API value serialized in the `project_card` wire field.
-class WebhookProjectCardMovedProjectCard
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookProjectCardMovedProjectCardMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookProjectCardMovedProjectCardMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookProjectCardMovedProjectCardMetadata::DECODERS
-
-  # @return [Float] Required `number` value serialized in the `after_id` wire field.
-  attr_reader :after_id
-  # @return [Boolean] Optional `boolean` value serialized in the `archived` wire field.
-  attr_reader :archived
-  # @return [Integer] Optional `integer` value serialized in the `column_id` wire field.
-  attr_reader :column_id
-  # @return [String] Optional `string` value serialized in the `column_url` wire field.
-  attr_reader :column_url
-  # @return [String] Optional `uri`-formatted value serialized in the `content_url` wire field.
-  attr_reader :content_url
-  # @return [String] Optional `string` value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [WebhookProjectCardMovedProjectCardVariant1Creator] Optional object value serialized in the `creator` wire field.
-  attr_reader :creator
-  # @return [Integer] Optional `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Optional `string` value serialized in the `note` wire field.
-  attr_reader :note
-  # @return [String] Optional `string` value serialized in the `project_url` wire field.
-  attr_reader :project_url
-  # @return [String] Optional `string` value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-  # @return [String] Optional `string` value serialized in the `url` wire field.
-  attr_reader :url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookProjectCardMovedProjectCardMetadata
+    FIELDS = {
+      after_id: 'after_id',
+      archived: 'archived',
+      column_id: 'column_id',
+      column_url: 'column_url',
+      content_url: 'content_url',
+      created_at: 'created_at',
+      creator: 'creator',
+      id: 'id',
+      node_id: 'node_id',
+      note: 'note',
+      project_url: 'project_url',
+      updated_at: 'updated_at',
+      url: 'url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      after_id
+      archived
+      column_id
+      column_url
+      created_at
+      creator
+      id
+      node_id
+      note
+      project_url
+      updated_at
+      url
+    ].freeze
+    DECODERS = {
+      creator: lambda do |value|
+        ::OctridevGithub::WebhookProjectCardMovedProjectCardVariant1Creator.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      after_id
+      creator
+      note
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookProjectCardMovedProjectCardMetadata::NULLABLE_FIELDS)
+  # API model for WebhookProjectCardMovedProjectCard.
+  # Required API value serialized in the `project_card` wire field.
+  class WebhookProjectCardMovedProjectCard
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookProjectCardMovedProjectCardMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookProjectCardMovedProjectCardMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookProjectCardMovedProjectCardMetadata::DECODERS
+
+    # @return [Float] Required `number` value serialized in the `after_id` wire field.
+    attr_reader :after_id
+    # @return [Boolean] Optional `boolean` value serialized in the `archived` wire field.
+    attr_reader :archived
+    # @return [Integer] Optional `integer` value serialized in the `column_id` wire field.
+    attr_reader :column_id
+    # @return [String] Optional `string` value serialized in the `column_url` wire field.
+    attr_reader :column_url
+    # @return [String] Optional `uri`-formatted value serialized in the `content_url` wire field.
+    attr_reader :content_url
+    # @return [String] Optional `string` value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [WebhookProjectCardMovedProjectCardVariant1Creator] Optional object value serialized in the `creator` wire field.
+    attr_reader :creator
+    # @return [Integer] Optional `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Optional `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Optional `string` value serialized in the `note` wire field.
+    attr_reader :note
+    # @return [String] Optional `string` value serialized in the `project_url` wire field.
+    attr_reader :project_url
+    # @return [String] Optional `string` value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+    # @return [String] Optional `string` value serialized in the `url` wire field.
+    attr_reader :url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookProjectCardMovedProjectCardMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookProjectCardMovedMetadata
-  FIELDS = {
-    action: "action",
-    changes: "changes",
-    enterprise: "enterprise",
-    installation: "installation",
-    organization: "organization",
-    project_card: "project_card",
-    repository: "repository",
-    sender: "sender",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    action
-    project_card
-    sender
-  ].freeze
-  DECODERS = {
-    action: lambda do |value|
-      ::OctridevGithub::WebhookProjectCardMovedAction.from_value(value)
-    end,
-    changes: lambda do |value|
-      ::OctridevGithub::WebhookProjectCardMovedChanges.from_hash(value)
-    end,
-    enterprise: lambda do |value|
-      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-    end,
-    installation: lambda do |value|
-      ::OctridevGithub::SimpleInstallation.from_hash(value)
-    end,
-    organization: lambda do |value|
-      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-    end,
-    project_card: lambda do |value|
-      ::OctridevGithub::WebhookProjectCardMovedProjectCard.from_hash(value)
-    end,
-    repository: lambda do |value|
-      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-    end,
-    sender: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookProjectCardMoved.
-# Typed representation of the `WebhookProjectCardMoved` API schema.
-class WebhookProjectCardMoved
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookProjectCardMovedMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookProjectCardMovedMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookProjectCardMovedMetadata::DECODERS
-
-  # @return [WebhookProjectCardMovedAction] Required enumerated value serialized in the `action` wire field.
-  attr_reader :action
-  # @return [WebhookProjectCardMovedChanges] Optional object value serialized in the `changes` wire field.
-  attr_reader :changes
-  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-  attr_reader :enterprise
-  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-  attr_reader :installation
-  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-  attr_reader :organization
-  # @return [WebhookProjectCardMovedProjectCard] Required API value serialized in the `project_card` wire field.
-  attr_reader :project_card
-  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-  attr_reader :repository
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :sender
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookProjectCardMovedMetadata
+    FIELDS = {
+      action: 'action',
+      changes: 'changes',
+      enterprise: 'enterprise',
+      installation: 'installation',
+      organization: 'organization',
+      project_card: 'project_card',
+      repository: 'repository',
+      sender: 'sender'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      action
+      project_card
+      sender
+    ].freeze
+    DECODERS = {
+      action: lambda do |value|
+        ::OctridevGithub::WebhookProjectCardMovedAction.from_value(value)
+      end,
+      changes: lambda do |value|
+        ::OctridevGithub::WebhookProjectCardMovedChanges.from_hash(value)
+      end,
+      enterprise: lambda do |value|
+        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+      end,
+      installation: lambda do |value|
+        ::OctridevGithub::SimpleInstallation.from_hash(value)
+      end,
+      organization: lambda do |value|
+        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+      end,
+      project_card: lambda do |value|
+        ::OctridevGithub::WebhookProjectCardMovedProjectCard.from_hash(value)
+      end,
+      repository: lambda do |value|
+        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+      end,
+      sender: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookProjectCardMoved.
+  # Typed representation of the `WebhookProjectCardMoved` API schema.
+  class WebhookProjectCardMoved
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookProjectCardMovedMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookProjectCardMovedMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookProjectCardMovedMetadata::DECODERS
+
+    # @return [WebhookProjectCardMovedAction] Required enumerated value serialized in the `action` wire field.
+    attr_reader :action
+    # @return [WebhookProjectCardMovedChanges] Optional object value serialized in the `changes` wire field.
+    attr_reader :changes
+    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+    attr_reader :enterprise
+    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+    attr_reader :installation
+    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+    attr_reader :organization
+    # @return [WebhookProjectCardMovedProjectCard] Required API value serialized in the `project_card` wire field.
+    attr_reader :project_card
+    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+    attr_reader :repository
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :sender
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the WebhookProjectCardMovedAction SDK namespace.
+  module WebhookProjectCardMovedAction
+    MOVED = 'moved'
+    VALUES = ['moved'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookProjectCardMovedAction SDK namespace.
-module WebhookProjectCardMovedAction
-  MOVED = 'moved'
-  VALUES = ['moved'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookProjectCardMovedProjectCardVariant0CreatorType SDK namespace.
+  module WebhookProjectCardMovedProjectCardVariant0CreatorType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    MANNEQUIN = 'Mannequin'
+    VALUES = %w[Bot User Organization Mannequin].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the WebhookProjectCardMovedProjectCardVariant0CreatorType SDK namespace.
-module WebhookProjectCardMovedProjectCardVariant0CreatorType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  MANNEQUIN = 'Mannequin'
-  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

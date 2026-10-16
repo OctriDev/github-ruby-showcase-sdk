@@ -37,29 +37,28 @@ module OctridevGithub
         status: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/hooks/",
+            '/hooks/',
             SdkClient.encode_path_segment(hook_id),
-            "/deliveries"
+            '/deliveries'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'cursor' => QueryValue.new(cursor, style: 'form', explode: true),
-            'status' => QueryValue.new(status, style: 'form', explode: true),
+            'status' => QueryValue.new(status, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::HookDeliveryItem],
           decoder: :json,
           operation_id: 'repos_list_webhook_deliveries',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '400' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -81,17 +80,16 @@ module OctridevGithub
         delivery_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/hooks/",
+            '/hooks/',
             SdkClient.encode_path_segment(hook_id),
-            "/deliveries/",
+            '/deliveries/',
             SdkClient.encode_path_segment(delivery_id)
           ].join,
           config: config,
@@ -99,7 +97,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'repos_get_webhook_delivery',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '400' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -121,25 +119,24 @@ module OctridevGithub
         delivery_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/hooks/",
+            '/hooks/',
             SdkClient.encode_path_segment(hook_id),
-            "/deliveries/",
+            '/deliveries/',
             SdkClient.encode_path_segment(delivery_id),
-            "/attempts"
+            '/attempts'
           ].join,
           config: config,
           decoder: :json,
           operation_id: 'repos_redeliver_webhook_delivery',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '400' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -158,23 +155,22 @@ module OctridevGithub
         hook_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/hooks/",
+            '/hooks/',
             SdkClient.encode_path_segment(hook_id),
-            "/pings"
+            '/pings'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_ping_webhook',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -193,23 +189,22 @@ module OctridevGithub
         hook_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/hooks/",
+            '/hooks/',
             SdkClient.encode_path_segment(hook_id),
-            "/tests"
+            '/tests'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_test_push_webhook',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -225,21 +220,20 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/immutable-releases"
+            '/immutable-releases'
           ].join,
           config: config,
           return_type: ::OctridevGithub::CheckImmutableReleases,
           decoder: :json,
           operation_id: 'repos_check_immutable_releases',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -255,21 +249,20 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/immutable-releases"
+            '/immutable-releases'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_enable_immutable_releases',
           request_options: request_options,
-          errors: { '409' => ::OctridevGithub::BasicError },
+          errors: { '409' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -285,21 +278,20 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/immutable-releases"
+            '/immutable-releases'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_disable_immutable_releases',
           request_options: request_options,
-          errors: { '409' => ::OctridevGithub::BasicError },
+          errors: { '409' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -321,25 +313,24 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/invitations"
+            '/invitations'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::RepositoryInvitation],
           decoder: :json,
           operation_id: 'repos_list_invitations',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -361,25 +352,24 @@ module OctridevGithub
         permissions: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/invitations/",
+            '/invitations/',
             SdkClient.encode_path_segment(invitation_id)
           ].join,
           config: config,
           body: {
-            'permissions' => permissions,
+            'permissions' => permissions
           },
           return_type: ::OctridevGithub::RepositoryInvitation,
           decoder: :json,
           operation_id: 'repos_update_invitation',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -397,21 +387,20 @@ module OctridevGithub
         invitation_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/invitations/",
+            '/invitations/',
             SdkClient.encode_path_segment(invitation_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_delete_invitation',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -427,22 +416,21 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/issue-types"
+            '/issue-types'
           ].join,
           config: config,
           return_type: [::OctridevGithub::IssueType],
           decoder: :json,
           operation_id: 'repos_list_issue_types',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -464,25 +452,24 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/keys"
+            '/keys'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::DeployKey],
           decoder: :json,
           operation_id: 'repos_list_deploy_keys',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -511,27 +498,26 @@ module OctridevGithub
         read_only: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/keys"
+            '/keys'
           ].join,
           config: config,
           body: {
             'key' => key,
             'title' => title,
-            'read_only' => read_only,
+            'read_only' => read_only
           },
           return_type: ::OctridevGithub::DeployKey,
           decoder: :json,
           operation_id: 'repos_create_deploy_key',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError },
+          errors: { '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -549,15 +535,14 @@ module OctridevGithub
         key_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/keys/",
+            '/keys/',
             SdkClient.encode_path_segment(key_id)
           ].join,
           config: config,
@@ -565,7 +550,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'repos_get_deploy_key',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

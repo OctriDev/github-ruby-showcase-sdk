@@ -36,7 +36,6 @@ module OctridevGithub
         since: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.if_given(per_page) { Validation.validate_range('per_page', per_page, min: 1, max: 100) }
 
         Validation.if_given(page) { Validation.validate_range('page', page, min: 1) }
@@ -45,7 +44,7 @@ module OctridevGithub
 
         SdkClient.request(
           'GET',
-          "/agents/tasks",
+          '/agents/tasks',
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
@@ -54,12 +53,12 @@ module OctridevGithub
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'state' => QueryValue.new(state, style: 'form', explode: true),
             'is_archived' => QueryValue.new(is_archived, style: 'form', explode: true),
-            'since' => QueryValue.new(since, style: 'form', explode: true),
+            'since' => QueryValue.new(since, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::AgentTasks::AgentTasksListTasksResponse,
           decoder: :json,
           operation_id: 'agent_tasks_list_tasks',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -71,18 +70,17 @@ module OctridevGithub
         task_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/agents/tasks/",
+            '/agents/tasks/',
             SdkClient.encode_path_segment(task_id)
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::AgentTasks::AgentTasksGetTaskByIdResponse,
           decoder: :json,
           operation_id: 'agent_tasks_get_task_by_id',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

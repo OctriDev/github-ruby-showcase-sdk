@@ -5,652 +5,647 @@
 
 # webhook_code_scanning_alert_closed_by_user domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalWebhookCodeScanningAlertClosedByUserAlertDismissedByMetadata
-  FIELDS = {
-    avatar_url: "avatar_url",
-    deleted: "deleted",
-    email: "email",
-    events_url: "events_url",
-    followers_url: "followers_url",
-    following_url: "following_url",
-    gists_url: "gists_url",
-    gravatar_id: "gravatar_id",
-    html_url: "html_url",
-    id: "id",
-    login: "login",
-    name: "name",
-    node_id: "node_id",
-    organizations_url: "organizations_url",
-    received_events_url: "received_events_url",
-    repos_url: "repos_url",
-    site_admin: "site_admin",
-    starred_url: "starred_url",
-    subscriptions_url: "subscriptions_url",
-    type: "type",
-    url: "url",
-    user_view_type: "user_view_type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    login
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlertDismissedByType.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookCodeScanningAlertClosedByUserAlertDismissedBy.
-# Required object value serialized in the `dismissed_by` wire field.
-class WebhookCodeScanningAlertClosedByUserAlertDismissedBy
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertDismissedByMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertDismissedByMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertDismissedByMetadata::DECODERS
-
-  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-  attr_reader :avatar_url
-  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-  attr_reader :deleted
-  # @return [String] Optional `string` value serialized in the `email` wire field.
-  attr_reader :email
-  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-  attr_reader :events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-  attr_reader :followers_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-  attr_reader :following_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-  attr_reader :gists_url
-  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-  attr_reader :gravatar_id
-  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `login` wire field.
-  attr_reader :login
-  # @return [String] Optional `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-  attr_reader :organizations_url
-  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-  attr_reader :received_events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-  attr_reader :repos_url
-  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-  attr_reader :site_admin
-  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-  attr_reader :starred_url
-  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-  attr_reader :subscriptions_url
-  # @return [WebhookCodeScanningAlertClosedByUserAlertDismissedByType] Optional enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-  attr_reader :user_view_type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookCodeScanningAlertClosedByUserAlertDismissedByMetadata
+    FIELDS = {
+      avatar_url: 'avatar_url',
+      deleted: 'deleted',
+      email: 'email',
+      events_url: 'events_url',
+      followers_url: 'followers_url',
+      following_url: 'following_url',
+      gists_url: 'gists_url',
+      gravatar_id: 'gravatar_id',
+      html_url: 'html_url',
+      id: 'id',
+      login: 'login',
+      name: 'name',
+      node_id: 'node_id',
+      organizations_url: 'organizations_url',
+      received_events_url: 'received_events_url',
+      repos_url: 'repos_url',
+      site_admin: 'site_admin',
+      starred_url: 'starred_url',
+      subscriptions_url: 'subscriptions_url',
+      type: 'type',
+      url: 'url',
+      user_view_type: 'user_view_type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      login
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlertDismissedByType.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookCodeScanningAlertClosedByUserAlertDismissedBy.
+  # Required object value serialized in the `dismissed_by` wire field.
+  class WebhookCodeScanningAlertClosedByUserAlertDismissedBy
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertDismissedByMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertDismissedByMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertDismissedByMetadata::DECODERS
+
+    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+    attr_reader :avatar_url
+    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+    attr_reader :deleted
+    # @return [String] Optional `string` value serialized in the `email` wire field.
+    attr_reader :email
+    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+    attr_reader :events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+    attr_reader :followers_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+    attr_reader :following_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+    attr_reader :gists_url
+    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+    attr_reader :gravatar_id
+    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `login` wire field.
+    attr_reader :login
+    # @return [String] Optional `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Optional `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+    attr_reader :organizations_url
+    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+    attr_reader :received_events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+    attr_reader :repos_url
+    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+    attr_reader :site_admin
+    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+    attr_reader :starred_url
+    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+    attr_reader :subscriptions_url
+    # @return [WebhookCodeScanningAlertClosedByUserAlertDismissedByType] Optional enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+    attr_reader :user_view_type
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceLocationMetadata
-  FIELDS = {
-    end_column: "end_column",
-    end_line: "end_line",
-    path: "path",
-    start_column: "start_column",
-    start_line: "start_line",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceLocation.
-# Optional object value serialized in the `location` wire field.
-class WebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceLocation
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceLocationMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceLocationMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceLocationMetadata::DECODERS
-
-  # @return [Integer] Optional `integer` value serialized in the `end_column` wire field.
-  attr_reader :end_column
-  # @return [Integer] Optional `integer` value serialized in the `end_line` wire field.
-  attr_reader :end_line
-  # @return [String] Optional `string` value serialized in the `path` wire field.
-  attr_reader :path
-  # @return [Integer] Optional `integer` value serialized in the `start_column` wire field.
-  attr_reader :start_column
-  # @return [Integer] Optional `integer` value serialized in the `start_line` wire field.
-  attr_reader :start_line
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceLocationMetadata
+    FIELDS = {
+      end_column: 'end_column',
+      end_line: 'end_line',
+      path: 'path',
+      start_column: 'start_column',
+      start_line: 'start_line'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceLocation.
+  # Optional object value serialized in the `location` wire field.
+  class WebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceLocation
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceLocationMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceLocationMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceLocationMetadata::DECODERS
+
+    # @return [Integer] Optional `integer` value serialized in the `end_column` wire field.
+    attr_reader :end_column
+    # @return [Integer] Optional `integer` value serialized in the `end_line` wire field.
+    attr_reader :end_line
+    # @return [String] Optional `string` value serialized in the `path` wire field.
+    attr_reader :path
+    # @return [Integer] Optional `integer` value serialized in the `start_column` wire field.
+    attr_reader :start_column
+    # @return [Integer] Optional `integer` value serialized in the `start_line` wire field.
+    attr_reader :start_line
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceMessageMetadata
-  FIELDS = {
-    text: "text",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceMessage.
-# Optional object value serialized in the `message` wire field.
-class WebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceMessage
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceMessageMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceMessageMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceMessageMetadata::DECODERS
-
-  # @return [String] Optional `string` value serialized in the `text` wire field.
-  attr_reader :text
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceMessageMetadata
+    FIELDS = {
+      text: 'text'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceMessage.
+  # Optional object value serialized in the `message` wire field.
+  class WebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceMessage
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceMessageMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceMessageMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceMessageMetadata::DECODERS
+
+    # @return [String] Optional `string` value serialized in the `text` wire field.
+    attr_reader :text
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceMetadata
-  FIELDS = {
-    analysis_key: "analysis_key",
-    category: "category",
-    classifications: "classifications",
-    commit_sha: "commit_sha",
-    environment: "environment",
-    location: "location",
-    message: "message",
-    ref: "ref",
-    state: "state",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    analysis_key
-    environment
-    ref
-    state
-  ].freeze
-  DECODERS = {
-    location: lambda do |value|
-      ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceLocation.from_hash(value)
-    end,
-    message: lambda do |value|
-      ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceMessage.from_hash(value)
-    end,
-    state: lambda do |value|
-      ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceState.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookCodeScanningAlertClosedByUserAlertMostRecentInstance.
-# Optional object value serialized in the `most_recent_instance` wire field.
-class WebhookCodeScanningAlertClosedByUserAlertMostRecentInstance
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceMetadata::DECODERS
-
-  # @return [String] Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
-  attr_reader :analysis_key
-  # @return [String] Identifies the configuration under which the analysis was executed.
-  attr_reader :category
-  # @return [Array_of_String] Optional array value serialized in the `classifications` wire field.
-  attr_reader :classifications
-  # @return [String] Optional `string` value serialized in the `commit_sha` wire field.
-  attr_reader :commit_sha
-  # @return [String] Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.
-  attr_reader :environment
-  # @return [WebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceLocation] Optional object value serialized in the `location` wire field.
-  attr_reader :location
-  # @return [WebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceMessage] Optional object value serialized in the `message` wire field.
-  attr_reader :message
-  # @return [String] The full Git reference, formatted as `refs/heads/<branch name>`.
-  attr_reader :ref
-  # @return [WebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceState] State of a code scanning alert.
-  attr_reader :state
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceMetadata
+    FIELDS = {
+      analysis_key: 'analysis_key',
+      category: 'category',
+      classifications: 'classifications',
+      commit_sha: 'commit_sha',
+      environment: 'environment',
+      location: 'location',
+      message: 'message',
+      ref: 'ref',
+      state: 'state'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      analysis_key
+      environment
+      ref
+      state
+    ].freeze
+    DECODERS = {
+      location: lambda do |value|
+        ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceLocation.from_hash(value)
+      end,
+      message: lambda do |value|
+        ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceMessage.from_hash(value)
+      end,
+      state: lambda do |value|
+        ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceState.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookCodeScanningAlertClosedByUserAlertMostRecentInstance.
+  # Optional object value serialized in the `most_recent_instance` wire field.
+  class WebhookCodeScanningAlertClosedByUserAlertMostRecentInstance
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceMetadata::DECODERS
+
+    # @return [String] Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
+    attr_reader :analysis_key
+    # @return [String] Identifies the configuration under which the analysis was executed.
+    attr_reader :category
+    # @return [Array_of_String] Optional array value serialized in the `classifications` wire field.
+    attr_reader :classifications
+    # @return [String] Optional `string` value serialized in the `commit_sha` wire field.
+    attr_reader :commit_sha
+    # @return [String] Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.
+    attr_reader :environment
+    # @return [WebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceLocation] Optional object value serialized in the `location` wire field.
+    attr_reader :location
+    # @return [WebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceMessage] Optional object value serialized in the `message` wire field.
+    attr_reader :message
+    # @return [String] The full Git reference, formatted as `refs/heads/<branch name>`.
+    attr_reader :ref
+    # @return [WebhookCodeScanningAlertClosedByUserAlertMostRecentInstanceState] State of a code scanning alert.
+    attr_reader :state
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookCodeScanningAlertClosedByUserAlertRuleMetadata
-  FIELDS = {
-    description: "description",
-    full_description: "full_description",
-    help: "help",
-    help_uri: "help_uri",
-    id: "id",
-    name: "name",
-    severity: "severity",
-    tags: "tags",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    description
-    id
-    severity
-  ].freeze
-  DECODERS = {
-    severity: lambda do |value|
-      ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlertRuleSeverity.from_value(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    severity
-  ].freeze
-end
-
-# API model for WebhookCodeScanningAlertClosedByUserAlertRule.
-# Required object value serialized in the `rule` wire field.
-class WebhookCodeScanningAlertClosedByUserAlertRule
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertRuleMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertRuleMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertRuleMetadata::DECODERS
-
-  # @return [String] A short description of the rule used to detect the alert.
-  attr_reader :description
-  # @return [String] Optional `string` value serialized in the `full_description` wire field.
-  attr_reader :full_description
-  # @return [String] Optional `string` value serialized in the `help` wire field.
-  attr_reader :help
-  # @return [String] A link to the documentation for the rule used to detect the alert.
-  attr_reader :help_uri
-  # @return [String] A unique identifier for the rule used to detect the alert.
-  attr_reader :id
-  # @return [String] Optional `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [WebhookCodeScanningAlertClosedByUserAlertRuleSeverity] The severity of the alert.
-  attr_reader :severity
-  # @return [Array_of_String] Optional array value serialized in the `tags` wire field.
-  attr_reader :tags
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookCodeScanningAlertClosedByUserAlertRuleMetadata
+    FIELDS = {
+      description: 'description',
+      full_description: 'full_description',
+      help: 'help',
+      help_uri: 'help_uri',
+      id: 'id',
+      name: 'name',
+      severity: 'severity',
+      tags: 'tags'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      description
+      id
+      severity
+    ].freeze
+    DECODERS = {
+      severity: lambda do |value|
+        ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlertRuleSeverity.from_value(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      severity
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookCodeScanningAlertClosedByUserAlertRuleMetadata::NULLABLE_FIELDS)
+  # API model for WebhookCodeScanningAlertClosedByUserAlertRule.
+  # Required object value serialized in the `rule` wire field.
+  class WebhookCodeScanningAlertClosedByUserAlertRule
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertRuleMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertRuleMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertRuleMetadata::DECODERS
+
+    # @return [String] A short description of the rule used to detect the alert.
+    attr_reader :description
+    # @return [String] Optional `string` value serialized in the `full_description` wire field.
+    attr_reader :full_description
+    # @return [String] Optional `string` value serialized in the `help` wire field.
+    attr_reader :help
+    # @return [String] A link to the documentation for the rule used to detect the alert.
+    attr_reader :help_uri
+    # @return [String] A unique identifier for the rule used to detect the alert.
+    attr_reader :id
+    # @return [String] Optional `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [WebhookCodeScanningAlertClosedByUserAlertRuleSeverity] The severity of the alert.
+    attr_reader :severity
+    # @return [Array_of_String] Optional array value serialized in the `tags` wire field.
+    attr_reader :tags
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookCodeScanningAlertClosedByUserAlertRuleMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookCodeScanningAlertClosedByUserAlertToolMetadata
-  FIELDS = {
-    guid: "guid",
-    name: "name",
-    version: "version",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    name
-    version
-  ].freeze
-  DECODERS = {
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    version
-  ].freeze
-end
-
-# API model for WebhookCodeScanningAlertClosedByUserAlertTool.
-# Required object value serialized in the `tool` wire field.
-class WebhookCodeScanningAlertClosedByUserAlertTool
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertToolMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertToolMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertToolMetadata::DECODERS
-
-  # @return [String] Optional `string` value serialized in the `guid` wire field.
-  attr_reader :guid
-  # @return [String] The name of the tool used to generate the code scanning analysis alert.
-  attr_reader :name
-  # @return [String] The version of the tool used to detect the alert.
-  attr_reader :version
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookCodeScanningAlertClosedByUserAlertToolMetadata
+    FIELDS = {
+      guid: 'guid',
+      name: 'name',
+      version: 'version'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      name
+      version
+    ].freeze
+    DECODERS = {}.freeze
+    NULLABLE_FIELDS = %i[
+      version
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookCodeScanningAlertClosedByUserAlertToolMetadata::NULLABLE_FIELDS)
+  # API model for WebhookCodeScanningAlertClosedByUserAlertTool.
+  # Required object value serialized in the `tool` wire field.
+  class WebhookCodeScanningAlertClosedByUserAlertTool
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertToolMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertToolMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertToolMetadata::DECODERS
+
+    # @return [String] Optional `string` value serialized in the `guid` wire field.
+    attr_reader :guid
+    # @return [String] The name of the tool used to generate the code scanning analysis alert.
+    attr_reader :name
+    # @return [String] The version of the tool used to detect the alert.
+    attr_reader :version
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookCodeScanningAlertClosedByUserAlertToolMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookCodeScanningAlertClosedByUserAlertDismissalApprovedByMetadata
-  FIELDS = {
-    avatar_url: "avatar_url",
-    deleted: "deleted",
-    email: "email",
-    events_url: "events_url",
-    followers_url: "followers_url",
-    following_url: "following_url",
-    gists_url: "gists_url",
-    gravatar_id: "gravatar_id",
-    html_url: "html_url",
-    id: "id",
-    login: "login",
-    name: "name",
-    node_id: "node_id",
-    organizations_url: "organizations_url",
-    received_events_url: "received_events_url",
-    repos_url: "repos_url",
-    site_admin: "site_admin",
-    starred_url: "starred_url",
-    subscriptions_url: "subscriptions_url",
-    type: "type",
-    url: "url",
-    user_view_type: "user_view_type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    login
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlertDismissalApprovedByType.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookCodeScanningAlertClosedByUserAlertDismissalApprovedBy.
-# Optional object value serialized in the `dismissal_approved_by` wire field.
-class WebhookCodeScanningAlertClosedByUserAlertDismissalApprovedBy
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertDismissalApprovedByMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertDismissalApprovedByMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertDismissalApprovedByMetadata::DECODERS
-
-  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-  attr_reader :avatar_url
-  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-  attr_reader :deleted
-  # @return [String] Optional `string` value serialized in the `email` wire field.
-  attr_reader :email
-  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-  attr_reader :events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-  attr_reader :followers_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-  attr_reader :following_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-  attr_reader :gists_url
-  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-  attr_reader :gravatar_id
-  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `login` wire field.
-  attr_reader :login
-  # @return [String] Optional `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-  attr_reader :organizations_url
-  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-  attr_reader :received_events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-  attr_reader :repos_url
-  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-  attr_reader :site_admin
-  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-  attr_reader :starred_url
-  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-  attr_reader :subscriptions_url
-  # @return [WebhookCodeScanningAlertClosedByUserAlertDismissalApprovedByType] Optional enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-  attr_reader :user_view_type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookCodeScanningAlertClosedByUserAlertDismissalApprovedByMetadata
+    FIELDS = {
+      avatar_url: 'avatar_url',
+      deleted: 'deleted',
+      email: 'email',
+      events_url: 'events_url',
+      followers_url: 'followers_url',
+      following_url: 'following_url',
+      gists_url: 'gists_url',
+      gravatar_id: 'gravatar_id',
+      html_url: 'html_url',
+      id: 'id',
+      login: 'login',
+      name: 'name',
+      node_id: 'node_id',
+      organizations_url: 'organizations_url',
+      received_events_url: 'received_events_url',
+      repos_url: 'repos_url',
+      site_admin: 'site_admin',
+      starred_url: 'starred_url',
+      subscriptions_url: 'subscriptions_url',
+      type: 'type',
+      url: 'url',
+      user_view_type: 'user_view_type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      login
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlertDismissalApprovedByType.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookCodeScanningAlertClosedByUserAlertDismissalApprovedBy.
+  # Optional object value serialized in the `dismissal_approved_by` wire field.
+  class WebhookCodeScanningAlertClosedByUserAlertDismissalApprovedBy
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertDismissalApprovedByMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertDismissalApprovedByMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertDismissalApprovedByMetadata::DECODERS
+
+    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+    attr_reader :avatar_url
+    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+    attr_reader :deleted
+    # @return [String] Optional `string` value serialized in the `email` wire field.
+    attr_reader :email
+    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+    attr_reader :events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+    attr_reader :followers_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+    attr_reader :following_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+    attr_reader :gists_url
+    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+    attr_reader :gravatar_id
+    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `login` wire field.
+    attr_reader :login
+    # @return [String] Optional `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Optional `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+    attr_reader :organizations_url
+    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+    attr_reader :received_events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+    attr_reader :repos_url
+    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+    attr_reader :site_admin
+    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+    attr_reader :starred_url
+    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+    attr_reader :subscriptions_url
+    # @return [WebhookCodeScanningAlertClosedByUserAlertDismissalApprovedByType] Optional enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+    attr_reader :user_view_type
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookCodeScanningAlertClosedByUserAlertMetadata
-  FIELDS = {
-    assignees: "assignees",
-    created_at: "created_at",
-    dismissed_at: "dismissed_at",
-    dismissed_by: "dismissed_by",
-    dismissed_comment: "dismissed_comment",
-    dismissed_reason: "dismissed_reason",
-    fixed_at: "fixed_at",
-    html_url: "html_url",
-    most_recent_instance: "most_recent_instance",
-    number: "number",
-    rule: "rule",
-    state: "state",
-    tool: "tool",
-    url: "url",
-    dismissal_approved_by: "dismissal_approved_by",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    created_at
-    dismissed_at
-    dismissed_by
-    dismissed_reason
-    html_url
-    number
-    rule
-    state
-    tool
-    url
-  ].freeze
-  DECODERS = {
-    assignees: lambda do |value|
-      value&.map { |item| ::OctridevGithub::SimpleUser.from_hash(item) }
-    end,
-    dismissed_by: lambda do |value|
-      ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlertDismissedBy.from_hash(value)
-    end,
-    dismissed_comment: lambda do |value|
-      ::OctridevGithub::CodeScanningAlertDismissedComment.from_value(value)
-    end,
-    dismissed_reason: lambda do |value|
-      ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlertDismissedReason.from_value(value)
-    end,
-    most_recent_instance: lambda do |value|
-      ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlertMostRecentInstance.from_hash(value)
-    end,
-    rule: lambda do |value|
-      ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlertRule.from_hash(value)
-    end,
-    state: lambda do |value|
-      ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlertState.from_value(value)
-    end,
-    tool: lambda do |value|
-      ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlertTool.from_hash(value)
-    end,
-    dismissal_approved_by: lambda do |value|
-      ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlertDismissalApprovedBy.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    dismissed_by
-    dismissed_reason
-  ].freeze
-end
-
-# API model for WebhookCodeScanningAlertClosedByUserAlert.
-# The code scanning alert involved in the event.
-class WebhookCodeScanningAlertClosedByUserAlert
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertMetadata::DECODERS
-
-  # @return [Array_of_SimpleUser] Optional array value serialized in the `assignees` wire field.
-  attr_reader :assignees
-  # @return [String] The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
-  attr_reader :created_at
-  # @return [String] The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-  attr_reader :dismissed_at
-  # @return [WebhookCodeScanningAlertClosedByUserAlertDismissedBy] Required object value serialized in the `dismissed_by` wire field.
-  attr_reader :dismissed_by
-  # @return [CodeScanningAlertDismissedComment] The dismissal comment associated with the dismissal of the alert.
-  attr_reader :dismissed_comment
-  # @return [WebhookCodeScanningAlertClosedByUserAlertDismissedReason] The reason for dismissing or closing the alert.
-  attr_reader :dismissed_reason
-  # @return [Object] The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-  attr_reader :fixed_at
-  # @return [String] The GitHub URL of the alert resource.
-  attr_reader :html_url
-  # @return [WebhookCodeScanningAlertClosedByUserAlertMostRecentInstance] Optional object value serialized in the `most_recent_instance` wire field.
-  attr_reader :most_recent_instance
-  # @return [Integer] The code scanning alert number.
-  attr_reader :number
-  # @return [WebhookCodeScanningAlertClosedByUserAlertRule] Required object value serialized in the `rule` wire field.
-  attr_reader :rule
-  # @return [WebhookCodeScanningAlertClosedByUserAlertState] State of a code scanning alert.
-  attr_reader :state
-  # @return [WebhookCodeScanningAlertClosedByUserAlertTool] Required object value serialized in the `tool` wire field.
-  attr_reader :tool
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [WebhookCodeScanningAlertClosedByUserAlertDismissalApprovedBy] Optional object value serialized in the `dismissal_approved_by` wire field.
-  attr_reader :dismissal_approved_by
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookCodeScanningAlertClosedByUserAlertMetadata
+    FIELDS = {
+      assignees: 'assignees',
+      created_at: 'created_at',
+      dismissed_at: 'dismissed_at',
+      dismissed_by: 'dismissed_by',
+      dismissed_comment: 'dismissed_comment',
+      dismissed_reason: 'dismissed_reason',
+      fixed_at: 'fixed_at',
+      html_url: 'html_url',
+      most_recent_instance: 'most_recent_instance',
+      number: 'number',
+      rule: 'rule',
+      state: 'state',
+      tool: 'tool',
+      url: 'url',
+      dismissal_approved_by: 'dismissal_approved_by'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      created_at
+      dismissed_at
+      dismissed_by
+      dismissed_reason
+      html_url
+      number
+      rule
+      state
+      tool
+      url
+    ].freeze
+    DECODERS = {
+      assignees: lambda do |value|
+        value&.map { |item| ::OctridevGithub::SimpleUser.from_hash(item) }
+      end,
+      dismissed_by: lambda do |value|
+        ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlertDismissedBy.from_hash(value)
+      end,
+      dismissed_comment: lambda do |value|
+        ::OctridevGithub::CodeScanningAlertDismissedComment.from_value(value)
+      end,
+      dismissed_reason: lambda do |value|
+        ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlertDismissedReason.from_value(value)
+      end,
+      most_recent_instance: lambda do |value|
+        ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlertMostRecentInstance.from_hash(value)
+      end,
+      rule: lambda do |value|
+        ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlertRule.from_hash(value)
+      end,
+      state: lambda do |value|
+        ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlertState.from_value(value)
+      end,
+      tool: lambda do |value|
+        ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlertTool.from_hash(value)
+      end,
+      dismissal_approved_by: lambda do |value|
+        ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlertDismissalApprovedBy.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      dismissed_by
+      dismissed_reason
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookCodeScanningAlertClosedByUserAlertMetadata::NULLABLE_FIELDS)
+  # API model for WebhookCodeScanningAlertClosedByUserAlert.
+  # The code scanning alert involved in the event.
+  class WebhookCodeScanningAlertClosedByUserAlert
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookCodeScanningAlertClosedByUserAlertMetadata::DECODERS
+
+    # @return [Array_of_SimpleUser] Optional array value serialized in the `assignees` wire field.
+    attr_reader :assignees
+    # @return [String] The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
+    attr_reader :created_at
+    # @return [String] The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+    attr_reader :dismissed_at
+    # @return [WebhookCodeScanningAlertClosedByUserAlertDismissedBy] Required object value serialized in the `dismissed_by` wire field.
+    attr_reader :dismissed_by
+    # @return [CodeScanningAlertDismissedComment] The dismissal comment associated with the dismissal of the alert.
+    attr_reader :dismissed_comment
+    # @return [WebhookCodeScanningAlertClosedByUserAlertDismissedReason] The reason for dismissing or closing the alert.
+    attr_reader :dismissed_reason
+    # @return [Object] The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+    attr_reader :fixed_at
+    # @return [String] The GitHub URL of the alert resource.
+    attr_reader :html_url
+    # @return [WebhookCodeScanningAlertClosedByUserAlertMostRecentInstance] Optional object value serialized in the `most_recent_instance` wire field.
+    attr_reader :most_recent_instance
+    # @return [Integer] The code scanning alert number.
+    attr_reader :number
+    # @return [WebhookCodeScanningAlertClosedByUserAlertRule] Required object value serialized in the `rule` wire field.
+    attr_reader :rule
+    # @return [WebhookCodeScanningAlertClosedByUserAlertState] State of a code scanning alert.
+    attr_reader :state
+    # @return [WebhookCodeScanningAlertClosedByUserAlertTool] Required object value serialized in the `tool` wire field.
+    attr_reader :tool
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [WebhookCodeScanningAlertClosedByUserAlertDismissalApprovedBy] Optional object value serialized in the `dismissal_approved_by` wire field.
+    attr_reader :dismissal_approved_by
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookCodeScanningAlertClosedByUserAlertMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalWebhookCodeScanningAlertClosedByUserMetadata
+    FIELDS = {
+      action: 'action',
+      alert: 'alert',
+      commit_oid: 'commit_oid',
+      enterprise: 'enterprise',
+      installation: 'installation',
+      organization: 'organization',
+      ref: 'ref',
+      repository: 'repository',
+      sender: 'sender'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      action
+      alert
+      commit_oid
+      ref
+      repository
+      sender
+    ].freeze
+    DECODERS = {
+      action: lambda do |value|
+        ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAction.from_value(value)
+      end,
+      alert: lambda do |value|
+        ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlert.from_hash(value)
+      end,
+      commit_oid: lambda do |value|
+        ::OctridevGithub::WebhooksCodeScanningCommitOid.from_value(value)
+      end,
+      enterprise: lambda do |value|
+        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+      end,
+      installation: lambda do |value|
+        ::OctridevGithub::SimpleInstallation.from_hash(value)
+      end,
+      organization: lambda do |value|
+        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+      end,
+      ref: lambda do |value|
+        ::OctridevGithub::WebhooksCodeScanningRef.from_value(value)
+      end,
+      repository: lambda do |value|
+        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+      end,
+      sender: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end
+    }.freeze
   end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookCodeScanningAlertClosedByUserMetadata
-  FIELDS = {
-    action: "action",
-    alert: "alert",
-    commit_oid: "commit_oid",
-    enterprise: "enterprise",
-    installation: "installation",
-    organization: "organization",
-    ref: "ref",
-    repository: "repository",
-    sender: "sender",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    action
-    alert
-    commit_oid
-    ref
-    repository
-    sender
-  ].freeze
-  DECODERS = {
-    action: lambda do |value|
-      ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAction.from_value(value)
-    end,
-    alert: lambda do |value|
-      ::OctridevGithub::WebhookCodeScanningAlertClosedByUserAlert.from_hash(value)
-    end,
-    commit_oid: lambda do |value|
-      ::OctridevGithub::WebhooksCodeScanningCommitOid.from_value(value)
-    end,
-    enterprise: lambda do |value|
-      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-    end,
-    installation: lambda do |value|
-      ::OctridevGithub::SimpleInstallation.from_hash(value)
-    end,
-    organization: lambda do |value|
-      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-    end,
-    ref: lambda do |value|
-      ::OctridevGithub::WebhooksCodeScanningRef.from_value(value)
-    end,
-    repository: lambda do |value|
-      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-    end,
-    sender: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-  }.freeze
-end
 end

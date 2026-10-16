@@ -12,11 +12,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsGetClusterDeploymentRecordsJobResponseMetadata
         FIELDS = {
-          job_id: "job_id",
-          status: "status",
-          started_at: "started_at",
-          total_count: "total_count",
-          errors: "errors",
+          job_id: 'job_id',
+          status: 'status',
+          started_at: 'started_at',
+          total_count: 'total_count',
+          errors: 'errors'
         }.freeze
         REQUIRED_FIELDS = %i[
           job_id
@@ -25,7 +25,7 @@ module OctridevGithub
         DECODERS = {
           status: lambda do |value|
             ::OctridevGithub::Methods::Orgs::OrgsGetClusterDeploymentRecordsJobResponseStatus.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -64,16 +64,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsCreateArtifactStorageRecordMetadata
         FIELDS = {
-          name: "name",
-          digest: "digest",
-          version: "version",
-          artifact_url: "artifact_url",
-          path: "path",
-          registry_url: "registry_url",
-          repository: "repository",
-          status: "status",
-          github_repository: "github_repository",
-          return_records: "return_records",
+          name: 'name',
+          digest: 'digest',
+          version: 'version',
+          artifact_url: 'artifact_url',
+          path: 'path',
+          registry_url: 'registry_url',
+          repository: 'repository',
+          status: 'status',
+          github_repository: 'github_repository',
+          return_records: 'return_records'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
@@ -83,7 +83,7 @@ module OctridevGithub
         DECODERS = {
           status: lambda do |value|
             ::OctridevGithub::Methods::Orgs::OrgsCreateArtifactStorageRecordStatus.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -132,20 +132,18 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsCreateArtifactStorageRecordResponseStorageRecordsItemMetadata
         FIELDS = {
-          id: "id",
-          name: "name",
-          digest: "digest",
-          artifact_url: "artifact_url",
-          registry_url: "registry_url",
-          repository: "repository",
-          status: "status",
-          created_at: "created_at",
-          updated_at: "updated_at",
+          id: 'id',
+          name: 'name',
+          digest: 'digest',
+          artifact_url: 'artifact_url',
+          registry_url: 'registry_url',
+          repository: 'repository',
+          status: 'status',
+          created_at: 'created_at',
+          updated_at: 'updated_at'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for OrgsCreateArtifactStorageRecordResponseStorageRecordsItem.
@@ -175,8 +173,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsCreateArtifactStorageRecordResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          storage_records: "storage_records",
+          total_count: 'total_count',
+          storage_records: 'storage_records'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -184,7 +182,7 @@ module OctridevGithub
         DECODERS = {
           storage_records: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Orgs::OrgsCreateArtifactStorageRecordResponseStorageRecordsItem.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -214,15 +212,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsListArtifactDeploymentRecordsResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          deployment_records: "deployment_records",
+          total_count: 'total_count',
+          deployment_records: 'deployment_records'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           deployment_records: lambda do |value|
             value&.map { |item| ::OctridevGithub::ArtifactDeploymentRecord.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -254,20 +251,18 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsListArtifactStorageRecordsResponseStorageRecordsItemMetadata
         FIELDS = {
-          id: "id",
-          name: "name",
-          digest: "digest",
-          artifact_url: "artifact_url",
-          registry_url: "registry_url",
-          repository: "repository",
-          status: "status",
-          created_at: "created_at",
-          updated_at: "updated_at",
+          id: 'id',
+          name: 'name',
+          digest: 'digest',
+          artifact_url: 'artifact_url',
+          registry_url: 'registry_url',
+          repository: 'repository',
+          status: 'status',
+          created_at: 'created_at',
+          updated_at: 'updated_at'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for OrgsListArtifactStorageRecordsResponseStorageRecordsItem.
@@ -297,15 +292,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsListArtifactStorageRecordsResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          storage_records: "storage_records",
+          total_count: 'total_count',
+          storage_records: 'storage_records'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           storage_records: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Orgs::OrgsListArtifactStorageRecordsResponseStorageRecordsItem.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -337,14 +331,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsListAttestationsBulkMetadata
         FIELDS = {
-          subject_digests: "subject_digests",
-          predicate_type: "predicate_type",
+          subject_digests: 'subject_digests',
+          predicate_type: 'predicate_type'
         }.freeze
         REQUIRED_FIELDS = %i[
           subject_digests
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for OrgsListAttestationsBulk.
@@ -376,15 +369,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsListAttestationsBulkResponsePageInfoMetadata
         FIELDS = {
-          has_next: "has_next",
-          has_previous: "has_previous",
-          next_: "next",
-          previous: "previous",
+          has_next: 'has_next',
+          has_previous: 'has_previous',
+          next_: 'next',
+          previous: 'previous'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for OrgsListAttestationsBulkResponsePageInfo.
@@ -421,15 +412,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsListAttestationsBulkResponseMetadata
         FIELDS = {
-          attestations_subject_digests: "attestations_subject_digests",
-          page_info: "page_info",
+          attestations_subject_digests: 'attestations_subject_digests',
+          page_info: 'page_info'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           page_info: lambda do |value|
             ::OctridevGithub::Methods::Orgs::OrgsListAttestationsBulkResponsePageInfo.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -462,14 +452,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsListAttestationsResponseAttestationsItemBundleMetadata
         FIELDS = {
-          media_type: "mediaType",
-          verification_material: "verificationMaterial",
-          dsse_envelope: "dsseEnvelope",
+          media_type: 'mediaType',
+          verification_material: 'verificationMaterial',
+          dsse_envelope: 'dsseEnvelope'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for OrgsListAttestationsResponseAttestationsItemBundle.
@@ -499,17 +487,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsListAttestationsResponseAttestationsItemMetadata
         FIELDS = {
-          bundle: "bundle",
-          repository_id: "repository_id",
-          bundle_url: "bundle_url",
-          initiator: "initiator",
+          bundle: 'bundle',
+          repository_id: 'repository_id',
+          bundle_url: 'bundle_url',
+          initiator: 'initiator'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           bundle: lambda do |value|
             ::OctridevGithub::Methods::Orgs::OrgsListAttestationsResponseAttestationsItemBundle.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -541,14 +528,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsListAttestationsResponseMetadata
         FIELDS = {
-          attestations: "attestations",
+          attestations: 'attestations'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           attestations: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Orgs::OrgsListAttestationsResponseAttestationsItem.from_hash(item) }
-          end,
+          end
         }.freeze
       end
     end

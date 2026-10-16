@@ -25,22 +25,21 @@ module OctridevGithub
         policy_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/policies/",
+            '/actions/policies/',
             SdkClient.encode_path_segment(policy_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'actions_delete_repo_actions_policy',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -64,26 +63,25 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runners"
+            '/actions/runners'
           ].join,
           config: config,
           query: {
             'name' => QueryValue.new(name, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Actions::ActionsListSelfHostedRunnersForRepoResponse,
           decoder: :json,
           operation_id: 'actions_list_self_hosted_runners_for_repo',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -101,22 +99,21 @@ module OctridevGithub
         version:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runners/deprecations/",
+            '/actions/runners/deprecations/',
             SdkClient.encode_path_segment(version)
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::Actions::ActionsGetRunnerVersionDeprecationForRepoResponse,
           decoder: :json,
           operation_id: 'actions_get_runner_version_deprecation_for_repo',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -132,21 +129,20 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runners/downloads"
+            '/actions/runners/downloads'
           ].join,
           config: config,
           return_type: [::OctridevGithub::RunnerApplication],
           decoder: :json,
           operation_id: 'actions_list_runner_applications_for_repo',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -173,30 +169,29 @@ module OctridevGithub
         work_folder: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_items('labels', labels, min: 1, max: 100)
 
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runners/generate-jitconfig"
+            '/actions/runners/generate-jitconfig'
           ].join,
           config: config,
           body: {
             'name' => name,
             'runner_group_id' => runner_group_id,
             'labels' => labels,
-            'work_folder' => work_folder,
+            'work_folder' => work_folder
           },
           return_type: ::OctridevGithub::Methods::Actions::SchemaSchemaCee94e2c,
           decoder: :json,
           operation_id: 'actions_generate_runner_jitconfig_for_repo',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple },
+          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple }
         ).data
       end
 
@@ -212,21 +207,20 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runners/registration-token"
+            '/actions/runners/registration-token'
           ].join,
           config: config,
           return_type: ::OctridevGithub::AuthenticationToken,
           decoder: :json,
           operation_id: 'actions_create_registration_token_for_repo',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -242,21 +236,20 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runners/remove-token"
+            '/actions/runners/remove-token'
           ].join,
           config: config,
           return_type: ::OctridevGithub::AuthenticationToken,
           decoder: :json,
           operation_id: 'actions_create_remove_token_for_repo',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -274,22 +267,21 @@ module OctridevGithub
         runner_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runners/",
+            '/actions/runners/',
             SdkClient.encode_path_segment(runner_id)
           ].join,
           config: config,
           return_type: ::OctridevGithub::Runner,
           decoder: :json,
           operation_id: 'actions_get_self_hosted_runner_for_repo',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -307,22 +299,21 @@ module OctridevGithub
         runner_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runners/",
+            '/actions/runners/',
             SdkClient.encode_path_segment(runner_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'actions_delete_self_hosted_runner_from_repo',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationErrorSimple },
+          errors: { '422' => ::OctridevGithub::ValidationErrorSimple }
         ).data
       end
 
@@ -340,24 +331,23 @@ module OctridevGithub
         runner_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runners/",
+            '/actions/runners/',
             SdkClient.encode_path_segment(runner_id),
-            "/labels"
+            '/labels'
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::Actions::SchemaSchemaC8266fdc,
           decoder: :json,
           operation_id: 'actions_list_labels_for_self_hosted_runner_for_repo',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -378,29 +368,28 @@ module OctridevGithub
         labels:,
         request_options: nil
       )
-
         Validation.validate_items('labels', labels, min: 1, max: 100)
 
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runners/",
+            '/actions/runners/',
             SdkClient.encode_path_segment(runner_id),
-            "/labels"
+            '/labels'
           ].join,
           config: config,
           body: {
-            'labels' => labels,
+            'labels' => labels
           },
           return_type: ::OctridevGithub::Methods::Actions::SchemaSchemaC8266fdc,
           decoder: :json,
           operation_id: 'actions_add_custom_labels_to_self_hosted_runner_for_repo',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple }
         ).data
       end
 
@@ -421,29 +410,28 @@ module OctridevGithub
         labels:,
         request_options: nil
       )
-
         Validation.validate_items('labels', labels, min: 0, max: 100)
 
         SdkClient.request(
           'PUT',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runners/",
+            '/actions/runners/',
             SdkClient.encode_path_segment(runner_id),
-            "/labels"
+            '/labels'
           ].join,
           config: config,
           body: {
-            'labels' => labels,
+            'labels' => labels
           },
           return_type: ::OctridevGithub::Methods::Actions::SchemaSchemaC8266fdc,
           decoder: :json,
           operation_id: 'actions_set_custom_labels_for_self_hosted_runner_for_repo',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple }
         ).data
       end
 
@@ -461,24 +449,23 @@ module OctridevGithub
         runner_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runners/",
+            '/actions/runners/',
             SdkClient.encode_path_segment(runner_id),
-            "/labels"
+            '/labels'
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::Actions::SchemaSchema328ddb88,
           decoder: :json,
           operation_id: 'actions_remove_all_custom_labels_from_self_hosted_runner_for_repo',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -498,17 +485,16 @@ module OctridevGithub
         name:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runners/",
+            '/actions/runners/',
             SdkClient.encode_path_segment(runner_id),
-            "/labels/",
+            '/labels/',
             SdkClient.encode_path_segment(name)
           ].join,
           config: config,
@@ -516,7 +502,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'actions_remove_custom_label_from_self_hosted_runner_for_repo',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple }
         ).data
       end
     end

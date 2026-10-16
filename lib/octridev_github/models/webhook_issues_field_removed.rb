@@ -5,313 +5,309 @@
 
 # webhook_issues_field_removed domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalWebhookIssuesFieldRemovedIssueFieldMetadata
-  FIELDS = {
-    id: "id",
-    name: "name",
-    field_type: "field_type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    name
-    field_type
-  ].freeze
-  DECODERS = {
-    field_type: lambda do |value|
-      ::OctridevGithub::WebhookIssuesFieldRemovedIssueFieldFieldType.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookIssuesFieldRemovedIssueField.
-# The issue field whose value was cleared from the issue.
-class WebhookIssuesFieldRemovedIssueField
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookIssuesFieldRemovedIssueFieldMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookIssuesFieldRemovedIssueFieldMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookIssuesFieldRemovedIssueFieldMetadata::DECODERS
-
-  # @return [Integer] The unique identifier of the issue field.
-  attr_reader :id
-  # @return [String] The name of the issue field.
-  attr_reader :name
-  # @return [WebhookIssuesFieldRemovedIssueFieldFieldType] The data type of the issue field.
-  attr_reader :field_type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookIssuesFieldRemovedIssueFieldMetadata
+    FIELDS = {
+      id: 'id',
+      name: 'name',
+      field_type: 'field_type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      name
+      field_type
+    ].freeze
+    DECODERS = {
+      field_type: lambda do |value|
+        ::OctridevGithub::WebhookIssuesFieldRemovedIssueFieldFieldType.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookIssuesFieldRemovedIssueField.
+  # The issue field whose value was cleared from the issue.
+  class WebhookIssuesFieldRemovedIssueField
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookIssuesFieldRemovedIssueFieldMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookIssuesFieldRemovedIssueFieldMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookIssuesFieldRemovedIssueFieldMetadata::DECODERS
+
+    # @return [Integer] The unique identifier of the issue field.
+    attr_reader :id
+    # @return [String] The name of the issue field.
+    attr_reader :name
+    # @return [WebhookIssuesFieldRemovedIssueFieldFieldType] The data type of the issue field.
+    attr_reader :field_type
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookIssuesFieldRemovedIssueFieldValueOptionMetadata
-  FIELDS = {
-    id: "id",
-    name: "name",
-    color: "color",
-    description: "description",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookIssuesFieldRemovedIssueFieldValueOption.
-# The selected option details. Present for single_select field types.
-class WebhookIssuesFieldRemovedIssueFieldValueOption
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookIssuesFieldRemovedIssueFieldValueOptionMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookIssuesFieldRemovedIssueFieldValueOptionMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookIssuesFieldRemovedIssueFieldValueOptionMetadata::DECODERS
-
-  # @return [Integer] Optional `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Optional `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Optional `string` value serialized in the `color` wire field.
-  attr_reader :color
-  # @return [String] Optional `string` value serialized in the `description` wire field.
-  attr_reader :description
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookIssuesFieldRemovedIssueFieldValueOptionMetadata
+    FIELDS = {
+      id: 'id',
+      name: 'name',
+      color: 'color',
+      description: 'description'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookIssuesFieldRemovedIssueFieldValueOption.
+  # The selected option details. Present for single_select field types.
+  class WebhookIssuesFieldRemovedIssueFieldValueOption
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookIssuesFieldRemovedIssueFieldValueOptionMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookIssuesFieldRemovedIssueFieldValueOptionMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookIssuesFieldRemovedIssueFieldValueOptionMetadata::DECODERS
+
+    # @return [Integer] Optional `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Optional `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Optional `string` value serialized in the `color` wire field.
+    attr_reader :color
+    # @return [String] Optional `string` value serialized in the `description` wire field.
+    attr_reader :description
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookIssuesFieldRemovedIssueFieldValueOptionsItemMetadata
-  FIELDS = {
-    id: "id",
-    name: "name",
-    color: "color",
-    description: "description",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookIssuesFieldRemovedIssueFieldValueOptionsItem.
-# Required object value serialized in the `options[]` wire field.
-class WebhookIssuesFieldRemovedIssueFieldValueOptionsItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookIssuesFieldRemovedIssueFieldValueOptionsItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookIssuesFieldRemovedIssueFieldValueOptionsItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookIssuesFieldRemovedIssueFieldValueOptionsItemMetadata::DECODERS
-
-  # @return [Integer] Optional `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Optional `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Optional `string` value serialized in the `color` wire field.
-  attr_reader :color
-  # @return [String] Optional `string` value serialized in the `description` wire field.
-  attr_reader :description
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookIssuesFieldRemovedIssueFieldValueOptionsItemMetadata
+    FIELDS = {
+      id: 'id',
+      name: 'name',
+      color: 'color',
+      description: 'description'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookIssuesFieldRemovedIssueFieldValueOptionsItem.
+  # Required object value serialized in the `options[]` wire field.
+  class WebhookIssuesFieldRemovedIssueFieldValueOptionsItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookIssuesFieldRemovedIssueFieldValueOptionsItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookIssuesFieldRemovedIssueFieldValueOptionsItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookIssuesFieldRemovedIssueFieldValueOptionsItemMetadata::DECODERS
+
+    # @return [Integer] Optional `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Optional `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Optional `string` value serialized in the `color` wire field.
+    attr_reader :color
+    # @return [String] Optional `string` value serialized in the `description` wire field.
+    attr_reader :description
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookIssuesFieldRemovedIssueFieldValueMetadata
-  FIELDS = {
-    id: "id",
-    value: "value",
-    value_id: "value_id",
-    option: "option",
-    value_ids: "value_ids",
-    options: "options",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-  ].freeze
-  DECODERS = {
-    option: lambda do |value|
-      ::OctridevGithub::WebhookIssuesFieldRemovedIssueFieldValueOption.from_hash(value)
-    end,
-    options: lambda do |value|
-      value&.map { |item| ::OctridevGithub::WebhookIssuesFieldRemovedIssueFieldValueOptionsItem.from_hash(item) }
-    end,
-  }.freeze
-end
-
-# API model for WebhookIssuesFieldRemovedIssueFieldValue.
-# The value that was cleared from the issue field.
-class WebhookIssuesFieldRemovedIssueFieldValue
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookIssuesFieldRemovedIssueFieldValueMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookIssuesFieldRemovedIssueFieldValueMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookIssuesFieldRemovedIssueFieldValueMetadata::DECODERS
-
-  # @return [Integer] The unique identifier of the issue field value.
-  attr_reader :id
-  # @return [Object] The value of the field. Present for text, date, and number field types.
-  attr_reader :value
-  # @return [Integer] The identifier of the selected option. Present for single_select field types.
-  attr_reader :value_id
-  # @return [WebhookIssuesFieldRemovedIssueFieldValueOption] The selected option details. Present for single_select field types.
-  attr_reader :option
-  # @return [Array_of_Integer] The identifiers of the selected options. Present for multi_select field types.
-  attr_reader :value_ids
-  # @return [Array_of_WebhookIssuesFieldRemovedIssueFieldValueOptionsItem] The selected option details. Present for multi_select field types.
-  attr_reader :options
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookIssuesFieldRemovedIssueFieldValueMetadata
+    FIELDS = {
+      id: 'id',
+      value: 'value',
+      value_id: 'value_id',
+      option: 'option',
+      value_ids: 'value_ids',
+      options: 'options'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+    ].freeze
+    DECODERS = {
+      option: lambda do |value|
+        ::OctridevGithub::WebhookIssuesFieldRemovedIssueFieldValueOption.from_hash(value)
+      end,
+      options: lambda do |value|
+        value&.map { |item| ::OctridevGithub::WebhookIssuesFieldRemovedIssueFieldValueOptionsItem.from_hash(item) }
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookIssuesFieldRemovedIssueFieldValue.
+  # The value that was cleared from the issue field.
+  class WebhookIssuesFieldRemovedIssueFieldValue
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookIssuesFieldRemovedIssueFieldValueMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookIssuesFieldRemovedIssueFieldValueMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookIssuesFieldRemovedIssueFieldValueMetadata::DECODERS
+
+    # @return [Integer] The unique identifier of the issue field value.
+    attr_reader :id
+    # @return [Object] The value of the field. Present for text, date, and number field types.
+    attr_reader :value
+    # @return [Integer] The identifier of the selected option. Present for single_select field types.
+    attr_reader :value_id
+    # @return [WebhookIssuesFieldRemovedIssueFieldValueOption] The selected option details. Present for single_select field types.
+    attr_reader :option
+    # @return [Array_of_Integer] The identifiers of the selected options. Present for multi_select field types.
+    attr_reader :value_ids
+    # @return [Array_of_WebhookIssuesFieldRemovedIssueFieldValueOptionsItem] The selected option details. Present for multi_select field types.
+    attr_reader :options
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookIssuesFieldRemovedMetadata
-  FIELDS = {
-    action: "action",
-    enterprise: "enterprise",
-    installation: "installation",
-    issue: "issue",
-    issue_field: "issue_field",
-    issue_field_value: "issue_field_value",
-    organization: "organization",
-    repository: "repository",
-    sender: "sender",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    action
-    issue
-    issue_field
-    repository
-    sender
-  ].freeze
-  DECODERS = {
-    action: lambda do |value|
-      ::OctridevGithub::WebhookIssuesFieldRemovedAction.from_value(value)
-    end,
-    enterprise: lambda do |value|
-      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-    end,
-    installation: lambda do |value|
-      ::OctridevGithub::SimpleInstallation.from_hash(value)
-    end,
-    issue: lambda do |value|
-      ::OctridevGithub::WebhooksIssue.from_hash(value)
-    end,
-    issue_field: lambda do |value|
-      ::OctridevGithub::WebhookIssuesFieldRemovedIssueField.from_hash(value)
-    end,
-    issue_field_value: lambda do |value|
-      ::OctridevGithub::WebhookIssuesFieldRemovedIssueFieldValue.from_hash(value)
-    end,
-    organization: lambda do |value|
-      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-    end,
-    repository: lambda do |value|
-      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-    end,
-    sender: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookIssuesFieldRemoved.
-# Typed representation of the `WebhookIssuesFieldRemoved` API schema.
-class WebhookIssuesFieldRemoved
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookIssuesFieldRemovedMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookIssuesFieldRemovedMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookIssuesFieldRemovedMetadata::DECODERS
-
-  # @return [WebhookIssuesFieldRemovedAction] Required enumerated value serialized in the `action` wire field.
-  attr_reader :action
-  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-  attr_reader :enterprise
-  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-  attr_reader :installation
-  # @return [WebhooksIssue] The issue itself.
-  attr_reader :issue
-  # @return [WebhookIssuesFieldRemovedIssueField] The issue field whose value was cleared from the issue.
-  attr_reader :issue_field
-  # @return [WebhookIssuesFieldRemovedIssueFieldValue] The value that was cleared from the issue field.
-  attr_reader :issue_field_value
-  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-  attr_reader :organization
-  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-  attr_reader :repository
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :sender
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookIssuesFieldRemovedMetadata
+    FIELDS = {
+      action: 'action',
+      enterprise: 'enterprise',
+      installation: 'installation',
+      issue: 'issue',
+      issue_field: 'issue_field',
+      issue_field_value: 'issue_field_value',
+      organization: 'organization',
+      repository: 'repository',
+      sender: 'sender'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      action
+      issue
+      issue_field
+      repository
+      sender
+    ].freeze
+    DECODERS = {
+      action: lambda do |value|
+        ::OctridevGithub::WebhookIssuesFieldRemovedAction.from_value(value)
+      end,
+      enterprise: lambda do |value|
+        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+      end,
+      installation: lambda do |value|
+        ::OctridevGithub::SimpleInstallation.from_hash(value)
+      end,
+      issue: lambda do |value|
+        ::OctridevGithub::WebhooksIssue.from_hash(value)
+      end,
+      issue_field: lambda do |value|
+        ::OctridevGithub::WebhookIssuesFieldRemovedIssueField.from_hash(value)
+      end,
+      issue_field_value: lambda do |value|
+        ::OctridevGithub::WebhookIssuesFieldRemovedIssueFieldValue.from_hash(value)
+      end,
+      organization: lambda do |value|
+        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+      end,
+      repository: lambda do |value|
+        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+      end,
+      sender: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookIssuesFieldRemoved.
+  # Typed representation of the `WebhookIssuesFieldRemoved` API schema.
+  class WebhookIssuesFieldRemoved
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookIssuesFieldRemovedMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookIssuesFieldRemovedMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookIssuesFieldRemovedMetadata::DECODERS
+
+    # @return [WebhookIssuesFieldRemovedAction] Required enumerated value serialized in the `action` wire field.
+    attr_reader :action
+    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+    attr_reader :enterprise
+    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+    attr_reader :installation
+    # @return [WebhooksIssue] The issue itself.
+    attr_reader :issue
+    # @return [WebhookIssuesFieldRemovedIssueField] The issue field whose value was cleared from the issue.
+    attr_reader :issue_field
+    # @return [WebhookIssuesFieldRemovedIssueFieldValue] The value that was cleared from the issue field.
+    attr_reader :issue_field_value
+    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+    attr_reader :organization
+    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+    attr_reader :repository
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :sender
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the WebhookIssuesFieldRemovedAction SDK namespace.
+  module WebhookIssuesFieldRemovedAction
+    FIELD_REMOVED = 'field_removed'
+    VALUES = ['field_removed'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesFieldRemovedAction SDK namespace.
-module WebhookIssuesFieldRemovedAction
-  FIELD_REMOVED = 'field_removed'
-  VALUES = ['field_removed'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesFieldRemovedIssueFieldFieldType SDK namespace.
+  module WebhookIssuesFieldRemovedIssueFieldFieldType
+    TEXT = 'text'
+    DATE = 'date'
+    SINGLE_SELECT = 'single_select'
+    MULTI_SELECT = 'multi_select'
+    NUMBER = 'number'
+    VALUES = %w[text date single_select multi_select number].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the WebhookIssuesFieldRemovedIssueFieldFieldType SDK namespace.
-module WebhookIssuesFieldRemovedIssueFieldFieldType
-  TEXT = 'text'
-  DATE = 'date'
-  SINGLE_SELECT = 'single_select'
-  MULTI_SELECT = 'multi_select'
-  NUMBER = 'number'
-  VALUES = ['text', 'date', 'single_select', 'multi_select', 'number'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

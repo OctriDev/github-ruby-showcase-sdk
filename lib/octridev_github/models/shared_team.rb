@@ -5,303 +5,303 @@
 
 # shared_team domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalTeamPermissionsMetadata
-  FIELDS = {
-    pull: "pull",
-    triage: "triage",
-    push: "push",
-    maintain: "maintain",
-    admin: "admin",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    pull
-    triage
-    push
-    maintain
-    admin
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for TeamPermissions.
-# Optional object value serialized in the `permissions` wire field.
-class TeamPermissions
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalTeamPermissionsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalTeamPermissionsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalTeamPermissionsMetadata::DECODERS
-
-  # @return [Boolean] Required `boolean` value serialized in the `pull` wire field.
-  attr_reader :pull
-  # @return [Boolean] Required `boolean` value serialized in the `triage` wire field.
-  attr_reader :triage
-  # @return [Boolean] Required `boolean` value serialized in the `push` wire field.
-  attr_reader :push
-  # @return [Boolean] Required `boolean` value serialized in the `maintain` wire field.
-  attr_reader :maintain
-  # @return [Boolean] Required `boolean` value serialized in the `admin` wire field.
-  attr_reader :admin
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalTeamPermissionsMetadata
+    FIELDS = {
+      pull: 'pull',
+      triage: 'triage',
+      push: 'push',
+      maintain: 'maintain',
+      admin: 'admin'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      pull
+      triage
+      push
+      maintain
+      admin
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for TeamPermissions.
+  # Optional object value serialized in the `permissions` wire field.
+  class TeamPermissions
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalTeamPermissionsMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalTeamPermissionsMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalTeamPermissionsMetadata::DECODERS
+
+    # @return [Boolean] Required `boolean` value serialized in the `pull` wire field.
+    attr_reader :pull
+    # @return [Boolean] Required `boolean` value serialized in the `triage` wire field.
+    attr_reader :triage
+    # @return [Boolean] Required `boolean` value serialized in the `push` wire field.
+    attr_reader :push
+    # @return [Boolean] Required `boolean` value serialized in the `maintain` wire field.
+    attr_reader :maintain
+    # @return [Boolean] Required `boolean` value serialized in the `admin` wire field.
+    attr_reader :admin
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalTeamMetadata
-  FIELDS = {
-    id: "id",
-    node_id: "node_id",
-    name: "name",
-    slug: "slug",
-    description: "description",
-    privacy: "privacy",
-    notification_setting: "notification_setting",
-    permission: "permission",
-    permissions: "permissions",
-    url: "url",
-    html_url: "html_url",
-    members_url: "members_url",
-    repositories_url: "repositories_url",
-    type: "type",
-    access_source: "access_source",
-    organization_id: "organization_id",
-    enterprise_id: "enterprise_id",
-    parent: "parent",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    node_id
-    name
-    slug
-    description
-    permission
-    url
-    html_url
-    members_url
-    repositories_url
-    type
-    parent
-  ].freeze
-  DECODERS = {
-    permissions: lambda do |value|
-      ::OctridevGithub::TeamPermissions.from_hash(value)
-    end,
-    type: lambda do |value|
-      ::OctridevGithub::TeamType.from_value(value)
-    end,
-    access_source: lambda do |value|
-      ::OctridevGithub::TeamAccessSource.from_value(value)
-    end,
-    parent: lambda do |value|
-      ::OctridevGithub::NullableTeamSimple.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    description
-    parent
-  ].freeze
-end
-
-# API model for Team.
-# Groups of organization members that gives permissions on specified repositories.
-class Team
-  include CopilotSeatDetailsAssigningTeam
-  include PendingDeploymentReviewersItemReviewer
-  include ReviewersItemReviewer
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalTeamMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalTeamMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalTeamMetadata::DECODERS
-
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Required `string` value serialized in the `slug` wire field.
-  attr_reader :slug
-  # @return [String] Required `string` value serialized in the `description` wire field.
-  attr_reader :description
-  # @return [String] Optional `string` value serialized in the `privacy` wire field.
-  attr_reader :privacy
-  # @return [String] Optional `string` value serialized in the `notification_setting` wire field.
-  attr_reader :notification_setting
-  # @return [String] Required `string` value serialized in the `permission` wire field.
-  attr_reader :permission
-  # @return [TeamPermissions] Optional object value serialized in the `permissions` wire field.
-  attr_reader :permissions
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [String] Required `string` value serialized in the `members_url` wire field.
-  attr_reader :members_url
-  # @return [String] Required `uri`-formatted value serialized in the `repositories_url` wire field.
-  attr_reader :repositories_url
-  # @return [TeamType] The ownership type of the team
-  attr_reader :type
-  # @return [TeamAccessSource] How the team's access to the repository was granted. This property is only present when the team is returned in a repository context, such as `GET /repos/{owner}/{repo}/teams`.
-  attr_reader :access_source
-  # @return [Integer] Unique identifier of the organization to which this team belongs
-  attr_reader :organization_id
-  # @return [Integer] Unique identifier of the enterprise to which this team belongs
-  attr_reader :enterprise_id
-  # @return [NullableTeamSimple] Groups of organization members that gives permissions on specified repositories.
-  attr_reader :parent
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalTeamMetadata
+    FIELDS = {
+      id: 'id',
+      node_id: 'node_id',
+      name: 'name',
+      slug: 'slug',
+      description: 'description',
+      privacy: 'privacy',
+      notification_setting: 'notification_setting',
+      permission: 'permission',
+      permissions: 'permissions',
+      url: 'url',
+      html_url: 'html_url',
+      members_url: 'members_url',
+      repositories_url: 'repositories_url',
+      type: 'type',
+      access_source: 'access_source',
+      organization_id: 'organization_id',
+      enterprise_id: 'enterprise_id',
+      parent: 'parent'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      node_id
+      name
+      slug
+      description
+      permission
+      url
+      html_url
+      members_url
+      repositories_url
+      type
+      parent
+    ].freeze
+    DECODERS = {
+      permissions: lambda do |value|
+        ::OctridevGithub::TeamPermissions.from_hash(value)
+      end,
+      type: lambda do |value|
+        ::OctridevGithub::TeamType.from_value(value)
+      end,
+      access_source: lambda do |value|
+        ::OctridevGithub::TeamAccessSource.from_value(value)
+      end,
+      parent: lambda do |value|
+        ::OctridevGithub::NullableTeamSimple.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      description
+      parent
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalTeamMetadata::NULLABLE_FIELDS)
+  # API model for Team.
+  # Groups of organization members that gives permissions on specified repositories.
+  class Team
+    include CopilotSeatDetailsAssigningTeam
+    include PendingDeploymentReviewersItemReviewer
+    include ReviewersItemReviewer
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalTeamMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalTeamMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalTeamMetadata::DECODERS
+
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Required `string` value serialized in the `slug` wire field.
+    attr_reader :slug
+    # @return [String] Required `string` value serialized in the `description` wire field.
+    attr_reader :description
+    # @return [String] Optional `string` value serialized in the `privacy` wire field.
+    attr_reader :privacy
+    # @return [String] Optional `string` value serialized in the `notification_setting` wire field.
+    attr_reader :notification_setting
+    # @return [String] Required `string` value serialized in the `permission` wire field.
+    attr_reader :permission
+    # @return [TeamPermissions] Optional object value serialized in the `permissions` wire field.
+    attr_reader :permissions
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [String] Required `string` value serialized in the `members_url` wire field.
+    attr_reader :members_url
+    # @return [String] Required `uri`-formatted value serialized in the `repositories_url` wire field.
+    attr_reader :repositories_url
+    # @return [TeamType] The ownership type of the team
+    attr_reader :type
+    # @return [TeamAccessSource] How the team's access to the repository was granted. This property is only present when the team is returned in a repository context, such as `GET /repos/{owner}/{repo}/teams`.
+    attr_reader :access_source
+    # @return [Integer] Unique identifier of the organization to which this team belongs
+    attr_reader :organization_id
+    # @return [Integer] Unique identifier of the enterprise to which this team belongs
+    attr_reader :enterprise_id
+    # @return [NullableTeamSimple] Groups of organization members that gives permissions on specified repositories.
+    attr_reader :parent
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalTeamMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the TeamAccessSource SDK namespace.
-module TeamAccessSource
-  DIRECT = 'direct'
-  ORGANIZATION = 'organization'
-  ENTERPRISE = 'enterprise'
-  VALUES = ['direct', 'organization', 'enterprise'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the TeamType SDK namespace.
-module TeamType
-  ENTERPRISE = 'enterprise'
-  ORGANIZATION = 'organization'
-  VALUES = ['enterprise', 'organization'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalTeamSimpleMetadata
-  FIELDS = {
-    id: "id",
-    node_id: "node_id",
-    url: "url",
-    members_url: "members_url",
-    name: "name",
-    description: "description",
-    permission: "permission",
-    privacy: "privacy",
-    notification_setting: "notification_setting",
-    html_url: "html_url",
-    repositories_url: "repositories_url",
-    slug: "slug",
-    ldap_dn: "ldap_dn",
-    type: "type",
-    organization_id: "organization_id",
-    enterprise_id: "enterprise_id",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    node_id
-    url
-    members_url
-    name
-    description
-    permission
-    html_url
-    repositories_url
-    slug
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::TeamSimpleType.from_value(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    description
-  ].freeze
-end
-
-# API model for TeamSimple.
-# Groups of organization members that gives permissions on specified repositories.
-class TeamSimple
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalTeamSimpleMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalTeamSimpleMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalTeamSimpleMetadata::DECODERS
-
-  # @return [Integer] Unique identifier of the team
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] URL for the team
-  attr_reader :url
-  # @return [String] Required `string` value serialized in the `members_url` wire field.
-  attr_reader :members_url
-  # @return [String] Name of the team
-  attr_reader :name
-  # @return [String] Description of the team
-  attr_reader :description
-  # @return [String] Permission that the team will have for its repositories
-  attr_reader :permission
-  # @return [String] The level of privacy this team should have
-  attr_reader :privacy
-  # @return [String] The notification setting the team has set
-  attr_reader :notification_setting
-  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [String] Required `uri`-formatted value serialized in the `repositories_url` wire field.
-  attr_reader :repositories_url
-  # @return [String] Required `string` value serialized in the `slug` wire field.
-  attr_reader :slug
-  # @return [String] Distinguished Name (DN) that team maps to within LDAP environment
-  attr_reader :ldap_dn
-  # @return [TeamSimpleType] The ownership type of the team
-  attr_reader :type
-  # @return [Integer] Unique identifier of the organization to which this team belongs
-  attr_reader :organization_id
-  # @return [Integer] Unique identifier of the enterprise to which this team belongs
-  attr_reader :enterprise_id
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the TeamAccessSource SDK namespace.
+  module TeamAccessSource
+    DIRECT = 'direct'
+    ORGANIZATION = 'organization'
+    ENTERPRISE = 'enterprise'
+    VALUES = %w[direct organization enterprise].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalTeamSimpleMetadata::NULLABLE_FIELDS)
+  # Defines the TeamType SDK namespace.
+  module TeamType
+    ENTERPRISE = 'enterprise'
+    ORGANIZATION = 'organization'
+    VALUES = %w[enterprise organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalTeamSimpleMetadata
+    FIELDS = {
+      id: 'id',
+      node_id: 'node_id',
+      url: 'url',
+      members_url: 'members_url',
+      name: 'name',
+      description: 'description',
+      permission: 'permission',
+      privacy: 'privacy',
+      notification_setting: 'notification_setting',
+      html_url: 'html_url',
+      repositories_url: 'repositories_url',
+      slug: 'slug',
+      ldap_dn: 'ldap_dn',
+      type: 'type',
+      organization_id: 'organization_id',
+      enterprise_id: 'enterprise_id'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      node_id
+      url
+      members_url
+      name
+      description
+      permission
+      html_url
+      repositories_url
+      slug
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::TeamSimpleType.from_value(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      description
+    ].freeze
   end
-end
 
-# Defines the TeamSimpleType SDK namespace.
-module TeamSimpleType
-  ENTERPRISE = 'enterprise'
-  ORGANIZATION = 'organization'
-  VALUES = ['enterprise', 'organization'].freeze
-  def self.from_value(value)
-    value
+  # API model for TeamSimple.
+  # Groups of organization members that gives permissions on specified repositories.
+  class TeamSimple
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalTeamSimpleMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalTeamSimpleMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalTeamSimpleMetadata::DECODERS
+
+    # @return [Integer] Unique identifier of the team
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] URL for the team
+    attr_reader :url
+    # @return [String] Required `string` value serialized in the `members_url` wire field.
+    attr_reader :members_url
+    # @return [String] Name of the team
+    attr_reader :name
+    # @return [String] Description of the team
+    attr_reader :description
+    # @return [String] Permission that the team will have for its repositories
+    attr_reader :permission
+    # @return [String] The level of privacy this team should have
+    attr_reader :privacy
+    # @return [String] The notification setting the team has set
+    attr_reader :notification_setting
+    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [String] Required `uri`-formatted value serialized in the `repositories_url` wire field.
+    attr_reader :repositories_url
+    # @return [String] Required `string` value serialized in the `slug` wire field.
+    attr_reader :slug
+    # @return [String] Distinguished Name (DN) that team maps to within LDAP environment
+    attr_reader :ldap_dn
+    # @return [TeamSimpleType] The ownership type of the team
+    attr_reader :type
+    # @return [Integer] Unique identifier of the organization to which this team belongs
+    attr_reader :organization_id
+    # @return [Integer] Unique identifier of the enterprise to which this team belongs
+    attr_reader :enterprise_id
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalTeamSimpleMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
+
+  # Defines the TeamSimpleType SDK namespace.
+  module TeamSimpleType
+    ENTERPRISE = 'enterprise'
+    ORGANIZATION = 'organization'
+    VALUES = %w[enterprise organization].freeze
+    def self.from_value(value)
+      value
+    end
+  end
 end

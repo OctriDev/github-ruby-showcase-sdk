@@ -5,664 +5,656 @@
 
 # orgs domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalApiInsightsRouteStatsItemMetadata
-  FIELDS = {
-    http_method: "http_method",
-    api_route: "api_route",
-    total_request_count: "total_request_count",
-    rate_limited_request_count: "rate_limited_request_count",
-    last_rate_limited_timestamp: "last_rate_limited_timestamp",
-    last_request_timestamp: "last_request_timestamp",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for ApiInsightsRouteStatsItem.
-class ApiInsightsRouteStatsItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalApiInsightsRouteStatsItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalApiInsightsRouteStatsItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalApiInsightsRouteStatsItemMetadata::DECODERS
-
-  attr_reader :last_rate_limited_timestamp, :last_request_timestamp
-  # @return [String] The HTTP method
-  attr_reader :http_method
-  # @return [String] The API path's route template
-  attr_reader :api_route
-  # @return [Integer] The total number of requests within the queried time period
-  attr_reader :total_request_count
-  # @return [Integer] The total number of requests that were rate limited within the queried time period
-  attr_reader :rate_limited_request_count
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalApiInsightsRouteStatsItemMetadata
+    FIELDS = {
+      http_method: 'http_method',
+      api_route: 'api_route',
+      total_request_count: 'total_request_count',
+      rate_limited_request_count: 'rate_limited_request_count',
+      last_rate_limited_timestamp: 'last_rate_limited_timestamp',
+      last_request_timestamp: 'last_request_timestamp'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ApiInsightsRouteStatsItem.
+  class ApiInsightsRouteStatsItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalApiInsightsRouteStatsItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalApiInsightsRouteStatsItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalApiInsightsRouteStatsItemMetadata::DECODERS
+
+    attr_reader :last_rate_limited_timestamp, :last_request_timestamp
+    # @return [String] The HTTP method
+    attr_reader :http_method
+    # @return [String] The API path's route template
+    attr_reader :api_route
+    # @return [Integer] The total number of requests within the queried time period
+    attr_reader :total_request_count
+    # @return [Integer] The total number of requests that were rate limited within the queried time period
+    attr_reader :rate_limited_request_count
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # Defines the ApiInsightsRouteStats SDK value decoder.
+  module ApiInsightsRouteStats
+    def self.from_hash(value)
+      return nil if value.nil?
 
-# Defines the ApiInsightsRouteStats SDK value decoder.
-module ApiInsightsRouteStats
-  def self.from_hash(value)
-    return nil if value.nil?
-    value&.map { |item| ::OctridevGithub::ApiInsightsRouteStatsItem.from_hash(item) }
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalApiInsightsSubjectStatsItemMetadata
-  FIELDS = {
-    subject_type: "subject_type",
-    subject_name: "subject_name",
-    subject_id: "subject_id",
-    total_request_count: "total_request_count",
-    rate_limited_request_count: "rate_limited_request_count",
-    last_rate_limited_timestamp: "last_rate_limited_timestamp",
-    last_request_timestamp: "last_request_timestamp",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for ApiInsightsSubjectStatsItem.
-class ApiInsightsSubjectStatsItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalApiInsightsSubjectStatsItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalApiInsightsSubjectStatsItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalApiInsightsSubjectStatsItemMetadata::DECODERS
-
-  attr_reader :subject_type, :subject_name, :subject_id, :total_request_count,
-              :rate_limited_request_count, :last_rate_limited_timestamp, :last_request_timestamp
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+      value&.map { |item| ::OctridevGithub::ApiInsightsRouteStatsItem.from_hash(item) }
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalApiInsightsSubjectStatsItemMetadata
+    FIELDS = {
+      subject_type: 'subject_type',
+      subject_name: 'subject_name',
+      subject_id: 'subject_id',
+      total_request_count: 'total_request_count',
+      rate_limited_request_count: 'rate_limited_request_count',
+      last_rate_limited_timestamp: 'last_rate_limited_timestamp',
+      last_request_timestamp: 'last_request_timestamp'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for ApiInsightsSubjectStatsItem.
+  class ApiInsightsSubjectStatsItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalApiInsightsSubjectStatsItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalApiInsightsSubjectStatsItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalApiInsightsSubjectStatsItemMetadata::DECODERS
 
-# Defines the ApiInsightsSubjectStats SDK value decoder.
-module ApiInsightsSubjectStats
-  def self.from_hash(value)
-    return nil if value.nil?
-    value&.map { |item| ::OctridevGithub::ApiInsightsSubjectStatsItem.from_hash(item) }
-  end
-end
+    attr_reader :subject_type, :subject_name, :subject_id, :total_request_count,
+                :rate_limited_request_count, :last_rate_limited_timestamp, :last_request_timestamp
 
-# Internal model hydration metadata.
-class SdkInternalApiInsightsSummaryStatsMetadata
-  FIELDS = {
-    total_request_count: "total_request_count",
-    rate_limited_request_count: "rate_limited_request_count",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-# API model for ApiInsightsSummaryStats.
-# API Insights usage summary stats for an organization
-class ApiInsightsSummaryStats
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalApiInsightsSummaryStatsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalApiInsightsSummaryStatsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalApiInsightsSummaryStatsMetadata::DECODERS
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  # @return [Integer] The total number of requests within the queried time period
-  attr_reader :total_request_count
-  # @return [Integer] The total number of requests that were rate limited within the queried time period
-  attr_reader :rate_limited_request_count
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the ApiInsightsSubjectStats SDK value decoder.
+  module ApiInsightsSubjectStats
+    def self.from_hash(value)
+      return nil if value.nil?
+
+      value&.map { |item| ::OctridevGithub::ApiInsightsSubjectStatsItem.from_hash(item) }
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalApiInsightsTimeStatsItemMetadata
-  FIELDS = {
-    timestamp: "timestamp",
-    total_request_count: "total_request_count",
-    rate_limited_request_count: "rate_limited_request_count",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for ApiInsightsTimeStatsItem.
-class ApiInsightsTimeStatsItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalApiInsightsTimeStatsItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalApiInsightsTimeStatsItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalApiInsightsTimeStatsItemMetadata::DECODERS
-
-  attr_reader :timestamp, :total_request_count, :rate_limited_request_count
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalApiInsightsSummaryStatsMetadata
+    FIELDS = {
+      total_request_count: 'total_request_count',
+      rate_limited_request_count: 'rate_limited_request_count'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ApiInsightsSummaryStats.
+  # API Insights usage summary stats for an organization
+  class ApiInsightsSummaryStats
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalApiInsightsSummaryStatsMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalApiInsightsSummaryStatsMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalApiInsightsSummaryStatsMetadata::DECODERS
+
+    # @return [Integer] The total number of requests within the queried time period
+    attr_reader :total_request_count
+    # @return [Integer] The total number of requests that were rate limited within the queried time period
+    attr_reader :rate_limited_request_count
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the ApiInsightsTimeStats SDK value decoder.
-module ApiInsightsTimeStats
-  def self.from_hash(value)
-    return nil if value.nil?
-    value&.map { |item| ::OctridevGithub::ApiInsightsTimeStatsItem.from_hash(item) }
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalApiInsightsUserStatsItemMetadata
-  FIELDS = {
-    actor_type: "actor_type",
-    actor_name: "actor_name",
-    actor_id: "actor_id",
-    integration_id: "integration_id",
-    oauth_application_id: "oauth_application_id",
-    total_request_count: "total_request_count",
-    rate_limited_request_count: "rate_limited_request_count",
-    last_rate_limited_timestamp: "last_rate_limited_timestamp",
-    last_request_timestamp: "last_request_timestamp",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for ApiInsightsUserStatsItem.
-class ApiInsightsUserStatsItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalApiInsightsUserStatsItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalApiInsightsUserStatsItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalApiInsightsUserStatsItemMetadata::DECODERS
-
-  attr_reader :actor_type, :actor_name, :actor_id, :integration_id, :oauth_application_id,
-              :total_request_count, :rate_limited_request_count, :last_rate_limited_timestamp,
-              :last_request_timestamp
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalApiInsightsTimeStatsItemMetadata
+    FIELDS = {
+      timestamp: 'timestamp',
+      total_request_count: 'total_request_count',
+      rate_limited_request_count: 'rate_limited_request_count'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ApiInsightsTimeStatsItem.
+  class ApiInsightsTimeStatsItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalApiInsightsTimeStatsItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalApiInsightsTimeStatsItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalApiInsightsTimeStatsItemMetadata::DECODERS
+
+    attr_reader :timestamp, :total_request_count, :rate_limited_request_count
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # Defines the ApiInsightsTimeStats SDK value decoder.
+  module ApiInsightsTimeStats
+    def self.from_hash(value)
+      return nil if value.nil?
 
-# Defines the ApiInsightsUserStats SDK value decoder.
-module ApiInsightsUserStats
-  def self.from_hash(value)
-    return nil if value.nil?
-    value&.map { |item| ::OctridevGithub::ApiInsightsUserStatsItem.from_hash(item) }
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalArtifactDeploymentRecordMetadata
-  FIELDS = {
-    id: "id",
-    digest: "digest",
-    logical_environment: "logical_environment",
-    physical_environment: "physical_environment",
-    cluster: "cluster",
-    deployment_name: "deployment_name",
-    tags: "tags",
-    runtime_risks: "runtime_risks",
-    created_at: "created_at",
-    updated_at: "updated_at",
-    attestation_id: "attestation_id",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    runtime_risks: lambda do |value|
-      value&.map { |item| ::OctridevGithub::ArtifactDeploymentRecordRuntimeRisksItem.from_value(item) }
-    end,
-  }.freeze
-end
-
-# API model for ArtifactDeploymentRecord.
-# Artifact Metadata Deployment Record
-class ArtifactDeploymentRecord
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalArtifactDeploymentRecordMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalArtifactDeploymentRecordMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalArtifactDeploymentRecordMetadata::DECODERS
-
-  # @return [Integer] Optional `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Optional `string` value serialized in the `digest` wire field.
-  attr_reader :digest
-  # @return [String] Optional `string` value serialized in the `logical_environment` wire field.
-  attr_reader :logical_environment
-  # @return [String] Optional `string` value serialized in the `physical_environment` wire field.
-  attr_reader :physical_environment
-  # @return [String] Optional `string` value serialized in the `cluster` wire field.
-  attr_reader :cluster
-  # @return [String] Optional `string` value serialized in the `deployment_name` wire field.
-  attr_reader :deployment_name
-  # @return [Hash] Optional object value serialized in the `tags` wire field.
-  attr_reader :tags
-  # @return [Array_of_ArtifactDeploymentRecordRuntimeRisksItem] A list of runtime risks associated with the deployment.
-  attr_reader :runtime_risks
-  # @return [String] Optional `string` value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Optional `string` value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-  # @return [Integer] The ID of the provenance attestation associated with the deployment record.
-  attr_reader :attestation_id
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+      value&.map { |item| ::OctridevGithub::ApiInsightsTimeStatsItem.from_hash(item) }
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalApiInsightsUserStatsItemMetadata
+    FIELDS = {
+      actor_type: 'actor_type',
+      actor_name: 'actor_name',
+      actor_id: 'actor_id',
+      integration_id: 'integration_id',
+      oauth_application_id: 'oauth_application_id',
+      total_request_count: 'total_request_count',
+      rate_limited_request_count: 'rate_limited_request_count',
+      last_rate_limited_timestamp: 'last_rate_limited_timestamp',
+      last_request_timestamp: 'last_request_timestamp'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for ApiInsightsUserStatsItem.
+  class ApiInsightsUserStatsItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalApiInsightsUserStatsItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalApiInsightsUserStatsItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalApiInsightsUserStatsItemMetadata::DECODERS
 
-# Defines the ArtifactDeploymentRecordRuntimeRisksItem SDK namespace.
-module ArtifactDeploymentRecordRuntimeRisksItem
-  CRITICAL_RESOURCE = 'critical-resource'
-  INTERNET_EXPOSED = 'internet-exposed'
-  LATERAL_MOVEMENT = 'lateral-movement'
-  SENSITIVE_DATA = 'sensitive-data'
-  VALUES = ['critical-resource', 'internet-exposed', 'lateral-movement', 'sensitive-data'].freeze
-  def self.from_value(value)
-    value
-  end
-end
+    attr_reader :actor_type, :actor_name, :actor_id, :integration_id, :oauth_application_id,
+                :total_request_count, :rate_limited_request_count, :last_rate_limited_timestamp,
+                :last_request_timestamp
 
-# Internal model hydration metadata.
-class SdkInternalCustomPropertyMetadata
-  FIELDS = {
-    property_name: "property_name",
-    url: "url",
-    source_type: "source_type",
-    value_type: "value_type",
-    required: "required",
-    default_value: "default_value",
-    description: "description",
-    allowed_values: "allowed_values",
-    values_editable_by: "values_editable_by",
-    require_explicit_values: "require_explicit_values",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    property_name
-    value_type
-  ].freeze
-  DECODERS = {
-    source_type: lambda do |value|
-      ::OctridevGithub::CustomPropertySourceType.from_value(value)
-    end,
-    value_type: lambda do |value|
-      ::OctridevGithub::CustomPropertyValueType.from_value(value)
-    end,
-    values_editable_by: lambda do |value|
-      ::OctridevGithub::CustomPropertyValuesEditableBy.from_value(value)
-    end,
-  }.freeze
-end
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-# API model for CustomProperty.
-# Custom property defined on an organization
-class CustomProperty
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalCustomPropertyMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalCustomPropertyMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalCustomPropertyMetadata::DECODERS
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  # @return [String] The name of the property
-  attr_reader :property_name
-  # @return [String] The URL that can be used to fetch, update, or delete info about this property via the API.
-  attr_reader :url
-  # @return [CustomPropertySourceType] The source type of the property
-  attr_reader :source_type
-  # @return [CustomPropertyValueType] The type of the value for the property
-  attr_reader :value_type
-  # @return [Boolean] Whether the property is required.
-  attr_reader :required
-  # @return [Object] Default value of the property
-  attr_reader :default_value
-  # @return [String] Short description of the property
-  attr_reader :description
-  # @return [Array_of_String] An ordered list of the allowed values of the property. The property can have up to 200 allowed values.
-  attr_reader :allowed_values
-  # @return [CustomPropertyValuesEditableBy] Who can edit the values of the property
-  attr_reader :values_editable_by
-  # @return [Boolean] Whether setting properties values is mandatory
-  attr_reader :require_explicit_values
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the ApiInsightsUserStats SDK value decoder.
+  module ApiInsightsUserStats
+    def self.from_hash(value)
+      return nil if value.nil?
+
+      value&.map { |item| ::OctridevGithub::ApiInsightsUserStatsItem.from_hash(item) }
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the CustomPropertySourceType SDK namespace.
-module CustomPropertySourceType
-  ORGANIZATION = 'organization'
-  ENTERPRISE = 'enterprise'
-  VALUES = ['organization', 'enterprise'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the CustomPropertyValueType SDK namespace.
-module CustomPropertyValueType
-  STRING = 'string'
-  SINGLE_SELECT = 'single_select'
-  MULTI_SELECT = 'multi_select'
-  TRUE_FALSE = 'true_false'
-  URL = 'url'
-  VALUES = ['string', 'single_select', 'multi_select', 'true_false', 'url'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the CustomPropertyValuesEditableBy SDK namespace.
-module CustomPropertyValuesEditableBy
-  ORG_ACTORS = 'org_actors'
-  ORG_AND_REPO_ACTORS = 'org_and_repo_actors'
-  VALUES = ['org_actors', 'org_and_repo_actors'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalCustomPropertySetPayloadMetadata
-  FIELDS = {
-    value_type: "value_type",
-    required: "required",
-    default_value: "default_value",
-    description: "description",
-    allowed_values: "allowed_values",
-    values_editable_by: "values_editable_by",
-    require_explicit_values: "require_explicit_values",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    value_type
-  ].freeze
-  DECODERS = {
-    value_type: lambda do |value|
-      ::OctridevGithub::CustomPropertySetPayloadValueType.from_value(value)
-    end,
-    values_editable_by: lambda do |value|
-      ::OctridevGithub::CustomPropertySetPayloadValuesEditableBy.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for CustomPropertySetPayload.
-# Custom property set payload
-class CustomPropertySetPayload
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalCustomPropertySetPayloadMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalCustomPropertySetPayloadMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalCustomPropertySetPayloadMetadata::DECODERS
-
-  # @return [CustomPropertySetPayloadValueType] The type of the value for the property
-  attr_reader :value_type
-  # @return [Boolean] Whether the property is required.
-  attr_reader :required
-  # @return [Object] Default value of the property
-  attr_reader :default_value
-  # @return [String] Short description of the property
-  attr_reader :description
-  # @return [Array_of_String] An ordered list of the allowed values of the property. The property can have up to 200 allowed values.
-  attr_reader :allowed_values
-  # @return [CustomPropertySetPayloadValuesEditableBy] Who can edit the values of the property
-  attr_reader :values_editable_by
-  # @return [Boolean] Whether setting properties values is mandatory
-  attr_reader :require_explicit_values
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalArtifactDeploymentRecordMetadata
+    FIELDS = {
+      id: 'id',
+      digest: 'digest',
+      logical_environment: 'logical_environment',
+      physical_environment: 'physical_environment',
+      cluster: 'cluster',
+      deployment_name: 'deployment_name',
+      tags: 'tags',
+      runtime_risks: 'runtime_risks',
+      created_at: 'created_at',
+      updated_at: 'updated_at',
+      attestation_id: 'attestation_id'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      runtime_risks: lambda do |value|
+        value&.map { |item| ::OctridevGithub::ArtifactDeploymentRecordRuntimeRisksItem.from_value(item) }
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ArtifactDeploymentRecord.
+  # Artifact Metadata Deployment Record
+  class ArtifactDeploymentRecord
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalArtifactDeploymentRecordMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalArtifactDeploymentRecordMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalArtifactDeploymentRecordMetadata::DECODERS
+
+    # @return [Integer] Optional `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Optional `string` value serialized in the `digest` wire field.
+    attr_reader :digest
+    # @return [String] Optional `string` value serialized in the `logical_environment` wire field.
+    attr_reader :logical_environment
+    # @return [String] Optional `string` value serialized in the `physical_environment` wire field.
+    attr_reader :physical_environment
+    # @return [String] Optional `string` value serialized in the `cluster` wire field.
+    attr_reader :cluster
+    # @return [String] Optional `string` value serialized in the `deployment_name` wire field.
+    attr_reader :deployment_name
+    # @return [Hash] Optional object value serialized in the `tags` wire field.
+    attr_reader :tags
+    # @return [Array_of_ArtifactDeploymentRecordRuntimeRisksItem] A list of runtime risks associated with the deployment.
+    attr_reader :runtime_risks
+    # @return [String] Optional `string` value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Optional `string` value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+    # @return [Integer] The ID of the provenance attestation associated with the deployment record.
+    attr_reader :attestation_id
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the CustomPropertySetPayloadValueType SDK namespace.
-module CustomPropertySetPayloadValueType
-  STRING = 'string'
-  SINGLE_SELECT = 'single_select'
-  MULTI_SELECT = 'multi_select'
-  TRUE_FALSE = 'true_false'
-  URL = 'url'
-  VALUES = ['string', 'single_select', 'multi_select', 'true_false', 'url'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the CustomPropertySetPayloadValuesEditableBy SDK namespace.
-module CustomPropertySetPayloadValuesEditableBy
-  ORG_ACTORS = 'org_actors'
-  ORG_AND_REPO_ACTORS = 'org_and_repo_actors'
-  VALUES = ['org_actors', 'org_and_repo_actors'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalExternalPropertyMetadata
-  FIELDS = {
-    property_name: "property_name",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    property_name
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for ExternalProperty.
-# External custom property defined for a GitHub App installation
-class ExternalProperty
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalExternalPropertyMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalExternalPropertyMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalExternalPropertyMetadata::DECODERS
-
-  # @return [String] The name of the external property
-  attr_reader :property_name
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the ArtifactDeploymentRecordRuntimeRisksItem SDK namespace.
+  module ArtifactDeploymentRecordRuntimeRisksItem
+    CRITICAL_RESOURCE = 'critical-resource'
+    INTERNET_EXPOSED = 'internet-exposed'
+    LATERAL_MOVEMENT = 'lateral-movement'
+    SENSITIVE_DATA = 'sensitive-data'
+    VALUES = %w[critical-resource internet-exposed lateral-movement sensitive-data].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalCustomPropertyMetadata
+    FIELDS = {
+      property_name: 'property_name',
+      url: 'url',
+      source_type: 'source_type',
+      value_type: 'value_type',
+      required: 'required',
+      default_value: 'default_value',
+      description: 'description',
+      allowed_values: 'allowed_values',
+      values_editable_by: 'values_editable_by',
+      require_explicit_values: 'require_explicit_values'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      property_name
+      value_type
+    ].freeze
+    DECODERS = {
+      source_type: lambda do |value|
+        ::OctridevGithub::CustomPropertySourceType.from_value(value)
+      end,
+      value_type: lambda do |value|
+        ::OctridevGithub::CustomPropertyValueType.from_value(value)
+      end,
+      values_editable_by: lambda do |value|
+        ::OctridevGithub::CustomPropertyValuesEditableBy.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for CustomProperty.
+  # Custom property defined on an organization
+  class CustomProperty
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalCustomPropertyMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalCustomPropertyMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalCustomPropertyMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalImmutableReleasesOrganizationSettingsMetadata
-  FIELDS = {
-    enforced_repositories: "enforced_repositories",
-    selected_repositories_url: "selected_repositories_url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    enforced_repositories
-  ].freeze
-  DECODERS = {
-    enforced_repositories: lambda do |value|
-      ::OctridevGithub::ImmutableReleasesOrganizationSettingsEnforcedRepositories.from_value(value)
-    end,
-  }.freeze
-end
+    # @return [String] The name of the property
+    attr_reader :property_name
+    # @return [String] The URL that can be used to fetch, update, or delete info about this property via the API.
+    attr_reader :url
+    # @return [CustomPropertySourceType] The source type of the property
+    attr_reader :source_type
+    # @return [CustomPropertyValueType] The type of the value for the property
+    attr_reader :value_type
+    # @return [Boolean] Whether the property is required.
+    attr_reader :required
+    # @return [Object] Default value of the property
+    attr_reader :default_value
+    # @return [String] Short description of the property
+    attr_reader :description
+    # @return [Array_of_String] An ordered list of the allowed values of the property. The property can have up to 200 allowed values.
+    attr_reader :allowed_values
+    # @return [CustomPropertyValuesEditableBy] Who can edit the values of the property
+    attr_reader :values_editable_by
+    # @return [Boolean] Whether setting properties values is mandatory
+    attr_reader :require_explicit_values
 
-# API model for ImmutableReleasesOrganizationSettings.
-# Check immutable releases settings for an organization.
-class ImmutableReleasesOrganizationSettings
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalImmutableReleasesOrganizationSettingsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalImmutableReleasesOrganizationSettingsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalImmutableReleasesOrganizationSettingsMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [ImmutableReleasesOrganizationSettingsEnforcedRepositories] The policy that controls how immutable releases are enforced in the organization.
-  attr_reader :enforced_repositories
-  # @return [String] The API URL to use to get or set the selected repositories for immutable releases enforcement, when `enforced_repositories` is set to `selected`.
-  attr_reader :selected_repositories_url
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the ImmutableReleasesOrganizationSettingsEnforcedRepositories SDK namespace.
-module ImmutableReleasesOrganizationSettingsEnforcedRepositories
-  ALL = 'all'
-  NONE = 'none'
-  SELECTED = 'selected'
-  VALUES = ['all', 'none', 'selected'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalIssueFieldOptionsItemMetadata
-  FIELDS = {
-    id: "id",
-    name: "name",
-    description: "description",
-    color: "color",
-    priority: "priority",
-    created_at: "created_at",
-    updated_at: "updated_at",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    name
-  ].freeze
-  DECODERS = {
-    color: lambda do |value|
-      ::OctridevGithub::IssueFieldOptionsItemColor.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for IssueFieldOptionsItem.
-# Required object value serialized in the `options[]` wire field.
-class IssueFieldOptionsItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalIssueFieldOptionsItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalIssueFieldOptionsItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalIssueFieldOptionsItemMetadata::DECODERS
-
-  # @return [Integer] The unique identifier of the option.
-  attr_reader :id
-  # @return [String] The name of the option.
-  attr_reader :name
-  # @return [String] The description of the option.
-  attr_reader :description
-  # @return [IssueFieldOptionsItemColor] The color of the option.
-  attr_reader :color
-  # @return [Integer] The priority of the option for ordering.
-  attr_reader :priority
-  # @return [String] The time the option was created.
-  attr_reader :created_at
-  # @return [String] The time the option was last updated.
-  attr_reader :updated_at
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the CustomPropertySourceType SDK namespace.
+  module CustomPropertySourceType
+    ORGANIZATION = 'organization'
+    ENTERPRISE = 'enterprise'
+    VALUES = %w[organization enterprise].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the CustomPropertyValueType SDK namespace.
+  module CustomPropertyValueType
+    STRING = 'string'
+    SINGLE_SELECT = 'single_select'
+    MULTI_SELECT = 'multi_select'
+    TRUE_FALSE = 'true_false'
+    URL = 'url'
+    VALUES = %w[string single_select multi_select true_false url].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
+
+  # Defines the CustomPropertyValuesEditableBy SDK namespace.
+  module CustomPropertyValuesEditableBy
+    ORG_ACTORS = 'org_actors'
+    ORG_AND_REPO_ACTORS = 'org_and_repo_actors'
+    VALUES = %w[org_actors org_and_repo_actors].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Internal model hydration metadata.
+  class SdkInternalCustomPropertySetPayloadMetadata
+    FIELDS = {
+      value_type: 'value_type',
+      required: 'required',
+      default_value: 'default_value',
+      description: 'description',
+      allowed_values: 'allowed_values',
+      values_editable_by: 'values_editable_by',
+      require_explicit_values: 'require_explicit_values'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      value_type
+    ].freeze
+    DECODERS = {
+      value_type: lambda do |value|
+        ::OctridevGithub::CustomPropertySetPayloadValueType.from_value(value)
+      end,
+      values_editable_by: lambda do |value|
+        ::OctridevGithub::CustomPropertySetPayloadValuesEditableBy.from_value(value)
+      end
+    }.freeze
+  end
+
+  # API model for CustomPropertySetPayload.
+  # Custom property set payload
+  class CustomPropertySetPayload
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalCustomPropertySetPayloadMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalCustomPropertySetPayloadMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalCustomPropertySetPayloadMetadata::DECODERS
+
+    # @return [CustomPropertySetPayloadValueType] The type of the value for the property
+    attr_reader :value_type
+    # @return [Boolean] Whether the property is required.
+    attr_reader :required
+    # @return [Object] Default value of the property
+    attr_reader :default_value
+    # @return [String] Short description of the property
+    attr_reader :description
+    # @return [Array_of_String] An ordered list of the allowed values of the property. The property can have up to 200 allowed values.
+    attr_reader :allowed_values
+    # @return [CustomPropertySetPayloadValuesEditableBy] Who can edit the values of the property
+    attr_reader :values_editable_by
+    # @return [Boolean] Whether setting properties values is mandatory
+    attr_reader :require_explicit_values
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Defines the CustomPropertySetPayloadValueType SDK namespace.
+  module CustomPropertySetPayloadValueType
+    STRING = 'string'
+    SINGLE_SELECT = 'single_select'
+    MULTI_SELECT = 'multi_select'
+    TRUE_FALSE = 'true_false'
+    URL = 'url'
+    VALUES = %w[string single_select multi_select true_false url].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Defines the CustomPropertySetPayloadValuesEditableBy SDK namespace.
+  module CustomPropertySetPayloadValuesEditableBy
+    ORG_ACTORS = 'org_actors'
+    ORG_AND_REPO_ACTORS = 'org_and_repo_actors'
+    VALUES = %w[org_actors org_and_repo_actors].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Internal model hydration metadata.
+  class SdkInternalExternalPropertyMetadata
+    FIELDS = {
+      property_name: 'property_name'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      property_name
+    ].freeze
+    DECODERS = {}.freeze
+  end
+
+  # API model for ExternalProperty.
+  # External custom property defined for a GitHub App installation
+  class ExternalProperty
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalExternalPropertyMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalExternalPropertyMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalExternalPropertyMetadata::DECODERS
+
+    # @return [String] The name of the external property
+    attr_reader :property_name
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Internal model hydration metadata.
+  class SdkInternalImmutableReleasesOrganizationSettingsMetadata
+    FIELDS = {
+      enforced_repositories: 'enforced_repositories',
+      selected_repositories_url: 'selected_repositories_url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      enforced_repositories
+    ].freeze
+    DECODERS = {
+      enforced_repositories: lambda do |value|
+        ::OctridevGithub::ImmutableReleasesOrganizationSettingsEnforcedRepositories.from_value(value)
+      end
+    }.freeze
+  end
+
+  # API model for ImmutableReleasesOrganizationSettings.
+  # Check immutable releases settings for an organization.
+  class ImmutableReleasesOrganizationSettings
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalImmutableReleasesOrganizationSettingsMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalImmutableReleasesOrganizationSettingsMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalImmutableReleasesOrganizationSettingsMetadata::DECODERS
+
+    # @return [ImmutableReleasesOrganizationSettingsEnforcedRepositories] The policy that controls how immutable releases are enforced in the organization.
+    attr_reader :enforced_repositories
+    # @return [String] The API URL to use to get or set the selected repositories for immutable releases enforcement, when `enforced_repositories` is set to `selected`.
+    attr_reader :selected_repositories_url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Defines the ImmutableReleasesOrganizationSettingsEnforcedRepositories SDK namespace.
+  module ImmutableReleasesOrganizationSettingsEnforcedRepositories
+    ALL = 'all'
+    NONE = 'none'
+    SELECTED = 'selected'
+    VALUES = %w[all none selected].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Internal model hydration metadata.
+  class SdkInternalIssueFieldOptionsItemMetadata
+    FIELDS = {
+      id: 'id',
+      name: 'name',
+      description: 'description',
+      color: 'color',
+      priority: 'priority',
+      created_at: 'created_at',
+      updated_at: 'updated_at'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      name
+    ].freeze
+    DECODERS = {
+      color: lambda do |value|
+        ::OctridevGithub::IssueFieldOptionsItemColor.from_value(value)
+      end
+    }.freeze
+  end
+
+  # API model for IssueFieldOptionsItem.
+  # Required object value serialized in the `options[]` wire field.
+  class IssueFieldOptionsItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalIssueFieldOptionsItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalIssueFieldOptionsItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalIssueFieldOptionsItemMetadata::DECODERS
+
+    # @return [Integer] The unique identifier of the option.
+    attr_reader :id
+    # @return [String] The name of the option.
+    attr_reader :name
+    # @return [String] The description of the option.
+    attr_reader :description
+    # @return [IssueFieldOptionsItemColor] The color of the option.
+    attr_reader :color
+    # @return [Integer] The priority of the option for ordering.
+    attr_reader :priority
+    # @return [String] The time the option was created.
+    attr_reader :created_at
+    # @return [String] The time the option was last updated.
+    attr_reader :updated_at
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
 end

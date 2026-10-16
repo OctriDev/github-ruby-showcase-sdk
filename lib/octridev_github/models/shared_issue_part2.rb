@@ -5,99 +5,99 @@
 
 # shared_issue domain models (part 2)
 module OctridevGithub
-# Defines the IssueFieldValueDataType SDK namespace.
-module IssueFieldValueDataType
-  TEXT = 'text'
-  SINGLE_SELECT = 'single_select'
-  MULTI_SELECT = 'multi_select'
-  NUMBER = 'number'
-  DATE = 'date'
-  VALUES = ['text', 'single_select', 'multi_select', 'number', 'date'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalIssueTypeMetadata
-  FIELDS = {
-    id: "id",
-    node_id: "node_id",
-    name: "name",
-    description: "description",
-    color: "color",
-    created_at: "created_at",
-    updated_at: "updated_at",
-    is_enabled: "is_enabled",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    node_id
-    name
-    description
-  ].freeze
-  DECODERS = {
-    color: lambda do |value|
-      ::OctridevGithub::IssueTypeColor.from_value(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    description
-  ].freeze
-end
-
-# API model for IssueType.
-# The type assigned to the issue. This is only present for issues in repositories where issue types are supported.
-class IssueType
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalIssueTypeMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalIssueTypeMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalIssueTypeMetadata::DECODERS
-
-  # @return [Integer] The unique identifier of the issue type.
-  attr_reader :id
-  # @return [String] The node identifier of the issue type.
-  attr_reader :node_id
-  # @return [String] The name of the issue type.
-  attr_reader :name
-  # @return [String] The description of the issue type.
-  attr_reader :description
-  # @return [IssueTypeColor] The color of the issue type.
-  attr_reader :color
-  # @return [String] The time the issue type created.
-  attr_reader :created_at
-  # @return [String] The time the issue type last updated.
-  attr_reader :updated_at
-  # @return [Boolean] The enabled state of the issue type.
-  attr_reader :is_enabled
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the IssueFieldValueDataType SDK namespace.
+  module IssueFieldValueDataType
+    TEXT = 'text'
+    SINGLE_SELECT = 'single_select'
+    MULTI_SELECT = 'multi_select'
+    NUMBER = 'number'
+    DATE = 'date'
+    VALUES = %w[text single_select multi_select number date].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalIssueTypeMetadata::NULLABLE_FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalIssueTypeMetadata
+    FIELDS = {
+      id: 'id',
+      node_id: 'node_id',
+      name: 'name',
+      description: 'description',
+      color: 'color',
+      created_at: 'created_at',
+      updated_at: 'updated_at',
+      is_enabled: 'is_enabled'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      node_id
+      name
+      description
+    ].freeze
+    DECODERS = {
+      color: lambda do |value|
+        ::OctridevGithub::IssueTypeColor.from_value(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      description
+    ].freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for IssueType.
+  # The type assigned to the issue. This is only present for issues in repositories where issue types are supported.
+  class IssueType
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalIssueTypeMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalIssueTypeMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalIssueTypeMetadata::DECODERS
 
-# Defines the IssueTypeColor SDK namespace.
-module IssueTypeColor
-  GRAY = 'gray'
-  BLUE = 'blue'
-  GREEN = 'green'
-  YELLOW = 'yellow'
-  ORANGE = 'orange'
-  RED = 'red'
-  PINK = 'pink'
-  PURPLE = 'purple'
-  VALUES = ['gray', 'blue', 'green', 'yellow', 'orange', 'red', 'pink', 'purple'].freeze
-  def self.from_value(value)
-    value
+    # @return [Integer] The unique identifier of the issue type.
+    attr_reader :id
+    # @return [String] The node identifier of the issue type.
+    attr_reader :node_id
+    # @return [String] The name of the issue type.
+    attr_reader :name
+    # @return [String] The description of the issue type.
+    attr_reader :description
+    # @return [IssueTypeColor] The color of the issue type.
+    attr_reader :color
+    # @return [String] The time the issue type created.
+    attr_reader :created_at
+    # @return [String] The time the issue type last updated.
+    attr_reader :updated_at
+    # @return [Boolean] The enabled state of the issue type.
+    attr_reader :is_enabled
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalIssueTypeMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
+
+  # Defines the IssueTypeColor SDK namespace.
+  module IssueTypeColor
+    GRAY = 'gray'
+    BLUE = 'blue'
+    GREEN = 'green'
+    YELLOW = 'yellow'
+    ORANGE = 'orange'
+    RED = 'red'
+    PINK = 'pink'
+    PURPLE = 'purple'
+    VALUES = %w[gray blue green yellow orange red pink purple].freeze
+    def self.from_value(value)
+      value
+    end
+  end
 end

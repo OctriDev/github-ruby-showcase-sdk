@@ -5,149 +5,148 @@
 
 # billing domain models (part 4)
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalUpdateBudgetBudgetMetadata
-  FIELDS = {
-    id: "id",
-    budget_scope: "budget_scope",
-    budget_entity_name: "budget_entity_name",
-    user: "user",
-    consumed_amount: "consumed_amount",
-    budget_amount: "budget_amount",
-    prevent_further_usage: "prevent_further_usage",
-    budget_product_sku: "budget_product_sku",
-    budget_type: "budget_type",
-    budget_alerting: "budget_alerting",
-    expires_at: "expires_at",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    budget_scope: lambda do |value|
-      ::OctridevGithub::UpdateBudgetBudgetBudgetScope.from_value(value)
-    end,
-    budget_type: lambda do |value|
-      ::OctridevGithub::UpdateBudgetBudgetBudgetTypeVariant0.from_value(value)
-    end,
-    budget_alerting: lambda do |value|
-      ::OctridevGithub::UpdateBudgetBudgetBudgetAlerting.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for UpdateBudgetBudget.
-# Required object value serialized in the `budget` wire field.
-class UpdateBudgetBudget
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalUpdateBudgetBudgetMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalUpdateBudgetBudgetMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalUpdateBudgetBudgetMetadata::DECODERS
-
-  # @return [String] ID of the budget.
-  attr_reader :id
-  # @return [UpdateBudgetBudgetBudgetScope] The type of scope for the budget
-  attr_reader :budget_scope
-  # @return [String] The name of the entity to apply the budget to
-  attr_reader :budget_entity_name
-  # @return [String] The user login when the budget is scoped to a single user (`user` scope).
-  attr_reader :user
-  # @return [Float] The consumed amount for the specified user within the budget. Only included for `user`-scoped budgets.
-  attr_reader :consumed_amount
-  # @return [Integer] The budget amount in whole dollars. For license-based products, this represents the number of licenses.
-  attr_reader :budget_amount
-  # @return [Boolean] Whether to prevent additional spending once the budget is exceeded
-  attr_reader :prevent_further_usage
-  # @return [String] A single product or sku to apply the budget to.
-  attr_reader :budget_product_sku
-  # @return [UpdateBudgetBudgetBudgetTypeVariant0] The type of pricing for the budget
-  attr_reader :budget_type
-  # @return [UpdateBudgetBudgetBudgetAlerting] Optional object value serialized in the `budget_alerting` wire field.
-  attr_reader :budget_alerting
-  # @return [String] The date the budget will expire in `YYYY-MM-DD` format. Only dates in the future are accepted. If not provided, the budget will not expire. Only supported for budgets with `budget_scope` of `user`
-  attr_reader :expires_at
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalUpdateBudgetBudgetMetadata
+    FIELDS = {
+      id: 'id',
+      budget_scope: 'budget_scope',
+      budget_entity_name: 'budget_entity_name',
+      user: 'user',
+      consumed_amount: 'consumed_amount',
+      budget_amount: 'budget_amount',
+      prevent_further_usage: 'prevent_further_usage',
+      budget_product_sku: 'budget_product_sku',
+      budget_type: 'budget_type',
+      budget_alerting: 'budget_alerting',
+      expires_at: 'expires_at'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      budget_scope: lambda do |value|
+        ::OctridevGithub::UpdateBudgetBudgetBudgetScope.from_value(value)
+      end,
+      budget_type: lambda do |value|
+        ::OctridevGithub::UpdateBudgetBudgetBudgetTypeVariant0.from_value(value)
+      end,
+      budget_alerting: lambda do |value|
+        ::OctridevGithub::UpdateBudgetBudgetBudgetAlerting.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for UpdateBudgetBudget.
+  # Required object value serialized in the `budget` wire field.
+  class UpdateBudgetBudget
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalUpdateBudgetBudgetMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalUpdateBudgetBudgetMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalUpdateBudgetBudgetMetadata::DECODERS
+
+    # @return [String] ID of the budget.
+    attr_reader :id
+    # @return [UpdateBudgetBudgetBudgetScope] The type of scope for the budget
+    attr_reader :budget_scope
+    # @return [String] The name of the entity to apply the budget to
+    attr_reader :budget_entity_name
+    # @return [String] The user login when the budget is scoped to a single user (`user` scope).
+    attr_reader :user
+    # @return [Float] The consumed amount for the specified user within the budget. Only included for `user`-scoped budgets.
+    attr_reader :consumed_amount
+    # @return [Integer] The budget amount in whole dollars. For license-based products, this represents the number of licenses.
+    attr_reader :budget_amount
+    # @return [Boolean] Whether to prevent additional spending once the budget is exceeded
+    attr_reader :prevent_further_usage
+    # @return [String] A single product or sku to apply the budget to.
+    attr_reader :budget_product_sku
+    # @return [UpdateBudgetBudgetBudgetTypeVariant0] The type of pricing for the budget
+    attr_reader :budget_type
+    # @return [UpdateBudgetBudgetBudgetAlerting] Optional object value serialized in the `budget_alerting` wire field.
+    attr_reader :budget_alerting
+    # @return [String] The date the budget will expire in `YYYY-MM-DD` format. Only dates in the future are accepted. If not provided, the budget will not expire. Only supported for budgets with `budget_scope` of `user`
+    attr_reader :expires_at
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalUpdateBudgetMetadata
-  FIELDS = {
-    message: "message",
-    budget: "budget",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    message
-    budget
-  ].freeze
-  DECODERS = {
-    budget: lambda do |value|
-      ::OctridevGithub::UpdateBudgetBudget.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for UpdateBudget.
-# Typed representation of the `UpdateBudget` API schema.
-class UpdateBudget
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalUpdateBudgetMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalUpdateBudgetMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalUpdateBudgetMetadata::DECODERS
-
-  # @return [String] A message indicating the result of the update operation
-  attr_reader :message
-  # @return [UpdateBudgetBudget] Required object value serialized in the `budget` wire field.
-  attr_reader :budget
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalUpdateBudgetMetadata
+    FIELDS = {
+      message: 'message',
+      budget: 'budget'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      message
+      budget
+    ].freeze
+    DECODERS = {
+      budget: lambda do |value|
+        ::OctridevGithub::UpdateBudgetBudget.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for UpdateBudget.
+  # Typed representation of the `UpdateBudget` API schema.
+  class UpdateBudget
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalUpdateBudgetMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalUpdateBudgetMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalUpdateBudgetMetadata::DECODERS
+
+    # @return [String] A message indicating the result of the update operation
+    attr_reader :message
+    # @return [UpdateBudgetBudget] Required object value serialized in the `budget` wire field.
+    attr_reader :budget
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the UpdateBudgetBudgetBudgetScope SDK namespace.
+  module UpdateBudgetBudgetBudgetScope
+    ENTERPRISE = 'enterprise'
+    ORGANIZATION = 'organization'
+    REPOSITORY = 'repository'
+    COST_CENTER = 'cost_center'
+    MULTI_USER_CUSTOMER = 'multi_user_customer'
+    MULTI_USER_COST_CENTER = 'multi_user_cost_center'
+    USER = 'user'
+    VALUES = %w[
+      enterprise organization repository cost_center multi_user_customer
+      multi_user_cost_center user
+    ].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the UpdateBudgetBudgetBudgetScope SDK namespace.
-module UpdateBudgetBudgetBudgetScope
-  ENTERPRISE = 'enterprise'
-  ORGANIZATION = 'organization'
-  REPOSITORY = 'repository'
-  COST_CENTER = 'cost_center'
-  MULTI_USER_CUSTOMER = 'multi_user_customer'
-  MULTI_USER_COST_CENTER = 'multi_user_cost_center'
-  USER = 'user'
-  VALUES = [
-    'enterprise', 'organization', 'repository', 'cost_center', 'multi_user_customer',
-    'multi_user_cost_center', 'user'
-  ].freeze
-  def self.from_value(value)
-    value
+  # Defines the UpdateBudgetBudgetBudgetTypeVariant1 SDK namespace.
+  module UpdateBudgetBudgetBudgetTypeVariant1
+    SKU_PRICING = 'SkuPricing'
+    VALUES = ['SkuPricing'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the UpdateBudgetBudgetBudgetTypeVariant1 SDK namespace.
-module UpdateBudgetBudgetBudgetTypeVariant1
-  SKU_PRICING = 'SkuPricing'
-  VALUES = ['SkuPricing'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

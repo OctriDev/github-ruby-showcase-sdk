@@ -110,23 +110,23 @@ module OctridevGithub
         owner_email_hash: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/secret-scanning/alerts"
+            '/secret-scanning/alerts'
           ].join,
           config: config,
           query: __sdk_query_secret_scanning_list_alerts_for_repo_part1(state: state, secret_type: secret_type, exclude_secret_types: exclude_secret_types, exclude_providers: exclude_providers, providers: providers, resolution: resolution, assignee: assignee, sort: sort, direction: direction, page: page, per_page: per_page, before: before, after: after, validity: validity, is_publicly_leaked: is_publicly_leaked, is_multi_repo: is_multi_repo, hide_secret: hide_secret, is_bypassed: is_bypassed).merge(
-            __sdk_query_secret_scanning_list_alerts_for_repo_part2(included_metadata: included_metadata, owner_email_hash: owner_email_hash)),
+            __sdk_query_secret_scanning_list_alerts_for_repo_part2(included_metadata: included_metadata, owner_email_hash: owner_email_hash)
+          ),
           return_type: [::OctridevGithub::SecretScanningAlert],
           decoder: :json,
           operation_id: 'secret_scanning_list_alerts_for_repo',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -168,7 +168,7 @@ module OctridevGithub
           'is_publicly_leaked' => QueryValue.new(is_publicly_leaked, style: 'form', explode: true),
           'is_multi_repo' => QueryValue.new(is_multi_repo, style: 'form', explode: true),
           'hide_secret' => QueryValue.new(hide_secret, style: 'form', explode: true),
-          'is_bypassed' => QueryValue.new(is_bypassed, style: 'form', explode: true),
+          'is_bypassed' => QueryValue.new(is_bypassed, style: 'form', explode: true)
         }
       end
       private_class_method :__sdk_query_secret_scanning_list_alerts_for_repo_part1
@@ -179,7 +179,7 @@ module OctridevGithub
       )
         {
           'included_metadata' => QueryValue.new(included_metadata, style: 'form', explode: true),
-          'owner_email_hash' => QueryValue.new(owner_email_hash, style: 'form', explode: true),
+          'owner_email_hash' => QueryValue.new(owner_email_hash, style: 'form', explode: true)
         }
       end
       private_class_method :__sdk_query_secret_scanning_list_alerts_for_repo_part2
@@ -204,25 +204,24 @@ module OctridevGithub
         hide_secret: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/secret-scanning/alerts/",
+            '/secret-scanning/alerts/',
             SdkClient.encode_path_segment(alert_number)
           ].join,
           config: config,
           query: {
-            'hide_secret' => QueryValue.new(hide_secret, style: 'form', explode: true),
+            'hide_secret' => QueryValue.new(hide_secret, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::SecretScanningAlertWithMetadata,
           decoder: :json,
           operation_id: 'secret_scanning_get_alert',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -260,15 +259,14 @@ module OctridevGithub
         validity: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/secret-scanning/alerts/",
+            '/secret-scanning/alerts/',
             SdkClient.encode_path_segment(alert_number)
           ].join,
           config: config,
@@ -277,12 +275,12 @@ module OctridevGithub
             'resolution' => resolution,
             'resolution_comment' => resolution_comment,
             'assignee' => assignee,
-            'validity' => validity,
+            'validity' => validity
           },
           return_type: ::OctridevGithub::SecretScanningAlertWithMetadata,
           decoder: :json,
           operation_id: 'secret_scanning_update_alert',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -309,27 +307,26 @@ module OctridevGithub
         per_page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/secret-scanning/alerts/",
+            '/secret-scanning/alerts/',
             SdkClient.encode_path_segment(alert_number),
-            "/locations"
+            '/locations'
           ].join,
           config: config,
           query: {
             'page' => QueryValue.new(page, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::SecretScanningLocation],
           decoder: :json,
           operation_id: 'secret_scanning_list_locations_for_alert',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -365,15 +362,14 @@ module OctridevGithub
         after: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/secret-scanning/custom-patterns"
+            '/secret-scanning/custom-patterns'
           ].join,
           config: config,
           query: {
@@ -382,13 +378,13 @@ module OctridevGithub
             'sort' => QueryValue.new(sort, style: 'form', explode: true),
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'before' => QueryValue.new(before, style: 'form', explode: true),
-            'after' => QueryValue.new(after, style: 'form', explode: true),
+            'after' => QueryValue.new(after, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::SecretScanningCustomPattern],
           decoder: :json,
           operation_id: 'secret_scanning_list_repo_custom_patterns',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -407,27 +403,26 @@ module OctridevGithub
         patterns:,
         request_options: nil
       )
-
         Validation.validate_items('patterns', patterns, max: 100)
 
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/secret-scanning/custom-patterns"
+            '/secret-scanning/custom-patterns'
           ].join,
           config: config,
           body: {
-            'patterns' => patterns,
+            'patterns' => patterns
           },
           return_type: ::OctridevGithub::Methods::SecretScanning::SecretScanningBulkCreateRepoCustomPatternsResponse,
           decoder: :json,
           operation_id: 'secret_scanning_bulk_create_repo_custom_patterns',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -452,27 +447,26 @@ module OctridevGithub
         post_delete_action: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_items('patterns', patterns, max: 500)
 
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/secret-scanning/custom-patterns"
+            '/secret-scanning/custom-patterns'
           ].join,
           config: config,
           body: {
             'patterns' => patterns,
-            'post_delete_action' => post_delete_action,
+            'post_delete_action' => post_delete_action
           },
           decoder: :empty,
           operation_id: 'secret_scanning_bulk_delete_repo_custom_patterns',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '412' => ::OctridevGithub::BasicError },
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '412' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -509,15 +503,14 @@ module OctridevGithub
         must_not_match: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/secret-scanning/custom-patterns/",
+            '/secret-scanning/custom-patterns/',
             SdkClient.encode_path_segment(pattern_id)
           ].join,
           config: config,
@@ -527,13 +520,13 @@ module OctridevGithub
             'start_delimiter' => start_delimiter,
             'end_delimiter' => end_delimiter,
             'must_match' => must_match,
-            'must_not_match' => must_not_match,
+            'must_not_match' => must_not_match
           },
           return_type: ::OctridevGithub::SecretScanningCustomPattern,
           decoder: :json,
           operation_id: 'secret_scanning_update_repo_custom_pattern',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '412' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '412' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -556,25 +549,24 @@ module OctridevGithub
         placeholder_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/secret-scanning/push-protection-bypasses"
+            '/secret-scanning/push-protection-bypasses'
           ].join,
           config: config,
           body: {
             'reason' => reason,
-            'placeholder_id' => placeholder_id,
+            'placeholder_id' => placeholder_id
           },
           return_type: ::OctridevGithub::SecretScanningPushProtectionBypass,
           decoder: :json,
           operation_id: 'secret_scanning_create_push_protection_bypass',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

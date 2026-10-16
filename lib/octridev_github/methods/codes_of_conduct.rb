@@ -16,15 +16,14 @@ module OctridevGithub
         config:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/codes_of_conduct",
+          '/codes_of_conduct',
           config: config,
           return_type: [::OctridevGithub::CodeOfConduct],
           decoder: :json,
           operation_id: 'codes_of_conduct_get_all_codes_of_conduct',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -36,11 +35,10 @@ module OctridevGithub
         key:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/codes_of_conduct/",
+            '/codes_of_conduct/',
             SdkClient.encode_path_segment(key)
           ].join,
           config: config,
@@ -48,7 +46,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'codes_of_conduct_get_conduct_code',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

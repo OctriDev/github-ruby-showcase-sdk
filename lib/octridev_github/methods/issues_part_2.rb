@@ -45,22 +45,21 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesUpdateResponseVariant1SuggestionsTypeItemMetadata
         FIELDS = {
-          value: "value",
-          rationale: "rationale",
-          suggest: "suggest",
-          confidence: "confidence",
-          ignored: "ignored",
-          ignored_reason: "ignored_reason",
+          value: 'value',
+          rationale: 'rationale',
+          suggest: 'suggest',
+          confidence: 'confidence',
+          ignored: 'ignored',
+          ignored_reason: 'ignored_reason'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           confidence: lambda do |value|
             ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsTypeItemConfidence.from_value(value)
           end,
           ignored_reason: lambda do |value|
             ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsTypeItemIgnoredReason.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -90,23 +89,22 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItemMetadata
         FIELDS = {
-          field_id: "field_id",
-          value: "value",
-          rationale: "rationale",
-          suggest: "suggest",
-          confidence: "confidence",
-          ignored: "ignored",
-          ignored_reason: "ignored_reason",
+          field_id: 'field_id',
+          value: 'value',
+          rationale: 'rationale',
+          suggest: 'suggest',
+          confidence: 'confidence',
+          ignored: 'ignored',
+          ignored_reason: 'ignored_reason'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           confidence: lambda do |value|
             ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItemConfidence.from_value(value)
           end,
           ignored_reason: lambda do |value|
             ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItemIgnoredReason.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -136,22 +134,21 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesUpdateResponseVariant1SuggestionsLabelsItemMetadata
         FIELDS = {
-          name: "name",
-          rationale: "rationale",
-          suggest: "suggest",
-          confidence: "confidence",
-          ignored: "ignored",
-          ignored_reason: "ignored_reason",
+          name: 'name',
+          rationale: 'rationale',
+          suggest: 'suggest',
+          confidence: 'confidence',
+          ignored: 'ignored',
+          ignored_reason: 'ignored_reason'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           confidence: lambda do |value|
             ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsLabelsItemConfidence.from_value(value)
           end,
           ignored_reason: lambda do |value|
             ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsLabelsItemIgnoredReason.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -181,22 +178,21 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesUpdateResponseVariant1SuggestionsAssigneesItemMetadata
         FIELDS = {
-          login: "login",
-          rationale: "rationale",
-          suggest: "suggest",
-          confidence: "confidence",
-          ignored: "ignored",
-          ignored_reason: "ignored_reason",
+          login: 'login',
+          rationale: 'rationale',
+          suggest: 'suggest',
+          confidence: 'confidence',
+          ignored: 'ignored',
+          ignored_reason: 'ignored_reason'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           confidence: lambda do |value|
             ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsAssigneesItemConfidence.from_value(value)
           end,
           ignored_reason: lambda do |value|
             ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsAssigneesItemIgnoredReason.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -226,24 +222,23 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesUpdateResponseVariant1SuggestionsStateItemMetadata
         FIELDS = {
-          value: "value",
-          state_reason: "state_reason",
-          duplicate_issue_id: "duplicate_issue_id",
-          rationale: "rationale",
-          suggest: "suggest",
-          confidence: "confidence",
-          ignored: "ignored",
-          ignored_reason: "ignored_reason",
+          value: 'value',
+          state_reason: 'state_reason',
+          duplicate_issue_id: 'duplicate_issue_id',
+          rationale: 'rationale',
+          suggest: 'suggest',
+          confidence: 'confidence',
+          ignored: 'ignored',
+          ignored_reason: 'ignored_reason'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           confidence: lambda do |value|
             ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsStateItemConfidence.from_value(value)
           end,
           ignored_reason: lambda do |value|
             ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsStateItemIgnoredReason.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -274,14 +269,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesUpdateResponseVariant1SuggestionsMetadata
         FIELDS = {
-          type: "type",
-          issue_field_values: "issue_field_values",
-          labels: "labels",
-          assignees: "assignees",
-          state: "state",
+          type: 'type',
+          issue_field_values: 'issue_field_values',
+          labels: 'labels',
+          assignees: 'assignees',
+          state: 'state'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           type: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsTypeItem.from_hash(item) }
@@ -297,7 +291,7 @@ module OctridevGithub
           end,
           state: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsStateItem.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -328,47 +322,47 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesUpdateResponseMetadata
         FIELDS = {
-          id: "id",
-          node_id: "node_id",
-          url: "url",
-          repository_url: "repository_url",
-          labels_url: "labels_url",
-          comments_url: "comments_url",
-          events_url: "events_url",
-          html_url: "html_url",
-          number: "number",
-          state: "state",
-          state_reason: "state_reason",
-          title: "title",
-          body: "body",
-          user: "user",
-          labels: "labels",
-          assignee: "assignee",
-          assignees: "assignees",
-          milestone: "milestone",
-          locked: "locked",
-          active_lock_reason: "active_lock_reason",
-          comments: "comments",
-          pull_request: "pull_request",
-          closed_at: "closed_at",
-          created_at: "created_at",
-          updated_at: "updated_at",
-          draft: "draft",
-          closed_by: "closed_by",
-          body_html: "body_html",
-          body_text: "body_text",
-          timeline_url: "timeline_url",
-          type: "type",
-          repository: "repository",
-          performed_via_github_app: "performed_via_github_app",
-          author_association: "author_association",
-          reactions: "reactions",
-          sub_issues_summary: "sub_issues_summary",
-          parent_issue_url: "parent_issue_url",
-          pinned_comment: "pinned_comment",
-          issue_dependencies_summary: "issue_dependencies_summary",
-          issue_field_values: "issue_field_values",
-          suggestions: "suggestions",
+          id: 'id',
+          node_id: 'node_id',
+          url: 'url',
+          repository_url: 'repository_url',
+          labels_url: 'labels_url',
+          comments_url: 'comments_url',
+          events_url: 'events_url',
+          html_url: 'html_url',
+          number: 'number',
+          state: 'state',
+          state_reason: 'state_reason',
+          title: 'title',
+          body: 'body',
+          user: 'user',
+          labels: 'labels',
+          assignee: 'assignee',
+          assignees: 'assignees',
+          milestone: 'milestone',
+          locked: 'locked',
+          active_lock_reason: 'active_lock_reason',
+          comments: 'comments',
+          pull_request: 'pull_request',
+          closed_at: 'closed_at',
+          created_at: 'created_at',
+          updated_at: 'updated_at',
+          draft: 'draft',
+          closed_by: 'closed_by',
+          body_html: 'body_html',
+          body_text: 'body_text',
+          timeline_url: 'timeline_url',
+          type: 'type',
+          repository: 'repository',
+          performed_via_github_app: 'performed_via_github_app',
+          author_association: 'author_association',
+          reactions: 'reactions',
+          sub_issues_summary: 'sub_issues_summary',
+          parent_issue_url: 'parent_issue_url',
+          pinned_comment: 'pinned_comment',
+          issue_dependencies_summary: 'issue_dependencies_summary',
+          issue_field_values: 'issue_field_values',
+          suggestions: 'suggestions'
         }.freeze
         REQUIRED_FIELDS = %i[
           id
@@ -443,7 +437,7 @@ module OctridevGithub
           end,
           suggestions: lambda do |value|
             ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1Suggestions.from_hash(value)
-          end,
+          end
         }.freeze
         NULLABLE_FIELDS = %i[
           user

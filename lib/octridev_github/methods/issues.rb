@@ -12,15 +12,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesCreateLabelsItemVariant1Metadata
         FIELDS = {
-          id: "id",
-          name: "name",
-          description: "description",
-          color: "color",
+          id: 'id',
+          name: 'name',
+          description: 'description',
+          color: 'color'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for IssuesCreateLabelsItemVariant1.
@@ -49,15 +47,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesCreateIssueFieldValuesItemMetadata
         FIELDS = {
-          field_id: "field_id",
-          value: "value",
+          field_id: 'field_id',
+          value: 'value'
         }.freeze
         REQUIRED_FIELDS = %i[
           field_id
           value
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for IssuesCreateIssueFieldValuesItem.
@@ -89,15 +86,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesCreateMetadata
         FIELDS = {
-          title: "title",
-          body: "body",
-          assignee: "assignee",
-          milestone: "milestone",
-          labels: "labels",
-          assignees: "assignees",
-          issue_field_values: "issue_field_values",
-          type: "type",
-          parent_issue_id: "parent_issue_id",
+          title: 'title',
+          body: 'body',
+          assignee: 'assignee',
+          milestone: 'milestone',
+          labels: 'labels',
+          assignees: 'assignees',
+          issue_field_values: 'issue_field_values',
+          type: 'type',
+          parent_issue_id: 'parent_issue_id'
         }.freeze
         REQUIRED_FIELDS = %i[
           title
@@ -105,7 +102,7 @@ module OctridevGithub
         DECODERS = {
           issue_field_values: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Issues::IssuesCreateIssueFieldValuesItem.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -151,13 +148,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesUpdateCommentMetadata
         FIELDS = {
-          body: "body",
+          body: 'body'
         }.freeze
         REQUIRED_FIELDS = %i[
           body
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for IssuesUpdateComment.
@@ -187,20 +183,19 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesUpdateLabelsItemVariant1Metadata
         FIELDS = {
-          id: "id",
-          name: "name",
-          description: "description",
-          color: "color",
-          rationale: "rationale",
-          suggest: "suggest",
-          confidence: "confidence",
+          id: 'id',
+          name: 'name',
+          description: 'description',
+          color: 'color',
+          rationale: 'rationale',
+          suggest: 'suggest',
+          confidence: 'confidence'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           confidence: lambda do |value|
             ::OctridevGithub::Methods::Issues::IssuesUpdateLabelsItemVariant1Confidence.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -236,17 +231,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesUpdateAssigneesItemVariant1Metadata
         FIELDS = {
-          login: "login",
-          rationale: "rationale",
-          suggest: "suggest",
-          confidence: "confidence",
+          login: 'login',
+          rationale: 'rationale',
+          suggest: 'suggest',
+          confidence: 'confidence'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           confidence: lambda do |value|
             ::OctridevGithub::Methods::Issues::IssuesUpdateAssigneesItemVariant1Confidence.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -282,11 +276,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesUpdateIssueFieldValuesItemMetadata
         FIELDS = {
-          field_id: "field_id",
-          value: "value",
-          rationale: "rationale",
-          suggest: "suggest",
-          confidence: "confidence",
+          field_id: 'field_id',
+          value: 'value',
+          rationale: 'rationale',
+          suggest: 'suggest',
+          confidence: 'confidence'
         }.freeze
         REQUIRED_FIELDS = %i[
           field_id
@@ -295,7 +289,7 @@ module OctridevGithub
         DECODERS = {
           confidence: lambda do |value|
             ::OctridevGithub::Methods::Issues::IssuesUpdateIssueFieldValuesItemConfidence.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -334,17 +328,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesUpdateTypeVariant1Metadata
         FIELDS = {
-          value: "value",
-          rationale: "rationale",
-          suggest: "suggest",
-          confidence: "confidence",
+          value: 'value',
+          rationale: 'rationale',
+          suggest: 'suggest',
+          confidence: 'confidence'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           confidence: lambda do |value|
             ::OctridevGithub::Methods::Issues::IssuesUpdateTypeVariant1Confidence.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -382,20 +375,19 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesUpdateMetadata
         FIELDS = {
-          title: "title",
-          body: "body",
-          assignee: "assignee",
-          state: "state",
-          state_reason: "state_reason",
-          duplicate_issue_id: "duplicate_issue_id",
-          milestone: "milestone",
-          labels: "labels",
-          assignees: "assignees",
-          issue_field_values: "issue_field_values",
-          type: "type",
+          title: 'title',
+          body: 'body',
+          assignee: 'assignee',
+          state: 'state',
+          state_reason: 'state_reason',
+          duplicate_issue_id: 'duplicate_issue_id',
+          milestone: 'milestone',
+          labels: 'labels',
+          assignees: 'assignees',
+          issue_field_values: 'issue_field_values',
+          type: 'type'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           state: lambda do |value|
             ::OctridevGithub::Methods::Issues::IssuesUpdateState.from_value(value)
@@ -405,7 +397,7 @@ module OctridevGithub
           end,
           issue_field_values: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Issues::IssuesUpdateIssueFieldValuesItem.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -455,21 +447,20 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssueLabelsItemVariant1Metadata
         FIELDS = {
-          id: "id",
-          node_id: "node_id",
-          url: "url",
-          name: "name",
-          description: "description",
-          color: "color",
-          default: "default",
-          archived_by: "archived_by",
+          id: 'id',
+          node_id: 'node_id',
+          url: 'url',
+          name: 'name',
+          description: 'description',
+          color: 'color',
+          default: 'default',
+          archived_by: 'archived_by'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           archived_by: lambda do |value|
             ::OctridevGithub::SimpleUser.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -515,11 +506,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuePullRequestMetadata
         FIELDS = {
-          merged_at: "merged_at",
-          diff_url: "diff_url",
-          html_url: "html_url",
-          patch_url: "patch_url",
-          url: "url",
+          merged_at: 'merged_at',
+          diff_url: 'diff_url',
+          html_url: 'html_url',
+          patch_url: 'patch_url',
+          url: 'url'
         }.freeze
         REQUIRED_FIELDS = %i[
           diff_url
@@ -527,8 +518,7 @@ module OctridevGithub
           patch_url
           url
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
         NULLABLE_FIELDS = %i[
           diff_url
           html_url

@@ -8,204 +8,271 @@ module OctridevGithub
   # Defines the ActionsPolicyConditions SDK namespace.
   module ActionsPolicyConditions
   end
+
   # Defines the ActionsPolicyEnterpriseConditions SDK namespace.
   module ActionsPolicyEnterpriseConditions
   end
+
   # Defines the ActionsPolicyOrgConditions SDK namespace.
   module ActionsPolicyOrgConditions
   end
+
   # Defines the ActionsPolicyRepoConditions SDK namespace.
   module ActionsPolicyRepoConditions
   end
+
   # Defines the ActionsRule SDK namespace.
   module ActionsRule
   end
+
   # Defines the ArtifactsItemData SDK namespace.
   module ArtifactsItemData
   end
+
   # Defines the ArtifactsItemData2 SDK namespace.
   module ArtifactsItemData2
   end
+
   # Defines the ArtifactsItemData3 SDK namespace.
   module ArtifactsItemData3
   end
+
   # Defines the CodeQualitySetupUpdate SDK namespace.
   module CodeQualitySetupUpdate
   end
+
   # Defines the CommitAuthor SDK namespace.
   module CommitAuthor
   end
+
   # Defines the CommitCommitter SDK namespace.
   module CommitCommitter
   end
+
   # Defines the CopilotSeatDetailsAssigningTeam SDK namespace.
   module CopilotSeatDetailsAssigningTeam
   end
+
   # Defines the CopilotSpaceCollaborator SDK namespace.
   module CopilotSpaceCollaborator
   end
+
   # Defines the CopilotSpaceOwner SDK namespace.
   module CopilotSpaceOwner
   end
+
   # Defines the EnvironmentProtectionRulesItem SDK namespace.
   module EnvironmentProtectionRulesItem
   end
+
   # Defines the EventPayload SDK namespace.
   module EventPayload
   end
+
   # Defines the FieldsItemSchema SDK namespace.
   module FieldsItemSchema
   end
+
   # Defines the InstallationAccount SDK namespace.
   module InstallationAccount
   end
+
   # Defines the IntegrationInstallationRequestAccount SDK namespace.
   module IntegrationInstallationRequestAccount
   end
+
   # Defines the IntegrationOwner SDK namespace.
   module IntegrationOwner
   end
+
   # Defines the IssueEventForIssue SDK namespace.
   module IssueEventForIssue
   end
+
   # Defines the NullableIntegrationOwner SDK namespace.
   module NullableIntegrationOwner
   end
+
   # Defines the NullableSecretScanningFirstDetectedLocation SDK namespace.
   module NullableSecretScanningFirstDetectedLocation
   end
+
   # Defines the OrgRules SDK namespace.
   module OrgRules
   end
+
   # Defines the OrgRulesetConditions SDK namespace.
   module OrgRulesetConditions
   end
+
   # Defines the PendingDeploymentReviewersItemReviewer SDK namespace.
   module PendingDeploymentReviewersItemReviewer
   end
+
   # Defines the ProjectsV2ItemSimpleContent SDK namespace.
   module ProjectsV2ItemSimpleContent
   end
+
   # Defines the PullRequestMergeAsyncResultDetails SDK namespace.
   module PullRequestMergeAsyncResultDetails
   end
+
   # Defines the PullRequestRequestedReviewersItem SDK namespace.
   module PullRequestRequestedReviewersItem
   end
+
   # Defines the PullRequestRequestedReviewersItem2 SDK namespace.
   module PullRequestRequestedReviewersItem2
   end
+
   # Defines the PullRequestRequestedReviewersItem3 SDK namespace.
   module PullRequestRequestedReviewersItem3
   end
+
   # Defines the PullRequestRequestedReviewersItem4 SDK namespace.
   module PullRequestRequestedReviewersItem4
   end
+
   # Defines the RepositoryRule SDK namespace.
   module RepositoryRule
   end
+
   # Defines the RepositoryRuleDetailed SDK namespace.
   module RepositoryRuleDetailed
   end
+
   # Defines the RepositoryRulesetConditions2 SDK namespace.
   module RepositoryRulesetConditions2
   end
+
   # Defines the ReviewersItemReviewer SDK namespace.
   module ReviewersItemReviewer
   end
+
   # Defines the RuleSuiteRuleEvaluationsItemMetadata SDK namespace.
   module RuleSuiteRuleEvaluationsItemMetadata
   end
+
   # Defines the SecretScanningCustomPatternToUpdate SDK namespace.
   module SecretScanningCustomPatternToUpdate
   end
+
   # Defines the SecretScanningLocationDetails SDK namespace.
   module SecretScanningLocationDetails
   end
+
   # Defines the TasksItemArtifactsItemData SDK namespace.
   module TasksItemArtifactsItemData
   end
+
   # Defines the TasksItemArtifactsItemData2 SDK namespace.
   module TasksItemArtifactsItemData2
   end
+
   # Defines the TasksItemArtifactsItemData3 SDK namespace.
   module TasksItemArtifactsItemData3
   end
+
   # Defines the TimelineIssueEvents SDK namespace.
   module TimelineIssueEvents
   end
+
   # Defines the WebhookConfigInsecureSsl SDK namespace.
   module WebhookConfigInsecureSsl
   end
+
   # Defines the WebhookProjectsV2ItemEditedChanges SDK namespace.
   module WebhookProjectsV2ItemEditedChanges
   end
+
   # Defines the WebhookPullRequestAssignedPullRequestRequestedReviewersItem SDK namespace.
   module WebhookPullRequestAssignedPullRequestRequestedReviewersItem
   end
+
   # Defines the WebhookPullRequestAutoMergeDisabledPullRequestRequestedReviewersItem SDK namespace.
   module WebhookPullRequestAutoMergeDisabledPullRequestRequestedReviewersItem
   end
+
   # Defines the WebhookPullRequestAutoMergeEnabledPullRequestRequestedReviewersItem SDK namespace.
   module WebhookPullRequestAutoMergeEnabledPullRequestRequestedReviewersItem
   end
+
   # Defines the WebhookPullRequestDequeuedPullRequestRequestedReviewersItem SDK namespace.
   module WebhookPullRequestDequeuedPullRequestRequestedReviewersItem
   end
+
   # Defines the WebhookPullRequestEnqueuedPullRequestRequestedReviewersItem SDK namespace.
   module WebhookPullRequestEnqueuedPullRequestRequestedReviewersItem
   end
+
   # Defines the WebhookPullRequestLabeledPullRequestRequestedReviewersItem SDK namespace.
   module WebhookPullRequestLabeledPullRequestRequestedReviewersItem
   end
+
   # Defines the WebhookPullRequestLockedPullRequestRequestedReviewersItem SDK namespace.
   module WebhookPullRequestLockedPullRequestRequestedReviewersItem
   end
+
   # Defines the WebhookPullRequestReviewCommentCreatedPullRequestRequestedReviewersItem SDK namespace.
   module WebhookPullRequestReviewCommentCreatedPullRequestRequestedReviewersItem
   end
+
   # Defines the WebhookPullRequestReviewCommentDeletedPullRequestRequestedReviewersItem SDK namespace.
   module WebhookPullRequestReviewCommentDeletedPullRequestRequestedReviewersItem
   end
+
   # Defines the WebhookPullRequestReviewCommentEditedPullRequestRequestedReviewersItem SDK namespace.
   module WebhookPullRequestReviewCommentEditedPullRequestRequestedReviewersItem
   end
+
   # Defines the WebhookPullRequestReviewDismissedPullRequestRequestedReviewersItem SDK namespace.
   module WebhookPullRequestReviewDismissedPullRequestRequestedReviewersItem
   end
+
   # Defines the WebhookPullRequestReviewEditedPullRequestRequestedReviewersItem SDK namespace.
   module WebhookPullRequestReviewEditedPullRequestRequestedReviewersItem
   end
+
   # Defines the WebhookPullRequestReviewRequested SDK namespace.
   module WebhookPullRequestReviewRequested
   end
+
   # Defines the WebhookPullRequestReviewRequestRemoved SDK namespace.
   module WebhookPullRequestReviewRequestRemoved
   end
+
   # Defines the WebhookPullRequestReviewSubmittedPullRequestRequestedReviewersItem SDK namespace.
   module WebhookPullRequestReviewSubmittedPullRequestRequestedReviewersItem
   end
+
   # Defines the WebhookPullRequestReviewThreadResolvedPullRequestRequestedReviewersItem SDK namespace.
   module WebhookPullRequestReviewThreadResolvedPullRequestRequestedReviewersItem
   end
+
   # Defines the WebhookPullRequestReviewThreadUnresolvedPullRequestRequestedRX0bac14bff6 SDK namespace.
   module WebhookPullRequestReviewThreadUnresolvedPullRequestRequestedRX0bac14bff6
   end
+
   # Defines the WebhookPullRequestStackedPullRequestRequestedReviewersItem SDK namespace.
   module WebhookPullRequestStackedPullRequestRequestedReviewersItem
   end
+
   # Defines the WebhookPullRequestSynchronizePullRequestRequestedReviewersItem SDK namespace.
   module WebhookPullRequestSynchronizePullRequestRequestedReviewersItem
   end
+
   # Defines the WebhookPullRequestUnassignedPullRequestRequestedReviewersItem SDK namespace.
   module WebhookPullRequestUnassignedPullRequestRequestedReviewersItem
   end
+
   # Defines the WebhookPullRequestUnlabeledPullRequestRequestedReviewersItem SDK namespace.
   module WebhookPullRequestUnlabeledPullRequestRequestedReviewersItem
   end
+
   # Defines the WebhookPullRequestUnlockedPullRequestRequestedReviewersItem SDK namespace.
   module WebhookPullRequestUnlockedPullRequestRequestedReviewersItem
   end
+
   # Defines the WebhooksPullRequest5RequestedReviewersItem SDK namespace.
   module WebhooksPullRequest5RequestedReviewersItem
   end

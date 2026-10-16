@@ -37,13 +37,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullRequestStacksUnstackResponseBaseMetadata
         FIELDS = {
-          ref: "ref",
+          ref: 'ref'
         }.freeze
         REQUIRED_FIELDS = %i[
           ref
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for PullRequestStacksUnstackResponseBase.
@@ -72,14 +71,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullRequestStacksUnstackResponseMetadata
         FIELDS = {
-          id: "id",
-          number: "number",
-          node_id: "node_id",
-          url: "url",
-          base: "base",
-          open: "open",
-          created_at: "created_at",
-          pull_requests: "pull_requests",
+          id: 'id',
+          number: 'number',
+          node_id: 'node_id',
+          url: 'url',
+          base: 'base',
+          open: 'open',
+          created_at: 'created_at',
+          pull_requests: 'pull_requests'
         }.freeze
         REQUIRED_FIELDS = %i[
           id
@@ -97,7 +96,7 @@ module OctridevGithub
           end,
           pull_requests: lambda do |value|
             value&.map { |item| ::OctridevGithub::PullRequestStackPullRequest.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -131,7 +130,7 @@ module OctridevGithub
         MERGE = 'merge'
         SQUASH = 'squash'
         REBASE = 'rebase'
-        VALUES = ['merge', 'squash', 'rebase'].freeze
+        VALUES = %w[merge squash rebase].freeze
         def self.from_value(value)
           value
         end
@@ -141,7 +140,7 @@ module OctridevGithub
       module PullsListParameterF37e00f7
         ASC = 'asc'
         DESC = 'desc'
-        VALUES = ['asc', 'desc'].freeze
+        VALUES = %w[asc desc].freeze
         def self.from_value(value)
           value
         end
@@ -153,7 +152,7 @@ module OctridevGithub
         UPDATED = 'updated'
         POPULARITY = 'popularity'
         LONG_RUNNING = 'long-running'
-        VALUES = ['created', 'updated', 'popularity', 'long-running'].freeze
+        VALUES = %w[created updated popularity long-running].freeze
         def self.from_value(value)
           value
         end
@@ -172,7 +171,7 @@ module OctridevGithub
       module PullsListReviewCommentsForRepoParameter7977536e
         ASC = 'asc'
         DESC = 'desc'
-        VALUES = ['asc', 'desc'].freeze
+        VALUES = %w[asc desc].freeze
         def self.from_value(value)
           value
         end
@@ -183,7 +182,7 @@ module OctridevGithub
         LEFT = 'LEFT'
         RIGHT = 'RIGHT'
         SIDE = 'side'
-        VALUES = ['LEFT', 'RIGHT', 'side'].freeze
+        VALUES = %w[LEFT RIGHT side].freeze
         def self.from_value(value)
           value
         end
@@ -194,7 +193,7 @@ module OctridevGithub
         OPEN = 'open'
         CLOSED = 'closed'
         ALL = 'all'
-        VALUES = ['open', 'closed', 'all'].freeze
+        VALUES = %w[open closed all].freeze
         def self.from_value(value)
           value
         end
@@ -205,7 +204,7 @@ module OctridevGithub
         CREATED = 'created'
         UPDATED = 'updated'
         CREATED_AT = 'created_at'
-        VALUES = ['created', 'updated', 'created_at'].freeze
+        VALUES = %w[created updated created_at].freeze
         def self.from_value(value)
           value
         end
@@ -216,7 +215,7 @@ module OctridevGithub
         DEFAULT = 'default'
         DIRECT_MERGE = 'direct_merge'
         MERGE_QUEUE = 'merge_queue'
-        VALUES = ['default', 'direct_merge', 'merge_queue'].freeze
+        VALUES = %w[default direct_merge merge_queue].freeze
         def self.from_value(value)
           value
         end
@@ -226,7 +225,7 @@ module OctridevGithub
       module PullsCreateReviewCommentSide
         LEFT = 'LEFT'
         RIGHT = 'RIGHT'
-        VALUES = ['LEFT', 'RIGHT'].freeze
+        VALUES = %w[LEFT RIGHT].freeze
         def self.from_value(value)
           value
         end
@@ -236,7 +235,7 @@ module OctridevGithub
       module PullsListReviewCommentsParameter
         ASC = 'asc'
         DESC = 'desc'
-        VALUES = ['asc', 'desc'].freeze
+        VALUES = %w[asc desc].freeze
         def self.from_value(value)
           value
         end
@@ -246,7 +245,7 @@ module OctridevGithub
       module PullsUpdateState
         OPEN = 'open'
         CLOSED = 'closed'
-        VALUES = ['open', 'closed'].freeze
+        VALUES = %w[open closed].freeze
         def self.from_value(value)
           value
         end
@@ -257,7 +256,7 @@ module OctridevGithub
         MERGE = 'merge'
         SQUASH = 'squash'
         REBASE = 'rebase'
-        VALUES = ['merge', 'squash', 'rebase'].freeze
+        VALUES = %w[merge squash rebase].freeze
         def self.from_value(value)
           value
         end
@@ -267,7 +266,7 @@ module OctridevGithub
       module PullsCreateReviewCommentSubjectType
         LINE = 'line'
         FILE = 'file'
-        VALUES = ['line', 'file'].freeze
+        VALUES = %w[line file].freeze
         def self.from_value(value)
           value
         end
@@ -278,7 +277,7 @@ module OctridevGithub
         APPROVE = 'APPROVE'
         REQUEST_CHANGES = 'REQUEST_CHANGES'
         COMMENT = 'COMMENT'
-        VALUES = ['APPROVE', 'REQUEST_CHANGES', 'COMMENT'].freeze
+        VALUES = %w[APPROVE REQUEST_CHANGES COMMENT].freeze
         def self.from_value(value)
           value
         end
@@ -289,7 +288,7 @@ module OctridevGithub
         APPROVE = 'APPROVE'
         REQUEST_CHANGES = 'REQUEST_CHANGES'
         COMMENT = 'COMMENT'
-        VALUES = ['APPROVE', 'REQUEST_CHANGES', 'COMMENT'].freeze
+        VALUES = %w[APPROVE REQUEST_CHANGES COMMENT].freeze
         def self.from_value(value)
           value
         end
@@ -331,15 +330,14 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pulls"
+            '/pulls'
           ].join,
           config: config,
           query: {
@@ -349,13 +347,13 @@ module OctridevGithub
             'sort' => QueryValue.new(sort, style: 'form', explode: true),
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::PullRequestSimple],
           decoder: :json,
           operation_id: 'pulls_list',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError },
+          errors: { '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -399,15 +397,14 @@ module OctridevGithub
         issue: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pulls"
+            '/pulls'
           ].join,
           config: config,
           body: {
@@ -418,13 +415,13 @@ module OctridevGithub
             'body' => body,
             'maintainer_can_modify' => maintainer_can_modify,
             'draft' => draft,
-            'issue' => issue,
+            'issue' => issue
           },
           return_type: ::OctridevGithub::PullRequest,
           decoder: :json,
           operation_id: 'pulls_create',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -455,17 +452,16 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.if_given(since) { Validation.validate_date_time('since', since) }
 
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pulls/comments"
+            '/pulls/comments'
           ].join,
           config: config,
           query: {
@@ -473,12 +469,12 @@ module OctridevGithub
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'since' => QueryValue.new(since, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::PullRequestReviewComment],
           decoder: :json,
           operation_id: 'pulls_list_review_comments_for_repo',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -496,15 +492,14 @@ module OctridevGithub
         comment_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pulls/comments/",
+            '/pulls/comments/',
             SdkClient.encode_path_segment(comment_id)
           ].join,
           config: config,
@@ -512,7 +507,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'pulls_get_review_comment',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -532,25 +527,24 @@ module OctridevGithub
         body:,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pulls/comments/",
+            '/pulls/comments/',
             SdkClient.encode_path_segment(comment_id)
           ].join,
           config: config,
           body: {
-            'body' => body,
+            'body' => body
           },
           return_type: ::OctridevGithub::PullRequestReviewComment,
           decoder: :json,
           operation_id: 'pulls_update_review_comment',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

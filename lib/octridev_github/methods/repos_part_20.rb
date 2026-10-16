@@ -23,21 +23,20 @@ module OctridevGithub
         key_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/keys/",
+            '/keys/',
             SdkClient.encode_path_segment(key_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_delete_deploy_key',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -53,21 +52,20 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/languages"
+            '/languages'
           ].join,
           config: config,
           return_type: ::OctridevGithub::Language,
           decoder: :json,
           operation_id: 'repos_list_languages',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -86,24 +84,23 @@ module OctridevGithub
         branch:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/merge-upstream"
+            '/merge-upstream'
           ].join,
           config: config,
           body: {
-            'branch' => branch,
+            'branch' => branch
           },
           return_type: ::OctridevGithub::MergedUpstream,
           decoder: :json,
           operation_id: 'repos_merge_upstream',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -128,27 +125,26 @@ module OctridevGithub
         commit_message: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/merges"
+            '/merges'
           ].join,
           config: config,
           body: {
             'base' => base,
             'head' => head,
-            'commit_message' => commit_message,
+            'commit_message' => commit_message
           },
           return_type: ::OctridevGithub::Commit,
           decoder: :json,
           operation_id: 'repos_merge',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -164,22 +160,21 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pages"
+            '/pages'
           ].join,
           config: config,
           return_type: ::OctridevGithub::Page,
           decoder: :json,
           operation_id: 'repos_get_pages',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -201,26 +196,25 @@ module OctridevGithub
         source: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pages"
+            '/pages'
           ].join,
           config: config,
           body: {
             'build_type' => build_type,
-            'source' => source,
+            'source' => source
           },
           return_type: ::OctridevGithub::Page,
           decoder: :json,
           operation_id: 'repos_create_pages_site',
           request_options: request_options,
-          errors: { '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -251,27 +245,26 @@ module OctridevGithub
         source: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pages"
+            '/pages'
           ].join,
           config: config,
           body: {
             'cname' => cname,
             'https_enforced' => https_enforced,
             'build_type' => build_type,
-            'source' => source,
+            'source' => source
           },
           decoder: :empty,
           operation_id: 'repos_update_information_about_pages_site',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '400' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -287,21 +280,20 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pages"
+            '/pages'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_delete_pages_site',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -323,25 +315,24 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pages/builds"
+            '/pages/builds'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::PageBuild],
           decoder: :json,
           operation_id: 'repos_list_pages_builds',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -357,21 +348,20 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pages/builds"
+            '/pages/builds'
           ].join,
           config: config,
           return_type: ::OctridevGithub::PageBuildStatus,
           decoder: :json,
           operation_id: 'repos_request_pages_build',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -387,21 +377,20 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pages/builds/latest"
+            '/pages/builds/latest'
           ].join,
           config: config,
           return_type: ::OctridevGithub::PageBuild,
           decoder: :json,
           operation_id: 'repos_get_latest_pages_build',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -420,22 +409,21 @@ module OctridevGithub
         build_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pages/builds/",
+            '/pages/builds/',
             SdkClient.encode_path_segment(build_id)
           ].join,
           config: config,
           return_type: ::OctridevGithub::PageBuild,
           decoder: :json,
           operation_id: 'repos_get_pages_build',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -468,15 +456,14 @@ module OctridevGithub
         environment: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pages/deployments"
+            '/pages/deployments'
           ].join,
           config: config,
           body: {
@@ -484,13 +471,13 @@ module OctridevGithub
             'oidc_token' => oidc_token,
             'artifact_id' => artifact_id,
             'artifact_url' => artifact_url,
-            'environment' => environment,
+            'environment' => environment
           },
           return_type: ::OctridevGithub::PageDeployment,
           decoder: :json,
           operation_id: 'repos_create_pages_deployment',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '400' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -509,15 +496,14 @@ module OctridevGithub
         pages_deployment_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pages/deployments/",
+            '/pages/deployments/',
             SdkClient.encode_path_segment(pages_deployment_id)
           ].join,
           config: config,
@@ -525,7 +511,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'repos_get_pages_deployment',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -544,23 +530,22 @@ module OctridevGithub
         pages_deployment_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pages/deployments/",
+            '/pages/deployments/',
             SdkClient.encode_path_segment(pages_deployment_id),
-            "/cancel"
+            '/cancel'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_cancel_pages_deployment',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

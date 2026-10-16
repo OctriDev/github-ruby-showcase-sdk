@@ -5,418 +5,416 @@
 
 # webhook_repository_transferred domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalWebhookRepositoryTransferredChangesOwnerFromOrganizationMetadata
-  FIELDS = {
-    avatar_url: "avatar_url",
-    description: "description",
-    events_url: "events_url",
-    hooks_url: "hooks_url",
-    html_url: "html_url",
-    id: "id",
-    issues_url: "issues_url",
-    login: "login",
-    members_url: "members_url",
-    node_id: "node_id",
-    public_members_url: "public_members_url",
-    repos_url: "repos_url",
-    url: "url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    avatar_url
-    description
-    events_url
-    hooks_url
-    id
-    issues_url
-    login
-    members_url
-    node_id
-    public_members_url
-    repos_url
-    url
-  ].freeze
-  DECODERS = {
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    description
-  ].freeze
-end
-
-# API model for WebhookRepositoryTransferredChangesOwnerFromOrganization.
-# Optional object value serialized in the `organization` wire field.
-class WebhookRepositoryTransferredChangesOwnerFromOrganization
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookRepositoryTransferredChangesOwnerFromOrganizationMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookRepositoryTransferredChangesOwnerFromOrganizationMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookRepositoryTransferredChangesOwnerFromOrganizationMetadata::DECODERS
-
-  # @return [String] Required `uri`-formatted value serialized in the `avatar_url` wire field.
-  attr_reader :avatar_url
-  # @return [String] Required `string` value serialized in the `description` wire field.
-  attr_reader :description
-  # @return [String] Required `uri`-formatted value serialized in the `events_url` wire field.
-  attr_reader :events_url
-  # @return [String] Required `uri`-formatted value serialized in the `hooks_url` wire field.
-  attr_reader :hooks_url
-  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `uri`-formatted value serialized in the `issues_url` wire field.
-  attr_reader :issues_url
-  # @return [String] Required `string` value serialized in the `login` wire field.
-  attr_reader :login
-  # @return [String] Required `uri-template`-formatted value serialized in the `members_url` wire field.
-  attr_reader :members_url
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Required `uri-template`-formatted value serialized in the `public_members_url` wire field.
-  attr_reader :public_members_url
-  # @return [String] Required `uri`-formatted value serialized in the `repos_url` wire field.
-  attr_reader :repos_url
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookRepositoryTransferredChangesOwnerFromOrganizationMetadata
+    FIELDS = {
+      avatar_url: 'avatar_url',
+      description: 'description',
+      events_url: 'events_url',
+      hooks_url: 'hooks_url',
+      html_url: 'html_url',
+      id: 'id',
+      issues_url: 'issues_url',
+      login: 'login',
+      members_url: 'members_url',
+      node_id: 'node_id',
+      public_members_url: 'public_members_url',
+      repos_url: 'repos_url',
+      url: 'url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      avatar_url
+      description
+      events_url
+      hooks_url
+      id
+      issues_url
+      login
+      members_url
+      node_id
+      public_members_url
+      repos_url
+      url
+    ].freeze
+    DECODERS = {}.freeze
+    NULLABLE_FIELDS = %i[
+      description
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookRepositoryTransferredChangesOwnerFromOrganizationMetadata::NULLABLE_FIELDS)
+  # API model for WebhookRepositoryTransferredChangesOwnerFromOrganization.
+  # Optional object value serialized in the `organization` wire field.
+  class WebhookRepositoryTransferredChangesOwnerFromOrganization
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookRepositoryTransferredChangesOwnerFromOrganizationMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookRepositoryTransferredChangesOwnerFromOrganizationMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookRepositoryTransferredChangesOwnerFromOrganizationMetadata::DECODERS
+
+    # @return [String] Required `uri`-formatted value serialized in the `avatar_url` wire field.
+    attr_reader :avatar_url
+    # @return [String] Required `string` value serialized in the `description` wire field.
+    attr_reader :description
+    # @return [String] Required `uri`-formatted value serialized in the `events_url` wire field.
+    attr_reader :events_url
+    # @return [String] Required `uri`-formatted value serialized in the `hooks_url` wire field.
+    attr_reader :hooks_url
+    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `uri`-formatted value serialized in the `issues_url` wire field.
+    attr_reader :issues_url
+    # @return [String] Required `string` value serialized in the `login` wire field.
+    attr_reader :login
+    # @return [String] Required `uri-template`-formatted value serialized in the `members_url` wire field.
+    attr_reader :members_url
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Required `uri-template`-formatted value serialized in the `public_members_url` wire field.
+    attr_reader :public_members_url
+    # @return [String] Required `uri`-formatted value serialized in the `repos_url` wire field.
+    attr_reader :repos_url
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookRepositoryTransferredChangesOwnerFromOrganizationMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookRepositoryTransferredChangesOwnerFromUserMetadata
-  FIELDS = {
-    avatar_url: "avatar_url",
-    deleted: "deleted",
-    email: "email",
-    events_url: "events_url",
-    followers_url: "followers_url",
-    following_url: "following_url",
-    gists_url: "gists_url",
-    gravatar_id: "gravatar_id",
-    html_url: "html_url",
-    id: "id",
-    login: "login",
-    name: "name",
-    node_id: "node_id",
-    organizations_url: "organizations_url",
-    received_events_url: "received_events_url",
-    repos_url: "repos_url",
-    site_admin: "site_admin",
-    starred_url: "starred_url",
-    subscriptions_url: "subscriptions_url",
-    type: "type",
-    url: "url",
-    user_view_type: "user_view_type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    login
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::WebhookRepositoryTransferredChangesOwnerFromUserType.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookRepositoryTransferredChangesOwnerFromUser.
-# Optional object value serialized in the `user` wire field.
-class WebhookRepositoryTransferredChangesOwnerFromUser
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookRepositoryTransferredChangesOwnerFromUserMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookRepositoryTransferredChangesOwnerFromUserMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookRepositoryTransferredChangesOwnerFromUserMetadata::DECODERS
-
-  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-  attr_reader :avatar_url
-  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-  attr_reader :deleted
-  # @return [String] Optional `string` value serialized in the `email` wire field.
-  attr_reader :email
-  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-  attr_reader :events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-  attr_reader :followers_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-  attr_reader :following_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-  attr_reader :gists_url
-  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-  attr_reader :gravatar_id
-  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `login` wire field.
-  attr_reader :login
-  # @return [String] Optional `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-  attr_reader :organizations_url
-  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-  attr_reader :received_events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-  attr_reader :repos_url
-  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-  attr_reader :site_admin
-  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-  attr_reader :starred_url
-  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-  attr_reader :subscriptions_url
-  # @return [WebhookRepositoryTransferredChangesOwnerFromUserType] Optional enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-  attr_reader :user_view_type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookRepositoryTransferredChangesOwnerFromUserMetadata
+    FIELDS = {
+      avatar_url: 'avatar_url',
+      deleted: 'deleted',
+      email: 'email',
+      events_url: 'events_url',
+      followers_url: 'followers_url',
+      following_url: 'following_url',
+      gists_url: 'gists_url',
+      gravatar_id: 'gravatar_id',
+      html_url: 'html_url',
+      id: 'id',
+      login: 'login',
+      name: 'name',
+      node_id: 'node_id',
+      organizations_url: 'organizations_url',
+      received_events_url: 'received_events_url',
+      repos_url: 'repos_url',
+      site_admin: 'site_admin',
+      starred_url: 'starred_url',
+      subscriptions_url: 'subscriptions_url',
+      type: 'type',
+      url: 'url',
+      user_view_type: 'user_view_type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      login
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::WebhookRepositoryTransferredChangesOwnerFromUserType.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookRepositoryTransferredChangesOwnerFromUser.
+  # Optional object value serialized in the `user` wire field.
+  class WebhookRepositoryTransferredChangesOwnerFromUser
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookRepositoryTransferredChangesOwnerFromUserMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookRepositoryTransferredChangesOwnerFromUserMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookRepositoryTransferredChangesOwnerFromUserMetadata::DECODERS
+
+    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+    attr_reader :avatar_url
+    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+    attr_reader :deleted
+    # @return [String] Optional `string` value serialized in the `email` wire field.
+    attr_reader :email
+    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+    attr_reader :events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+    attr_reader :followers_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+    attr_reader :following_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+    attr_reader :gists_url
+    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+    attr_reader :gravatar_id
+    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `login` wire field.
+    attr_reader :login
+    # @return [String] Optional `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Optional `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+    attr_reader :organizations_url
+    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+    attr_reader :received_events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+    attr_reader :repos_url
+    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+    attr_reader :site_admin
+    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+    attr_reader :starred_url
+    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+    attr_reader :subscriptions_url
+    # @return [WebhookRepositoryTransferredChangesOwnerFromUserType] Optional enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+    attr_reader :user_view_type
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookRepositoryTransferredChangesOwnerFromMetadata
-  FIELDS = {
-    organization: "organization",
-    user: "user",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    organization: lambda do |value|
-      ::OctridevGithub::WebhookRepositoryTransferredChangesOwnerFromOrganization.from_hash(value)
-    end,
-    user: lambda do |value|
-      ::OctridevGithub::WebhookRepositoryTransferredChangesOwnerFromUser.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookRepositoryTransferredChangesOwnerFrom.
-# Required object value serialized in the `from` wire field.
-class WebhookRepositoryTransferredChangesOwnerFrom
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookRepositoryTransferredChangesOwnerFromMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookRepositoryTransferredChangesOwnerFromMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookRepositoryTransferredChangesOwnerFromMetadata::DECODERS
-
-  # @return [WebhookRepositoryTransferredChangesOwnerFromOrganization] Optional object value serialized in the `organization` wire field.
-  attr_reader :organization
-  # @return [WebhookRepositoryTransferredChangesOwnerFromUser] Optional object value serialized in the `user` wire field.
-  attr_reader :user
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookRepositoryTransferredChangesOwnerFromMetadata
+    FIELDS = {
+      organization: 'organization',
+      user: 'user'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      organization: lambda do |value|
+        ::OctridevGithub::WebhookRepositoryTransferredChangesOwnerFromOrganization.from_hash(value)
+      end,
+      user: lambda do |value|
+        ::OctridevGithub::WebhookRepositoryTransferredChangesOwnerFromUser.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookRepositoryTransferredChangesOwnerFrom.
+  # Required object value serialized in the `from` wire field.
+  class WebhookRepositoryTransferredChangesOwnerFrom
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookRepositoryTransferredChangesOwnerFromMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookRepositoryTransferredChangesOwnerFromMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookRepositoryTransferredChangesOwnerFromMetadata::DECODERS
+
+    # @return [WebhookRepositoryTransferredChangesOwnerFromOrganization] Optional object value serialized in the `organization` wire field.
+    attr_reader :organization
+    # @return [WebhookRepositoryTransferredChangesOwnerFromUser] Optional object value serialized in the `user` wire field.
+    attr_reader :user
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookRepositoryTransferredChangesOwnerMetadata
-  FIELDS = {
-    from: "from",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    from
-  ].freeze
-  DECODERS = {
-    from: lambda do |value|
-      ::OctridevGithub::WebhookRepositoryTransferredChangesOwnerFrom.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookRepositoryTransferredChangesOwner.
-# Required object value serialized in the `owner` wire field.
-class WebhookRepositoryTransferredChangesOwner
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookRepositoryTransferredChangesOwnerMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookRepositoryTransferredChangesOwnerMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookRepositoryTransferredChangesOwnerMetadata::DECODERS
-
-  # @return [WebhookRepositoryTransferredChangesOwnerFrom] Required object value serialized in the `from` wire field.
-  attr_reader :from
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookRepositoryTransferredChangesOwnerMetadata
+    FIELDS = {
+      from: 'from'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      from
+    ].freeze
+    DECODERS = {
+      from: lambda do |value|
+        ::OctridevGithub::WebhookRepositoryTransferredChangesOwnerFrom.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookRepositoryTransferredChangesOwner.
+  # Required object value serialized in the `owner` wire field.
+  class WebhookRepositoryTransferredChangesOwner
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookRepositoryTransferredChangesOwnerMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookRepositoryTransferredChangesOwnerMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookRepositoryTransferredChangesOwnerMetadata::DECODERS
+
+    # @return [WebhookRepositoryTransferredChangesOwnerFrom] Required object value serialized in the `from` wire field.
+    attr_reader :from
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookRepositoryTransferredChangesMetadata
-  FIELDS = {
-    owner: "owner",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    owner
-  ].freeze
-  DECODERS = {
-    owner: lambda do |value|
-      ::OctridevGithub::WebhookRepositoryTransferredChangesOwner.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookRepositoryTransferredChanges.
-# Required object value serialized in the `changes` wire field.
-class WebhookRepositoryTransferredChanges
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookRepositoryTransferredChangesMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookRepositoryTransferredChangesMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookRepositoryTransferredChangesMetadata::DECODERS
-
-  # @return [WebhookRepositoryTransferredChangesOwner] Required object value serialized in the `owner` wire field.
-  attr_reader :owner
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookRepositoryTransferredChangesMetadata
+    FIELDS = {
+      owner: 'owner'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      owner
+    ].freeze
+    DECODERS = {
+      owner: lambda do |value|
+        ::OctridevGithub::WebhookRepositoryTransferredChangesOwner.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookRepositoryTransferredChanges.
+  # Required object value serialized in the `changes` wire field.
+  class WebhookRepositoryTransferredChanges
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookRepositoryTransferredChangesMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookRepositoryTransferredChangesMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookRepositoryTransferredChangesMetadata::DECODERS
+
+    # @return [WebhookRepositoryTransferredChangesOwner] Required object value serialized in the `owner` wire field.
+    attr_reader :owner
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookRepositoryTransferredMetadata
-  FIELDS = {
-    action: "action",
-    changes: "changes",
-    enterprise: "enterprise",
-    installation: "installation",
-    organization: "organization",
-    repository: "repository",
-    sender: "sender",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    action
-    changes
-    repository
-    sender
-  ].freeze
-  DECODERS = {
-    action: lambda do |value|
-      ::OctridevGithub::WebhookRepositoryTransferredAction.from_value(value)
-    end,
-    changes: lambda do |value|
-      ::OctridevGithub::WebhookRepositoryTransferredChanges.from_hash(value)
-    end,
-    enterprise: lambda do |value|
-      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-    end,
-    installation: lambda do |value|
-      ::OctridevGithub::SimpleInstallation.from_hash(value)
-    end,
-    organization: lambda do |value|
-      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-    end,
-    repository: lambda do |value|
-      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-    end,
-    sender: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookRepositoryTransferred.
-# Typed representation of the `WebhookRepositoryTransferred` API schema.
-class WebhookRepositoryTransferred
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookRepositoryTransferredMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookRepositoryTransferredMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookRepositoryTransferredMetadata::DECODERS
-
-  # @return [WebhookRepositoryTransferredAction] Required enumerated value serialized in the `action` wire field.
-  attr_reader :action
-  # @return [WebhookRepositoryTransferredChanges] Required object value serialized in the `changes` wire field.
-  attr_reader :changes
-  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-  attr_reader :enterprise
-  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-  attr_reader :installation
-  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-  attr_reader :organization
-  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-  attr_reader :repository
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :sender
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookRepositoryTransferredMetadata
+    FIELDS = {
+      action: 'action',
+      changes: 'changes',
+      enterprise: 'enterprise',
+      installation: 'installation',
+      organization: 'organization',
+      repository: 'repository',
+      sender: 'sender'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      action
+      changes
+      repository
+      sender
+    ].freeze
+    DECODERS = {
+      action: lambda do |value|
+        ::OctridevGithub::WebhookRepositoryTransferredAction.from_value(value)
+      end,
+      changes: lambda do |value|
+        ::OctridevGithub::WebhookRepositoryTransferredChanges.from_hash(value)
+      end,
+      enterprise: lambda do |value|
+        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+      end,
+      installation: lambda do |value|
+        ::OctridevGithub::SimpleInstallation.from_hash(value)
+      end,
+      organization: lambda do |value|
+        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+      end,
+      repository: lambda do |value|
+        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+      end,
+      sender: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookRepositoryTransferred.
+  # Typed representation of the `WebhookRepositoryTransferred` API schema.
+  class WebhookRepositoryTransferred
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookRepositoryTransferredMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookRepositoryTransferredMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookRepositoryTransferredMetadata::DECODERS
+
+    # @return [WebhookRepositoryTransferredAction] Required enumerated value serialized in the `action` wire field.
+    attr_reader :action
+    # @return [WebhookRepositoryTransferredChanges] Required object value serialized in the `changes` wire field.
+    attr_reader :changes
+    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+    attr_reader :enterprise
+    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+    attr_reader :installation
+    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+    attr_reader :organization
+    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+    attr_reader :repository
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :sender
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the WebhookRepositoryTransferredAction SDK namespace.
+  module WebhookRepositoryTransferredAction
+    TRANSFERRED = 'transferred'
+    VALUES = ['transferred'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookRepositoryTransferredAction SDK namespace.
-module WebhookRepositoryTransferredAction
-  TRANSFERRED = 'transferred'
-  VALUES = ['transferred'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookRepositoryTransferredChangesOwnerFromUserType SDK namespace.
+  module WebhookRepositoryTransferredChangesOwnerFromUserType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the WebhookRepositoryTransferredChangesOwnerFromUserType SDK namespace.
-module WebhookRepositoryTransferredChangesOwnerFromUserType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

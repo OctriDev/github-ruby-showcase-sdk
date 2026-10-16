@@ -5,79 +5,79 @@
 
 # webhook_projects_v2_project_closed domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalWebhookProjectsV2ProjectClosedMetadata
-  FIELDS = {
-    action: "action",
-    installation: "installation",
-    organization: "organization",
-    projects_v2: "projects_v2",
-    sender: "sender",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    action
-    organization
-    projects_v2
-    sender
-  ].freeze
-  DECODERS = {
-    action: lambda do |value|
-      ::OctridevGithub::WebhookProjectsV2ProjectClosedAction.from_value(value)
-    end,
-    installation: lambda do |value|
-      ::OctridevGithub::SimpleInstallation.from_hash(value)
-    end,
-    organization: lambda do |value|
-      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-    end,
-    projects_v2: lambda do |value|
-      ::OctridevGithub::ProjectsV2.from_hash(value)
-    end,
-    sender: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookProjectsV2ProjectClosed.
-# Typed representation of the `WebhookProjectsV2ProjectClosed` API schema.
-class WebhookProjectsV2ProjectClosed
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookProjectsV2ProjectClosedMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookProjectsV2ProjectClosedMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookProjectsV2ProjectClosedMetadata::DECODERS
-
-  # @return [WebhookProjectsV2ProjectClosedAction] Required enumerated value serialized in the `action` wire field.
-  attr_reader :action
-  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-  attr_reader :installation
-  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-  attr_reader :organization
-  # @return [ProjectsV2] A projects v2 project
-  attr_reader :projects_v2
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :sender
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookProjectsV2ProjectClosedMetadata
+    FIELDS = {
+      action: 'action',
+      installation: 'installation',
+      organization: 'organization',
+      projects_v2: 'projects_v2',
+      sender: 'sender'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      action
+      organization
+      projects_v2
+      sender
+    ].freeze
+    DECODERS = {
+      action: lambda do |value|
+        ::OctridevGithub::WebhookProjectsV2ProjectClosedAction.from_value(value)
+      end,
+      installation: lambda do |value|
+        ::OctridevGithub::SimpleInstallation.from_hash(value)
+      end,
+      organization: lambda do |value|
+        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+      end,
+      projects_v2: lambda do |value|
+        ::OctridevGithub::ProjectsV2.from_hash(value)
+      end,
+      sender: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookProjectsV2ProjectClosed.
+  # Typed representation of the `WebhookProjectsV2ProjectClosed` API schema.
+  class WebhookProjectsV2ProjectClosed
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookProjectsV2ProjectClosedMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookProjectsV2ProjectClosedMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookProjectsV2ProjectClosedMetadata::DECODERS
+
+    # @return [WebhookProjectsV2ProjectClosedAction] Required enumerated value serialized in the `action` wire field.
+    attr_reader :action
+    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+    attr_reader :installation
+    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+    attr_reader :organization
+    # @return [ProjectsV2] A projects v2 project
+    attr_reader :projects_v2
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :sender
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the WebhookProjectsV2ProjectClosedAction SDK namespace.
+  module WebhookProjectsV2ProjectClosedAction
+    CLOSED = 'closed'
+    VALUES = ['closed'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the WebhookProjectsV2ProjectClosedAction SDK namespace.
-module WebhookProjectsV2ProjectClosedAction
-  CLOSED = 'closed'
-  VALUES = ['closed'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

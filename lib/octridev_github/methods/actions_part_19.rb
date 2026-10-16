@@ -25,25 +25,24 @@ module OctridevGithub
         value:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/variables"
+            '/actions/variables'
           ].join,
           config: config,
           body: {
             'name' => name,
-            'value' => value,
+            'value' => value
           },
           return_type: ::OctridevGithub::EmptyObject,
           decoder: :json,
           operation_id: 'actions_create_repo_variable',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -61,22 +60,21 @@ module OctridevGithub
         name:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/variables/",
+            '/actions/variables/',
             SdkClient.encode_path_segment(name)
           ].join,
           config: config,
           return_type: ::OctridevGithub::ActionsVariable,
           decoder: :json,
           operation_id: 'actions_get_repo_variable',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -98,25 +96,24 @@ module OctridevGithub
         value: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/variables/",
+            '/actions/variables/',
             SdkClient.encode_path_segment(name)
           ].join,
           config: config,
           body: {
             'name' => name2,
-            'value' => value,
+            'value' => value
           },
           decoder: :empty,
           operation_id: 'actions_update_repo_variable',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -134,21 +131,20 @@ module OctridevGithub
         name:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/variables/",
+            '/actions/variables/',
             SdkClient.encode_path_segment(name)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'actions_delete_repo_variable',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -170,25 +166,24 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/workflows"
+            '/actions/workflows'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Actions::ActionsListRepoWorkflowsResponse,
           decoder: :json,
           operation_id: 'actions_list_repo_workflows',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -207,22 +202,21 @@ module OctridevGithub
         workflow_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/workflows/",
+            '/actions/workflows/',
             SdkClient.encode_path_segment(workflow_id)
           ].join,
           config: config,
           return_type: ::OctridevGithub::Workflow,
           decoder: :json,
           operation_id: 'actions_get_workflow',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -241,22 +235,21 @@ module OctridevGithub
         workflow_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/workflows/",
+            '/actions/workflows/',
             SdkClient.encode_path_segment(workflow_id),
-            "/disable"
+            '/disable'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'actions_disable_workflow',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -285,28 +278,27 @@ module OctridevGithub
         return_run_details: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/workflows/",
+            '/actions/workflows/',
             SdkClient.encode_path_segment(workflow_id),
-            "/dispatches"
+            '/dispatches'
           ].join,
           config: config,
           body: {
             'ref' => ref,
             'inputs' => inputs,
-            'return_run_details' => return_run_details,
+            'return_run_details' => return_run_details
           },
           return_type: ::OctridevGithub::WorkflowDispatchResponse,
           decoder: :json,
           operation_id: 'actions_create_workflow_dispatch',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -325,22 +317,21 @@ module OctridevGithub
         workflow_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/workflows/",
+            '/actions/workflows/',
             SdkClient.encode_path_segment(workflow_id),
-            "/enable"
+            '/enable'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'actions_enable_workflow',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -393,19 +384,18 @@ module OctridevGithub
         head_sha: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.if_given(created) { Validation.validate_date_time('created', created) }
 
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/workflows/",
+            '/actions/workflows/',
             SdkClient.encode_path_segment(workflow_id),
-            "/runs"
+            '/runs'
           ].join,
           config: config,
           query: {
@@ -418,12 +408,12 @@ module OctridevGithub
             'created' => QueryValue.new(created, style: 'form', explode: true),
             'exclude_pull_requests' => QueryValue.new(exclude_pull_requests, style: 'form', explode: true),
             'check_suite_id' => QueryValue.new(check_suite_id, style: 'form', explode: true),
-            'head_sha' => QueryValue.new(head_sha, style: 'form', explode: true),
+            'head_sha' => QueryValue.new(head_sha, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Actions::ActionsListWorkflowRunsResponse,
           decoder: :json,
           operation_id: 'actions_list_workflow_runs',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -442,23 +432,22 @@ module OctridevGithub
         workflow_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/workflows/",
+            '/actions/workflows/',
             SdkClient.encode_path_segment(workflow_id),
-            "/timing"
+            '/timing'
           ].join,
           config: config,
           return_type: ::OctridevGithub::WorkflowUsage,
           decoder: :json,
           operation_id: 'actions_get_workflow_usage',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -484,27 +473,26 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name),
-            "/secrets"
+            '/secrets'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Actions::ActionsListEnvironmentSecretsResponse,
           decoder: :json,
           operation_id: 'actions_list_environment_secrets',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -524,23 +512,22 @@ module OctridevGithub
         environment_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name),
-            "/secrets/public-key"
+            '/secrets/public-key'
           ].join,
           config: config,
           return_type: ::OctridevGithub::ActionsPublicKey,
           decoder: :json,
           operation_id: 'actions_get_environment_public_key',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

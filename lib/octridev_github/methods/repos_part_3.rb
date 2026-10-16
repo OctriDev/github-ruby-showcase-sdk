@@ -40,14 +40,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateBranchProtectionRequiredStatusChecksChecksItemMetadata
         FIELDS = {
-          context: "context",
-          app_id: "app_id",
+          context: 'context',
+          app_id: 'app_id'
         }.freeze
         REQUIRED_FIELDS = %i[
           context
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposUpdateBranchProtectionRequiredStatusChecksChecksItem.
@@ -79,9 +78,9 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateBranchProtectionRequiredStatusChecksMetadata
         FIELDS = {
-          strict: "strict",
-          contexts: "contexts",
-          checks: "checks",
+          strict: 'strict',
+          contexts: 'contexts',
+          checks: 'checks'
         }.freeze
         REQUIRED_FIELDS = %i[
           strict
@@ -90,7 +89,7 @@ module OctridevGithub
         DECODERS = {
           checks: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Repos::ReposUpdateBranchProtectionRequiredStatusChecksChecksItem.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -126,14 +125,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateBranchProtectionRequiredPullRequestReviewsDismissaXa608d77ef8Metadata
         FIELDS = {
-          users: "users",
-          teams: "teams",
-          apps: "apps",
+          users: 'users',
+          teams: 'teams',
+          apps: 'apps'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposUpdateBranchProtectionRequiredPullRequestReviewsDismissaXa608d77ef8.
@@ -168,14 +165,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateBranchProtectionRequiredPullRequestReviewsBypassPuXca647ea501Metadata
         FIELDS = {
-          users: "users",
-          teams: "teams",
-          apps: "apps",
+          users: 'users',
+          teams: 'teams',
+          apps: 'apps'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposUpdateBranchProtectionRequiredPullRequestReviewsBypassPuXca647ea501.
@@ -210,22 +205,21 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateBranchProtectionRequiredPullRequestReviewsMetadata
         FIELDS = {
-          dismissal_restrictions: "dismissal_restrictions",
-          dismiss_stale_reviews: "dismiss_stale_reviews",
-          require_code_owner_reviews: "require_code_owner_reviews",
-          required_approving_review_count: "required_approving_review_count",
-          require_last_push_approval: "require_last_push_approval",
-          bypass_pull_request_allowances: "bypass_pull_request_allowances",
+          dismissal_restrictions: 'dismissal_restrictions',
+          dismiss_stale_reviews: 'dismiss_stale_reviews',
+          require_code_owner_reviews: 'require_code_owner_reviews',
+          required_approving_review_count: 'required_approving_review_count',
+          require_last_push_approval: 'require_last_push_approval',
+          bypass_pull_request_allowances: 'bypass_pull_request_allowances'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           dismissal_restrictions: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposUpdateBranchProtectionRequiredPullRequestReviewsDismissaXa608d77ef8.from_hash(value)
           end,
           bypass_pull_request_allowances: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposUpdateBranchProtectionRequiredPullRequestReviewsBypassPuXca647ea501.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -267,16 +261,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateBranchProtectionRestrictionsMetadata
         FIELDS = {
-          users: "users",
-          teams: "teams",
-          apps: "apps",
+          users: 'users',
+          teams: 'teams',
+          apps: 'apps'
         }.freeze
         REQUIRED_FIELDS = %i[
           users
           teams
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposUpdateBranchProtectionRestrictions.
@@ -311,17 +304,17 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateBranchProtectionMetadata
         FIELDS = {
-          required_status_checks: "required_status_checks",
-          enforce_admins: "enforce_admins",
-          required_pull_request_reviews: "required_pull_request_reviews",
-          restrictions: "restrictions",
-          required_linear_history: "required_linear_history",
-          allow_force_pushes: "allow_force_pushes",
-          allow_deletions: "allow_deletions",
-          block_creations: "block_creations",
-          required_conversation_resolution: "required_conversation_resolution",
-          lock_branch: "lock_branch",
-          allow_fork_syncing: "allow_fork_syncing",
+          required_status_checks: 'required_status_checks',
+          enforce_admins: 'enforce_admins',
+          required_pull_request_reviews: 'required_pull_request_reviews',
+          restrictions: 'restrictions',
+          required_linear_history: 'required_linear_history',
+          allow_force_pushes: 'allow_force_pushes',
+          allow_deletions: 'allow_deletions',
+          block_creations: 'block_creations',
+          required_conversation_resolution: 'required_conversation_resolution',
+          lock_branch: 'lock_branch',
+          allow_fork_syncing: 'allow_fork_syncing'
         }.freeze
         REQUIRED_FIELDS = %i[
           required_status_checks
@@ -338,7 +331,7 @@ module OctridevGithub
           end,
           restrictions: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposUpdateBranchProtectionRestrictions.from_hash(value)
-          end,
+          end
         }.freeze
         NULLABLE_FIELDS = %i[
           required_status_checks
@@ -395,14 +388,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdatePullRequestReviewProtectionDismissalRestrictionsMetadata
         FIELDS = {
-          users: "users",
-          teams: "teams",
-          apps: "apps",
+          users: 'users',
+          teams: 'teams',
+          apps: 'apps'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposUpdatePullRequestReviewProtectionDismissalRestrictions.
@@ -437,14 +428,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdatePullRequestReviewProtectionBypassPullRequestAllowancesMetadata
         FIELDS = {
-          users: "users",
-          teams: "teams",
-          apps: "apps",
+          users: 'users',
+          teams: 'teams',
+          apps: 'apps'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposUpdatePullRequestReviewProtectionBypassPullRequestAllowances.
@@ -479,22 +468,21 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdatePullRequestReviewProtectionMetadata
         FIELDS = {
-          dismissal_restrictions: "dismissal_restrictions",
-          dismiss_stale_reviews: "dismiss_stale_reviews",
-          require_code_owner_reviews: "require_code_owner_reviews",
-          required_approving_review_count: "required_approving_review_count",
-          require_last_push_approval: "require_last_push_approval",
-          bypass_pull_request_allowances: "bypass_pull_request_allowances",
+          dismissal_restrictions: 'dismissal_restrictions',
+          dismiss_stale_reviews: 'dismiss_stale_reviews',
+          require_code_owner_reviews: 'require_code_owner_reviews',
+          required_approving_review_count: 'required_approving_review_count',
+          require_last_push_approval: 'require_last_push_approval',
+          bypass_pull_request_allowances: 'bypass_pull_request_allowances'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           dismissal_restrictions: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposUpdatePullRequestReviewProtectionDismissalRestrictions.from_hash(value)
           end,
           bypass_pull_request_allowances: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposUpdatePullRequestReviewProtectionBypassPullRequestAllowances.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -535,14 +523,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateStatusCheckProtectionChecksItemMetadata
         FIELDS = {
-          context: "context",
-          app_id: "app_id",
+          context: 'context',
+          app_id: 'app_id'
         }.freeze
         REQUIRED_FIELDS = %i[
           context
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
     end
   end

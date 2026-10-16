@@ -14,7 +14,7 @@ module OctridevGithub
         PR_BODY = 'PR_BODY'
         PR_TITLE = 'PR_TITLE'
         BLANK = 'BLANK'
-        VALUES = ['PR_BODY', 'PR_TITLE', 'BLANK'].freeze
+        VALUES = %w[PR_BODY PR_TITLE BLANK].freeze
         def self.from_value(value)
           value
         end
@@ -24,7 +24,7 @@ module OctridevGithub
       module ReposUpdateSecurityAndAnalysisSecretScanningDelegatedBypassOpX7ef3ce56ec
         ALWAYS = 'ALWAYS'
         EXEMPT = 'EXEMPT'
-        VALUES = ['ALWAYS', 'EXEMPT'].freeze
+        VALUES = %w[ALWAYS EXEMPT].freeze
         def self.from_value(value)
           value
         end
@@ -38,7 +38,7 @@ module OctridevGithub
         FORKS = 'forks'
         SOURCES = 'sources'
         MEMBER = 'member'
-        VALUES = ['all', 'public', 'private', 'forks', 'sources', 'member'].freeze
+        VALUES = %w[all public private forks sources member].freeze
         def self.from_value(value)
           value
         end
@@ -48,7 +48,7 @@ module OctridevGithub
       module ReposCreateForAuthenticatedUserMergeCommitTitle
         PR_TITLE = 'PR_TITLE'
         MERGE_MESSAGE = 'MERGE_MESSAGE'
-        VALUES = ['PR_TITLE', 'MERGE_MESSAGE'].freeze
+        VALUES = %w[PR_TITLE MERGE_MESSAGE].freeze
         def self.from_value(value)
           value
         end
@@ -58,7 +58,7 @@ module OctridevGithub
       module ReposUpdateSquashMergeCommitTitle
         PR_TITLE = 'PR_TITLE'
         COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
-        VALUES = ['PR_TITLE', 'COMMIT_OR_PR_TITLE'].freeze
+        VALUES = %w[PR_TITLE COMMIT_OR_PR_TITLE].freeze
         def self.from_value(value)
           value
         end
@@ -70,7 +70,7 @@ module OctridevGithub
         TAG = 'tag'
         PUSH = 'push'
         REPOSITORY = 'repository'
-        VALUES = ['branch', 'tag', 'push', 'repository'].freeze
+        VALUES = %w[branch tag push repository].freeze
         def self.from_value(value)
           value
         end
@@ -84,9 +84,9 @@ module OctridevGithub
         BRANCH_DELETION = 'branch_deletion'
         PR_MERGE = 'pr_merge'
         MERGE_QUEUE_MERGE = 'merge_queue_merge'
-        VALUES = [
-          'push', 'force_push', 'branch_creation', 'branch_deletion', 'pr_merge',
-          'merge_queue_merge'
+        VALUES = %w[
+          push force_push branch_creation branch_deletion pr_merge
+          merge_queue_merge
         ].freeze
         def self.from_value(value)
           value
@@ -98,7 +98,7 @@ module OctridevGithub
         OUTSIDE = 'outside'
         DIRECT = 'direct'
         ALL = 'all'
-        VALUES = ['outside', 'direct', 'all'].freeze
+        VALUES = %w[outside direct all].freeze
         def self.from_value(value)
           value
         end
@@ -120,7 +120,7 @@ module OctridevGithub
         FAILURE = 'failure'
         PENDING = 'pending'
         SUCCESS = 'success'
-        VALUES = ['error', 'failure', 'pending', 'success'].freeze
+        VALUES = %w[error failure pending success].freeze
         def self.from_value(value)
           value
         end
@@ -131,7 +131,7 @@ module OctridevGithub
         TRUE = 'true'
         FALSE = 'false'
         LEGACY = 'legacy'
-        VALUES = ['true', 'false', 'legacy'].freeze
+        VALUES = %w[true false legacy].freeze
         def self.from_value(value)
           value
         end
@@ -145,7 +145,7 @@ module OctridevGithub
         PUSH = 'push'
         MAINTAIN = 'maintain'
         ADMIN = 'admin'
-        VALUES = ['pull', 'triage', 'triage_plus', 'push', 'maintain', 'admin'].freeze
+        VALUES = %w[pull triage triage_plus push maintain admin].freeze
         def self.from_value(value)
           value
         end
@@ -155,7 +155,7 @@ module OctridevGithub
       module ReposCreatePagesSiteBuildType
         LEGACY = 'legacy'
         WORKFLOW = 'workflow'
-        VALUES = ['legacy', 'workflow'].freeze
+        VALUES = %w[legacy workflow].freeze
         def self.from_value(value)
           value
         end
@@ -166,7 +166,7 @@ module OctridevGithub
         PR_BODY = 'PR_BODY'
         COMMIT_MESSAGES = 'COMMIT_MESSAGES'
         BLANK = 'BLANK'
-        VALUES = ['PR_BODY', 'COMMIT_MESSAGES', 'BLANK'].freeze
+        VALUES = %w[PR_BODY COMMIT_MESSAGES BLANK].freeze
         def self.from_value(value)
           value
         end
@@ -176,7 +176,7 @@ module OctridevGithub
       module ReposListForAuthenticatedUserParameterA1a095b2
         ASC = 'asc'
         DESC = 'desc'
-        VALUES = ['asc', 'desc'].freeze
+        VALUES = %w[asc desc].freeze
         def self.from_value(value)
           value
         end
@@ -188,7 +188,7 @@ module OctridevGithub
         UPDATED = 'updated'
         PUSHED = 'pushed'
         FULL_NAME = 'full_name'
-        VALUES = ['created', 'updated', 'pushed', 'full_name'].freeze
+        VALUES = %w[created updated pushed full_name].freeze
         def self.from_value(value)
           value
         end
@@ -199,7 +199,7 @@ module OctridevGithub
         PR_BODY = 'PR_BODY'
         COMMIT_MESSAGES = 'COMMIT_MESSAGES'
         BLANK = 'BLANK'
-        VALUES = ['PR_BODY', 'COMMIT_MESSAGES', 'BLANK'].freeze
+        VALUES = %w[PR_BODY COMMIT_MESSAGES BLANK].freeze
         def self.from_value(value)
           value
         end
@@ -209,7 +209,7 @@ module OctridevGithub
       module ReposUpdateVisibility
         PUBLIC = 'public'
         PRIVATE = 'private'
-        VALUES = ['public', 'private'].freeze
+        VALUES = %w[public private].freeze
         def self.from_value(value)
           value
         end
@@ -222,7 +222,7 @@ module OctridevGithub
         MAINTAIN = 'maintain'
         TRIAGE = 'triage'
         ADMIN = 'admin'
-        VALUES = ['read', 'write', 'maintain', 'triage', 'admin'].freeze
+        VALUES = %w[read write maintain triage admin].freeze
         def self.from_value(value)
           value
         end
@@ -232,7 +232,7 @@ module OctridevGithub
       module ReposCreateForAuthenticatedUserSquashMergeCommitTitle
         PR_TITLE = 'PR_TITLE'
         COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
-        VALUES = ['PR_TITLE', 'COMMIT_OR_PR_TITLE'].freeze
+        VALUES = %w[PR_TITLE COMMIT_OR_PR_TITLE].freeze
         def self.from_value(value)
           value
         end
@@ -244,7 +244,7 @@ module OctridevGithub
         TAG = 'tag'
         PUSH = 'push'
         REPOSITORY = 'repository'
-        VALUES = ['branch', 'tag', 'push', 'repository'].freeze
+        VALUES = %w[branch tag push repository].freeze
         def self.from_value(value)
           value
         end
@@ -259,8 +259,8 @@ module OctridevGithub
         QUEUED = 'queued'
         PENDING = 'pending'
         SUCCESS = 'success'
-        VALUES = [
-          'error', 'failure', 'inactive', 'in_progress', 'queued', 'pending', 'success'
+        VALUES = %w[
+          error failure inactive in_progress queued pending success
         ].freeze
         def self.from_value(value)
           value
@@ -273,7 +273,7 @@ module OctridevGithub
         UPDATED = 'updated'
         PUSHED = 'pushed'
         FULL_NAME = 'full_name'
-        VALUES = ['created', 'updated', 'pushed', 'full_name'].freeze
+        VALUES = %w[created updated pushed full_name].freeze
         def self.from_value(value)
           value
         end
@@ -283,7 +283,7 @@ module OctridevGithub
       module ReposUpdateInformationAboutPagesSiteBuildType
         LEGACY = 'legacy'
         WORKFLOW = 'workflow'
-        VALUES = ['legacy', 'workflow'].freeze
+        VALUES = %w[legacy workflow].freeze
         def self.from_value(value)
           value
         end
@@ -312,13 +312,12 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/repos"
+            '/repos'
           ].join,
           config: config,
           query: {
@@ -326,12 +325,12 @@ module OctridevGithub
             'sort' => QueryValue.new(sort, style: 'form', explode: true),
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::MinimalRepository],
           decoder: :json,
           operation_id: 'repos_list_for_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -435,22 +434,22 @@ module OctridevGithub
         custom_properties: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/repos"
+            '/repos'
           ].join,
           config: config,
           body: __sdk_body_repos_create_in_org_part1(name: name, description: description, homepage: homepage, private: private, visibility: visibility, has_issues: has_issues, has_projects: has_projects, has_wiki: has_wiki, has_downloads: has_downloads, is_template: is_template, team_id: team_id, auto_init: auto_init, gitignore_template: gitignore_template, license_template: license_template, allow_squash_merge: allow_squash_merge, allow_merge_commit: allow_merge_commit, allow_rebase_merge: allow_rebase_merge, allow_auto_merge: allow_auto_merge).merge(
-            __sdk_body_repos_create_in_org_part2(delete_branch_on_merge: delete_branch_on_merge, use_squash_pr_title_as_default: use_squash_pr_title_as_default, squash_merge_commit_title: squash_merge_commit_title, squash_merge_commit_message: squash_merge_commit_message, merge_commit_title: merge_commit_title, merge_commit_message: merge_commit_message, custom_properties: custom_properties)),
+            __sdk_body_repos_create_in_org_part2(delete_branch_on_merge: delete_branch_on_merge, use_squash_pr_title_as_default: use_squash_pr_title_as_default, squash_merge_commit_title: squash_merge_commit_title, squash_merge_commit_message: squash_merge_commit_message, merge_commit_title: merge_commit_title, merge_commit_message: merge_commit_message, custom_properties: custom_properties)
+          ),
           return_type: ::OctridevGithub::FullRepository,
           decoder: :json,
           operation_id: 'repos_create_in_org',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -492,7 +491,7 @@ module OctridevGithub
           'allow_squash_merge' => allow_squash_merge,
           'allow_merge_commit' => allow_merge_commit,
           'allow_rebase_merge' => allow_rebase_merge,
-          'allow_auto_merge' => allow_auto_merge,
+          'allow_auto_merge' => allow_auto_merge
         }
       end
       private_class_method :__sdk_body_repos_create_in_org_part1
@@ -513,7 +512,7 @@ module OctridevGithub
           'squash_merge_commit_message' => squash_merge_commit_message,
           'merge_commit_title' => merge_commit_title,
           'merge_commit_message' => merge_commit_message,
-          'custom_properties' => custom_properties,
+          'custom_properties' => custom_properties
         }
       end
       private_class_method :__sdk_body_repos_create_in_org_part2
@@ -536,25 +535,24 @@ module OctridevGithub
         targets: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/rulesets"
+            '/rulesets'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'page' => QueryValue.new(page, style: 'form', explode: true),
-            'targets' => QueryValue.new(targets, style: 'form', explode: true),
+            'targets' => QueryValue.new(targets, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::RepositoryRuleset],
           decoder: :json,
           operation_id: 'repos_get_org_rulesets',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
     end
