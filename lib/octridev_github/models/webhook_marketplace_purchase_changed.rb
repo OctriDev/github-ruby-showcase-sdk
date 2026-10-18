@@ -5,312 +5,311 @@
 
 # webhook_marketplace_purchase_changed domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseAccountMetadata
-  FIELDS = {
-    id: "id",
-    login: "login",
-    node_id: "node_id",
-    organization_billing_email: "organization_billing_email",
-    type: "type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    login
-    node_id
-    organization_billing_email
-    type
-  ].freeze
-  DECODERS = {
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    organization_billing_email
-  ].freeze
-end
-
-# API model for WebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseAccount.
-# Required object value serialized in the `account` wire field.
-class WebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseAccount
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseAccountMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseAccountMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseAccountMetadata::DECODERS
-
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `login` wire field.
-  attr_reader :login
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Required `string` value serialized in the `organization_billing_email` wire field.
-  attr_reader :organization_billing_email
-  # @return [String] Required `string` value serialized in the `type` wire field.
-  attr_reader :type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseAccountMetadata
+    FIELDS = {
+      id: 'id',
+      login: 'login',
+      node_id: 'node_id',
+      organization_billing_email: 'organization_billing_email',
+      type: 'type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      login
+      node_id
+      organization_billing_email
+      type
+    ].freeze
+    DECODERS = {}.freeze
+    NULLABLE_FIELDS = %i[
+      organization_billing_email
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseAccountMetadata::NULLABLE_FIELDS)
+  # API model for WebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseAccount.
+  # Required object value serialized in the `account` wire field.
+  class WebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseAccount
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseAccountMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseAccountMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseAccountMetadata::DECODERS
+
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `login` wire field.
+    attr_reader :login
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Required `string` value serialized in the `organization_billing_email` wire field.
+    attr_reader :organization_billing_email
+    # @return [String] Required `string` value serialized in the `type` wire field.
+    attr_reader :type
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseAccountMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchasePlanMetadata
-  FIELDS = {
-    bullets: "bullets",
-    description: "description",
-    has_free_trial: "has_free_trial",
-    id: "id",
-    monthly_price_in_cents: "monthly_price_in_cents",
-    name: "name",
-    price_model: "price_model",
-    unit_name: "unit_name",
-    yearly_price_in_cents: "yearly_price_in_cents",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    bullets
-    description
-    has_free_trial
-    id
-    monthly_price_in_cents
-    name
-    price_model
-    unit_name
-    yearly_price_in_cents
-  ].freeze
-  DECODERS = {
-    price_model: lambda do |value|
-      ::OctridevGithub::WebhookMarketplacePurchaseChangedPreviousMarketplacePurchasePX621508bb1f.from_value(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    unit_name
-  ].freeze
-end
-
-# API model for WebhookMarketplacePurchaseChangedPreviousMarketplacePurchasePlan.
-# Required object value serialized in the `plan` wire field.
-class WebhookMarketplacePurchaseChangedPreviousMarketplacePurchasePlan
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchasePlanMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchasePlanMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchasePlanMetadata::DECODERS
-
-  # @return [Array_of_String] Required array value serialized in the `bullets` wire field.
-  attr_reader :bullets
-  # @return [String] Required `string` value serialized in the `description` wire field.
-  attr_reader :description
-  # @return [Boolean] Required `boolean` value serialized in the `has_free_trial` wire field.
-  attr_reader :has_free_trial
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [Integer] Required `integer` value serialized in the `monthly_price_in_cents` wire field.
-  attr_reader :monthly_price_in_cents
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [WebhookMarketplacePurchaseChangedPreviousMarketplacePurchasePX621508bb1f] Required enumerated value serialized in the `price_model` wire field.
-  attr_reader :price_model
-  # @return [String] Required `string` value serialized in the `unit_name` wire field.
-  attr_reader :unit_name
-  # @return [Integer] Required `integer` value serialized in the `yearly_price_in_cents` wire field.
-  attr_reader :yearly_price_in_cents
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchasePlanMetadata
+    FIELDS = {
+      bullets: 'bullets',
+      description: 'description',
+      has_free_trial: 'has_free_trial',
+      id: 'id',
+      monthly_price_in_cents: 'monthly_price_in_cents',
+      name: 'name',
+      price_model: 'price_model',
+      unit_name: 'unit_name',
+      yearly_price_in_cents: 'yearly_price_in_cents'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      bullets
+      description
+      has_free_trial
+      id
+      monthly_price_in_cents
+      name
+      price_model
+      unit_name
+      yearly_price_in_cents
+    ].freeze
+    DECODERS = {
+      price_model: lambda do |value|
+        ::OctridevGithub::WebhookMarketplacePurchaseChangedPreviousMarketplacePurchasePX621508bb1f.from_value(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      unit_name
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchasePlanMetadata::NULLABLE_FIELDS)
+  # API model for WebhookMarketplacePurchaseChangedPreviousMarketplacePurchasePlan.
+  # Required object value serialized in the `plan` wire field.
+  class WebhookMarketplacePurchaseChangedPreviousMarketplacePurchasePlan
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchasePlanMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchasePlanMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchasePlanMetadata::DECODERS
+
+    # @return [Array_of_String] Required array value serialized in the `bullets` wire field.
+    attr_reader :bullets
+    # @return [String] Required `string` value serialized in the `description` wire field.
+    attr_reader :description
+    # @return [Boolean] Required `boolean` value serialized in the `has_free_trial` wire field.
+    attr_reader :has_free_trial
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [Integer] Required `integer` value serialized in the `monthly_price_in_cents` wire field.
+    attr_reader :monthly_price_in_cents
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [WebhookMarketplacePurchaseChangedPreviousMarketplacePurchasePX621508bb1f] Required enumerated value serialized in the `price_model` wire field.
+    attr_reader :price_model
+    # @return [String] Required `string` value serialized in the `unit_name` wire field.
+    attr_reader :unit_name
+    # @return [Integer] Required `integer` value serialized in the `yearly_price_in_cents` wire field.
+    attr_reader :yearly_price_in_cents
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchasePlanMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseMetadata
-  FIELDS = {
-    account: "account",
-    billing_cycle: "billing_cycle",
-    free_trial_ends_on: "free_trial_ends_on",
-    next_billing_date: "next_billing_date",
-    on_free_trial: "on_free_trial",
-    plan: "plan",
-    unit_count: "unit_count",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    account
-    billing_cycle
-    free_trial_ends_on
-    on_free_trial
-    plan
-    unit_count
-  ].freeze
-  DECODERS = {
-    account: lambda do |value|
-      ::OctridevGithub::WebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseAccount.from_hash(value)
-    end,
-    plan: lambda do |value|
-      ::OctridevGithub::WebhookMarketplacePurchaseChangedPreviousMarketplacePurchasePlan.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    free_trial_ends_on
-    on_free_trial
-  ].freeze
-end
-
-# API model for WebhookMarketplacePurchaseChangedPreviousMarketplacePurchase.
-# Optional object value serialized in the `previous_marketplace_purchase` wire field.
-class WebhookMarketplacePurchaseChangedPreviousMarketplacePurchase
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseMetadata::DECODERS
-
-  # @return [WebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseAccount] Required object value serialized in the `account` wire field.
-  attr_reader :account
-  # @return [String] Required `string` value serialized in the `billing_cycle` wire field.
-  attr_reader :billing_cycle
-  # @return [String] Required `string` value serialized in the `free_trial_ends_on` wire field.
-  attr_reader :free_trial_ends_on
-  # @return [String] Optional `string` value serialized in the `next_billing_date` wire field.
-  attr_reader :next_billing_date
-  # @return [Boolean] Required `boolean` value serialized in the `on_free_trial` wire field.
-  attr_reader :on_free_trial
-  # @return [WebhookMarketplacePurchaseChangedPreviousMarketplacePurchasePlan] Required object value serialized in the `plan` wire field.
-  attr_reader :plan
-  # @return [Integer] Required `integer` value serialized in the `unit_count` wire field.
-  attr_reader :unit_count
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseMetadata
+    FIELDS = {
+      account: 'account',
+      billing_cycle: 'billing_cycle',
+      free_trial_ends_on: 'free_trial_ends_on',
+      next_billing_date: 'next_billing_date',
+      on_free_trial: 'on_free_trial',
+      plan: 'plan',
+      unit_count: 'unit_count'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      account
+      billing_cycle
+      free_trial_ends_on
+      on_free_trial
+      plan
+      unit_count
+    ].freeze
+    DECODERS = {
+      account: lambda do |value|
+        ::OctridevGithub::WebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseAccount.from_hash(value)
+      end,
+      plan: lambda do |value|
+        ::OctridevGithub::WebhookMarketplacePurchaseChangedPreviousMarketplacePurchasePlan.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      free_trial_ends_on
+      on_free_trial
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseMetadata::NULLABLE_FIELDS)
+  # API model for WebhookMarketplacePurchaseChangedPreviousMarketplacePurchase.
+  # Optional object value serialized in the `previous_marketplace_purchase` wire field.
+  class WebhookMarketplacePurchaseChangedPreviousMarketplacePurchase
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseMetadata::DECODERS
+
+    # @return [WebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseAccount] Required object value serialized in the `account` wire field.
+    attr_reader :account
+    # @return [String] Required `string` value serialized in the `billing_cycle` wire field.
+    attr_reader :billing_cycle
+    # @return [String] Required `string` value serialized in the `free_trial_ends_on` wire field.
+    attr_reader :free_trial_ends_on
+    # @return [String] Optional `string` value serialized in the `next_billing_date` wire field.
+    attr_reader :next_billing_date
+    # @return [Boolean] Required `boolean` value serialized in the `on_free_trial` wire field.
+    attr_reader :on_free_trial
+    # @return [WebhookMarketplacePurchaseChangedPreviousMarketplacePurchasePlan] Required object value serialized in the `plan` wire field.
+    attr_reader :plan
+    # @return [Integer] Required `integer` value serialized in the `unit_count` wire field.
+    attr_reader :unit_count
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookMarketplacePurchaseChangedPreviousMarketplacePurchaseMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookMarketplacePurchaseChangedMetadata
-  FIELDS = {
-    action: "action",
-    effective_date: "effective_date",
-    enterprise: "enterprise",
-    installation: "installation",
-    marketplace_purchase: "marketplace_purchase",
-    organization: "organization",
-    previous_marketplace_purchase: "previous_marketplace_purchase",
-    repository: "repository",
-    sender: "sender",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    action
-    effective_date
-    marketplace_purchase
-    sender
-  ].freeze
-  DECODERS = {
-    action: lambda do |value|
-      ::OctridevGithub::WebhookMarketplacePurchaseChangedAction.from_value(value)
-    end,
-    enterprise: lambda do |value|
-      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-    end,
-    installation: lambda do |value|
-      ::OctridevGithub::SimpleInstallation.from_hash(value)
-    end,
-    marketplace_purchase: lambda do |value|
-      ::OctridevGithub::WebhooksMarketplacePurchase.from_hash(value)
-    end,
-    organization: lambda do |value|
-      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-    end,
-    previous_marketplace_purchase: lambda do |value|
-      ::OctridevGithub::WebhookMarketplacePurchaseChangedPreviousMarketplacePurchase.from_hash(value)
-    end,
-    repository: lambda do |value|
-      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-    end,
-    sender: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookMarketplacePurchaseChanged.
-# Typed representation of the `WebhookMarketplacePurchaseChanged` API schema.
-class WebhookMarketplacePurchaseChanged
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookMarketplacePurchaseChangedMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookMarketplacePurchaseChangedMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookMarketplacePurchaseChangedMetadata::DECODERS
-
-  # @return [WebhookMarketplacePurchaseChangedAction] Required enumerated value serialized in the `action` wire field.
-  attr_reader :action
-  # @return [String] Required `string` value serialized in the `effective_date` wire field.
-  attr_reader :effective_date
-  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-  attr_reader :enterprise
-  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-  attr_reader :installation
-  # @return [WebhooksMarketplacePurchase] Required object value serialized in the `marketplace_purchase` wire field.
-  attr_reader :marketplace_purchase
-  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-  attr_reader :organization
-  # @return [WebhookMarketplacePurchaseChangedPreviousMarketplacePurchase] Optional object value serialized in the `previous_marketplace_purchase` wire field.
-  attr_reader :previous_marketplace_purchase
-  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-  attr_reader :repository
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :sender
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookMarketplacePurchaseChangedMetadata
+    FIELDS = {
+      action: 'action',
+      effective_date: 'effective_date',
+      enterprise: 'enterprise',
+      installation: 'installation',
+      marketplace_purchase: 'marketplace_purchase',
+      organization: 'organization',
+      previous_marketplace_purchase: 'previous_marketplace_purchase',
+      repository: 'repository',
+      sender: 'sender'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      action
+      effective_date
+      marketplace_purchase
+      sender
+    ].freeze
+    DECODERS = {
+      action: lambda do |value|
+        ::OctridevGithub::WebhookMarketplacePurchaseChangedAction.from_value(value)
+      end,
+      enterprise: lambda do |value|
+        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+      end,
+      installation: lambda do |value|
+        ::OctridevGithub::SimpleInstallation.from_hash(value)
+      end,
+      marketplace_purchase: lambda do |value|
+        ::OctridevGithub::WebhooksMarketplacePurchase.from_hash(value)
+      end,
+      organization: lambda do |value|
+        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+      end,
+      previous_marketplace_purchase: lambda do |value|
+        ::OctridevGithub::WebhookMarketplacePurchaseChangedPreviousMarketplacePurchase.from_hash(value)
+      end,
+      repository: lambda do |value|
+        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+      end,
+      sender: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookMarketplacePurchaseChanged.
+  # Typed representation of the `WebhookMarketplacePurchaseChanged` API schema.
+  class WebhookMarketplacePurchaseChanged
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookMarketplacePurchaseChangedMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookMarketplacePurchaseChangedMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookMarketplacePurchaseChangedMetadata::DECODERS
+
+    # @return [WebhookMarketplacePurchaseChangedAction] Required enumerated value serialized in the `action` wire field.
+    attr_reader :action
+    # @return [String] Required `string` value serialized in the `effective_date` wire field.
+    attr_reader :effective_date
+    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+    attr_reader :enterprise
+    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+    attr_reader :installation
+    # @return [WebhooksMarketplacePurchase] Required object value serialized in the `marketplace_purchase` wire field.
+    attr_reader :marketplace_purchase
+    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+    attr_reader :organization
+    # @return [WebhookMarketplacePurchaseChangedPreviousMarketplacePurchase] Optional object value serialized in the `previous_marketplace_purchase` wire field.
+    attr_reader :previous_marketplace_purchase
+    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+    attr_reader :repository
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :sender
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the WebhookMarketplacePurchaseChangedAction SDK namespace.
+  module WebhookMarketplacePurchaseChangedAction
+    CHANGED = 'changed'
+    VALUES = ['changed'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookMarketplacePurchaseChangedAction SDK namespace.
-module WebhookMarketplacePurchaseChangedAction
-  CHANGED = 'changed'
-  VALUES = ['changed'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookMarketplacePurchaseChangedPreviousMarketplacePurchasePX621508bb1f SDK namespace.
+  module WebhookMarketplacePurchaseChangedPreviousMarketplacePurchasePX621508bb1f
+    FREE = 'FREE'
+    FLAT_RATE = 'FLAT_RATE'
+    PER_UNIT = 'PER_UNIT'
+    VALUES = %w[FREE FLAT_RATE PER_UNIT].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the WebhookMarketplacePurchaseChangedPreviousMarketplacePurchasePX621508bb1f SDK namespace.
-module WebhookMarketplacePurchaseChangedPreviousMarketplacePurchasePX621508bb1f
-  FREE = 'FREE'
-  FLAT_RATE = 'FLAT_RATE'
-  PER_UNIT = 'PER_UNIT'
-  VALUES = ['FREE', 'FLAT_RATE', 'PER_UNIT'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

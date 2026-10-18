@@ -29,7 +29,6 @@ module OctridevGithub
         key_id: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.if_given(encrypted_value) do
           Validation.validate_pattern('encrypted_value', encrypted_value, '^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$')
         end
@@ -37,22 +36,22 @@ module OctridevGithub
         SdkClient.request(
           'PUT',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/dependabot/secrets/",
+            '/dependabot/secrets/',
             SdkClient.encode_path_segment(secret_name)
           ].join,
           config: config,
           body: {
             'encrypted_value' => encrypted_value,
-            'key_id' => key_id,
+            'key_id' => key_id
           },
           return_type: ::OctridevGithub::EmptyObject,
           decoder: :json,
           operation_id: 'dependabot_create_or_update_repo_secret',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -70,21 +69,20 @@ module OctridevGithub
         secret_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/dependabot/secrets/",
+            '/dependabot/secrets/',
             SdkClient.encode_path_segment(secret_name)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'dependabot_delete_repo_secret',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

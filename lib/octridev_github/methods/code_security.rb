@@ -12,12 +12,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodeSecurityCreateConfigurationForEnterpriseDependencyGraphAuX32e7360676Metadata
         FIELDS = {
-          labeled_runners: "labeled_runners",
+          labeled_runners: 'labeled_runners'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for CodeSecurityCreateConfigurationForEnterpriseDependencyGraphAuX32e7360676.
@@ -48,29 +46,29 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodeSecurityCreateConfigurationForEnterpriseMetadata
         FIELDS = {
-          name: "name",
-          description: "description",
-          advanced_security: "advanced_security",
-          code_security: "code_security",
-          dependency_graph: "dependency_graph",
-          dependency_graph_autosubmit_action: "dependency_graph_autosubmit_action",
-          dependency_graph_autosubmit_action_options: "dependency_graph_autosubmit_action_options",
-          dependabot_alerts: "dependabot_alerts",
-          dependabot_security_updates: "dependabot_security_updates",
-          code_scanning_options: "code_scanning_options",
-          code_scanning_default_setup: "code_scanning_default_setup",
-          code_scanning_default_setup_options: "code_scanning_default_setup_options",
-          code_scanning_delegated_alert_dismissal: "code_scanning_delegated_alert_dismissal",
-          secret_protection: "secret_protection",
-          secret_scanning: "secret_scanning",
-          secret_scanning_push_protection: "secret_scanning_push_protection",
-          secret_scanning_validity_checks: "secret_scanning_validity_checks",
-          secret_scanning_non_provider_patterns: "secret_scanning_non_provider_patterns",
-          secret_scanning_generic_secrets: "secret_scanning_generic_secrets",
-          secret_scanning_delegated_alert_dismissal: "secret_scanning_delegated_alert_dismissal",
-          secret_scanning_extended_metadata: "secret_scanning_extended_metadata",
-          private_vulnerability_reporting: "private_vulnerability_reporting",
-          enforcement: "enforcement",
+          name: 'name',
+          description: 'description',
+          advanced_security: 'advanced_security',
+          code_security: 'code_security',
+          dependency_graph: 'dependency_graph',
+          dependency_graph_autosubmit_action: 'dependency_graph_autosubmit_action',
+          dependency_graph_autosubmit_action_options: 'dependency_graph_autosubmit_action_options',
+          dependabot_alerts: 'dependabot_alerts',
+          dependabot_security_updates: 'dependabot_security_updates',
+          code_scanning_options: 'code_scanning_options',
+          code_scanning_default_setup: 'code_scanning_default_setup',
+          code_scanning_default_setup_options: 'code_scanning_default_setup_options',
+          code_scanning_delegated_alert_dismissal: 'code_scanning_delegated_alert_dismissal',
+          secret_protection: 'secret_protection',
+          secret_scanning: 'secret_scanning',
+          secret_scanning_push_protection: 'secret_scanning_push_protection',
+          secret_scanning_validity_checks: 'secret_scanning_validity_checks',
+          secret_scanning_non_provider_patterns: 'secret_scanning_non_provider_patterns',
+          secret_scanning_generic_secrets: 'secret_scanning_generic_secrets',
+          secret_scanning_delegated_alert_dismissal: 'secret_scanning_delegated_alert_dismissal',
+          secret_scanning_extended_metadata: 'secret_scanning_extended_metadata',
+          private_vulnerability_reporting: 'private_vulnerability_reporting',
+          enforcement: 'enforcement'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
@@ -138,7 +136,7 @@ module OctridevGithub
           end,
           enforcement: lambda do |value|
             ::OctridevGithub::Methods::CodeSecurity::CodeSecurityCreateConfigurationForEnterpriseEnforcement.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -213,12 +211,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodeSecurityUpdateEnterpriseConfigurationDependencyGraphAutosX88eb4f4e9eMetadata
         FIELDS = {
-          labeled_runners: "labeled_runners",
+          labeled_runners: 'labeled_runners'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for CodeSecurityUpdateEnterpriseConfigurationDependencyGraphAutosX88eb4f4e9e.
@@ -249,32 +245,31 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodeSecurityUpdateEnterpriseConfigurationMetadata
         FIELDS = {
-          name: "name",
-          description: "description",
-          advanced_security: "advanced_security",
-          code_security: "code_security",
-          dependency_graph: "dependency_graph",
-          dependency_graph_autosubmit_action: "dependency_graph_autosubmit_action",
-          dependency_graph_autosubmit_action_options: "dependency_graph_autosubmit_action_options",
-          dependabot_alerts: "dependabot_alerts",
-          dependabot_security_updates: "dependabot_security_updates",
-          code_scanning_default_setup: "code_scanning_default_setup",
-          code_scanning_default_setup_options: "code_scanning_default_setup_options",
-          code_scanning_options: "code_scanning_options",
-          code_scanning_delegated_alert_dismissal: "code_scanning_delegated_alert_dismissal",
-          secret_protection: "secret_protection",
-          secret_scanning: "secret_scanning",
-          secret_scanning_push_protection: "secret_scanning_push_protection",
-          secret_scanning_validity_checks: "secret_scanning_validity_checks",
-          secret_scanning_non_provider_patterns: "secret_scanning_non_provider_patterns",
-          secret_scanning_generic_secrets: "secret_scanning_generic_secrets",
-          secret_scanning_delegated_alert_dismissal: "secret_scanning_delegated_alert_dismissal",
-          secret_scanning_extended_metadata: "secret_scanning_extended_metadata",
-          private_vulnerability_reporting: "private_vulnerability_reporting",
-          enforcement: "enforcement",
+          name: 'name',
+          description: 'description',
+          advanced_security: 'advanced_security',
+          code_security: 'code_security',
+          dependency_graph: 'dependency_graph',
+          dependency_graph_autosubmit_action: 'dependency_graph_autosubmit_action',
+          dependency_graph_autosubmit_action_options: 'dependency_graph_autosubmit_action_options',
+          dependabot_alerts: 'dependabot_alerts',
+          dependabot_security_updates: 'dependabot_security_updates',
+          code_scanning_default_setup: 'code_scanning_default_setup',
+          code_scanning_default_setup_options: 'code_scanning_default_setup_options',
+          code_scanning_options: 'code_scanning_options',
+          code_scanning_delegated_alert_dismissal: 'code_scanning_delegated_alert_dismissal',
+          secret_protection: 'secret_protection',
+          secret_scanning: 'secret_scanning',
+          secret_scanning_push_protection: 'secret_scanning_push_protection',
+          secret_scanning_validity_checks: 'secret_scanning_validity_checks',
+          secret_scanning_non_provider_patterns: 'secret_scanning_non_provider_patterns',
+          secret_scanning_generic_secrets: 'secret_scanning_generic_secrets',
+          secret_scanning_delegated_alert_dismissal: 'secret_scanning_delegated_alert_dismissal',
+          secret_scanning_extended_metadata: 'secret_scanning_extended_metadata',
+          private_vulnerability_reporting: 'private_vulnerability_reporting',
+          enforcement: 'enforcement'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           advanced_security: lambda do |value|
             ::OctridevGithub::Methods::CodeSecurity::CodeSecurityUpdateEnterpriseConfigurationAdvancedSecurity.from_value(value)
@@ -338,7 +333,7 @@ module OctridevGithub
           end,
           enforcement: lambda do |value|
             ::OctridevGithub::Methods::CodeSecurity::CodeSecurityUpdateEnterpriseConfigurationEnforcement.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -413,7 +408,7 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodeSecurityAttachEnterpriseConfigurationMetadata
         FIELDS = {
-          scope: "scope",
+          scope: 'scope'
         }.freeze
         REQUIRED_FIELDS = %i[
           scope
@@ -421,7 +416,7 @@ module OctridevGithub
         DECODERS = {
           scope: lambda do |value|
             ::OctridevGithub::Methods::CodeSecurity::CodeSecurityAttachEnterpriseConfigurationScope.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -452,14 +447,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodeSecuritySetConfigurationAsDefaultForEnterpriseMetadata
         FIELDS = {
-          default_for_new_repos: "default_for_new_repos",
+          default_for_new_repos: 'default_for_new_repos'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           default_for_new_repos: lambda do |value|
             ::OctridevGithub::Methods::CodeSecurity::CodeSecuritySetConfigurationAsDefaultForEnterpriseDefaultForNewRepos.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -490,18 +484,17 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodeSecuritySetConfigurationAsDefaultForEnterpriseResponseMetadata
         FIELDS = {
-          default_for_new_repos: "default_for_new_repos",
-          configuration: "configuration",
+          default_for_new_repos: 'default_for_new_repos',
+          configuration: 'configuration'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           default_for_new_repos: lambda do |value|
             ::OctridevGithub::Methods::CodeSecurity::CodeSecuritySetConfigurationAsDefaultForEnterpriseResponseDefXa2fa29f8bf.from_value(value)
           end,
           configuration: lambda do |value|
             ::OctridevGithub::CodeSecurityConfiguration.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -534,12 +527,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodeSecurityCreateConfigurationDependencyGraphAutosubmitActionOptionsMetadata
         FIELDS = {
-          labeled_runners: "labeled_runners",
+          labeled_runners: 'labeled_runners'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for CodeSecurityCreateConfigurationDependencyGraphAutosubmitActionOptions.

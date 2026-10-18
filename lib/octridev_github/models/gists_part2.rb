@@ -5,114 +5,113 @@
 
 # gists domain models (part 2)
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalGistSimpleMetadata
-  FIELDS = {
-    forks: "forks",
-    history: "history",
-    fork_of: "fork_of",
-    url: "url",
-    forks_url: "forks_url",
-    commits_url: "commits_url",
-    id: "id",
-    node_id: "node_id",
-    git_pull_url: "git_pull_url",
-    git_push_url: "git_push_url",
-    html_url: "html_url",
-    files: "files",
-    public: "public",
-    created_at: "created_at",
-    updated_at: "updated_at",
-    description: "description",
-    comments: "comments",
-    comments_enabled: "comments_enabled",
-    user: "user",
-    comments_url: "comments_url",
-    owner: "owner",
-    truncated: "truncated",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    forks: lambda do |value|
-      value&.map { |item| ::OctridevGithub::GistSimpleForksItem.from_hash(item) }
-    end,
-    history: lambda do |value|
-      value&.map { |item| ::OctridevGithub::GistHistory.from_hash(item) }
-    end,
-    fork_of: lambda do |value|
-      ::OctridevGithub::GistSimpleForkOf.from_hash(value)
-    end,
-    owner: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for GistSimple.
-# Gist Simple
-class GistSimple
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalGistSimpleMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalGistSimpleMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalGistSimpleMetadata::DECODERS
-
-  # @return [Array_of_GistSimpleForksItem] Optional array value serialized in the `forks` wire field.
-  attr_reader :forks
-  # @return [Array_of_GistHistory] Optional array value serialized in the `history` wire field.
-  attr_reader :history
-  # @return [GistSimpleForkOf] Gist
-  attr_reader :fork_of
-  # @return [String] Optional `string` value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Optional `string` value serialized in the `forks_url` wire field.
-  attr_reader :forks_url
-  # @return [String] Optional `string` value serialized in the `commits_url` wire field.
-  attr_reader :commits_url
-  # @return [String] Optional `string` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Optional `string` value serialized in the `git_pull_url` wire field.
-  attr_reader :git_pull_url
-  # @return [String] Optional `string` value serialized in the `git_push_url` wire field.
-  attr_reader :git_push_url
-  # @return [String] Optional `string` value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Hash] Optional object value serialized in the `files` wire field.
-  attr_reader :files
-  # @return [Boolean] Optional `boolean` value serialized in the `public` wire field.
-  attr_reader :public
-  # @return [String] Optional `string` value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Optional `string` value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-  # @return [String] Optional `string` value serialized in the `description` wire field.
-  attr_reader :description
-  # @return [Integer] Optional `integer` value serialized in the `comments` wire field.
-  attr_reader :comments
-  # @return [Boolean] Optional `boolean` value serialized in the `comments_enabled` wire field.
-  attr_reader :comments_enabled
-  # @return [String] Optional `string` value serialized in the `user` wire field.
-  attr_reader :user
-  # @return [String] Optional `string` value serialized in the `comments_url` wire field.
-  attr_reader :comments_url
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :owner
-  # @return [Boolean] Optional `boolean` value serialized in the `truncated` wire field.
-  attr_reader :truncated
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalGistSimpleMetadata
+    FIELDS = {
+      forks: 'forks',
+      history: 'history',
+      fork_of: 'fork_of',
+      url: 'url',
+      forks_url: 'forks_url',
+      commits_url: 'commits_url',
+      id: 'id',
+      node_id: 'node_id',
+      git_pull_url: 'git_pull_url',
+      git_push_url: 'git_push_url',
+      html_url: 'html_url',
+      files: 'files',
+      public: 'public',
+      created_at: 'created_at',
+      updated_at: 'updated_at',
+      description: 'description',
+      comments: 'comments',
+      comments_enabled: 'comments_enabled',
+      user: 'user',
+      comments_url: 'comments_url',
+      owner: 'owner',
+      truncated: 'truncated'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      forks: lambda do |value|
+        value&.map { |item| ::OctridevGithub::GistSimpleForksItem.from_hash(item) }
+      end,
+      history: lambda do |value|
+        value&.map { |item| ::OctridevGithub::GistHistory.from_hash(item) }
+      end,
+      fork_of: lambda do |value|
+        ::OctridevGithub::GistSimpleForkOf.from_hash(value)
+      end,
+      owner: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
+  # API model for GistSimple.
+  # Gist Simple
+  class GistSimple
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalGistSimpleMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalGistSimpleMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalGistSimpleMetadata::DECODERS
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+    # @return [Array_of_GistSimpleForksItem] Optional array value serialized in the `forks` wire field.
+    attr_reader :forks
+    # @return [Array_of_GistHistory] Optional array value serialized in the `history` wire field.
+    attr_reader :history
+    # @return [GistSimpleForkOf] Gist
+    attr_reader :fork_of
+    # @return [String] Optional `string` value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Optional `string` value serialized in the `forks_url` wire field.
+    attr_reader :forks_url
+    # @return [String] Optional `string` value serialized in the `commits_url` wire field.
+    attr_reader :commits_url
+    # @return [String] Optional `string` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Optional `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Optional `string` value serialized in the `git_pull_url` wire field.
+    attr_reader :git_pull_url
+    # @return [String] Optional `string` value serialized in the `git_push_url` wire field.
+    attr_reader :git_push_url
+    # @return [String] Optional `string` value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Hash] Optional object value serialized in the `files` wire field.
+    attr_reader :files
+    # @return [Boolean] Optional `boolean` value serialized in the `public` wire field.
+    attr_reader :public
+    # @return [String] Optional `string` value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Optional `string` value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+    # @return [String] Optional `string` value serialized in the `description` wire field.
+    attr_reader :description
+    # @return [Integer] Optional `integer` value serialized in the `comments` wire field.
+    attr_reader :comments
+    # @return [Boolean] Optional `boolean` value serialized in the `comments_enabled` wire field.
+    attr_reader :comments_enabled
+    # @return [String] Optional `string` value serialized in the `user` wire field.
+    attr_reader :user
+    # @return [String] Optional `string` value serialized in the `comments_url` wire field.
+    attr_reader :comments_url
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :owner
+    # @return [Boolean] Optional `boolean` value serialized in the `truncated` wire field.
+    attr_reader :truncated
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
 end

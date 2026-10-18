@@ -12,8 +12,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentsListOrgSecretsResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          secrets: "secrets",
+          total_count: 'total_count',
+          secrets: 'secrets'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -22,7 +22,7 @@ module OctridevGithub
         DECODERS = {
           secrets: lambda do |value|
             value&.map { |item| ::OctridevGithub::OrganizationActionsSecret.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -52,10 +52,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentsCreateOrUpdateOrgSecretMetadata
         FIELDS = {
-          encrypted_value: "encrypted_value",
-          key_id: "key_id",
-          visibility: "visibility",
-          selected_repository_ids: "selected_repository_ids",
+          encrypted_value: 'encrypted_value',
+          key_id: 'key_id',
+          visibility: 'visibility',
+          selected_repository_ids: 'selected_repository_ids'
         }.freeze
         REQUIRED_FIELDS = %i[
           encrypted_value
@@ -65,7 +65,7 @@ module OctridevGithub
         DECODERS = {
           visibility: lambda do |value|
             ::OctridevGithub::Methods::Agents::AgentsCreateOrUpdateOrgSecretVisibility.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -102,8 +102,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentsListSelectedReposForOrgSecretResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          repositories: "repositories",
+          total_count: 'total_count',
+          repositories: 'repositories'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -112,7 +112,7 @@ module OctridevGithub
         DECODERS = {
           repositories: lambda do |value|
             value&.map { |item| ::OctridevGithub::MinimalRepository.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -142,13 +142,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentsSetSelectedReposForOrgSecretMetadata
         FIELDS = {
-          selected_repository_ids: "selected_repository_ids",
+          selected_repository_ids: 'selected_repository_ids'
         }.freeze
         REQUIRED_FIELDS = %i[
           selected_repository_ids
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for AgentsSetSelectedReposForOrgSecret.
@@ -178,8 +177,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentsListOrgVariablesResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          variables: "variables",
+          total_count: 'total_count',
+          variables: 'variables'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -188,7 +187,7 @@ module OctridevGithub
         DECODERS = {
           variables: lambda do |value|
             value&.map { |item| ::OctridevGithub::OrganizationActionsVariable.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -218,10 +217,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentsCreateOrgVariableMetadata
         FIELDS = {
-          name: "name",
-          value: "value",
-          visibility: "visibility",
-          selected_repository_ids: "selected_repository_ids",
+          name: 'name',
+          value: 'value',
+          visibility: 'visibility',
+          selected_repository_ids: 'selected_repository_ids'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
@@ -231,7 +230,7 @@ module OctridevGithub
         DECODERS = {
           visibility: lambda do |value|
             ::OctridevGithub::Methods::Agents::AgentsCreateOrgVariableVisibility.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -268,17 +267,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentsUpdateOrgVariableMetadata
         FIELDS = {
-          name: "name",
-          value: "value",
-          visibility: "visibility",
-          selected_repository_ids: "selected_repository_ids",
+          name: 'name',
+          value: 'value',
+          visibility: 'visibility',
+          selected_repository_ids: 'selected_repository_ids'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           visibility: lambda do |value|
             ::OctridevGithub::Methods::Agents::AgentsUpdateOrgVariableVisibility.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -315,8 +313,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentsListSelectedReposForOrgVariableResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          repositories: "repositories",
+          total_count: 'total_count',
+          repositories: 'repositories'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -325,7 +323,7 @@ module OctridevGithub
         DECODERS = {
           repositories: lambda do |value|
             value&.map { |item| ::OctridevGithub::MinimalRepository.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -355,13 +353,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentsSetSelectedReposForOrgVariableMetadata
         FIELDS = {
-          selected_repository_ids: "selected_repository_ids",
+          selected_repository_ids: 'selected_repository_ids'
         }.freeze
         REQUIRED_FIELDS = %i[
           selected_repository_ids
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for AgentsSetSelectedReposForOrgVariable.
@@ -391,8 +388,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentsListRepoOrganizationSecretsResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          secrets: "secrets",
+          total_count: 'total_count',
+          secrets: 'secrets'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -401,7 +398,7 @@ module OctridevGithub
         DECODERS = {
           secrets: lambda do |value|
             value&.map { |item| ::OctridevGithub::ActionsSecret.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -431,8 +428,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentsListRepoOrganizationVariablesResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          variables: "variables",
+          total_count: 'total_count',
+          variables: 'variables'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -441,7 +438,7 @@ module OctridevGithub
         DECODERS = {
           variables: lambda do |value|
             value&.map { |item| ::OctridevGithub::ActionsVariable.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -471,8 +468,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentsListRepoSecretsResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          secrets: "secrets",
+          total_count: 'total_count',
+          secrets: 'secrets'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -481,7 +478,7 @@ module OctridevGithub
         DECODERS = {
           secrets: lambda do |value|
             value&.map { |item| ::OctridevGithub::ActionsSecret.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -511,15 +508,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentsCreateOrUpdateRepoSecretMetadata
         FIELDS = {
-          encrypted_value: "encrypted_value",
-          key_id: "key_id",
+          encrypted_value: 'encrypted_value',
+          key_id: 'key_id'
         }.freeze
         REQUIRED_FIELDS = %i[
           encrypted_value
           key_id
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for AgentsCreateOrUpdateRepoSecret.

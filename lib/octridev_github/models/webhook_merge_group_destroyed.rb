@@ -5,100 +5,100 @@
 
 # webhook_merge_group_destroyed domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalWebhookMergeGroupDestroyedMetadata
-  FIELDS = {
-    action: "action",
-    reason: "reason",
-    installation: "installation",
-    merge_group: "merge_group",
-    organization: "organization",
-    repository: "repository",
-    sender: "sender",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    action
-    merge_group
-  ].freeze
-  DECODERS = {
-    action: lambda do |value|
-      ::OctridevGithub::WebhookMergeGroupDestroyedAction.from_value(value)
-    end,
-    reason: lambda do |value|
-      ::OctridevGithub::WebhookMergeGroupDestroyedReason.from_value(value)
-    end,
-    installation: lambda do |value|
-      ::OctridevGithub::SimpleInstallation.from_hash(value)
-    end,
-    merge_group: lambda do |value|
-      ::OctridevGithub::MergeGroup.from_hash(value)
-    end,
-    organization: lambda do |value|
-      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-    end,
-    repository: lambda do |value|
-      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-    end,
-    sender: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookMergeGroupDestroyed.
-# Typed representation of the `WebhookMergeGroupDestroyed` API schema.
-class WebhookMergeGroupDestroyed
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookMergeGroupDestroyedMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookMergeGroupDestroyedMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookMergeGroupDestroyedMetadata::DECODERS
-
-  # @return [WebhookMergeGroupDestroyedAction] Required enumerated value serialized in the `action` wire field.
-  attr_reader :action
-  # @return [WebhookMergeGroupDestroyedReason] Explains why the merge group is being destroyed. The group could have been merged, removed from the queue (dequeued), or invalidated by an earlier queue entry being dequeued (invalidated).
-  attr_reader :reason
-  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-  attr_reader :installation
-  # @return [MergeGroup] A group of pull requests that the merge queue has grouped together to be merged.
-  attr_reader :merge_group
-  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-  attr_reader :organization
-  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-  attr_reader :repository
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :sender
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookMergeGroupDestroyedMetadata
+    FIELDS = {
+      action: 'action',
+      reason: 'reason',
+      installation: 'installation',
+      merge_group: 'merge_group',
+      organization: 'organization',
+      repository: 'repository',
+      sender: 'sender'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      action
+      merge_group
+    ].freeze
+    DECODERS = {
+      action: lambda do |value|
+        ::OctridevGithub::WebhookMergeGroupDestroyedAction.from_value(value)
+      end,
+      reason: lambda do |value|
+        ::OctridevGithub::WebhookMergeGroupDestroyedReason.from_value(value)
+      end,
+      installation: lambda do |value|
+        ::OctridevGithub::SimpleInstallation.from_hash(value)
+      end,
+      merge_group: lambda do |value|
+        ::OctridevGithub::MergeGroup.from_hash(value)
+      end,
+      organization: lambda do |value|
+        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+      end,
+      repository: lambda do |value|
+        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+      end,
+      sender: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookMergeGroupDestroyed.
+  # Typed representation of the `WebhookMergeGroupDestroyed` API schema.
+  class WebhookMergeGroupDestroyed
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookMergeGroupDestroyedMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookMergeGroupDestroyedMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookMergeGroupDestroyedMetadata::DECODERS
+
+    # @return [WebhookMergeGroupDestroyedAction] Required enumerated value serialized in the `action` wire field.
+    attr_reader :action
+    # @return [WebhookMergeGroupDestroyedReason] Explains why the merge group is being destroyed. The group could have been merged, removed from the queue (dequeued), or invalidated by an earlier queue entry being dequeued (invalidated).
+    attr_reader :reason
+    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+    attr_reader :installation
+    # @return [MergeGroup] A group of pull requests that the merge queue has grouped together to be merged.
+    attr_reader :merge_group
+    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+    attr_reader :organization
+    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+    attr_reader :repository
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :sender
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the WebhookMergeGroupDestroyedAction SDK namespace.
+  module WebhookMergeGroupDestroyedAction
+    DESTROYED = 'destroyed'
+    VALUES = ['destroyed'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookMergeGroupDestroyedAction SDK namespace.
-module WebhookMergeGroupDestroyedAction
-  DESTROYED = 'destroyed'
-  VALUES = ['destroyed'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookMergeGroupDestroyedReason SDK namespace.
+  module WebhookMergeGroupDestroyedReason
+    MERGED = 'merged'
+    INVALIDATED = 'invalidated'
+    DEQUEUED = 'dequeued'
+    VALUES = %w[merged invalidated dequeued].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the WebhookMergeGroupDestroyedReason SDK namespace.
-module WebhookMergeGroupDestroyedReason
-  MERGED = 'merged'
-  INVALIDATED = 'invalidated'
-  DEQUEUED = 'dequeued'
-  VALUES = ['merged', 'invalidated', 'dequeued'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

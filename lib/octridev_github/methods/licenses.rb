@@ -24,20 +24,19 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/licenses",
+          '/licenses',
           config: config,
           query: {
             'featured' => QueryValue.new(featured, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::LicenseSimple],
           decoder: :json,
           operation_id: 'licenses_get_all_commonly_used',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -49,11 +48,10 @@ module OctridevGithub
         license:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/licenses/",
+            '/licenses/',
             SdkClient.encode_path_segment(license)
           ].join,
           config: config,
@@ -61,7 +59,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'licenses_get',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -82,25 +80,24 @@ module OctridevGithub
         ref: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/license"
+            '/license'
           ].join,
           config: config,
           query: {
-            'ref' => QueryValue.new(ref, style: 'form', explode: true),
+            'ref' => QueryValue.new(ref, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::LicenseContent,
           decoder: :json,
           operation_id: 'licenses_get_for_repo',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

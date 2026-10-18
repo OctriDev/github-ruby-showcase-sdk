@@ -5,10 +5,10 @@
 
 # code_scanning domain models
 module OctridevGithub
-# Defines the AlertInstancesUrl SDK value decoder.
-module AlertInstancesUrl
-  def self.from_value(value)
-    value
+  # Defines the AlertInstancesUrl SDK value decoder.
+  module AlertInstancesUrl
+    def self.from_value(value)
+      value
+    end
   end
-end
 end

@@ -5,97 +5,97 @@
 
 # webhook_issue_relates_to_removed domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalWebhookIssueRelatesToRemovedMetadata
-  FIELDS = {
-    action: "action",
-    issue_id: "issue_id",
-    issue: "issue",
-    related_issue_id: "related_issue_id",
-    related_issue: "related_issue",
-    installation: "installation",
-    organization: "organization",
-    repository: "repository",
-    sender: "sender",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    action
-    organization
-    repository
-    sender
-  ].freeze
-  DECODERS = {
-    action: lambda do |value|
-      ::OctridevGithub::WebhookIssueRelatesToRemovedAction.from_value(value)
-    end,
-    issue: lambda do |value|
-      ::OctridevGithub::Issue.from_hash(value)
-    end,
-    related_issue: lambda do |value|
-      ::OctridevGithub::Issue.from_hash(value)
-    end,
-    installation: lambda do |value|
-      ::OctridevGithub::SimpleInstallation.from_hash(value)
-    end,
-    organization: lambda do |value|
-      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-    end,
-    repository: lambda do |value|
-      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-    end,
-    sender: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookIssueRelatesToRemoved.
-# Typed representation of the `WebhookIssueRelatesToRemoved` API schema.
-class WebhookIssueRelatesToRemoved
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookIssueRelatesToRemovedMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookIssueRelatesToRemovedMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookIssueRelatesToRemovedMetadata::DECODERS
-
-  # @return [WebhookIssueRelatesToRemovedAction] Required enumerated value serialized in the `action` wire field.
-  attr_reader :action
-  # @return [Float] The ID of the issue the relationship was removed from.
-  attr_reader :issue_id
-  # @return [Issue] Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.
-  attr_reader :issue
-  # @return [Float] The ID of the related issue. Only present when both issues belong to the same repository.
-  attr_reader :related_issue_id
-  # @return [Issue] Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.
-  attr_reader :related_issue
-  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-  attr_reader :installation
-  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-  attr_reader :organization
-  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-  attr_reader :repository
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :sender
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookIssueRelatesToRemovedMetadata
+    FIELDS = {
+      action: 'action',
+      issue_id: 'issue_id',
+      issue: 'issue',
+      related_issue_id: 'related_issue_id',
+      related_issue: 'related_issue',
+      installation: 'installation',
+      organization: 'organization',
+      repository: 'repository',
+      sender: 'sender'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      action
+      organization
+      repository
+      sender
+    ].freeze
+    DECODERS = {
+      action: lambda do |value|
+        ::OctridevGithub::WebhookIssueRelatesToRemovedAction.from_value(value)
+      end,
+      issue: lambda do |value|
+        ::OctridevGithub::Issue.from_hash(value)
+      end,
+      related_issue: lambda do |value|
+        ::OctridevGithub::Issue.from_hash(value)
+      end,
+      installation: lambda do |value|
+        ::OctridevGithub::SimpleInstallation.from_hash(value)
+      end,
+      organization: lambda do |value|
+        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+      end,
+      repository: lambda do |value|
+        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+      end,
+      sender: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookIssueRelatesToRemoved.
+  # Typed representation of the `WebhookIssueRelatesToRemoved` API schema.
+  class WebhookIssueRelatesToRemoved
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookIssueRelatesToRemovedMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookIssueRelatesToRemovedMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookIssueRelatesToRemovedMetadata::DECODERS
+
+    # @return [WebhookIssueRelatesToRemovedAction] Required enumerated value serialized in the `action` wire field.
+    attr_reader :action
+    # @return [Float] The ID of the issue the relationship was removed from.
+    attr_reader :issue_id
+    # @return [Issue] Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.
+    attr_reader :issue
+    # @return [Float] The ID of the related issue. Only present when both issues belong to the same repository.
+    attr_reader :related_issue_id
+    # @return [Issue] Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.
+    attr_reader :related_issue
+    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+    attr_reader :installation
+    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+    attr_reader :organization
+    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+    attr_reader :repository
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :sender
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the WebhookIssueRelatesToRemovedAction SDK namespace.
+  module WebhookIssueRelatesToRemovedAction
+    RELATES_TO_REMOVED = 'relates_to_removed'
+    VALUES = ['relates_to_removed'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the WebhookIssueRelatesToRemovedAction SDK namespace.
-module WebhookIssueRelatesToRemovedAction
-  RELATES_TO_REMOVED = 'relates_to_removed'
-  VALUES = ['relates_to_removed'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

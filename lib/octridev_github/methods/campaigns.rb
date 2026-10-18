@@ -12,15 +12,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCampaignsCreateCampaignCodeScanningAlertsItemMetadata
         FIELDS = {
-          repository_id: "repository_id",
-          alert_numbers: "alert_numbers",
+          repository_id: 'repository_id',
+          alert_numbers: 'alert_numbers'
         }.freeze
         REQUIRED_FIELDS = %i[
           repository_id
           alert_numbers
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for CampaignsCreateCampaignCodeScanningAlertsItem.
@@ -52,14 +51,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCampaignsCreateCampaignMetadata
         FIELDS = {
-          name: "name",
-          description: "description",
-          managers: "managers",
-          team_managers: "team_managers",
-          ends_at: "ends_at",
-          contact_link: "contact_link",
-          code_scanning_alerts: "code_scanning_alerts",
-          generate_issues: "generate_issues",
+          name: 'name',
+          description: 'description',
+          managers: 'managers',
+          team_managers: 'team_managers',
+          ends_at: 'ends_at',
+          contact_link: 'contact_link',
+          code_scanning_alerts: 'code_scanning_alerts',
+          generate_issues: 'generate_issues'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
@@ -69,7 +68,7 @@ module OctridevGithub
         DECODERS = {
           code_scanning_alerts: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Campaigns::CampaignsCreateCampaignCodeScanningAlertsItem.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -114,20 +113,19 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCampaignsUpdateCampaignMetadata
         FIELDS = {
-          name: "name",
-          description: "description",
-          managers: "managers",
-          team_managers: "team_managers",
-          ends_at: "ends_at",
-          contact_link: "contact_link",
-          state: "state",
+          name: 'name',
+          description: 'description',
+          managers: 'managers',
+          team_managers: 'team_managers',
+          ends_at: 'ends_at',
+          contact_link: 'contact_link',
+          state: 'state'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           state: lambda do |value|
             ::OctridevGithub::CampaignState.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -173,7 +171,7 @@ module OctridevGithub
         UPDATED = 'updated'
         ENDS_AT = 'ends_at'
         PUBLISHED = 'published'
-        VALUES = ['created', 'updated', 'ends_at', 'published'].freeze
+        VALUES = %w[created updated ends_at published].freeze
         def self.from_value(value)
           value
         end
@@ -202,13 +200,12 @@ module OctridevGithub
         sort: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/campaigns"
+            '/campaigns'
           ].join,
           config: config,
           query: {
@@ -216,13 +213,13 @@ module OctridevGithub
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'state' => QueryValue.new(state, style: 'form', explode: true),
-            'sort' => QueryValue.new(sort, style: 'form', explode: true),
+            'sort' => QueryValue.new(sort, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::CampaignSummary],
           decoder: :json,
           operation_id: 'campaigns_list_org_campaigns',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
+          errors: { '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
 
@@ -256,7 +253,6 @@ module OctridevGithub
         generate_issues: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('name', name, min: 1, max: 50)
 
         Validation.validate_length('description', description, min: 1, max: 255)
@@ -276,9 +272,9 @@ module OctridevGithub
         SdkClient.request(
           'POST',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/campaigns"
+            '/campaigns'
           ].join,
           config: config,
           body: {
@@ -289,13 +285,13 @@ module OctridevGithub
             'team_managers' => team_managers,
             'contact_link' => contact_link,
             'code_scanning_alerts' => code_scanning_alerts,
-            'generate_issues' => generate_issues,
+            'generate_issues' => generate_issues
           },
           return_type: ::OctridevGithub::CampaignSummary,
           decoder: :json,
           operation_id: 'campaigns_create_campaign',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
+          errors: { '400' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
 
@@ -309,13 +305,12 @@ module OctridevGithub
         campaign_number:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/campaigns/",
+            '/campaigns/',
             SdkClient.encode_path_segment(campaign_number)
           ].join,
           config: config,
@@ -323,7 +318,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'campaigns_get_campaign_summary',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
 
@@ -355,7 +350,6 @@ module OctridevGithub
         state: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.if_given(name) { Validation.validate_length('name', name, min: 1, max: 50) }
 
         Validation.if_given(description) do
@@ -373,9 +367,9 @@ module OctridevGithub
         SdkClient.request(
           'PATCH',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/campaigns/",
+            '/campaigns/',
             SdkClient.encode_path_segment(campaign_number)
           ].join,
           config: config,
@@ -386,13 +380,13 @@ module OctridevGithub
             'team_managers' => team_managers,
             'ends_at' => ends_at,
             'contact_link' => contact_link,
-            'state' => state,
+            'state' => state
           },
           return_type: ::OctridevGithub::CampaignSummary,
           decoder: :json,
           operation_id: 'campaigns_update_campaign',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
+          errors: { '400' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
 
@@ -406,20 +400,19 @@ module OctridevGithub
         campaign_number:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/campaigns/",
+            '/campaigns/',
             SdkClient.encode_path_segment(campaign_number)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'campaigns_delete_campaign',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
+          errors: { '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
     end
