@@ -471,49 +471,6 @@ module OctridevGithub
   end
 
   # Internal model hydration metadata.
-  class SdkInternalWebhookPackagePublishedPackagePackageVersionNugetMetadataItemX69135351c1Metadata
-    FIELDS = {
-      url: 'url',
-      branch: 'branch',
-      commit: 'commit',
-      type: 'type'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
-  end
-
-  # API model for WebhookPackagePublishedPackagePackageVersionNugetMetadataItemX69135351c1.
-  # Optional object value serialized in the `value` wire field.
-  class WebhookPackagePublishedPackagePackageVersionNugetMetadataItemX69135351c1
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookPackagePublishedPackagePackageVersionNugetMetadataItemX69135351c1Metadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookPackagePublishedPackagePackageVersionNugetMetadataItemX69135351c1Metadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookPackagePublishedPackagePackageVersionNugetMetadataItemX69135351c1Metadata::DECODERS
-
-    # @return [String] Optional `string` value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Optional `string` value serialized in the `branch` wire field.
-    attr_reader :branch
-    # @return [String] Optional `string` value serialized in the `commit` wire field.
-    attr_reader :commit
-    # @return [String] Optional `string` value serialized in the `type` wire field.
-    attr_reader :type
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
-  end
-
-  # Internal model hydration metadata.
   class SdkInternalWebhookPackagePublishedPackagePackageVersionNugetMetadataItemMetadata
     FIELDS = {
       id: 'id',
@@ -521,7 +478,11 @@ module OctridevGithub
       value: 'value'
     }.freeze
     REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+    DECODERS = {
+      value: lambda do |value|
+        ::OctridevGithub::WebhookPackagePublishedPackagePackageVersionNugetMetadataItemValue.from_hash(value)
+      end
+    }.freeze
   end
 
   # API model for WebhookPackagePublishedPackagePackageVersionNugetMetadataItem.
@@ -536,7 +497,7 @@ module OctridevGithub
     attr_reader :id
     # @return [String] Optional `string` value serialized in the `name` wire field.
     attr_reader :name
-    # @return [Object] Optional API value serialized in the `value` wire field.
+    # @return [WebhookPackagePublishedPackagePackageVersionNugetMetadataItemValue] Optional API value serialized in the `value` wire field.
     attr_reader :value
 
     def initialize(**attributes)

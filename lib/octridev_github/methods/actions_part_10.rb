@@ -9,164 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Actions SDK namespace.
     module Actions
-      # Lists Actions policies configured for an organization. Set `has_parents` to include policies configured at higher levels that apply to the organization, and use `page` and `per_page` to paginate the results.
-      #
-      # List all Actions policies for an organization.
-      #
-      # @param org [String] The organization name. The name is not case sensitive.
-      # @param per_page [Integer] The number of results per page (max 100). For more
-      #   information, see "Using pagination in the REST API."
-      # @param page [Integer] The page number of the results to fetch. For more
-      #   information, see "Using pagination in the REST API."
-      # @param has_parents [Boolean] Include policies configured at higher levels
-      #   that apply to this organization
-      def self.actions_get_org_actions_policies(
-        config:,
-        org:,
-        per_page: NOT_GIVEN,
-        page: NOT_GIVEN,
-        has_parents: NOT_GIVEN,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          [
-            '/orgs/',
-            SdkClient.encode_path_segment(org),
-            '/actions/policies'
-          ].join,
-          config: config,
-          query: {
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
-            'has_parents' => QueryValue.new(has_parents, style: 'form', explode: true)
-          },
-          return_type: ::OctridevGithub::Methods::Actions::ActionsGetOrgActionsPoliciesResponse,
-          decoder: :json,
-          operation_id: 'actions_get_org_actions_policies',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
-        ).data
-      end
-
-      # Create an Actions policy for an organization. Omitting `workflow_path` targets all workflows without storing an explicit condition.
-      #
-      # @param org [String] The organization name. The name is not case sensitive.
-      # @param name [String] The name of the policy.
-      # @param enforcement [RepositoryRuleEnforcement] The enforcement level of the
-      #   ruleset. `evaluate` allows admins to test rules before enforcing them.
-      #   Admins can view insights on the Rule Insights page (`evaluate` is only
-      #   available with GitHub Enterprise).
-      # @param conditions [ActionsPolicyOrgConditions] Conditions for an
-      #   organization Actions policy. The conditions object should contain one of
-      #   `repository_name`, `repository_id`, or `repository_property`, and may also
-      #   contain `workflow_path`.
-      # @param rules [Array_of_ActionsRule] An array of rules within the policy.
-      def self.actions_create_org_actions_policy(
-        config:,
-        org:,
-        name:,
-        enforcement:,
-        conditions: NOT_GIVEN,
-        rules: NOT_GIVEN,
-        request_options: nil
-      )
-        SdkClient.request(
-          'POST',
-          [
-            '/orgs/',
-            SdkClient.encode_path_segment(org),
-            '/actions/policies'
-          ].join,
-          config: config,
-          body: {
-            'name' => name,
-            'enforcement' => enforcement,
-            'conditions' => conditions,
-            'rules' => rules
-          },
-          return_type: ::OctridevGithub::ActionsPolicy,
-          decoder: :json,
-          operation_id: 'actions_create_org_actions_policy',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError }
-        ).data
-      end
-
-      # Get a specific Actions policy for an organization.
-      #
-      # @param org [String] The organization name. The name is not case sensitive.
-      # @param policy_id [Integer] The ID of the policy.
-      def self.actions_get_org_actions_policy(
-        config:,
-        org:,
-        policy_id:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          [
-            '/orgs/',
-            SdkClient.encode_path_segment(org),
-            '/actions/policies/',
-            SdkClient.encode_path_segment(policy_id)
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::ActionsPolicy,
-          decoder: :json,
-          operation_id: 'actions_get_org_actions_policy',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
-        ).data
-      end
-
-      # Update an Actions policy for an organization. Omitting `workflow_path` preserves the policy's existing workflow targeting.
-      #
-      # @param org [String] The organization name. The name is not case sensitive.
-      # @param policy_id [Integer] The ID of the policy.
-      # @param name [String] The name of the policy.
-      # @param enforcement [RepositoryRuleEnforcement] The enforcement level of the
-      #   ruleset. `evaluate` allows admins to test rules before enforcing them.
-      #   Admins can view insights on the Rule Insights page (`evaluate` is only
-      #   available with GitHub Enterprise).
-      # @param conditions [ActionsPolicyOrgConditions] Conditions for an
-      #   organization Actions policy. The conditions object should contain one of
-      #   `repository_name`, `repository_id`, or `repository_property`, and may also
-      #   contain `workflow_path`.
-      # @param rules [Array_of_ActionsRule] An array of rules within the policy.
-      def self.actions_update_org_actions_policy(
-        config:,
-        org:,
-        policy_id:,
-        name: NOT_GIVEN,
-        enforcement: NOT_GIVEN,
-        conditions: NOT_GIVEN,
-        rules: NOT_GIVEN,
-        request_options: nil
-      )
-        SdkClient.request(
-          'PUT',
-          [
-            '/orgs/',
-            SdkClient.encode_path_segment(org),
-            '/actions/policies/',
-            SdkClient.encode_path_segment(policy_id)
-          ].join,
-          config: config,
-          body: {
-            'name' => name,
-            'enforcement' => enforcement,
-            'conditions' => conditions,
-            'rules' => rules
-          },
-          return_type: ::OctridevGithub::ActionsPolicy,
-          decoder: :json,
-          operation_id: 'actions_update_org_actions_policy',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError }
-        ).data
-      end
-
       # Deletes an organization-level Actions policy. Use `org` and `policy_id` to identify the organization and policy to remove; the policy must belong to that organization.
       #
       # Delete an Actions policy for an organization.
@@ -534,6 +376,167 @@ module OctridevGithub
           config: config,
           decoder: :empty,
           operation_id: 'actions_add_repo_access_to_self_hosted_runner_group_in_org',
+          request_options: request_options
+        ).data
+      end
+
+      # Removes a repository from the list of selected repositories that can access a self-hosted runner group. The runner group must have `visibility` set to `selected`. For more information, see "Create a self-hosted runner group for an organization." OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param runner_group_id [Integer] Unique identifier of the self-hosted runner
+      #   group.
+      # @param repository_id [Integer] The unique identifier of the repository.
+      def self.actions_remove_repo_access_to_self_hosted_runner_group_in_org(
+        config:,
+        org:,
+        runner_group_id:,
+        repository_id:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'DELETE',
+          [
+            '/orgs/',
+            SdkClient.encode_path_segment(org),
+            '/actions/runner-groups/',
+            SdkClient.encode_path_segment(runner_group_id),
+            '/repositories/',
+            SdkClient.encode_path_segment(repository_id)
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'actions_remove_repo_access_to_self_hosted_runner_group_in_org',
+          request_options: request_options
+        ).data
+      end
+
+      # Lists self-hosted runners that are in a specific organization group. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param runner_group_id [Integer] Unique identifier of the self-hosted runner
+      #   group.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.actions_list_self_hosted_runners_in_group_for_org(
+        config:,
+        org:,
+        runner_group_id:,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/orgs/',
+            SdkClient.encode_path_segment(org),
+            '/actions/runner-groups/',
+            SdkClient.encode_path_segment(runner_group_id),
+            '/runners'
+          ].join,
+          config: config,
+          query: {
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
+          },
+          return_type: ::OctridevGithub::Methods::Actions::ActionsListSelfHostedRunnersInGroupForOrgResponse,
+          decoder: :json,
+          operation_id: 'actions_list_self_hosted_runners_in_group_for_org',
+          request_options: request_options
+        ).data
+      end
+
+      # Replaces the list of self-hosted runners that are part of an organization runner group. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param runner_group_id [Integer] Unique identifier of the self-hosted runner
+      #   group.
+      # @param runners [Array_of_Integer] List of runner IDs to add to the runner
+      #   group.
+      def self.actions_set_self_hosted_runners_in_group_for_org(
+        config:,
+        org:,
+        runner_group_id:,
+        runners:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'PUT',
+          [
+            '/orgs/',
+            SdkClient.encode_path_segment(org),
+            '/actions/runner-groups/',
+            SdkClient.encode_path_segment(runner_group_id),
+            '/runners'
+          ].join,
+          config: config,
+          body: {
+            'runners' => runners
+          },
+          decoder: :empty,
+          operation_id: 'actions_set_self_hosted_runners_in_group_for_org',
+          request_options: request_options
+        ).data
+      end
+
+      # Adds a self-hosted runner to a runner group configured in an organization. OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param runner_group_id [Integer] Unique identifier of the self-hosted runner
+      #   group.
+      # @param runner_id [Integer] Unique identifier of the self-hosted runner.
+      def self.actions_add_self_hosted_runner_to_group_for_org(
+        config:,
+        org:,
+        runner_group_id:,
+        runner_id:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'PUT',
+          [
+            '/orgs/',
+            SdkClient.encode_path_segment(org),
+            '/actions/runner-groups/',
+            SdkClient.encode_path_segment(runner_group_id),
+            '/runners/',
+            SdkClient.encode_path_segment(runner_id)
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'actions_add_self_hosted_runner_to_group_for_org',
+          request_options: request_options
+        ).data
+      end
+
+      # Removes a self-hosted runner from a group configured in an organization. The runner is then returned to the default group. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param runner_group_id [Integer] Unique identifier of the self-hosted runner
+      #   group.
+      # @param runner_id [Integer] Unique identifier of the self-hosted runner.
+      def self.actions_remove_self_hosted_runner_from_group_for_org(
+        config:,
+        org:,
+        runner_group_id:,
+        runner_id:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'DELETE',
+          [
+            '/orgs/',
+            SdkClient.encode_path_segment(org),
+            '/actions/runner-groups/',
+            SdkClient.encode_path_segment(runner_group_id),
+            '/runners/',
+            SdkClient.encode_path_segment(runner_id)
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'actions_remove_self_hosted_runner_from_group_for_org',
           request_options: request_options
         ).data
       end

@@ -9,6 +9,175 @@ module OctridevGithub
   module Methods
     # Defines the Apps SDK namespace.
     module Apps
+      # Defines the AppsListInstallationReposForAuthenticatedUserResponseRepositoX7d8fa4489f SDK namespace.
+      module AppsListInstallationReposForAuthenticatedUserResponseRepositoX7d8fa4489f
+        ALL = 'all'
+        COLLABORATORS_ONLY = 'collaborators_only'
+        VALUES = %w[all collaborators_only].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the AppsListAccountsForPlanParameter SDK namespace.
+      module AppsListAccountsForPlanParameter
+        ASC = 'asc'
+        DESC = 'desc'
+        VALUES = %w[asc desc].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the AppsListReposAccessibleToInstallationResponseRepositoriesItemX553368913c SDK namespace.
+      module AppsListReposAccessibleToInstallationResponseRepositoriesItemX553368913c
+        PR_BODY = 'PR_BODY'
+        COMMIT_MESSAGES = 'COMMIT_MESSAGES'
+        BLANK = 'BLANK'
+        VALUES = %w[PR_BODY COMMIT_MESSAGES BLANK].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the AppsListInstallationReposForAuthenticatedUserResponseRepositoXe6dfe6af0c SDK namespace.
+      module AppsListInstallationReposForAuthenticatedUserResponseRepositoXe6dfe6af0c
+        PR_TITLE = 'PR_TITLE'
+        COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
+        VALUES = %w[PR_TITLE COMMIT_OR_PR_TITLE].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the AppsListInstallationReposForAuthenticatedUserResponseRepositoX58478254fe SDK namespace.
+      module AppsListInstallationReposForAuthenticatedUserResponseRepositoX58478254fe
+        PR_BODY = 'PR_BODY'
+        PR_TITLE = 'PR_TITLE'
+        BLANK = 'BLANK'
+        VALUES = %w[PR_BODY PR_TITLE BLANK].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the AppsListReposAccessibleToInstallationResponseRepositoriesItemX5dafed43da SDK namespace.
+      module AppsListReposAccessibleToInstallationResponseRepositoriesItemX5dafed43da
+        PR_TITLE = 'PR_TITLE'
+        COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
+        VALUES = %w[PR_TITLE COMMIT_OR_PR_TITLE].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the AppsListInstallationReposForAuthenticatedUserResponseRepositoX55612d4937 SDK namespace.
+      module AppsListInstallationReposForAuthenticatedUserResponseRepositoX55612d4937
+        PR_TITLE = 'PR_TITLE'
+        MERGE_MESSAGE = 'MERGE_MESSAGE'
+        VALUES = %w[PR_TITLE MERGE_MESSAGE].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the AppsListReposAccessibleToInstallationResponseRepositoriesItemXd25bc05c9a SDK namespace.
+      module AppsListReposAccessibleToInstallationResponseRepositoriesItemXd25bc05c9a
+        PR_BODY = 'PR_BODY'
+        PR_TITLE = 'PR_TITLE'
+        BLANK = 'BLANK'
+        VALUES = %w[PR_BODY PR_TITLE BLANK].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the AppsListAccountsForPlanStubbedParameter SDK namespace.
+      module AppsListAccountsForPlanStubbedParameter
+        ASC = 'asc'
+        DESC = 'desc'
+        VALUES = %w[asc desc].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the AppsListReposAccessibleToInstallationResponseRepositoriesItemXd3df6a5cde SDK namespace.
+      module AppsListReposAccessibleToInstallationResponseRepositoriesItemXd3df6a5cde
+        ALL = 'all'
+        COLLABORATORS_ONLY = 'collaborators_only'
+        VALUES = %w[all collaborators_only].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the AppsListReposAccessibleToInstallationResponseRepositoriesItemX6025c9444b SDK namespace.
+      module AppsListReposAccessibleToInstallationResponseRepositoriesItemX6025c9444b
+        PR_TITLE = 'PR_TITLE'
+        MERGE_MESSAGE = 'MERGE_MESSAGE'
+        VALUES = %w[PR_TITLE MERGE_MESSAGE].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Returns the GitHub App associated with the authentication credentials used. To see how many app installations are associated with this GitHub App, see the `installations_count` in the response. For more details about your app's installations, see the "List installations for the authenticated app" endpoint. You must use a JWT to access this endpoint.
+      def self.apps_get_authenticated(
+        config:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          '/app',
+          config: config,
+          return_type: ::OctridevGithub::Integration,
+          decoder: :json,
+          operation_id: 'apps_get_authenticated',
+          request_options: request_options
+        ).data
+      end
+
+      # Creates a GitHub App from a manifest to complete the GitHub App Manifest flow. Use the temporary `code` to retrieve the app details and credentials, including its `id`, `pem`, and `webhook_secret`.
+      #
+      # Use this endpoint to complete the handshake necessary when implementing the GitHub App Manifest flow. When you create a GitHub App with the manifest flow, you receive a temporary `code` used to retrieve the GitHub App's `id`, `pem` (private key), and `webhook_secret`.
+      def self.apps_create_from_manifest(
+        config:,
+        code:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'POST',
+          [
+            '/app-manifests/',
+            SdkClient.encode_path_segment(code),
+            '/conversions'
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::Methods::Apps::AppsCreateFromManifestResponse,
+          decoder: :json,
+          operation_id: 'apps_create_from_manifest',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple }
+        ).data
+      end
+
+      # Returns the webhook configuration for a GitHub App. For more information about configuring a webhook for your app, see "Creating a GitHub App." You must use a JWT to access this endpoint.
+      def self.apps_get_webhook_config_for_app(
+        config:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          '/app/hook/config',
+          config: config,
+          return_type: ::OctridevGithub::WebhookConfig,
+          decoder: :json,
+          operation_id: 'apps_get_webhook_config_for_app',
+          request_options: request_options
+        ).data
+      end
+
       # Updates the webhook configuration for a GitHub App, including its payload URL and delivery settings. Supply `url` as a URI; `content_type` defaults to `form`, and `insecure_ssl` defaults to `0`. Authenticate with a GitHub App JWT to access this endpoint.
       #
       # Updates the webhook configuration for a GitHub App. For more information about configuring a webhook for your app, see "Creating a GitHub App." You must use a JWT to access this endpoint.
@@ -380,168 +549,6 @@ module OctridevGithub
           operation_id: 'apps_check_token',
           request_options: request_options,
           errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
-        ).data
-      end
-
-      # OAuth applications and GitHub applications with OAuth authorizations can use this API method to reset a valid OAuth token without end-user involvement. Applications must save the "token" property in the response because changes take effect immediately. Invalid tokens will return `404 NOT FOUND`.
-      #
-      # @param client_id [String] The client ID of the GitHub app.
-      # @param access_token [String] The access_token of the OAuth or GitHub
-      #   application.
-      def self.apps_reset_token(
-        config:,
-        client_id:,
-        access_token:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'PATCH',
-          [
-            '/applications/',
-            SdkClient.encode_path_segment(client_id),
-            '/token'
-          ].join,
-          config: config,
-          body: {
-            'access_token' => access_token
-          },
-          return_type: ::OctridevGithub::Authorization,
-          decoder: :json,
-          operation_id: 'apps_reset_token',
-          request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError }
-        ).data
-      end
-
-      # OAuth or GitHub application owners can revoke a single token for an OAuth application or a GitHub application with an OAuth authorization.
-      #
-      # @param client_id [String] The client ID of the GitHub app.
-      # @param access_token [String] The OAuth access token used to authenticate to
-      #   the GitHub API.
-      def self.apps_delete_token(
-        config:,
-        client_id:,
-        access_token:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'DELETE',
-          [
-            '/applications/',
-            SdkClient.encode_path_segment(client_id),
-            '/token'
-          ].join,
-          config: config,
-          body: {
-            'access_token' => access_token
-          },
-          decoder: :empty,
-          operation_id: 'apps_delete_token',
-          request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError }
-        ).data
-      end
-
-      # Use a non-scoped user access token to create a repository-scoped and/or permission-scoped user access token. You can specify which repositories the token can access and which permissions are granted to the token. Invalid tokens will return `404 NOT FOUND`.
-      #
-      # @param client_id [String] The client ID of the GitHub app.
-      # @param access_token [String] The access token used to authenticate to the
-      #   GitHub API.
-      # @param target [String] The name of the user or organization to scope the
-      #   user access token to. **Required** unless `target_id` is specified.
-      # @param target_id [Integer] The ID of the user or organization to scope the
-      #   user access token to. **Required** unless `target` is specified.
-      # @param repositories [Array_of_String] The list of repository names to scope
-      #   the user access token to. `repositories` may not be specified if
-      #   `repository_ids` is specified.
-      # @param repository_ids [Array_of_Integer] The list of repository IDs to scope
-      #   the user access token to. `repository_ids` may not be specified if
-      #   `repositories` is specified.
-      # @param permissions [AppPermissions] The permissions granted to the
-      #   fine-grained access token.
-      def self.apps_scope_token(
-        config:,
-        client_id:,
-        access_token:,
-        target: NOT_GIVEN,
-        target_id: NOT_GIVEN,
-        repositories: NOT_GIVEN,
-        repository_ids: NOT_GIVEN,
-        permissions: NOT_GIVEN,
-        request_options: nil
-      )
-        SdkClient.request(
-          'POST',
-          [
-            '/applications/',
-            SdkClient.encode_path_segment(client_id),
-            '/token/scoped'
-          ].join,
-          config: config,
-          body: {
-            'access_token' => access_token,
-            'target' => target,
-            'target_id' => target_id,
-            'repositories' => repositories,
-            'repository_ids' => repository_ids,
-            'permissions' => permissions
-          },
-          return_type: ::OctridevGithub::Authorization,
-          decoder: :json,
-          operation_id: 'apps_scope_token',
-          request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
-        ).data
-      end
-
-      # Retrieves a GitHub App by its URL-friendly slug. Use the `app_slug` path parameter shown in the app's settings URL to identify the app.
-      #
-      # > [!NOTE] > The `:app_slug` is just the URL-friendly name of your GitHub App. You can find this on the settings page for your GitHub App (e.g., `github.com).
-      def self.apps_get_by_slug(
-        config:,
-        app_slug:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          [
-            '/apps/',
-            SdkClient.encode_path_segment(app_slug)
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::Integration,
-          decoder: :json,
-          operation_id: 'apps_get_by_slug',
-          request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
-        ).data
-      end
-
-      # List repositories that an app installation can access.
-      #
-      # @param per_page [Integer] The number of results per page (max 100). For more
-      #   information, see "Using pagination in the REST API."
-      # @param page [Integer] The page number of the results to fetch. For more
-      #   information, see "Using pagination in the REST API."
-      def self.apps_list_repos_accessible_to_installation(
-        config:,
-        per_page: NOT_GIVEN,
-        page: NOT_GIVEN,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          '/installation/repositories',
-          config: config,
-          query: {
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
-          },
-          return_type: ::OctridevGithub::Methods::Apps::AppsListReposAccessibleToInstallationResponse,
-          decoder: :json,
-          operation_id: 'apps_list_repos_accessible_to_installation',
-          request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
         ).data
       end
     end

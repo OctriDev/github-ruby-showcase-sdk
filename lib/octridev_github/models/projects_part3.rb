@@ -27,7 +27,7 @@ module OctridevGithub
     attr_reader :project_url
     # @return [String] The web URL of the view.
     attr_reader :html_url
-    # @return [SimpleUser] Required API value serialized in the `creator` wire field.
+    # @return [SimpleUser] A GitHub user.
     attr_reader :creator
     # @return [String] The time when the view was created.
     attr_reader :created_at

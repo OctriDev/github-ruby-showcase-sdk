@@ -185,6 +185,9 @@ module OctridevGithub
     }.freeze
     REQUIRED_FIELDS = %i[].freeze
     DECODERS = {
+      default_for_new_repos: lambda do |value|
+        ::OctridevGithub::CodeSecurityDefaultConfigurationsItemDefaultForNewRepos.from_value(value)
+      end,
       configuration: lambda do |value|
         ::OctridevGithub::CodeSecurityConfiguration.from_hash(value)
       end
@@ -198,7 +201,7 @@ module OctridevGithub
     REQUIRED_FIELDS = SdkInternalCodeSecurityDefaultConfigurationsItemMetadata::REQUIRED_FIELDS
     DECODERS = SdkInternalCodeSecurityDefaultConfigurationsItemMetadata::DECODERS
 
-    # @return [Object] The visibility of newly created repositories for which the code security configuration will be applied to by default
+    # @return [CodeSecurityDefaultConfigurationsItemDefaultForNewRepos] The visibility of newly created repositories for which the code security configuration will be applied to by default
     attr_reader :default_for_new_repos
     # @return [CodeSecurityConfiguration] A code security configuration
     attr_reader :configuration
@@ -223,6 +226,17 @@ module OctridevGithub
       return nil if value.nil?
 
       value&.map { |item| ::OctridevGithub::CodeSecurityDefaultConfigurationsItem.from_hash(item) }
+    end
+  end
+
+  # Defines the CodeSecurityDefaultConfigurationsItemDefaultForNewRepos SDK namespace.
+  module CodeSecurityDefaultConfigurationsItemDefaultForNewRepos
+    PUBLIC = 'public'
+    PRIVATE_AND_INTERNAL = 'private_and_internal'
+    ALL = 'all'
+    VALUES = %w[public private_and_internal all].freeze
+    def self.from_value(value)
+      value
     end
   end
 end

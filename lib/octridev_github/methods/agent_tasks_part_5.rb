@@ -9,6 +9,161 @@ module OctridevGithub
   module Methods
     # Defines the AgentTasks SDK namespace.
     module AgentTasks
+      # Internal model hydration metadata.
+      class SdkInternalAgentTasksGetTaskByIdResponseVariant1SessionsItemUserMetadata
+        FIELDS = {
+          id: 'id'
+        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
+      end
+
+      # API model for AgentTasksGetTaskByIdResponseVariant1SessionsItemUser.
+      # The user who created this session
+      class AgentTasksGetTaskByIdResponseVariant1SessionsItemUser
+        CONSTRUCTION_SURFACE = :named
+        FIELDS = SdkInternalAgentTasksGetTaskByIdResponseVariant1SessionsItemUserMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalAgentTasksGetTaskByIdResponseVariant1SessionsItemUserMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalAgentTasksGetTaskByIdResponseVariant1SessionsItemUserMetadata::DECODERS
+
+        # @return [Integer] The unique identifier of the user
+        attr_reader :id
+
+        def initialize(**attributes)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          freeze
+        end
+
+        def self.from_hash(data)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        end
+
+        def to_h
+          SdkModel.to_h(self, FIELDS)
+        end
+      end
+
+      # Internal model hydration metadata.
+      class SdkInternalAgentTasksGetTaskByIdResponseVariant1SessionsItemOwnerMetadata
+        FIELDS = {
+          id: 'id'
+        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
+      end
+
+      # API model for AgentTasksGetTaskByIdResponseVariant1SessionsItemOwner.
+      # The owner of the repository
+      class AgentTasksGetTaskByIdResponseVariant1SessionsItemOwner
+        CONSTRUCTION_SURFACE = :named
+        FIELDS = SdkInternalAgentTasksGetTaskByIdResponseVariant1SessionsItemOwnerMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalAgentTasksGetTaskByIdResponseVariant1SessionsItemOwnerMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalAgentTasksGetTaskByIdResponseVariant1SessionsItemOwnerMetadata::DECODERS
+
+        # @return [Integer] The unique identifier of the user
+        attr_reader :id
+
+        def initialize(**attributes)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          freeze
+        end
+
+        def self.from_hash(data)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        end
+
+        def to_h
+          SdkModel.to_h(self, FIELDS)
+        end
+      end
+
+      # Internal model hydration metadata.
+      class SdkInternalAgentTasksGetTaskByIdResponseVariant1SessionsItemRepositoryMetadata
+        FIELDS = {
+          id: 'id'
+        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
+      end
+
+      # API model for AgentTasksGetTaskByIdResponseVariant1SessionsItemRepository.
+      # The repository this session belongs to
+      class AgentTasksGetTaskByIdResponseVariant1SessionsItemRepository
+        CONSTRUCTION_SURFACE = :named
+        FIELDS = SdkInternalAgentTasksGetTaskByIdResponseVariant1SessionsItemRepositoryMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalAgentTasksGetTaskByIdResponseVariant1SessionsItemRepositoryMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalAgentTasksGetTaskByIdResponseVariant1SessionsItemRepositoryMetadata::DECODERS
+
+        # @return [Integer] The unique identifier of the repository
+        attr_reader :id
+
+        def initialize(**attributes)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          freeze
+        end
+
+        def self.from_hash(data)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        end
+
+        def to_h
+          SdkModel.to_h(self, FIELDS)
+        end
+      end
+
+      # Internal model hydration metadata.
+      class SdkInternalAgentTasksGetTaskByIdResponseVariant1SessionsItemUsageMetadata
+        FIELDS = {
+          type: 'type',
+          amount: 'amount'
+        }.freeze
+        REQUIRED_FIELDS = %i[
+          type
+          amount
+        ].freeze
+        DECODERS = {
+          type: lambda do |value|
+            ::OctridevGithub::Methods::AgentTasks::AgentTasksGetTaskByIdResponseVariant1SessionsItemUsageType.from_value(value)
+          end
+        }.freeze
+      end
+
+      # API model for AgentTasksGetTaskByIdResponseVariant1SessionsItemUsage.
+      # Structured information about billing units consumed by the session.
+      class AgentTasksGetTaskByIdResponseVariant1SessionsItemUsage
+        CONSTRUCTION_SURFACE = :named
+        FIELDS = SdkInternalAgentTasksGetTaskByIdResponseVariant1SessionsItemUsageMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalAgentTasksGetTaskByIdResponseVariant1SessionsItemUsageMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalAgentTasksGetTaskByIdResponseVariant1SessionsItemUsageMetadata::DECODERS
+
+        # @return [AgentTasksGetTaskByIdResponseVariant1SessionsItemUsageType] Billing unit used for this session. New sessions since June 1, 2026 use `ai_credits`, but older sessions use `premium_requests`.
+        attr_reader :type
+        # @return [Float] Number of billing units used by this session. When the `type` is `ai_credits`, the value is a whole number, expressed in nano units. When presenting this to a human, divide by 1,000,000,000 and round to one decimal place. When aggregating (for example, summing usage across sessions), sum the nano values first, and divide once at the end before presenting to a human to avoid losing precision. When the `type` is `premium_requests`, the value may be fractional (for example…
+        attr_reader :amount
+
+        def initialize(**attributes)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          freeze
+        end
+
+        def self.from_hash(data)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        end
+
+        def to_h
+          SdkModel.to_h(self, FIELDS)
+        end
+      end
+
+      # Internal model hydration metadata.
+      class SdkInternalAgentTasksGetTaskByIdResponseVariant1SessionsItemErrorMetadata
+        FIELDS = {
+          message: 'message'
+        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
+      end
+
       # API model for AgentTasksGetTaskByIdResponseVariant1SessionsItemError.
       # Error details for a failed session
       class AgentTasksGetTaskByIdResponseVariant1SessionsItemError
@@ -164,7 +319,7 @@ module OctridevGithub
         ].freeze
         DECODERS = {
           creator: lambda do |value|
-            ::OctridevGithub::Methods::AgentTasks::AgentTasksGetTaskByIdResponseVariant0CreatorVariant0.from_hash(value)
+            ::OctridevGithub::Methods::AgentTasks::AgentTasksGetTaskByIdResponseVariant0Creator.from_hash(value)
           end,
           creator_type: lambda do |value|
             ::OctridevGithub::Methods::AgentTasks::AgentTasksGetTaskByIdResponseVariant0CreatorType.from_value(value)
@@ -208,7 +363,7 @@ module OctridevGithub
         attr_reader :html_url
         # @return [String] Human-readable name derived from the task prompt
         attr_reader :name
-        # @return [AgentTasksGetTaskByIdResponseVariant0CreatorVariant0] The entity who created this task
+        # @return [AgentTasksGetTaskByIdResponseVariant0Creator] The entity who created this task
         attr_reader :creator
         # @return [AgentTasksGetTaskByIdResponseVariant0CreatorType] Type of the task creator
         attr_reader :creator_type
@@ -404,173 +559,6 @@ module OctridevGithub
         VALUES = %w[
           missing missing_field invalid already_exists unprocessable custom
         ].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the AgentTasksListTasksForRepoParameter SDK namespace.
-      module AgentTasksListTasksForRepoParameter
-        UPDATED_AT = 'updated_at'
-        CREATED_AT = 'created_at'
-        VALUES = %w[updated_at created_at].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the AgentTasksGetTaskByIdResponseVariant1SessionsItemState SDK namespace.
-      module AgentTasksGetTaskByIdResponseVariant1SessionsItemState
-        QUEUED = 'queued'
-        IN_PROGRESS = 'in_progress'
-        COMPLETED = 'completed'
-        FAILED = 'failed'
-        IDLE = 'idle'
-        WAITING_FOR_USER = 'waiting_for_user'
-        TIMED_OUT = 'timed_out'
-        CANCELLED = 'cancelled'
-        VALUES = %w[
-          queued in_progress completed failed idle waiting_for_user timed_out
-          cancelled
-        ].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the AgentTasksGetTaskByIdResponseErrorsItemCode258096ad SDK namespace.
-      module AgentTasksGetTaskByIdResponseErrorsItemCode258096ad
-        MISSING = 'missing'
-        MISSING_FIELD = 'missing_field'
-        INVALID = 'invalid'
-        ALREADY_EXISTS = 'already_exists'
-        UNPROCESSABLE = 'unprocessable'
-        CUSTOM = 'custom'
-        VALUES = %w[
-          missing missing_field invalid already_exists unprocessable custom
-        ].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the AgentTasksListTasksForRepoResponseErrorsItemCodeC90f4e0b SDK namespace.
-      module AgentTasksListTasksForRepoResponseErrorsItemCodeC90f4e0b
-        MISSING = 'missing'
-        MISSING_FIELD = 'missing_field'
-        INVALID = 'invalid'
-        ALREADY_EXISTS = 'already_exists'
-        UNPROCESSABLE = 'unprocessable'
-        CUSTOM = 'custom'
-        VALUES = %w[
-          missing missing_field invalid already_exists unprocessable custom
-        ].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the AgentTasksListTasksResponseErrorsItemCodeF891db39 SDK namespace.
-      module AgentTasksListTasksResponseErrorsItemCodeF891db39
-        MISSING = 'missing'
-        MISSING_FIELD = 'missing_field'
-        INVALID = 'invalid'
-        ALREADY_EXISTS = 'already_exists'
-        UNPROCESSABLE = 'unprocessable'
-        CUSTOM = 'custom'
-        VALUES = %w[
-          missing missing_field invalid already_exists unprocessable custom
-        ].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the AgentTasksGetTaskByRepoAndIdResponseVariant1SessionsItemState SDK namespace.
-      module AgentTasksGetTaskByRepoAndIdResponseVariant1SessionsItemState
-        QUEUED = 'queued'
-        IN_PROGRESS = 'in_progress'
-        COMPLETED = 'completed'
-        FAILED = 'failed'
-        IDLE = 'idle'
-        WAITING_FOR_USER = 'waiting_for_user'
-        TIMED_OUT = 'timed_out'
-        CANCELLED = 'cancelled'
-        VALUES = %w[
-          queued in_progress completed failed idle waiting_for_user timed_out
-          cancelled
-        ].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the AgentTasksGetTaskByIdResponseVariant0ArtifactsItemType SDK namespace.
-      module AgentTasksGetTaskByIdResponseVariant0ArtifactsItemType
-        PULL = 'pull'
-        BRANCH = 'branch'
-        VALUES = %w[pull branch].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the AgentTasksListTasksResponseErrorsItemCode000b1114 SDK namespace.
-      module AgentTasksListTasksResponseErrorsItemCode000b1114
-        MISSING = 'missing'
-        MISSING_FIELD = 'missing_field'
-        INVALID = 'invalid'
-        ALREADY_EXISTS = 'already_exists'
-        UNPROCESSABLE = 'unprocessable'
-        CUSTOM = 'custom'
-        VALUES = %w[
-          missing missing_field invalid already_exists unprocessable custom
-        ].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the AgentTasksGetTaskByIdResponseErrorsItemCode SDK namespace.
-      module AgentTasksGetTaskByIdResponseErrorsItemCode
-        MISSING = 'missing'
-        MISSING_FIELD = 'missing_field'
-        INVALID = 'invalid'
-        ALREADY_EXISTS = 'already_exists'
-        UNPROCESSABLE = 'unprocessable'
-        CUSTOM = 'custom'
-        VALUES = %w[
-          missing missing_field invalid already_exists unprocessable custom
-        ].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the AgentTasksGetTaskByRepoAndIdResponseVariant0State SDK namespace.
-      module AgentTasksGetTaskByRepoAndIdResponseVariant0State
-        QUEUED = 'queued'
-        IN_PROGRESS = 'in_progress'
-        COMPLETED = 'completed'
-        FAILED = 'failed'
-        IDLE = 'idle'
-        WAITING_FOR_USER = 'waiting_for_user'
-        TIMED_OUT = 'timed_out'
-        CANCELLED = 'cancelled'
-        VALUES = %w[
-          queued in_progress completed failed idle waiting_for_user timed_out
-          cancelled
-        ].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the AgentTasksCreateTaskInRepoResponseArtifactsItemType SDK namespace.
-      module AgentTasksCreateTaskInRepoResponseArtifactsItemType
-        PULL = 'pull'
-        BRANCH = 'branch'
-        VALUES = %w[pull branch].freeze
         def self.from_value(value)
           value
         end

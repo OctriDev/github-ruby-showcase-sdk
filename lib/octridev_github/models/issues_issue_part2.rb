@@ -5,6 +5,54 @@
 
 # issues_issue domain models (part 2)
 module OctridevGithub
+  # API model for IssueTypeAddedIssueEvent.
+  # Issue Type Added Issue Event
+  class IssueTypeAddedIssueEvent
+    include IssueEventForIssue
+    include TimelineIssueEvents
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalIssueTypeAddedIssueEventMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalIssueTypeAddedIssueEventMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalIssueTypeAddedIssueEventMetadata::DECODERS
+
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Required `string` value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :actor
+    # @return [String] Required `string` value serialized in the `event` wire field.
+    attr_reader :event
+    # @return [String] Required `string` value serialized in the `commit_id` wire field.
+    attr_reader :commit_id
+    # @return [String] Required `string` value serialized in the `commit_url` wire field.
+    attr_reader :commit_url
+    # @return [String] Required `string` value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [NullableIntegration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+    attr_reader :performed_via_github_app
+    # @return [IssueTypeWebhook] The type of issue.
+    attr_reader :issue_type
+    # @return [NullableIssueEventIntent] The intent behind an agent's action on an issue, including the rationale and confidence. Present (and `null` when the event carried no agent intent) on supported event types while the issue suggestions feature is enabled for the repository; the property is omitted entirely when the feature is disabled or the event type does not support intent.
+    attr_reader :intent
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalIssueTypeAddedIssueEventMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
   # Internal model hydration metadata.
   class SdkInternalIssueTypeChangedIssueEventMetadata
     FIELDS = {

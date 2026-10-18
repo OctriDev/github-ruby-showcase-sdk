@@ -9,124 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Repos SDK namespace.
     module Repos
-      # Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see GitHub's products in the GitHub Help documentation. Updating required status checks requires admin or owner permissions to the repository and branch protection to be enabled.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param branch [String] The name of the branch. Cannot contain wildcard
-      #   characters. To use wildcard characters in branch names, use the GraphQL API.
-      # @param strict [Boolean] Require branches to be up to date before merging.
-      # @param contexts [Array_of_String] **Closing down notice**: The list of
-      #   status checks to require in order to merge into this branch. If any of these
-      #   checks have recently been set by a particular GitHub App, they will be
-      #   required to come from that app in future for the branch to merge. Use
-      #   `checks` instead of `contexts` for more fine-grained control.
-      # @param checks [Array_of_Hash] The list of status checks to require in order
-      #   to merge into this branch.
-      def self.repos_update_status_check_protection(
-        config:,
-        owner:,
-        repo:,
-        branch:,
-        strict: NOT_GIVEN,
-        contexts: NOT_GIVEN,
-        checks: NOT_GIVEN,
-        request_options: nil
-      )
-        SdkClient.request(
-          'PATCH',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/branches/',
-            SdkClient.encode_path_segment(branch),
-            '/protection/required_status_checks'
-          ].join,
-          config: config,
-          body: {
-            'strict' => strict,
-            'contexts' => contexts,
-            'checks' => checks
-          },
-          return_type: ::OctridevGithub::StatusCheckPolicy,
-          decoder: :json,
-          operation_id: 'repos_update_status_check_protection',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
-        ).data
-      end
-
-      # Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see GitHub's products in the GitHub Help documentation.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param branch [String] The name of the branch. Cannot contain wildcard
-      #   characters. To use wildcard characters in branch names, use the GraphQL API.
-      def self.repos_remove_status_check_protection(
-        config:,
-        owner:,
-        repo:,
-        branch:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'DELETE',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/branches/',
-            SdkClient.encode_path_segment(branch),
-            '/protection/required_status_checks'
-          ].join,
-          config: config,
-          decoder: :empty,
-          operation_id: 'repos_remove_status_check_protection',
-          request_options: request_options
-        ).data
-      end
-
-      # Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see GitHub's products in the GitHub Help documentation.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param branch [String] The name of the branch. Cannot contain wildcard
-      #   characters. To use wildcard characters in branch names, use the GraphQL API.
-      def self.repos_get_all_status_check_contexts(
-        config:,
-        owner:,
-        repo:,
-        branch:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/branches/',
-            SdkClient.encode_path_segment(branch),
-            '/protection/required_status_checks/contexts'
-          ].join,
-          config: config,
-          decoder: :json,
-          operation_id: 'repos_get_all_status_check_contexts',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
-        ).data
-      end
-
       # Adds status check contexts to a protected branch in a repository. Supply the context names in `contexts`, either in an object or as a top-level array; the request body can be omitted. The `branch` name cannot contain wildcard characters.
       #
       # Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see GitHub's products in the GitHub Help documentation.
@@ -541,6 +423,119 @@ module OctridevGithub
           operation_id: 'repos_add_team_access_restrictions',
           request_options: request_options,
           errors: { '422' => ::OctridevGithub::ValidationError }
+        ).data
+      end
+
+      # Replaces the list of teams that have push access to a protected branch, including access for child teams. Provide the complete list in `teams`; teams not included in the new list lose push access.
+      #
+      # Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see GitHub's products in the GitHub Help documentation. Replaces the list of teams that have push access to this branch. This removes all teams that previously had push access and grants push access to the new list of teams.…
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param branch [String] The name of the branch. Cannot contain wildcard
+      #   characters. To use wildcard characters in branch names, use the GraphQL API.
+      def self.repos_set_team_access_restrictions(
+        config:,
+        owner:,
+        repo:,
+        branch:,
+        body: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'PUT',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/branches/',
+            SdkClient.encode_path_segment(branch),
+            '/protection/restrictions/teams'
+          ].join,
+          config: config,
+          body: body,
+          return_type: [::OctridevGithub::Team],
+          decoder: :json,
+          operation_id: 'repos_set_team_access_restrictions',
+          request_options: request_options,
+          errors: { '422' => ::OctridevGithub::ValidationError }
+        ).data
+      end
+
+      # Removes the specified team's push access to a protected branch, including access for child teams. Provide team slugs in `teams` to identify the teams whose access you want to remove.
+      #
+      # Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see GitHub's products in the GitHub Help documentation. Removes the ability of a team to push to this branch. You can also remove push access for child teams.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param branch [String] The name of the branch. Cannot contain wildcard
+      #   characters. To use wildcard characters in branch names, use the GraphQL API.
+      def self.repos_remove_team_access_restrictions(
+        config:,
+        owner:,
+        repo:,
+        branch:,
+        body: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'DELETE',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/branches/',
+            SdkClient.encode_path_segment(branch),
+            '/protection/restrictions/teams'
+          ].join,
+          config: config,
+          body: body,
+          return_type: [::OctridevGithub::Team],
+          decoder: :json,
+          operation_id: 'repos_remove_team_access_restrictions',
+          request_options: request_options,
+          errors: { '422' => ::OctridevGithub::ValidationError }
+        ).data
+      end
+
+      # Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see GitHub's products in the GitHub Help documentation. Lists the people who have push access to this branch.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param branch [String] The name of the branch. Cannot contain wildcard
+      #   characters. To use wildcard characters in branch names, use the GraphQL API.
+      def self.repos_get_users_with_access_to_protected_branch(
+        config:,
+        owner:,
+        repo:,
+        branch:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/branches/',
+            SdkClient.encode_path_segment(branch),
+            '/protection/restrictions/users'
+          ].join,
+          config: config,
+          return_type: [::OctridevGithub::SimpleUser],
+          decoder: :json,
+          operation_id: 'repos_get_users_with_access_to_protected_branch',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

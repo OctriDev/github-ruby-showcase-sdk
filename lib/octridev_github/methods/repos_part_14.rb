@@ -9,119 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Repos SDK namespace.
     module Repos
-      # Replaces the list of teams that have push access to a protected branch, including access for child teams. Provide the complete list in `teams`; teams not included in the new list lose push access.
-      #
-      # Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see GitHub's products in the GitHub Help documentation. Replaces the list of teams that have push access to this branch. This removes all teams that previously had push access and grants push access to the new list of teams.…
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param branch [String] The name of the branch. Cannot contain wildcard
-      #   characters. To use wildcard characters in branch names, use the GraphQL API.
-      def self.repos_set_team_access_restrictions(
-        config:,
-        owner:,
-        repo:,
-        branch:,
-        body: NOT_GIVEN,
-        request_options: nil
-      )
-        SdkClient.request(
-          'PUT',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/branches/',
-            SdkClient.encode_path_segment(branch),
-            '/protection/restrictions/teams'
-          ].join,
-          config: config,
-          body: body,
-          return_type: [::OctridevGithub::Team],
-          decoder: :json,
-          operation_id: 'repos_set_team_access_restrictions',
-          request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError }
-        ).data
-      end
-
-      # Removes the specified team's push access to a protected branch, including access for child teams. Provide team slugs in `teams` to identify the teams whose access you want to remove.
-      #
-      # Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see GitHub's products in the GitHub Help documentation. Removes the ability of a team to push to this branch. You can also remove push access for child teams.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param branch [String] The name of the branch. Cannot contain wildcard
-      #   characters. To use wildcard characters in branch names, use the GraphQL API.
-      def self.repos_remove_team_access_restrictions(
-        config:,
-        owner:,
-        repo:,
-        branch:,
-        body: NOT_GIVEN,
-        request_options: nil
-      )
-        SdkClient.request(
-          'DELETE',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/branches/',
-            SdkClient.encode_path_segment(branch),
-            '/protection/restrictions/teams'
-          ].join,
-          config: config,
-          body: body,
-          return_type: [::OctridevGithub::Team],
-          decoder: :json,
-          operation_id: 'repos_remove_team_access_restrictions',
-          request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError }
-        ).data
-      end
-
-      # Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see GitHub's products in the GitHub Help documentation. Lists the people who have push access to this branch.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param branch [String] The name of the branch. Cannot contain wildcard
-      #   characters. To use wildcard characters in branch names, use the GraphQL API.
-      def self.repos_get_users_with_access_to_protected_branch(
-        config:,
-        owner:,
-        repo:,
-        branch:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/branches/',
-            SdkClient.encode_path_segment(branch),
-            '/protection/restrictions/users'
-          ].join,
-          config: config,
-          return_type: [::OctridevGithub::SimpleUser],
-          decoder: :json,
-          operation_id: 'repos_get_users_with_access_to_protected_branch',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
-        ).data
-      end
-
       # Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see GitHub's products in the GitHub Help documentation. Grants the specified people push access for this branch. | Type | Description | | ------- |…
       #
       # @param owner [String] The account owner of the repository. The name is not
@@ -546,6 +433,109 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'repos_list_commit_comments_for_repo',
           request_options: request_options
+        ).data
+      end
+
+      # Gets a specified commit comment. This endpoint supports the following custom media types. For more information, see "Media types." - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type. - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`. -…
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param comment_id [Integer] The unique identifier of the comment.
+      def self.repos_get_commit_comment(
+        config:,
+        owner:,
+        repo:,
+        comment_id:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/comments/',
+            SdkClient.encode_path_segment(comment_id)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::CommitComment,
+          decoder: :json,
+          operation_id: 'repos_get_commit_comment',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError }
+        ).data
+      end
+
+      # Updates the contents of a specified commit comment. This endpoint supports the following custom media types. For more information, see "Media types." - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type. - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`. -…
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param comment_id [Integer] The unique identifier of the comment.
+      # @param body [String] The contents of the comment
+      def self.repos_update_commit_comment(
+        config:,
+        owner:,
+        repo:,
+        comment_id:,
+        body:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'PATCH',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/comments/',
+            SdkClient.encode_path_segment(comment_id)
+          ].join,
+          config: config,
+          body: {
+            'body' => body
+          },
+          return_type: ::OctridevGithub::CommitComment,
+          decoder: :json,
+          operation_id: 'repos_update_commit_comment',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError }
+        ).data
+      end
+
+      # Deletes a commit comment from the specified repository. Use `owner`, `repo`, and `comment_id` to identify the repository and comment to remove.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param comment_id [Integer] The unique identifier of the comment.
+      def self.repos_delete_commit_comment(
+        config:,
+        owner:,
+        repo:,
+        comment_id:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'DELETE',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/comments/',
+            SdkClient.encode_path_segment(comment_id)
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'repos_delete_commit_comment',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

@@ -9,103 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Repos SDK namespace.
     module Repos
-      # View the latest published full release for the repository. The latest release is the most recent non-prerelease, non-draft release, sorted by the `created_at` attribute. The `created_at` attribute is the date of the commit used for the release, and not the date when the release was drafted or published.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      def self.repos_get_latest_release(
-        config:,
-        owner:,
-        repo:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/releases/latest'
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::Release,
-          decoder: :json,
-          operation_id: 'repos_get_latest_release',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
-        ).data
-      end
-
-      # Retrieves a published release from a repository by its tag name. Use `tag` to identify the release you want to retrieve.
-      #
-      # Get a published release with the specified tag.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param tag [String] tag parameter
-      def self.repos_get_release_by_tag(
-        config:,
-        owner:,
-        repo:,
-        tag:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/releases/tags/',
-            SdkClient.encode_path_segment(tag)
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::Release,
-          decoder: :json,
-          operation_id: 'repos_get_release_by_tag',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
-        ).data
-      end
-
-      # Gets a public release with the specified release ID. > !NOTE] > This returns an `upload_url` key corresponding to the endpoint for uploading release assets. This key is a hypermedia resource. For more information, see "[Getting started with the REST API."
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param release_id [Integer] The unique identifier of the release.
-      def self.repos_get_release(
-        config:,
-        owner:,
-        repo:,
-        release_id:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/releases/',
-            SdkClient.encode_path_segment(release_id)
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::Release,
-          decoder: :json,
-          operation_id: 'repos_get_release',
-          request_options: request_options
-        ).data
-      end
-
       # Users with push access to the repository can edit a release. > !NOTE] > If the resolved target commit (the new value of `target_commitish` if you are changing it, otherwise the existing target) adds or modifies any file under `.github/workflows/` relative to the repository's default branch, the authenticating token must be authorized to modify workflows. Otherwise, this endpoint returns `404 Not Found`; some authentication paths surface `403 Resource not accessible by…
       #
       # @param owner [String] The account owner of the repository. The name is not
@@ -557,6 +460,105 @@ module OctridevGithub
           operation_id: 'repos_get_repo_rule_suite',
           request_options: request_options,
           errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+        ).data
+      end
+
+      # Get a ruleset for a repository. **Note:** To prevent leaking sensitive information, the `bypass_actors` property is only returned if the user making the API request has write access to the ruleset.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param ruleset_id [Integer] The ID of the ruleset.
+      # @param includes_parents [Boolean] Include rulesets configured at higher
+      #   levels that apply to this repository
+      def self.repos_get_repo_ruleset(
+        config:,
+        owner:,
+        repo:,
+        ruleset_id:,
+        includes_parents: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/rulesets/',
+            SdkClient.encode_path_segment(ruleset_id)
+          ].join,
+          config: config,
+          query: {
+            'includes_parents' => QueryValue.new(includes_parents, style: 'form', explode: true)
+          },
+          return_type: ::OctridevGithub::RepositoryRuleset,
+          decoder: :json,
+          operation_id: 'repos_get_repo_ruleset',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+        ).data
+      end
+
+      # Replaces a repository ruleset with the supplied configuration. Supply the ruleset properties you want to set, including its target, enforcement level, bypass actors, conditions, or rules. Use `evaluate` to test rules before enforcement; this option is available only with GitHub Enterprise.
+      #
+      # Update a ruleset for a repository.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param ruleset_id [Integer] The ID of the ruleset.
+      # @param name [String] The name of the ruleset.
+      # @param target [ReposUpdateRepoRulesetTarget] The target of the ruleset
+      # @param enforcement [RepositoryRuleEnforcement] The enforcement level of the
+      #   ruleset. `evaluate` allows admins to test rules before enforcing them.
+      #   Admins can view insights on the Rule Insights page (`evaluate` is only
+      #   available with GitHub Enterprise).
+      # @param bypass_actors [Array_of_RepositoryRulesetBypassActor] The actors that
+      #   can bypass the rules in this ruleset
+      # @param conditions [RepositoryRulesetConditions] Parameters for a repository
+      #   ruleset ref name condition
+      # @param rules [Array_of_RepositoryRule] An array of rules within the ruleset.
+      def self.repos_update_repo_ruleset(
+        config:,
+        owner:,
+        repo:,
+        ruleset_id:,
+        name: NOT_GIVEN,
+        target: NOT_GIVEN,
+        enforcement: NOT_GIVEN,
+        bypass_actors: NOT_GIVEN,
+        conditions: NOT_GIVEN,
+        rules: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'PUT',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/rulesets/',
+            SdkClient.encode_path_segment(ruleset_id)
+          ].join,
+          config: config,
+          body: {
+            'name' => name,
+            'target' => target,
+            'enforcement' => enforcement,
+            'bypass_actors' => bypass_actors,
+            'conditions' => conditions,
+            'rules' => rules
+          },
+          return_type: ::OctridevGithub::RepositoryRuleset,
+          decoder: :json,
+          operation_id: 'repos_update_repo_ruleset',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
     end

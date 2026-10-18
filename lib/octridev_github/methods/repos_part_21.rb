@@ -9,95 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Repos SDK namespace.
     module Repos
-      # Gets a health check of the DNS settings for the `CNAME` record configured for a repository's GitHub Pages. The first request to this endpoint returns a `202 Accepted` status and starts an asynchronous background task to get the results for the domain. After the background task completes, subsequent requests to this endpoint return a `200 OK` status with the health check results in the response. The authenticated user must be a repository administrator, maintainer, or have…
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      def self.repos_get_pages_health_check(
-        config:,
-        owner:,
-        repo:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/pages/health'
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::PagesHealthCheck,
-          decoder: :json,
-          operation_id: 'repos_get_pages_health_check',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
-        ).data
-      end
-
-      # Returns a boolean indicating whether or not private vulnerability reporting is enabled for the repository. For more information, see "Evaluating the security settings of a repository".
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      def self.repos_check_private_vulnerability_reporting(
-        config:,
-        owner:,
-        repo:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/private-vulnerability-reporting'
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::Methods::Repos::ReposCheckPrivateVulnerabilityReportingResponse,
-          decoder: :json,
-          operation_id: 'repos_check_private_vulnerability_reporting',
-          request_options: request_options,
-          errors: { '422' => ::OctridevGithub::BasicError }
-        ).data
-      end
-
-      # Enables private vulnerability reporting for a repository. The authenticated user must have admin access to the repository. For more information, see "Privately reporting a security vulnerability."
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      def self.repos_enable_private_vulnerability_reporting(
-        config:,
-        owner:,
-        repo:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'PUT',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/private-vulnerability-reporting'
-          ].join,
-          config: config,
-          decoder: :empty,
-          operation_id: 'repos_enable_private_vulnerability_reporting',
-          request_options: request_options,
-          errors: { '422' => ::OctridevGithub::BasicError }
-        ).data
-      end
-
       # Disables private vulnerability reporting for a repository. The authenticated user must have admin access to the repository. For more information, see "Privately reporting a security vulnerability".
       #
       # @param owner [String] The account owner of the repository. The name is not
@@ -542,6 +453,103 @@ module OctridevGithub
           operation_id: 'repos_generate_release_notes',
           request_options: request_options,
           errors: { '404' => ::OctridevGithub::BasicError }
+        ).data
+      end
+
+      # View the latest published full release for the repository. The latest release is the most recent non-prerelease, non-draft release, sorted by the `created_at` attribute. The `created_at` attribute is the date of the commit used for the release, and not the date when the release was drafted or published.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      def self.repos_get_latest_release(
+        config:,
+        owner:,
+        repo:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/releases/latest'
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::Release,
+          decoder: :json,
+          operation_id: 'repos_get_latest_release',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError }
+        ).data
+      end
+
+      # Retrieves a published release from a repository by its tag name. Use `tag` to identify the release you want to retrieve.
+      #
+      # Get a published release with the specified tag.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param tag [String] tag parameter
+      def self.repos_get_release_by_tag(
+        config:,
+        owner:,
+        repo:,
+        tag:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/releases/tags/',
+            SdkClient.encode_path_segment(tag)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::Release,
+          decoder: :json,
+          operation_id: 'repos_get_release_by_tag',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError }
+        ).data
+      end
+
+      # Gets a public release with the specified release ID. > !NOTE] > This returns an `upload_url` key corresponding to the endpoint for uploading release assets. This key is a hypermedia resource. For more information, see "[Getting started with the REST API."
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param release_id [Integer] The unique identifier of the release.
+      def self.repos_get_release(
+        config:,
+        owner:,
+        repo:,
+        release_id:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/releases/',
+            SdkClient.encode_path_segment(release_id)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::Release,
+          decoder: :json,
+          operation_id: 'repos_get_release',
+          request_options: request_options
         ).data
       end
     end

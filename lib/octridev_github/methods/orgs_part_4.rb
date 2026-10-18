@@ -437,6 +437,43 @@ module OctridevGithub
       end
 
       # Internal model hydration metadata.
+      class SdkInternalOrgsEnableOrDisableSecurityProductOnAllOrgReposMetadata
+        FIELDS = {
+          query_suite: 'query_suite'
+        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {
+          query_suite: lambda do |value|
+            ::OctridevGithub::Methods::Orgs::OrgsEnableOrDisableSecurityProductOnAllOrgReposQuerySuite.from_value(value)
+          end
+        }.freeze
+      end
+
+      # API model for OrgsEnableOrDisableSecurityProductOnAllOrgRepos.
+      class OrgsEnableOrDisableSecurityProductOnAllOrgRepos
+        CONSTRUCTION_SURFACE = :named
+        FIELDS = SdkInternalOrgsEnableOrDisableSecurityProductOnAllOrgReposMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalOrgsEnableOrDisableSecurityProductOnAllOrgReposMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalOrgsEnableOrDisableSecurityProductOnAllOrgReposMetadata::DECODERS
+
+        # @return [OrgsEnableOrDisableSecurityProductOnAllOrgReposQuerySuite] CodeQL query suite to be used. If you specify the `query_suite` parameter, the default setup will be configured with this query suite only on all repositories that didn't have default setup already configured. It will not change the query suite on repositories that already have default setup configured. If you don't specify any `query_suite` in your request, the preferred query suite of the organization will be applied.
+        attr_reader :query_suite
+
+        def initialize(**attributes)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          freeze
+        end
+
+        def self.from_hash(data)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        end
+
+        def to_h
+          SdkModel.to_h(self, FIELDS)
+        end
+      end
+
+      # Internal model hydration metadata.
       class SdkInternalOrgsUpdateMembershipForAuthenticatedUserMetadata
         FIELDS = {
           state: 'state'
@@ -505,54 +542,6 @@ module OctridevGithub
         BILLING_MANAGER = 'billing_manager'
         REINSTATE = 'reinstate'
         VALUES = %w[admin direct_member billing_manager reinstate].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the OrgsCreateArtifactDeploymentRecordRuntimeRisksItem SDK namespace.
-      module OrgsCreateArtifactDeploymentRecordRuntimeRisksItem
-        CRITICAL_RESOURCE = 'critical-resource'
-        INTERNET_EXPOSED = 'internet-exposed'
-        LATERAL_MOVEMENT = 'lateral-movement'
-        SENSITIVE_DATA = 'sensitive-data'
-        VALUES = %w[
-          critical-resource internet-exposed lateral-movement sensitive-data
-        ].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the OrgsUpdateMembershipForAuthenticatedUserState SDK namespace.
-      module OrgsUpdateMembershipForAuthenticatedUserState
-        ACTIVE = 'active'
-        VALUES = ['active'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the OrgsListOutsideCollaboratorsParameter SDK namespace.
-      module OrgsListOutsideCollaboratorsParameter
-        V_2_FA_DISABLED = '2fa_disabled'
-        V_2_FA_INSECURE = '2fa_insecure'
-        ALL = 'all'
-        VALUES = %w[2fa_disabled 2fa_insecure all].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the OrgsCreateClusterDeploymentRecordsJobDeploymentsItemRuntimeRisksItem SDK namespace.
-      module OrgsCreateClusterDeploymentRecordsJobDeploymentsItemRuntimeRisksItem
-        CRITICAL_RESOURCE = 'critical-resource'
-        INTERNET_EXPOSED = 'internet-exposed'
-        LATERAL_MOVEMENT = 'lateral-movement'
-        SENSITIVE_DATA = 'sensitive-data'
-        VALUES = %w[
-          critical-resource internet-exposed lateral-movement sensitive-data
-        ].freeze
         def self.from_value(value)
           value
         end

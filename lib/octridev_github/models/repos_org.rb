@@ -30,6 +30,29 @@ module OctridevGithub
       'code_scanning' => -> { RepositoryRuleCodeScanning },
       'copilot_code_review' => -> { RepositoryRuleCopilotCodeReview }
     }.freeze
+    UNDECIDED_VARIANTS = [
+      -> { RepositoryRuleCreation },
+      -> { RepositoryRuleUpdate },
+      -> { RepositoryRuleDeletion },
+      -> { RepositoryRuleRequiredLinearHistory },
+      -> { RepositoryRuleRequiredDeployments },
+      -> { RepositoryRuleRequiredSignatures },
+      -> { RepositoryRulePullRequest },
+      -> { RepositoryRuleRequiredStatusChecks },
+      -> { RepositoryRuleNonFastForward },
+      -> { RepositoryRuleCommitMessagePattern },
+      -> { RepositoryRuleCommitAuthorEmailPattern },
+      -> { RepositoryRuleCommitterEmailPattern },
+      -> { RepositoryRuleBranchNamePattern },
+      -> { RepositoryRuleTagNamePattern },
+      -> { RepositoryRuleFilePathRestriction },
+      -> { RepositoryRuleMaxFilePathLength },
+      -> { RepositoryRuleFileExtensionRestriction },
+      -> { RepositoryRuleMaxFileSize },
+      -> { RepositoryRuleWorkflows },
+      -> { RepositoryRuleCodeScanning },
+      -> { RepositoryRuleCopilotCodeReview }
+    ].freeze
 
     def self.from_hash(hash)
       return hash unless hash.is_a?(::Hash)

@@ -67,7 +67,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'search_issues_and_pull_requests',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
 
@@ -158,7 +158,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'search_repos',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError }
+          errors: { '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
 
@@ -237,7 +237,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'search_users',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError }
+          errors: { '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
     end

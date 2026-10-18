@@ -9,126 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Repos SDK namespace.
     module Repos
-      # Retrieves a status record for a deployment in a repository. You must have pull access to the repository to view the deployment status.
-      #
-      # Users with pull access can view a deployment status for a deployment:
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param deployment_id [Integer] deployment_id parameter
-      def self.repos_get_deployment_status(
-        config:,
-        owner:,
-        repo:,
-        deployment_id:,
-        status_id:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/deployments/',
-            SdkClient.encode_path_segment(deployment_id),
-            '/statuses/',
-            SdkClient.encode_path_segment(status_id)
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::DeploymentStatus,
-          decoder: :json,
-          operation_id: 'repos_get_deployment_status',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
-        ).data
-      end
-
-      # You can use this endpoint to trigger a webhook event called `repository_dispatch` when you want activity that happens outside of GitHub to trigger a GitHub Actions workflow or GitHub App webhook. You must configure your GitHub Actions workflow or GitHub App to run when the `repository_dispatch` event occurs. For an example `repository_dispatch` webhook payload, see "RepositoryDispatchEvent." The `client_payload` parameter is available for any extra information that your…
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param event_type [String] A custom webhook event name. Must be 100
-      #   characters or fewer.
-      # @param client_payload [Hash] JSON payload with extra information about the
-      #   webhook event that your action or workflow may use. The maximum number of
-      #   top-level properties is 10. The total size of the JSON payload must be less
-      #   than 64KB.
-      def self.repos_create_dispatch_event(
-        config:,
-        owner:,
-        repo:,
-        event_type:,
-        client_payload: NOT_GIVEN,
-        request_options: nil
-      )
-        Validation.validate_length('event_type', event_type, min: 1, max: 100)
-
-        SdkClient.request(
-          'POST',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/dispatches'
-          ].join,
-          config: config,
-          body: {
-            'event_type' => event_type,
-            'client_payload' => client_payload
-          },
-          decoder: :empty,
-          operation_id: 'repos_create_dispatch_event',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
-        ).data
-      end
-
-      # Lists the environments for a repository. Anyone with read access to the repository can use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param per_page [Integer] The number of results per page (max 100). For more
-      #   information, see "Using pagination in the REST API."
-      # @param page [Integer] The page number of the results to fetch. For more
-      #   information, see "Using pagination in the REST API."
-      def self.repos_get_all_environments(
-        config:,
-        owner:,
-        repo:,
-        per_page: NOT_GIVEN,
-        page: NOT_GIVEN,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/environments'
-          ].join,
-          config: config,
-          query: {
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
-          },
-          return_type: ::OctridevGithub::Methods::Repos::ReposGetAllEnvironmentsResponse,
-          decoder: :json,
-          operation_id: 'repos_get_all_environments',
-          request_options: request_options
-        ).data
-      end
-
       # > [!NOTE] > To get information about name patterns that branches must match in order to deploy to this environment, see "Get a deployment branch policy." Anyone with read access to the repository can use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
       #
       # @param owner [String] The account owner of the repository. The name is not
@@ -544,6 +424,128 @@ module OctridevGithub
           return_type: ::OctridevGithub::DeploymentProtectionRule,
           decoder: :json,
           operation_id: 'repos_create_deployment_protection_rule',
+          request_options: request_options
+        ).data
+      end
+
+      # Gets all custom deployment protection rule integrations that are available for an environment. The authenticated user must have admin or owner permissions to the repository to use this endpoint. For more information about environments, see "Using environments for deployment." For more information about the app that is providing this custom deployment rule, see "GET an app". OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with…
+      #
+      # @param environment_name [String] The name of the environment. The name must
+      #   be URL encoded. For example, any slashes in the name must be replaced with
+      #   `%2F`.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      def self.repos_list_custom_deployment_rule_integrations(
+        config:,
+        environment_name:,
+        repo:,
+        owner:,
+        page: NOT_GIVEN,
+        per_page: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/environments/',
+            SdkClient.encode_path_segment(environment_name),
+            '/deployment_protection_rules/apps'
+          ].join,
+          config: config,
+          query: {
+            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
+          },
+          return_type: ::OctridevGithub::Methods::Repos::ReposListCustomDeploymentRuleIntegrationsResponse,
+          decoder: :json,
+          operation_id: 'repos_list_custom_deployment_rule_integrations',
+          request_options: request_options
+        ).data
+      end
+
+      # Gets an enabled custom deployment protection rule for an environment. Anyone with read access to the repository can use this endpoint. For more information about environments, see "Using environments for deployment." For more information about the app that is providing this custom deployment rule, see `GET /apps/{app_slug}`. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param environment_name [String] The name of the environment. The name must
+      #   be URL encoded. For example, any slashes in the name must be replaced with
+      #   `%2F`.
+      # @param protection_rule_id [Integer] The unique identifier of the protection
+      #   rule.
+      def self.repos_get_custom_deployment_protection_rule(
+        config:,
+        owner:,
+        repo:,
+        environment_name:,
+        protection_rule_id:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/environments/',
+            SdkClient.encode_path_segment(environment_name),
+            '/deployment_protection_rules/',
+            SdkClient.encode_path_segment(protection_rule_id)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::DeploymentProtectionRule,
+          decoder: :json,
+          operation_id: 'repos_get_custom_deployment_protection_rule',
+          request_options: request_options
+        ).data
+      end
+
+      # Disables a custom deployment protection rule for an environment. The authenticated user must have admin or owner permissions to the repository to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+      #
+      # @param environment_name [String] The name of the environment. The name must
+      #   be URL encoded. For example, any slashes in the name must be replaced with
+      #   `%2F`.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param protection_rule_id [Integer] The unique identifier of the protection
+      #   rule.
+      def self.repos_disable_deployment_protection_rule(
+        config:,
+        environment_name:,
+        repo:,
+        owner:,
+        protection_rule_id:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'DELETE',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/environments/',
+            SdkClient.encode_path_segment(environment_name),
+            '/deployment_protection_rules/',
+            SdkClient.encode_path_segment(protection_rule_id)
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'repos_disable_deployment_protection_rule',
           request_options: request_options
         ).data
       end

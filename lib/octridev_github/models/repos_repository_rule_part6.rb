@@ -5,6 +5,52 @@
 
 # repos_repository_rule domain models (part 6)
 module OctridevGithub
+  # API model for RepositoryRuleParamsRequiredReviewerConfiguration.
+  # A reviewing team, and file patterns describing which files they must approve changes to.
+  class RepositoryRuleParamsRequiredReviewerConfiguration
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleParamsRequiredReviewerConfigurationMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleParamsRequiredReviewerConfigurationMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleParamsRequiredReviewerConfigurationMetadata::DECODERS
+
+    # @return [Array_of_String] Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use fnmatch syntax.
+    attr_reader :file_patterns
+    # @return [Integer] Minimum number of approvals required from the specified team. If set to zero, the team will be added to the pull request but approval is optional.
+    attr_reader :minimum_approvals
+    # @return [RepositoryRuleParamsReviewer] A required reviewing team
+    attr_reader :reviewer
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleParamsReviewerMetadata
+    FIELDS = {
+      id: 'id',
+      type: 'type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleParamsReviewerType.from_value(value)
+      end
+    }.freeze
+  end
+
   # API model for RepositoryRuleParamsReviewer.
   # A required reviewing team
   class RepositoryRuleParamsReviewer
@@ -630,56 +676,6 @@ module OctridevGithub
     VALUES = %w[Repository Organization].freeze
     def self.from_value(value)
       value
-    end
-  end
-
-  # Internal model hydration metadata.
-  class SdkInternalRepositoryRuleTagNamePatternParametersMetadata
-    FIELDS = {
-      name: 'name',
-      negate: 'negate',
-      operator: 'operator',
-      pattern: 'pattern'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      operator
-      pattern
-    ].freeze
-    DECODERS = {
-      operator: lambda do |value|
-        ::OctridevGithub::RepositoryRuleTagNamePatternParametersOperator.from_value(value)
-      end
-    }.freeze
-  end
-
-  # API model for RepositoryRuleTagNamePatternParameters.
-  # Optional object value serialized in the `parameters` wire field.
-  class RepositoryRuleTagNamePatternParameters
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalRepositoryRuleTagNamePatternParametersMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalRepositoryRuleTagNamePatternParametersMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalRepositoryRuleTagNamePatternParametersMetadata::DECODERS
-
-    # @return [String] How this rule appears when configuring it.
-    attr_reader :name
-    # @return [Boolean] If true, the rule will fail if the pattern matches.
-    attr_reader :negate
-    # @return [RepositoryRuleTagNamePatternParametersOperator] The operator to use for matching.
-    attr_reader :operator
-    # @return [String] The pattern to match with.
-    attr_reader :pattern
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
     end
   end
 end

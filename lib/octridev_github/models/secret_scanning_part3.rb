@@ -5,6 +5,56 @@
 
 # secret_scanning domain models (part 3)
 module OctridevGithub
+  # Internal model hydration metadata.
+  class SdkInternalSecretScanningLocationDiscussionBodyMetadata
+    FIELDS = {
+      discussion_body_url: 'discussion_body_url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      discussion_body_url
+    ].freeze
+    DECODERS = {}.freeze
+  end
+
+  # API model for SecretScanningLocationDiscussionBody.
+  # Represents a 'discussion_body' secret scanning location type. This location type shows that a secret was detected in the body of a discussion.
+  class SecretScanningLocationDiscussionBody
+    include NullableSecretScanningFirstDetectedLocation
+    include SecretScanningLocationDetails
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalSecretScanningLocationDiscussionBodyMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalSecretScanningLocationDiscussionBodyMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalSecretScanningLocationDiscussionBodyMetadata::DECODERS
+
+    # @return [String] The URL to the discussion where the secret was detected.
+    attr_reader :discussion_body_url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Internal model hydration metadata.
+  class SdkInternalSecretScanningLocationDiscussionCommentMetadata
+    FIELDS = {
+      discussion_comment_url: 'discussion_comment_url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      discussion_comment_url
+    ].freeze
+    DECODERS = {}.freeze
+  end
+
   # API model for SecretScanningLocationDiscussionComment.
   # Represents a 'discussion_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a discussion.
   class SecretScanningLocationDiscussionComment
@@ -625,31 +675,5 @@ module OctridevGithub
     def self.from_value(value)
       value
     end
-  end
-
-  # Defines the SecretScanningPatternOverrideSetting SDK namespace.
-  module SecretScanningPatternOverrideSetting
-    NOT_SET = 'not-set'
-    DISABLED = 'disabled'
-    ENABLED = 'enabled'
-    VALUES = %w[not-set disabled enabled].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Internal model hydration metadata.
-  class SdkInternalSecretScanningPushProtectionBypassMetadata
-    FIELDS = {
-      reason: 'reason',
-      expire_at: 'expire_at',
-      token_type: 'token_type'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      reason: lambda do |value|
-        ::OctridevGithub::SecretScanningPushProtectionBypassReason.from_value(value)
-      end
-    }.freeze
   end
 end

@@ -9,76 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Repos SDK namespace.
     module Repos
-      # Lists a detailed history of changes to a repository, such as pushes, merges, force pushes, and branch changes, and associates these changes with commits and users. For more information about viewing repository activity, see "Viewing activity and data for your repository."
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param direction [SchemaSchema0df64690] The direction to sort the results
-      #   by.
-      # @param per_page [Integer] The number of results per page (max 100). For more
-      #   information, see "Using pagination in the REST API."
-      # @param before [String] A cursor, as given in the Link header. If specified,
-      #   the query only searches for results before this cursor. For more
-      #   information, see "Using pagination in the REST API."
-      # @param after [String] A cursor, as given in the Link header. If specified,
-      #   the query only searches for results after this cursor. For more information,
-      #   see "Using pagination in the REST API."
-      # @param ref [String] The Git reference for the activities you want to list.
-      #   The `ref` for a branch can be formatted either as `refs/heads/BRANCH_NAME`
-      #   or `BRANCH_NAME`, where `BRANCH_NAME` is the name of your branch.
-      # @param actor [String] The GitHub username to use to filter by the actor who
-      #   performed the activity.
-      # @param time_period [ReposListActivitiesParameter] The time period to filter
-      #   by. For example, `day` will filter for activity that occurred in the past 24
-      #   hours, and `week` will filter for activity that occurred in the past 7 days
-      #   (168 hours).
-      # @param activity_type [ReposListActivitiesParameterDc62da83] The activity
-      #   type to filter by. For example, you can choose to filter by "force_push", to
-      #   see all force pushes to the repository.
-      def self.repos_list_activities(
-        config:,
-        owner:,
-        repo:,
-        direction: NOT_GIVEN,
-        per_page: NOT_GIVEN,
-        before: NOT_GIVEN,
-        after: NOT_GIVEN,
-        ref: NOT_GIVEN,
-        actor: NOT_GIVEN,
-        time_period: NOT_GIVEN,
-        activity_type: NOT_GIVEN,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/activity'
-          ].join,
-          config: config,
-          query: {
-            'direction' => QueryValue.new(direction, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'before' => QueryValue.new(before, style: 'form', explode: true),
-            'after' => QueryValue.new(after, style: 'form', explode: true),
-            'ref' => QueryValue.new(ref, style: 'form', explode: true),
-            'actor' => QueryValue.new(actor, style: 'form', explode: true),
-            'time_period' => QueryValue.new(time_period, style: 'form', explode: true),
-            'activity_type' => QueryValue.new(activity_type, style: 'form', explode: true)
-          },
-          return_type: [::OctridevGithub::Activity],
-          decoder: :json,
-          operation_id: 'repos_list_activities',
-          request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationErrorSimple }
-        ).data
-      end
-
       # Store an artifact attestation and associate it with a repository. The authenticated user must have write permission to the repository and, if using a fine-grained access token, the `attestations:write` permission is required. Artifact attestations are meant to be created using the attest action. For more information, see our guide on using artifact attestations to establish a build's provenance.
       #
       # @param owner [String] The account owner of the repository. The name is not
@@ -507,6 +437,109 @@ module OctridevGithub
           operation_id: 'repos_get_branch_protection',
           request_options: request_options,
           errors: { '404' => ::OctridevGithub::BasicError }
+        ).data
+      end
+
+      # Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see GitHub's products in the GitHub Help documentation. Protecting a branch requires admin or owner permissions to the repository. > [!NOTE] > Passing new arrays of `users` and `teams` replaces their previous values. >…
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param branch [String] The name of the branch. Cannot contain wildcard
+      #   characters. To use wildcard characters in branch names, use the GraphQL API.
+      # @param required_status_checks
+      #   [ReposUpdateBranchProtectionRequiredStatusChecks] Require status checks to
+      #   pass before merging. Set to `null` to disable.
+      # @param enforce_admins [Boolean] Enforce all configured restrictions for
+      #   administrators. Set to `true` to enforce required status checks for
+      #   repository administrators. Set to `null` to disable.
+      # @param required_pull_request_reviews
+      #   [ReposUpdateBranchProtectionRequiredPullRequestReviews] Require at least one
+      #   approving review on a pull request, before merging. Set to `null` to
+      #   disable.
+      # @param restrictions [ReposUpdateBranchProtectionRestrictions] Restrict who
+      #   can push to the protected branch. User, app, and team `restrictions` are
+      #   only available for organization-owned repositories. Set to `null` to
+      #   disable.
+      # @param required_linear_history [Boolean] Enforces a linear commit Git
+      #   history, which prevents anyone from pushing merge commits to a branch. Set
+      #   to `true` to enforce a linear commit history. Set to `false` to disable a
+      #   linear commit Git history. Your repository must allow squash merging or
+      #   rebase merging before you can enable a linear commit history. Default:
+      #   `false`. For more information, see "Requiring a linear commit history" in
+      #   the GitHub Help documentation.
+      # @param allow_force_pushes [Boolean] Permits force pushes to the protected
+      #   branch by anyone with write access to the repository. Set to `true` to allow
+      #   force pushes. Set to `false` or `null` to block force pushes. Default:
+      #   `false`. For more information, see "Enabling force pushes to a protected
+      #   branch" in the GitHub Help documentation."
+      # @param allow_deletions [Boolean] Allows deletion of the protected branch by
+      #   anyone with write access to the repository. Set to `false` to prevent
+      #   deletion of the protected branch. Default: `false`. For more information,
+      #   see "Enabling force pushes to a protected branch" in the GitHub Help
+      #   documentation.
+      # @param block_creations [Boolean] If set to `true`, the `restrictions` branch
+      #   protection settings which limits who can push will also block pushes which
+      #   create new branches, unless the push is initiated by a user, team, or app
+      #   which has the ability to push. Set to `true` to restrict new branch
+      #   creation. Default: `false`.
+      # @param required_conversation_resolution [Boolean] Requires all conversations
+      #   on code to be resolved before a pull request can be merged into a branch
+      #   that matches this rule. Set to `false` to disable. Default: `false`.
+      # @param lock_branch [Boolean] Whether to set the branch as read-only. If this
+      #   is true, users will not be able to push to the branch. Default: `false`.
+      # @param allow_fork_syncing [Boolean] Whether users can pull changes from
+      #   upstream when the branch is locked. Set to `true` to allow fork syncing. Set
+      #   to `false` to prevent fork syncing. Default: `false`.
+      def self.repos_update_branch_protection(
+        config:,
+        owner:,
+        repo:,
+        branch:,
+        required_status_checks:,
+        enforce_admins:,
+        required_pull_request_reviews:,
+        restrictions:,
+        required_linear_history: NOT_GIVEN,
+        allow_force_pushes: NOT_GIVEN,
+        allow_deletions: NOT_GIVEN,
+        block_creations: NOT_GIVEN,
+        required_conversation_resolution: NOT_GIVEN,
+        lock_branch: NOT_GIVEN,
+        allow_fork_syncing: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'PUT',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/branches/',
+            SdkClient.encode_path_segment(branch),
+            '/protection'
+          ].join,
+          config: config,
+          body: {
+            'required_status_checks' => required_status_checks,
+            'enforce_admins' => enforce_admins,
+            'required_pull_request_reviews' => required_pull_request_reviews,
+            'restrictions' => restrictions,
+            'required_linear_history' => required_linear_history,
+            'allow_force_pushes' => allow_force_pushes,
+            'allow_deletions' => allow_deletions,
+            'block_creations' => block_creations,
+            'required_conversation_resolution' => required_conversation_resolution,
+            'lock_branch' => lock_branch,
+            'allow_fork_syncing' => allow_fork_syncing
+          },
+          return_type: ::OctridevGithub::ProtectedBranch,
+          decoder: :json,
+          operation_id: 'repos_update_branch_protection',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple }
         ).data
       end
     end

@@ -177,7 +177,7 @@ module OctridevGithub
       end
 
       # Internal model hydration metadata.
-      class SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemCreatorVariant0Metadata
+      class SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemCreatorMetadata
         FIELDS = {
           id: 'id'
         }.freeze
@@ -185,13 +185,13 @@ module OctridevGithub
         DECODERS = {}.freeze
       end
 
-      # API model for AgentAutomationsListAutomationTasksResponseTasksItemCreatorVariant0.
-      # A GitHub user
-      class AgentAutomationsListAutomationTasksResponseTasksItemCreatorVariant0
+      # API model for AgentAutomationsListAutomationTasksResponseTasksItemCreator.
+      # The entity who created this task
+      class AgentAutomationsListAutomationTasksResponseTasksItemCreator
         CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemCreatorVariant0Metadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemCreatorVariant0Metadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemCreatorVariant0Metadata::DECODERS
+        FIELDS = SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemCreatorMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemCreatorMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemCreatorMetadata::DECODERS
 
         # @return [Integer] The unique identifier of the user
         attr_reader :id
@@ -332,7 +332,7 @@ module OctridevGithub
             ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsListAutomationTasksResponseTasksItemArtifactsItemType.from_value(value)
           end,
           data: lambda do |value|
-            ::OctridevGithub::TasksItemArtifactsItemData.from_hash(value)
+            ::OctridevGithub::AgentAutomationsListAutomationTasksResponseTasksItemArtifactsItemData.from_hash(value)
           end
         }.freeze
       end
@@ -349,7 +349,7 @@ module OctridevGithub
         attr_reader :provider
         # @return [AgentAutomationsListAutomationTasksResponseTasksItemArtifactsItemType] Type of artifact. Available Values: `pull`, `branch`.
         attr_reader :type
-        # @return [TasksItemArtifactsItemData] Resource data (shape depends on type)
+        # @return [AgentAutomationsListAutomationTasksResponseTasksItemArtifactsItemData] Resource data (shape depends on type)
         attr_reader :data
 
         def initialize(**attributes)
@@ -427,7 +427,7 @@ module OctridevGithub
         ].freeze
         DECODERS = {
           creator: lambda do |value|
-            ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsListAutomationTasksResponseTasksItemCreatorVariant0.from_hash(value)
+            ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsListAutomationTasksResponseTasksItemCreator.from_hash(value)
           end,
           creator_type: lambda do |value|
             ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsListAutomationTasksResponseTasksItemCreatorType.from_value(value)
@@ -468,7 +468,7 @@ module OctridevGithub
         attr_reader :html_url
         # @return [String] Human-readable name derived from the task prompt
         attr_reader :name
-        # @return [AgentAutomationsListAutomationTasksResponseTasksItemCreatorVariant0] The entity who created this task
+        # @return [AgentAutomationsListAutomationTasksResponseTasksItemCreator] The entity who created this task
         attr_reader :creator
         # @return [AgentAutomationsListAutomationTasksResponseTasksItemCreatorType] Type of the task creator
         attr_reader :creator_type

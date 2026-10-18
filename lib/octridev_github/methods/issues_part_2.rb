@@ -9,239 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Issues SDK namespace.
     module Issues
-      # API model for IssuePullRequest.
-      # Optional object value serialized in the `pull_request` wire field.
-      class IssuePullRequest
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalIssuePullRequestMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalIssuePullRequestMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalIssuePullRequestMetadata::DECODERS
-
-        # @return [String] Optional `date-time`-formatted value serialized in the `merged_at` wire field.
-        attr_reader :merged_at
-        # @return [String] Required `uri`-formatted value serialized in the `diff_url` wire field.
-        attr_reader :diff_url
-        # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-        attr_reader :html_url
-        # @return [String] Required `uri`-formatted value serialized in the `patch_url` wire field.
-        attr_reader :patch_url
-        # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-        attr_reader :url
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalIssuePullRequestMetadata::NULLABLE_FIELDS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalIssuesUpdateResponseVariant1SuggestionsTypeItemMetadata
-        FIELDS = {
-          value: 'value',
-          rationale: 'rationale',
-          suggest: 'suggest',
-          confidence: 'confidence',
-          ignored: 'ignored',
-          ignored_reason: 'ignored_reason'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          confidence: lambda do |value|
-            ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsTypeItemConfidence.from_value(value)
-          end,
-          ignored_reason: lambda do |value|
-            ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsTypeItemIgnoredReason.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for IssuesUpdateResponseVariant1SuggestionsTypeItem.
-      class IssuesUpdateResponseVariant1SuggestionsTypeItem
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalIssuesUpdateResponseVariant1SuggestionsTypeItemMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalIssuesUpdateResponseVariant1SuggestionsTypeItemMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalIssuesUpdateResponseVariant1SuggestionsTypeItemMetadata::DECODERS
-
-        attr_reader :value, :rationale, :suggest, :confidence, :ignored, :ignored_reason
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalIssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItemMetadata
-        FIELDS = {
-          field_id: 'field_id',
-          value: 'value',
-          rationale: 'rationale',
-          suggest: 'suggest',
-          confidence: 'confidence',
-          ignored: 'ignored',
-          ignored_reason: 'ignored_reason'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          confidence: lambda do |value|
-            ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItemConfidence.from_value(value)
-          end,
-          ignored_reason: lambda do |value|
-            ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItemIgnoredReason.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for IssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItem.
-      class IssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItem
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalIssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItemMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalIssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItemMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalIssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItemMetadata::DECODERS
-
-        attr_reader :field_id, :value, :rationale, :suggest, :confidence, :ignored, :ignored_reason
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalIssuesUpdateResponseVariant1SuggestionsLabelsItemMetadata
-        FIELDS = {
-          name: 'name',
-          rationale: 'rationale',
-          suggest: 'suggest',
-          confidence: 'confidence',
-          ignored: 'ignored',
-          ignored_reason: 'ignored_reason'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          confidence: lambda do |value|
-            ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsLabelsItemConfidence.from_value(value)
-          end,
-          ignored_reason: lambda do |value|
-            ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsLabelsItemIgnoredReason.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for IssuesUpdateResponseVariant1SuggestionsLabelsItem.
-      class IssuesUpdateResponseVariant1SuggestionsLabelsItem
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalIssuesUpdateResponseVariant1SuggestionsLabelsItemMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalIssuesUpdateResponseVariant1SuggestionsLabelsItemMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalIssuesUpdateResponseVariant1SuggestionsLabelsItemMetadata::DECODERS
-
-        attr_reader :name, :rationale, :suggest, :confidence, :ignored, :ignored_reason
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalIssuesUpdateResponseVariant1SuggestionsAssigneesItemMetadata
-        FIELDS = {
-          login: 'login',
-          rationale: 'rationale',
-          suggest: 'suggest',
-          confidence: 'confidence',
-          ignored: 'ignored',
-          ignored_reason: 'ignored_reason'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          confidence: lambda do |value|
-            ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsAssigneesItemConfidence.from_value(value)
-          end,
-          ignored_reason: lambda do |value|
-            ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsAssigneesItemIgnoredReason.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for IssuesUpdateResponseVariant1SuggestionsAssigneesItem.
-      class IssuesUpdateResponseVariant1SuggestionsAssigneesItem
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalIssuesUpdateResponseVariant1SuggestionsAssigneesItemMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalIssuesUpdateResponseVariant1SuggestionsAssigneesItemMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalIssuesUpdateResponseVariant1SuggestionsAssigneesItemMetadata::DECODERS
-
-        attr_reader :login, :rationale, :suggest, :confidence, :ignored, :ignored_reason
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalIssuesUpdateResponseVariant1SuggestionsStateItemMetadata
-        FIELDS = {
-          value: 'value',
-          state_reason: 'state_reason',
-          duplicate_issue_id: 'duplicate_issue_id',
-          rationale: 'rationale',
-          suggest: 'suggest',
-          confidence: 'confidence',
-          ignored: 'ignored',
-          ignored_reason: 'ignored_reason'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          confidence: lambda do |value|
-            ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsStateItemConfidence.from_value(value)
-          end,
-          ignored_reason: lambda do |value|
-            ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsStateItemIgnoredReason.from_value(value)
-          end
-        }.freeze
-      end
-
       # API model for IssuesUpdateResponseVariant1SuggestionsStateItem.
       class IssuesUpdateResponseVariant1SuggestionsStateItem
         CONSTRUCTION_SURFACE = :named
@@ -393,6 +160,9 @@ module OctridevGithub
           user: lambda do |value|
             ::OctridevGithub::NullableSimpleUser.from_hash(value)
           end,
+          labels: lambda do |value|
+            value&.map { |item| ::OctridevGithub::IssueLabelsItem.from_hash(item) }
+          end,
           assignee: lambda do |value|
             ::OctridevGithub::NullableSimpleUser.from_hash(value)
           end,
@@ -482,7 +252,7 @@ module OctridevGithub
         attr_reader :body
         # @return [NullableSimpleUser] A GitHub user.
         attr_reader :user
-        # @return [Array_of_Object] Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository
+        # @return [Array_of_IssueLabelsItem] Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository
         attr_reader :labels
         # @return [NullableSimpleUser] A GitHub user.
         attr_reader :assignee
@@ -549,6 +319,235 @@ module OctridevGithub
         def to_h
           SdkModel.to_h(self, FIELDS)
         end
+      end
+
+      # Internal model hydration metadata.
+      class SdkInternalIssuesAddAssigneesMetadata
+        FIELDS = {
+          assignees: 'assignees'
+        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {
+          assignees: lambda do |value|
+            value&.map { |item| ::OctridevGithub::IssuesAddAssigneesRequestAssigneesItem.from_hash(item) }
+          end
+        }.freeze
+      end
+
+      # API model for IssuesAddAssignees.
+      class IssuesAddAssignees
+        CONSTRUCTION_SURFACE = :named
+        FIELDS = SdkInternalIssuesAddAssigneesMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalIssuesAddAssigneesMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalIssuesAddAssigneesMetadata::DECODERS
+
+        # @return [Array_of_IssuesAddAssigneesRequestAssigneesItem] Usernames of people to assign this issue to. _NOTE: Only users with push access can add assignees to an issue. Assignees are silently ignored otherwise._
+        attr_reader :assignees
+
+        def initialize(**attributes)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          freeze
+        end
+
+        def self.from_hash(data)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        end
+
+        def to_h
+          SdkModel.to_h(self, FIELDS)
+        end
+      end
+
+      # Internal model hydration metadata.
+      class SdkInternalIssuesRemoveAssigneesMetadata
+        FIELDS = {
+          assignees: 'assignees'
+        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
+      end
+
+      # API model for IssuesRemoveAssignees.
+      class IssuesRemoveAssignees
+        CONSTRUCTION_SURFACE = :named
+        FIELDS = SdkInternalIssuesRemoveAssigneesMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalIssuesRemoveAssigneesMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalIssuesRemoveAssigneesMetadata::DECODERS
+
+        # @return [Array_of_String] Usernames of assignees to remove from an issue. _NOTE: Only users with push access can remove assignees from an issue. Assignees are silently ignored otherwise._
+        attr_reader :assignees
+
+        def initialize(**attributes)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          freeze
+        end
+
+        def self.from_hash(data)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        end
+
+        def to_h
+          SdkModel.to_h(self, FIELDS)
+        end
+      end
+
+      # Internal model hydration metadata.
+      class SdkInternalIssuesCreateCommentMetadata
+        FIELDS = {
+          body: 'body'
+        }.freeze
+        REQUIRED_FIELDS = %i[
+          body
+        ].freeze
+        DECODERS = {}.freeze
+      end
+
+      # API model for IssuesCreateComment.
+      class IssuesCreateComment
+        CONSTRUCTION_SURFACE = :named
+        FIELDS = SdkInternalIssuesCreateCommentMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalIssuesCreateCommentMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalIssuesCreateCommentMetadata::DECODERS
+
+        # @return [String] The contents of the comment.
+        attr_reader :body
+
+        def initialize(**attributes)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          freeze
+        end
+
+        def self.from_hash(data)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        end
+
+        def to_h
+          SdkModel.to_h(self, FIELDS)
+        end
+      end
+
+      # Internal model hydration metadata.
+      class SdkInternalIssuesAddBlockedByDependencyMetadata
+        FIELDS = {
+          issue_id: 'issue_id'
+        }.freeze
+        REQUIRED_FIELDS = %i[
+          issue_id
+        ].freeze
+        DECODERS = {}.freeze
+      end
+
+      # API model for IssuesAddBlockedByDependency.
+      class IssuesAddBlockedByDependency
+        CONSTRUCTION_SURFACE = :named
+        FIELDS = SdkInternalIssuesAddBlockedByDependencyMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalIssuesAddBlockedByDependencyMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalIssuesAddBlockedByDependencyMetadata::DECODERS
+
+        # @return [Integer] The id of the issue that blocks the current issue
+        attr_reader :issue_id
+
+        def initialize(**attributes)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          freeze
+        end
+
+        def self.from_hash(data)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        end
+
+        def to_h
+          SdkModel.to_h(self, FIELDS)
+        end
+      end
+
+      # Internal model hydration metadata.
+      class SdkInternalIssuesAddIssueFieldValuesIssueFieldValuesItemMetadata
+        FIELDS = {
+          field_id: 'field_id',
+          value: 'value'
+        }.freeze
+        REQUIRED_FIELDS = %i[
+          field_id
+          value
+        ].freeze
+        DECODERS = {}.freeze
+      end
+
+      # API model for IssuesAddIssueFieldValuesIssueFieldValuesItem.
+      class IssuesAddIssueFieldValuesIssueFieldValuesItem
+        CONSTRUCTION_SURFACE = :named
+        FIELDS = SdkInternalIssuesAddIssueFieldValuesIssueFieldValuesItemMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalIssuesAddIssueFieldValuesIssueFieldValuesItemMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalIssuesAddIssueFieldValuesIssueFieldValuesItemMetadata::DECODERS
+
+        # @return [Integer] The ID of the issue field to set
+        attr_reader :field_id
+        # @return [Object] The value to set for the field. The type depends on the field's data type: - For text fields: provide a string value - For single_select fields: provide the option name as a string (must match an existing option) - For number fields: provide a numeric value - For multi_select fields: provide an array of option names (must match existing options) - For date fields: provide an ISO 8601 date string
+        attr_reader :value
+
+        def initialize(**attributes)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          freeze
+        end
+
+        def self.from_hash(data)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        end
+
+        def to_h
+          SdkModel.to_h(self, FIELDS)
+        end
+      end
+
+      # Internal model hydration metadata.
+      class SdkInternalIssuesAddIssueFieldValuesMetadata
+        FIELDS = {
+          issue_field_values: 'issue_field_values'
+        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {
+          issue_field_values: lambda do |value|
+            value&.map { |item| ::OctridevGithub::Methods::Issues::IssuesAddIssueFieldValuesIssueFieldValuesItem.from_hash(item) }
+          end
+        }.freeze
+      end
+
+      # API model for IssuesAddIssueFieldValues.
+      class IssuesAddIssueFieldValues
+        CONSTRUCTION_SURFACE = :named
+        FIELDS = SdkInternalIssuesAddIssueFieldValuesMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalIssuesAddIssueFieldValuesMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalIssuesAddIssueFieldValuesMetadata::DECODERS
+
+        # @return [Array_of_IssuesAddIssueFieldValuesIssueFieldValuesItem] An array of issue field values to add to this issue. Each field value must include the field ID and the value to set.
+        attr_reader :issue_field_values
+
+        def initialize(**attributes)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          freeze
+        end
+
+        def self.from_hash(data)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        end
+
+        def to_h
+          SdkModel.to_h(self, FIELDS)
+        end
+      end
+
+      # Internal model hydration metadata.
+      class SdkInternalIssuesSetIssueFieldValuesIssueFieldValuesItemMetadata
+        FIELDS = {
+          field_id: 'field_id',
+          value: 'value'
+        }.freeze
+        REQUIRED_FIELDS = %i[
+          field_id
+          value
+        ].freeze
+        DECODERS = {}.freeze
       end
     end
   end

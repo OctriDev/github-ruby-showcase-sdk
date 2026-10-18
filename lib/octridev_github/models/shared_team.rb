@@ -118,7 +118,6 @@ module OctridevGithub
   class Team
     include CopilotSeatDetailsAssigningTeam
     include PendingDeploymentReviewersItemReviewer
-    include ReviewersItemReviewer
 
     CONSTRUCTION_SURFACE = :named
     FIELDS = SdkInternalTeamMetadata::FIELDS

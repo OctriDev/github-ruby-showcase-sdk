@@ -9,162 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Actions SDK namespace.
     module Actions
-      # Lists the active concurrency groups for a repository. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param per_page [Integer] The number of results per page (max 100). For more
-      #   information, see "Using pagination in the REST API."
-      # @param after [String] A cursor, as given in the Link header. If specified,
-      #   the query only searches for results after this cursor. For more information,
-      #   see "Using pagination in the REST API."
-      def self.actions_list_concurrency_groups_for_repository(
-        config:,
-        owner:,
-        repo:,
-        per_page: NOT_GIVEN,
-        after: NOT_GIVEN,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/actions/concurrency_groups'
-          ].join,
-          config: config,
-          query: {
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'after' => QueryValue.new(after, style: 'form', explode: true)
-          },
-          return_type: ::OctridevGithub::ConcurrencyGroupList,
-          decoder: :json,
-          operation_id: 'actions_list_concurrency_groups_for_repository',
-          request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError }
-        ).data
-      end
-
-      # Gets a specific concurrency group for a repository, including all instances in the group's queue. Returns 404 if the group is inactive or does not exist. Optionally, pass `ahead_of_run` or `ahead_of_job` to filter the results to only the items ahead of the specified workflow run or job in the queue, plus the specified item itself (returned as the last element). This is useful for determining what is blocking a particular run or job. Returns 422 if the specified run or job is…
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param concurrency_group_name [String] The name of the concurrency group.
-      # @param ahead_of_run [Integer] Filter to items ahead of this workflow run ID
-      #   in the queue, plus the run itself. Matches workflow-level concurrency and
-      #   reusable-workflow leases held on behalf of the run. Mutually exclusive with
-      #   `ahead_of_job`.
-      # @param ahead_of_job [Integer] Filter to items ahead of this job ID in the
-      #   queue, plus the job itself. Matches job-level concurrency and
-      #   reusable-workflow leases on the job's ancestor paths. Mutually exclusive
-      #   with `ahead_of_run`.
-      def self.actions_get_concurrency_group_for_repository(
-        config:,
-        owner:,
-        repo:,
-        concurrency_group_name:,
-        ahead_of_run: NOT_GIVEN,
-        ahead_of_job: NOT_GIVEN,
-        request_options: nil
-      )
-        Validation.if_given(ahead_of_run) { Validation.validate_range('ahead_of_run', ahead_of_run, min: 1) }
-
-        Validation.if_given(ahead_of_job) { Validation.validate_range('ahead_of_job', ahead_of_job, min: 1) }
-
-        SdkClient.request(
-          'GET',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/actions/concurrency_groups/',
-            SdkClient.encode_path_segment(concurrency_group_name)
-          ].join,
-          config: config,
-          query: {
-            'ahead_of_run' => QueryValue.new(ahead_of_run, style: 'form', explode: true),
-            'ahead_of_job' => QueryValue.new(ahead_of_job, style: 'form', explode: true)
-          },
-          return_type: ::OctridevGithub::ConcurrencyGroup,
-          decoder: :json,
-          operation_id: 'actions_get_concurrency_group_for_repository',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
-        ).data
-      end
-
-      # Gets a specific job in a workflow run. Anyone with read access to the repository can use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param job_id [Integer] The unique identifier of the job.
-      def self.actions_get_job_for_workflow_run(
-        config:,
-        owner:,
-        repo:,
-        job_id:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/actions/jobs/',
-            SdkClient.encode_path_segment(job_id)
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::Job,
-          decoder: :json,
-          operation_id: 'actions_get_job_for_workflow_run',
-          request_options: request_options
-        ).data
-      end
-
-      # Gets a redirect URL to download a plain text file of logs for a workflow job. This link expires after 1 minute. Look for `Location:` in the response header to find the URL for the download. Anyone with read access to the repository can use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param job_id [Integer] The unique identifier of the job.
-      def self.actions_download_job_logs_for_workflow_run(
-        config:,
-        owner:,
-        repo:,
-        job_id:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/actions/jobs/',
-            SdkClient.encode_path_segment(job_id),
-            '/logs'
-          ].join,
-          config: config,
-          decoder: :empty,
-          operation_id: 'actions_download_job_logs_for_workflow_run',
-          request_options: request_options
-        ).data
-      end
-
       # Re-run a job and its dependent jobs in a workflow run. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
       #
       # @param owner [String] The account owner of the repository. The name is not
@@ -536,6 +380,167 @@ module OctridevGithub
           decoder: :empty,
           operation_id: 'actions_set_workflow_access_to_repository',
           request_options: request_options
+        ).data
+      end
+
+      # Gets retention settings for checks, workflow runs, commit statuses, artifacts, and logs for a repository. Checks include check suites, check runs, and check annotations. These settings also apply to checks and commit statuses created by third-party integrations, and are not limited to data created by GitHub Actions. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      def self.actions_get_artifact_and_log_retention_settings_repository(
+        config:,
+        owner:,
+        repo:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/actions/permissions/artifact-and-log-retention'
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::ActionsArtifactAndLogRetentionResponse,
+          decoder: :json,
+          operation_id: 'actions_get_artifact_and_log_retention_settings_repository',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError }
+        ).data
+      end
+
+      # Sets retention settings for checks, workflow runs, commit statuses, artifacts, and logs for a repository. Checks include check suites, check runs, and check annotations. These settings also apply to checks and commit statuses created by third-party integrations, and are not limited to data created by GitHub Actions. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param days [Integer] The number of days to retain checks, workflow runs,
+      #   commit statuses, artifacts, and logs
+      def self.actions_set_artifact_and_log_retention_settings_repository(
+        config:,
+        owner:,
+        repo:,
+        days:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'PUT',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/actions/permissions/artifact-and-log-retention'
+          ].join,
+          config: config,
+          body: {
+            'days' => days
+          },
+          decoder: :empty,
+          operation_id: 'actions_set_artifact_and_log_retention_settings_repository',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+        ).data
+      end
+
+      # Gets the fork PR contributor approval policy for a repository. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      def self.actions_get_fork_pr_contributor_approval_permissions_repository(
+        config:,
+        owner:,
+        repo:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/actions/permissions/fork-pr-contributor-approval'
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::ActionsForkPrContributorApproval,
+          decoder: :json,
+          operation_id: 'actions_get_fork_pr_contributor_approval_permissions_repository',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError }
+        ).data
+      end
+
+      # Sets the fork PR contributor approval policy for a repository. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param approval_policy [ActionsForkPrContributorApprovalApprovalPolicy] The
+      #   policy that controls when fork PR workflows require approval from a
+      #   maintainer.
+      def self.actions_set_fork_pr_contributor_approval_permissions_repository(
+        config:,
+        owner:,
+        repo:,
+        approval_policy:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'PUT',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/actions/permissions/fork-pr-contributor-approval'
+          ].join,
+          config: config,
+          body: {
+            'approval_policy' => approval_policy
+          },
+          decoder: :empty,
+          operation_id: 'actions_set_fork_pr_contributor_approval_permissions_repository',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+        ).data
+      end
+
+      # Gets the settings for whether workflows from fork pull requests can run on a private repository. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      def self.actions_get_private_repo_fork_pr_workflows_settings_repository(
+        config:,
+        owner:,
+        repo:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/actions/permissions/fork-pr-workflows-private-repos'
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::ActionsForkPrWorkflowsPrivateRepos,
+          decoder: :json,
+          operation_id: 'actions_get_private_repo_fork_pr_workflows_settings_repository',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

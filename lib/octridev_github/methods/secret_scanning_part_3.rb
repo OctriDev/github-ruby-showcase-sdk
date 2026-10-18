@@ -126,7 +126,8 @@ module OctridevGithub
           return_type: [::OctridevGithub::SecretScanningAlert],
           decoder: :json,
           operation_id: 'secret_scanning_list_alerts_for_repo',
-          request_options: request_options
+          request_options: request_options,
+          errors: { '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
 
@@ -221,7 +222,8 @@ module OctridevGithub
           return_type: ::OctridevGithub::SecretScanningAlertWithMetadata,
           decoder: :json,
           operation_id: 'secret_scanning_get_alert',
-          request_options: request_options
+          request_options: request_options,
+          errors: { '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
 
@@ -280,7 +282,8 @@ module OctridevGithub
           return_type: ::OctridevGithub::SecretScanningAlertWithMetadata,
           decoder: :json,
           operation_id: 'secret_scanning_update_alert',
-          request_options: request_options
+          request_options: request_options,
+          errors: { '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
 
@@ -326,7 +329,8 @@ module OctridevGithub
           return_type: [::OctridevGithub::SecretScanningLocation],
           decoder: :json,
           operation_id: 'secret_scanning_list_locations_for_alert',
-          request_options: request_options
+          request_options: request_options,
+          errors: { '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
 
@@ -527,46 +531,6 @@ module OctridevGithub
           operation_id: 'secret_scanning_update_repo_custom_pattern',
           request_options: request_options,
           errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '412' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
-        ).data
-      end
-
-      # Creates a bypass for a previously push protected secret. The authenticated user must be the original author of the committed secret. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param reason [SecretScanningPushProtectionBypassReason] The reason for
-      #   bypassing push protection.
-      # @param placeholder_id [SecretScanningPushProtectionBypassPlaceholderId] The
-      #   ID of the push protection bypass placeholder. This value is returned on any
-      #   push protected routes.
-      def self.secret_scanning_create_push_protection_bypass(
-        config:,
-        owner:,
-        repo:,
-        reason:,
-        placeholder_id:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'POST',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/secret-scanning/push-protection-bypasses'
-          ].join,
-          config: config,
-          body: {
-            'reason' => reason,
-            'placeholder_id' => placeholder_id
-          },
-          return_type: ::OctridevGithub::SecretScanningPushProtectionBypass,
-          decoder: :json,
-          operation_id: 'secret_scanning_create_push_protection_bypass',
-          request_options: request_options
         ).data
       end
     end

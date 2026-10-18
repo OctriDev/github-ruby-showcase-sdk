@@ -509,12 +509,16 @@ module OctridevGithub
   # Internal model hydration metadata.
   class SdkInternalRuleSuitePullRequestMetadata
     FIELDS = {
-      pull_request: 'pull_request'
+      pull_request: 'pull_request',
+      rule_type: 'rule_type'
     }.freeze
     REQUIRED_FIELDS = %i[].freeze
     DECODERS = {
       pull_request: lambda do |value|
         ::OctridevGithub::RuleSuitePullRequestPullRequest.from_hash(value)
+      end,
+      rule_type: lambda do |value|
+        ::OctridevGithub::RuleSuitePullRequestRuleType.from_value(value)
       end
     }.freeze
   end
@@ -531,6 +535,8 @@ module OctridevGithub
 
     # @return [RuleSuitePullRequestPullRequest] The pull request associated with the rule evaluation.
     attr_reader :pull_request
+    # @return [RuleSuitePullRequestRuleType] Optional enumerated value serialized in the `rule_type` wire field.
+    attr_reader :rule_type
 
     def initialize(**attributes)
       SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
@@ -543,6 +549,17 @@ module OctridevGithub
 
     def to_h
       SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Defines the RuleSuitePullRequestRuleType SDK namespace.
+  module RuleSuitePullRequestRuleType
+    PULL_REQUEST = 'pull_request'
+    VALUES = ['pull_request'].freeze
+    def self.from_value(value)
+      return value if VALUES.include?(value)
+
+      raise SdkValidationError.new('RuleSuitePullRequestRuleType', 'enum', "Unknown RuleSuitePullRequestRuleType: #{value}")
     end
   end
 
@@ -634,18 +651,5 @@ module OctridevGithub
     def to_h
       SdkModel.to_h(self, FIELDS)
     end
-  end
-
-  # Internal model hydration metadata.
-  class SdkInternalRuleSuiteRequiredStatusChecksMetadata
-    FIELDS = {
-      checks: 'checks'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      checks: lambda do |value|
-        value&.map { |item| ::OctridevGithub::RuleSuiteRequiredStatusChecksChecksItem.from_hash(item) }
-      end
-    }.freeze
   end
 end

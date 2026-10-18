@@ -6,7 +6,7 @@
 # agent_tasks domain models
 module OctridevGithub
   # Internal model hydration metadata.
-  class SdkInternalArtifactsItemDataVariant0Metadata
+  class SdkInternalAgentTasksCreateTaskInRepoResponseArtifactsItemDataVariant0Metadata
     FIELDS = {
       id: 'id',
       global_id: 'global_id'
@@ -17,12 +17,12 @@ module OctridevGithub
     DECODERS = {}.freeze
   end
 
-  # API model for ArtifactsItemDataVariant0.
-  class ArtifactsItemDataVariant0
+  # API model for AgentTasksCreateTaskInRepoResponseArtifactsItemDataVariant0.
+  class AgentTasksCreateTaskInRepoResponseArtifactsItemDataVariant0
     CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalArtifactsItemDataVariant0Metadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalArtifactsItemDataVariant0Metadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalArtifactsItemDataVariant0Metadata::DECODERS
+    FIELDS = SdkInternalAgentTasksCreateTaskInRepoResponseArtifactsItemDataVariant0Metadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalAgentTasksCreateTaskInRepoResponseArtifactsItemDataVariant0Metadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalAgentTasksCreateTaskInRepoResponseArtifactsItemDataVariant0Metadata::DECODERS
 
     # @return [Integer] GitHub resource ID
     attr_reader :id
@@ -44,7 +44,7 @@ module OctridevGithub
   end
 
   # Internal model hydration metadata.
-  class SdkInternalArtifactsItemDataVariant1Metadata
+  class SdkInternalAgentTasksCreateTaskInRepoResponseArtifactsItemDataVariant1Metadata
     FIELDS = {
       head_ref: 'head_ref',
       base_ref: 'base_ref'
@@ -56,12 +56,12 @@ module OctridevGithub
     DECODERS = {}.freeze
   end
 
-  # API model for ArtifactsItemDataVariant1.
-  class ArtifactsItemDataVariant1
+  # API model for AgentTasksCreateTaskInRepoResponseArtifactsItemDataVariant1.
+  class AgentTasksCreateTaskInRepoResponseArtifactsItemDataVariant1
     CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalArtifactsItemDataVariant1Metadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalArtifactsItemDataVariant1Metadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalArtifactsItemDataVariant1Metadata::DECODERS
+    FIELDS = SdkInternalAgentTasksCreateTaskInRepoResponseArtifactsItemDataVariant1Metadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalAgentTasksCreateTaskInRepoResponseArtifactsItemDataVariant1Metadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalAgentTasksCreateTaskInRepoResponseArtifactsItemDataVariant1Metadata::DECODERS
 
     # @return [String] Head branch name
     attr_reader :head_ref
@@ -82,12 +82,12 @@ module OctridevGithub
     end
   end
 
-  # Defines the ArtifactsItemData SDK namespace.
-  module ArtifactsItemData
+  # Defines the AgentTasksCreateTaskInRepoResponseArtifactsItemData SDK namespace.
+  module AgentTasksCreateTaskInRepoResponseArtifactsItemData
     def self.from_hash(hash)
       shape_mapping = {
-        'id' => ArtifactsItemDataVariant0,
-        'head_ref' => ArtifactsItemDataVariant1
+        'id' => AgentTasksCreateTaskInRepoResponseArtifactsItemDataVariant0,
+        'head_ref' => AgentTasksCreateTaskInRepoResponseArtifactsItemDataVariant1
       }
       type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
       decoded = type&.from_hash(hash)
@@ -96,7 +96,7 @@ module OctridevGithub
   end
 
   # Internal model hydration metadata.
-  class SdkInternalArtifactsItemData2Variant0Metadata
+  class SdkInternalAgentTasksListTasksForRepoResponseTasksItemArtifactsItemDataVariant0Metadata
     FIELDS = {
       id: 'id',
       global_id: 'global_id'
@@ -107,12 +107,12 @@ module OctridevGithub
     DECODERS = {}.freeze
   end
 
-  # API model for ArtifactsItemData2Variant0.
-  class ArtifactsItemData2Variant0
+  # API model for AgentTasksListTasksForRepoResponseTasksItemArtifactsItemDataVariant0.
+  class AgentTasksListTasksForRepoResponseTasksItemArtifactsItemDataVariant0
     CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalArtifactsItemData2Variant0Metadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalArtifactsItemData2Variant0Metadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalArtifactsItemData2Variant0Metadata::DECODERS
+    FIELDS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemArtifactsItemDataVariant0Metadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemArtifactsItemDataVariant0Metadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemArtifactsItemDataVariant0Metadata::DECODERS
 
     # @return [Integer] GitHub resource ID
     attr_reader :id
@@ -134,7 +134,7 @@ module OctridevGithub
   end
 
   # Internal model hydration metadata.
-  class SdkInternalArtifactsItemData2Variant1Metadata
+  class SdkInternalAgentTasksListTasksForRepoResponseTasksItemArtifactsItemDataVariant1Metadata
     FIELDS = {
       head_ref: 'head_ref',
       base_ref: 'base_ref'
@@ -146,12 +146,12 @@ module OctridevGithub
     DECODERS = {}.freeze
   end
 
-  # API model for ArtifactsItemData2Variant1.
-  class ArtifactsItemData2Variant1
+  # API model for AgentTasksListTasksForRepoResponseTasksItemArtifactsItemDataVariant1.
+  class AgentTasksListTasksForRepoResponseTasksItemArtifactsItemDataVariant1
     CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalArtifactsItemData2Variant1Metadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalArtifactsItemData2Variant1Metadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalArtifactsItemData2Variant1Metadata::DECODERS
+    FIELDS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemArtifactsItemDataVariant1Metadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemArtifactsItemDataVariant1Metadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemArtifactsItemDataVariant1Metadata::DECODERS
 
     # @return [String] Head branch name
     attr_reader :head_ref
@@ -172,12 +172,12 @@ module OctridevGithub
     end
   end
 
-  # Defines the ArtifactsItemData2 SDK namespace.
-  module ArtifactsItemData2
+  # Defines the AgentTasksListTasksForRepoResponseTasksItemArtifactsItemData SDK namespace.
+  module AgentTasksListTasksForRepoResponseTasksItemArtifactsItemData
     def self.from_hash(hash)
       shape_mapping = {
-        'id' => ArtifactsItemData2Variant0,
-        'head_ref' => ArtifactsItemData2Variant1
+        'id' => AgentTasksListTasksForRepoResponseTasksItemArtifactsItemDataVariant0,
+        'head_ref' => AgentTasksListTasksForRepoResponseTasksItemArtifactsItemDataVariant1
       }
       type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
       decoded = type&.from_hash(hash)
@@ -186,7 +186,7 @@ module OctridevGithub
   end
 
   # Internal model hydration metadata.
-  class SdkInternalArtifactsItemData3Variant0Metadata
+  class SdkInternalAgentTasksListTasksResponseTasksItemArtifactsItemDataVariant0Metadata
     FIELDS = {
       id: 'id',
       global_id: 'global_id'
@@ -197,12 +197,12 @@ module OctridevGithub
     DECODERS = {}.freeze
   end
 
-  # API model for ArtifactsItemData3Variant0.
-  class ArtifactsItemData3Variant0
+  # API model for AgentTasksListTasksResponseTasksItemArtifactsItemDataVariant0.
+  class AgentTasksListTasksResponseTasksItemArtifactsItemDataVariant0
     CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalArtifactsItemData3Variant0Metadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalArtifactsItemData3Variant0Metadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalArtifactsItemData3Variant0Metadata::DECODERS
+    FIELDS = SdkInternalAgentTasksListTasksResponseTasksItemArtifactsItemDataVariant0Metadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalAgentTasksListTasksResponseTasksItemArtifactsItemDataVariant0Metadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalAgentTasksListTasksResponseTasksItemArtifactsItemDataVariant0Metadata::DECODERS
 
     # @return [Integer] GitHub resource ID
     attr_reader :id
@@ -224,7 +224,7 @@ module OctridevGithub
   end
 
   # Internal model hydration metadata.
-  class SdkInternalArtifactsItemData3Variant1Metadata
+  class SdkInternalAgentTasksListTasksResponseTasksItemArtifactsItemDataVariant1Metadata
     FIELDS = {
       head_ref: 'head_ref',
       base_ref: 'base_ref'
@@ -236,12 +236,12 @@ module OctridevGithub
     DECODERS = {}.freeze
   end
 
-  # API model for ArtifactsItemData3Variant1.
-  class ArtifactsItemData3Variant1
+  # API model for AgentTasksListTasksResponseTasksItemArtifactsItemDataVariant1.
+  class AgentTasksListTasksResponseTasksItemArtifactsItemDataVariant1
     CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalArtifactsItemData3Variant1Metadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalArtifactsItemData3Variant1Metadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalArtifactsItemData3Variant1Metadata::DECODERS
+    FIELDS = SdkInternalAgentTasksListTasksResponseTasksItemArtifactsItemDataVariant1Metadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalAgentTasksListTasksResponseTasksItemArtifactsItemDataVariant1Metadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalAgentTasksListTasksResponseTasksItemArtifactsItemDataVariant1Metadata::DECODERS
 
     # @return [String] Head branch name
     attr_reader :head_ref
@@ -262,192 +262,12 @@ module OctridevGithub
     end
   end
 
-  # Defines the ArtifactsItemData3 SDK namespace.
-  module ArtifactsItemData3
+  # Defines the AgentTasksListTasksResponseTasksItemArtifactsItemData SDK namespace.
+  module AgentTasksListTasksResponseTasksItemArtifactsItemData
     def self.from_hash(hash)
       shape_mapping = {
-        'id' => ArtifactsItemData3Variant0,
-        'head_ref' => ArtifactsItemData3Variant1
-      }
-      type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
-      decoded = type&.from_hash(hash)
-      decoded unless type.nil?
-    end
-  end
-
-  # Internal model hydration metadata.
-  class SdkInternalTasksItemArtifactsItemData2Variant0Metadata
-    FIELDS = {
-      id: 'id',
-      global_id: 'global_id'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-    ].freeze
-    DECODERS = {}.freeze
-  end
-
-  # API model for TasksItemArtifactsItemData2Variant0.
-  class TasksItemArtifactsItemData2Variant0
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalTasksItemArtifactsItemData2Variant0Metadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalTasksItemArtifactsItemData2Variant0Metadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalTasksItemArtifactsItemData2Variant0Metadata::DECODERS
-
-    # @return [Integer] GitHub resource ID
-    attr_reader :id
-    # @return [String] GraphQL global ID
-    attr_reader :global_id
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
-  end
-
-  # Internal model hydration metadata.
-  class SdkInternalTasksItemArtifactsItemData2Variant1Metadata
-    FIELDS = {
-      head_ref: 'head_ref',
-      base_ref: 'base_ref'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      head_ref
-      base_ref
-    ].freeze
-    DECODERS = {}.freeze
-  end
-
-  # API model for TasksItemArtifactsItemData2Variant1.
-  class TasksItemArtifactsItemData2Variant1
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalTasksItemArtifactsItemData2Variant1Metadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalTasksItemArtifactsItemData2Variant1Metadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalTasksItemArtifactsItemData2Variant1Metadata::DECODERS
-
-    # @return [String] Head branch name
-    attr_reader :head_ref
-    # @return [String] Base branch name
-    attr_reader :base_ref
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
-  end
-
-  # Defines the TasksItemArtifactsItemData2 SDK namespace.
-  module TasksItemArtifactsItemData2
-    def self.from_hash(hash)
-      shape_mapping = {
-        'id' => TasksItemArtifactsItemData2Variant0,
-        'head_ref' => TasksItemArtifactsItemData2Variant1
-      }
-      type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
-      decoded = type&.from_hash(hash)
-      decoded unless type.nil?
-    end
-  end
-
-  # Internal model hydration metadata.
-  class SdkInternalTasksItemArtifactsItemData3Variant0Metadata
-    FIELDS = {
-      id: 'id',
-      global_id: 'global_id'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-    ].freeze
-    DECODERS = {}.freeze
-  end
-
-  # API model for TasksItemArtifactsItemData3Variant0.
-  class TasksItemArtifactsItemData3Variant0
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalTasksItemArtifactsItemData3Variant0Metadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalTasksItemArtifactsItemData3Variant0Metadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalTasksItemArtifactsItemData3Variant0Metadata::DECODERS
-
-    # @return [Integer] GitHub resource ID
-    attr_reader :id
-    # @return [String] GraphQL global ID
-    attr_reader :global_id
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
-  end
-
-  # Internal model hydration metadata.
-  class SdkInternalTasksItemArtifactsItemData3Variant1Metadata
-    FIELDS = {
-      head_ref: 'head_ref',
-      base_ref: 'base_ref'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      head_ref
-      base_ref
-    ].freeze
-    DECODERS = {}.freeze
-  end
-
-  # API model for TasksItemArtifactsItemData3Variant1.
-  class TasksItemArtifactsItemData3Variant1
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalTasksItemArtifactsItemData3Variant1Metadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalTasksItemArtifactsItemData3Variant1Metadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalTasksItemArtifactsItemData3Variant1Metadata::DECODERS
-
-    # @return [String] Head branch name
-    attr_reader :head_ref
-    # @return [String] Base branch name
-    attr_reader :base_ref
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
-  end
-
-  # Defines the TasksItemArtifactsItemData3 SDK namespace.
-  module TasksItemArtifactsItemData3
-    def self.from_hash(hash)
-      shape_mapping = {
-        'id' => TasksItemArtifactsItemData3Variant0,
-        'head_ref' => TasksItemArtifactsItemData3Variant1
+        'id' => AgentTasksListTasksResponseTasksItemArtifactsItemDataVariant0,
+        'head_ref' => AgentTasksListTasksResponseTasksItemArtifactsItemDataVariant1
       }
       type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
       decoded = type&.from_hash(hash)

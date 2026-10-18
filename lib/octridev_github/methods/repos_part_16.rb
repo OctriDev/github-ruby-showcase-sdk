@@ -9,152 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Repos SDK namespace.
     module Repos
-      # Compares two commits against one another. You can compare refs (branches or tags) and commit SHAs in the same repository, or you can compare refs and commit SHAs that exist in different repositories within the same repository network, including fork branches. For more information about how to view a repository's network, see "Understanding connections between repositories." This endpoint is equivalent to running the `git log BASE..HEAD` command, but it returns commits in a…
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param basehead [String] The base branch and head branch to compare. This
-      #   parameter expects the format `BASE...HEAD`. Both must be branch names in
-      #   `repo`. To compare with a branch that exists in a different repository in
-      #   the same network as `repo`, the `basehead` parameter expects the format
-      #   `USERNAME:BASE...USERNAME:HEAD`.
-      # @param page [Integer] The page number of the results to fetch. For more
-      #   information, see "Using pagination in the REST API."
-      # @param per_page [Integer] The number of results per page (max 100). For more
-      #   information, see "Using pagination in the REST API."
-      def self.repos_compare_commits(
-        config:,
-        owner:,
-        repo:,
-        basehead:,
-        page: NOT_GIVEN,
-        per_page: NOT_GIVEN,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/compare/',
-            SdkClient.encode_path_segment(basehead)
-          ].join,
-          config: config,
-          query: {
-            'page' => QueryValue.new(page, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
-          },
-          return_type: ::OctridevGithub::CommitComparison,
-          decoder: :json,
-          operation_id: 'repos_compare_commits',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError }
-        ).data
-      end
-
-      # Retrieves a file or directory from a repository at the specified `path`. Use `ref` to select a commit, branch, or tag; it defaults to the repository's default branch when omitted. Directory responses are limited to 1,000 items, and files larger than 100 MB are not supported.
-      #
-      # Gets the contents of a file or directory in a repository. Specify the file path or directory with the `path` parameter. If you omit the `path` parameter, you will receive the contents of the repository's root directory. This endpoint supports the following custom media types. For more information, see "Media types." - **`application/vnd.github.raw+json`**: Returns the raw file contents for files and symlinks. - **`application/vnd.github.html+json`**: Returns the file…
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param path [String] path parameter
-      # @param ref [String] The name of the commit/branch/tag. Default: the
-      #   repository’s default branch.
-      def self.repos_get_content(
-        config:,
-        owner:,
-        repo:,
-        path:,
-        ref: NOT_GIVEN,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/contents/',
-            SdkClient.encode_path_segment(path)
-          ].join,
-          config: config,
-          query: {
-            'ref' => QueryValue.new(ref, style: 'form', explode: true)
-          },
-          return_type: ::OctridevGithub::ContentTree,
-          decoder: :json,
-          operation_id: 'repos_get_content',
-          request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
-        ).data
-      end
-
-      # Creates a new file or replaces an existing file in a repository. > !NOTE] > If you use this endpoint and the "[Delete a file" endpoint in parallel, the concurrent requests will conflict and you will receive errors. You must use these endpoints serially instead. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint. The `workflow` scope is also required in order to modify files in the `.github/workflows` directory.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param path [String] path parameter
-      # @param message [String] The commit message.
-      # @param content [String] The new file content, using Base64 encoding.
-      # @param sha [String] **Required if you are updating a file**. The blob SHA of
-      #   the file being replaced.
-      # @param branch [String] The branch name. Default: the repository’s default
-      #   branch.
-      # @param committer [ReposCreateOrUpdateFileContentsCommitter] The person that
-      #   committed the file. Default: the authenticated user.
-      # @param author [ReposCreateOrUpdateFileContentsAuthor] The author of the
-      #   file. Default: The `committer` or the authenticated user if you omit
-      #   `committer`.
-      def self.repos_create_or_update_file_contents(
-        config:,
-        owner:,
-        repo:,
-        path:,
-        message:,
-        content:,
-        sha: NOT_GIVEN,
-        branch: NOT_GIVEN,
-        committer: NOT_GIVEN,
-        author: NOT_GIVEN,
-        request_options: nil
-      )
-        SdkClient.request(
-          'PUT',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/contents/',
-            SdkClient.encode_path_segment(path)
-          ].join,
-          config: config,
-          body: {
-            'message' => message,
-            'content' => content,
-            'sha' => sha,
-            'branch' => branch,
-            'committer' => committer,
-            'author' => author
-          },
-          return_type: ::OctridevGithub::FileCommit,
-          decoder: :json,
-          operation_id: 'repos_create_or_update_file_contents',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
-        ).data
-      end
-
       # Deletes a file in a repository. You can provide an additional `committer` parameter, which is an object containing information about the committer. Or, you can provide an `author` parameter, which is an object containing information about the author. The `author` section is optional and is filled in with the `committer` information if omitted. If the `committer` information is omitted, the authenticated user's information is used. You must provide values for both `name` and…
       #
       # @param owner [String] The account owner of the repository. The name is not
@@ -204,7 +58,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'repos_delete_file',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
 
@@ -322,6 +176,8 @@ module OctridevGithub
       #   against commit status checks. If you omit this parameter, GitHub verifies
       #   all unique contexts before creating a deployment. To bypass checking
       #   entirely, pass an empty array. Defaults to all unique contexts.
+      # @param payload [ReposCreateDeploymentRequestPayload] Typed representation of
+      #   the `ReposCreateDeploymentRequestPayload` API schema.
       # @param environment [String] Name for the target deployment environment
       #   (e.g., `production`, `staging`, `qa`).
       # @param description [String] Short description of the deployment.
@@ -558,6 +414,126 @@ module OctridevGithub
           operation_id: 'repos_create_deployment_status',
           request_options: request_options,
           errors: { '422' => ::OctridevGithub::ValidationError }
+        ).data
+      end
+
+      # Retrieves a status record for a deployment in a repository. You must have pull access to the repository to view the deployment status.
+      #
+      # Users with pull access can view a deployment status for a deployment:
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param deployment_id [Integer] deployment_id parameter
+      def self.repos_get_deployment_status(
+        config:,
+        owner:,
+        repo:,
+        deployment_id:,
+        status_id:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/deployments/',
+            SdkClient.encode_path_segment(deployment_id),
+            '/statuses/',
+            SdkClient.encode_path_segment(status_id)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::DeploymentStatus,
+          decoder: :json,
+          operation_id: 'repos_get_deployment_status',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError }
+        ).data
+      end
+
+      # You can use this endpoint to trigger a webhook event called `repository_dispatch` when you want activity that happens outside of GitHub to trigger a GitHub Actions workflow or GitHub App webhook. You must configure your GitHub Actions workflow or GitHub App to run when the `repository_dispatch` event occurs. For an example `repository_dispatch` webhook payload, see "RepositoryDispatchEvent." The `client_payload` parameter is available for any extra information that your…
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param event_type [String] A custom webhook event name. Must be 100
+      #   characters or fewer.
+      # @param client_payload [Hash] JSON payload with extra information about the
+      #   webhook event that your action or workflow may use. The maximum number of
+      #   top-level properties is 10. The total size of the JSON payload must be less
+      #   than 64KB.
+      def self.repos_create_dispatch_event(
+        config:,
+        owner:,
+        repo:,
+        event_type:,
+        client_payload: NOT_GIVEN,
+        request_options: nil
+      )
+        Validation.validate_length('event_type', event_type, min: 1, max: 100)
+
+        SdkClient.request(
+          'POST',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/dispatches'
+          ].join,
+          config: config,
+          body: {
+            'event_type' => event_type,
+            'client_payload' => client_payload
+          },
+          decoder: :empty,
+          operation_id: 'repos_create_dispatch_event',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+        ).data
+      end
+
+      # Lists the environments for a repository. Anyone with read access to the repository can use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.repos_get_all_environments(
+        config:,
+        owner:,
+        repo:,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/environments'
+          ].join,
+          config: config,
+          query: {
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
+          },
+          return_type: ::OctridevGithub::Methods::Repos::ReposGetAllEnvironmentsResponse,
+          decoder: :json,
+          operation_id: 'repos_get_all_environments',
+          request_options: request_options
         ).data
       end
     end

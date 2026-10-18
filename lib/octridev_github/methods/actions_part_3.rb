@@ -270,89 +270,6 @@ module OctridevGithub
       end
 
       # Internal model hydration metadata.
-      class SdkInternalSchemaSchemaCee94e2cMetadata
-        FIELDS = {
-          runner: 'runner',
-          encoded_jit_config: 'encoded_jit_config'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          runner
-          encoded_jit_config
-        ].freeze
-        DECODERS = {
-          runner: lambda do |value|
-            ::OctridevGithub::Runner.from_hash(value)
-          end
-        }.freeze
-      end
-
-      # API model for SchemaSchemaCee94e2c.
-      class SchemaSchemaCee94e2c
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalSchemaSchemaCee94e2cMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalSchemaSchemaCee94e2cMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalSchemaSchemaCee94e2cMetadata::DECODERS
-
-        # @return [Runner] A self hosted runner
-        attr_reader :runner
-        # @return [String] The base64 encoded runner configuration.
-        attr_reader :encoded_jit_config
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalSchemaSchemaC8266fdcMetadata
-        FIELDS = {
-          total_count: 'total_count',
-          labels: 'labels'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          total_count
-          labels
-        ].freeze
-        DECODERS = {
-          labels: lambda do |value|
-            value&.map { |item| ::OctridevGithub::RunnerLabel.from_hash(item) }
-          end
-        }.freeze
-      end
-
-      # API model for SchemaSchemaC8266fdc.
-      class SchemaSchemaC8266fdc
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalSchemaSchemaC8266fdcMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalSchemaSchemaC8266fdcMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalSchemaSchemaC8266fdcMetadata::DECODERS
-
-        attr_reader :total_count, :labels
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
       class SdkInternalActionsAddCustomLabelsToSelfHostedRunnerForOrgMetadata
         FIELDS = {
           labels: 'labels'
@@ -407,46 +324,6 @@ module OctridevGithub
 
         # @return [Array_of_String] The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.
         attr_reader :labels
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalSchemaSchema328ddb88Metadata
-        FIELDS = {
-          total_count: 'total_count',
-          labels: 'labels'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          total_count
-          labels
-        ].freeze
-        DECODERS = {
-          labels: lambda do |value|
-            value&.map { |item| ::OctridevGithub::RunnerLabel.from_hash(item) }
-          end
-        }.freeze
-      end
-
-      # API model for SchemaSchema328ddb88.
-      class SchemaSchema328ddb88
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalSchemaSchema328ddb88Metadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalSchemaSchema328ddb88Metadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalSchemaSchema328ddb88Metadata::DECODERS
-
-        attr_reader :total_count, :labels
 
         def initialize(**attributes)
           SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
@@ -537,6 +414,121 @@ module OctridevGithub
         attr_reader :visibility
         # @return [Array_of_Integer] An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the List selected repositories for an organization secret, Set selected repositories for an organization secret, and Remove selected repository from an organization secret endpoints.
         attr_reader :selected_repository_ids
+
+        def initialize(**attributes)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          freeze
+        end
+
+        def self.from_hash(data)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        end
+
+        def to_h
+          SdkModel.to_h(self, FIELDS)
+        end
+      end
+
+      # Internal model hydration metadata.
+      class SdkInternalActionsListSelectedReposForOrgSecretResponseMetadata
+        FIELDS = {
+          total_count: 'total_count',
+          repositories: 'repositories'
+        }.freeze
+        REQUIRED_FIELDS = %i[
+          total_count
+          repositories
+        ].freeze
+        DECODERS = {
+          repositories: lambda do |value|
+            value&.map { |item| ::OctridevGithub::MinimalRepository.from_hash(item) }
+          end
+        }.freeze
+      end
+
+      # API model for ActionsListSelectedReposForOrgSecretResponse.
+      class ActionsListSelectedReposForOrgSecretResponse
+        CONSTRUCTION_SURFACE = :named
+        FIELDS = SdkInternalActionsListSelectedReposForOrgSecretResponseMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalActionsListSelectedReposForOrgSecretResponseMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalActionsListSelectedReposForOrgSecretResponseMetadata::DECODERS
+
+        attr_reader :total_count, :repositories
+
+        def initialize(**attributes)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          freeze
+        end
+
+        def self.from_hash(data)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        end
+
+        def to_h
+          SdkModel.to_h(self, FIELDS)
+        end
+      end
+
+      # Internal model hydration metadata.
+      class SdkInternalActionsSetSelectedReposForOrgSecretMetadata
+        FIELDS = {
+          selected_repository_ids: 'selected_repository_ids'
+        }.freeze
+        REQUIRED_FIELDS = %i[
+          selected_repository_ids
+        ].freeze
+        DECODERS = {}.freeze
+      end
+
+      # API model for ActionsSetSelectedReposForOrgSecret.
+      class ActionsSetSelectedReposForOrgSecret
+        CONSTRUCTION_SURFACE = :named
+        FIELDS = SdkInternalActionsSetSelectedReposForOrgSecretMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalActionsSetSelectedReposForOrgSecretMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalActionsSetSelectedReposForOrgSecretMetadata::DECODERS
+
+        # @return [Array_of_Integer] An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the Add selected repository to an organization secret and Remove selected repository from an organization secret endpoints.
+        attr_reader :selected_repository_ids
+
+        def initialize(**attributes)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          freeze
+        end
+
+        def self.from_hash(data)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        end
+
+        def to_h
+          SdkModel.to_h(self, FIELDS)
+        end
+      end
+
+      # Internal model hydration metadata.
+      class SdkInternalActionsListOrgVariablesResponseMetadata
+        FIELDS = {
+          total_count: 'total_count',
+          variables: 'variables'
+        }.freeze
+        REQUIRED_FIELDS = %i[
+          total_count
+          variables
+        ].freeze
+        DECODERS = {
+          variables: lambda do |value|
+            value&.map { |item| ::OctridevGithub::OrganizationActionsVariable.from_hash(item) }
+          end
+        }.freeze
+      end
+
+      # API model for ActionsListOrgVariablesResponse.
+      class ActionsListOrgVariablesResponse
+        CONSTRUCTION_SURFACE = :named
+        FIELDS = SdkInternalActionsListOrgVariablesResponseMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalActionsListOrgVariablesResponseMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalActionsListOrgVariablesResponseMetadata::DECODERS
+
+        attr_reader :total_count, :variables
 
         def initialize(**attributes)
           SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)

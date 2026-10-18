@@ -9,279 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Issues SDK namespace.
     module Issues
-      # Internal model hydration metadata.
-      class SdkInternalIssuesAddAssigneesAssigneesItemVariant1Metadata
-        FIELDS = {
-          login: 'login',
-          rationale: 'rationale',
-          suggest: 'suggest',
-          confidence: 'confidence'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          login
-        ].freeze
-        DECODERS = {
-          confidence: lambda do |value|
-            ::OctridevGithub::Methods::Issues::IssuesAddAssigneesAssigneesItemVariant1Confidence.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for IssuesAddAssigneesAssigneesItemVariant1.
-      class IssuesAddAssigneesAssigneesItemVariant1
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalIssuesAddAssigneesAssigneesItemVariant1Metadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalIssuesAddAssigneesAssigneesItemVariant1Metadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalIssuesAddAssigneesAssigneesItemVariant1Metadata::DECODERS
-
-        # @return [String] The login of the user to assign.
-        attr_reader :login
-        # @return [String] Optional reasoning for adding this assignee.
-        attr_reader :rationale
-        # @return [Boolean] If `true`, the assignee is stored as a pending suggestion for human review rather than applied directly.
-        attr_reader :suggest
-        # @return [IssuesAddAssigneesAssigneesItemVariant1Confidence] The confidence level for this assignee choice.
-        attr_reader :confidence
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalIssuesAddAssigneesMetadata
-        FIELDS = {
-          assignees: 'assignees'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
-      end
-
-      # API model for IssuesAddAssignees.
-      class IssuesAddAssignees
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalIssuesAddAssigneesMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalIssuesAddAssigneesMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalIssuesAddAssigneesMetadata::DECODERS
-
-        # @return [Array_of_Object] Usernames of people to assign this issue to. _NOTE: Only users with push access can add assignees to an issue. Assignees are silently ignored otherwise._
-        attr_reader :assignees
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalIssuesRemoveAssigneesMetadata
-        FIELDS = {
-          assignees: 'assignees'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
-      end
-
-      # API model for IssuesRemoveAssignees.
-      class IssuesRemoveAssignees
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalIssuesRemoveAssigneesMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalIssuesRemoveAssigneesMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalIssuesRemoveAssigneesMetadata::DECODERS
-
-        # @return [Array_of_String] Usernames of assignees to remove from an issue. _NOTE: Only users with push access can remove assignees from an issue. Assignees are silently ignored otherwise._
-        attr_reader :assignees
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalIssuesCreateCommentMetadata
-        FIELDS = {
-          body: 'body'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          body
-        ].freeze
-        DECODERS = {}.freeze
-      end
-
-      # API model for IssuesCreateComment.
-      class IssuesCreateComment
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalIssuesCreateCommentMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalIssuesCreateCommentMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalIssuesCreateCommentMetadata::DECODERS
-
-        # @return [String] The contents of the comment.
-        attr_reader :body
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalIssuesAddBlockedByDependencyMetadata
-        FIELDS = {
-          issue_id: 'issue_id'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          issue_id
-        ].freeze
-        DECODERS = {}.freeze
-      end
-
-      # API model for IssuesAddBlockedByDependency.
-      class IssuesAddBlockedByDependency
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalIssuesAddBlockedByDependencyMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalIssuesAddBlockedByDependencyMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalIssuesAddBlockedByDependencyMetadata::DECODERS
-
-        # @return [Integer] The id of the issue that blocks the current issue
-        attr_reader :issue_id
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalIssuesAddIssueFieldValuesIssueFieldValuesItemMetadata
-        FIELDS = {
-          field_id: 'field_id',
-          value: 'value'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          field_id
-          value
-        ].freeze
-        DECODERS = {}.freeze
-      end
-
-      # API model for IssuesAddIssueFieldValuesIssueFieldValuesItem.
-      class IssuesAddIssueFieldValuesIssueFieldValuesItem
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalIssuesAddIssueFieldValuesIssueFieldValuesItemMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalIssuesAddIssueFieldValuesIssueFieldValuesItemMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalIssuesAddIssueFieldValuesIssueFieldValuesItemMetadata::DECODERS
-
-        # @return [Integer] The ID of the issue field to set
-        attr_reader :field_id
-        # @return [Object] The value to set for the field. The type depends on the field's data type: - For text fields: provide a string value - For single_select fields: provide the option name as a string (must match an existing option) - For number fields: provide a numeric value - For multi_select fields: provide an array of option names (must match existing options) - For date fields: provide an ISO 8601 date string
-        attr_reader :value
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalIssuesAddIssueFieldValuesMetadata
-        FIELDS = {
-          issue_field_values: 'issue_field_values'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          issue_field_values: lambda do |value|
-            value&.map { |item| ::OctridevGithub::Methods::Issues::IssuesAddIssueFieldValuesIssueFieldValuesItem.from_hash(item) }
-          end
-        }.freeze
-      end
-
-      # API model for IssuesAddIssueFieldValues.
-      class IssuesAddIssueFieldValues
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalIssuesAddIssueFieldValuesMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalIssuesAddIssueFieldValuesMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalIssuesAddIssueFieldValuesMetadata::DECODERS
-
-        # @return [Array_of_IssuesAddIssueFieldValuesIssueFieldValuesItem] An array of issue field values to add to this issue. Each field value must include the field ID and the value to set.
-        attr_reader :issue_field_values
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalIssuesSetIssueFieldValuesIssueFieldValuesItemMetadata
-        FIELDS = {
-          field_id: 'field_id',
-          value: 'value'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          field_id
-          value
-        ].freeze
-        DECODERS = {}.freeze
-      end
-
       # API model for IssuesSetIssueFieldValuesIssueFieldValuesItem.
       class IssuesSetIssueFieldValuesIssueFieldValuesItem
         CONSTRUCTION_SURFACE = :named
@@ -528,6 +255,300 @@ module OctridevGithub
 
         def to_h
           SdkModel.to_h(self, FIELDS)
+        end
+      end
+
+      # Internal model hydration metadata.
+      class SdkInternalIssuesCreateLabelMetadata
+        FIELDS = {
+          name: 'name',
+          color: 'color',
+          description: 'description'
+        }.freeze
+        REQUIRED_FIELDS = %i[
+          name
+        ].freeze
+        DECODERS = {}.freeze
+      end
+
+      # API model for IssuesCreateLabel.
+      class IssuesCreateLabel
+        CONSTRUCTION_SURFACE = :named
+        FIELDS = SdkInternalIssuesCreateLabelMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalIssuesCreateLabelMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalIssuesCreateLabelMetadata::DECODERS
+
+        # @return [String] The name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji !:strawberry:. For a full list of available emoji and codes, see "Emoji cheat sheet."
+        attr_reader :name
+        # @return [String] The hexadecimal color code for the label, without the leading `#`.
+        attr_reader :color
+        # @return [String] A short description of the label. Must be 100 characters or fewer.
+        attr_reader :description
+
+        def initialize(**attributes)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          freeze
+        end
+
+        def self.from_hash(data)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        end
+
+        def to_h
+          SdkModel.to_h(self, FIELDS)
+        end
+      end
+
+      # Internal model hydration metadata.
+      class SdkInternalIssuesUpdateLabelMetadata
+        FIELDS = {
+          new_name: 'new_name',
+          color: 'color',
+          description: 'description',
+          archived: 'archived'
+        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
+      end
+
+      # API model for IssuesUpdateLabel.
+      class IssuesUpdateLabel
+        CONSTRUCTION_SURFACE = :named
+        FIELDS = SdkInternalIssuesUpdateLabelMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalIssuesUpdateLabelMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalIssuesUpdateLabelMetadata::DECODERS
+
+        # @return [String] The new name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji !:strawberry:. For a full list of available emoji and codes, see "Emoji cheat sheet."
+        attr_reader :new_name
+        # @return [String] The hexadecimal color code for the label, without the leading `#`.
+        attr_reader :color
+        # @return [String] A short description of the label. Must be 100 characters or fewer.
+        attr_reader :description
+        # @return [Boolean] Whether to archive or unarchive the label. Archived labels cannot be added to issues or pull requests. For more information, see "Archiving labels."
+        attr_reader :archived
+
+        def initialize(**attributes)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          freeze
+        end
+
+        def self.from_hash(data)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        end
+
+        def to_h
+          SdkModel.to_h(self, FIELDS)
+        end
+      end
+
+      # Internal model hydration metadata.
+      class SdkInternalIssuesCreateMilestone277b065cMetadata
+        FIELDS = {
+          title: 'title',
+          state: 'state',
+          description: 'description',
+          due_on: 'due_on'
+        }.freeze
+        REQUIRED_FIELDS = %i[
+          title
+        ].freeze
+        DECODERS = {
+          state: lambda do |value|
+            ::OctridevGithub::Methods::Issues::IssuesCreateMilestoneState.from_value(value)
+          end
+        }.freeze
+      end
+
+      # API model for IssuesCreateMilestone277b065c.
+      class IssuesCreateMilestone277b065c
+        CONSTRUCTION_SURFACE = :named
+        FIELDS = SdkInternalIssuesCreateMilestone277b065cMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalIssuesCreateMilestone277b065cMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalIssuesCreateMilestone277b065cMetadata::DECODERS
+
+        # @return [String] The title of the milestone.
+        attr_reader :title
+        # @return [IssuesCreateMilestoneState] The state of the milestone. Either `open` or `closed`.
+        attr_reader :state
+        # @return [String] A description of the milestone.
+        attr_reader :description
+        # @return [String] The milestone due date. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+        attr_reader :due_on
+
+        def initialize(**attributes)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          freeze
+        end
+
+        def self.from_hash(data)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        end
+
+        def to_h
+          SdkModel.to_h(self, FIELDS)
+        end
+      end
+
+      # Internal model hydration metadata.
+      class SdkInternalIssuesUpdateMilestone5179c53dMetadata
+        FIELDS = {
+          title: 'title',
+          state: 'state',
+          description: 'description',
+          due_on: 'due_on'
+        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {
+          state: lambda do |value|
+            ::OctridevGithub::Methods::Issues::IssuesUpdateMilestoneState.from_value(value)
+          end
+        }.freeze
+      end
+
+      # API model for IssuesUpdateMilestone5179c53d.
+      class IssuesUpdateMilestone5179c53d
+        CONSTRUCTION_SURFACE = :named
+        FIELDS = SdkInternalIssuesUpdateMilestone5179c53dMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalIssuesUpdateMilestone5179c53dMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalIssuesUpdateMilestone5179c53dMetadata::DECODERS
+
+        # @return [String] The title of the milestone.
+        attr_reader :title
+        # @return [IssuesUpdateMilestoneState] The state of the milestone. Either `open` or `closed`.
+        attr_reader :state
+        # @return [String] A description of the milestone.
+        attr_reader :description
+        # @return [String] The milestone due date. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+        attr_reader :due_on
+
+        def initialize(**attributes)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          freeze
+        end
+
+        def self.from_hash(data)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        end
+
+        def to_h
+          SdkModel.to_h(self, FIELDS)
+        end
+      end
+
+      # Defines the IssuesListSuggestionsParameterE0083d47 SDK namespace.
+      module IssuesListSuggestionsParameterE0083d47
+        SET_TYPE = 'set_type'
+        ADD_LABEL = 'add_label'
+        ADD_FIELD = 'add_field'
+        ADD_ASSIGNEE = 'add_assignee'
+        CLOSE_ISSUE = 'close_issue'
+        VALUES = %w[set_type add_label add_field add_assignee close_issue].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the IssuesListForRepoParameterCa0683ce SDK namespace.
+      module IssuesListForRepoParameterCa0683ce
+        OPEN = 'open'
+        CLOSED = 'closed'
+        ALL = 'all'
+        VALUES = %w[open closed all].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the IssuesListForAuthenticatedUserParameter SDK namespace.
+      module IssuesListForAuthenticatedUserParameter
+        ASSIGNED = 'assigned'
+        CREATED = 'created'
+        MENTIONED = 'mentioned'
+        SUBSCRIBED = 'subscribed'
+        REPOS = 'repos'
+        ALL = 'all'
+        VALUES = %w[assigned created mentioned subscribed repos all].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the IssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItemIgnoredReason SDK namespace.
+      module IssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItemIgnoredReason
+        ALREADY_APPLIED = 'already_applied'
+        ISSUE_ALREADY_CLOSED = 'issue_already_closed'
+        VALUES = %w[already_applied issue_already_closed].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the IssuesListParameter56183a23 SDK namespace.
+      module IssuesListParameter56183a23
+        CREATED = 'created'
+        UPDATED = 'updated'
+        COMMENTS = 'comments'
+        VALUES = %w[created updated comments].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the IssuesListParameter8cbd4dc2 SDK namespace.
+      module IssuesListParameter8cbd4dc2
+        OPEN = 'open'
+        CLOSED = 'closed'
+        ALL = 'all'
+        VALUES = %w[open closed all].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the IssuesListMilestonesParameter SDK namespace.
+      module IssuesListMilestonesParameter
+        OPEN = 'open'
+        CLOSED = 'closed'
+        ALL = 'all'
+        VALUES = %w[open closed all].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the IssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItemConfidence SDK namespace.
+      module IssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItemConfidence
+        LOW = 'low'
+        MEDIUM = 'medium'
+        HIGH = 'high'
+        VALUES = %w[low medium high].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the IssuesListParameter SDK namespace.
+      module IssuesListParameter
+        ASSIGNED = 'assigned'
+        CREATED = 'created'
+        MENTIONED = 'mentioned'
+        SUBSCRIBED = 'subscribed'
+        REPOS = 'repos'
+        ALL = 'all'
+        VALUES = %w[assigned created mentioned subscribed repos all].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the IssuesAddLabelsVariant2ItemConfidence SDK namespace.
+      module IssuesAddLabelsVariant2ItemConfidence
+        LOW = 'low'
+        MEDIUM = 'medium'
+        HIGH = 'high'
+        VALUES = %w[low medium high].freeze
+        def self.from_value(value)
+          value
         end
       end
     end

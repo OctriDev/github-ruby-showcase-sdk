@@ -291,7 +291,6 @@ module OctridevGithub
     include CommitAuthor
     include CommitCommitter
     include InstallationAccount
-    include ReviewersItemReviewer
 
     CONSTRUCTION_SURFACE = :named
     FIELDS = SdkInternalSimpleUserMetadata::FIELDS

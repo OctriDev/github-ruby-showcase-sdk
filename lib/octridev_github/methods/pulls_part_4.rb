@@ -72,7 +72,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'pulls_get',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '406' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError, '406' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
 
@@ -409,7 +409,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'pulls_list_files',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError }
+          errors: { '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
 

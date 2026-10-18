@@ -181,6 +181,9 @@ module OctridevGithub
       author: lambda do |value|
         ::OctridevGithub::WebhookRegistryPackagePublishedRegistryPackagePackageVersionAuthor.from_hash(value)
       end,
+      body: lambda do |value|
+        ::OctridevGithub::WebhookRegistryPackagePublishedRegistryPackagePackageVersionBody.from_hash(value)
+      end,
       container_metadata: lambda do |value|
         ::OctridevGithub::WebhookRegistryPackagePublishedRegistryPackagePackageVersionCXbdb9d4a9cc.from_hash(value)
       end,
@@ -215,7 +218,7 @@ module OctridevGithub
 
     # @return [WebhookRegistryPackagePublishedRegistryPackagePackageVersionAuthor] Optional object value serialized in the `author` wire field.
     attr_reader :author
-    # @return [Object] Optional API value serialized in the `body` wire field.
+    # @return [WebhookRegistryPackagePublishedRegistryPackagePackageVersionBody] Optional API value serialized in the `body` wire field.
     attr_reader :body
     # @return [String] Optional `string` value serialized in the `body_html` wire field.
     attr_reader :body_html

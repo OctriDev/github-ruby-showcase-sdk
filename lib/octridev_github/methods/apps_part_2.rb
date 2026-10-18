@@ -192,28 +192,28 @@ module OctridevGithub
             ::OctridevGithub::NullableLicenseSimple.from_hash(value)
           end,
           permissions: lambda do |value|
-            ::OctridevGithub::Methods::Apps::RepositoryPermissions.from_hash(value)
+            ::OctridevGithub::Methods::Apps::AppsListReposAccessibleToInstallationResponseRepositoriesItemPermissions.from_hash(value)
           end,
           owner: lambda do |value|
             ::OctridevGithub::SimpleUser.from_hash(value)
           end,
           pull_request_creation_policy: lambda do |value|
-            ::OctridevGithub::RepositoryPullRequestCreationPolicy.from_value(value)
+            ::OctridevGithub::Methods::Apps::AppsListReposAccessibleToInstallationResponseRepositoriesItemXd3df6a5cde.from_value(value)
           end,
           squash_merge_commit_title: lambda do |value|
-            ::OctridevGithub::RepositorySquashMergeCommitTitle.from_value(value)
+            ::OctridevGithub::Methods::Apps::AppsListReposAccessibleToInstallationResponseRepositoriesItemX5dafed43da.from_value(value)
           end,
           squash_merge_commit_message: lambda do |value|
-            ::OctridevGithub::RepositorySquashMergeCommitMessage.from_value(value)
+            ::OctridevGithub::Methods::Apps::AppsListReposAccessibleToInstallationResponseRepositoriesItemX553368913c.from_value(value)
           end,
           merge_commit_title: lambda do |value|
-            ::OctridevGithub::RepositoryMergeCommitTitle.from_value(value)
+            ::OctridevGithub::Methods::Apps::AppsListReposAccessibleToInstallationResponseRepositoriesItemX6025c9444b.from_value(value)
           end,
           merge_commit_message: lambda do |value|
-            ::OctridevGithub::RepositoryMergeCommitMessage.from_value(value)
+            ::OctridevGithub::Methods::Apps::AppsListReposAccessibleToInstallationResponseRepositoriesItemXd25bc05c9a.from_value(value)
           end,
           code_search_index_status: lambda do |value|
-            ::OctridevGithub::Methods::Apps::RepositoryCodeSearchIndexStatus.from_hash(value)
+            ::OctridevGithub::Methods::Apps::AppsListReposAccessibleToInstallationResponseRepositoriesItemXbc571f6d86.from_hash(value)
           end
         }.freeze
         NULLABLE_FIELDS = %i[
@@ -247,7 +247,7 @@ module OctridevGithub
         attr_reader :license
         # @return [Integer] Required `integer` value serialized in the `forks` wire field.
         attr_reader :forks
-        # @return [RepositoryPermissions] Optional object value serialized in the `permissions` wire field.
+        # @return [AppsListReposAccessibleToInstallationResponseRepositoriesItemPermissions] Optional object value serialized in the `permissions` wire field.
         attr_reader :permissions
         # @return [SimpleUser] A GitHub user.
         attr_reader :owner
@@ -377,7 +377,7 @@ module OctridevGithub
         attr_reader :has_discussions
         # @return [Boolean] Whether pull requests are enabled.
         attr_reader :has_pull_requests
-        # @return [RepositoryPullRequestCreationPolicy] The policy controlling who can create pull requests: all or collaborators_only.
+        # @return [AppsListReposAccessibleToInstallationResponseRepositoriesItemXd3df6a5cde] The policy controlling who can create pull requests: all or collaborators_only.
         attr_reader :pull_request_creation_policy
         # @return [Boolean] Whether the repository is archived.
         attr_reader :archived
@@ -405,13 +405,13 @@ module OctridevGithub
         attr_reader :allow_update_branch
         # @return [Boolean] Whether a squash merge commit can use the pull request title as default. **This property is closing down. Please use `squash_merge_commit_title` instead.
         attr_reader :use_squash_pr_title_as_default
-        # @return [RepositorySquashMergeCommitTitle] The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+        # @return [AppsListReposAccessibleToInstallationResponseRepositoriesItemX5dafed43da] The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
         attr_reader :squash_merge_commit_title
-        # @return [RepositorySquashMergeCommitMessage] The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message.
+        # @return [AppsListReposAccessibleToInstallationResponseRepositoriesItemX553368913c] The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message.
         attr_reader :squash_merge_commit_message
-        # @return [RepositoryMergeCommitTitle] The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+        # @return [AppsListReposAccessibleToInstallationResponseRepositoriesItemX6025c9444b] The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
         attr_reader :merge_commit_title
-        # @return [RepositoryMergeCommitMessage] The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message.
+        # @return [AppsListReposAccessibleToInstallationResponseRepositoriesItemXd25bc05c9a] The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message.
         attr_reader :merge_commit_message
         # @return [Boolean] Whether to allow merge commits for pull requests.
         attr_reader :allow_merge_commit
@@ -429,7 +429,7 @@ module OctridevGithub
         attr_reader :starred_at
         # @return [Boolean] Whether anonymous git access is enabled for this repository
         attr_reader :anonymous_access_enabled
-        # @return [RepositoryCodeSearchIndexStatus] The status of the code search index for this repository
+        # @return [AppsListReposAccessibleToInstallationResponseRepositoriesItemXbc571f6d86] The status of the code search index for this repository
         attr_reader :code_search_index_status
         # @return [Hash] The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. Present for org repos only.
         attr_reader :custom_properties
@@ -527,6 +527,23 @@ module OctridevGithub
         def to_h
           SdkModel.to_h(self, FIELDS)
         end
+      end
+
+      # Internal model hydration metadata.
+      class SdkInternalAppsListInstallationReposForAuthenticatedUserResponseRepositoXfbc57dcb02Metadata
+        FIELDS = {
+          admin: 'admin',
+          pull: 'pull',
+          triage: 'triage',
+          push: 'push',
+          maintain: 'maintain'
+        }.freeze
+        REQUIRED_FIELDS = %i[
+          admin
+          pull
+          push
+        ].freeze
+        DECODERS = {}.freeze
       end
     end
   end

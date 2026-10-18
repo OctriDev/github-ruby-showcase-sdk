@@ -6,65 +6,6 @@
 # shared_issue domain models
 module OctridevGithub
   # Internal model hydration metadata.
-  class SdkInternalIssueLabelsItemVariant1Metadata
-    FIELDS = {
-      id: 'id',
-      node_id: 'node_id',
-      url: 'url',
-      name: 'name',
-      description: 'description',
-      color: 'color',
-      default: 'default',
-      archived_by: 'archived_by'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      archived_by: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end
-    }.freeze
-  end
-
-  # API model for IssueLabelsItemVariant1.
-  # Required object value serialized in the `labels[]` wire field.
-  class IssueLabelsItemVariant1
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalIssueLabelsItemVariant1Metadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalIssueLabelsItemVariant1Metadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalIssueLabelsItemVariant1Metadata::DECODERS
-
-    # @return [Integer] Optional `int64`-formatted value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Optional `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Optional `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [String] Optional `string` value serialized in the `description` wire field.
-    attr_reader :description
-    # @return [String] Optional `string` value serialized in the `color` wire field.
-    attr_reader :color
-    # @return [Boolean] Optional `boolean` value serialized in the `default` wire field.
-    attr_reader :default
-    # @return [SimpleUser] The user who archived the label, or `null` if it has not been archived.
-    attr_reader :archived_by
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
-  end
-
-  # Internal model hydration metadata.
   class SdkInternalIssuePullRequestMetadata
     FIELDS = {
       merged_at: 'merged_at',
@@ -194,6 +135,9 @@ module OctridevGithub
       user: lambda do |value|
         ::OctridevGithub::NullableSimpleUser.from_hash(value)
       end,
+      labels: lambda do |value|
+        value&.map { |item| ::OctridevGithub::IssueLabelsItem.from_hash(item) }
+      end,
       assignee: lambda do |value|
         ::OctridevGithub::NullableSimpleUser.from_hash(value)
       end,
@@ -283,7 +227,7 @@ module OctridevGithub
     attr_reader :body
     # @return [NullableSimpleUser] A GitHub user.
     attr_reader :user
-    # @return [Array_of_Object] Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository
+    # @return [Array_of_IssueLabelsItem] Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository
     attr_reader :labels
     # @return [NullableSimpleUser] A GitHub user.
     attr_reader :assignee
@@ -676,5 +620,38 @@ module OctridevGithub
     def to_h
       SdkModel.to_h(self, FIELDS)
     end
+  end
+
+  # Defines the IssueFieldValueDataType SDK namespace.
+  module IssueFieldValueDataType
+    TEXT = 'text'
+    SINGLE_SELECT = 'single_select'
+    MULTI_SELECT = 'multi_select'
+    NUMBER = 'number'
+    DATE = 'date'
+    VALUES = %w[text single_select multi_select number date].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Internal model hydration metadata.
+  class SdkInternalIssueLabelsItemVariant1Metadata
+    FIELDS = {
+      id: 'id',
+      node_id: 'node_id',
+      url: 'url',
+      name: 'name',
+      description: 'description',
+      color: 'color',
+      default: 'default',
+      archived_by: 'archived_by'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      archived_by: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end
+    }.freeze
   end
 end

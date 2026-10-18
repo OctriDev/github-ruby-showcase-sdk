@@ -391,8 +391,8 @@ module OctridevGithub
       # Delete artifact attestations in bulk by either subject digests or unique ID.
       #
       # @param username [String] The handle for the GitHub user account.
-      # @param body [Object] The request body must include either `subject_digests`
-      #   or `attestation_ids`, but not both.
+      # @param body [Hash] The request body must include either `subject_digests` or
+      #   `attestation_ids`, but not both.
       def self.users_delete_attestations_bulk(
         config:,
         username:,

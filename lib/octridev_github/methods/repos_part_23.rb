@@ -9,105 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Repos SDK namespace.
     module Repos
-      # Get a ruleset for a repository. **Note:** To prevent leaking sensitive information, the `bypass_actors` property is only returned if the user making the API request has write access to the ruleset.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param ruleset_id [Integer] The ID of the ruleset.
-      # @param includes_parents [Boolean] Include rulesets configured at higher
-      #   levels that apply to this repository
-      def self.repos_get_repo_ruleset(
-        config:,
-        owner:,
-        repo:,
-        ruleset_id:,
-        includes_parents: NOT_GIVEN,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/rulesets/',
-            SdkClient.encode_path_segment(ruleset_id)
-          ].join,
-          config: config,
-          query: {
-            'includes_parents' => QueryValue.new(includes_parents, style: 'form', explode: true)
-          },
-          return_type: ::OctridevGithub::RepositoryRuleset,
-          decoder: :json,
-          operation_id: 'repos_get_repo_ruleset',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
-        ).data
-      end
-
-      # Replaces a repository ruleset with the supplied configuration. Supply the ruleset properties you want to set, including its target, enforcement level, bypass actors, conditions, or rules. Use `evaluate` to test rules before enforcement; this option is available only with GitHub Enterprise.
-      #
-      # Update a ruleset for a repository.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param ruleset_id [Integer] The ID of the ruleset.
-      # @param name [String] The name of the ruleset.
-      # @param target [ReposUpdateRepoRulesetTarget] The target of the ruleset
-      # @param enforcement [RepositoryRuleEnforcement] The enforcement level of the
-      #   ruleset. `evaluate` allows admins to test rules before enforcing them.
-      #   Admins can view insights on the Rule Insights page (`evaluate` is only
-      #   available with GitHub Enterprise).
-      # @param bypass_actors [Array_of_RepositoryRulesetBypassActor] The actors that
-      #   can bypass the rules in this ruleset
-      # @param conditions [RepositoryRulesetConditions] Parameters for a repository
-      #   ruleset ref name condition
-      # @param rules [Array_of_RepositoryRule] An array of rules within the ruleset.
-      def self.repos_update_repo_ruleset(
-        config:,
-        owner:,
-        repo:,
-        ruleset_id:,
-        name: NOT_GIVEN,
-        target: NOT_GIVEN,
-        enforcement: NOT_GIVEN,
-        bypass_actors: NOT_GIVEN,
-        conditions: NOT_GIVEN,
-        rules: NOT_GIVEN,
-        request_options: nil
-      )
-        SdkClient.request(
-          'PUT',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/rulesets/',
-            SdkClient.encode_path_segment(ruleset_id)
-          ].join,
-          config: config,
-          body: {
-            'name' => name,
-            'target' => target,
-            'enforcement' => enforcement,
-            'bypass_actors' => bypass_actors,
-            'conditions' => conditions,
-            'rules' => rules
-          },
-          return_type: ::OctridevGithub::RepositoryRuleset,
-          decoder: :json,
-          operation_id: 'repos_update_repo_ruleset',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError }
-        ).data
-      end
-
       # Deletes a ruleset from a repository. Identify the repository with `owner` and `repo`, and specify the ruleset with `ruleset_id`. The operation returns no content when the ruleset is deleted.
       #
       # Delete a ruleset for a repository.
@@ -533,6 +434,119 @@ module OctridevGithub
           operation_id: 'repos_list_teams',
           request_options: request_options,
           errors: { '404' => ::OctridevGithub::BasicError }
+        ).data
+      end
+
+      # Retrieves the topic names associated with a repository. Use `page` and `per_page` to paginate the results.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      def self.repos_get_all_topics(
+        config:,
+        owner:,
+        repo:,
+        page: NOT_GIVEN,
+        per_page: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/topics'
+          ].join,
+          config: config,
+          query: {
+            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
+          },
+          return_type: ::OctridevGithub::Topic,
+          decoder: :json,
+          operation_id: 'repos_get_all_topics',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError }
+        ).data
+      end
+
+      # Replaces all topics associated with a repository. Supply `names` with the complete topic list; send an empty array to clear all topics, and note that topic names are saved as lowercase.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param names [Array_of_String] An array of topics to add to the repository.
+      #   Pass one or more topics to _replace_ the set of existing topics. Send an
+      #   empty array (`[]`) to clear all topics from the repository. **Note:** Topic
+      #   `names` will be saved as lowercase.
+      def self.repos_replace_all_topics(
+        config:,
+        owner:,
+        repo:,
+        names:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'PUT',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/topics'
+          ].join,
+          config: config,
+          body: {
+            'names' => names
+          },
+          return_type: ::OctridevGithub::Topic,
+          decoder: :json,
+          operation_id: 'repos_replace_all_topics',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple }
+        ).data
+      end
+
+      # Get the total number of clones and breakdown per day or week for the last 14 days. Timestamps are aligned to UTC midnight of the beginning of the day or week. Week begins on Monday.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param per [SchemaSchemaD984713f] The time frame to display results for.
+      def self.repos_get_clones(
+        config:,
+        owner:,
+        repo:,
+        per: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/traffic/clones'
+          ].join,
+          config: config,
+          query: {
+            'per' => QueryValue.new(per, style: 'form', explode: true)
+          },
+          return_type: ::OctridevGithub::CloneTraffic,
+          decoder: :json,
+          operation_id: 'repos_get_clones',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError }
         ).data
       end
     end

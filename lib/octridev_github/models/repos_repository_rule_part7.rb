@@ -6,6 +6,56 @@
 # repos_repository_rule domain models (part 7)
 module OctridevGithub
   # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleTagNamePatternParametersMetadata
+    FIELDS = {
+      name: 'name',
+      negate: 'negate',
+      operator: 'operator',
+      pattern: 'pattern'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      operator
+      pattern
+    ].freeze
+    DECODERS = {
+      operator: lambda do |value|
+        ::OctridevGithub::RepositoryRuleTagNamePatternParametersOperator.from_value(value)
+      end
+    }.freeze
+  end
+
+  # API model for RepositoryRuleTagNamePatternParameters.
+  # Optional object value serialized in the `parameters` wire field.
+  class RepositoryRuleTagNamePatternParameters
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleTagNamePatternParametersMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleTagNamePatternParametersMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleTagNamePatternParametersMetadata::DECODERS
+
+    # @return [String] How this rule appears when configuring it.
+    attr_reader :name
+    # @return [Boolean] If true, the rule will fail if the pattern matches.
+    attr_reader :negate
+    # @return [RepositoryRuleTagNamePatternParametersOperator] The operator to use for matching.
+    attr_reader :operator
+    # @return [String] The pattern to match with.
+    attr_reader :pattern
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Internal model hydration metadata.
   class SdkInternalRepositoryRuleTagNamePatternMetadata
     FIELDS = {
       type: 'type',

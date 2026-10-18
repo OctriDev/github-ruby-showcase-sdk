@@ -5,6 +5,32 @@
 
 # secret_scanning domain models (part 4)
 module OctridevGithub
+  # Defines the SecretScanningPatternOverrideSetting SDK namespace.
+  module SecretScanningPatternOverrideSetting
+    NOT_SET = 'not-set'
+    DISABLED = 'disabled'
+    ENABLED = 'enabled'
+    VALUES = %w[not-set disabled enabled].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Internal model hydration metadata.
+  class SdkInternalSecretScanningPushProtectionBypassMetadata
+    FIELDS = {
+      reason: 'reason',
+      expire_at: 'expire_at',
+      token_type: 'token_type'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      reason: lambda do |value|
+        ::OctridevGithub::SecretScanningPushProtectionBypassReason.from_value(value)
+      end
+    }.freeze
+  end
+
   # API model for SecretScanningPushProtectionBypass.
   # Typed representation of the `SecretScanningPushProtectionBypass` API schema.
   class SecretScanningPushProtectionBypass
@@ -110,7 +136,7 @@ module OctridevGithub
   end
 
   # API model for SecretScanningScanHistoryCustomPatternBackfillScansItem.
-  # Required API value serialized in the `custom_pattern_backfill_scans[]` wire field.
+  # Required object value serialized in the `custom_pattern_backfill_scans[]` wire field.
   class SecretScanningScanHistoryCustomPatternBackfillScansItem
     CONSTRUCTION_SURFACE = :named
     FIELDS = SdkInternalSecretScanningScanHistoryCustomPatternBackfillScansItemMetadata::FIELDS

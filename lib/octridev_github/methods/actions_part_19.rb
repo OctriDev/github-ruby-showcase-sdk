@@ -9,145 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Actions SDK namespace.
     module Actions
-      # Creates a repository variable that you can reference in a GitHub Actions workflow. Authenticated users must have collaborator access to a repository to create, update, or read variables. OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param name [String] The name of the variable.
-      # @param value [String] The value of the variable.
-      def self.actions_create_repo_variable(
-        config:,
-        owner:,
-        repo:,
-        name:,
-        value:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'POST',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/actions/variables'
-          ].join,
-          config: config,
-          body: {
-            'name' => name,
-            'value' => value
-          },
-          return_type: ::OctridevGithub::EmptyObject,
-          decoder: :json,
-          operation_id: 'actions_create_repo_variable',
-          request_options: request_options
-        ).data
-      end
-
-      # Gets a specific variable in a repository. The authenticated user must have collaborator access to the repository to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param name [String] The name of the variable.
-      def self.actions_get_repo_variable(
-        config:,
-        owner:,
-        repo:,
-        name:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/actions/variables/',
-            SdkClient.encode_path_segment(name)
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::ActionsVariable,
-          decoder: :json,
-          operation_id: 'actions_get_repo_variable',
-          request_options: request_options
-        ).data
-      end
-
-      # Updates a repository variable that you can reference in a GitHub Actions workflow. Authenticated users must have collaborator access to a repository to create, update, or read variables. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param name [String] The name of the variable.
-      # @param name2 [String] The name of the variable.
-      # @param value [String] The value of the variable.
-      def self.actions_update_repo_variable(
-        config:,
-        owner:,
-        repo:,
-        name:,
-        name2: NOT_GIVEN,
-        value: NOT_GIVEN,
-        request_options: nil
-      )
-        SdkClient.request(
-          'PATCH',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/actions/variables/',
-            SdkClient.encode_path_segment(name)
-          ].join,
-          config: config,
-          body: {
-            'name' => name2,
-            'value' => value
-          },
-          decoder: :empty,
-          operation_id: 'actions_update_repo_variable',
-          request_options: request_options
-        ).data
-      end
-
-      # Deletes a repository variable using the variable name. Authenticated users must have collaborator access to a repository to create, update, or read variables. OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param name [String] The name of the variable.
-      def self.actions_delete_repo_variable(
-        config:,
-        owner:,
-        repo:,
-        name:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'DELETE',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/actions/variables/',
-            SdkClient.encode_path_segment(name)
-          ].join,
-          config: config,
-          decoder: :empty,
-          operation_id: 'actions_delete_repo_variable',
-          request_options: request_options
-        ).data
-      end
-
       # Lists the workflows in a repository. Anyone with read access to the repository can use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
       #
       # @param owner [String] The account owner of the repository. The name is not
@@ -527,6 +388,131 @@ module OctridevGithub
           return_type: ::OctridevGithub::ActionsPublicKey,
           decoder: :json,
           operation_id: 'actions_get_environment_public_key',
+          request_options: request_options
+        ).data
+      end
+
+      # Gets a single environment secret without revealing its encrypted value. Authenticated users must have collaborator access to a repository to create, update, or read secrets. OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param environment_name [String] The name of the environment. The name must
+      #   be URL encoded. For example, any slashes in the name must be replaced with
+      #   `%2F`.
+      # @param secret_name [String] The name of the secret.
+      def self.actions_get_environment_secret(
+        config:,
+        owner:,
+        repo:,
+        environment_name:,
+        secret_name:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/environments/',
+            SdkClient.encode_path_segment(environment_name),
+            '/secrets/',
+            SdkClient.encode_path_segment(secret_name)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::ActionsSecret,
+          decoder: :json,
+          operation_id: 'actions_get_environment_secret',
+          request_options: request_options
+        ).data
+      end
+
+      # Creates or updates an environment secret with an encrypted value. Encrypt your secret using LibSodium. For more information, see "Encrypting secrets for the REST API." Authenticated users must have collaborator access to a repository to create, update, or read secrets. OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param environment_name [String] The name of the environment. The name must
+      #   be URL encoded. For example, any slashes in the name must be replaced with
+      #   `%2F`.
+      # @param secret_name [String] The name of the secret.
+      # @param encrypted_value [String] Value for your secret, encrypted with
+      #   LibSodium using the public key retrieved from the Get an environment public
+      #   key endpoint.
+      # @param key_id [String] ID of the key you used to encrypt the secret.
+      def self.actions_create_or_update_environment_secret(
+        config:,
+        owner:,
+        repo:,
+        environment_name:,
+        secret_name:,
+        encrypted_value:,
+        key_id:,
+        request_options: nil
+      )
+        Validation.validate_pattern('encrypted_value', encrypted_value, '^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$')
+
+        SdkClient.request(
+          'PUT',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/environments/',
+            SdkClient.encode_path_segment(environment_name),
+            '/secrets/',
+            SdkClient.encode_path_segment(secret_name)
+          ].join,
+          config: config,
+          body: {
+            'encrypted_value' => encrypted_value,
+            'key_id' => key_id
+          },
+          return_type: ::OctridevGithub::EmptyObject,
+          decoder: :json,
+          operation_id: 'actions_create_or_update_environment_secret',
+          request_options: request_options
+        ).data
+      end
+
+      # Deletes a secret in an environment using the secret name. Authenticated users must have collaborator access to a repository to create, update, or read secrets. OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param environment_name [String] The name of the environment. The name must
+      #   be URL encoded. For example, any slashes in the name must be replaced with
+      #   `%2F`.
+      # @param secret_name [String] The name of the secret.
+      def self.actions_delete_environment_secret(
+        config:,
+        owner:,
+        repo:,
+        environment_name:,
+        secret_name:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'DELETE',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/environments/',
+            SdkClient.encode_path_segment(environment_name),
+            '/secrets/',
+            SdkClient.encode_path_segment(secret_name)
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'actions_delete_environment_secret',
           request_options: request_options
         ).data
       end

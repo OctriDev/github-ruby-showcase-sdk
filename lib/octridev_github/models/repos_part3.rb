@@ -97,59 +97,6 @@ module OctridevGithub
   end
 
   # Internal model hydration metadata.
-  class SdkInternalReleaseNotesContentMetadata
-    FIELDS = {
-      name: 'name',
-      body: 'body'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      name
-      body
-    ].freeze
-    DECODERS = {}.freeze
-  end
-
-  # API model for ReleaseNotesContent.
-  # Generated name and body describing a release
-  class ReleaseNotesContent
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalReleaseNotesContentMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalReleaseNotesContentMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalReleaseNotesContentMetadata::DECODERS
-
-    # @return [String] The generated name of the release
-    attr_reader :name
-    # @return [String] The generated body describing the contents of the release supporting markdown formatting
-    attr_reader :body
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
-  end
-
-  # Defines the ReviewersItemReviewer SDK namespace.
-  module ReviewersItemReviewer
-    def self.from_hash(hash)
-      shape_mapping = {
-        'avatar_url' => SimpleUser,
-        'members_url' => Team
-      }
-      type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
-      decoded = type&.from_hash(hash)
-      decoded unless type.nil?
-    end
-  end
-
-  # Internal model hydration metadata.
   class SdkInternalShortBranchCommitMetadata
     FIELDS = {
       sha: 'sha',

@@ -9,173 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Actions SDK namespace.
     module Actions
-      # Replaces all repositories for an organization variable that is available to selected repositories. Organization variables that are available to selected repositories have their `visibility` field set to `selected`. Authenticated users must have collaborator access to a repository to create, update, or read variables. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also…
-      #
-      # @param org [String] The organization name. The name is not case sensitive.
-      # @param name [String] The name of the variable.
-      # @param selected_repository_ids [Array_of_Integer] The IDs of the
-      #   repositories that can access the organization variable.
-      def self.actions_set_selected_repos_for_org_variable(
-        config:,
-        org:,
-        name:,
-        selected_repository_ids:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'PUT',
-          [
-            '/orgs/',
-            SdkClient.encode_path_segment(org),
-            '/actions/variables/',
-            SdkClient.encode_path_segment(name),
-            '/repositories'
-          ].join,
-          config: config,
-          body: {
-            'selected_repository_ids' => selected_repository_ids
-          },
-          decoder: :empty,
-          operation_id: 'actions_set_selected_repos_for_org_variable',
-          request_options: request_options
-        ).data
-      end
-
-      # Adds a repository to an organization variable configured for selected repositories. Use `name` and `repository_id` to identify the variable and repository to include; the variable must have `visibility` set to `selected`. The authenticated user must have collaborator access to the repository, and the token must have the required organization scope.
-      #
-      # Adds a repository to an organization variable that is available to selected repositories. Organization variables that are available to selected repositories have their `visibility` field set to `selected`. Authenticated users must have collaborator access to a repository to create, update, or read secrets. OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens…
-      #
-      # @param org [String] The organization name. The name is not case sensitive.
-      # @param name [String] The name of the variable.
-      def self.actions_add_selected_repo_to_org_variable(
-        config:,
-        org:,
-        name:,
-        repository_id:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'PUT',
-          [
-            '/orgs/',
-            SdkClient.encode_path_segment(org),
-            '/actions/variables/',
-            SdkClient.encode_path_segment(name),
-            '/repositories/',
-            SdkClient.encode_path_segment(repository_id)
-          ].join,
-          config: config,
-          decoder: :empty,
-          operation_id: 'actions_add_selected_repo_to_org_variable',
-          request_options: request_options
-        ).data
-      end
-
-      # Removes a repository from an organization variable configured for selected repositories. Use `name` and `repository_id` to identify the variable and repository to remove; the variable must have `visibility` set to `selected`. The authenticated user must have collaborator access to the repository, and the token must have the required organization scope.
-      #
-      # Removes a repository from an organization variable that is available to selected repositories. Organization variables that are available to selected repositories have their `visibility` field set to `selected`. Authenticated users must have collaborator access to a repository to create, update, or read variables. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also…
-      #
-      # @param org [String] The organization name. The name is not case sensitive.
-      # @param name [String] The name of the variable.
-      def self.actions_remove_selected_repo_from_org_variable(
-        config:,
-        org:,
-        name:,
-        repository_id:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'DELETE',
-          [
-            '/orgs/',
-            SdkClient.encode_path_segment(org),
-            '/actions/variables/',
-            SdkClient.encode_path_segment(name),
-            '/repositories/',
-            SdkClient.encode_path_segment(repository_id)
-          ].join,
-          config: config,
-          decoder: :empty,
-          operation_id: 'actions_remove_selected_repo_from_org_variable',
-          request_options: request_options
-        ).data
-      end
-
-      # Lists all artifacts for a repository. Anyone with read access to the repository can use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param per_page [Integer] The number of results per page (max 100). For more
-      #   information, see "Using pagination in the REST API."
-      # @param page [Integer] The page number of the results to fetch. For more
-      #   information, see "Using pagination in the REST API."
-      # @param name [String] The name field of an artifact. When specified, only
-      #   artifacts with this name will be returned.
-      def self.actions_list_artifacts_for_repo(
-        config:,
-        owner:,
-        repo:,
-        per_page: NOT_GIVEN,
-        page: NOT_GIVEN,
-        name: NOT_GIVEN,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/actions/artifacts'
-          ].join,
-          config: config,
-          query: {
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
-            'name' => QueryValue.new(name, style: 'form', explode: true)
-          },
-          return_type: ::OctridevGithub::Methods::Actions::ActionsListArtifactsForRepoResponse,
-          decoder: :json,
-          operation_id: 'actions_list_artifacts_for_repo',
-          request_options: request_options
-        ).data
-      end
-
-      # Gets a specific artifact for a workflow run. Anyone with read access to the repository can use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param artifact_id [Integer] The unique identifier of the artifact.
-      def self.actions_get_artifact(
-        config:,
-        owner:,
-        repo:,
-        artifact_id:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/actions/artifacts/',
-            SdkClient.encode_path_segment(artifact_id)
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::Artifact,
-          decoder: :json,
-          operation_id: 'actions_get_artifact',
-          request_options: request_options
-        ).data
-      end
-
       # Deletes an artifact for a workflow run. OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
       #
       # @param owner [String] The account owner of the repository. The name is not
@@ -525,6 +358,162 @@ module OctridevGithub
           config: config,
           decoder: :empty,
           operation_id: 'actions_delete_actions_cache_by_id',
+          request_options: request_options
+        ).data
+      end
+
+      # Lists the active concurrency groups for a repository. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param after [String] A cursor, as given in the Link header. If specified,
+      #   the query only searches for results after this cursor. For more information,
+      #   see "Using pagination in the REST API."
+      def self.actions_list_concurrency_groups_for_repository(
+        config:,
+        owner:,
+        repo:,
+        per_page: NOT_GIVEN,
+        after: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/actions/concurrency_groups'
+          ].join,
+          config: config,
+          query: {
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'after' => QueryValue.new(after, style: 'form', explode: true)
+          },
+          return_type: ::OctridevGithub::ConcurrencyGroupList,
+          decoder: :json,
+          operation_id: 'actions_list_concurrency_groups_for_repository',
+          request_options: request_options,
+          errors: { '422' => ::OctridevGithub::ValidationError }
+        ).data
+      end
+
+      # Gets a specific concurrency group for a repository, including all instances in the group's queue. Returns 404 if the group is inactive or does not exist. Optionally, pass `ahead_of_run` or `ahead_of_job` to filter the results to only the items ahead of the specified workflow run or job in the queue, plus the specified item itself (returned as the last element). This is useful for determining what is blocking a particular run or job. Returns 422 if the specified run or job is…
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param concurrency_group_name [String] The name of the concurrency group.
+      # @param ahead_of_run [Integer] Filter to items ahead of this workflow run ID
+      #   in the queue, plus the run itself. Matches workflow-level concurrency and
+      #   reusable-workflow leases held on behalf of the run. Mutually exclusive with
+      #   `ahead_of_job`.
+      # @param ahead_of_job [Integer] Filter to items ahead of this job ID in the
+      #   queue, plus the job itself. Matches job-level concurrency and
+      #   reusable-workflow leases on the job's ancestor paths. Mutually exclusive
+      #   with `ahead_of_run`.
+      def self.actions_get_concurrency_group_for_repository(
+        config:,
+        owner:,
+        repo:,
+        concurrency_group_name:,
+        ahead_of_run: NOT_GIVEN,
+        ahead_of_job: NOT_GIVEN,
+        request_options: nil
+      )
+        Validation.if_given(ahead_of_run) { Validation.validate_range('ahead_of_run', ahead_of_run, min: 1) }
+
+        Validation.if_given(ahead_of_job) { Validation.validate_range('ahead_of_job', ahead_of_job, min: 1) }
+
+        SdkClient.request(
+          'GET',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/actions/concurrency_groups/',
+            SdkClient.encode_path_segment(concurrency_group_name)
+          ].join,
+          config: config,
+          query: {
+            'ahead_of_run' => QueryValue.new(ahead_of_run, style: 'form', explode: true),
+            'ahead_of_job' => QueryValue.new(ahead_of_job, style: 'form', explode: true)
+          },
+          return_type: ::OctridevGithub::ConcurrencyGroup,
+          decoder: :json,
+          operation_id: 'actions_get_concurrency_group_for_repository',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+        ).data
+      end
+
+      # Gets a specific job in a workflow run. Anyone with read access to the repository can use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param job_id [Integer] The unique identifier of the job.
+      def self.actions_get_job_for_workflow_run(
+        config:,
+        owner:,
+        repo:,
+        job_id:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/actions/jobs/',
+            SdkClient.encode_path_segment(job_id)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::Job,
+          decoder: :json,
+          operation_id: 'actions_get_job_for_workflow_run',
+          request_options: request_options
+        ).data
+      end
+
+      # Gets a redirect URL to download a plain text file of logs for a workflow job. This link expires after 1 minute. Look for `Location:` in the response header to find the URL for the download. Anyone with read access to the repository can use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param job_id [Integer] The unique identifier of the job.
+      def self.actions_download_job_logs_for_workflow_run(
+        config:,
+        owner:,
+        repo:,
+        job_id:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/actions/jobs/',
+            SdkClient.encode_path_segment(job_id),
+            '/logs'
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'actions_download_job_logs_for_workflow_run',
           request_options: request_options
         ).data
       end

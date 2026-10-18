@@ -9,6 +9,54 @@ module OctridevGithub
   module Methods
     # Defines the Orgs SDK namespace.
     module Orgs
+      # Defines the OrgsCreateArtifactDeploymentRecordRuntimeRisksItem SDK namespace.
+      module OrgsCreateArtifactDeploymentRecordRuntimeRisksItem
+        CRITICAL_RESOURCE = 'critical-resource'
+        INTERNET_EXPOSED = 'internet-exposed'
+        LATERAL_MOVEMENT = 'lateral-movement'
+        SENSITIVE_DATA = 'sensitive-data'
+        VALUES = %w[
+          critical-resource internet-exposed lateral-movement sensitive-data
+        ].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the OrgsUpdateMembershipForAuthenticatedUserState SDK namespace.
+      module OrgsUpdateMembershipForAuthenticatedUserState
+        ACTIVE = 'active'
+        VALUES = ['active'].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the OrgsListOutsideCollaboratorsParameter SDK namespace.
+      module OrgsListOutsideCollaboratorsParameter
+        V_2_FA_DISABLED = '2fa_disabled'
+        V_2_FA_INSECURE = '2fa_insecure'
+        ALL = 'all'
+        VALUES = %w[2fa_disabled 2fa_insecure all].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the OrgsCreateClusterDeploymentRecordsJobDeploymentsItemRuntimeRisksItem SDK namespace.
+      module OrgsCreateClusterDeploymentRecordsJobDeploymentsItemRuntimeRisksItem
+        CRITICAL_RESOURCE = 'critical-resource'
+        INTERNET_EXPOSED = 'internet-exposed'
+        LATERAL_MOVEMENT = 'lateral-movement'
+        SENSITIVE_DATA = 'sensitive-data'
+        VALUES = %w[
+          critical-resource internet-exposed lateral-movement sensitive-data
+        ].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
       # Defines the OrgsSetClusterDeploymentRecordsResponseErrorsItemCause SDK namespace.
       module OrgsSetClusterDeploymentRecordsResponseErrorsItemCause
         UNAUTHORIZED = 'unauthorized'

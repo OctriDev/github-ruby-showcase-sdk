@@ -9,322 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Issues SDK namespace.
     module Issues
-      # Internal model hydration metadata.
-      class SdkInternalIssuesCreateLabelMetadata
-        FIELDS = {
-          name: 'name',
-          color: 'color',
-          description: 'description'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          name
-        ].freeze
-        DECODERS = {}.freeze
-      end
-
-      # API model for IssuesCreateLabel.
-      class IssuesCreateLabel
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalIssuesCreateLabelMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalIssuesCreateLabelMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalIssuesCreateLabelMetadata::DECODERS
-
-        # @return [String] The name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji !:strawberry:. For a full list of available emoji and codes, see "Emoji cheat sheet."
-        attr_reader :name
-        # @return [String] The hexadecimal color code for the label, without the leading `#`.
-        attr_reader :color
-        # @return [String] A short description of the label. Must be 100 characters or fewer.
-        attr_reader :description
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalIssuesUpdateLabelMetadata
-        FIELDS = {
-          new_name: 'new_name',
-          color: 'color',
-          description: 'description',
-          archived: 'archived'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
-      end
-
-      # API model for IssuesUpdateLabel.
-      class IssuesUpdateLabel
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalIssuesUpdateLabelMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalIssuesUpdateLabelMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalIssuesUpdateLabelMetadata::DECODERS
-
-        # @return [String] The new name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji !:strawberry:. For a full list of available emoji and codes, see "Emoji cheat sheet."
-        attr_reader :new_name
-        # @return [String] The hexadecimal color code for the label, without the leading `#`.
-        attr_reader :color
-        # @return [String] A short description of the label. Must be 100 characters or fewer.
-        attr_reader :description
-        # @return [Boolean] Whether to archive or unarchive the label. Archived labels cannot be added to issues or pull requests. For more information, see "Archiving labels."
-        attr_reader :archived
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalIssuesCreateMilestone277b065cMetadata
-        FIELDS = {
-          title: 'title',
-          state: 'state',
-          description: 'description',
-          due_on: 'due_on'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          title
-        ].freeze
-        DECODERS = {
-          state: lambda do |value|
-            ::OctridevGithub::Methods::Issues::IssuesCreateMilestoneState.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for IssuesCreateMilestone277b065c.
-      class IssuesCreateMilestone277b065c
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalIssuesCreateMilestone277b065cMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalIssuesCreateMilestone277b065cMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalIssuesCreateMilestone277b065cMetadata::DECODERS
-
-        # @return [String] The title of the milestone.
-        attr_reader :title
-        # @return [IssuesCreateMilestoneState] The state of the milestone. Either `open` or `closed`.
-        attr_reader :state
-        # @return [String] A description of the milestone.
-        attr_reader :description
-        # @return [String] The milestone due date. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-        attr_reader :due_on
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalIssuesUpdateMilestone5179c53dMetadata
-        FIELDS = {
-          title: 'title',
-          state: 'state',
-          description: 'description',
-          due_on: 'due_on'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          state: lambda do |value|
-            ::OctridevGithub::Methods::Issues::IssuesUpdateMilestoneState.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for IssuesUpdateMilestone5179c53d.
-      class IssuesUpdateMilestone5179c53d
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalIssuesUpdateMilestone5179c53dMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalIssuesUpdateMilestone5179c53dMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalIssuesUpdateMilestone5179c53dMetadata::DECODERS
-
-        # @return [String] The title of the milestone.
-        attr_reader :title
-        # @return [IssuesUpdateMilestoneState] The state of the milestone. Either `open` or `closed`.
-        attr_reader :state
-        # @return [String] A description of the milestone.
-        attr_reader :description
-        # @return [String] The milestone due date. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-        attr_reader :due_on
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Defines the IssuesListSuggestionsParameterE0083d47 SDK namespace.
-      module IssuesListSuggestionsParameterE0083d47
-        SET_TYPE = 'set_type'
-        ADD_LABEL = 'add_label'
-        ADD_FIELD = 'add_field'
-        ADD_ASSIGNEE = 'add_assignee'
-        CLOSE_ISSUE = 'close_issue'
-        VALUES = %w[set_type add_label add_field add_assignee close_issue].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the IssuesListForRepoParameterCa0683ce SDK namespace.
-      module IssuesListForRepoParameterCa0683ce
-        OPEN = 'open'
-        CLOSED = 'closed'
-        ALL = 'all'
-        VALUES = %w[open closed all].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the IssuesListForAuthenticatedUserParameter SDK namespace.
-      module IssuesListForAuthenticatedUserParameter
-        ASSIGNED = 'assigned'
-        CREATED = 'created'
-        MENTIONED = 'mentioned'
-        SUBSCRIBED = 'subscribed'
-        REPOS = 'repos'
-        ALL = 'all'
-        VALUES = %w[assigned created mentioned subscribed repos all].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the IssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItemIgnoredReason SDK namespace.
-      module IssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItemIgnoredReason
-        ALREADY_APPLIED = 'already_applied'
-        ISSUE_ALREADY_CLOSED = 'issue_already_closed'
-        VALUES = %w[already_applied issue_already_closed].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the IssuesListParameter56183a23 SDK namespace.
-      module IssuesListParameter56183a23
-        CREATED = 'created'
-        UPDATED = 'updated'
-        COMMENTS = 'comments'
-        VALUES = %w[created updated comments].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the IssuesUpdateLabelsItemVariant1Confidence SDK namespace.
-      module IssuesUpdateLabelsItemVariant1Confidence
-        LOW = 'low'
-        MEDIUM = 'medium'
-        HIGH = 'high'
-        VALUES = %w[low medium high].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the IssuesListParameter8cbd4dc2 SDK namespace.
-      module IssuesListParameter8cbd4dc2
-        OPEN = 'open'
-        CLOSED = 'closed'
-        ALL = 'all'
-        VALUES = %w[open closed all].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the IssuesUpdateTypeVariant1Confidence SDK namespace.
-      module IssuesUpdateTypeVariant1Confidence
-        LOW = 'low'
-        MEDIUM = 'medium'
-        HIGH = 'high'
-        VALUES = %w[low medium high].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the IssuesListMilestonesParameter SDK namespace.
-      module IssuesListMilestonesParameter
-        OPEN = 'open'
-        CLOSED = 'closed'
-        ALL = 'all'
-        VALUES = %w[open closed all].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the IssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItemConfidence SDK namespace.
-      module IssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItemConfidence
-        LOW = 'low'
-        MEDIUM = 'medium'
-        HIGH = 'high'
-        VALUES = %w[low medium high].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the IssuesListParameter SDK namespace.
-      module IssuesListParameter
-        ASSIGNED = 'assigned'
-        CREATED = 'created'
-        MENTIONED = 'mentioned'
-        SUBSCRIBED = 'subscribed'
-        REPOS = 'repos'
-        ALL = 'all'
-        VALUES = %w[assigned created mentioned subscribed repos all].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the IssuesAddLabelsVariant2ItemConfidence SDK namespace.
-      module IssuesAddLabelsVariant2ItemConfidence
-        LOW = 'low'
-        MEDIUM = 'medium'
-        HIGH = 'high'
-        VALUES = %w[low medium high].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
       # Defines the IssuesUpdateResponseVariant1SuggestionsAssigneesItemIgnoredReason SDK namespace.
       module IssuesUpdateResponseVariant1SuggestionsAssigneesItemIgnoredReason
         ALREADY_APPLIED = 'already_applied'
@@ -389,17 +73,6 @@ module OctridevGithub
         end
       end
 
-      # Defines the IssuesUpdateAssigneesItemVariant1Confidence SDK namespace.
-      module IssuesUpdateAssigneesItemVariant1Confidence
-        LOW = 'low'
-        MEDIUM = 'medium'
-        HIGH = 'high'
-        VALUES = %w[low medium high].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
       # Defines the IssuesUpdateResponseVariant1SuggestionsAssigneesItemConfidence SDK namespace.
       module IssuesUpdateResponseVariant1SuggestionsAssigneesItemConfidence
         LOW = 'low'
@@ -416,17 +89,6 @@ module OctridevGithub
         ALREADY_APPLIED = 'already_applied'
         ISSUE_ALREADY_CLOSED = 'issue_already_closed'
         VALUES = %w[already_applied issue_already_closed].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the IssuesAddAssigneesAssigneesItemVariant1Confidence SDK namespace.
-      module IssuesAddAssigneesAssigneesItemVariant1Confidence
-        LOW = 'low'
-        MEDIUM = 'medium'
-        HIGH = 'high'
-        VALUES = %w[low medium high].freeze
         def self.from_value(value)
           value
         end
@@ -566,6 +228,265 @@ module OctridevGithub
         def self.from_value(value)
           value
         end
+      end
+
+      # Defines the IssuesListMilestonesParameter4b5b1f9b SDK namespace.
+      module IssuesListMilestonesParameter4b5b1f9b
+        ASC = 'asc'
+        DESC = 'desc'
+        VALUES = %w[asc desc].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the IssuesListForOrgParameter809ee8ab SDK namespace.
+      module IssuesListForOrgParameter809ee8ab
+        OPEN = 'open'
+        CLOSED = 'closed'
+        ALL = 'all'
+        VALUES = %w[open closed all].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the IssuesListForRepoParameter SDK namespace.
+      module IssuesListForRepoParameter
+        CREATED = 'created'
+        UPDATED = 'updated'
+        COMMENTS = 'comments'
+        VALUES = %w[created updated comments].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the IssuesUpdateStateReason SDK namespace.
+      module IssuesUpdateStateReason
+        COMPLETED = 'completed'
+        NOT_PLANNED = 'not_planned'
+        DUPLICATE = 'duplicate'
+        REOPENED = 'reopened'
+        VALUES = %w[completed not_planned duplicate reopened].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the IssuesUpdateResponseVariant1SuggestionsTypeItemConfidence SDK namespace.
+      module IssuesUpdateResponseVariant1SuggestionsTypeItemConfidence
+        LOW = 'low'
+        MEDIUM = 'medium'
+        HIGH = 'high'
+        VALUES = %w[low medium high].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Lists issues assigned to the authenticated user across repositories the user can access, including owned, member, and organization repositories. Use `filter`, `state`, and `labels` to narrow the results, and use `page` and `per_page` to paginate the results. Responses can include pull requests; identify them by the `pull_request` key, and use the pull requests endpoint to retrieve a pull request ID.
+      #
+      # List issues assigned to the authenticated user across all visible repositories including owned repositories, member repositories, and organization repositories. You can use the `filter` query parameter to fetch issues that are not necessarily assigned to you. > !NOTE] > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify…
+      #
+      # @param filter [IssuesListParameter] Indicates which sorts of issues to
+      #   return. `assigned` means issues assigned to you. `created` means issues
+      #   created by you. `mentioned` means issues mentioning you. `subscribed` means
+      #   issues you're subscribed to updates for. `all` or `repos` means all issues
+      #   you can see, regardless of participation or creation.
+      # @param state [IssuesListParameter8cbd4dc2] Indicates the state of the issues
+      #   to return.
+      # @param labels [String] A list of comma separated label names. Example:
+      #   `bug,ui,@high`
+      # @param sort [IssuesListParameter56183a23] What to sort results by.
+      # @param direction [SchemaSchema0df64690] The direction to sort the results
+      #   by.
+      # @param since [String] Only show results that were last updated after the
+      #   given time. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.issues_list(
+        config:,
+        filter: NOT_GIVEN,
+        state: NOT_GIVEN,
+        labels: NOT_GIVEN,
+        sort: NOT_GIVEN,
+        direction: NOT_GIVEN,
+        since: NOT_GIVEN,
+        collab: NOT_GIVEN,
+        orgs: NOT_GIVEN,
+        owned: NOT_GIVEN,
+        pulls: NOT_GIVEN,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
+        Validation.if_given(since) { Validation.validate_date_time('since', since) }
+
+        SdkClient.request(
+          'GET',
+          '/issues',
+          config: config,
+          query: {
+            'filter' => QueryValue.new(filter, style: 'form', explode: true),
+            'state' => QueryValue.new(state, style: 'form', explode: true),
+            'labels' => QueryValue.new(labels, style: 'form', explode: true),
+            'sort' => QueryValue.new(sort, style: 'form', explode: true),
+            'direction' => QueryValue.new(direction, style: 'form', explode: true),
+            'since' => QueryValue.new(since, style: 'form', explode: true),
+            'collab' => QueryValue.new(collab, style: 'form', explode: true),
+            'orgs' => QueryValue.new(orgs, style: 'form', explode: true),
+            'owned' => QueryValue.new(owned, style: 'form', explode: true),
+            'pulls' => QueryValue.new(pulls, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
+          },
+          return_type: [::OctridevGithub::Issue],
+          decoder: :json,
+          operation_id: 'issues_list',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+        ).data
+      end
+
+      # List issues in an organization assigned to the authenticated user. > !NOTE] > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull…
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param filter [IssuesListForOrgParameter] Indicates which sorts of issues to
+      #   return. `assigned` means issues assigned to you. `created` means issues
+      #   created by you. `mentioned` means issues mentioning you. `subscribed` means
+      #   issues you're subscribed to updates for. `all` or `repos` means all issues
+      #   you can see, regardless of participation or creation.
+      # @param state [IssuesListForOrgParameter809ee8ab] Indicates the state of the
+      #   issues to return.
+      # @param labels [String] A list of comma separated label names. Example:
+      #   `bug,ui,@high`
+      # @param type [String] Can be the name of an issue type.
+      # @param sort [IssuesListForOrgParameter3784845c] What to sort results by.
+      # @param direction [SchemaSchema0df64690] The direction to sort the results
+      #   by.
+      # @param since [String] Only show results that were last updated after the
+      #   given time. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.issues_list_for_org(
+        config:,
+        org:,
+        filter: NOT_GIVEN,
+        state: NOT_GIVEN,
+        labels: NOT_GIVEN,
+        type: NOT_GIVEN,
+        sort: NOT_GIVEN,
+        direction: NOT_GIVEN,
+        since: NOT_GIVEN,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
+        Validation.if_given(since) { Validation.validate_date_time('since', since) }
+
+        SdkClient.request(
+          'GET',
+          [
+            '/orgs/',
+            SdkClient.encode_path_segment(org),
+            '/issues'
+          ].join,
+          config: config,
+          query: {
+            'filter' => QueryValue.new(filter, style: 'form', explode: true),
+            'state' => QueryValue.new(state, style: 'form', explode: true),
+            'labels' => QueryValue.new(labels, style: 'form', explode: true),
+            'type' => QueryValue.new(type, style: 'form', explode: true),
+            'sort' => QueryValue.new(sort, style: 'form', explode: true),
+            'direction' => QueryValue.new(direction, style: 'form', explode: true),
+            'since' => QueryValue.new(since, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
+          },
+          return_type: [::OctridevGithub::Issue],
+          decoder: :json,
+          operation_id: 'issues_list_for_org',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError }
+        ).data
+      end
+
+      # Lists the available assignees for issues in a repository.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.issues_list_assignees(
+        config:,
+        owner:,
+        repo:,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/assignees'
+          ].join,
+          config: config,
+          query: {
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
+          },
+          return_type: [::OctridevGithub::SimpleUser],
+          decoder: :json,
+          operation_id: 'issues_list_assignees',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError }
+        ).data
+      end
+
+      # Checks whether a user can be assigned to issues in a repository. Use `owner` and `repo` to identify the repository and `assignee` to identify the user; a 204 response has no body when assignment is allowed.
+      #
+      # Checks if a user has permission to be assigned to an issue in this repository. If the `assignee` can be assigned to issues in the repository, a `204` header with no content is returned. Otherwise a `404` status code is returned.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      def self.issues_check_user_can_be_assigned(
+        config:,
+        owner:,
+        repo:,
+        assignee:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/assignees/',
+            SdkClient.encode_path_segment(assignee)
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'issues_check_user_can_be_assigned',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError }
+        ).data
       end
     end
   end

@@ -113,11 +113,8 @@ module OctridevGithub
   ActionsListSelfHostedRunnersForOrgResponse = Methods::Actions::ActionsListSelfHostedRunnersForOrgResponse
   ActionsGetRunnerVersionDeprecationForOrgResponse = Methods::Actions::ActionsGetRunnerVersionDeprecationForOrgResponse
   ActionsGenerateRunnerJitconfigForOrg = Methods::Actions::ActionsGenerateRunnerJitconfigForOrg
-  SchemaSchemaCee94e2c = Methods::Actions::SchemaSchemaCee94e2c
-  SchemaSchemaC8266fdc = Methods::Actions::SchemaSchemaC8266fdc
   ActionsAddCustomLabelsToSelfHostedRunnerForOrg = Methods::Actions::ActionsAddCustomLabelsToSelfHostedRunnerForOrg
   ActionsSetCustomLabelsForSelfHostedRunnerForOrg = Methods::Actions::ActionsSetCustomLabelsForSelfHostedRunnerForOrg
-  SchemaSchema328ddb88 = Methods::Actions::SchemaSchema328ddb88
   ActionsListOrgSecretsResponse = Methods::Actions::ActionsListOrgSecretsResponse
   ActionsCreateOrUpdateOrgSecret = Methods::Actions::ActionsCreateOrUpdateOrgSecret
   ActionsListSelectedReposForOrgSecretResponse = Methods::Actions::ActionsListSelectedReposForOrgSecretResponse
@@ -277,6 +274,7 @@ module OctridevGithub
   OrgsSetImmutableReleasesSettings = Methods::Orgs::OrgsSetImmutableReleasesSettings
   OrgsGetImmutableReleasesSettingsRepositoriesResponse = Methods::Orgs::OrgsGetImmutableReleasesSettingsRepositoriesResponse
   OrgsSetImmutableReleasesSettingsRepositories = Methods::Orgs::OrgsSetImmutableReleasesSettingsRepositories
+  OrgsEnableOrDisableSecurityProductOnAllOrgRepos = Methods::Orgs::OrgsEnableOrDisableSecurityProductOnAllOrgRepos
   OrgsUpdateMembershipForAuthenticatedUser = Methods::Orgs::OrgsUpdateMembershipForAuthenticatedUser
   BillingCreateOrganizationBudgetBudgetAlerting = Methods::Billing::BillingCreateOrganizationBudgetBudgetAlerting
   BillingCreateOrganizationBudget = Methods::Billing::BillingCreateOrganizationBudget
@@ -460,7 +458,8 @@ module OctridevGithub
   TeamsAddOrUpdateMembershipForUserLegacy = Methods::Teams::TeamsAddOrUpdateMembershipForUserLegacy
   TeamsAddOrUpdateRepoPermissionsLegacy = Methods::Teams::TeamsAddOrUpdateRepoPermissionsLegacy
   ChecksCreateOutput = Methods::Checks::ChecksCreateOutput
-  ChecksUpdateOutput = Methods::Checks::ChecksUpdateOutput
+  ChecksCreateVariant0 = Methods::Checks::ChecksCreateVariant0
+  ChecksCreateVariant1 = Methods::Checks::ChecksCreateVariant1
   ChecksCreateSuite = Methods::Checks::ChecksCreateSuite
   ChecksSetSuitesPreferences = Methods::Checks::ChecksSetSuitesPreferences
   ChecksListForSuiteResponse = Methods::Checks::ChecksListForSuiteResponse
@@ -19455,15 +19454,7 @@ module OctridevGithub
       owner:,
       repo:,
       check_run_id:,
-      name: NOT_GIVEN,
-      details_url: NOT_GIVEN,
-      external_id: NOT_GIVEN,
-      started_at: NOT_GIVEN,
-      status: NOT_GIVEN,
-      conclusion: NOT_GIVEN,
-      completed_at: NOT_GIVEN,
-      output: NOT_GIVEN,
-      actions: NOT_GIVEN,
+      body:,
       request_options: nil
     )
       ::OctridevGithub::Methods::Checks.checks_update(
@@ -19471,15 +19462,7 @@ module OctridevGithub
         owner: owner,
         repo: repo,
         check_run_id: check_run_id,
-        name: name,
-        details_url: details_url,
-        external_id: external_id,
-        started_at: started_at,
-        status: status,
-        conclusion: conclusion,
-        completed_at: completed_at,
-        output: output,
-        actions: actions,
+        body: body,
         request_options: request_options
       )
     end

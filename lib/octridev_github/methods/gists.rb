@@ -318,7 +318,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'gists_get',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::ForbiddenGist, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -467,7 +467,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'gists_get_comment',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::ForbiddenGist, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 

@@ -5,6 +5,25 @@
 
 # repos_repository_rule domain models (part 2)
 module OctridevGithub
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleCommitMessagePatternMetadata
+    FIELDS = {
+      type: 'type',
+      parameters: 'parameters'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleCommitMessagePatternType.from_value(value)
+      end,
+      parameters: lambda do |value|
+        ::OctridevGithub::RepositoryRuleCommitMessagePatternParameters.from_hash(value)
+      end
+    }.freeze
+  end
+
   # API model for RepositoryRuleCommitMessagePattern.
   # Parameters to be used for the commit_message_pattern rule
   class RepositoryRuleCommitMessagePattern
@@ -650,30 +669,5 @@ module OctridevGithub
     def to_h
       SdkModel.to_h(self, FIELDS)
     end
-  end
-
-  # Internal model hydration metadata.
-  class SdkInternalRepositoryRuleDetailedVariant5Metadata
-    FIELDS = {
-      type: 'type',
-      parameters: 'parameters',
-      ruleset_source_type: 'ruleset_source_type',
-      ruleset_source: 'ruleset_source',
-      ruleset_id: 'ruleset_id'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      type
-    ].freeze
-    DECODERS = {
-      type: lambda do |value|
-        ::OctridevGithub::RepositoryRuleRequiredDeploymentsType.from_value(value)
-      end,
-      parameters: lambda do |value|
-        ::OctridevGithub::RepositoryRuleRequiredDeploymentsParameters.from_hash(value)
-      end,
-      ruleset_source_type: lambda do |value|
-        ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
-      end
-    }.freeze
   end
 end

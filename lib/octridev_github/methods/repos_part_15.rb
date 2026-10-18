@@ -9,109 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Repos SDK namespace.
     module Repos
-      # Gets a specified commit comment. This endpoint supports the following custom media types. For more information, see "Media types." - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type. - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`. -…
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param comment_id [Integer] The unique identifier of the comment.
-      def self.repos_get_commit_comment(
-        config:,
-        owner:,
-        repo:,
-        comment_id:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/comments/',
-            SdkClient.encode_path_segment(comment_id)
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::CommitComment,
-          decoder: :json,
-          operation_id: 'repos_get_commit_comment',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
-        ).data
-      end
-
-      # Updates the contents of a specified commit comment. This endpoint supports the following custom media types. For more information, see "Media types." - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type. - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`. -…
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param comment_id [Integer] The unique identifier of the comment.
-      # @param body [String] The contents of the comment
-      def self.repos_update_commit_comment(
-        config:,
-        owner:,
-        repo:,
-        comment_id:,
-        body:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'PATCH',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/comments/',
-            SdkClient.encode_path_segment(comment_id)
-          ].join,
-          config: config,
-          body: {
-            'body' => body
-          },
-          return_type: ::OctridevGithub::CommitComment,
-          decoder: :json,
-          operation_id: 'repos_update_commit_comment',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
-        ).data
-      end
-
-      # Deletes a commit comment from the specified repository. Use `owner`, `repo`, and `comment_id` to identify the repository and comment to remove.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param comment_id [Integer] The unique identifier of the comment.
-      def self.repos_delete_commit_comment(
-        config:,
-        owner:,
-        repo:,
-        comment_id:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'DELETE',
-          [
-            '/repos/',
-            SdkClient.encode_path_segment(owner),
-            '/',
-            SdkClient.encode_path_segment(repo),
-            '/comments/',
-            SdkClient.encode_path_segment(comment_id)
-          ].join,
-          config: config,
-          decoder: :empty,
-          operation_id: 'repos_delete_commit_comment',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
-        ).data
-      end
-
       # **Signature verification object** The response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object: | Name | Type | Description | | ---- | ---- | ----------- | | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. | | `reason` | `string` | The reason for verified value. Possible values and their meanings are…
       #
       # @param owner [String] The account owner of the repository. The name is not
@@ -395,7 +292,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'repos_get_commit',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '429' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '429' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
 
@@ -517,6 +414,152 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'repos_get_community_profile_metrics',
           request_options: request_options
+        ).data
+      end
+
+      # Compares two commits against one another. You can compare refs (branches or tags) and commit SHAs in the same repository, or you can compare refs and commit SHAs that exist in different repositories within the same repository network, including fork branches. For more information about how to view a repository's network, see "Understanding connections between repositories." This endpoint is equivalent to running the `git log BASE..HEAD` command, but it returns commits in a…
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param basehead [String] The base branch and head branch to compare. This
+      #   parameter expects the format `BASE...HEAD`. Both must be branch names in
+      #   `repo`. To compare with a branch that exists in a different repository in
+      #   the same network as `repo`, the `basehead` parameter expects the format
+      #   `USERNAME:BASE...USERNAME:HEAD`.
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      def self.repos_compare_commits(
+        config:,
+        owner:,
+        repo:,
+        basehead:,
+        page: NOT_GIVEN,
+        per_page: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/compare/',
+            SdkClient.encode_path_segment(basehead)
+          ].join,
+          config: config,
+          query: {
+            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
+          },
+          return_type: ::OctridevGithub::CommitComparison,
+          decoder: :json,
+          operation_id: 'repos_compare_commits',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+        ).data
+      end
+
+      # Retrieves a file or directory from a repository at the specified `path`. Use `ref` to select a commit, branch, or tag; it defaults to the repository's default branch when omitted. Directory responses are limited to 1,000 items, and files larger than 100 MB are not supported.
+      #
+      # Gets the contents of a file or directory in a repository. Specify the file path or directory with the `path` parameter. If you omit the `path` parameter, you will receive the contents of the repository's root directory. This endpoint supports the following custom media types. For more information, see "Media types." - **`application/vnd.github.raw+json`**: Returns the raw file contents for files and symlinks. - **`application/vnd.github.html+json`**: Returns the file…
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param path [String] path parameter
+      # @param ref [String] The name of the commit/branch/tag. Default: the
+      #   repository’s default branch.
+      def self.repos_get_content(
+        config:,
+        owner:,
+        repo:,
+        path:,
+        ref: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/contents/',
+            SdkClient.encode_path_segment(path)
+          ].join,
+          config: config,
+          query: {
+            'ref' => QueryValue.new(ref, style: 'form', explode: true)
+          },
+          return_type: ::OctridevGithub::ContentTree,
+          decoder: :json,
+          operation_id: 'repos_get_content',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+        ).data
+      end
+
+      # Creates a new file or replaces an existing file in a repository. > !NOTE] > If you use this endpoint and the "[Delete a file" endpoint in parallel, the concurrent requests will conflict and you will receive errors. You must use these endpoints serially instead. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint. The `workflow` scope is also required in order to modify files in the `.github/workflows` directory.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param path [String] path parameter
+      # @param message [String] The commit message.
+      # @param content [String] The new file content, using Base64 encoding.
+      # @param sha [String] **Required if you are updating a file**. The blob SHA of
+      #   the file being replaced.
+      # @param branch [String] The branch name. Default: the repository’s default
+      #   branch.
+      # @param committer [ReposCreateOrUpdateFileContentsCommitter] The person that
+      #   committed the file. Default: the authenticated user.
+      # @param author [ReposCreateOrUpdateFileContentsAuthor] The author of the
+      #   file. Default: The `committer` or the authenticated user if you omit
+      #   `committer`.
+      def self.repos_create_or_update_file_contents(
+        config:,
+        owner:,
+        repo:,
+        path:,
+        message:,
+        content:,
+        sha: NOT_GIVEN,
+        branch: NOT_GIVEN,
+        committer: NOT_GIVEN,
+        author: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'PUT',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/contents/',
+            SdkClient.encode_path_segment(path)
+          ].join,
+          config: config,
+          body: {
+            'message' => message,
+            'content' => content,
+            'sha' => sha,
+            'branch' => branch,
+            'committer' => committer,
+            'author' => author
+          },
+          return_type: ::OctridevGithub::FileCommit,
+          decoder: :json,
+          operation_id: 'repos_create_or_update_file_contents',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
     end

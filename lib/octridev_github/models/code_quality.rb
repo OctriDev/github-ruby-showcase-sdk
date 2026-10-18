@@ -382,16 +382,62 @@ module OctridevGithub
     end
   end
 
-  # Defines the CodeQualitySetupUpdate SDK namespace.
-  module CodeQualitySetupUpdate
-    def self.from_hash(hash)
-      return hash if hash.is_a?(::Object)
-      return hash if hash.is_a?(::Object)
-      return hash if hash.is_a?(::Object)
-      return hash if hash.is_a?(::Object)
-      return hash if hash.is_a?(::Object)
+  # Internal model hydration metadata.
+  class SdkInternalCodeQualitySetupUpdateMetadata
+    FIELDS = {
+      state: 'state',
+      runner_type: 'runner_type',
+      runner_label: 'runner_label',
+      languages: 'languages',
+      ai_findings_option: 'ai_findings_option'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      state: lambda do |value|
+        ::OctridevGithub::CodeQualitySetupUpdateState.from_value(value)
+      end,
+      runner_type: lambda do |value|
+        ::OctridevGithub::CodeQualitySetupUpdateRunnerType.from_value(value)
+      end,
+      languages: lambda do |value|
+        value&.map { |item| ::OctridevGithub::CodeQualitySetupUpdateLanguagesItem.from_value(item) }
+      end,
+      ai_findings_option: lambda do |value|
+        ::OctridevGithub::CodeQualitySetupUpdateAiFindingsOption.from_value(value)
+      end
+    }.freeze
+  end
 
-      raise "Could not deserialize CodeQualitySetupUpdate from #{hash.inspect}"
+  # API model for CodeQualitySetupUpdate.
+  # Configuration for code quality setup.
+  class CodeQualitySetupUpdate
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalCodeQualitySetupUpdateMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalCodeQualitySetupUpdateMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalCodeQualitySetupUpdateMetadata::DECODERS
+
+    # @return [CodeQualitySetupUpdateState] The desired state of code quality setup.
+    attr_reader :state
+    # @return [CodeQualitySetupUpdateRunnerType] Runner type to be used.
+    attr_reader :runner_type
+    # @return [String] Runner label to be used if the runner type is labeled.
+    attr_reader :runner_label
+    # @return [Array_of_CodeQualitySetupUpdateLanguagesItem] Languages to be analyzed.
+    attr_reader :languages
+    # @return [CodeQualitySetupUpdateAiFindingsOption] Whether AI findings run for Code Quality on this repository.
+    attr_reader :ai_findings_option
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
     end
   end
 

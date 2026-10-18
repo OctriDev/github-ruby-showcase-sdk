@@ -275,6 +275,116 @@ module OctridevGithub
   end
 
   # Internal model hydration metadata.
+  class SdkInternalReleaseAssetMetadata
+    FIELDS = {
+      url: 'url',
+      browser_download_url: 'browser_download_url',
+      id: 'id',
+      node_id: 'node_id',
+      name: 'name',
+      label: 'label',
+      state: 'state',
+      content_type: 'content_type',
+      size: 'size',
+      digest: 'digest',
+      download_count: 'download_count',
+      created_at: 'created_at',
+      updated_at: 'updated_at',
+      uploader: 'uploader'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      url
+      browser_download_url
+      id
+      node_id
+      name
+      label
+      state
+      content_type
+      size
+      digest
+      download_count
+      created_at
+      updated_at
+      uploader
+    ].freeze
+    DECODERS = {
+      state: lambda do |value|
+        ::OctridevGithub::ReleaseAssetState.from_value(value)
+      end,
+      uploader: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      label
+      digest
+      uploader
+    ].freeze
+  end
+
+  # API model for ReleaseAsset.
+  # Data related to a release.
+  class ReleaseAsset
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalReleaseAssetMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalReleaseAssetMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalReleaseAssetMetadata::DECODERS
+
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Required `uri`-formatted value serialized in the `browser_download_url` wire field.
+    attr_reader :browser_download_url
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] The file name of the asset.
+    attr_reader :name
+    # @return [String] Required `string` value serialized in the `label` wire field.
+    attr_reader :label
+    # @return [ReleaseAssetState] State of the release asset.
+    attr_reader :state
+    # @return [String] Required `string` value serialized in the `content_type` wire field.
+    attr_reader :content_type
+    # @return [Integer] Required `integer` value serialized in the `size` wire field.
+    attr_reader :size
+    # @return [String] Required `string` value serialized in the `digest` wire field.
+    attr_reader :digest
+    # @return [Integer] Required `integer` value serialized in the `download_count` wire field.
+    attr_reader :download_count
+    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :uploader
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalReleaseAssetMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Defines the ReleaseAssetState SDK namespace.
+  module ReleaseAssetState
+    UPLOADED = 'uploaded'
+    OPEN = 'open'
+    VALUES = %w[uploaded open].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Internal model hydration metadata.
   class SdkInternalScimErrorMetadata
     FIELDS = {
       message: 'message',
@@ -327,6 +437,46 @@ module OctridevGithub
   module SecretScanningPushProtectionBypassPlaceholderId
     def self.from_value(value)
       value
+    end
+  end
+
+  # Internal model hydration metadata.
+  class SdkInternalServiceUnavailableMetadata
+    FIELDS = {
+      code: 'code',
+      message: 'message',
+      documentation_url: 'documentation_url'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
+  end
+
+  # API model for ServiceUnavailable.
+  # Typed representation of the `ServiceUnavailable` API schema.
+  class ServiceUnavailable
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalServiceUnavailableMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalServiceUnavailableMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalServiceUnavailableMetadata::DECODERS
+
+    # @return [String] Optional `string` value serialized in the `code` wire field.
+    attr_reader :code
+    # @return [String] Optional `string` value serialized in the `message` wire field.
+    attr_reader :message
+    # @return [String] Optional `string` value serialized in the `documentation_url` wire field.
+    attr_reader :documentation_url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
     end
   end
 

@@ -678,6 +678,9 @@ module OctridevGithub
       creator: lambda do |value|
         ::OctridevGithub::WebhookDeploymentStatusCreatedDeploymentCreator.from_hash(value)
       end,
+      payload: lambda do |value|
+        ::OctridevGithub::WebhookDeploymentStatusCreatedDeploymentPayload.from_hash(value)
+      end,
       performed_via_github_app: lambda do |value|
         ::OctridevGithub::WebhookDeploymentStatusCreatedDeploymentPerformedViaGithubApp.from_hash(value)
       end
