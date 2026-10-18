@@ -9,230 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Issues SDK namespace.
     module Issues
-      # Lists the issues that block a specified issue in a repository. Use `page` and `per_page` to paginate the results; returned issues include their issue details.
-      #
-      # You can use the REST API to list the dependencies an issue is blocked by. This endpoint supports the following custom media types. For more information, see Media types. - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you do not pass any specific media type. - **`application/vnd.github.text+json`**: Returns a text only representation of the Markdown body. Response will include `body_text`. -…
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param issue_number [Integer] The number that identifies the issue.
-      # @param per_page [Integer] The number of results per page (max 100). For more
-      #   information, see "Using pagination in the REST API."
-      # @param page [Integer] The page number of the results to fetch. For more
-      #   information, see "Using pagination in the REST API."
-      def self.issues_list_dependencies_blocked_by(
-        config:,
-        owner:,
-        repo:,
-        issue_number:,
-        per_page: NOT_GIVEN,
-        page: NOT_GIVEN,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/issues/",
-            SdkClient.encode_path_segment(issue_number),
-            "/dependencies/blocked_by"
-          ].join,
-          config: config,
-          query: {
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
-          },
-          return_type: [::OctridevGithub::Issue],
-          decoder: :json,
-          operation_id: 'issues_list_dependencies_blocked_by',
-          request_options: request_options,
-          errors: { '301' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError },
-        ).data
-      end
-
-      # Adds a “blocked by” dependency between an issue and another issue in a repository. Provide the blocking issue's ID in `issue_id`; creating content too quickly may result in secondary rate limiting.
-      #
-      # You can use the REST API to add a 'blocked by' relationship to an issue. Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see Rate limits for the API and Best practices for using the REST API. This endpoint supports the following custom media types. For more information, see Media types. - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you…
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param issue_number [Integer] The number that identifies the issue.
-      # @param issue_id [Integer] The id of the issue that blocks the current issue
-      def self.issues_add_blocked_by_dependency(
-        config:,
-        owner:,
-        repo:,
-        issue_number:,
-        issue_id:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'POST',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/issues/",
-            SdkClient.encode_path_segment(issue_number),
-            "/dependencies/blocked_by"
-          ].join,
-          config: config,
-          body: {
-            'issue_id' => issue_id,
-          },
-          return_type: ::OctridevGithub::Issue,
-          decoder: :json,
-          operation_id: 'issues_add_blocked_by_dependency',
-          request_options: request_options,
-          errors: { '301' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
-        ).data
-      end
-
-      # Removes a blocking dependency from an issue in a repository. Specify the issue being blocked with `issue_number` and the blocking issue with `issue_id`; removing content too quickly may result in secondary rate limiting.
-      #
-      # You can use the REST API to remove a dependency that an issue is blocked by. Removing content too quickly using this endpoint may result in secondary rate limiting. For more information, see Rate limits for the API and Best practices for using the REST API. This endpoint supports the following custom media types. For more information, see Media types. - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if…
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param issue_number [Integer] The number that identifies the issue.
-      # @param issue_id [Integer] The id of the blocking issue to remove as a
-      #   dependency
-      def self.issues_remove_dependency_blocked_by(
-        config:,
-        owner:,
-        repo:,
-        issue_number:,
-        issue_id:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'DELETE',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/issues/",
-            SdkClient.encode_path_segment(issue_number),
-            "/dependencies/blocked_by/",
-            SdkClient.encode_path_segment(issue_id)
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::Issue,
-          decoder: :json,
-          operation_id: 'issues_remove_dependency_blocked_by',
-          request_options: request_options,
-          errors: { '301' => ::OctridevGithub::BasicError, '400' => ::OctridevGithub::BasicError, '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError },
-        ).data
-      end
-
-      # Lists the issues that a specified issue blocks in a repository. Use `page` and `per_page` to paginate the results; returned issues include their issue details.
-      #
-      # You can use the REST API to list the dependencies an issue is blocking. This endpoint supports the following custom media types. For more information, see Media types. - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you do not pass any specific media type. - **`application/vnd.github.text+json`**: Returns a text only representation of the Markdown body. Response will include `body_text`. -…
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param issue_number [Integer] The number that identifies the issue.
-      # @param per_page [Integer] The number of results per page (max 100). For more
-      #   information, see "Using pagination in the REST API."
-      # @param page [Integer] The page number of the results to fetch. For more
-      #   information, see "Using pagination in the REST API."
-      def self.issues_list_dependencies_blocking(
-        config:,
-        owner:,
-        repo:,
-        issue_number:,
-        per_page: NOT_GIVEN,
-        page: NOT_GIVEN,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/issues/",
-            SdkClient.encode_path_segment(issue_number),
-            "/dependencies/blocking"
-          ].join,
-          config: config,
-          query: {
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
-          },
-          return_type: [::OctridevGithub::Issue],
-          decoder: :json,
-          operation_id: 'issues_list_dependencies_blocking',
-          request_options: request_options,
-          errors: { '301' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError },
-        ).data
-      end
-
-      # Lists events recorded for an issue in a repository. Use `owner`, `repo`, and `issue_number` to identify the issue, and paginate the results with `page` and `per_page`.
-      #
-      # Lists all events for an issue.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param issue_number [Integer] The number that identifies the issue.
-      # @param per_page [Integer] The number of results per page (max 100). For more
-      #   information, see "Using pagination in the REST API."
-      # @param page [Integer] The page number of the results to fetch. For more
-      #   information, see "Using pagination in the REST API."
-      def self.issues_list_events(
-        config:,
-        owner:,
-        repo:,
-        issue_number:,
-        per_page: NOT_GIVEN,
-        page: NOT_GIVEN,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/issues/",
-            SdkClient.encode_path_segment(issue_number),
-            "/events"
-          ].join,
-          config: config,
-          query: {
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
-          },
-          return_type: [::OctridevGithub::IssueEventForIssue],
-          decoder: :json,
-          operation_id: 'issues_list_events',
-          request_options: request_options,
-          errors: { '410' => ::OctridevGithub::BasicError },
-        ).data
-      end
-
       # Lists the field values assigned to an issue in a repository. Use `owner`, `repo`, and `issue_number` to identify the issue, and paginate the results with `page` and `per_page`.
       #
       # Lists all issue field values for an issue.
@@ -322,7 +98,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'issues_add_issue_field_values',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -368,7 +144,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'issues_set_issue_field_values',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -405,7 +181,7 @@ module OctridevGithub
           decoder: :empty,
           operation_id: 'issues_delete_issue_field_value',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -565,6 +341,206 @@ module OctridevGithub
           config: config,
           decoder: :empty,
           operation_id: 'issues_remove_all_labels',
+          request_options: request_options,
+          errors: { '301' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError },
+        ).data
+      end
+
+      # Removes a specified label from an issue and returns the labels that remain. Use `owner`, `repo`, and `issue_number` to identify the issue, and `name` to select the label to remove.
+      #
+      # Removes the specified label from the issue, and returns the remaining labels on the issue. This endpoint returns a `404 Not Found` status if the label does not exist.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param issue_number [Integer] The number that identifies the issue.
+      def self.issues_remove_label(
+        config:,
+        owner:,
+        repo:,
+        issue_number:,
+        name:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'DELETE',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/issues/",
+            SdkClient.encode_path_segment(issue_number),
+            "/labels/",
+            SdkClient.encode_path_segment(name)
+          ].join,
+          config: config,
+          return_type: [::OctridevGithub::Label],
+          decoder: :json,
+          operation_id: 'issues_remove_label',
+          request_options: request_options,
+          errors: { '301' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError },
+        ).data
+      end
+
+      # Locks the conversation on an issue or pull request in a repository. Use `owner`, `repo`, and `issue_number` to identify the conversation, and set `lock_reason` to explain the lock. Users with push access can lock conversations; if you omit the request body, send a `Content-Length` header with a value of zero.
+      #
+      # Users with push access can lock an issue or pull request's conversation. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "HTTP method."
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param issue_number [Integer] The number that identifies the issue.
+      # @param lock_reason [IssuesLockLockReason] The reason for locking the issue
+      #   or pull request conversation. Lock will fail if you don't use one of these
+      #   reasons: * `off-topic` * `too heated` * `resolved` * `spam`
+      def self.issues_lock(
+        config:,
+        owner:,
+        repo:,
+        issue_number:,
+        lock_reason: NOT_GIVEN,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'PUT',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/issues/",
+            SdkClient.encode_path_segment(issue_number),
+            "/lock"
+          ].join,
+          config: config,
+          body: {
+            'lock_reason' => lock_reason,
+          },
+          decoder: :empty,
+          operation_id: 'issues_lock',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+        ).data
+      end
+
+      # Users with push access can unlock an issue's conversation.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param issue_number [Integer] The number that identifies the issue.
+      def self.issues_unlock(
+        config:,
+        owner:,
+        repo:,
+        issue_number:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'DELETE',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/issues/",
+            SdkClient.encode_path_segment(issue_number),
+            "/lock"
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'issues_unlock',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+        ).data
+      end
+
+      # Retrieves the parent issue of a sub-issue in a repository. Use `owner`, `repo`, and `issue_number` to identify the sub-issue; the selected media type controls which representation of the parent's Markdown body is included.
+      #
+      # You can use the REST API to get the parent issue of a sub-issue. This endpoint supports the following custom media types. For more information, see Media types. - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type. - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`. -…
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param issue_number [Integer] The number that identifies the issue.
+      def self.issues_get_parent(
+        config:,
+        owner:,
+        repo:,
+        issue_number:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/issues/",
+            SdkClient.encode_path_segment(issue_number),
+            "/parent"
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::Issue,
+          decoder: :json,
+          operation_id: 'issues_get_parent',
+          request_options: request_options,
+          errors: { '301' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError },
+        ).data
+      end
+
+      # Lists issues related to an issue in a repository. Use `owner`, `repo`, and `issue_number` to identify the issue, then use `page` and `per_page` to paginate the results.
+      #
+      # You can use the REST API to list the issues that are related to an issue. This endpoint supports the following custom media types. For more information, see Media types. - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you do not pass any specific media type. - **`application/vnd.github.text+json`**: Returns a text only representation of the Markdown body. Response will include `body_text`. -…
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param issue_number [Integer] The number that identifies the issue.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.issues_list_relates_to(
+        config:,
+        owner:,
+        repo:,
+        issue_number:,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/issues/",
+            SdkClient.encode_path_segment(issue_number),
+            "/relates_to"
+          ].join,
+          config: config,
+          query: {
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true),
+          },
+          return_type: [::OctridevGithub::Issue],
+          decoder: :json,
+          operation_id: 'issues_list_relates_to',
           request_options: request_options,
           errors: { '301' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError },
         ).data

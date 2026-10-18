@@ -292,7 +292,7 @@ class WebhookIssueCommentCreatedComment
 end
 
 # Internal model hydration metadata.
-class SdkInternalWebhookIssueCommentCreatedIssueVariant1AssigneeMetadata
+class SdkInternalWebhookIssueCommentCreatedIssueAssigneeMetadata
   FIELDS = {
     avatar_url: "avatar_url",
     deleted: "deleted",
@@ -323,18 +323,18 @@ class SdkInternalWebhookIssueCommentCreatedIssueVariant1AssigneeMetadata
   ].freeze
   DECODERS = {
     type: lambda do |value|
-      ::OctridevGithub::WebhookIssueCommentCreatedIssueVariant1AssigneeType.from_value(value)
+      ::OctridevGithub::WebhookIssueCommentCreatedIssueAssigneeType.from_value(value)
     end,
   }.freeze
 end
 
-# API model for WebhookIssueCommentCreatedIssueVariant1Assignee.
+# API model for WebhookIssueCommentCreatedIssueAssignee.
 # Required object value serialized in the `assignee` wire field.
-class WebhookIssueCommentCreatedIssueVariant1Assignee
+class WebhookIssueCommentCreatedIssueAssignee
   CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookIssueCommentCreatedIssueVariant1AssigneeMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookIssueCommentCreatedIssueVariant1AssigneeMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookIssueCommentCreatedIssueVariant1AssigneeMetadata::DECODERS
+  FIELDS = SdkInternalWebhookIssueCommentCreatedIssueAssigneeMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookIssueCommentCreatedIssueAssigneeMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookIssueCommentCreatedIssueAssigneeMetadata::DECODERS
 
   # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
   attr_reader :avatar_url
@@ -374,7 +374,7 @@ class WebhookIssueCommentCreatedIssueVariant1Assignee
   attr_reader :starred_url
   # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
   attr_reader :subscriptions_url
-  # @return [WebhookIssueCommentCreatedIssueVariant1AssigneeType] Optional enumerated value serialized in the `type` wire field.
+  # @return [WebhookIssueCommentCreatedIssueAssigneeType] Optional enumerated value serialized in the `type` wire field.
   attr_reader :type
   # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
   attr_reader :url
@@ -396,7 +396,7 @@ class WebhookIssueCommentCreatedIssueVariant1Assignee
 end
 
 # Internal model hydration metadata.
-class SdkInternalWebhookIssueCommentCreatedIssueVariant1LabelsItemMetadata
+class SdkInternalWebhookIssueCommentCreatedIssueLabelsItemMetadata
   FIELDS = {
     color: "color",
     default: "default",
@@ -422,13 +422,13 @@ class SdkInternalWebhookIssueCommentCreatedIssueVariant1LabelsItemMetadata
   ].freeze
 end
 
-# API model for WebhookIssueCommentCreatedIssueVariant1LabelsItem.
+# API model for WebhookIssueCommentCreatedIssueLabelsItem.
 # Required object value serialized in the `labels[]` wire field.
-class WebhookIssueCommentCreatedIssueVariant1LabelsItem
+class WebhookIssueCommentCreatedIssueLabelsItem
   CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookIssueCommentCreatedIssueVariant1LabelsItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookIssueCommentCreatedIssueVariant1LabelsItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookIssueCommentCreatedIssueVariant1LabelsItemMetadata::DECODERS
+  FIELDS = SdkInternalWebhookIssueCommentCreatedIssueLabelsItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookIssueCommentCreatedIssueLabelsItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookIssueCommentCreatedIssueLabelsItemMetadata::DECODERS
 
   # @return [String] 6-character hex code, without the leading #, identifying the color
   attr_reader :color
@@ -451,7 +451,7 @@ class WebhookIssueCommentCreatedIssueVariant1LabelsItem
   end
 
   def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookIssueCommentCreatedIssueVariant1LabelsItemMetadata::NULLABLE_FIELDS)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookIssueCommentCreatedIssueLabelsItemMetadata::NULLABLE_FIELDS)
   end
 
   def to_h
@@ -460,7 +460,7 @@ class WebhookIssueCommentCreatedIssueVariant1LabelsItem
 end
 
 # Internal model hydration metadata.
-class SdkInternalWebhookIssueCommentCreatedIssueVariant0PullRequestMetadata
+class SdkInternalWebhookIssueCommentCreatedIssuePullRequestMetadata
   FIELDS = {
     diff_url: "diff_url",
     html_url: "html_url",
@@ -474,13 +474,13 @@ class SdkInternalWebhookIssueCommentCreatedIssueVariant0PullRequestMetadata
   }.freeze
 end
 
-# API model for WebhookIssueCommentCreatedIssueVariant0PullRequest.
+# API model for WebhookIssueCommentCreatedIssuePullRequest.
 # Optional object value serialized in the `pull_request` wire field.
-class WebhookIssueCommentCreatedIssueVariant0PullRequest
+class WebhookIssueCommentCreatedIssuePullRequest
   CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookIssueCommentCreatedIssueVariant0PullRequestMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookIssueCommentCreatedIssueVariant0PullRequestMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookIssueCommentCreatedIssueVariant0PullRequestMetadata::DECODERS
+  FIELDS = SdkInternalWebhookIssueCommentCreatedIssuePullRequestMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookIssueCommentCreatedIssuePullRequestMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookIssueCommentCreatedIssuePullRequestMetadata::DECODERS
 
   # @return [String] Optional `uri`-formatted value serialized in the `diff_url` wire field.
   attr_reader :diff_url
@@ -508,7 +508,7 @@ class WebhookIssueCommentCreatedIssueVariant0PullRequest
 end
 
 # Internal model hydration metadata.
-class SdkInternalWebhookIssueCommentCreatedIssueVariant1ReactionsMetadata
+class SdkInternalWebhookIssueCommentCreatedIssueReactionsMetadata
   FIELDS = {
     plus1: "+1",
     minus1: "-1",
@@ -527,13 +527,13 @@ class SdkInternalWebhookIssueCommentCreatedIssueVariant1ReactionsMetadata
   }.freeze
 end
 
-# API model for WebhookIssueCommentCreatedIssueVariant1Reactions.
-# Optional object value serialized in the `reactions` wire field.
-class WebhookIssueCommentCreatedIssueVariant1Reactions
+# API model for WebhookIssueCommentCreatedIssueReactions.
+# Required object value serialized in the `reactions` wire field.
+class WebhookIssueCommentCreatedIssueReactions
   CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookIssueCommentCreatedIssueVariant1ReactionsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookIssueCommentCreatedIssueVariant1ReactionsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookIssueCommentCreatedIssueVariant1ReactionsMetadata::DECODERS
+  FIELDS = SdkInternalWebhookIssueCommentCreatedIssueReactionsMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookIssueCommentCreatedIssueReactionsMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookIssueCommentCreatedIssueReactionsMetadata::DECODERS
 
   # @return [Integer] Optional `integer` value serialized in the `+1` wire field.
   attr_reader :plus1
@@ -571,7 +571,7 @@ class WebhookIssueCommentCreatedIssueVariant1Reactions
 end
 
 # Internal model hydration metadata.
-class SdkInternalWebhookIssueCommentCreatedIssueVariant1UserMetadata
+class SdkInternalWebhookIssueCommentCreatedIssueUserMetadata
   FIELDS = {
     avatar_url: "avatar_url",
     events_url: "events_url",
@@ -598,13 +598,13 @@ class SdkInternalWebhookIssueCommentCreatedIssueVariant1UserMetadata
   }.freeze
 end
 
-# API model for WebhookIssueCommentCreatedIssueVariant1User.
-# Optional object value serialized in the `user` wire field.
-class WebhookIssueCommentCreatedIssueVariant1User
+# API model for WebhookIssueCommentCreatedIssueUser.
+# Required object value serialized in the `user` wire field.
+class WebhookIssueCommentCreatedIssueUser
   CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookIssueCommentCreatedIssueVariant1UserMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookIssueCommentCreatedIssueVariant1UserMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookIssueCommentCreatedIssueVariant1UserMetadata::DECODERS
+  FIELDS = SdkInternalWebhookIssueCommentCreatedIssueUserMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookIssueCommentCreatedIssueUserMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookIssueCommentCreatedIssueUserMetadata::DECODERS
 
   # @return [String] Optional `string` value serialized in the `avatar_url` wire field.
   attr_reader :avatar_url

@@ -34,6 +34,35 @@ module RepositoryRule
     "file_extension_restriction" => -> { RepositoryRuleFileExtensionRestriction },
     "max_file_size" => -> { RepositoryRuleMaxFileSize },
   }.freeze
+  UNDECIDED_VARIANTS = (
+    [
+      -> { RepositoryRuleCreation },
+      -> { RepositoryRuleUpdate },
+      -> { RepositoryRuleDeletion },
+      -> { RepositoryRuleRequiredLinearHistory },
+      -> { RepositoryRuleMergeQueue },
+      -> { RepositoryRuleRequiredDeployments },
+      -> { RepositoryRuleRequiredSignatures },
+      -> { RepositoryRulePullRequest },
+      -> { RepositoryRuleRequiredStatusChecks },
+      -> { RepositoryRuleNonFastForward },
+      -> { RepositoryRuleCommitMessagePattern },
+      -> { RepositoryRuleCommitAuthorEmailPattern },
+      -> { RepositoryRuleCommitterEmailPattern },
+      -> { RepositoryRuleBranchNamePattern },
+      -> { RepositoryRuleTagNamePattern },
+      -> { RepositoryRuleWorkflows },
+      -> { RepositoryRuleCodeScanning },
+      -> { RepositoryRuleCodeQuality },
+      -> { RepositoryRuleCodeCoverage },
+      -> { RepositoryRuleCopilotCodeReview },
+      -> { RepositoryRuleLicenseComplianceScanning },
+      -> { RepositoryRuleFilePathRestriction },
+      -> { RepositoryRuleMaxFilePathLength },
+      -> { RepositoryRuleFileExtensionRestriction },
+      -> { RepositoryRuleMaxFileSize },
+    ]
+  ).freeze
 
   def self.from_hash(hash)
     return hash unless hash.is_a?(::Hash)
@@ -642,24 +671,5 @@ class RepositoryRuleCommitMessagePatternParameters
   def to_h
     SdkModel.to_h(self, FIELDS)
   end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleCommitMessagePatternMetadata
-  FIELDS = {
-    type: "type",
-    parameters: "parameters",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleCommitMessagePatternType.from_value(value)
-    end,
-    parameters: lambda do |value|
-      ::OctridevGithub::RepositoryRuleCommitMessagePatternParameters.from_hash(value)
-    end,
-  }.freeze
 end
 end

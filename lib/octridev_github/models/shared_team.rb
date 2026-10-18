@@ -119,7 +119,6 @@ end
 class Team
   include CopilotSeatDetailsAssigningTeam
   include PendingDeploymentReviewersItemReviewer
-  include ReviewersItemReviewer
   CONSTRUCTION_SURFACE = :named
   FIELDS = SdkInternalTeamMetadata::FIELDS
   REQUIRED_FIELDS = SdkInternalTeamMetadata::REQUIRED_FIELDS

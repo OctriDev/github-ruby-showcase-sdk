@@ -189,6 +189,39 @@ end
 
 # Defines the TimelineIssueEvents SDK namespace.
 module TimelineIssueEvents
+  UNDECIDED_VARIANTS = (
+    [
+      -> { LabeledIssueEvent },
+      -> { UnlabeledIssueEvent },
+      -> { MilestonedIssueEvent },
+      -> { DemilestonedIssueEvent },
+      -> { ReviewRequestedIssueEvent },
+      -> { ReviewRequestRemovedIssueEvent },
+      -> { AddedToProjectIssueEvent },
+      -> { MovedColumnInProjectIssueEvent },
+      -> { RemovedFromProjectIssueEvent },
+      -> { ConvertedNoteToIssueIssueEvent },
+      -> { TimelineLineCommentedEvent },
+      -> { TimelineCommitCommentedEvent },
+      -> { TimelineAssignedIssueEvent },
+      -> { TimelineUnassignedIssueEvent },
+      -> { StateChangeIssueEvent },
+      -> { IssueTypeAddedIssueEvent },
+      -> { IssueTypeRemovedIssueEvent },
+      -> { IssueTypeChangedIssueEvent },
+      -> { SubIssueAddedIssueEvent },
+      -> { SubIssueRemovedIssueEvent },
+      -> { ParentIssueAddedIssueEvent },
+      -> { ParentIssueRemovedIssueEvent },
+      -> { BlockedByAddedIssueEvent },
+      -> { BlockedByRemovedIssueEvent },
+      -> { BlockingAddedIssueEvent },
+      -> { BlockingRemovedIssueEvent },
+      -> { TimelineConnectedEvent },
+      -> { TimelineDisconnectedEvent },
+    ]
+  ).freeze
+
   def self.from_hash(hash)
     shape_mapping = {
       "rename" => RenamedIssueEvent,
@@ -202,12 +235,17 @@ module TimelineIssueEvents
     type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
     decoded = type&.from_hash(hash)
     return decoded unless type.nil?
-    [LabeledIssueEvent, UnlabeledIssueEvent, MilestonedIssueEvent, DemilestonedIssueEvent, ReviewRequestedIssueEvent, ReviewRequestRemovedIssueEvent, AddedToProjectIssueEvent, MovedColumnInProjectIssueEvent, RemovedFromProjectIssueEvent, ConvertedNoteToIssueIssueEvent, TimelineLineCommentedEvent, TimelineCommitCommentedEvent, TimelineAssignedIssueEvent, TimelineUnassignedIssueEvent, StateChangeIssueEvent, IssueTypeAddedIssueEvent, IssueTypeRemovedIssueEvent, IssueTypeChangedIssueEvent, SubIssueAddedIssueEvent, SubIssueRemovedIssueEvent, ParentIssueAddedIssueEvent, ParentIssueRemovedIssueEvent, BlockedByAddedIssueEvent, BlockedByRemovedIssueEvent, BlockingAddedIssueEvent, BlockingRemovedIssueEvent, TimelineConnectedEvent, TimelineDisconnectedEvent].each do |type|
-      return type.from_hash(hash)
+    lossy = nil
+    UNDECIDED_VARIANTS.each do |variant|
+      type = variant.call
+      decoded = type.from_hash(hash)
+      return decoded if SdkModel.keeps_every_key?(hash, decoded)
+
+      lossy ||= decoded
     rescue ::StandardError
       next
     end
-    raise SdkValidationError.new('TimelineIssueEvents', 'variant', "Cannot select TimelineIssueEvents variant without a discriminator")
+    return lossy unless lossy.nil?
   end
 end
 

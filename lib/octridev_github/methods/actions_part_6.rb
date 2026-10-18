@@ -9,144 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Actions SDK namespace.
     module Actions
-      # API model for ActionsReviewPendingDeploymentsForRun.
-      class ActionsReviewPendingDeploymentsForRun
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalActionsReviewPendingDeploymentsForRunMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalActionsReviewPendingDeploymentsForRunMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalActionsReviewPendingDeploymentsForRunMetadata::DECODERS
-
-        # @return [Array_of_Integer] The list of environment ids to approve or reject
-        attr_reader :environment_ids
-        # @return [ActionsReviewPendingDeploymentsForRunState] Whether to approve or reject deployment to the specified environments.
-        attr_reader :state
-        # @return [String] A comment to accompany the deployment review
-        attr_reader :comment
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalActionsReRunWorkflowMetadata
-        FIELDS = {
-          enable_debug_logging: "enable_debug_logging",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
-      end
-
-      # API model for ActionsReRunWorkflow.
-      class ActionsReRunWorkflow
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalActionsReRunWorkflowMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalActionsReRunWorkflowMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalActionsReRunWorkflowMetadata::DECODERS
-
-        # @return [Boolean] Whether to enable debug logging for the re-run.
-        attr_reader :enable_debug_logging
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalActionsReRunWorkflowFailedJobsMetadata
-        FIELDS = {
-          enable_debug_logging: "enable_debug_logging",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
-      end
-
-      # API model for ActionsReRunWorkflowFailedJobs.
-      class ActionsReRunWorkflowFailedJobs
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalActionsReRunWorkflowFailedJobsMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalActionsReRunWorkflowFailedJobsMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalActionsReRunWorkflowFailedJobsMetadata::DECODERS
-
-        # @return [Boolean] Whether to enable debug logging for the re-run.
-        attr_reader :enable_debug_logging
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalActionsListRepoSecretsResponseMetadata
-        FIELDS = {
-          total_count: "total_count",
-          secrets: "secrets",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          total_count
-          secrets
-        ].freeze
-        DECODERS = {
-          secrets: lambda do |value|
-            value&.map { |item| ::OctridevGithub::ActionsSecret.from_hash(item) }
-          end,
-        }.freeze
-      end
-
-      # API model for ActionsListRepoSecretsResponse.
-      class ActionsListRepoSecretsResponse
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalActionsListRepoSecretsResponseMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalActionsListRepoSecretsResponseMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalActionsListRepoSecretsResponseMetadata::DECODERS
-
-        attr_reader :total_count, :secrets
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
       # Internal model hydration metadata.
       class SdkInternalActionsCreateOrUpdateRepoSecretMetadata
         FIELDS = {
@@ -544,6 +406,159 @@ module OctridevGithub
 
         def to_h
           SdkModel.to_h(self, FIELDS)
+        end
+      end
+
+      # Internal model hydration metadata.
+      class SdkInternalActionsCreateEnvironmentVariableMetadata
+        FIELDS = {
+          name: "name",
+          value: "value",
+        }.freeze
+        REQUIRED_FIELDS = %i[
+          name
+          value
+        ].freeze
+        DECODERS = {
+        }.freeze
+      end
+
+      # API model for ActionsCreateEnvironmentVariable.
+      class ActionsCreateEnvironmentVariable
+        CONSTRUCTION_SURFACE = :named
+        FIELDS = SdkInternalActionsCreateEnvironmentVariableMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalActionsCreateEnvironmentVariableMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalActionsCreateEnvironmentVariableMetadata::DECODERS
+
+        # @return [String] The name of the variable.
+        attr_reader :name
+        # @return [String] The value of the variable.
+        attr_reader :value
+
+        def initialize(**attributes)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          freeze
+        end
+
+        def self.from_hash(data)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        end
+
+        def to_h
+          SdkModel.to_h(self, FIELDS)
+        end
+      end
+
+      # Internal model hydration metadata.
+      class SdkInternalActionsUpdateEnvironmentVariableMetadata
+        FIELDS = {
+          name: "name",
+          value: "value",
+        }.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
+      end
+
+      # API model for ActionsUpdateEnvironmentVariable.
+      class ActionsUpdateEnvironmentVariable
+        CONSTRUCTION_SURFACE = :named
+        FIELDS = SdkInternalActionsUpdateEnvironmentVariableMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalActionsUpdateEnvironmentVariableMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalActionsUpdateEnvironmentVariableMetadata::DECODERS
+
+        # @return [String] The name of the variable.
+        attr_reader :name
+        # @return [String] The value of the variable.
+        attr_reader :value
+
+        def initialize(**attributes)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          freeze
+        end
+
+        def self.from_hash(data)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        end
+
+        def to_h
+          SdkModel.to_h(self, FIELDS)
+        end
+      end
+
+      # Defines the ActionsCreateOrUpdateOrgSecretVisibility SDK namespace.
+      module ActionsCreateOrUpdateOrgSecretVisibility
+        ALL = 'all'
+        PRIVATE = 'private'
+        SELECTED = 'selected'
+        VALUES = ['all', 'private', 'selected'].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the ActionsCreateOrgVariableVisibility SDK namespace.
+      module ActionsCreateOrgVariableVisibility
+        ALL = 'all'
+        PRIVATE = 'private'
+        SELECTED = 'selected'
+        VALUES = ['all', 'private', 'selected'].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the ActionsListJobsForWorkflowRunParameter SDK namespace.
+      module ActionsListJobsForWorkflowRunParameter
+        LATEST = 'latest'
+        ALL = 'all'
+        VALUES = ['latest', 'all'].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the ActionsReviewPendingDeploymentsForRunState SDK namespace.
+      module ActionsReviewPendingDeploymentsForRunState
+        APPROVED = 'approved'
+        REJECTED = 'rejected'
+        VALUES = ['approved', 'rejected'].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the ActionsUpdateSelfHostedRunnerGroupForOrgVisibility SDK namespace.
+      module ActionsUpdateSelfHostedRunnerGroupForOrgVisibility
+        SELECTED = 'selected'
+        ALL = 'all'
+        PRIVATE = 'private'
+        VALUES = ['selected', 'all', 'private'].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the ActionsUpdateHostedRunnerForOrgImageSource SDK namespace.
+      module ActionsUpdateHostedRunnerForOrgImageSource
+        GITHUB = 'github'
+        PARTNER = 'partner'
+        CUSTOM = 'custom'
+        VALUES = ['github', 'partner', 'custom'].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the ActionsCreateHostedRunnerForOrgImageSource SDK namespace.
+      module ActionsCreateHostedRunnerForOrgImageSource
+        GITHUB = 'github'
+        PARTNER = 'partner'
+        CUSTOM = 'custom'
+        VALUES = ['github', 'partner', 'custom'].freeze
+        def self.from_value(value)
+          value
         end
       end
     end

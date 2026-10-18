@@ -9,172 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Actions SDK namespace.
     module Actions
-      # Gets retention settings for checks, workflow runs, commit statuses, artifacts, and logs for a repository. Checks include check suites, check runs, and check annotations. These settings also apply to checks and commit statuses created by third-party integrations, and are not limited to data created by GitHub Actions. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      def self.actions_get_artifact_and_log_retention_settings_repository(
-        config:,
-        owner:,
-        repo:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/actions/permissions/artifact-and-log-retention"
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::ActionsArtifactAndLogRetentionResponse,
-          decoder: :json,
-          operation_id: 'actions_get_artifact_and_log_retention_settings_repository',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
-        ).data
-      end
-
-      # Sets retention settings for checks, workflow runs, commit statuses, artifacts, and logs for a repository. Checks include check suites, check runs, and check annotations. These settings also apply to checks and commit statuses created by third-party integrations, and are not limited to data created by GitHub Actions. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param days [Integer] The number of days to retain checks, workflow runs,
-      #   commit statuses, artifacts, and logs
-      def self.actions_set_artifact_and_log_retention_settings_repository(
-        config:,
-        owner:,
-        repo:,
-        days:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'PUT',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/actions/permissions/artifact-and-log-retention"
-          ].join,
-          config: config,
-          body: {
-            'days' => days,
-          },
-          decoder: :empty,
-          operation_id: 'actions_set_artifact_and_log_retention_settings_repository',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
-        ).data
-      end
-
-      # Gets the fork PR contributor approval policy for a repository. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      def self.actions_get_fork_pr_contributor_approval_permissions_repository(
-        config:,
-        owner:,
-        repo:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/actions/permissions/fork-pr-contributor-approval"
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::ActionsForkPrContributorApproval,
-          decoder: :json,
-          operation_id: 'actions_get_fork_pr_contributor_approval_permissions_repository',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
-        ).data
-      end
-
-      # Sets the fork PR contributor approval policy for a repository. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param approval_policy [ActionsForkPrContributorApprovalApprovalPolicy] The
-      #   policy that controls when fork PR workflows require approval from a
-      #   maintainer.
-      def self.actions_set_fork_pr_contributor_approval_permissions_repository(
-        config:,
-        owner:,
-        repo:,
-        approval_policy:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'PUT',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/actions/permissions/fork-pr-contributor-approval"
-          ].join,
-          config: config,
-          body: {
-            'approval_policy' => approval_policy,
-          },
-          decoder: :empty,
-          operation_id: 'actions_set_fork_pr_contributor_approval_permissions_repository',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
-        ).data
-      end
-
-      # Gets the settings for whether workflows from fork pull requests can run on a private repository. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      def self.actions_get_private_repo_fork_pr_workflows_settings_repository(
-        config:,
-        owner:,
-        repo:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/actions/permissions/fork-pr-workflows-private-repos"
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::ActionsForkPrWorkflowsPrivateRepos,
-          decoder: :json,
-          operation_id: 'actions_get_private_repo_fork_pr_workflows_settings_repository',
-          request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
-        ).data
-      end
-
       # Sets the settings for whether workflows from fork pull requests can run on a private repository. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
       #
       # @param owner [String] The account owner of the repository. The name is not
@@ -558,6 +392,147 @@ module OctridevGithub
           operation_id: 'actions_update_repo_actions_policy',
           request_options: request_options,
           errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError },
+        ).data
+      end
+
+      # Deletes an Actions policy from a repository. Use `policy_id` to identify the policy you want to remove; this operation does not return a response body when successful.
+      #
+      # Delete an Actions policy for a repository.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param policy_id [Integer] The ID of the policy.
+      def self.actions_delete_repo_actions_policy(
+        config:,
+        owner:,
+        repo:,
+        policy_id:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'DELETE',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/actions/policies/",
+            SdkClient.encode_path_segment(policy_id)
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'actions_delete_repo_actions_policy',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
+        ).data
+      end
+
+      # Lists all self-hosted runners configured in a repository. Authenticated users must have admin access to the repository to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param name [String] The name of a self-hosted runner.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.actions_list_self_hosted_runners_for_repo(
+        config:,
+        owner:,
+        repo:,
+        name: NOT_GIVEN,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/actions/runners"
+          ].join,
+          config: config,
+          query: {
+            'name' => QueryValue.new(name, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true),
+          },
+          return_type: ::OctridevGithub::Methods::Actions::ActionsListSelfHostedRunnersForRepoResponse,
+          decoder: :json,
+          operation_id: 'actions_list_self_hosted_runners_for_repo',
+          request_options: request_options,
+        ).data
+      end
+
+      # Gets the end-of-life schedule for a specific runner version in a repository. Returns the runner version and the dates when registration and runtime support will end. Authenticated users must have admin access to the repository to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param version [String] The runner version to look up.
+      def self.actions_get_runner_version_deprecation_for_repo(
+        config:,
+        owner:,
+        repo:,
+        version:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/actions/runners/deprecations/",
+            SdkClient.encode_path_segment(version)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::Methods::Actions::ActionsGetRunnerVersionDeprecationForRepoResponse,
+          decoder: :json,
+          operation_id: 'actions_get_runner_version_deprecation_for_repo',
+          request_options: request_options,
+        ).data
+      end
+
+      # Lists binaries for the runner application that you can download and run. Authenticated users must have admin access to the repository to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      def self.actions_list_runner_applications_for_repo(
+        config:,
+        owner:,
+        repo:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/actions/runners/downloads"
+          ].join,
+          config: config,
+          return_type: [::OctridevGithub::RunnerApplication],
+          decoder: :json,
+          operation_id: 'actions_list_runner_applications_for_repo',
+          request_options: request_options,
         ).data
       end
     end

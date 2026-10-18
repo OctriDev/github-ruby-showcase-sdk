@@ -9,144 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Actions SDK namespace.
     module Actions
-      # List custom images for an organization. OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
-      #
-      # @param org [String] The organization name. The name is not case sensitive.
-      def self.actions_list_custom_images_for_org(
-        config:,
-        org:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/orgs/",
-            SdkClient.encode_path_segment(org),
-            "/actions/hosted-runners/images/custom"
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::Methods::Actions::ActionsListCustomImagesForOrgResponse,
-          decoder: :json,
-          operation_id: 'actions_list_custom_images_for_org',
-          request_options: request_options,
-        ).data
-      end
-
-      # Get a custom image definition for GitHub Actions Hosted Runners. OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
-      #
-      # @param org [String] The organization name. The name is not case sensitive.
-      # @param image_definition_id [Integer] Image definition ID of custom image
-      def self.actions_get_custom_image_for_org(
-        config:,
-        org:,
-        image_definition_id:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/orgs/",
-            SdkClient.encode_path_segment(org),
-            "/actions/hosted-runners/images/custom/",
-            SdkClient.encode_path_segment(image_definition_id)
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::ActionsHostedRunnerCustomImage,
-          decoder: :json,
-          operation_id: 'actions_get_custom_image_for_org',
-          request_options: request_options,
-        ).data
-      end
-
-      # Delete a custom image from the organization. OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
-      #
-      # @param org [String] The organization name. The name is not case sensitive.
-      # @param image_definition_id [Integer] Image definition ID of custom image
-      def self.actions_delete_custom_image_from_org(
-        config:,
-        org:,
-        image_definition_id:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'DELETE',
-          [
-            "/orgs/",
-            SdkClient.encode_path_segment(org),
-            "/actions/hosted-runners/images/custom/",
-            SdkClient.encode_path_segment(image_definition_id)
-          ].join,
-          config: config,
-          decoder: :empty,
-          operation_id: 'actions_delete_custom_image_from_org',
-          request_options: request_options,
-        ).data
-      end
-
-      # List image versions of a custom image for an organization. OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
-      #
-      # @param image_definition_id [Integer] Image definition ID of custom image
-      # @param org [String] The organization name. The name is not case sensitive.
-      def self.actions_list_custom_image_versions_for_org(
-        config:,
-        image_definition_id:,
-        org:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/orgs/",
-            SdkClient.encode_path_segment(org),
-            "/actions/hosted-runners/images/custom/",
-            SdkClient.encode_path_segment(image_definition_id),
-            "/versions"
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::Methods::Actions::ActionsListCustomImageVersionsForOrgResponse,
-          decoder: :json,
-          operation_id: 'actions_list_custom_image_versions_for_org',
-          request_options: request_options,
-        ).data
-      end
-
-      # Get an image version of a custom image for GitHub Actions Hosted Runners. OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
-      #
-      # @param org [String] The organization name. The name is not case sensitive.
-      # @param image_definition_id [Integer] Image definition ID of custom image
-      # @param version [String] Version of a custom image
-      def self.actions_get_custom_image_version_for_org(
-        config:,
-        org:,
-        image_definition_id:,
-        version:,
-        request_options: nil
-      )
-
-        Validation.validate_pattern('version', version, '^\d+\.\d+\.\d+$')
-
-        SdkClient.request(
-          'GET',
-          [
-            "/orgs/",
-            SdkClient.encode_path_segment(org),
-            "/actions/hosted-runners/images/custom/",
-            SdkClient.encode_path_segment(image_definition_id),
-            "/versions/",
-            SdkClient.encode_path_segment(version)
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::ActionsHostedRunnerCustomImageVersion,
-          decoder: :json,
-          operation_id: 'actions_get_custom_image_version_for_org',
-          request_options: request_options,
-        ).data
-      end
-
       # Delete an image version of custom image from the organization. OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
       #
       # @param org [String] The organization name. The name is not case sensitive.
@@ -160,7 +22,7 @@ module OctridevGithub
         request_options: nil
       )
 
-        Validation.validate_pattern('version', version, '^\d+\.\d+\.\d+$')
+        Validation.validate_pattern('version', version, '^\\d+\\.\\d+\\.\\d+$')
 
         SdkClient.request(
           'DELETE',
@@ -541,6 +403,166 @@ module OctridevGithub
           operation_id: 'actions_set_artifact_and_log_retention_settings_organization',
           request_options: request_options,
           errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+        ).data
+      end
+
+      # Gets the fork PR contributor approval policy for an organization. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      def self.actions_get_fork_pr_contributor_approval_permissions_organization(
+        config:,
+        org:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/orgs/",
+            SdkClient.encode_path_segment(org),
+            "/actions/permissions/fork-pr-contributor-approval"
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::ActionsForkPrContributorApproval,
+          decoder: :json,
+          operation_id: 'actions_get_fork_pr_contributor_approval_permissions_organization',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError },
+        ).data
+      end
+
+      # Sets the fork PR contributor approval policy for an organization. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param approval_policy [ActionsForkPrContributorApprovalApprovalPolicy] The
+      #   policy that controls when fork PR workflows require approval from a
+      #   maintainer.
+      def self.actions_set_fork_pr_contributor_approval_permissions_organization(
+        config:,
+        org:,
+        approval_policy:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'PUT',
+          [
+            "/orgs/",
+            SdkClient.encode_path_segment(org),
+            "/actions/permissions/fork-pr-contributor-approval"
+          ].join,
+          config: config,
+          body: {
+            'approval_policy' => approval_policy,
+          },
+          decoder: :empty,
+          operation_id: 'actions_set_fork_pr_contributor_approval_permissions_organization',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+        ).data
+      end
+
+      # Gets the settings for whether workflows from fork pull requests can run on private repositories in an organization.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      def self.actions_get_private_repo_fork_pr_workflows_settings_organization(
+        config:,
+        org:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/orgs/",
+            SdkClient.encode_path_segment(org),
+            "/actions/permissions/fork-pr-workflows-private-repos"
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::ActionsForkPrWorkflowsPrivateRepos,
+          decoder: :json,
+          operation_id: 'actions_get_private_repo_fork_pr_workflows_settings_organization',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+        ).data
+      end
+
+      # Sets the settings for whether workflows from fork pull requests can run on private repositories in an organization.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param run_workflows_from_fork_pull_requests [Boolean] Whether workflows
+      #   triggered by pull requests from forks are allowed to run on private
+      #   repositories.
+      # @param send_write_tokens_to_workflows [Boolean] Whether GitHub Actions can
+      #   create pull requests or submit approving pull request reviews from a
+      #   workflow triggered by a fork pull request.
+      # @param send_secrets_and_variables [Boolean] Whether to make secrets and
+      #   variables available to workflows triggered by pull requests from forks.
+      # @param require_approval_for_fork_pr_workflows [Boolean] Whether workflows
+      #   triggered by pull requests from forks require approval from a repository
+      #   administrator to run.
+      def self.actions_set_private_repo_fork_pr_workflows_settings_organization(
+        config:,
+        org:,
+        run_workflows_from_fork_pull_requests:,
+        send_write_tokens_to_workflows: NOT_GIVEN,
+        send_secrets_and_variables: NOT_GIVEN,
+        require_approval_for_fork_pr_workflows: NOT_GIVEN,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'PUT',
+          [
+            "/orgs/",
+            SdkClient.encode_path_segment(org),
+            "/actions/permissions/fork-pr-workflows-private-repos"
+          ].join,
+          config: config,
+          body: {
+            'run_workflows_from_fork_pull_requests' => run_workflows_from_fork_pull_requests,
+            'send_write_tokens_to_workflows' => send_write_tokens_to_workflows,
+            'send_secrets_and_variables' => send_secrets_and_variables,
+            'require_approval_for_fork_pr_workflows' => require_approval_for_fork_pr_workflows,
+          },
+          decoder: :empty,
+          operation_id: 'actions_set_private_repo_fork_pr_workflows_settings_organization',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+        ).data
+      end
+
+      # Lists the selected repositories that are enabled for GitHub Actions in an organization. To use this endpoint, the organization permission policy for `enabled_repositories` must be configured to `selected`. For more information, see "Set GitHub Actions permissions for an organization." OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.actions_list_selected_repositories_enabled_github_actions_organization(
+        config:,
+        org:,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/orgs/",
+            SdkClient.encode_path_segment(org),
+            "/actions/permissions/repositories"
+          ].join,
+          config: config,
+          query: {
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true),
+          },
+          return_type: ::OctridevGithub::Methods::Actions::ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse,
+          decoder: :json,
+          operation_id: 'actions_list_selected_repositories_enabled_github_actions_organization',
+          request_options: request_options,
         ).data
       end
     end

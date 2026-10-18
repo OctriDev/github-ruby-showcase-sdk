@@ -161,7 +161,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'codespaces_create_with_pr_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -215,7 +215,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'codespaces_create_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 

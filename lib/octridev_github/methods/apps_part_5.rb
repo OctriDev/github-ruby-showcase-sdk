@@ -9,6 +9,173 @@ module OctridevGithub
   module Methods
     # Defines the Apps SDK namespace.
     module Apps
+      # OAuth applications and GitHub applications with OAuth authorizations can use this API method to reset a valid OAuth token without end-user involvement. Applications must save the "token" property in the response because changes take effect immediately. Invalid tokens will return `404 NOT FOUND`.
+      #
+      # @param client_id [String] The client ID of the GitHub app.
+      # @param access_token [String] The access_token of the OAuth or GitHub
+      #   application.
+      def self.apps_reset_token(
+        config:,
+        client_id:,
+        access_token:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'PATCH',
+          [
+            "/applications/",
+            SdkClient.encode_path_segment(client_id),
+            "/token"
+          ].join,
+          config: config,
+          body: {
+            'access_token' => access_token,
+          },
+          return_type: ::OctridevGithub::Authorization,
+          decoder: :json,
+          operation_id: 'apps_reset_token',
+          request_options: request_options,
+          errors: { '422' => ::OctridevGithub::ValidationError },
+        ).data
+      end
+
+      # OAuth or GitHub application owners can revoke a single token for an OAuth application or a GitHub application with an OAuth authorization.
+      #
+      # @param client_id [String] The client ID of the GitHub app.
+      # @param access_token [String] The OAuth access token used to authenticate to
+      #   the GitHub API.
+      def self.apps_delete_token(
+        config:,
+        client_id:,
+        access_token:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'DELETE',
+          [
+            "/applications/",
+            SdkClient.encode_path_segment(client_id),
+            "/token"
+          ].join,
+          config: config,
+          body: {
+            'access_token' => access_token,
+          },
+          decoder: :empty,
+          operation_id: 'apps_delete_token',
+          request_options: request_options,
+          errors: { '422' => ::OctridevGithub::ValidationError },
+        ).data
+      end
+
+      # Use a non-scoped user access token to create a repository-scoped and/or permission-scoped user access token. You can specify which repositories the token can access and which permissions are granted to the token. Invalid tokens will return `404 NOT FOUND`.
+      #
+      # @param client_id [String] The client ID of the GitHub app.
+      # @param access_token [String] The access token used to authenticate to the
+      #   GitHub API.
+      # @param target [String] The name of the user or organization to scope the
+      #   user access token to. **Required** unless `target_id` is specified.
+      # @param target_id [Integer] The ID of the user or organization to scope the
+      #   user access token to. **Required** unless `target` is specified.
+      # @param repositories [Array_of_String] The list of repository names to scope
+      #   the user access token to. `repositories` may not be specified if
+      #   `repository_ids` is specified.
+      # @param repository_ids [Array_of_Integer] The list of repository IDs to scope
+      #   the user access token to. `repository_ids` may not be specified if
+      #   `repositories` is specified.
+      # @param permissions [AppPermissions] The permissions granted to the
+      #   fine-grained access token.
+      def self.apps_scope_token(
+        config:,
+        client_id:,
+        access_token:,
+        target: NOT_GIVEN,
+        target_id: NOT_GIVEN,
+        repositories: NOT_GIVEN,
+        repository_ids: NOT_GIVEN,
+        permissions: NOT_GIVEN,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'POST',
+          [
+            "/applications/",
+            SdkClient.encode_path_segment(client_id),
+            "/token/scoped"
+          ].join,
+          config: config,
+          body: {
+            'access_token' => access_token,
+            'target' => target,
+            'target_id' => target_id,
+            'repositories' => repositories,
+            'repository_ids' => repository_ids,
+            'permissions' => permissions,
+          },
+          return_type: ::OctridevGithub::Authorization,
+          decoder: :json,
+          operation_id: 'apps_scope_token',
+          request_options: request_options,
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+        ).data
+      end
+
+      # Retrieves a GitHub App by its URL-friendly slug. Use the `app_slug` path parameter shown in the app's settings URL to identify the app.
+      #
+      # > [!NOTE] > The `:app_slug` is just the URL-friendly name of your GitHub App. You can find this on the settings page for your GitHub App (e.g., `github.com).
+      def self.apps_get_by_slug(
+        config:,
+        app_slug:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/apps/",
+            SdkClient.encode_path_segment(app_slug)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::Integration,
+          decoder: :json,
+          operation_id: 'apps_get_by_slug',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+        ).data
+      end
+
+      # List repositories that an app installation can access.
+      #
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.apps_list_repos_accessible_to_installation(
+        config:,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          "/installation/repositories",
+          config: config,
+          query: {
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true),
+          },
+          return_type: ::OctridevGithub::Methods::Apps::AppsListReposAccessibleToInstallationResponse,
+          decoder: :json,
+          operation_id: 'apps_list_repos_accessible_to_installation',
+          request_options: request_options,
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
+        ).data
+      end
+
       # Revokes the installation token you're using to authenticate as an installation and access this endpoint. Once an installation token is revoked, the token is invalidated and cannot be used. Other endpoints that require the revoked installation token must have a new installation token to work. You can create a new token using the "Create an installation access token for an app" endpoint.
       def self.apps_revoke_installation_access_token(
         config:,
@@ -385,88 +552,6 @@ module OctridevGithub
           operation_id: 'apps_remove_repo_from_installation_for_authenticated_user',
           request_options: request_options,
           errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
-        ).data
-      end
-
-      # Lists the active subscriptions for the authenticated user.
-      #
-      # @param per_page [Integer] The number of results per page (max 100). For more
-      #   information, see "Using pagination in the REST API."
-      # @param page [Integer] The page number of the results to fetch. For more
-      #   information, see "Using pagination in the REST API."
-      def self.apps_list_subscriptions_for_authenticated_user(
-        config:,
-        per_page: NOT_GIVEN,
-        page: NOT_GIVEN,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          "/user/marketplace_purchases",
-          config: config,
-          query: {
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
-          },
-          return_type: [::OctridevGithub::UserMarketplacePurchase],
-          decoder: :json,
-          operation_id: 'apps_list_subscriptions_for_authenticated_user',
-          request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
-        ).data
-      end
-
-      # Lists the active subscriptions for the authenticated user.
-      #
-      # @param per_page [Integer] The number of results per page (max 100). For more
-      #   information, see "Using pagination in the REST API."
-      # @param page [Integer] The page number of the results to fetch. For more
-      #   information, see "Using pagination in the REST API."
-      def self.apps_list_subscriptions_for_authenticated_user_stubbed(
-        config:,
-        per_page: NOT_GIVEN,
-        page: NOT_GIVEN,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          "/user/marketplace_purchases/stubbed",
-          config: config,
-          query: {
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
-          },
-          return_type: [::OctridevGithub::UserMarketplacePurchase],
-          decoder: :json,
-          operation_id: 'apps_list_subscriptions_for_authenticated_user_stubbed',
-          request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError },
-        ).data
-      end
-
-      # Enables an authenticated GitHub App to find the user’s installation information. You must use a JWT to access this endpoint.
-      #
-      # @param username [String] The handle for the GitHub user account.
-      def self.apps_get_user_installation(
-        config:,
-        username:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/users/",
-            SdkClient.encode_path_segment(username),
-            "/installation"
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::Installation,
-          decoder: :json,
-          operation_id: 'apps_get_user_installation',
-          request_options: request_options,
         ).data
       end
     end

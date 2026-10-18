@@ -9,189 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Actions SDK namespace.
     module Actions
-      # Lists all workflow runs for a repository. You can use parameters to narrow the list of results. For more information about using parameters, see Parameters. Anyone with read access to the repository can use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository. This endpoint will return up to 1,000 results for each search when using the following parameters: `actor`, `branch`,…
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param actor [String] Returns someone's workflow runs. Use the login for the
-      #   user who created the `push` associated with the check suite or workflow run.
-      # @param branch [String] Returns workflow runs associated with a branch. Use
-      #   the name of the branch of the `push`.
-      # @param event [String] Returns workflow run triggered by the event you
-      #   specify. For example, `push`, `pull_request` or `issue`. For more
-      #   information, see "Events that trigger workflows."
-      # @param status [SchemaSchema9f04b9bc] Returns workflow runs with the check
-      #   run `status` or `conclusion` that you specify. For example, a conclusion can
-      #   be `success` or a status can be `in_progress`. Only GitHub Actions can set a
-      #   status of `waiting`, `pending`, or `requested`.
-      # @param per_page [Integer] The number of results per page (max 100). For more
-      #   information, see "Using pagination in the REST API."
-      # @param page [Integer] The page number of the results to fetch. For more
-      #   information, see "Using pagination in the REST API."
-      # @param created [String] Returns workflow runs created within the given
-      #   date-time range. For more information on the syntax, see "Understanding the
-      #   search syntax."
-      # @param exclude_pull_requests [Boolean] If `true` pull requests are omitted
-      #   from the response (empty array).
-      # @param check_suite_id [Integer] Returns workflow runs with the
-      #   `check_suite_id` that you specify.
-      # @param head_sha [String] Only returns workflow runs that are associated with
-      #   the specified `head_sha`.
-      def self.actions_list_workflow_runs_for_repo(
-        config:,
-        owner:,
-        repo:,
-        actor: NOT_GIVEN,
-        branch: NOT_GIVEN,
-        event: NOT_GIVEN,
-        status: NOT_GIVEN,
-        per_page: NOT_GIVEN,
-        page: NOT_GIVEN,
-        created: NOT_GIVEN,
-        exclude_pull_requests: NOT_GIVEN,
-        check_suite_id: NOT_GIVEN,
-        head_sha: NOT_GIVEN,
-        request_options: nil
-      )
-
-        Validation.if_given(created) { Validation.validate_date_time('created', created) }
-
-        SdkClient.request(
-          'GET',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/actions/runs"
-          ].join,
-          config: config,
-          query: {
-            'actor' => QueryValue.new(actor, style: 'form', explode: true),
-            'branch' => QueryValue.new(branch, style: 'form', explode: true),
-            'event' => QueryValue.new(event, style: 'form', explode: true),
-            'status' => QueryValue.new(status, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
-            'created' => QueryValue.new(created, style: 'form', explode: true),
-            'exclude_pull_requests' => QueryValue.new(exclude_pull_requests, style: 'form', explode: true),
-            'check_suite_id' => QueryValue.new(check_suite_id, style: 'form', explode: true),
-            'head_sha' => QueryValue.new(head_sha, style: 'form', explode: true),
-          },
-          return_type: ::OctridevGithub::Methods::Actions::ActionsListWorkflowRunsForRepoResponse,
-          decoder: :json,
-          operation_id: 'actions_list_workflow_runs_for_repo',
-          request_options: request_options,
-        ).data
-      end
-
-      # Gets a specific workflow run. Anyone with read access to the repository can use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param run_id [Integer] The unique identifier of the workflow run.
-      # @param exclude_pull_requests [Boolean] If `true` pull requests are omitted
-      #   from the response (empty array).
-      def self.actions_get_workflow_run(
-        config:,
-        owner:,
-        repo:,
-        run_id:,
-        exclude_pull_requests: NOT_GIVEN,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/actions/runs/",
-            SdkClient.encode_path_segment(run_id)
-          ].join,
-          config: config,
-          query: {
-            'exclude_pull_requests' => QueryValue.new(exclude_pull_requests, style: 'form', explode: true),
-          },
-          return_type: ::OctridevGithub::WorkflowRun,
-          decoder: :json,
-          operation_id: 'actions_get_workflow_run',
-          request_options: request_options,
-        ).data
-      end
-
-      # Deletes a specific workflow run. Anyone with write access to the repository can use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param run_id [Integer] The unique identifier of the workflow run.
-      def self.actions_delete_workflow_run(
-        config:,
-        owner:,
-        repo:,
-        run_id:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'DELETE',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/actions/runs/",
-            SdkClient.encode_path_segment(run_id)
-          ].join,
-          config: config,
-          decoder: :empty,
-          operation_id: 'actions_delete_workflow_run',
-          request_options: request_options,
-        ).data
-      end
-
-      # Anyone with read access to the repository can use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param run_id [Integer] The unique identifier of the workflow run.
-      def self.actions_get_reviews_for_run(
-        config:,
-        owner:,
-        repo:,
-        run_id:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/actions/runs/",
-            SdkClient.encode_path_segment(run_id),
-            "/approvals"
-          ].join,
-          config: config,
-          return_type: [::OctridevGithub::EnvironmentApprovals],
-          decoder: :json,
-          operation_id: 'actions_get_reviews_for_run',
-          request_options: request_options,
-        ).data
-      end
-
       # Approves a workflow run for a pull request from a public fork of a first time contributor. For more information, see "Approving workflow runs from public forks." OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
       #
       # @param owner [String] The account owner of the repository. The name is not
@@ -563,6 +380,157 @@ module OctridevGithub
           operation_id: 'actions_force_cancel_workflow_run',
           request_options: request_options,
           errors: { '409' => ::OctridevGithub::BasicError },
+        ).data
+      end
+
+      # Lists jobs for a workflow run. You can use parameters to narrow the list of results. For more information about using parameters, see Parameters. Anyone with read access to the repository can use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param run_id [Integer] The unique identifier of the workflow run.
+      # @param filter [ActionsListJobsForWorkflowRunParameter] Filters jobs by their
+      #   `completed_at` timestamp. `latest` returns jobs from the most recent
+      #   execution of the workflow run. `all` returns all jobs for a workflow run,
+      #   including from old executions of the workflow run.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.actions_list_jobs_for_workflow_run(
+        config:,
+        owner:,
+        repo:,
+        run_id:,
+        filter: NOT_GIVEN,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/actions/runs/",
+            SdkClient.encode_path_segment(run_id),
+            "/jobs"
+          ].join,
+          config: config,
+          query: {
+            'filter' => QueryValue.new(filter, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true),
+          },
+          return_type: ::OctridevGithub::Methods::Actions::ActionsListJobsForWorkflowRunResponse,
+          decoder: :json,
+          operation_id: 'actions_list_jobs_for_workflow_run',
+          request_options: request_options,
+        ).data
+      end
+
+      # Gets a redirect URL to download an archive of log files for a workflow run. This link expires after 1 minute. Look for `Location:` in the response header to find the URL for the download. Anyone with read access to the repository can use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param run_id [Integer] The unique identifier of the workflow run.
+      def self.actions_download_workflow_run_logs(
+        config:,
+        owner:,
+        repo:,
+        run_id:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/actions/runs/",
+            SdkClient.encode_path_segment(run_id),
+            "/logs"
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'actions_download_workflow_run_logs',
+          request_options: request_options,
+        ).data
+      end
+
+      # Deletes all logs for a workflow run. OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param run_id [Integer] The unique identifier of the workflow run.
+      def self.actions_delete_workflow_run_logs(
+        config:,
+        owner:,
+        repo:,
+        run_id:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'DELETE',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/actions/runs/",
+            SdkClient.encode_path_segment(run_id),
+            "/logs"
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'actions_delete_workflow_run_logs',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
+        ).data
+      end
+
+      # Get all deployment environments for a workflow run that are waiting for protection rules to pass. Anyone with read access to the repository can use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param run_id [Integer] The unique identifier of the workflow run.
+      def self.actions_get_pending_deployments_for_run(
+        config:,
+        owner:,
+        repo:,
+        run_id:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/actions/runs/",
+            SdkClient.encode_path_segment(run_id),
+            "/pending_deployments"
+          ].join,
+          config: config,
+          return_type: [::OctridevGithub::PendingDeployment],
+          decoder: :json,
+          operation_id: 'actions_get_pending_deployments_for_run',
+          request_options: request_options,
         ).data
       end
     end

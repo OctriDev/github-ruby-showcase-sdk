@@ -5,6 +5,43 @@
 
 # webhook_deployment_created domain models (part 2)
 module OctridevGithub
+# Internal model hydration metadata.
+class SdkInternalWebhookDeploymentCreatedWorkflowRunActorMetadata
+  FIELDS = {
+    avatar_url: "avatar_url",
+    deleted: "deleted",
+    email: "email",
+    events_url: "events_url",
+    followers_url: "followers_url",
+    following_url: "following_url",
+    gists_url: "gists_url",
+    gravatar_id: "gravatar_id",
+    html_url: "html_url",
+    id: "id",
+    login: "login",
+    name: "name",
+    node_id: "node_id",
+    organizations_url: "organizations_url",
+    received_events_url: "received_events_url",
+    repos_url: "repos_url",
+    site_admin: "site_admin",
+    starred_url: "starred_url",
+    subscriptions_url: "subscriptions_url",
+    type: "type",
+    url: "url",
+    user_view_type: "user_view_type",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    login
+  ].freeze
+  DECODERS = {
+    type: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedWorkflowRunActorType.from_value(value)
+    end,
+  }.freeze
+end
+
 # API model for WebhookDeploymentCreatedWorkflowRunActor.
 # Required object value serialized in the `actor` wire field.
 class WebhookDeploymentCreatedWorkflowRunActor

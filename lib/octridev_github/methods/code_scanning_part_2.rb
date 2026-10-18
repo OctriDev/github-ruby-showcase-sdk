@@ -70,7 +70,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'code_scanning_update_alert',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -196,7 +196,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'code_scanning_commit_autofix',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -254,7 +254,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'code_scanning_list_alert_instances',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -328,7 +328,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'code_scanning_list_recent_analyses',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -363,7 +363,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'code_scanning_get_analysis',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -407,7 +407,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'code_scanning_delete_analysis',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -438,7 +438,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'code_scanning_list_codeql_databases',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -472,7 +472,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'code_scanning_get_codeql_database',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -505,7 +505,7 @@ module OctridevGithub
           decoder: :empty,
           operation_id: 'code_scanning_delete_codeql_database',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -570,7 +570,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'code_scanning_create_variant_analysis',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
     end

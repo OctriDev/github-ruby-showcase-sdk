@@ -6,7 +6,7 @@
 # webhook_issue_comment_pinned domain models
 module OctridevGithub
 # Internal model hydration metadata.
-class SdkInternalWebhookIssueCommentPinnedIssueVariant1AssigneeMetadata
+class SdkInternalWebhookIssueCommentPinnedIssueAssigneeMetadata
   FIELDS = {
     avatar_url: "avatar_url",
     deleted: "deleted",
@@ -37,18 +37,18 @@ class SdkInternalWebhookIssueCommentPinnedIssueVariant1AssigneeMetadata
   ].freeze
   DECODERS = {
     type: lambda do |value|
-      ::OctridevGithub::WebhookIssueCommentPinnedIssueVariant1AssigneeType.from_value(value)
+      ::OctridevGithub::WebhookIssueCommentPinnedIssueAssigneeType.from_value(value)
     end,
   }.freeze
 end
 
-# API model for WebhookIssueCommentPinnedIssueVariant1Assignee.
+# API model for WebhookIssueCommentPinnedIssueAssignee.
 # Required object value serialized in the `assignee` wire field.
-class WebhookIssueCommentPinnedIssueVariant1Assignee
+class WebhookIssueCommentPinnedIssueAssignee
   CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookIssueCommentPinnedIssueVariant1AssigneeMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookIssueCommentPinnedIssueVariant1AssigneeMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookIssueCommentPinnedIssueVariant1AssigneeMetadata::DECODERS
+  FIELDS = SdkInternalWebhookIssueCommentPinnedIssueAssigneeMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookIssueCommentPinnedIssueAssigneeMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookIssueCommentPinnedIssueAssigneeMetadata::DECODERS
 
   # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
   attr_reader :avatar_url
@@ -88,7 +88,7 @@ class WebhookIssueCommentPinnedIssueVariant1Assignee
   attr_reader :starred_url
   # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
   attr_reader :subscriptions_url
-  # @return [WebhookIssueCommentPinnedIssueVariant1AssigneeType] Optional enumerated value serialized in the `type` wire field.
+  # @return [WebhookIssueCommentPinnedIssueAssigneeType] Optional enumerated value serialized in the `type` wire field.
   attr_reader :type
   # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
   attr_reader :url
@@ -110,7 +110,7 @@ class WebhookIssueCommentPinnedIssueVariant1Assignee
 end
 
 # Internal model hydration metadata.
-class SdkInternalWebhookIssueCommentPinnedIssueVariant1LabelsItemMetadata
+class SdkInternalWebhookIssueCommentPinnedIssueLabelsItemMetadata
   FIELDS = {
     color: "color",
     default: "default",
@@ -136,13 +136,13 @@ class SdkInternalWebhookIssueCommentPinnedIssueVariant1LabelsItemMetadata
   ].freeze
 end
 
-# API model for WebhookIssueCommentPinnedIssueVariant1LabelsItem.
+# API model for WebhookIssueCommentPinnedIssueLabelsItem.
 # Required object value serialized in the `labels[]` wire field.
-class WebhookIssueCommentPinnedIssueVariant1LabelsItem
+class WebhookIssueCommentPinnedIssueLabelsItem
   CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookIssueCommentPinnedIssueVariant1LabelsItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookIssueCommentPinnedIssueVariant1LabelsItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookIssueCommentPinnedIssueVariant1LabelsItemMetadata::DECODERS
+  FIELDS = SdkInternalWebhookIssueCommentPinnedIssueLabelsItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookIssueCommentPinnedIssueLabelsItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookIssueCommentPinnedIssueLabelsItemMetadata::DECODERS
 
   # @return [String] 6-character hex code, without the leading #, identifying the color
   attr_reader :color
@@ -165,7 +165,7 @@ class WebhookIssueCommentPinnedIssueVariant1LabelsItem
   end
 
   def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookIssueCommentPinnedIssueVariant1LabelsItemMetadata::NULLABLE_FIELDS)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookIssueCommentPinnedIssueLabelsItemMetadata::NULLABLE_FIELDS)
   end
 
   def to_h
@@ -174,7 +174,7 @@ class WebhookIssueCommentPinnedIssueVariant1LabelsItem
 end
 
 # Internal model hydration metadata.
-class SdkInternalWebhookIssueCommentPinnedIssueVariant0PullRequestMetadata
+class SdkInternalWebhookIssueCommentPinnedIssuePullRequestMetadata
   FIELDS = {
     diff_url: "diff_url",
     html_url: "html_url",
@@ -188,13 +188,13 @@ class SdkInternalWebhookIssueCommentPinnedIssueVariant0PullRequestMetadata
   }.freeze
 end
 
-# API model for WebhookIssueCommentPinnedIssueVariant0PullRequest.
+# API model for WebhookIssueCommentPinnedIssuePullRequest.
 # Optional object value serialized in the `pull_request` wire field.
-class WebhookIssueCommentPinnedIssueVariant0PullRequest
+class WebhookIssueCommentPinnedIssuePullRequest
   CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookIssueCommentPinnedIssueVariant0PullRequestMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookIssueCommentPinnedIssueVariant0PullRequestMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookIssueCommentPinnedIssueVariant0PullRequestMetadata::DECODERS
+  FIELDS = SdkInternalWebhookIssueCommentPinnedIssuePullRequestMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookIssueCommentPinnedIssuePullRequestMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookIssueCommentPinnedIssuePullRequestMetadata::DECODERS
 
   # @return [String] Optional `uri`-formatted value serialized in the `diff_url` wire field.
   attr_reader :diff_url
@@ -222,7 +222,7 @@ class WebhookIssueCommentPinnedIssueVariant0PullRequest
 end
 
 # Internal model hydration metadata.
-class SdkInternalWebhookIssueCommentPinnedIssueVariant1ReactionsMetadata
+class SdkInternalWebhookIssueCommentPinnedIssueReactionsMetadata
   FIELDS = {
     plus1: "+1",
     minus1: "-1",
@@ -241,13 +241,13 @@ class SdkInternalWebhookIssueCommentPinnedIssueVariant1ReactionsMetadata
   }.freeze
 end
 
-# API model for WebhookIssueCommentPinnedIssueVariant1Reactions.
-# Optional object value serialized in the `reactions` wire field.
-class WebhookIssueCommentPinnedIssueVariant1Reactions
+# API model for WebhookIssueCommentPinnedIssueReactions.
+# Required object value serialized in the `reactions` wire field.
+class WebhookIssueCommentPinnedIssueReactions
   CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookIssueCommentPinnedIssueVariant1ReactionsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookIssueCommentPinnedIssueVariant1ReactionsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookIssueCommentPinnedIssueVariant1ReactionsMetadata::DECODERS
+  FIELDS = SdkInternalWebhookIssueCommentPinnedIssueReactionsMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookIssueCommentPinnedIssueReactionsMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookIssueCommentPinnedIssueReactionsMetadata::DECODERS
 
   # @return [Integer] Optional `integer` value serialized in the `+1` wire field.
   attr_reader :plus1
@@ -285,7 +285,7 @@ class WebhookIssueCommentPinnedIssueVariant1Reactions
 end
 
 # Internal model hydration metadata.
-class SdkInternalWebhookIssueCommentPinnedIssueVariant1UserMetadata
+class SdkInternalWebhookIssueCommentPinnedIssueUserMetadata
   FIELDS = {
     avatar_url: "avatar_url",
     events_url: "events_url",
@@ -313,13 +313,13 @@ class SdkInternalWebhookIssueCommentPinnedIssueVariant1UserMetadata
   }.freeze
 end
 
-# API model for WebhookIssueCommentPinnedIssueVariant1User.
-# Optional object value serialized in the `user` wire field.
-class WebhookIssueCommentPinnedIssueVariant1User
+# API model for WebhookIssueCommentPinnedIssueUser.
+# Required object value serialized in the `user` wire field.
+class WebhookIssueCommentPinnedIssueUser
   CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookIssueCommentPinnedIssueVariant1UserMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookIssueCommentPinnedIssueVariant1UserMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookIssueCommentPinnedIssueVariant1UserMetadata::DECODERS
+  FIELDS = SdkInternalWebhookIssueCommentPinnedIssueUserMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookIssueCommentPinnedIssueUserMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookIssueCommentPinnedIssueUserMetadata::DECODERS
 
   # @return [String] Optional `string` value serialized in the `avatar_url` wire field.
   attr_reader :avatar_url
@@ -440,16 +440,16 @@ class SdkInternalWebhookIssueCommentPinnedIssueMetadata
   ].freeze
   DECODERS = {
     assignee: lambda do |value|
-      ::OctridevGithub::WebhookIssueCommentPinnedIssueVariant1Assignee.from_hash(value)
+      ::OctridevGithub::WebhookIssueCommentPinnedIssueAssignee.from_hash(value)
     end,
     labels: lambda do |value|
-      value&.map { |item| ::OctridevGithub::WebhookIssueCommentPinnedIssueVariant1LabelsItem.from_hash(item) }
+      value&.map { |item| ::OctridevGithub::WebhookIssueCommentPinnedIssueLabelsItem.from_hash(item) }
     end,
     pull_request: lambda do |value|
-      ::OctridevGithub::WebhookIssueCommentPinnedIssueVariant0PullRequest.from_hash(value)
+      ::OctridevGithub::WebhookIssueCommentPinnedIssuePullRequest.from_hash(value)
     end,
     reactions: lambda do |value|
-      ::OctridevGithub::WebhookIssueCommentPinnedIssueVariant1Reactions.from_hash(value)
+      ::OctridevGithub::WebhookIssueCommentPinnedIssueReactions.from_hash(value)
     end,
     sub_issues_summary: lambda do |value|
       ::OctridevGithub::SubIssuesSummary.from_hash(value)
@@ -458,13 +458,13 @@ class SdkInternalWebhookIssueCommentPinnedIssueMetadata
       ::OctridevGithub::IssueDependenciesSummary.from_hash(value)
     end,
     state: lambda do |value|
-      ::OctridevGithub::WebhookIssueCommentPinnedIssueVariant1State.from_value(value)
+      ::OctridevGithub::WebhookIssueCommentPinnedIssueState.from_value(value)
     end,
     type: lambda do |value|
       ::OctridevGithub::IssueType.from_hash(value)
     end,
     user: lambda do |value|
-      ::OctridevGithub::WebhookIssueCommentPinnedIssueVariant1User.from_hash(value)
+      ::OctridevGithub::WebhookIssueCommentPinnedIssueUser.from_hash(value)
     end,
   }.freeze
   NULLABLE_FIELDS = %i[
@@ -484,71 +484,71 @@ class WebhookIssueCommentPinnedIssue
   REQUIRED_FIELDS = SdkInternalWebhookIssueCommentPinnedIssueMetadata::REQUIRED_FIELDS
   DECODERS = SdkInternalWebhookIssueCommentPinnedIssueMetadata::DECODERS
 
-  # @return [String] Optional `string` value serialized in the `active_lock_reason` wire field.
+  # @return [String] Required `string` value serialized in the `active_lock_reason` wire field.
   attr_reader :active_lock_reason
-  # @return [WebhookIssueCommentPinnedIssueVariant1Assignee] Required object value serialized in the `assignee` wire field.
+  # @return [WebhookIssueCommentPinnedIssueAssignee] Required object value serialized in the `assignee` wire field.
   attr_reader :assignee
-  # @return [Array_of_Hash] Optional array value serialized in the `assignees` wire field.
+  # @return [Array_of_Hash] Required array value serialized in the `assignees` wire field.
   attr_reader :assignees
-  # @return [String] Optional `string` value serialized in the `author_association` wire field.
+  # @return [String] Required `string` value serialized in the `author_association` wire field.
   attr_reader :author_association
-  # @return [String] Optional `string` value serialized in the `body` wire field.
+  # @return [String] Required `string` value serialized in the `body` wire field.
   attr_reader :body
-  # @return [String] Optional `string` value serialized in the `closed_at` wire field.
+  # @return [String] Required `string` value serialized in the `closed_at` wire field.
   attr_reader :closed_at
-  # @return [Integer] Optional `integer` value serialized in the `comments` wire field.
+  # @return [Integer] Required `integer` value serialized in the `comments` wire field.
   attr_reader :comments
-  # @return [String] Optional `string` value serialized in the `comments_url` wire field.
+  # @return [String] Required `string` value serialized in the `comments_url` wire field.
   attr_reader :comments_url
-  # @return [String] Optional `string` value serialized in the `created_at` wire field.
+  # @return [String] Required `string` value serialized in the `created_at` wire field.
   attr_reader :created_at
   # @return [Boolean] Optional `boolean` value serialized in the `draft` wire field.
   attr_reader :draft
-  # @return [String] Optional `string` value serialized in the `events_url` wire field.
+  # @return [String] Required `string` value serialized in the `events_url` wire field.
   attr_reader :events_url
-  # @return [String] Optional `string` value serialized in the `html_url` wire field.
+  # @return [String] Required `string` value serialized in the `html_url` wire field.
   attr_reader :html_url
-  # @return [Integer] Optional `integer` value serialized in the `id` wire field.
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
   attr_reader :id
-  # @return [Array_of_WebhookIssueCommentPinnedIssueVariant1LabelsItem] Required array value serialized in the `labels` wire field.
+  # @return [Array_of_WebhookIssueCommentPinnedIssueLabelsItem] Required array value serialized in the `labels` wire field.
   attr_reader :labels
-  # @return [String] Optional `string` value serialized in the `labels_url` wire field.
+  # @return [String] Required `string` value serialized in the `labels_url` wire field.
   attr_reader :labels_url
   # @return [Boolean] Required `boolean` value serialized in the `locked` wire field.
   attr_reader :locked
-  # @return [Hash] Optional object value serialized in the `milestone` wire field.
+  # @return [Hash] Required object value serialized in the `milestone` wire field.
   attr_reader :milestone
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
   attr_reader :node_id
-  # @return [Integer] Optional `integer` value serialized in the `number` wire field.
+  # @return [Integer] Required `integer` value serialized in the `number` wire field.
   attr_reader :number
   # @return [Hash] Optional object value serialized in the `performed_via_github_app` wire field.
   attr_reader :performed_via_github_app
-  # @return [WebhookIssueCommentPinnedIssueVariant0PullRequest] Optional object value serialized in the `pull_request` wire field.
+  # @return [WebhookIssueCommentPinnedIssuePullRequest] Optional object value serialized in the `pull_request` wire field.
   attr_reader :pull_request
-  # @return [WebhookIssueCommentPinnedIssueVariant1Reactions] Optional object value serialized in the `reactions` wire field.
+  # @return [WebhookIssueCommentPinnedIssueReactions] Required object value serialized in the `reactions` wire field.
   attr_reader :reactions
-  # @return [String] Optional `string` value serialized in the `repository_url` wire field.
+  # @return [String] Required `string` value serialized in the `repository_url` wire field.
   attr_reader :repository_url
   # @return [SubIssuesSummary] Optional object value serialized in the `sub_issues_summary` wire field.
   attr_reader :sub_issues_summary
   # @return [IssueDependenciesSummary] Optional object value serialized in the `issue_dependencies_summary` wire field.
   attr_reader :issue_dependencies_summary
-  # @return [WebhookIssueCommentPinnedIssueVariant1State] State of the issue; either 'open' or 'closed'
+  # @return [WebhookIssueCommentPinnedIssueState] State of the issue; either 'open' or 'closed'
   attr_reader :state
   # @return [String] Optional `string` value serialized in the `state_reason` wire field.
   attr_reader :state_reason
   # @return [String] Optional `string` value serialized in the `timeline_url` wire field.
   attr_reader :timeline_url
-  # @return [String] Optional `string` value serialized in the `title` wire field.
+  # @return [String] Required `string` value serialized in the `title` wire field.
   attr_reader :title
   # @return [IssueType] The type assigned to the issue. This is only present for issues in repositories where issue types are supported.
   attr_reader :type
-  # @return [String] Optional `string` value serialized in the `updated_at` wire field.
+  # @return [String] Required `string` value serialized in the `updated_at` wire field.
   attr_reader :updated_at
-  # @return [String] Optional `string` value serialized in the `url` wire field.
+  # @return [String] Required `string` value serialized in the `url` wire field.
   attr_reader :url
-  # @return [WebhookIssueCommentPinnedIssueVariant1User] Optional object value serialized in the `user` wire field.
+  # @return [WebhookIssueCommentPinnedIssueUser] Required object value serialized in the `user` wire field.
   attr_reader :user
 
   def initialize(**attributes)
@@ -660,25 +660,23 @@ module WebhookIssueCommentPinnedAction
   end
 end
 
-# Defines the WebhookIssueCommentPinnedIssueVariant0ActiveLockReason SDK namespace.
-module WebhookIssueCommentPinnedIssueVariant0ActiveLockReason
-  RESOLVED = 'resolved'
-  OFF_TOPIC = 'off-topic'
-  TOO_HEATED = 'too heated'
-  SPAM = 'spam'
-  VALUES = ['resolved', 'off-topic', 'too heated', 'spam'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentPinnedIssueVariant0AssigneeType SDK namespace.
-module WebhookIssueCommentPinnedIssueVariant0AssigneeType
+# Defines the WebhookIssueCommentPinnedIssueAssigneeType SDK namespace.
+module WebhookIssueCommentPinnedIssueAssigneeType
   BOT = 'Bot'
   USER = 'User'
   ORGANIZATION = 'Organization'
   MANNEQUIN = 'Mannequin'
   VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhookIssueCommentPinnedIssueState SDK namespace.
+module WebhookIssueCommentPinnedIssueState
+  OPEN = 'open'
+  CLOSED = 'closed'
+  VALUES = ['open', 'closed'].freeze
   def self.from_value(value)
     value
   end

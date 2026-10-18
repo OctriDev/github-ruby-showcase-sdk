@@ -9,177 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Actions SDK namespace.
     module Actions
-      # Remove a custom label from a self-hosted runner configured in an organization. Returns the remaining labels from the runner. This endpoint returns a `404 Not Found` status if the custom label is not present on the runner. Authenticated users must have admin access to the organization to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
-      #
-      # @param org [String] The organization name. The name is not case sensitive.
-      # @param runner_id [Integer] Unique identifier of the self-hosted runner.
-      # @param name [String] The name of a self-hosted runner's custom label.
-      def self.actions_remove_custom_label_from_self_hosted_runner_for_org(
-        config:,
-        org:,
-        runner_id:,
-        name:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'DELETE',
-          [
-            "/orgs/",
-            SdkClient.encode_path_segment(org),
-            "/actions/runners/",
-            SdkClient.encode_path_segment(runner_id),
-            "/labels/",
-            SdkClient.encode_path_segment(name)
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::Methods::Actions::SchemaSchemaC8266fdc,
-          decoder: :json,
-          operation_id: 'actions_remove_custom_label_from_self_hosted_runner_for_org',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple },
-        ).data
-      end
-
-      # Lists all secrets available in an organization without revealing their encrypted values. Authenticated users must have collaborator access to a repository to create, update, or read secrets. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
-      #
-      # @param org [String] The organization name. The name is not case sensitive.
-      # @param per_page [Integer] The number of results per page (max 100). For more
-      #   information, see "Using pagination in the REST API."
-      # @param page [Integer] The page number of the results to fetch. For more
-      #   information, see "Using pagination in the REST API."
-      def self.actions_list_org_secrets(
-        config:,
-        org:,
-        per_page: NOT_GIVEN,
-        page: NOT_GIVEN,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/orgs/",
-            SdkClient.encode_path_segment(org),
-            "/actions/secrets"
-          ].join,
-          config: config,
-          query: {
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
-          },
-          return_type: ::OctridevGithub::Methods::Actions::ActionsListOrgSecretsResponse,
-          decoder: :json,
-          operation_id: 'actions_list_org_secrets',
-          request_options: request_options,
-        ).data
-      end
-
-      # Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you can create or update secrets. The authenticated user must have collaborator access to a repository to create, update, or read secrets. OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-      #
-      # @param org [String] The organization name. The name is not case sensitive.
-      def self.actions_get_org_public_key(
-        config:,
-        org:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/orgs/",
-            SdkClient.encode_path_segment(org),
-            "/actions/secrets/public-key"
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::ActionsPublicKey,
-          decoder: :json,
-          operation_id: 'actions_get_org_public_key',
-          request_options: request_options,
-        ).data
-      end
-
-      # Gets a single organization secret without revealing its encrypted value. The authenticated user must have collaborator access to a repository to create, update, or read secrets OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-      #
-      # @param org [String] The organization name. The name is not case sensitive.
-      # @param secret_name [String] The name of the secret.
-      def self.actions_get_org_secret(
-        config:,
-        org:,
-        secret_name:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/orgs/",
-            SdkClient.encode_path_segment(org),
-            "/actions/secrets/",
-            SdkClient.encode_path_segment(secret_name)
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::OrganizationActionsSecret,
-          decoder: :json,
-          operation_id: 'actions_get_org_secret',
-          request_options: request_options,
-        ).data
-      end
-
-      # Creates or updates an organization secret with an encrypted value. Encrypt your secret using LibSodium. For more information, see "Encrypting secrets for the REST API." Authenticated users must have collaborator access to a repository to create, update, or read secrets. OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use…
-      #
-      # @param org [String] The organization name. The name is not case sensitive.
-      # @param secret_name [String] The name of the secret.
-      # @param encrypted_value [String] Value for your secret, encrypted with
-      #   LibSodium using the public key retrieved from the Get an organization public
-      #   key endpoint.
-      # @param key_id [String] ID of the key you used to encrypt the secret.
-      # @param visibility [ActionsCreateOrUpdateOrgSecretVisibility] Which type of
-      #   organization repositories have access to the organization secret. `selected`
-      #   means only the repositories specified by `selected_repository_ids` can
-      #   access the secret.
-      # @param selected_repository_ids [Array_of_Integer] An array of repository ids
-      #   that can access the organization secret. You can only provide a list of
-      #   repository ids when the `visibility` is set to `selected`. You can manage
-      #   the list of selected repositories using the List selected repositories for
-      #   an organization secret, Set selected repositories for an organization
-      #   secret, and Remove selected repository from an organization secret
-      #   endpoints.
-      def self.actions_create_or_update_org_secret(
-        config:,
-        org:,
-        secret_name:,
-        encrypted_value:,
-        key_id:,
-        visibility:,
-        selected_repository_ids: NOT_GIVEN,
-        request_options: nil
-      )
-
-        Validation.validate_pattern('encrypted_value', encrypted_value, '^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$')
-
-        SdkClient.request(
-          'PUT',
-          [
-            "/orgs/",
-            SdkClient.encode_path_segment(org),
-            "/actions/secrets/",
-            SdkClient.encode_path_segment(secret_name)
-          ].join,
-          config: config,
-          body: {
-            'encrypted_value' => encrypted_value,
-            'key_id' => key_id,
-            'visibility' => visibility,
-            'selected_repository_ids' => selected_repository_ids,
-          },
-          return_type: ::OctridevGithub::EmptyObject,
-          decoder: :json,
-          operation_id: 'actions_create_or_update_org_secret',
-          request_options: request_options,
-        ).data
-      end
-
       # Deletes a secret in an organization using the secret name. Authenticated users must have collaborator access to a repository to create, update, or read secrets. OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
       #
       # @param org [String] The organization name. The name is not case sensitive.
@@ -552,6 +381,178 @@ module OctridevGithub
           return_type: ::OctridevGithub::Methods::Actions::ActionsListSelectedReposForOrgVariableResponse,
           decoder: :json,
           operation_id: 'actions_list_selected_repos_for_org_variable',
+          request_options: request_options,
+        ).data
+      end
+
+      # Replaces all repositories for an organization variable that is available to selected repositories. Organization variables that are available to selected repositories have their `visibility` field set to `selected`. Authenticated users must have collaborator access to a repository to create, update, or read variables. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also…
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param name [String] The name of the variable.
+      # @param selected_repository_ids [Array_of_Integer] The IDs of the
+      #   repositories that can access the organization variable.
+      def self.actions_set_selected_repos_for_org_variable(
+        config:,
+        org:,
+        name:,
+        selected_repository_ids:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'PUT',
+          [
+            "/orgs/",
+            SdkClient.encode_path_segment(org),
+            "/actions/variables/",
+            SdkClient.encode_path_segment(name),
+            "/repositories"
+          ].join,
+          config: config,
+          body: {
+            'selected_repository_ids' => selected_repository_ids,
+          },
+          decoder: :empty,
+          operation_id: 'actions_set_selected_repos_for_org_variable',
+          request_options: request_options,
+        ).data
+      end
+
+      # Adds a repository to an organization variable configured for selected repositories. Use `name` and `repository_id` to identify the variable and repository to include; the variable must have `visibility` set to `selected`. The authenticated user must have collaborator access to the repository, and the token must have the required organization scope.
+      #
+      # Adds a repository to an organization variable that is available to selected repositories. Organization variables that are available to selected repositories have their `visibility` field set to `selected`. Authenticated users must have collaborator access to a repository to create, update, or read secrets. OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens…
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param name [String] The name of the variable.
+      def self.actions_add_selected_repo_to_org_variable(
+        config:,
+        org:,
+        name:,
+        repository_id:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'PUT',
+          [
+            "/orgs/",
+            SdkClient.encode_path_segment(org),
+            "/actions/variables/",
+            SdkClient.encode_path_segment(name),
+            "/repositories/",
+            SdkClient.encode_path_segment(repository_id)
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'actions_add_selected_repo_to_org_variable',
+          request_options: request_options,
+        ).data
+      end
+
+      # Removes a repository from an organization variable configured for selected repositories. Use `name` and `repository_id` to identify the variable and repository to remove; the variable must have `visibility` set to `selected`. The authenticated user must have collaborator access to the repository, and the token must have the required organization scope.
+      #
+      # Removes a repository from an organization variable that is available to selected repositories. Organization variables that are available to selected repositories have their `visibility` field set to `selected`. Authenticated users must have collaborator access to a repository to create, update, or read variables. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also…
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param name [String] The name of the variable.
+      def self.actions_remove_selected_repo_from_org_variable(
+        config:,
+        org:,
+        name:,
+        repository_id:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'DELETE',
+          [
+            "/orgs/",
+            SdkClient.encode_path_segment(org),
+            "/actions/variables/",
+            SdkClient.encode_path_segment(name),
+            "/repositories/",
+            SdkClient.encode_path_segment(repository_id)
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'actions_remove_selected_repo_from_org_variable',
+          request_options: request_options,
+        ).data
+      end
+
+      # Lists all artifacts for a repository. Anyone with read access to the repository can use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      # @param name [String] The name field of an artifact. When specified, only
+      #   artifacts with this name will be returned.
+      def self.actions_list_artifacts_for_repo(
+        config:,
+        owner:,
+        repo:,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        name: NOT_GIVEN,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/actions/artifacts"
+          ].join,
+          config: config,
+          query: {
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'name' => QueryValue.new(name, style: 'form', explode: true),
+          },
+          return_type: ::OctridevGithub::Methods::Actions::ActionsListArtifactsForRepoResponse,
+          decoder: :json,
+          operation_id: 'actions_list_artifacts_for_repo',
+          request_options: request_options,
+        ).data
+      end
+
+      # Gets a specific artifact for a workflow run. Anyone with read access to the repository can use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param artifact_id [Integer] The unique identifier of the artifact.
+      def self.actions_get_artifact(
+        config:,
+        owner:,
+        repo:,
+        artifact_id:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/actions/artifacts/",
+            SdkClient.encode_path_segment(artifact_id)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::Artifact,
+          decoder: :json,
+          operation_id: 'actions_get_artifact',
           request_options: request_options,
         ).data
       end

@@ -9,61 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Repos SDK namespace.
     module Repos
-      # Defines the ReposCreateInOrgMergeCommitMessage SDK namespace.
-      module ReposCreateInOrgMergeCommitMessage
-        PR_BODY = 'PR_BODY'
-        PR_TITLE = 'PR_TITLE'
-        BLANK = 'BLANK'
-        VALUES = ['PR_BODY', 'PR_TITLE', 'BLANK'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the ReposUpdateSecurityAndAnalysisSecretScanningDelegatedBypassOpX7ef3ce56ec SDK namespace.
-      module ReposUpdateSecurityAndAnalysisSecretScanningDelegatedBypassOpX7ef3ce56ec
-        ALWAYS = 'ALWAYS'
-        EXEMPT = 'EXEMPT'
-        VALUES = ['ALWAYS', 'EXEMPT'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the ReposListForOrgParameter SDK namespace.
-      module ReposListForOrgParameter
-        ALL = 'all'
-        PUBLIC = 'public'
-        PRIVATE = 'private'
-        FORKS = 'forks'
-        SOURCES = 'sources'
-        MEMBER = 'member'
-        VALUES = ['all', 'public', 'private', 'forks', 'sources', 'member'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the ReposCreateForAuthenticatedUserMergeCommitTitle SDK namespace.
-      module ReposCreateForAuthenticatedUserMergeCommitTitle
-        PR_TITLE = 'PR_TITLE'
-        MERGE_MESSAGE = 'MERGE_MESSAGE'
-        VALUES = ['PR_TITLE', 'MERGE_MESSAGE'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the ReposUpdateSquashMergeCommitTitle SDK namespace.
-      module ReposUpdateSquashMergeCommitTitle
-        PR_TITLE = 'PR_TITLE'
-        COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
-        VALUES = ['PR_TITLE', 'COMMIT_OR_PR_TITLE'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
       # Defines the ReposCreateOrgRulesetTarget SDK namespace.
       module ReposCreateOrgRulesetTarget
         BRANCH = 'branch'
@@ -555,6 +500,63 @@ module OctridevGithub
           operation_id: 'repos_get_org_rulesets',
           request_options: request_options,
           errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
+        ).data
+      end
+
+      # Creates a repository ruleset for an organization. Set the required `name` and `enforcement`, and optionally configure the target, bypass actors, conditions, and rules. Use `evaluate` to test rules before enforcing them; this enforcement level is available only with GitHub Enterprise.
+      #
+      # Create a repository ruleset for an organization.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param name [String] The name of the ruleset.
+      # @param enforcement [RepositoryRuleEnforcement] The enforcement level of the
+      #   ruleset. `evaluate` allows admins to test rules before enforcing them.
+      #   Admins can view insights on the Rule Insights page (`evaluate` is only
+      #   available with GitHub Enterprise).
+      # @param target [ReposCreateOrgRulesetTarget] The target of the ruleset
+      # @param bypass_actors [Array_of_RepositoryRulesetBypassActor] The actors that
+      #   can bypass the rules in this ruleset
+      # @param conditions [OrgRulesetConditions] Conditions for an organization
+      #   ruleset. The branch and tag rulesets conditions object should contain both
+      #   `repository_name` and `ref_name` properties, or both `repository_id` and
+      #   `ref_name` properties, or both `repository_property` and `ref_name`
+      #   properties. The push rulesets conditions object does not require the
+      #   `ref_name` property. For repository policy rulesets, the conditions object
+      #   should only contain the `repository_name`, the `repository_id`, or the…
+      # @param rules [Array_of_OrgRules] An array of rules within the ruleset.
+      def self.repos_create_org_ruleset(
+        config:,
+        org:,
+        name:,
+        enforcement:,
+        target: NOT_GIVEN,
+        bypass_actors: NOT_GIVEN,
+        conditions: NOT_GIVEN,
+        rules: NOT_GIVEN,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'POST',
+          [
+            "/orgs/",
+            SdkClient.encode_path_segment(org),
+            "/rulesets"
+          ].join,
+          config: config,
+          body: {
+            'name' => name,
+            'enforcement' => enforcement,
+            'target' => target,
+            'bypass_actors' => bypass_actors,
+            'conditions' => conditions,
+            'rules' => rules,
+          },
+          return_type: ::OctridevGithub::RepositoryRuleset,
+          decoder: :json,
+          operation_id: 'repos_create_org_ruleset',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
     end

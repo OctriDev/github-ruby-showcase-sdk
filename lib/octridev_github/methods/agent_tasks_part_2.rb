@@ -65,7 +65,7 @@ module OctridevGithub
             ::OctridevGithub::Methods::AgentTasks::AgentTasksCreateTaskInRepoResponseArtifactsItemType.from_value(value)
           end,
           data: lambda do |value|
-            ::OctridevGithub::ArtifactsItemData.from_hash(value)
+            ::OctridevGithub::AgentTasksCreateTaskInRepoResponseArtifactsItemData.from_hash(value)
           end,
         }.freeze
       end
@@ -82,7 +82,7 @@ module OctridevGithub
         attr_reader :provider
         # @return [AgentTasksCreateTaskInRepoResponseArtifactsItemType] Type of artifact. Available Values: `pull`, `branch`.
         attr_reader :type
-        # @return [ArtifactsItemData] Resource data (shape depends on type)
+        # @return [AgentTasksCreateTaskInRepoResponseArtifactsItemData] Resource data (shape depends on type)
         attr_reader :data
 
         def initialize(**attributes)
@@ -162,7 +162,7 @@ module OctridevGithub
         ].freeze
         DECODERS = {
           creator: lambda do |value|
-            ::OctridevGithub::Methods::AgentTasks::AgentTasksCreateTaskInRepoResponseCreatorVariant0.from_hash(value)
+            ::OctridevGithub::Methods::AgentTasks::AgentTasksCreateTaskInRepoResponseCreator.from_hash(value)
           end,
           creator_type: lambda do |value|
             ::OctridevGithub::Methods::AgentTasks::AgentTasksCreateTaskInRepoResponseCreatorType.from_value(value)
@@ -203,7 +203,7 @@ module OctridevGithub
         attr_reader :html_url
         # @return [String] Human-readable name derived from the task prompt
         attr_reader :name
-        # @return [AgentTasksCreateTaskInRepoResponseCreatorVariant0] The entity who created this task
+        # @return [AgentTasksCreateTaskInRepoResponseCreator] The entity who created this task
         attr_reader :creator
         # @return [AgentTasksCreateTaskInRepoResponseCreatorType] Type of the task creator
         attr_reader :creator_type
@@ -243,7 +243,7 @@ module OctridevGithub
       end
 
       # Internal model hydration metadata.
-      class SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant0CreatorVariant0Metadata
+      class SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant0CreatorMetadata
         FIELDS = {
           id: "id",
         }.freeze
@@ -253,13 +253,13 @@ module OctridevGithub
         }.freeze
       end
 
-      # API model for AgentTasksGetTaskByRepoAndIdResponseVariant0CreatorVariant0.
-      # A GitHub user
-      class AgentTasksGetTaskByRepoAndIdResponseVariant0CreatorVariant0
+      # API model for AgentTasksGetTaskByRepoAndIdResponseVariant0Creator.
+      # The entity who created this task
+      class AgentTasksGetTaskByRepoAndIdResponseVariant0Creator
         CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant0CreatorVariant0Metadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant0CreatorVariant0Metadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant0CreatorVariant0Metadata::DECODERS
+        FIELDS = SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant0CreatorMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant0CreatorMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant0CreatorMetadata::DECODERS
 
         # @return [Integer] The unique identifier of the user
         attr_reader :id
@@ -387,6 +387,87 @@ module OctridevGithub
       end
 
       # Internal model hydration metadata.
+      class SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant0ArtifactsItemDataVariant0Metadata
+        FIELDS = {
+          id: "id",
+          global_id: "global_id",
+        }.freeze
+        REQUIRED_FIELDS = %i[
+          id
+        ].freeze
+        DECODERS = {
+        }.freeze
+      end
+
+      # API model for AgentTasksGetTaskByRepoAndIdResponseVariant0ArtifactsItemDataVariant0.
+      # A GitHub resource (pull request, issue, etc.)
+      class AgentTasksGetTaskByRepoAndIdResponseVariant0ArtifactsItemDataVariant0
+        CONSTRUCTION_SURFACE = :named
+        FIELDS = SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant0ArtifactsItemDataVariant0Metadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant0ArtifactsItemDataVariant0Metadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant0ArtifactsItemDataVariant0Metadata::DECODERS
+
+        # @return [Integer] GitHub resource ID
+        attr_reader :id
+        # @return [String] GraphQL global ID
+        attr_reader :global_id
+
+        def initialize(**attributes)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          freeze
+        end
+
+        def self.from_hash(data)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        end
+
+        def to_h
+          SdkModel.to_h(self, FIELDS)
+        end
+      end
+
+      # Internal model hydration metadata.
+      class SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant0ArtifactsItemDataVariant1Metadata
+        FIELDS = {
+          head_ref: "head_ref",
+          base_ref: "base_ref",
+        }.freeze
+        REQUIRED_FIELDS = %i[
+          head_ref
+          base_ref
+        ].freeze
+        DECODERS = {
+        }.freeze
+      end
+
+      # API model for AgentTasksGetTaskByRepoAndIdResponseVariant0ArtifactsItemDataVariant1.
+      # A Git branch reference
+      class AgentTasksGetTaskByRepoAndIdResponseVariant0ArtifactsItemDataVariant1
+        CONSTRUCTION_SURFACE = :named
+        FIELDS = SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant0ArtifactsItemDataVariant1Metadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant0ArtifactsItemDataVariant1Metadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant0ArtifactsItemDataVariant1Metadata::DECODERS
+
+        # @return [String] Head branch name
+        attr_reader :head_ref
+        # @return [String] Base branch name
+        attr_reader :base_ref
+
+        def initialize(**attributes)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          freeze
+        end
+
+        def self.from_hash(data)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        end
+
+        def to_h
+          SdkModel.to_h(self, FIELDS)
+        end
+      end
+
+      # Internal model hydration metadata.
       class SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant0ArtifactsItemMetadata
         FIELDS = {
           provider: "provider",
@@ -405,9 +486,6 @@ module OctridevGithub
           type: lambda do |value|
             ::OctridevGithub::Methods::AgentTasks::AgentTasksGetTaskByRepoAndIdResponseVariant0ArtifactsItemType.from_value(value)
           end,
-          data: lambda do |value|
-            ::OctridevGithub::ArtifactsItemData2.from_hash(value)
-          end,
         }.freeze
       end
 
@@ -423,7 +501,7 @@ module OctridevGithub
         attr_reader :provider
         # @return [AgentTasksGetTaskByRepoAndIdResponseVariant0ArtifactsItemType] Type of artifact. Available Values: `pull`, `branch`.
         attr_reader :type
-        # @return [ArtifactsItemData2] Resource data (shape depends on type)
+        # @return [Object] Resource data (shape depends on type)
         attr_reader :data
 
         def initialize(**attributes)
@@ -474,89 +552,6 @@ module OctridevGithub
         def to_h
           SdkModel.to_h(self, FIELDS)
         end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant1SessionsItemUserMetadata
-        FIELDS = {
-          id: "id",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
-      end
-
-      # API model for AgentTasksGetTaskByRepoAndIdResponseVariant1SessionsItemUser.
-      # The user who created this session
-      class AgentTasksGetTaskByRepoAndIdResponseVariant1SessionsItemUser
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant1SessionsItemUserMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant1SessionsItemUserMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant1SessionsItemUserMetadata::DECODERS
-
-        # @return [Integer] The unique identifier of the user
-        attr_reader :id
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant1SessionsItemOwnerMetadata
-        FIELDS = {
-          id: "id",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
-      end
-
-      # API model for AgentTasksGetTaskByRepoAndIdResponseVariant1SessionsItemOwner.
-      # The owner of the repository
-      class AgentTasksGetTaskByRepoAndIdResponseVariant1SessionsItemOwner
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant1SessionsItemOwnerMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant1SessionsItemOwnerMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant1SessionsItemOwnerMetadata::DECODERS
-
-        # @return [Integer] The unique identifier of the user
-        attr_reader :id
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant1SessionsItemRepositoryMetadata
-        FIELDS = {
-          id: "id",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
       end
     end
   end

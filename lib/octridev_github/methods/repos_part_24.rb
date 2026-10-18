@@ -9,122 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Repos SDK namespace.
     module Repos
-      # Retrieves the topic names associated with a repository. Use `page` and `per_page` to paginate the results.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param page [Integer] The page number of the results to fetch. For more
-      #   information, see "Using pagination in the REST API."
-      # @param per_page [Integer] The number of results per page (max 100). For more
-      #   information, see "Using pagination in the REST API."
-      def self.repos_get_all_topics(
-        config:,
-        owner:,
-        repo:,
-        page: NOT_GIVEN,
-        per_page: NOT_GIVEN,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/topics"
-          ].join,
-          config: config,
-          query: {
-            'page' => QueryValue.new(page, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-          },
-          return_type: ::OctridevGithub::Topic,
-          decoder: :json,
-          operation_id: 'repos_get_all_topics',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
-        ).data
-      end
-
-      # Replaces all topics associated with a repository. Supply `names` with the complete topic list; send an empty array to clear all topics, and note that topic names are saved as lowercase.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param names [Array_of_String] An array of topics to add to the repository.
-      #   Pass one or more topics to _replace_ the set of existing topics. Send an
-      #   empty array (`[]`) to clear all topics from the repository. **Note:** Topic
-      #   `names` will be saved as lowercase.
-      def self.repos_replace_all_topics(
-        config:,
-        owner:,
-        repo:,
-        names:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'PUT',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/topics"
-          ].join,
-          config: config,
-          body: {
-            'names' => names,
-          },
-          return_type: ::OctridevGithub::Topic,
-          decoder: :json,
-          operation_id: 'repos_replace_all_topics',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple },
-        ).data
-      end
-
-      # Get the total number of clones and breakdown per day or week for the last 14 days. Timestamps are aligned to UTC midnight of the beginning of the day or week. Week begins on Monday.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param per [SchemaSchemaD984713f] The time frame to display results for.
-      def self.repos_get_clones(
-        config:,
-        owner:,
-        repo:,
-        per: NOT_GIVEN,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/traffic/clones"
-          ].join,
-          config: config,
-          query: {
-            'per' => QueryValue.new(per, style: 'form', explode: true),
-          },
-          return_type: ::OctridevGithub::CloneTraffic,
-          decoder: :json,
-          operation_id: 'repos_get_clones',
-          request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError },
-        ).data
-      end
-
       # Get the top 10 popular contents over the last 14 days.
       #
       # @param owner [String] The account owner of the repository. The name is not
@@ -530,6 +414,161 @@ module OctridevGithub
           errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
+
+      # Creates a new repository for the authenticated user. OAuth app tokens and personal access tokens (classic) need the `public_repo` or `repo` scope to create a public repository, and `repo` scope to create a private repository.
+      #
+      # @param name [String] The name of the repository.
+      # @param description [String] A short description of the repository.
+      # @param homepage [String] A URL with more information about the repository.
+      # @param private [Boolean] Whether the repository is private.
+      # @param has_issues [Boolean] Whether issues are enabled.
+      # @param has_projects [Boolean] Whether projects are enabled.
+      # @param has_wiki [Boolean] Whether the wiki is enabled.
+      # @param has_discussions [Boolean] Whether discussions are enabled.
+      # @param team_id [Integer] The id of the team that will be granted access to
+      #   this repository. This is only valid when creating a repository in an
+      #   organization.
+      # @param auto_init [Boolean] Whether the repository is initialized with a
+      #   minimal README.
+      # @param gitignore_template [String] The desired language or platform to apply
+      #   to the .gitignore.
+      # @param license_template [String] The license keyword of the open source
+      #   license for this repository.
+      # @param allow_squash_merge [Boolean] Whether to allow squash merges for pull
+      #   requests.
+      # @param allow_merge_commit [Boolean] Whether to allow merge commits for pull
+      #   requests.
+      # @param allow_rebase_merge [Boolean] Whether to allow rebase merges for pull
+      #   requests.
+      # @param allow_auto_merge [Boolean] Whether to allow Auto-merge to be used on
+      #   pull requests.
+      # @param delete_branch_on_merge [Boolean] Whether to delete head branches when
+      #   pull requests are merged
+      # @param squash_merge_commit_title
+      #   [ReposCreateForAuthenticatedUserSquashMergeCommitTitle] Required when using
+      #   `squash_merge_commit_message`. The default value for a squash merge commit
+      #   title: - `PR_TITLE` - default to the pull request's title. -
+      #   `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or
+      #   the pull request's title (when more than one commit).
+      # @param squash_merge_commit_message
+      #   [ReposCreateForAuthenticatedUserSquashMergeCommitMessage] The default value
+      #   for a squash merge commit message: - `PR_BODY` - default to the pull
+      #   request's body. - `COMMIT_MESSAGES` - default to the branch's commit
+      #   messages. - `BLANK` - default to a blank commit message.
+      # @param merge_commit_title [ReposCreateForAuthenticatedUserMergeCommitTitle]
+      #   Required when using `merge_commit_message`. The default value for a merge
+      #   commit title. - `PR_TITLE` - default to the pull request's title. -
+      #   `MERGE_MESSAGE` - default to the classic title for a merge message (e.g.,
+      #   Merge pull request #123 from branch-name).
+      # @param merge_commit_message
+      #   [ReposCreateForAuthenticatedUserMergeCommitMessage] The default value for a
+      #   merge commit message. - `PR_TITLE` - default to the pull request's title. -
+      #   `PR_BODY` - default to the pull request's body. - `BLANK` - default to a
+      #   blank commit message.
+      # @param has_downloads [Boolean] Whether downloads are enabled.
+      # @param is_template [Boolean] Whether this repository acts as a template that
+      #   can be used to generate new repositories.
+      def self.repos_create_for_authenticated_user(
+        config:,
+        name:,
+        description: NOT_GIVEN,
+        homepage: NOT_GIVEN,
+        private: NOT_GIVEN,
+        has_issues: NOT_GIVEN,
+        has_projects: NOT_GIVEN,
+        has_wiki: NOT_GIVEN,
+        has_discussions: NOT_GIVEN,
+        team_id: NOT_GIVEN,
+        auto_init: NOT_GIVEN,
+        gitignore_template: NOT_GIVEN,
+        license_template: NOT_GIVEN,
+        allow_squash_merge: NOT_GIVEN,
+        allow_merge_commit: NOT_GIVEN,
+        allow_rebase_merge: NOT_GIVEN,
+        allow_auto_merge: NOT_GIVEN,
+        delete_branch_on_merge: NOT_GIVEN,
+        squash_merge_commit_title: NOT_GIVEN,
+        squash_merge_commit_message: NOT_GIVEN,
+        merge_commit_title: NOT_GIVEN,
+        merge_commit_message: NOT_GIVEN,
+        has_downloads: NOT_GIVEN,
+        is_template: NOT_GIVEN,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'POST',
+          "/user/repos",
+          config: config,
+          body: __sdk_body_repos_create_for_authenticated_user_part1(name: name, description: description, homepage: homepage, private: private, has_issues: has_issues, has_projects: has_projects, has_wiki: has_wiki, has_discussions: has_discussions, team_id: team_id, auto_init: auto_init, gitignore_template: gitignore_template, license_template: license_template, allow_squash_merge: allow_squash_merge, allow_merge_commit: allow_merge_commit, allow_rebase_merge: allow_rebase_merge, allow_auto_merge: allow_auto_merge, delete_branch_on_merge: delete_branch_on_merge, squash_merge_commit_title: squash_merge_commit_title).merge(
+            __sdk_body_repos_create_for_authenticated_user_part2(squash_merge_commit_message: squash_merge_commit_message, merge_commit_title: merge_commit_title, merge_commit_message: merge_commit_message, has_downloads: has_downloads, is_template: is_template)),
+          return_type: ::OctridevGithub::FullRepository,
+          decoder: :json,
+          operation_id: 'repos_create_for_authenticated_user',
+          request_options: request_options,
+          errors: { '400' => ::OctridevGithub::BasicError, '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+        ).data
+      end
+
+      def self.__sdk_body_repos_create_for_authenticated_user_part1(
+        name:,
+        description:,
+        homepage:,
+        private:,
+        has_issues:,
+        has_projects:,
+        has_wiki:,
+        has_discussions:,
+        team_id:,
+        auto_init:,
+        gitignore_template:,
+        license_template:,
+        allow_squash_merge:,
+        allow_merge_commit:,
+        allow_rebase_merge:,
+        allow_auto_merge:,
+        delete_branch_on_merge:,
+        squash_merge_commit_title:
+      )
+        {
+          'name' => name,
+          'description' => description,
+          'homepage' => homepage,
+          'private' => private,
+          'has_issues' => has_issues,
+          'has_projects' => has_projects,
+          'has_wiki' => has_wiki,
+          'has_discussions' => has_discussions,
+          'team_id' => team_id,
+          'auto_init' => auto_init,
+          'gitignore_template' => gitignore_template,
+          'license_template' => license_template,
+          'allow_squash_merge' => allow_squash_merge,
+          'allow_merge_commit' => allow_merge_commit,
+          'allow_rebase_merge' => allow_rebase_merge,
+          'allow_auto_merge' => allow_auto_merge,
+          'delete_branch_on_merge' => delete_branch_on_merge,
+          'squash_merge_commit_title' => squash_merge_commit_title,
+        }
+      end
+      private_class_method :__sdk_body_repos_create_for_authenticated_user_part1
+
+      def self.__sdk_body_repos_create_for_authenticated_user_part2(
+        squash_merge_commit_message:,
+        merge_commit_title:,
+        merge_commit_message:,
+        has_downloads:,
+        is_template:
+      )
+        {
+          'squash_merge_commit_message' => squash_merge_commit_message,
+          'merge_commit_title' => merge_commit_title,
+          'merge_commit_message' => merge_commit_message,
+          'has_downloads' => has_downloads,
+          'is_template' => is_template,
+        }
+      end
+      private_class_method :__sdk_body_repos_create_for_authenticated_user_part2
     end
   end
 end

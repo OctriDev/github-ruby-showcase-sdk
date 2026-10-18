@@ -476,7 +476,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'search_code',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 

@@ -457,7 +457,7 @@ module OctridevGithub
       end
 
       # Internal model hydration metadata.
-      class SdkInternalRepositoryPermissionsMetadata
+      class SdkInternalAppsListReposAccessibleToInstallationResponseRepositoriesItemPermissionsMetadata
         FIELDS = {
           admin: "admin",
           pull: "pull",
@@ -474,13 +474,13 @@ module OctridevGithub
         }.freeze
       end
 
-      # API model for RepositoryPermissions.
+      # API model for AppsListReposAccessibleToInstallationResponseRepositoriesItemPermissions.
       # Optional object value serialized in the `permissions` wire field.
-      class RepositoryPermissions
+      class AppsListReposAccessibleToInstallationResponseRepositoriesItemPermissions
         CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalRepositoryPermissionsMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalRepositoryPermissionsMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalRepositoryPermissionsMetadata::DECODERS
+        FIELDS = SdkInternalAppsListReposAccessibleToInstallationResponseRepositoriesItemPermissionsMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalAppsListReposAccessibleToInstallationResponseRepositoriesItemPermissionsMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalAppsListReposAccessibleToInstallationResponseRepositoriesItemPermissionsMetadata::DECODERS
 
         # @return [Boolean] Required `boolean` value serialized in the `admin` wire field.
         attr_reader :admin
@@ -508,7 +508,7 @@ module OctridevGithub
       end
 
       # Internal model hydration metadata.
-      class SdkInternalRepositoryCodeSearchIndexStatusMetadata
+      class SdkInternalAppsListReposAccessibleToInstallationResponseRepositoriesItemXbc571f6d86Metadata
         FIELDS = {
           lexical_search_ok: "lexical_search_ok",
           lexical_commit_sha: "lexical_commit_sha",
@@ -519,13 +519,13 @@ module OctridevGithub
         }.freeze
       end
 
-      # API model for RepositoryCodeSearchIndexStatus.
+      # API model for AppsListReposAccessibleToInstallationResponseRepositoriesItemXbc571f6d86.
       # The status of the code search index for this repository
-      class RepositoryCodeSearchIndexStatus
+      class AppsListReposAccessibleToInstallationResponseRepositoriesItemXbc571f6d86
         CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalRepositoryCodeSearchIndexStatusMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalRepositoryCodeSearchIndexStatusMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalRepositoryCodeSearchIndexStatusMetadata::DECODERS
+        FIELDS = SdkInternalAppsListReposAccessibleToInstallationResponseRepositoriesItemXbc571f6d86Metadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalAppsListReposAccessibleToInstallationResponseRepositoriesItemXbc571f6d86Metadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalAppsListReposAccessibleToInstallationResponseRepositoriesItemXbc571f6d86Metadata::DECODERS
 
         # @return [Boolean] Optional `boolean` value serialized in the `lexical_search_ok` wire field.
         attr_reader :lexical_search_ok
@@ -553,3 +553,4 @@ require_relative 'apps_part_2'
 require_relative 'apps_part_3'
 require_relative 'apps_part_4'
 require_relative 'apps_part_5'
+require_relative 'apps_part_6'

@@ -44,6 +44,9 @@ class SdkInternalDeploymentMetadata
     repository_url
   ].freeze
   DECODERS = {
+    payload: lambda do |value|
+      ::OctridevGithub::DeploymentPayload.from_hash(value)
+    end,
     creator: lambda do |value|
       ::OctridevGithub::NullableSimpleUser.from_hash(value)
     end,
@@ -77,7 +80,7 @@ class Deployment
   attr_reader :ref
   # @return [String] Parameter to specify a task to execute
   attr_reader :task
-  # @return [Object] Required API value serialized in the `payload` wire field.
+  # @return [DeploymentPayload] Required API value serialized in the `payload` wire field.
   attr_reader :payload
   # @return [String] Optional `string` value serialized in the `original_environment` wire field.
   attr_reader :original_environment
@@ -113,6 +116,15 @@ class Deployment
 
   def to_h
     SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Defines the DeploymentPayload SDK namespace.
+module DeploymentPayload
+  def self.from_hash(hash)
+    return hash if hash.is_a?(::String)
+    return hash if hash.is_a?(::Hash)
+    raise "Could not deserialize DeploymentPayload from #{hash.inspect}"
   end
 end
 

@@ -152,7 +152,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'secret_scanning_list_alerts_for_org',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 

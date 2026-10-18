@@ -284,7 +284,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'activity_list_public_events',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 

@@ -83,7 +83,7 @@ class WebhookProjectCardMovedChanges
 end
 
 # Internal model hydration metadata.
-class SdkInternalWebhookProjectCardMovedProjectCardVariant1CreatorMetadata
+class SdkInternalWebhookProjectCardMovedProjectCardCreatorMetadata
   FIELDS = {
     avatar_url: "avatar_url",
     events_url: "events_url",
@@ -110,13 +110,13 @@ class SdkInternalWebhookProjectCardMovedProjectCardVariant1CreatorMetadata
   }.freeze
 end
 
-# API model for WebhookProjectCardMovedProjectCardVariant1Creator.
-# Optional object value serialized in the `creator` wire field.
-class WebhookProjectCardMovedProjectCardVariant1Creator
+# API model for WebhookProjectCardMovedProjectCardCreator.
+# Required object value serialized in the `creator` wire field.
+class WebhookProjectCardMovedProjectCardCreator
   CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookProjectCardMovedProjectCardVariant1CreatorMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookProjectCardMovedProjectCardVariant1CreatorMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookProjectCardMovedProjectCardVariant1CreatorMetadata::DECODERS
+  FIELDS = SdkInternalWebhookProjectCardMovedProjectCardCreatorMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookProjectCardMovedProjectCardCreatorMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookProjectCardMovedProjectCardCreatorMetadata::DECODERS
 
   # @return [String] Optional `string` value serialized in the `avatar_url` wire field.
   attr_reader :avatar_url
@@ -202,7 +202,7 @@ class SdkInternalWebhookProjectCardMovedProjectCardMetadata
   ].freeze
   DECODERS = {
     creator: lambda do |value|
-      ::OctridevGithub::WebhookProjectCardMovedProjectCardVariant1Creator.from_hash(value)
+      ::OctridevGithub::WebhookProjectCardMovedProjectCardCreator.from_hash(value)
     end,
   }.freeze
   NULLABLE_FIELDS = %i[
@@ -213,7 +213,7 @@ class SdkInternalWebhookProjectCardMovedProjectCardMetadata
 end
 
 # API model for WebhookProjectCardMovedProjectCard.
-# Required API value serialized in the `project_card` wire field.
+# Required object value serialized in the `project_card` wire field.
 class WebhookProjectCardMovedProjectCard
   CONSTRUCTION_SURFACE = :named
   FIELDS = SdkInternalWebhookProjectCardMovedProjectCardMetadata::FIELDS
@@ -222,29 +222,29 @@ class WebhookProjectCardMovedProjectCard
 
   # @return [Float] Required `number` value serialized in the `after_id` wire field.
   attr_reader :after_id
-  # @return [Boolean] Optional `boolean` value serialized in the `archived` wire field.
+  # @return [Boolean] Required `boolean` value serialized in the `archived` wire field.
   attr_reader :archived
-  # @return [Integer] Optional `integer` value serialized in the `column_id` wire field.
+  # @return [Integer] Required `integer` value serialized in the `column_id` wire field.
   attr_reader :column_id
-  # @return [String] Optional `string` value serialized in the `column_url` wire field.
+  # @return [String] Required `string` value serialized in the `column_url` wire field.
   attr_reader :column_url
   # @return [String] Optional `uri`-formatted value serialized in the `content_url` wire field.
   attr_reader :content_url
-  # @return [String] Optional `string` value serialized in the `created_at` wire field.
+  # @return [String] Required `string` value serialized in the `created_at` wire field.
   attr_reader :created_at
-  # @return [WebhookProjectCardMovedProjectCardVariant1Creator] Optional object value serialized in the `creator` wire field.
+  # @return [WebhookProjectCardMovedProjectCardCreator] Required object value serialized in the `creator` wire field.
   attr_reader :creator
-  # @return [Integer] Optional `integer` value serialized in the `id` wire field.
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
   attr_reader :id
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
   attr_reader :node_id
-  # @return [String] Optional `string` value serialized in the `note` wire field.
+  # @return [String] Required `string` value serialized in the `note` wire field.
   attr_reader :note
-  # @return [String] Optional `string` value serialized in the `project_url` wire field.
+  # @return [String] Required `string` value serialized in the `project_url` wire field.
   attr_reader :project_url
-  # @return [String] Optional `string` value serialized in the `updated_at` wire field.
+  # @return [String] Required `string` value serialized in the `updated_at` wire field.
   attr_reader :updated_at
-  # @return [String] Optional `string` value serialized in the `url` wire field.
+  # @return [String] Required `string` value serialized in the `url` wire field.
   attr_reader :url
 
   def initialize(**attributes)
@@ -324,7 +324,7 @@ class WebhookProjectCardMoved
   attr_reader :installation
   # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
   attr_reader :organization
-  # @return [WebhookProjectCardMovedProjectCard] Required API value serialized in the `project_card` wire field.
+  # @return [WebhookProjectCardMovedProjectCard] Required object value serialized in the `project_card` wire field.
   attr_reader :project_card
   # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
   attr_reader :repository
@@ -349,18 +349,6 @@ end
 module WebhookProjectCardMovedAction
   MOVED = 'moved'
   VALUES = ['moved'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookProjectCardMovedProjectCardVariant0CreatorType SDK namespace.
-module WebhookProjectCardMovedProjectCardVariant0CreatorType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  MANNEQUIN = 'Mannequin'
-  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
   def self.from_value(value)
     value
   end

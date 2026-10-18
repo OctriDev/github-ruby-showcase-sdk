@@ -292,7 +292,6 @@ class SimpleUser
   include CommitAuthor
   include CommitCommitter
   include InstallationAccount
-  include ReviewersItemReviewer
   CONSTRUCTION_SURFACE = :named
   FIELDS = SdkInternalSimpleUserMetadata::FIELDS
   REQUIRED_FIELDS = SdkInternalSimpleUserMetadata::REQUIRED_FIELDS

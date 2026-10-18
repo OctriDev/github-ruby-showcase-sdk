@@ -9,186 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Issues SDK namespace.
     module Issues
-      # Dismisses a pending suggestion on an issue. Transitions the suggestion to `dismissed` without applying any change or creating a timeline event. Requires triage access to the repository. This endpoint only supports issues, not pull requests.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param issue_number [Integer] The number that identifies the issue.
-      # @param suggestion_id [Integer] The unique identifier of the suggestion.
-      def self.issues_dismiss_suggestion(
-        config:,
-        owner:,
-        repo:,
-        issue_number:,
-        suggestion_id:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'POST',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/issues/",
-            SdkClient.encode_path_segment(issue_number),
-            "/suggestions/",
-            SdkClient.encode_path_segment(suggestion_id),
-            "/dismiss"
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::IssueSuggestion,
-          decoder: :json,
-          operation_id: 'issues_dismiss_suggestion',
-          request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
-        ).data
-      end
-
-      # Lists timeline events recorded for a repository issue. Use `exclude` to omit selected event types, and `page` and `per_page` to paginate the results.
-      #
-      # List all timeline events for an issue.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param issue_number [Integer] The number that identifies the issue.
-      # @param per_page [Integer] The number of results per page (max 100). For more
-      #   information, see "Using pagination in the REST API."
-      # @param page [Integer] The page number of the results to fetch. For more
-      #   information, see "Using pagination in the REST API."
-      # @param exclude [String] A comma-separated list of timeline event names to
-      #   exclude from the response.
-      def self.issues_list_events_for_timeline(
-        config:,
-        owner:,
-        repo:,
-        issue_number:,
-        per_page: NOT_GIVEN,
-        page: NOT_GIVEN,
-        exclude: NOT_GIVEN,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/issues/",
-            SdkClient.encode_path_segment(issue_number),
-            "/timeline"
-          ].join,
-          config: config,
-          query: {
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
-            'exclude' => QueryValue.new(exclude, style: 'form', explode: true),
-          },
-          return_type: [::OctridevGithub::TimelineIssueEvents],
-          decoder: :json,
-          operation_id: 'issues_list_events_for_timeline',
-          request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError },
-        ).data
-      end
-
-      # Lists labels in a repository. Use `owner` and `repo` to identify the repository, and use `page` and `per_page` to paginate the results.
-      #
-      # Lists all labels for a repository.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param per_page [Integer] The number of results per page (max 100). For more
-      #   information, see "Using pagination in the REST API."
-      # @param page [Integer] The page number of the results to fetch. For more
-      #   information, see "Using pagination in the REST API."
-      def self.issues_list_labels_for_repo(
-        config:,
-        owner:,
-        repo:,
-        per_page: NOT_GIVEN,
-        page: NOT_GIVEN,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/labels"
-          ].join,
-          config: config,
-          query: {
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
-          },
-          return_type: [::OctridevGithub::Label],
-          decoder: :json,
-          operation_id: 'issues_list_labels_for_repo',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
-        ).data
-      end
-
-      # Creates a label for the specified repository with the given name and color. The name and color parameters are required. The color must be a valid hexadecimal color code.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param name [String] The name of the label. Emoji can be added to label
-      #   names, using either native emoji or colon-style markup. For example, typing
-      #   `:strawberry:` will render the emoji !:strawberry:. For a full list of
-      #   available emoji and codes, see "Emoji cheat sheet."
-      # @param color [String] The hexadecimal color code for the label, without the
-      #   leading `#`.
-      # @param description [String] A short description of the label. Must be 100
-      #   characters or fewer.
-      def self.issues_create_label(
-        config:,
-        owner:,
-        repo:,
-        name:,
-        color: NOT_GIVEN,
-        description: NOT_GIVEN,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'POST',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/labels"
-          ].join,
-          config: config,
-          body: {
-            'name' => name,
-            'color' => color,
-            'description' => description,
-          },
-          return_type: ::OctridevGithub::Label,
-          decoder: :json,
-          operation_id: 'issues_create_label',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
-        ).data
-      end
-
       # Retrieves a label from a repository by its name. Use `owner` and `repo` to identify the repository and `name` to specify the label.
       #
       # Gets a label using the given name.
@@ -531,6 +351,109 @@ module OctridevGithub
           config: config,
           decoder: :empty,
           operation_id: 'issues_delete_milestone',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError },
+        ).data
+      end
+
+      # Lists labels for issues in a milestone.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param milestone_number [Integer] The number that identifies the milestone.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.issues_list_labels_for_milestone(
+        config:,
+        owner:,
+        repo:,
+        milestone_number:,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/milestones/",
+            SdkClient.encode_path_segment(milestone_number),
+            "/labels"
+          ].join,
+          config: config,
+          query: {
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true),
+          },
+          return_type: [::OctridevGithub::Label],
+          decoder: :json,
+          operation_id: 'issues_list_labels_for_milestone',
+          request_options: request_options,
+        ).data
+      end
+
+      # List issues across owned and member repositories assigned to the authenticated user. > !NOTE] > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use…
+      #
+      # @param filter [IssuesListForAuthenticatedUserParameter] Indicates which
+      #   sorts of issues to return. `assigned` means issues assigned to you.
+      #   `created` means issues created by you. `mentioned` means issues mentioning
+      #   you. `subscribed` means issues you're subscribed to updates for. `all` or
+      #   `repos` means all issues you can see, regardless of participation or
+      #   creation.
+      # @param state [IssuesListForAuthenticatedUserParameter5800f286] Indicates the
+      #   state of the issues to return.
+      # @param labels [String] A list of comma separated label names. Example:
+      #   `bug,ui,@high`
+      # @param sort [IssuesListForAuthenticatedUserParameterE3e0be62] What to sort
+      #   results by.
+      # @param direction [SchemaSchema0df64690] The direction to sort the results
+      #   by.
+      # @param since [String] Only show results that were last updated after the
+      #   given time. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.issues_list_for_authenticated_user(
+        config:,
+        filter: NOT_GIVEN,
+        state: NOT_GIVEN,
+        labels: NOT_GIVEN,
+        sort: NOT_GIVEN,
+        direction: NOT_GIVEN,
+        since: NOT_GIVEN,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
+
+        Validation.if_given(since) { Validation.validate_date_time('since', since) }
+
+        SdkClient.request(
+          'GET',
+          "/user/issues",
+          config: config,
+          query: {
+            'filter' => QueryValue.new(filter, style: 'form', explode: true),
+            'state' => QueryValue.new(state, style: 'form', explode: true),
+            'labels' => QueryValue.new(labels, style: 'form', explode: true),
+            'sort' => QueryValue.new(sort, style: 'form', explode: true),
+            'direction' => QueryValue.new(direction, style: 'form', explode: true),
+            'since' => QueryValue.new(since, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true),
+          },
+          return_type: [::OctridevGithub::Issue],
+          decoder: :json,
+          operation_id: 'issues_list_for_authenticated_user',
           request_options: request_options,
           errors: { '404' => ::OctridevGithub::BasicError },
         ).data

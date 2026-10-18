@@ -9,140 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Repos SDK namespace.
     module Repos
-      # Returns a list of webhook deliveries for a webhook configured in a repository.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param hook_id [Integer] The unique identifier of the hook. You can find
-      #   this value in the `X-GitHub-Hook-ID` header of a webhook delivery.
-      # @param per_page [Integer] The number of results per page (max 100). For more
-      #   information, see "Using pagination in the REST API."
-      # @param cursor [String] Used for pagination: the starting delivery from which
-      #   the page of deliveries is fetched. Refer to the `link` header for the next
-      #   and previous page cursors.
-      # @param status [SchemaSchemaE81e966c] Returns webhook deliveries filtered by
-      #   delivery outcome classification based on `status_code` range. A `status` of
-      #   `success` returns deliveries with a `status_code` in the 200-399 range
-      #   (inclusive). A `status` of `failure` returns deliveries with a `status_code`
-      #   in the 400-599 range (inclusive).
-      def self.repos_list_webhook_deliveries(
-        config:,
-        owner:,
-        repo:,
-        hook_id:,
-        per_page: NOT_GIVEN,
-        cursor: NOT_GIVEN,
-        status: NOT_GIVEN,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/hooks/",
-            SdkClient.encode_path_segment(hook_id),
-            "/deliveries"
-          ].join,
-          config: config,
-          query: {
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'cursor' => QueryValue.new(cursor, style: 'form', explode: true),
-            'status' => QueryValue.new(status, style: 'form', explode: true),
-          },
-          return_type: [::OctridevGithub::HookDeliveryItem],
-          decoder: :json,
-          operation_id: 'repos_list_webhook_deliveries',
-          request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
-        ).data
-      end
-
-      # Retrieves a delivery record for a webhook configured in a repository. Use the repository owner, repository name, hook ID, and delivery ID to inspect the delivery status, event metadata, and request and response details.
-      #
-      # Returns a delivery for a webhook configured in a repository.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param hook_id [Integer] The unique identifier of the hook. You can find
-      #   this value in the `X-GitHub-Hook-ID` header of a webhook delivery.
-      def self.repos_get_webhook_delivery(
-        config:,
-        owner:,
-        repo:,
-        hook_id:,
-        delivery_id:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/hooks/",
-            SdkClient.encode_path_segment(hook_id),
-            "/deliveries/",
-            SdkClient.encode_path_segment(delivery_id)
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::HookDelivery,
-          decoder: :json,
-          operation_id: 'repos_get_webhook_delivery',
-          request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
-        ).data
-      end
-
-      # Submits a redelivery attempt for a delivery made by a webhook configured in a repository. Use the repository owner, repository name, hook ID, and delivery ID to identify the delivery to retry. A 202 response confirms that the redelivery request was accepted.
-      #
-      # Redeliver a webhook delivery for a webhook configured in a repository.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param hook_id [Integer] The unique identifier of the hook. You can find
-      #   this value in the `X-GitHub-Hook-ID` header of a webhook delivery.
-      def self.repos_redeliver_webhook_delivery(
-        config:,
-        owner:,
-        repo:,
-        hook_id:,
-        delivery_id:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'POST',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/hooks/",
-            SdkClient.encode_path_segment(hook_id),
-            "/deliveries/",
-            SdkClient.encode_path_segment(delivery_id),
-            "/attempts"
-          ].join,
-          config: config,
-          decoder: :json,
-          operation_id: 'repos_redeliver_webhook_delivery',
-          request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
-        ).data
-      end
-
       # This will trigger a ping event to be sent to the hook.
       #
       # @param owner [String] The account owner of the repository. The name is not
@@ -566,6 +432,104 @@ module OctridevGithub
           operation_id: 'repos_get_deploy_key',
           request_options: request_options,
           errors: { '404' => ::OctridevGithub::BasicError },
+        ).data
+      end
+
+      # Deploy keys are immutable. If you need to update a key, remove the key and create a new one instead.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param key_id [Integer] The unique identifier of the key.
+      def self.repos_delete_deploy_key(
+        config:,
+        owner:,
+        repo:,
+        key_id:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'DELETE',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/keys/",
+            SdkClient.encode_path_segment(key_id)
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'repos_delete_deploy_key',
+          request_options: request_options,
+        ).data
+      end
+
+      # Lists languages for the specified repository. The value shown for each language is the number of bytes of code written in that language.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      def self.repos_list_languages(
+        config:,
+        owner:,
+        repo:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/languages"
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::Language,
+          decoder: :json,
+          operation_id: 'repos_list_languages',
+          request_options: request_options,
+        ).data
+      end
+
+      # Sync a branch of a forked repository to keep it up-to-date with the upstream repository.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param branch [String] The name of the branch which should be updated to
+      #   match upstream.
+      def self.repos_merge_upstream(
+        config:,
+        owner:,
+        repo:,
+        branch:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'POST',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/merge-upstream"
+          ].join,
+          config: config,
+          body: {
+            'branch' => branch,
+          },
+          return_type: ::OctridevGithub::MergedUpstream,
+          decoder: :json,
+          operation_id: 'repos_merge_upstream',
+          request_options: request_options,
         ).data
       end
     end

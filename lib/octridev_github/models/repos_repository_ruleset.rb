@@ -418,12 +418,16 @@ end
 # Defines the RepositoryRulesetConditions2 SDK namespace.
 module RepositoryRulesetConditions2
   def self.from_hash(hash)
+    lossy = nil
     [RepositoryRulesetConditions, OrgRulesetConditions].each do |type|
-      return type.from_hash(hash)
+      decoded = type.from_hash(hash)
+      return decoded if SdkModel.keeps_every_key?(hash, decoded)
+
+      lossy ||= decoded
     rescue ::StandardError
       next
     end
-    raise SdkValidationError.new('RepositoryRulesetConditions2', 'variant', "Cannot select RepositoryRulesetConditions2 variant without a discriminator")
+    return lossy unless lossy.nil?
   end
 end
 end

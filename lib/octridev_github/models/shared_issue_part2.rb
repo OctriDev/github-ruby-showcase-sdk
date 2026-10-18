@@ -5,16 +5,49 @@
 
 # shared_issue domain models (part 2)
 module OctridevGithub
-# Defines the IssueFieldValueDataType SDK namespace.
-module IssueFieldValueDataType
-  TEXT = 'text'
-  SINGLE_SELECT = 'single_select'
-  MULTI_SELECT = 'multi_select'
-  NUMBER = 'number'
-  DATE = 'date'
-  VALUES = ['text', 'single_select', 'multi_select', 'number', 'date'].freeze
-  def self.from_value(value)
-    value
+# API model for IssueLabelsItemVariant1.
+class IssueLabelsItemVariant1
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalIssueLabelsItemVariant1Metadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalIssueLabelsItemVariant1Metadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalIssueLabelsItemVariant1Metadata::DECODERS
+
+  # @return [Integer] Optional `int64`-formatted value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Optional `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Optional `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [String] Optional `string` value serialized in the `description` wire field.
+  attr_reader :description
+  # @return [String] Optional `string` value serialized in the `color` wire field.
+  attr_reader :color
+  # @return [Boolean] Optional `boolean` value serialized in the `default` wire field.
+  attr_reader :default
+  # @return [SimpleUser] The user who archived the label, or `null` if it has not been archived.
+  attr_reader :archived_by
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
+  end
+
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Defines the IssueLabelsItem SDK namespace.
+module IssueLabelsItem
+  def self.from_hash(hash)
+    return hash if hash.is_a?(::String)
+    return IssueLabelsItemVariant1.from_hash(hash)
   end
 end
 

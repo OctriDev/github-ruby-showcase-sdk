@@ -70,7 +70,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'code_quality_list_findings_for_repo',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -104,7 +104,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'code_quality_get_finding',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -135,7 +135,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'code_quality_get_setup',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -188,7 +188,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'code_quality_update_setup',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
     end

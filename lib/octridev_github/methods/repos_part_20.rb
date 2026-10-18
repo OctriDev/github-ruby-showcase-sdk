@@ -9,104 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Repos SDK namespace.
     module Repos
-      # Deploy keys are immutable. If you need to update a key, remove the key and create a new one instead.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param key_id [Integer] The unique identifier of the key.
-      def self.repos_delete_deploy_key(
-        config:,
-        owner:,
-        repo:,
-        key_id:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'DELETE',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/keys/",
-            SdkClient.encode_path_segment(key_id)
-          ].join,
-          config: config,
-          decoder: :empty,
-          operation_id: 'repos_delete_deploy_key',
-          request_options: request_options,
-        ).data
-      end
-
-      # Lists languages for the specified repository. The value shown for each language is the number of bytes of code written in that language.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      def self.repos_list_languages(
-        config:,
-        owner:,
-        repo:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/languages"
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::Language,
-          decoder: :json,
-          operation_id: 'repos_list_languages',
-          request_options: request_options,
-        ).data
-      end
-
-      # Sync a branch of a forked repository to keep it up-to-date with the upstream repository.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param branch [String] The name of the branch which should be updated to
-      #   match upstream.
-      def self.repos_merge_upstream(
-        config:,
-        owner:,
-        repo:,
-        branch:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'POST',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/merge-upstream"
-          ].join,
-          config: config,
-          body: {
-            'branch' => branch,
-          },
-          return_type: ::OctridevGithub::MergedUpstream,
-          decoder: :json,
-          operation_id: 'repos_merge_upstream',
-          request_options: request_options,
-        ).data
-      end
-
       # Merges a branch or commit into a base branch in a repository. Supply `base` and `head`; `commit_message` is optional and defaults to a generated message when omitted. If the changes are already merged, the endpoint returns 204 without a merge commit body.
       #
       # @param owner [String] The account owner of the repository. The name is not
@@ -241,6 +143,9 @@ module OctridevGithub
       #   process by which the GitHub Pages site will be built. `workflow` means that
       #   the site is built by a custom GitHub Actions workflow. `legacy` means that
       #   the site is built by GitHub when changes are pushed to a specific branch.
+      # @param source [ReposUpdateInformationAboutPagesSiteRequestSource] Typed
+      #   representation of the `ReposUpdateInformationAboutPagesSiteRequestSource`
+      #   API schema.
       def self.repos_update_information_about_pages_site(
         config:,
         owner:,
@@ -561,6 +466,98 @@ module OctridevGithub
           operation_id: 'repos_cancel_pages_deployment',
           request_options: request_options,
           errors: { '404' => ::OctridevGithub::BasicError },
+        ).data
+      end
+
+      # Gets a health check of the DNS settings for the `CNAME` record configured for a repository's GitHub Pages. The first request to this endpoint returns a `202 Accepted` status and starts an asynchronous background task to get the results for the domain. After the background task completes, subsequent requests to this endpoint return a `200 OK` status with the health check results in the response. The authenticated user must be a repository administrator, maintainer, or have…
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      def self.repos_get_pages_health_check(
+        config:,
+        owner:,
+        repo:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/pages/health"
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::PagesHealthCheck,
+          decoder: :json,
+          operation_id: 'repos_get_pages_health_check',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError },
+        ).data
+      end
+
+      # Returns a boolean indicating whether or not private vulnerability reporting is enabled for the repository. For more information, see "Evaluating the security settings of a repository".
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      def self.repos_check_private_vulnerability_reporting(
+        config:,
+        owner:,
+        repo:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/private-vulnerability-reporting"
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::Methods::Repos::ReposCheckPrivateVulnerabilityReportingResponse,
+          decoder: :json,
+          operation_id: 'repos_check_private_vulnerability_reporting',
+          request_options: request_options,
+          errors: { '422' => ::OctridevGithub::BasicError },
+        ).data
+      end
+
+      # Enables private vulnerability reporting for a repository. The authenticated user must have admin access to the repository. For more information, see "Privately reporting a security vulnerability."
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      def self.repos_enable_private_vulnerability_reporting(
+        config:,
+        owner:,
+        repo:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'PUT',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/private-vulnerability-reporting"
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'repos_enable_private_vulnerability_reporting',
+          request_options: request_options,
+          errors: { '422' => ::OctridevGithub::BasicError },
         ).data
       end
     end

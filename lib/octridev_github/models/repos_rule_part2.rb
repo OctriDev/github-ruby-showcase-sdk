@@ -5,6 +5,24 @@
 
 # repos_rule domain models (part 2)
 module OctridevGithub
+# Internal model hydration metadata.
+class SdkInternalRuleSuiteRequiredStatusChecksMetadata
+  FIELDS = {
+    checks: "checks",
+    rule_type: "rule_type",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    checks: lambda do |value|
+      value&.map { |item| ::OctridevGithub::RuleSuiteRequiredStatusChecksChecksItem.from_hash(item) }
+    end,
+    rule_type: lambda do |value|
+      ::OctridevGithub::RuleSuiteRequiredStatusChecksRuleType.from_value(value)
+    end,
+  }.freeze
+end
+
 # API model for RuleSuiteRequiredStatusChecks.
 # Metadata for a required status checks rule evaluation result.
 class RuleSuiteRequiredStatusChecks
@@ -16,6 +34,8 @@ class RuleSuiteRequiredStatusChecks
 
   # @return [Array_of_RuleSuiteRequiredStatusChecksChecksItem] The status checks associated with the rule evaluation.
   attr_reader :checks
+  # @return [RuleSuiteRequiredStatusChecksRuleType] Optional enumerated value serialized in the `rule_type` wire field.
+  attr_reader :rule_type
 
   def initialize(**attributes)
     SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
@@ -28,6 +48,17 @@ class RuleSuiteRequiredStatusChecks
 
   def to_h
     SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Defines the RuleSuiteRequiredStatusChecksRuleType SDK namespace.
+module RuleSuiteRequiredStatusChecksRuleType
+  REQUIRED_STATUS_CHECKS = 'required_status_checks'
+  VALUES = ['required_status_checks'].freeze
+  def self.from_value(value)
+    return value if VALUES.include?(value)
+
+    raise SdkValidationError.new('RuleSuiteRequiredStatusChecksRuleType', 'enum', "Unknown RuleSuiteRequiredStatusChecksRuleType: #{value}")
   end
 end
 

@@ -385,6 +385,21 @@ class SdkInternalWebhookRegistryPackagePublishedRegistryPackagePackageVersionNpm
   REQUIRED_FIELDS = %i[
   ].freeze
   DECODERS = {
+    author: lambda do |value|
+      ::OctridevGithub::WebhookRegistryPackagePublishedRegistryPackagePackageVersionNX4f18e8fc66.from_hash(value)
+    end,
+    bugs: lambda do |value|
+      ::OctridevGithub::WebhookRegistryPackagePublishedRegistryPackagePackageVersionNX0959bd7628.from_hash(value)
+    end,
+    dist: lambda do |value|
+      ::OctridevGithub::WebhookRegistryPackagePublishedRegistryPackagePackageVersionNXe481105674.from_hash(value)
+    end,
+    repository: lambda do |value|
+      ::OctridevGithub::WebhookRegistryPackagePublishedRegistryPackagePackageVersionNX92a977cccf.from_hash(value)
+    end,
+    directories: lambda do |value|
+      ::OctridevGithub::WebhookRegistryPackagePublishedRegistryPackagePackageVersionNXe064aa3855.from_hash(value)
+    end,
   }.freeze
 end
 
@@ -402,9 +417,9 @@ class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata
   attr_reader :version
   # @return [String] Optional `string` value serialized in the `npm_user` wire field.
   attr_reader :npm_user
-  # @return [Object] Optional API value serialized in the `author` wire field.
+  # @return [WebhookRegistryPackagePublishedRegistryPackagePackageVersionNX4f18e8fc66] Optional API value serialized in the `author` wire field.
   attr_reader :author
-  # @return [Object] Optional API value serialized in the `bugs` wire field.
+  # @return [WebhookRegistryPackagePublishedRegistryPackagePackageVersionNX0959bd7628] Optional API value serialized in the `bugs` wire field.
   attr_reader :bugs
   # @return [Hash] Optional object value serialized in the `dependencies` wire field.
   attr_reader :dependencies
@@ -416,7 +431,7 @@ class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata
   attr_reader :optional_dependencies
   # @return [String] Optional `string` value serialized in the `description` wire field.
   attr_reader :description
-  # @return [Object] Optional API value serialized in the `dist` wire field.
+  # @return [WebhookRegistryPackagePublishedRegistryPackagePackageVersionNXe481105674] Optional API value serialized in the `dist` wire field.
   attr_reader :dist
   # @return [String] Optional `string` value serialized in the `git_head` wire field.
   attr_reader :git_head
@@ -426,7 +441,7 @@ class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata
   attr_reader :license
   # @return [String] Optional `string` value serialized in the `main` wire field.
   attr_reader :main
-  # @return [Object] Optional API value serialized in the `repository` wire field.
+  # @return [WebhookRegistryPackagePublishedRegistryPackagePackageVersionNX92a977cccf] Optional API value serialized in the `repository` wire field.
   attr_reader :repository
   # @return [Hash] Optional object value serialized in the `scripts` wire field.
   attr_reader :scripts
@@ -452,7 +467,7 @@ class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata
   attr_reader :bin
   # @return [Hash] Optional object value serialized in the `man` wire field.
   attr_reader :man
-  # @return [Object] Optional API value serialized in the `directories` wire field.
+  # @return [WebhookRegistryPackagePublishedRegistryPackagePackageVersionNXe064aa3855] Optional API value serialized in the `directories` wire field.
   attr_reader :directories
   # @return [Array_of_String] Optional array value serialized in the `os` wire field.
   attr_reader :os
@@ -486,51 +501,6 @@ class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata
 end
 
 # Internal model hydration metadata.
-class SdkInternalWebhookRegistryPackagePublishedRegistryPackagePackageVersionNX186d4d5aaaMetadata
-  FIELDS = {
-    url: "url",
-    branch: "branch",
-    commit: "commit",
-    type: "type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookRegistryPackagePublishedRegistryPackagePackageVersionNX186d4d5aaa.
-# Optional object value serialized in the `value` wire field.
-class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNX186d4d5aaa
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookRegistryPackagePublishedRegistryPackagePackageVersionNX186d4d5aaaMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookRegistryPackagePublishedRegistryPackagePackageVersionNX186d4d5aaaMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookRegistryPackagePublishedRegistryPackagePackageVersionNX186d4d5aaaMetadata::DECODERS
-
-  # @return [String] Optional `string` value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Optional `string` value serialized in the `branch` wire field.
-  attr_reader :branch
-  # @return [String] Optional `string` value serialized in the `commit` wire field.
-  attr_reader :commit
-  # @return [String] Optional `string` value serialized in the `type` wire field.
-  attr_reader :type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
 class SdkInternalWebhookRegistryPackagePublishedRegistryPackagePackageVersionNX85336b7650Metadata
   FIELDS = {
     id: "id",
@@ -540,6 +510,12 @@ class SdkInternalWebhookRegistryPackagePublishedRegistryPackagePackageVersionNX8
   REQUIRED_FIELDS = %i[
   ].freeze
   DECODERS = {
+    id: lambda do |value|
+      ::OctridevGithub::WebhookRegistryPackagePublishedRegistryPackagePackageVersionNX29b0f8b1a2.from_hash(value)
+    end,
+    value: lambda do |value|
+      ::OctridevGithub::WebhookRegistryPackagePublishedRegistryPackagePackageVersionNX502324e7f1.from_hash(value)
+    end,
   }.freeze
 end
 
@@ -551,11 +527,11 @@ class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNX85336b7650
   REQUIRED_FIELDS = SdkInternalWebhookRegistryPackagePublishedRegistryPackagePackageVersionNX85336b7650Metadata::REQUIRED_FIELDS
   DECODERS = SdkInternalWebhookRegistryPackagePublishedRegistryPackagePackageVersionNX85336b7650Metadata::DECODERS
 
-  # @return [Object] Optional API value serialized in the `id` wire field.
+  # @return [WebhookRegistryPackagePublishedRegistryPackagePackageVersionNX29b0f8b1a2] Optional API value serialized in the `id` wire field.
   attr_reader :id
   # @return [String] Optional `string` value serialized in the `name` wire field.
   attr_reader :name
-  # @return [Object] Optional API value serialized in the `value` wire field.
+  # @return [WebhookRegistryPackagePublishedRegistryPackagePackageVersionNX502324e7f1] Optional API value serialized in the `value` wire field.
   attr_reader :value
 
   def initialize(**attributes)

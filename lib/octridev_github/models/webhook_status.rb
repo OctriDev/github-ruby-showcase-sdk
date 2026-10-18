@@ -215,7 +215,7 @@ class SdkInternalWebhookStatusCommitCommitAuthorMetadata
 end
 
 # API model for WebhookStatusCommitCommitAuthor.
-# Required API value serialized in the `author` wire field.
+# Required object value serialized in the `author` wire field.
 class WebhookStatusCommitCommitAuthor
   CONSTRUCTION_SURFACE = :named
   FIELDS = SdkInternalWebhookStatusCommitCommitAuthorMetadata::FIELDS
@@ -224,9 +224,9 @@ class WebhookStatusCommitCommitAuthor
 
   # @return [String] Required `string` value serialized in the `date` wire field.
   attr_reader :date
-  # @return [String] Optional `string` value serialized in the `email` wire field.
+  # @return [String] Required `string` value serialized in the `email` wire field.
   attr_reader :email
-  # @return [String] Optional `string` value serialized in the `name` wire field.
+  # @return [String] Required `string` value serialized in the `name` wire field.
   attr_reader :name
   # @return [String] Optional `string` value serialized in the `username` wire field.
   attr_reader :username
@@ -263,7 +263,7 @@ class SdkInternalWebhookStatusCommitCommitCommitterMetadata
 end
 
 # API model for WebhookStatusCommitCommitCommitter.
-# Required API value serialized in the `committer` wire field.
+# Required object value serialized in the `committer` wire field.
 class WebhookStatusCommitCommitCommitter
   CONSTRUCTION_SURFACE = :named
   FIELDS = SdkInternalWebhookStatusCommitCommitCommitterMetadata::FIELDS
@@ -272,9 +272,9 @@ class WebhookStatusCommitCommitCommitter
 
   # @return [String] Required `string` value serialized in the `date` wire field.
   attr_reader :date
-  # @return [String] Optional `string` value serialized in the `email` wire field.
+  # @return [String] Required `string` value serialized in the `email` wire field.
   attr_reader :email
-  # @return [String] Optional `string` value serialized in the `name` wire field.
+  # @return [String] Required `string` value serialized in the `name` wire field.
   attr_reader :name
   # @return [String] Optional `string` value serialized in the `username` wire field.
   attr_reader :username
@@ -439,11 +439,11 @@ class WebhookStatusCommitCommit
   REQUIRED_FIELDS = SdkInternalWebhookStatusCommitCommitMetadata::REQUIRED_FIELDS
   DECODERS = SdkInternalWebhookStatusCommitCommitMetadata::DECODERS
 
-  # @return [WebhookStatusCommitCommitAuthor] Required API value serialized in the `author` wire field.
+  # @return [WebhookStatusCommitCommitAuthor] Required object value serialized in the `author` wire field.
   attr_reader :author
   # @return [Integer] Required `integer` value serialized in the `comment_count` wire field.
   attr_reader :comment_count
-  # @return [WebhookStatusCommitCommitCommitter] Required API value serialized in the `committer` wire field.
+  # @return [WebhookStatusCommitCommitCommitter] Required object value serialized in the `committer` wire field.
   attr_reader :committer
   # @return [String] Required `string` value serialized in the `message` wire field.
   attr_reader :message

@@ -59,7 +59,7 @@ class SdkInternalWebhookWorkflowJobCompletedWorkflowJobMetadata
   ].freeze
   DECODERS = {
     conclusion: lambda do |value|
-      ::OctridevGithub::WebhookWorkflowJobCompletedWorkflowJobVariant1Conclusion.from_value(value)
+      ::OctridevGithub::WebhookWorkflowJobCompletedWorkflowJobConclusion.from_value(value)
     end,
   }.freeze
   NULLABLE_FIELDS = %i[
@@ -73,58 +73,58 @@ class SdkInternalWebhookWorkflowJobCompletedWorkflowJobMetadata
 end
 
 # API model for WebhookWorkflowJobCompletedWorkflowJob.
-# Required API value serialized in the `workflow_job` wire field.
+# Required object value serialized in the `workflow_job` wire field.
 class WebhookWorkflowJobCompletedWorkflowJob
   CONSTRUCTION_SURFACE = :named
   FIELDS = SdkInternalWebhookWorkflowJobCompletedWorkflowJobMetadata::FIELDS
   REQUIRED_FIELDS = SdkInternalWebhookWorkflowJobCompletedWorkflowJobMetadata::REQUIRED_FIELDS
   DECODERS = SdkInternalWebhookWorkflowJobCompletedWorkflowJobMetadata::DECODERS
 
-  # @return [String] Optional `string` value serialized in the `check_run_url` wire field.
+  # @return [String] Required `string` value serialized in the `check_run_url` wire field.
   attr_reader :check_run_url
-  # @return [String] Optional `string` value serialized in the `completed_at` wire field.
+  # @return [String] Required `string` value serialized in the `completed_at` wire field.
   attr_reader :completed_at
-  # @return [WebhookWorkflowJobCompletedWorkflowJobVariant1Conclusion] Required enumerated value serialized in the `conclusion` wire field.
+  # @return [WebhookWorkflowJobCompletedWorkflowJobConclusion] Required enumerated value serialized in the `conclusion` wire field.
   attr_reader :conclusion
   # @return [String] The time that the job created.
   attr_reader :created_at
-  # @return [String] Optional `string` value serialized in the `head_sha` wire field.
+  # @return [String] Required `string` value serialized in the `head_sha` wire field.
   attr_reader :head_sha
-  # @return [String] Optional `string` value serialized in the `html_url` wire field.
+  # @return [String] Required `string` value serialized in the `html_url` wire field.
   attr_reader :html_url
-  # @return [Integer] Optional `integer` value serialized in the `id` wire field.
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
   attr_reader :id
-  # @return [Array_of_String] Optional array value serialized in the `labels` wire field.
+  # @return [Array_of_String] Required array value serialized in the `labels` wire field.
   attr_reader :labels
-  # @return [String] Optional `string` value serialized in the `name` wire field.
+  # @return [String] Required `string` value serialized in the `name` wire field.
   attr_reader :name
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
   attr_reader :node_id
-  # @return [Integer] Optional `integer` value serialized in the `run_attempt` wire field.
+  # @return [Integer] Required `integer` value serialized in the `run_attempt` wire field.
   attr_reader :run_attempt
-  # @return [Integer] Optional `integer` value serialized in the `run_id` wire field.
+  # @return [Integer] Required `integer` value serialized in the `run_id` wire field.
   attr_reader :run_id
-  # @return [String] Optional `string` value serialized in the `run_url` wire field.
+  # @return [String] Required `string` value serialized in the `run_url` wire field.
   attr_reader :run_url
-  # @return [Float] Optional `number` value serialized in the `runner_group_id` wire field.
+  # @return [Float] Required `number` value serialized in the `runner_group_id` wire field.
   attr_reader :runner_group_id
-  # @return [String] Optional `string` value serialized in the `runner_group_name` wire field.
+  # @return [String] Required `string` value serialized in the `runner_group_name` wire field.
   attr_reader :runner_group_name
-  # @return [Float] Optional `number` value serialized in the `runner_id` wire field.
+  # @return [Float] Required `number` value serialized in the `runner_id` wire field.
   attr_reader :runner_id
-  # @return [String] Optional `string` value serialized in the `runner_name` wire field.
+  # @return [String] Required `string` value serialized in the `runner_name` wire field.
   attr_reader :runner_name
-  # @return [String] Optional `string` value serialized in the `started_at` wire field.
+  # @return [String] Required `string` value serialized in the `started_at` wire field.
   attr_reader :started_at
-  # @return [String] Optional `string` value serialized in the `status` wire field.
+  # @return [String] Required `string` value serialized in the `status` wire field.
   attr_reader :status
   # @return [String] The name of the current branch.
   attr_reader :head_branch
   # @return [String] The name of the workflow.
   attr_reader :workflow_name
-  # @return [Array_of_Hash] Optional array value serialized in the `steps` wire field.
+  # @return [Array_of_Hash] Required array value serialized in the `steps` wire field.
   attr_reader :steps
-  # @return [String] Optional `string` value serialized in the `url` wire field.
+  # @return [String] Required `string` value serialized in the `url` wire field.
   attr_reader :url
 
   def initialize(**attributes)
@@ -207,7 +207,7 @@ class WebhookWorkflowJobCompleted
   attr_reader :repository
   # @return [SimpleUser] A GitHub user.
   attr_reader :sender
-  # @return [WebhookWorkflowJobCompletedWorkflowJob] Required API value serialized in the `workflow_job` wire field.
+  # @return [WebhookWorkflowJobCompletedWorkflowJob] Required object value serialized in the `workflow_job` wire field.
   attr_reader :workflow_job
   # @return [Deployment] A request for a specific ref(branch,sha,tag) to be deployed
   attr_reader :deployment
@@ -235,60 +235,8 @@ module WebhookWorkflowJobCompletedAction
   end
 end
 
-# Defines the WebhookWorkflowJobCompletedWorkflowJobVariant0Conclusion SDK namespace.
-module WebhookWorkflowJobCompletedWorkflowJobVariant0Conclusion
-  SUCCESS = 'success'
-  FAILURE = 'failure'
-  SKIPPED = 'skipped'
-  CANCELLED = 'cancelled'
-  ACTION_REQUIRED = 'action_required'
-  NEUTRAL = 'neutral'
-  TIMED_OUT = 'timed_out'
-  VALUES = [
-    'success', 'failure', 'skipped', 'cancelled', 'action_required', 'neutral', 'timed_out'
-  ].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookWorkflowJobCompletedWorkflowJobVariant0Status SDK namespace.
-module WebhookWorkflowJobCompletedWorkflowJobVariant0Status
-  QUEUED = 'queued'
-  IN_PROGRESS = 'in_progress'
-  COMPLETED = 'completed'
-  WAITING = 'waiting'
-  VALUES = ['queued', 'in_progress', 'completed', 'waiting'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookWorkflowJobCompletedWorkflowJobVariant0StepsItemConclusion SDK namespace.
-module WebhookWorkflowJobCompletedWorkflowJobVariant0StepsItemConclusion
-  FAILURE = 'failure'
-  SKIPPED = 'skipped'
-  SUCCESS = 'success'
-  CANCELLED = 'cancelled'
-  VALUES = ['failure', 'skipped', 'success', 'cancelled'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookWorkflowJobCompletedWorkflowJobVariant0StepsItemStatus SDK namespace.
-module WebhookWorkflowJobCompletedWorkflowJobVariant0StepsItemStatus
-  IN_PROGRESS = 'in_progress'
-  COMPLETED = 'completed'
-  QUEUED = 'queued'
-  VALUES = ['in_progress', 'completed', 'queued'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookWorkflowJobCompletedWorkflowJobVariant1Conclusion SDK namespace.
-module WebhookWorkflowJobCompletedWorkflowJobVariant1Conclusion
+# Defines the WebhookWorkflowJobCompletedWorkflowJobConclusion SDK namespace.
+module WebhookWorkflowJobCompletedWorkflowJobConclusion
   SUCCESS = 'success'
   FAILURE = 'failure'
   SKIPPED = 'skipped'

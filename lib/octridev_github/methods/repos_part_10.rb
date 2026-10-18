@@ -9,63 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Repos SDK namespace.
     module Repos
-      # Creates a repository ruleset for an organization. Set the required `name` and `enforcement`, and optionally configure the target, bypass actors, conditions, and rules. Use `evaluate` to test rules before enforcing them; this enforcement level is available only with GitHub Enterprise.
-      #
-      # Create a repository ruleset for an organization.
-      #
-      # @param org [String] The organization name. The name is not case sensitive.
-      # @param name [String] The name of the ruleset.
-      # @param enforcement [RepositoryRuleEnforcement] The enforcement level of the
-      #   ruleset. `evaluate` allows admins to test rules before enforcing them.
-      #   Admins can view insights on the Rule Insights page (`evaluate` is only
-      #   available with GitHub Enterprise).
-      # @param target [ReposCreateOrgRulesetTarget] The target of the ruleset
-      # @param bypass_actors [Array_of_RepositoryRulesetBypassActor] The actors that
-      #   can bypass the rules in this ruleset
-      # @param conditions [OrgRulesetConditions] Conditions for an organization
-      #   ruleset. The branch and tag rulesets conditions object should contain both
-      #   `repository_name` and `ref_name` properties, or both `repository_id` and
-      #   `ref_name` properties, or both `repository_property` and `ref_name`
-      #   properties. The push rulesets conditions object does not require the
-      #   `ref_name` property. For repository policy rulesets, the conditions object
-      #   should only contain the `repository_name`, the `repository_id`, or the…
-      # @param rules [Array_of_OrgRules] An array of rules within the ruleset.
-      def self.repos_create_org_ruleset(
-        config:,
-        org:,
-        name:,
-        enforcement:,
-        target: NOT_GIVEN,
-        bypass_actors: NOT_GIVEN,
-        conditions: NOT_GIVEN,
-        rules: NOT_GIVEN,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'POST',
-          [
-            "/orgs/",
-            SdkClient.encode_path_segment(org),
-            "/rulesets"
-          ].join,
-          config: config,
-          body: {
-            'name' => name,
-            'enforcement' => enforcement,
-            'target' => target,
-            'bypass_actors' => bypass_actors,
-            'conditions' => conditions,
-            'rules' => rules,
-          },
-          return_type: ::OctridevGithub::RepositoryRuleset,
-          decoder: :json,
-          operation_id: 'repos_create_org_ruleset',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError },
-        ).data
-      end
-
       # Lists suites of rule evaluations at the organization level. For more information, see "Managing rulesets for repositories in your organization."
       #
       # @param org [String] The organization name. The name is not case sensitive.
@@ -548,6 +491,77 @@ module OctridevGithub
           operation_id: 'repos_delete',
           request_options: request_options,
           errors: { '307' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError },
+        ).data
+      end
+
+      # Lists a detailed history of changes to a repository, such as pushes, merges, force pushes, and branch changes, and associates these changes with commits and users. For more information about viewing repository activity, see "Viewing activity and data for your repository."
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param direction [SchemaSchema0df64690] The direction to sort the results
+      #   by.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param before [String] A cursor, as given in the Link header. If specified,
+      #   the query only searches for results before this cursor. For more
+      #   information, see "Using pagination in the REST API."
+      # @param after [String] A cursor, as given in the Link header. If specified,
+      #   the query only searches for results after this cursor. For more information,
+      #   see "Using pagination in the REST API."
+      # @param ref [String] The Git reference for the activities you want to list.
+      #   The `ref` for a branch can be formatted either as `refs/heads/BRANCH_NAME`
+      #   or `BRANCH_NAME`, where `BRANCH_NAME` is the name of your branch.
+      # @param actor [String] The GitHub username to use to filter by the actor who
+      #   performed the activity.
+      # @param time_period [ReposListActivitiesParameter] The time period to filter
+      #   by. For example, `day` will filter for activity that occurred in the past 24
+      #   hours, and `week` will filter for activity that occurred in the past 7 days
+      #   (168 hours).
+      # @param activity_type [ReposListActivitiesParameterDc62da83] The activity
+      #   type to filter by. For example, you can choose to filter by "force_push", to
+      #   see all force pushes to the repository.
+      def self.repos_list_activities(
+        config:,
+        owner:,
+        repo:,
+        direction: NOT_GIVEN,
+        per_page: NOT_GIVEN,
+        before: NOT_GIVEN,
+        after: NOT_GIVEN,
+        ref: NOT_GIVEN,
+        actor: NOT_GIVEN,
+        time_period: NOT_GIVEN,
+        activity_type: NOT_GIVEN,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/activity"
+          ].join,
+          config: config,
+          query: {
+            'direction' => QueryValue.new(direction, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'before' => QueryValue.new(before, style: 'form', explode: true),
+            'after' => QueryValue.new(after, style: 'form', explode: true),
+            'ref' => QueryValue.new(ref, style: 'form', explode: true),
+            'actor' => QueryValue.new(actor, style: 'form', explode: true),
+            'time_period' => QueryValue.new(time_period, style: 'form', explode: true),
+            'activity_type' => QueryValue.new(activity_type, style: 'form', explode: true),
+          },
+          return_type: [::OctridevGithub::Activity],
+          decoder: :json,
+          operation_id: 'repos_list_activities',
+          request_options: request_options,
+          errors: { '422' => ::OctridevGithub::ValidationErrorSimple },
         ).data
       end
     end

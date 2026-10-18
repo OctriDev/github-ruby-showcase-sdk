@@ -9,40 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Repos SDK namespace.
     module Repos
-      # API model for ReposUpdateRepoRuleset.
-      class ReposUpdateRepoRuleset
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalReposUpdateRepoRulesetMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalReposUpdateRepoRulesetMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalReposUpdateRepoRulesetMetadata::DECODERS
-
-        # @return [String] The name of the ruleset.
-        attr_reader :name
-        # @return [ReposUpdateRepoRulesetTarget] The target of the ruleset
-        attr_reader :target
-        # @return [RepositoryRuleEnforcement] The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).
-        attr_reader :enforcement
-        # @return [Array_of_RepositoryRulesetBypassActor] The actors that can bypass the rules in this ruleset
-        attr_reader :bypass_actors
-        # @return [RepositoryRulesetConditions] Parameters for a repository ruleset ref name condition
-        attr_reader :conditions
-        # @return [Array_of_RepositoryRule] An array of rules within the ruleset.
-        attr_reader :rules
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
       # Internal model hydration metadata.
       class SdkInternalReposCreateCommitStatusMetadata
         FIELDS = {
@@ -342,17 +308,6 @@ module OctridevGithub
         end
       end
 
-      # Defines the ReposUpdateInformationAboutPagesSiteSourceVariant0 SDK namespace.
-      module ReposUpdateInformationAboutPagesSiteSourceVariant0
-        GH_PAGES = 'gh-pages'
-        MASTER = 'master'
-        MASTER_DOCS = 'master /docs'
-        VALUES = ['gh-pages', 'master', 'master /docs'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
       # Defines the ReposCreateForAuthenticatedUserMergeCommitMessage SDK namespace.
       module ReposCreateForAuthenticatedUserMergeCommitMessage
         PR_BODY = 'PR_BODY'
@@ -537,16 +492,6 @@ module OctridevGithub
         end
       end
 
-      # Defines the ReposUpdateInformationAboutPagesSiteSourceVariant1Path SDK namespace.
-      module ReposUpdateInformationAboutPagesSiteSourceVariant1Path
-        UNKNOWN = '/'
-        DOCS = '/docs'
-        VALUES = ['/', '/docs'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
       # Defines the ReposUpdatePullRequestCreationPolicy SDK namespace.
       module ReposUpdatePullRequestCreationPolicy
         ALL = 'all'
@@ -565,6 +510,61 @@ module OctridevGithub
         PRIVATE = 'private'
         MEMBER = 'member'
         VALUES = ['all', 'owner', 'public', 'private', 'member'].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the ReposCreateInOrgMergeCommitMessage SDK namespace.
+      module ReposCreateInOrgMergeCommitMessage
+        PR_BODY = 'PR_BODY'
+        PR_TITLE = 'PR_TITLE'
+        BLANK = 'BLANK'
+        VALUES = ['PR_BODY', 'PR_TITLE', 'BLANK'].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the ReposUpdateSecurityAndAnalysisSecretScanningDelegatedBypassOpX7ef3ce56ec SDK namespace.
+      module ReposUpdateSecurityAndAnalysisSecretScanningDelegatedBypassOpX7ef3ce56ec
+        ALWAYS = 'ALWAYS'
+        EXEMPT = 'EXEMPT'
+        VALUES = ['ALWAYS', 'EXEMPT'].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the ReposListForOrgParameter SDK namespace.
+      module ReposListForOrgParameter
+        ALL = 'all'
+        PUBLIC = 'public'
+        PRIVATE = 'private'
+        FORKS = 'forks'
+        SOURCES = 'sources'
+        MEMBER = 'member'
+        VALUES = ['all', 'public', 'private', 'forks', 'sources', 'member'].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the ReposCreateForAuthenticatedUserMergeCommitTitle SDK namespace.
+      module ReposCreateForAuthenticatedUserMergeCommitTitle
+        PR_TITLE = 'PR_TITLE'
+        MERGE_MESSAGE = 'MERGE_MESSAGE'
+        VALUES = ['PR_TITLE', 'MERGE_MESSAGE'].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the ReposUpdateSquashMergeCommitTitle SDK namespace.
+      module ReposUpdateSquashMergeCommitTitle
+        PR_TITLE = 'PR_TITLE'
+        COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
+        VALUES = ['PR_TITLE', 'COMMIT_OR_PR_TITLE'].freeze
         def self.from_value(value)
           value
         end

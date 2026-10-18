@@ -10,7 +10,7 @@ module OctridevGithub
     # Defines the AgentTasks SDK namespace.
     module AgentTasks
       # Internal model hydration metadata.
-      class SdkInternalAgentTasksListTasksForRepoResponseTasksItemCreatorVariant0Metadata
+      class SdkInternalAgentTasksListTasksForRepoResponseTasksItemCreatorMetadata
         FIELDS = {
           id: "id",
         }.freeze
@@ -20,13 +20,13 @@ module OctridevGithub
         }.freeze
       end
 
-      # API model for AgentTasksListTasksForRepoResponseTasksItemCreatorVariant0.
-      # A GitHub user
-      class AgentTasksListTasksForRepoResponseTasksItemCreatorVariant0
+      # API model for AgentTasksListTasksForRepoResponseTasksItemCreator.
+      # The entity who created this task
+      class AgentTasksListTasksForRepoResponseTasksItemCreator
         CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemCreatorVariant0Metadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemCreatorVariant0Metadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemCreatorVariant0Metadata::DECODERS
+        FIELDS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemCreatorMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemCreatorMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemCreatorMetadata::DECODERS
 
         # @return [Integer] The unique identifier of the user
         attr_reader :id
@@ -173,7 +173,7 @@ module OctridevGithub
             ::OctridevGithub::Methods::AgentTasks::AgentTasksListTasksForRepoResponseTasksItemArtifactsItemType.from_value(value)
           end,
           data: lambda do |value|
-            ::OctridevGithub::TasksItemArtifactsItemData2.from_hash(value)
+            ::OctridevGithub::AgentTasksListTasksForRepoResponseTasksItemArtifactsItemData.from_hash(value)
           end,
         }.freeze
       end
@@ -190,7 +190,7 @@ module OctridevGithub
         attr_reader :provider
         # @return [AgentTasksListTasksForRepoResponseTasksItemArtifactsItemType] Type of artifact. Available Values: `pull`, `branch`.
         attr_reader :type
-        # @return [TasksItemArtifactsItemData2] Resource data (shape depends on type)
+        # @return [AgentTasksListTasksForRepoResponseTasksItemArtifactsItemData] Resource data (shape depends on type)
         attr_reader :data
 
         def initialize(**attributes)
@@ -270,7 +270,7 @@ module OctridevGithub
         ].freeze
         DECODERS = {
           creator: lambda do |value|
-            ::OctridevGithub::Methods::AgentTasks::AgentTasksListTasksForRepoResponseTasksItemCreatorVariant0.from_hash(value)
+            ::OctridevGithub::Methods::AgentTasks::AgentTasksListTasksForRepoResponseTasksItemCreator.from_hash(value)
           end,
           creator_type: lambda do |value|
             ::OctridevGithub::Methods::AgentTasks::AgentTasksListTasksForRepoResponseTasksItemCreatorType.from_value(value)
@@ -311,7 +311,7 @@ module OctridevGithub
         attr_reader :html_url
         # @return [String] Human-readable name derived from the task prompt
         attr_reader :name
-        # @return [AgentTasksListTasksForRepoResponseTasksItemCreatorVariant0] The entity who created this task
+        # @return [AgentTasksListTasksForRepoResponseTasksItemCreator] The entity who created this task
         attr_reader :creator
         # @return [AgentTasksListTasksForRepoResponseTasksItemCreatorType] Type of the task creator
         attr_reader :creator_type
@@ -447,7 +447,7 @@ module OctridevGithub
       end
 
       # Internal model hydration metadata.
-      class SdkInternalAgentTasksCreateTaskInRepoResponseCreatorVariant0Metadata
+      class SdkInternalAgentTasksCreateTaskInRepoResponseCreatorMetadata
         FIELDS = {
           id: "id",
         }.freeze
@@ -457,13 +457,13 @@ module OctridevGithub
         }.freeze
       end
 
-      # API model for AgentTasksCreateTaskInRepoResponseCreatorVariant0.
-      # A GitHub user
-      class AgentTasksCreateTaskInRepoResponseCreatorVariant0
+      # API model for AgentTasksCreateTaskInRepoResponseCreator.
+      # The entity who created this task
+      class AgentTasksCreateTaskInRepoResponseCreator
         CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentTasksCreateTaskInRepoResponseCreatorVariant0Metadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentTasksCreateTaskInRepoResponseCreatorVariant0Metadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentTasksCreateTaskInRepoResponseCreatorVariant0Metadata::DECODERS
+        FIELDS = SdkInternalAgentTasksCreateTaskInRepoResponseCreatorMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalAgentTasksCreateTaskInRepoResponseCreatorMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalAgentTasksCreateTaskInRepoResponseCreatorMetadata::DECODERS
 
         # @return [Integer] The unique identifier of the user
         attr_reader :id

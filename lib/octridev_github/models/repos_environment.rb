@@ -141,7 +141,7 @@ class SdkInternalEnvironmentProtectionRulesItemVariant1ReviewersItemMetadata
       ::OctridevGithub::DeploymentReviewerType.from_value(value)
     end,
     reviewer: lambda do |value|
-      ::OctridevGithub::ReviewersItemReviewer.from_hash(value)
+      SdkModel.union_branch(value, [::OctridevGithub::SimpleUser, ::OctridevGithub::Team])
     end,
   }.freeze
 end
@@ -156,7 +156,7 @@ class EnvironmentProtectionRulesItemVariant1ReviewersItem
 
   # @return [DeploymentReviewerType] The type of reviewer.
   attr_reader :type
-  # @return [ReviewersItemReviewer] Optional API value serialized in the `reviewer` wire field.
+  # @return [Object] Optional API value serialized in the `reviewer` wire field.
   attr_reader :reviewer
 
   def initialize(**attributes)
@@ -273,12 +273,16 @@ end
 # Defines the EnvironmentProtectionRulesItem SDK namespace.
 module EnvironmentProtectionRulesItem
   def self.from_hash(hash)
+    lossy = nil
     [EnvironmentProtectionRulesItemVariant0, EnvironmentProtectionRulesItemVariant1, EnvironmentProtectionRulesItemVariant2].each do |type|
-      return type.from_hash(hash)
+      decoded = type.from_hash(hash)
+      return decoded if SdkModel.keeps_every_key?(hash, decoded)
+
+      lossy ||= decoded
     rescue ::StandardError
       next
     end
-    raise SdkValidationError.new('EnvironmentProtectionRulesItem', 'variant', "Cannot select EnvironmentProtectionRulesItem variant without a discriminator")
+    return lossy unless lossy.nil?
   end
 end
 end

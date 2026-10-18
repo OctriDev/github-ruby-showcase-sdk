@@ -9,6 +9,78 @@ module OctridevGithub
   module Methods
     # Defines the Apps SDK namespace.
     module Apps
+      # API model for AppsListInstallationReposForAuthenticatedUserResponseRepositoXfbc57dcb02.
+      # Optional object value serialized in the `permissions` wire field.
+      class AppsListInstallationReposForAuthenticatedUserResponseRepositoXfbc57dcb02
+        CONSTRUCTION_SURFACE = :named
+        FIELDS = SdkInternalAppsListInstallationReposForAuthenticatedUserResponseRepositoXfbc57dcb02Metadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalAppsListInstallationReposForAuthenticatedUserResponseRepositoXfbc57dcb02Metadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalAppsListInstallationReposForAuthenticatedUserResponseRepositoXfbc57dcb02Metadata::DECODERS
+
+        # @return [Boolean] Required `boolean` value serialized in the `admin` wire field.
+        attr_reader :admin
+        # @return [Boolean] Required `boolean` value serialized in the `pull` wire field.
+        attr_reader :pull
+        # @return [Boolean] Optional `boolean` value serialized in the `triage` wire field.
+        attr_reader :triage
+        # @return [Boolean] Required `boolean` value serialized in the `push` wire field.
+        attr_reader :push
+        # @return [Boolean] Optional `boolean` value serialized in the `maintain` wire field.
+        attr_reader :maintain
+
+        def initialize(**attributes)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          freeze
+        end
+
+        def self.from_hash(data)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        end
+
+        def to_h
+          SdkModel.to_h(self, FIELDS)
+        end
+      end
+
+      # Internal model hydration metadata.
+      class SdkInternalAppsListInstallationReposForAuthenticatedUserResponseRepositoXace4d6c012Metadata
+        FIELDS = {
+          lexical_search_ok: "lexical_search_ok",
+          lexical_commit_sha: "lexical_commit_sha",
+        }.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
+      end
+
+      # API model for AppsListInstallationReposForAuthenticatedUserResponseRepositoXace4d6c012.
+      # The status of the code search index for this repository
+      class AppsListInstallationReposForAuthenticatedUserResponseRepositoXace4d6c012
+        CONSTRUCTION_SURFACE = :named
+        FIELDS = SdkInternalAppsListInstallationReposForAuthenticatedUserResponseRepositoXace4d6c012Metadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalAppsListInstallationReposForAuthenticatedUserResponseRepositoXace4d6c012Metadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalAppsListInstallationReposForAuthenticatedUserResponseRepositoXace4d6c012Metadata::DECODERS
+
+        # @return [Boolean] Optional `boolean` value serialized in the `lexical_search_ok` wire field.
+        attr_reader :lexical_search_ok
+        # @return [String] Optional `string` value serialized in the `lexical_commit_sha` wire field.
+        attr_reader :lexical_commit_sha
+
+        def initialize(**attributes)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          freeze
+        end
+
+        def self.from_hash(data)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        end
+
+        def to_h
+          SdkModel.to_h(self, FIELDS)
+        end
+      end
+
       # Internal model hydration metadata.
       class SdkInternalAppsListInstallationReposForAuthenticatedUserResponseRepositoriesItemMetadata
         FIELDS = {
@@ -192,28 +264,28 @@ module OctridevGithub
             ::OctridevGithub::NullableLicenseSimple.from_hash(value)
           end,
           permissions: lambda do |value|
-            ::OctridevGithub::Methods::Apps::RepositoryPermissions.from_hash(value)
+            ::OctridevGithub::Methods::Apps::AppsListInstallationReposForAuthenticatedUserResponseRepositoXfbc57dcb02.from_hash(value)
           end,
           owner: lambda do |value|
             ::OctridevGithub::SimpleUser.from_hash(value)
           end,
           pull_request_creation_policy: lambda do |value|
-            ::OctridevGithub::RepositoryPullRequestCreationPolicy.from_value(value)
+            ::OctridevGithub::Methods::Apps::AppsListInstallationReposForAuthenticatedUserResponseRepositoX7d8fa4489f.from_value(value)
           end,
           squash_merge_commit_title: lambda do |value|
-            ::OctridevGithub::RepositorySquashMergeCommitTitle.from_value(value)
+            ::OctridevGithub::Methods::Apps::AppsListInstallationReposForAuthenticatedUserResponseRepositoXe6dfe6af0c.from_value(value)
           end,
           squash_merge_commit_message: lambda do |value|
-            ::OctridevGithub::RepositorySquashMergeCommitMessage.from_value(value)
+            ::OctridevGithub::Methods::Apps::AppsListInstallationReposForAuthenticatedUserResponseRepositoX6003e45528.from_value(value)
           end,
           merge_commit_title: lambda do |value|
-            ::OctridevGithub::RepositoryMergeCommitTitle.from_value(value)
+            ::OctridevGithub::Methods::Apps::AppsListInstallationReposForAuthenticatedUserResponseRepositoX55612d4937.from_value(value)
           end,
           merge_commit_message: lambda do |value|
-            ::OctridevGithub::RepositoryMergeCommitMessage.from_value(value)
+            ::OctridevGithub::Methods::Apps::AppsListInstallationReposForAuthenticatedUserResponseRepositoX58478254fe.from_value(value)
           end,
           code_search_index_status: lambda do |value|
-            ::OctridevGithub::Methods::Apps::RepositoryCodeSearchIndexStatus.from_hash(value)
+            ::OctridevGithub::Methods::Apps::AppsListInstallationReposForAuthenticatedUserResponseRepositoXace4d6c012.from_hash(value)
           end,
         }.freeze
         NULLABLE_FIELDS = %i[
@@ -247,7 +319,7 @@ module OctridevGithub
         attr_reader :license
         # @return [Integer] Required `integer` value serialized in the `forks` wire field.
         attr_reader :forks
-        # @return [RepositoryPermissions] Optional object value serialized in the `permissions` wire field.
+        # @return [AppsListInstallationReposForAuthenticatedUserResponseRepositoXfbc57dcb02] Optional object value serialized in the `permissions` wire field.
         attr_reader :permissions
         # @return [SimpleUser] A GitHub user.
         attr_reader :owner
@@ -377,7 +449,7 @@ module OctridevGithub
         attr_reader :has_discussions
         # @return [Boolean] Whether pull requests are enabled.
         attr_reader :has_pull_requests
-        # @return [RepositoryPullRequestCreationPolicy] The policy controlling who can create pull requests: all or collaborators_only.
+        # @return [AppsListInstallationReposForAuthenticatedUserResponseRepositoX7d8fa4489f] The policy controlling who can create pull requests: all or collaborators_only.
         attr_reader :pull_request_creation_policy
         # @return [Boolean] Whether the repository is archived.
         attr_reader :archived
@@ -405,13 +477,13 @@ module OctridevGithub
         attr_reader :allow_update_branch
         # @return [Boolean] Whether a squash merge commit can use the pull request title as default. **This property is closing down. Please use `squash_merge_commit_title` instead.
         attr_reader :use_squash_pr_title_as_default
-        # @return [RepositorySquashMergeCommitTitle] The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+        # @return [AppsListInstallationReposForAuthenticatedUserResponseRepositoXe6dfe6af0c] The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
         attr_reader :squash_merge_commit_title
-        # @return [RepositorySquashMergeCommitMessage] The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message.
+        # @return [AppsListInstallationReposForAuthenticatedUserResponseRepositoX6003e45528] The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message.
         attr_reader :squash_merge_commit_message
-        # @return [RepositoryMergeCommitTitle] The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+        # @return [AppsListInstallationReposForAuthenticatedUserResponseRepositoX55612d4937] The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
         attr_reader :merge_commit_title
-        # @return [RepositoryMergeCommitMessage] The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message.
+        # @return [AppsListInstallationReposForAuthenticatedUserResponseRepositoX58478254fe] The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message.
         attr_reader :merge_commit_message
         # @return [Boolean] Whether to allow merge commits for pull requests.
         attr_reader :allow_merge_commit
@@ -429,7 +501,7 @@ module OctridevGithub
         attr_reader :starred_at
         # @return [Boolean] Whether anonymous git access is enabled for this repository
         attr_reader :anonymous_access_enabled
-        # @return [RepositoryCodeSearchIndexStatus] The status of the code search index for this repository
+        # @return [AppsListInstallationReposForAuthenticatedUserResponseRepositoXace4d6c012] The status of the code search index for this repository
         attr_reader :code_search_index_status
         # @return [Hash] The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. Present for org repos only.
         attr_reader :custom_properties
@@ -489,83 +561,15 @@ module OctridevGithub
         end
       end
 
-      # Defines the AppsListAccountsForPlanParameter SDK namespace.
-      module AppsListAccountsForPlanParameter
-        ASC = 'asc'
-        DESC = 'desc'
-        VALUES = ['asc', 'desc'].freeze
+      # Defines the AppsListInstallationReposForAuthenticatedUserResponseRepositoX6003e45528 SDK namespace.
+      module AppsListInstallationReposForAuthenticatedUserResponseRepositoX6003e45528
+        PR_BODY = 'PR_BODY'
+        COMMIT_MESSAGES = 'COMMIT_MESSAGES'
+        BLANK = 'BLANK'
+        VALUES = ['PR_BODY', 'COMMIT_MESSAGES', 'BLANK'].freeze
         def self.from_value(value)
           value
         end
-      end
-
-      # Defines the AppsListAccountsForPlanStubbedParameter SDK namespace.
-      module AppsListAccountsForPlanStubbedParameter
-        ASC = 'asc'
-        DESC = 'desc'
-        VALUES = ['asc', 'desc'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Returns the GitHub App associated with the authentication credentials used. To see how many app installations are associated with this GitHub App, see the `installations_count` in the response. For more details about your app's installations, see the "List installations for the authenticated app" endpoint. You must use a JWT to access this endpoint.
-      def self.apps_get_authenticated(
-        config:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          "/app",
-          config: config,
-          return_type: ::OctridevGithub::Integration,
-          decoder: :json,
-          operation_id: 'apps_get_authenticated',
-          request_options: request_options,
-        ).data
-      end
-
-      # Creates a GitHub App from a manifest to complete the GitHub App Manifest flow. Use the temporary `code` to retrieve the app details and credentials, including its `id`, `pem`, and `webhook_secret`.
-      #
-      # Use this endpoint to complete the handshake necessary when implementing the GitHub App Manifest flow. When you create a GitHub App with the manifest flow, you receive a temporary `code` used to retrieve the GitHub App's `id`, `pem` (private key), and `webhook_secret`.
-      def self.apps_create_from_manifest(
-        config:,
-        code:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'POST',
-          [
-            "/app-manifests/",
-            SdkClient.encode_path_segment(code),
-            "/conversions"
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::Methods::Apps::AppsCreateFromManifestResponse,
-          decoder: :json,
-          operation_id: 'apps_create_from_manifest',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple },
-        ).data
-      end
-
-      # Returns the webhook configuration for a GitHub App. For more information about configuring a webhook for your app, see "Creating a GitHub App." You must use a JWT to access this endpoint.
-      def self.apps_get_webhook_config_for_app(
-        config:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          "/app/hook/config",
-          config: config,
-          return_type: ::OctridevGithub::WebhookConfig,
-          decoder: :json,
-          operation_id: 'apps_get_webhook_config_for_app',
-          request_options: request_options,
-        ).data
       end
     end
   end

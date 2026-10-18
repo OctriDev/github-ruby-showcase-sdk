@@ -9,172 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Actions SDK namespace.
     module Actions
-      # Removes a repository from the list of selected repositories that can access a self-hosted runner group. The runner group must have `visibility` set to `selected`. For more information, see "Create a self-hosted runner group for an organization." OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-      #
-      # @param org [String] The organization name. The name is not case sensitive.
-      # @param runner_group_id [Integer] Unique identifier of the self-hosted runner
-      #   group.
-      # @param repository_id [Integer] The unique identifier of the repository.
-      def self.actions_remove_repo_access_to_self_hosted_runner_group_in_org(
-        config:,
-        org:,
-        runner_group_id:,
-        repository_id:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'DELETE',
-          [
-            "/orgs/",
-            SdkClient.encode_path_segment(org),
-            "/actions/runner-groups/",
-            SdkClient.encode_path_segment(runner_group_id),
-            "/repositories/",
-            SdkClient.encode_path_segment(repository_id)
-          ].join,
-          config: config,
-          decoder: :empty,
-          operation_id: 'actions_remove_repo_access_to_self_hosted_runner_group_in_org',
-          request_options: request_options,
-        ).data
-      end
-
-      # Lists self-hosted runners that are in a specific organization group. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-      #
-      # @param org [String] The organization name. The name is not case sensitive.
-      # @param runner_group_id [Integer] Unique identifier of the self-hosted runner
-      #   group.
-      # @param per_page [Integer] The number of results per page (max 100). For more
-      #   information, see "Using pagination in the REST API."
-      # @param page [Integer] The page number of the results to fetch. For more
-      #   information, see "Using pagination in the REST API."
-      def self.actions_list_self_hosted_runners_in_group_for_org(
-        config:,
-        org:,
-        runner_group_id:,
-        per_page: NOT_GIVEN,
-        page: NOT_GIVEN,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/orgs/",
-            SdkClient.encode_path_segment(org),
-            "/actions/runner-groups/",
-            SdkClient.encode_path_segment(runner_group_id),
-            "/runners"
-          ].join,
-          config: config,
-          query: {
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
-          },
-          return_type: ::OctridevGithub::Methods::Actions::ActionsListSelfHostedRunnersInGroupForOrgResponse,
-          decoder: :json,
-          operation_id: 'actions_list_self_hosted_runners_in_group_for_org',
-          request_options: request_options,
-        ).data
-      end
-
-      # Replaces the list of self-hosted runners that are part of an organization runner group. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-      #
-      # @param org [String] The organization name. The name is not case sensitive.
-      # @param runner_group_id [Integer] Unique identifier of the self-hosted runner
-      #   group.
-      # @param runners [Array_of_Integer] List of runner IDs to add to the runner
-      #   group.
-      def self.actions_set_self_hosted_runners_in_group_for_org(
-        config:,
-        org:,
-        runner_group_id:,
-        runners:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'PUT',
-          [
-            "/orgs/",
-            SdkClient.encode_path_segment(org),
-            "/actions/runner-groups/",
-            SdkClient.encode_path_segment(runner_group_id),
-            "/runners"
-          ].join,
-          config: config,
-          body: {
-            'runners' => runners,
-          },
-          decoder: :empty,
-          operation_id: 'actions_set_self_hosted_runners_in_group_for_org',
-          request_options: request_options,
-        ).data
-      end
-
-      # Adds a self-hosted runner to a runner group configured in an organization. OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-      #
-      # @param org [String] The organization name. The name is not case sensitive.
-      # @param runner_group_id [Integer] Unique identifier of the self-hosted runner
-      #   group.
-      # @param runner_id [Integer] Unique identifier of the self-hosted runner.
-      def self.actions_add_self_hosted_runner_to_group_for_org(
-        config:,
-        org:,
-        runner_group_id:,
-        runner_id:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'PUT',
-          [
-            "/orgs/",
-            SdkClient.encode_path_segment(org),
-            "/actions/runner-groups/",
-            SdkClient.encode_path_segment(runner_group_id),
-            "/runners/",
-            SdkClient.encode_path_segment(runner_id)
-          ].join,
-          config: config,
-          decoder: :empty,
-          operation_id: 'actions_add_self_hosted_runner_to_group_for_org',
-          request_options: request_options,
-        ).data
-      end
-
-      # Removes a self-hosted runner from a group configured in an organization. The runner is then returned to the default group. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-      #
-      # @param org [String] The organization name. The name is not case sensitive.
-      # @param runner_group_id [Integer] Unique identifier of the self-hosted runner
-      #   group.
-      # @param runner_id [Integer] Unique identifier of the self-hosted runner.
-      def self.actions_remove_self_hosted_runner_from_group_for_org(
-        config:,
-        org:,
-        runner_group_id:,
-        runner_id:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'DELETE',
-          [
-            "/orgs/",
-            SdkClient.encode_path_segment(org),
-            "/actions/runner-groups/",
-            SdkClient.encode_path_segment(runner_group_id),
-            "/runners/",
-            SdkClient.encode_path_segment(runner_id)
-          ].join,
-          config: config,
-          decoder: :empty,
-          operation_id: 'actions_remove_self_hosted_runner_from_group_for_org',
-          request_options: request_options,
-        ).data
-      end
-
       # Lists all self-hosted runners configured in an organization. Authenticated users must have admin access to the organization to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
       #
       # @param org [String] The organization name. The name is not case sensitive.
@@ -299,7 +133,7 @@ module OctridevGithub
             'labels' => labels,
             'work_folder' => work_folder,
           },
-          return_type: ::OctridevGithub::Methods::Actions::SchemaSchemaCee94e2c,
+          return_type: ::OctridevGithub::ActionsRunnerJitconfig,
           decoder: :json,
           operation_id: 'actions_generate_runner_jitconfig_for_org',
           request_options: request_options,
@@ -430,7 +264,7 @@ module OctridevGithub
             "/labels"
           ].join,
           config: config,
-          return_type: ::OctridevGithub::Methods::Actions::SchemaSchemaC8266fdc,
+          return_type: ::OctridevGithub::ActionsRunnerLabels,
           decoder: :json,
           operation_id: 'actions_list_labels_for_self_hosted_runner_for_org',
           request_options: request_options,
@@ -467,7 +301,7 @@ module OctridevGithub
           body: {
             'labels' => labels,
           },
-          return_type: ::OctridevGithub::Methods::Actions::SchemaSchemaC8266fdc,
+          return_type: ::OctridevGithub::ActionsRunnerLabels,
           decoder: :json,
           operation_id: 'actions_add_custom_labels_to_self_hosted_runner_for_org',
           request_options: request_options,
@@ -504,7 +338,7 @@ module OctridevGithub
           body: {
             'labels' => labels,
           },
-          return_type: ::OctridevGithub::Methods::Actions::SchemaSchemaC8266fdc,
+          return_type: ::OctridevGithub::ActionsRunnerLabels,
           decoder: :json,
           operation_id: 'actions_set_custom_labels_for_self_hosted_runner_for_org',
           request_options: request_options,
@@ -533,11 +367,182 @@ module OctridevGithub
             "/labels"
           ].join,
           config: config,
-          return_type: ::OctridevGithub::Methods::Actions::SchemaSchema328ddb88,
+          return_type: ::OctridevGithub::ActionsRunnerLabelsReadonly,
           decoder: :json,
           operation_id: 'actions_remove_all_custom_labels_from_self_hosted_runner_for_org',
           request_options: request_options,
           errors: { '404' => ::OctridevGithub::BasicError },
+        ).data
+      end
+
+      # Remove a custom label from a self-hosted runner configured in an organization. Returns the remaining labels from the runner. This endpoint returns a `404 Not Found` status if the custom label is not present on the runner. Authenticated users must have admin access to the organization to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param runner_id [Integer] Unique identifier of the self-hosted runner.
+      # @param name [String] The name of a self-hosted runner's custom label.
+      def self.actions_remove_custom_label_from_self_hosted_runner_for_org(
+        config:,
+        org:,
+        runner_id:,
+        name:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'DELETE',
+          [
+            "/orgs/",
+            SdkClient.encode_path_segment(org),
+            "/actions/runners/",
+            SdkClient.encode_path_segment(runner_id),
+            "/labels/",
+            SdkClient.encode_path_segment(name)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::ActionsRunnerLabels,
+          decoder: :json,
+          operation_id: 'actions_remove_custom_label_from_self_hosted_runner_for_org',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple },
+        ).data
+      end
+
+      # Lists all secrets available in an organization without revealing their encrypted values. Authenticated users must have collaborator access to a repository to create, update, or read secrets. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.actions_list_org_secrets(
+        config:,
+        org:,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/orgs/",
+            SdkClient.encode_path_segment(org),
+            "/actions/secrets"
+          ].join,
+          config: config,
+          query: {
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true),
+          },
+          return_type: ::OctridevGithub::Methods::Actions::ActionsListOrgSecretsResponse,
+          decoder: :json,
+          operation_id: 'actions_list_org_secrets',
+          request_options: request_options,
+        ).data
+      end
+
+      # Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you can create or update secrets. The authenticated user must have collaborator access to a repository to create, update, or read secrets. OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      def self.actions_get_org_public_key(
+        config:,
+        org:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/orgs/",
+            SdkClient.encode_path_segment(org),
+            "/actions/secrets/public-key"
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::ActionsPublicKey,
+          decoder: :json,
+          operation_id: 'actions_get_org_public_key',
+          request_options: request_options,
+        ).data
+      end
+
+      # Gets a single organization secret without revealing its encrypted value. The authenticated user must have collaborator access to a repository to create, update, or read secrets OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param secret_name [String] The name of the secret.
+      def self.actions_get_org_secret(
+        config:,
+        org:,
+        secret_name:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/orgs/",
+            SdkClient.encode_path_segment(org),
+            "/actions/secrets/",
+            SdkClient.encode_path_segment(secret_name)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::OrganizationActionsSecret,
+          decoder: :json,
+          operation_id: 'actions_get_org_secret',
+          request_options: request_options,
+        ).data
+      end
+
+      # Creates or updates an organization secret with an encrypted value. Encrypt your secret using LibSodium. For more information, see "Encrypting secrets for the REST API." Authenticated users must have collaborator access to a repository to create, update, or read secrets. OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use…
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param secret_name [String] The name of the secret.
+      # @param encrypted_value [String] Value for your secret, encrypted with
+      #   LibSodium using the public key retrieved from the Get an organization public
+      #   key endpoint.
+      # @param key_id [String] ID of the key you used to encrypt the secret.
+      # @param visibility [ActionsCreateOrUpdateOrgSecretVisibility] Which type of
+      #   organization repositories have access to the organization secret. `selected`
+      #   means only the repositories specified by `selected_repository_ids` can
+      #   access the secret.
+      # @param selected_repository_ids [Array_of_Integer] An array of repository ids
+      #   that can access the organization secret. You can only provide a list of
+      #   repository ids when the `visibility` is set to `selected`. You can manage
+      #   the list of selected repositories using the List selected repositories for
+      #   an organization secret, Set selected repositories for an organization
+      #   secret, and Remove selected repository from an organization secret
+      #   endpoints.
+      def self.actions_create_or_update_org_secret(
+        config:,
+        org:,
+        secret_name:,
+        encrypted_value:,
+        key_id:,
+        visibility:,
+        selected_repository_ids: NOT_GIVEN,
+        request_options: nil
+      )
+
+        Validation.validate_pattern('encrypted_value', encrypted_value, '^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$')
+
+        SdkClient.request(
+          'PUT',
+          [
+            "/orgs/",
+            SdkClient.encode_path_segment(org),
+            "/actions/secrets/",
+            SdkClient.encode_path_segment(secret_name)
+          ].join,
+          config: config,
+          body: {
+            'encrypted_value' => encrypted_value,
+            'key_id' => key_id,
+            'visibility' => visibility,
+            'selected_repository_ids' => selected_repository_ids,
+          },
+          return_type: ::OctridevGithub::EmptyObject,
+          decoder: :json,
+          operation_id: 'actions_create_or_update_org_secret',
+          request_options: request_options,
         ).data
       end
     end

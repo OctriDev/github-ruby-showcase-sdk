@@ -9,157 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Actions SDK namespace.
     module Actions
-      # Lists jobs for a workflow run. You can use parameters to narrow the list of results. For more information about using parameters, see Parameters. Anyone with read access to the repository can use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param run_id [Integer] The unique identifier of the workflow run.
-      # @param filter [ActionsListJobsForWorkflowRunParameter] Filters jobs by their
-      #   `completed_at` timestamp. `latest` returns jobs from the most recent
-      #   execution of the workflow run. `all` returns all jobs for a workflow run,
-      #   including from old executions of the workflow run.
-      # @param per_page [Integer] The number of results per page (max 100). For more
-      #   information, see "Using pagination in the REST API."
-      # @param page [Integer] The page number of the results to fetch. For more
-      #   information, see "Using pagination in the REST API."
-      def self.actions_list_jobs_for_workflow_run(
-        config:,
-        owner:,
-        repo:,
-        run_id:,
-        filter: NOT_GIVEN,
-        per_page: NOT_GIVEN,
-        page: NOT_GIVEN,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/actions/runs/",
-            SdkClient.encode_path_segment(run_id),
-            "/jobs"
-          ].join,
-          config: config,
-          query: {
-            'filter' => QueryValue.new(filter, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
-          },
-          return_type: ::OctridevGithub::Methods::Actions::ActionsListJobsForWorkflowRunResponse,
-          decoder: :json,
-          operation_id: 'actions_list_jobs_for_workflow_run',
-          request_options: request_options,
-        ).data
-      end
-
-      # Gets a redirect URL to download an archive of log files for a workflow run. This link expires after 1 minute. Look for `Location:` in the response header to find the URL for the download. Anyone with read access to the repository can use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param run_id [Integer] The unique identifier of the workflow run.
-      def self.actions_download_workflow_run_logs(
-        config:,
-        owner:,
-        repo:,
-        run_id:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/actions/runs/",
-            SdkClient.encode_path_segment(run_id),
-            "/logs"
-          ].join,
-          config: config,
-          decoder: :empty,
-          operation_id: 'actions_download_workflow_run_logs',
-          request_options: request_options,
-        ).data
-      end
-
-      # Deletes all logs for a workflow run. OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param run_id [Integer] The unique identifier of the workflow run.
-      def self.actions_delete_workflow_run_logs(
-        config:,
-        owner:,
-        repo:,
-        run_id:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'DELETE',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/actions/runs/",
-            SdkClient.encode_path_segment(run_id),
-            "/logs"
-          ].join,
-          config: config,
-          decoder: :empty,
-          operation_id: 'actions_delete_workflow_run_logs',
-          request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
-        ).data
-      end
-
-      # Get all deployment environments for a workflow run that are waiting for protection rules to pass. Anyone with read access to the repository can use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param run_id [Integer] The unique identifier of the workflow run.
-      def self.actions_get_pending_deployments_for_run(
-        config:,
-        owner:,
-        repo:,
-        run_id:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/actions/runs/",
-            SdkClient.encode_path_segment(run_id),
-            "/pending_deployments"
-          ].join,
-          config: config,
-          return_type: [::OctridevGithub::PendingDeployment],
-          decoder: :json,
-          operation_id: 'actions_get_pending_deployments_for_run',
-          request_options: request_options,
-        ).data
-      end
-
       # Approve or reject pending deployments that are waiting on approval by a required reviewer. Required reviewers with read access to the repository contents and deployments can use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
       #
       # @param owner [String] The account owner of the repository. The name is not
@@ -537,6 +386,149 @@ module OctridevGithub
           return_type: ::OctridevGithub::Methods::Actions::ActionsListRepoVariablesResponse,
           decoder: :json,
           operation_id: 'actions_list_repo_variables',
+          request_options: request_options,
+        ).data
+      end
+
+      # Creates a repository variable that you can reference in a GitHub Actions workflow. Authenticated users must have collaborator access to a repository to create, update, or read variables. OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param name [String] The name of the variable.
+      # @param value [String] The value of the variable.
+      def self.actions_create_repo_variable(
+        config:,
+        owner:,
+        repo:,
+        name:,
+        value:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'POST',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/actions/variables"
+          ].join,
+          config: config,
+          body: {
+            'name' => name,
+            'value' => value,
+          },
+          return_type: ::OctridevGithub::EmptyObject,
+          decoder: :json,
+          operation_id: 'actions_create_repo_variable',
+          request_options: request_options,
+        ).data
+      end
+
+      # Gets a specific variable in a repository. The authenticated user must have collaborator access to the repository to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param name [String] The name of the variable.
+      def self.actions_get_repo_variable(
+        config:,
+        owner:,
+        repo:,
+        name:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/actions/variables/",
+            SdkClient.encode_path_segment(name)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::ActionsVariable,
+          decoder: :json,
+          operation_id: 'actions_get_repo_variable',
+          request_options: request_options,
+        ).data
+      end
+
+      # Updates a repository variable that you can reference in a GitHub Actions workflow. Authenticated users must have collaborator access to a repository to create, update, or read variables. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param name [String] The name of the variable.
+      # @param name2 [String] The name of the variable.
+      # @param value [String] The value of the variable.
+      def self.actions_update_repo_variable(
+        config:,
+        owner:,
+        repo:,
+        name:,
+        name2: NOT_GIVEN,
+        value: NOT_GIVEN,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'PATCH',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/actions/variables/",
+            SdkClient.encode_path_segment(name)
+          ].join,
+          config: config,
+          body: {
+            'name' => name2,
+            'value' => value,
+          },
+          decoder: :empty,
+          operation_id: 'actions_update_repo_variable',
+          request_options: request_options,
+        ).data
+      end
+
+      # Deletes a repository variable using the variable name. Authenticated users must have collaborator access to a repository to create, update, or read variables. OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param name [String] The name of the variable.
+      def self.actions_delete_repo_variable(
+        config:,
+        owner:,
+        repo:,
+        name:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'DELETE',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/actions/variables/",
+            SdkClient.encode_path_segment(name)
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'actions_delete_repo_variable',
           request_options: request_options,
         ).data
       end

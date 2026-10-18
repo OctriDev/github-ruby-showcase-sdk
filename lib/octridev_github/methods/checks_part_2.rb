@@ -9,52 +9,8 @@ module OctridevGithub
   module Methods
     # Defines the Checks SDK namespace.
     module Checks
-      # API model for ChecksListSuitesForRefResponse.
-      class ChecksListSuitesForRefResponse
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalChecksListSuitesForRefResponseMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalChecksListSuitesForRefResponseMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalChecksListSuitesForRefResponseMetadata::DECODERS
-
-        attr_reader :total_count, :check_suites
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Defines the ChecksListForRefParameter SDK namespace.
-      module ChecksListForRefParameter
-        LATEST = 'latest'
-        ALL = 'all'
-        VALUES = ['latest', 'all'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the ChecksCreateOutputAnnotationsItemAnnotationLevel SDK namespace.
-      module ChecksCreateOutputAnnotationsItemAnnotationLevel
-        NOTICE = 'notice'
-        WARNING = 'warning'
-        FAILURE = 'failure'
-        VALUES = ['notice', 'warning', 'failure'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the ChecksUpdateConclusion SDK namespace.
-      module ChecksUpdateConclusion
+      # Defines the ChecksUpdateVariant0Conclusion SDK namespace.
+      module ChecksUpdateVariant0Conclusion
         ACTION_REQUIRED = 'action_required'
         CANCELLED = 'cancelled'
         FAILURE = 'failure'
@@ -72,31 +28,22 @@ module OctridevGithub
         end
       end
 
-      # Defines the ChecksCreateConclusion SDK namespace.
-      module ChecksCreateConclusion
-        ACTION_REQUIRED = 'action_required'
-        CANCELLED = 'cancelled'
-        FAILURE = 'failure'
-        NEUTRAL = 'neutral'
-        SUCCESS = 'success'
-        SKIPPED = 'skipped'
-        STALE = 'stale'
-        TIMED_OUT = 'timed_out'
-        VALUES = [
-          'action_required', 'cancelled', 'failure', 'neutral', 'success', 'skipped', 'stale',
-          'timed_out'
-        ].freeze
+      # Defines the ChecksCreateVariant1Status SDK namespace.
+      module ChecksCreateVariant1Status
+        QUEUED = 'queued'
+        IN_PROGRESS = 'in_progress'
+        VALUES = ['queued', 'in_progress'].freeze
         def self.from_value(value)
-          value
+          return value if VALUES.include?(value)
+
+          raise SdkValidationError.new('ChecksCreateVariant1Status', 'enum', "Unknown ChecksCreateVariant1Status: #{value}")
         end
       end
 
-      # Defines the ChecksUpdateOutputAnnotationsItemAnnotationLevel SDK namespace.
-      module ChecksUpdateOutputAnnotationsItemAnnotationLevel
-        NOTICE = 'notice'
-        WARNING = 'warning'
-        FAILURE = 'failure'
-        VALUES = ['notice', 'warning', 'failure'].freeze
+      # Defines the ChecksUpdateVariant0Status SDK namespace.
+      module ChecksUpdateVariant0Status
+        COMPLETED = 'completed'
+        VALUES = ['completed'].freeze
         def self.from_value(value)
           value
         end
@@ -126,15 +73,31 @@ module OctridevGithub
         end
       end
 
-      # Defines the ChecksUpdateStatus SDK namespace.
-      module ChecksUpdateStatus
-        QUEUED = 'queued'
-        IN_PROGRESS = 'in_progress'
+      # Defines the ChecksCreateVariant0Status SDK namespace.
+      module ChecksCreateVariant0Status
         COMPLETED = 'completed'
-        WAITING = 'waiting'
-        REQUESTED = 'requested'
-        PENDING = 'pending'
-        VALUES = ['queued', 'in_progress', 'completed', 'waiting', 'requested', 'pending'].freeze
+        VALUES = ['completed'].freeze
+        def self.from_value(value)
+          return value if VALUES.include?(value)
+
+          raise SdkValidationError.new('ChecksCreateVariant0Status', 'enum', "Unknown ChecksCreateVariant0Status: #{value}")
+        end
+      end
+
+      # Defines the ChecksUpdateVariant1Conclusion SDK namespace.
+      module ChecksUpdateVariant1Conclusion
+        ACTION_REQUIRED = 'action_required'
+        CANCELLED = 'cancelled'
+        FAILURE = 'failure'
+        NEUTRAL = 'neutral'
+        SUCCESS = 'success'
+        SKIPPED = 'skipped'
+        STALE = 'stale'
+        TIMED_OUT = 'timed_out'
+        VALUES = [
+          'action_required', 'cancelled', 'failure', 'neutral', 'success', 'skipped', 'stale',
+          'timed_out'
+        ].freeze
         def self.from_value(value)
           value
         end
@@ -267,52 +230,14 @@ module OctridevGithub
       # @param repo [String] The name of the repository without the `.git`
       #   extension. The name is not case sensitive.
       # @param check_run_id [Integer] The unique identifier of the check run.
-      # @param name [String] The name of the check. For example, "code-coverage".
-      # @param details_url [String] The URL of the integrator's site that has the
-      #   full details of the check.
-      # @param external_id [String] A reference for the run on the integrator's
-      #   system.
-      # @param started_at [String] This is a timestamp in ISO 8601 format:
-      #   `YYYY-MM-DDTHH:MM:SSZ`.
-      # @param status [ChecksUpdateStatus] The current status of the check run. Only
-      #   GitHub Actions can set a status of `waiting`, `pending`, or `requested`.
-      # @param conclusion [ChecksUpdateConclusion] **Required if you provide
-      #   `completed_at` or a `status` of `completed`**. The final conclusion of the
-      #   check. **Note:** Providing `conclusion` will automatically set the `status`
-      #   parameter to `completed`. You cannot change a check run conclusion to
-      #   `stale`, only GitHub can set this.
-      # @param completed_at [String] The time the check completed. This is a
-      #   timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-      # @param output [ChecksUpdateOutput] Check runs can accept a variety of data
-      #   in the `output` object, including a `title` and `summary` and can optionally
-      #   provide descriptive details about the run.
-      # @param actions [Array_of_Hash] Possible further actions the integrator can
-      #   perform, which a user may trigger. Each action includes a `label`,
-      #   `identifier` and `description`. A maximum of three actions are accepted. To
-      #   learn more about check runs and requested actions, see "Check runs and
-      #   requested actions."
       def self.checks_update(
         config:,
         owner:,
         repo:,
         check_run_id:,
-        name: NOT_GIVEN,
-        details_url: NOT_GIVEN,
-        external_id: NOT_GIVEN,
-        started_at: NOT_GIVEN,
-        status: NOT_GIVEN,
-        conclusion: NOT_GIVEN,
-        completed_at: NOT_GIVEN,
-        output: NOT_GIVEN,
-        actions: NOT_GIVEN,
+        body:,
         request_options: nil
       )
-
-        Validation.if_given(started_at) { Validation.validate_date_time('started_at', started_at) }
-
-        Validation.if_given(completed_at) { Validation.validate_date_time('completed_at', completed_at) }
-
-        Validation.if_given(actions) { Validation.validate_items('actions', actions, max: 3) }
 
         SdkClient.request(
           'PATCH',
@@ -325,17 +250,7 @@ module OctridevGithub
             SdkClient.encode_path_segment(check_run_id)
           ].join,
           config: config,
-          body: {
-            'name' => name,
-            'details_url' => details_url,
-            'external_id' => external_id,
-            'started_at' => started_at,
-            'status' => status,
-            'conclusion' => conclusion,
-            'completed_at' => completed_at,
-            'output' => output,
-            'actions' => actions,
-          },
+          body: body,
           return_type: ::OctridevGithub::CheckRun,
           decoder: :json,
           operation_id: 'checks_update',
@@ -523,6 +438,95 @@ module OctridevGithub
           return_type: ::OctridevGithub::CheckSuite,
           decoder: :json,
           operation_id: 'checks_get_suite',
+          request_options: request_options,
+        ).data
+      end
+
+      # Lists check runs for a check suite using its `id`. > [!NOTE] > The endpoints to manage checks only look for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint on a private repository.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param check_suite_id [Integer] The unique identifier of the check suite.
+      # @param check_name [String] Returns check runs with the specified `name`.
+      # @param status [SchemaSchemaB67a25cf] Returns check runs with the specified
+      #   `status`.
+      # @param filter [ChecksListForSuiteParameter] Filters check runs by their
+      #   `completed_at` timestamp. `latest` returns the most recent check runs.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.checks_list_for_suite(
+        config:,
+        owner:,
+        repo:,
+        check_suite_id:,
+        check_name: NOT_GIVEN,
+        status: NOT_GIVEN,
+        filter: NOT_GIVEN,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/check-suites/",
+            SdkClient.encode_path_segment(check_suite_id),
+            "/check-runs"
+          ].join,
+          config: config,
+          query: {
+            'check_name' => QueryValue.new(check_name, style: 'form', explode: true),
+            'status' => QueryValue.new(status, style: 'form', explode: true),
+            'filter' => QueryValue.new(filter, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true),
+          },
+          return_type: ::OctridevGithub::Methods::Checks::ChecksListForSuiteResponse,
+          decoder: :json,
+          operation_id: 'checks_list_for_suite',
+          request_options: request_options,
+        ).data
+      end
+
+      # Triggers GitHub to rerequest an existing check suite, without pushing new code to a repository. This endpoint will trigger the `check_suite` webhook event with the action `rerequested`. When a check suite is `rerequested`, its `status` is reset to `queued` and the `conclusion` is cleared.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param check_suite_id [Integer] The unique identifier of the check suite.
+      def self.checks_rerequest_suite(
+        config:,
+        owner:,
+        repo:,
+        check_suite_id:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'POST',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/check-suites/",
+            SdkClient.encode_path_segment(check_suite_id),
+            "/rerequest"
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::EmptyObject,
+          decoder: :json,
+          operation_id: 'checks_rerequest_suite',
           request_options: request_options,
         ).data
       end

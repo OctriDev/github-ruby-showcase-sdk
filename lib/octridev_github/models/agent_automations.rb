@@ -6,7 +6,99 @@
 # agent_automations domain models
 module OctridevGithub
 # Internal model hydration metadata.
-class SdkInternalFieldsItemSchemaVariant0Metadata
+class SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemArtifactsXff12b2977aMetadata
+  FIELDS = {
+    id: "id",
+    global_id: "global_id",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for AgentAutomationsListAutomationTasksResponseTasksItemArtifactsXff12b2977a.
+class AgentAutomationsListAutomationTasksResponseTasksItemArtifactsXff12b2977a
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemArtifactsXff12b2977aMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemArtifactsXff12b2977aMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemArtifactsXff12b2977aMetadata::DECODERS
+
+  # @return [Integer] GitHub resource ID
+  attr_reader :id
+  # @return [String] GraphQL global ID
+  attr_reader :global_id
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
+  end
+
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemArtifactsX3f37b14db4Metadata
+  FIELDS = {
+    head_ref: "head_ref",
+    base_ref: "base_ref",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    head_ref
+    base_ref
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for AgentAutomationsListAutomationTasksResponseTasksItemArtifactsX3f37b14db4.
+class AgentAutomationsListAutomationTasksResponseTasksItemArtifactsX3f37b14db4
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemArtifactsX3f37b14db4Metadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemArtifactsX3f37b14db4Metadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemArtifactsX3f37b14db4Metadata::DECODERS
+
+  # @return [String] Head branch name
+  attr_reader :head_ref
+  # @return [String] Base branch name
+  attr_reader :base_ref
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
+  end
+
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Defines the AgentAutomationsListAutomationTasksResponseTasksItemArtifactsItemData SDK namespace.
+module AgentAutomationsListAutomationTasksResponseTasksItemArtifactsItemData
+  def self.from_hash(hash)
+    shape_mapping = {
+      "id" => AgentAutomationsListAutomationTasksResponseTasksItemArtifactsXff12b2977a,
+      "head_ref" => AgentAutomationsListAutomationTasksResponseTasksItemArtifactsX3f37b14db4,
+    }
+    type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
+    decoded = type&.from_hash(hash)
+    return decoded unless type.nil?
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX2732c6430fMetadata
   FIELDS = {
     type: "type",
     min_length: "minLength",
@@ -16,17 +108,17 @@ class SdkInternalFieldsItemSchemaVariant0Metadata
   ].freeze
   DECODERS = {
     type: lambda do |value|
-      ::OctridevGithub::FieldsItemSchemaVariant0Type.from_value(value)
+      ::OctridevGithub::AgentAutomationsListAvailableAutomationTriggersResponseItemFiX6c461ef13f.from_value(value)
     end,
   }.freeze
 end
 
-# API model for FieldsItemSchemaVariant0.
-class FieldsItemSchemaVariant0
+# API model for AgentAutomationsListAvailableAutomationTriggersResponseItemFiX2732c6430f.
+class AgentAutomationsListAvailableAutomationTriggersResponseItemFiX2732c6430f
   CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalFieldsItemSchemaVariant0Metadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalFieldsItemSchemaVariant0Metadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalFieldsItemSchemaVariant0Metadata::DECODERS
+  FIELDS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX2732c6430fMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX2732c6430fMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX2732c6430fMetadata::DECODERS
 
   attr_reader :type
   # @return [Integer] The minimum accepted string length.
@@ -47,7 +139,7 @@ class FieldsItemSchemaVariant0
 end
 
 # Internal model hydration metadata.
-class SdkInternalFieldsItemSchemaVariant1ItemsMetadata
+class SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX3c0c1332cbMetadata
   FIELDS = {
     type: "type",
     min_length: "minLength",
@@ -57,17 +149,17 @@ class SdkInternalFieldsItemSchemaVariant1ItemsMetadata
   ].freeze
   DECODERS = {
     type: lambda do |value|
-      ::OctridevGithub::FieldsItemSchemaVariant1ItemsType.from_value(value)
+      ::OctridevGithub::AgentAutomationsListAvailableAutomationTriggersResponseItemFiX6da060e0f6.from_value(value)
     end,
   }.freeze
 end
 
-# API model for FieldsItemSchemaVariant1Items.
-class FieldsItemSchemaVariant1Items
+# API model for AgentAutomationsListAvailableAutomationTriggersResponseItemFiX3c0c1332cb.
+class AgentAutomationsListAvailableAutomationTriggersResponseItemFiX3c0c1332cb
   CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalFieldsItemSchemaVariant1ItemsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalFieldsItemSchemaVariant1ItemsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalFieldsItemSchemaVariant1ItemsMetadata::DECODERS
+  FIELDS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX3c0c1332cbMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX3c0c1332cbMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX3c0c1332cbMetadata::DECODERS
 
   attr_reader :type
   # @return [Integer] The minimum accepted string item length.
@@ -88,7 +180,7 @@ class FieldsItemSchemaVariant1Items
 end
 
 # Internal model hydration metadata.
-class SdkInternalFieldsItemSchemaVariant1Metadata
+class SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX33c1ad0172Metadata
   FIELDS = {
     type: "type",
     items: "items",
@@ -102,20 +194,20 @@ class SdkInternalFieldsItemSchemaVariant1Metadata
   ].freeze
   DECODERS = {
     type: lambda do |value|
-      ::OctridevGithub::FieldsItemSchemaVariant1Type.from_value(value)
+      ::OctridevGithub::AgentAutomationsListAvailableAutomationTriggersResponseItemFiXf26f7efb5e.from_value(value)
     end,
     items: lambda do |value|
-      ::OctridevGithub::FieldsItemSchemaVariant1Items.from_hash(value)
+      ::OctridevGithub::AgentAutomationsListAvailableAutomationTriggersResponseItemFiX3c0c1332cb.from_hash(value)
     end,
   }.freeze
 end
 
-# API model for FieldsItemSchemaVariant1.
-class FieldsItemSchemaVariant1
+# API model for AgentAutomationsListAvailableAutomationTriggersResponseItemFiX33c1ad0172.
+class AgentAutomationsListAvailableAutomationTriggersResponseItemFiX33c1ad0172
   CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalFieldsItemSchemaVariant1Metadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalFieldsItemSchemaVariant1Metadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalFieldsItemSchemaVariant1Metadata::DECODERS
+  FIELDS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX33c1ad0172Metadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX33c1ad0172Metadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX33c1ad0172Metadata::DECODERS
 
   attr_reader :type, :items
   # @return [Integer] The minimum accepted number of array items.
@@ -140,7 +232,7 @@ class FieldsItemSchemaVariant1
 end
 
 # Internal model hydration metadata.
-class SdkInternalFieldsItemSchemaVariant2Metadata
+class SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiXe26621da0fMetadata
   FIELDS = {
     type: "type",
   }.freeze
@@ -149,17 +241,17 @@ class SdkInternalFieldsItemSchemaVariant2Metadata
   ].freeze
   DECODERS = {
     type: lambda do |value|
-      ::OctridevGithub::FieldsItemSchemaVariant2Type.from_value(value)
+      ::OctridevGithub::AgentAutomationsListAvailableAutomationTriggersResponseItemFiX453baec979.from_value(value)
     end,
   }.freeze
 end
 
-# API model for FieldsItemSchemaVariant2.
-class FieldsItemSchemaVariant2
+# API model for AgentAutomationsListAvailableAutomationTriggersResponseItemFiXe26621da0f.
+class AgentAutomationsListAvailableAutomationTriggersResponseItemFiXe26621da0f
   CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalFieldsItemSchemaVariant2Metadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalFieldsItemSchemaVariant2Metadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalFieldsItemSchemaVariant2Metadata::DECODERS
+  FIELDS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiXe26621da0fMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiXe26621da0fMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiXe26621da0fMetadata::DECODERS
 
   attr_reader :type
 
@@ -177,12 +269,12 @@ class FieldsItemSchemaVariant2
   end
 end
 
-# Defines the FieldsItemSchema SDK namespace.
-module FieldsItemSchema
+# Defines the AgentAutomationsListAvailableAutomationTriggersResponseItemFiX8d60f6fda7 SDK namespace.
+module AgentAutomationsListAvailableAutomationTriggersResponseItemFiX8d60f6fda7
   DISCRIMINATOR_MAPPING = {
-    "string" => -> { FieldsItemSchemaVariant0 },
-    "array" => -> { FieldsItemSchemaVariant1 },
-    "integer" => -> { FieldsItemSchemaVariant2 },
+    "string" => -> { AgentAutomationsListAvailableAutomationTriggersResponseItemFiX2732c6430f },
+    "array" => -> { AgentAutomationsListAvailableAutomationTriggersResponseItemFiX33c1ad0172 },
+    "integer" => -> { AgentAutomationsListAvailableAutomationTriggersResponseItemFiXe26621da0f },
   }.freeze
 
   def self.from_hash(hash)
@@ -190,23 +282,23 @@ module FieldsItemSchema
     type = DISCRIMINATOR_MAPPING[hash["type"]]&.call
     return type.from_hash(hash) if type
 
-    raise SdkValidationError.new('FieldsItemSchema', 'variant', "Unknown FieldsItemSchema discriminator: #{hash["type"].inspect}")
+    raise SdkValidationError.new('AgentAutomationsListAvailableAutomationTriggersResponseItemFiX8d60f6fda7', 'variant', "Unknown AgentAutomationsListAvailableAutomationTriggersResponseItemFiX8d60f6fda7 discriminator: #{hash["type"].inspect}")
   end
 end
 
-# Defines the FieldsItemSchemaVariant0Type SDK namespace.
-module FieldsItemSchemaVariant0Type
+# Defines the AgentAutomationsListAvailableAutomationTriggersResponseItemFiX6c461ef13f SDK namespace.
+module AgentAutomationsListAvailableAutomationTriggersResponseItemFiX6c461ef13f
   STRING = 'string'
   VALUES = ['string'].freeze
   def self.from_value(value)
     return value if VALUES.include?(value)
 
-    raise SdkValidationError.new('FieldsItemSchemaVariant0Type', 'enum', "Unknown FieldsItemSchemaVariant0Type: #{value}")
+    raise SdkValidationError.new('AgentAutomationsListAvailableAutomationTriggersResponseItemFiX6c461ef13f', 'enum', "Unknown AgentAutomationsListAvailableAutomationTriggersResponseItemFiX6c461ef13f: #{value}")
   end
 end
 
-# Defines the FieldsItemSchemaVariant1ItemsType SDK namespace.
-module FieldsItemSchemaVariant1ItemsType
+# Defines the AgentAutomationsListAvailableAutomationTriggersResponseItemFiX6da060e0f6 SDK namespace.
+module AgentAutomationsListAvailableAutomationTriggersResponseItemFiX6da060e0f6
   STRING = 'string'
   VALUES = ['string'].freeze
   def self.from_value(value)
@@ -214,117 +306,25 @@ module FieldsItemSchemaVariant1ItemsType
   end
 end
 
-# Defines the FieldsItemSchemaVariant1Type SDK namespace.
-module FieldsItemSchemaVariant1Type
+# Defines the AgentAutomationsListAvailableAutomationTriggersResponseItemFiXf26f7efb5e SDK namespace.
+module AgentAutomationsListAvailableAutomationTriggersResponseItemFiXf26f7efb5e
   ARRAY = 'array'
   VALUES = ['array'].freeze
   def self.from_value(value)
     return value if VALUES.include?(value)
 
-    raise SdkValidationError.new('FieldsItemSchemaVariant1Type', 'enum', "Unknown FieldsItemSchemaVariant1Type: #{value}")
+    raise SdkValidationError.new('AgentAutomationsListAvailableAutomationTriggersResponseItemFiXf26f7efb5e', 'enum', "Unknown AgentAutomationsListAvailableAutomationTriggersResponseItemFiXf26f7efb5e: #{value}")
   end
 end
 
-# Defines the FieldsItemSchemaVariant2Type SDK namespace.
-module FieldsItemSchemaVariant2Type
+# Defines the AgentAutomationsListAvailableAutomationTriggersResponseItemFiX453baec979 SDK namespace.
+module AgentAutomationsListAvailableAutomationTriggersResponseItemFiX453baec979
   INTEGER = 'integer'
   VALUES = ['integer'].freeze
   def self.from_value(value)
     return value if VALUES.include?(value)
 
-    raise SdkValidationError.new('FieldsItemSchemaVariant2Type', 'enum', "Unknown FieldsItemSchemaVariant2Type: #{value}")
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalTasksItemArtifactsItemDataVariant0Metadata
-  FIELDS = {
-    id: "id",
-    global_id: "global_id",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for TasksItemArtifactsItemDataVariant0.
-class TasksItemArtifactsItemDataVariant0
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalTasksItemArtifactsItemDataVariant0Metadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalTasksItemArtifactsItemDataVariant0Metadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalTasksItemArtifactsItemDataVariant0Metadata::DECODERS
-
-  # @return [Integer] GitHub resource ID
-  attr_reader :id
-  # @return [String] GraphQL global ID
-  attr_reader :global_id
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalTasksItemArtifactsItemDataVariant1Metadata
-  FIELDS = {
-    head_ref: "head_ref",
-    base_ref: "base_ref",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    head_ref
-    base_ref
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for TasksItemArtifactsItemDataVariant1.
-class TasksItemArtifactsItemDataVariant1
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalTasksItemArtifactsItemDataVariant1Metadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalTasksItemArtifactsItemDataVariant1Metadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalTasksItemArtifactsItemDataVariant1Metadata::DECODERS
-
-  # @return [String] Head branch name
-  attr_reader :head_ref
-  # @return [String] Base branch name
-  attr_reader :base_ref
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the TasksItemArtifactsItemData SDK namespace.
-module TasksItemArtifactsItemData
-  def self.from_hash(hash)
-    shape_mapping = {
-      "id" => TasksItemArtifactsItemDataVariant0,
-      "head_ref" => TasksItemArtifactsItemDataVariant1,
-    }
-    type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
-    decoded = type&.from_hash(hash)
-    return decoded unless type.nil?
+    raise SdkValidationError.new('AgentAutomationsListAvailableAutomationTriggersResponseItemFiX453baec979', 'enum', "Unknown AgentAutomationsListAvailableAutomationTriggersResponseItemFiX453baec979: #{value}")
   end
 end
 end

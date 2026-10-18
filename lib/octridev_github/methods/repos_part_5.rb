@@ -193,6 +193,9 @@ module OctridevGithub
           ref
         ].freeze
         DECODERS = {
+          payload: lambda do |value|
+            ::OctridevGithub::ReposCreateDeploymentRequestPayload.from_hash(value)
+          end,
         }.freeze
       end
 
@@ -203,7 +206,6 @@ module OctridevGithub
         REQUIRED_FIELDS = SdkInternalReposCreateDeploymentMetadata::REQUIRED_FIELDS
         DECODERS = SdkInternalReposCreateDeploymentMetadata::DECODERS
 
-        attr_reader :payload
         # @return [String] The ref to deploy. This can be a branch, tag, or SHA.
         attr_reader :ref
         # @return [String] Specifies a task to execute (e.g., `deploy` or `deploy:migrations`).
@@ -212,6 +214,8 @@ module OctridevGithub
         attr_reader :auto_merge
         # @return [Array_of_String] The status contexts to verify against commit status checks. If you omit this parameter, GitHub verifies all unique contexts before creating a deployment. To bypass checking entirely, pass an empty array. Defaults to all unique contexts.
         attr_reader :required_contexts
+        # @return [ReposCreateDeploymentRequestPayload] Typed representation of the `ReposCreateDeploymentRequestPayload` API schema.
+        attr_reader :payload
         # @return [String] Name for the target deployment environment (e.g., `production`, `staging`, `qa`).
         attr_reader :environment
         # @return [String] Short description of the deployment.
@@ -548,17 +552,6 @@ module OctridevGithub
         def to_h
           SdkModel.to_h(self, FIELDS)
         end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalReposCreateDeploymentProtectionRuleMetadata
-        FIELDS = {
-          integration_id: "integration_id",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
       end
     end
   end

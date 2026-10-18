@@ -9,6 +9,17 @@ module OctridevGithub
   module Methods
     # Defines the Repos SDK namespace.
     module Repos
+      # Internal model hydration metadata.
+      class SdkInternalReposCreateDeploymentProtectionRuleMetadata
+        FIELDS = {
+          integration_id: "integration_id",
+        }.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
+      end
+
       # API model for ReposCreateDeploymentProtectionRule.
       class ReposCreateDeploymentProtectionRule
         CONSTRUCTION_SURFACE = :named

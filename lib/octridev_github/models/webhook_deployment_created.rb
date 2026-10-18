@@ -588,6 +588,9 @@ class SdkInternalWebhookDeploymentCreatedDeploymentMetadata
     creator: lambda do |value|
       ::OctridevGithub::WebhookDeploymentCreatedDeploymentCreator.from_hash(value)
     end,
+    payload: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPayload.from_hash(value)
+    end,
     performed_via_github_app: lambda do |value|
       ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubApp.from_hash(value)
     end,
@@ -620,7 +623,7 @@ class WebhookDeploymentCreatedDeployment
   attr_reader :node_id
   # @return [String] Required `string` value serialized in the `original_environment` wire field.
   attr_reader :original_environment
-  # @return [Object] Required API value serialized in the `payload` wire field.
+  # @return [WebhookDeploymentCreatedDeploymentPayload] Required API value serialized in the `payload` wire field.
   attr_reader :payload
   # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubApp] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
   attr_reader :performed_via_github_app
@@ -655,42 +658,5 @@ class WebhookDeploymentCreatedDeployment
   def to_h
     SdkModel.to_h(self, FIELDS)
   end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookDeploymentCreatedWorkflowRunActorMetadata
-  FIELDS = {
-    avatar_url: "avatar_url",
-    deleted: "deleted",
-    email: "email",
-    events_url: "events_url",
-    followers_url: "followers_url",
-    following_url: "following_url",
-    gists_url: "gists_url",
-    gravatar_id: "gravatar_id",
-    html_url: "html_url",
-    id: "id",
-    login: "login",
-    name: "name",
-    node_id: "node_id",
-    organizations_url: "organizations_url",
-    received_events_url: "received_events_url",
-    repos_url: "repos_url",
-    site_admin: "site_admin",
-    starred_url: "starred_url",
-    subscriptions_url: "subscriptions_url",
-    type: "type",
-    url: "url",
-    user_view_type: "user_view_type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    login
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::WebhookDeploymentCreatedWorkflowRunActorType.from_value(value)
-    end,
-  }.freeze
 end
 end

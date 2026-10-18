@@ -397,15 +397,61 @@ class SecretScanningCustomPatternToDelete
   end
 end
 
-# Defines the SecretScanningCustomPatternToUpdate SDK namespace.
-module SecretScanningCustomPatternToUpdate
-  def self.from_hash(hash)
-    return hash if hash.is_a?(::Object)
-    return hash if hash.is_a?(::Object)
-    return hash if hash.is_a?(::Object)
-    return hash if hash.is_a?(::Object)
-    return hash if hash.is_a?(::Object)
-    raise "Could not deserialize SecretScanningCustomPatternToUpdate from #{hash.inspect}"
+# Internal model hydration metadata.
+class SdkInternalSecretScanningCustomPatternToUpdateMetadata
+  FIELDS = {
+    pattern: "pattern",
+    start_delimiter: "start_delimiter",
+    end_delimiter: "end_delimiter",
+    must_match: "must_match",
+    must_not_match: "must_not_match",
+    custom_pattern_version: "custom_pattern_version",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    custom_pattern_version
+  ].freeze
+  DECODERS = {
+    custom_pattern_version: lambda do |value|
+      ::OctridevGithub::SecretScanningRowVersion.from_value(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    custom_pattern_version
+  ].freeze
+end
+
+# API model for SecretScanningCustomPatternToUpdate.
+# Fields to update on a custom pattern. At least one updatable field (`pattern`, `start_delimiter`, `end_delimiter`, `must_match`, or `must_not_match`) must also be provided. Only provided fields will be updated.
+class SecretScanningCustomPatternToUpdate
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalSecretScanningCustomPatternToUpdateMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalSecretScanningCustomPatternToUpdateMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalSecretScanningCustomPatternToUpdateMetadata::DECODERS
+
+  # @return [String] The updated regular expression of the custom pattern.
+  attr_reader :pattern
+  # @return [String] The updated start delimiter regex for the custom pattern.
+  attr_reader :start_delimiter
+  # @return [String] The updated end delimiter regex for the custom pattern.
+  attr_reader :end_delimiter
+  # @return [Array_of_String] Updated list of regexes that the secret must match.
+  attr_reader :must_match
+  # @return [Array_of_String] Updated list of regexes that the secret must not match.
+  attr_reader :must_not_match
+  # @return [SecretScanningRowVersion] The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.
+  attr_reader :custom_pattern_version
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
+  end
+
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalSecretScanningCustomPatternToUpdateMetadata::NULLABLE_FIELDS)
+  end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
 end
 
@@ -636,56 +682,5 @@ module SecretScanningLocationDetails
     decoded = type&.from_hash(hash)
     return decoded unless type.nil?
   end
-end
-
-# Internal model hydration metadata.
-class SdkInternalSecretScanningLocationDiscussionBodyMetadata
-  FIELDS = {
-    discussion_body_url: "discussion_body_url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    discussion_body_url
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for SecretScanningLocationDiscussionBody.
-# Represents a 'discussion_body' secret scanning location type. This location type shows that a secret was detected in the body of a discussion.
-class SecretScanningLocationDiscussionBody
-  include NullableSecretScanningFirstDetectedLocation
-  include SecretScanningLocationDetails
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalSecretScanningLocationDiscussionBodyMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalSecretScanningLocationDiscussionBodyMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalSecretScanningLocationDiscussionBodyMetadata::DECODERS
-
-  # @return [String] The URL to the discussion where the secret was detected.
-  attr_reader :discussion_body_url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalSecretScanningLocationDiscussionCommentMetadata
-  FIELDS = {
-    discussion_comment_url: "discussion_comment_url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    discussion_comment_url
-  ].freeze
-  DECODERS = {
-  }.freeze
 end
 end

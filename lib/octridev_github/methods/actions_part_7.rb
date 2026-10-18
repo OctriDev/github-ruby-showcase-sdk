@@ -9,159 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Actions SDK namespace.
     module Actions
-      # Internal model hydration metadata.
-      class SdkInternalActionsCreateEnvironmentVariableMetadata
-        FIELDS = {
-          name: "name",
-          value: "value",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          name
-          value
-        ].freeze
-        DECODERS = {
-        }.freeze
-      end
-
-      # API model for ActionsCreateEnvironmentVariable.
-      class ActionsCreateEnvironmentVariable
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalActionsCreateEnvironmentVariableMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalActionsCreateEnvironmentVariableMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalActionsCreateEnvironmentVariableMetadata::DECODERS
-
-        # @return [String] The name of the variable.
-        attr_reader :name
-        # @return [String] The value of the variable.
-        attr_reader :value
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalActionsUpdateEnvironmentVariableMetadata
-        FIELDS = {
-          name: "name",
-          value: "value",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
-      end
-
-      # API model for ActionsUpdateEnvironmentVariable.
-      class ActionsUpdateEnvironmentVariable
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalActionsUpdateEnvironmentVariableMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalActionsUpdateEnvironmentVariableMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalActionsUpdateEnvironmentVariableMetadata::DECODERS
-
-        # @return [String] The name of the variable.
-        attr_reader :name
-        # @return [String] The value of the variable.
-        attr_reader :value
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Defines the ActionsCreateOrUpdateOrgSecretVisibility SDK namespace.
-      module ActionsCreateOrUpdateOrgSecretVisibility
-        ALL = 'all'
-        PRIVATE = 'private'
-        SELECTED = 'selected'
-        VALUES = ['all', 'private', 'selected'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the ActionsCreateOrgVariableVisibility SDK namespace.
-      module ActionsCreateOrgVariableVisibility
-        ALL = 'all'
-        PRIVATE = 'private'
-        SELECTED = 'selected'
-        VALUES = ['all', 'private', 'selected'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the ActionsListJobsForWorkflowRunParameter SDK namespace.
-      module ActionsListJobsForWorkflowRunParameter
-        LATEST = 'latest'
-        ALL = 'all'
-        VALUES = ['latest', 'all'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the ActionsReviewPendingDeploymentsForRunState SDK namespace.
-      module ActionsReviewPendingDeploymentsForRunState
-        APPROVED = 'approved'
-        REJECTED = 'rejected'
-        VALUES = ['approved', 'rejected'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the ActionsUpdateSelfHostedRunnerGroupForOrgVisibility SDK namespace.
-      module ActionsUpdateSelfHostedRunnerGroupForOrgVisibility
-        SELECTED = 'selected'
-        ALL = 'all'
-        PRIVATE = 'private'
-        VALUES = ['selected', 'all', 'private'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the ActionsUpdateHostedRunnerForOrgImageSource SDK namespace.
-      module ActionsUpdateHostedRunnerForOrgImageSource
-        GITHUB = 'github'
-        PARTNER = 'partner'
-        CUSTOM = 'custom'
-        VALUES = ['github', 'partner', 'custom'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the ActionsCreateHostedRunnerForOrgImageSource SDK namespace.
-      module ActionsCreateHostedRunnerForOrgImageSource
-        GITHUB = 'github'
-        PARTNER = 'partner'
-        CUSTOM = 'custom'
-        VALUES = ['github', 'partner', 'custom'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
       # Defines the ActionsSetSelfHostedRunnersPermissionsOrganizationEnabledRepositories SDK namespace.
       module ActionsSetSelfHostedRunnersPermissionsOrganizationEnabledRepositories
         ALL = 'all'
@@ -565,6 +412,144 @@ module OctridevGithub
           return_type: ::OctridevGithub::ActionsHostedRunner,
           decoder: :json,
           operation_id: 'actions_create_hosted_runner_for_org',
+          request_options: request_options,
+        ).data
+      end
+
+      # List custom images for an organization. OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      def self.actions_list_custom_images_for_org(
+        config:,
+        org:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/orgs/",
+            SdkClient.encode_path_segment(org),
+            "/actions/hosted-runners/images/custom"
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::Methods::Actions::ActionsListCustomImagesForOrgResponse,
+          decoder: :json,
+          operation_id: 'actions_list_custom_images_for_org',
+          request_options: request_options,
+        ).data
+      end
+
+      # Get a custom image definition for GitHub Actions Hosted Runners. OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param image_definition_id [Integer] Image definition ID of custom image
+      def self.actions_get_custom_image_for_org(
+        config:,
+        org:,
+        image_definition_id:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/orgs/",
+            SdkClient.encode_path_segment(org),
+            "/actions/hosted-runners/images/custom/",
+            SdkClient.encode_path_segment(image_definition_id)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::ActionsHostedRunnerCustomImage,
+          decoder: :json,
+          operation_id: 'actions_get_custom_image_for_org',
+          request_options: request_options,
+        ).data
+      end
+
+      # Delete a custom image from the organization. OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param image_definition_id [Integer] Image definition ID of custom image
+      def self.actions_delete_custom_image_from_org(
+        config:,
+        org:,
+        image_definition_id:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'DELETE',
+          [
+            "/orgs/",
+            SdkClient.encode_path_segment(org),
+            "/actions/hosted-runners/images/custom/",
+            SdkClient.encode_path_segment(image_definition_id)
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'actions_delete_custom_image_from_org',
+          request_options: request_options,
+        ).data
+      end
+
+      # List image versions of a custom image for an organization. OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
+      #
+      # @param image_definition_id [Integer] Image definition ID of custom image
+      # @param org [String] The organization name. The name is not case sensitive.
+      def self.actions_list_custom_image_versions_for_org(
+        config:,
+        image_definition_id:,
+        org:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/orgs/",
+            SdkClient.encode_path_segment(org),
+            "/actions/hosted-runners/images/custom/",
+            SdkClient.encode_path_segment(image_definition_id),
+            "/versions"
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::Methods::Actions::ActionsListCustomImageVersionsForOrgResponse,
+          decoder: :json,
+          operation_id: 'actions_list_custom_image_versions_for_org',
+          request_options: request_options,
+        ).data
+      end
+
+      # Get an image version of a custom image for GitHub Actions Hosted Runners. OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param image_definition_id [Integer] Image definition ID of custom image
+      # @param version [String] Version of a custom image
+      def self.actions_get_custom_image_version_for_org(
+        config:,
+        org:,
+        image_definition_id:,
+        version:,
+        request_options: nil
+      )
+
+        Validation.validate_pattern('version', version, '^\\d+\\.\\d+\\.\\d+$')
+
+        SdkClient.request(
+          'GET',
+          [
+            "/orgs/",
+            SdkClient.encode_path_segment(org),
+            "/actions/hosted-runners/images/custom/",
+            SdkClient.encode_path_segment(image_definition_id),
+            "/versions/",
+            SdkClient.encode_path_segment(version)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::ActionsHostedRunnerCustomImageVersion,
+          decoder: :json,
+          operation_id: 'actions_get_custom_image_version_for_org',
           request_options: request_options,
         ).data
       end

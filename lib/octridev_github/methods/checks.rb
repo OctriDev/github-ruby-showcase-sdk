@@ -176,167 +176,81 @@ module OctridevGithub
       end
 
       # Internal model hydration metadata.
-      class SdkInternalChecksUpdateOutputAnnotationsItemMetadata
+      class SdkInternalChecksCreateVariant0Metadata
         FIELDS = {
-          path: "path",
-          start_line: "start_line",
-          end_line: "end_line",
-          start_column: "start_column",
-          end_column: "end_column",
-          annotation_level: "annotation_level",
-          message: "message",
-          title: "title",
-          raw_details: "raw_details",
+          status: "status",
         }.freeze
         REQUIRED_FIELDS = %i[
-          path
-          start_line
-          end_line
-          annotation_level
-          message
+          status
         ].freeze
         DECODERS = {
-          annotation_level: lambda do |value|
-            ::OctridevGithub::Methods::Checks::ChecksUpdateOutputAnnotationsItemAnnotationLevel.from_value(value)
+          status: lambda do |value|
+            ::OctridevGithub::Methods::Checks::ChecksCreateVariant0Status.from_value(value)
           end,
         }.freeze
       end
 
-      # API model for ChecksUpdateOutputAnnotationsItem.
-      class ChecksUpdateOutputAnnotationsItem
+      # API model for ChecksCreateVariant0.
+      class ChecksCreateVariant0
         CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalChecksUpdateOutputAnnotationsItemMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalChecksUpdateOutputAnnotationsItemMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalChecksUpdateOutputAnnotationsItemMetadata::DECODERS
+        FIELDS = SdkInternalChecksCreateVariant0Metadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalChecksCreateVariant0Metadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalChecksCreateVariant0Metadata::DECODERS
 
-        # @return [String] The path of the file to add an annotation to. For example, `assets/css/main.css`.
-        attr_reader :path
-        # @return [Integer] The start line of the annotation. Line numbers start at 1.
-        attr_reader :start_line
-        # @return [Integer] The end line of the annotation.
-        attr_reader :end_line
-        # @return [Integer] The start column of the annotation. Annotations only support `start_column` and `end_column` on the same line. Omit this parameter if `start_line` and `end_line` have different values. Column numbers start at 1.
-        attr_reader :start_column
-        # @return [Integer] The end column of the annotation. Annotations only support `start_column` and `end_column` on the same line. Omit this parameter if `start_line` and `end_line` have different values.
-        attr_reader :end_column
-        # @return [ChecksUpdateOutputAnnotationsItemAnnotationLevel] The level of the annotation.
-        attr_reader :annotation_level
-        # @return [String] A short description of the feedback for these lines of code. The maximum size is 64 KB.
-        attr_reader :message
-        # @return [String] The title that represents the annotation. The maximum size is 255 characters.
-        attr_reader :title
-        # @return [String] Details about this annotation. The maximum size is 64 KB.
-        attr_reader :raw_details
+        attr_reader :status
+        # @return [Hash{String => Object}] Keys the schema admits beside the declared fields.
+        attr_reader :additional_properties
 
         def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS, extras: true)
           freeze
         end
 
         def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, extras: true)
         end
 
         def to_h
-          SdkModel.to_h(self, FIELDS)
+          SdkModel.to_h(self, FIELDS, extras: true)
         end
       end
 
       # Internal model hydration metadata.
-      class SdkInternalChecksUpdateOutputImagesItemMetadata
+      class SdkInternalChecksCreateVariant1Metadata
         FIELDS = {
-          alt: "alt",
-          image_url: "image_url",
-          caption: "caption",
+          status: "status",
         }.freeze
         REQUIRED_FIELDS = %i[
-          alt
-          image_url
         ].freeze
         DECODERS = {
-        }.freeze
-      end
-
-      # API model for ChecksUpdateOutputImagesItem.
-      class ChecksUpdateOutputImagesItem
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalChecksUpdateOutputImagesItemMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalChecksUpdateOutputImagesItemMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalChecksUpdateOutputImagesItemMetadata::DECODERS
-
-        # @return [String] The alternative text for the image.
-        attr_reader :alt
-        # @return [String] The full URL of the image.
-        attr_reader :image_url
-        # @return [String] A short image description.
-        attr_reader :caption
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalChecksUpdateOutputMetadata
-        FIELDS = {
-          title: "title",
-          summary: "summary",
-          text: "text",
-          annotations: "annotations",
-          images: "images",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          summary
-        ].freeze
-        DECODERS = {
-          annotations: lambda do |value|
-            value&.map { |item| ::OctridevGithub::Methods::Checks::ChecksUpdateOutputAnnotationsItem.from_hash(item) }
-          end,
-          images: lambda do |value|
-            value&.map { |item| ::OctridevGithub::Methods::Checks::ChecksUpdateOutputImagesItem.from_hash(item) }
+          status: lambda do |value|
+            ::OctridevGithub::Methods::Checks::ChecksCreateVariant1Status.from_value(value)
           end,
         }.freeze
       end
 
-      # API model for ChecksUpdateOutput.
-      # Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run.
-      class ChecksUpdateOutput
+      # API model for ChecksCreateVariant1.
+      class ChecksCreateVariant1
         CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalChecksUpdateOutputMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalChecksUpdateOutputMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalChecksUpdateOutputMetadata::DECODERS
+        FIELDS = SdkInternalChecksCreateVariant1Metadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalChecksCreateVariant1Metadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalChecksCreateVariant1Metadata::DECODERS
 
-        # @return [String] **Required**.
-        attr_reader :title
-        # @return [String] Can contain Markdown.
-        attr_reader :summary
-        # @return [String] Can contain Markdown.
-        attr_reader :text
-        # @return [Array_of_ChecksUpdateOutputAnnotationsItem] Adds information from your analysis to specific lines of code. Annotations are visible in GitHub's pull request UI. Annotations are visible in GitHub's pull request UI. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests to the Update a check run endpoint. Each time you update the check run, annotations are appended to the list of annotations that already exist for the…
-        attr_reader :annotations
-        # @return [Array_of_ChecksUpdateOutputImagesItem] Adds images to the output displayed in the GitHub pull request UI.
-        attr_reader :images
+        attr_reader :status
+        # @return [Hash{String => Object}] Keys the schema admits beside the declared fields.
+        attr_reader :additional_properties
 
         def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS, extras: true)
           freeze
         end
 
         def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, extras: true)
         end
 
         def to_h
-          SdkModel.to_h(self, FIELDS)
+          SdkModel.to_h(self, FIELDS, extras: true)
         end
       end
 
@@ -549,6 +463,101 @@ module OctridevGithub
             value&.map { |item| ::OctridevGithub::CheckSuite.from_hash(item) }
           end,
         }.freeze
+      end
+
+      # API model for ChecksListSuitesForRefResponse.
+      class ChecksListSuitesForRefResponse
+        CONSTRUCTION_SURFACE = :named
+        FIELDS = SdkInternalChecksListSuitesForRefResponseMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalChecksListSuitesForRefResponseMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalChecksListSuitesForRefResponseMetadata::DECODERS
+
+        attr_reader :total_count, :check_suites
+
+        def initialize(**attributes)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          freeze
+        end
+
+        def self.from_hash(data)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        end
+
+        def to_h
+          SdkModel.to_h(self, FIELDS)
+        end
+      end
+
+      # Defines the ChecksListForRefParameter SDK namespace.
+      module ChecksListForRefParameter
+        LATEST = 'latest'
+        ALL = 'all'
+        VALUES = ['latest', 'all'].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the ChecksUpdateVariant1Status SDK namespace.
+      module ChecksUpdateVariant1Status
+        QUEUED = 'queued'
+        IN_PROGRESS = 'in_progress'
+        VALUES = ['queued', 'in_progress'].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the ChecksCreateOutputAnnotationsItemAnnotationLevel SDK namespace.
+      module ChecksCreateOutputAnnotationsItemAnnotationLevel
+        NOTICE = 'notice'
+        WARNING = 'warning'
+        FAILURE = 'failure'
+        VALUES = ['notice', 'warning', 'failure'].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the ChecksUpdateVariant0OutputAnnotationsItemAnnotationLevel SDK namespace.
+      module ChecksUpdateVariant0OutputAnnotationsItemAnnotationLevel
+        NOTICE = 'notice'
+        WARNING = 'warning'
+        FAILURE = 'failure'
+        VALUES = ['notice', 'warning', 'failure'].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the ChecksCreateConclusion SDK namespace.
+      module ChecksCreateConclusion
+        ACTION_REQUIRED = 'action_required'
+        CANCELLED = 'cancelled'
+        FAILURE = 'failure'
+        NEUTRAL = 'neutral'
+        SUCCESS = 'success'
+        SKIPPED = 'skipped'
+        STALE = 'stale'
+        TIMED_OUT = 'timed_out'
+        VALUES = [
+          'action_required', 'cancelled', 'failure', 'neutral', 'success', 'skipped', 'stale',
+          'timed_out'
+        ].freeze
+        def self.from_value(value)
+          value
+        end
+      end
+
+      # Defines the ChecksUpdateVariant1OutputAnnotationsItemAnnotationLevel SDK namespace.
+      module ChecksUpdateVariant1OutputAnnotationsItemAnnotationLevel
+        NOTICE = 'notice'
+        WARNING = 'warning'
+        FAILURE = 'failure'
+        VALUES = ['notice', 'warning', 'failure'].freeze
+        def self.from_value(value)
+          value
+        end
       end
     end
   end

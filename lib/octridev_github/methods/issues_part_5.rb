@@ -9,269 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Issues SDK namespace.
     module Issues
-      # Defines the IssuesListMilestonesParameter4b5b1f9b SDK namespace.
-      module IssuesListMilestonesParameter4b5b1f9b
-        ASC = 'asc'
-        DESC = 'desc'
-        VALUES = ['asc', 'desc'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the IssuesListForOrgParameter809ee8ab SDK namespace.
-      module IssuesListForOrgParameter809ee8ab
-        OPEN = 'open'
-        CLOSED = 'closed'
-        ALL = 'all'
-        VALUES = ['open', 'closed', 'all'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the IssuesListForRepoParameter SDK namespace.
-      module IssuesListForRepoParameter
-        CREATED = 'created'
-        UPDATED = 'updated'
-        COMMENTS = 'comments'
-        VALUES = ['created', 'updated', 'comments'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the IssuesUpdateStateReason SDK namespace.
-      module IssuesUpdateStateReason
-        COMPLETED = 'completed'
-        NOT_PLANNED = 'not_planned'
-        DUPLICATE = 'duplicate'
-        REOPENED = 'reopened'
-        VALUES = ['completed', 'not_planned', 'duplicate', 'reopened'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the IssuesUpdateResponseVariant1SuggestionsTypeItemConfidence SDK namespace.
-      module IssuesUpdateResponseVariant1SuggestionsTypeItemConfidence
-        LOW = 'low'
-        MEDIUM = 'medium'
-        HIGH = 'high'
-        VALUES = ['low', 'medium', 'high'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Lists issues assigned to the authenticated user across repositories the user can access, including owned, member, and organization repositories. Use `filter`, `state`, and `labels` to narrow the results, and use `page` and `per_page` to paginate the results. Responses can include pull requests; identify them by the `pull_request` key, and use the pull requests endpoint to retrieve a pull request ID.
-      #
-      # List issues assigned to the authenticated user across all visible repositories including owned repositories, member repositories, and organization repositories. You can use the `filter` query parameter to fetch issues that are not necessarily assigned to you. > !NOTE] > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify…
-      #
-      # @param filter [IssuesListParameter] Indicates which sorts of issues to
-      #   return. `assigned` means issues assigned to you. `created` means issues
-      #   created by you. `mentioned` means issues mentioning you. `subscribed` means
-      #   issues you're subscribed to updates for. `all` or `repos` means all issues
-      #   you can see, regardless of participation or creation.
-      # @param state [IssuesListParameter8cbd4dc2] Indicates the state of the issues
-      #   to return.
-      # @param labels [String] A list of comma separated label names. Example:
-      #   `bug,ui,@high`
-      # @param sort [IssuesListParameter56183a23] What to sort results by.
-      # @param direction [SchemaSchema0df64690] The direction to sort the results
-      #   by.
-      # @param since [String] Only show results that were last updated after the
-      #   given time. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-      # @param per_page [Integer] The number of results per page (max 100). For more
-      #   information, see "Using pagination in the REST API."
-      # @param page [Integer] The page number of the results to fetch. For more
-      #   information, see "Using pagination in the REST API."
-      def self.issues_list(
-        config:,
-        filter: NOT_GIVEN,
-        state: NOT_GIVEN,
-        labels: NOT_GIVEN,
-        sort: NOT_GIVEN,
-        direction: NOT_GIVEN,
-        since: NOT_GIVEN,
-        collab: NOT_GIVEN,
-        orgs: NOT_GIVEN,
-        owned: NOT_GIVEN,
-        pulls: NOT_GIVEN,
-        per_page: NOT_GIVEN,
-        page: NOT_GIVEN,
-        request_options: nil
-      )
-
-        Validation.if_given(since) { Validation.validate_date_time('since', since) }
-
-        SdkClient.request(
-          'GET',
-          "/issues",
-          config: config,
-          query: {
-            'filter' => QueryValue.new(filter, style: 'form', explode: true),
-            'state' => QueryValue.new(state, style: 'form', explode: true),
-            'labels' => QueryValue.new(labels, style: 'form', explode: true),
-            'sort' => QueryValue.new(sort, style: 'form', explode: true),
-            'direction' => QueryValue.new(direction, style: 'form', explode: true),
-            'since' => QueryValue.new(since, style: 'form', explode: true),
-            'collab' => QueryValue.new(collab, style: 'form', explode: true),
-            'orgs' => QueryValue.new(orgs, style: 'form', explode: true),
-            'owned' => QueryValue.new(owned, style: 'form', explode: true),
-            'pulls' => QueryValue.new(pulls, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
-          },
-          return_type: [::OctridevGithub::Issue],
-          decoder: :json,
-          operation_id: 'issues_list',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
-        ).data
-      end
-
-      # List issues in an organization assigned to the authenticated user. > !NOTE] > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull…
-      #
-      # @param org [String] The organization name. The name is not case sensitive.
-      # @param filter [IssuesListForOrgParameter] Indicates which sorts of issues to
-      #   return. `assigned` means issues assigned to you. `created` means issues
-      #   created by you. `mentioned` means issues mentioning you. `subscribed` means
-      #   issues you're subscribed to updates for. `all` or `repos` means all issues
-      #   you can see, regardless of participation or creation.
-      # @param state [IssuesListForOrgParameter809ee8ab] Indicates the state of the
-      #   issues to return.
-      # @param labels [String] A list of comma separated label names. Example:
-      #   `bug,ui,@high`
-      # @param type [String] Can be the name of an issue type.
-      # @param sort [IssuesListForOrgParameter3784845c] What to sort results by.
-      # @param direction [SchemaSchema0df64690] The direction to sort the results
-      #   by.
-      # @param since [String] Only show results that were last updated after the
-      #   given time. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-      # @param per_page [Integer] The number of results per page (max 100). For more
-      #   information, see "Using pagination in the REST API."
-      # @param page [Integer] The page number of the results to fetch. For more
-      #   information, see "Using pagination in the REST API."
-      def self.issues_list_for_org(
-        config:,
-        org:,
-        filter: NOT_GIVEN,
-        state: NOT_GIVEN,
-        labels: NOT_GIVEN,
-        type: NOT_GIVEN,
-        sort: NOT_GIVEN,
-        direction: NOT_GIVEN,
-        since: NOT_GIVEN,
-        per_page: NOT_GIVEN,
-        page: NOT_GIVEN,
-        request_options: nil
-      )
-
-        Validation.if_given(since) { Validation.validate_date_time('since', since) }
-
-        SdkClient.request(
-          'GET',
-          [
-            "/orgs/",
-            SdkClient.encode_path_segment(org),
-            "/issues"
-          ].join,
-          config: config,
-          query: {
-            'filter' => QueryValue.new(filter, style: 'form', explode: true),
-            'state' => QueryValue.new(state, style: 'form', explode: true),
-            'labels' => QueryValue.new(labels, style: 'form', explode: true),
-            'type' => QueryValue.new(type, style: 'form', explode: true),
-            'sort' => QueryValue.new(sort, style: 'form', explode: true),
-            'direction' => QueryValue.new(direction, style: 'form', explode: true),
-            'since' => QueryValue.new(since, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
-          },
-          return_type: [::OctridevGithub::Issue],
-          decoder: :json,
-          operation_id: 'issues_list_for_org',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
-        ).data
-      end
-
-      # Lists the available assignees for issues in a repository.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param per_page [Integer] The number of results per page (max 100). For more
-      #   information, see "Using pagination in the REST API."
-      # @param page [Integer] The page number of the results to fetch. For more
-      #   information, see "Using pagination in the REST API."
-      def self.issues_list_assignees(
-        config:,
-        owner:,
-        repo:,
-        per_page: NOT_GIVEN,
-        page: NOT_GIVEN,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/assignees"
-          ].join,
-          config: config,
-          query: {
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
-          },
-          return_type: [::OctridevGithub::SimpleUser],
-          decoder: :json,
-          operation_id: 'issues_list_assignees',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
-        ).data
-      end
-
-      # Checks whether a user can be assigned to issues in a repository. Use `owner` and `repo` to identify the repository and `assignee` to identify the user; a 204 response has no body when assignment is allowed.
-      #
-      # Checks if a user has permission to be assigned to an issue in this repository. If the `assignee` can be assigned to issues in the repository, a `204` header with no content is returned. Otherwise a `404` status code is returned.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      def self.issues_check_user_can_be_assigned(
-        config:,
-        owner:,
-        repo:,
-        assignee:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/assignees/",
-            SdkClient.encode_path_segment(assignee)
-          ].join,
-          config: config,
-          decoder: :empty,
-          operation_id: 'issues_check_user_can_be_assigned',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
-        ).data
-      end
-
       # List issues in a repository. Only open issues will be listed. > !NOTE] > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull…
       #
       # @param owner [String] The account owner of the repository. The name is not
@@ -379,9 +116,9 @@ module OctridevGithub
       #   assigned to. _NOTE: Only users with push access can set the assignee for new
       #   issues. The assignee is silently dropped otherwise. **This field is closing
       #   down.**_
-      # @param labels [Array_of_Object] Labels to associate with this issue. _NOTE:
-      #   Only users with push access can set labels for new issues. Labels are
-      #   silently dropped otherwise._
+      # @param labels [Array_of_IssuesCreateRequestLabelsItem] Labels to associate
+      #   with this issue. _NOTE: Only users with push access can set labels for new
+      #   issues. Labels are silently dropped otherwise._
       # @param assignees [Array_of_String] Logins for Users to assign to this issue.
       #   _NOTE: Only users with push access can set assignees for new issues.
       #   Assignees are silently dropped otherwise._
@@ -436,7 +173,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'issues_create',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -564,6 +301,225 @@ module OctridevGithub
           operation_id: 'issues_update_comment',
           request_options: request_options,
           errors: { '422' => ::OctridevGithub::ValidationError },
+        ).data
+      end
+
+      # You can use the REST API to delete comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param comment_id [Integer] The unique identifier of the comment.
+      def self.issues_delete_comment(
+        config:,
+        owner:,
+        repo:,
+        comment_id:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'DELETE',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/issues/comments/",
+            SdkClient.encode_path_segment(comment_id)
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'issues_delete_comment',
+          request_options: request_options,
+        ).data
+      end
+
+      # Pins an issue comment in the specified repository. Use `owner`, `repo`, and `comment_id` to identify the comment to pin. The response includes the comment and details about who pinned it and when.
+      #
+      # You can use the REST API to pin comments on issues. This endpoint supports the following custom media types. For more information, see "Media types." - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type. - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`. -…
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param comment_id [Integer] The unique identifier of the comment.
+      def self.issues_pin_comment(
+        config:,
+        owner:,
+        repo:,
+        comment_id:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'PUT',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/issues/comments/",
+            SdkClient.encode_path_segment(comment_id),
+            "/pin"
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::IssueComment,
+          decoder: :json,
+          operation_id: 'issues_pin_comment',
+          request_options: request_options,
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+        ).data
+      end
+
+      # Removes the pin from an issue comment in the specified repository. Use `owner`, `repo`, and `comment_id` to identify the comment whose pin you want to remove.
+      #
+      # You can use the REST API to unpin comments on issues.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param comment_id [Integer] The unique identifier of the comment.
+      def self.issues_unpin_comment(
+        config:,
+        owner:,
+        repo:,
+        comment_id:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'DELETE',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/issues/comments/",
+            SdkClient.encode_path_segment(comment_id),
+            "/pin"
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'issues_unpin_comment',
+          request_options: request_options,
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
+        ).data
+      end
+
+      # Lists issue events for a repository, including event details and associated issue information. Use `page` and `per_page` to paginate the results.
+      #
+      # Lists events for a repository.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.issues_list_events_for_repo(
+        config:,
+        owner:,
+        repo:,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/issues/events"
+          ].join,
+          config: config,
+          query: {
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true),
+          },
+          return_type: [::OctridevGithub::IssueEvent],
+          decoder: :json,
+          operation_id: 'issues_list_events_for_repo',
+          request_options: request_options,
+          errors: { '422' => ::OctridevGithub::ValidationError },
+        ).data
+      end
+
+      # Retrieves a single issue event from a repository by its event identifier. Use `event_id` to select the event and `owner` and `repo` to identify the repository.
+      #
+      # Gets a single event by the event id.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      def self.issues_get_event(
+        config:,
+        owner:,
+        repo:,
+        event_id:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/issues/events/",
+            SdkClient.encode_path_segment(event_id)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::IssueEvent,
+          decoder: :json,
+          operation_id: 'issues_get_event',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError },
+        ).data
+      end
+
+      # Retrieves an issue from a repository by its issue number. Use `owner`, `repo`, and `issue_number` to identify the repository and issue; the response may also represent a pull request. Transferred issues return a 301 redirect, while deleted issues return 404 or 410 depending on the authenticated user's read access.
+      #
+      # The API returns a `301 Moved Permanently` status if the issue was transferred to another repository. If the issue was transferred to or deleted from a repository where the authenticated user lacks read access, the API returns a `404 Not Found` status. If the issue was deleted from a repository where the authenticated user has read access, the API returns a `410 Gone` status. To receive webhook events for transferred and deleted issues, subscribe to the `issues` webhook. >…
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param issue_number [Integer] The number that identifies the issue.
+      def self.issues_get(
+        config:,
+        owner:,
+        repo:,
+        issue_number:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/issues/",
+            SdkClient.encode_path_segment(issue_number)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::Issue,
+          decoder: :json,
+          operation_id: 'issues_get',
+          request_options: request_options,
+          errors: { '301' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError },
         ).data
       end
     end

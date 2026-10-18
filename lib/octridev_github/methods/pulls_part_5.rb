@@ -123,7 +123,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'pulls_request_reviewers',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 

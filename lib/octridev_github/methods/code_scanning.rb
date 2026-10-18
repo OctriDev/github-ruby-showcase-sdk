@@ -350,7 +350,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'code_scanning_list_alerts_for_org',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -512,7 +512,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'code_scanning_list_alerts_for_repo',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -549,7 +549,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'code_scanning_get_alert',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
     end

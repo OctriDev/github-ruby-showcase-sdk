@@ -37,50 +37,6 @@ module OctridevGithub
       end
 
       # Internal model hydration metadata.
-      class SdkInternalReposUpdateInformationAboutPagesSiteSourceVariant1Metadata
-        FIELDS = {
-          branch: "branch",
-          path: "path",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          branch
-          path
-        ].freeze
-        DECODERS = {
-          path: lambda do |value|
-            ::OctridevGithub::Methods::Repos::ReposUpdateInformationAboutPagesSiteSourceVariant1Path.from_value(value)
-          end,
-        }.freeze
-      end
-
-      # API model for ReposUpdateInformationAboutPagesSiteSourceVariant1.
-      # Update the source for the repository. Must include the branch name and path.
-      class ReposUpdateInformationAboutPagesSiteSourceVariant1
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalReposUpdateInformationAboutPagesSiteSourceVariant1Metadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalReposUpdateInformationAboutPagesSiteSourceVariant1Metadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalReposUpdateInformationAboutPagesSiteSourceVariant1Metadata::DECODERS
-
-        # @return [String] The repository branch used to publish your site's source files.
-        attr_reader :branch
-        # @return [ReposUpdateInformationAboutPagesSiteSourceVariant1Path] The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`.
-        attr_reader :path
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
       class SdkInternalReposUpdateInformationAboutPagesSiteMetadata
         FIELDS = {
           cname: "cname",
@@ -94,6 +50,9 @@ module OctridevGithub
           build_type: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposUpdateInformationAboutPagesSiteBuildType.from_value(value)
           end,
+          source: lambda do |value|
+            ::OctridevGithub::ReposUpdateInformationAboutPagesSiteRequestSource.from_hash(value)
+          end,
         }.freeze
       end
 
@@ -104,13 +63,14 @@ module OctridevGithub
         REQUIRED_FIELDS = SdkInternalReposUpdateInformationAboutPagesSiteMetadata::REQUIRED_FIELDS
         DECODERS = SdkInternalReposUpdateInformationAboutPagesSiteMetadata::DECODERS
 
-        attr_reader :source
         # @return [String] Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "Using a custom domain with GitHub Pages."
         attr_reader :cname
         # @return [Boolean] Specify whether HTTPS should be enforced for the repository.
         attr_reader :https_enforced
         # @return [ReposUpdateInformationAboutPagesSiteBuildType] The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.
         attr_reader :build_type
+        # @return [ReposUpdateInformationAboutPagesSiteRequestSource] Typed representation of the `ReposUpdateInformationAboutPagesSiteRequestSource` API schema.
+        attr_reader :source
 
         def initialize(**attributes)
           SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
@@ -554,6 +514,40 @@ module OctridevGithub
             value&.map { |item| ::OctridevGithub::RepositoryRule.from_hash(item) }
           end,
         }.freeze
+      end
+
+      # API model for ReposUpdateRepoRuleset.
+      class ReposUpdateRepoRuleset
+        CONSTRUCTION_SURFACE = :named
+        FIELDS = SdkInternalReposUpdateRepoRulesetMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalReposUpdateRepoRulesetMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalReposUpdateRepoRulesetMetadata::DECODERS
+
+        # @return [String] The name of the ruleset.
+        attr_reader :name
+        # @return [ReposUpdateRepoRulesetTarget] The target of the ruleset
+        attr_reader :target
+        # @return [RepositoryRuleEnforcement] The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).
+        attr_reader :enforcement
+        # @return [Array_of_RepositoryRulesetBypassActor] The actors that can bypass the rules in this ruleset
+        attr_reader :bypass_actors
+        # @return [RepositoryRulesetConditions] Parameters for a repository ruleset ref name condition
+        attr_reader :conditions
+        # @return [Array_of_RepositoryRule] An array of rules within the ruleset.
+        attr_reader :rules
+
+        def initialize(**attributes)
+          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+          freeze
+        end
+
+        def self.from_hash(data)
+          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        end
+
+        def to_h
+          SdkModel.to_h(self, FIELDS)
+        end
       end
     end
   end

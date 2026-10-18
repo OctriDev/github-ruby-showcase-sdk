@@ -5,6 +5,61 @@
 
 # repos_repository_rule domain models (part 5)
 module OctridevGithub
+# API model for RepositoryRuleFilePathRestriction.
+# Prevent commits that include changes in specified file and folder paths from being pushed to the commit graph. This includes absolute paths that contain file names.
+class RepositoryRuleFilePathRestriction
+  include RepositoryRule
+  include OrgRules
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalRepositoryRuleFilePathRestrictionMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalRepositoryRuleFilePathRestrictionMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalRepositoryRuleFilePathRestrictionMetadata::DECODERS
+
+  # @return [RepositoryRuleFilePathRestrictionType] Required enumerated value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [RepositoryRuleFilePathRestrictionParameters] Optional object value serialized in the `parameters` wire field.
+  attr_reader :parameters
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
+  end
+
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Defines the RepositoryRuleFilePathRestrictionType SDK namespace.
+module RepositoryRuleFilePathRestrictionType
+  FILE_PATH_RESTRICTION = 'file_path_restriction'
+  VALUES = ['file_path_restriction'].freeze
+  def self.from_value(value)
+    return value if VALUES.include?(value)
+
+    raise SdkValidationError.new('RepositoryRuleFilePathRestrictionType', 'enum', "Unknown RepositoryRuleFilePathRestrictionType: #{value}")
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalRepositoryRuleLicenseComplianceScanningMetadata
+  FIELDS = {
+    type: "type",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    type
+  ].freeze
+  DECODERS = {
+    type: lambda do |value|
+      ::OctridevGithub::RepositoryRuleLicenseComplianceScanningType.from_value(value)
+    end,
+  }.freeze
+end
+
 # API model for RepositoryRuleLicenseComplianceScanning.
 # Enforce any added or changed dependencies to comply with the organization's license policy.
 class RepositoryRuleLicenseComplianceScanning
@@ -623,52 +678,6 @@ class SdkInternalRepositoryRuleParamsRequiredReviewerConfigurationMetadata
   DECODERS = {
     reviewer: lambda do |value|
       ::OctridevGithub::RepositoryRuleParamsReviewer.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleParamsRequiredReviewerConfiguration.
-# A reviewing team, and file patterns describing which files they must approve changes to.
-class RepositoryRuleParamsRequiredReviewerConfiguration
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleParamsRequiredReviewerConfigurationMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleParamsRequiredReviewerConfigurationMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleParamsRequiredReviewerConfigurationMetadata::DECODERS
-
-  # @return [Array_of_String] Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use fnmatch syntax.
-  attr_reader :file_patterns
-  # @return [Integer] Minimum number of approvals required from the specified team. If set to zero, the team will be added to the pull request but approval is optional.
-  attr_reader :minimum_approvals
-  # @return [RepositoryRuleParamsReviewer] A required reviewing team
-  attr_reader :reviewer
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleParamsReviewerMetadata
-  FIELDS = {
-    id: "id",
-    type: "type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleParamsReviewerType.from_value(value)
     end,
   }.freeze
 end

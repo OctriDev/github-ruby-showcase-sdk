@@ -5,6 +5,45 @@
 
 # pulls domain models (part 3)
 module OctridevGithub
+# API model for PullRequestStackMinimal.
+# Typed representation of the `PullRequestStackMinimal` API schema.
+class PullRequestStackMinimal
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalPullRequestStackMinimalMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalPullRequestStackMinimalMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalPullRequestStackMinimalMetadata::DECODERS
+
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [Integer] Required `integer` value serialized in the `number` wire field.
+  attr_reader :number
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [PullRequestStackMinimalBase] Required object value serialized in the `base` wire field.
+  attr_reader :base
+  # @return [Boolean] Whether the stack has any open pull request. False when all pull requests are merged or closed.
+  attr_reader :open
+  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [Array_of_PullRequestStackMinimalPullRequestsItem] Required array value serialized in the `pull_requests` wire field.
+  attr_reader :pull_requests
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
+  end
+
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
 # Defines the PullRequestStackMinimalPullRequestsItemState SDK namespace.
 module PullRequestStackMinimalPullRequestsItemState
   OPEN = 'open'

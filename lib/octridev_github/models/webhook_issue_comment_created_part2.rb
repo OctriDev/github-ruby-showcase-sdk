@@ -71,16 +71,16 @@ class SdkInternalWebhookIssueCommentCreatedIssueMetadata
   ].freeze
   DECODERS = {
     assignee: lambda do |value|
-      ::OctridevGithub::WebhookIssueCommentCreatedIssueVariant1Assignee.from_hash(value)
+      ::OctridevGithub::WebhookIssueCommentCreatedIssueAssignee.from_hash(value)
     end,
     labels: lambda do |value|
-      value&.map { |item| ::OctridevGithub::WebhookIssueCommentCreatedIssueVariant1LabelsItem.from_hash(item) }
+      value&.map { |item| ::OctridevGithub::WebhookIssueCommentCreatedIssueLabelsItem.from_hash(item) }
     end,
     pull_request: lambda do |value|
-      ::OctridevGithub::WebhookIssueCommentCreatedIssueVariant0PullRequest.from_hash(value)
+      ::OctridevGithub::WebhookIssueCommentCreatedIssuePullRequest.from_hash(value)
     end,
     reactions: lambda do |value|
-      ::OctridevGithub::WebhookIssueCommentCreatedIssueVariant1Reactions.from_hash(value)
+      ::OctridevGithub::WebhookIssueCommentCreatedIssueReactions.from_hash(value)
     end,
     sub_issues_summary: lambda do |value|
       ::OctridevGithub::SubIssuesSummary.from_hash(value)
@@ -89,13 +89,13 @@ class SdkInternalWebhookIssueCommentCreatedIssueMetadata
       ::OctridevGithub::IssueDependenciesSummary.from_hash(value)
     end,
     state: lambda do |value|
-      ::OctridevGithub::WebhookIssueCommentCreatedIssueVariant1State.from_value(value)
+      ::OctridevGithub::WebhookIssueCommentCreatedIssueState.from_value(value)
     end,
     type: lambda do |value|
       ::OctridevGithub::IssueType.from_hash(value)
     end,
     user: lambda do |value|
-      ::OctridevGithub::WebhookIssueCommentCreatedIssueVariant1User.from_hash(value)
+      ::OctridevGithub::WebhookIssueCommentCreatedIssueUser.from_hash(value)
     end,
   }.freeze
   NULLABLE_FIELDS = %i[
@@ -115,71 +115,71 @@ class WebhookIssueCommentCreatedIssue
   REQUIRED_FIELDS = SdkInternalWebhookIssueCommentCreatedIssueMetadata::REQUIRED_FIELDS
   DECODERS = SdkInternalWebhookIssueCommentCreatedIssueMetadata::DECODERS
 
-  # @return [String] Optional `string` value serialized in the `active_lock_reason` wire field.
+  # @return [String] Required `string` value serialized in the `active_lock_reason` wire field.
   attr_reader :active_lock_reason
-  # @return [WebhookIssueCommentCreatedIssueVariant1Assignee] Required object value serialized in the `assignee` wire field.
+  # @return [WebhookIssueCommentCreatedIssueAssignee] Required object value serialized in the `assignee` wire field.
   attr_reader :assignee
-  # @return [Array_of_Hash] Optional array value serialized in the `assignees` wire field.
+  # @return [Array_of_Hash] Required array value serialized in the `assignees` wire field.
   attr_reader :assignees
-  # @return [String] Optional `string` value serialized in the `author_association` wire field.
+  # @return [String] Required `string` value serialized in the `author_association` wire field.
   attr_reader :author_association
-  # @return [String] Optional `string` value serialized in the `body` wire field.
+  # @return [String] Required `string` value serialized in the `body` wire field.
   attr_reader :body
-  # @return [String] Optional `string` value serialized in the `closed_at` wire field.
+  # @return [String] Required `string` value serialized in the `closed_at` wire field.
   attr_reader :closed_at
-  # @return [Integer] Optional `integer` value serialized in the `comments` wire field.
+  # @return [Integer] Required `integer` value serialized in the `comments` wire field.
   attr_reader :comments
-  # @return [String] Optional `string` value serialized in the `comments_url` wire field.
+  # @return [String] Required `string` value serialized in the `comments_url` wire field.
   attr_reader :comments_url
-  # @return [String] Optional `string` value serialized in the `created_at` wire field.
+  # @return [String] Required `string` value serialized in the `created_at` wire field.
   attr_reader :created_at
   # @return [Boolean] Optional `boolean` value serialized in the `draft` wire field.
   attr_reader :draft
-  # @return [String] Optional `string` value serialized in the `events_url` wire field.
+  # @return [String] Required `string` value serialized in the `events_url` wire field.
   attr_reader :events_url
-  # @return [String] Optional `string` value serialized in the `html_url` wire field.
+  # @return [String] Required `string` value serialized in the `html_url` wire field.
   attr_reader :html_url
-  # @return [Integer] Optional `integer` value serialized in the `id` wire field.
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
   attr_reader :id
-  # @return [Array_of_WebhookIssueCommentCreatedIssueVariant1LabelsItem] Required array value serialized in the `labels` wire field.
+  # @return [Array_of_WebhookIssueCommentCreatedIssueLabelsItem] Required array value serialized in the `labels` wire field.
   attr_reader :labels
-  # @return [String] Optional `string` value serialized in the `labels_url` wire field.
+  # @return [String] Required `string` value serialized in the `labels_url` wire field.
   attr_reader :labels_url
   # @return [Boolean] Required `boolean` value serialized in the `locked` wire field.
   attr_reader :locked
-  # @return [Hash] Optional object value serialized in the `milestone` wire field.
+  # @return [Hash] Required object value serialized in the `milestone` wire field.
   attr_reader :milestone
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
   attr_reader :node_id
-  # @return [Integer] Optional `integer` value serialized in the `number` wire field.
+  # @return [Integer] Required `integer` value serialized in the `number` wire field.
   attr_reader :number
   # @return [Hash] Optional object value serialized in the `performed_via_github_app` wire field.
   attr_reader :performed_via_github_app
-  # @return [WebhookIssueCommentCreatedIssueVariant0PullRequest] Optional object value serialized in the `pull_request` wire field.
+  # @return [WebhookIssueCommentCreatedIssuePullRequest] Optional object value serialized in the `pull_request` wire field.
   attr_reader :pull_request
-  # @return [WebhookIssueCommentCreatedIssueVariant1Reactions] Optional object value serialized in the `reactions` wire field.
+  # @return [WebhookIssueCommentCreatedIssueReactions] Required object value serialized in the `reactions` wire field.
   attr_reader :reactions
-  # @return [String] Optional `string` value serialized in the `repository_url` wire field.
+  # @return [String] Required `string` value serialized in the `repository_url` wire field.
   attr_reader :repository_url
   # @return [SubIssuesSummary] Optional object value serialized in the `sub_issues_summary` wire field.
   attr_reader :sub_issues_summary
   # @return [IssueDependenciesSummary] Optional object value serialized in the `issue_dependencies_summary` wire field.
   attr_reader :issue_dependencies_summary
-  # @return [WebhookIssueCommentCreatedIssueVariant1State] State of the issue; either 'open' or 'closed'
+  # @return [WebhookIssueCommentCreatedIssueState] State of the issue; either 'open' or 'closed'
   attr_reader :state
   # @return [String] Optional `string` value serialized in the `state_reason` wire field.
   attr_reader :state_reason
   # @return [String] Optional `string` value serialized in the `timeline_url` wire field.
   attr_reader :timeline_url
-  # @return [String] Optional `string` value serialized in the `title` wire field.
+  # @return [String] Required `string` value serialized in the `title` wire field.
   attr_reader :title
   # @return [IssueType] The type assigned to the issue. This is only present for issues in repositories where issue types are supported.
   attr_reader :type
-  # @return [String] Optional `string` value serialized in the `updated_at` wire field.
+  # @return [String] Required `string` value serialized in the `updated_at` wire field.
   attr_reader :updated_at
-  # @return [String] Optional `string` value serialized in the `url` wire field.
+  # @return [String] Required `string` value serialized in the `url` wire field.
   attr_reader :url
-  # @return [WebhookIssueCommentCreatedIssueVariant1User] Optional object value serialized in the `user` wire field.
+  # @return [WebhookIssueCommentCreatedIssueUser] Required object value serialized in the `user` wire field.
   attr_reader :user
 
   def initialize(**attributes)
@@ -321,20 +321,8 @@ module WebhookIssueCommentCreatedCommentUserType
   end
 end
 
-# Defines the WebhookIssueCommentCreatedIssueVariant0ActiveLockReason SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0ActiveLockReason
-  RESOLVED = 'resolved'
-  OFF_TOPIC = 'off-topic'
-  TOO_HEATED = 'too heated'
-  SPAM = 'spam'
-  VALUES = ['resolved', 'off-topic', 'too heated', 'spam'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0AssigneeType SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0AssigneeType
+# Defines the WebhookIssueCommentCreatedIssueAssigneeType SDK namespace.
+module WebhookIssueCommentCreatedIssueAssigneeType
   BOT = 'Bot'
   USER = 'User'
   ORGANIZATION = 'Organization'
@@ -345,350 +333,11 @@ module WebhookIssueCommentCreatedIssueVariant0AssigneeType
   end
 end
 
-# Defines the WebhookIssueCommentCreatedIssueVariant0AssigneesItemType SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0AssigneesItemType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  MANNEQUIN = 'Mannequin'
-  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0AuthorAssociation SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0AuthorAssociation
-  COLLABORATOR = 'COLLABORATOR'
-  CONTRIBUTOR = 'CONTRIBUTOR'
-  FIRST_TIMER = 'FIRST_TIMER'
-  FIRST_TIME_CONTRIBUTOR = 'FIRST_TIME_CONTRIBUTOR'
-  MANNEQUIN = 'MANNEQUIN'
-  MEMBER = 'MEMBER'
-  NONE = 'NONE'
-  OWNER = 'OWNER'
-  VALUES = [
-    'COLLABORATOR', 'CONTRIBUTOR', 'FIRST_TIMER', 'FIRST_TIME_CONTRIBUTOR', 'MANNEQUIN', 'MEMBER',
-    'NONE', 'OWNER'
-  ].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0MilestoneCreatorType SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0MilestoneCreatorType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  MANNEQUIN = 'Mannequin'
-  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0MilestoneState SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0MilestoneState
+# Defines the WebhookIssueCommentCreatedIssueState SDK namespace.
+module WebhookIssueCommentCreatedIssueState
   OPEN = 'open'
   CLOSED = 'closed'
   VALUES = ['open', 'closed'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppEventsItem SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppEventsItem
-  BRANCH_PROTECTION_RULE = 'branch_protection_rule'
-  CHECK_RUN = 'check_run'
-  CHECK_SUITE = 'check_suite'
-  CODE_SCANNING_ALERT = 'code_scanning_alert'
-  COMMIT_COMMENT = 'commit_comment'
-  CONTENT_REFERENCE = 'content_reference'
-  CREATE = 'create'
-  DELETE = 'delete'
-  DEPLOYMENT = 'deployment'
-  DEPLOYMENT_REVIEW = 'deployment_review'
-  DEPLOYMENT_STATUS = 'deployment_status'
-  DEPLOY_KEY = 'deploy_key'
-  DISCUSSION = 'discussion'
-  DISCUSSION_COMMENT = 'discussion_comment'
-  FORK = 'fork'
-  GOLLUM = 'gollum'
-  ISSUES = 'issues'
-  ISSUE_COMMENT = 'issue_comment'
-  LABEL = 'label'
-  MEMBER = 'member'
-  MEMBERSHIP = 'membership'
-  MILESTONE = 'milestone'
-  ORGANIZATION = 'organization'
-  ORG_BLOCK = 'org_block'
-  PAGE_BUILD = 'page_build'
-  PROJECT = 'project'
-  PROJECT_CARD = 'project_card'
-  PROJECT_COLUMN = 'project_column'
-  PUBLIC = 'public'
-  PULL_REQUEST = 'pull_request'
-  PULL_REQUEST_REVIEW = 'pull_request_review'
-  PULL_REQUEST_REVIEW_COMMENT = 'pull_request_review_comment'
-  PUSH = 'push'
-  REGISTRY_PACKAGE = 'registry_package'
-  RELEASE = 'release'
-  REPOSITORY = 'repository'
-  REPOSITORY_DISPATCH = 'repository_dispatch'
-  SECRET_SCANNING_ALERT = 'secret_scanning_alert'
-  STAR = 'star'
-  STATUS = 'status'
-  TEAM = 'team'
-  TEAM_ADD = 'team_add'
-  WATCH = 'watch'
-  WORKFLOW_DISPATCH = 'workflow_dispatch'
-  WORKFLOW_RUN = 'workflow_run'
-  REMINDER = 'reminder'
-  PULL_REQUEST_REVIEW_THREAD = 'pull_request_review_thread'
-  VALUES = [
-    'branch_protection_rule', 'check_run', 'check_suite', 'code_scanning_alert', 'commit_comment',
-    'content_reference', 'create', 'delete', 'deployment', 'deployment_review', 'deployment_status',
-    'deploy_key', 'discussion', 'discussion_comment', 'fork', 'gollum', 'issues', 'issue_comment',
-    'label', 'member', 'membership', 'milestone', 'organization', 'org_block', 'page_build',
-    'project', 'project_card', 'project_column', 'public', 'pull_request', 'pull_request_review',
-    'pull_request_review_comment', 'push', 'registry_package', 'release', 'repository',
-    'repository_dispatch', 'secret_scanning_alert', 'star', 'status', 'team', 'team_add', 'watch',
-    'workflow_dispatch', 'workflow_run', 'reminder', 'pull_request_review_thread'
-  ].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppOwnerType SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppOwnerType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX33c647bf5e SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX33c647bf5e
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX76e0f3987f SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX76e0f3987f
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX02e66ed8eb SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX02e66ed8eb
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPXa305e59894 SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPXa305e59894
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX69dc869fa2 SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX69dc869fa2
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX967b3aa226 SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX967b3aa226
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPXba1e52f5cd SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPXba1e52f5cd
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPXc154016a8b SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPXc154016a8b
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPXa6ed1ac548 SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPXa6ed1ac548
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPXffc2d79c07 SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPXffc2d79c07
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX6136539db8 SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX6136539db8
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX1048c756be SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX1048c756be
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX7e47e27c4b SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX7e47e27c4b
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX7dd3bf9c2b SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX7dd3bf9c2b
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX30d0d478d7 SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX30d0d478d7
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPXc04b32bb04 SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPXc04b32bb04
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX1e57f26b34 SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX1e57f26b34
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX5ff37f506d SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX5ff37f506d
-  READ = 'read'
-  WRITE = 'write'
-  ADMIN = 'admin'
-  VALUES = ['read', 'write', 'admin'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPXdc938fa543 SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPXdc938fa543
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPXd5c98aae45 SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPXd5c98aae45
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX80adf29164 SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX80adf29164
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX15e925ce5f SDK namespace.
-module WebhookIssueCommentCreatedIssueVariant0PerformedViaGithubAppPX15e925ce5f
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
   def self.from_value(value)
     value
   end

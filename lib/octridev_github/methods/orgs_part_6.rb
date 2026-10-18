@@ -75,7 +75,7 @@ module OctridevGithub
 
         Validation.if_given(github_repository) do
           Validation.validate_length('github_repository', github_repository, min: 1, max: 100)
-          Validation.validate_pattern('github_repository', github_repository, '^[A-Za-z0-9.\-_]+$')
+          Validation.validate_pattern('github_repository', github_repository, '^[A-Za-z0-9.\\-_]+$')
         end
 
         SdkClient.request(
@@ -320,7 +320,7 @@ module OctridevGithub
 
         Validation.if_given(github_repository) do
           Validation.validate_length('github_repository', github_repository, min: 1, max: 100)
-          Validation.validate_pattern('github_repository', github_repository, '^[A-Za-z0-9.\-_]+$')
+          Validation.validate_pattern('github_repository', github_repository, '^[A-Za-z0-9.\\-_]+$')
         end
 
         SdkClient.request(
@@ -473,8 +473,8 @@ module OctridevGithub
       # Delete artifact attestations in bulk by either subject digests or unique ID.
       #
       # @param org [String] The organization name. The name is not case sensitive.
-      # @param body [Object] The request body must include either `subject_digests`
-      #   or `attestation_ids`, but not both.
+      # @param body [Hash] The request body must include either `subject_digests` or
+      #   `attestation_ids`, but not both.
       def self.orgs_delete_attestations_bulk(
         config:,
         org:,

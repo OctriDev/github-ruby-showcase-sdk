@@ -6,7 +6,7 @@
 # webhook_fork domain models
 module OctridevGithub
 # Internal model hydration metadata.
-class SdkInternalWebhookForkForkeeVariant1OwnerMetadata
+class SdkInternalWebhookForkForkeeOwnerMetadata
   FIELDS = {
     avatar_url: "avatar_url",
     events_url: "events_url",
@@ -33,13 +33,13 @@ class SdkInternalWebhookForkForkeeVariant1OwnerMetadata
   }.freeze
 end
 
-# API model for WebhookForkForkeeVariant1Owner.
-# Optional object value serialized in the `owner` wire field.
-class WebhookForkForkeeVariant1Owner
+# API model for WebhookForkForkeeOwner.
+# Required object value serialized in the `owner` wire field.
+class WebhookForkForkeeOwner
   CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookForkForkeeVariant1OwnerMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookForkForkeeVariant1OwnerMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookForkForkeeVariant1OwnerMetadata::DECODERS
+  FIELDS = SdkInternalWebhookForkForkeeOwnerMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookForkForkeeOwnerMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookForkForkeeOwnerMetadata::DECODERS
 
   # @return [String] Optional `string` value serialized in the `avatar_url` wire field.
   attr_reader :avatar_url
@@ -93,7 +93,7 @@ class WebhookForkForkeeVariant1Owner
 end
 
 # Internal model hydration metadata.
-class SdkInternalWebhookForkForkeeVariant0PermissionsMetadata
+class SdkInternalWebhookForkForkeePermissionsMetadata
   FIELDS = {
     admin: "admin",
     maintain: "maintain",
@@ -110,13 +110,13 @@ class SdkInternalWebhookForkForkeeVariant0PermissionsMetadata
   }.freeze
 end
 
-# API model for WebhookForkForkeeVariant0Permissions.
+# API model for WebhookForkForkeePermissions.
 # Optional object value serialized in the `permissions` wire field.
-class WebhookForkForkeeVariant0Permissions
+class WebhookForkForkeePermissions
   CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookForkForkeeVariant0PermissionsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookForkForkeeVariant0PermissionsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookForkForkeeVariant0PermissionsMetadata::DECODERS
+  FIELDS = SdkInternalWebhookForkForkeePermissionsMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookForkForkeePermissionsMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookForkForkeePermissionsMetadata::DECODERS
 
   # @return [Boolean] Required `boolean` value serialized in the `admin` wire field.
   attr_reader :admin
@@ -315,13 +315,13 @@ class SdkInternalWebhookForkForkeeMetadata
   ].freeze
   DECODERS = {
     fork: lambda do |value|
-      ::OctridevGithub::WebhookForkForkeeVariant1Fork.from_value(value)
+      ::OctridevGithub::WebhookForkForkeeFork.from_value(value)
     end,
     owner: lambda do |value|
-      ::OctridevGithub::WebhookForkForkeeVariant1Owner.from_hash(value)
+      ::OctridevGithub::WebhookForkForkeeOwner.from_hash(value)
     end,
     permissions: lambda do |value|
-      ::OctridevGithub::WebhookForkForkeeVariant0Permissions.from_hash(value)
+      ::OctridevGithub::WebhookForkForkeePermissions.from_hash(value)
     end,
   }.freeze
   NULLABLE_FIELDS = %i[
@@ -353,171 +353,171 @@ class WebhookForkForkee
   attr_reader :allow_squash_merge
   # @return [Boolean] Optional `boolean` value serialized in the `allow_update_branch` wire field.
   attr_reader :allow_update_branch
-  # @return [String] Optional `string` value serialized in the `archive_url` wire field.
+  # @return [String] Required `string` value serialized in the `archive_url` wire field.
   attr_reader :archive_url
-  # @return [Boolean] Optional `boolean` value serialized in the `archived` wire field.
+  # @return [Boolean] Required `boolean` value serialized in the `archived` wire field.
   attr_reader :archived
-  # @return [String] Optional `string` value serialized in the `assignees_url` wire field.
+  # @return [String] Required `string` value serialized in the `assignees_url` wire field.
   attr_reader :assignees_url
-  # @return [String] Optional `string` value serialized in the `blobs_url` wire field.
+  # @return [String] Required `string` value serialized in the `blobs_url` wire field.
   attr_reader :blobs_url
-  # @return [String] Optional `string` value serialized in the `branches_url` wire field.
+  # @return [String] Required `string` value serialized in the `branches_url` wire field.
   attr_reader :branches_url
-  # @return [String] Optional `string` value serialized in the `clone_url` wire field.
+  # @return [String] Required `string` value serialized in the `clone_url` wire field.
   attr_reader :clone_url
-  # @return [String] Optional `string` value serialized in the `collaborators_url` wire field.
+  # @return [String] Required `string` value serialized in the `collaborators_url` wire field.
   attr_reader :collaborators_url
-  # @return [String] Optional `string` value serialized in the `comments_url` wire field.
+  # @return [String] Required `string` value serialized in the `comments_url` wire field.
   attr_reader :comments_url
-  # @return [String] Optional `string` value serialized in the `commits_url` wire field.
+  # @return [String] Required `string` value serialized in the `commits_url` wire field.
   attr_reader :commits_url
-  # @return [String] Optional `string` value serialized in the `compare_url` wire field.
+  # @return [String] Required `string` value serialized in the `compare_url` wire field.
   attr_reader :compare_url
-  # @return [String] Optional `string` value serialized in the `contents_url` wire field.
+  # @return [String] Required `string` value serialized in the `contents_url` wire field.
   attr_reader :contents_url
-  # @return [String] Optional `string` value serialized in the `contributors_url` wire field.
+  # @return [String] Required `string` value serialized in the `contributors_url` wire field.
   attr_reader :contributors_url
-  # @return [String] Optional `string` value serialized in the `created_at` wire field.
+  # @return [String] Required `string` value serialized in the `created_at` wire field.
   attr_reader :created_at
-  # @return [String] Optional `string` value serialized in the `default_branch` wire field.
+  # @return [String] Required `string` value serialized in the `default_branch` wire field.
   attr_reader :default_branch
   # @return [Boolean] Whether to delete head branches when pull requests are merged
   attr_reader :delete_branch_on_merge
-  # @return [String] Optional `string` value serialized in the `deployments_url` wire field.
+  # @return [String] Required `string` value serialized in the `deployments_url` wire field.
   attr_reader :deployments_url
-  # @return [String] Optional `string` value serialized in the `description` wire field.
+  # @return [String] Required `string` value serialized in the `description` wire field.
   attr_reader :description
   # @return [Boolean] Optional `boolean` value serialized in the `disabled` wire field.
   attr_reader :disabled
-  # @return [String] Optional `string` value serialized in the `downloads_url` wire field.
+  # @return [String] Required `string` value serialized in the `downloads_url` wire field.
   attr_reader :downloads_url
-  # @return [String] Optional `string` value serialized in the `events_url` wire field.
+  # @return [String] Required `string` value serialized in the `events_url` wire field.
   attr_reader :events_url
-  # @return [WebhookForkForkeeVariant1Fork] Optional enumerated value serialized in the `fork` wire field.
+  # @return [WebhookForkForkeeFork] Required enumerated value serialized in the `fork` wire field.
   attr_reader :fork
-  # @return [Integer] Optional `integer` value serialized in the `forks` wire field.
+  # @return [Integer] Required `integer` value serialized in the `forks` wire field.
   attr_reader :forks
-  # @return [Integer] Optional `integer` value serialized in the `forks_count` wire field.
+  # @return [Integer] Required `integer` value serialized in the `forks_count` wire field.
   attr_reader :forks_count
-  # @return [String] Optional `string` value serialized in the `forks_url` wire field.
+  # @return [String] Required `string` value serialized in the `forks_url` wire field.
   attr_reader :forks_url
-  # @return [String] Optional `string` value serialized in the `full_name` wire field.
+  # @return [String] Required `string` value serialized in the `full_name` wire field.
   attr_reader :full_name
-  # @return [String] Optional `string` value serialized in the `git_commits_url` wire field.
+  # @return [String] Required `string` value serialized in the `git_commits_url` wire field.
   attr_reader :git_commits_url
-  # @return [String] Optional `string` value serialized in the `git_refs_url` wire field.
+  # @return [String] Required `string` value serialized in the `git_refs_url` wire field.
   attr_reader :git_refs_url
-  # @return [String] Optional `string` value serialized in the `git_tags_url` wire field.
+  # @return [String] Required `string` value serialized in the `git_tags_url` wire field.
   attr_reader :git_tags_url
-  # @return [String] Optional `string` value serialized in the `git_url` wire field.
+  # @return [String] Required `string` value serialized in the `git_url` wire field.
   attr_reader :git_url
-  # @return [Boolean] Optional `boolean` value serialized in the `has_downloads` wire field.
+  # @return [Boolean] Required `boolean` value serialized in the `has_downloads` wire field.
   attr_reader :has_downloads
-  # @return [Boolean] Optional `boolean` value serialized in the `has_issues` wire field.
+  # @return [Boolean] Required `boolean` value serialized in the `has_issues` wire field.
   attr_reader :has_issues
-  # @return [Boolean] Optional `boolean` value serialized in the `has_pages` wire field.
+  # @return [Boolean] Required `boolean` value serialized in the `has_pages` wire field.
   attr_reader :has_pages
-  # @return [Boolean] Optional `boolean` value serialized in the `has_projects` wire field.
+  # @return [Boolean] Required `boolean` value serialized in the `has_projects` wire field.
   attr_reader :has_projects
-  # @return [Boolean] Optional `boolean` value serialized in the `has_wiki` wire field.
+  # @return [Boolean] Required `boolean` value serialized in the `has_wiki` wire field.
   attr_reader :has_wiki
-  # @return [String] Optional `string` value serialized in the `homepage` wire field.
+  # @return [String] Required `string` value serialized in the `homepage` wire field.
   attr_reader :homepage
-  # @return [String] Optional `string` value serialized in the `hooks_url` wire field.
+  # @return [String] Required `string` value serialized in the `hooks_url` wire field.
   attr_reader :hooks_url
-  # @return [String] Optional `string` value serialized in the `html_url` wire field.
+  # @return [String] Required `string` value serialized in the `html_url` wire field.
   attr_reader :html_url
-  # @return [Integer] Optional `integer` value serialized in the `id` wire field.
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
   attr_reader :id
   # @return [Boolean] Optional `boolean` value serialized in the `is_template` wire field.
   attr_reader :is_template
-  # @return [String] Optional `string` value serialized in the `issue_comment_url` wire field.
+  # @return [String] Required `string` value serialized in the `issue_comment_url` wire field.
   attr_reader :issue_comment_url
-  # @return [String] Optional `string` value serialized in the `issue_events_url` wire field.
+  # @return [String] Required `string` value serialized in the `issue_events_url` wire field.
   attr_reader :issue_events_url
-  # @return [String] Optional `string` value serialized in the `issues_url` wire field.
+  # @return [String] Required `string` value serialized in the `issues_url` wire field.
   attr_reader :issues_url
-  # @return [String] Optional `string` value serialized in the `keys_url` wire field.
+  # @return [String] Required `string` value serialized in the `keys_url` wire field.
   attr_reader :keys_url
-  # @return [String] Optional `string` value serialized in the `labels_url` wire field.
+  # @return [String] Required `string` value serialized in the `labels_url` wire field.
   attr_reader :labels_url
-  # @return [Object] Optional API value serialized in the `language` wire field.
+  # @return [Object] Required API value serialized in the `language` wire field.
   attr_reader :language
-  # @return [String] Optional `string` value serialized in the `languages_url` wire field.
+  # @return [String] Required `string` value serialized in the `languages_url` wire field.
   attr_reader :languages_url
-  # @return [Hash] Optional object value serialized in the `license` wire field.
+  # @return [Hash] Required object value serialized in the `license` wire field.
   attr_reader :license
   # @return [String] Optional `string` value serialized in the `master_branch` wire field.
   attr_reader :master_branch
-  # @return [String] Optional `string` value serialized in the `merges_url` wire field.
+  # @return [String] Required `string` value serialized in the `merges_url` wire field.
   attr_reader :merges_url
-  # @return [String] Optional `string` value serialized in the `milestones_url` wire field.
+  # @return [String] Required `string` value serialized in the `milestones_url` wire field.
   attr_reader :milestones_url
-  # @return [Object] Optional API value serialized in the `mirror_url` wire field.
+  # @return [Object] Required API value serialized in the `mirror_url` wire field.
   attr_reader :mirror_url
-  # @return [String] Optional `string` value serialized in the `name` wire field.
+  # @return [String] Required `string` value serialized in the `name` wire field.
   attr_reader :name
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
   attr_reader :node_id
-  # @return [String] Optional `string` value serialized in the `notifications_url` wire field.
+  # @return [String] Required `string` value serialized in the `notifications_url` wire field.
   attr_reader :notifications_url
-  # @return [Integer] Optional `integer` value serialized in the `open_issues` wire field.
+  # @return [Integer] Required `integer` value serialized in the `open_issues` wire field.
   attr_reader :open_issues
-  # @return [Integer] Optional `integer` value serialized in the `open_issues_count` wire field.
+  # @return [Integer] Required `integer` value serialized in the `open_issues_count` wire field.
   attr_reader :open_issues_count
   # @return [String] Optional `string` value serialized in the `organization` wire field.
   attr_reader :organization
-  # @return [WebhookForkForkeeVariant1Owner] Optional object value serialized in the `owner` wire field.
+  # @return [WebhookForkForkeeOwner] Required object value serialized in the `owner` wire field.
   attr_reader :owner
-  # @return [WebhookForkForkeeVariant0Permissions] Optional object value serialized in the `permissions` wire field.
+  # @return [WebhookForkForkeePermissions] Optional object value serialized in the `permissions` wire field.
   attr_reader :permissions
-  # @return [Boolean] Optional `boolean` value serialized in the `private` wire field.
+  # @return [Boolean] Required `boolean` value serialized in the `private` wire field.
   attr_reader :private
   # @return [Boolean] Optional `boolean` value serialized in the `public` wire field.
   attr_reader :public
-  # @return [String] Optional `string` value serialized in the `pulls_url` wire field.
+  # @return [String] Required `string` value serialized in the `pulls_url` wire field.
   attr_reader :pulls_url
-  # @return [String] Optional `string` value serialized in the `pushed_at` wire field.
+  # @return [String] Required `string` value serialized in the `pushed_at` wire field.
   attr_reader :pushed_at
-  # @return [String] Optional `string` value serialized in the `releases_url` wire field.
+  # @return [String] Required `string` value serialized in the `releases_url` wire field.
   attr_reader :releases_url
   # @return [String] Optional `string` value serialized in the `role_name` wire field.
   attr_reader :role_name
-  # @return [Integer] Optional `integer` value serialized in the `size` wire field.
+  # @return [Integer] Required `integer` value serialized in the `size` wire field.
   attr_reader :size
-  # @return [String] Optional `string` value serialized in the `ssh_url` wire field.
+  # @return [String] Required `string` value serialized in the `ssh_url` wire field.
   attr_reader :ssh_url
   # @return [Integer] Optional `integer` value serialized in the `stargazers` wire field.
   attr_reader :stargazers
-  # @return [Integer] Optional `integer` value serialized in the `stargazers_count` wire field.
+  # @return [Integer] Required `integer` value serialized in the `stargazers_count` wire field.
   attr_reader :stargazers_count
-  # @return [String] Optional `string` value serialized in the `stargazers_url` wire field.
+  # @return [String] Required `string` value serialized in the `stargazers_url` wire field.
   attr_reader :stargazers_url
-  # @return [String] Optional `string` value serialized in the `statuses_url` wire field.
+  # @return [String] Required `string` value serialized in the `statuses_url` wire field.
   attr_reader :statuses_url
-  # @return [String] Optional `string` value serialized in the `subscribers_url` wire field.
+  # @return [String] Required `string` value serialized in the `subscribers_url` wire field.
   attr_reader :subscribers_url
-  # @return [String] Optional `string` value serialized in the `subscription_url` wire field.
+  # @return [String] Required `string` value serialized in the `subscription_url` wire field.
   attr_reader :subscription_url
-  # @return [String] Optional `string` value serialized in the `svn_url` wire field.
+  # @return [String] Required `string` value serialized in the `svn_url` wire field.
   attr_reader :svn_url
-  # @return [String] Optional `string` value serialized in the `tags_url` wire field.
+  # @return [String] Required `string` value serialized in the `tags_url` wire field.
   attr_reader :tags_url
-  # @return [String] Optional `string` value serialized in the `teams_url` wire field.
+  # @return [String] Required `string` value serialized in the `teams_url` wire field.
   attr_reader :teams_url
-  # @return [Array_of_Object] Optional array value serialized in the `topics` wire field.
+  # @return [Array_of_Object] Required array value serialized in the `topics` wire field.
   attr_reader :topics
-  # @return [String] Optional `string` value serialized in the `trees_url` wire field.
+  # @return [String] Required `string` value serialized in the `trees_url` wire field.
   attr_reader :trees_url
-  # @return [String] Optional `string` value serialized in the `updated_at` wire field.
+  # @return [String] Required `string` value serialized in the `updated_at` wire field.
   attr_reader :updated_at
-  # @return [String] Optional `string` value serialized in the `url` wire field.
+  # @return [String] Required `string` value serialized in the `url` wire field.
   attr_reader :url
-  # @return [String] Optional `string` value serialized in the `visibility` wire field.
+  # @return [String] Required `string` value serialized in the `visibility` wire field.
   attr_reader :visibility
-  # @return [Integer] Optional `integer` value serialized in the `watchers` wire field.
+  # @return [Integer] Required `integer` value serialized in the `watchers` wire field.
   attr_reader :watchers
-  # @return [Integer] Optional `integer` value serialized in the `watchers_count` wire field.
+  # @return [Integer] Required `integer` value serialized in the `watchers_count` wire field.
   attr_reader :watchers_count
   # @return [Boolean] Whether to require contributors to sign off on web-based commits
   attr_reader :web_commit_signoff_required
@@ -608,30 +608,8 @@ class WebhookFork
   end
 end
 
-# Defines the WebhookForkForkeeVariant0OwnerType SDK namespace.
-module WebhookForkForkeeVariant0OwnerType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookForkForkeeVariant0Visibility SDK namespace.
-module WebhookForkForkeeVariant0Visibility
-  PUBLIC = 'public'
-  PRIVATE = 'private'
-  INTERNAL = 'internal'
-  VALUES = ['public', 'private', 'internal'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookForkForkeeVariant1Fork SDK namespace.
-module WebhookForkForkeeVariant1Fork
+# Defines the WebhookForkForkeeFork SDK namespace.
+module WebhookForkForkeeFork
   TRUE = true
   VALUES = [true].freeze
   def self.from_value(value)

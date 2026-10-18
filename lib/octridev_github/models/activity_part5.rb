@@ -226,7 +226,7 @@ class SdkInternalReleaseEventReleaseMetadata
 end
 
 # API model for ReleaseEventRelease.
-# Required API value serialized in the `release` wire field.
+# Required object value serialized in the `release` wire field.
 class ReleaseEventRelease
   CONSTRUCTION_SURFACE = :named
   FIELDS = SdkInternalReleaseEventReleaseMetadata::FIELDS
@@ -330,7 +330,7 @@ class ReleaseEvent
 
   # @return [String] Required `string` value serialized in the `action` wire field.
   attr_reader :action
-  # @return [ReleaseEventRelease] Required API value serialized in the `release` wire field.
+  # @return [ReleaseEventRelease] Required object value serialized in the `release` wire field.
   attr_reader :release
 
   def initialize(**attributes)

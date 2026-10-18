@@ -20,17 +20,20 @@ module OctridevGithub
   # Defines the ActionsRule SDK namespace.
   module ActionsRule
   end
-  # Defines the ArtifactsItemData SDK namespace.
-  module ArtifactsItemData
+  # Defines the AgentAutomationsListAutomationTasksResponseTasksItemArtifactsItemData SDK namespace.
+  module AgentAutomationsListAutomationTasksResponseTasksItemArtifactsItemData
   end
-  # Defines the ArtifactsItemData2 SDK namespace.
-  module ArtifactsItemData2
+  # Defines the AgentAutomationsListAvailableAutomationTriggersResponseItemFiX8d60f6fda7 SDK namespace.
+  module AgentAutomationsListAvailableAutomationTriggersResponseItemFiX8d60f6fda7
   end
-  # Defines the ArtifactsItemData3 SDK namespace.
-  module ArtifactsItemData3
+  # Defines the AgentTasksCreateTaskInRepoResponseArtifactsItemData SDK namespace.
+  module AgentTasksCreateTaskInRepoResponseArtifactsItemData
   end
-  # Defines the CodeQualitySetupUpdate SDK namespace.
-  module CodeQualitySetupUpdate
+  # Defines the AgentTasksListTasksForRepoResponseTasksItemArtifactsItemData SDK namespace.
+  module AgentTasksListTasksForRepoResponseTasksItemArtifactsItemData
+  end
+  # Defines the AgentTasksListTasksResponseTasksItemArtifactsItemData SDK namespace.
+  module AgentTasksListTasksResponseTasksItemArtifactsItemData
   end
   # Defines the CommitAuthor SDK namespace.
   module CommitAuthor
@@ -47,14 +50,14 @@ module OctridevGithub
   # Defines the CopilotSpaceOwner SDK namespace.
   module CopilotSpaceOwner
   end
+  # Defines the DeploymentPayload SDK namespace.
+  module DeploymentPayload
+  end
   # Defines the EnvironmentProtectionRulesItem SDK namespace.
   module EnvironmentProtectionRulesItem
   end
   # Defines the EventPayload SDK namespace.
   module EventPayload
-  end
-  # Defines the FieldsItemSchema SDK namespace.
-  module FieldsItemSchema
   end
   # Defines the InstallationAccount SDK namespace.
   module InstallationAccount
@@ -68,8 +71,32 @@ module OctridevGithub
   # Defines the IssueEventForIssue SDK namespace.
   module IssueEventForIssue
   end
+  # Defines the IssueLabelsItem SDK namespace.
+  module IssueLabelsItem
+  end
+  # Defines the IssuesAddAssigneesRequestAssigneesItem SDK namespace.
+  module IssuesAddAssigneesRequestAssigneesItem
+  end
+  # Defines the IssuesCreateRequestLabelsItem SDK namespace.
+  module IssuesCreateRequestLabelsItem
+  end
+  # Defines the IssuesUpdateRequestAssigneesItem SDK namespace.
+  module IssuesUpdateRequestAssigneesItem
+  end
+  # Defines the IssuesUpdateRequestLabelsItem SDK namespace.
+  module IssuesUpdateRequestLabelsItem
+  end
+  # Defines the IssuesUpdateRequestType SDK namespace.
+  module IssuesUpdateRequestType
+  end
+  # Defines the NullableDeploymentPayload SDK namespace.
+  module NullableDeploymentPayload
+  end
   # Defines the NullableIntegrationOwner SDK namespace.
   module NullableIntegrationOwner
+  end
+  # Defines the NullableIssueLabelsItem SDK namespace.
+  module NullableIssueLabelsItem
   end
   # Defines the NullableSecretScanningFirstDetectedLocation SDK namespace.
   module NullableSecretScanningFirstDetectedLocation
@@ -89,17 +116,8 @@ module OctridevGithub
   # Defines the PullRequestMergeAsyncResultDetails SDK namespace.
   module PullRequestMergeAsyncResultDetails
   end
-  # Defines the PullRequestRequestedReviewersItem SDK namespace.
-  module PullRequestRequestedReviewersItem
-  end
-  # Defines the PullRequestRequestedReviewersItem2 SDK namespace.
-  module PullRequestRequestedReviewersItem2
-  end
-  # Defines the PullRequestRequestedReviewersItem3 SDK namespace.
-  module PullRequestRequestedReviewersItem3
-  end
-  # Defines the PullRequestRequestedReviewersItem4 SDK namespace.
-  module PullRequestRequestedReviewersItem4
+  # Defines the ReposCreateDeploymentRequestPayload SDK namespace.
+  module ReposCreateDeploymentRequestPayload
   end
   # Defines the RepositoryRule SDK namespace.
   module RepositoryRule
@@ -110,32 +128,32 @@ module OctridevGithub
   # Defines the RepositoryRulesetConditions2 SDK namespace.
   module RepositoryRulesetConditions2
   end
-  # Defines the ReviewersItemReviewer SDK namespace.
-  module ReviewersItemReviewer
+  # Defines the ReposUpdateInformationAboutPagesSiteRequestSource SDK namespace.
+  module ReposUpdateInformationAboutPagesSiteRequestSource
   end
   # Defines the RuleSuiteRuleEvaluationsItemMetadata SDK namespace.
   module RuleSuiteRuleEvaluationsItemMetadata
   end
-  # Defines the SecretScanningCustomPatternToUpdate SDK namespace.
-  module SecretScanningCustomPatternToUpdate
-  end
   # Defines the SecretScanningLocationDetails SDK namespace.
   module SecretScanningLocationDetails
-  end
-  # Defines the TasksItemArtifactsItemData SDK namespace.
-  module TasksItemArtifactsItemData
-  end
-  # Defines the TasksItemArtifactsItemData2 SDK namespace.
-  module TasksItemArtifactsItemData2
-  end
-  # Defines the TasksItemArtifactsItemData3 SDK namespace.
-  module TasksItemArtifactsItemData3
   end
   # Defines the TimelineIssueEvents SDK namespace.
   module TimelineIssueEvents
   end
   # Defines the WebhookConfigInsecureSsl SDK namespace.
   module WebhookConfigInsecureSsl
+  end
+  # Defines the WebhookDeploymentCreatedDeploymentPayload SDK namespace.
+  module WebhookDeploymentCreatedDeploymentPayload
+  end
+  # Defines the WebhookDeploymentStatusCreatedDeploymentPayload SDK namespace.
+  module WebhookDeploymentStatusCreatedDeploymentPayload
+  end
+  # Defines the WebhookPackagePublishedPackagePackageVersionBody SDK namespace.
+  module WebhookPackagePublishedPackagePackageVersionBody
+  end
+  # Defines the WebhookPackagePublishedPackagePackageVersionNugetMetadataItemValue SDK namespace.
+  module WebhookPackagePublishedPackagePackageVersionNugetMetadataItemValue
   end
   # Defines the WebhookProjectsV2ItemEditedChanges SDK namespace.
   module WebhookProjectsV2ItemEditedChanges
@@ -206,6 +224,30 @@ module OctridevGithub
   # Defines the WebhookPullRequestUnlockedPullRequestRequestedReviewersItem SDK namespace.
   module WebhookPullRequestUnlockedPullRequestRequestedReviewersItem
   end
+  # Defines the WebhookRegistryPackagePublishedRegistryPackagePackageVersionBody SDK namespace.
+  module WebhookRegistryPackagePublishedRegistryPackagePackageVersionBody
+  end
+  # Defines the WebhookRegistryPackagePublishedRegistryPackagePackageVersionNX0959bd7628 SDK namespace.
+  module WebhookRegistryPackagePublishedRegistryPackagePackageVersionNX0959bd7628
+  end
+  # Defines the WebhookRegistryPackagePublishedRegistryPackagePackageVersionNX29b0f8b1a2 SDK namespace.
+  module WebhookRegistryPackagePublishedRegistryPackagePackageVersionNX29b0f8b1a2
+  end
+  # Defines the WebhookRegistryPackagePublishedRegistryPackagePackageVersionNX4f18e8fc66 SDK namespace.
+  module WebhookRegistryPackagePublishedRegistryPackagePackageVersionNX4f18e8fc66
+  end
+  # Defines the WebhookRegistryPackagePublishedRegistryPackagePackageVersionNX502324e7f1 SDK namespace.
+  module WebhookRegistryPackagePublishedRegistryPackagePackageVersionNX502324e7f1
+  end
+  # Defines the WebhookRegistryPackagePublishedRegistryPackagePackageVersionNX92a977cccf SDK namespace.
+  module WebhookRegistryPackagePublishedRegistryPackagePackageVersionNX92a977cccf
+  end
+  # Defines the WebhookRegistryPackagePublishedRegistryPackagePackageVersionNXe064aa3855 SDK namespace.
+  module WebhookRegistryPackagePublishedRegistryPackagePackageVersionNXe064aa3855
+  end
+  # Defines the WebhookRegistryPackagePublishedRegistryPackagePackageVersionNXe481105674 SDK namespace.
+  module WebhookRegistryPackagePublishedRegistryPackagePackageVersionNXe481105674
+  end
   # Defines the WebhooksPullRequest5RequestedReviewersItem SDK namespace.
   module WebhooksPullRequest5RequestedReviewersItem
   end
@@ -214,9 +256,14 @@ end
 require_relative 'models/actions'
 require_relative 'models/actions_part2'
 require_relative 'models/actions_actions'
-require_relative 'models/actions_actions_part2'
-require_relative 'models/actions_actions_part3'
-require_relative 'models/actions_actions_part4'
+require_relative 'models/actions_actions_artifact'
+require_relative 'models/actions_actions_cache'
+require_relative 'models/actions_actions_fork'
+require_relative 'models/actions_actions_hosted'
+require_relative 'models/actions_actions_policy'
+require_relative 'models/actions_actions_policy_part2'
+require_relative 'models/actions_actions_rule'
+require_relative 'models/actions_actions_runner'
 require_relative 'models/actions_concurrency'
 require_relative 'models/actions_enterprise'
 require_relative 'models/actions_nullable'
@@ -266,6 +313,7 @@ require_relative 'models/dependabot_part3'
 require_relative 'models/dependency_graph'
 require_relative 'models/dependency_graph_part2'
 require_relative 'models/gists'
+require_relative 'models/gists_part2'
 require_relative 'models/git'
 require_relative 'models/git_part2'
 require_relative 'models/gitignore'
@@ -278,6 +326,7 @@ require_relative 'models/issues_blocked'
 require_relative 'models/issues_blocking'
 require_relative 'models/issues_issue'
 require_relative 'models/issues_issue_part2'
+require_relative 'models/issues_issues'
 require_relative 'models/issues_nullable'
 require_relative 'models/issues_parent'
 require_relative 'models/issues_review'
@@ -291,6 +340,7 @@ require_relative 'models/misc'
 require_relative 'models/misc_part2'
 require_relative 'models/nullable'
 require_relative 'models/nullable_part2'
+require_relative 'models/nullable_deployment'
 require_relative 'models/oidc'
 require_relative 'models/orgs'
 require_relative 'models/orgs_part2'
@@ -303,9 +353,6 @@ require_relative 'models/private_registries'
 require_relative 'models/projects'
 require_relative 'models/projects_part2'
 require_relative 'models/projects_part3'
-require_relative 'models/pull_request'
-require_relative 'models/pull_request_part2'
-require_relative 'models/pull_request_part3'
 require_relative 'models/pulls'
 require_relative 'models/pulls_part2'
 require_relative 'models/pulls_part3'
@@ -330,6 +377,8 @@ require_relative 'models/repos_page'
 require_relative 'models/repos_pages'
 require_relative 'models/repos_protected'
 require_relative 'models/repos_protected_part2'
+require_relative 'models/repos_release'
+require_relative 'models/repos_repos'
 require_relative 'models/repos_repository'
 require_relative 'models/repos_repository_rule'
 require_relative 'models/repos_repository_rule_part2'
@@ -376,7 +425,6 @@ require_relative 'models/shared_nullable_part3'
 require_relative 'models/shared_organization'
 require_relative 'models/shared_pull'
 require_relative 'models/shared_pull_part2'
-require_relative 'models/shared_release'
 require_relative 'models/shared_repository'
 require_relative 'models/shared_repository_part2'
 require_relative 'models/shared_ruleset'
@@ -444,6 +492,7 @@ require_relative 'models/webhook_deployment_created'
 require_relative 'models/webhook_deployment_created_part2'
 require_relative 'models/webhook_deployment_created_part3'
 require_relative 'models/webhook_deployment_created_part4'
+require_relative 'models/webhook_deployment_created_deployment_payload'
 require_relative 'models/webhook_deployment_protection_rule_requested'
 require_relative 'models/webhook_deployment_review_approved'
 require_relative 'models/webhook_deployment_review_approved_part2'
@@ -460,6 +509,7 @@ require_relative 'models/webhook_deployment_status_created_part3'
 require_relative 'models/webhook_deployment_status_created_part4'
 require_relative 'models/webhook_deployment_status_created_part5'
 require_relative 'models/webhook_deployment_status_created_part6'
+require_relative 'models/webhook_deployment_status_created_deployment_payload'
 require_relative 'models/webhook_discussion_answered'
 require_relative 'models/webhook_discussion_category_changed'
 require_relative 'models/webhook_discussion_closed'
@@ -491,15 +541,10 @@ require_relative 'models/webhook_installation_target_renamed'
 require_relative 'models/webhook_installation_unsuspend'
 require_relative 'models/webhook_issue_comment_created'
 require_relative 'models/webhook_issue_comment_created_part2'
-require_relative 'models/webhook_issue_comment_created_part3'
 require_relative 'models/webhook_issue_comment_deleted'
-require_relative 'models/webhook_issue_comment_deleted_part2'
 require_relative 'models/webhook_issue_comment_edited'
-require_relative 'models/webhook_issue_comment_edited_part2'
 require_relative 'models/webhook_issue_comment_pinned'
-require_relative 'models/webhook_issue_comment_pinned_part2'
 require_relative 'models/webhook_issue_comment_unpinned'
-require_relative 'models/webhook_issue_comment_unpinned_part2'
 require_relative 'models/webhook_issue_dependencies_blocked_by_added'
 require_relative 'models/webhook_issue_dependencies_blocked_by_removed'
 require_relative 'models/webhook_issue_dependencies_blocking_added'
@@ -508,7 +553,6 @@ require_relative 'models/webhook_issue_relates_to_added'
 require_relative 'models/webhook_issue_relates_to_removed'
 require_relative 'models/webhook_issues_assigned'
 require_relative 'models/webhook_issues_closed'
-require_relative 'models/webhook_issues_closed_part2'
 require_relative 'models/webhook_issues_deleted'
 require_relative 'models/webhook_issues_deleted_part2'
 require_relative 'models/webhook_issues_deleted_part3'
@@ -590,6 +634,8 @@ require_relative 'models/webhook_organization_member_removed'
 require_relative 'models/webhook_organization_renamed'
 require_relative 'models/webhook_package_published'
 require_relative 'models/webhook_package_published_part2'
+require_relative 'models/webhook_package_published_package_package_version_body'
+require_relative 'models/webhook_package_published_package_package_version_nuget_metadata_item_value'
 require_relative 'models/webhook_package_updated'
 require_relative 'models/webhook_package_updated_part2'
 require_relative 'models/webhook_page_build'
@@ -746,6 +792,7 @@ require_relative 'models/webhook_pull_request_review_requested_part6'
 require_relative 'models/webhook_pull_request_review_requested_part7'
 require_relative 'models/webhook_pull_request_review_requested_part8'
 require_relative 'models/webhook_pull_request_review_requested_part9'
+require_relative 'models/webhook_pull_request_review_requested_part10'
 require_relative 'models/webhook_pull_request_review_submitted'
 require_relative 'models/webhook_pull_request_review_submitted_part2'
 require_relative 'models/webhook_pull_request_review_submitted_part3'
@@ -812,6 +859,14 @@ require_relative 'models/webhook_push'
 require_relative 'models/webhook_push_part2'
 require_relative 'models/webhook_registry_package_published'
 require_relative 'models/webhook_registry_package_published_part2'
+require_relative 'models/webhook_registry_package_published_registry_package_package_version_body'
+require_relative 'models/webhook_registry_package_published_registry_package_package_version_npm_metadata_author'
+require_relative 'models/webhook_registry_package_published_registry_package_package_version_npm_metadata_bugs'
+require_relative 'models/webhook_registry_package_published_registry_package_package_version_npm_metadata_directories'
+require_relative 'models/webhook_registry_package_published_registry_package_package_version_npm_metadata_dist'
+require_relative 'models/webhook_registry_package_published_registry_package_package_version_npm_metadata_repository'
+require_relative 'models/webhook_registry_package_published_registry_package_package_version_nuget_metadata_item_id'
+require_relative 'models/webhook_registry_package_published_registry_package_package_version_nuget_metadata_item_value'
 require_relative 'models/webhook_registry_package_updated'
 require_relative 'models/webhook_registry_package_updated_part2'
 require_relative 'models/webhook_release_created'

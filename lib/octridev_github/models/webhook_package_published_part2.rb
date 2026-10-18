@@ -203,6 +203,9 @@ class SdkInternalWebhookPackagePublishedPackagePackageVersionMetadata
     author: lambda do |value|
       ::OctridevGithub::WebhookPackagePublishedPackagePackageVersionAuthor.from_hash(value)
     end,
+    body: lambda do |value|
+      ::OctridevGithub::WebhookPackagePublishedPackagePackageVersionBody.from_hash(value)
+    end,
     container_metadata: lambda do |value|
       ::OctridevGithub::WebhookPackagePublishedPackagePackageVersionContainerMetadata.from_hash(value)
     end,
@@ -237,7 +240,7 @@ class WebhookPackagePublishedPackagePackageVersion
 
   # @return [WebhookPackagePublishedPackagePackageVersionAuthor] Optional object value serialized in the `author` wire field.
   attr_reader :author
-  # @return [Object] Optional API value serialized in the `body` wire field.
+  # @return [WebhookPackagePublishedPackagePackageVersionBody] Optional API value serialized in the `body` wire field.
   attr_reader :body
   # @return [String] Optional `string` value serialized in the `body_html` wire field.
   attr_reader :body_html

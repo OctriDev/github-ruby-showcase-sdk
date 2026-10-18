@@ -9,131 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Repos SDK namespace.
     module Repos
-      # Gets all custom deployment protection rule integrations that are available for an environment. The authenticated user must have admin or owner permissions to the repository to use this endpoint. For more information about environments, see "Using environments for deployment." For more information about the app that is providing this custom deployment rule, see "GET an app". OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with…
-      #
-      # @param environment_name [String] The name of the environment. The name must
-      #   be URL encoded. For example, any slashes in the name must be replaced with
-      #   `%2F`.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param page [Integer] The page number of the results to fetch. For more
-      #   information, see "Using pagination in the REST API."
-      # @param per_page [Integer] The number of results per page (max 100). For more
-      #   information, see "Using pagination in the REST API."
-      def self.repos_list_custom_deployment_rule_integrations(
-        config:,
-        environment_name:,
-        repo:,
-        owner:,
-        page: NOT_GIVEN,
-        per_page: NOT_GIVEN,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/environments/",
-            SdkClient.encode_path_segment(environment_name),
-            "/deployment_protection_rules/apps"
-          ].join,
-          config: config,
-          query: {
-            'page' => QueryValue.new(page, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-          },
-          return_type: ::OctridevGithub::Methods::Repos::ReposListCustomDeploymentRuleIntegrationsResponse,
-          decoder: :json,
-          operation_id: 'repos_list_custom_deployment_rule_integrations',
-          request_options: request_options,
-        ).data
-      end
-
-      # Gets an enabled custom deployment protection rule for an environment. Anyone with read access to the repository can use this endpoint. For more information about environments, see "Using environments for deployment." For more information about the app that is providing this custom deployment rule, see `GET /apps/{app_slug}`. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param environment_name [String] The name of the environment. The name must
-      #   be URL encoded. For example, any slashes in the name must be replaced with
-      #   `%2F`.
-      # @param protection_rule_id [Integer] The unique identifier of the protection
-      #   rule.
-      def self.repos_get_custom_deployment_protection_rule(
-        config:,
-        owner:,
-        repo:,
-        environment_name:,
-        protection_rule_id:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/environments/",
-            SdkClient.encode_path_segment(environment_name),
-            "/deployment_protection_rules/",
-            SdkClient.encode_path_segment(protection_rule_id)
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::DeploymentProtectionRule,
-          decoder: :json,
-          operation_id: 'repos_get_custom_deployment_protection_rule',
-          request_options: request_options,
-        ).data
-      end
-
-      # Disables a custom deployment protection rule for an environment. The authenticated user must have admin or owner permissions to the repository to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-      #
-      # @param environment_name [String] The name of the environment. The name must
-      #   be URL encoded. For example, any slashes in the name must be replaced with
-      #   `%2F`.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param protection_rule_id [Integer] The unique identifier of the protection
-      #   rule.
-      def self.repos_disable_deployment_protection_rule(
-        config:,
-        environment_name:,
-        repo:,
-        owner:,
-        protection_rule_id:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'DELETE',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/environments/",
-            SdkClient.encode_path_segment(environment_name),
-            "/deployment_protection_rules/",
-            SdkClient.encode_path_segment(protection_rule_id)
-          ].join,
-          config: config,
-          decoder: :empty,
-          operation_id: 'repos_disable_deployment_protection_rule',
-          request_options: request_options,
-        ).data
-      end
-
       # Lists forks of a repository. Use `sort` to order forks by newest, oldest, stargazers, or watchers. Use `page` and `per_page` to paginate the results.
       #
       # @param owner [String] The account owner of the repository. The name is not
@@ -559,6 +434,140 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'repos_update_webhook_config_for_repo',
           request_options: request_options,
+        ).data
+      end
+
+      # Returns a list of webhook deliveries for a webhook configured in a repository.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param hook_id [Integer] The unique identifier of the hook. You can find
+      #   this value in the `X-GitHub-Hook-ID` header of a webhook delivery.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param cursor [String] Used for pagination: the starting delivery from which
+      #   the page of deliveries is fetched. Refer to the `link` header for the next
+      #   and previous page cursors.
+      # @param status [SchemaSchemaE81e966c] Returns webhook deliveries filtered by
+      #   delivery outcome classification based on `status_code` range. A `status` of
+      #   `success` returns deliveries with a `status_code` in the 200-399 range
+      #   (inclusive). A `status` of `failure` returns deliveries with a `status_code`
+      #   in the 400-599 range (inclusive).
+      def self.repos_list_webhook_deliveries(
+        config:,
+        owner:,
+        repo:,
+        hook_id:,
+        per_page: NOT_GIVEN,
+        cursor: NOT_GIVEN,
+        status: NOT_GIVEN,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/hooks/",
+            SdkClient.encode_path_segment(hook_id),
+            "/deliveries"
+          ].join,
+          config: config,
+          query: {
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'cursor' => QueryValue.new(cursor, style: 'form', explode: true),
+            'status' => QueryValue.new(status, style: 'form', explode: true),
+          },
+          return_type: [::OctridevGithub::HookDeliveryItem],
+          decoder: :json,
+          operation_id: 'repos_list_webhook_deliveries',
+          request_options: request_options,
+          errors: { '400' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+        ).data
+      end
+
+      # Retrieves a delivery record for a webhook configured in a repository. Use the repository owner, repository name, hook ID, and delivery ID to inspect the delivery status, event metadata, and request and response details.
+      #
+      # Returns a delivery for a webhook configured in a repository.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param hook_id [Integer] The unique identifier of the hook. You can find
+      #   this value in the `X-GitHub-Hook-ID` header of a webhook delivery.
+      def self.repos_get_webhook_delivery(
+        config:,
+        owner:,
+        repo:,
+        hook_id:,
+        delivery_id:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/hooks/",
+            SdkClient.encode_path_segment(hook_id),
+            "/deliveries/",
+            SdkClient.encode_path_segment(delivery_id)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::HookDelivery,
+          decoder: :json,
+          operation_id: 'repos_get_webhook_delivery',
+          request_options: request_options,
+          errors: { '400' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+        ).data
+      end
+
+      # Submits a redelivery attempt for a delivery made by a webhook configured in a repository. Use the repository owner, repository name, hook ID, and delivery ID to identify the delivery to retry. A 202 response confirms that the redelivery request was accepted.
+      #
+      # Redeliver a webhook delivery for a webhook configured in a repository.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param hook_id [Integer] The unique identifier of the hook. You can find
+      #   this value in the `X-GitHub-Hook-ID` header of a webhook delivery.
+      def self.repos_redeliver_webhook_delivery(
+        config:,
+        owner:,
+        repo:,
+        hook_id:,
+        delivery_id:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'POST',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/hooks/",
+            SdkClient.encode_path_segment(hook_id),
+            "/deliveries/",
+            SdkClient.encode_path_segment(delivery_id),
+            "/attempts"
+          ].join,
+          config: config,
+          decoder: :json,
+          operation_id: 'repos_redeliver_webhook_delivery',
+          request_options: request_options,
+          errors: { '400' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end

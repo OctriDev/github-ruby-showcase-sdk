@@ -5,6 +5,31 @@
 
 # repos_repository_rule domain models (part 4)
 module OctridevGithub
+# Internal model hydration metadata.
+class SdkInternalRepositoryRuleDetailedVariant17Metadata
+  FIELDS = {
+    type: "type",
+    parameters: "parameters",
+    ruleset_source_type: "ruleset_source_type",
+    ruleset_source: "ruleset_source",
+    ruleset_id: "ruleset_id",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    type
+  ].freeze
+  DECODERS = {
+    type: lambda do |value|
+      ::OctridevGithub::RepositoryRuleCodeQualityType.from_value(value)
+    end,
+    parameters: lambda do |value|
+      ::OctridevGithub::RepositoryRuleCodeQualityParameters.from_hash(value)
+    end,
+    ruleset_source_type: lambda do |value|
+      ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
+    end,
+  }.freeze
+end
+
 # API model for RepositoryRuleDetailedVariant17.
 class RepositoryRuleDetailedVariant17
   CONSTRUCTION_SURFACE = :named
@@ -459,6 +484,35 @@ module RepositoryRuleDetailed
     "file_extension_restriction" => -> { RepositoryRuleDetailedVariant23 },
     "max_file_size" => -> { RepositoryRuleDetailedVariant24 },
   }.freeze
+  UNDECIDED_VARIANTS = (
+    [
+      -> { RepositoryRuleDetailedVariant0 },
+      -> { RepositoryRuleDetailedVariant1 },
+      -> { RepositoryRuleDetailedVariant2 },
+      -> { RepositoryRuleDetailedVariant3 },
+      -> { RepositoryRuleDetailedVariant4 },
+      -> { RepositoryRuleDetailedVariant5 },
+      -> { RepositoryRuleDetailedVariant6 },
+      -> { RepositoryRuleDetailedVariant7 },
+      -> { RepositoryRuleDetailedVariant8 },
+      -> { RepositoryRuleDetailedVariant9 },
+      -> { RepositoryRuleDetailedVariant10 },
+      -> { RepositoryRuleDetailedVariant11 },
+      -> { RepositoryRuleDetailedVariant12 },
+      -> { RepositoryRuleDetailedVariant13 },
+      -> { RepositoryRuleDetailedVariant14 },
+      -> { RepositoryRuleDetailedVariant15 },
+      -> { RepositoryRuleDetailedVariant16 },
+      -> { RepositoryRuleDetailedVariant17 },
+      -> { RepositoryRuleDetailedVariant18 },
+      -> { RepositoryRuleDetailedVariant19 },
+      -> { RepositoryRuleDetailedVariant20 },
+      -> { RepositoryRuleDetailedVariant21 },
+      -> { RepositoryRuleDetailedVariant22 },
+      -> { RepositoryRuleDetailedVariant23 },
+      -> { RepositoryRuleDetailedVariant24 },
+    ]
+  ).freeze
 
   def self.from_hash(hash)
     return hash unless hash.is_a?(::Hash)
@@ -617,61 +671,6 @@ class SdkInternalRepositoryRuleFilePathRestrictionMetadata
     end,
     parameters: lambda do |value|
       ::OctridevGithub::RepositoryRuleFilePathRestrictionParameters.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleFilePathRestriction.
-# Prevent commits that include changes in specified file and folder paths from being pushed to the commit graph. This includes absolute paths that contain file names.
-class RepositoryRuleFilePathRestriction
-  include RepositoryRule
-  include OrgRules
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleFilePathRestrictionMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleFilePathRestrictionMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleFilePathRestrictionMetadata::DECODERS
-
-  # @return [RepositoryRuleFilePathRestrictionType] Required enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [RepositoryRuleFilePathRestrictionParameters] Optional object value serialized in the `parameters` wire field.
-  attr_reader :parameters
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the RepositoryRuleFilePathRestrictionType SDK namespace.
-module RepositoryRuleFilePathRestrictionType
-  FILE_PATH_RESTRICTION = 'file_path_restriction'
-  VALUES = ['file_path_restriction'].freeze
-  def self.from_value(value)
-    return value if VALUES.include?(value)
-
-    raise SdkValidationError.new('RepositoryRuleFilePathRestrictionType', 'enum', "Unknown RepositoryRuleFilePathRestrictionType: #{value}")
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleLicenseComplianceScanningMetadata
-  FIELDS = {
-    type: "type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleLicenseComplianceScanningType.from_value(value)
     end,
   }.freeze
 end

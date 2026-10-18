@@ -127,12 +127,16 @@ module PullRequestMergeAsyncResultDetails
     type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
     decoded = type&.from_hash(hash)
     return decoded unless type.nil?
+    lossy = nil
     [PullRequestMergeAsyncResultDetailsVariant1, PullRequestMergeAsyncResultDetailsVariant2].each do |type|
-      return type.from_hash(hash)
+      decoded = type.from_hash(hash)
+      return decoded if SdkModel.keeps_every_key?(hash, decoded)
+
+      lossy ||= decoded
     rescue ::StandardError
       next
     end
-    raise SdkValidationError.new('PullRequestMergeAsyncResultDetails', 'variant', "Cannot select PullRequestMergeAsyncResultDetails variant without a discriminator")
+    return lossy unless lossy.nil?
   end
 end
 
@@ -637,44 +641,5 @@ class SdkInternalPullRequestStackMinimalMetadata
       value&.map { |item| ::OctridevGithub::PullRequestStackMinimalPullRequestsItem.from_hash(item) }
     end,
   }.freeze
-end
-
-# API model for PullRequestStackMinimal.
-# Typed representation of the `PullRequestStackMinimal` API schema.
-class PullRequestStackMinimal
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalPullRequestStackMinimalMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalPullRequestStackMinimalMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalPullRequestStackMinimalMetadata::DECODERS
-
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [Integer] Required `integer` value serialized in the `number` wire field.
-  attr_reader :number
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [PullRequestStackMinimalBase] Required object value serialized in the `base` wire field.
-  attr_reader :base
-  # @return [Boolean] Whether the stack has any open pull request. False when all pull requests are merged or closed.
-  attr_reader :open
-  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [Array_of_PullRequestStackMinimalPullRequestsItem] Required array value serialized in the `pull_requests` wire field.
-  attr_reader :pull_requests
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
 end
 end
