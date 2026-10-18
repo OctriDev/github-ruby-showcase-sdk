@@ -5,667 +5,651 @@
 
 # repos_rule domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalRuleSuiteRuleEvaluationsItemRuleSourceMetadata
-  FIELDS = {
-    type: "type",
-    id: "id",
-    name: "name",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for RuleSuiteRuleEvaluationsItemRuleSource.
-# Optional object value serialized in the `rule_source` wire field.
-class RuleSuiteRuleEvaluationsItemRuleSource
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRuleSuiteRuleEvaluationsItemRuleSourceMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRuleSuiteRuleEvaluationsItemRuleSourceMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRuleSuiteRuleEvaluationsItemRuleSourceMetadata::DECODERS
-
-  # @return [String] The type of rule source.
-  attr_reader :type
-  # @return [Integer] The ID of the rule source.
-  attr_reader :id
-  # @return [String] The name of the rule source.
-  attr_reader :name
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRuleSuiteRuleEvaluationsItemRuleSourceMetadata
+    FIELDS = {
+      type: 'type',
+      id: 'id',
+      name: 'name'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RuleSuiteRuleEvaluationsItemRuleSource.
+  # Optional object value serialized in the `rule_source` wire field.
+  class RuleSuiteRuleEvaluationsItemRuleSource
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRuleSuiteRuleEvaluationsItemRuleSourceMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRuleSuiteRuleEvaluationsItemRuleSourceMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRuleSuiteRuleEvaluationsItemRuleSourceMetadata::DECODERS
+
+    # @return [String] The type of rule source.
+    attr_reader :type
+    # @return [Integer] The ID of the rule source.
+    attr_reader :id
+    # @return [String] The name of the rule source.
+    attr_reader :name
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRuleSuiteRuleEvaluationsItemMetadata
-  FIELDS = {
-    rule_source: "rule_source",
-    enforcement: "enforcement",
-    result: "result",
-    rule_type: "rule_type",
-    metadata: "metadata",
-    details: "details",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    rule_source: lambda do |value|
-      ::OctridevGithub::RuleSuiteRuleEvaluationsItemRuleSource.from_hash(value)
-    end,
-    enforcement: lambda do |value|
-      ::OctridevGithub::RuleSuiteRuleEvaluationsItemEnforcement.from_value(value)
-    end,
-    result: lambda do |value|
-      ::OctridevGithub::RuleSuiteRuleEvaluationsItemResult.from_value(value)
-    end,
-    metadata: lambda do |value|
-      ::OctridevGithub::RuleSuiteRuleEvaluationsItemMetadata.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for RuleSuiteRuleEvaluationsItem.
-# Required object value serialized in the `rule_evaluations[]` wire field.
-class RuleSuiteRuleEvaluationsItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRuleSuiteRuleEvaluationsItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRuleSuiteRuleEvaluationsItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRuleSuiteRuleEvaluationsItemMetadata::DECODERS
-
-  # @return [RuleSuiteRuleEvaluationsItemRuleSource] Optional object value serialized in the `rule_source` wire field.
-  attr_reader :rule_source
-  # @return [RuleSuiteRuleEvaluationsItemEnforcement] The enforcement level of this rule source.
-  attr_reader :enforcement
-  # @return [RuleSuiteRuleEvaluationsItemResult] The result of the evaluation of the individual rule.
-  attr_reader :result
-  # @return [String] The type of rule.
-  attr_reader :rule_type
-  # @return [RuleSuiteRuleEvaluationsItemMetadata] Additional metadata about the rule evaluation.
-  attr_reader :metadata
-  # @return [String] The detailed failure message for the rule. Null if the rule passed.
-  attr_reader :details
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRuleSuiteRuleEvaluationsItemMetadata
+    FIELDS = {
+      rule_source: 'rule_source',
+      enforcement: 'enforcement',
+      result: 'result',
+      rule_type: 'rule_type',
+      metadata: 'metadata',
+      details: 'details'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      rule_source: lambda do |value|
+        ::OctridevGithub::RuleSuiteRuleEvaluationsItemRuleSource.from_hash(value)
+      end,
+      enforcement: lambda do |value|
+        ::OctridevGithub::RuleSuiteRuleEvaluationsItemEnforcement.from_value(value)
+      end,
+      result: lambda do |value|
+        ::OctridevGithub::RuleSuiteRuleEvaluationsItemResult.from_value(value)
+      end,
+      metadata: lambda do |value|
+        ::OctridevGithub::RuleSuiteRuleEvaluationsItemMetadata.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RuleSuiteRuleEvaluationsItem.
+  # Required object value serialized in the `rule_evaluations[]` wire field.
+  class RuleSuiteRuleEvaluationsItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRuleSuiteRuleEvaluationsItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRuleSuiteRuleEvaluationsItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRuleSuiteRuleEvaluationsItemMetadata::DECODERS
+
+    # @return [RuleSuiteRuleEvaluationsItemRuleSource] Optional object value serialized in the `rule_source` wire field.
+    attr_reader :rule_source
+    # @return [RuleSuiteRuleEvaluationsItemEnforcement] The enforcement level of this rule source.
+    attr_reader :enforcement
+    # @return [RuleSuiteRuleEvaluationsItemResult] The result of the evaluation of the individual rule.
+    attr_reader :result
+    # @return [String] The type of rule.
+    attr_reader :rule_type
+    # @return [RuleSuiteRuleEvaluationsItemMetadata] Additional metadata about the rule evaluation.
+    attr_reader :metadata
+    # @return [String] The detailed failure message for the rule. Null if the rule passed.
+    attr_reader :details
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRuleSuiteMetadata
-  FIELDS = {
-    id: "id",
-    actor_id: "actor_id",
-    actor_name: "actor_name",
-    before_sha: "before_sha",
-    after_sha: "after_sha",
-    ref: "ref",
-    repository_id: "repository_id",
-    repository_name: "repository_name",
-    pushed_at: "pushed_at",
-    result: "result",
-    evaluation_result: "evaluation_result",
-    rule_evaluations: "rule_evaluations",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    result: lambda do |value|
-      ::OctridevGithub::RuleSuiteResult.from_value(value)
-    end,
-    evaluation_result: lambda do |value|
-      ::OctridevGithub::RuleSuiteEvaluationResult.from_value(value)
-    end,
-    rule_evaluations: lambda do |value|
-      value&.map { |item| ::OctridevGithub::RuleSuiteRuleEvaluationsItem.from_hash(item) }
-    end,
-  }.freeze
-end
-
-# API model for RuleSuite.
-# Response
-class RuleSuite
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRuleSuiteMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRuleSuiteMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRuleSuiteMetadata::DECODERS
-
-  # @return [Integer] The unique identifier of the rule insight.
-  attr_reader :id
-  # @return [Integer] The number that identifies the user.
-  attr_reader :actor_id
-  # @return [String] The handle for the GitHub user account.
-  attr_reader :actor_name
-  # @return [String] The previous commit SHA of the ref.
-  attr_reader :before_sha
-  # @return [String] The new commit SHA of the ref.
-  attr_reader :after_sha
-  # @return [String] The ref name that the evaluation ran on.
-  attr_reader :ref
-  # @return [Integer] The ID of the repository associated with the rule evaluation.
-  attr_reader :repository_id
-  # @return [String] The name of the repository without the `.git` extension.
-  attr_reader :repository_name
-  # @return [String] Optional `date-time`-formatted value serialized in the `pushed_at` wire field.
-  attr_reader :pushed_at
-  # @return [RuleSuiteResult] The result of the rule evaluations for rules with the `active` enforcement status.
-  attr_reader :result
-  # @return [RuleSuiteEvaluationResult] The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`. Null if no rules with `evaluate` enforcement status were run.
-  attr_reader :evaluation_result
-  # @return [Array_of_RuleSuiteRuleEvaluationsItem] Details on the evaluated rules.
-  attr_reader :rule_evaluations
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRuleSuiteMetadata
+    FIELDS = {
+      id: 'id',
+      actor_id: 'actor_id',
+      actor_name: 'actor_name',
+      before_sha: 'before_sha',
+      after_sha: 'after_sha',
+      ref: 'ref',
+      repository_id: 'repository_id',
+      repository_name: 'repository_name',
+      pushed_at: 'pushed_at',
+      result: 'result',
+      evaluation_result: 'evaluation_result',
+      rule_evaluations: 'rule_evaluations'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      result: lambda do |value|
+        ::OctridevGithub::RuleSuiteResult.from_value(value)
+      end,
+      evaluation_result: lambda do |value|
+        ::OctridevGithub::RuleSuiteEvaluationResult.from_value(value)
+      end,
+      rule_evaluations: lambda do |value|
+        value&.map { |item| ::OctridevGithub::RuleSuiteRuleEvaluationsItem.from_hash(item) }
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RuleSuite.
+  # Response
+  class RuleSuite
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRuleSuiteMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRuleSuiteMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRuleSuiteMetadata::DECODERS
+
+    # @return [Integer] The unique identifier of the rule insight.
+    attr_reader :id
+    # @return [Integer] The number that identifies the user.
+    attr_reader :actor_id
+    # @return [String] The handle for the GitHub user account.
+    attr_reader :actor_name
+    # @return [String] The previous commit SHA of the ref.
+    attr_reader :before_sha
+    # @return [String] The new commit SHA of the ref.
+    attr_reader :after_sha
+    # @return [String] The ref name that the evaluation ran on.
+    attr_reader :ref
+    # @return [Integer] The ID of the repository associated with the rule evaluation.
+    attr_reader :repository_id
+    # @return [String] The name of the repository without the `.git` extension.
+    attr_reader :repository_name
+    # @return [String] Optional `date-time`-formatted value serialized in the `pushed_at` wire field.
+    attr_reader :pushed_at
+    # @return [RuleSuiteResult] The result of the rule evaluations for rules with the `active` enforcement status.
+    attr_reader :result
+    # @return [RuleSuiteEvaluationResult] The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`. Null if no rules with `evaluate` enforcement status were run.
+    attr_reader :evaluation_result
+    # @return [Array_of_RuleSuiteRuleEvaluationsItem] Details on the evaluated rules.
+    attr_reader :rule_evaluations
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the RuleSuiteEvaluationResult SDK namespace.
-module RuleSuiteEvaluationResult
-  PASS = 'pass'
-  FAIL = 'fail'
-  BYPASS = 'bypass'
-  VALUES = ['pass', 'fail', 'bypass'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the RuleSuiteResult SDK namespace.
-module RuleSuiteResult
-  PASS = 'pass'
-  FAIL = 'fail'
-  BYPASS = 'bypass'
-  VALUES = ['pass', 'fail', 'bypass'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the RuleSuiteRuleEvaluationsItemEnforcement SDK namespace.
-module RuleSuiteRuleEvaluationsItemEnforcement
-  ACTIVE = 'active'
-  EVALUATE = 'evaluate'
-  DELETED_RULESET = 'deleted ruleset'
-  VALUES = ['active', 'evaluate', 'deleted ruleset'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the RuleSuiteRuleEvaluationsItemResult SDK namespace.
-module RuleSuiteRuleEvaluationsItemResult
-  PASS = 'pass'
-  FAIL = 'fail'
-  VALUES = ['pass', 'fail'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRuleSuitePullRequestPullRequestUserMetadata
-  FIELDS = {
-    id: "id",
-    login: "login",
-    type: "type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for RuleSuitePullRequestPullRequestUser.
-# The user who created the pull request.
-class RuleSuitePullRequestPullRequestUser
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRuleSuitePullRequestPullRequestUserMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRuleSuitePullRequestPullRequestUserMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRuleSuitePullRequestPullRequestUserMetadata::DECODERS
-
-  # @return [Integer] The unique identifier of the user.
-  attr_reader :id
-  # @return [String] The handle for the GitHub user account.
-  attr_reader :login
-  # @return [String] The type of the user.
-  attr_reader :type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the RuleSuiteEvaluationResult SDK namespace.
+  module RuleSuiteEvaluationResult
+    PASS = 'pass'
+    FAIL = 'fail'
+    BYPASS = 'bypass'
+    VALUES = %w[pass fail bypass].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the RuleSuiteResult SDK namespace.
+  module RuleSuiteResult
+    PASS = 'pass'
+    FAIL = 'fail'
+    BYPASS = 'bypass'
+    VALUES = %w[pass fail bypass].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRuleSuitePullRequestPullRequestReviewsItemUserMetadata
-  FIELDS = {
-    id: "id",
-    login: "login",
-    type: "type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for RuleSuitePullRequestPullRequestReviewsItemUser.
-# The user who submitted the review.
-class RuleSuitePullRequestPullRequestReviewsItemUser
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRuleSuitePullRequestPullRequestReviewsItemUserMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRuleSuitePullRequestPullRequestReviewsItemUserMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRuleSuitePullRequestPullRequestReviewsItemUserMetadata::DECODERS
-
-  # @return [Integer] The unique identifier of the user.
-  attr_reader :id
-  # @return [String] The handle for the GitHub user account.
-  attr_reader :login
-  # @return [String] The type of the user.
-  attr_reader :type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the RuleSuiteRuleEvaluationsItemEnforcement SDK namespace.
+  module RuleSuiteRuleEvaluationsItemEnforcement
+    ACTIVE = 'active'
+    EVALUATE = 'evaluate'
+    DELETED_RULESET = 'deleted ruleset'
+    VALUES = ['active', 'evaluate', 'deleted ruleset'].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the RuleSuiteRuleEvaluationsItemResult SDK namespace.
+  module RuleSuiteRuleEvaluationsItemResult
+    PASS = 'pass'
+    FAIL = 'fail'
+    VALUES = %w[pass fail].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRuleSuitePullRequestPullRequestReviewsItemMetadata
-  FIELDS = {
-    id: "id",
-    user: "user",
-    state: "state",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    user: lambda do |value|
-      ::OctridevGithub::RuleSuitePullRequestPullRequestReviewsItemUser.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for RuleSuitePullRequestPullRequestReviewsItem.
-# Required object value serialized in the `reviews[]` wire field.
-class RuleSuitePullRequestPullRequestReviewsItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRuleSuitePullRequestPullRequestReviewsItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRuleSuitePullRequestPullRequestReviewsItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRuleSuitePullRequestPullRequestReviewsItemMetadata::DECODERS
-
-  # @return [Integer] The unique identifier of the review.
-  attr_reader :id
-  # @return [RuleSuitePullRequestPullRequestReviewsItemUser] The user who submitted the review.
-  attr_reader :user
-  # @return [String] The state of the review.
-  attr_reader :state
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRuleSuitePullRequestPullRequestUserMetadata
+    FIELDS = {
+      id: 'id',
+      login: 'login',
+      type: 'type'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RuleSuitePullRequestPullRequestUser.
+  # The user who created the pull request.
+  class RuleSuitePullRequestPullRequestUser
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRuleSuitePullRequestPullRequestUserMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRuleSuitePullRequestPullRequestUserMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRuleSuitePullRequestPullRequestUserMetadata::DECODERS
+
+    # @return [Integer] The unique identifier of the user.
+    attr_reader :id
+    # @return [String] The handle for the GitHub user account.
+    attr_reader :login
+    # @return [String] The type of the user.
+    attr_reader :type
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRuleSuitePullRequestPullRequestProofOfPresenceVerifierMetadata
-  FIELDS = {
-    id: "id",
-    login: "login",
-    type: "type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for RuleSuitePullRequestPullRequestProofOfPresenceVerifier.
-# The user who provided proof of presence. Null if no proof of presence was recorded.
-class RuleSuitePullRequestPullRequestProofOfPresenceVerifier
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRuleSuitePullRequestPullRequestProofOfPresenceVerifierMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRuleSuitePullRequestPullRequestProofOfPresenceVerifierMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRuleSuitePullRequestPullRequestProofOfPresenceVerifierMetadata::DECODERS
-
-  # @return [Integer] The unique identifier of the user.
-  attr_reader :id
-  # @return [String] The handle for the GitHub user account.
-  attr_reader :login
-  # @return [String] The type of the user.
-  attr_reader :type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRuleSuitePullRequestPullRequestReviewsItemUserMetadata
+    FIELDS = {
+      id: 'id',
+      login: 'login',
+      type: 'type'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RuleSuitePullRequestPullRequestReviewsItemUser.
+  # The user who submitted the review.
+  class RuleSuitePullRequestPullRequestReviewsItemUser
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRuleSuitePullRequestPullRequestReviewsItemUserMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRuleSuitePullRequestPullRequestReviewsItemUserMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRuleSuitePullRequestPullRequestReviewsItemUserMetadata::DECODERS
+
+    # @return [Integer] The unique identifier of the user.
+    attr_reader :id
+    # @return [String] The handle for the GitHub user account.
+    attr_reader :login
+    # @return [String] The type of the user.
+    attr_reader :type
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRuleSuitePullRequestPullRequestProofOfPresenceMetadata
-  FIELDS = {
-    state: "state",
-    code: "code",
-    base_sha: "base_sha",
-    head_sha: "head_sha",
-    required_level: "required_level",
-    verified_level: "verified_level",
-    verified_at: "verified_at",
-    verifier: "verifier",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    verifier: lambda do |value|
-      ::OctridevGithub::RuleSuitePullRequestPullRequestProofOfPresenceVerifier.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for RuleSuitePullRequestPullRequestProofOfPresence.
-# The proof of presence evaluation for the pull request. Null if proof of presence was not evaluated.
-class RuleSuitePullRequestPullRequestProofOfPresence
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRuleSuitePullRequestPullRequestProofOfPresenceMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRuleSuitePullRequestPullRequestProofOfPresenceMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRuleSuitePullRequestPullRequestProofOfPresenceMetadata::DECODERS
-
-  # @return [String] The state of the proof of presence evaluation.
-  attr_reader :state
-  # @return [String] A code describing the reason for the proof of presence state.
-  attr_reader :code
-  # @return [String] The base commit SHA the proof of presence evaluation applies to. Empty if unavailable.
-  attr_reader :base_sha
-  # @return [String] The head commit SHA the proof of presence evaluation applies to. Empty if unavailable.
-  attr_reader :head_sha
-  # @return [String] The authentication level required by the rule. Empty if unavailable.
-  attr_reader :required_level
-  # @return [String] The authentication level that was verified. Empty if proof of presence has not been completed.
-  attr_reader :verified_level
-  # @return [String] The time proof of presence was verified, in ISO 8601 format. Empty if proof of presence has not been completed.
-  attr_reader :verified_at
-  # @return [RuleSuitePullRequestPullRequestProofOfPresenceVerifier] The user who provided proof of presence. Null if no proof of presence was recorded.
-  attr_reader :verifier
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRuleSuitePullRequestPullRequestReviewsItemMetadata
+    FIELDS = {
+      id: 'id',
+      user: 'user',
+      state: 'state'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      user: lambda do |value|
+        ::OctridevGithub::RuleSuitePullRequestPullRequestReviewsItemUser.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RuleSuitePullRequestPullRequestReviewsItem.
+  # Required object value serialized in the `reviews[]` wire field.
+  class RuleSuitePullRequestPullRequestReviewsItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRuleSuitePullRequestPullRequestReviewsItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRuleSuitePullRequestPullRequestReviewsItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRuleSuitePullRequestPullRequestReviewsItemMetadata::DECODERS
+
+    # @return [Integer] The unique identifier of the review.
+    attr_reader :id
+    # @return [RuleSuitePullRequestPullRequestReviewsItemUser] The user who submitted the review.
+    attr_reader :user
+    # @return [String] The state of the review.
+    attr_reader :state
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRuleSuitePullRequestPullRequestMetadata
-  FIELDS = {
-    id: "id",
-    number: "number",
-    user: "user",
-    reviews: "reviews",
-    proof_of_presence: "proof_of_presence",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    user: lambda do |value|
-      ::OctridevGithub::RuleSuitePullRequestPullRequestUser.from_hash(value)
-    end,
-    reviews: lambda do |value|
-      value&.map { |item| ::OctridevGithub::RuleSuitePullRequestPullRequestReviewsItem.from_hash(item) }
-    end,
-    proof_of_presence: lambda do |value|
-      ::OctridevGithub::RuleSuitePullRequestPullRequestProofOfPresence.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for RuleSuitePullRequestPullRequest.
-# The pull request associated with the rule evaluation.
-class RuleSuitePullRequestPullRequest
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRuleSuitePullRequestPullRequestMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRuleSuitePullRequestPullRequestMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRuleSuitePullRequestPullRequestMetadata::DECODERS
-
-  # @return [Integer] The unique identifier of the pull request.
-  attr_reader :id
-  # @return [Integer] The number of the pull request.
-  attr_reader :number
-  # @return [RuleSuitePullRequestPullRequestUser] The user who created the pull request.
-  attr_reader :user
-  # @return [Array_of_RuleSuitePullRequestPullRequestReviewsItem] The reviews associated with the pull request.
-  attr_reader :reviews
-  # @return [RuleSuitePullRequestPullRequestProofOfPresence] The proof of presence evaluation for the pull request. Null if proof of presence was not evaluated.
-  attr_reader :proof_of_presence
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRuleSuitePullRequestPullRequestProofOfPresenceVerifierMetadata
+    FIELDS = {
+      id: 'id',
+      login: 'login',
+      type: 'type'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RuleSuitePullRequestPullRequestProofOfPresenceVerifier.
+  # The user who provided proof of presence. Null if no proof of presence was recorded.
+  class RuleSuitePullRequestPullRequestProofOfPresenceVerifier
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRuleSuitePullRequestPullRequestProofOfPresenceVerifierMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRuleSuitePullRequestPullRequestProofOfPresenceVerifierMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRuleSuitePullRequestPullRequestProofOfPresenceVerifierMetadata::DECODERS
+
+    # @return [Integer] The unique identifier of the user.
+    attr_reader :id
+    # @return [String] The handle for the GitHub user account.
+    attr_reader :login
+    # @return [String] The type of the user.
+    attr_reader :type
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRuleSuitePullRequestMetadata
-  FIELDS = {
-    pull_request: "pull_request",
-    rule_type: "rule_type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    pull_request: lambda do |value|
-      ::OctridevGithub::RuleSuitePullRequestPullRequest.from_hash(value)
-    end,
-    rule_type: lambda do |value|
-      ::OctridevGithub::RuleSuitePullRequestRuleType.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for RuleSuitePullRequest.
-# Metadata for a pull request rule evaluation result.
-class RuleSuitePullRequest
-  include RuleSuiteRuleEvaluationsItemMetadata
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRuleSuitePullRequestMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRuleSuitePullRequestMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRuleSuitePullRequestMetadata::DECODERS
-
-  # @return [RuleSuitePullRequestPullRequest] The pull request associated with the rule evaluation.
-  attr_reader :pull_request
-  # @return [RuleSuitePullRequestRuleType] Optional enumerated value serialized in the `rule_type` wire field.
-  attr_reader :rule_type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRuleSuitePullRequestPullRequestProofOfPresenceMetadata
+    FIELDS = {
+      state: 'state',
+      code: 'code',
+      base_sha: 'base_sha',
+      head_sha: 'head_sha',
+      required_level: 'required_level',
+      verified_level: 'verified_level',
+      verified_at: 'verified_at',
+      verifier: 'verifier'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      verifier: lambda do |value|
+        ::OctridevGithub::RuleSuitePullRequestPullRequestProofOfPresenceVerifier.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RuleSuitePullRequestPullRequestProofOfPresence.
+  # The proof of presence evaluation for the pull request. Null if proof of presence was not evaluated.
+  class RuleSuitePullRequestPullRequestProofOfPresence
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRuleSuitePullRequestPullRequestProofOfPresenceMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRuleSuitePullRequestPullRequestProofOfPresenceMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRuleSuitePullRequestPullRequestProofOfPresenceMetadata::DECODERS
+
+    # @return [String] The state of the proof of presence evaluation.
+    attr_reader :state
+    # @return [String] A code describing the reason for the proof of presence state.
+    attr_reader :code
+    # @return [String] The base commit SHA the proof of presence evaluation applies to. Empty if unavailable.
+    attr_reader :base_sha
+    # @return [String] The head commit SHA the proof of presence evaluation applies to. Empty if unavailable.
+    attr_reader :head_sha
+    # @return [String] The authentication level required by the rule. Empty if unavailable.
+    attr_reader :required_level
+    # @return [String] The authentication level that was verified. Empty if proof of presence has not been completed.
+    attr_reader :verified_level
+    # @return [String] The time proof of presence was verified, in ISO 8601 format. Empty if proof of presence has not been completed.
+    attr_reader :verified_at
+    # @return [RuleSuitePullRequestPullRequestProofOfPresenceVerifier] The user who provided proof of presence. Null if no proof of presence was recorded.
+    attr_reader :verifier
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the RuleSuitePullRequestRuleType SDK namespace.
-module RuleSuitePullRequestRuleType
-  PULL_REQUEST = 'pull_request'
-  VALUES = ['pull_request'].freeze
-  def self.from_value(value)
-    return value if VALUES.include?(value)
-
-    raise SdkValidationError.new('RuleSuitePullRequestRuleType', 'enum', "Unknown RuleSuitePullRequestRuleType: #{value}")
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRuleSuiteRequiredStatusChecksChecksItemAppMetadata
-  FIELDS = {
-    id: "id",
-    slug: "slug",
-    name: "name",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for RuleSuiteRequiredStatusChecksChecksItemApp.
-# The GitHub App associated with the status check.
-class RuleSuiteRequiredStatusChecksChecksItemApp
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRuleSuiteRequiredStatusChecksChecksItemAppMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRuleSuiteRequiredStatusChecksChecksItemAppMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRuleSuiteRequiredStatusChecksChecksItemAppMetadata::DECODERS
-
-  # @return [Integer] The unique identifier of the GitHub App.
-  attr_reader :id
-  # @return [String] The slug of the GitHub App.
-  attr_reader :slug
-  # @return [String] The name of the GitHub App.
-  attr_reader :name
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRuleSuitePullRequestPullRequestMetadata
+    FIELDS = {
+      id: 'id',
+      number: 'number',
+      user: 'user',
+      reviews: 'reviews',
+      proof_of_presence: 'proof_of_presence'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      user: lambda do |value|
+        ::OctridevGithub::RuleSuitePullRequestPullRequestUser.from_hash(value)
+      end,
+      reviews: lambda do |value|
+        value&.map { |item| ::OctridevGithub::RuleSuitePullRequestPullRequestReviewsItem.from_hash(item) }
+      end,
+      proof_of_presence: lambda do |value|
+        ::OctridevGithub::RuleSuitePullRequestPullRequestProofOfPresence.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RuleSuitePullRequestPullRequest.
+  # The pull request associated with the rule evaluation.
+  class RuleSuitePullRequestPullRequest
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRuleSuitePullRequestPullRequestMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRuleSuitePullRequestPullRequestMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRuleSuitePullRequestPullRequestMetadata::DECODERS
+
+    # @return [Integer] The unique identifier of the pull request.
+    attr_reader :id
+    # @return [Integer] The number of the pull request.
+    attr_reader :number
+    # @return [RuleSuitePullRequestPullRequestUser] The user who created the pull request.
+    attr_reader :user
+    # @return [Array_of_RuleSuitePullRequestPullRequestReviewsItem] The reviews associated with the pull request.
+    attr_reader :reviews
+    # @return [RuleSuitePullRequestPullRequestProofOfPresence] The proof of presence evaluation for the pull request. Null if proof of presence was not evaluated.
+    attr_reader :proof_of_presence
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRuleSuiteRequiredStatusChecksChecksItemMetadata
-  FIELDS = {
-    id: "id",
-    context: "context",
-    state: "state",
-    type: "type",
-    app: "app",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    app: lambda do |value|
-      ::OctridevGithub::RuleSuiteRequiredStatusChecksChecksItemApp.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for RuleSuiteRequiredStatusChecksChecksItem.
-# Required object value serialized in the `checks[]` wire field.
-class RuleSuiteRequiredStatusChecksChecksItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRuleSuiteRequiredStatusChecksChecksItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRuleSuiteRequiredStatusChecksChecksItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRuleSuiteRequiredStatusChecksChecksItemMetadata::DECODERS
-
-  # @return [Integer] The unique identifier of the status check.
-  attr_reader :id
-  # @return [String] The context name of the status check.
-  attr_reader :context
-  # @return [String] The state of the status check.
-  attr_reader :state
-  # @return [String] The type of the status check.
-  attr_reader :type
-  # @return [RuleSuiteRequiredStatusChecksChecksItemApp] The GitHub App associated with the status check.
-  attr_reader :app
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRuleSuitePullRequestMetadata
+    FIELDS = {
+      pull_request: 'pull_request',
+      rule_type: 'rule_type'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      pull_request: lambda do |value|
+        ::OctridevGithub::RuleSuitePullRequestPullRequest.from_hash(value)
+      end,
+      rule_type: lambda do |value|
+        ::OctridevGithub::RuleSuitePullRequestRuleType.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RuleSuitePullRequest.
+  # Metadata for a pull request rule evaluation result.
+  class RuleSuitePullRequest
+    include RuleSuiteRuleEvaluationsItemMetadata
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRuleSuitePullRequestMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRuleSuitePullRequestMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRuleSuitePullRequestMetadata::DECODERS
+
+    # @return [RuleSuitePullRequestPullRequest] The pull request associated with the rule evaluation.
+    attr_reader :pull_request
+    # @return [RuleSuitePullRequestRuleType] Optional enumerated value serialized in the `rule_type` wire field.
+    attr_reader :rule_type
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the RuleSuitePullRequestRuleType SDK namespace.
+  module RuleSuitePullRequestRuleType
+    PULL_REQUEST = 'pull_request'
+    VALUES = ['pull_request'].freeze
+    def self.from_value(value)
+      return value if VALUES.include?(value)
+
+      raise SdkValidationError.new('RuleSuitePullRequestRuleType', 'enum', "Unknown RuleSuitePullRequestRuleType: #{value}")
+    end
   end
-end
+
+  # Internal model hydration metadata.
+  class SdkInternalRuleSuiteRequiredStatusChecksChecksItemAppMetadata
+    FIELDS = {
+      id: 'id',
+      slug: 'slug',
+      name: 'name'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
+  end
+
+  # API model for RuleSuiteRequiredStatusChecksChecksItemApp.
+  # The GitHub App associated with the status check.
+  class RuleSuiteRequiredStatusChecksChecksItemApp
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRuleSuiteRequiredStatusChecksChecksItemAppMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRuleSuiteRequiredStatusChecksChecksItemAppMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRuleSuiteRequiredStatusChecksChecksItemAppMetadata::DECODERS
+
+    # @return [Integer] The unique identifier of the GitHub App.
+    attr_reader :id
+    # @return [String] The slug of the GitHub App.
+    attr_reader :slug
+    # @return [String] The name of the GitHub App.
+    attr_reader :name
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Internal model hydration metadata.
+  class SdkInternalRuleSuiteRequiredStatusChecksChecksItemMetadata
+    FIELDS = {
+      id: 'id',
+      context: 'context',
+      state: 'state',
+      type: 'type',
+      app: 'app'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      app: lambda do |value|
+        ::OctridevGithub::RuleSuiteRequiredStatusChecksChecksItemApp.from_hash(value)
+      end
+    }.freeze
+  end
+
+  # API model for RuleSuiteRequiredStatusChecksChecksItem.
+  # Required object value serialized in the `checks[]` wire field.
+  class RuleSuiteRequiredStatusChecksChecksItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRuleSuiteRequiredStatusChecksChecksItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRuleSuiteRequiredStatusChecksChecksItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRuleSuiteRequiredStatusChecksChecksItemMetadata::DECODERS
+
+    # @return [Integer] The unique identifier of the status check.
+    attr_reader :id
+    # @return [String] The context name of the status check.
+    attr_reader :context
+    # @return [String] The state of the status check.
+    attr_reader :state
+    # @return [String] The type of the status check.
+    attr_reader :type
+    # @return [RuleSuiteRequiredStatusChecksChecksItemApp] The GitHub App associated with the status check.
+    attr_reader :app
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
 end

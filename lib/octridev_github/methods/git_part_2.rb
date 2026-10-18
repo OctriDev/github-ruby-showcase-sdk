@@ -24,15 +24,14 @@ module OctridevGithub
         file_sha:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/git/blobs/",
+            '/git/blobs/',
             SdkClient.encode_path_segment(file_sha)
           ].join,
           config: config,
@@ -40,7 +39,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'git_get_blob',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -81,15 +80,14 @@ module OctridevGithub
         signature: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/git/commits"
+            '/git/commits'
           ].join,
           config: config,
           body: {
@@ -98,13 +96,13 @@ module OctridevGithub
             'parents' => parents,
             'author' => author,
             'committer' => committer,
-            'signature' => signature,
+            'signature' => signature
           },
           return_type: ::OctridevGithub::GitCommit,
           decoder: :json,
           operation_id: 'git_create_commit',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -122,15 +120,14 @@ module OctridevGithub
         commit_sha:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/git/commits/",
+            '/git/commits/',
             SdkClient.encode_path_segment(commit_sha)
           ].join,
           config: config,
@@ -138,7 +135,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'git_get_commit',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -157,15 +154,14 @@ module OctridevGithub
         ref:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/git/matching-refs/",
+            '/git/matching-refs/',
             SdkClient.encode_path_segment(ref)
           ].join,
           config: config,
@@ -173,7 +169,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'git_list_matching_refs',
           request_options: request_options,
-          errors: { '409' => ::OctridevGithub::BasicError },
+          errors: { '409' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -192,15 +188,14 @@ module OctridevGithub
         ref:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/git/ref/",
+            '/git/ref/',
             SdkClient.encode_path_segment(ref)
           ].join,
           config: config,
@@ -208,7 +203,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'git_get_ref',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -230,26 +225,25 @@ module OctridevGithub
         sha:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/git/refs"
+            '/git/refs'
           ].join,
           config: config,
           body: {
             'ref' => ref,
-            'sha' => sha,
+            'sha' => sha
           },
           return_type: ::OctridevGithub::GitRef,
           decoder: :json,
           operation_id: 'git_create_ref',
           request_options: request_options,
-          errors: { '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -274,27 +268,26 @@ module OctridevGithub
         force: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/git/refs/",
+            '/git/refs/',
             SdkClient.encode_path_segment(ref)
           ].join,
           config: config,
           body: {
             'sha' => sha,
-            'force' => force,
+            'force' => force
           },
           return_type: ::OctridevGithub::GitRef,
           decoder: :json,
           operation_id: 'git_update_ref',
           request_options: request_options,
-          errors: { '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -315,22 +308,21 @@ module OctridevGithub
         ref:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/git/refs/",
+            '/git/refs/',
             SdkClient.encode_path_segment(ref)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'git_delete_ref',
           request_options: request_options,
-          errors: { '409' => ::OctridevGithub::BasicError },
+          errors: { '409' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -359,15 +351,14 @@ module OctridevGithub
         tagger: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/git/tags"
+            '/git/tags'
           ].join,
           config: config,
           body: {
@@ -375,13 +366,13 @@ module OctridevGithub
             'message' => message,
             'object' => object,
             'type' => type,
-            'tagger' => tagger,
+            'tagger' => tagger
           },
           return_type: ::OctridevGithub::GitTag,
           decoder: :json,
           operation_id: 'git_create_tag',
           request_options: request_options,
-          errors: { '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -400,15 +391,14 @@ module OctridevGithub
         tag_sha:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/git/tags/",
+            '/git/tags/',
             SdkClient.encode_path_segment(tag_sha)
           ].join,
           config: config,
@@ -416,7 +406,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'git_get_tag',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -443,26 +433,25 @@ module OctridevGithub
         base_tree: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/git/trees"
+            '/git/trees'
           ].join,
           config: config,
           body: {
             'tree' => tree,
-            'base_tree' => base_tree,
+            'base_tree' => base_tree
           },
           return_type: ::OctridevGithub::GitTree,
           decoder: :json,
           operation_id: 'git_create_tree',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -487,26 +476,25 @@ module OctridevGithub
         recursive: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/git/trees/",
+            '/git/trees/',
             SdkClient.encode_path_segment(tree_sha)
           ].join,
           config: config,
           query: {
-            'recursive' => QueryValue.new(recursive, style: 'form', explode: true),
+            'recursive' => QueryValue.new(recursive, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::GitTree,
           decoder: :json,
           operation_id: 'git_get_tree',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
     end

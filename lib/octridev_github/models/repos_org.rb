@@ -5,33 +5,32 @@
 
 # repos_org domain models
 module OctridevGithub
-# Defines the OrgRules SDK namespace.
-module OrgRules
-  DISCRIMINATOR_MAPPING = {
-    "creation" => -> { RepositoryRuleCreation },
-    "update" => -> { RepositoryRuleUpdate },
-    "deletion" => -> { RepositoryRuleDeletion },
-    "required_linear_history" => -> { RepositoryRuleRequiredLinearHistory },
-    "required_deployments" => -> { RepositoryRuleRequiredDeployments },
-    "required_signatures" => -> { RepositoryRuleRequiredSignatures },
-    "pull_request" => -> { RepositoryRulePullRequest },
-    "required_status_checks" => -> { RepositoryRuleRequiredStatusChecks },
-    "non_fast_forward" => -> { RepositoryRuleNonFastForward },
-    "commit_message_pattern" => -> { RepositoryRuleCommitMessagePattern },
-    "commit_author_email_pattern" => -> { RepositoryRuleCommitAuthorEmailPattern },
-    "committer_email_pattern" => -> { RepositoryRuleCommitterEmailPattern },
-    "branch_name_pattern" => -> { RepositoryRuleBranchNamePattern },
-    "tag_name_pattern" => -> { RepositoryRuleTagNamePattern },
-    "file_path_restriction" => -> { RepositoryRuleFilePathRestriction },
-    "max_file_path_length" => -> { RepositoryRuleMaxFilePathLength },
-    "file_extension_restriction" => -> { RepositoryRuleFileExtensionRestriction },
-    "max_file_size" => -> { RepositoryRuleMaxFileSize },
-    "workflows" => -> { RepositoryRuleWorkflows },
-    "code_scanning" => -> { RepositoryRuleCodeScanning },
-    "copilot_code_review" => -> { RepositoryRuleCopilotCodeReview },
-  }.freeze
-  UNDECIDED_VARIANTS = (
-    [
+  # Defines the OrgRules SDK namespace.
+  module OrgRules
+    DISCRIMINATOR_MAPPING = {
+      'creation' => -> { RepositoryRuleCreation },
+      'update' => -> { RepositoryRuleUpdate },
+      'deletion' => -> { RepositoryRuleDeletion },
+      'required_linear_history' => -> { RepositoryRuleRequiredLinearHistory },
+      'required_deployments' => -> { RepositoryRuleRequiredDeployments },
+      'required_signatures' => -> { RepositoryRuleRequiredSignatures },
+      'pull_request' => -> { RepositoryRulePullRequest },
+      'required_status_checks' => -> { RepositoryRuleRequiredStatusChecks },
+      'non_fast_forward' => -> { RepositoryRuleNonFastForward },
+      'commit_message_pattern' => -> { RepositoryRuleCommitMessagePattern },
+      'commit_author_email_pattern' => -> { RepositoryRuleCommitAuthorEmailPattern },
+      'committer_email_pattern' => -> { RepositoryRuleCommitterEmailPattern },
+      'branch_name_pattern' => -> { RepositoryRuleBranchNamePattern },
+      'tag_name_pattern' => -> { RepositoryRuleTagNamePattern },
+      'file_path_restriction' => -> { RepositoryRuleFilePathRestriction },
+      'max_file_path_length' => -> { RepositoryRuleMaxFilePathLength },
+      'file_extension_restriction' => -> { RepositoryRuleFileExtensionRestriction },
+      'max_file_size' => -> { RepositoryRuleMaxFileSize },
+      'workflows' => -> { RepositoryRuleWorkflows },
+      'code_scanning' => -> { RepositoryRuleCodeScanning },
+      'copilot_code_review' => -> { RepositoryRuleCopilotCodeReview }
+    }.freeze
+    UNDECIDED_VARIANTS = [
       -> { RepositoryRuleCreation },
       -> { RepositoryRuleUpdate },
       -> { RepositoryRuleDeletion },
@@ -52,167 +51,167 @@ module OrgRules
       -> { RepositoryRuleMaxFileSize },
       -> { RepositoryRuleWorkflows },
       -> { RepositoryRuleCodeScanning },
-      -> { RepositoryRuleCopilotCodeReview },
-    ]
-  ).freeze
+      -> { RepositoryRuleCopilotCodeReview }
+    ].freeze
 
-  def self.from_hash(hash)
-    return hash unless hash.is_a?(::Hash)
-    type = DISCRIMINATOR_MAPPING[hash["type"]]&.call
-    return type.from_hash(hash) if type
+    def self.from_hash(hash)
+      return hash unless hash.is_a?(::Hash)
 
-    return SdkUnknownMember.new(hash) if hash["type"].is_a?(::String)
+      type = DISCRIMINATOR_MAPPING[hash['type']]&.call
+      return type.from_hash(hash) if type
 
-    raise SdkValidationError.new('OrgRules', 'variant', "Unknown OrgRules discriminator: #{hash["type"].inspect}")
-  end
-end
+      return SdkUnknownMember.new(hash) if hash['type'].is_a?(::String)
 
-# Internal model hydration metadata.
-class SdkInternalOrgRulesetConditionsVariant0Metadata
-  FIELDS = {
-    ref_name: "ref_name",
-    repository_name: "repository_name",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    repository_name
-  ].freeze
-  DECODERS = {
-    ref_name: lambda do |value|
-      ::OctridevGithub::RepositoryRulesetConditionsRefName.from_hash(value)
-    end,
-    repository_name: lambda do |value|
-      ::OctridevGithub::RepositoryRulesetConditionsRepositoryNameTargetRepositoryName.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for OrgRulesetConditionsVariant0.
-class OrgRulesetConditionsVariant0
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalOrgRulesetConditionsVariant0Metadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalOrgRulesetConditionsVariant0Metadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalOrgRulesetConditionsVariant0Metadata::DECODERS
-
-  # @return [RepositoryRulesetConditionsRefName] Optional object value serialized in the `ref_name` wire field.
-  attr_reader :ref_name
-  # @return [RepositoryRulesetConditionsRepositoryNameTargetRepositoryName] Required object value serialized in the `repository_name` wire field.
-  attr_reader :repository_name
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+      raise SdkValidationError.new('OrgRules', 'variant', "Unknown OrgRules discriminator: #{hash['type'].inspect}")
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalOrgRulesetConditionsVariant0Metadata
+    FIELDS = {
+      ref_name: 'ref_name',
+      repository_name: 'repository_name'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      repository_name
+    ].freeze
+    DECODERS = {
+      ref_name: lambda do |value|
+        ::OctridevGithub::RepositoryRulesetConditionsRefName.from_hash(value)
+      end,
+      repository_name: lambda do |value|
+        ::OctridevGithub::RepositoryRulesetConditionsRepositoryNameTargetRepositoryName.from_hash(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for OrgRulesetConditionsVariant0.
+  class OrgRulesetConditionsVariant0
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalOrgRulesetConditionsVariant0Metadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalOrgRulesetConditionsVariant0Metadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalOrgRulesetConditionsVariant0Metadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalOrgRulesetConditionsVariant1Metadata
-  FIELDS = {
-    ref_name: "ref_name",
-    repository_id: "repository_id",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    repository_id
-  ].freeze
-  DECODERS = {
-    ref_name: lambda do |value|
-      ::OctridevGithub::RepositoryRulesetConditionsRefName.from_hash(value)
-    end,
-    repository_id: lambda do |value|
-      ::OctridevGithub::RepositoryRulesetConditionsRepositoryIdTargetRepositoryId.from_hash(value)
-    end,
-  }.freeze
-end
+    # @return [RepositoryRulesetConditionsRefName] Optional object value serialized in the `ref_name` wire field.
+    attr_reader :ref_name
+    # @return [RepositoryRulesetConditionsRepositoryNameTargetRepositoryName] Required object value serialized in the `repository_name` wire field.
+    attr_reader :repository_name
 
-# API model for OrgRulesetConditionsVariant1.
-class OrgRulesetConditionsVariant1
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalOrgRulesetConditionsVariant1Metadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalOrgRulesetConditionsVariant1Metadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalOrgRulesetConditionsVariant1Metadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [RepositoryRulesetConditionsRefName] Optional object value serialized in the `ref_name` wire field.
-  attr_reader :ref_name
-  # @return [RepositoryRulesetConditionsRepositoryIdTargetRepositoryId] Required object value serialized in the `repository_id` wire field.
-  attr_reader :repository_id
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalOrgRulesetConditionsVariant1Metadata
+    FIELDS = {
+      ref_name: 'ref_name',
+      repository_id: 'repository_id'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      repository_id
+    ].freeze
+    DECODERS = {
+      ref_name: lambda do |value|
+        ::OctridevGithub::RepositoryRulesetConditionsRefName.from_hash(value)
+      end,
+      repository_id: lambda do |value|
+        ::OctridevGithub::RepositoryRulesetConditionsRepositoryIdTargetRepositoryId.from_hash(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for OrgRulesetConditionsVariant1.
+  class OrgRulesetConditionsVariant1
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalOrgRulesetConditionsVariant1Metadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalOrgRulesetConditionsVariant1Metadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalOrgRulesetConditionsVariant1Metadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalOrgRulesetConditionsVariant2Metadata
-  FIELDS = {
-    ref_name: "ref_name",
-    repository_property: "repository_property",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    repository_property
-  ].freeze
-  DECODERS = {
-    ref_name: lambda do |value|
-      ::OctridevGithub::RepositoryRulesetConditionsRefName.from_hash(value)
-    end,
-    repository_property: lambda do |value|
-      ::OctridevGithub::RepositoryRulesetConditionsRepositoryPropertyTargetRepositoryProperty.from_hash(value)
-    end,
-  }.freeze
-end
+    # @return [RepositoryRulesetConditionsRefName] Optional object value serialized in the `ref_name` wire field.
+    attr_reader :ref_name
+    # @return [RepositoryRulesetConditionsRepositoryIdTargetRepositoryId] Required object value serialized in the `repository_id` wire field.
+    attr_reader :repository_id
 
-# API model for OrgRulesetConditionsVariant2.
-class OrgRulesetConditionsVariant2
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalOrgRulesetConditionsVariant2Metadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalOrgRulesetConditionsVariant2Metadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalOrgRulesetConditionsVariant2Metadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [RepositoryRulesetConditionsRefName] Optional object value serialized in the `ref_name` wire field.
-  attr_reader :ref_name
-  # @return [RepositoryRulesetConditionsRepositoryPropertyTargetRepositoryProperty] Required object value serialized in the `repository_property` wire field.
-  attr_reader :repository_property
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalOrgRulesetConditionsVariant2Metadata
+    FIELDS = {
+      ref_name: 'ref_name',
+      repository_property: 'repository_property'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      repository_property
+    ].freeze
+    DECODERS = {
+      ref_name: lambda do |value|
+        ::OctridevGithub::RepositoryRulesetConditionsRefName.from_hash(value)
+      end,
+      repository_property: lambda do |value|
+        ::OctridevGithub::RepositoryRulesetConditionsRepositoryPropertyTargetRepositoryProperty.from_hash(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for OrgRulesetConditionsVariant2.
+  class OrgRulesetConditionsVariant2
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalOrgRulesetConditionsVariant2Metadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalOrgRulesetConditionsVariant2Metadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalOrgRulesetConditionsVariant2Metadata::DECODERS
 
-# Defines the OrgRulesetConditions SDK namespace.
-module OrgRulesetConditions
-  def self.from_hash(hash)
-    shape_mapping = {
-      "repository_name" => OrgRulesetConditionsVariant0,
-      "repository_id" => OrgRulesetConditionsVariant1,
-      "repository_property" => OrgRulesetConditionsVariant2,
-    }
-    type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
-    decoded = type&.from_hash(hash)
-    return decoded unless type.nil?
+    # @return [RepositoryRulesetConditionsRefName] Optional object value serialized in the `ref_name` wire field.
+    attr_reader :ref_name
+    # @return [RepositoryRulesetConditionsRepositoryPropertyTargetRepositoryProperty] Required object value serialized in the `repository_property` wire field.
+    attr_reader :repository_property
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
+
+  # Defines the OrgRulesetConditions SDK namespace.
+  module OrgRulesetConditions
+    def self.from_hash(hash)
+      shape_mapping = {
+        'repository_name' => OrgRulesetConditionsVariant0,
+        'repository_id' => OrgRulesetConditionsVariant1,
+        'repository_property' => OrgRulesetConditionsVariant2
+      }
+      type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
+      decoded = type&.from_hash(hash)
+      decoded unless type.nil?
+    end
+  end
 end

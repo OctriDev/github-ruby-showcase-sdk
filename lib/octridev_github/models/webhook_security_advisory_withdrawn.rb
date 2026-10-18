@@ -5,490 +5,484 @@
 
 # webhook_security_advisory_withdrawn domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvssMetadata
-  FIELDS = {
-    score: "score",
-    vector_string: "vector_string",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    score
-    vector_string
-  ].freeze
-  DECODERS = {
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    vector_string
-  ].freeze
-end
-
-# API model for WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvss.
-# Required object value serialized in the `cvss` wire field.
-class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvss
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvssMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvssMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvssMetadata::DECODERS
-
-  # @return [Float] Required `number` value serialized in the `score` wire field.
-  attr_reader :score
-  # @return [String] Required `string` value serialized in the `vector_string` wire field.
-  attr_reader :vector_string
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvssMetadata
+    FIELDS = {
+      score: 'score',
+      vector_string: 'vector_string'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      score
+      vector_string
+    ].freeze
+    DECODERS = {}.freeze
+    NULLABLE_FIELDS = %i[
+      vector_string
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvssMetadata::NULLABLE_FIELDS)
+  # API model for WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvss.
+  # Required object value serialized in the `cvss` wire field.
+  class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvss
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvssMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvssMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvssMetadata::DECODERS
+
+    # @return [Float] Required `number` value serialized in the `score` wire field.
+    attr_reader :score
+    # @return [String] Required `string` value serialized in the `vector_string` wire field.
+    attr_reader :vector_string
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvssMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwesItemMetadata
-  FIELDS = {
-    cwe_id: "cwe_id",
-    name: "name",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    cwe_id
-    name
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwesItem.
-# Required object value serialized in the `cwes[]` wire field.
-class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwesItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwesItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwesItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwesItemMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `cwe_id` wire field.
-  attr_reader :cwe_id
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwesItemMetadata
+    FIELDS = {
+      cwe_id: 'cwe_id',
+      name: 'name'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      cwe_id
+      name
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwesItem.
+  # Required object value serialized in the `cwes[]` wire field.
+  class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwesItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwesItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwesItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwesItemMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `cwe_id` wire field.
+    attr_reader :cwe_id
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItemMetadata
-  FIELDS = {
-    type: "type",
-    value: "value",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-    value
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItem.
-# Required object value serialized in the `identifiers[]` wire field.
-class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItemMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [String] Required `string` value serialized in the `value` wire field.
-  attr_reader :value
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItemMetadata
+    FIELDS = {
+      type: 'type',
+      value: 'value'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+      value
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItem.
+  # Required object value serialized in the `identifiers[]` wire field.
+  class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItemMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [String] Required `string` value serialized in the `value` wire field.
+    attr_reader :value
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItemMetadata
-  FIELDS = {
-    url: "url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    url
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItem.
-# Required object value serialized in the `references[]` wire field.
-class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItemMetadata::DECODERS
-
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItemMetadata
+    FIELDS = {
+      url: 'url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      url
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItem.
+  # Required object value serialized in the `references[]` wire field.
+  class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItemMetadata::DECODERS
+
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXd0620b75f8Metadata
-  FIELDS = {
-    identifier: "identifier",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    identifier
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXd0620b75f8.
-# Required object value serialized in the `first_patched_version` wire field.
-class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXd0620b75f8
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXd0620b75f8Metadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXd0620b75f8Metadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXd0620b75f8Metadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `identifier` wire field.
-  attr_reader :identifier
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXd0620b75f8Metadata
+    FIELDS = {
+      identifier: 'identifier'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      identifier
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXd0620b75f8.
+  # Required object value serialized in the `first_patched_version` wire field.
+  class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXd0620b75f8
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXd0620b75f8Metadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXd0620b75f8Metadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXd0620b75f8Metadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `identifier` wire field.
+    attr_reader :identifier
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXe112a1d8d5Metadata
-  FIELDS = {
-    ecosystem: "ecosystem",
-    name: "name",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    ecosystem
-    name
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXe112a1d8d5.
-# Required object value serialized in the `package` wire field.
-class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXe112a1d8d5
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXe112a1d8d5Metadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXe112a1d8d5Metadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXe112a1d8d5Metadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `ecosystem` wire field.
-  attr_reader :ecosystem
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXe112a1d8d5Metadata
+    FIELDS = {
+      ecosystem: 'ecosystem',
+      name: 'name'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      ecosystem
+      name
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXe112a1d8d5.
+  # Required object value serialized in the `package` wire field.
+  class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXe112a1d8d5
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXe112a1d8d5Metadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXe112a1d8d5Metadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXe112a1d8d5Metadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `ecosystem` wire field.
+    attr_reader :ecosystem
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemMetadata
-  FIELDS = {
-    first_patched_version: "first_patched_version",
-    package: "package",
-    severity: "severity",
-    vulnerable_version_range: "vulnerable_version_range",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    first_patched_version
-    package
-    severity
-    vulnerable_version_range
-  ].freeze
-  DECODERS = {
-    first_patched_version: lambda do |value|
-      ::OctridevGithub::WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXd0620b75f8.from_hash(value)
-    end,
-    package: lambda do |value|
-      ::OctridevGithub::WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXe112a1d8d5.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    first_patched_version
-  ].freeze
-end
-
-# API model for WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItem.
-# Required object value serialized in the `vulnerabilities[]` wire field.
-class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemMetadata::DECODERS
-
-  # @return [WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXd0620b75f8] Required object value serialized in the `first_patched_version` wire field.
-  attr_reader :first_patched_version
-  # @return [WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXe112a1d8d5] Required object value serialized in the `package` wire field.
-  attr_reader :package
-  # @return [String] Required `string` value serialized in the `severity` wire field.
-  attr_reader :severity
-  # @return [String] Required `string` value serialized in the `vulnerable_version_range` wire field.
-  attr_reader :vulnerable_version_range
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemMetadata
+    FIELDS = {
+      first_patched_version: 'first_patched_version',
+      package: 'package',
+      severity: 'severity',
+      vulnerable_version_range: 'vulnerable_version_range'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      first_patched_version
+      package
+      severity
+      vulnerable_version_range
+    ].freeze
+    DECODERS = {
+      first_patched_version: lambda do |value|
+        ::OctridevGithub::WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXd0620b75f8.from_hash(value)
+      end,
+      package: lambda do |value|
+        ::OctridevGithub::WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXe112a1d8d5.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      first_patched_version
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemMetadata::NULLABLE_FIELDS)
+  # API model for WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItem.
+  # Required object value serialized in the `vulnerabilities[]` wire field.
+  class WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemMetadata::DECODERS
+
+    # @return [WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXd0620b75f8] Required object value serialized in the `first_patched_version` wire field.
+    attr_reader :first_patched_version
+    # @return [WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiXe112a1d8d5] Required object value serialized in the `package` wire field.
+    attr_reader :package
+    # @return [String] Required `string` value serialized in the `severity` wire field.
+    attr_reader :severity
+    # @return [String] Required `string` value serialized in the `vulnerable_version_range` wire field.
+    attr_reader :vulnerable_version_range
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItemMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryMetadata
-  FIELDS = {
-    cvss: "cvss",
-    cvss_severities: "cvss_severities",
-    cwes: "cwes",
-    description: "description",
-    ghsa_id: "ghsa_id",
-    identifiers: "identifiers",
-    published_at: "published_at",
-    references: "references",
-    severity: "severity",
-    summary: "summary",
-    updated_at: "updated_at",
-    vulnerabilities: "vulnerabilities",
-    withdrawn_at: "withdrawn_at",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    cvss
-    cwes
-    description
-    ghsa_id
-    identifiers
-    published_at
-    references
-    severity
-    summary
-    updated_at
-    vulnerabilities
-    withdrawn_at
-  ].freeze
-  DECODERS = {
-    cvss: lambda do |value|
-      ::OctridevGithub::WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvss.from_hash(value)
-    end,
-    cvss_severities: lambda do |value|
-      ::OctridevGithub::CvssSeverities.from_hash(value)
-    end,
-    cwes: lambda do |value|
-      value&.map { |item| ::OctridevGithub::WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwesItem.from_hash(item) }
-    end,
-    identifiers: lambda do |value|
-      value&.map { |item| ::OctridevGithub::WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItem.from_hash(item) }
-    end,
-    references: lambda do |value|
-      value&.map { |item| ::OctridevGithub::WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItem.from_hash(item) }
-    end,
-    vulnerabilities: lambda do |value|
-      value&.map { |item| ::OctridevGithub::WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItem.from_hash(item) }
-    end,
-  }.freeze
-end
-
-# API model for WebhookSecurityAdvisoryWithdrawnSecurityAdvisory.
-# The details of the security advisory, including summary, description, and severity.
-class WebhookSecurityAdvisoryWithdrawnSecurityAdvisory
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryMetadata::DECODERS
-
-  # @return [WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvss] Required object value serialized in the `cvss` wire field.
-  attr_reader :cvss
-  # @return [CvssSeverities] Optional object value serialized in the `cvss_severities` wire field.
-  attr_reader :cvss_severities
-  # @return [Array_of_WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwesItem] Required array value serialized in the `cwes` wire field.
-  attr_reader :cwes
-  # @return [String] Required `string` value serialized in the `description` wire field.
-  attr_reader :description
-  # @return [String] Required `string` value serialized in the `ghsa_id` wire field.
-  attr_reader :ghsa_id
-  # @return [Array_of_WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItem] Required array value serialized in the `identifiers` wire field.
-  attr_reader :identifiers
-  # @return [String] Required `string` value serialized in the `published_at` wire field.
-  attr_reader :published_at
-  # @return [Array_of_WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItem] Required array value serialized in the `references` wire field.
-  attr_reader :references
-  # @return [String] Required `string` value serialized in the `severity` wire field.
-  attr_reader :severity
-  # @return [String] Required `string` value serialized in the `summary` wire field.
-  attr_reader :summary
-  # @return [String] Required `string` value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-  # @return [Array_of_WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItem] Required array value serialized in the `vulnerabilities` wire field.
-  attr_reader :vulnerabilities
-  # @return [String] Required `string` value serialized in the `withdrawn_at` wire field.
-  attr_reader :withdrawn_at
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryMetadata
+    FIELDS = {
+      cvss: 'cvss',
+      cvss_severities: 'cvss_severities',
+      cwes: 'cwes',
+      description: 'description',
+      ghsa_id: 'ghsa_id',
+      identifiers: 'identifiers',
+      published_at: 'published_at',
+      references: 'references',
+      severity: 'severity',
+      summary: 'summary',
+      updated_at: 'updated_at',
+      vulnerabilities: 'vulnerabilities',
+      withdrawn_at: 'withdrawn_at'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      cvss
+      cwes
+      description
+      ghsa_id
+      identifiers
+      published_at
+      references
+      severity
+      summary
+      updated_at
+      vulnerabilities
+      withdrawn_at
+    ].freeze
+    DECODERS = {
+      cvss: lambda do |value|
+        ::OctridevGithub::WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvss.from_hash(value)
+      end,
+      cvss_severities: lambda do |value|
+        ::OctridevGithub::CvssSeverities.from_hash(value)
+      end,
+      cwes: lambda do |value|
+        value&.map { |item| ::OctridevGithub::WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwesItem.from_hash(item) }
+      end,
+      identifiers: lambda do |value|
+        value&.map { |item| ::OctridevGithub::WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItem.from_hash(item) }
+      end,
+      references: lambda do |value|
+        value&.map { |item| ::OctridevGithub::WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItem.from_hash(item) }
+      end,
+      vulnerabilities: lambda do |value|
+        value&.map { |item| ::OctridevGithub::WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItem.from_hash(item) }
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookSecurityAdvisoryWithdrawnSecurityAdvisory.
+  # The details of the security advisory, including summary, description, and severity.
+  class WebhookSecurityAdvisoryWithdrawnSecurityAdvisory
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookSecurityAdvisoryWithdrawnSecurityAdvisoryMetadata::DECODERS
+
+    # @return [WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvss] Required object value serialized in the `cvss` wire field.
+    attr_reader :cvss
+    # @return [CvssSeverities] Optional object value serialized in the `cvss_severities` wire field.
+    attr_reader :cvss_severities
+    # @return [Array_of_WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwesItem] Required array value serialized in the `cwes` wire field.
+    attr_reader :cwes
+    # @return [String] Required `string` value serialized in the `description` wire field.
+    attr_reader :description
+    # @return [String] Required `string` value serialized in the `ghsa_id` wire field.
+    attr_reader :ghsa_id
+    # @return [Array_of_WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersItem] Required array value serialized in the `identifiers` wire field.
+    attr_reader :identifiers
+    # @return [String] Required `string` value serialized in the `published_at` wire field.
+    attr_reader :published_at
+    # @return [Array_of_WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferencesItem] Required array value serialized in the `references` wire field.
+    attr_reader :references
+    # @return [String] Required `string` value serialized in the `severity` wire field.
+    attr_reader :severity
+    # @return [String] Required `string` value serialized in the `summary` wire field.
+    attr_reader :summary
+    # @return [String] Required `string` value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+    # @return [Array_of_WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesItem] Required array value serialized in the `vulnerabilities` wire field.
+    attr_reader :vulnerabilities
+    # @return [String] Required `string` value serialized in the `withdrawn_at` wire field.
+    attr_reader :withdrawn_at
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookSecurityAdvisoryWithdrawnMetadata
-  FIELDS = {
-    action: "action",
-    enterprise: "enterprise",
-    installation: "installation",
-    organization: "organization",
-    repository: "repository",
-    security_advisory: "security_advisory",
-    sender: "sender",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    action
-    security_advisory
-  ].freeze
-  DECODERS = {
-    action: lambda do |value|
-      ::OctridevGithub::WebhookSecurityAdvisoryWithdrawnAction.from_value(value)
-    end,
-    enterprise: lambda do |value|
-      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-    end,
-    installation: lambda do |value|
-      ::OctridevGithub::SimpleInstallation.from_hash(value)
-    end,
-    organization: lambda do |value|
-      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-    end,
-    repository: lambda do |value|
-      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-    end,
-    security_advisory: lambda do |value|
-      ::OctridevGithub::WebhookSecurityAdvisoryWithdrawnSecurityAdvisory.from_hash(value)
-    end,
-    sender: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookSecurityAdvisoryWithdrawn.
-# Typed representation of the `WebhookSecurityAdvisoryWithdrawn` API schema.
-class WebhookSecurityAdvisoryWithdrawn
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookSecurityAdvisoryWithdrawnMetadata::DECODERS
-
-  # @return [WebhookSecurityAdvisoryWithdrawnAction] Required enumerated value serialized in the `action` wire field.
-  attr_reader :action
-  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-  attr_reader :enterprise
-  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-  attr_reader :installation
-  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-  attr_reader :organization
-  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-  attr_reader :repository
-  # @return [WebhookSecurityAdvisoryWithdrawnSecurityAdvisory] The details of the security advisory, including summary, description, and severity.
-  attr_reader :security_advisory
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :sender
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookSecurityAdvisoryWithdrawnMetadata
+    FIELDS = {
+      action: 'action',
+      enterprise: 'enterprise',
+      installation: 'installation',
+      organization: 'organization',
+      repository: 'repository',
+      security_advisory: 'security_advisory',
+      sender: 'sender'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      action
+      security_advisory
+    ].freeze
+    DECODERS = {
+      action: lambda do |value|
+        ::OctridevGithub::WebhookSecurityAdvisoryWithdrawnAction.from_value(value)
+      end,
+      enterprise: lambda do |value|
+        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+      end,
+      installation: lambda do |value|
+        ::OctridevGithub::SimpleInstallation.from_hash(value)
+      end,
+      organization: lambda do |value|
+        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+      end,
+      repository: lambda do |value|
+        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+      end,
+      security_advisory: lambda do |value|
+        ::OctridevGithub::WebhookSecurityAdvisoryWithdrawnSecurityAdvisory.from_hash(value)
+      end,
+      sender: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookSecurityAdvisoryWithdrawn.
+  # Typed representation of the `WebhookSecurityAdvisoryWithdrawn` API schema.
+  class WebhookSecurityAdvisoryWithdrawn
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookSecurityAdvisoryWithdrawnMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookSecurityAdvisoryWithdrawnMetadata::DECODERS
+
+    # @return [WebhookSecurityAdvisoryWithdrawnAction] Required enumerated value serialized in the `action` wire field.
+    attr_reader :action
+    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+    attr_reader :enterprise
+    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+    attr_reader :installation
+    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+    attr_reader :organization
+    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+    attr_reader :repository
+    # @return [WebhookSecurityAdvisoryWithdrawnSecurityAdvisory] The details of the security advisory, including summary, description, and severity.
+    attr_reader :security_advisory
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :sender
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the WebhookSecurityAdvisoryWithdrawnAction SDK namespace.
+  module WebhookSecurityAdvisoryWithdrawnAction
+    WITHDRAWN = 'withdrawn'
+    VALUES = ['withdrawn'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the WebhookSecurityAdvisoryWithdrawnAction SDK namespace.
-module WebhookSecurityAdvisoryWithdrawnAction
-  WITHDRAWN = 'withdrawn'
-  VALUES = ['withdrawn'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

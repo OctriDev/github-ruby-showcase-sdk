@@ -5,429 +5,422 @@
 
 # repos_repository_ruleset domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalRepositoryRulesetLinksSelfMetadata
-  FIELDS = {
-    href: "href",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for RepositoryRulesetLinksSelf.
-# Optional object value serialized in the `self` wire field.
-class RepositoryRulesetLinksSelf
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRulesetLinksSelfMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRulesetLinksSelfMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRulesetLinksSelfMetadata::DECODERS
-
-  # @return [String] The URL of the ruleset
-  attr_reader :href
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRulesetLinksSelfMetadata
+    FIELDS = {
+      href: 'href'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
+  # API model for RepositoryRulesetLinksSelf.
+  # Optional object value serialized in the `self` wire field.
+  class RepositoryRulesetLinksSelf
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRulesetLinksSelfMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRulesetLinksSelfMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRulesetLinksSelfMetadata::DECODERS
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+    # @return [String] The URL of the ruleset
+    attr_reader :href
 
-# Internal model hydration metadata.
-class SdkInternalRepositoryRulesetLinksHtmlMetadata
-  FIELDS = {
-    href: "href",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for RepositoryRulesetLinksHtml.
-# Optional object value serialized in the `html` wire field.
-class RepositoryRulesetLinksHtml
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRulesetLinksHtmlMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRulesetLinksHtmlMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRulesetLinksHtmlMetadata::DECODERS
-
-  # @return [String] The html URL of the ruleset
-  attr_reader :href
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRulesetLinksMetadata
-  FIELDS = {
-    self_: "self",
-    html: "html",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    self_: lambda do |value|
-      ::OctridevGithub::RepositoryRulesetLinksSelf.from_hash(value)
-    end,
-    html: lambda do |value|
-      ::OctridevGithub::RepositoryRulesetLinksHtml.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRulesetLinks.
-# Optional object value serialized in the `_links` wire field.
-class RepositoryRulesetLinks
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRulesetLinksMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRulesetLinksMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRulesetLinksMetadata::DECODERS
-
-  # @return [RepositoryRulesetLinksSelf] Optional object value serialized in the `self` wire field.
-  attr_reader :self_
-  # @return [RepositoryRulesetLinksHtml] Optional object value serialized in the `html` wire field.
-  attr_reader :html
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRulesetMetadata
-  FIELDS = {
-    id: "id",
-    name: "name",
-    target: "target",
-    source_type: "source_type",
-    source: "source",
-    enforcement: "enforcement",
-    bypass_actors: "bypass_actors",
-    current_user_can_bypass: "current_user_can_bypass",
-    node_id: "node_id",
-    links: "_links",
-    conditions: "conditions",
-    rules: "rules",
-    created_at: "created_at",
-    updated_at: "updated_at",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    name
-    source
-    enforcement
-  ].freeze
-  DECODERS = {
-    target: lambda do |value|
-      ::OctridevGithub::RepositoryRulesetTarget.from_value(value)
-    end,
-    source_type: lambda do |value|
-      ::OctridevGithub::RepositoryRulesetSourceType.from_value(value)
-    end,
-    enforcement: lambda do |value|
-      ::OctridevGithub::RepositoryRuleEnforcement.from_value(value)
-    end,
-    bypass_actors: lambda do |value|
-      value&.map { |item| ::OctridevGithub::RepositoryRulesetBypassActor.from_hash(item) }
-    end,
-    current_user_can_bypass: lambda do |value|
-      ::OctridevGithub::RepositoryRulesetCurrentUserCanBypass.from_value(value)
-    end,
-    links: lambda do |value|
-      ::OctridevGithub::RepositoryRulesetLinks.from_hash(value)
-    end,
-    conditions: lambda do |value|
-      ::OctridevGithub::RepositoryRulesetConditions2.from_hash(value)
-    end,
-    rules: lambda do |value|
-      value&.map { |item| ::OctridevGithub::RepositoryRule.from_hash(item) }
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleset.
-# A set of rules to apply when specified conditions are met.
-class RepositoryRuleset
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRulesetMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRulesetMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRulesetMetadata::DECODERS
-
-  # @return [Integer] The ID of the ruleset
-  attr_reader :id
-  # @return [String] The name of the ruleset
-  attr_reader :name
-  # @return [RepositoryRulesetTarget] The target of the ruleset
-  attr_reader :target
-  # @return [RepositoryRulesetSourceType] The type of the source of the ruleset
-  attr_reader :source_type
-  # @return [String] The name of the source
-  attr_reader :source
-  # @return [RepositoryRuleEnforcement] The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).
-  attr_reader :enforcement
-  # @return [Array_of_RepositoryRulesetBypassActor] The actors that can bypass the rules in this ruleset
-  attr_reader :bypass_actors
-  # @return [RepositoryRulesetCurrentUserCanBypass] The bypass type of the user making the API request for this ruleset. This field is only returned when querying the repository-level endpoint.
-  attr_reader :current_user_can_bypass
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [RepositoryRulesetLinks] Optional object value serialized in the `_links` wire field.
-  attr_reader :links
-  # @return [RepositoryRulesetConditions2] Optional API value serialized in the `conditions` wire field.
-  attr_reader :conditions
-  # @return [Array_of_RepositoryRule] Optional array value serialized in the `rules` wire field.
-  attr_reader :rules
-  # @return [String] Optional `date-time`-formatted value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Optional `date-time`-formatted value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the RepositoryRulesetCurrentUserCanBypass SDK namespace.
-module RepositoryRulesetCurrentUserCanBypass
-  ALWAYS = 'always'
-  PULL_REQUESTS_ONLY = 'pull_requests_only'
-  NEVER = 'never'
-  EXEMPT = 'exempt'
-  VALUES = ['always', 'pull_requests_only', 'never', 'exempt'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the RepositoryRulesetSourceType SDK namespace.
-module RepositoryRulesetSourceType
-  REPOSITORY = 'Repository'
-  ORGANIZATION = 'Organization'
-  ENTERPRISE = 'Enterprise'
-  VALUES = ['Repository', 'Organization', 'Enterprise'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the RepositoryRulesetTarget SDK namespace.
-module RepositoryRulesetTarget
-  BRANCH = 'branch'
-  TAG = 'tag'
-  PUSH = 'push'
-  REPOSITORY = 'repository'
-  VALUES = ['branch', 'tag', 'push', 'repository'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRulesetBypassActorMetadata
-  FIELDS = {
-    actor_id: "actor_id",
-    actor_type: "actor_type",
-    bypass_mode: "bypass_mode",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    actor_type
-  ].freeze
-  DECODERS = {
-    actor_type: lambda do |value|
-      ::OctridevGithub::RepositoryRulesetBypassActorActorType.from_value(value)
-    end,
-    bypass_mode: lambda do |value|
-      ::OctridevGithub::RepositoryRulesetBypassActorBypassMode.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRulesetBypassActor.
-# An actor that can bypass rules in a ruleset
-class RepositoryRulesetBypassActor
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRulesetBypassActorMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRulesetBypassActorMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRulesetBypassActorMetadata::DECODERS
-
-  # @return [Integer] The ID of the actor that can bypass a ruleset. Required for `Integration`, `RepositoryRole`, `Team`, and `User` actor types. If `actor_type` is `OrganizationAdmin`, `actor_id` is ignored. If `actor_type` is `DeployKey`, this should be null. `OrganizationAdmin` is not applicable for personal repositories.
-  attr_reader :actor_id
-  # @return [RepositoryRulesetBypassActorActorType] The type of actor that can bypass a ruleset.
-  attr_reader :actor_type
-  # @return [RepositoryRulesetBypassActorBypassMode] When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests. `pull_request` is not applicable for the `DeployKey` actor type. Also, `pull_request` is only applicable to branch rulesets. When `bypass_mode` is `exempt`, rules will not be run for that actor and a bypass audit entry will not be created.
-  attr_reader :bypass_mode
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the RepositoryRulesetBypassActorActorType SDK namespace.
-module RepositoryRulesetBypassActorActorType
-  INTEGRATION = 'Integration'
-  ORGANIZATION_ADMIN = 'OrganizationAdmin'
-  REPOSITORY_ROLE = 'RepositoryRole'
-  TEAM = 'Team'
-  DEPLOY_KEY = 'DeployKey'
-  USER = 'User'
-  VALUES = [
-    'Integration', 'OrganizationAdmin', 'RepositoryRole', 'Team', 'DeployKey', 'User'
-  ].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the RepositoryRulesetBypassActorBypassMode SDK namespace.
-module RepositoryRulesetBypassActorBypassMode
-  ALWAYS = 'always'
-  PULL_REQUEST = 'pull_request'
-  EXEMPT = 'exempt'
-  VALUES = ['always', 'pull_request', 'exempt'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRulesetConditionsRefNameMetadata
-  FIELDS = {
-    include: "include",
-    exclude: "exclude",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for RepositoryRulesetConditionsRefName.
-# Optional object value serialized in the `ref_name` wire field.
-class RepositoryRulesetConditionsRefName
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRulesetConditionsRefNameMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRulesetConditionsRefNameMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRulesetConditionsRefNameMetadata::DECODERS
-
-  # @return [Array_of_String] Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches.
-  attr_reader :include
-  # @return [Array_of_String] Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match.
-  attr_reader :exclude
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRulesetConditionsMetadata
-  FIELDS = {
-    ref_name: "ref_name",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    ref_name: lambda do |value|
-      ::OctridevGithub::RepositoryRulesetConditionsRefName.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRulesetConditions.
-# Parameters for a repository ruleset ref name condition
-class RepositoryRulesetConditions
-  include RepositoryRulesetConditions2
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRulesetConditionsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRulesetConditionsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRulesetConditionsMetadata::DECODERS
-
-  # @return [RepositoryRulesetConditionsRefName] Optional object value serialized in the `ref_name` wire field.
-  attr_reader :ref_name
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the RepositoryRulesetConditions2 SDK namespace.
-module RepositoryRulesetConditions2
-  def self.from_hash(hash)
-    lossy = nil
-    [RepositoryRulesetConditions, OrgRulesetConditions].each do |type|
-      decoded = type.from_hash(hash)
-      return decoded if SdkModel.keeps_every_key?(hash, decoded)
-
-      lossy ||= decoded
-    rescue ::StandardError
-      next
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
     end
-    return lossy unless lossy.nil?
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
+
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRulesetLinksHtmlMetadata
+    FIELDS = {
+      href: 'href'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
+  end
+
+  # API model for RepositoryRulesetLinksHtml.
+  # Optional object value serialized in the `html` wire field.
+  class RepositoryRulesetLinksHtml
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRulesetLinksHtmlMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRulesetLinksHtmlMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRulesetLinksHtmlMetadata::DECODERS
+
+    # @return [String] The html URL of the ruleset
+    attr_reader :href
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRulesetLinksMetadata
+    FIELDS = {
+      self_: 'self',
+      html: 'html'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      self_: lambda do |value|
+        ::OctridevGithub::RepositoryRulesetLinksSelf.from_hash(value)
+      end,
+      html: lambda do |value|
+        ::OctridevGithub::RepositoryRulesetLinksHtml.from_hash(value)
+      end
+    }.freeze
+  end
+
+  # API model for RepositoryRulesetLinks.
+  # Optional object value serialized in the `_links` wire field.
+  class RepositoryRulesetLinks
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRulesetLinksMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRulesetLinksMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRulesetLinksMetadata::DECODERS
+
+    # @return [RepositoryRulesetLinksSelf] Optional object value serialized in the `self` wire field.
+    attr_reader :self_
+    # @return [RepositoryRulesetLinksHtml] Optional object value serialized in the `html` wire field.
+    attr_reader :html
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRulesetMetadata
+    FIELDS = {
+      id: 'id',
+      name: 'name',
+      target: 'target',
+      source_type: 'source_type',
+      source: 'source',
+      enforcement: 'enforcement',
+      bypass_actors: 'bypass_actors',
+      current_user_can_bypass: 'current_user_can_bypass',
+      node_id: 'node_id',
+      links: '_links',
+      conditions: 'conditions',
+      rules: 'rules',
+      created_at: 'created_at',
+      updated_at: 'updated_at'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      name
+      source
+      enforcement
+    ].freeze
+    DECODERS = {
+      target: lambda do |value|
+        ::OctridevGithub::RepositoryRulesetTarget.from_value(value)
+      end,
+      source_type: lambda do |value|
+        ::OctridevGithub::RepositoryRulesetSourceType.from_value(value)
+      end,
+      enforcement: lambda do |value|
+        ::OctridevGithub::RepositoryRuleEnforcement.from_value(value)
+      end,
+      bypass_actors: lambda do |value|
+        value&.map { |item| ::OctridevGithub::RepositoryRulesetBypassActor.from_hash(item) }
+      end,
+      current_user_can_bypass: lambda do |value|
+        ::OctridevGithub::RepositoryRulesetCurrentUserCanBypass.from_value(value)
+      end,
+      links: lambda do |value|
+        ::OctridevGithub::RepositoryRulesetLinks.from_hash(value)
+      end,
+      conditions: lambda do |value|
+        ::OctridevGithub::RepositoryRulesetConditions2.from_hash(value)
+      end,
+      rules: lambda do |value|
+        value&.map { |item| ::OctridevGithub::RepositoryRule.from_hash(item) }
+      end
+    }.freeze
+  end
+
+  # API model for RepositoryRuleset.
+  # A set of rules to apply when specified conditions are met.
+  class RepositoryRuleset
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRulesetMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRulesetMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRulesetMetadata::DECODERS
+
+    # @return [Integer] The ID of the ruleset
+    attr_reader :id
+    # @return [String] The name of the ruleset
+    attr_reader :name
+    # @return [RepositoryRulesetTarget] The target of the ruleset
+    attr_reader :target
+    # @return [RepositoryRulesetSourceType] The type of the source of the ruleset
+    attr_reader :source_type
+    # @return [String] The name of the source
+    attr_reader :source
+    # @return [RepositoryRuleEnforcement] The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).
+    attr_reader :enforcement
+    # @return [Array_of_RepositoryRulesetBypassActor] The actors that can bypass the rules in this ruleset
+    attr_reader :bypass_actors
+    # @return [RepositoryRulesetCurrentUserCanBypass] The bypass type of the user making the API request for this ruleset. This field is only returned when querying the repository-level endpoint.
+    attr_reader :current_user_can_bypass
+    # @return [String] Optional `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [RepositoryRulesetLinks] Optional object value serialized in the `_links` wire field.
+    attr_reader :links
+    # @return [RepositoryRulesetConditions2] Optional API value serialized in the `conditions` wire field.
+    attr_reader :conditions
+    # @return [Array_of_RepositoryRule] Optional array value serialized in the `rules` wire field.
+    attr_reader :rules
+    # @return [String] Optional `date-time`-formatted value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Optional `date-time`-formatted value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Defines the RepositoryRulesetCurrentUserCanBypass SDK namespace.
+  module RepositoryRulesetCurrentUserCanBypass
+    ALWAYS = 'always'
+    PULL_REQUESTS_ONLY = 'pull_requests_only'
+    NEVER = 'never'
+    EXEMPT = 'exempt'
+    VALUES = %w[always pull_requests_only never exempt].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Defines the RepositoryRulesetSourceType SDK namespace.
+  module RepositoryRulesetSourceType
+    REPOSITORY = 'Repository'
+    ORGANIZATION = 'Organization'
+    ENTERPRISE = 'Enterprise'
+    VALUES = %w[Repository Organization Enterprise].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Defines the RepositoryRulesetTarget SDK namespace.
+  module RepositoryRulesetTarget
+    BRANCH = 'branch'
+    TAG = 'tag'
+    PUSH = 'push'
+    REPOSITORY = 'repository'
+    VALUES = %w[branch tag push repository].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRulesetBypassActorMetadata
+    FIELDS = {
+      actor_id: 'actor_id',
+      actor_type: 'actor_type',
+      bypass_mode: 'bypass_mode'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      actor_type
+    ].freeze
+    DECODERS = {
+      actor_type: lambda do |value|
+        ::OctridevGithub::RepositoryRulesetBypassActorActorType.from_value(value)
+      end,
+      bypass_mode: lambda do |value|
+        ::OctridevGithub::RepositoryRulesetBypassActorBypassMode.from_value(value)
+      end
+    }.freeze
+  end
+
+  # API model for RepositoryRulesetBypassActor.
+  # An actor that can bypass rules in a ruleset
+  class RepositoryRulesetBypassActor
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRulesetBypassActorMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRulesetBypassActorMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRulesetBypassActorMetadata::DECODERS
+
+    # @return [Integer] The ID of the actor that can bypass a ruleset. Required for `Integration`, `RepositoryRole`, `Team`, and `User` actor types. If `actor_type` is `OrganizationAdmin`, `actor_id` is ignored. If `actor_type` is `DeployKey`, this should be null. `OrganizationAdmin` is not applicable for personal repositories.
+    attr_reader :actor_id
+    # @return [RepositoryRulesetBypassActorActorType] The type of actor that can bypass a ruleset.
+    attr_reader :actor_type
+    # @return [RepositoryRulesetBypassActorBypassMode] When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests. `pull_request` is not applicable for the `DeployKey` actor type. Also, `pull_request` is only applicable to branch rulesets. When `bypass_mode` is `exempt`, rules will not be run for that actor and a bypass audit entry will not be created.
+    attr_reader :bypass_mode
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Defines the RepositoryRulesetBypassActorActorType SDK namespace.
+  module RepositoryRulesetBypassActorActorType
+    INTEGRATION = 'Integration'
+    ORGANIZATION_ADMIN = 'OrganizationAdmin'
+    REPOSITORY_ROLE = 'RepositoryRole'
+    TEAM = 'Team'
+    DEPLOY_KEY = 'DeployKey'
+    USER = 'User'
+    VALUES = %w[
+      Integration OrganizationAdmin RepositoryRole Team DeployKey User
+    ].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Defines the RepositoryRulesetBypassActorBypassMode SDK namespace.
+  module RepositoryRulesetBypassActorBypassMode
+    ALWAYS = 'always'
+    PULL_REQUEST = 'pull_request'
+    EXEMPT = 'exempt'
+    VALUES = %w[always pull_request exempt].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRulesetConditionsRefNameMetadata
+    FIELDS = {
+      include: 'include',
+      exclude: 'exclude'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
+  end
+
+  # API model for RepositoryRulesetConditionsRefName.
+  # Optional object value serialized in the `ref_name` wire field.
+  class RepositoryRulesetConditionsRefName
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRulesetConditionsRefNameMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRulesetConditionsRefNameMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRulesetConditionsRefNameMetadata::DECODERS
+
+    # @return [Array_of_String] Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches.
+    attr_reader :include
+    # @return [Array_of_String] Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match.
+    attr_reader :exclude
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRulesetConditionsMetadata
+    FIELDS = {
+      ref_name: 'ref_name'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      ref_name: lambda do |value|
+        ::OctridevGithub::RepositoryRulesetConditionsRefName.from_hash(value)
+      end
+    }.freeze
+  end
+
+  # API model for RepositoryRulesetConditions.
+  # Parameters for a repository ruleset ref name condition
+  class RepositoryRulesetConditions
+    include RepositoryRulesetConditions2
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRulesetConditionsMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRulesetConditionsMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRulesetConditionsMetadata::DECODERS
+
+    # @return [RepositoryRulesetConditionsRefName] Optional object value serialized in the `ref_name` wire field.
+    attr_reader :ref_name
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Defines the RepositoryRulesetConditions2 SDK namespace.
+  module RepositoryRulesetConditions2
+    def self.from_hash(hash)
+      lossy = nil
+      [RepositoryRulesetConditions, OrgRulesetConditions].each do |type|
+        decoded = type.from_hash(hash)
+        return decoded if SdkModel.keeps_every_key?(hash, decoded)
+
+        lossy ||= decoded
+      rescue ::StandardError
+        next
+      end
+      lossy unless lossy.nil?
+    end
+  end
 end

@@ -5,34 +5,34 @@
 
 # webhook_team_created domain models (part 2)
 module OctridevGithub
-# Defines the WebhookTeamCreatedAction SDK namespace.
-module WebhookTeamCreatedAction
-  CREATED = 'created'
-  VALUES = ['created'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookTeamCreatedAction SDK namespace.
+  module WebhookTeamCreatedAction
+    CREATED = 'created'
+    VALUES = ['created'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookTeamCreatedRepositoryOwnerType SDK namespace.
-module WebhookTeamCreatedRepositoryOwnerType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookTeamCreatedRepositoryOwnerType SDK namespace.
+  module WebhookTeamCreatedRepositoryOwnerType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookTeamCreatedRepositoryVisibility SDK namespace.
-module WebhookTeamCreatedRepositoryVisibility
-  PUBLIC = 'public'
-  PRIVATE = 'private'
-  INTERNAL = 'internal'
-  VALUES = ['public', 'private', 'internal'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookTeamCreatedRepositoryVisibility SDK namespace.
+  module WebhookTeamCreatedRepositoryVisibility
+    PUBLIC = 'public'
+    PRIVATE = 'private'
+    INTERNAL = 'internal'
+    VALUES = %w[public private internal].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 end

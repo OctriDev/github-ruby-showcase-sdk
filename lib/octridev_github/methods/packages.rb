@@ -13,7 +13,7 @@ module OctridevGithub
       module PackagesGetAllPackageVersionsForPackageOwnedByOrgParameter
         ACTIVE = 'active'
         DELETED = 'deleted'
-        VALUES = ['active', 'deleted'].freeze
+        VALUES = %w[active deleted].freeze
         def self.from_value(value)
           value
         end
@@ -27,7 +27,7 @@ module OctridevGithub
         DOCKER = 'docker'
         NUGET = 'nuget'
         CONTAINER = 'container'
-        VALUES = ['npm', 'maven', 'rubygems', 'docker', 'nuget', 'container'].freeze
+        VALUES = %w[npm maven rubygems docker nuget container].freeze
         def self.from_value(value)
           value
         end
@@ -41,7 +41,7 @@ module OctridevGithub
         DOCKER = 'docker'
         NUGET = 'nuget'
         CONTAINER = 'container'
-        VALUES = ['npm', 'maven', 'rubygems', 'docker', 'nuget', 'container'].freeze
+        VALUES = %w[npm maven rubygems docker nuget container].freeze
         def self.from_value(value)
           value
         end
@@ -55,7 +55,7 @@ module OctridevGithub
         DOCKER = 'docker'
         NUGET = 'nuget'
         CONTAINER = 'container'
-        VALUES = ['npm', 'maven', 'rubygems', 'docker', 'nuget', 'container'].freeze
+        VALUES = %w[npm maven rubygems docker nuget container].freeze
         def self.from_value(value)
           value
         end
@@ -65,7 +65,7 @@ module OctridevGithub
       module PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParameter
         ACTIVE = 'active'
         DELETED = 'deleted'
-        VALUES = ['active', 'deleted'].freeze
+        VALUES = %w[active deleted].freeze
         def self.from_value(value)
           value
         end
@@ -79,20 +79,19 @@ module OctridevGithub
         org:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/docker/conflicts"
+            '/docker/conflicts'
           ].join,
           config: config,
           return_type: [::OctridevGithub::Package],
           decoder: :json,
           operation_id: 'packages_list_docker_migration_conflicting_packages_for_organization',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -125,26 +124,25 @@ module OctridevGithub
         per_page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/packages"
+            '/packages'
           ].join,
           config: config,
           query: {
             'package_type' => QueryValue.new(package_type, style: 'form', explode: true),
             'visibility' => QueryValue.new(visibility, style: 'form', explode: true),
             'page' => QueryValue.new(page, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::Package],
           decoder: :json,
           operation_id: 'packages_list_packages_for_organization',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -165,22 +163,21 @@ module OctridevGithub
         org:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/packages/",
+            '/packages/',
             SdkClient.encode_path_segment(package_type),
-            "/",
+            '/',
             SdkClient.encode_path_segment(package_name)
           ].join,
           config: config,
           return_type: ::OctridevGithub::Package,
           decoder: :json,
           operation_id: 'packages_get_package_for_organization',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -201,22 +198,21 @@ module OctridevGithub
         org:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/packages/",
+            '/packages/',
             SdkClient.encode_path_segment(package_type),
-            "/",
+            '/',
             SdkClient.encode_path_segment(package_name)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'packages_delete_package_for_org',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -239,26 +235,25 @@ module OctridevGithub
         token: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/packages/",
+            '/packages/',
             SdkClient.encode_path_segment(package_type),
-            "/",
+            '/',
             SdkClient.encode_path_segment(package_name),
-            "/restore"
+            '/restore'
           ].join,
           config: config,
           query: {
-            'token' => QueryValue.new(token, style: 'form', explode: true),
+            'token' => QueryValue.new(token, style: 'form', explode: true)
           },
           decoder: :empty,
           operation_id: 'packages_restore_package_for_org',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -288,29 +283,28 @@ module OctridevGithub
         state: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/packages/",
+            '/packages/',
             SdkClient.encode_path_segment(package_type),
-            "/",
+            '/',
             SdkClient.encode_path_segment(package_name),
-            "/versions"
+            '/versions'
           ].join,
           config: config,
           query: {
             'page' => QueryValue.new(page, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'state' => QueryValue.new(state, style: 'form', explode: true),
+            'state' => QueryValue.new(state, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::PackageVersion],
           decoder: :json,
           operation_id: 'packages_get_all_package_versions_for_package_owned_by_org',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -334,24 +328,23 @@ module OctridevGithub
         package_version_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/packages/",
+            '/packages/',
             SdkClient.encode_path_segment(package_type),
-            "/",
+            '/',
             SdkClient.encode_path_segment(package_name),
-            "/versions/",
+            '/versions/',
             SdkClient.encode_path_segment(package_version_id)
           ].join,
           config: config,
           return_type: ::OctridevGithub::PackageVersion,
           decoder: :json,
           operation_id: 'packages_get_package_version_for_organization',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -375,24 +368,23 @@ module OctridevGithub
         package_version_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/packages/",
+            '/packages/',
             SdkClient.encode_path_segment(package_type),
-            "/",
+            '/',
             SdkClient.encode_path_segment(package_name),
-            "/versions/",
+            '/versions/',
             SdkClient.encode_path_segment(package_version_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'packages_delete_package_version_for_org',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -416,25 +408,24 @@ module OctridevGithub
         package_version_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/packages/",
+            '/packages/',
             SdkClient.encode_path_segment(package_type),
-            "/",
+            '/',
             SdkClient.encode_path_segment(package_name),
-            "/versions/",
+            '/versions/',
             SdkClient.encode_path_segment(package_version_id),
-            "/restore"
+            '/restore'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'packages_restore_package_version_for_org',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -443,15 +434,14 @@ module OctridevGithub
         config:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/user/docker/conflicts",
+          '/user/docker/conflicts',
           config: config,
           return_type: [::OctridevGithub::Package],
           decoder: :json,
           operation_id: 'packages_list_docker_migration_conflicting_packages_for_authenticated_user',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -483,21 +473,20 @@ module OctridevGithub
         per_page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/user/packages",
+          '/user/packages',
           config: config,
           query: {
             'package_type' => QueryValue.new(package_type, style: 'form', explode: true),
             'visibility' => QueryValue.new(visibility, style: 'form', explode: true),
             'page' => QueryValue.new(page, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::Package],
           decoder: :json,
           operation_id: 'packages_list_packages_for_authenticated_user',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -516,20 +505,19 @@ module OctridevGithub
         package_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/user/packages/",
+            '/user/packages/',
             SdkClient.encode_path_segment(package_type),
-            "/",
+            '/',
             SdkClient.encode_path_segment(package_name)
           ].join,
           config: config,
           return_type: ::OctridevGithub::Package,
           decoder: :json,
           operation_id: 'packages_get_package_for_authenticated_user',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -548,20 +536,19 @@ module OctridevGithub
         package_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/user/packages/",
+            '/user/packages/',
             SdkClient.encode_path_segment(package_type),
-            "/",
+            '/',
             SdkClient.encode_path_segment(package_name)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'packages_delete_package_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

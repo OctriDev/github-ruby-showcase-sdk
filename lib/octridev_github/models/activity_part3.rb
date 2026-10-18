@@ -5,653 +5,654 @@
 
 # activity domain models (part 3)
 module OctridevGithub
-# API model for ForkEventForkee.
-# Required object value serialized in the `forkee` wire field.
-class ForkEventForkee
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalForkEventForkeeMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalForkEventForkeeMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalForkEventForkeeMetadata::DECODERS
+  # API model for ForkEventForkee.
+  # Required object value serialized in the `forkee` wire field.
+  class ForkEventForkee
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalForkEventForkeeMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalForkEventForkeeMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalForkEventForkeeMetadata::DECODERS
 
-  # @return [Integer] Optional `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Optional `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Optional `string` value serialized in the `full_name` wire field.
-  attr_reader :full_name
-  # @return [Boolean] Optional `boolean` value serialized in the `private` wire field.
-  attr_reader :private
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :owner
-  # @return [String] Optional `string` value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [String] Optional `string` value serialized in the `description` wire field.
-  attr_reader :description
-  # @return [Boolean] Optional `boolean` value serialized in the `fork` wire field.
-  attr_reader :fork
-  # @return [String] Optional `string` value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Optional `string` value serialized in the `forks_url` wire field.
-  attr_reader :forks_url
-  # @return [String] Optional `string` value serialized in the `keys_url` wire field.
-  attr_reader :keys_url
-  # @return [String] Optional `string` value serialized in the `collaborators_url` wire field.
-  attr_reader :collaborators_url
-  # @return [String] Optional `string` value serialized in the `teams_url` wire field.
-  attr_reader :teams_url
-  # @return [String] Optional `string` value serialized in the `hooks_url` wire field.
-  attr_reader :hooks_url
-  # @return [String] Optional `string` value serialized in the `issue_events_url` wire field.
-  attr_reader :issue_events_url
-  # @return [String] Optional `string` value serialized in the `events_url` wire field.
-  attr_reader :events_url
-  # @return [String] Optional `string` value serialized in the `assignees_url` wire field.
-  attr_reader :assignees_url
-  # @return [String] Optional `string` value serialized in the `branches_url` wire field.
-  attr_reader :branches_url
-  # @return [String] Optional `string` value serialized in the `tags_url` wire field.
-  attr_reader :tags_url
-  # @return [String] Optional `string` value serialized in the `blobs_url` wire field.
-  attr_reader :blobs_url
-  # @return [String] Optional `string` value serialized in the `git_tags_url` wire field.
-  attr_reader :git_tags_url
-  # @return [String] Optional `string` value serialized in the `git_refs_url` wire field.
-  attr_reader :git_refs_url
-  # @return [String] Optional `string` value serialized in the `trees_url` wire field.
-  attr_reader :trees_url
-  # @return [String] Optional `string` value serialized in the `statuses_url` wire field.
-  attr_reader :statuses_url
-  # @return [String] Optional `string` value serialized in the `languages_url` wire field.
-  attr_reader :languages_url
-  # @return [String] Optional `string` value serialized in the `stargazers_url` wire field.
-  attr_reader :stargazers_url
-  # @return [String] Optional `string` value serialized in the `contributors_url` wire field.
-  attr_reader :contributors_url
-  # @return [String] Optional `string` value serialized in the `subscribers_url` wire field.
-  attr_reader :subscribers_url
-  # @return [String] Optional `string` value serialized in the `subscription_url` wire field.
-  attr_reader :subscription_url
-  # @return [String] Optional `string` value serialized in the `commits_url` wire field.
-  attr_reader :commits_url
-  # @return [String] Optional `string` value serialized in the `git_commits_url` wire field.
-  attr_reader :git_commits_url
-  # @return [String] Optional `string` value serialized in the `comments_url` wire field.
-  attr_reader :comments_url
-  # @return [String] Optional `string` value serialized in the `issue_comment_url` wire field.
-  attr_reader :issue_comment_url
-  # @return [String] Optional `string` value serialized in the `contents_url` wire field.
-  attr_reader :contents_url
-  # @return [String] Optional `string` value serialized in the `compare_url` wire field.
-  attr_reader :compare_url
-  # @return [String] Optional `string` value serialized in the `merges_url` wire field.
-  attr_reader :merges_url
-  # @return [String] Optional `string` value serialized in the `archive_url` wire field.
-  attr_reader :archive_url
-  # @return [String] Optional `string` value serialized in the `downloads_url` wire field.
-  attr_reader :downloads_url
-  # @return [String] Optional `string` value serialized in the `issues_url` wire field.
-  attr_reader :issues_url
-  # @return [String] Optional `string` value serialized in the `pulls_url` wire field.
-  attr_reader :pulls_url
-  # @return [String] Optional `string` value serialized in the `milestones_url` wire field.
-  attr_reader :milestones_url
-  # @return [String] Optional `string` value serialized in the `notifications_url` wire field.
-  attr_reader :notifications_url
-  # @return [String] Optional `string` value serialized in the `labels_url` wire field.
-  attr_reader :labels_url
-  # @return [String] Optional `string` value serialized in the `releases_url` wire field.
-  attr_reader :releases_url
-  # @return [String] Optional `string` value serialized in the `deployments_url` wire field.
-  attr_reader :deployments_url
-  # @return [String] Optional `date-time`-formatted value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Optional `date-time`-formatted value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-  # @return [String] Optional `date-time`-formatted value serialized in the `pushed_at` wire field.
-  attr_reader :pushed_at
-  # @return [String] Optional `string` value serialized in the `git_url` wire field.
-  attr_reader :git_url
-  # @return [String] Optional `string` value serialized in the `ssh_url` wire field.
-  attr_reader :ssh_url
-  # @return [String] Optional `string` value serialized in the `clone_url` wire field.
-  attr_reader :clone_url
-  # @return [String] Optional `string` value serialized in the `svn_url` wire field.
-  attr_reader :svn_url
-  # @return [String] Optional `string` value serialized in the `homepage` wire field.
-  attr_reader :homepage
-  # @return [Integer] Optional `integer` value serialized in the `size` wire field.
-  attr_reader :size
-  # @return [Integer] Optional `integer` value serialized in the `stargazers_count` wire field.
-  attr_reader :stargazers_count
-  # @return [Integer] Optional `integer` value serialized in the `watchers_count` wire field.
-  attr_reader :watchers_count
-  # @return [String] Optional `string` value serialized in the `language` wire field.
-  attr_reader :language
-  # @return [Boolean] Optional `boolean` value serialized in the `has_issues` wire field.
-  attr_reader :has_issues
-  # @return [Boolean] Optional `boolean` value serialized in the `has_projects` wire field.
-  attr_reader :has_projects
-  # @return [Boolean] Optional `boolean` value serialized in the `has_downloads` wire field.
-  attr_reader :has_downloads
-  # @return [Boolean] Optional `boolean` value serialized in the `has_wiki` wire field.
-  attr_reader :has_wiki
-  # @return [Boolean] Optional `boolean` value serialized in the `has_pages` wire field.
-  attr_reader :has_pages
-  # @return [Boolean] Optional `boolean` value serialized in the `has_discussions` wire field.
-  attr_reader :has_discussions
-  # @return [Boolean] Optional `boolean` value serialized in the `has_pull_requests` wire field.
-  attr_reader :has_pull_requests
-  # @return [ForkEventForkeePullRequestCreationPolicy] The policy controlling who can create pull requests: all or collaborators_only.
-  attr_reader :pull_request_creation_policy
-  # @return [Integer] Optional `integer` value serialized in the `forks_count` wire field.
-  attr_reader :forks_count
-  # @return [String] Optional `string` value serialized in the `mirror_url` wire field.
-  attr_reader :mirror_url
-  # @return [Boolean] Optional `boolean` value serialized in the `archived` wire field.
-  attr_reader :archived
-  # @return [Boolean] Optional `boolean` value serialized in the `disabled` wire field.
-  attr_reader :disabled
-  # @return [Integer] Optional `integer` value serialized in the `open_issues_count` wire field.
-  attr_reader :open_issues_count
-  # @return [NullableLicenseSimple] License Simple
-  attr_reader :license
-  # @return [Boolean] Optional `boolean` value serialized in the `allow_forking` wire field.
-  attr_reader :allow_forking
-  # @return [Boolean] Optional `boolean` value serialized in the `is_template` wire field.
-  attr_reader :is_template
-  # @return [Boolean] Optional `boolean` value serialized in the `web_commit_signoff_required` wire field.
-  attr_reader :web_commit_signoff_required
-  # @return [Array_of_String] Optional array value serialized in the `topics` wire field.
-  attr_reader :topics
-  # @return [String] Optional `string` value serialized in the `visibility` wire field.
-  attr_reader :visibility
-  # @return [Integer] Optional `integer` value serialized in the `forks` wire field.
-  attr_reader :forks
-  # @return [Integer] Optional `integer` value serialized in the `open_issues` wire field.
-  attr_reader :open_issues
-  # @return [Integer] Optional `integer` value serialized in the `watchers` wire field.
-  attr_reader :watchers
-  # @return [String] Optional `string` value serialized in the `default_branch` wire field.
-  attr_reader :default_branch
-  # @return [Boolean] Optional `boolean` value serialized in the `public` wire field.
-  attr_reader :public
+    # @return [Integer] Optional `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Optional `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Optional `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Optional `string` value serialized in the `full_name` wire field.
+    attr_reader :full_name
+    # @return [Boolean] Optional `boolean` value serialized in the `private` wire field.
+    attr_reader :private
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :owner
+    # @return [String] Optional `string` value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [String] Optional `string` value serialized in the `description` wire field.
+    attr_reader :description
+    # @return [Boolean] Optional `boolean` value serialized in the `fork` wire field.
+    attr_reader :fork
+    # @return [String] Optional `string` value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Optional `string` value serialized in the `forks_url` wire field.
+    attr_reader :forks_url
+    # @return [String] Optional `string` value serialized in the `keys_url` wire field.
+    attr_reader :keys_url
+    # @return [String] Optional `string` value serialized in the `collaborators_url` wire field.
+    attr_reader :collaborators_url
+    # @return [String] Optional `string` value serialized in the `teams_url` wire field.
+    attr_reader :teams_url
+    # @return [String] Optional `string` value serialized in the `hooks_url` wire field.
+    attr_reader :hooks_url
+    # @return [String] Optional `string` value serialized in the `issue_events_url` wire field.
+    attr_reader :issue_events_url
+    # @return [String] Optional `string` value serialized in the `events_url` wire field.
+    attr_reader :events_url
+    # @return [String] Optional `string` value serialized in the `assignees_url` wire field.
+    attr_reader :assignees_url
+    # @return [String] Optional `string` value serialized in the `branches_url` wire field.
+    attr_reader :branches_url
+    # @return [String] Optional `string` value serialized in the `tags_url` wire field.
+    attr_reader :tags_url
+    # @return [String] Optional `string` value serialized in the `blobs_url` wire field.
+    attr_reader :blobs_url
+    # @return [String] Optional `string` value serialized in the `git_tags_url` wire field.
+    attr_reader :git_tags_url
+    # @return [String] Optional `string` value serialized in the `git_refs_url` wire field.
+    attr_reader :git_refs_url
+    # @return [String] Optional `string` value serialized in the `trees_url` wire field.
+    attr_reader :trees_url
+    # @return [String] Optional `string` value serialized in the `statuses_url` wire field.
+    attr_reader :statuses_url
+    # @return [String] Optional `string` value serialized in the `languages_url` wire field.
+    attr_reader :languages_url
+    # @return [String] Optional `string` value serialized in the `stargazers_url` wire field.
+    attr_reader :stargazers_url
+    # @return [String] Optional `string` value serialized in the `contributors_url` wire field.
+    attr_reader :contributors_url
+    # @return [String] Optional `string` value serialized in the `subscribers_url` wire field.
+    attr_reader :subscribers_url
+    # @return [String] Optional `string` value serialized in the `subscription_url` wire field.
+    attr_reader :subscription_url
+    # @return [String] Optional `string` value serialized in the `commits_url` wire field.
+    attr_reader :commits_url
+    # @return [String] Optional `string` value serialized in the `git_commits_url` wire field.
+    attr_reader :git_commits_url
+    # @return [String] Optional `string` value serialized in the `comments_url` wire field.
+    attr_reader :comments_url
+    # @return [String] Optional `string` value serialized in the `issue_comment_url` wire field.
+    attr_reader :issue_comment_url
+    # @return [String] Optional `string` value serialized in the `contents_url` wire field.
+    attr_reader :contents_url
+    # @return [String] Optional `string` value serialized in the `compare_url` wire field.
+    attr_reader :compare_url
+    # @return [String] Optional `string` value serialized in the `merges_url` wire field.
+    attr_reader :merges_url
+    # @return [String] Optional `string` value serialized in the `archive_url` wire field.
+    attr_reader :archive_url
+    # @return [String] Optional `string` value serialized in the `downloads_url` wire field.
+    attr_reader :downloads_url
+    # @return [String] Optional `string` value serialized in the `issues_url` wire field.
+    attr_reader :issues_url
+    # @return [String] Optional `string` value serialized in the `pulls_url` wire field.
+    attr_reader :pulls_url
+    # @return [String] Optional `string` value serialized in the `milestones_url` wire field.
+    attr_reader :milestones_url
+    # @return [String] Optional `string` value serialized in the `notifications_url` wire field.
+    attr_reader :notifications_url
+    # @return [String] Optional `string` value serialized in the `labels_url` wire field.
+    attr_reader :labels_url
+    # @return [String] Optional `string` value serialized in the `releases_url` wire field.
+    attr_reader :releases_url
+    # @return [String] Optional `string` value serialized in the `deployments_url` wire field.
+    attr_reader :deployments_url
+    # @return [String] Optional `date-time`-formatted value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Optional `date-time`-formatted value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+    # @return [String] Optional `date-time`-formatted value serialized in the `pushed_at` wire field.
+    attr_reader :pushed_at
+    # @return [String] Optional `string` value serialized in the `git_url` wire field.
+    attr_reader :git_url
+    # @return [String] Optional `string` value serialized in the `ssh_url` wire field.
+    attr_reader :ssh_url
+    # @return [String] Optional `string` value serialized in the `clone_url` wire field.
+    attr_reader :clone_url
+    # @return [String] Optional `string` value serialized in the `svn_url` wire field.
+    attr_reader :svn_url
+    # @return [String] Optional `string` value serialized in the `homepage` wire field.
+    attr_reader :homepage
+    # @return [Integer] Optional `integer` value serialized in the `size` wire field.
+    attr_reader :size
+    # @return [Integer] Optional `integer` value serialized in the `stargazers_count` wire field.
+    attr_reader :stargazers_count
+    # @return [Integer] Optional `integer` value serialized in the `watchers_count` wire field.
+    attr_reader :watchers_count
+    # @return [String] Optional `string` value serialized in the `language` wire field.
+    attr_reader :language
+    # @return [Boolean] Optional `boolean` value serialized in the `has_issues` wire field.
+    attr_reader :has_issues
+    # @return [Boolean] Optional `boolean` value serialized in the `has_projects` wire field.
+    attr_reader :has_projects
+    # @return [Boolean] Optional `boolean` value serialized in the `has_downloads` wire field.
+    attr_reader :has_downloads
+    # @return [Boolean] Optional `boolean` value serialized in the `has_wiki` wire field.
+    attr_reader :has_wiki
+    # @return [Boolean] Optional `boolean` value serialized in the `has_pages` wire field.
+    attr_reader :has_pages
+    # @return [Boolean] Optional `boolean` value serialized in the `has_discussions` wire field.
+    attr_reader :has_discussions
+    # @return [Boolean] Optional `boolean` value serialized in the `has_pull_requests` wire field.
+    attr_reader :has_pull_requests
+    # @return [ForkEventForkeePullRequestCreationPolicy] The policy controlling who can create pull requests: all or collaborators_only.
+    attr_reader :pull_request_creation_policy
+    # @return [Integer] Optional `integer` value serialized in the `forks_count` wire field.
+    attr_reader :forks_count
+    # @return [String] Optional `string` value serialized in the `mirror_url` wire field.
+    attr_reader :mirror_url
+    # @return [Boolean] Optional `boolean` value serialized in the `archived` wire field.
+    attr_reader :archived
+    # @return [Boolean] Optional `boolean` value serialized in the `disabled` wire field.
+    attr_reader :disabled
+    # @return [Integer] Optional `integer` value serialized in the `open_issues_count` wire field.
+    attr_reader :open_issues_count
+    # @return [NullableLicenseSimple] License Simple
+    attr_reader :license
+    # @return [Boolean] Optional `boolean` value serialized in the `allow_forking` wire field.
+    attr_reader :allow_forking
+    # @return [Boolean] Optional `boolean` value serialized in the `is_template` wire field.
+    attr_reader :is_template
+    # @return [Boolean] Optional `boolean` value serialized in the `web_commit_signoff_required` wire field.
+    attr_reader :web_commit_signoff_required
+    # @return [Array_of_String] Optional array value serialized in the `topics` wire field.
+    attr_reader :topics
+    # @return [String] Optional `string` value serialized in the `visibility` wire field.
+    attr_reader :visibility
+    # @return [Integer] Optional `integer` value serialized in the `forks` wire field.
+    attr_reader :forks
+    # @return [Integer] Optional `integer` value serialized in the `open_issues` wire field.
+    attr_reader :open_issues
+    # @return [Integer] Optional `integer` value serialized in the `watchers` wire field.
+    attr_reader :watchers
+    # @return [String] Optional `string` value serialized in the `default_branch` wire field.
+    attr_reader :default_branch
+    # @return [Boolean] Optional `boolean` value serialized in the `public` wire field.
+    attr_reader :public
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalForkEventMetadata
+    FIELDS = {
+      action: 'action',
+      forkee: 'forkee'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      action
+      forkee
+    ].freeze
+    DECODERS = {
+      forkee: lambda do |value|
+        ::OctridevGithub::ForkEventForkee.from_hash(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for ForkEvent.
+  # Typed representation of the `ForkEvent` API schema.
+  class ForkEvent
+    include EventPayload
 
-# Internal model hydration metadata.
-class SdkInternalForkEventMetadata
-  FIELDS = {
-    action: "action",
-    forkee: "forkee",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    action
-    forkee
-  ].freeze
-  DECODERS = {
-    forkee: lambda do |value|
-      ::OctridevGithub::ForkEventForkee.from_hash(value)
-    end,
-  }.freeze
-end
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalForkEventMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalForkEventMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalForkEventMetadata::DECODERS
 
-# API model for ForkEvent.
-# Typed representation of the `ForkEvent` API schema.
-class ForkEvent
-  include EventPayload
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalForkEventMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalForkEventMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalForkEventMetadata::DECODERS
+    # @return [String] Required `string` value serialized in the `action` wire field.
+    attr_reader :action
+    # @return [ForkEventForkee] Required object value serialized in the `forkee` wire field.
+    attr_reader :forkee
 
-  # @return [String] Required `string` value serialized in the `action` wire field.
-  attr_reader :action
-  # @return [ForkEventForkee] Required object value serialized in the `forkee` wire field.
-  attr_reader :forkee
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the ForkEventForkeePullRequestCreationPolicy SDK namespace.
+  module ForkEventForkeePullRequestCreationPolicy
+    ALL = 'all'
+    COLLABORATORS_ONLY = 'collaborators_only'
+    VALUES = %w[all collaborators_only].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the ForkEventForkeePullRequestCreationPolicy SDK namespace.
-module ForkEventForkeePullRequestCreationPolicy
-  ALL = 'all'
-  COLLABORATORS_ONLY = 'collaborators_only'
-  VALUES = ['all', 'collaborators_only'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalGollumEventPagesItemMetadata
-  FIELDS = {
-    page_name: "page_name",
-    title: "title",
-    summary: "summary",
-    action: "action",
-    sha: "sha",
-    html_url: "html_url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for GollumEventPagesItem.
-# Required object value serialized in the `pages[]` wire field.
-class GollumEventPagesItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalGollumEventPagesItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalGollumEventPagesItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalGollumEventPagesItemMetadata::DECODERS
-
-  # @return [String] Optional `string` value serialized in the `page_name` wire field.
-  attr_reader :page_name
-  # @return [String] Optional `string` value serialized in the `title` wire field.
-  attr_reader :title
-  # @return [String] Optional `string` value serialized in the `summary` wire field.
-  attr_reader :summary
-  # @return [String] Optional `string` value serialized in the `action` wire field.
-  attr_reader :action
-  # @return [String] Optional `string` value serialized in the `sha` wire field.
-  attr_reader :sha
-  # @return [String] Optional `string` value serialized in the `html_url` wire field.
-  attr_reader :html_url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalGollumEventPagesItemMetadata
+    FIELDS = {
+      page_name: 'page_name',
+      title: 'title',
+      summary: 'summary',
+      action: 'action',
+      sha: 'sha',
+      html_url: 'html_url'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for GollumEventPagesItem.
+  # Required object value serialized in the `pages[]` wire field.
+  class GollumEventPagesItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalGollumEventPagesItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalGollumEventPagesItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalGollumEventPagesItemMetadata::DECODERS
+
+    # @return [String] Optional `string` value serialized in the `page_name` wire field.
+    attr_reader :page_name
+    # @return [String] Optional `string` value serialized in the `title` wire field.
+    attr_reader :title
+    # @return [String] Optional `string` value serialized in the `summary` wire field.
+    attr_reader :summary
+    # @return [String] Optional `string` value serialized in the `action` wire field.
+    attr_reader :action
+    # @return [String] Optional `string` value serialized in the `sha` wire field.
+    attr_reader :sha
+    # @return [String] Optional `string` value serialized in the `html_url` wire field.
+    attr_reader :html_url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalGollumEventMetadata
-  FIELDS = {
-    pages: "pages",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    pages
-  ].freeze
-  DECODERS = {
-    pages: lambda do |value|
-      value&.map { |item| ::OctridevGithub::GollumEventPagesItem.from_hash(item) }
-    end,
-  }.freeze
-end
-
-# API model for GollumEvent.
-# Typed representation of the `GollumEvent` API schema.
-class GollumEvent
-  include EventPayload
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalGollumEventMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalGollumEventMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalGollumEventMetadata::DECODERS
-
-  # @return [Array_of_GollumEventPagesItem] Required array value serialized in the `pages` wire field.
-  attr_reader :pages
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalGollumEventMetadata
+    FIELDS = {
+      pages: 'pages'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      pages
+    ].freeze
+    DECODERS = {
+      pages: lambda do |value|
+        value&.map { |item| ::OctridevGithub::GollumEventPagesItem.from_hash(item) }
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for GollumEvent.
+  # Typed representation of the `GollumEvent` API schema.
+  class GollumEvent
+    include EventPayload
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalGollumEventMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalGollumEventMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalGollumEventMetadata::DECODERS
+
+    # @return [Array_of_GollumEventPagesItem] Required array value serialized in the `pages` wire field.
+    attr_reader :pages
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalIssueCommentEventMetadata
-  FIELDS = {
-    action: "action",
-    issue: "issue",
-    comment: "comment",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    action
-    issue
-    comment
-  ].freeze
-  DECODERS = {
-    issue: lambda do |value|
-      ::OctridevGithub::Issue.from_hash(value)
-    end,
-    comment: lambda do |value|
-      ::OctridevGithub::IssueComment.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for IssueCommentEvent.
-# Typed representation of the `IssueCommentEvent` API schema.
-class IssueCommentEvent
-  include EventPayload
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalIssueCommentEventMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalIssueCommentEventMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalIssueCommentEventMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `action` wire field.
-  attr_reader :action
-  # @return [Issue] Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.
-  attr_reader :issue
-  # @return [IssueComment] Comments provide a way for people to collaborate on an issue.
-  attr_reader :comment
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalIssueCommentEventMetadata
+    FIELDS = {
+      action: 'action',
+      issue: 'issue',
+      comment: 'comment'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      action
+      issue
+      comment
+    ].freeze
+    DECODERS = {
+      issue: lambda do |value|
+        ::OctridevGithub::Issue.from_hash(value)
+      end,
+      comment: lambda do |value|
+        ::OctridevGithub::IssueComment.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for IssueCommentEvent.
+  # Typed representation of the `IssueCommentEvent` API schema.
+  class IssueCommentEvent
+    include EventPayload
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalIssueCommentEventMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalIssueCommentEventMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalIssueCommentEventMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `action` wire field.
+    attr_reader :action
+    # @return [Issue] Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.
+    attr_reader :issue
+    # @return [IssueComment] Comments provide a way for people to collaborate on an issue.
+    attr_reader :comment
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalIssuesEventMetadata
-  FIELDS = {
-    action: "action",
-    issue: "issue",
-    assignee: "assignee",
-    assignees: "assignees",
-    label: "label",
-    labels: "labels",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    action
-    issue
-  ].freeze
-  DECODERS = {
-    issue: lambda do |value|
-      ::OctridevGithub::Issue.from_hash(value)
-    end,
-    assignee: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-    assignees: lambda do |value|
-      value&.map { |item| ::OctridevGithub::SimpleUser.from_hash(item) }
-    end,
-    label: lambda do |value|
-      ::OctridevGithub::Label.from_hash(value)
-    end,
-    labels: lambda do |value|
-      value&.map { |item| ::OctridevGithub::Label.from_hash(item) }
-    end,
-  }.freeze
-end
-
-# API model for IssuesEvent.
-# Typed representation of the `IssuesEvent` API schema.
-class IssuesEvent
-  include EventPayload
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalIssuesEventMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalIssuesEventMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalIssuesEventMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `action` wire field.
-  attr_reader :action
-  # @return [Issue] Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.
-  attr_reader :issue
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :assignee
-  # @return [Array_of_SimpleUser] Optional array value serialized in the `assignees` wire field.
-  attr_reader :assignees
-  # @return [Label] Color-coded labels help you categorize and filter your issues (just like labels in Gmail).
-  attr_reader :label
-  # @return [Array_of_Label] Optional array value serialized in the `labels` wire field.
-  attr_reader :labels
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalIssuesEventMetadata
+    FIELDS = {
+      action: 'action',
+      issue: 'issue',
+      assignee: 'assignee',
+      assignees: 'assignees',
+      label: 'label',
+      labels: 'labels'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      action
+      issue
+    ].freeze
+    DECODERS = {
+      issue: lambda do |value|
+        ::OctridevGithub::Issue.from_hash(value)
+      end,
+      assignee: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end,
+      assignees: lambda do |value|
+        value&.map { |item| ::OctridevGithub::SimpleUser.from_hash(item) }
+      end,
+      label: lambda do |value|
+        ::OctridevGithub::Label.from_hash(value)
+      end,
+      labels: lambda do |value|
+        value&.map { |item| ::OctridevGithub::Label.from_hash(item) }
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for IssuesEvent.
+  # Typed representation of the `IssuesEvent` API schema.
+  class IssuesEvent
+    include EventPayload
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalIssuesEventMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalIssuesEventMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalIssuesEventMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `action` wire field.
+    attr_reader :action
+    # @return [Issue] Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.
+    attr_reader :issue
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :assignee
+    # @return [Array_of_SimpleUser] Optional array value serialized in the `assignees` wire field.
+    attr_reader :assignees
+    # @return [Label] Color-coded labels help you categorize and filter your issues (just like labels in Gmail).
+    attr_reader :label
+    # @return [Array_of_Label] Optional array value serialized in the `labels` wire field.
+    attr_reader :labels
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalLinkWithTypeMetadata
-  FIELDS = {
-    href: "href",
-    type: "type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    href
-    type
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for LinkWithType.
-# Hypermedia Link with Type
-class LinkWithType
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalLinkWithTypeMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalLinkWithTypeMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalLinkWithTypeMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `href` wire field.
-  attr_reader :href
-  # @return [String] Required `string` value serialized in the `type` wire field.
-  attr_reader :type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalLinkWithTypeMetadata
+    FIELDS = {
+      href: 'href',
+      type: 'type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      href
+      type
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for LinkWithType.
+  # Hypermedia Link with Type
+  class LinkWithType
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalLinkWithTypeMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalLinkWithTypeMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalLinkWithTypeMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `href` wire field.
+    attr_reader :href
+    # @return [String] Required `string` value serialized in the `type` wire field.
+    attr_reader :type
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalMemberEventMetadata
-  FIELDS = {
-    action: "action",
-    member: "member",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    action
-    member
-  ].freeze
-  DECODERS = {
-    member: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for MemberEvent.
-# Typed representation of the `MemberEvent` API schema.
-class MemberEvent
-  include EventPayload
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalMemberEventMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalMemberEventMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalMemberEventMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `action` wire field.
-  attr_reader :action
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :member
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalMemberEventMetadata
+    FIELDS = {
+      action: 'action',
+      member: 'member'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      action
+      member
+    ].freeze
+    DECODERS = {
+      member: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for MemberEvent.
+  # Typed representation of the `MemberEvent` API schema.
+  class MemberEvent
+    include EventPayload
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalMemberEventMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalMemberEventMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalMemberEventMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `action` wire field.
+    attr_reader :action
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :member
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalPublicEventMetadata
-  FIELDS = {
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for PublicEvent.
-# Typed representation of the `PublicEvent` API schema.
-class PublicEvent
-  include EventPayload
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalPublicEventMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalPublicEventMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalPublicEventMetadata::DECODERS
-
-  # @return [Hash{String => Object}] Keys the schema admits beside the declared fields.
-  attr_reader :additional_properties
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS, extras: true)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalPublicEventMetadata
+    FIELDS = {}.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, extras: true)
+  # API model for PublicEvent.
+  # Typed representation of the `PublicEvent` API schema.
+  class PublicEvent
+    include EventPayload
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalPublicEventMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalPublicEventMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalPublicEventMetadata::DECODERS
+
+    # @return [Hash{String => Object}] Keys the schema admits beside the declared fields.
+    attr_reader :additional_properties
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS, extras: true)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, extras: true)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS, extras: true)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS, extras: true)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalPullRequestEventMetadata
-  FIELDS = {
-    action: "action",
-    number: "number",
-    pull_request: "pull_request",
-    assignee: "assignee",
-    assignees: "assignees",
-    label: "label",
-    labels: "labels",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    action
-    number
-    pull_request
-  ].freeze
-  DECODERS = {
-    pull_request: lambda do |value|
-      ::OctridevGithub::PullRequestMinimal.from_hash(value)
-    end,
-    assignee: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-    assignees: lambda do |value|
-      value&.map { |item| ::OctridevGithub::SimpleUser.from_hash(item) }
-    end,
-    label: lambda do |value|
-      ::OctridevGithub::Label.from_hash(value)
-    end,
-    labels: lambda do |value|
-      value&.map { |item| ::OctridevGithub::Label.from_hash(item) }
-    end,
-  }.freeze
-end
-
-# API model for PullRequestEvent.
-# Typed representation of the `PullRequestEvent` API schema.
-class PullRequestEvent
-  include EventPayload
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalPullRequestEventMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalPullRequestEventMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalPullRequestEventMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `action` wire field.
-  attr_reader :action
-  # @return [Integer] Required `integer` value serialized in the `number` wire field.
-  attr_reader :number
-  # @return [PullRequestMinimal] Required object value serialized in the `pull_request` wire field.
-  attr_reader :pull_request
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :assignee
-  # @return [Array_of_SimpleUser] Optional array value serialized in the `assignees` wire field.
-  attr_reader :assignees
-  # @return [Label] Color-coded labels help you categorize and filter your issues (just like labels in Gmail).
-  attr_reader :label
-  # @return [Array_of_Label] Optional array value serialized in the `labels` wire field.
-  attr_reader :labels
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalPullRequestEventMetadata
+    FIELDS = {
+      action: 'action',
+      number: 'number',
+      pull_request: 'pull_request',
+      assignee: 'assignee',
+      assignees: 'assignees',
+      label: 'label',
+      labels: 'labels'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      action
+      number
+      pull_request
+    ].freeze
+    DECODERS = {
+      pull_request: lambda do |value|
+        ::OctridevGithub::PullRequestMinimal.from_hash(value)
+      end,
+      assignee: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end,
+      assignees: lambda do |value|
+        value&.map { |item| ::OctridevGithub::SimpleUser.from_hash(item) }
+      end,
+      label: lambda do |value|
+        ::OctridevGithub::Label.from_hash(value)
+      end,
+      labels: lambda do |value|
+        value&.map { |item| ::OctridevGithub::Label.from_hash(item) }
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
+  # API model for PullRequestEvent.
+  # Typed representation of the `PullRequestEvent` API schema.
+  class PullRequestEvent
+    include EventPayload
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalPullRequestEventMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalPullRequestEventMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalPullRequestEventMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `action` wire field.
+    attr_reader :action
+    # @return [Integer] Required `integer` value serialized in the `number` wire field.
+    attr_reader :number
+    # @return [PullRequestMinimal] Required object value serialized in the `pull_request` wire field.
+    attr_reader :pull_request
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :assignee
+    # @return [Array_of_SimpleUser] Optional array value serialized in the `assignees` wire field.
+    attr_reader :assignees
+    # @return [Label] Color-coded labels help you categorize and filter your issues (just like labels in Gmail).
+    attr_reader :label
+    # @return [Array_of_Label] Optional array value serialized in the `labels` wire field.
+    attr_reader :labels
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
 end

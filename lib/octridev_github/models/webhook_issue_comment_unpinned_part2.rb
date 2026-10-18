@@ -5,523 +5,523 @@
 
 # webhook_issue_comment_unpinned domain models (part 2)
 module OctridevGithub
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0AssigneesItemType SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0AssigneesItemType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  MANNEQUIN = 'Mannequin'
-  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0AssigneesItemType SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0AssigneesItemType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    MANNEQUIN = 'Mannequin'
+    VALUES = %w[Bot User Organization Mannequin].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0AuthorAssociation SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0AuthorAssociation
-  COLLABORATOR = 'COLLABORATOR'
-  CONTRIBUTOR = 'CONTRIBUTOR'
-  FIRST_TIMER = 'FIRST_TIMER'
-  FIRST_TIME_CONTRIBUTOR = 'FIRST_TIME_CONTRIBUTOR'
-  MANNEQUIN = 'MANNEQUIN'
-  MEMBER = 'MEMBER'
-  NONE = 'NONE'
-  OWNER = 'OWNER'
-  VALUES = [
-    'COLLABORATOR', 'CONTRIBUTOR', 'FIRST_TIMER', 'FIRST_TIME_CONTRIBUTOR', 'MANNEQUIN', 'MEMBER',
-    'NONE', 'OWNER'
-  ].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0AuthorAssociation SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0AuthorAssociation
+    COLLABORATOR = 'COLLABORATOR'
+    CONTRIBUTOR = 'CONTRIBUTOR'
+    FIRST_TIMER = 'FIRST_TIMER'
+    FIRST_TIME_CONTRIBUTOR = 'FIRST_TIME_CONTRIBUTOR'
+    MANNEQUIN = 'MANNEQUIN'
+    MEMBER = 'MEMBER'
+    NONE = 'NONE'
+    OWNER = 'OWNER'
+    VALUES = %w[
+      COLLABORATOR CONTRIBUTOR FIRST_TIMER FIRST_TIME_CONTRIBUTOR MANNEQUIN MEMBER
+      NONE OWNER
+    ].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0MilestoneCreatorType SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0MilestoneCreatorType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  MANNEQUIN = 'Mannequin'
-  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0MilestoneCreatorType SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0MilestoneCreatorType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    MANNEQUIN = 'Mannequin'
+    VALUES = %w[Bot User Organization Mannequin].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0MilestoneState SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0MilestoneState
-  OPEN = 'open'
-  CLOSED = 'closed'
-  VALUES = ['open', 'closed'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0MilestoneState SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0MilestoneState
+    OPEN = 'open'
+    CLOSED = 'closed'
+    VALUES = %w[open closed].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppEventsItem SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppEventsItem
-  BRANCH_PROTECTION_RULE = 'branch_protection_rule'
-  CHECK_RUN = 'check_run'
-  CHECK_SUITE = 'check_suite'
-  CODE_SCANNING_ALERT = 'code_scanning_alert'
-  COMMIT_COMMENT = 'commit_comment'
-  CONTENT_REFERENCE = 'content_reference'
-  CREATE = 'create'
-  DELETE = 'delete'
-  DEPLOYMENT = 'deployment'
-  DEPLOYMENT_REVIEW = 'deployment_review'
-  DEPLOYMENT_STATUS = 'deployment_status'
-  DEPLOY_KEY = 'deploy_key'
-  DISCUSSION = 'discussion'
-  DISCUSSION_COMMENT = 'discussion_comment'
-  FORK = 'fork'
-  GOLLUM = 'gollum'
-  ISSUES = 'issues'
-  ISSUE_COMMENT = 'issue_comment'
-  LABEL = 'label'
-  MEMBER = 'member'
-  MEMBERSHIP = 'membership'
-  MILESTONE = 'milestone'
-  ORGANIZATION = 'organization'
-  ORG_BLOCK = 'org_block'
-  PAGE_BUILD = 'page_build'
-  PROJECT = 'project'
-  PROJECT_CARD = 'project_card'
-  PROJECT_COLUMN = 'project_column'
-  PUBLIC = 'public'
-  PULL_REQUEST = 'pull_request'
-  PULL_REQUEST_REVIEW = 'pull_request_review'
-  PULL_REQUEST_REVIEW_COMMENT = 'pull_request_review_comment'
-  PUSH = 'push'
-  REGISTRY_PACKAGE = 'registry_package'
-  RELEASE = 'release'
-  REPOSITORY = 'repository'
-  REPOSITORY_DISPATCH = 'repository_dispatch'
-  SECRET_SCANNING_ALERT = 'secret_scanning_alert'
-  STAR = 'star'
-  STATUS = 'status'
-  TEAM = 'team'
-  TEAM_ADD = 'team_add'
-  WATCH = 'watch'
-  WORKFLOW_DISPATCH = 'workflow_dispatch'
-  WORKFLOW_RUN = 'workflow_run'
-  VALUES = [
-    'branch_protection_rule', 'check_run', 'check_suite', 'code_scanning_alert', 'commit_comment',
-    'content_reference', 'create', 'delete', 'deployment', 'deployment_review', 'deployment_status',
-    'deploy_key', 'discussion', 'discussion_comment', 'fork', 'gollum', 'issues', 'issue_comment',
-    'label', 'member', 'membership', 'milestone', 'organization', 'org_block', 'page_build',
-    'project', 'project_card', 'project_column', 'public', 'pull_request', 'pull_request_review',
-    'pull_request_review_comment', 'push', 'registry_package', 'release', 'repository',
-    'repository_dispatch', 'secret_scanning_alert', 'star', 'status', 'team', 'team_add', 'watch',
-    'workflow_dispatch', 'workflow_run'
-  ].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppEventsItem SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppEventsItem
+    BRANCH_PROTECTION_RULE = 'branch_protection_rule'
+    CHECK_RUN = 'check_run'
+    CHECK_SUITE = 'check_suite'
+    CODE_SCANNING_ALERT = 'code_scanning_alert'
+    COMMIT_COMMENT = 'commit_comment'
+    CONTENT_REFERENCE = 'content_reference'
+    CREATE = 'create'
+    DELETE = 'delete'
+    DEPLOYMENT = 'deployment'
+    DEPLOYMENT_REVIEW = 'deployment_review'
+    DEPLOYMENT_STATUS = 'deployment_status'
+    DEPLOY_KEY = 'deploy_key'
+    DISCUSSION = 'discussion'
+    DISCUSSION_COMMENT = 'discussion_comment'
+    FORK = 'fork'
+    GOLLUM = 'gollum'
+    ISSUES = 'issues'
+    ISSUE_COMMENT = 'issue_comment'
+    LABEL = 'label'
+    MEMBER = 'member'
+    MEMBERSHIP = 'membership'
+    MILESTONE = 'milestone'
+    ORGANIZATION = 'organization'
+    ORG_BLOCK = 'org_block'
+    PAGE_BUILD = 'page_build'
+    PROJECT = 'project'
+    PROJECT_CARD = 'project_card'
+    PROJECT_COLUMN = 'project_column'
+    PUBLIC = 'public'
+    PULL_REQUEST = 'pull_request'
+    PULL_REQUEST_REVIEW = 'pull_request_review'
+    PULL_REQUEST_REVIEW_COMMENT = 'pull_request_review_comment'
+    PUSH = 'push'
+    REGISTRY_PACKAGE = 'registry_package'
+    RELEASE = 'release'
+    REPOSITORY = 'repository'
+    REPOSITORY_DISPATCH = 'repository_dispatch'
+    SECRET_SCANNING_ALERT = 'secret_scanning_alert'
+    STAR = 'star'
+    STATUS = 'status'
+    TEAM = 'team'
+    TEAM_ADD = 'team_add'
+    WATCH = 'watch'
+    WORKFLOW_DISPATCH = 'workflow_dispatch'
+    WORKFLOW_RUN = 'workflow_run'
+    VALUES = %w[
+      branch_protection_rule check_run check_suite code_scanning_alert commit_comment
+      content_reference create delete deployment deployment_review deployment_status
+      deploy_key discussion discussion_comment fork gollum issues issue_comment
+      label member membership milestone organization org_block page_build
+      project project_card project_column public pull_request pull_request_review
+      pull_request_review_comment push registry_package release repository
+      repository_dispatch secret_scanning_alert star status team team_add watch
+      workflow_dispatch workflow_run
+    ].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppOwnerType SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppOwnerType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppOwnerType SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppOwnerType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX5f86afcd5c SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX5f86afcd5c
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX5f86afcd5c SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX5f86afcd5c
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXc33f6ccc17 SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXc33f6ccc17
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXc33f6ccc17 SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXc33f6ccc17
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX0b906ad268 SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX0b906ad268
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX0b906ad268 SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX0b906ad268
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXa80399696e SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXa80399696e
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXa80399696e SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXa80399696e
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXf3d63e8fc5 SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXf3d63e8fc5
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXf3d63e8fc5 SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXf3d63e8fc5
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX140ada1c12 SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX140ada1c12
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX140ada1c12 SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX140ada1c12
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX8fb87d611b SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX8fb87d611b
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX8fb87d611b SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX8fb87d611b
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX113d7b4f34 SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX113d7b4f34
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX113d7b4f34 SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX113d7b4f34
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX77ac922ecf SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX77ac922ecf
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX77ac922ecf SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX77ac922ecf
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXe2e9bc3876 SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXe2e9bc3876
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXe2e9bc3876 SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXe2e9bc3876
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXd8413310b6 SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXd8413310b6
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXd8413310b6 SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXd8413310b6
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX472b8dca06 SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX472b8dca06
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX472b8dca06 SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX472b8dca06
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX77197c3636 SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX77197c3636
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX77197c3636 SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX77197c3636
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXcaf29039e9 SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXcaf29039e9
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXcaf29039e9 SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXcaf29039e9
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXde40271786 SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXde40271786
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXde40271786 SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXde40271786
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXaa2b24ce2f SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXaa2b24ce2f
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXaa2b24ce2f SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXaa2b24ce2f
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXc40269e02e SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXc40269e02e
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXc40269e02e SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXc40269e02e
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX098df75865 SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX098df75865
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX098df75865 SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX098df75865
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX745e1b7dfd SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX745e1b7dfd
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX745e1b7dfd SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX745e1b7dfd
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX31581386aa SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX31581386aa
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX31581386aa SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX31581386aa
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXb7354f4a98 SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXb7354f4a98
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXb7354f4a98 SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXb7354f4a98
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX07ce786bd8 SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX07ce786bd8
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX07ce786bd8 SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX07ce786bd8
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX529ddd6c61 SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX529ddd6c61
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX529ddd6c61 SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX529ddd6c61
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX046434c74a SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX046434c74a
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX046434c74a SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX046434c74a
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX488121987e SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX488121987e
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX488121987e SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX488121987e
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX97b45b1fa2 SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX97b45b1fa2
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX97b45b1fa2 SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX97b45b1fa2
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXbc7803fc59 SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXbc7803fc59
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXbc7803fc59 SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXbc7803fc59
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX0f6875cb25 SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX0f6875cb25
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX0f6875cb25 SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX0f6875cb25
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX67ffe14a75 SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX67ffe14a75
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX67ffe14a75 SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX67ffe14a75
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXbbbd9f849e SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXbbbd9f849e
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXbbbd9f849e SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXbbbd9f849e
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX93a1ed42c4 SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX93a1ed42c4
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX93a1ed42c4 SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX93a1ed42c4
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX403123d9bb SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX403123d9bb
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX403123d9bb SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX403123d9bb
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX026eff35ca SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX026eff35ca
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX026eff35ca SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppX026eff35ca
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXc678527b93 SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXc678527b93
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXc678527b93 SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXc678527b93
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXf34ed0e82d SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXf34ed0e82d
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXf34ed0e82d SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0PerformedViaGithubAppXf34ed0e82d
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0State SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0State
-  OPEN = 'open'
-  CLOSED = 'closed'
-  VALUES = ['open', 'closed'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0State SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0State
+    OPEN = 'open'
+    CLOSED = 'closed'
+    VALUES = %w[open closed].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant0UserType SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant0UserType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  MANNEQUIN = 'Mannequin'
-  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant0UserType SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant0UserType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    MANNEQUIN = 'Mannequin'
+    VALUES = %w[Bot User Organization Mannequin].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant1AssigneeType SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant1AssigneeType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  MANNEQUIN = 'Mannequin'
-  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant1AssigneeType SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant1AssigneeType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    MANNEQUIN = 'Mannequin'
+    VALUES = %w[Bot User Organization Mannequin].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueVariant1State SDK namespace.
-module WebhookIssueCommentUnpinnedIssueVariant1State
-  OPEN = 'open'
-  CLOSED = 'closed'
-  VALUES = ['open', 'closed'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueVariant1State SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueVariant1State
+    OPEN = 'open'
+    CLOSED = 'closed'
+    VALUES = %w[open closed].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 end

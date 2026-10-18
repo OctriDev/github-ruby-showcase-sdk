@@ -13,7 +13,7 @@ module OctridevGithub
       module AgentAutomationsListRepoAutomationsResponseAutomationsItemTriX6ca880397e
         TIMELINE_COMMENT = 'timeline_comment'
         REVIEW_COMMENT = 'review_comment'
-        VALUES = ['timeline_comment', 'review_comment'].freeze
+        VALUES = %w[timeline_comment review_comment].freeze
         def self.from_value(value)
           value
         end
@@ -23,7 +23,7 @@ module OctridevGithub
       module AgentAutomationsGetRepoAutomationResponseTriggersDiscussionUpX53d0ec5ca9
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = ['trigger', 'repository'].freeze
+        VALUES = %w[trigger repository].freeze
         def self.from_value(value)
           value
         end
@@ -33,7 +33,7 @@ module OctridevGithub
       module AgentAutomationsListAutomationsResponseItemTriggersIntervalWriteScope
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = ['trigger', 'repository'].freeze
+        VALUES = %w[trigger repository].freeze
         def self.from_value(value)
           value
         end
@@ -43,7 +43,7 @@ module OctridevGithub
       module AgentAutomationsGetAutomationResponseTriggersPullRequestMergeX14bcf9e4e9
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = ['trigger', 'repository'].freeze
+        VALUES = %w[trigger repository].freeze
         def self.from_value(value)
           value
         end
@@ -57,8 +57,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = [
-          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
+        VALUES = %w[
+          missing missing_field invalid already_exists unprocessable custom
         ].freeze
         def self.from_value(value)
           value
@@ -73,8 +73,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = [
-          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
+        VALUES = %w[
+          missing missing_field invalid already_exists unprocessable custom
         ].freeze
         def self.from_value(value)
           value
@@ -89,8 +89,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = [
-          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
+        VALUES = %w[
+          missing missing_field invalid already_exists unprocessable custom
         ].freeze
         def self.from_value(value)
           value
@@ -101,7 +101,7 @@ module OctridevGithub
       module AgentAutomationsListRepoAutomationsResponseAutomationsItemTriX02fac249c5
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = ['trigger', 'repository'].freeze
+        VALUES = %w[trigger repository].freeze
         def self.from_value(value)
           value
         end
@@ -111,7 +111,7 @@ module OctridevGithub
       module AgentAutomationsEditRepoAutomationTriggersAutomationCompletedWriteScope
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = ['trigger', 'repository'].freeze
+        VALUES = %w[trigger repository].freeze
         def self.from_value(value)
           value
         end
@@ -130,7 +130,7 @@ module OctridevGithub
       module AgentAutomationsListRepoAutomationsResponseAutomationsItemTriXed84f28191
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = ['trigger', 'repository'].freeze
+        VALUES = %w[trigger repository].freeze
         def self.from_value(value)
           value
         end
@@ -140,7 +140,7 @@ module OctridevGithub
       module AgentAutomationsGetAutomationResponseTriggersPullRequestCommeX6840452c27
         TIMELINE_COMMENT = 'timeline_comment'
         REVIEW_COMMENT = 'review_comment'
-        VALUES = ['timeline_comment', 'review_comment'].freeze
+        VALUES = %w[timeline_comment review_comment].freeze
         def self.from_value(value)
           value
         end
@@ -150,7 +150,7 @@ module OctridevGithub
       module AgentAutomationsEditRepoAutomationResponseTriggersPullRequestXe707adef57
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = ['trigger', 'repository'].freeze
+        VALUES = %w[trigger repository].freeze
         def self.from_value(value)
           value
         end
@@ -160,7 +160,7 @@ module OctridevGithub
       module AgentAutomationsEditRepoAutomationResponseTriggersPullRequestXe64ce7b0f1
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = ['trigger', 'repository'].freeze
+        VALUES = %w[trigger repository].freeze
         def self.from_value(value)
           value
         end
@@ -170,7 +170,7 @@ module OctridevGithub
       module AgentAutomationsEditRepoAutomationTriggersDiscussionOpenedWriteScope
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = ['trigger', 'repository'].freeze
+        VALUES = %w[trigger repository].freeze
         def self.from_value(value)
           value
         end
@@ -180,7 +180,7 @@ module OctridevGithub
       module AgentAutomationsListAutomationsParameter
         USER = 'user'
         REPOSITORY = 'repository'
-        VALUES = ['user', 'repository'].freeze
+        VALUES = %w[user repository].freeze
         def self.from_value(value)
           value
         end
@@ -201,23 +201,22 @@ module OctridevGithub
         owner_type: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.if_given(page) { Validation.validate_range('page', page, min: 1) }
 
         Validation.if_given(per_page) { Validation.validate_range('per_page', per_page, min: 1, max: 100) }
 
         SdkClient.request(
           'GET',
-          "/agents/automations",
+          '/agents/automations',
           config: config,
           query: {
             'page' => QueryValue.new(page, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'owner_type' => QueryValue.new(owner_type, style: 'form', explode: true),
+            'owner_type' => QueryValue.new(owner_type, style: 'form', explode: true)
           },
           decoder: :json,
           operation_id: 'agent_automations_list_automations',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -226,14 +225,13 @@ module OctridevGithub
         config:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/agents/automations/available-tools",
+          '/agents/automations/available-tools',
           config: config,
           decoder: :json,
           operation_id: 'agent_automations_list_available_automation_tools',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -242,14 +240,13 @@ module OctridevGithub
         config:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/agents/automations/available-triggers",
+          '/agents/automations/available-triggers',
           config: config,
           decoder: :json,
           operation_id: 'agent_automations_list_available_automation_triggers',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -261,18 +258,17 @@ module OctridevGithub
         automation_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/agents/automations/",
+            '/agents/automations/',
             SdkClient.encode_path_segment(automation_id)
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponse,
           decoder: :json,
           operation_id: 'agent_automations_get_automation',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -302,7 +298,6 @@ module OctridevGithub
         is_archived: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.if_given(per_page) { Validation.validate_range('per_page', per_page, min: 1, max: 100) }
 
         Validation.if_given(page) { Validation.validate_range('page', page, min: 1) }
@@ -310,9 +305,9 @@ module OctridevGithub
         SdkClient.request(
           'GET',
           [
-            "/agents/automations/",
+            '/agents/automations/',
             SdkClient.encode_path_segment(automation_id),
-            "/tasks"
+            '/tasks'
           ].join,
           config: config,
           query: {
@@ -321,12 +316,12 @@ module OctridevGithub
             'sort' => QueryValue.new(sort, style: 'form', explode: true),
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'state' => QueryValue.new(state, style: 'form', explode: true),
-            'is_archived' => QueryValue.new(is_archived, style: 'form', explode: true),
+            'is_archived' => QueryValue.new(is_archived, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsListAutomationTasksResponse,
           decoder: :json,
           operation_id: 'agent_automations_list_automation_tasks',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -351,7 +346,6 @@ module OctridevGithub
         owner_type: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.if_given(page) { Validation.validate_range('page', page, min: 1) }
 
         Validation.if_given(per_page) { Validation.validate_range('per_page', per_page, min: 1, max: 100) }
@@ -359,22 +353,22 @@ module OctridevGithub
         SdkClient.request(
           'GET',
           [
-            "/agents/repos/",
+            '/agents/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/automations"
+            '/automations'
           ].join,
           config: config,
           query: {
             'page' => QueryValue.new(page, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'owner_type' => QueryValue.new(owner_type, style: 'form', explode: true),
+            'owner_type' => QueryValue.new(owner_type, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsListRepoAutomationsResponse,
           decoder: :json,
           operation_id: 'agent_automations_list_repo_automations',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -434,15 +428,14 @@ module OctridevGithub
         require_actor_write_permission: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/agents/repos/",
+            '/agents/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/automations"
+            '/automations'
           ].join,
           config: config,
           body: {
@@ -456,12 +449,12 @@ module OctridevGithub
             'enabled' => enabled,
             'owner_type' => owner_type,
             'write_scope' => write_scope,
-            'require_actor_write_permission' => require_actor_write_permission,
+            'require_actor_write_permission' => require_actor_write_permission
           },
           return_type: ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsCreateRepoAutomationResponse,
           decoder: :json,
           operation_id: 'agent_automations_create_repo_automation',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -479,22 +472,21 @@ module OctridevGithub
         automation_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/agents/repos/",
+            '/agents/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/automations/",
+            '/automations/',
             SdkClient.encode_path_segment(automation_id)
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetRepoAutomationResponse,
           decoder: :json,
           operation_id: 'agent_automations_get_repo_automation',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

@@ -5,158 +5,157 @@
 
 # interactions domain models
 module OctridevGithub
-# Defines the InteractionExpiry SDK namespace.
-module InteractionExpiry
-  ONE_DAY = 'one_day'
-  THREE_DAYS = 'three_days'
-  ONE_WEEK = 'one_week'
-  ONE_MONTH = 'one_month'
-  SIX_MONTHS = 'six_months'
-  VALUES = ['one_day', 'three_days', 'one_week', 'one_month', 'six_months'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the InteractionGroup SDK namespace.
-module InteractionGroup
-  EXISTING_USERS = 'existing_users'
-  CONTRIBUTORS_ONLY = 'contributors_only'
-  COLLABORATORS_ONLY = 'collaborators_only'
-  VALUES = ['existing_users', 'contributors_only', 'collaborators_only'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalInteractionLimitMetadata
-  FIELDS = {
-    limit: "limit",
-    expiry: "expiry",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    limit
-  ].freeze
-  DECODERS = {
-    limit: lambda do |value|
-      ::OctridevGithub::InteractionGroup.from_value(value)
-    end,
-    expiry: lambda do |value|
-      ::OctridevGithub::InteractionExpiry.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for InteractionLimit.
-# Limit interactions to a specific type of user for a specified duration
-class InteractionLimit
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalInteractionLimitMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalInteractionLimitMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalInteractionLimitMetadata::DECODERS
-
-  # @return [InteractionGroup] The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect.
-  attr_reader :limit
-  # @return [InteractionExpiry] The duration of the interaction restriction. Default: `one_day`.
-  attr_reader :expiry
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the InteractionExpiry SDK namespace.
+  module InteractionExpiry
+    ONE_DAY = 'one_day'
+    THREE_DAYS = 'three_days'
+    ONE_WEEK = 'one_week'
+    ONE_MONTH = 'one_month'
+    SIX_MONTHS = 'six_months'
+    VALUES = %w[one_day three_days one_week one_month six_months].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the InteractionGroup SDK namespace.
+  module InteractionGroup
+    EXISTING_USERS = 'existing_users'
+    CONTRIBUTORS_ONLY = 'contributors_only'
+    COLLABORATORS_ONLY = 'collaborators_only'
+    VALUES = %w[existing_users contributors_only collaborators_only].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalInteractionLimitPullRequestBypassListMetadata
-  FIELDS = {
-    users: "users",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    users
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for InteractionLimitPullRequestBypassList.
-# A list of user logins to add or remove from the pull request creation cap bypass list.
-class InteractionLimitPullRequestBypassList
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalInteractionLimitPullRequestBypassListMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalInteractionLimitPullRequestBypassListMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalInteractionLimitPullRequestBypassListMetadata::DECODERS
-
-  # @return [Array_of_String] A list of user logins to add or remove from the bypass list.
-  attr_reader :users
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalInteractionLimitMetadata
+    FIELDS = {
+      limit: 'limit',
+      expiry: 'expiry'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      limit
+    ].freeze
+    DECODERS = {
+      limit: lambda do |value|
+        ::OctridevGithub::InteractionGroup.from_value(value)
+      end,
+      expiry: lambda do |value|
+        ::OctridevGithub::InteractionExpiry.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for InteractionLimit.
+  # Limit interactions to a specific type of user for a specified duration
+  class InteractionLimit
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalInteractionLimitMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalInteractionLimitMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalInteractionLimitMetadata::DECODERS
+
+    # @return [InteractionGroup] The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect.
+    attr_reader :limit
+    # @return [InteractionExpiry] The duration of the interaction restriction. Default: `one_day`.
+    attr_reader :expiry
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalInteractionLimitResponseMetadata
-  FIELDS = {
-    limit: "limit",
-    origin: "origin",
-    expires_at: "expires_at",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    limit
-    origin
-    expires_at
-  ].freeze
-  DECODERS = {
-    limit: lambda do |value|
-      ::OctridevGithub::InteractionGroup.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for InteractionLimitResponse.
-# Interaction limit settings.
-class InteractionLimitResponse
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalInteractionLimitResponseMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalInteractionLimitResponseMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalInteractionLimitResponseMetadata::DECODERS
-
-  # @return [InteractionGroup] The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect.
-  attr_reader :limit
-  # @return [String] Required `string` value serialized in the `origin` wire field.
-  attr_reader :origin
-  # @return [String] Required `date-time`-formatted value serialized in the `expires_at` wire field.
-  attr_reader :expires_at
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalInteractionLimitPullRequestBypassListMetadata
+    FIELDS = {
+      users: 'users'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      users
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for InteractionLimitPullRequestBypassList.
+  # A list of user logins to add or remove from the pull request creation cap bypass list.
+  class InteractionLimitPullRequestBypassList
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalInteractionLimitPullRequestBypassListMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalInteractionLimitPullRequestBypassListMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalInteractionLimitPullRequestBypassListMetadata::DECODERS
+
+    # @return [Array_of_String] A list of user logins to add or remove from the bypass list.
+    attr_reader :users
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalInteractionLimitResponseMetadata
+    FIELDS = {
+      limit: 'limit',
+      origin: 'origin',
+      expires_at: 'expires_at'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      limit
+      origin
+      expires_at
+    ].freeze
+    DECODERS = {
+      limit: lambda do |value|
+        ::OctridevGithub::InteractionGroup.from_value(value)
+      end
+    }.freeze
   end
-end
+
+  # API model for InteractionLimitResponse.
+  # Interaction limit settings.
+  class InteractionLimitResponse
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalInteractionLimitResponseMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalInteractionLimitResponseMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalInteractionLimitResponseMetadata::DECODERS
+
+    # @return [InteractionGroup] The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect.
+    attr_reader :limit
+    # @return [String] Required `string` value serialized in the `origin` wire field.
+    attr_reader :origin
+    # @return [String] Required `date-time`-formatted value serialized in the `expires_at` wire field.
+    attr_reader :expires_at
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
 end

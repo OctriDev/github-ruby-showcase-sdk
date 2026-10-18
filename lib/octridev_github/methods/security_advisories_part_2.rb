@@ -56,19 +56,18 @@ module OctridevGithub
         collaborating_teams: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.if_given(summary) { Validation.validate_length('summary', summary, max: 1024) }
 
-        Validation.if_given(description) { Validation.validate_length('description', description, max: 65535) }
+        Validation.if_given(description) { Validation.validate_length('description', description, max: 65_535) }
 
         SdkClient.request(
           'PATCH',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/security-advisories/",
+            '/security-advisories/',
             SdkClient.encode_path_segment(ghsa_id)
           ].join,
           config: config,
@@ -83,13 +82,13 @@ module OctridevGithub
             'cvss_vector_string' => cvss_vector_string,
             'state' => state,
             'collaborating_users' => collaborating_users,
-            'collaborating_teams' => collaborating_teams,
+            'collaborating_teams' => collaborating_teams
           },
           return_type: ::OctridevGithub::RepositoryAdvisory,
           decoder: :json,
           operation_id: 'security_advisories_update_repository_advisory',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -108,23 +107,22 @@ module OctridevGithub
         ghsa_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/security-advisories/",
+            '/security-advisories/',
             SdkClient.encode_path_segment(ghsa_id),
-            "/cve"
+            '/cve'
           ].join,
           config: config,
           decoder: :json,
           operation_id: 'security_advisories_create_repository_advisory_cve_request',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -143,24 +141,23 @@ module OctridevGithub
         ghsa_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/security-advisories/",
+            '/security-advisories/',
             SdkClient.encode_path_segment(ghsa_id),
-            "/forks"
+            '/forks'
           ].join,
           config: config,
           return_type: ::OctridevGithub::FullRepository,
           decoder: :json,
           operation_id: 'security_advisories_create_fork',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
     end

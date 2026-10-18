@@ -5,152 +5,150 @@
 
 # webhook_security_and_analysis domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalWebhookSecurityAndAnalysisChangesFromMetadata
-  FIELDS = {
-    security_and_analysis: "security_and_analysis",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    security_and_analysis: lambda do |value|
-      ::OctridevGithub::SecurityAndAnalysis.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookSecurityAndAnalysisChangesFrom.
-# Optional object value serialized in the `from` wire field.
-class WebhookSecurityAndAnalysisChangesFrom
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookSecurityAndAnalysisChangesFromMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookSecurityAndAnalysisChangesFromMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookSecurityAndAnalysisChangesFromMetadata::DECODERS
-
-  # @return [SecurityAndAnalysis] Optional object value serialized in the `security_and_analysis` wire field.
-  attr_reader :security_and_analysis
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookSecurityAndAnalysisChangesFromMetadata
+    FIELDS = {
+      security_and_analysis: 'security_and_analysis'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      security_and_analysis: lambda do |value|
+        ::OctridevGithub::SecurityAndAnalysis.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookSecurityAndAnalysisChangesFrom.
+  # Optional object value serialized in the `from` wire field.
+  class WebhookSecurityAndAnalysisChangesFrom
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookSecurityAndAnalysisChangesFromMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookSecurityAndAnalysisChangesFromMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookSecurityAndAnalysisChangesFromMetadata::DECODERS
+
+    # @return [SecurityAndAnalysis] Optional object value serialized in the `security_and_analysis` wire field.
+    attr_reader :security_and_analysis
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookSecurityAndAnalysisChangesMetadata
-  FIELDS = {
-    from: "from",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    from: lambda do |value|
-      ::OctridevGithub::WebhookSecurityAndAnalysisChangesFrom.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookSecurityAndAnalysisChanges.
-# Required object value serialized in the `changes` wire field.
-class WebhookSecurityAndAnalysisChanges
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookSecurityAndAnalysisChangesMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookSecurityAndAnalysisChangesMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookSecurityAndAnalysisChangesMetadata::DECODERS
-
-  # @return [WebhookSecurityAndAnalysisChangesFrom] Optional object value serialized in the `from` wire field.
-  attr_reader :from
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookSecurityAndAnalysisChangesMetadata
+    FIELDS = {
+      from: 'from'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      from: lambda do |value|
+        ::OctridevGithub::WebhookSecurityAndAnalysisChangesFrom.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookSecurityAndAnalysisChanges.
+  # Required object value serialized in the `changes` wire field.
+  class WebhookSecurityAndAnalysisChanges
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookSecurityAndAnalysisChangesMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookSecurityAndAnalysisChangesMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookSecurityAndAnalysisChangesMetadata::DECODERS
+
+    # @return [WebhookSecurityAndAnalysisChangesFrom] Optional object value serialized in the `from` wire field.
+    attr_reader :from
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookSecurityAndAnalysisMetadata
-  FIELDS = {
-    changes: "changes",
-    enterprise: "enterprise",
-    installation: "installation",
-    organization: "organization",
-    repository: "repository",
-    sender: "sender",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    changes
-    repository
-  ].freeze
-  DECODERS = {
-    changes: lambda do |value|
-      ::OctridevGithub::WebhookSecurityAndAnalysisChanges.from_hash(value)
-    end,
-    enterprise: lambda do |value|
-      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-    end,
-    installation: lambda do |value|
-      ::OctridevGithub::SimpleInstallation.from_hash(value)
-    end,
-    organization: lambda do |value|
-      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-    end,
-    repository: lambda do |value|
-      ::OctridevGithub::FullRepository.from_hash(value)
-    end,
-    sender: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookSecurityAndAnalysis.
-# Typed representation of the `WebhookSecurityAndAnalysis` API schema.
-class WebhookSecurityAndAnalysis
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookSecurityAndAnalysisMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookSecurityAndAnalysisMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookSecurityAndAnalysisMetadata::DECODERS
-
-  # @return [WebhookSecurityAndAnalysisChanges] Required object value serialized in the `changes` wire field.
-  attr_reader :changes
-  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-  attr_reader :enterprise
-  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-  attr_reader :installation
-  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-  attr_reader :organization
-  # @return [FullRepository] Full Repository
-  attr_reader :repository
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :sender
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookSecurityAndAnalysisMetadata
+    FIELDS = {
+      changes: 'changes',
+      enterprise: 'enterprise',
+      installation: 'installation',
+      organization: 'organization',
+      repository: 'repository',
+      sender: 'sender'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      changes
+      repository
+    ].freeze
+    DECODERS = {
+      changes: lambda do |value|
+        ::OctridevGithub::WebhookSecurityAndAnalysisChanges.from_hash(value)
+      end,
+      enterprise: lambda do |value|
+        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+      end,
+      installation: lambda do |value|
+        ::OctridevGithub::SimpleInstallation.from_hash(value)
+      end,
+      organization: lambda do |value|
+        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+      end,
+      repository: lambda do |value|
+        ::OctridevGithub::FullRepository.from_hash(value)
+      end,
+      sender: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
+  # API model for WebhookSecurityAndAnalysis.
+  # Typed representation of the `WebhookSecurityAndAnalysis` API schema.
+  class WebhookSecurityAndAnalysis
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookSecurityAndAnalysisMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookSecurityAndAnalysisMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookSecurityAndAnalysisMetadata::DECODERS
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+    # @return [WebhookSecurityAndAnalysisChanges] Required object value serialized in the `changes` wire field.
+    attr_reader :changes
+    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+    attr_reader :enterprise
+    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+    attr_reader :installation
+    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+    attr_reader :organization
+    # @return [FullRepository] Full Repository
+    attr_reader :repository
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :sender
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
 end

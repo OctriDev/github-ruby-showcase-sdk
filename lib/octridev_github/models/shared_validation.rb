@@ -5,146 +5,144 @@
 
 # shared_validation domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalValidationErrorErrorsItemMetadata
-  FIELDS = {
-    resource: "resource",
-    field: "field",
-    message: "message",
-    code: "code",
-    index: "index",
-    value: "value",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    code
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for ValidationErrorErrorsItem.
-# Required object value serialized in the `errors[]` wire field.
-class ValidationErrorErrorsItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalValidationErrorErrorsItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalValidationErrorErrorsItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalValidationErrorErrorsItemMetadata::DECODERS
-
-  # @return [String] Optional `string` value serialized in the `resource` wire field.
-  attr_reader :resource
-  # @return [String] Optional `string` value serialized in the `field` wire field.
-  attr_reader :field
-  # @return [String] Optional `string` value serialized in the `message` wire field.
-  attr_reader :message
-  # @return [String] Required `string` value serialized in the `code` wire field.
-  attr_reader :code
-  # @return [Integer] Optional `integer` value serialized in the `index` wire field.
-  attr_reader :index
-  # @return [Object] Optional API value serialized in the `value` wire field.
-  attr_reader :value
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalValidationErrorErrorsItemMetadata
+    FIELDS = {
+      resource: 'resource',
+      field: 'field',
+      message: 'message',
+      code: 'code',
+      index: 'index',
+      value: 'value'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      code
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ValidationErrorErrorsItem.
+  # Required object value serialized in the `errors[]` wire field.
+  class ValidationErrorErrorsItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalValidationErrorErrorsItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalValidationErrorErrorsItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalValidationErrorErrorsItemMetadata::DECODERS
+
+    # @return [String] Optional `string` value serialized in the `resource` wire field.
+    attr_reader :resource
+    # @return [String] Optional `string` value serialized in the `field` wire field.
+    attr_reader :field
+    # @return [String] Optional `string` value serialized in the `message` wire field.
+    attr_reader :message
+    # @return [String] Required `string` value serialized in the `code` wire field.
+    attr_reader :code
+    # @return [Integer] Optional `integer` value serialized in the `index` wire field.
+    attr_reader :index
+    # @return [Object] Optional API value serialized in the `value` wire field.
+    attr_reader :value
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalValidationErrorMetadata
-  FIELDS = {
-    message: "message",
-    documentation_url: "documentation_url",
-    errors: "errors",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    message
-    documentation_url
-  ].freeze
-  DECODERS = {
-    errors: lambda do |value|
-      value&.map { |item| ::OctridevGithub::ValidationErrorErrorsItem.from_hash(item) }
-    end,
-  }.freeze
-end
-
-# API model for ValidationError.
-# Validation Error
-class ValidationError
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalValidationErrorMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalValidationErrorMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalValidationErrorMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `message` wire field.
-  attr_reader :message
-  # @return [String] Required `string` value serialized in the `documentation_url` wire field.
-  attr_reader :documentation_url
-  # @return [Array_of_ValidationErrorErrorsItem] Optional array value serialized in the `errors` wire field.
-  attr_reader :errors
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalValidationErrorMetadata
+    FIELDS = {
+      message: 'message',
+      documentation_url: 'documentation_url',
+      errors: 'errors'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      message
+      documentation_url
+    ].freeze
+    DECODERS = {
+      errors: lambda do |value|
+        value&.map { |item| ::OctridevGithub::ValidationErrorErrorsItem.from_hash(item) }
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ValidationError.
+  # Validation Error
+  class ValidationError
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalValidationErrorMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalValidationErrorMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalValidationErrorMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `message` wire field.
+    attr_reader :message
+    # @return [String] Required `string` value serialized in the `documentation_url` wire field.
+    attr_reader :documentation_url
+    # @return [Array_of_ValidationErrorErrorsItem] Optional array value serialized in the `errors` wire field.
+    attr_reader :errors
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalValidationErrorSimpleMetadata
-  FIELDS = {
-    message: "message",
-    documentation_url: "documentation_url",
-    errors: "errors",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    message
-    documentation_url
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for ValidationErrorSimple.
-# Validation Error Simple
-class ValidationErrorSimple
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalValidationErrorSimpleMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalValidationErrorSimpleMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalValidationErrorSimpleMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `message` wire field.
-  attr_reader :message
-  # @return [String] Required `string` value serialized in the `documentation_url` wire field.
-  attr_reader :documentation_url
-  # @return [Array_of_String] Optional array value serialized in the `errors` wire field.
-  attr_reader :errors
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalValidationErrorSimpleMetadata
+    FIELDS = {
+      message: 'message',
+      documentation_url: 'documentation_url',
+      errors: 'errors'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      message
+      documentation_url
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
+  # API model for ValidationErrorSimple.
+  # Validation Error Simple
+  class ValidationErrorSimple
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalValidationErrorSimpleMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalValidationErrorSimpleMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalValidationErrorSimpleMetadata::DECODERS
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+    # @return [String] Required `string` value serialized in the `message` wire field.
+    attr_reader :message
+    # @return [String] Required `string` value serialized in the `documentation_url` wire field.
+    attr_reader :documentation_url
+    # @return [Array_of_String] Optional array value serialized in the `errors` wire field.
+    attr_reader :errors
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
 end

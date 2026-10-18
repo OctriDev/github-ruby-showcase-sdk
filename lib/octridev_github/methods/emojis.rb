@@ -16,14 +16,13 @@ module OctridevGithub
         config:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/emojis",
+          '/emojis',
           config: config,
           decoder: :json,
           operation_id: 'emojis_get',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

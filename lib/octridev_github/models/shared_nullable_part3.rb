@@ -5,68 +5,68 @@
 
 # shared_nullable domain models (part 3)
 module OctridevGithub
-# API model for NullableTeamSimple.
-# Groups of organization members that gives permissions on specified repositories.
-class NullableTeamSimple
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalNullableTeamSimpleMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalNullableTeamSimpleMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalNullableTeamSimpleMetadata::DECODERS
+  # API model for NullableTeamSimple.
+  # Groups of organization members that gives permissions on specified repositories.
+  class NullableTeamSimple
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalNullableTeamSimpleMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalNullableTeamSimpleMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalNullableTeamSimpleMetadata::DECODERS
 
-  # @return [Integer] Unique identifier of the team
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] URL for the team
-  attr_reader :url
-  # @return [String] Required `string` value serialized in the `members_url` wire field.
-  attr_reader :members_url
-  # @return [String] Name of the team
-  attr_reader :name
-  # @return [String] Description of the team
-  attr_reader :description
-  # @return [String] Permission that the team will have for its repositories
-  attr_reader :permission
-  # @return [String] The level of privacy this team should have
-  attr_reader :privacy
-  # @return [String] The notification setting the team has set
-  attr_reader :notification_setting
-  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [String] Required `uri`-formatted value serialized in the `repositories_url` wire field.
-  attr_reader :repositories_url
-  # @return [String] Required `string` value serialized in the `slug` wire field.
-  attr_reader :slug
-  # @return [String] Distinguished Name (DN) that team maps to within LDAP environment
-  attr_reader :ldap_dn
-  # @return [NullableTeamSimpleType] The ownership type of the team
-  attr_reader :type
-  # @return [Integer] Unique identifier of the organization to which this team belongs
-  attr_reader :organization_id
-  # @return [Integer] Unique identifier of the enterprise to which this team belongs
-  attr_reader :enterprise_id
+    # @return [Integer] Unique identifier of the team
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] URL for the team
+    attr_reader :url
+    # @return [String] Required `string` value serialized in the `members_url` wire field.
+    attr_reader :members_url
+    # @return [String] Name of the team
+    attr_reader :name
+    # @return [String] Description of the team
+    attr_reader :description
+    # @return [String] Permission that the team will have for its repositories
+    attr_reader :permission
+    # @return [String] The level of privacy this team should have
+    attr_reader :privacy
+    # @return [String] The notification setting the team has set
+    attr_reader :notification_setting
+    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [String] Required `uri`-formatted value serialized in the `repositories_url` wire field.
+    attr_reader :repositories_url
+    # @return [String] Required `string` value serialized in the `slug` wire field.
+    attr_reader :slug
+    # @return [String] Distinguished Name (DN) that team maps to within LDAP environment
+    attr_reader :ldap_dn
+    # @return [NullableTeamSimpleType] The ownership type of the team
+    attr_reader :type
+    # @return [Integer] Unique identifier of the organization to which this team belongs
+    attr_reader :organization_id
+    # @return [Integer] Unique identifier of the enterprise to which this team belongs
+    attr_reader :enterprise_id
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalNullableTeamSimpleMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalNullableTeamSimpleMetadata::NULLABLE_FIELDS)
+  # Defines the NullableTeamSimpleType SDK namespace.
+  module NullableTeamSimpleType
+    ENTERPRISE = 'enterprise'
+    ORGANIZATION = 'organization'
+    VALUES = %w[enterprise organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the NullableTeamSimpleType SDK namespace.
-module NullableTeamSimpleType
-  ENTERPRISE = 'enterprise'
-  ORGANIZATION = 'organization'
-  VALUES = ['enterprise', 'organization'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

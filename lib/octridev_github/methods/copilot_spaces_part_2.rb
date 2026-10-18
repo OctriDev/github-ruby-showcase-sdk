@@ -36,7 +36,7 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotSpacesListForUserResponseMetadata
         FIELDS = {
-          spaces: "spaces",
+          spaces: 'spaces'
         }.freeze
         REQUIRED_FIELDS = %i[
           spaces
@@ -44,7 +44,7 @@ module OctridevGithub
         DECODERS = {
           spaces: lambda do |value|
             value&.map { |item| ::OctridevGithub::CopilotSpace.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -75,16 +75,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotSpacesCreateForUserResourcesAttributesItemMetadataMetadata
         FIELDS = {
-          repository_id: "repository_id",
-          file_path: "file_path",
-          text: "text",
-          name: "name",
-          number: "number",
+          repository_id: 'repository_id',
+          file_path: 'file_path',
+          text: 'text',
+          name: 'name',
+          number: 'number'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for CopilotSpacesCreateForUserResourcesAttributesItemMetadata.
@@ -123,18 +121,17 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotSpacesCreateForUserResourcesAttributesItemMetadata
         FIELDS = {
-          resource_type: "resource_type",
-          metadata: "metadata",
+          resource_type: 'resource_type',
+          metadata: 'metadata'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           resource_type: lambda do |value|
             ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesCreateForUserResourcesAttributesItemResourceType.from_value(value)
           end,
           metadata: lambda do |value|
             ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesCreateForUserResourcesAttributesItemMetadata.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -167,11 +164,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotSpacesCreateForUserMetadata
         FIELDS = {
-          name: "name",
-          description: "description",
-          general_instructions: "general_instructions",
-          base_role: "base_role",
-          resources_attributes: "resources_attributes",
+          name: 'name',
+          description: 'description',
+          general_instructions: 'general_instructions',
+          base_role: 'base_role',
+          resources_attributes: 'resources_attributes'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
@@ -182,7 +179,7 @@ module OctridevGithub
           end,
           resources_attributes: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesCreateForUserResourcesAttributesItem.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -221,16 +218,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotSpacesUpdateForUserResourcesAttributesItemMetadataMetadata
         FIELDS = {
-          repository_id: "repository_id",
-          file_path: "file_path",
-          text: "text",
-          name: "name",
-          number: "number",
+          repository_id: 'repository_id',
+          file_path: 'file_path',
+          text: 'text',
+          name: 'name',
+          number: 'number'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for CopilotSpacesUpdateForUserResourcesAttributesItemMetadata.
@@ -269,18 +264,17 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotSpacesUpdateForUserResourcesAttributesItemMetadata
         FIELDS = {
-          resource_type: "resource_type",
-          metadata: "metadata",
+          resource_type: 'resource_type',
+          metadata: 'metadata'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           resource_type: lambda do |value|
             ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesUpdateForUserResourcesAttributesItemResourceType.from_value(value)
           end,
           metadata: lambda do |value|
             ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesUpdateForUserResourcesAttributesItemMetadata.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -313,21 +307,20 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotSpacesUpdateForUserMetadata
         FIELDS = {
-          name: "name",
-          description: "description",
-          general_instructions: "general_instructions",
-          base_role: "base_role",
-          resources_attributes: "resources_attributes",
+          name: 'name',
+          description: 'description',
+          general_instructions: 'general_instructions',
+          base_role: 'base_role',
+          resources_attributes: 'resources_attributes'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           base_role: lambda do |value|
             ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesUpdateForUserBaseRole.from_value(value)
           end,
           resources_attributes: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesUpdateForUserResourcesAttributesItem.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -366,7 +359,7 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotSpacesListCollaboratorsForUserResponseMetadata
         FIELDS = {
-          collaborators: "collaborators",
+          collaborators: 'collaborators'
         }.freeze
         REQUIRED_FIELDS = %i[
           collaborators
@@ -374,7 +367,7 @@ module OctridevGithub
         DECODERS = {
           collaborators: lambda do |value|
             value&.map { |item| ::OctridevGithub::CopilotSpaceCollaborator.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -405,9 +398,9 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotSpacesAddCollaboratorForUserMetadata
         FIELDS = {
-          actor_type: "actor_type",
-          actor_identifier: "actor_identifier",
-          role: "role",
+          actor_type: 'actor_type',
+          actor_identifier: 'actor_identifier',
+          role: 'role'
         }.freeze
         REQUIRED_FIELDS = %i[
           actor_type
@@ -420,7 +413,7 @@ module OctridevGithub
           end,
           role: lambda do |value|
             ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesAddCollaboratorForUserRole.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -455,7 +448,7 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotSpacesUpdateCollaboratorForUserMetadata
         FIELDS = {
-          role: "role",
+          role: 'role'
         }.freeze
         REQUIRED_FIELDS = %i[
           role
@@ -463,7 +456,7 @@ module OctridevGithub
         DECODERS = {
           role: lambda do |value|
             ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesUpdateCollaboratorForUserRole.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -494,7 +487,7 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotSpacesListResourcesForUserResponseMetadata
         FIELDS = {
-          resources: "resources",
+          resources: 'resources'
         }.freeze
         REQUIRED_FIELDS = %i[
           resources
@@ -502,7 +495,7 @@ module OctridevGithub
         DECODERS = {
           resources: lambda do |value|
             value&.map { |item| ::OctridevGithub::CopilotSpaceResource.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -533,8 +526,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotSpacesCreateResourceForUserMetadata
         FIELDS = {
-          resource_type: "resource_type",
-          metadata: "metadata",
+          resource_type: 'resource_type',
+          metadata: 'metadata'
         }.freeze
         REQUIRED_FIELDS = %i[
           resource_type
@@ -543,7 +536,7 @@ module OctridevGithub
         DECODERS = {
           resource_type: lambda do |value|
             ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesCreateResourceForUserResourceType.from_value(value)
-          end,
+          end
         }.freeze
       end
     end

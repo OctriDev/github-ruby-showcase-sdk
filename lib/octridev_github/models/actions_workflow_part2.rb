@@ -5,229 +5,222 @@
 
 # actions_workflow domain models (part 2)
 module OctridevGithub
-# API model for WorkflowRunUsage.
-# Workflow Run Usage
-class WorkflowRunUsage
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWorkflowRunUsageMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWorkflowRunUsageMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWorkflowRunUsageMetadata::DECODERS
+  # API model for WorkflowRunUsage.
+  # Workflow Run Usage
+  class WorkflowRunUsage
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWorkflowRunUsageMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWorkflowRunUsageMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWorkflowRunUsageMetadata::DECODERS
 
-  # @return [WorkflowRunUsageBillable] Required object value serialized in the `billable` wire field.
-  attr_reader :billable
-  # @return [Integer] Optional `integer` value serialized in the `run_duration_ms` wire field.
-  attr_reader :run_duration_ms
+    # @return [WorkflowRunUsageBillable] Required object value serialized in the `billable` wire field.
+    attr_reader :billable
+    # @return [Integer] Optional `integer` value serialized in the `run_duration_ms` wire field.
+    attr_reader :run_duration_ms
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalWorkflowUsageBillableUBUNTUMetadata
+    FIELDS = {
+      total_ms: 'total_ms'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for WorkflowUsageBillableUBUNTU.
+  # Optional object value serialized in the `UBUNTU` wire field.
+  class WorkflowUsageBillableUBUNTU
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWorkflowUsageBillableUBUNTUMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWorkflowUsageBillableUBUNTUMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWorkflowUsageBillableUBUNTUMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalWorkflowUsageBillableUBUNTUMetadata
-  FIELDS = {
-    total_ms: "total_ms",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    # @return [Integer] Optional `integer` value serialized in the `total_ms` wire field.
+    attr_reader :total_ms
 
-# API model for WorkflowUsageBillableUBUNTU.
-# Optional object value serialized in the `UBUNTU` wire field.
-class WorkflowUsageBillableUBUNTU
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWorkflowUsageBillableUBUNTUMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWorkflowUsageBillableUBUNTUMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWorkflowUsageBillableUBUNTUMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [Integer] Optional `integer` value serialized in the `total_ms` wire field.
-  attr_reader :total_ms
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalWorkflowUsageBillableMACOSMetadata
+    FIELDS = {
+      total_ms: 'total_ms'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for WorkflowUsageBillableMACOS.
+  # Optional object value serialized in the `MACOS` wire field.
+  class WorkflowUsageBillableMACOS
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWorkflowUsageBillableMACOSMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWorkflowUsageBillableMACOSMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWorkflowUsageBillableMACOSMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalWorkflowUsageBillableMACOSMetadata
-  FIELDS = {
-    total_ms: "total_ms",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    # @return [Integer] Optional `integer` value serialized in the `total_ms` wire field.
+    attr_reader :total_ms
 
-# API model for WorkflowUsageBillableMACOS.
-# Optional object value serialized in the `MACOS` wire field.
-class WorkflowUsageBillableMACOS
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWorkflowUsageBillableMACOSMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWorkflowUsageBillableMACOSMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWorkflowUsageBillableMACOSMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [Integer] Optional `integer` value serialized in the `total_ms` wire field.
-  attr_reader :total_ms
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalWorkflowUsageBillableWINDOWSMetadata
+    FIELDS = {
+      total_ms: 'total_ms'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for WorkflowUsageBillableWINDOWS.
+  # Optional object value serialized in the `WINDOWS` wire field.
+  class WorkflowUsageBillableWINDOWS
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWorkflowUsageBillableWINDOWSMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWorkflowUsageBillableWINDOWSMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWorkflowUsageBillableWINDOWSMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalWorkflowUsageBillableWINDOWSMetadata
-  FIELDS = {
-    total_ms: "total_ms",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    # @return [Integer] Optional `integer` value serialized in the `total_ms` wire field.
+    attr_reader :total_ms
 
-# API model for WorkflowUsageBillableWINDOWS.
-# Optional object value serialized in the `WINDOWS` wire field.
-class WorkflowUsageBillableWINDOWS
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWorkflowUsageBillableWINDOWSMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWorkflowUsageBillableWINDOWSMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWorkflowUsageBillableWINDOWSMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [Integer] Optional `integer` value serialized in the `total_ms` wire field.
-  attr_reader :total_ms
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalWorkflowUsageBillableMetadata
+    FIELDS = {
+      ubuntu: 'UBUNTU',
+      macos: 'MACOS',
+      windows: 'WINDOWS'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      ubuntu: lambda do |value|
+        ::OctridevGithub::WorkflowUsageBillableUBUNTU.from_hash(value)
+      end,
+      macos: lambda do |value|
+        ::OctridevGithub::WorkflowUsageBillableMACOS.from_hash(value)
+      end,
+      windows: lambda do |value|
+        ::OctridevGithub::WorkflowUsageBillableWINDOWS.from_hash(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for WorkflowUsageBillable.
+  # Required object value serialized in the `billable` wire field.
+  class WorkflowUsageBillable
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWorkflowUsageBillableMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWorkflowUsageBillableMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWorkflowUsageBillableMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalWorkflowUsageBillableMetadata
-  FIELDS = {
-    ubuntu: "UBUNTU",
-    macos: "MACOS",
-    windows: "WINDOWS",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    ubuntu: lambda do |value|
-      ::OctridevGithub::WorkflowUsageBillableUBUNTU.from_hash(value)
-    end,
-    macos: lambda do |value|
-      ::OctridevGithub::WorkflowUsageBillableMACOS.from_hash(value)
-    end,
-    windows: lambda do |value|
-      ::OctridevGithub::WorkflowUsageBillableWINDOWS.from_hash(value)
-    end,
-  }.freeze
-end
+    # @return [WorkflowUsageBillableUBUNTU] Optional object value serialized in the `UBUNTU` wire field.
+    attr_reader :ubuntu
+    # @return [WorkflowUsageBillableMACOS] Optional object value serialized in the `MACOS` wire field.
+    attr_reader :macos
+    # @return [WorkflowUsageBillableWINDOWS] Optional object value serialized in the `WINDOWS` wire field.
+    attr_reader :windows
 
-# API model for WorkflowUsageBillable.
-# Required object value serialized in the `billable` wire field.
-class WorkflowUsageBillable
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWorkflowUsageBillableMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWorkflowUsageBillableMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWorkflowUsageBillableMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [WorkflowUsageBillableUBUNTU] Optional object value serialized in the `UBUNTU` wire field.
-  attr_reader :ubuntu
-  # @return [WorkflowUsageBillableMACOS] Optional object value serialized in the `MACOS` wire field.
-  attr_reader :macos
-  # @return [WorkflowUsageBillableWINDOWS] Optional object value serialized in the `WINDOWS` wire field.
-  attr_reader :windows
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalWorkflowUsageMetadata
+    FIELDS = {
+      billable: 'billable'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      billable
+    ].freeze
+    DECODERS = {
+      billable: lambda do |value|
+        ::OctridevGithub::WorkflowUsageBillable.from_hash(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # API model for WorkflowUsage.
+  # Workflow Usage
+  class WorkflowUsage
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWorkflowUsageMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWorkflowUsageMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWorkflowUsageMetadata::DECODERS
+
+    # @return [WorkflowUsageBillable] Required object value serialized in the `billable` wire field.
+    attr_reader :billable
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWorkflowUsageMetadata
-  FIELDS = {
-    billable: "billable",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    billable
-  ].freeze
-  DECODERS = {
-    billable: lambda do |value|
-      ::OctridevGithub::WorkflowUsageBillable.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WorkflowUsage.
-# Workflow Usage
-class WorkflowUsage
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWorkflowUsageMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWorkflowUsageMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWorkflowUsageMetadata::DECODERS
-
-  # @return [WorkflowUsageBillable] Required object value serialized in the `billable` wire field.
-  attr_reader :billable
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
 end

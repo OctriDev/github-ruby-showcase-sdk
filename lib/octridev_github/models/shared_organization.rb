@@ -5,309 +5,309 @@
 
 # shared_organization domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalOrganizationActionsSecretMetadata
-  FIELDS = {
-    name: "name",
-    created_at: "created_at",
-    updated_at: "updated_at",
-    visibility: "visibility",
-    selected_repositories_url: "selected_repositories_url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    name
-    created_at
-    updated_at
-    visibility
-  ].freeze
-  DECODERS = {
-    visibility: lambda do |value|
-      ::OctridevGithub::OrganizationActionsSecretVisibility.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for OrganizationActionsSecret.
-# Secrets for GitHub Actions for an organization.
-class OrganizationActionsSecret
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalOrganizationActionsSecretMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalOrganizationActionsSecretMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalOrganizationActionsSecretMetadata::DECODERS
-
-  # @return [String] The name of the secret.
-  attr_reader :name
-  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-  # @return [OrganizationActionsSecretVisibility] Visibility of a secret
-  attr_reader :visibility
-  # @return [String] Optional `uri`-formatted value serialized in the `selected_repositories_url` wire field.
-  attr_reader :selected_repositories_url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalOrganizationActionsSecretMetadata
+    FIELDS = {
+      name: 'name',
+      created_at: 'created_at',
+      updated_at: 'updated_at',
+      visibility: 'visibility',
+      selected_repositories_url: 'selected_repositories_url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      name
+      created_at
+      updated_at
+      visibility
+    ].freeze
+    DECODERS = {
+      visibility: lambda do |value|
+        ::OctridevGithub::OrganizationActionsSecretVisibility.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for OrganizationActionsSecret.
+  # Secrets for GitHub Actions for an organization.
+  class OrganizationActionsSecret
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalOrganizationActionsSecretMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalOrganizationActionsSecretMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalOrganizationActionsSecretMetadata::DECODERS
+
+    # @return [String] The name of the secret.
+    attr_reader :name
+    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+    # @return [OrganizationActionsSecretVisibility] Visibility of a secret
+    attr_reader :visibility
+    # @return [String] Optional `uri`-formatted value serialized in the `selected_repositories_url` wire field.
+    attr_reader :selected_repositories_url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the OrganizationActionsSecretVisibility SDK namespace.
-module OrganizationActionsSecretVisibility
-  ALL = 'all'
-  PRIVATE = 'private'
-  SELECTED = 'selected'
-  VALUES = ['all', 'private', 'selected'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalOrganizationActionsVariableMetadata
-  FIELDS = {
-    name: "name",
-    value: "value",
-    created_at: "created_at",
-    updated_at: "updated_at",
-    visibility: "visibility",
-    selected_repositories_url: "selected_repositories_url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    name
-    value
-    created_at
-    updated_at
-    visibility
-  ].freeze
-  DECODERS = {
-    visibility: lambda do |value|
-      ::OctridevGithub::OrganizationActionsVariableVisibility.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for OrganizationActionsVariable.
-# Organization variable for GitHub Actions.
-class OrganizationActionsVariable
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalOrganizationActionsVariableMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalOrganizationActionsVariableMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalOrganizationActionsVariableMetadata::DECODERS
-
-  # @return [String] The name of the variable.
-  attr_reader :name
-  # @return [String] The value of the variable.
-  attr_reader :value
-  # @return [String] The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
-  attr_reader :created_at
-  # @return [String] The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
-  attr_reader :updated_at
-  # @return [OrganizationActionsVariableVisibility] Visibility of a variable
-  attr_reader :visibility
-  # @return [String] Optional `uri`-formatted value serialized in the `selected_repositories_url` wire field.
-  attr_reader :selected_repositories_url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the OrganizationActionsSecretVisibility SDK namespace.
+  module OrganizationActionsSecretVisibility
+    ALL = 'all'
+    PRIVATE = 'private'
+    SELECTED = 'selected'
+    VALUES = %w[all private selected].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalOrganizationActionsVariableMetadata
+    FIELDS = {
+      name: 'name',
+      value: 'value',
+      created_at: 'created_at',
+      updated_at: 'updated_at',
+      visibility: 'visibility',
+      selected_repositories_url: 'selected_repositories_url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      name
+      value
+      created_at
+      updated_at
+      visibility
+    ].freeze
+    DECODERS = {
+      visibility: lambda do |value|
+        ::OctridevGithub::OrganizationActionsVariableVisibility.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for OrganizationActionsVariable.
+  # Organization variable for GitHub Actions.
+  class OrganizationActionsVariable
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalOrganizationActionsVariableMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalOrganizationActionsVariableMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalOrganizationActionsVariableMetadata::DECODERS
 
-# Defines the OrganizationActionsVariableVisibility SDK namespace.
-module OrganizationActionsVariableVisibility
-  ALL = 'all'
-  PRIVATE = 'private'
-  SELECTED = 'selected'
-  VALUES = ['all', 'private', 'selected'].freeze
-  def self.from_value(value)
-    value
-  end
-end
+    # @return [String] The name of the variable.
+    attr_reader :name
+    # @return [String] The value of the variable.
+    attr_reader :value
+    # @return [String] The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
+    attr_reader :created_at
+    # @return [String] The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
+    attr_reader :updated_at
+    # @return [OrganizationActionsVariableVisibility] Visibility of a variable
+    attr_reader :visibility
+    # @return [String] Optional `uri`-formatted value serialized in the `selected_repositories_url` wire field.
+    attr_reader :selected_repositories_url
 
-# Internal model hydration metadata.
-class SdkInternalOrganizationInvitationMetadata
-  FIELDS = {
-    id: "id",
-    login: "login",
-    email: "email",
-    role: "role",
-    created_at: "created_at",
-    failed_at: "failed_at",
-    failed_reason: "failed_reason",
-    inviter: "inviter",
-    team_count: "team_count",
-    node_id: "node_id",
-    invitation_teams_url: "invitation_teams_url",
-    invitation_source: "invitation_source",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    login
-    email
-    role
-    created_at
-    inviter
-    team_count
-    node_id
-    invitation_teams_url
-  ].freeze
-  DECODERS = {
-    inviter: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    login
-    email
-  ].freeze
-end
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-# API model for OrganizationInvitation.
-# Organization Invitation
-class OrganizationInvitation
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalOrganizationInvitationMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalOrganizationInvitationMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalOrganizationInvitationMetadata::DECODERS
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `login` wire field.
-  attr_reader :login
-  # @return [String] Required `string` value serialized in the `email` wire field.
-  attr_reader :email
-  # @return [String] Required `string` value serialized in the `role` wire field.
-  attr_reader :role
-  # @return [String] Required `string` value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Optional `string` value serialized in the `failed_at` wire field.
-  attr_reader :failed_at
-  # @return [String] Optional `string` value serialized in the `failed_reason` wire field.
-  attr_reader :failed_reason
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :inviter
-  # @return [Integer] Required `integer` value serialized in the `team_count` wire field.
-  attr_reader :team_count
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Required `string` value serialized in the `invitation_teams_url` wire field.
-  attr_reader :invitation_teams_url
-  # @return [String] Optional `string` value serialized in the `invitation_source` wire field.
-  attr_reader :invitation_source
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalOrganizationInvitationMetadata::NULLABLE_FIELDS)
+  # Defines the OrganizationActionsVariableVisibility SDK namespace.
+  module OrganizationActionsVariableVisibility
+    ALL = 'all'
+    PRIVATE = 'private'
+    SELECTED = 'selected'
+    VALUES = %w[all private selected].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalOrganizationSimpleMetadata
-  FIELDS = {
-    login: "login",
-    id: "id",
-    node_id: "node_id",
-    url: "url",
-    repos_url: "repos_url",
-    events_url: "events_url",
-    hooks_url: "hooks_url",
-    issues_url: "issues_url",
-    members_url: "members_url",
-    public_members_url: "public_members_url",
-    avatar_url: "avatar_url",
-    description: "description",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    login
-    id
-    node_id
-    url
-    repos_url
-    events_url
-    hooks_url
-    issues_url
-    members_url
-    public_members_url
-    avatar_url
-    description
-  ].freeze
-  DECODERS = {
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    description
-  ].freeze
-end
-
-# API model for OrganizationSimple.
-# A GitHub organization.
-class OrganizationSimple
-  include CopilotSpaceOwner
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalOrganizationSimpleMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalOrganizationSimpleMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalOrganizationSimpleMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `login` wire field.
-  attr_reader :login
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Required `uri`-formatted value serialized in the `repos_url` wire field.
-  attr_reader :repos_url
-  # @return [String] Required `uri`-formatted value serialized in the `events_url` wire field.
-  attr_reader :events_url
-  # @return [String] Required `string` value serialized in the `hooks_url` wire field.
-  attr_reader :hooks_url
-  # @return [String] Required `string` value serialized in the `issues_url` wire field.
-  attr_reader :issues_url
-  # @return [String] Required `string` value serialized in the `members_url` wire field.
-  attr_reader :members_url
-  # @return [String] Required `string` value serialized in the `public_members_url` wire field.
-  attr_reader :public_members_url
-  # @return [String] Required `string` value serialized in the `avatar_url` wire field.
-  attr_reader :avatar_url
-  # @return [String] Required `string` value serialized in the `description` wire field.
-  attr_reader :description
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalOrganizationInvitationMetadata
+    FIELDS = {
+      id: 'id',
+      login: 'login',
+      email: 'email',
+      role: 'role',
+      created_at: 'created_at',
+      failed_at: 'failed_at',
+      failed_reason: 'failed_reason',
+      inviter: 'inviter',
+      team_count: 'team_count',
+      node_id: 'node_id',
+      invitation_teams_url: 'invitation_teams_url',
+      invitation_source: 'invitation_source'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      login
+      email
+      role
+      created_at
+      inviter
+      team_count
+      node_id
+      invitation_teams_url
+    ].freeze
+    DECODERS = {
+      inviter: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      login
+      email
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalOrganizationSimpleMetadata::NULLABLE_FIELDS)
+  # API model for OrganizationInvitation.
+  # Organization Invitation
+  class OrganizationInvitation
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalOrganizationInvitationMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalOrganizationInvitationMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalOrganizationInvitationMetadata::DECODERS
+
+    # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `login` wire field.
+    attr_reader :login
+    # @return [String] Required `string` value serialized in the `email` wire field.
+    attr_reader :email
+    # @return [String] Required `string` value serialized in the `role` wire field.
+    attr_reader :role
+    # @return [String] Required `string` value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Optional `string` value serialized in the `failed_at` wire field.
+    attr_reader :failed_at
+    # @return [String] Optional `string` value serialized in the `failed_reason` wire field.
+    attr_reader :failed_reason
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :inviter
+    # @return [Integer] Required `integer` value serialized in the `team_count` wire field.
+    attr_reader :team_count
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Required `string` value serialized in the `invitation_teams_url` wire field.
+    attr_reader :invitation_teams_url
+    # @return [String] Optional `string` value serialized in the `invitation_source` wire field.
+    attr_reader :invitation_source
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalOrganizationInvitationMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalOrganizationSimpleMetadata
+    FIELDS = {
+      login: 'login',
+      id: 'id',
+      node_id: 'node_id',
+      url: 'url',
+      repos_url: 'repos_url',
+      events_url: 'events_url',
+      hooks_url: 'hooks_url',
+      issues_url: 'issues_url',
+      members_url: 'members_url',
+      public_members_url: 'public_members_url',
+      avatar_url: 'avatar_url',
+      description: 'description'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      login
+      id
+      node_id
+      url
+      repos_url
+      events_url
+      hooks_url
+      issues_url
+      members_url
+      public_members_url
+      avatar_url
+      description
+    ].freeze
+    DECODERS = {}.freeze
+    NULLABLE_FIELDS = %i[
+      description
+    ].freeze
   end
-end
+
+  # API model for OrganizationSimple.
+  # A GitHub organization.
+  class OrganizationSimple
+    include CopilotSpaceOwner
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalOrganizationSimpleMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalOrganizationSimpleMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalOrganizationSimpleMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `login` wire field.
+    attr_reader :login
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Required `uri`-formatted value serialized in the `repos_url` wire field.
+    attr_reader :repos_url
+    # @return [String] Required `uri`-formatted value serialized in the `events_url` wire field.
+    attr_reader :events_url
+    # @return [String] Required `string` value serialized in the `hooks_url` wire field.
+    attr_reader :hooks_url
+    # @return [String] Required `string` value serialized in the `issues_url` wire field.
+    attr_reader :issues_url
+    # @return [String] Required `string` value serialized in the `members_url` wire field.
+    attr_reader :members_url
+    # @return [String] Required `string` value serialized in the `public_members_url` wire field.
+    attr_reader :public_members_url
+    # @return [String] Required `string` value serialized in the `avatar_url` wire field.
+    attr_reader :avatar_url
+    # @return [String] Required `string` value serialized in the `description` wire field.
+    attr_reader :description
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalOrganizationSimpleMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
 end
