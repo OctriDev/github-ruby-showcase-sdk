@@ -5,322 +5,330 @@
 
 # webhook_projects_v2_status_update_edited domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalWebhookProjectsV2StatusUpdateEditedChangesBodyMetadata
-    FIELDS = {
-      from: 'from',
-      to: 'to'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+# Internal model hydration metadata.
+class SdkInternalWebhookProjectsV2StatusUpdateEditedChangesBodyMetadata
+  FIELDS = {
+    from: "from",
+    to: "to",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhookProjectsV2StatusUpdateEditedChangesBody.
+# Optional object value serialized in the `body` wire field.
+class WebhookProjectsV2StatusUpdateEditedChangesBody
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesBodyMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesBodyMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesBodyMetadata::DECODERS
+
+  # @return [String] Optional `string` value serialized in the `from` wire field.
+  attr_reader :from
+  # @return [String] Optional `string` value serialized in the `to` wire field.
+  attr_reader :to
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookProjectsV2StatusUpdateEditedChangesBody.
-  # Optional object value serialized in the `body` wire field.
-  class WebhookProjectsV2StatusUpdateEditedChangesBody
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesBodyMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesBodyMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesBodyMetadata::DECODERS
-
-    # @return [String] Optional `string` value serialized in the `from` wire field.
-    attr_reader :from
-    # @return [String] Optional `string` value serialized in the `to` wire field.
-    attr_reader :to
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookProjectsV2StatusUpdateEditedChangesStatusMetadata
-    FIELDS = {
-      from: 'from',
-      to: 'to'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      from: lambda do |value|
-        ::OctridevGithub::WebhookProjectsV2StatusUpdateEditedChangesStatusFrom.from_value(value)
-      end,
-      to: lambda do |value|
-        ::OctridevGithub::WebhookProjectsV2StatusUpdateEditedChangesStatusTo.from_value(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookProjectsV2StatusUpdateEditedChangesStatusMetadata
+  FIELDS = {
+    from: "from",
+    to: "to",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    from: lambda do |value|
+      ::OctridevGithub::WebhookProjectsV2StatusUpdateEditedChangesStatusFrom.from_value(value)
+    end,
+    to: lambda do |value|
+      ::OctridevGithub::WebhookProjectsV2StatusUpdateEditedChangesStatusTo.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookProjectsV2StatusUpdateEditedChangesStatus.
+# Optional object value serialized in the `status` wire field.
+class WebhookProjectsV2StatusUpdateEditedChangesStatus
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesStatusMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesStatusMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesStatusMetadata::DECODERS
+
+  # @return [WebhookProjectsV2StatusUpdateEditedChangesStatusFrom] Optional enumerated value serialized in the `from` wire field.
+  attr_reader :from
+  # @return [WebhookProjectsV2StatusUpdateEditedChangesStatusTo] Optional enumerated value serialized in the `to` wire field.
+  attr_reader :to
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookProjectsV2StatusUpdateEditedChangesStatus.
-  # Optional object value serialized in the `status` wire field.
-  class WebhookProjectsV2StatusUpdateEditedChangesStatus
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesStatusMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesStatusMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesStatusMetadata::DECODERS
-
-    # @return [WebhookProjectsV2StatusUpdateEditedChangesStatusFrom] Optional enumerated value serialized in the `from` wire field.
-    attr_reader :from
-    # @return [WebhookProjectsV2StatusUpdateEditedChangesStatusTo] Optional enumerated value serialized in the `to` wire field.
-    attr_reader :to
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookProjectsV2StatusUpdateEditedChangesStartDateMetadata
-    FIELDS = {
-      from: 'from',
-      to: 'to'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookProjectsV2StatusUpdateEditedChangesStartDateMetadata
+  FIELDS = {
+    from: "from",
+    to: "to",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhookProjectsV2StatusUpdateEditedChangesStartDate.
+# Optional object value serialized in the `start_date` wire field.
+class WebhookProjectsV2StatusUpdateEditedChangesStartDate
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesStartDateMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesStartDateMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesStartDateMetadata::DECODERS
+
+  # @return [String] Optional `date`-formatted value serialized in the `from` wire field.
+  attr_reader :from
+  # @return [String] Optional `date`-formatted value serialized in the `to` wire field.
+  attr_reader :to
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookProjectsV2StatusUpdateEditedChangesStartDate.
-  # Optional object value serialized in the `start_date` wire field.
-  class WebhookProjectsV2StatusUpdateEditedChangesStartDate
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesStartDateMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesStartDateMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesStartDateMetadata::DECODERS
-
-    # @return [String] Optional `date`-formatted value serialized in the `from` wire field.
-    attr_reader :from
-    # @return [String] Optional `date`-formatted value serialized in the `to` wire field.
-    attr_reader :to
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookProjectsV2StatusUpdateEditedChangesTargetDateMetadata
-    FIELDS = {
-      from: 'from',
-      to: 'to'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookProjectsV2StatusUpdateEditedChangesTargetDateMetadata
+  FIELDS = {
+    from: "from",
+    to: "to",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhookProjectsV2StatusUpdateEditedChangesTargetDate.
+# Optional object value serialized in the `target_date` wire field.
+class WebhookProjectsV2StatusUpdateEditedChangesTargetDate
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesTargetDateMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesTargetDateMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesTargetDateMetadata::DECODERS
+
+  # @return [String] Optional `date`-formatted value serialized in the `from` wire field.
+  attr_reader :from
+  # @return [String] Optional `date`-formatted value serialized in the `to` wire field.
+  attr_reader :to
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookProjectsV2StatusUpdateEditedChangesTargetDate.
-  # Optional object value serialized in the `target_date` wire field.
-  class WebhookProjectsV2StatusUpdateEditedChangesTargetDate
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesTargetDateMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesTargetDateMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesTargetDateMetadata::DECODERS
-
-    # @return [String] Optional `date`-formatted value serialized in the `from` wire field.
-    attr_reader :from
-    # @return [String] Optional `date`-formatted value serialized in the `to` wire field.
-    attr_reader :to
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookProjectsV2StatusUpdateEditedChangesMetadata
-    FIELDS = {
-      body: 'body',
-      status: 'status',
-      start_date: 'start_date',
-      target_date: 'target_date'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      body: lambda do |value|
-        ::OctridevGithub::WebhookProjectsV2StatusUpdateEditedChangesBody.from_hash(value)
-      end,
-      status: lambda do |value|
-        ::OctridevGithub::WebhookProjectsV2StatusUpdateEditedChangesStatus.from_hash(value)
-      end,
-      start_date: lambda do |value|
-        ::OctridevGithub::WebhookProjectsV2StatusUpdateEditedChangesStartDate.from_hash(value)
-      end,
-      target_date: lambda do |value|
-        ::OctridevGithub::WebhookProjectsV2StatusUpdateEditedChangesTargetDate.from_hash(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookProjectsV2StatusUpdateEditedChangesMetadata
+  FIELDS = {
+    body: "body",
+    status: "status",
+    start_date: "start_date",
+    target_date: "target_date",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    body: lambda do |value|
+      ::OctridevGithub::WebhookProjectsV2StatusUpdateEditedChangesBody.from_hash(value)
+    end,
+    status: lambda do |value|
+      ::OctridevGithub::WebhookProjectsV2StatusUpdateEditedChangesStatus.from_hash(value)
+    end,
+    start_date: lambda do |value|
+      ::OctridevGithub::WebhookProjectsV2StatusUpdateEditedChangesStartDate.from_hash(value)
+    end,
+    target_date: lambda do |value|
+      ::OctridevGithub::WebhookProjectsV2StatusUpdateEditedChangesTargetDate.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookProjectsV2StatusUpdateEditedChanges.
+# Optional object value serialized in the `changes` wire field.
+class WebhookProjectsV2StatusUpdateEditedChanges
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesMetadata::DECODERS
+
+  # @return [WebhookProjectsV2StatusUpdateEditedChangesBody] Optional object value serialized in the `body` wire field.
+  attr_reader :body
+  # @return [WebhookProjectsV2StatusUpdateEditedChangesStatus] Optional object value serialized in the `status` wire field.
+  attr_reader :status
+  # @return [WebhookProjectsV2StatusUpdateEditedChangesStartDate] Optional object value serialized in the `start_date` wire field.
+  attr_reader :start_date
+  # @return [WebhookProjectsV2StatusUpdateEditedChangesTargetDate] Optional object value serialized in the `target_date` wire field.
+  attr_reader :target_date
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookProjectsV2StatusUpdateEditedChanges.
-  # Optional object value serialized in the `changes` wire field.
-  class WebhookProjectsV2StatusUpdateEditedChanges
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookProjectsV2StatusUpdateEditedChangesMetadata::DECODERS
-
-    # @return [WebhookProjectsV2StatusUpdateEditedChangesBody] Optional object value serialized in the `body` wire field.
-    attr_reader :body
-    # @return [WebhookProjectsV2StatusUpdateEditedChangesStatus] Optional object value serialized in the `status` wire field.
-    attr_reader :status
-    # @return [WebhookProjectsV2StatusUpdateEditedChangesStartDate] Optional object value serialized in the `start_date` wire field.
-    attr_reader :start_date
-    # @return [WebhookProjectsV2StatusUpdateEditedChangesTargetDate] Optional object value serialized in the `target_date` wire field.
-    attr_reader :target_date
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookProjectsV2StatusUpdateEditedMetadata
-    FIELDS = {
-      action: 'action',
-      changes: 'changes',
-      installation: 'installation',
-      organization: 'organization',
-      projects_v2_status_update: 'projects_v2_status_update',
-      sender: 'sender'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      action
-      organization
-      projects_v2_status_update
-      sender
-    ].freeze
-    DECODERS = {
-      action: lambda do |value|
-        ::OctridevGithub::WebhookProjectsV2StatusUpdateEditedAction.from_value(value)
-      end,
-      changes: lambda do |value|
-        ::OctridevGithub::WebhookProjectsV2StatusUpdateEditedChanges.from_hash(value)
-      end,
-      installation: lambda do |value|
-        ::OctridevGithub::SimpleInstallation.from_hash(value)
-      end,
-      organization: lambda do |value|
-        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-      end,
-      projects_v2_status_update: lambda do |value|
-        ::OctridevGithub::ProjectsV2StatusUpdate.from_hash(value)
-      end,
-      sender: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookProjectsV2StatusUpdateEditedMetadata
+  FIELDS = {
+    action: "action",
+    changes: "changes",
+    installation: "installation",
+    organization: "organization",
+    projects_v2_status_update: "projects_v2_status_update",
+    sender: "sender",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    action
+    organization
+    projects_v2_status_update
+    sender
+  ].freeze
+  DECODERS = {
+    action: lambda do |value|
+      ::OctridevGithub::WebhookProjectsV2StatusUpdateEditedAction.from_value(value)
+    end,
+    changes: lambda do |value|
+      ::OctridevGithub::WebhookProjectsV2StatusUpdateEditedChanges.from_hash(value)
+    end,
+    installation: lambda do |value|
+      ::OctridevGithub::SimpleInstallation.from_hash(value)
+    end,
+    organization: lambda do |value|
+      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+    end,
+    projects_v2_status_update: lambda do |value|
+      ::OctridevGithub::ProjectsV2StatusUpdate.from_hash(value)
+    end,
+    sender: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookProjectsV2StatusUpdateEdited.
+# Typed representation of the `WebhookProjectsV2StatusUpdateEdited` API schema.
+class WebhookProjectsV2StatusUpdateEdited
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookProjectsV2StatusUpdateEditedMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookProjectsV2StatusUpdateEditedMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookProjectsV2StatusUpdateEditedMetadata::DECODERS
+
+  # @return [WebhookProjectsV2StatusUpdateEditedAction] Required enumerated value serialized in the `action` wire field.
+  attr_reader :action
+  # @return [WebhookProjectsV2StatusUpdateEditedChanges] Optional object value serialized in the `changes` wire field.
+  attr_reader :changes
+  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+  attr_reader :installation
+  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+  attr_reader :organization
+  # @return [ProjectsV2StatusUpdate] An status update belonging to a project
+  attr_reader :projects_v2_status_update
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :sender
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookProjectsV2StatusUpdateEdited.
-  # Typed representation of the `WebhookProjectsV2StatusUpdateEdited` API schema.
-  class WebhookProjectsV2StatusUpdateEdited
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookProjectsV2StatusUpdateEditedMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookProjectsV2StatusUpdateEditedMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookProjectsV2StatusUpdateEditedMetadata::DECODERS
-
-    # @return [WebhookProjectsV2StatusUpdateEditedAction] Required enumerated value serialized in the `action` wire field.
-    attr_reader :action
-    # @return [WebhookProjectsV2StatusUpdateEditedChanges] Optional object value serialized in the `changes` wire field.
-    attr_reader :changes
-    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-    attr_reader :installation
-    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-    attr_reader :organization
-    # @return [ProjectsV2StatusUpdate] An status update belonging to a project
-    attr_reader :projects_v2_status_update
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :sender
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the WebhookProjectsV2StatusUpdateEditedAction SDK namespace.
-  module WebhookProjectsV2StatusUpdateEditedAction
-    EDITED = 'edited'
-    VALUES = ['edited'].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
 
-  # Defines the WebhookProjectsV2StatusUpdateEditedChangesStatusFrom SDK namespace.
-  module WebhookProjectsV2StatusUpdateEditedChangesStatusFrom
-    INACTIVE = 'INACTIVE'
-    ON_TRACK = 'ON_TRACK'
-    AT_RISK = 'AT_RISK'
-    OFF_TRACK = 'OFF_TRACK'
-    COMPLETE = 'COMPLETE'
-    VALUES = %w[INACTIVE ON_TRACK AT_RISK OFF_TRACK COMPLETE].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookProjectsV2StatusUpdateEditedAction SDK namespace.
+module WebhookProjectsV2StatusUpdateEditedAction
+  EDITED = 'edited'
+  VALUES = ['edited'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookProjectsV2StatusUpdateEditedChangesStatusTo SDK namespace.
-  module WebhookProjectsV2StatusUpdateEditedChangesStatusTo
-    INACTIVE = 'INACTIVE'
-    ON_TRACK = 'ON_TRACK'
-    AT_RISK = 'AT_RISK'
-    OFF_TRACK = 'OFF_TRACK'
-    COMPLETE = 'COMPLETE'
-    VALUES = %w[INACTIVE ON_TRACK AT_RISK OFF_TRACK COMPLETE].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookProjectsV2StatusUpdateEditedChangesStatusFrom SDK namespace.
+module WebhookProjectsV2StatusUpdateEditedChangesStatusFrom
+  INACTIVE = 'INACTIVE'
+  ON_TRACK = 'ON_TRACK'
+  AT_RISK = 'AT_RISK'
+  OFF_TRACK = 'OFF_TRACK'
+  COMPLETE = 'COMPLETE'
+  VALUES = ['INACTIVE', 'ON_TRACK', 'AT_RISK', 'OFF_TRACK', 'COMPLETE'].freeze
+  def self.from_value(value)
+    value
   end
+end
+
+# Defines the WebhookProjectsV2StatusUpdateEditedChangesStatusTo SDK namespace.
+module WebhookProjectsV2StatusUpdateEditedChangesStatusTo
+  INACTIVE = 'INACTIVE'
+  ON_TRACK = 'ON_TRACK'
+  AT_RISK = 'AT_RISK'
+  OFF_TRACK = 'OFF_TRACK'
+  COMPLETE = 'COMPLETE'
+  VALUES = ['INACTIVE', 'ON_TRACK', 'AT_RISK', 'OFF_TRACK', 'COMPLETE'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

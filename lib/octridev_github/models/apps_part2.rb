@@ -5,127 +5,127 @@
 
 # apps domain models (part 2)
 module OctridevGithub
-  # API model for NullableScopedInstallation.
-  # Typed representation of the `NullableScopedInstallation` API schema.
-  class NullableScopedInstallation
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalNullableScopedInstallationMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalNullableScopedInstallationMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalNullableScopedInstallationMetadata::DECODERS
+# API model for NullableScopedInstallation.
+# Typed representation of the `NullableScopedInstallation` API schema.
+class NullableScopedInstallation
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalNullableScopedInstallationMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalNullableScopedInstallationMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalNullableScopedInstallationMetadata::DECODERS
 
-    # @return [AppPermissions] The permissions granted to the fine-grained access token.
-    attr_reader :permissions
-    # @return [NullableScopedInstallationRepositorySelection] Describe whether all repositories have been selected or there's a selection involved
-    attr_reader :repository_selection
-    # @return [String] Required `string` value serialized in the `single_file_name` wire field.
-    attr_reader :single_file_name
-    # @return [Boolean] Optional `boolean` value serialized in the `has_multiple_single_files` wire field.
-    attr_reader :has_multiple_single_files
-    # @return [Array_of_String] Optional array value serialized in the `single_file_paths` wire field.
-    attr_reader :single_file_paths
-    # @return [String] Required `uri`-formatted value serialized in the `repositories_url` wire field.
-    attr_reader :repositories_url
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :account
+  # @return [AppPermissions] The permissions granted to the fine-grained access token.
+  attr_reader :permissions
+  # @return [NullableScopedInstallationRepositorySelection] Describe whether all repositories have been selected or there's a selection involved
+  attr_reader :repository_selection
+  # @return [String] Required `string` value serialized in the `single_file_name` wire field.
+  attr_reader :single_file_name
+  # @return [Boolean] Optional `boolean` value serialized in the `has_multiple_single_files` wire field.
+  attr_reader :has_multiple_single_files
+  # @return [Array_of_String] Optional array value serialized in the `single_file_paths` wire field.
+  attr_reader :single_file_paths
+  # @return [String] Required `uri`-formatted value serialized in the `repositories_url` wire field.
+  attr_reader :repositories_url
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :account
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalNullableScopedInstallationMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the NullableScopedInstallationRepositorySelection SDK namespace.
-  module NullableScopedInstallationRepositorySelection
-    ALL = 'all'
-    SELECTED = 'selected'
-    VALUES = %w[all selected].freeze
-    def self.from_value(value)
-      value
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalNullableScopedInstallationMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalUserMarketplacePurchaseMetadata
-    FIELDS = {
-      billing_cycle: 'billing_cycle',
-      next_billing_date: 'next_billing_date',
-      unit_count: 'unit_count',
-      on_free_trial: 'on_free_trial',
-      free_trial_ends_on: 'free_trial_ends_on',
-      updated_at: 'updated_at',
-      account: 'account',
-      plan: 'plan'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      billing_cycle
-      next_billing_date
-      unit_count
-      on_free_trial
-      free_trial_ends_on
-      updated_at
-      account
-      plan
-    ].freeze
-    DECODERS = {
-      account: lambda do |value|
-        ::OctridevGithub::MarketplaceAccount.from_hash(value)
-      end,
-      plan: lambda do |value|
-        ::OctridevGithub::MarketplaceListingPlan.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      next_billing_date
-      unit_count
-      free_trial_ends_on
-      updated_at
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Defines the NullableScopedInstallationRepositorySelection SDK namespace.
+module NullableScopedInstallationRepositorySelection
+  ALL = 'all'
+  SELECTED = 'selected'
+  VALUES = ['all', 'selected'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalUserMarketplacePurchaseMetadata
+  FIELDS = {
+    billing_cycle: "billing_cycle",
+    next_billing_date: "next_billing_date",
+    unit_count: "unit_count",
+    on_free_trial: "on_free_trial",
+    free_trial_ends_on: "free_trial_ends_on",
+    updated_at: "updated_at",
+    account: "account",
+    plan: "plan",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    billing_cycle
+    next_billing_date
+    unit_count
+    on_free_trial
+    free_trial_ends_on
+    updated_at
+    account
+    plan
+  ].freeze
+  DECODERS = {
+    account: lambda do |value|
+      ::OctridevGithub::MarketplaceAccount.from_hash(value)
+    end,
+    plan: lambda do |value|
+      ::OctridevGithub::MarketplaceListingPlan.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    next_billing_date
+    unit_count
+    free_trial_ends_on
+    updated_at
+  ].freeze
+end
+
+# API model for UserMarketplacePurchase.
+# User Marketplace Purchase
+class UserMarketplacePurchase
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalUserMarketplacePurchaseMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalUserMarketplacePurchaseMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalUserMarketplacePurchaseMetadata::DECODERS
+
+  # @return [String] Required `string` value serialized in the `billing_cycle` wire field.
+  attr_reader :billing_cycle
+  # @return [String] Required `date-time`-formatted value serialized in the `next_billing_date` wire field.
+  attr_reader :next_billing_date
+  # @return [Integer] Required `integer` value serialized in the `unit_count` wire field.
+  attr_reader :unit_count
+  # @return [Boolean] Required `boolean` value serialized in the `on_free_trial` wire field.
+  attr_reader :on_free_trial
+  # @return [String] Required `date-time`-formatted value serialized in the `free_trial_ends_on` wire field.
+  attr_reader :free_trial_ends_on
+  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+  attr_reader :updated_at
+  # @return [MarketplaceAccount] Required object value serialized in the `account` wire field.
+  attr_reader :account
+  # @return [MarketplaceListingPlan] Marketplace Listing Plan
+  attr_reader :plan
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for UserMarketplacePurchase.
-  # User Marketplace Purchase
-  class UserMarketplacePurchase
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalUserMarketplacePurchaseMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalUserMarketplacePurchaseMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalUserMarketplacePurchaseMetadata::DECODERS
-
-    # @return [String] Required `string` value serialized in the `billing_cycle` wire field.
-    attr_reader :billing_cycle
-    # @return [String] Required `date-time`-formatted value serialized in the `next_billing_date` wire field.
-    attr_reader :next_billing_date
-    # @return [Integer] Required `integer` value serialized in the `unit_count` wire field.
-    attr_reader :unit_count
-    # @return [Boolean] Required `boolean` value serialized in the `on_free_trial` wire field.
-    attr_reader :on_free_trial
-    # @return [String] Required `date-time`-formatted value serialized in the `free_trial_ends_on` wire field.
-    attr_reader :free_trial_ends_on
-    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-    attr_reader :updated_at
-    # @return [MarketplaceAccount] Required object value serialized in the `account` wire field.
-    attr_reader :account
-    # @return [MarketplaceListingPlan] Marketplace Listing Plan
-    attr_reader :plan
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalUserMarketplacePurchaseMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalUserMarketplacePurchaseMetadata::NULLABLE_FIELDS)
   end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 end

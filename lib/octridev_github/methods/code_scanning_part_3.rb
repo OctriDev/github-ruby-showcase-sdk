@@ -24,14 +24,15 @@ module OctridevGithub
         codeql_variant_analysis_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/code-scanning/codeql/variant-analyses/',
+            "/code-scanning/codeql/variant-analyses/",
             SdkClient.encode_path_segment(codeql_variant_analysis_id)
           ].join,
           config: config,
@@ -39,7 +40,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'code_scanning_get_variant_analysis',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -61,18 +62,19 @@ module OctridevGithub
         repo_name:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/code-scanning/codeql/variant-analyses/',
+            "/code-scanning/codeql/variant-analyses/",
             SdkClient.encode_path_segment(codeql_variant_analysis_id),
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(repo_owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo_name)
           ].join,
           config: config,
@@ -80,7 +82,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'code_scanning_get_variant_analysis_repo_task',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -96,21 +98,22 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/code-scanning/default-setup'
+            "/code-scanning/default-setup"
           ].join,
           config: config,
           return_type: ::OctridevGithub::CodeScanningDefaultSetup,
           decoder: :json,
           operation_id: 'code_scanning_get_default_setup',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -147,14 +150,15 @@ module OctridevGithub
         languages: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/code-scanning/default-setup'
+            "/code-scanning/default-setup"
           ].join,
           config: config,
           body: {
@@ -163,13 +167,13 @@ module OctridevGithub
             'runner_label' => runner_label,
             'query_suite' => query_suite,
             'threat_model' => threat_model,
-            'languages' => languages
+            'languages' => languages,
           },
           return_type: ::OctridevGithub::EmptyObject,
           decoder: :json,
           operation_id: 'code_scanning_update_default_setup',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -216,6 +220,7 @@ module OctridevGithub
         validate: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_length('commit_sha', commit_sha, min: 40, max: 64)
         Validation.validate_pattern('commit_sha', commit_sha, '^([0-9a-fA-F]{40}(?:[0-9a-fA-F]{24})?)$')
 
@@ -228,11 +233,11 @@ module OctridevGithub
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/code-scanning/sarifs'
+            "/code-scanning/sarifs"
           ].join,
           config: config,
           body: {
@@ -242,13 +247,13 @@ module OctridevGithub
             'checkout_uri' => checkout_uri,
             'started_at' => started_at,
             'tool_name' => tool_name,
-            'validate' => validate
+            'validate' => validate,
           },
           return_type: ::OctridevGithub::CodeScanningSarifsReceipt,
           decoder: :json,
           operation_id: 'code_scanning_upload_sarif',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -266,14 +271,15 @@ module OctridevGithub
         sarif_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/code-scanning/sarifs/',
+            "/code-scanning/sarifs/",
             SdkClient.encode_path_segment(sarif_id)
           ].join,
           config: config,
@@ -281,7 +287,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'code_scanning_get_sarif',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '403' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
     end

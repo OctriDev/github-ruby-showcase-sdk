@@ -5,205 +5,206 @@
 
 # rate_limit domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalRateLimitMetadata
-    FIELDS = {
-      limit: 'limit',
-      remaining: 'remaining',
-      reset: 'reset',
-      used: 'used'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      limit
-      remaining
-      reset
-      used
-    ].freeze
-    DECODERS = {}.freeze
+# Internal model hydration metadata.
+class SdkInternalRateLimitMetadata
+  FIELDS = {
+    limit: "limit",
+    remaining: "remaining",
+    reset: "reset",
+    used: "used",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    limit
+    remaining
+    reset
+    used
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for RateLimit.
+# Typed representation of the `RateLimit` API schema.
+class RateLimit
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalRateLimitMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalRateLimitMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalRateLimitMetadata::DECODERS
+
+  # @return [Integer] Required `integer` value serialized in the `limit` wire field.
+  attr_reader :limit
+  # @return [Integer] Required `integer` value serialized in the `remaining` wire field.
+  attr_reader :remaining
+  # @return [Integer] Required `integer` value serialized in the `reset` wire field.
+  attr_reader :reset
+  # @return [Integer] Required `integer` value serialized in the `used` wire field.
+  attr_reader :used
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for RateLimit.
-  # Typed representation of the `RateLimit` API schema.
-  class RateLimit
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalRateLimitMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalRateLimitMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalRateLimitMetadata::DECODERS
-
-    # @return [Integer] Required `integer` value serialized in the `limit` wire field.
-    attr_reader :limit
-    # @return [Integer] Required `integer` value serialized in the `remaining` wire field.
-    attr_reader :remaining
-    # @return [Integer] Required `integer` value serialized in the `reset` wire field.
-    attr_reader :reset
-    # @return [Integer] Required `integer` value serialized in the `used` wire field.
-    attr_reader :used
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalRateLimitOverviewResourcesMetadata
-    FIELDS = {
-      core: 'core',
-      graphql: 'graphql',
-      search: 'search',
-      code_search: 'code_search',
-      source_import: 'source_import',
-      integration_manifest: 'integration_manifest',
-      actions_runner_registration: 'actions_runner_registration',
-      scim: 'scim',
-      dependency_snapshots: 'dependency_snapshots',
-      dependency_sbom: 'dependency_sbom',
-      code_scanning_autofix: 'code_scanning_autofix',
-      copilot_usage_records: 'copilot_usage_records'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      core
-      search
-    ].freeze
-    DECODERS = {
-      core: lambda do |value|
-        ::OctridevGithub::RateLimit.from_hash(value)
-      end,
-      graphql: lambda do |value|
-        ::OctridevGithub::RateLimit.from_hash(value)
-      end,
-      search: lambda do |value|
-        ::OctridevGithub::RateLimit.from_hash(value)
-      end,
-      code_search: lambda do |value|
-        ::OctridevGithub::RateLimit.from_hash(value)
-      end,
-      source_import: lambda do |value|
-        ::OctridevGithub::RateLimit.from_hash(value)
-      end,
-      integration_manifest: lambda do |value|
-        ::OctridevGithub::RateLimit.from_hash(value)
-      end,
-      actions_runner_registration: lambda do |value|
-        ::OctridevGithub::RateLimit.from_hash(value)
-      end,
-      scim: lambda do |value|
-        ::OctridevGithub::RateLimit.from_hash(value)
-      end,
-      dependency_snapshots: lambda do |value|
-        ::OctridevGithub::RateLimit.from_hash(value)
-      end,
-      dependency_sbom: lambda do |value|
-        ::OctridevGithub::RateLimit.from_hash(value)
-      end,
-      code_scanning_autofix: lambda do |value|
-        ::OctridevGithub::RateLimit.from_hash(value)
-      end,
-      copilot_usage_records: lambda do |value|
-        ::OctridevGithub::RateLimit.from_hash(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalRateLimitOverviewResourcesMetadata
+  FIELDS = {
+    core: "core",
+    graphql: "graphql",
+    search: "search",
+    code_search: "code_search",
+    source_import: "source_import",
+    integration_manifest: "integration_manifest",
+    actions_runner_registration: "actions_runner_registration",
+    scim: "scim",
+    dependency_snapshots: "dependency_snapshots",
+    dependency_sbom: "dependency_sbom",
+    code_scanning_autofix: "code_scanning_autofix",
+    copilot_usage_records: "copilot_usage_records",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    core
+    search
+  ].freeze
+  DECODERS = {
+    core: lambda do |value|
+      ::OctridevGithub::RateLimit.from_hash(value)
+    end,
+    graphql: lambda do |value|
+      ::OctridevGithub::RateLimit.from_hash(value)
+    end,
+    search: lambda do |value|
+      ::OctridevGithub::RateLimit.from_hash(value)
+    end,
+    code_search: lambda do |value|
+      ::OctridevGithub::RateLimit.from_hash(value)
+    end,
+    source_import: lambda do |value|
+      ::OctridevGithub::RateLimit.from_hash(value)
+    end,
+    integration_manifest: lambda do |value|
+      ::OctridevGithub::RateLimit.from_hash(value)
+    end,
+    actions_runner_registration: lambda do |value|
+      ::OctridevGithub::RateLimit.from_hash(value)
+    end,
+    scim: lambda do |value|
+      ::OctridevGithub::RateLimit.from_hash(value)
+    end,
+    dependency_snapshots: lambda do |value|
+      ::OctridevGithub::RateLimit.from_hash(value)
+    end,
+    dependency_sbom: lambda do |value|
+      ::OctridevGithub::RateLimit.from_hash(value)
+    end,
+    code_scanning_autofix: lambda do |value|
+      ::OctridevGithub::RateLimit.from_hash(value)
+    end,
+    copilot_usage_records: lambda do |value|
+      ::OctridevGithub::RateLimit.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for RateLimitOverviewResources.
+# Required object value serialized in the `resources` wire field.
+class RateLimitOverviewResources
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalRateLimitOverviewResourcesMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalRateLimitOverviewResourcesMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalRateLimitOverviewResourcesMetadata::DECODERS
+
+  # @return [RateLimit] Required object value serialized in the `core` wire field.
+  attr_reader :core
+  # @return [RateLimit] Optional object value serialized in the `graphql` wire field.
+  attr_reader :graphql
+  # @return [RateLimit] Required object value serialized in the `search` wire field.
+  attr_reader :search
+  # @return [RateLimit] Optional object value serialized in the `code_search` wire field.
+  attr_reader :code_search
+  # @return [RateLimit] Optional object value serialized in the `source_import` wire field.
+  attr_reader :source_import
+  # @return [RateLimit] Optional object value serialized in the `integration_manifest` wire field.
+  attr_reader :integration_manifest
+  # @return [RateLimit] Optional object value serialized in the `actions_runner_registration` wire field.
+  attr_reader :actions_runner_registration
+  # @return [RateLimit] Optional object value serialized in the `scim` wire field.
+  attr_reader :scim
+  # @return [RateLimit] Optional object value serialized in the `dependency_snapshots` wire field.
+  attr_reader :dependency_snapshots
+  # @return [RateLimit] Optional object value serialized in the `dependency_sbom` wire field.
+  attr_reader :dependency_sbom
+  # @return [RateLimit] Optional object value serialized in the `code_scanning_autofix` wire field.
+  attr_reader :code_scanning_autofix
+  # @return [RateLimit] Optional object value serialized in the `copilot_usage_records` wire field.
+  attr_reader :copilot_usage_records
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for RateLimitOverviewResources.
-  # Required object value serialized in the `resources` wire field.
-  class RateLimitOverviewResources
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalRateLimitOverviewResourcesMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalRateLimitOverviewResourcesMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalRateLimitOverviewResourcesMetadata::DECODERS
-
-    # @return [RateLimit] Required object value serialized in the `core` wire field.
-    attr_reader :core
-    # @return [RateLimit] Optional object value serialized in the `graphql` wire field.
-    attr_reader :graphql
-    # @return [RateLimit] Required object value serialized in the `search` wire field.
-    attr_reader :search
-    # @return [RateLimit] Optional object value serialized in the `code_search` wire field.
-    attr_reader :code_search
-    # @return [RateLimit] Optional object value serialized in the `source_import` wire field.
-    attr_reader :source_import
-    # @return [RateLimit] Optional object value serialized in the `integration_manifest` wire field.
-    attr_reader :integration_manifest
-    # @return [RateLimit] Optional object value serialized in the `actions_runner_registration` wire field.
-    attr_reader :actions_runner_registration
-    # @return [RateLimit] Optional object value serialized in the `scim` wire field.
-    attr_reader :scim
-    # @return [RateLimit] Optional object value serialized in the `dependency_snapshots` wire field.
-    attr_reader :dependency_snapshots
-    # @return [RateLimit] Optional object value serialized in the `dependency_sbom` wire field.
-    attr_reader :dependency_sbom
-    # @return [RateLimit] Optional object value serialized in the `code_scanning_autofix` wire field.
-    attr_reader :code_scanning_autofix
-    # @return [RateLimit] Optional object value serialized in the `copilot_usage_records` wire field.
-    attr_reader :copilot_usage_records
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalRateLimitOverviewMetadata
-    FIELDS = {
-      resources: 'resources',
-      rate: 'rate'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      resources
-      rate
-    ].freeze
-    DECODERS = {
-      resources: lambda do |value|
-        ::OctridevGithub::RateLimitOverviewResources.from_hash(value)
-      end,
-      rate: lambda do |value|
-        ::OctridevGithub::RateLimit.from_hash(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalRateLimitOverviewMetadata
+  FIELDS = {
+    resources: "resources",
+    rate: "rate",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    resources
+    rate
+  ].freeze
+  DECODERS = {
+    resources: lambda do |value|
+      ::OctridevGithub::RateLimitOverviewResources.from_hash(value)
+    end,
+    rate: lambda do |value|
+      ::OctridevGithub::RateLimit.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for RateLimitOverview.
+# Rate limit status for the applicable requester and resource category. Requests authenticated as a user share the user's rate limit across credentials. Requests without authentication use the requesting IP address. API requests routed through either an API hostname or a web hostname can count against the same applicable limit.
+class RateLimitOverview
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalRateLimitOverviewMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalRateLimitOverviewMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalRateLimitOverviewMetadata::DECODERS
+
+  # @return [RateLimitOverviewResources] Required object value serialized in the `resources` wire field.
+  attr_reader :resources
+  # @return [RateLimit] Required object value serialized in the `rate` wire field.
+  attr_reader :rate
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for RateLimitOverview.
-  # Rate limit status for the applicable requester and resource category. Requests authenticated as a user share the user's rate limit across credentials. Requests without authentication use the requesting IP address. API requests routed through either an API hostname or a web hostname can count against the same applicable limit.
-  class RateLimitOverview
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalRateLimitOverviewMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalRateLimitOverviewMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalRateLimitOverviewMetadata::DECODERS
-
-    # @return [RateLimitOverviewResources] Required object value serialized in the `resources` wire field.
-    attr_reader :resources
-    # @return [RateLimit] Required object value serialized in the `rate` wire field.
-    attr_reader :rate
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 end

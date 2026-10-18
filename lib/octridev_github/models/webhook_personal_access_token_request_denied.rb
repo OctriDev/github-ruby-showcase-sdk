@@ -5,86 +5,86 @@
 
 # webhook_personal_access_token_request_denied domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalWebhookPersonalAccessTokenRequestDeniedMetadata
-    FIELDS = {
-      action: 'action',
-      personal_access_token_request: 'personal_access_token_request',
-      organization: 'organization',
-      enterprise: 'enterprise',
-      sender: 'sender',
-      installation: 'installation'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      action
-      personal_access_token_request
-      organization
-      sender
-      installation
-    ].freeze
-    DECODERS = {
-      action: lambda do |value|
-        ::OctridevGithub::WebhookPersonalAccessTokenRequestDeniedAction.from_value(value)
-      end,
-      personal_access_token_request: lambda do |value|
-        ::OctridevGithub::PersonalAccessTokenRequest.from_hash(value)
-      end,
-      organization: lambda do |value|
-        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-      end,
-      enterprise: lambda do |value|
-        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-      end,
-      sender: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end,
-      installation: lambda do |value|
-        ::OctridevGithub::SimpleInstallation.from_hash(value)
-      end
-    }.freeze
+# Internal model hydration metadata.
+class SdkInternalWebhookPersonalAccessTokenRequestDeniedMetadata
+  FIELDS = {
+    action: "action",
+    personal_access_token_request: "personal_access_token_request",
+    organization: "organization",
+    enterprise: "enterprise",
+    sender: "sender",
+    installation: "installation",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    action
+    personal_access_token_request
+    organization
+    sender
+    installation
+  ].freeze
+  DECODERS = {
+    action: lambda do |value|
+      ::OctridevGithub::WebhookPersonalAccessTokenRequestDeniedAction.from_value(value)
+    end,
+    personal_access_token_request: lambda do |value|
+      ::OctridevGithub::PersonalAccessTokenRequest.from_hash(value)
+    end,
+    organization: lambda do |value|
+      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+    end,
+    enterprise: lambda do |value|
+      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+    end,
+    sender: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+    installation: lambda do |value|
+      ::OctridevGithub::SimpleInstallation.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookPersonalAccessTokenRequestDenied.
+# Typed representation of the `WebhookPersonalAccessTokenRequestDenied` API schema.
+class WebhookPersonalAccessTokenRequestDenied
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookPersonalAccessTokenRequestDeniedMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookPersonalAccessTokenRequestDeniedMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookPersonalAccessTokenRequestDeniedMetadata::DECODERS
+
+  # @return [WebhookPersonalAccessTokenRequestDeniedAction] Required enumerated value serialized in the `action` wire field.
+  attr_reader :action
+  # @return [PersonalAccessTokenRequest] Details of a Personal Access Token Request.
+  attr_reader :personal_access_token_request
+  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+  attr_reader :organization
+  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+  attr_reader :enterprise
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :sender
+  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+  attr_reader :installation
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookPersonalAccessTokenRequestDenied.
-  # Typed representation of the `WebhookPersonalAccessTokenRequestDenied` API schema.
-  class WebhookPersonalAccessTokenRequestDenied
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookPersonalAccessTokenRequestDeniedMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookPersonalAccessTokenRequestDeniedMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookPersonalAccessTokenRequestDeniedMetadata::DECODERS
-
-    # @return [WebhookPersonalAccessTokenRequestDeniedAction] Required enumerated value serialized in the `action` wire field.
-    attr_reader :action
-    # @return [PersonalAccessTokenRequest] Details of a Personal Access Token Request.
-    attr_reader :personal_access_token_request
-    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-    attr_reader :organization
-    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-    attr_reader :enterprise
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :sender
-    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-    attr_reader :installation
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the WebhookPersonalAccessTokenRequestDeniedAction SDK namespace.
-  module WebhookPersonalAccessTokenRequestDeniedAction
-    DENIED = 'denied'
-    VALUES = ['denied'].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
+
+# Defines the WebhookPersonalAccessTokenRequestDeniedAction SDK namespace.
+module WebhookPersonalAccessTokenRequestDeniedAction
+  DENIED = 'denied'
+  VALUES = ['denied'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

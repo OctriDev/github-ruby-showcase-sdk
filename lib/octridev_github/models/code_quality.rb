@@ -5,520 +5,526 @@
 
 # code_quality domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalCodeQualityFindingMetadata
-    FIELDS = {
-      number: 'number',
-      state: 'state',
-      url: 'url',
-      rule: 'rule',
-      location: 'location',
-      message: 'message',
-      created_at: 'created_at'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      number
-      state
-      url
-      rule
-      location
-      message
-    ].freeze
-    DECODERS = {
-      state: lambda do |value|
-        ::OctridevGithub::CodeQualityFindingState.from_value(value)
-      end,
-      rule: lambda do |value|
-        ::OctridevGithub::CodeQualityFindingRule.from_hash(value)
-      end,
-      location: lambda do |value|
-        ::OctridevGithub::CodeQualityFindingLocation.from_hash(value)
-      end,
-      message: lambda do |value|
-        ::OctridevGithub::CodeQualityFindingMessage.from_hash(value)
-      end
-    }.freeze
+# Internal model hydration metadata.
+class SdkInternalCodeQualityFindingMetadata
+  FIELDS = {
+    number: "number",
+    state: "state",
+    url: "url",
+    rule: "rule",
+    location: "location",
+    message: "message",
+    created_at: "created_at",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    number
+    state
+    url
+    rule
+    location
+    message
+  ].freeze
+  DECODERS = {
+    state: lambda do |value|
+      ::OctridevGithub::CodeQualityFindingState.from_value(value)
+    end,
+    rule: lambda do |value|
+      ::OctridevGithub::CodeQualityFindingRule.from_hash(value)
+    end,
+    location: lambda do |value|
+      ::OctridevGithub::CodeQualityFindingLocation.from_hash(value)
+    end,
+    message: lambda do |value|
+      ::OctridevGithub::CodeQualityFindingMessage.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for CodeQualityFinding.
+# Code quality finding
+class CodeQualityFinding
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalCodeQualityFindingMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalCodeQualityFindingMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalCodeQualityFindingMetadata::DECODERS
+
+  # @return [Integer] The finding number.
+  attr_reader :number
+  # @return [CodeQualityFindingState] State of the code quality finding.
+  attr_reader :state
+  # @return [String] The REST API URL of the code quality finding resource.
+  attr_reader :url
+  # @return [CodeQualityFindingRule] Code quality rule
+  attr_reader :rule
+  # @return [CodeQualityFindingLocation] Code quality file location
+  attr_reader :location
+  # @return [CodeQualityFindingMessage] Code quality finding message
+  attr_reader :message
+  # @return [String] The time the code quality finding was created.
+  attr_reader :created_at
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for CodeQualityFinding.
-  # Code quality finding
-  class CodeQualityFinding
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalCodeQualityFindingMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalCodeQualityFindingMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalCodeQualityFindingMetadata::DECODERS
-
-    # @return [Integer] The finding number.
-    attr_reader :number
-    # @return [CodeQualityFindingState] State of the code quality finding.
-    attr_reader :state
-    # @return [String] The REST API URL of the code quality finding resource.
-    attr_reader :url
-    # @return [CodeQualityFindingRule] Code quality rule
-    attr_reader :rule
-    # @return [CodeQualityFindingLocation] Code quality file location
-    attr_reader :location
-    # @return [CodeQualityFindingMessage] Code quality finding message
-    attr_reader :message
-    # @return [String] The time the code quality finding was created.
-    attr_reader :created_at
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the CodeQualityFindingState SDK namespace.
-  module CodeQualityFindingState
-    OPEN = 'open'
-    DISMISSED = 'dismissed'
-    VALUES = %w[open dismissed].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Defines the CodeQualityFindingState SDK namespace.
+module CodeQualityFindingState
+  OPEN = 'open'
+  DISMISSED = 'dismissed'
+  VALUES = ['open', 'dismissed'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalCodeQualityFindingLocationMetadata
+  FIELDS = {
+    path: "path",
+    start_line: "start_line",
+    start_column: "start_column",
+    end_line: "end_line",
+    end_column: "end_column",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    path
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for CodeQualityFindingLocation.
+# Code quality file location
+class CodeQualityFindingLocation
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalCodeQualityFindingLocationMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalCodeQualityFindingLocationMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalCodeQualityFindingLocationMetadata::DECODERS
+
+  # @return [String] The file path where the finding was detected.
+  attr_reader :path
+  # @return [Integer] The line number where the finding starts.
+  attr_reader :start_line
+  # @return [Integer] The column number where the finding starts.
+  attr_reader :start_column
+  # @return [Integer] The line number where the finding ends.
+  attr_reader :end_line
+  # @return [Integer] The column number where the finding ends.
+  attr_reader :end_column
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalCodeQualityFindingLocationMetadata
-    FIELDS = {
-      path: 'path',
-      start_line: 'start_line',
-      start_column: 'start_column',
-      end_line: 'end_line',
-      end_column: 'end_column'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      path
-    ].freeze
-    DECODERS = {}.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for CodeQualityFindingLocation.
-  # Code quality file location
-  class CodeQualityFindingLocation
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalCodeQualityFindingLocationMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalCodeQualityFindingLocationMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalCodeQualityFindingLocationMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [String] The file path where the finding was detected.
-    attr_reader :path
-    # @return [Integer] The line number where the finding starts.
-    attr_reader :start_line
-    # @return [Integer] The column number where the finding starts.
-    attr_reader :start_column
-    # @return [Integer] The line number where the finding ends.
-    attr_reader :end_line
-    # @return [Integer] The column number where the finding ends.
-    attr_reader :end_column
+# Internal model hydration metadata.
+class SdkInternalCodeQualityFindingMessageMetadata
+  FIELDS = {
+    text: "text",
+    markdown: "markdown",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    text
+    markdown
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for CodeQualityFindingMessage.
+# Code quality finding message
+class CodeQualityFindingMessage
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalCodeQualityFindingMessageMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalCodeQualityFindingMessageMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalCodeQualityFindingMessageMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+  # @return [String] The message text of the code quality finding.
+  attr_reader :text
+  # @return [String] The message text of the code quality finding in markdown format.
+  attr_reader :markdown
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalCodeQualityFindingMessageMetadata
-    FIELDS = {
-      text: 'text',
-      markdown: 'markdown'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      text
-      markdown
-    ].freeze
-    DECODERS = {}.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for CodeQualityFindingMessage.
-  # Code quality finding message
-  class CodeQualityFindingMessage
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalCodeQualityFindingMessageMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalCodeQualityFindingMessageMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalCodeQualityFindingMessageMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [String] The message text of the code quality finding.
-    attr_reader :text
-    # @return [String] The message text of the code quality finding in markdown format.
-    attr_reader :markdown
+# Internal model hydration metadata.
+class SdkInternalCodeQualityFindingRuleMetadata
+  FIELDS = {
+    id: "id",
+    title: "title",
+    description: "description",
+    help: "help",
+    severity: "severity",
+    category: "category",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    title
+    description
+    severity
+    category
+  ].freeze
+  DECODERS = {
+    severity: lambda do |value|
+      ::OctridevGithub::CodeQualityFindingRuleSeverity.from_value(value)
+    end,
+    category: lambda do |value|
+      ::OctridevGithub::CodeQualityFindingRuleCategory.from_value(value)
+    end,
+  }.freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for CodeQualityFindingRule.
+# Code quality rule
+class CodeQualityFindingRule
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalCodeQualityFindingRuleMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalCodeQualityFindingRuleMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalCodeQualityFindingRuleMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+  # @return [String] A unique identifier for the rule used to detect the finding.
+  attr_reader :id
+  # @return [String] The name of the rule used to detect the finding.
+  attr_reader :title
+  # @return [String] A short description of the rule used to detect the finding.
+  attr_reader :description
+  # @return [String] A detailed description of the rule used to detect the finding.
+  attr_reader :help
+  # @return [CodeQualityFindingRuleSeverity] The severity of the rule used to detect the finding.
+  attr_reader :severity
+  # @return [CodeQualityFindingRuleCategory] The category of the rule used to detect the finding.
+  attr_reader :category
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalCodeQualityFindingRuleMetadata
-    FIELDS = {
-      id: 'id',
-      title: 'title',
-      description: 'description',
-      help: 'help',
-      severity: 'severity',
-      category: 'category'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      title
-      description
-      severity
-      category
-    ].freeze
-    DECODERS = {
-      severity: lambda do |value|
-        ::OctridevGithub::CodeQualityFindingRuleSeverity.from_value(value)
-      end,
-      category: lambda do |value|
-        ::OctridevGithub::CodeQualityFindingRuleCategory.from_value(value)
-      end
-    }.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for CodeQualityFindingRule.
-  # Code quality rule
-  class CodeQualityFindingRule
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalCodeQualityFindingRuleMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalCodeQualityFindingRuleMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalCodeQualityFindingRuleMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [String] A unique identifier for the rule used to detect the finding.
-    attr_reader :id
-    # @return [String] The name of the rule used to detect the finding.
-    attr_reader :title
-    # @return [String] A short description of the rule used to detect the finding.
-    attr_reader :description
-    # @return [String] A detailed description of the rule used to detect the finding.
-    attr_reader :help
-    # @return [CodeQualityFindingRuleSeverity] The severity of the rule used to detect the finding.
-    attr_reader :severity
-    # @return [CodeQualityFindingRuleCategory] The category of the rule used to detect the finding.
-    attr_reader :category
+# Defines the CodeQualityFindingRuleCategory SDK namespace.
+module CodeQualityFindingRuleCategory
+  NONE = 'none'
+  MAINTAINABILITY = 'maintainability'
+  RELIABILITY = 'reliability'
+  VALUES = ['none', 'maintainability', 'reliability'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# Defines the CodeQualityFindingRuleSeverity SDK namespace.
+module CodeQualityFindingRuleSeverity
+  ERROR = 'error'
+  WARNING = 'warning'
+  NOTE = 'note'
+  NONE = 'none'
+  VALUES = ['error', 'warning', 'note', 'none'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+# Internal model hydration metadata.
+class SdkInternalCodeQualitySetupMetadata
+  FIELDS = {
+    state: "state",
+    languages: "languages",
+    runner_type: "runner_type",
+    runner_label: "runner_label",
+    updated_at: "updated_at",
+    schedule: "schedule",
+    ai_findings_option: "ai_findings_option",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    state: lambda do |value|
+      ::OctridevGithub::CodeQualitySetupState.from_value(value)
+    end,
+    languages: lambda do |value|
+      value&.map { |item| ::OctridevGithub::CodeQualitySetupLanguagesItem.from_value(item) }
+    end,
+    runner_type: lambda do |value|
+      ::OctridevGithub::CodeQualitySetupRunnerType.from_value(value)
+    end,
+    schedule: lambda do |value|
+      ::OctridevGithub::CodeQualitySetupSchedule.from_value(value)
+    end,
+    ai_findings_option: lambda do |value|
+      ::OctridevGithub::CodeQualitySetupAiFindingsOption.from_value(value)
+    end,
+  }.freeze
+end
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+# API model for CodeQualitySetup.
+# Configuration for code quality setup.
+class CodeQualitySetup
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalCodeQualitySetupMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalCodeQualitySetupMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalCodeQualitySetupMetadata::DECODERS
+
+  # @return [CodeQualitySetupState] Code quality setup has been configured or not.
+  attr_reader :state
+  # @return [Array_of_CodeQualitySetupLanguagesItem] Languages to be analyzed.
+  attr_reader :languages
+  # @return [CodeQualitySetupRunnerType] Runner type to be used.
+  attr_reader :runner_type
+  # @return [String] Runner label to be used if the runner type is labeled.
+  attr_reader :runner_label
+  # @return [String] Timestamp of latest configuration update.
+  attr_reader :updated_at
+  # @return [CodeQualitySetupSchedule] The frequency of the periodic analysis.
+  attr_reader :schedule
+  # @return [CodeQualitySetupAiFindingsOption] The AI findings configuration for the repository.
+  attr_reader :ai_findings_option
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the CodeQualityFindingRuleCategory SDK namespace.
-  module CodeQualityFindingRuleCategory
-    NONE = 'none'
-    MAINTAINABILITY = 'maintainability'
-    RELIABILITY = 'reliability'
-    VALUES = %w[none maintainability reliability].freeze
-    def self.from_value(value)
-      value
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the CodeQualityFindingRuleSeverity SDK namespace.
-  module CodeQualityFindingRuleSeverity
-    ERROR = 'error'
-    WARNING = 'warning'
-    NOTE = 'note'
-    NONE = 'none'
-    VALUES = %w[error warning note none].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Defines the CodeQualitySetupAiFindingsOption SDK namespace.
+module CodeQualitySetupAiFindingsOption
+  DISABLED = 'disabled'
+  ON_PUSH = 'on_push'
+  VALUES = ['disabled', 'on_push'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the CodeQualitySetupLanguagesItem SDK namespace.
+module CodeQualitySetupLanguagesItem
+  CSHARP = 'csharp'
+  GO = 'go'
+  JAVA_KOTLIN = 'java-kotlin'
+  JAVASCRIPT_TYPESCRIPT = 'javascript-typescript'
+  PYTHON = 'python'
+  RUBY = 'ruby'
+  RUST = 'rust'
+  VALUES = ['csharp', 'go', 'java-kotlin', 'javascript-typescript', 'python', 'ruby', 'rust'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the CodeQualitySetupRunnerType SDK namespace.
+module CodeQualitySetupRunnerType
+  STANDARD = 'standard'
+  LABELED = 'labeled'
+  VALUES = ['standard', 'labeled'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the CodeQualitySetupSchedule SDK namespace.
+module CodeQualitySetupSchedule
+  WEEKLY = 'weekly'
+  VALUES = ['weekly'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the CodeQualitySetupState SDK namespace.
+module CodeQualitySetupState
+  CONFIGURED = 'configured'
+  NOT_CONFIGURED = 'not-configured'
+  VALUES = ['configured', 'not-configured'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalCodeQualitySetupUpdateMetadata
+  FIELDS = {
+    state: "state",
+    runner_type: "runner_type",
+    runner_label: "runner_label",
+    languages: "languages",
+    ai_findings_option: "ai_findings_option",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    state: lambda do |value|
+      ::OctridevGithub::CodeQualitySetupUpdateState.from_value(value)
+    end,
+    runner_type: lambda do |value|
+      ::OctridevGithub::CodeQualitySetupUpdateRunnerType.from_value(value)
+    end,
+    languages: lambda do |value|
+      value&.map { |item| ::OctridevGithub::CodeQualitySetupUpdateLanguagesItem.from_value(item) }
+    end,
+    ai_findings_option: lambda do |value|
+      ::OctridevGithub::CodeQualitySetupUpdateAiFindingsOption.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for CodeQualitySetupUpdate.
+# Configuration for code quality setup.
+class CodeQualitySetupUpdate
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalCodeQualitySetupUpdateMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalCodeQualitySetupUpdateMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalCodeQualitySetupUpdateMetadata::DECODERS
+
+  # @return [CodeQualitySetupUpdateState] The desired state of code quality setup.
+  attr_reader :state
+  # @return [CodeQualitySetupUpdateRunnerType] Runner type to be used.
+  attr_reader :runner_type
+  # @return [String] Runner label to be used if the runner type is labeled.
+  attr_reader :runner_label
+  # @return [Array_of_CodeQualitySetupUpdateLanguagesItem] Languages to be analyzed.
+  attr_reader :languages
+  # @return [CodeQualitySetupUpdateAiFindingsOption] Whether AI findings run for Code Quality on this repository.
+  attr_reader :ai_findings_option
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalCodeQualitySetupMetadata
-    FIELDS = {
-      state: 'state',
-      languages: 'languages',
-      runner_type: 'runner_type',
-      runner_label: 'runner_label',
-      updated_at: 'updated_at',
-      schedule: 'schedule',
-      ai_findings_option: 'ai_findings_option'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      state: lambda do |value|
-        ::OctridevGithub::CodeQualitySetupState.from_value(value)
-      end,
-      languages: lambda do |value|
-        value&.map { |item| ::OctridevGithub::CodeQualitySetupLanguagesItem.from_value(item) }
-      end,
-      runner_type: lambda do |value|
-        ::OctridevGithub::CodeQualitySetupRunnerType.from_value(value)
-      end,
-      schedule: lambda do |value|
-        ::OctridevGithub::CodeQualitySetupSchedule.from_value(value)
-      end,
-      ai_findings_option: lambda do |value|
-        ::OctridevGithub::CodeQualitySetupAiFindingsOption.from_value(value)
-      end
-    }.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for CodeQualitySetup.
-  # Configuration for code quality setup.
-  class CodeQualitySetup
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalCodeQualitySetupMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalCodeQualitySetupMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalCodeQualitySetupMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [CodeQualitySetupState] Code quality setup has been configured or not.
-    attr_reader :state
-    # @return [Array_of_CodeQualitySetupLanguagesItem] Languages to be analyzed.
-    attr_reader :languages
-    # @return [CodeQualitySetupRunnerType] Runner type to be used.
-    attr_reader :runner_type
-    # @return [String] Runner label to be used if the runner type is labeled.
-    attr_reader :runner_label
-    # @return [String] Timestamp of latest configuration update.
-    attr_reader :updated_at
-    # @return [CodeQualitySetupSchedule] The frequency of the periodic analysis.
-    attr_reader :schedule
-    # @return [CodeQualitySetupAiFindingsOption] The AI findings configuration for the repository.
-    attr_reader :ai_findings_option
+# Defines the CodeQualitySetupUpdateAiFindingsOption SDK namespace.
+module CodeQualitySetupUpdateAiFindingsOption
+  DISABLED = 'disabled'
+  ON_PUSH = 'on_push'
+  VALUES = ['disabled', 'on_push'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# Defines the CodeQualitySetupUpdateLanguagesItem SDK namespace.
+module CodeQualitySetupUpdateLanguagesItem
+  CSHARP = 'csharp'
+  GO = 'go'
+  JAVA_KOTLIN = 'java-kotlin'
+  JAVASCRIPT_TYPESCRIPT = 'javascript-typescript'
+  PYTHON = 'python'
+  RUBY = 'ruby'
+  VALUES = ['csharp', 'go', 'java-kotlin', 'javascript-typescript', 'python', 'ruby'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+# Defines the CodeQualitySetupUpdateRunnerType SDK namespace.
+module CodeQualitySetupUpdateRunnerType
+  STANDARD = 'standard'
+  LABELED = 'labeled'
+  VALUES = ['standard', 'labeled'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+# Defines the CodeQualitySetupUpdateState SDK namespace.
+module CodeQualitySetupUpdateState
+  CONFIGURED = 'configured'
+  NOT_CONFIGURED = 'not-configured'
+  VALUES = ['configured', 'not-configured'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalCodeQualitySetupUpdateResponseMetadata
+  FIELDS = {
+    run_id: "run_id",
+    run_url: "run_url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for CodeQualitySetupUpdateResponse.
+# You can use `run_url` to track the status of the run. This includes a property status and conclusion. You should not rely on this always being an actions workflow run object.
+class CodeQualitySetupUpdateResponse
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalCodeQualitySetupUpdateResponseMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalCodeQualitySetupUpdateResponseMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalCodeQualitySetupUpdateResponseMetadata::DECODERS
+
+  # @return [Integer] ID of the corresponding run.
+  attr_reader :run_id
+  # @return [String] URL of the corresponding run.
+  attr_reader :run_url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the CodeQualitySetupAiFindingsOption SDK namespace.
-  module CodeQualitySetupAiFindingsOption
-    DISABLED = 'disabled'
-    ON_PUSH = 'on_push'
-    VALUES = %w[disabled on_push].freeze
-    def self.from_value(value)
-      value
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the CodeQualitySetupLanguagesItem SDK namespace.
-  module CodeQualitySetupLanguagesItem
-    CSHARP = 'csharp'
-    GO = 'go'
-    JAVA_KOTLIN = 'java-kotlin'
-    JAVASCRIPT_TYPESCRIPT = 'javascript-typescript'
-    PYTHON = 'python'
-    RUBY = 'ruby'
-    RUST = 'rust'
-    VALUES = %w[csharp go java-kotlin javascript-typescript python ruby rust].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
-
-  # Defines the CodeQualitySetupRunnerType SDK namespace.
-  module CodeQualitySetupRunnerType
-    STANDARD = 'standard'
-    LABELED = 'labeled'
-    VALUES = %w[standard labeled].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the CodeQualitySetupSchedule SDK namespace.
-  module CodeQualitySetupSchedule
-    WEEKLY = 'weekly'
-    VALUES = ['weekly'].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the CodeQualitySetupState SDK namespace.
-  module CodeQualitySetupState
-    CONFIGURED = 'configured'
-    NOT_CONFIGURED = 'not-configured'
-    VALUES = %w[configured not-configured].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Internal model hydration metadata.
-  class SdkInternalCodeQualitySetupUpdateMetadata
-    FIELDS = {
-      state: 'state',
-      runner_type: 'runner_type',
-      runner_label: 'runner_label',
-      languages: 'languages',
-      ai_findings_option: 'ai_findings_option'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      state: lambda do |value|
-        ::OctridevGithub::CodeQualitySetupUpdateState.from_value(value)
-      end,
-      runner_type: lambda do |value|
-        ::OctridevGithub::CodeQualitySetupUpdateRunnerType.from_value(value)
-      end,
-      languages: lambda do |value|
-        value&.map { |item| ::OctridevGithub::CodeQualitySetupUpdateLanguagesItem.from_value(item) }
-      end,
-      ai_findings_option: lambda do |value|
-        ::OctridevGithub::CodeQualitySetupUpdateAiFindingsOption.from_value(value)
-      end
-    }.freeze
-  end
-
-  # API model for CodeQualitySetupUpdate.
-  # Configuration for code quality setup.
-  class CodeQualitySetupUpdate
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalCodeQualitySetupUpdateMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalCodeQualitySetupUpdateMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalCodeQualitySetupUpdateMetadata::DECODERS
-
-    # @return [CodeQualitySetupUpdateState] The desired state of code quality setup.
-    attr_reader :state
-    # @return [CodeQualitySetupUpdateRunnerType] Runner type to be used.
-    attr_reader :runner_type
-    # @return [String] Runner label to be used if the runner type is labeled.
-    attr_reader :runner_label
-    # @return [Array_of_CodeQualitySetupUpdateLanguagesItem] Languages to be analyzed.
-    attr_reader :languages
-    # @return [CodeQualitySetupUpdateAiFindingsOption] Whether AI findings run for Code Quality on this repository.
-    attr_reader :ai_findings_option
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
-  end
-
-  # Defines the CodeQualitySetupUpdateAiFindingsOption SDK namespace.
-  module CodeQualitySetupUpdateAiFindingsOption
-    DISABLED = 'disabled'
-    ON_PUSH = 'on_push'
-    VALUES = %w[disabled on_push].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the CodeQualitySetupUpdateLanguagesItem SDK namespace.
-  module CodeQualitySetupUpdateLanguagesItem
-    CSHARP = 'csharp'
-    GO = 'go'
-    JAVA_KOTLIN = 'java-kotlin'
-    JAVASCRIPT_TYPESCRIPT = 'javascript-typescript'
-    PYTHON = 'python'
-    RUBY = 'ruby'
-    VALUES = %w[csharp go java-kotlin javascript-typescript python ruby].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the CodeQualitySetupUpdateRunnerType SDK namespace.
-  module CodeQualitySetupUpdateRunnerType
-    STANDARD = 'standard'
-    LABELED = 'labeled'
-    VALUES = %w[standard labeled].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the CodeQualitySetupUpdateState SDK namespace.
-  module CodeQualitySetupUpdateState
-    CONFIGURED = 'configured'
-    NOT_CONFIGURED = 'not-configured'
-    VALUES = %w[configured not-configured].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Internal model hydration metadata.
-  class SdkInternalCodeQualitySetupUpdateResponseMetadata
-    FIELDS = {
-      run_id: 'run_id',
-      run_url: 'run_url'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
-  end
-
-  # API model for CodeQualitySetupUpdateResponse.
-  # You can use `run_url` to track the status of the run. This includes a property status and conclusion. You should not rely on this always being an actions workflow run object.
-  class CodeQualitySetupUpdateResponse
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalCodeQualitySetupUpdateResponseMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalCodeQualitySetupUpdateResponseMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalCodeQualitySetupUpdateResponseMetadata::DECODERS
-
-    # @return [Integer] ID of the corresponding run.
-    attr_reader :run_id
-    # @return [String] URL of the corresponding run.
-    attr_reader :run_url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
-  end
+end
 end

@@ -38,7 +38,7 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotSetCopilotCodingAgentPermissionsOrganizationMetadata
         FIELDS = {
-          enabled_repositories: 'enabled_repositories'
+          enabled_repositories: "enabled_repositories",
         }.freeze
         REQUIRED_FIELDS = %i[
           enabled_repositories
@@ -46,7 +46,7 @@ module OctridevGithub
         DECODERS = {
           enabled_repositories: lambda do |value|
             ::OctridevGithub::Methods::Copilot::CopilotSetCopilotCodingAgentPermissionsOrganizationEnabledRepositories.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -77,8 +77,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotListCopilotCodingAgentSelectedRepositoriesForOrganizationResponseMetadata
         FIELDS = {
-          total_count: 'total_count',
-          repositories: 'repositories'
+          total_count: "total_count",
+          repositories: "repositories",
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -87,7 +87,7 @@ module OctridevGithub
         DECODERS = {
           repositories: lambda do |value|
             value&.map { |item| ::OctridevGithub::MinimalRepository.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -117,12 +117,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotSetCopilotCodingAgentSelectedRepositoriesForOrganizationMetadata
         FIELDS = {
-          selected_repository_ids: 'selected_repository_ids'
+          selected_repository_ids: "selected_repository_ids",
         }.freeze
         REQUIRED_FIELDS = %i[
           selected_repository_ids
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for CopilotSetCopilotCodingAgentSelectedRepositoriesForOrganization.
@@ -152,10 +153,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotSetCopilotContentExclusionForOrganizationResponseMetadata
         FIELDS = {
-          message: 'message'
+          message: "message",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for CopilotSetCopilotContentExclusionForOrganizationResponse.
@@ -184,10 +187,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotGetCopilotCloudAgentConfigurationResponseEnabledToolsMetadata
         FIELDS = {
-          codeql: 'codeql',
-          copilot_code_review: 'copilot_code_review',
-          secret_scanning: 'secret_scanning',
-          dependency_vulnerability_checks: 'dependency_vulnerability_checks'
+          codeql: "codeql",
+          copilot_code_review: "copilot_code_review",
+          secret_scanning: "secret_scanning",
+          dependency_vulnerability_checks: "dependency_vulnerability_checks",
         }.freeze
         REQUIRED_FIELDS = %i[
           codeql
@@ -195,7 +198,8 @@ module OctridevGithub
           secret_scanning
           dependency_vulnerability_checks
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for CopilotGetCopilotCloudAgentConfigurationResponseEnabledTools.
@@ -232,14 +236,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotGetCopilotCloudAgentConfigurationResponseMetadata
         FIELDS = {
-          mcp_configuration: 'mcp_configuration',
-          enabled_tools: 'enabled_tools',
-          require_actions_workflow_approval: 'require_actions_workflow_approval',
-          is_firewall_enabled: 'is_firewall_enabled',
-          is_firewall_recommended_allowlist_enabled: 'is_firewall_recommended_allowlist_enabled',
-          custom_allowlist: 'custom_allowlist',
-          is_automations_enabled: 'is_automations_enabled',
-          require_write_access_for_automation_triggers: 'require_write_access_for_automation_triggers'
+          mcp_configuration: "mcp_configuration",
+          enabled_tools: "enabled_tools",
+          require_actions_workflow_approval: "require_actions_workflow_approval",
+          is_firewall_enabled: "is_firewall_enabled",
+          is_firewall_recommended_allowlist_enabled: "is_firewall_recommended_allowlist_enabled",
+          custom_allowlist: "custom_allowlist",
+          is_automations_enabled: "is_automations_enabled",
+          require_write_access_for_automation_triggers: "require_write_access_for_automation_triggers",
         }.freeze
         REQUIRED_FIELDS = %i[
           mcp_configuration
@@ -254,7 +258,7 @@ module OctridevGithub
         DECODERS = {
           enabled_tools: lambda do |value|
             ::OctridevGithub::Methods::Copilot::CopilotGetCopilotCloudAgentConfigurationResponseEnabledTools.from_hash(value)
-          end
+          end,
         }.freeze
         NULLABLE_FIELDS = %i[
           mcp_configuration
@@ -304,7 +308,7 @@ module OctridevGithub
         ALL = 'all'
         SELECTED = 'selected'
         NONE = 'none'
-        VALUES = %w[all selected none].freeze
+        VALUES = ['all', 'selected', 'none'].freeze
         def self.from_value(value)
           value
         end
@@ -316,9 +320,9 @@ module OctridevGithub
         DISABLED_FOR_ALL_ORGS = 'disabled_for_all_orgs'
         ENABLED_FOR_SELECTED_ORGS = 'enabled_for_selected_orgs'
         CONFIGURED_BY_ORG_ADMINS = 'configured_by_org_admins'
-        VALUES = %w[
-          enabled_for_all_orgs disabled_for_all_orgs enabled_for_selected_orgs
-          configured_by_org_admins
+        VALUES = [
+          'enabled_for_all_orgs', 'disabled_for_all_orgs', 'enabled_for_selected_orgs',
+          'configured_by_org_admins'
         ].freeze
         def self.from_value(value)
           value
@@ -330,7 +334,7 @@ module OctridevGithub
         ALL = 'all'
         SELECTED = 'selected'
         NONE = 'none'
-        VALUES = %w[all selected none].freeze
+        VALUES = ['all', 'selected', 'none'].freeze
         def self.from_value(value)
           value
         end
@@ -346,24 +350,25 @@ module OctridevGithub
         day:,
         request_options: nil
       )
+
         Validation.validate_date('day', day)
 
         SdkClient.request(
           'GET',
           [
-            '/enterprises/',
+            "/enterprises/",
             SdkClient.encode_path_segment(enterprise),
-            '/copilot/metrics/reports/enterprise-1-day'
+            "/copilot/metrics/reports/enterprise-1-day"
           ].join,
           config: config,
           query: {
-            'day' => QueryValue.new(day, style: 'form', explode: true)
+            'day' => QueryValue.new(day, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::CopilotUsageMetrics1DayReport,
           decoder: :json,
           operation_id: 'copilot_copilot_enterprise_one_day_usage_metrics',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -375,19 +380,20 @@ module OctridevGithub
         enterprise:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/enterprises/',
+            "/enterprises/",
             SdkClient.encode_path_segment(enterprise),
-            '/copilot/metrics/reports/enterprise-28-day/latest'
+            "/copilot/metrics/reports/enterprise-28-day/latest"
           ].join,
           config: config,
           return_type: ::OctridevGithub::CopilotUsageMetrics28DayReport,
           decoder: :json,
           operation_id: 'copilot_copilot_enterprise_usage_metrics',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -401,24 +407,25 @@ module OctridevGithub
         day:,
         request_options: nil
       )
+
         Validation.validate_date('day', day)
 
         SdkClient.request(
           'GET',
           [
-            '/enterprises/',
+            "/enterprises/",
             SdkClient.encode_path_segment(enterprise),
-            '/copilot/metrics/reports/repos-1-day'
+            "/copilot/metrics/reports/repos-1-day"
           ].join,
           config: config,
           query: {
-            'day' => QueryValue.new(day, style: 'form', explode: true)
+            'day' => QueryValue.new(day, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::CopilotUsageMetrics1DayReport,
           decoder: :json,
           operation_id: 'copilot_copilot_enterprise_repos_one_day_report',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -432,24 +439,25 @@ module OctridevGithub
         day:,
         request_options: nil
       )
+
         Validation.validate_date('day', day)
 
         SdkClient.request(
           'GET',
           [
-            '/enterprises/',
+            "/enterprises/",
             SdkClient.encode_path_segment(enterprise),
-            '/copilot/metrics/reports/user-teams-1-day'
+            "/copilot/metrics/reports/user-teams-1-day"
           ].join,
           config: config,
           query: {
-            'day' => QueryValue.new(day, style: 'form', explode: true)
+            'day' => QueryValue.new(day, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::CopilotUsageMetrics1DayReport,
           decoder: :json,
           operation_id: 'copilot_copilot_enterprise_user_teams_one_day_report',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -463,24 +471,25 @@ module OctridevGithub
         day:,
         request_options: nil
       )
+
         Validation.validate_date('day', day)
 
         SdkClient.request(
           'GET',
           [
-            '/enterprises/',
+            "/enterprises/",
             SdkClient.encode_path_segment(enterprise),
-            '/copilot/metrics/reports/users-1-day'
+            "/copilot/metrics/reports/users-1-day"
           ].join,
           config: config,
           query: {
-            'day' => QueryValue.new(day, style: 'form', explode: true)
+            'day' => QueryValue.new(day, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::CopilotUsageMetrics1DayReport,
           decoder: :json,
           operation_id: 'copilot_copilot_users_one_day_usage_metrics',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -492,19 +501,20 @@ module OctridevGithub
         enterprise:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/enterprises/',
+            "/enterprises/",
             SdkClient.encode_path_segment(enterprise),
-            '/copilot/metrics/reports/users-28-day/latest'
+            "/copilot/metrics/reports/users-28-day/latest"
           ].join,
           config: config,
           return_type: ::OctridevGithub::CopilotUsageMetrics28DayReport,
           decoder: :json,
           operation_id: 'copilot_copilot_users_usage_metrics',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -521,21 +531,22 @@ module OctridevGithub
         policy_state:,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/enterprises/',
+            "/enterprises/",
             SdkClient.encode_path_segment(enterprise),
-            '/copilot/policies/coding_agent'
+            "/copilot/policies/coding_agent"
           ].join,
           config: config,
           body: {
-            'policy_state' => policy_state
+            'policy_state' => policy_state,
           },
           decoder: :empty,
           operation_id: 'copilot_set_enterprise_coding_agent_policy',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError }
+          errors: { '400' => ::OctridevGithub::BasicError },
         ).data
       end
     end

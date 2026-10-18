@@ -5,650 +5,659 @@
 
 # gists domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalBaseGistMetadata
-    FIELDS = {
-      url: 'url',
-      forks_url: 'forks_url',
-      commits_url: 'commits_url',
-      id: 'id',
-      node_id: 'node_id',
-      git_pull_url: 'git_pull_url',
-      git_push_url: 'git_push_url',
-      html_url: 'html_url',
-      files: 'files',
-      public: 'public',
-      created_at: 'created_at',
-      updated_at: 'updated_at',
-      description: 'description',
-      comments: 'comments',
-      comments_enabled: 'comments_enabled',
-      user: 'user',
-      comments_url: 'comments_url',
-      owner: 'owner',
-      truncated: 'truncated',
-      forks: 'forks',
-      history: 'history'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      url
-      forks_url
-      commits_url
-      id
-      node_id
-      git_pull_url
-      git_push_url
-      html_url
-      files
-      public
-      created_at
-      updated_at
-      description
-      comments
-      user
-      comments_url
-    ].freeze
-    DECODERS = {
-      user: lambda do |value|
-        ::OctridevGithub::NullableSimpleUser.from_hash(value)
-      end,
-      owner: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      description
-      user
-    ].freeze
+# Internal model hydration metadata.
+class SdkInternalBaseGistMetadata
+  FIELDS = {
+    url: "url",
+    forks_url: "forks_url",
+    commits_url: "commits_url",
+    id: "id",
+    node_id: "node_id",
+    git_pull_url: "git_pull_url",
+    git_push_url: "git_push_url",
+    html_url: "html_url",
+    files: "files",
+    public: "public",
+    created_at: "created_at",
+    updated_at: "updated_at",
+    description: "description",
+    comments: "comments",
+    comments_enabled: "comments_enabled",
+    user: "user",
+    comments_url: "comments_url",
+    owner: "owner",
+    truncated: "truncated",
+    forks: "forks",
+    history: "history",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    url
+    forks_url
+    commits_url
+    id
+    node_id
+    git_pull_url
+    git_push_url
+    html_url
+    files
+    public
+    created_at
+    updated_at
+    description
+    comments
+    user
+    comments_url
+  ].freeze
+  DECODERS = {
+    user: lambda do |value|
+      ::OctridevGithub::NullableSimpleUser.from_hash(value)
+    end,
+    owner: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    description
+    user
+  ].freeze
+end
+
+# API model for BaseGist.
+# Base Gist
+class BaseGist
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalBaseGistMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalBaseGistMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalBaseGistMetadata::DECODERS
+
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Required `uri`-formatted value serialized in the `forks_url` wire field.
+  attr_reader :forks_url
+  # @return [String] Required `uri`-formatted value serialized in the `commits_url` wire field.
+  attr_reader :commits_url
+  # @return [String] Required `string` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Required `uri`-formatted value serialized in the `git_pull_url` wire field.
+  attr_reader :git_pull_url
+  # @return [String] Required `uri`-formatted value serialized in the `git_push_url` wire field.
+  attr_reader :git_push_url
+  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [Hash] Required object value serialized in the `files` wire field.
+  attr_reader :files
+  # @return [Boolean] Required `boolean` value serialized in the `public` wire field.
+  attr_reader :public
+  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+  attr_reader :updated_at
+  # @return [String] Required `string` value serialized in the `description` wire field.
+  attr_reader :description
+  # @return [Integer] Required `integer` value serialized in the `comments` wire field.
+  attr_reader :comments
+  # @return [Boolean] Optional `boolean` value serialized in the `comments_enabled` wire field.
+  attr_reader :comments_enabled
+  # @return [NullableSimpleUser] A GitHub user.
+  attr_reader :user
+  # @return [String] Required `uri`-formatted value serialized in the `comments_url` wire field.
+  attr_reader :comments_url
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :owner
+  # @return [Boolean] Optional `boolean` value serialized in the `truncated` wire field.
+  attr_reader :truncated
+  # @return [Array_of_Object] Optional array value serialized in the `forks` wire field.
+  attr_reader :forks
+  # @return [Array_of_Object] Optional array value serialized in the `history` wire field.
+  attr_reader :history
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for BaseGist.
-  # Base Gist
-  class BaseGist
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalBaseGistMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalBaseGistMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalBaseGistMetadata::DECODERS
-
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Required `uri`-formatted value serialized in the `forks_url` wire field.
-    attr_reader :forks_url
-    # @return [String] Required `uri`-formatted value serialized in the `commits_url` wire field.
-    attr_reader :commits_url
-    # @return [String] Required `string` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Required `uri`-formatted value serialized in the `git_pull_url` wire field.
-    attr_reader :git_pull_url
-    # @return [String] Required `uri`-formatted value serialized in the `git_push_url` wire field.
-    attr_reader :git_push_url
-    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [Hash] Required object value serialized in the `files` wire field.
-    attr_reader :files
-    # @return [Boolean] Required `boolean` value serialized in the `public` wire field.
-    attr_reader :public
-    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-    attr_reader :updated_at
-    # @return [String] Required `string` value serialized in the `description` wire field.
-    attr_reader :description
-    # @return [Integer] Required `integer` value serialized in the `comments` wire field.
-    attr_reader :comments
-    # @return [Boolean] Optional `boolean` value serialized in the `comments_enabled` wire field.
-    attr_reader :comments_enabled
-    # @return [NullableSimpleUser] A GitHub user.
-    attr_reader :user
-    # @return [String] Required `uri`-formatted value serialized in the `comments_url` wire field.
-    attr_reader :comments_url
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :owner
-    # @return [Boolean] Optional `boolean` value serialized in the `truncated` wire field.
-    attr_reader :truncated
-    # @return [Array_of_Object] Optional array value serialized in the `forks` wire field.
-    attr_reader :forks
-    # @return [Array_of_Object] Optional array value serialized in the `history` wire field.
-    attr_reader :history
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalBaseGistMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalBaseGistMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalForbiddenGistBlockMetadata
-    FIELDS = {
-      reason: 'reason',
-      created_at: 'created_at',
-      html_url: 'html_url'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalForbiddenGistBlockMetadata
+  FIELDS = {
+    reason: "reason",
+    created_at: "created_at",
+    html_url: "html_url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for ForbiddenGistBlock.
+# Optional object value serialized in the `block` wire field.
+class ForbiddenGistBlock
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalForbiddenGistBlockMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalForbiddenGistBlockMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalForbiddenGistBlockMetadata::DECODERS
+
+  # @return [String] Optional `string` value serialized in the `reason` wire field.
+  attr_reader :reason
+  # @return [String] Optional `string` value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [String] Optional `string` value serialized in the `html_url` wire field.
+  attr_reader :html_url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ForbiddenGistBlock.
-  # Optional object value serialized in the `block` wire field.
-  class ForbiddenGistBlock
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalForbiddenGistBlockMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalForbiddenGistBlockMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalForbiddenGistBlockMetadata::DECODERS
-
-    # @return [String] Optional `string` value serialized in the `reason` wire field.
-    attr_reader :reason
-    # @return [String] Optional `string` value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [String] Optional `string` value serialized in the `html_url` wire field.
-    attr_reader :html_url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalForbiddenGistMetadata
-    FIELDS = {
-      block: 'block',
-      message: 'message',
-      documentation_url: 'documentation_url'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      block: lambda do |value|
-        ::OctridevGithub::ForbiddenGistBlock.from_hash(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalForbiddenGistMetadata
+  FIELDS = {
+    block: "block",
+    message: "message",
+    documentation_url: "documentation_url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    block: lambda do |value|
+      ::OctridevGithub::ForbiddenGistBlock.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for ForbiddenGist.
+# Typed representation of the `ForbiddenGist` API schema.
+class ForbiddenGist
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalForbiddenGistMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalForbiddenGistMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalForbiddenGistMetadata::DECODERS
+
+  # @return [ForbiddenGistBlock] Optional object value serialized in the `block` wire field.
+  attr_reader :block
+  # @return [String] Optional `string` value serialized in the `message` wire field.
+  attr_reader :message
+  # @return [String] Optional `string` value serialized in the `documentation_url` wire field.
+  attr_reader :documentation_url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ForbiddenGist.
-  # Typed representation of the `ForbiddenGist` API schema.
-  class ForbiddenGist
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalForbiddenGistMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalForbiddenGistMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalForbiddenGistMetadata::DECODERS
-
-    # @return [ForbiddenGistBlock] Optional object value serialized in the `block` wire field.
-    attr_reader :block
-    # @return [String] Optional `string` value serialized in the `message` wire field.
-    attr_reader :message
-    # @return [String] Optional `string` value serialized in the `documentation_url` wire field.
-    attr_reader :documentation_url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalGistCommentMetadata
-    FIELDS = {
-      id: 'id',
-      node_id: 'node_id',
-      url: 'url',
-      body: 'body',
-      user: 'user',
-      created_at: 'created_at',
-      updated_at: 'updated_at',
-      author_association: 'author_association'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      node_id
-      url
-      body
-      user
-      created_at
-      updated_at
-      author_association
-    ].freeze
-    DECODERS = {
-      user: lambda do |value|
-        ::OctridevGithub::NullableSimpleUser.from_hash(value)
-      end,
-      author_association: lambda do |value|
-        ::OctridevGithub::AuthorAssociation.from_value(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      user
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalGistCommentMetadata
+  FIELDS = {
+    id: "id",
+    node_id: "node_id",
+    url: "url",
+    body: "body",
+    user: "user",
+    created_at: "created_at",
+    updated_at: "updated_at",
+    author_association: "author_association",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    node_id
+    url
+    body
+    user
+    created_at
+    updated_at
+    author_association
+  ].freeze
+  DECODERS = {
+    user: lambda do |value|
+      ::OctridevGithub::NullableSimpleUser.from_hash(value)
+    end,
+    author_association: lambda do |value|
+      ::OctridevGithub::AuthorAssociation.from_value(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    user
+  ].freeze
+end
+
+# API model for GistComment.
+# A comment made to a gist.
+class GistComment
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalGistCommentMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalGistCommentMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalGistCommentMetadata::DECODERS
+
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] The comment text.
+  attr_reader :body
+  # @return [NullableSimpleUser] A GitHub user.
+  attr_reader :user
+  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+  attr_reader :updated_at
+  # @return [AuthorAssociation] How the author is associated with the repository.
+  attr_reader :author_association
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for GistComment.
-  # A comment made to a gist.
-  class GistComment
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalGistCommentMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalGistCommentMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalGistCommentMetadata::DECODERS
-
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] The comment text.
-    attr_reader :body
-    # @return [NullableSimpleUser] A GitHub user.
-    attr_reader :user
-    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-    attr_reader :updated_at
-    # @return [AuthorAssociation] How the author is associated with the repository.
-    attr_reader :author_association
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalGistCommentMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalGistCommentMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalGistCommitChangeStatusMetadata
-    FIELDS = {
-      total: 'total',
-      additions: 'additions',
-      deletions: 'deletions'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalGistCommitChangeStatusMetadata
+  FIELDS = {
+    total: "total",
+    additions: "additions",
+    deletions: "deletions",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for GistCommitChangeStatus.
+# Required object value serialized in the `change_status` wire field.
+class GistCommitChangeStatus
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalGistCommitChangeStatusMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalGistCommitChangeStatusMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalGistCommitChangeStatusMetadata::DECODERS
+
+  # @return [Integer] Optional `integer` value serialized in the `total` wire field.
+  attr_reader :total
+  # @return [Integer] Optional `integer` value serialized in the `additions` wire field.
+  attr_reader :additions
+  # @return [Integer] Optional `integer` value serialized in the `deletions` wire field.
+  attr_reader :deletions
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for GistCommitChangeStatus.
-  # Required object value serialized in the `change_status` wire field.
-  class GistCommitChangeStatus
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalGistCommitChangeStatusMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalGistCommitChangeStatusMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalGistCommitChangeStatusMetadata::DECODERS
-
-    # @return [Integer] Optional `integer` value serialized in the `total` wire field.
-    attr_reader :total
-    # @return [Integer] Optional `integer` value serialized in the `additions` wire field.
-    attr_reader :additions
-    # @return [Integer] Optional `integer` value serialized in the `deletions` wire field.
-    attr_reader :deletions
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalGistCommitMetadata
-    FIELDS = {
-      url: 'url',
-      version: 'version',
-      user: 'user',
-      change_status: 'change_status',
-      committed_at: 'committed_at'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      url
-      version
-      user
-      change_status
-      committed_at
-    ].freeze
-    DECODERS = {
-      user: lambda do |value|
-        ::OctridevGithub::NullableSimpleUser.from_hash(value)
-      end,
-      change_status: lambda do |value|
-        ::OctridevGithub::GistCommitChangeStatus.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      user
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalGistCommitMetadata
+  FIELDS = {
+    url: "url",
+    version: "version",
+    user: "user",
+    change_status: "change_status",
+    committed_at: "committed_at",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    url
+    version
+    user
+    change_status
+    committed_at
+  ].freeze
+  DECODERS = {
+    user: lambda do |value|
+      ::OctridevGithub::NullableSimpleUser.from_hash(value)
+    end,
+    change_status: lambda do |value|
+      ::OctridevGithub::GistCommitChangeStatus.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    user
+  ].freeze
+end
+
+# API model for GistCommit.
+# Gist Commit
+class GistCommit
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalGistCommitMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalGistCommitMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalGistCommitMetadata::DECODERS
+
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Required `string` value serialized in the `version` wire field.
+  attr_reader :version
+  # @return [NullableSimpleUser] A GitHub user.
+  attr_reader :user
+  # @return [GistCommitChangeStatus] Required object value serialized in the `change_status` wire field.
+  attr_reader :change_status
+  # @return [String] Required `date-time`-formatted value serialized in the `committed_at` wire field.
+  attr_reader :committed_at
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for GistCommit.
-  # Gist Commit
-  class GistCommit
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalGistCommitMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalGistCommitMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalGistCommitMetadata::DECODERS
-
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Required `string` value serialized in the `version` wire field.
-    attr_reader :version
-    # @return [NullableSimpleUser] A GitHub user.
-    attr_reader :user
-    # @return [GistCommitChangeStatus] Required object value serialized in the `change_status` wire field.
-    attr_reader :change_status
-    # @return [String] Required `date-time`-formatted value serialized in the `committed_at` wire field.
-    attr_reader :committed_at
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalGistCommitMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalGistCommitMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalGistHistoryChangeStatusMetadata
-    FIELDS = {
-      total: 'total',
-      additions: 'additions',
-      deletions: 'deletions'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalGistHistoryChangeStatusMetadata
+  FIELDS = {
+    total: "total",
+    additions: "additions",
+    deletions: "deletions",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for GistHistoryChangeStatus.
+# Optional object value serialized in the `change_status` wire field.
+class GistHistoryChangeStatus
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalGistHistoryChangeStatusMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalGistHistoryChangeStatusMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalGistHistoryChangeStatusMetadata::DECODERS
+
+  # @return [Integer] Optional `integer` value serialized in the `total` wire field.
+  attr_reader :total
+  # @return [Integer] Optional `integer` value serialized in the `additions` wire field.
+  attr_reader :additions
+  # @return [Integer] Optional `integer` value serialized in the `deletions` wire field.
+  attr_reader :deletions
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for GistHistoryChangeStatus.
-  # Optional object value serialized in the `change_status` wire field.
-  class GistHistoryChangeStatus
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalGistHistoryChangeStatusMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalGistHistoryChangeStatusMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalGistHistoryChangeStatusMetadata::DECODERS
-
-    # @return [Integer] Optional `integer` value serialized in the `total` wire field.
-    attr_reader :total
-    # @return [Integer] Optional `integer` value serialized in the `additions` wire field.
-    attr_reader :additions
-    # @return [Integer] Optional `integer` value serialized in the `deletions` wire field.
-    attr_reader :deletions
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalGistHistoryMetadata
-    FIELDS = {
-      user: 'user',
-      version: 'version',
-      committed_at: 'committed_at',
-      change_status: 'change_status',
-      url: 'url'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      user: lambda do |value|
-        ::OctridevGithub::NullableSimpleUser.from_hash(value)
-      end,
-      change_status: lambda do |value|
-        ::OctridevGithub::GistHistoryChangeStatus.from_hash(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalGistHistoryMetadata
+  FIELDS = {
+    user: "user",
+    version: "version",
+    committed_at: "committed_at",
+    change_status: "change_status",
+    url: "url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    user: lambda do |value|
+      ::OctridevGithub::NullableSimpleUser.from_hash(value)
+    end,
+    change_status: lambda do |value|
+      ::OctridevGithub::GistHistoryChangeStatus.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for GistHistory.
+# Gist History
+class GistHistory
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalGistHistoryMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalGistHistoryMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalGistHistoryMetadata::DECODERS
+
+  # @return [NullableSimpleUser] A GitHub user.
+  attr_reader :user
+  # @return [String] Optional `string` value serialized in the `version` wire field.
+  attr_reader :version
+  # @return [String] Optional `date-time`-formatted value serialized in the `committed_at` wire field.
+  attr_reader :committed_at
+  # @return [GistHistoryChangeStatus] Optional object value serialized in the `change_status` wire field.
+  attr_reader :change_status
+  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for GistHistory.
-  # Gist History
-  class GistHistory
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalGistHistoryMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalGistHistoryMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalGistHistoryMetadata::DECODERS
-
-    # @return [NullableSimpleUser] A GitHub user.
-    attr_reader :user
-    # @return [String] Optional `string` value serialized in the `version` wire field.
-    attr_reader :version
-    # @return [String] Optional `date-time`-formatted value serialized in the `committed_at` wire field.
-    attr_reader :committed_at
-    # @return [GistHistoryChangeStatus] Optional object value serialized in the `change_status` wire field.
-    attr_reader :change_status
-    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalGistSimpleForksItemMetadata
-    FIELDS = {
-      id: 'id',
-      url: 'url',
-      user: 'user',
-      created_at: 'created_at',
-      updated_at: 'updated_at'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      user: lambda do |value|
-        ::OctridevGithub::PublicUser.from_hash(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalGistSimpleForksItemMetadata
+  FIELDS = {
+    id: "id",
+    url: "url",
+    user: "user",
+    created_at: "created_at",
+    updated_at: "updated_at",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    user: lambda do |value|
+      ::OctridevGithub::PublicUser.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for GistSimpleForksItem.
+# Required object value serialized in the `forks[]` wire field.
+class GistSimpleForksItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalGistSimpleForksItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalGistSimpleForksItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalGistSimpleForksItemMetadata::DECODERS
+
+  # @return [String] Optional `string` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [PublicUser] Public User
+  attr_reader :user
+  # @return [String] Optional `date-time`-formatted value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [String] Optional `date-time`-formatted value serialized in the `updated_at` wire field.
+  attr_reader :updated_at
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for GistSimpleForksItem.
-  # Required object value serialized in the `forks[]` wire field.
-  class GistSimpleForksItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalGistSimpleForksItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalGistSimpleForksItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalGistSimpleForksItemMetadata::DECODERS
-
-    # @return [String] Optional `string` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [PublicUser] Public User
-    attr_reader :user
-    # @return [String] Optional `date-time`-formatted value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [String] Optional `date-time`-formatted value serialized in the `updated_at` wire field.
-    attr_reader :updated_at
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalGistSimpleForkOfMetadata
-    FIELDS = {
-      url: 'url',
-      forks_url: 'forks_url',
-      commits_url: 'commits_url',
-      id: 'id',
-      node_id: 'node_id',
-      git_pull_url: 'git_pull_url',
-      git_push_url: 'git_push_url',
-      html_url: 'html_url',
-      files: 'files',
-      public: 'public',
-      created_at: 'created_at',
-      updated_at: 'updated_at',
-      description: 'description',
-      comments: 'comments',
-      comments_enabled: 'comments_enabled',
-      user: 'user',
-      comments_url: 'comments_url',
-      owner: 'owner',
-      truncated: 'truncated',
-      forks: 'forks',
-      history: 'history'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      url
-      forks_url
-      commits_url
-      id
-      node_id
-      git_pull_url
-      git_push_url
-      html_url
-      files
-      public
-      created_at
-      updated_at
-      description
-      comments
-      user
-      comments_url
-    ].freeze
-    DECODERS = {
-      user: lambda do |value|
-        ::OctridevGithub::NullableSimpleUser.from_hash(value)
-      end,
-      owner: lambda do |value|
-        ::OctridevGithub::NullableSimpleUser.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      description
-      user
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalGistSimpleForkOfMetadata
+  FIELDS = {
+    url: "url",
+    forks_url: "forks_url",
+    commits_url: "commits_url",
+    id: "id",
+    node_id: "node_id",
+    git_pull_url: "git_pull_url",
+    git_push_url: "git_push_url",
+    html_url: "html_url",
+    files: "files",
+    public: "public",
+    created_at: "created_at",
+    updated_at: "updated_at",
+    description: "description",
+    comments: "comments",
+    comments_enabled: "comments_enabled",
+    user: "user",
+    comments_url: "comments_url",
+    owner: "owner",
+    truncated: "truncated",
+    forks: "forks",
+    history: "history",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    url
+    forks_url
+    commits_url
+    id
+    node_id
+    git_pull_url
+    git_push_url
+    html_url
+    files
+    public
+    created_at
+    updated_at
+    description
+    comments
+    user
+    comments_url
+  ].freeze
+  DECODERS = {
+    user: lambda do |value|
+      ::OctridevGithub::NullableSimpleUser.from_hash(value)
+    end,
+    owner: lambda do |value|
+      ::OctridevGithub::NullableSimpleUser.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    description
+    user
+  ].freeze
+end
+
+# API model for GistSimpleForkOf.
+# Gist
+class GistSimpleForkOf
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalGistSimpleForkOfMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalGistSimpleForkOfMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalGistSimpleForkOfMetadata::DECODERS
+
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Required `uri`-formatted value serialized in the `forks_url` wire field.
+  attr_reader :forks_url
+  # @return [String] Required `uri`-formatted value serialized in the `commits_url` wire field.
+  attr_reader :commits_url
+  # @return [String] Required `string` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Required `uri`-formatted value serialized in the `git_pull_url` wire field.
+  attr_reader :git_pull_url
+  # @return [String] Required `uri`-formatted value serialized in the `git_push_url` wire field.
+  attr_reader :git_push_url
+  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [Hash] Required object value serialized in the `files` wire field.
+  attr_reader :files
+  # @return [Boolean] Required `boolean` value serialized in the `public` wire field.
+  attr_reader :public
+  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+  attr_reader :updated_at
+  # @return [String] Required `string` value serialized in the `description` wire field.
+  attr_reader :description
+  # @return [Integer] Required `integer` value serialized in the `comments` wire field.
+  attr_reader :comments
+  # @return [Boolean] Optional `boolean` value serialized in the `comments_enabled` wire field.
+  attr_reader :comments_enabled
+  # @return [NullableSimpleUser] A GitHub user.
+  attr_reader :user
+  # @return [String] Required `uri`-formatted value serialized in the `comments_url` wire field.
+  attr_reader :comments_url
+  # @return [NullableSimpleUser] A GitHub user.
+  attr_reader :owner
+  # @return [Boolean] Optional `boolean` value serialized in the `truncated` wire field.
+  attr_reader :truncated
+  # @return [Array_of_Object] Optional array value serialized in the `forks` wire field.
+  attr_reader :forks
+  # @return [Array_of_Object] Optional array value serialized in the `history` wire field.
+  attr_reader :history
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for GistSimpleForkOf.
-  # Gist
-  class GistSimpleForkOf
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalGistSimpleForkOfMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalGistSimpleForkOfMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalGistSimpleForkOfMetadata::DECODERS
-
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Required `uri`-formatted value serialized in the `forks_url` wire field.
-    attr_reader :forks_url
-    # @return [String] Required `uri`-formatted value serialized in the `commits_url` wire field.
-    attr_reader :commits_url
-    # @return [String] Required `string` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Required `uri`-formatted value serialized in the `git_pull_url` wire field.
-    attr_reader :git_pull_url
-    # @return [String] Required `uri`-formatted value serialized in the `git_push_url` wire field.
-    attr_reader :git_push_url
-    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [Hash] Required object value serialized in the `files` wire field.
-    attr_reader :files
-    # @return [Boolean] Required `boolean` value serialized in the `public` wire field.
-    attr_reader :public
-    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-    attr_reader :updated_at
-    # @return [String] Required `string` value serialized in the `description` wire field.
-    attr_reader :description
-    # @return [Integer] Required `integer` value serialized in the `comments` wire field.
-    attr_reader :comments
-    # @return [Boolean] Optional `boolean` value serialized in the `comments_enabled` wire field.
-    attr_reader :comments_enabled
-    # @return [NullableSimpleUser] A GitHub user.
-    attr_reader :user
-    # @return [String] Required `uri`-formatted value serialized in the `comments_url` wire field.
-    attr_reader :comments_url
-    # @return [NullableSimpleUser] A GitHub user.
-    attr_reader :owner
-    # @return [Boolean] Optional `boolean` value serialized in the `truncated` wire field.
-    attr_reader :truncated
-    # @return [Array_of_Object] Optional array value serialized in the `forks` wire field.
-    attr_reader :forks
-    # @return [Array_of_Object] Optional array value serialized in the `history` wire field.
-    attr_reader :history
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalGistSimpleForkOfMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalGistSimpleForkOfMetadata::NULLABLE_FIELDS)
   end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 end

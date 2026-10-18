@@ -5,634 +5,639 @@
 
 # webhooks domain models (part 9)
 module OctridevGithub
-  # API model for WebhooksReviewersItem.
-  # Required object value serialized in the `reviewers[]` wire field.
-  class WebhooksReviewersItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksReviewersItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksReviewersItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksReviewersItemMetadata::DECODERS
+# API model for WebhooksReviewersItem.
+# Required object value serialized in the `reviewers[]` wire field.
+class WebhooksReviewersItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksReviewersItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksReviewersItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksReviewersItemMetadata::DECODERS
 
-    # @return [WebhooksReviewersItemReviewer] Optional object value serialized in the `reviewer` wire field.
-    attr_reader :reviewer
-    # @return [WebhooksReviewersItemType] Optional enumerated value serialized in the `type` wire field.
-    attr_reader :type
+  # @return [WebhooksReviewersItemReviewer] Optional object value serialized in the `reviewer` wire field.
+  attr_reader :reviewer
+  # @return [WebhooksReviewersItemType] Optional enumerated value serialized in the `type` wire field.
+  attr_reader :type
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the WebhooksReviewers SDK value decoder.
-  module WebhooksReviewers
-    def self.from_hash(value)
-      return nil if value.nil?
-
-      value&.map { |item| ::OctridevGithub::WebhooksReviewersItem.from_hash(item) }
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the WebhooksReviewersItemReviewerType SDK namespace.
-  module WebhooksReviewersItemReviewerType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Defines the WebhooksReviewers SDK value decoder.
+module WebhooksReviewers
+  def self.from_hash(value)
+    return nil if value.nil?
+    value&.map { |item| ::OctridevGithub::WebhooksReviewersItem.from_hash(item) }
+  end
+end
+
+# Defines the WebhooksReviewersItemReviewerType SDK namespace.
+module WebhooksReviewersItemReviewerType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksReviewersItemType SDK namespace.
+module WebhooksReviewersItemType
+  USER = 'User'
+  VALUES = ['User'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhooksRuleMetadata
+  FIELDS = {
+    admin_enforced: "admin_enforced",
+    allow_deletions_enforcement_level: "allow_deletions_enforcement_level",
+    allow_force_pushes_enforcement_level: "allow_force_pushes_enforcement_level",
+    authorized_actor_names: "authorized_actor_names",
+    authorized_actors_only: "authorized_actors_only",
+    authorized_dismissal_actors_only: "authorized_dismissal_actors_only",
+    create_protected: "create_protected",
+    created_at: "created_at",
+    dismiss_stale_reviews_on_push: "dismiss_stale_reviews_on_push",
+    id: "id",
+    ignore_approvals_from_contributors: "ignore_approvals_from_contributors",
+    linear_history_requirement_enforcement_level: "linear_history_requirement_enforcement_level",
+    lock_branch_enforcement_level: "lock_branch_enforcement_level",
+    lock_allows_fork_sync: "lock_allows_fork_sync",
+    merge_queue_enforcement_level: "merge_queue_enforcement_level",
+    name: "name",
+    pull_request_reviews_enforcement_level: "pull_request_reviews_enforcement_level",
+    repository_id: "repository_id",
+    require_code_owner_review: "require_code_owner_review",
+    require_last_push_approval: "require_last_push_approval",
+    required_approving_review_count: "required_approving_review_count",
+    required_conversation_resolution_level: "required_conversation_resolution_level",
+    required_deployments_enforcement_level: "required_deployments_enforcement_level",
+    required_status_checks: "required_status_checks",
+    required_status_checks_enforcement_level: "required_status_checks_enforcement_level",
+    signature_requirement_enforcement_level: "signature_requirement_enforcement_level",
+    strict_required_status_checks_policy: "strict_required_status_checks_policy",
+    updated_at: "updated_at",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    admin_enforced
+    allow_deletions_enforcement_level
+    allow_force_pushes_enforcement_level
+    authorized_actor_names
+    authorized_actors_only
+    authorized_dismissal_actors_only
+    created_at
+    dismiss_stale_reviews_on_push
+    id
+    ignore_approvals_from_contributors
+    linear_history_requirement_enforcement_level
+    lock_branch_enforcement_level
+    merge_queue_enforcement_level
+    name
+    pull_request_reviews_enforcement_level
+    repository_id
+    require_code_owner_review
+    required_approving_review_count
+    required_conversation_resolution_level
+    required_deployments_enforcement_level
+    required_status_checks
+    required_status_checks_enforcement_level
+    signature_requirement_enforcement_level
+    strict_required_status_checks_policy
+    updated_at
+  ].freeze
+  DECODERS = {
+    allow_deletions_enforcement_level: lambda do |value|
+      ::OctridevGithub::WebhooksRuleAllowDeletionsEnforcementLevel.from_value(value)
+    end,
+    allow_force_pushes_enforcement_level: lambda do |value|
+      ::OctridevGithub::WebhooksRuleAllowForcePushesEnforcementLevel.from_value(value)
+    end,
+    linear_history_requirement_enforcement_level: lambda do |value|
+      ::OctridevGithub::WebhooksRuleLinearHistoryRequirementEnforcementLevel.from_value(value)
+    end,
+    lock_branch_enforcement_level: lambda do |value|
+      ::OctridevGithub::WebhooksRuleLockBranchEnforcementLevel.from_value(value)
+    end,
+    merge_queue_enforcement_level: lambda do |value|
+      ::OctridevGithub::WebhooksRuleMergeQueueEnforcementLevel.from_value(value)
+    end,
+    pull_request_reviews_enforcement_level: lambda do |value|
+      ::OctridevGithub::WebhooksRulePullRequestReviewsEnforcementLevel.from_value(value)
+    end,
+    required_conversation_resolution_level: lambda do |value|
+      ::OctridevGithub::WebhooksRuleRequiredConversationResolutionLevel.from_value(value)
+    end,
+    required_deployments_enforcement_level: lambda do |value|
+      ::OctridevGithub::WebhooksRuleRequiredDeploymentsEnforcementLevel.from_value(value)
+    end,
+    required_status_checks_enforcement_level: lambda do |value|
+      ::OctridevGithub::WebhooksRuleRequiredStatusChecksEnforcementLevel.from_value(value)
+    end,
+    signature_requirement_enforcement_level: lambda do |value|
+      ::OctridevGithub::WebhooksRuleSignatureRequirementEnforcementLevel.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhooksRule.
+# The branch protection rule. Includes a `name` and all the branch protection settings applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
+class WebhooksRule
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksRuleMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksRuleMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksRuleMetadata::DECODERS
+
+  # @return [Boolean] Required `boolean` value serialized in the `admin_enforced` wire field.
+  attr_reader :admin_enforced
+  # @return [WebhooksRuleAllowDeletionsEnforcementLevel] Required enumerated value serialized in the `allow_deletions_enforcement_level` wire field.
+  attr_reader :allow_deletions_enforcement_level
+  # @return [WebhooksRuleAllowForcePushesEnforcementLevel] Required enumerated value serialized in the `allow_force_pushes_enforcement_level` wire field.
+  attr_reader :allow_force_pushes_enforcement_level
+  # @return [Array_of_String] Required array value serialized in the `authorized_actor_names` wire field.
+  attr_reader :authorized_actor_names
+  # @return [Boolean] Required `boolean` value serialized in the `authorized_actors_only` wire field.
+  attr_reader :authorized_actors_only
+  # @return [Boolean] Required `boolean` value serialized in the `authorized_dismissal_actors_only` wire field.
+  attr_reader :authorized_dismissal_actors_only
+  # @return [Boolean] Optional `boolean` value serialized in the `create_protected` wire field.
+  attr_reader :create_protected
+  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [Boolean] Required `boolean` value serialized in the `dismiss_stale_reviews_on_push` wire field.
+  attr_reader :dismiss_stale_reviews_on_push
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [Boolean] Required `boolean` value serialized in the `ignore_approvals_from_contributors` wire field.
+  attr_reader :ignore_approvals_from_contributors
+  # @return [WebhooksRuleLinearHistoryRequirementEnforcementLevel] Required enumerated value serialized in the `linear_history_requirement_enforcement_level` wire field.
+  attr_reader :linear_history_requirement_enforcement_level
+  # @return [WebhooksRuleLockBranchEnforcementLevel] The enforcement level of the branch lock setting. `off` means the branch is not locked, `non_admins` means the branch is read-only for non_admins, and `everyone` means the branch is read-only for everyone.
+  attr_reader :lock_branch_enforcement_level
+  # @return [Boolean] Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow users to pull changes from upstream when the branch is locked. This setting is only applicable for forks.
+  attr_reader :lock_allows_fork_sync
+  # @return [WebhooksRuleMergeQueueEnforcementLevel] Required enumerated value serialized in the `merge_queue_enforcement_level` wire field.
+  attr_reader :merge_queue_enforcement_level
+  # @return [String] Required `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [WebhooksRulePullRequestReviewsEnforcementLevel] Required enumerated value serialized in the `pull_request_reviews_enforcement_level` wire field.
+  attr_reader :pull_request_reviews_enforcement_level
+  # @return [Integer] Required `integer` value serialized in the `repository_id` wire field.
+  attr_reader :repository_id
+  # @return [Boolean] Required `boolean` value serialized in the `require_code_owner_review` wire field.
+  attr_reader :require_code_owner_review
+  # @return [Boolean] Whether the most recent push must be approved by someone other than the person who pushed it
+  attr_reader :require_last_push_approval
+  # @return [Integer] Required `integer` value serialized in the `required_approving_review_count` wire field.
+  attr_reader :required_approving_review_count
+  # @return [WebhooksRuleRequiredConversationResolutionLevel] Required enumerated value serialized in the `required_conversation_resolution_level` wire field.
+  attr_reader :required_conversation_resolution_level
+  # @return [WebhooksRuleRequiredDeploymentsEnforcementLevel] Required enumerated value serialized in the `required_deployments_enforcement_level` wire field.
+  attr_reader :required_deployments_enforcement_level
+  # @return [Array_of_String] Required array value serialized in the `required_status_checks` wire field.
+  attr_reader :required_status_checks
+  # @return [WebhooksRuleRequiredStatusChecksEnforcementLevel] Required enumerated value serialized in the `required_status_checks_enforcement_level` wire field.
+  attr_reader :required_status_checks_enforcement_level
+  # @return [WebhooksRuleSignatureRequirementEnforcementLevel] Required enumerated value serialized in the `signature_requirement_enforcement_level` wire field.
+  attr_reader :signature_requirement_enforcement_level
+  # @return [Boolean] Required `boolean` value serialized in the `strict_required_status_checks_policy` wire field.
+  attr_reader :strict_required_status_checks_policy
+  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+  attr_reader :updated_at
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the WebhooksReviewersItemType SDK namespace.
-  module WebhooksReviewersItemType
-    USER = 'User'
-    VALUES = ['User'].freeze
-    def self.from_value(value)
-      value
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksRuleMetadata
-    FIELDS = {
-      admin_enforced: 'admin_enforced',
-      allow_deletions_enforcement_level: 'allow_deletions_enforcement_level',
-      allow_force_pushes_enforcement_level: 'allow_force_pushes_enforcement_level',
-      authorized_actor_names: 'authorized_actor_names',
-      authorized_actors_only: 'authorized_actors_only',
-      authorized_dismissal_actors_only: 'authorized_dismissal_actors_only',
-      create_protected: 'create_protected',
-      created_at: 'created_at',
-      dismiss_stale_reviews_on_push: 'dismiss_stale_reviews_on_push',
-      id: 'id',
-      ignore_approvals_from_contributors: 'ignore_approvals_from_contributors',
-      linear_history_requirement_enforcement_level: 'linear_history_requirement_enforcement_level',
-      lock_branch_enforcement_level: 'lock_branch_enforcement_level',
-      lock_allows_fork_sync: 'lock_allows_fork_sync',
-      merge_queue_enforcement_level: 'merge_queue_enforcement_level',
-      name: 'name',
-      pull_request_reviews_enforcement_level: 'pull_request_reviews_enforcement_level',
-      repository_id: 'repository_id',
-      require_code_owner_review: 'require_code_owner_review',
-      require_last_push_approval: 'require_last_push_approval',
-      required_approving_review_count: 'required_approving_review_count',
-      required_conversation_resolution_level: 'required_conversation_resolution_level',
-      required_deployments_enforcement_level: 'required_deployments_enforcement_level',
-      required_status_checks: 'required_status_checks',
-      required_status_checks_enforcement_level: 'required_status_checks_enforcement_level',
-      signature_requirement_enforcement_level: 'signature_requirement_enforcement_level',
-      strict_required_status_checks_policy: 'strict_required_status_checks_policy',
-      updated_at: 'updated_at'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      admin_enforced
-      allow_deletions_enforcement_level
-      allow_force_pushes_enforcement_level
-      authorized_actor_names
-      authorized_actors_only
-      authorized_dismissal_actors_only
-      created_at
-      dismiss_stale_reviews_on_push
-      id
-      ignore_approvals_from_contributors
-      linear_history_requirement_enforcement_level
-      lock_branch_enforcement_level
-      merge_queue_enforcement_level
-      name
-      pull_request_reviews_enforcement_level
-      repository_id
-      require_code_owner_review
-      required_approving_review_count
-      required_conversation_resolution_level
-      required_deployments_enforcement_level
-      required_status_checks
-      required_status_checks_enforcement_level
-      signature_requirement_enforcement_level
-      strict_required_status_checks_policy
-      updated_at
-    ].freeze
-    DECODERS = {
-      allow_deletions_enforcement_level: lambda do |value|
-        ::OctridevGithub::WebhooksRuleAllowDeletionsEnforcementLevel.from_value(value)
-      end,
-      allow_force_pushes_enforcement_level: lambda do |value|
-        ::OctridevGithub::WebhooksRuleAllowForcePushesEnforcementLevel.from_value(value)
-      end,
-      linear_history_requirement_enforcement_level: lambda do |value|
-        ::OctridevGithub::WebhooksRuleLinearHistoryRequirementEnforcementLevel.from_value(value)
-      end,
-      lock_branch_enforcement_level: lambda do |value|
-        ::OctridevGithub::WebhooksRuleLockBranchEnforcementLevel.from_value(value)
-      end,
-      merge_queue_enforcement_level: lambda do |value|
-        ::OctridevGithub::WebhooksRuleMergeQueueEnforcementLevel.from_value(value)
-      end,
-      pull_request_reviews_enforcement_level: lambda do |value|
-        ::OctridevGithub::WebhooksRulePullRequestReviewsEnforcementLevel.from_value(value)
-      end,
-      required_conversation_resolution_level: lambda do |value|
-        ::OctridevGithub::WebhooksRuleRequiredConversationResolutionLevel.from_value(value)
-      end,
-      required_deployments_enforcement_level: lambda do |value|
-        ::OctridevGithub::WebhooksRuleRequiredDeploymentsEnforcementLevel.from_value(value)
-      end,
-      required_status_checks_enforcement_level: lambda do |value|
-        ::OctridevGithub::WebhooksRuleRequiredStatusChecksEnforcementLevel.from_value(value)
-      end,
-      signature_requirement_enforcement_level: lambda do |value|
-        ::OctridevGithub::WebhooksRuleSignatureRequirementEnforcementLevel.from_value(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Defines the WebhooksRuleAllowDeletionsEnforcementLevel SDK namespace.
+module WebhooksRuleAllowDeletionsEnforcementLevel
+  OFF = 'off'
+  NON_ADMINS = 'non_admins'
+  EVERYONE = 'everyone'
+  VALUES = ['off', 'non_admins', 'everyone'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksRuleAllowForcePushesEnforcementLevel SDK namespace.
+module WebhooksRuleAllowForcePushesEnforcementLevel
+  OFF = 'off'
+  NON_ADMINS = 'non_admins'
+  EVERYONE = 'everyone'
+  VALUES = ['off', 'non_admins', 'everyone'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksRuleLinearHistoryRequirementEnforcementLevel SDK namespace.
+module WebhooksRuleLinearHistoryRequirementEnforcementLevel
+  OFF = 'off'
+  NON_ADMINS = 'non_admins'
+  EVERYONE = 'everyone'
+  VALUES = ['off', 'non_admins', 'everyone'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksRuleLockBranchEnforcementLevel SDK namespace.
+module WebhooksRuleLockBranchEnforcementLevel
+  OFF = 'off'
+  NON_ADMINS = 'non_admins'
+  EVERYONE = 'everyone'
+  VALUES = ['off', 'non_admins', 'everyone'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksRuleMergeQueueEnforcementLevel SDK namespace.
+module WebhooksRuleMergeQueueEnforcementLevel
+  OFF = 'off'
+  NON_ADMINS = 'non_admins'
+  EVERYONE = 'everyone'
+  VALUES = ['off', 'non_admins', 'everyone'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksRulePullRequestReviewsEnforcementLevel SDK namespace.
+module WebhooksRulePullRequestReviewsEnforcementLevel
+  OFF = 'off'
+  NON_ADMINS = 'non_admins'
+  EVERYONE = 'everyone'
+  VALUES = ['off', 'non_admins', 'everyone'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksRuleRequiredConversationResolutionLevel SDK namespace.
+module WebhooksRuleRequiredConversationResolutionLevel
+  OFF = 'off'
+  NON_ADMINS = 'non_admins'
+  EVERYONE = 'everyone'
+  VALUES = ['off', 'non_admins', 'everyone'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksRuleRequiredDeploymentsEnforcementLevel SDK namespace.
+module WebhooksRuleRequiredDeploymentsEnforcementLevel
+  OFF = 'off'
+  NON_ADMINS = 'non_admins'
+  EVERYONE = 'everyone'
+  VALUES = ['off', 'non_admins', 'everyone'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksRuleRequiredStatusChecksEnforcementLevel SDK namespace.
+module WebhooksRuleRequiredStatusChecksEnforcementLevel
+  OFF = 'off'
+  NON_ADMINS = 'non_admins'
+  EVERYONE = 'everyone'
+  VALUES = ['off', 'non_admins', 'everyone'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksRuleSignatureRequirementEnforcementLevel SDK namespace.
+module WebhooksRuleSignatureRequirementEnforcementLevel
+  OFF = 'off'
+  NON_ADMINS = 'non_admins'
+  EVERYONE = 'everyone'
+  VALUES = ['off', 'non_admins', 'everyone'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhooksSecurityAdvisoryCvssMetadata
+  FIELDS = {
+    score: "score",
+    vector_string: "vector_string",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    score
+    vector_string
+  ].freeze
+  DECODERS = {
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    vector_string
+  ].freeze
+end
+
+# API model for WebhooksSecurityAdvisoryCvss.
+# Required object value serialized in the `cvss` wire field.
+class WebhooksSecurityAdvisoryCvss
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksSecurityAdvisoryCvssMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksSecurityAdvisoryCvssMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksSecurityAdvisoryCvssMetadata::DECODERS
+
+  # @return [Float] Required `number` value serialized in the `score` wire field.
+  attr_reader :score
+  # @return [String] Required `string` value serialized in the `vector_string` wire field.
+  attr_reader :vector_string
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhooksRule.
-  # The branch protection rule. Includes a `name` and all the branch protection settings applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
-  class WebhooksRule
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksRuleMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksRuleMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksRuleMetadata::DECODERS
-
-    # @return [Boolean] Required `boolean` value serialized in the `admin_enforced` wire field.
-    attr_reader :admin_enforced
-    # @return [WebhooksRuleAllowDeletionsEnforcementLevel] Required enumerated value serialized in the `allow_deletions_enforcement_level` wire field.
-    attr_reader :allow_deletions_enforcement_level
-    # @return [WebhooksRuleAllowForcePushesEnforcementLevel] Required enumerated value serialized in the `allow_force_pushes_enforcement_level` wire field.
-    attr_reader :allow_force_pushes_enforcement_level
-    # @return [Array_of_String] Required array value serialized in the `authorized_actor_names` wire field.
-    attr_reader :authorized_actor_names
-    # @return [Boolean] Required `boolean` value serialized in the `authorized_actors_only` wire field.
-    attr_reader :authorized_actors_only
-    # @return [Boolean] Required `boolean` value serialized in the `authorized_dismissal_actors_only` wire field.
-    attr_reader :authorized_dismissal_actors_only
-    # @return [Boolean] Optional `boolean` value serialized in the `create_protected` wire field.
-    attr_reader :create_protected
-    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [Boolean] Required `boolean` value serialized in the `dismiss_stale_reviews_on_push` wire field.
-    attr_reader :dismiss_stale_reviews_on_push
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [Boolean] Required `boolean` value serialized in the `ignore_approvals_from_contributors` wire field.
-    attr_reader :ignore_approvals_from_contributors
-    # @return [WebhooksRuleLinearHistoryRequirementEnforcementLevel] Required enumerated value serialized in the `linear_history_requirement_enforcement_level` wire field.
-    attr_reader :linear_history_requirement_enforcement_level
-    # @return [WebhooksRuleLockBranchEnforcementLevel] The enforcement level of the branch lock setting. `off` means the branch is not locked, `non_admins` means the branch is read-only for non_admins, and `everyone` means the branch is read-only for everyone.
-    attr_reader :lock_branch_enforcement_level
-    # @return [Boolean] Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow users to pull changes from upstream when the branch is locked. This setting is only applicable for forks.
-    attr_reader :lock_allows_fork_sync
-    # @return [WebhooksRuleMergeQueueEnforcementLevel] Required enumerated value serialized in the `merge_queue_enforcement_level` wire field.
-    attr_reader :merge_queue_enforcement_level
-    # @return [String] Required `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [WebhooksRulePullRequestReviewsEnforcementLevel] Required enumerated value serialized in the `pull_request_reviews_enforcement_level` wire field.
-    attr_reader :pull_request_reviews_enforcement_level
-    # @return [Integer] Required `integer` value serialized in the `repository_id` wire field.
-    attr_reader :repository_id
-    # @return [Boolean] Required `boolean` value serialized in the `require_code_owner_review` wire field.
-    attr_reader :require_code_owner_review
-    # @return [Boolean] Whether the most recent push must be approved by someone other than the person who pushed it
-    attr_reader :require_last_push_approval
-    # @return [Integer] Required `integer` value serialized in the `required_approving_review_count` wire field.
-    attr_reader :required_approving_review_count
-    # @return [WebhooksRuleRequiredConversationResolutionLevel] Required enumerated value serialized in the `required_conversation_resolution_level` wire field.
-    attr_reader :required_conversation_resolution_level
-    # @return [WebhooksRuleRequiredDeploymentsEnforcementLevel] Required enumerated value serialized in the `required_deployments_enforcement_level` wire field.
-    attr_reader :required_deployments_enforcement_level
-    # @return [Array_of_String] Required array value serialized in the `required_status_checks` wire field.
-    attr_reader :required_status_checks
-    # @return [WebhooksRuleRequiredStatusChecksEnforcementLevel] Required enumerated value serialized in the `required_status_checks_enforcement_level` wire field.
-    attr_reader :required_status_checks_enforcement_level
-    # @return [WebhooksRuleSignatureRequirementEnforcementLevel] Required enumerated value serialized in the `signature_requirement_enforcement_level` wire field.
-    attr_reader :signature_requirement_enforcement_level
-    # @return [Boolean] Required `boolean` value serialized in the `strict_required_status_checks_policy` wire field.
-    attr_reader :strict_required_status_checks_policy
-    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-    attr_reader :updated_at
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhooksSecurityAdvisoryCvssMetadata::NULLABLE_FIELDS)
   end
 
-  # Defines the WebhooksRuleAllowDeletionsEnforcementLevel SDK namespace.
-  module WebhooksRuleAllowDeletionsEnforcementLevel
-    OFF = 'off'
-    NON_ADMINS = 'non_admins'
-    EVERYONE = 'everyone'
-    VALUES = %w[off non_admins everyone].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhooksSecurityAdvisoryCwesItemMetadata
+  FIELDS = {
+    cwe_id: "cwe_id",
+    name: "name",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    cwe_id
+    name
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhooksSecurityAdvisoryCwesItem.
+# Required object value serialized in the `cwes[]` wire field.
+class WebhooksSecurityAdvisoryCwesItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksSecurityAdvisoryCwesItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksSecurityAdvisoryCwesItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksSecurityAdvisoryCwesItemMetadata::DECODERS
+
+  # @return [String] Required `string` value serialized in the `cwe_id` wire field.
+  attr_reader :cwe_id
+  # @return [String] Required `string` value serialized in the `name` wire field.
+  attr_reader :name
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the WebhooksRuleAllowForcePushesEnforcementLevel SDK namespace.
-  module WebhooksRuleAllowForcePushesEnforcementLevel
-    OFF = 'off'
-    NON_ADMINS = 'non_admins'
-    EVERYONE = 'everyone'
-    VALUES = %w[off non_admins everyone].freeze
-    def self.from_value(value)
-      value
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the WebhooksRuleLinearHistoryRequirementEnforcementLevel SDK namespace.
-  module WebhooksRuleLinearHistoryRequirementEnforcementLevel
-    OFF = 'off'
-    NON_ADMINS = 'non_admins'
-    EVERYONE = 'everyone'
-    VALUES = %w[off non_admins everyone].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhooksSecurityAdvisoryIdentifiersItemMetadata
+  FIELDS = {
+    type: "type",
+    value: "value",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    type
+    value
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhooksSecurityAdvisoryIdentifiersItem.
+# Required object value serialized in the `identifiers[]` wire field.
+class WebhooksSecurityAdvisoryIdentifiersItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksSecurityAdvisoryIdentifiersItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksSecurityAdvisoryIdentifiersItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksSecurityAdvisoryIdentifiersItemMetadata::DECODERS
+
+  # @return [String] Required `string` value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [String] Required `string` value serialized in the `value` wire field.
+  attr_reader :value
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the WebhooksRuleLockBranchEnforcementLevel SDK namespace.
-  module WebhooksRuleLockBranchEnforcementLevel
-    OFF = 'off'
-    NON_ADMINS = 'non_admins'
-    EVERYONE = 'everyone'
-    VALUES = %w[off non_admins everyone].freeze
-    def self.from_value(value)
-      value
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the WebhooksRuleMergeQueueEnforcementLevel SDK namespace.
-  module WebhooksRuleMergeQueueEnforcementLevel
-    OFF = 'off'
-    NON_ADMINS = 'non_admins'
-    EVERYONE = 'everyone'
-    VALUES = %w[off non_admins everyone].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhooksSecurityAdvisoryReferencesItemMetadata
+  FIELDS = {
+    url: "url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    url
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhooksSecurityAdvisoryReferencesItem.
+# Required object value serialized in the `references[]` wire field.
+class WebhooksSecurityAdvisoryReferencesItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksSecurityAdvisoryReferencesItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksSecurityAdvisoryReferencesItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksSecurityAdvisoryReferencesItemMetadata::DECODERS
+
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the WebhooksRulePullRequestReviewsEnforcementLevel SDK namespace.
-  module WebhooksRulePullRequestReviewsEnforcementLevel
-    OFF = 'off'
-    NON_ADMINS = 'non_admins'
-    EVERYONE = 'everyone'
-    VALUES = %w[off non_admins everyone].freeze
-    def self.from_value(value)
-      value
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the WebhooksRuleRequiredConversationResolutionLevel SDK namespace.
-  module WebhooksRuleRequiredConversationResolutionLevel
-    OFF = 'off'
-    NON_ADMINS = 'non_admins'
-    EVERYONE = 'everyone'
-    VALUES = %w[off non_admins everyone].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhooksSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersionMetadata
+  FIELDS = {
+    identifier: "identifier",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    identifier
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhooksSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion.
+# Required object value serialized in the `first_patched_version` wire field.
+class WebhooksSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersionMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersionMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersionMetadata::DECODERS
+
+  # @return [String] Required `string` value serialized in the `identifier` wire field.
+  attr_reader :identifier
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the WebhooksRuleRequiredDeploymentsEnforcementLevel SDK namespace.
-  module WebhooksRuleRequiredDeploymentsEnforcementLevel
-    OFF = 'off'
-    NON_ADMINS = 'non_admins'
-    EVERYONE = 'everyone'
-    VALUES = %w[off non_admins everyone].freeze
-    def self.from_value(value)
-      value
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the WebhooksRuleRequiredStatusChecksEnforcementLevel SDK namespace.
-  module WebhooksRuleRequiredStatusChecksEnforcementLevel
-    OFF = 'off'
-    NON_ADMINS = 'non_admins'
-    EVERYONE = 'everyone'
-    VALUES = %w[off non_admins everyone].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhooksSecurityAdvisoryVulnerabilitiesItemPackageMetadata
+  FIELDS = {
+    ecosystem: "ecosystem",
+    name: "name",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    ecosystem
+    name
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhooksSecurityAdvisoryVulnerabilitiesItemPackage.
+# Required object value serialized in the `package` wire field.
+class WebhooksSecurityAdvisoryVulnerabilitiesItemPackage
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksSecurityAdvisoryVulnerabilitiesItemPackageMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksSecurityAdvisoryVulnerabilitiesItemPackageMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksSecurityAdvisoryVulnerabilitiesItemPackageMetadata::DECODERS
+
+  # @return [String] Required `string` value serialized in the `ecosystem` wire field.
+  attr_reader :ecosystem
+  # @return [String] Required `string` value serialized in the `name` wire field.
+  attr_reader :name
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the WebhooksRuleSignatureRequirementEnforcementLevel SDK namespace.
-  module WebhooksRuleSignatureRequirementEnforcementLevel
-    OFF = 'off'
-    NON_ADMINS = 'non_admins'
-    EVERYONE = 'everyone'
-    VALUES = %w[off non_admins everyone].freeze
-    def self.from_value(value)
-      value
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksSecurityAdvisoryCvssMetadata
-    FIELDS = {
-      score: 'score',
-      vector_string: 'vector_string'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      score
-      vector_string
-    ].freeze
-    DECODERS = {}.freeze
-    NULLABLE_FIELDS = %i[
-      vector_string
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhooksSecurityAdvisoryVulnerabilitiesItemMetadata
+  FIELDS = {
+    first_patched_version: "first_patched_version",
+    package: "package",
+    severity: "severity",
+    vulnerable_version_range: "vulnerable_version_range",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    first_patched_version
+    package
+    severity
+    vulnerable_version_range
+  ].freeze
+  DECODERS = {
+    first_patched_version: lambda do |value|
+      ::OctridevGithub::WebhooksSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion.from_hash(value)
+    end,
+    package: lambda do |value|
+      ::OctridevGithub::WebhooksSecurityAdvisoryVulnerabilitiesItemPackage.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    first_patched_version
+  ].freeze
+end
+
+# API model for WebhooksSecurityAdvisoryVulnerabilitiesItem.
+# Required object value serialized in the `vulnerabilities[]` wire field.
+class WebhooksSecurityAdvisoryVulnerabilitiesItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksSecurityAdvisoryVulnerabilitiesItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksSecurityAdvisoryVulnerabilitiesItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksSecurityAdvisoryVulnerabilitiesItemMetadata::DECODERS
+
+  # @return [WebhooksSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion] Required object value serialized in the `first_patched_version` wire field.
+  attr_reader :first_patched_version
+  # @return [WebhooksSecurityAdvisoryVulnerabilitiesItemPackage] Required object value serialized in the `package` wire field.
+  attr_reader :package
+  # @return [String] Required `string` value serialized in the `severity` wire field.
+  attr_reader :severity
+  # @return [String] Required `string` value serialized in the `vulnerable_version_range` wire field.
+  attr_reader :vulnerable_version_range
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhooksSecurityAdvisoryCvss.
-  # Required object value serialized in the `cvss` wire field.
-  class WebhooksSecurityAdvisoryCvss
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksSecurityAdvisoryCvssMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksSecurityAdvisoryCvssMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksSecurityAdvisoryCvssMetadata::DECODERS
-
-    # @return [Float] Required `number` value serialized in the `score` wire field.
-    attr_reader :score
-    # @return [String] Required `string` value serialized in the `vector_string` wire field.
-    attr_reader :vector_string
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhooksSecurityAdvisoryCvssMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhooksSecurityAdvisoryVulnerabilitiesItemMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksSecurityAdvisoryCwesItemMetadata
-    FIELDS = {
-      cwe_id: 'cwe_id',
-      name: 'name'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      cwe_id
-      name
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
-
-  # API model for WebhooksSecurityAdvisoryCwesItem.
-  # Required object value serialized in the `cwes[]` wire field.
-  class WebhooksSecurityAdvisoryCwesItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksSecurityAdvisoryCwesItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksSecurityAdvisoryCwesItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksSecurityAdvisoryCwesItemMetadata::DECODERS
-
-    # @return [String] Required `string` value serialized in the `cwe_id` wire field.
-    attr_reader :cwe_id
-    # @return [String] Required `string` value serialized in the `name` wire field.
-    attr_reader :name
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
-  end
-
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksSecurityAdvisoryIdentifiersItemMetadata
-    FIELDS = {
-      type: 'type',
-      value: 'value'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      type
-      value
-    ].freeze
-    DECODERS = {}.freeze
-  end
-
-  # API model for WebhooksSecurityAdvisoryIdentifiersItem.
-  # Required object value serialized in the `identifiers[]` wire field.
-  class WebhooksSecurityAdvisoryIdentifiersItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksSecurityAdvisoryIdentifiersItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksSecurityAdvisoryIdentifiersItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksSecurityAdvisoryIdentifiersItemMetadata::DECODERS
-
-    # @return [String] Required `string` value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [String] Required `string` value serialized in the `value` wire field.
-    attr_reader :value
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
-  end
-
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksSecurityAdvisoryReferencesItemMetadata
-    FIELDS = {
-      url: 'url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      url
-    ].freeze
-    DECODERS = {}.freeze
-  end
-
-  # API model for WebhooksSecurityAdvisoryReferencesItem.
-  # Required object value serialized in the `references[]` wire field.
-  class WebhooksSecurityAdvisoryReferencesItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksSecurityAdvisoryReferencesItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksSecurityAdvisoryReferencesItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksSecurityAdvisoryReferencesItemMetadata::DECODERS
-
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
-  end
-
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersionMetadata
-    FIELDS = {
-      identifier: 'identifier'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      identifier
-    ].freeze
-    DECODERS = {}.freeze
-  end
-
-  # API model for WebhooksSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion.
-  # Required object value serialized in the `first_patched_version` wire field.
-  class WebhooksSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersionMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersionMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersionMetadata::DECODERS
-
-    # @return [String] Required `string` value serialized in the `identifier` wire field.
-    attr_reader :identifier
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
-  end
-
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksSecurityAdvisoryVulnerabilitiesItemPackageMetadata
-    FIELDS = {
-      ecosystem: 'ecosystem',
-      name: 'name'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      ecosystem
-      name
-    ].freeze
-    DECODERS = {}.freeze
-  end
-
-  # API model for WebhooksSecurityAdvisoryVulnerabilitiesItemPackage.
-  # Required object value serialized in the `package` wire field.
-  class WebhooksSecurityAdvisoryVulnerabilitiesItemPackage
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksSecurityAdvisoryVulnerabilitiesItemPackageMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksSecurityAdvisoryVulnerabilitiesItemPackageMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksSecurityAdvisoryVulnerabilitiesItemPackageMetadata::DECODERS
-
-    # @return [String] Required `string` value serialized in the `ecosystem` wire field.
-    attr_reader :ecosystem
-    # @return [String] Required `string` value serialized in the `name` wire field.
-    attr_reader :name
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
-  end
-
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksSecurityAdvisoryVulnerabilitiesItemMetadata
-    FIELDS = {
-      first_patched_version: 'first_patched_version',
-      package: 'package',
-      severity: 'severity',
-      vulnerable_version_range: 'vulnerable_version_range'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      first_patched_version
-      package
-      severity
-      vulnerable_version_range
-    ].freeze
-    DECODERS = {
-      first_patched_version: lambda do |value|
-        ::OctridevGithub::WebhooksSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion.from_hash(value)
-      end,
-      package: lambda do |value|
-        ::OctridevGithub::WebhooksSecurityAdvisoryVulnerabilitiesItemPackage.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      first_patched_version
-    ].freeze
-  end
-
-  # API model for WebhooksSecurityAdvisoryVulnerabilitiesItem.
-  # Required object value serialized in the `vulnerabilities[]` wire field.
-  class WebhooksSecurityAdvisoryVulnerabilitiesItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksSecurityAdvisoryVulnerabilitiesItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksSecurityAdvisoryVulnerabilitiesItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksSecurityAdvisoryVulnerabilitiesItemMetadata::DECODERS
-
-    # @return [WebhooksSecurityAdvisoryVulnerabilitiesItemFirstPatchedVersion] Required object value serialized in the `first_patched_version` wire field.
-    attr_reader :first_patched_version
-    # @return [WebhooksSecurityAdvisoryVulnerabilitiesItemPackage] Required object value serialized in the `package` wire field.
-    attr_reader :package
-    # @return [String] Required `string` value serialized in the `severity` wire field.
-    attr_reader :severity
-    # @return [String] Required `string` value serialized in the `vulnerable_version_range` wire field.
-    attr_reader :vulnerable_version_range
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhooksSecurityAdvisoryVulnerabilitiesItemMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
-  end
+end
 end

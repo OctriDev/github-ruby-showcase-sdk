@@ -17,18 +17,19 @@ module OctridevGithub
         migration_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/user/migrations/',
+            "/user/migrations/",
             SdkClient.encode_path_segment(migration_id),
-            '/archive'
+            "/archive"
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'migrations_get_archive_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -40,18 +41,19 @@ module OctridevGithub
         migration_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/user/migrations/',
+            "/user/migrations/",
             SdkClient.encode_path_segment(migration_id),
-            '/archive'
+            "/archive"
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'migrations_delete_archive_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -65,20 +67,21 @@ module OctridevGithub
         repo_name:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/user/migrations/',
+            "/user/migrations/",
             SdkClient.encode_path_segment(migration_id),
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(repo_name),
-            '/lock'
+            "/lock"
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'migrations_unlock_repo_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -96,23 +99,24 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/user/migrations/',
+            "/user/migrations/",
             SdkClient.encode_path_segment(migration_id),
-            '/repositories'
+            "/repositories"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::MinimalRepository],
           decoder: :json,
           operation_id: 'migrations_list_repos_for_authenticated_user',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

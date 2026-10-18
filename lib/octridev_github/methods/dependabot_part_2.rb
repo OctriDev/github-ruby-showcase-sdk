@@ -80,12 +80,13 @@ module OctridevGithub
         per_page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/enterprises/',
+            "/enterprises/",
             SdkClient.encode_path_segment(enterprise),
-            '/dependabot/alerts'
+            "/dependabot/alerts"
           ].join,
           config: config,
           query: {
@@ -103,13 +104,13 @@ module OctridevGithub
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'before' => QueryValue.new(before, style: 'form', explode: true),
             'after' => QueryValue.new(after, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::DependabotAlertWithRepository],
           decoder: :json,
           operation_id: 'dependabot_list_alerts_for_enterprise',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple },
         ).data
       end
 
@@ -125,6 +126,7 @@ module OctridevGithub
         per_page: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(page) { Validation.validate_range('page', page, min: 1) }
 
         Validation.if_given(per_page) { Validation.validate_range('per_page', per_page, min: 1, max: 100) }
@@ -132,20 +134,20 @@ module OctridevGithub
         SdkClient.request(
           'GET',
           [
-            '/enterprises/',
+            "/enterprises/",
             SdkClient.encode_path_segment(enterprise),
-            '/dependabot/repository-access'
+            "/dependabot/repository-access"
           ].join,
           config: config,
           query: {
             'page' => QueryValue.new(page, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::DependabotRepositoryAccessDetails,
           decoder: :json,
           operation_id: 'dependabot_repository_access_for_enterprise',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -163,22 +165,23 @@ module OctridevGithub
         repository_ids_to_remove: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/enterprises/',
+            "/enterprises/",
             SdkClient.encode_path_segment(enterprise),
-            '/dependabot/repository-access'
+            "/dependabot/repository-access"
           ].join,
           config: config,
           body: {
             'repository_ids_to_add' => repository_ids_to_add,
-            'repository_ids_to_remove' => repository_ids_to_remove
+            'repository_ids_to_remove' => repository_ids_to_remove,
           },
           decoder: :empty,
           operation_id: 'dependabot_update_repository_access_for_enterprise',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -194,21 +197,22 @@ module OctridevGithub
         default_level:,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/enterprises/',
+            "/enterprises/",
             SdkClient.encode_path_segment(enterprise),
-            '/dependabot/repository-access/default-level'
+            "/dependabot/repository-access/default-level"
           ].join,
           config: config,
           body: {
-            'default_level' => default_level
+            'default_level' => default_level,
           },
           decoder: :empty,
           operation_id: 'dependabot_set_repository_access_default_level_for_enterprise',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -297,12 +301,13 @@ module OctridevGithub
         per_page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/dependabot/alerts'
+            "/dependabot/alerts"
           ].join,
           config: config,
           query: {
@@ -323,13 +328,13 @@ module OctridevGithub
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'before' => QueryValue.new(before, style: 'form', explode: true),
             'after' => QueryValue.new(after, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::DependabotAlertWithRepository],
           decoder: :json,
           operation_id: 'dependabot_list_alerts_for_org',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple }
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple },
         ).data
       end
 
@@ -345,6 +350,7 @@ module OctridevGithub
         per_page: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(page) { Validation.validate_range('page', page, min: 1) }
 
         Validation.if_given(per_page) { Validation.validate_range('per_page', per_page, min: 1, max: 100) }
@@ -352,20 +358,20 @@ module OctridevGithub
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/dependabot/repository-access'
+            "/dependabot/repository-access"
           ].join,
           config: config,
           query: {
             'page' => QueryValue.new(page, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::DependabotRepositoryAccessDetails,
           decoder: :json,
           operation_id: 'dependabot_repository_access_for_org',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -383,22 +389,23 @@ module OctridevGithub
         repository_ids_to_remove: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/dependabot/repository-access'
+            "/dependabot/repository-access"
           ].join,
           config: config,
           body: {
             'repository_ids_to_add' => repository_ids_to_add,
-            'repository_ids_to_remove' => repository_ids_to_remove
+            'repository_ids_to_remove' => repository_ids_to_remove,
           },
           decoder: :empty,
           operation_id: 'dependabot_update_repository_access_for_org',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -413,21 +420,22 @@ module OctridevGithub
         default_level:,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/dependabot/repository-access/default-level'
+            "/dependabot/repository-access/default-level"
           ].join,
           config: config,
           body: {
-            'default_level' => default_level
+            'default_level' => default_level,
           },
           decoder: :empty,
           operation_id: 'dependabot_set_repository_access_default_level',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -445,22 +453,23 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/dependabot/secrets'
+            "/dependabot/secrets"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::Methods::Dependabot::DependabotListOrgSecretsResponse,
           decoder: :json,
           operation_id: 'dependabot_list_org_secrets',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -472,18 +481,19 @@ module OctridevGithub
         org:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/dependabot/secrets/public-key'
+            "/dependabot/secrets/public-key"
           ].join,
           config: config,
           return_type: ::OctridevGithub::DependabotPublicKey,
           decoder: :json,
           operation_id: 'dependabot_get_org_public_key',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -497,19 +507,20 @@ module OctridevGithub
         secret_name:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/dependabot/secrets/',
+            "/dependabot/secrets/",
             SdkClient.encode_path_segment(secret_name)
           ].join,
           config: config,
           return_type: ::OctridevGithub::OrganizationDependabotSecret,
           decoder: :json,
           operation_id: 'dependabot_get_org_secret',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

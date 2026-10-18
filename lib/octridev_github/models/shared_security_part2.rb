@@ -5,13 +5,13 @@
 
 # shared_security domain models (part 2)
 module OctridevGithub
-  # Defines the SecurityAndAnalysisSecretScanningPushProtectionStatus SDK namespace.
-  module SecurityAndAnalysisSecretScanningPushProtectionStatus
-    ENABLED = 'enabled'
-    DISABLED = 'disabled'
-    VALUES = %w[enabled disabled].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the SecurityAndAnalysisSecretScanningPushProtectionStatus SDK namespace.
+module SecurityAndAnalysisSecretScanningPushProtectionStatus
+  ENABLED = 'enabled'
+  DISABLED = 'disabled'
+  VALUES = ['enabled', 'disabled'].freeze
+  def self.from_value(value)
+    value
   end
+end
 end

@@ -13,7 +13,7 @@ module OctridevGithub
       module AgentAutomationsEditRepoAutomationTriggersDiscussionCommentWriteScope
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -23,7 +23,7 @@ module OctridevGithub
       module AgentAutomationsCreateRepoAutomationTriggersIssueLabeledWriteScope
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -34,7 +34,7 @@ module OctridevGithub
         HOURLY = 'hourly'
         DAILY = 'daily'
         WEEKLY = 'weekly'
-        VALUES = %w[hourly daily weekly].freeze
+        VALUES = ['hourly', 'daily', 'weekly'].freeze
         def self.from_value(value)
           value
         end
@@ -44,7 +44,7 @@ module OctridevGithub
       module AgentAutomationsCreateRepoAutomationResponseTriggersPullRequeX9089246861
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -54,7 +54,7 @@ module OctridevGithub
       module AgentAutomationsEditRepoAutomationTriggersIntervalWriteScope
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -68,8 +68,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = %w[
-          missing missing_field invalid already_exists unprocessable custom
+        VALUES = [
+          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
         ].freeze
         def self.from_value(value)
           value
@@ -80,7 +80,7 @@ module OctridevGithub
       module AgentAutomationsGetAutomationResponseTriggersWorkflowRunWriteScope
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -90,7 +90,7 @@ module OctridevGithub
       module AgentAutomationsCreateRepoAutomationResponseTriggersDiscussioX16bbd638f8
         COMMENT = 'comment'
         REPLY = 'reply'
-        VALUES = %w[comment reply].freeze
+        VALUES = ['comment', 'reply'].freeze
         def self.from_value(value)
           value
         end
@@ -100,7 +100,7 @@ module OctridevGithub
       module AgentAutomationsGetAutomationResponseTriggersPullRequestMergedWriteScope
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -110,7 +110,7 @@ module OctridevGithub
       module AgentAutomationsGetAutomationResponseTriggersDiscussionCommenXb5c1aa59f3
         COMMENT = 'comment'
         REPLY = 'reply'
-        VALUES = %w[comment reply].freeze
+        VALUES = ['comment', 'reply'].freeze
         def self.from_value(value)
           value
         end
@@ -120,7 +120,7 @@ module OctridevGithub
       module AgentAutomationsEditRepoAutomationResponseTriggersPullRequestX2afc979810
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -130,7 +130,7 @@ module OctridevGithub
       module AgentAutomationsListAutomationsResponseItemTriggersPullRequesX5b1d43db58
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -140,7 +140,7 @@ module OctridevGithub
       module AgentAutomationsGetRepoAutomationResponseTriggersDiscussionOpXa592250054
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -150,7 +150,7 @@ module OctridevGithub
       module AgentAutomationsGetAutomationResponseTriggersDiscussionOpenedWriteScope
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -160,7 +160,7 @@ module OctridevGithub
       module AgentAutomationsCreateRepoAutomationTriggersIssueCommentWriteScope
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -170,7 +170,7 @@ module OctridevGithub
       module AgentAutomationsGetRepoAutomationResponseTriggersPullRequestRXbeb0d5c730
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -180,7 +180,7 @@ module OctridevGithub
       module AgentAutomationsCreateRepoAutomationResponseTriggersIssueLabeXaf29d595d5
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -194,8 +194,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = %w[
-          missing missing_field invalid already_exists unprocessable custom
+        VALUES = [
+          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
         ].freeze
         def self.from_value(value)
           value
@@ -206,7 +206,7 @@ module OctridevGithub
       module AgentAutomationsCreateRepoAutomationTriggersPullRequestLabeledWriteScope
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -216,7 +216,7 @@ module OctridevGithub
       module AgentAutomationsCreateRepoAutomationTriggersIntervalWriteScope
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -226,7 +226,7 @@ module OctridevGithub
       module AgentAutomationsGetRepoAutomationResponseTriggersIssueAssignedWriteScope
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -236,7 +236,7 @@ module OctridevGithub
       module AgentAutomationsListAutomationsResponseItemTriggersPullRequesX722f4b8d4b
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -246,7 +246,7 @@ module OctridevGithub
       module AgentAutomationsCreateRepoAutomationResponseTriggersPullRequeX59ccb7cd88
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -256,7 +256,7 @@ module OctridevGithub
       module AgentAutomationsCreateRepoAutomationResponseTriggersSubIssueAX083e29614d
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -266,7 +266,7 @@ module OctridevGithub
       module AgentAutomationsListAutomationsResponseItemTriggersPullRequesXe3ca381461
         TIMELINE_COMMENT = 'timeline_comment'
         REVIEW_COMMENT = 'review_comment'
-        VALUES = %w[timeline_comment review_comment].freeze
+        VALUES = ['timeline_comment', 'review_comment'].freeze
         def self.from_value(value)
           value
         end
@@ -276,7 +276,7 @@ module OctridevGithub
       module AgentAutomationsListAutomationsResponseItemTriggersPullRequesX2ddd62c462
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -286,7 +286,7 @@ module OctridevGithub
       module AgentAutomationsCreateRepoAutomationResponseTriggersDiscussioX31a7e78e24
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -296,7 +296,7 @@ module OctridevGithub
       module AgentAutomationsListRepoAutomationsResponseAutomationsItemTriX830ecc8566
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -306,7 +306,7 @@ module OctridevGithub
       module AgentAutomationsListRepoAutomationsResponseAutomationsItemWriteScope
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -316,7 +316,7 @@ module OctridevGithub
       module AgentAutomationsEditRepoAutomationTriggersPullRequestMergedWriteScope
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -326,7 +326,7 @@ module OctridevGithub
       module AgentAutomationsCreateRepoAutomationTriggersPullRequestMergedWriteScope
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -336,7 +336,7 @@ module OctridevGithub
       module AgentAutomationsListRepoAutomationsResponseAutomationsItemTriX398335623d
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -346,7 +346,7 @@ module OctridevGithub
       module AgentAutomationsListRepoAutomationsResponseAutomationsItemTriXe1817df779
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -360,8 +360,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = %w[
-          missing missing_field invalid already_exists unprocessable custom
+        VALUES = [
+          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
         ].freeze
         def self.from_value(value)
           value
@@ -372,7 +372,7 @@ module OctridevGithub
       module AgentAutomationsListAutomationsResponseItemTriggersSubIssueAdX6bb7c08f91
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -382,7 +382,7 @@ module OctridevGithub
       module AgentAutomationsCreateRepoAutomationTriggersDiscussionCommentX0d6d32243c
         COMMENT = 'comment'
         REPLY = 'reply'
-        VALUES = %w[comment reply].freeze
+        VALUES = ['comment', 'reply'].freeze
         def self.from_value(value)
           value
         end
@@ -392,7 +392,7 @@ module OctridevGithub
       module AgentAutomationsListRepoAutomationsResponseAutomationsItemTriXf6b2075557
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -402,7 +402,7 @@ module OctridevGithub
       module AgentAutomationsGetRepoAutomationResponseTriggersIssueOpenedWriteScope
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -416,8 +416,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = %w[
-          missing missing_field invalid already_exists unprocessable custom
+        VALUES = [
+          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
         ].freeze
         def self.from_value(value)
           value
@@ -428,7 +428,7 @@ module OctridevGithub
       module AgentAutomationsGetRepoAutomationResponseTriggersAutomationCoX4297e226d6
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -438,7 +438,7 @@ module OctridevGithub
       module AgentAutomationsGetRepoAutomationResponseTriggersDiscussionCoX72210de70a
         COMMENT = 'comment'
         REPLY = 'reply'
-        VALUES = %w[comment reply].freeze
+        VALUES = ['comment', 'reply'].freeze
         def self.from_value(value)
           value
         end
@@ -448,7 +448,7 @@ module OctridevGithub
       module AgentAutomationsGetRepoAutomationResponseWriteScope
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -458,7 +458,7 @@ module OctridevGithub
       module AgentAutomationsListRepoAutomationsResponseAutomationsItemTriXc7cf3b3cb9
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -468,7 +468,7 @@ module OctridevGithub
       module AgentAutomationsListRepoAutomationsParameter
         USER = 'user'
         REPOSITORY = 'repository'
-        VALUES = %w[user repository].freeze
+        VALUES = ['user', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -482,8 +482,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = %w[
-          missing missing_field invalid already_exists unprocessable custom
+        VALUES = [
+          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
         ].freeze
         def self.from_value(value)
           value
@@ -495,7 +495,7 @@ module OctridevGithub
         APPROVED = 'approved'
         CHANGES_REQUESTED = 'changes_requested'
         COMMENTED = 'commented'
-        VALUES = %w[approved changes_requested commented].freeze
+        VALUES = ['approved', 'changes_requested', 'commented'].freeze
         def self.from_value(value)
           value
         end
@@ -505,7 +505,7 @@ module OctridevGithub
       module AgentAutomationsEditRepoAutomationResponseTriggersPullRequestXbbc0c6b283
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -515,7 +515,7 @@ module OctridevGithub
       module AgentAutomationsCreateRepoAutomationResponseTriggersIssueCommX98ce1dc1ea
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -525,7 +525,7 @@ module OctridevGithub
       module AgentAutomationsCreateRepoAutomationTriggersDiscussionCommentWriteScope
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -535,7 +535,7 @@ module OctridevGithub
       module AgentAutomationsGetRepoAutomationResponseOwnerType
         USER = 'user'
         REPOSITORY = 'repository'
-        VALUES = %w[user repository].freeze
+        VALUES = ['user', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -545,7 +545,7 @@ module OctridevGithub
       module AgentAutomationsCreateRepoAutomationResponseWriteScope
         TRIGGER = 'trigger'
         REPOSITORY = 'repository'
-        VALUES = %w[trigger repository].freeze
+        VALUES = ['trigger', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -556,7 +556,7 @@ module OctridevGithub
         APPROVED = 'approved'
         CHANGES_REQUESTED = 'changes_requested'
         COMMENTED = 'commented'
-        VALUES = %w[approved changes_requested commented].freeze
+        VALUES = ['approved', 'changes_requested', 'commented'].freeze
         def self.from_value(value)
           value
         end
@@ -576,7 +576,7 @@ module OctridevGithub
         APPROVED = 'approved'
         CHANGES_REQUESTED = 'changes_requested'
         COMMENTED = 'commented'
-        VALUES = %w[approved changes_requested commented].freeze
+        VALUES = ['approved', 'changes_requested', 'commented'].freeze
         def self.from_value(value)
           value
         end

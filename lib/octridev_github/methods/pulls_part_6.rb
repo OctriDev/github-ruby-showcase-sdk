@@ -33,29 +33,30 @@ module OctridevGithub
         body: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/pulls/',
+            "/pulls/",
             SdkClient.encode_path_segment(pull_number),
-            '/reviews/',
+            "/reviews/",
             SdkClient.encode_path_segment(review_id),
-            '/events'
+            "/events"
           ].join,
           config: config,
           body: {
             'event' => event,
-            'body' => body
+            'body' => body,
           },
           return_type: ::OctridevGithub::PullRequestReview,
           decoder: :json,
           operation_id: 'pulls_submit_review',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple },
         ).data
       end
 
@@ -80,26 +81,27 @@ module OctridevGithub
         expected_head_sha: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/pulls/',
+            "/pulls/",
             SdkClient.encode_path_segment(pull_number),
-            '/update-branch'
+            "/update-branch"
           ].join,
           config: config,
           body: {
-            'expected_head_sha' => expected_head_sha
+            'expected_head_sha' => expected_head_sha,
           },
           return_type: ::OctridevGithub::Methods::Pulls::PullsUpdateBranchResponse,
           decoder: :json,
           operation_id: 'pulls_update_branch',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -126,26 +128,27 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/stacks'
+            "/stacks"
           ].join,
           config: config,
           query: {
             'pull_request' => QueryValue.new(pull_request, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::PullRequestStackMinimal],
           decoder: :json,
           operation_id: 'pull_request_stacks_list',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -164,26 +167,27 @@ module OctridevGithub
         pull_requests:,
         request_options: nil
       )
+
         Validation.validate_items('pull_requests', pull_requests, min: 2, max: 100)
 
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/stacks'
+            "/stacks"
           ].join,
           config: config,
           body: {
-            'pull_requests' => pull_requests
+            'pull_requests' => pull_requests,
           },
           return_type: ::OctridevGithub::Methods::Pulls::PullRequestStacksCreateResponse,
           decoder: :json,
           operation_id: 'pull_request_stacks_create',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -202,14 +206,15 @@ module OctridevGithub
         stack_number:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/stacks/',
+            "/stacks/",
             SdkClient.encode_path_segment(stack_number)
           ].join,
           config: config,
@@ -217,7 +222,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'pull_request_stacks_get',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -239,28 +244,29 @@ module OctridevGithub
         pull_requests:,
         request_options: nil
       )
+
         Validation.validate_items('pull_requests', pull_requests, min: 1, max: 100)
 
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/stacks/',
+            "/stacks/",
             SdkClient.encode_path_segment(stack_number),
-            '/add'
+            "/add"
           ].join,
           config: config,
           body: {
-            'pull_requests' => pull_requests
+            'pull_requests' => pull_requests,
           },
           return_type: ::OctridevGithub::Methods::Pulls::PullRequestStacksAddResponse,
           decoder: :json,
           operation_id: 'pull_request_stacks_add',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -279,23 +285,24 @@ module OctridevGithub
         stack_number:,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/stacks/',
+            "/stacks/",
             SdkClient.encode_path_segment(stack_number),
-            '/unstack'
+            "/unstack"
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::Pulls::PullRequestStacksUnstackResponse,
           decoder: :json,
           operation_id: 'pull_request_stacks_unstack',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end

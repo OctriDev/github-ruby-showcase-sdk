@@ -19,9 +19,9 @@ module OctridevGithub
         SKIPPED = 'skipped'
         STALE = 'stale'
         TIMED_OUT = 'timed_out'
-        VALUES = %w[
-          action_required cancelled failure neutral success skipped stale
-          timed_out
+        VALUES = [
+          'action_required', 'cancelled', 'failure', 'neutral', 'success', 'skipped', 'stale',
+          'timed_out'
         ].freeze
         def self.from_value(value)
           value
@@ -32,7 +32,7 @@ module OctridevGithub
       module ChecksCreateVariant1Status
         QUEUED = 'queued'
         IN_PROGRESS = 'in_progress'
-        VALUES = %w[queued in_progress].freeze
+        VALUES = ['queued', 'in_progress'].freeze
         def self.from_value(value)
           return value if VALUES.include?(value)
 
@@ -57,7 +57,7 @@ module OctridevGithub
         WAITING = 'waiting'
         REQUESTED = 'requested'
         PENDING = 'pending'
-        VALUES = %w[queued in_progress completed waiting requested pending].freeze
+        VALUES = ['queued', 'in_progress', 'completed', 'waiting', 'requested', 'pending'].freeze
         def self.from_value(value)
           value
         end
@@ -67,7 +67,7 @@ module OctridevGithub
       module ChecksListForSuiteParameter
         LATEST = 'latest'
         ALL = 'all'
-        VALUES = %w[latest all].freeze
+        VALUES = ['latest', 'all'].freeze
         def self.from_value(value)
           value
         end
@@ -94,9 +94,9 @@ module OctridevGithub
         SKIPPED = 'skipped'
         STALE = 'stale'
         TIMED_OUT = 'timed_out'
-        VALUES = %w[
-          action_required cancelled failure neutral success skipped stale
-          timed_out
+        VALUES = [
+          'action_required', 'cancelled', 'failure', 'neutral', 'success', 'skipped', 'stale',
+          'timed_out'
         ].freeze
         def self.from_value(value)
           value
@@ -154,6 +154,7 @@ module OctridevGithub
         actions: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(started_at) { Validation.validate_date_time('started_at', started_at) }
 
         Validation.if_given(completed_at) { Validation.validate_date_time('completed_at', completed_at) }
@@ -163,11 +164,11 @@ module OctridevGithub
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/check-runs'
+            "/check-runs"
           ].join,
           config: config,
           body: {
@@ -180,12 +181,12 @@ module OctridevGithub
             'conclusion' => conclusion,
             'completed_at' => completed_at,
             'output' => output,
-            'actions' => actions
+            'actions' => actions,
           },
           return_type: ::OctridevGithub::CheckRun,
           decoder: :json,
           operation_id: 'checks_create',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -203,21 +204,22 @@ module OctridevGithub
         check_run_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/check-runs/',
+            "/check-runs/",
             SdkClient.encode_path_segment(check_run_id)
           ].join,
           config: config,
           return_type: ::OctridevGithub::CheckRun,
           decoder: :json,
           operation_id: 'checks_get',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -236,14 +238,15 @@ module OctridevGithub
         body:,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/check-runs/',
+            "/check-runs/",
             SdkClient.encode_path_segment(check_run_id)
           ].join,
           config: config,
@@ -251,7 +254,7 @@ module OctridevGithub
           return_type: ::OctridevGithub::CheckRun,
           decoder: :json,
           operation_id: 'checks_update',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -275,26 +278,27 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/check-runs/',
+            "/check-runs/",
             SdkClient.encode_path_segment(check_run_id),
-            '/annotations'
+            "/annotations"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::CheckAnnotation],
           decoder: :json,
           operation_id: 'checks_list_annotations',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -312,23 +316,24 @@ module OctridevGithub
         check_run_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/check-runs/',
+            "/check-runs/",
             SdkClient.encode_path_segment(check_run_id),
-            '/rerequest'
+            "/rerequest"
           ].join,
           config: config,
           return_type: ::OctridevGithub::EmptyObject,
           decoder: :json,
           operation_id: 'checks_rerequest_run',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -346,23 +351,24 @@ module OctridevGithub
         head_sha:,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/check-suites'
+            "/check-suites"
           ].join,
           config: config,
           body: {
-            'head_sha' => head_sha
+            'head_sha' => head_sha,
           },
           return_type: ::OctridevGithub::CheckSuite,
           decoder: :json,
           operation_id: 'checks_create_suite',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -382,23 +388,24 @@ module OctridevGithub
         auto_trigger_checks: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/check-suites/preferences'
+            "/check-suites/preferences"
           ].join,
           config: config,
           body: {
-            'auto_trigger_checks' => auto_trigger_checks
+            'auto_trigger_checks' => auto_trigger_checks,
           },
           return_type: ::OctridevGithub::CheckSuitePreference,
           decoder: :json,
           operation_id: 'checks_set_suites_preferences',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -416,21 +423,22 @@ module OctridevGithub
         check_suite_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/check-suites/',
+            "/check-suites/",
             SdkClient.encode_path_segment(check_suite_id)
           ].join,
           config: config,
           return_type: ::OctridevGithub::CheckSuite,
           decoder: :json,
           operation_id: 'checks_get_suite',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -462,16 +470,17 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/check-suites/',
+            "/check-suites/",
             SdkClient.encode_path_segment(check_suite_id),
-            '/check-runs'
+            "/check-runs"
           ].join,
           config: config,
           query: {
@@ -479,12 +488,12 @@ module OctridevGithub
             'status' => QueryValue.new(status, style: 'form', explode: true),
             'filter' => QueryValue.new(filter, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::Methods::Checks::ChecksListForSuiteResponse,
           decoder: :json,
           operation_id: 'checks_list_for_suite',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -502,22 +511,23 @@ module OctridevGithub
         check_suite_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/check-suites/',
+            "/check-suites/",
             SdkClient.encode_path_segment(check_suite_id),
-            '/rerequest'
+            "/rerequest"
           ].join,
           config: config,
           return_type: ::OctridevGithub::EmptyObject,
           decoder: :json,
           operation_id: 'checks_rerequest_suite',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

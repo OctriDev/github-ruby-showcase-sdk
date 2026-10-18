@@ -5,13 +5,12 @@
 
 # webhook_registry_package_published_registry_package_package_version_npm_metadata_dist domain models
 module OctridevGithub
-  # Defines the WebhookRegistryPackagePublishedRegistryPackagePackageVersionNXe481105674 SDK namespace.
-  module WebhookRegistryPackagePublishedRegistryPackagePackageVersionNXe481105674
-    def self.from_hash(hash)
-      return hash if hash.is_a?(::String)
-      return hash if hash.is_a?(::Hash)
-
-      raise "Could not deserialize WebhookRegistryPackagePublishedRegistryPackagePackageVersionNXe481105674 from #{hash.inspect}"
-    end
+# Defines the WebhookRegistryPackagePublishedRegistryPackagePackageVersionNXe481105674 SDK namespace.
+module WebhookRegistryPackagePublishedRegistryPackagePackageVersionNXe481105674
+  def self.from_hash(hash)
+    return hash if hash.is_a?(::String)
+    return hash if hash.is_a?(::Hash)
+    raise "Could not deserialize WebhookRegistryPackagePublishedRegistryPackagePackageVersionNXe481105674 from #{hash.inspect}"
   end
+end
 end

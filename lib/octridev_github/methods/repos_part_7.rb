@@ -39,19 +39,20 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateInformationAboutPagesSiteMetadata
         FIELDS = {
-          cname: 'cname',
-          https_enforced: 'https_enforced',
-          build_type: 'build_type',
-          source: 'source'
+          cname: "cname",
+          https_enforced: "https_enforced",
+          build_type: "build_type",
+          source: "source",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           build_type: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposUpdateInformationAboutPagesSiteBuildType.from_value(value)
           end,
           source: lambda do |value|
             ::OctridevGithub::ReposUpdateInformationAboutPagesSiteRequestSource.from_hash(value)
-          end
+          end,
         }.freeze
       end
 
@@ -88,17 +89,18 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreatePagesDeploymentMetadata
         FIELDS = {
-          artifact_id: 'artifact_id',
-          artifact_url: 'artifact_url',
-          environment: 'environment',
-          pages_build_version: 'pages_build_version',
-          oidc_token: 'oidc_token'
+          artifact_id: "artifact_id",
+          artifact_url: "artifact_url",
+          environment: "environment",
+          pages_build_version: "pages_build_version",
+          oidc_token: "oidc_token",
         }.freeze
         REQUIRED_FIELDS = %i[
           pages_build_version
           oidc_token
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ReposCreatePagesDeployment.
@@ -137,12 +139,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCheckPrivateVulnerabilityReportingResponseMetadata
         FIELDS = {
-          enabled: 'enabled'
+          enabled: "enabled",
         }.freeze
         REQUIRED_FIELDS = %i[
           enabled
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ReposCheckPrivateVulnerabilityReportingResponse.
@@ -172,7 +175,7 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCustomPropertiesForReposCreateOrUpdateRepositoryValuesMetadata
         FIELDS = {
-          properties: 'properties'
+          properties: "properties",
         }.freeze
         REQUIRED_FIELDS = %i[
           properties
@@ -180,7 +183,7 @@ module OctridevGithub
         DECODERS = {
           properties: lambda do |value|
             value&.map { |item| ::OctridevGithub::CustomPropertyValue.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -211,15 +214,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreateReleaseMetadata
         FIELDS = {
-          tag_name: 'tag_name',
-          target_commitish: 'target_commitish',
-          name: 'name',
-          body: 'body',
-          draft: 'draft',
-          prerelease: 'prerelease',
-          discussion_category_name: 'discussion_category_name',
-          generate_release_notes: 'generate_release_notes',
-          make_latest: 'make_latest'
+          tag_name: "tag_name",
+          target_commitish: "target_commitish",
+          name: "name",
+          body: "body",
+          draft: "draft",
+          prerelease: "prerelease",
+          discussion_category_name: "discussion_category_name",
+          generate_release_notes: "generate_release_notes",
+          make_latest: "make_latest",
         }.freeze
         REQUIRED_FIELDS = %i[
           tag_name
@@ -227,7 +230,7 @@ module OctridevGithub
         DECODERS = {
           make_latest: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposCreateReleaseMakeLatest.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -274,12 +277,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateReleaseAssetMetadata
         FIELDS = {
-          name: 'name',
-          label: 'label',
-          state: 'state'
+          name: "name",
+          label: "label",
+          state: "state",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ReposUpdateReleaseAsset.
@@ -312,15 +317,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposGenerateReleaseNotesMetadata
         FIELDS = {
-          tag_name: 'tag_name',
-          target_commitish: 'target_commitish',
-          previous_tag_name: 'previous_tag_name',
-          configuration_file_path: 'configuration_file_path'
+          tag_name: "tag_name",
+          target_commitish: "target_commitish",
+          previous_tag_name: "previous_tag_name",
+          configuration_file_path: "configuration_file_path",
         }.freeze
         REQUIRED_FIELDS = %i[
           tag_name
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ReposGenerateReleaseNotes.
@@ -356,20 +362,21 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateReleaseMetadata
         FIELDS = {
-          tag_name: 'tag_name',
-          target_commitish: 'target_commitish',
-          name: 'name',
-          body: 'body',
-          draft: 'draft',
-          prerelease: 'prerelease',
-          make_latest: 'make_latest',
-          discussion_category_name: 'discussion_category_name'
+          tag_name: "tag_name",
+          target_commitish: "target_commitish",
+          name: "name",
+          body: "body",
+          draft: "draft",
+          prerelease: "prerelease",
+          make_latest: "make_latest",
+          discussion_category_name: "discussion_category_name",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           make_latest: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposUpdateReleaseMakeLatest.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -414,12 +421,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreateRepoRulesetMetadata
         FIELDS = {
-          name: 'name',
-          target: 'target',
-          enforcement: 'enforcement',
-          bypass_actors: 'bypass_actors',
-          conditions: 'conditions',
-          rules: 'rules'
+          name: "name",
+          target: "target",
+          enforcement: "enforcement",
+          bypass_actors: "bypass_actors",
+          conditions: "conditions",
+          rules: "rules",
         }.freeze
         REQUIRED_FIELDS = %i[
           name
@@ -440,7 +447,7 @@ module OctridevGithub
           end,
           rules: lambda do |value|
             value&.map { |item| ::OctridevGithub::RepositoryRule.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -481,14 +488,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateRepoRulesetMetadata
         FIELDS = {
-          name: 'name',
-          target: 'target',
-          enforcement: 'enforcement',
-          bypass_actors: 'bypass_actors',
-          conditions: 'conditions',
-          rules: 'rules'
+          name: "name",
+          target: "target",
+          enforcement: "enforcement",
+          bypass_actors: "bypass_actors",
+          conditions: "conditions",
+          rules: "rules",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           target: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposUpdateRepoRulesetTarget.from_value(value)
@@ -504,7 +512,7 @@ module OctridevGithub
           end,
           rules: lambda do |value|
             value&.map { |item| ::OctridevGithub::RepositoryRule.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 

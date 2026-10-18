@@ -24,24 +24,25 @@ module OctridevGithub
         bundle:,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/attestations'
+            "/attestations"
           ].join,
           config: config,
           body: {
-            'bundle' => bundle
+            'bundle' => bundle,
           },
           return_type: ::OctridevGithub::Methods::Repos::ReposCreateAttestationResponse,
           decoder: :json,
           operation_id: 'repos_create_attestation',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -75,14 +76,15 @@ module OctridevGithub
         predicate_type: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/attestations/',
+            "/attestations/",
             SdkClient.encode_path_segment(subject_digest)
           ].join,
           config: config,
@@ -90,12 +92,12 @@ module OctridevGithub
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'before' => QueryValue.new(before, style: 'form', explode: true),
             'after' => QueryValue.new(after, style: 'form', explode: true),
-            'predicate_type' => QueryValue.new(predicate_type, style: 'form', explode: true)
+            'predicate_type' => QueryValue.new(predicate_type, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::Methods::Repos::ReposListAttestationsResponse,
           decoder: :json,
           operation_id: 'repos_list_attestations',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -111,20 +113,21 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/autolinks'
+            "/autolinks"
           ].join,
           config: config,
           return_type: [::OctridevGithub::Autolink],
           decoder: :json,
           operation_id: 'repos_list_autolinks',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -153,26 +156,27 @@ module OctridevGithub
         is_alphanumeric: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/autolinks'
+            "/autolinks"
           ].join,
           config: config,
           body: {
             'key_prefix' => key_prefix,
             'url_template' => url_template,
-            'is_alphanumeric' => is_alphanumeric
+            'is_alphanumeric' => is_alphanumeric,
           },
           return_type: ::OctridevGithub::Autolink,
           decoder: :json,
           operation_id: 'repos_create_autolink',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError }
+          errors: { '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -190,14 +194,15 @@ module OctridevGithub
         autolink_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/autolinks/',
+            "/autolinks/",
             SdkClient.encode_path_segment(autolink_id)
           ].join,
           config: config,
@@ -205,7 +210,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'repos_get_autolink',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -223,21 +228,22 @@ module OctridevGithub
         autolink_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/autolinks/',
+            "/autolinks/",
             SdkClient.encode_path_segment(autolink_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_delete_autolink',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -253,20 +259,21 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/automated-security-fixes'
+            "/automated-security-fixes"
           ].join,
           config: config,
           return_type: ::OctridevGithub::CheckAutomatedSecurityFixes,
           decoder: :json,
           operation_id: 'repos_check_automated_security_fixes',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -282,19 +289,20 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/automated-security-fixes'
+            "/automated-security-fixes"
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_enable_automated_security_fixes',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -310,19 +318,20 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/automated-security-fixes'
+            "/automated-security-fixes"
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_disable_automated_security_fixes',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -348,26 +357,27 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/branches'
+            "/branches"
           ].join,
           config: config,
           query: {
             'protected' => QueryValue.new(protected, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::ShortBranch],
           decoder: :json,
           operation_id: 'repos_list_branches',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -386,14 +396,15 @@ module OctridevGithub
         branch:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/branches/',
+            "/branches/",
             SdkClient.encode_path_segment(branch)
           ].join,
           config: config,
@@ -401,7 +412,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'repos_get_branch',
           request_options: request_options,
-          errors: { '301' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '301' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -420,23 +431,24 @@ module OctridevGithub
         branch:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/branches/',
+            "/branches/",
             SdkClient.encode_path_segment(branch),
-            '/protection'
+            "/protection"
           ].join,
           config: config,
           return_type: ::OctridevGithub::BranchProtection,
           decoder: :json,
           operation_id: 'repos_get_branch_protection',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -510,16 +522,17 @@ module OctridevGithub
         allow_fork_syncing: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/branches/',
+            "/branches/",
             SdkClient.encode_path_segment(branch),
-            '/protection'
+            "/protection"
           ].join,
           config: config,
           body: {
@@ -533,13 +546,13 @@ module OctridevGithub
             'block_creations' => block_creations,
             'required_conversation_resolution' => required_conversation_resolution,
             'lock_branch' => lock_branch,
-            'allow_fork_syncing' => allow_fork_syncing
+            'allow_fork_syncing' => allow_fork_syncing,
           },
           return_type: ::OctridevGithub::ProtectedBranch,
           decoder: :json,
           operation_id: 'repos_update_branch_protection',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple },
         ).data
       end
     end

@@ -12,9 +12,9 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalMarkdownRenderMetadata
         FIELDS = {
-          text: 'text',
-          mode: 'mode',
-          context: 'context'
+          text: "text",
+          mode: "mode",
+          context: "context",
         }.freeze
         REQUIRED_FIELDS = %i[
           text
@@ -22,7 +22,7 @@ module OctridevGithub
         DECODERS = {
           mode: lambda do |value|
             ::OctridevGithub::Methods::Markdown::MarkdownRenderMode.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -58,7 +58,7 @@ module OctridevGithub
       module MarkdownRenderMode
         MARKDOWN = 'markdown'
         GFM = 'gfm'
-        VALUES = %w[markdown gfm].freeze
+        VALUES = ['markdown', 'gfm'].freeze
         def self.from_value(value)
           value
         end
@@ -79,18 +79,19 @@ module OctridevGithub
         context: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
-          '/markdown',
+          "/markdown",
           config: config,
           body: {
             'text' => text,
             'mode' => mode,
-            'context' => context
+            'context' => context,
           },
           decoder: :text,
           operation_id: 'markdown_render',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -106,15 +107,16 @@ module OctridevGithub
         content_type: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
-          '/markdown/raw',
+          "/markdown/raw",
           config: config,
           body: body,
           content_type: SdkClient.body_content_type(content_type, nil, 'text/plain'),
           decoder: :text,
           operation_id: 'markdown_render_raw',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

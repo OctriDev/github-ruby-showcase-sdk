@@ -5,664 +5,664 @@
 
 # issues domain models (part 2)
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalLockedIssueEventMetadata
-    FIELDS = {
-      id: 'id',
-      node_id: 'node_id',
-      url: 'url',
-      actor: 'actor',
-      event: 'event',
-      commit_id: 'commit_id',
-      commit_url: 'commit_url',
-      created_at: 'created_at',
-      performed_via_github_app: 'performed_via_github_app',
-      lock_reason: 'lock_reason'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      node_id
-      url
-      actor
-      event
-      commit_id
-      commit_url
-      created_at
-      performed_via_github_app
-      lock_reason
-    ].freeze
-    DECODERS = {
-      actor: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end,
-      performed_via_github_app: lambda do |value|
-        ::OctridevGithub::NullableIntegration.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      commit_id
-      commit_url
-      performed_via_github_app
-      lock_reason
-    ].freeze
+# Internal model hydration metadata.
+class SdkInternalLockedIssueEventMetadata
+  FIELDS = {
+    id: "id",
+    node_id: "node_id",
+    url: "url",
+    actor: "actor",
+    event: "event",
+    commit_id: "commit_id",
+    commit_url: "commit_url",
+    created_at: "created_at",
+    performed_via_github_app: "performed_via_github_app",
+    lock_reason: "lock_reason",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    node_id
+    url
+    actor
+    event
+    commit_id
+    commit_url
+    created_at
+    performed_via_github_app
+    lock_reason
+  ].freeze
+  DECODERS = {
+    actor: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+    performed_via_github_app: lambda do |value|
+      ::OctridevGithub::NullableIntegration.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    commit_id
+    commit_url
+    performed_via_github_app
+    lock_reason
+  ].freeze
+end
+
+# API model for LockedIssueEvent.
+# Locked Issue Event
+class LockedIssueEvent
+  include IssueEventForIssue
+  include TimelineIssueEvents
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalLockedIssueEventMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalLockedIssueEventMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalLockedIssueEventMetadata::DECODERS
+
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Required `string` value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :actor
+  # @return [String] Required `string` value serialized in the `event` wire field.
+  attr_reader :event
+  # @return [String] Required `string` value serialized in the `commit_id` wire field.
+  attr_reader :commit_id
+  # @return [String] Required `string` value serialized in the `commit_url` wire field.
+  attr_reader :commit_url
+  # @return [String] Required `string` value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [NullableIntegration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+  attr_reader :performed_via_github_app
+  # @return [String] Required `string` value serialized in the `lock_reason` wire field.
+  attr_reader :lock_reason
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for LockedIssueEvent.
-  # Locked Issue Event
-  class LockedIssueEvent
-    include IssueEventForIssue
-    include TimelineIssueEvents
-
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalLockedIssueEventMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalLockedIssueEventMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalLockedIssueEventMetadata::DECODERS
-
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Required `string` value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :actor
-    # @return [String] Required `string` value serialized in the `event` wire field.
-    attr_reader :event
-    # @return [String] Required `string` value serialized in the `commit_id` wire field.
-    attr_reader :commit_id
-    # @return [String] Required `string` value serialized in the `commit_url` wire field.
-    attr_reader :commit_url
-    # @return [String] Required `string` value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [NullableIntegration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
-    attr_reader :performed_via_github_app
-    # @return [String] Required `string` value serialized in the `lock_reason` wire field.
-    attr_reader :lock_reason
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalLockedIssueEventMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalLockedIssueEventMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalMilestoneMetadata
-    FIELDS = {
-      url: 'url',
-      html_url: 'html_url',
-      labels_url: 'labels_url',
-      id: 'id',
-      node_id: 'node_id',
-      number: 'number',
-      state: 'state',
-      title: 'title',
-      description: 'description',
-      creator: 'creator',
-      open_issues: 'open_issues',
-      closed_issues: 'closed_issues',
-      created_at: 'created_at',
-      updated_at: 'updated_at',
-      closed_at: 'closed_at',
-      due_on: 'due_on'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      url
-      html_url
-      labels_url
-      id
-      node_id
-      number
-      state
-      title
-      description
-      creator
-      open_issues
-      closed_issues
-      created_at
-      updated_at
-      closed_at
-      due_on
-    ].freeze
-    DECODERS = {
-      state: lambda do |value|
-        ::OctridevGithub::MilestoneState.from_value(value)
-      end,
-      creator: lambda do |value|
-        ::OctridevGithub::NullableSimpleUser.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      description
-      creator
-      closed_at
-      due_on
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalMilestoneMetadata
+  FIELDS = {
+    url: "url",
+    html_url: "html_url",
+    labels_url: "labels_url",
+    id: "id",
+    node_id: "node_id",
+    number: "number",
+    state: "state",
+    title: "title",
+    description: "description",
+    creator: "creator",
+    open_issues: "open_issues",
+    closed_issues: "closed_issues",
+    created_at: "created_at",
+    updated_at: "updated_at",
+    closed_at: "closed_at",
+    due_on: "due_on",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    url
+    html_url
+    labels_url
+    id
+    node_id
+    number
+    state
+    title
+    description
+    creator
+    open_issues
+    closed_issues
+    created_at
+    updated_at
+    closed_at
+    due_on
+  ].freeze
+  DECODERS = {
+    state: lambda do |value|
+      ::OctridevGithub::MilestoneState.from_value(value)
+    end,
+    creator: lambda do |value|
+      ::OctridevGithub::NullableSimpleUser.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    description
+    creator
+    closed_at
+    due_on
+  ].freeze
+end
+
+# API model for Milestone.
+# A collection of related issues and pull requests.
+class Milestone
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalMilestoneMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalMilestoneMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalMilestoneMetadata::DECODERS
+
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [String] Required `uri`-formatted value serialized in the `labels_url` wire field.
+  attr_reader :labels_url
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [Integer] The number of the milestone.
+  attr_reader :number
+  # @return [MilestoneState] The state of the milestone.
+  attr_reader :state
+  # @return [String] The title of the milestone.
+  attr_reader :title
+  # @return [String] Required `string` value serialized in the `description` wire field.
+  attr_reader :description
+  # @return [NullableSimpleUser] A GitHub user.
+  attr_reader :creator
+  # @return [Integer] Required `integer` value serialized in the `open_issues` wire field.
+  attr_reader :open_issues
+  # @return [Integer] Required `integer` value serialized in the `closed_issues` wire field.
+  attr_reader :closed_issues
+  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+  attr_reader :updated_at
+  # @return [String] Required `date-time`-formatted value serialized in the `closed_at` wire field.
+  attr_reader :closed_at
+  # @return [String] Required `date-time`-formatted value serialized in the `due_on` wire field.
+  attr_reader :due_on
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for Milestone.
-  # A collection of related issues and pull requests.
-  class Milestone
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalMilestoneMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalMilestoneMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalMilestoneMetadata::DECODERS
-
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [String] Required `uri`-formatted value serialized in the `labels_url` wire field.
-    attr_reader :labels_url
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [Integer] The number of the milestone.
-    attr_reader :number
-    # @return [MilestoneState] The state of the milestone.
-    attr_reader :state
-    # @return [String] The title of the milestone.
-    attr_reader :title
-    # @return [String] Required `string` value serialized in the `description` wire field.
-    attr_reader :description
-    # @return [NullableSimpleUser] A GitHub user.
-    attr_reader :creator
-    # @return [Integer] Required `integer` value serialized in the `open_issues` wire field.
-    attr_reader :open_issues
-    # @return [Integer] Required `integer` value serialized in the `closed_issues` wire field.
-    attr_reader :closed_issues
-    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-    attr_reader :updated_at
-    # @return [String] Required `date-time`-formatted value serialized in the `closed_at` wire field.
-    attr_reader :closed_at
-    # @return [String] Required `date-time`-formatted value serialized in the `due_on` wire field.
-    attr_reader :due_on
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalMilestoneMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalMilestoneMetadata::NULLABLE_FIELDS)
   end
 
-  # Defines the MilestoneState SDK namespace.
-  module MilestoneState
-    OPEN = 'open'
-    CLOSED = 'closed'
-    VALUES = %w[open closed].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Defines the MilestoneState SDK namespace.
+module MilestoneState
+  OPEN = 'open'
+  CLOSED = 'closed'
+  VALUES = ['open', 'closed'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalMilestonedIssueEventMilestoneMetadata
+  FIELDS = {
+    title: "title",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    title
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for MilestonedIssueEventMilestone.
+# Required object value serialized in the `milestone` wire field.
+class MilestonedIssueEventMilestone
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalMilestonedIssueEventMilestoneMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalMilestonedIssueEventMilestoneMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalMilestonedIssueEventMilestoneMetadata::DECODERS
+
+  # @return [String] Required `string` value serialized in the `title` wire field.
+  attr_reader :title
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalMilestonedIssueEventMilestoneMetadata
-    FIELDS = {
-      title: 'title'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      title
-    ].freeze
-    DECODERS = {}.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for MilestonedIssueEventMilestone.
-  # Required object value serialized in the `milestone` wire field.
-  class MilestonedIssueEventMilestone
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalMilestonedIssueEventMilestoneMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalMilestonedIssueEventMilestoneMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalMilestonedIssueEventMilestoneMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [String] Required `string` value serialized in the `title` wire field.
-    attr_reader :title
+# Internal model hydration metadata.
+class SdkInternalMilestonedIssueEventMetadata
+  FIELDS = {
+    id: "id",
+    node_id: "node_id",
+    url: "url",
+    actor: "actor",
+    event: "event",
+    commit_id: "commit_id",
+    commit_url: "commit_url",
+    created_at: "created_at",
+    performed_via_github_app: "performed_via_github_app",
+    milestone: "milestone",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    node_id
+    url
+    actor
+    event
+    commit_id
+    commit_url
+    created_at
+    performed_via_github_app
+    milestone
+  ].freeze
+  DECODERS = {
+    actor: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+    performed_via_github_app: lambda do |value|
+      ::OctridevGithub::NullableIntegration.from_hash(value)
+    end,
+    milestone: lambda do |value|
+      ::OctridevGithub::MilestonedIssueEventMilestone.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    commit_id
+    commit_url
+    performed_via_github_app
+  ].freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for MilestonedIssueEvent.
+# Milestoned Issue Event
+class MilestonedIssueEvent
+  include IssueEventForIssue
+  include TimelineIssueEvents
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalMilestonedIssueEventMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalMilestonedIssueEventMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalMilestonedIssueEventMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Required `string` value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :actor
+  # @return [String] Required `string` value serialized in the `event` wire field.
+  attr_reader :event
+  # @return [String] Required `string` value serialized in the `commit_id` wire field.
+  attr_reader :commit_id
+  # @return [String] Required `string` value serialized in the `commit_url` wire field.
+  attr_reader :commit_url
+  # @return [String] Required `string` value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [NullableIntegration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+  attr_reader :performed_via_github_app
+  # @return [MilestonedIssueEventMilestone] Required object value serialized in the `milestone` wire field.
+  attr_reader :milestone
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalMilestonedIssueEventMetadata
-    FIELDS = {
-      id: 'id',
-      node_id: 'node_id',
-      url: 'url',
-      actor: 'actor',
-      event: 'event',
-      commit_id: 'commit_id',
-      commit_url: 'commit_url',
-      created_at: 'created_at',
-      performed_via_github_app: 'performed_via_github_app',
-      milestone: 'milestone'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      node_id
-      url
-      actor
-      event
-      commit_id
-      commit_url
-      created_at
-      performed_via_github_app
-      milestone
-    ].freeze
-    DECODERS = {
-      actor: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end,
-      performed_via_github_app: lambda do |value|
-        ::OctridevGithub::NullableIntegration.from_hash(value)
-      end,
-      milestone: lambda do |value|
-        ::OctridevGithub::MilestonedIssueEventMilestone.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      commit_id
-      commit_url
-      performed_via_github_app
-    ].freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalMilestonedIssueEventMetadata::NULLABLE_FIELDS)
   end
 
-  # API model for MilestonedIssueEvent.
-  # Milestoned Issue Event
-  class MilestonedIssueEvent
-    include IssueEventForIssue
-    include TimelineIssueEvents
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalMilestonedIssueEventMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalMilestonedIssueEventMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalMilestonedIssueEventMetadata::DECODERS
+# Internal model hydration metadata.
+class SdkInternalMovedColumnInProjectIssueEventProjectCardMetadata
+  FIELDS = {
+    id: "id",
+    url: "url",
+    project_id: "project_id",
+    project_url: "project_url",
+    column_name: "column_name",
+    previous_column_name: "previous_column_name",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    url
+    project_id
+    project_url
+    column_name
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
 
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Required `string` value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :actor
-    # @return [String] Required `string` value serialized in the `event` wire field.
-    attr_reader :event
-    # @return [String] Required `string` value serialized in the `commit_id` wire field.
-    attr_reader :commit_id
-    # @return [String] Required `string` value serialized in the `commit_url` wire field.
-    attr_reader :commit_url
-    # @return [String] Required `string` value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [NullableIntegration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
-    attr_reader :performed_via_github_app
-    # @return [MilestonedIssueEventMilestone] Required object value serialized in the `milestone` wire field.
-    attr_reader :milestone
+# API model for MovedColumnInProjectIssueEventProjectCard.
+# Optional object value serialized in the `project_card` wire field.
+class MovedColumnInProjectIssueEventProjectCard
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalMovedColumnInProjectIssueEventProjectCardMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalMovedColumnInProjectIssueEventProjectCardMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalMovedColumnInProjectIssueEventProjectCardMetadata::DECODERS
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [Integer] Required `integer` value serialized in the `project_id` wire field.
+  attr_reader :project_id
+  # @return [String] Required `uri`-formatted value serialized in the `project_url` wire field.
+  attr_reader :project_url
+  # @return [String] Required `string` value serialized in the `column_name` wire field.
+  attr_reader :column_name
+  # @return [String] Optional `string` value serialized in the `previous_column_name` wire field.
+  attr_reader :previous_column_name
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalMilestonedIssueEventMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalMovedColumnInProjectIssueEventProjectCardMetadata
-    FIELDS = {
-      id: 'id',
-      url: 'url',
-      project_id: 'project_id',
-      project_url: 'project_url',
-      column_name: 'column_name',
-      previous_column_name: 'previous_column_name'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      url
-      project_id
-      project_url
-      column_name
-    ].freeze
-    DECODERS = {}.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for MovedColumnInProjectIssueEventProjectCard.
-  # Optional object value serialized in the `project_card` wire field.
-  class MovedColumnInProjectIssueEventProjectCard
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalMovedColumnInProjectIssueEventProjectCardMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalMovedColumnInProjectIssueEventProjectCardMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalMovedColumnInProjectIssueEventProjectCardMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [Integer] Required `integer` value serialized in the `project_id` wire field.
-    attr_reader :project_id
-    # @return [String] Required `uri`-formatted value serialized in the `project_url` wire field.
-    attr_reader :project_url
-    # @return [String] Required `string` value serialized in the `column_name` wire field.
-    attr_reader :column_name
-    # @return [String] Optional `string` value serialized in the `previous_column_name` wire field.
-    attr_reader :previous_column_name
+# Internal model hydration metadata.
+class SdkInternalMovedColumnInProjectIssueEventMetadata
+  FIELDS = {
+    id: "id",
+    node_id: "node_id",
+    url: "url",
+    actor: "actor",
+    event: "event",
+    commit_id: "commit_id",
+    commit_url: "commit_url",
+    created_at: "created_at",
+    performed_via_github_app: "performed_via_github_app",
+    project_card: "project_card",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    node_id
+    url
+    actor
+    event
+    commit_id
+    commit_url
+    created_at
+    performed_via_github_app
+  ].freeze
+  DECODERS = {
+    actor: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+    performed_via_github_app: lambda do |value|
+      ::OctridevGithub::NullableIntegration.from_hash(value)
+    end,
+    project_card: lambda do |value|
+      ::OctridevGithub::MovedColumnInProjectIssueEventProjectCard.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    commit_id
+    commit_url
+    performed_via_github_app
+  ].freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for MovedColumnInProjectIssueEvent.
+# Moved Column in Project Issue Event
+class MovedColumnInProjectIssueEvent
+  include IssueEventForIssue
+  include TimelineIssueEvents
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalMovedColumnInProjectIssueEventMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalMovedColumnInProjectIssueEventMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalMovedColumnInProjectIssueEventMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Required `string` value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :actor
+  # @return [String] Required `string` value serialized in the `event` wire field.
+  attr_reader :event
+  # @return [String] Required `string` value serialized in the `commit_id` wire field.
+  attr_reader :commit_id
+  # @return [String] Required `string` value serialized in the `commit_url` wire field.
+  attr_reader :commit_url
+  # @return [String] Required `string` value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [NullableIntegration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+  attr_reader :performed_via_github_app
+  # @return [MovedColumnInProjectIssueEventProjectCard] Optional object value serialized in the `project_card` wire field.
+  attr_reader :project_card
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalMovedColumnInProjectIssueEventMetadata
-    FIELDS = {
-      id: 'id',
-      node_id: 'node_id',
-      url: 'url',
-      actor: 'actor',
-      event: 'event',
-      commit_id: 'commit_id',
-      commit_url: 'commit_url',
-      created_at: 'created_at',
-      performed_via_github_app: 'performed_via_github_app',
-      project_card: 'project_card'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      node_id
-      url
-      actor
-      event
-      commit_id
-      commit_url
-      created_at
-      performed_via_github_app
-    ].freeze
-    DECODERS = {
-      actor: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end,
-      performed_via_github_app: lambda do |value|
-        ::OctridevGithub::NullableIntegration.from_hash(value)
-      end,
-      project_card: lambda do |value|
-        ::OctridevGithub::MovedColumnInProjectIssueEventProjectCard.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      commit_id
-      commit_url
-      performed_via_github_app
-    ].freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalMovedColumnInProjectIssueEventMetadata::NULLABLE_FIELDS)
   end
 
-  # API model for MovedColumnInProjectIssueEvent.
-  # Moved Column in Project Issue Event
-  class MovedColumnInProjectIssueEvent
-    include IssueEventForIssue
-    include TimelineIssueEvents
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalMovedColumnInProjectIssueEventMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalMovedColumnInProjectIssueEventMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalMovedColumnInProjectIssueEventMetadata::DECODERS
+# Internal model hydration metadata.
+class SdkInternalRemovedFromProjectIssueEventProjectCardMetadata
+  FIELDS = {
+    id: "id",
+    url: "url",
+    project_id: "project_id",
+    project_url: "project_url",
+    column_name: "column_name",
+    previous_column_name: "previous_column_name",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    url
+    project_id
+    project_url
+    column_name
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
 
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Required `string` value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :actor
-    # @return [String] Required `string` value serialized in the `event` wire field.
-    attr_reader :event
-    # @return [String] Required `string` value serialized in the `commit_id` wire field.
-    attr_reader :commit_id
-    # @return [String] Required `string` value serialized in the `commit_url` wire field.
-    attr_reader :commit_url
-    # @return [String] Required `string` value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [NullableIntegration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
-    attr_reader :performed_via_github_app
-    # @return [MovedColumnInProjectIssueEventProjectCard] Optional object value serialized in the `project_card` wire field.
-    attr_reader :project_card
+# API model for RemovedFromProjectIssueEventProjectCard.
+# Optional object value serialized in the `project_card` wire field.
+class RemovedFromProjectIssueEventProjectCard
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalRemovedFromProjectIssueEventProjectCardMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalRemovedFromProjectIssueEventProjectCardMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalRemovedFromProjectIssueEventProjectCardMetadata::DECODERS
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [Integer] Required `integer` value serialized in the `project_id` wire field.
+  attr_reader :project_id
+  # @return [String] Required `uri`-formatted value serialized in the `project_url` wire field.
+  attr_reader :project_url
+  # @return [String] Required `string` value serialized in the `column_name` wire field.
+  attr_reader :column_name
+  # @return [String] Optional `string` value serialized in the `previous_column_name` wire field.
+  attr_reader :previous_column_name
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalMovedColumnInProjectIssueEventMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalRemovedFromProjectIssueEventProjectCardMetadata
-    FIELDS = {
-      id: 'id',
-      url: 'url',
-      project_id: 'project_id',
-      project_url: 'project_url',
-      column_name: 'column_name',
-      previous_column_name: 'previous_column_name'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      url
-      project_id
-      project_url
-      column_name
-    ].freeze
-    DECODERS = {}.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for RemovedFromProjectIssueEventProjectCard.
-  # Optional object value serialized in the `project_card` wire field.
-  class RemovedFromProjectIssueEventProjectCard
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalRemovedFromProjectIssueEventProjectCardMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalRemovedFromProjectIssueEventProjectCardMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalRemovedFromProjectIssueEventProjectCardMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [Integer] Required `integer` value serialized in the `project_id` wire field.
-    attr_reader :project_id
-    # @return [String] Required `uri`-formatted value serialized in the `project_url` wire field.
-    attr_reader :project_url
-    # @return [String] Required `string` value serialized in the `column_name` wire field.
-    attr_reader :column_name
-    # @return [String] Optional `string` value serialized in the `previous_column_name` wire field.
-    attr_reader :previous_column_name
+# Internal model hydration metadata.
+class SdkInternalRemovedFromProjectIssueEventMetadata
+  FIELDS = {
+    id: "id",
+    node_id: "node_id",
+    url: "url",
+    actor: "actor",
+    event: "event",
+    commit_id: "commit_id",
+    commit_url: "commit_url",
+    created_at: "created_at",
+    performed_via_github_app: "performed_via_github_app",
+    project_card: "project_card",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    node_id
+    url
+    actor
+    event
+    commit_id
+    commit_url
+    created_at
+    performed_via_github_app
+  ].freeze
+  DECODERS = {
+    actor: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+    performed_via_github_app: lambda do |value|
+      ::OctridevGithub::NullableIntegration.from_hash(value)
+    end,
+    project_card: lambda do |value|
+      ::OctridevGithub::RemovedFromProjectIssueEventProjectCard.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    commit_id
+    commit_url
+    performed_via_github_app
+  ].freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for RemovedFromProjectIssueEvent.
+# Removed from Project Issue Event
+class RemovedFromProjectIssueEvent
+  include IssueEventForIssue
+  include TimelineIssueEvents
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalRemovedFromProjectIssueEventMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalRemovedFromProjectIssueEventMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalRemovedFromProjectIssueEventMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Required `string` value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :actor
+  # @return [String] Required `string` value serialized in the `event` wire field.
+  attr_reader :event
+  # @return [String] Required `string` value serialized in the `commit_id` wire field.
+  attr_reader :commit_id
+  # @return [String] Required `string` value serialized in the `commit_url` wire field.
+  attr_reader :commit_url
+  # @return [String] Required `string` value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [NullableIntegration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+  attr_reader :performed_via_github_app
+  # @return [RemovedFromProjectIssueEventProjectCard] Optional object value serialized in the `project_card` wire field.
+  attr_reader :project_card
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalRemovedFromProjectIssueEventMetadata
-    FIELDS = {
-      id: 'id',
-      node_id: 'node_id',
-      url: 'url',
-      actor: 'actor',
-      event: 'event',
-      commit_id: 'commit_id',
-      commit_url: 'commit_url',
-      created_at: 'created_at',
-      performed_via_github_app: 'performed_via_github_app',
-      project_card: 'project_card'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      node_id
-      url
-      actor
-      event
-      commit_id
-      commit_url
-      created_at
-      performed_via_github_app
-    ].freeze
-    DECODERS = {
-      actor: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end,
-      performed_via_github_app: lambda do |value|
-        ::OctridevGithub::NullableIntegration.from_hash(value)
-      end,
-      project_card: lambda do |value|
-        ::OctridevGithub::RemovedFromProjectIssueEventProjectCard.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      commit_id
-      commit_url
-      performed_via_github_app
-    ].freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalRemovedFromProjectIssueEventMetadata::NULLABLE_FIELDS)
   end
 
-  # API model for RemovedFromProjectIssueEvent.
-  # Removed from Project Issue Event
-  class RemovedFromProjectIssueEvent
-    include IssueEventForIssue
-    include TimelineIssueEvents
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalRemovedFromProjectIssueEventMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalRemovedFromProjectIssueEventMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalRemovedFromProjectIssueEventMetadata::DECODERS
+# Internal model hydration metadata.
+class SdkInternalRenamedIssueEventRenameMetadata
+  FIELDS = {
+    from: "from",
+    to: "to",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    from
+    to
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
 
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Required `string` value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :actor
-    # @return [String] Required `string` value serialized in the `event` wire field.
-    attr_reader :event
-    # @return [String] Required `string` value serialized in the `commit_id` wire field.
-    attr_reader :commit_id
-    # @return [String] Required `string` value serialized in the `commit_url` wire field.
-    attr_reader :commit_url
-    # @return [String] Required `string` value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [NullableIntegration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
-    attr_reader :performed_via_github_app
-    # @return [RemovedFromProjectIssueEventProjectCard] Optional object value serialized in the `project_card` wire field.
-    attr_reader :project_card
+# API model for RenamedIssueEventRename.
+# Required object value serialized in the `rename` wire field.
+class RenamedIssueEventRename
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalRenamedIssueEventRenameMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalRenamedIssueEventRenameMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalRenamedIssueEventRenameMetadata::DECODERS
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+  # @return [String] Required `string` value serialized in the `from` wire field.
+  attr_reader :from
+  # @return [String] Required `string` value serialized in the `to` wire field.
+  attr_reader :to
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalRemovedFromProjectIssueEventMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalRenamedIssueEventRenameMetadata
-    FIELDS = {
-      from: 'from',
-      to: 'to'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      from
-      to
-    ].freeze
-    DECODERS = {}.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for RenamedIssueEventRename.
-  # Required object value serialized in the `rename` wire field.
-  class RenamedIssueEventRename
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalRenamedIssueEventRenameMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalRenamedIssueEventRenameMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalRenamedIssueEventRenameMetadata::DECODERS
-
-    # @return [String] Required `string` value serialized in the `from` wire field.
-    attr_reader :from
-    # @return [String] Required `string` value serialized in the `to` wire field.
-    attr_reader :to
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
 end

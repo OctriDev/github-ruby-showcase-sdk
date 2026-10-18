@@ -5,102 +5,105 @@
 
 # webhook_rubygems_metadata domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalWebhookRubygemsMetadataVersionInfoMetadata
-    FIELDS = {
-      version: 'version'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+# Internal model hydration metadata.
+class SdkInternalWebhookRubygemsMetadataVersionInfoMetadata
+  FIELDS = {
+    version: "version",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhookRubygemsMetadataVersionInfo.
+# Optional object value serialized in the `version_info` wire field.
+class WebhookRubygemsMetadataVersionInfo
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookRubygemsMetadataVersionInfoMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookRubygemsMetadataVersionInfoMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookRubygemsMetadataVersionInfoMetadata::DECODERS
+
+  # @return [String] Optional `string` value serialized in the `version` wire field.
+  attr_reader :version
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookRubygemsMetadataVersionInfo.
-  # Optional object value serialized in the `version_info` wire field.
-  class WebhookRubygemsMetadataVersionInfo
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookRubygemsMetadataVersionInfoMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookRubygemsMetadataVersionInfoMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookRubygemsMetadataVersionInfoMetadata::DECODERS
-
-    # @return [String] Optional `string` value serialized in the `version` wire field.
-    attr_reader :version
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookRubygemsMetadataMetadata
-    FIELDS = {
-      name: 'name',
-      description: 'description',
-      readme: 'readme',
-      homepage: 'homepage',
-      version_info: 'version_info',
-      platform: 'platform',
-      metadata: 'metadata',
-      repo: 'repo',
-      dependencies: 'dependencies',
-      commit_oid: 'commit_oid'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      version_info: lambda do |value|
-        ::OctridevGithub::WebhookRubygemsMetadataVersionInfo.from_hash(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookRubygemsMetadataMetadata
+  FIELDS = {
+    name: "name",
+    description: "description",
+    readme: "readme",
+    homepage: "homepage",
+    version_info: "version_info",
+    platform: "platform",
+    metadata: "metadata",
+    repo: "repo",
+    dependencies: "dependencies",
+    commit_oid: "commit_oid",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    version_info: lambda do |value|
+      ::OctridevGithub::WebhookRubygemsMetadataVersionInfo.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookRubygemsMetadata.
+# Typed representation of the `WebhookRubygemsMetadata` API schema.
+class WebhookRubygemsMetadata
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookRubygemsMetadataMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookRubygemsMetadataMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookRubygemsMetadataMetadata::DECODERS
+
+  # @return [String] Optional `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [String] Optional `string` value serialized in the `description` wire field.
+  attr_reader :description
+  # @return [String] Optional `string` value serialized in the `readme` wire field.
+  attr_reader :readme
+  # @return [String] Optional `string` value serialized in the `homepage` wire field.
+  attr_reader :homepage
+  # @return [WebhookRubygemsMetadataVersionInfo] Optional object value serialized in the `version_info` wire field.
+  attr_reader :version_info
+  # @return [String] Optional `string` value serialized in the `platform` wire field.
+  attr_reader :platform
+  # @return [Hash] Optional object value serialized in the `metadata` wire field.
+  attr_reader :metadata
+  # @return [String] Optional `string` value serialized in the `repo` wire field.
+  attr_reader :repo
+  # @return [Array_of_Hash] Optional array value serialized in the `dependencies` wire field.
+  attr_reader :dependencies
+  # @return [String] Optional `string` value serialized in the `commit_oid` wire field.
+  attr_reader :commit_oid
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookRubygemsMetadata.
-  # Typed representation of the `WebhookRubygemsMetadata` API schema.
-  class WebhookRubygemsMetadata
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookRubygemsMetadataMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookRubygemsMetadataMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookRubygemsMetadataMetadata::DECODERS
-
-    # @return [String] Optional `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [String] Optional `string` value serialized in the `description` wire field.
-    attr_reader :description
-    # @return [String] Optional `string` value serialized in the `readme` wire field.
-    attr_reader :readme
-    # @return [String] Optional `string` value serialized in the `homepage` wire field.
-    attr_reader :homepage
-    # @return [WebhookRubygemsMetadataVersionInfo] Optional object value serialized in the `version_info` wire field.
-    attr_reader :version_info
-    # @return [String] Optional `string` value serialized in the `platform` wire field.
-    attr_reader :platform
-    # @return [Hash] Optional object value serialized in the `metadata` wire field.
-    attr_reader :metadata
-    # @return [String] Optional `string` value serialized in the `repo` wire field.
-    attr_reader :repo
-    # @return [Array_of_Hash] Optional array value serialized in the `dependencies` wire field.
-    attr_reader :dependencies
-    # @return [String] Optional `string` value serialized in the `commit_oid` wire field.
-    attr_reader :commit_oid
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 end

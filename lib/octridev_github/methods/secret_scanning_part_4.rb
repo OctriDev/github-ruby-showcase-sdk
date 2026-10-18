@@ -28,25 +28,26 @@ module OctridevGithub
         placeholder_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/secret-scanning/push-protection-bypasses'
+            "/secret-scanning/push-protection-bypasses"
           ].join,
           config: config,
           body: {
             'reason' => reason,
-            'placeholder_id' => placeholder_id
+            'placeholder_id' => placeholder_id,
           },
           return_type: ::OctridevGithub::SecretScanningPushProtectionBypass,
           decoder: :json,
           operation_id: 'secret_scanning_create_push_protection_bypass',
           request_options: request_options,
-          errors: { '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -62,21 +63,22 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/secret-scanning/scan-history'
+            "/secret-scanning/scan-history"
           ].join,
           config: config,
           return_type: ::OctridevGithub::SecretScanningScanHistory,
           decoder: :json,
           operation_id: 'secret_scanning_get_scan_history',
           request_options: request_options,
-          errors: { '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
     end

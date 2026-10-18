@@ -5,17 +5,17 @@
 
 # webhooks_code_scanning domain models
 module OctridevGithub
-  # Defines the WebhooksCodeScanningCommitOid SDK value decoder.
-  module WebhooksCodeScanningCommitOid
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhooksCodeScanningCommitOid SDK value decoder.
+module WebhooksCodeScanningCommitOid
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhooksCodeScanningRef SDK value decoder.
-  module WebhooksCodeScanningRef
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhooksCodeScanningRef SDK value decoder.
+module WebhooksCodeScanningRef
+  def self.from_value(value)
+    value
   end
+end
 end

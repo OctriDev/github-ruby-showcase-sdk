@@ -13,7 +13,7 @@ module OctridevGithub
       module CodeQualityListFindingsForRepoParameter
         OPEN = 'open'
         DISMISSED = 'dismissed'
-        VALUES = %w[open dismissed].freeze
+        VALUES = ['open', 'dismissed'].freeze
         def self.from_value(value)
           value
         end
@@ -48,14 +48,15 @@ module OctridevGithub
         state: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/code-quality/findings'
+            "/code-quality/findings"
           ].join,
           config: config,
           query: {
@@ -63,13 +64,13 @@ module OctridevGithub
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'before' => QueryValue.new(before, style: 'form', explode: true),
             'after' => QueryValue.new(after, style: 'form', explode: true),
-            'state' => QueryValue.new(state, style: 'form', explode: true)
+            'state' => QueryValue.new(state, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::CodeQualityFinding],
           decoder: :json,
           operation_id: 'code_quality_list_findings_for_repo',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -87,14 +88,15 @@ module OctridevGithub
         finding_number:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/code-quality/findings/',
+            "/code-quality/findings/",
             SdkClient.encode_path_segment(finding_number)
           ].join,
           config: config,
@@ -102,7 +104,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'code_quality_get_finding',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -118,21 +120,22 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/code-quality/setup'
+            "/code-quality/setup"
           ].join,
           config: config,
           return_type: ::OctridevGithub::CodeQualitySetup,
           decoder: :json,
           operation_id: 'code_quality_get_setup',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -163,14 +166,15 @@ module OctridevGithub
         ai_findings_option: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/code-quality/setup'
+            "/code-quality/setup"
           ].join,
           config: config,
           body: {
@@ -178,13 +182,13 @@ module OctridevGithub
             'runner_type' => runner_type,
             'runner_label' => runner_label,
             'languages' => languages,
-            'ai_findings_option' => ai_findings_option
+            'ai_findings_option' => ai_findings_option,
           },
           return_type: ::OctridevGithub::EmptyObject,
           decoder: :json,
           operation_id: 'code_quality_update_setup',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
     end

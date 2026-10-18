@@ -5,161 +5,164 @@
 
 # webhook_projects_v2_item_reordered domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalWebhookProjectsV2ItemReorderedChangesPreviousProjectsV2ItemNodeIdMetadata
-    FIELDS = {
-      from: 'from',
-      to: 'to'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+# Internal model hydration metadata.
+class SdkInternalWebhookProjectsV2ItemReorderedChangesPreviousProjectsV2ItemNodeIdMetadata
+  FIELDS = {
+    from: "from",
+    to: "to",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhookProjectsV2ItemReorderedChangesPreviousProjectsV2ItemNodeId.
+# Optional object value serialized in the `previous_projects_v2_item_node_id` wire field.
+class WebhookProjectsV2ItemReorderedChangesPreviousProjectsV2ItemNodeId
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookProjectsV2ItemReorderedChangesPreviousProjectsV2ItemNodeIdMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookProjectsV2ItemReorderedChangesPreviousProjectsV2ItemNodeIdMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookProjectsV2ItemReorderedChangesPreviousProjectsV2ItemNodeIdMetadata::DECODERS
+
+  # @return [String] Optional `string` value serialized in the `from` wire field.
+  attr_reader :from
+  # @return [String] Optional `string` value serialized in the `to` wire field.
+  attr_reader :to
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookProjectsV2ItemReorderedChangesPreviousProjectsV2ItemNodeId.
-  # Optional object value serialized in the `previous_projects_v2_item_node_id` wire field.
-  class WebhookProjectsV2ItemReorderedChangesPreviousProjectsV2ItemNodeId
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookProjectsV2ItemReorderedChangesPreviousProjectsV2ItemNodeIdMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookProjectsV2ItemReorderedChangesPreviousProjectsV2ItemNodeIdMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookProjectsV2ItemReorderedChangesPreviousProjectsV2ItemNodeIdMetadata::DECODERS
-
-    # @return [String] Optional `string` value serialized in the `from` wire field.
-    attr_reader :from
-    # @return [String] Optional `string` value serialized in the `to` wire field.
-    attr_reader :to
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookProjectsV2ItemReorderedChangesMetadata
-    FIELDS = {
-      previous_projects_v2_item_node_id: 'previous_projects_v2_item_node_id'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      previous_projects_v2_item_node_id: lambda do |value|
-        ::OctridevGithub::WebhookProjectsV2ItemReorderedChangesPreviousProjectsV2ItemNodeId.from_hash(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookProjectsV2ItemReorderedChangesMetadata
+  FIELDS = {
+    previous_projects_v2_item_node_id: "previous_projects_v2_item_node_id",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    previous_projects_v2_item_node_id: lambda do |value|
+      ::OctridevGithub::WebhookProjectsV2ItemReorderedChangesPreviousProjectsV2ItemNodeId.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookProjectsV2ItemReorderedChanges.
+# Required object value serialized in the `changes` wire field.
+class WebhookProjectsV2ItemReorderedChanges
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookProjectsV2ItemReorderedChangesMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookProjectsV2ItemReorderedChangesMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookProjectsV2ItemReorderedChangesMetadata::DECODERS
+
+  # @return [WebhookProjectsV2ItemReorderedChangesPreviousProjectsV2ItemNodeId] Optional object value serialized in the `previous_projects_v2_item_node_id` wire field.
+  attr_reader :previous_projects_v2_item_node_id
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookProjectsV2ItemReorderedChanges.
-  # Required object value serialized in the `changes` wire field.
-  class WebhookProjectsV2ItemReorderedChanges
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookProjectsV2ItemReorderedChangesMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookProjectsV2ItemReorderedChangesMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookProjectsV2ItemReorderedChangesMetadata::DECODERS
-
-    # @return [WebhookProjectsV2ItemReorderedChangesPreviousProjectsV2ItemNodeId] Optional object value serialized in the `previous_projects_v2_item_node_id` wire field.
-    attr_reader :previous_projects_v2_item_node_id
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookProjectsV2ItemReorderedMetadata
-    FIELDS = {
-      action: 'action',
-      changes: 'changes',
-      installation: 'installation',
-      organization: 'organization',
-      projects_v2_item: 'projects_v2_item',
-      sender: 'sender'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      action
-      changes
-      organization
-      projects_v2_item
-      sender
-    ].freeze
-    DECODERS = {
-      action: lambda do |value|
-        ::OctridevGithub::WebhookProjectsV2ItemReorderedAction.from_value(value)
-      end,
-      changes: lambda do |value|
-        ::OctridevGithub::WebhookProjectsV2ItemReorderedChanges.from_hash(value)
-      end,
-      installation: lambda do |value|
-        ::OctridevGithub::SimpleInstallation.from_hash(value)
-      end,
-      organization: lambda do |value|
-        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-      end,
-      projects_v2_item: lambda do |value|
-        ::OctridevGithub::ProjectsV2Item.from_hash(value)
-      end,
-      sender: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookProjectsV2ItemReorderedMetadata
+  FIELDS = {
+    action: "action",
+    changes: "changes",
+    installation: "installation",
+    organization: "organization",
+    projects_v2_item: "projects_v2_item",
+    sender: "sender",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    action
+    changes
+    organization
+    projects_v2_item
+    sender
+  ].freeze
+  DECODERS = {
+    action: lambda do |value|
+      ::OctridevGithub::WebhookProjectsV2ItemReorderedAction.from_value(value)
+    end,
+    changes: lambda do |value|
+      ::OctridevGithub::WebhookProjectsV2ItemReorderedChanges.from_hash(value)
+    end,
+    installation: lambda do |value|
+      ::OctridevGithub::SimpleInstallation.from_hash(value)
+    end,
+    organization: lambda do |value|
+      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+    end,
+    projects_v2_item: lambda do |value|
+      ::OctridevGithub::ProjectsV2Item.from_hash(value)
+    end,
+    sender: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookProjectsV2ItemReordered.
+# Typed representation of the `WebhookProjectsV2ItemReordered` API schema.
+class WebhookProjectsV2ItemReordered
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookProjectsV2ItemReorderedMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookProjectsV2ItemReorderedMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookProjectsV2ItemReorderedMetadata::DECODERS
+
+  # @return [WebhookProjectsV2ItemReorderedAction] Required enumerated value serialized in the `action` wire field.
+  attr_reader :action
+  # @return [WebhookProjectsV2ItemReorderedChanges] Required object value serialized in the `changes` wire field.
+  attr_reader :changes
+  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+  attr_reader :installation
+  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+  attr_reader :organization
+  # @return [ProjectsV2Item] An item belonging to a project
+  attr_reader :projects_v2_item
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :sender
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookProjectsV2ItemReordered.
-  # Typed representation of the `WebhookProjectsV2ItemReordered` API schema.
-  class WebhookProjectsV2ItemReordered
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookProjectsV2ItemReorderedMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookProjectsV2ItemReorderedMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookProjectsV2ItemReorderedMetadata::DECODERS
-
-    # @return [WebhookProjectsV2ItemReorderedAction] Required enumerated value serialized in the `action` wire field.
-    attr_reader :action
-    # @return [WebhookProjectsV2ItemReorderedChanges] Required object value serialized in the `changes` wire field.
-    attr_reader :changes
-    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-    attr_reader :installation
-    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-    attr_reader :organization
-    # @return [ProjectsV2Item] An item belonging to a project
-    attr_reader :projects_v2_item
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :sender
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the WebhookProjectsV2ItemReorderedAction SDK namespace.
-  module WebhookProjectsV2ItemReorderedAction
-    REORDERED = 'reordered'
-    VALUES = ['reordered'].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
+
+# Defines the WebhookProjectsV2ItemReorderedAction SDK namespace.
+module WebhookProjectsV2ItemReorderedAction
+  REORDERED = 'reordered'
+  VALUES = ['reordered'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

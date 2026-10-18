@@ -5,167 +5,168 @@
 
 # webhook_installation_repositories_removed domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalWebhookInstallationRepositoriesRemovedRepositoriesRemovedItemMetadata
-    FIELDS = {
-      full_name: 'full_name',
-      id: 'id',
-      name: 'name',
-      node_id: 'node_id',
-      private: 'private'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      full_name
-      id
-      name
-      node_id
-      private
-    ].freeze
-    DECODERS = {}.freeze
+# Internal model hydration metadata.
+class SdkInternalWebhookInstallationRepositoriesRemovedRepositoriesRemovedItemMetadata
+  FIELDS = {
+    full_name: "full_name",
+    id: "id",
+    name: "name",
+    node_id: "node_id",
+    private: "private",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    full_name
+    id
+    name
+    node_id
+    private
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhookInstallationRepositoriesRemovedRepositoriesRemovedItem.
+# Required object value serialized in the `repositories_removed[]` wire field.
+class WebhookInstallationRepositoriesRemovedRepositoriesRemovedItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookInstallationRepositoriesRemovedRepositoriesRemovedItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookInstallationRepositoriesRemovedRepositoriesRemovedItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookInstallationRepositoriesRemovedRepositoriesRemovedItemMetadata::DECODERS
+
+  # @return [String] Required `string` value serialized in the `full_name` wire field.
+  attr_reader :full_name
+  # @return [Integer] Unique identifier of the repository
+  attr_reader :id
+  # @return [String] The name of the repository.
+  attr_reader :name
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [Boolean] Whether the repository is private or public.
+  attr_reader :private
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookInstallationRepositoriesRemovedRepositoriesRemovedItem.
-  # Required object value serialized in the `repositories_removed[]` wire field.
-  class WebhookInstallationRepositoriesRemovedRepositoriesRemovedItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookInstallationRepositoriesRemovedRepositoriesRemovedItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookInstallationRepositoriesRemovedRepositoriesRemovedItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookInstallationRepositoriesRemovedRepositoriesRemovedItemMetadata::DECODERS
-
-    # @return [String] Required `string` value serialized in the `full_name` wire field.
-    attr_reader :full_name
-    # @return [Integer] Unique identifier of the repository
-    attr_reader :id
-    # @return [String] The name of the repository.
-    attr_reader :name
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [Boolean] Whether the repository is private or public.
-    attr_reader :private
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookInstallationRepositoriesRemovedMetadata
-    FIELDS = {
-      action: 'action',
-      enterprise: 'enterprise',
-      installation: 'installation',
-      organization: 'organization',
-      repositories_added: 'repositories_added',
-      repositories_removed: 'repositories_removed',
-      repository: 'repository',
-      repository_selection: 'repository_selection',
-      requester: 'requester',
-      sender: 'sender'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      action
-      installation
-      repositories_added
-      repositories_removed
-      repository_selection
-      requester
-      sender
-    ].freeze
-    DECODERS = {
-      action: lambda do |value|
-        ::OctridevGithub::WebhookInstallationRepositoriesRemovedAction.from_value(value)
-      end,
-      enterprise: lambda do |value|
-        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-      end,
-      installation: lambda do |value|
-        ::OctridevGithub::Installation.from_hash(value)
-      end,
-      organization: lambda do |value|
-        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-      end,
-      repositories_added: lambda do |value|
-        ::OctridevGithub::WebhooksRepositoriesAdded.from_hash(value)
-      end,
-      repositories_removed: lambda do |value|
-        value&.map { |item| ::OctridevGithub::WebhookInstallationRepositoriesRemovedRepositoriesRemovedItem.from_hash(item) }
-      end,
-      repository: lambda do |value|
-        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-      end,
-      repository_selection: lambda do |value|
-        ::OctridevGithub::WebhooksRepositorySelection.from_value(value)
-      end,
-      requester: lambda do |value|
-        ::OctridevGithub::WebhooksUser.from_hash(value)
-      end,
-      sender: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      requester
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookInstallationRepositoriesRemovedMetadata
+  FIELDS = {
+    action: "action",
+    enterprise: "enterprise",
+    installation: "installation",
+    organization: "organization",
+    repositories_added: "repositories_added",
+    repositories_removed: "repositories_removed",
+    repository: "repository",
+    repository_selection: "repository_selection",
+    requester: "requester",
+    sender: "sender",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    action
+    installation
+    repositories_added
+    repositories_removed
+    repository_selection
+    requester
+    sender
+  ].freeze
+  DECODERS = {
+    action: lambda do |value|
+      ::OctridevGithub::WebhookInstallationRepositoriesRemovedAction.from_value(value)
+    end,
+    enterprise: lambda do |value|
+      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+    end,
+    installation: lambda do |value|
+      ::OctridevGithub::Installation.from_hash(value)
+    end,
+    organization: lambda do |value|
+      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+    end,
+    repositories_added: lambda do |value|
+      ::OctridevGithub::WebhooksRepositoriesAdded.from_hash(value)
+    end,
+    repositories_removed: lambda do |value|
+      value&.map { |item| ::OctridevGithub::WebhookInstallationRepositoriesRemovedRepositoriesRemovedItem.from_hash(item) }
+    end,
+    repository: lambda do |value|
+      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+    end,
+    repository_selection: lambda do |value|
+      ::OctridevGithub::WebhooksRepositorySelection.from_value(value)
+    end,
+    requester: lambda do |value|
+      ::OctridevGithub::WebhooksUser.from_hash(value)
+    end,
+    sender: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    requester
+  ].freeze
+end
+
+# API model for WebhookInstallationRepositoriesRemoved.
+# Typed representation of the `WebhookInstallationRepositoriesRemoved` API schema.
+class WebhookInstallationRepositoriesRemoved
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookInstallationRepositoriesRemovedMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookInstallationRepositoriesRemovedMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookInstallationRepositoriesRemovedMetadata::DECODERS
+
+  # @return [WebhookInstallationRepositoriesRemovedAction] Required enumerated value serialized in the `action` wire field.
+  attr_reader :action
+  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+  attr_reader :enterprise
+  # @return [Installation] Installation
+  attr_reader :installation
+  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+  attr_reader :organization
+  # @return [WebhooksRepositoriesAdded] An array of repository objects, which were added to the installation.
+  attr_reader :repositories_added
+  # @return [Array_of_WebhookInstallationRepositoriesRemovedRepositoriesRemovedItem] An array of repository objects, which were removed from the installation. When `repository_selection` changes from `all` to `selected`, this array is empty.
+  attr_reader :repositories_removed
+  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+  attr_reader :repository
+  # @return [WebhooksRepositorySelection] Describe whether all repositories have been selected or there's a selection involved
+  attr_reader :repository_selection
+  # @return [WebhooksUser] Required object value serialized in the `requester` wire field.
+  attr_reader :requester
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :sender
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookInstallationRepositoriesRemoved.
-  # Typed representation of the `WebhookInstallationRepositoriesRemoved` API schema.
-  class WebhookInstallationRepositoriesRemoved
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookInstallationRepositoriesRemovedMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookInstallationRepositoriesRemovedMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookInstallationRepositoriesRemovedMetadata::DECODERS
-
-    # @return [WebhookInstallationRepositoriesRemovedAction] Required enumerated value serialized in the `action` wire field.
-    attr_reader :action
-    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-    attr_reader :enterprise
-    # @return [Installation] Installation
-    attr_reader :installation
-    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-    attr_reader :organization
-    # @return [WebhooksRepositoriesAdded] An array of repository objects, which were added to the installation.
-    attr_reader :repositories_added
-    # @return [Array_of_WebhookInstallationRepositoriesRemovedRepositoriesRemovedItem] An array of repository objects, which were removed from the installation. When `repository_selection` changes from `all` to `selected`, this array is empty.
-    attr_reader :repositories_removed
-    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-    attr_reader :repository
-    # @return [WebhooksRepositorySelection] Describe whether all repositories have been selected or there's a selection involved
-    attr_reader :repository_selection
-    # @return [WebhooksUser] Required object value serialized in the `requester` wire field.
-    attr_reader :requester
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :sender
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookInstallationRepositoriesRemovedMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookInstallationRepositoriesRemovedMetadata::NULLABLE_FIELDS)
   end
 
-  # Defines the WebhookInstallationRepositoriesRemovedAction SDK namespace.
-  module WebhookInstallationRepositoriesRemovedAction
-    REMOVED = 'removed'
-    VALUES = ['removed'].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
+
+# Defines the WebhookInstallationRepositoriesRemovedAction SDK namespace.
+module WebhookInstallationRepositoriesRemovedAction
+  REMOVED = 'removed'
+  VALUES = ['removed'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

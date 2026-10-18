@@ -5,689 +5,690 @@
 
 # webhook_check_suite_completed domain models (part 2)
 module OctridevGithub
-  # API model for WebhookCheckSuiteCompletedCheckSuitePullRequestsItemBase.
-  # Required object value serialized in the `base` wire field.
-  class WebhookCheckSuiteCompletedCheckSuitePullRequestsItemBase
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemBaseMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemBaseMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemBaseMetadata::DECODERS
+# API model for WebhookCheckSuiteCompletedCheckSuitePullRequestsItemBase.
+# Required object value serialized in the `base` wire field.
+class WebhookCheckSuiteCompletedCheckSuitePullRequestsItemBase
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemBaseMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemBaseMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemBaseMetadata::DECODERS
 
-    # @return [String] Required `string` value serialized in the `ref` wire field.
-    attr_reader :ref
-    # @return [WebhookCheckSuiteCompletedCheckSuitePullRequestsItemBaseRepo] Required object value serialized in the `repo` wire field.
-    attr_reader :repo
-    # @return [String] Required `string` value serialized in the `sha` wire field.
-    attr_reader :sha
+  # @return [String] Required `string` value serialized in the `ref` wire field.
+  attr_reader :ref
+  # @return [WebhookCheckSuiteCompletedCheckSuitePullRequestsItemBaseRepo] Required object value serialized in the `repo` wire field.
+  attr_reader :repo
+  # @return [String] Required `string` value serialized in the `sha` wire field.
+  attr_reader :sha
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemHeadRepoMetadata
-    FIELDS = {
-      id: 'id',
-      name: 'name',
-      url: 'url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      name
-      url
-    ].freeze
-    DECODERS = {}.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for WebhookCheckSuiteCompletedCheckSuitePullRequestsItemHeadRepo.
-  # Required object value serialized in the `repo` wire field.
-  class WebhookCheckSuiteCompletedCheckSuitePullRequestsItemHeadRepo
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemHeadRepoMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemHeadRepoMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemHeadRepoMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
+# Internal model hydration metadata.
+class SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemHeadRepoMetadata
+  FIELDS = {
+    id: "id",
+    name: "name",
+    url: "url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    name
+    url
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for WebhookCheckSuiteCompletedCheckSuitePullRequestsItemHeadRepo.
+# Required object value serialized in the `repo` wire field.
+class WebhookCheckSuiteCompletedCheckSuitePullRequestsItemHeadRepo
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemHeadRepoMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemHeadRepoMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemHeadRepoMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemHeadMetadata
-    FIELDS = {
-      ref: 'ref',
-      repo: 'repo',
-      sha: 'sha'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      ref
-      repo
-      sha
-    ].freeze
-    DECODERS = {
-      repo: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuitePullRequestsItemHeadRepo.from_hash(value)
-      end
-    }.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for WebhookCheckSuiteCompletedCheckSuitePullRequestsItemHead.
-  # Required object value serialized in the `head` wire field.
-  class WebhookCheckSuiteCompletedCheckSuitePullRequestsItemHead
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemHeadMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemHeadMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemHeadMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [String] Required `string` value serialized in the `ref` wire field.
-    attr_reader :ref
-    # @return [WebhookCheckSuiteCompletedCheckSuitePullRequestsItemHeadRepo] Required object value serialized in the `repo` wire field.
-    attr_reader :repo
-    # @return [String] Required `string` value serialized in the `sha` wire field.
-    attr_reader :sha
+# Internal model hydration metadata.
+class SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemHeadMetadata
+  FIELDS = {
+    ref: "ref",
+    repo: "repo",
+    sha: "sha",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    ref
+    repo
+    sha
+  ].freeze
+  DECODERS = {
+    repo: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuitePullRequestsItemHeadRepo.from_hash(value)
+    end,
+  }.freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for WebhookCheckSuiteCompletedCheckSuitePullRequestsItemHead.
+# Required object value serialized in the `head` wire field.
+class WebhookCheckSuiteCompletedCheckSuitePullRequestsItemHead
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemHeadMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemHeadMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemHeadMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+  # @return [String] Required `string` value serialized in the `ref` wire field.
+  attr_reader :ref
+  # @return [WebhookCheckSuiteCompletedCheckSuitePullRequestsItemHeadRepo] Required object value serialized in the `repo` wire field.
+  attr_reader :repo
+  # @return [String] Required `string` value serialized in the `sha` wire field.
+  attr_reader :sha
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemMetadata
-    FIELDS = {
-      base: 'base',
-      head: 'head',
-      id: 'id',
-      number: 'number',
-      url: 'url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      base
-      head
-      id
-      number
-      url
-    ].freeze
-    DECODERS = {
-      base: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuitePullRequestsItemBase.from_hash(value)
-      end,
-      head: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuitePullRequestsItemHead.from_hash(value)
-      end
-    }.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for WebhookCheckSuiteCompletedCheckSuitePullRequestsItem.
-  # Required object value serialized in the `pull_requests[]` wire field.
-  class WebhookCheckSuiteCompletedCheckSuitePullRequestsItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [WebhookCheckSuiteCompletedCheckSuitePullRequestsItemBase] Required object value serialized in the `base` wire field.
-    attr_reader :base
-    # @return [WebhookCheckSuiteCompletedCheckSuitePullRequestsItemHead] Required object value serialized in the `head` wire field.
-    attr_reader :head
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [Integer] Required `integer` value serialized in the `number` wire field.
-    attr_reader :number
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
+# Internal model hydration metadata.
+class SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemMetadata
+  FIELDS = {
+    base: "base",
+    head: "head",
+    id: "id",
+    number: "number",
+    url: "url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    base
+    head
+    id
+    number
+    url
+  ].freeze
+  DECODERS = {
+    base: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuitePullRequestsItemBase.from_hash(value)
+    end,
+    head: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuitePullRequestsItemHead.from_hash(value)
+    end,
+  }.freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for WebhookCheckSuiteCompletedCheckSuitePullRequestsItem.
+# Required object value serialized in the `pull_requests[]` wire field.
+class WebhookCheckSuiteCompletedCheckSuitePullRequestsItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+  # @return [WebhookCheckSuiteCompletedCheckSuitePullRequestsItemBase] Required object value serialized in the `base` wire field.
+  attr_reader :base
+  # @return [WebhookCheckSuiteCompletedCheckSuitePullRequestsItemHead] Required object value serialized in the `head` wire field.
+  attr_reader :head
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [Integer] Required `integer` value serialized in the `number` wire field.
+  attr_reader :number
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookCheckSuiteCompletedCheckSuiteMetadata
-    FIELDS = {
-      after: 'after',
-      app: 'app',
-      before: 'before',
-      check_runs_url: 'check_runs_url',
-      conclusion: 'conclusion',
-      created_at: 'created_at',
-      head_branch: 'head_branch',
-      head_commit: 'head_commit',
-      head_sha: 'head_sha',
-      id: 'id',
-      latest_check_runs_count: 'latest_check_runs_count',
-      node_id: 'node_id',
-      pull_requests: 'pull_requests',
-      rerequestable: 'rerequestable',
-      runs_rerequestable: 'runs_rerequestable',
-      status: 'status',
-      updated_at: 'updated_at',
-      url: 'url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      after
-      app
-      before
-      check_runs_url
-      conclusion
-      created_at
-      head_branch
-      head_commit
-      head_sha
-      id
-      latest_check_runs_count
-      node_id
-      pull_requests
-      status
-      updated_at
-      url
-    ].freeze
-    DECODERS = {
-      app: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteApp.from_hash(value)
-      end,
-      conclusion: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteConclusion.from_value(value)
-      end,
-      head_commit: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteHeadCommit.from_hash(value)
-      end,
-      pull_requests: lambda do |value|
-        value&.map { |item| ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuitePullRequestsItem.from_hash(item) }
-      end,
-      status: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteStatus.from_value(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      after
-      before
-      conclusion
-      head_branch
-      status
-    ].freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for WebhookCheckSuiteCompletedCheckSuite.
-  # The check_suite.
-  class WebhookCheckSuiteCompletedCheckSuite
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [String] Required `string` value serialized in the `after` wire field.
-    attr_reader :after
-    # @return [WebhookCheckSuiteCompletedCheckSuiteApp] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
-    attr_reader :app
-    # @return [String] Required `string` value serialized in the `before` wire field.
-    attr_reader :before
-    # @return [String] Required `uri`-formatted value serialized in the `check_runs_url` wire field.
-    attr_reader :check_runs_url
-    # @return [WebhookCheckSuiteCompletedCheckSuiteConclusion] The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has `completed`.
-    attr_reader :conclusion
-    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [String] The head branch name the changes are on.
-    attr_reader :head_branch
-    # @return [WebhookCheckSuiteCompletedCheckSuiteHeadCommit] Required object value serialized in the `head_commit` wire field.
-    attr_reader :head_commit
-    # @return [String] The SHA of the head commit that is being checked.
-    attr_reader :head_sha
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [Integer] Required `integer` value serialized in the `latest_check_runs_count` wire field.
-    attr_reader :latest_check_runs_count
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [Array_of_WebhookCheckSuiteCompletedCheckSuitePullRequestsItem] An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.
-    attr_reader :pull_requests
-    # @return [Boolean] Optional `boolean` value serialized in the `rerequestable` wire field.
-    attr_reader :rerequestable
-    # @return [Boolean] Optional `boolean` value serialized in the `runs_rerequestable` wire field.
-    attr_reader :runs_rerequestable
-    # @return [WebhookCheckSuiteCompletedCheckSuiteStatus] The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`.
-    attr_reader :status
-    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-    attr_reader :updated_at
-    # @return [String] URL that points to the check suite API resource.
-    attr_reader :url
+# Internal model hydration metadata.
+class SdkInternalWebhookCheckSuiteCompletedCheckSuiteMetadata
+  FIELDS = {
+    after: "after",
+    app: "app",
+    before: "before",
+    check_runs_url: "check_runs_url",
+    conclusion: "conclusion",
+    created_at: "created_at",
+    head_branch: "head_branch",
+    head_commit: "head_commit",
+    head_sha: "head_sha",
+    id: "id",
+    latest_check_runs_count: "latest_check_runs_count",
+    node_id: "node_id",
+    pull_requests: "pull_requests",
+    rerequestable: "rerequestable",
+    runs_rerequestable: "runs_rerequestable",
+    status: "status",
+    updated_at: "updated_at",
+    url: "url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    after
+    app
+    before
+    check_runs_url
+    conclusion
+    created_at
+    head_branch
+    head_commit
+    head_sha
+    id
+    latest_check_runs_count
+    node_id
+    pull_requests
+    status
+    updated_at
+    url
+  ].freeze
+  DECODERS = {
+    app: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteApp.from_hash(value)
+    end,
+    conclusion: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteConclusion.from_value(value)
+    end,
+    head_commit: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteHeadCommit.from_hash(value)
+    end,
+    pull_requests: lambda do |value|
+      value&.map { |item| ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuitePullRequestsItem.from_hash(item) }
+    end,
+    status: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteStatus.from_value(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    after
+    before
+    conclusion
+    head_branch
+    status
+  ].freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for WebhookCheckSuiteCompletedCheckSuite.
+# The check_suite.
+class WebhookCheckSuiteCompletedCheckSuite
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookCheckSuiteCompletedCheckSuiteMetadata::NULLABLE_FIELDS)
-    end
+  # @return [String] Required `string` value serialized in the `after` wire field.
+  attr_reader :after
+  # @return [WebhookCheckSuiteCompletedCheckSuiteApp] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+  attr_reader :app
+  # @return [String] Required `string` value serialized in the `before` wire field.
+  attr_reader :before
+  # @return [String] Required `uri`-formatted value serialized in the `check_runs_url` wire field.
+  attr_reader :check_runs_url
+  # @return [WebhookCheckSuiteCompletedCheckSuiteConclusion] The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has `completed`.
+  attr_reader :conclusion
+  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [String] The head branch name the changes are on.
+  attr_reader :head_branch
+  # @return [WebhookCheckSuiteCompletedCheckSuiteHeadCommit] Required object value serialized in the `head_commit` wire field.
+  attr_reader :head_commit
+  # @return [String] The SHA of the head commit that is being checked.
+  attr_reader :head_sha
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [Integer] Required `integer` value serialized in the `latest_check_runs_count` wire field.
+  attr_reader :latest_check_runs_count
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [Array_of_WebhookCheckSuiteCompletedCheckSuitePullRequestsItem] An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.
+  attr_reader :pull_requests
+  # @return [Boolean] Optional `boolean` value serialized in the `rerequestable` wire field.
+  attr_reader :rerequestable
+  # @return [Boolean] Optional `boolean` value serialized in the `runs_rerequestable` wire field.
+  attr_reader :runs_rerequestable
+  # @return [WebhookCheckSuiteCompletedCheckSuiteStatus] The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`.
+  attr_reader :status
+  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+  attr_reader :updated_at
+  # @return [String] URL that points to the check suite API resource.
+  attr_reader :url
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookCheckSuiteCompletedMetadata
-    FIELDS = {
-      action: 'action',
-      check_suite: 'check_suite',
-      enterprise: 'enterprise',
-      installation: 'installation',
-      organization: 'organization',
-      repository: 'repository',
-      sender: 'sender'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      action
-      check_suite
-      repository
-      sender
-    ].freeze
-    DECODERS = {
-      action: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedAction.from_value(value)
-      end,
-      check_suite: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuite.from_hash(value)
-      end,
-      enterprise: lambda do |value|
-        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-      end,
-      installation: lambda do |value|
-        ::OctridevGithub::SimpleInstallation.from_hash(value)
-      end,
-      organization: lambda do |value|
-        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-      end,
-      repository: lambda do |value|
-        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-      end,
-      sender: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end
-    }.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookCheckSuiteCompletedCheckSuiteMetadata::NULLABLE_FIELDS)
   end
 
-  # API model for WebhookCheckSuiteCompleted.
-  # Typed representation of the `WebhookCheckSuiteCompleted` API schema.
-  class WebhookCheckSuiteCompleted
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookCheckSuiteCompletedMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookCheckSuiteCompletedMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookCheckSuiteCompletedMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [WebhookCheckSuiteCompletedAction] Required enumerated value serialized in the `action` wire field.
-    attr_reader :action
-    # @return [WebhookCheckSuiteCompletedCheckSuite] The check_suite.
-    attr_reader :check_suite
-    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-    attr_reader :enterprise
-    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-    attr_reader :installation
-    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-    attr_reader :organization
-    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-    attr_reader :repository
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :sender
+# Internal model hydration metadata.
+class SdkInternalWebhookCheckSuiteCompletedMetadata
+  FIELDS = {
+    action: "action",
+    check_suite: "check_suite",
+    enterprise: "enterprise",
+    installation: "installation",
+    organization: "organization",
+    repository: "repository",
+    sender: "sender",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    action
+    check_suite
+    repository
+    sender
+  ].freeze
+  DECODERS = {
+    action: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedAction.from_value(value)
+    end,
+    check_suite: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuite.from_hash(value)
+    end,
+    enterprise: lambda do |value|
+      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+    end,
+    installation: lambda do |value|
+      ::OctridevGithub::SimpleInstallation.from_hash(value)
+    end,
+    organization: lambda do |value|
+      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+    end,
+    repository: lambda do |value|
+      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+    end,
+    sender: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+  }.freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for WebhookCheckSuiteCompleted.
+# Typed representation of the `WebhookCheckSuiteCompleted` API schema.
+class WebhookCheckSuiteCompleted
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookCheckSuiteCompletedMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookCheckSuiteCompletedMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookCheckSuiteCompletedMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+  # @return [WebhookCheckSuiteCompletedAction] Required enumerated value serialized in the `action` wire field.
+  attr_reader :action
+  # @return [WebhookCheckSuiteCompletedCheckSuite] The check_suite.
+  attr_reader :check_suite
+  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+  attr_reader :enterprise
+  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+  attr_reader :installation
+  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+  attr_reader :organization
+  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+  attr_reader :repository
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :sender
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the WebhookCheckSuiteCompletedAction SDK namespace.
-  module WebhookCheckSuiteCompletedAction
-    COMPLETED = 'completed'
-    VALUES = ['completed'].freeze
-    def self.from_value(value)
-      value
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the WebhookCheckSuiteCompletedCheckSuiteAppEventsItem SDK namespace.
-  module WebhookCheckSuiteCompletedCheckSuiteAppEventsItem
-    BRANCH_PROTECTION_RULE = 'branch_protection_rule'
-    CHECK_RUN = 'check_run'
-    CHECK_SUITE = 'check_suite'
-    CODE_SCANNING_ALERT = 'code_scanning_alert'
-    COMMIT_COMMENT = 'commit_comment'
-    CONTENT_REFERENCE = 'content_reference'
-    CREATE = 'create'
-    DELETE = 'delete'
-    DEPLOYMENT = 'deployment'
-    DEPLOYMENT_REVIEW = 'deployment_review'
-    DEPLOYMENT_STATUS = 'deployment_status'
-    DEPLOY_KEY = 'deploy_key'
-    DISCUSSION = 'discussion'
-    DISCUSSION_COMMENT = 'discussion_comment'
-    FORK = 'fork'
-    GOLLUM = 'gollum'
-    ISSUES = 'issues'
-    ISSUE_COMMENT = 'issue_comment'
-    LABEL = 'label'
-    MEMBER = 'member'
-    MEMBERSHIP = 'membership'
-    MILESTONE = 'milestone'
-    ORGANIZATION = 'organization'
-    ORG_BLOCK = 'org_block'
-    PAGE_BUILD = 'page_build'
-    PROJECT = 'project'
-    PROJECT_CARD = 'project_card'
-    PROJECT_COLUMN = 'project_column'
-    PUBLIC = 'public'
-    PULL_REQUEST = 'pull_request'
-    PULL_REQUEST_REVIEW = 'pull_request_review'
-    PULL_REQUEST_REVIEW_COMMENT = 'pull_request_review_comment'
-    PUSH = 'push'
-    REGISTRY_PACKAGE = 'registry_package'
-    RELEASE = 'release'
-    REPOSITORY = 'repository'
-    REPOSITORY_DISPATCH = 'repository_dispatch'
-    SECRET_SCANNING_ALERT = 'secret_scanning_alert'
-    STAR = 'star'
-    STATUS = 'status'
-    TEAM = 'team'
-    TEAM_ADD = 'team_add'
-    WATCH = 'watch'
-    WORKFLOW_DISPATCH = 'workflow_dispatch'
-    WORKFLOW_RUN = 'workflow_run'
-    MERGE_GROUP = 'merge_group'
-    PULL_REQUEST_REVIEW_THREAD = 'pull_request_review_thread'
-    WORKFLOW_JOB = 'workflow_job'
-    MERGE_QUEUE_ENTRY = 'merge_queue_entry'
-    SECURITY_AND_ANALYSIS = 'security_and_analysis'
-    PROJECTS_V2_ITEM = 'projects_v2_item'
-    SECRET_SCANNING_ALERT_LOCATION = 'secret_scanning_alert_location'
-    VALUES = %w[
-      branch_protection_rule check_run check_suite code_scanning_alert commit_comment
-      content_reference create delete deployment deployment_review deployment_status
-      deploy_key discussion discussion_comment fork gollum issues issue_comment
-      label member membership milestone organization org_block page_build
-      project project_card project_column public pull_request pull_request_review
-      pull_request_review_comment push registry_package release repository
-      repository_dispatch secret_scanning_alert star status team team_add watch
-      workflow_dispatch workflow_run merge_group pull_request_review_thread workflow_job
-      merge_queue_entry security_and_analysis projects_v2_item
-      secret_scanning_alert_location
-    ].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
 
-  # Defines the WebhookCheckSuiteCompletedCheckSuiteAppOwnerType SDK namespace.
-  module WebhookCheckSuiteCompletedCheckSuiteAppOwnerType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookCheckSuiteCompletedAction SDK namespace.
+module WebhookCheckSuiteCompletedAction
+  COMPLETED = 'completed'
+  VALUES = ['completed'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsActions SDK namespace.
-  module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsActions
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookCheckSuiteCompletedCheckSuiteAppEventsItem SDK namespace.
+module WebhookCheckSuiteCompletedCheckSuiteAppEventsItem
+  BRANCH_PROTECTION_RULE = 'branch_protection_rule'
+  CHECK_RUN = 'check_run'
+  CHECK_SUITE = 'check_suite'
+  CODE_SCANNING_ALERT = 'code_scanning_alert'
+  COMMIT_COMMENT = 'commit_comment'
+  CONTENT_REFERENCE = 'content_reference'
+  CREATE = 'create'
+  DELETE = 'delete'
+  DEPLOYMENT = 'deployment'
+  DEPLOYMENT_REVIEW = 'deployment_review'
+  DEPLOYMENT_STATUS = 'deployment_status'
+  DEPLOY_KEY = 'deploy_key'
+  DISCUSSION = 'discussion'
+  DISCUSSION_COMMENT = 'discussion_comment'
+  FORK = 'fork'
+  GOLLUM = 'gollum'
+  ISSUES = 'issues'
+  ISSUE_COMMENT = 'issue_comment'
+  LABEL = 'label'
+  MEMBER = 'member'
+  MEMBERSHIP = 'membership'
+  MILESTONE = 'milestone'
+  ORGANIZATION = 'organization'
+  ORG_BLOCK = 'org_block'
+  PAGE_BUILD = 'page_build'
+  PROJECT = 'project'
+  PROJECT_CARD = 'project_card'
+  PROJECT_COLUMN = 'project_column'
+  PUBLIC = 'public'
+  PULL_REQUEST = 'pull_request'
+  PULL_REQUEST_REVIEW = 'pull_request_review'
+  PULL_REQUEST_REVIEW_COMMENT = 'pull_request_review_comment'
+  PUSH = 'push'
+  REGISTRY_PACKAGE = 'registry_package'
+  RELEASE = 'release'
+  REPOSITORY = 'repository'
+  REPOSITORY_DISPATCH = 'repository_dispatch'
+  SECRET_SCANNING_ALERT = 'secret_scanning_alert'
+  STAR = 'star'
+  STATUS = 'status'
+  TEAM = 'team'
+  TEAM_ADD = 'team_add'
+  WATCH = 'watch'
+  WORKFLOW_DISPATCH = 'workflow_dispatch'
+  WORKFLOW_RUN = 'workflow_run'
+  MERGE_GROUP = 'merge_group'
+  PULL_REQUEST_REVIEW_THREAD = 'pull_request_review_thread'
+  WORKFLOW_JOB = 'workflow_job'
+  MERGE_QUEUE_ENTRY = 'merge_queue_entry'
+  SECURITY_AND_ANALYSIS = 'security_and_analysis'
+  PROJECTS_V2_ITEM = 'projects_v2_item'
+  SECRET_SCANNING_ALERT_LOCATION = 'secret_scanning_alert_location'
+  VALUES = [
+    'branch_protection_rule', 'check_run', 'check_suite', 'code_scanning_alert', 'commit_comment',
+    'content_reference', 'create', 'delete', 'deployment', 'deployment_review', 'deployment_status',
+    'deploy_key', 'discussion', 'discussion_comment', 'fork', 'gollum', 'issues', 'issue_comment',
+    'label', 'member', 'membership', 'milestone', 'organization', 'org_block', 'page_build',
+    'project', 'project_card', 'project_column', 'public', 'pull_request', 'pull_request_review',
+    'pull_request_review_comment', 'push', 'registry_package', 'release', 'repository',
+    'repository_dispatch', 'secret_scanning_alert', 'star', 'status', 'team', 'team_add', 'watch',
+    'workflow_dispatch', 'workflow_run', 'merge_group', 'pull_request_review_thread', 'workflow_job',
+    'merge_queue_entry', 'security_and_analysis', 'projects_v2_item',
+    'secret_scanning_alert_location'
+  ].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsAdministration SDK namespace.
-  module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsAdministration
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookCheckSuiteCompletedCheckSuiteAppOwnerType SDK namespace.
+module WebhookCheckSuiteCompletedCheckSuiteAppOwnerType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsChecks SDK namespace.
-  module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsChecks
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsActions SDK namespace.
+module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsActions
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsContentReferences SDK namespace.
-  module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsContentReferences
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsAdministration SDK namespace.
+module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsAdministration
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsContents SDK namespace.
-  module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsContents
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsChecks SDK namespace.
+module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsChecks
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsDeployments SDK namespace.
-  module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsDeployments
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsContentReferences SDK namespace.
+module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsContentReferences
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsDiscussions SDK namespace.
-  module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsDiscussions
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsContents SDK namespace.
+module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsContents
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsEmails SDK namespace.
-  module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsEmails
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsDeployments SDK namespace.
+module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsDeployments
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsEnvironments SDK namespace.
-  module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsEnvironments
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsDiscussions SDK namespace.
+module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsDiscussions
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsIssues SDK namespace.
-  module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsIssues
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsEmails SDK namespace.
+module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsEmails
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsKeys SDK namespace.
-  module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsKeys
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsEnvironments SDK namespace.
+module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsEnvironments
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsMembers SDK namespace.
-  module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsMembers
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsIssues SDK namespace.
+module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsIssues
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsMetadata SDK namespace.
-  module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsMetadata
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsKeys SDK namespace.
+module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsKeys
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizatioX8ff7d9c6e2 SDK namespace.
-  module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizatioX8ff7d9c6e2
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsMembers SDK namespace.
+module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsMembers
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationHooks SDK namespace.
-  module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationHooks
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsMetadata SDK namespace.
+module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsMetadata
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationPackages SDK namespace.
-  module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationPackages
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizatioX8ff7d9c6e2 SDK namespace.
+module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizatioX8ff7d9c6e2
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationPlan SDK namespace.
-  module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationPlan
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationHooks SDK namespace.
+module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationHooks
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationProjects SDK namespace.
-  module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationProjects
-    READ = 'read'
-    WRITE = 'write'
-    ADMIN = 'admin'
-    VALUES = %w[read write admin].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationPackages SDK namespace.
+module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationPackages
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationSecrets SDK namespace.
-  module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationSecrets
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationPlan SDK namespace.
+module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationPlan
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizatioX27d7ffcd97 SDK namespace.
-  module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizatioX27d7ffcd97
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationProjects SDK namespace.
+module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationProjects
+  READ = 'read'
+  WRITE = 'write'
+  ADMIN = 'admin'
+  VALUES = ['read', 'write', 'admin'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizatioX0c909af858 SDK namespace.
-  module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizatioX0c909af858
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationSecrets SDK namespace.
+module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationSecrets
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
+
+# Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizatioX27d7ffcd97 SDK namespace.
+module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizatioX27d7ffcd97
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizatioX0c909af858 SDK namespace.
+module WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizatioX0c909af858
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

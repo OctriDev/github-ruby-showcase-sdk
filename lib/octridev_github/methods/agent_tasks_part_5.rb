@@ -12,10 +12,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentTasksGetTaskByIdResponseVariant1SessionsItemUserMetadata
         FIELDS = {
-          id: 'id'
+          id: "id",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for AgentTasksGetTaskByIdResponseVariant1SessionsItemUser.
@@ -46,10 +48,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentTasksGetTaskByIdResponseVariant1SessionsItemOwnerMetadata
         FIELDS = {
-          id: 'id'
+          id: "id",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for AgentTasksGetTaskByIdResponseVariant1SessionsItemOwner.
@@ -80,10 +84,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentTasksGetTaskByIdResponseVariant1SessionsItemRepositoryMetadata
         FIELDS = {
-          id: 'id'
+          id: "id",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for AgentTasksGetTaskByIdResponseVariant1SessionsItemRepository.
@@ -114,8 +120,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentTasksGetTaskByIdResponseVariant1SessionsItemUsageMetadata
         FIELDS = {
-          type: 'type',
-          amount: 'amount'
+          type: "type",
+          amount: "amount",
         }.freeze
         REQUIRED_FIELDS = %i[
           type
@@ -124,7 +130,7 @@ module OctridevGithub
         DECODERS = {
           type: lambda do |value|
             ::OctridevGithub::Methods::AgentTasks::AgentTasksGetTaskByIdResponseVariant1SessionsItemUsageType.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -158,10 +164,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentTasksGetTaskByIdResponseVariant1SessionsItemErrorMetadata
         FIELDS = {
-          message: 'message'
+          message: "message",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for AgentTasksGetTaskByIdResponseVariant1SessionsItemError.
@@ -192,22 +200,22 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentTasksGetTaskByIdResponseVariant1SessionsItemMetadata
         FIELDS = {
-          id: 'id',
-          name: 'name',
-          user: 'user',
-          owner: 'owner',
-          repository: 'repository',
-          task_id: 'task_id',
-          state: 'state',
-          created_at: 'created_at',
-          updated_at: 'updated_at',
-          completed_at: 'completed_at',
-          prompt: 'prompt',
-          head_ref: 'head_ref',
-          base_ref: 'base_ref',
-          model: 'model',
-          usage: 'usage',
-          error: 'error'
+          id: "id",
+          name: "name",
+          user: "user",
+          owner: "owner",
+          repository: "repository",
+          task_id: "task_id",
+          state: "state",
+          created_at: "created_at",
+          updated_at: "updated_at",
+          completed_at: "completed_at",
+          prompt: "prompt",
+          head_ref: "head_ref",
+          base_ref: "base_ref",
+          model: "model",
+          usage: "usage",
+          error: "error",
         }.freeze
         REQUIRED_FIELDS = %i[
           id
@@ -232,7 +240,7 @@ module OctridevGithub
           end,
           error: lambda do |value|
             ::OctridevGithub::Methods::AgentTasks::AgentTasksGetTaskByIdResponseVariant1SessionsItemError.from_hash(value)
-          end
+          end,
         }.freeze
       end
 
@@ -294,23 +302,23 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentTasksGetTaskByIdResponseMetadata
         FIELDS = {
-          id: 'id',
-          url: 'url',
-          html_url: 'html_url',
-          name: 'name',
-          creator: 'creator',
-          creator_type: 'creator_type',
-          user_collaborators: 'user_collaborators',
-          owner: 'owner',
-          repository: 'repository',
-          state: 'state',
-          session_count: 'session_count',
-          artifacts: 'artifacts',
-          archived_at: 'archived_at',
-          updated_at: 'updated_at',
-          created_at: 'created_at',
-          custom_agent: 'custom_agent',
-          sessions: 'sessions'
+          id: "id",
+          url: "url",
+          html_url: "html_url",
+          name: "name",
+          creator: "creator",
+          creator_type: "creator_type",
+          user_collaborators: "user_collaborators",
+          owner: "owner",
+          repository: "repository",
+          state: "state",
+          session_count: "session_count",
+          artifacts: "artifacts",
+          archived_at: "archived_at",
+          updated_at: "updated_at",
+          created_at: "created_at",
+          custom_agent: "custom_agent",
+          sessions: "sessions",
         }.freeze
         REQUIRED_FIELDS = %i[
           id
@@ -344,7 +352,7 @@ module OctridevGithub
           end,
           sessions: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::AgentTasks::AgentTasksGetTaskByIdResponseVariant1SessionsItem.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -412,8 +420,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = %w[
-          missing missing_field invalid already_exists unprocessable custom
+        VALUES = [
+          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
         ].freeze
         def self.from_value(value)
           value
@@ -424,7 +432,7 @@ module OctridevGithub
       module AgentTasksListTasksForRepoResponseTasksItemCreatorType
         USER = 'user'
         ORGANIZATION = 'organization'
-        VALUES = %w[user organization].freeze
+        VALUES = ['user', 'organization'].freeze
         def self.from_value(value)
           value
         end
@@ -438,8 +446,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = %w[
-          missing missing_field invalid already_exists unprocessable custom
+        VALUES = [
+          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
         ].freeze
         def self.from_value(value)
           value
@@ -454,8 +462,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = %w[
-          missing missing_field invalid already_exists unprocessable custom
+        VALUES = [
+          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
         ].freeze
         def self.from_value(value)
           value
@@ -470,8 +478,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = %w[
-          missing missing_field invalid already_exists unprocessable custom
+        VALUES = [
+          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
         ].freeze
         def self.from_value(value)
           value
@@ -491,7 +499,7 @@ module OctridevGithub
       module AgentTasksGetTaskByIdResponseVariant1SessionsItemUsageType
         AI_CREDITS = 'ai_credits'
         PREMIUM_REQUESTS = 'premium_requests'
-        VALUES = %w[ai_credits premium_requests].freeze
+        VALUES = ['ai_credits', 'premium_requests'].freeze
         def self.from_value(value)
           value
         end
@@ -501,7 +509,7 @@ module OctridevGithub
       module AgentTasksGetTaskByRepoAndIdResponseVariant0CreatorType
         USER = 'user'
         ORGANIZATION = 'organization'
-        VALUES = %w[user organization].freeze
+        VALUES = ['user', 'organization'].freeze
         def self.from_value(value)
           value
         end
@@ -524,8 +532,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = %w[
-          missing missing_field invalid already_exists unprocessable custom
+        VALUES = [
+          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
         ].freeze
         def self.from_value(value)
           value
@@ -540,8 +548,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = %w[
-          missing missing_field invalid already_exists unprocessable custom
+        VALUES = [
+          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
         ].freeze
         def self.from_value(value)
           value
@@ -556,8 +564,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = %w[
-          missing missing_field invalid already_exists unprocessable custom
+        VALUES = [
+          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
         ].freeze
         def self.from_value(value)
           value

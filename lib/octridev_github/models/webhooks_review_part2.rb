@@ -5,299 +5,299 @@
 
 # webhooks_review domain models (part 2)
 module OctridevGithub
-  # API model for WebhooksReviewCommentUser.
-  # Required object value serialized in the `user` wire field.
-  class WebhooksReviewCommentUser
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksReviewCommentUserMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksReviewCommentUserMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksReviewCommentUserMetadata::DECODERS
+# API model for WebhooksReviewCommentUser.
+# Required object value serialized in the `user` wire field.
+class WebhooksReviewCommentUser
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksReviewCommentUserMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksReviewCommentUserMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksReviewCommentUserMetadata::DECODERS
 
-    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-    attr_reader :avatar_url
-    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-    attr_reader :deleted
-    # @return [String] Optional `string` value serialized in the `email` wire field.
-    attr_reader :email
-    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-    attr_reader :events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-    attr_reader :followers_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-    attr_reader :following_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-    attr_reader :gists_url
-    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-    attr_reader :gravatar_id
-    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `login` wire field.
-    attr_reader :login
-    # @return [String] Optional `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [String] Optional `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-    attr_reader :organizations_url
-    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-    attr_reader :received_events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-    attr_reader :repos_url
-    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-    attr_reader :site_admin
-    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-    attr_reader :starred_url
-    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-    attr_reader :subscriptions_url
-    # @return [WebhooksReviewCommentUserType] Optional enumerated value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-    attr_reader :user_view_type
+  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+  attr_reader :avatar_url
+  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+  attr_reader :deleted
+  # @return [String] Optional `string` value serialized in the `email` wire field.
+  attr_reader :email
+  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+  attr_reader :events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+  attr_reader :followers_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+  attr_reader :following_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+  attr_reader :gists_url
+  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+  attr_reader :gravatar_id
+  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `login` wire field.
+  attr_reader :login
+  # @return [String] Optional `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [String] Optional `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+  attr_reader :organizations_url
+  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+  attr_reader :received_events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+  attr_reader :repos_url
+  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+  attr_reader :site_admin
+  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+  attr_reader :starred_url
+  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+  attr_reader :subscriptions_url
+  # @return [WebhooksReviewCommentUserType] Optional enumerated value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+  attr_reader :user_view_type
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksReviewCommentMetadata
-    FIELDS = {
-      links: '_links',
-      author_association: 'author_association',
-      body: 'body',
-      commit_id: 'commit_id',
-      created_at: 'created_at',
-      diff_hunk: 'diff_hunk',
-      html_url: 'html_url',
-      id: 'id',
-      in_reply_to_id: 'in_reply_to_id',
-      line: 'line',
-      node_id: 'node_id',
-      original_commit_id: 'original_commit_id',
-      original_line: 'original_line',
-      original_position: 'original_position',
-      original_start_line: 'original_start_line',
-      path: 'path',
-      position: 'position',
-      pull_request_review_id: 'pull_request_review_id',
-      pull_request_url: 'pull_request_url',
-      reactions: 'reactions',
-      side: 'side',
-      start_line: 'start_line',
-      start_side: 'start_side',
-      subject_type: 'subject_type',
-      updated_at: 'updated_at',
-      url: 'url',
-      user: 'user'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      links
-      author_association
-      body
-      commit_id
-      created_at
-      diff_hunk
-      html_url
-      id
-      line
-      node_id
-      original_commit_id
-      original_line
-      original_position
-      original_start_line
-      path
-      position
-      pull_request_review_id
-      pull_request_url
-      reactions
-      side
-      start_line
-      start_side
-      updated_at
-      url
-      user
-    ].freeze
-    DECODERS = {
-      links: lambda do |value|
-        ::OctridevGithub::WebhooksReviewCommentLinks.from_hash(value)
-      end,
-      author_association: lambda do |value|
-        ::OctridevGithub::WebhooksReviewCommentAuthorAssociation.from_value(value)
-      end,
-      reactions: lambda do |value|
-        ::OctridevGithub::WebhooksReviewCommentReactions.from_hash(value)
-      end,
-      side: lambda do |value|
-        ::OctridevGithub::WebhooksReviewCommentSide.from_value(value)
-      end,
-      start_side: lambda do |value|
-        ::OctridevGithub::WebhooksReviewCommentStartSide.from_value(value)
-      end,
-      subject_type: lambda do |value|
-        ::OctridevGithub::WebhooksReviewCommentSubjectType.from_value(value)
-      end,
-      user: lambda do |value|
-        ::OctridevGithub::WebhooksReviewCommentUser.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      line
-      original_start_line
-      position
-      pull_request_review_id
-      start_line
-      start_side
-      user
-    ].freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for WebhooksReviewComment.
-  # The comment itself.
-  class WebhooksReviewComment
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksReviewCommentMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksReviewCommentMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksReviewCommentMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [WebhooksReviewCommentLinks] Required object value serialized in the `_links` wire field.
-    attr_reader :links
-    # @return [WebhooksReviewCommentAuthorAssociation] How the author is associated with the repository.
-    attr_reader :author_association
-    # @return [String] The text of the comment.
-    attr_reader :body
-    # @return [String] The SHA of the commit to which the comment applies.
-    attr_reader :commit_id
-    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [String] The diff of the line that the comment refers to.
-    attr_reader :diff_hunk
-    # @return [String] HTML URL for the pull request review comment.
-    attr_reader :html_url
-    # @return [Integer] The ID of the pull request review comment.
-    attr_reader :id
-    # @return [Integer] The comment ID to reply to.
-    attr_reader :in_reply_to_id
-    # @return [Integer] The line of the blob to which the comment applies. The last line of the range for a multi-line comment
-    attr_reader :line
-    # @return [String] The node ID of the pull request review comment.
-    attr_reader :node_id
-    # @return [String] The SHA of the original commit to which the comment applies.
-    attr_reader :original_commit_id
-    # @return [Integer] The line of the blob to which the comment applies. The last line of the range for a multi-line comment
-    attr_reader :original_line
-    # @return [Integer] The index of the original line in the diff to which the comment applies.
-    attr_reader :original_position
-    # @return [Integer] The first line of the range for a multi-line comment.
-    attr_reader :original_start_line
-    # @return [String] The relative path of the file to which the comment applies.
-    attr_reader :path
-    # @return [Integer] The line index in the diff to which the comment applies.
-    attr_reader :position
-    # @return [Integer] The ID of the pull request review to which the comment belongs.
-    attr_reader :pull_request_review_id
-    # @return [String] URL for the pull request that the review comment belongs to.
-    attr_reader :pull_request_url
-    # @return [WebhooksReviewCommentReactions] Required object value serialized in the `reactions` wire field.
-    attr_reader :reactions
-    # @return [WebhooksReviewCommentSide] The side of the first line of the range for a multi-line comment.
-    attr_reader :side
-    # @return [Integer] The first line of the range for a multi-line comment.
-    attr_reader :start_line
-    # @return [WebhooksReviewCommentStartSide] The side of the first line of the range for a multi-line comment.
-    attr_reader :start_side
-    # @return [WebhooksReviewCommentSubjectType] The level at which the comment is targeted, can be a diff line or a file.
-    attr_reader :subject_type
-    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-    attr_reader :updated_at
-    # @return [String] URL for the pull request review comment
-    attr_reader :url
-    # @return [WebhooksReviewCommentUser] Required object value serialized in the `user` wire field.
-    attr_reader :user
+# Internal model hydration metadata.
+class SdkInternalWebhooksReviewCommentMetadata
+  FIELDS = {
+    links: "_links",
+    author_association: "author_association",
+    body: "body",
+    commit_id: "commit_id",
+    created_at: "created_at",
+    diff_hunk: "diff_hunk",
+    html_url: "html_url",
+    id: "id",
+    in_reply_to_id: "in_reply_to_id",
+    line: "line",
+    node_id: "node_id",
+    original_commit_id: "original_commit_id",
+    original_line: "original_line",
+    original_position: "original_position",
+    original_start_line: "original_start_line",
+    path: "path",
+    position: "position",
+    pull_request_review_id: "pull_request_review_id",
+    pull_request_url: "pull_request_url",
+    reactions: "reactions",
+    side: "side",
+    start_line: "start_line",
+    start_side: "start_side",
+    subject_type: "subject_type",
+    updated_at: "updated_at",
+    url: "url",
+    user: "user",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    links
+    author_association
+    body
+    commit_id
+    created_at
+    diff_hunk
+    html_url
+    id
+    line
+    node_id
+    original_commit_id
+    original_line
+    original_position
+    original_start_line
+    path
+    position
+    pull_request_review_id
+    pull_request_url
+    reactions
+    side
+    start_line
+    start_side
+    updated_at
+    url
+    user
+  ].freeze
+  DECODERS = {
+    links: lambda do |value|
+      ::OctridevGithub::WebhooksReviewCommentLinks.from_hash(value)
+    end,
+    author_association: lambda do |value|
+      ::OctridevGithub::WebhooksReviewCommentAuthorAssociation.from_value(value)
+    end,
+    reactions: lambda do |value|
+      ::OctridevGithub::WebhooksReviewCommentReactions.from_hash(value)
+    end,
+    side: lambda do |value|
+      ::OctridevGithub::WebhooksReviewCommentSide.from_value(value)
+    end,
+    start_side: lambda do |value|
+      ::OctridevGithub::WebhooksReviewCommentStartSide.from_value(value)
+    end,
+    subject_type: lambda do |value|
+      ::OctridevGithub::WebhooksReviewCommentSubjectType.from_value(value)
+    end,
+    user: lambda do |value|
+      ::OctridevGithub::WebhooksReviewCommentUser.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    line
+    original_start_line
+    position
+    pull_request_review_id
+    start_line
+    start_side
+    user
+  ].freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for WebhooksReviewComment.
+# The comment itself.
+class WebhooksReviewComment
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksReviewCommentMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksReviewCommentMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksReviewCommentMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhooksReviewCommentMetadata::NULLABLE_FIELDS)
-    end
+  # @return [WebhooksReviewCommentLinks] Required object value serialized in the `_links` wire field.
+  attr_reader :links
+  # @return [WebhooksReviewCommentAuthorAssociation] How the author is associated with the repository.
+  attr_reader :author_association
+  # @return [String] The text of the comment.
+  attr_reader :body
+  # @return [String] The SHA of the commit to which the comment applies.
+  attr_reader :commit_id
+  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [String] The diff of the line that the comment refers to.
+  attr_reader :diff_hunk
+  # @return [String] HTML URL for the pull request review comment.
+  attr_reader :html_url
+  # @return [Integer] The ID of the pull request review comment.
+  attr_reader :id
+  # @return [Integer] The comment ID to reply to.
+  attr_reader :in_reply_to_id
+  # @return [Integer] The line of the blob to which the comment applies. The last line of the range for a multi-line comment
+  attr_reader :line
+  # @return [String] The node ID of the pull request review comment.
+  attr_reader :node_id
+  # @return [String] The SHA of the original commit to which the comment applies.
+  attr_reader :original_commit_id
+  # @return [Integer] The line of the blob to which the comment applies. The last line of the range for a multi-line comment
+  attr_reader :original_line
+  # @return [Integer] The index of the original line in the diff to which the comment applies.
+  attr_reader :original_position
+  # @return [Integer] The first line of the range for a multi-line comment.
+  attr_reader :original_start_line
+  # @return [String] The relative path of the file to which the comment applies.
+  attr_reader :path
+  # @return [Integer] The line index in the diff to which the comment applies.
+  attr_reader :position
+  # @return [Integer] The ID of the pull request review to which the comment belongs.
+  attr_reader :pull_request_review_id
+  # @return [String] URL for the pull request that the review comment belongs to.
+  attr_reader :pull_request_url
+  # @return [WebhooksReviewCommentReactions] Required object value serialized in the `reactions` wire field.
+  attr_reader :reactions
+  # @return [WebhooksReviewCommentSide] The side of the first line of the range for a multi-line comment.
+  attr_reader :side
+  # @return [Integer] The first line of the range for a multi-line comment.
+  attr_reader :start_line
+  # @return [WebhooksReviewCommentStartSide] The side of the first line of the range for a multi-line comment.
+  attr_reader :start_side
+  # @return [WebhooksReviewCommentSubjectType] The level at which the comment is targeted, can be a diff line or a file.
+  attr_reader :subject_type
+  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+  attr_reader :updated_at
+  # @return [String] URL for the pull request review comment
+  attr_reader :url
+  # @return [WebhooksReviewCommentUser] Required object value serialized in the `user` wire field.
+  attr_reader :user
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the WebhooksReviewCommentAuthorAssociation SDK namespace.
-  module WebhooksReviewCommentAuthorAssociation
-    COLLABORATOR = 'COLLABORATOR'
-    CONTRIBUTOR = 'CONTRIBUTOR'
-    FIRST_TIMER = 'FIRST_TIMER'
-    FIRST_TIME_CONTRIBUTOR = 'FIRST_TIME_CONTRIBUTOR'
-    MANNEQUIN = 'MANNEQUIN'
-    MEMBER = 'MEMBER'
-    NONE = 'NONE'
-    OWNER = 'OWNER'
-    VALUES = %w[
-      COLLABORATOR CONTRIBUTOR FIRST_TIMER FIRST_TIME_CONTRIBUTOR MANNEQUIN MEMBER
-      NONE OWNER
-    ].freeze
-    def self.from_value(value)
-      value
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhooksReviewCommentMetadata::NULLABLE_FIELDS)
   end
 
-  # Defines the WebhooksReviewCommentSide SDK namespace.
-  module WebhooksReviewCommentSide
-    LEFT = 'LEFT'
-    RIGHT = 'RIGHT'
-    VALUES = %w[LEFT RIGHT].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
 
-  # Defines the WebhooksReviewCommentStartSide SDK namespace.
-  module WebhooksReviewCommentStartSide
-    LEFT = 'LEFT'
-    RIGHT = 'RIGHT'
-    VALUES = %w[LEFT RIGHT].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhooksReviewCommentAuthorAssociation SDK namespace.
+module WebhooksReviewCommentAuthorAssociation
+  COLLABORATOR = 'COLLABORATOR'
+  CONTRIBUTOR = 'CONTRIBUTOR'
+  FIRST_TIMER = 'FIRST_TIMER'
+  FIRST_TIME_CONTRIBUTOR = 'FIRST_TIME_CONTRIBUTOR'
+  MANNEQUIN = 'MANNEQUIN'
+  MEMBER = 'MEMBER'
+  NONE = 'NONE'
+  OWNER = 'OWNER'
+  VALUES = [
+    'COLLABORATOR', 'CONTRIBUTOR', 'FIRST_TIMER', 'FIRST_TIME_CONTRIBUTOR', 'MANNEQUIN', 'MEMBER',
+    'NONE', 'OWNER'
+  ].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhooksReviewCommentSubjectType SDK namespace.
-  module WebhooksReviewCommentSubjectType
-    LINE = 'line'
-    FILE = 'file'
-    VALUES = %w[line file].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhooksReviewCommentSide SDK namespace.
+module WebhooksReviewCommentSide
+  LEFT = 'LEFT'
+  RIGHT = 'RIGHT'
+  VALUES = ['LEFT', 'RIGHT'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhooksReviewCommentUserType SDK namespace.
-  module WebhooksReviewCommentUserType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhooksReviewCommentStartSide SDK namespace.
+module WebhooksReviewCommentStartSide
+  LEFT = 'LEFT'
+  RIGHT = 'RIGHT'
+  VALUES = ['LEFT', 'RIGHT'].freeze
+  def self.from_value(value)
+    value
   end
+end
+
+# Defines the WebhooksReviewCommentSubjectType SDK namespace.
+module WebhooksReviewCommentSubjectType
+  LINE = 'line'
+  FILE = 'file'
+  VALUES = ['line', 'file'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksReviewCommentUserType SDK namespace.
+module WebhooksReviewCommentUserType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

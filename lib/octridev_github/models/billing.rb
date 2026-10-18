@@ -5,652 +5,660 @@
 
 # billing domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalBillingAiCreditUsageReportOrgTimePeriodMetadata
-    FIELDS = {
-      year: 'year',
-      month: 'month',
-      day: 'day'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      year
-    ].freeze
-    DECODERS = {}.freeze
+# Internal model hydration metadata.
+class SdkInternalBillingAiCreditUsageReportOrgTimePeriodMetadata
+  FIELDS = {
+    year: "year",
+    month: "month",
+    day: "day",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    year
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for BillingAiCreditUsageReportOrgTimePeriod.
+# Required object value serialized in the `timePeriod` wire field.
+class BillingAiCreditUsageReportOrgTimePeriod
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalBillingAiCreditUsageReportOrgTimePeriodMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalBillingAiCreditUsageReportOrgTimePeriodMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalBillingAiCreditUsageReportOrgTimePeriodMetadata::DECODERS
+
+  # @return [Integer] The year for the usage report.
+  attr_reader :year
+  # @return [Integer] The month for the usage report.
+  attr_reader :month
+  # @return [Integer] The day for the usage report.
+  attr_reader :day
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for BillingAiCreditUsageReportOrgTimePeriod.
-  # Required object value serialized in the `timePeriod` wire field.
-  class BillingAiCreditUsageReportOrgTimePeriod
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalBillingAiCreditUsageReportOrgTimePeriodMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalBillingAiCreditUsageReportOrgTimePeriodMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalBillingAiCreditUsageReportOrgTimePeriodMetadata::DECODERS
-
-    # @return [Integer] The year for the usage report.
-    attr_reader :year
-    # @return [Integer] The month for the usage report.
-    attr_reader :month
-    # @return [Integer] The day for the usage report.
-    attr_reader :day
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalBillingAiCreditUsageReportOrgUsageItemsItemMetadata
-    FIELDS = {
-      product: 'product',
-      sku: 'sku',
-      model: 'model',
-      unit_type: 'unitType',
-      price_per_unit: 'pricePerUnit',
-      gross_quantity: 'grossQuantity',
-      gross_amount: 'grossAmount',
-      discount_quantity: 'discountQuantity',
-      discount_amount: 'discountAmount',
-      net_quantity: 'netQuantity',
-      net_amount: 'netAmount'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      product
-      sku
-      model
-      unit_type
-      price_per_unit
-      gross_quantity
-      gross_amount
-      discount_quantity
-      discount_amount
-      net_quantity
-      net_amount
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalBillingAiCreditUsageReportOrgUsageItemsItemMetadata
+  FIELDS = {
+    product: "product",
+    sku: "sku",
+    model: "model",
+    unit_type: "unitType",
+    price_per_unit: "pricePerUnit",
+    gross_quantity: "grossQuantity",
+    gross_amount: "grossAmount",
+    discount_quantity: "discountQuantity",
+    discount_amount: "discountAmount",
+    net_quantity: "netQuantity",
+    net_amount: "netAmount",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    product
+    sku
+    model
+    unit_type
+    price_per_unit
+    gross_quantity
+    gross_amount
+    discount_quantity
+    discount_amount
+    net_quantity
+    net_amount
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for BillingAiCreditUsageReportOrgUsageItemsItem.
+# Required object value serialized in the `usageItems[]` wire field.
+class BillingAiCreditUsageReportOrgUsageItemsItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalBillingAiCreditUsageReportOrgUsageItemsItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalBillingAiCreditUsageReportOrgUsageItemsItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalBillingAiCreditUsageReportOrgUsageItemsItemMetadata::DECODERS
+
+  # @return [String] Product name.
+  attr_reader :product
+  # @return [String] SKU name.
+  attr_reader :sku
+  # @return [String] Model name.
+  attr_reader :model
+  # @return [String] Unit type of the usage line item.
+  attr_reader :unit_type
+  # @return [Float] Price per unit of the usage line item.
+  attr_reader :price_per_unit
+  # @return [Float] Gross quantity of the usage line item.
+  attr_reader :gross_quantity
+  # @return [Float] Gross amount of the usage line item.
+  attr_reader :gross_amount
+  # @return [Float] Discount quantity of the usage line item.
+  attr_reader :discount_quantity
+  # @return [Float] Discount amount of the usage line item.
+  attr_reader :discount_amount
+  # @return [Float] Net quantity of the usage line item.
+  attr_reader :net_quantity
+  # @return [Float] Net amount of the usage line item.
+  attr_reader :net_amount
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for BillingAiCreditUsageReportOrgUsageItemsItem.
-  # Required object value serialized in the `usageItems[]` wire field.
-  class BillingAiCreditUsageReportOrgUsageItemsItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalBillingAiCreditUsageReportOrgUsageItemsItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalBillingAiCreditUsageReportOrgUsageItemsItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalBillingAiCreditUsageReportOrgUsageItemsItemMetadata::DECODERS
-
-    # @return [String] Product name.
-    attr_reader :product
-    # @return [String] SKU name.
-    attr_reader :sku
-    # @return [String] Model name.
-    attr_reader :model
-    # @return [String] Unit type of the usage line item.
-    attr_reader :unit_type
-    # @return [Float] Price per unit of the usage line item.
-    attr_reader :price_per_unit
-    # @return [Float] Gross quantity of the usage line item.
-    attr_reader :gross_quantity
-    # @return [Float] Gross amount of the usage line item.
-    attr_reader :gross_amount
-    # @return [Float] Discount quantity of the usage line item.
-    attr_reader :discount_quantity
-    # @return [Float] Discount amount of the usage line item.
-    attr_reader :discount_amount
-    # @return [Float] Net quantity of the usage line item.
-    attr_reader :net_quantity
-    # @return [Float] Net amount of the usage line item.
-    attr_reader :net_amount
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalBillingAiCreditUsageReportOrgMetadata
-    FIELDS = {
-      time_period: 'timePeriod',
-      organization: 'organization',
-      user: 'user',
-      product: 'product',
-      model: 'model',
-      usage_items: 'usageItems'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      time_period
-      organization
-      usage_items
-    ].freeze
-    DECODERS = {
-      time_period: lambda do |value|
-        ::OctridevGithub::BillingAiCreditUsageReportOrgTimePeriod.from_hash(value)
-      end,
-      usage_items: lambda do |value|
-        value&.map { |item| ::OctridevGithub::BillingAiCreditUsageReportOrgUsageItemsItem.from_hash(item) }
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalBillingAiCreditUsageReportOrgMetadata
+  FIELDS = {
+    time_period: "timePeriod",
+    organization: "organization",
+    user: "user",
+    product: "product",
+    model: "model",
+    usage_items: "usageItems",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    time_period
+    organization
+    usage_items
+  ].freeze
+  DECODERS = {
+    time_period: lambda do |value|
+      ::OctridevGithub::BillingAiCreditUsageReportOrgTimePeriod.from_hash(value)
+    end,
+    usage_items: lambda do |value|
+      value&.map { |item| ::OctridevGithub::BillingAiCreditUsageReportOrgUsageItemsItem.from_hash(item) }
+    end,
+  }.freeze
+end
+
+# API model for BillingAiCreditUsageReportOrg.
+# Typed representation of the `BillingAiCreditUsageReportOrg` API schema.
+class BillingAiCreditUsageReportOrg
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalBillingAiCreditUsageReportOrgMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalBillingAiCreditUsageReportOrgMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalBillingAiCreditUsageReportOrgMetadata::DECODERS
+
+  # @return [BillingAiCreditUsageReportOrgTimePeriod] Required object value serialized in the `timePeriod` wire field.
+  attr_reader :time_period
+  # @return [String] The unique identifier of the organization.
+  attr_reader :organization
+  # @return [String] The name of the user for the usage report.
+  attr_reader :user
+  # @return [String] The product for the usage report.
+  attr_reader :product
+  # @return [String] The model for the usage report.
+  attr_reader :model
+  # @return [Array_of_BillingAiCreditUsageReportOrgUsageItemsItem] Required array value serialized in the `usageItems` wire field.
+  attr_reader :usage_items
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for BillingAiCreditUsageReportOrg.
-  # Typed representation of the `BillingAiCreditUsageReportOrg` API schema.
-  class BillingAiCreditUsageReportOrg
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalBillingAiCreditUsageReportOrgMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalBillingAiCreditUsageReportOrgMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalBillingAiCreditUsageReportOrgMetadata::DECODERS
-
-    # @return [BillingAiCreditUsageReportOrgTimePeriod] Required object value serialized in the `timePeriod` wire field.
-    attr_reader :time_period
-    # @return [String] The unique identifier of the organization.
-    attr_reader :organization
-    # @return [String] The name of the user for the usage report.
-    attr_reader :user
-    # @return [String] The product for the usage report.
-    attr_reader :product
-    # @return [String] The model for the usage report.
-    attr_reader :model
-    # @return [Array_of_BillingAiCreditUsageReportOrgUsageItemsItem] Required array value serialized in the `usageItems` wire field.
-    attr_reader :usage_items
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalBillingAiCreditUsageReportUserTimePeriodMetadata
-    FIELDS = {
-      year: 'year',
-      month: 'month',
-      day: 'day'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      year
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalBillingAiCreditUsageReportUserTimePeriodMetadata
+  FIELDS = {
+    year: "year",
+    month: "month",
+    day: "day",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    year
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for BillingAiCreditUsageReportUserTimePeriod.
+# Required object value serialized in the `timePeriod` wire field.
+class BillingAiCreditUsageReportUserTimePeriod
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalBillingAiCreditUsageReportUserTimePeriodMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalBillingAiCreditUsageReportUserTimePeriodMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalBillingAiCreditUsageReportUserTimePeriodMetadata::DECODERS
+
+  # @return [Integer] The year for the usage report.
+  attr_reader :year
+  # @return [Integer] The month for the usage report.
+  attr_reader :month
+  # @return [Integer] The day for the usage report.
+  attr_reader :day
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for BillingAiCreditUsageReportUserTimePeriod.
-  # Required object value serialized in the `timePeriod` wire field.
-  class BillingAiCreditUsageReportUserTimePeriod
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalBillingAiCreditUsageReportUserTimePeriodMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalBillingAiCreditUsageReportUserTimePeriodMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalBillingAiCreditUsageReportUserTimePeriodMetadata::DECODERS
-
-    # @return [Integer] The year for the usage report.
-    attr_reader :year
-    # @return [Integer] The month for the usage report.
-    attr_reader :month
-    # @return [Integer] The day for the usage report.
-    attr_reader :day
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalBillingAiCreditUsageReportUserUsageItemsItemMetadata
-    FIELDS = {
-      product: 'product',
-      sku: 'sku',
-      model: 'model',
-      unit_type: 'unitType',
-      price_per_unit: 'pricePerUnit',
-      gross_quantity: 'grossQuantity',
-      gross_amount: 'grossAmount',
-      discount_quantity: 'discountQuantity',
-      discount_amount: 'discountAmount',
-      net_quantity: 'netQuantity',
-      net_amount: 'netAmount'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      product
-      sku
-      model
-      unit_type
-      price_per_unit
-      gross_quantity
-      gross_amount
-      discount_quantity
-      discount_amount
-      net_quantity
-      net_amount
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalBillingAiCreditUsageReportUserUsageItemsItemMetadata
+  FIELDS = {
+    product: "product",
+    sku: "sku",
+    model: "model",
+    unit_type: "unitType",
+    price_per_unit: "pricePerUnit",
+    gross_quantity: "grossQuantity",
+    gross_amount: "grossAmount",
+    discount_quantity: "discountQuantity",
+    discount_amount: "discountAmount",
+    net_quantity: "netQuantity",
+    net_amount: "netAmount",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    product
+    sku
+    model
+    unit_type
+    price_per_unit
+    gross_quantity
+    gross_amount
+    discount_quantity
+    discount_amount
+    net_quantity
+    net_amount
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for BillingAiCreditUsageReportUserUsageItemsItem.
+# Required object value serialized in the `usageItems[]` wire field.
+class BillingAiCreditUsageReportUserUsageItemsItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalBillingAiCreditUsageReportUserUsageItemsItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalBillingAiCreditUsageReportUserUsageItemsItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalBillingAiCreditUsageReportUserUsageItemsItemMetadata::DECODERS
+
+  # @return [String] Product name.
+  attr_reader :product
+  # @return [String] SKU name.
+  attr_reader :sku
+  # @return [String] Model name.
+  attr_reader :model
+  # @return [String] Unit type of the usage line item.
+  attr_reader :unit_type
+  # @return [Float] Price per unit of the usage line item.
+  attr_reader :price_per_unit
+  # @return [Float] Gross quantity of the usage line item.
+  attr_reader :gross_quantity
+  # @return [Float] Gross amount of the usage line item.
+  attr_reader :gross_amount
+  # @return [Float] Discount quantity of the usage line item.
+  attr_reader :discount_quantity
+  # @return [Float] Discount amount of the usage line item.
+  attr_reader :discount_amount
+  # @return [Float] Net quantity of the usage line item.
+  attr_reader :net_quantity
+  # @return [Float] Net amount of the usage line item.
+  attr_reader :net_amount
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for BillingAiCreditUsageReportUserUsageItemsItem.
-  # Required object value serialized in the `usageItems[]` wire field.
-  class BillingAiCreditUsageReportUserUsageItemsItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalBillingAiCreditUsageReportUserUsageItemsItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalBillingAiCreditUsageReportUserUsageItemsItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalBillingAiCreditUsageReportUserUsageItemsItemMetadata::DECODERS
-
-    # @return [String] Product name.
-    attr_reader :product
-    # @return [String] SKU name.
-    attr_reader :sku
-    # @return [String] Model name.
-    attr_reader :model
-    # @return [String] Unit type of the usage line item.
-    attr_reader :unit_type
-    # @return [Float] Price per unit of the usage line item.
-    attr_reader :price_per_unit
-    # @return [Float] Gross quantity of the usage line item.
-    attr_reader :gross_quantity
-    # @return [Float] Gross amount of the usage line item.
-    attr_reader :gross_amount
-    # @return [Float] Discount quantity of the usage line item.
-    attr_reader :discount_quantity
-    # @return [Float] Discount amount of the usage line item.
-    attr_reader :discount_amount
-    # @return [Float] Net quantity of the usage line item.
-    attr_reader :net_quantity
-    # @return [Float] Net amount of the usage line item.
-    attr_reader :net_amount
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalBillingAiCreditUsageReportUserMetadata
-    FIELDS = {
-      time_period: 'timePeriod',
-      user: 'user',
-      product: 'product',
-      model: 'model',
-      usage_items: 'usageItems'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      time_period
-      user
-      usage_items
-    ].freeze
-    DECODERS = {
-      time_period: lambda do |value|
-        ::OctridevGithub::BillingAiCreditUsageReportUserTimePeriod.from_hash(value)
-      end,
-      usage_items: lambda do |value|
-        value&.map { |item| ::OctridevGithub::BillingAiCreditUsageReportUserUsageItemsItem.from_hash(item) }
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalBillingAiCreditUsageReportUserMetadata
+  FIELDS = {
+    time_period: "timePeriod",
+    user: "user",
+    product: "product",
+    model: "model",
+    usage_items: "usageItems",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    time_period
+    user
+    usage_items
+  ].freeze
+  DECODERS = {
+    time_period: lambda do |value|
+      ::OctridevGithub::BillingAiCreditUsageReportUserTimePeriod.from_hash(value)
+    end,
+    usage_items: lambda do |value|
+      value&.map { |item| ::OctridevGithub::BillingAiCreditUsageReportUserUsageItemsItem.from_hash(item) }
+    end,
+  }.freeze
+end
+
+# API model for BillingAiCreditUsageReportUser.
+# Typed representation of the `BillingAiCreditUsageReportUser` API schema.
+class BillingAiCreditUsageReportUser
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalBillingAiCreditUsageReportUserMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalBillingAiCreditUsageReportUserMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalBillingAiCreditUsageReportUserMetadata::DECODERS
+
+  # @return [BillingAiCreditUsageReportUserTimePeriod] Required object value serialized in the `timePeriod` wire field.
+  attr_reader :time_period
+  # @return [String] The unique identifier of the user.
+  attr_reader :user
+  # @return [String] The product for the usage report.
+  attr_reader :product
+  # @return [String] The model for the usage report.
+  attr_reader :model
+  # @return [Array_of_BillingAiCreditUsageReportUserUsageItemsItem] Required array value serialized in the `usageItems` wire field.
+  attr_reader :usage_items
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for BillingAiCreditUsageReportUser.
-  # Typed representation of the `BillingAiCreditUsageReportUser` API schema.
-  class BillingAiCreditUsageReportUser
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalBillingAiCreditUsageReportUserMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalBillingAiCreditUsageReportUserMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalBillingAiCreditUsageReportUserMetadata::DECODERS
-
-    # @return [BillingAiCreditUsageReportUserTimePeriod] Required object value serialized in the `timePeriod` wire field.
-    attr_reader :time_period
-    # @return [String] The unique identifier of the user.
-    attr_reader :user
-    # @return [String] The product for the usage report.
-    attr_reader :product
-    # @return [String] The model for the usage report.
-    attr_reader :model
-    # @return [Array_of_BillingAiCreditUsageReportUserUsageItemsItem] Required array value serialized in the `usageItems` wire field.
-    attr_reader :usage_items
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalBillingPremiumRequestUsageReportOrgTimePeriodMetadata
-    FIELDS = {
-      year: 'year',
-      month: 'month',
-      day: 'day'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      year
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalBillingPremiumRequestUsageReportOrgTimePeriodMetadata
+  FIELDS = {
+    year: "year",
+    month: "month",
+    day: "day",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    year
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for BillingPremiumRequestUsageReportOrgTimePeriod.
+# Required object value serialized in the `timePeriod` wire field.
+class BillingPremiumRequestUsageReportOrgTimePeriod
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalBillingPremiumRequestUsageReportOrgTimePeriodMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalBillingPremiumRequestUsageReportOrgTimePeriodMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalBillingPremiumRequestUsageReportOrgTimePeriodMetadata::DECODERS
+
+  # @return [Integer] The year for the usage report.
+  attr_reader :year
+  # @return [Integer] The month for the usage report.
+  attr_reader :month
+  # @return [Integer] The day for the usage report.
+  attr_reader :day
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for BillingPremiumRequestUsageReportOrgTimePeriod.
-  # Required object value serialized in the `timePeriod` wire field.
-  class BillingPremiumRequestUsageReportOrgTimePeriod
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalBillingPremiumRequestUsageReportOrgTimePeriodMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalBillingPremiumRequestUsageReportOrgTimePeriodMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalBillingPremiumRequestUsageReportOrgTimePeriodMetadata::DECODERS
-
-    # @return [Integer] The year for the usage report.
-    attr_reader :year
-    # @return [Integer] The month for the usage report.
-    attr_reader :month
-    # @return [Integer] The day for the usage report.
-    attr_reader :day
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalBillingPremiumRequestUsageReportOrgUsageItemsItemMetadata
-    FIELDS = {
-      product: 'product',
-      sku: 'sku',
-      model: 'model',
-      unit_type: 'unitType',
-      price_per_unit: 'pricePerUnit',
-      gross_quantity: 'grossQuantity',
-      gross_amount: 'grossAmount',
-      discount_quantity: 'discountQuantity',
-      discount_amount: 'discountAmount',
-      net_quantity: 'netQuantity',
-      net_amount: 'netAmount'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      product
-      sku
-      model
-      unit_type
-      price_per_unit
-      gross_quantity
-      gross_amount
-      discount_quantity
-      discount_amount
-      net_quantity
-      net_amount
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalBillingPremiumRequestUsageReportOrgUsageItemsItemMetadata
+  FIELDS = {
+    product: "product",
+    sku: "sku",
+    model: "model",
+    unit_type: "unitType",
+    price_per_unit: "pricePerUnit",
+    gross_quantity: "grossQuantity",
+    gross_amount: "grossAmount",
+    discount_quantity: "discountQuantity",
+    discount_amount: "discountAmount",
+    net_quantity: "netQuantity",
+    net_amount: "netAmount",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    product
+    sku
+    model
+    unit_type
+    price_per_unit
+    gross_quantity
+    gross_amount
+    discount_quantity
+    discount_amount
+    net_quantity
+    net_amount
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for BillingPremiumRequestUsageReportOrgUsageItemsItem.
+# Required object value serialized in the `usageItems[]` wire field.
+class BillingPremiumRequestUsageReportOrgUsageItemsItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalBillingPremiumRequestUsageReportOrgUsageItemsItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalBillingPremiumRequestUsageReportOrgUsageItemsItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalBillingPremiumRequestUsageReportOrgUsageItemsItemMetadata::DECODERS
+
+  # @return [String] Product name.
+  attr_reader :product
+  # @return [String] SKU name.
+  attr_reader :sku
+  # @return [String] Model name.
+  attr_reader :model
+  # @return [String] Unit type of the usage line item.
+  attr_reader :unit_type
+  # @return [Float] Price per unit of the usage line item.
+  attr_reader :price_per_unit
+  # @return [Float] Gross quantity of the usage line item.
+  attr_reader :gross_quantity
+  # @return [Float] Gross amount of the usage line item.
+  attr_reader :gross_amount
+  # @return [Float] Discount quantity of the usage line item.
+  attr_reader :discount_quantity
+  # @return [Float] Discount amount of the usage line item.
+  attr_reader :discount_amount
+  # @return [Float] Net quantity of the usage line item.
+  attr_reader :net_quantity
+  # @return [Float] Net amount of the usage line item.
+  attr_reader :net_amount
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for BillingPremiumRequestUsageReportOrgUsageItemsItem.
-  # Required object value serialized in the `usageItems[]` wire field.
-  class BillingPremiumRequestUsageReportOrgUsageItemsItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalBillingPremiumRequestUsageReportOrgUsageItemsItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalBillingPremiumRequestUsageReportOrgUsageItemsItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalBillingPremiumRequestUsageReportOrgUsageItemsItemMetadata::DECODERS
-
-    # @return [String] Product name.
-    attr_reader :product
-    # @return [String] SKU name.
-    attr_reader :sku
-    # @return [String] Model name.
-    attr_reader :model
-    # @return [String] Unit type of the usage line item.
-    attr_reader :unit_type
-    # @return [Float] Price per unit of the usage line item.
-    attr_reader :price_per_unit
-    # @return [Float] Gross quantity of the usage line item.
-    attr_reader :gross_quantity
-    # @return [Float] Gross amount of the usage line item.
-    attr_reader :gross_amount
-    # @return [Float] Discount quantity of the usage line item.
-    attr_reader :discount_quantity
-    # @return [Float] Discount amount of the usage line item.
-    attr_reader :discount_amount
-    # @return [Float] Net quantity of the usage line item.
-    attr_reader :net_quantity
-    # @return [Float] Net amount of the usage line item.
-    attr_reader :net_amount
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalBillingPremiumRequestUsageReportOrgMetadata
-    FIELDS = {
-      time_period: 'timePeriod',
-      organization: 'organization',
-      user: 'user',
-      product: 'product',
-      model: 'model',
-      usage_items: 'usageItems'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      time_period
-      organization
-      usage_items
-    ].freeze
-    DECODERS = {
-      time_period: lambda do |value|
-        ::OctridevGithub::BillingPremiumRequestUsageReportOrgTimePeriod.from_hash(value)
-      end,
-      usage_items: lambda do |value|
-        value&.map { |item| ::OctridevGithub::BillingPremiumRequestUsageReportOrgUsageItemsItem.from_hash(item) }
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalBillingPremiumRequestUsageReportOrgMetadata
+  FIELDS = {
+    time_period: "timePeriod",
+    organization: "organization",
+    user: "user",
+    product: "product",
+    model: "model",
+    usage_items: "usageItems",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    time_period
+    organization
+    usage_items
+  ].freeze
+  DECODERS = {
+    time_period: lambda do |value|
+      ::OctridevGithub::BillingPremiumRequestUsageReportOrgTimePeriod.from_hash(value)
+    end,
+    usage_items: lambda do |value|
+      value&.map { |item| ::OctridevGithub::BillingPremiumRequestUsageReportOrgUsageItemsItem.from_hash(item) }
+    end,
+  }.freeze
+end
+
+# API model for BillingPremiumRequestUsageReportOrg.
+# Typed representation of the `BillingPremiumRequestUsageReportOrg` API schema.
+class BillingPremiumRequestUsageReportOrg
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalBillingPremiumRequestUsageReportOrgMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalBillingPremiumRequestUsageReportOrgMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalBillingPremiumRequestUsageReportOrgMetadata::DECODERS
+
+  # @return [BillingPremiumRequestUsageReportOrgTimePeriod] Required object value serialized in the `timePeriod` wire field.
+  attr_reader :time_period
+  # @return [String] The unique identifier of the organization.
+  attr_reader :organization
+  # @return [String] The name of the user for the usage report.
+  attr_reader :user
+  # @return [String] The product for the usage report.
+  attr_reader :product
+  # @return [String] The model for the usage report.
+  attr_reader :model
+  # @return [Array_of_BillingPremiumRequestUsageReportOrgUsageItemsItem] Required array value serialized in the `usageItems` wire field.
+  attr_reader :usage_items
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for BillingPremiumRequestUsageReportOrg.
-  # Typed representation of the `BillingPremiumRequestUsageReportOrg` API schema.
-  class BillingPremiumRequestUsageReportOrg
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalBillingPremiumRequestUsageReportOrgMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalBillingPremiumRequestUsageReportOrgMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalBillingPremiumRequestUsageReportOrgMetadata::DECODERS
-
-    # @return [BillingPremiumRequestUsageReportOrgTimePeriod] Required object value serialized in the `timePeriod` wire field.
-    attr_reader :time_period
-    # @return [String] The unique identifier of the organization.
-    attr_reader :organization
-    # @return [String] The name of the user for the usage report.
-    attr_reader :user
-    # @return [String] The product for the usage report.
-    attr_reader :product
-    # @return [String] The model for the usage report.
-    attr_reader :model
-    # @return [Array_of_BillingPremiumRequestUsageReportOrgUsageItemsItem] Required array value serialized in the `usageItems` wire field.
-    attr_reader :usage_items
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalBillingPremiumRequestUsageReportUserTimePeriodMetadata
-    FIELDS = {
-      year: 'year',
-      month: 'month',
-      day: 'day'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      year
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalBillingPremiumRequestUsageReportUserTimePeriodMetadata
+  FIELDS = {
+    year: "year",
+    month: "month",
+    day: "day",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    year
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for BillingPremiumRequestUsageReportUserTimePeriod.
+# Required object value serialized in the `timePeriod` wire field.
+class BillingPremiumRequestUsageReportUserTimePeriod
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalBillingPremiumRequestUsageReportUserTimePeriodMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalBillingPremiumRequestUsageReportUserTimePeriodMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalBillingPremiumRequestUsageReportUserTimePeriodMetadata::DECODERS
+
+  # @return [Integer] The year for the usage report.
+  attr_reader :year
+  # @return [Integer] The month for the usage report.
+  attr_reader :month
+  # @return [Integer] The day for the usage report.
+  attr_reader :day
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for BillingPremiumRequestUsageReportUserTimePeriod.
-  # Required object value serialized in the `timePeriod` wire field.
-  class BillingPremiumRequestUsageReportUserTimePeriod
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalBillingPremiumRequestUsageReportUserTimePeriodMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalBillingPremiumRequestUsageReportUserTimePeriodMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalBillingPremiumRequestUsageReportUserTimePeriodMetadata::DECODERS
-
-    # @return [Integer] The year for the usage report.
-    attr_reader :year
-    # @return [Integer] The month for the usage report.
-    attr_reader :month
-    # @return [Integer] The day for the usage report.
-    attr_reader :day
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalBillingPremiumRequestUsageReportUserUsageItemsItemMetadata
-    FIELDS = {
-      product: 'product',
-      sku: 'sku',
-      model: 'model',
-      unit_type: 'unitType',
-      price_per_unit: 'pricePerUnit',
-      gross_quantity: 'grossQuantity',
-      gross_amount: 'grossAmount',
-      discount_quantity: 'discountQuantity',
-      discount_amount: 'discountAmount',
-      net_quantity: 'netQuantity',
-      net_amount: 'netAmount'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      product
-      sku
-      model
-      unit_type
-      price_per_unit
-      gross_quantity
-      gross_amount
-      discount_quantity
-      discount_amount
-      net_quantity
-      net_amount
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalBillingPremiumRequestUsageReportUserUsageItemsItemMetadata
+  FIELDS = {
+    product: "product",
+    sku: "sku",
+    model: "model",
+    unit_type: "unitType",
+    price_per_unit: "pricePerUnit",
+    gross_quantity: "grossQuantity",
+    gross_amount: "grossAmount",
+    discount_quantity: "discountQuantity",
+    discount_amount: "discountAmount",
+    net_quantity: "netQuantity",
+    net_amount: "netAmount",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    product
+    sku
+    model
+    unit_type
+    price_per_unit
+    gross_quantity
+    gross_amount
+    discount_quantity
+    discount_amount
+    net_quantity
+    net_amount
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for BillingPremiumRequestUsageReportUserUsageItemsItem.
+# Required object value serialized in the `usageItems[]` wire field.
+class BillingPremiumRequestUsageReportUserUsageItemsItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalBillingPremiumRequestUsageReportUserUsageItemsItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalBillingPremiumRequestUsageReportUserUsageItemsItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalBillingPremiumRequestUsageReportUserUsageItemsItemMetadata::DECODERS
+
+  # @return [String] Product name.
+  attr_reader :product
+  # @return [String] SKU name.
+  attr_reader :sku
+  # @return [String] Model name.
+  attr_reader :model
+  # @return [String] Unit type of the usage line item.
+  attr_reader :unit_type
+  # @return [Float] Price per unit of the usage line item.
+  attr_reader :price_per_unit
+  # @return [Float] Gross quantity of the usage line item.
+  attr_reader :gross_quantity
+  # @return [Float] Gross amount of the usage line item.
+  attr_reader :gross_amount
+  # @return [Float] Discount quantity of the usage line item.
+  attr_reader :discount_quantity
+  # @return [Float] Discount amount of the usage line item.
+  attr_reader :discount_amount
+  # @return [Float] Net quantity of the usage line item.
+  attr_reader :net_quantity
+  # @return [Float] Net amount of the usage line item.
+  attr_reader :net_amount
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for BillingPremiumRequestUsageReportUserUsageItemsItem.
-  # Required object value serialized in the `usageItems[]` wire field.
-  class BillingPremiumRequestUsageReportUserUsageItemsItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalBillingPremiumRequestUsageReportUserUsageItemsItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalBillingPremiumRequestUsageReportUserUsageItemsItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalBillingPremiumRequestUsageReportUserUsageItemsItemMetadata::DECODERS
-
-    # @return [String] Product name.
-    attr_reader :product
-    # @return [String] SKU name.
-    attr_reader :sku
-    # @return [String] Model name.
-    attr_reader :model
-    # @return [String] Unit type of the usage line item.
-    attr_reader :unit_type
-    # @return [Float] Price per unit of the usage line item.
-    attr_reader :price_per_unit
-    # @return [Float] Gross quantity of the usage line item.
-    attr_reader :gross_quantity
-    # @return [Float] Gross amount of the usage line item.
-    attr_reader :gross_amount
-    # @return [Float] Discount quantity of the usage line item.
-    attr_reader :discount_quantity
-    # @return [Float] Discount amount of the usage line item.
-    attr_reader :discount_amount
-    # @return [Float] Net quantity of the usage line item.
-    attr_reader :net_quantity
-    # @return [Float] Net amount of the usage line item.
-    attr_reader :net_amount
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 end

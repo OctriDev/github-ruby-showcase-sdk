@@ -5,280 +5,280 @@
 
 # webhook_pull_request_review_comment_created domain models (part 7)
 module OctridevGithub
-  # Defines the WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation SDK namespace.
-  module WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation
-    COLLABORATOR = 'COLLABORATOR'
-    CONTRIBUTOR = 'CONTRIBUTOR'
-    FIRST_TIMER = 'FIRST_TIMER'
-    FIRST_TIME_CONTRIBUTOR = 'FIRST_TIME_CONTRIBUTOR'
-    MANNEQUIN = 'MANNEQUIN'
-    MEMBER = 'MEMBER'
-    NONE = 'NONE'
-    OWNER = 'OWNER'
-    VALUES = %w[
-      COLLABORATOR CONTRIBUTOR FIRST_TIMER FIRST_TIME_CONTRIBUTOR MANNEQUIN MEMBER
-      NONE OWNER
-    ].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation SDK namespace.
+module WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation
+  COLLABORATOR = 'COLLABORATOR'
+  CONTRIBUTOR = 'CONTRIBUTOR'
+  FIRST_TIMER = 'FIRST_TIMER'
+  FIRST_TIME_CONTRIBUTOR = 'FIRST_TIME_CONTRIBUTOR'
+  MANNEQUIN = 'MANNEQUIN'
+  MEMBER = 'MEMBER'
+  NONE = 'NONE'
+  OWNER = 'OWNER'
+  VALUES = [
+    'COLLABORATOR', 'CONTRIBUTOR', 'FIRST_TIMER', 'FIRST_TIME_CONTRIBUTOR', 'MANNEQUIN', 'MEMBER',
+    'NONE', 'OWNER'
+  ].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentCreatedPullRequestAutoMergeEnabledByType SDK namespace.
-  module WebhookPullRequestReviewCommentCreatedPullRequestAutoMergeEnabledByType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentCreatedPullRequestAutoMergeEnabledByType SDK namespace.
+module WebhookPullRequestReviewCommentCreatedPullRequestAutoMergeEnabledByType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentCreatedPullRequestAutoMergeMergeMethod SDK namespace.
-  module WebhookPullRequestReviewCommentCreatedPullRequestAutoMergeMergeMethod
-    MERGE = 'merge'
-    SQUASH = 'squash'
-    REBASE = 'rebase'
-    VALUES = %w[merge squash rebase].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentCreatedPullRequestAutoMergeMergeMethod SDK namespace.
+module WebhookPullRequestReviewCommentCreatedPullRequestAutoMergeMergeMethod
+  MERGE = 'merge'
+  SQUASH = 'squash'
+  REBASE = 'rebase'
+  VALUES = ['merge', 'squash', 'rebase'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoMergX2c6799a4d5 SDK namespace.
-  module WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoMergX2c6799a4d5
-    PR_BODY = 'PR_BODY'
-    PR_TITLE = 'PR_TITLE'
-    BLANK = 'BLANK'
-    VALUES = %w[PR_BODY PR_TITLE BLANK].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoMergX2c6799a4d5 SDK namespace.
+module WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoMergX2c6799a4d5
+  PR_BODY = 'PR_BODY'
+  PR_TITLE = 'PR_TITLE'
+  BLANK = 'BLANK'
+  VALUES = ['PR_BODY', 'PR_TITLE', 'BLANK'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoMergX59205db385 SDK namespace.
-  module WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoMergX59205db385
-    PR_TITLE = 'PR_TITLE'
-    MERGE_MESSAGE = 'MERGE_MESSAGE'
-    VALUES = %w[PR_TITLE MERGE_MESSAGE].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoMergX59205db385 SDK namespace.
+module WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoMergX59205db385
+  PR_TITLE = 'PR_TITLE'
+  MERGE_MESSAGE = 'MERGE_MESSAGE'
+  VALUES = ['PR_TITLE', 'MERGE_MESSAGE'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoOwnerType SDK namespace.
-  module WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoOwnerType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoOwnerType SDK namespace.
+module WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoOwnerType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoPullX2b489ed467 SDK namespace.
-  module WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoPullX2b489ed467
-    ALL = 'all'
-    COLLABORATORS_ONLY = 'collaborators_only'
-    VALUES = %w[all collaborators_only].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoPullX2b489ed467 SDK namespace.
+module WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoPullX2b489ed467
+  ALL = 'all'
+  COLLABORATORS_ONLY = 'collaborators_only'
+  VALUES = ['all', 'collaborators_only'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoSquaX801f2999fb SDK namespace.
-  module WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoSquaX801f2999fb
-    PR_BODY = 'PR_BODY'
-    COMMIT_MESSAGES = 'COMMIT_MESSAGES'
-    BLANK = 'BLANK'
-    VALUES = %w[PR_BODY COMMIT_MESSAGES BLANK].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoSquaX801f2999fb SDK namespace.
+module WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoSquaX801f2999fb
+  PR_BODY = 'PR_BODY'
+  COMMIT_MESSAGES = 'COMMIT_MESSAGES'
+  BLANK = 'BLANK'
+  VALUES = ['PR_BODY', 'COMMIT_MESSAGES', 'BLANK'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoSquaXe8e250fcbe SDK namespace.
-  module WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoSquaXe8e250fcbe
-    PR_TITLE = 'PR_TITLE'
-    COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
-    VALUES = %w[PR_TITLE COMMIT_OR_PR_TITLE].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoSquaXe8e250fcbe SDK namespace.
+module WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoSquaXe8e250fcbe
+  PR_TITLE = 'PR_TITLE'
+  COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
+  VALUES = ['PR_TITLE', 'COMMIT_OR_PR_TITLE'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoVisibility SDK namespace.
-  module WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoVisibility
-    PUBLIC = 'public'
-    PRIVATE = 'private'
-    INTERNAL = 'internal'
-    VALUES = %w[public private internal].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoVisibility SDK namespace.
+module WebhookPullRequestReviewCommentCreatedPullRequestBaseRepoVisibility
+  PUBLIC = 'public'
+  PRIVATE = 'private'
+  INTERNAL = 'internal'
+  VALUES = ['public', 'private', 'internal'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentCreatedPullRequestBaseUserType SDK namespace.
-  module WebhookPullRequestReviewCommentCreatedPullRequestBaseUserType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentCreatedPullRequestBaseUserType SDK namespace.
+module WebhookPullRequestReviewCommentCreatedPullRequestBaseUserType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoMergX42b1f8b994 SDK namespace.
-  module WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoMergX42b1f8b994
-    PR_BODY = 'PR_BODY'
-    PR_TITLE = 'PR_TITLE'
-    BLANK = 'BLANK'
-    VALUES = %w[PR_BODY PR_TITLE BLANK].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoMergX42b1f8b994 SDK namespace.
+module WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoMergX42b1f8b994
+  PR_BODY = 'PR_BODY'
+  PR_TITLE = 'PR_TITLE'
+  BLANK = 'BLANK'
+  VALUES = ['PR_BODY', 'PR_TITLE', 'BLANK'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoMergXe5198084c6 SDK namespace.
-  module WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoMergXe5198084c6
-    PR_TITLE = 'PR_TITLE'
-    MERGE_MESSAGE = 'MERGE_MESSAGE'
-    VALUES = %w[PR_TITLE MERGE_MESSAGE].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoMergXe5198084c6 SDK namespace.
+module WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoMergXe5198084c6
+  PR_TITLE = 'PR_TITLE'
+  MERGE_MESSAGE = 'MERGE_MESSAGE'
+  VALUES = ['PR_TITLE', 'MERGE_MESSAGE'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoOwnerType SDK namespace.
-  module WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoOwnerType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoOwnerType SDK namespace.
+module WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoOwnerType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoPullX98efe4851b SDK namespace.
-  module WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoPullX98efe4851b
-    ALL = 'all'
-    COLLABORATORS_ONLY = 'collaborators_only'
-    VALUES = %w[all collaborators_only].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoPullX98efe4851b SDK namespace.
+module WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoPullX98efe4851b
+  ALL = 'all'
+  COLLABORATORS_ONLY = 'collaborators_only'
+  VALUES = ['all', 'collaborators_only'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoSquaXab37d89d35 SDK namespace.
-  module WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoSquaXab37d89d35
-    PR_BODY = 'PR_BODY'
-    COMMIT_MESSAGES = 'COMMIT_MESSAGES'
-    BLANK = 'BLANK'
-    VALUES = %w[PR_BODY COMMIT_MESSAGES BLANK].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoSquaXab37d89d35 SDK namespace.
+module WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoSquaXab37d89d35
+  PR_BODY = 'PR_BODY'
+  COMMIT_MESSAGES = 'COMMIT_MESSAGES'
+  BLANK = 'BLANK'
+  VALUES = ['PR_BODY', 'COMMIT_MESSAGES', 'BLANK'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoSquaX8e39ca5cd9 SDK namespace.
-  module WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoSquaX8e39ca5cd9
-    PR_TITLE = 'PR_TITLE'
-    COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
-    VALUES = %w[PR_TITLE COMMIT_OR_PR_TITLE].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoSquaX8e39ca5cd9 SDK namespace.
+module WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoSquaX8e39ca5cd9
+  PR_TITLE = 'PR_TITLE'
+  COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
+  VALUES = ['PR_TITLE', 'COMMIT_OR_PR_TITLE'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoVisibility SDK namespace.
-  module WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoVisibility
-    PUBLIC = 'public'
-    PRIVATE = 'private'
-    INTERNAL = 'internal'
-    VALUES = %w[public private internal].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoVisibility SDK namespace.
+module WebhookPullRequestReviewCommentCreatedPullRequestHeadRepoVisibility
+  PUBLIC = 'public'
+  PRIVATE = 'private'
+  INTERNAL = 'internal'
+  VALUES = ['public', 'private', 'internal'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentCreatedPullRequestHeadUserType SDK namespace.
-  module WebhookPullRequestReviewCommentCreatedPullRequestHeadUserType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentCreatedPullRequestHeadUserType SDK namespace.
+module WebhookPullRequestReviewCommentCreatedPullRequestHeadUserType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentCreatedPullRequestMilestoneCreatorType SDK namespace.
-  module WebhookPullRequestReviewCommentCreatedPullRequestMilestoneCreatorType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    MANNEQUIN = 'Mannequin'
-    VALUES = %w[Bot User Organization Mannequin].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentCreatedPullRequestMilestoneCreatorType SDK namespace.
+module WebhookPullRequestReviewCommentCreatedPullRequestMilestoneCreatorType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  MANNEQUIN = 'Mannequin'
+  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentCreatedPullRequestMilestoneState SDK namespace.
-  module WebhookPullRequestReviewCommentCreatedPullRequestMilestoneState
-    OPEN = 'open'
-    CLOSED = 'closed'
-    VALUES = %w[open closed].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentCreatedPullRequestMilestoneState SDK namespace.
+module WebhookPullRequestReviewCommentCreatedPullRequestMilestoneState
+  OPEN = 'open'
+  CLOSED = 'closed'
+  VALUES = ['open', 'closed'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentCreatedPullRequestRequestedTeaX1d3d64b50e SDK namespace.
-  module WebhookPullRequestReviewCommentCreatedPullRequestRequestedTeaX1d3d64b50e
-    OPEN = 'open'
-    CLOSED = 'closed'
-    SECRET = 'secret'
-    VALUES = %w[open closed secret].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentCreatedPullRequestRequestedTeaX1d3d64b50e SDK namespace.
+module WebhookPullRequestReviewCommentCreatedPullRequestRequestedTeaX1d3d64b50e
+  OPEN = 'open'
+  CLOSED = 'closed'
+  SECRET = 'secret'
+  VALUES = ['open', 'closed', 'secret'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentCreatedPullRequestRequestedTeaXb267c93eea SDK namespace.
-  module WebhookPullRequestReviewCommentCreatedPullRequestRequestedTeaXb267c93eea
-    OPEN = 'open'
-    CLOSED = 'closed'
-    SECRET = 'secret'
-    VALUES = %w[open closed secret].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentCreatedPullRequestRequestedTeaXb267c93eea SDK namespace.
+module WebhookPullRequestReviewCommentCreatedPullRequestRequestedTeaXb267c93eea
+  OPEN = 'open'
+  CLOSED = 'closed'
+  SECRET = 'secret'
+  VALUES = ['open', 'closed', 'secret'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentCreatedPullRequestState SDK namespace.
-  module WebhookPullRequestReviewCommentCreatedPullRequestState
-    OPEN = 'open'
-    CLOSED = 'closed'
-    VALUES = %w[open closed].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentCreatedPullRequestState SDK namespace.
+module WebhookPullRequestReviewCommentCreatedPullRequestState
+  OPEN = 'open'
+  CLOSED = 'closed'
+  VALUES = ['open', 'closed'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentCreatedPullRequestUserType SDK namespace.
-  module WebhookPullRequestReviewCommentCreatedPullRequestUserType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    MANNEQUIN = 'Mannequin'
-    VALUES = %w[Bot User Organization Mannequin].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentCreatedPullRequestUserType SDK namespace.
+module WebhookPullRequestReviewCommentCreatedPullRequestUserType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  MANNEQUIN = 'Mannequin'
+  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
+  def self.from_value(value)
+    value
   end
+end
 end

@@ -5,85 +5,85 @@
 
 # orgs domain models (part 5)
 module OctridevGithub
-  # API model for UserRoleAssignment.
-  # The Relationship a User has with a role.
-  class UserRoleAssignment
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalUserRoleAssignmentMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalUserRoleAssignmentMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalUserRoleAssignmentMetadata::DECODERS
+# API model for UserRoleAssignment.
+# The Relationship a User has with a role.
+class UserRoleAssignment
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalUserRoleAssignmentMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalUserRoleAssignmentMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalUserRoleAssignmentMetadata::DECODERS
 
-    # @return [UserRoleAssignmentAssignment] Determines if the user has a direct, indirect, or mixed relationship to a role
-    attr_reader :assignment
-    # @return [Array_of_TeamSimple] Team the user has gotten the role through
-    attr_reader :inherited_from
-    # @return [String] Optional `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [String] Optional `string` value serialized in the `email` wire field.
-    attr_reader :email
-    # @return [String] Required `string` value serialized in the `login` wire field.
-    attr_reader :login
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Required `uri`-formatted value serialized in the `avatar_url` wire field.
-    attr_reader :avatar_url
-    # @return [String] Required `string` value serialized in the `gravatar_id` wire field.
-    attr_reader :gravatar_id
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [String] Required `uri`-formatted value serialized in the `followers_url` wire field.
-    attr_reader :followers_url
-    # @return [String] Required `string` value serialized in the `following_url` wire field.
-    attr_reader :following_url
-    # @return [String] Required `string` value serialized in the `gists_url` wire field.
-    attr_reader :gists_url
-    # @return [String] Required `string` value serialized in the `starred_url` wire field.
-    attr_reader :starred_url
-    # @return [String] Required `uri`-formatted value serialized in the `subscriptions_url` wire field.
-    attr_reader :subscriptions_url
-    # @return [String] Required `uri`-formatted value serialized in the `organizations_url` wire field.
-    attr_reader :organizations_url
-    # @return [String] Required `uri`-formatted value serialized in the `repos_url` wire field.
-    attr_reader :repos_url
-    # @return [String] Required `string` value serialized in the `events_url` wire field.
-    attr_reader :events_url
-    # @return [String] Required `uri`-formatted value serialized in the `received_events_url` wire field.
-    attr_reader :received_events_url
-    # @return [String] Required `string` value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [Boolean] Required `boolean` value serialized in the `site_admin` wire field.
-    attr_reader :site_admin
-    # @return [String] Optional `string` value serialized in the `starred_at` wire field.
-    attr_reader :starred_at
-    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-    attr_reader :user_view_type
+  # @return [UserRoleAssignmentAssignment] Determines if the user has a direct, indirect, or mixed relationship to a role
+  attr_reader :assignment
+  # @return [Array_of_TeamSimple] Team the user has gotten the role through
+  attr_reader :inherited_from
+  # @return [String] Optional `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [String] Optional `string` value serialized in the `email` wire field.
+  attr_reader :email
+  # @return [String] Required `string` value serialized in the `login` wire field.
+  attr_reader :login
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Required `uri`-formatted value serialized in the `avatar_url` wire field.
+  attr_reader :avatar_url
+  # @return [String] Required `string` value serialized in the `gravatar_id` wire field.
+  attr_reader :gravatar_id
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [String] Required `uri`-formatted value serialized in the `followers_url` wire field.
+  attr_reader :followers_url
+  # @return [String] Required `string` value serialized in the `following_url` wire field.
+  attr_reader :following_url
+  # @return [String] Required `string` value serialized in the `gists_url` wire field.
+  attr_reader :gists_url
+  # @return [String] Required `string` value serialized in the `starred_url` wire field.
+  attr_reader :starred_url
+  # @return [String] Required `uri`-formatted value serialized in the `subscriptions_url` wire field.
+  attr_reader :subscriptions_url
+  # @return [String] Required `uri`-formatted value serialized in the `organizations_url` wire field.
+  attr_reader :organizations_url
+  # @return [String] Required `uri`-formatted value serialized in the `repos_url` wire field.
+  attr_reader :repos_url
+  # @return [String] Required `string` value serialized in the `events_url` wire field.
+  attr_reader :events_url
+  # @return [String] Required `uri`-formatted value serialized in the `received_events_url` wire field.
+  attr_reader :received_events_url
+  # @return [String] Required `string` value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [Boolean] Required `boolean` value serialized in the `site_admin` wire field.
+  attr_reader :site_admin
+  # @return [String] Optional `string` value serialized in the `starred_at` wire field.
+  attr_reader :starred_at
+  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+  attr_reader :user_view_type
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalUserRoleAssignmentMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the UserRoleAssignmentAssignment SDK namespace.
-  module UserRoleAssignmentAssignment
-    DIRECT = 'direct'
-    INDIRECT = 'indirect'
-    MIXED = 'mixed'
-    VALUES = %w[direct indirect mixed].freeze
-    def self.from_value(value)
-      value
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalUserRoleAssignmentMetadata::NULLABLE_FIELDS)
   end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Defines the UserRoleAssignmentAssignment SDK namespace.
+module UserRoleAssignmentAssignment
+  DIRECT = 'direct'
+  INDIRECT = 'indirect'
+  MIXED = 'mixed'
+  VALUES = ['direct', 'indirect', 'mixed'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

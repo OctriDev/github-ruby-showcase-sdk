@@ -13,7 +13,7 @@ module OctridevGithub
       module IssuesUpdateResponseVariant1SuggestionsAssigneesItemIgnoredReason
         ALREADY_APPLIED = 'already_applied'
         ISSUE_ALREADY_CLOSED = 'issue_already_closed'
-        VALUES = %w[already_applied issue_already_closed].freeze
+        VALUES = ['already_applied', 'issue_already_closed'].freeze
         def self.from_value(value)
           value
         end
@@ -24,7 +24,7 @@ module OctridevGithub
         LOW = 'low'
         MEDIUM = 'medium'
         HIGH = 'high'
-        VALUES = %w[low medium high].freeze
+        VALUES = ['low', 'medium', 'high'].freeze
         def self.from_value(value)
           value
         end
@@ -34,7 +34,7 @@ module OctridevGithub
       module IssuesListMilestonesParameterF2551cbd
         DUE_ON = 'due_on'
         COMPLETENESS = 'completeness'
-        VALUES = %w[due_on completeness].freeze
+        VALUES = ['due_on', 'completeness'].freeze
         def self.from_value(value)
           value
         end
@@ -44,7 +44,7 @@ module OctridevGithub
       module IssuesUpdateMilestoneState
         OPEN = 'open'
         CLOSED = 'closed'
-        VALUES = %w[open closed].freeze
+        VALUES = ['open', 'closed'].freeze
         def self.from_value(value)
           value
         end
@@ -55,7 +55,7 @@ module OctridevGithub
         LOW = 'low'
         MEDIUM = 'medium'
         HIGH = 'high'
-        VALUES = %w[low medium high].freeze
+        VALUES = ['low', 'medium', 'high'].freeze
         def self.from_value(value)
           value
         end
@@ -78,7 +78,7 @@ module OctridevGithub
         LOW = 'low'
         MEDIUM = 'medium'
         HIGH = 'high'
-        VALUES = %w[low medium high].freeze
+        VALUES = ['low', 'medium', 'high'].freeze
         def self.from_value(value)
           value
         end
@@ -88,7 +88,7 @@ module OctridevGithub
       module IssuesUpdateResponseVariant1SuggestionsTypeItemIgnoredReason
         ALREADY_APPLIED = 'already_applied'
         ISSUE_ALREADY_CLOSED = 'issue_already_closed'
-        VALUES = %w[already_applied issue_already_closed].freeze
+        VALUES = ['already_applied', 'issue_already_closed'].freeze
         def self.from_value(value)
           value
         end
@@ -99,7 +99,7 @@ module OctridevGithub
         OPEN = 'open'
         CLOSED = 'closed'
         ALL = 'all'
-        VALUES = %w[open closed all].freeze
+        VALUES = ['open', 'closed', 'all'].freeze
         def self.from_value(value)
           value
         end
@@ -109,7 +109,7 @@ module OctridevGithub
       module IssuesUpdateResponseVariant1SuggestionsLabelsItemIgnoredReason
         ALREADY_APPLIED = 'already_applied'
         ISSUE_ALREADY_CLOSED = 'issue_already_closed'
-        VALUES = %w[already_applied issue_already_closed].freeze
+        VALUES = ['already_applied', 'issue_already_closed'].freeze
         def self.from_value(value)
           value
         end
@@ -120,7 +120,7 @@ module OctridevGithub
         LOW = 'low'
         MEDIUM = 'medium'
         HIGH = 'high'
-        VALUES = %w[low medium high].freeze
+        VALUES = ['low', 'medium', 'high'].freeze
         def self.from_value(value)
           value
         end
@@ -130,7 +130,7 @@ module OctridevGithub
       module IssuesCreateMilestoneState
         OPEN = 'open'
         CLOSED = 'closed'
-        VALUES = %w[open closed].freeze
+        VALUES = ['open', 'closed'].freeze
         def self.from_value(value)
           value
         end
@@ -140,7 +140,7 @@ module OctridevGithub
       module IssuesListCommentsForRepoParameter
         ASC = 'asc'
         DESC = 'desc'
-        VALUES = %w[asc desc].freeze
+        VALUES = ['asc', 'desc'].freeze
         def self.from_value(value)
           value
         end
@@ -154,7 +154,7 @@ module OctridevGithub
         SUBSCRIBED = 'subscribed'
         REPOS = 'repos'
         ALL = 'all'
-        VALUES = %w[assigned created mentioned subscribed repos all].freeze
+        VALUES = ['assigned', 'created', 'mentioned', 'subscribed', 'repos', 'all'].freeze
         def self.from_value(value)
           value
         end
@@ -164,7 +164,7 @@ module OctridevGithub
       module IssuesUpdateResponseVariant1SuggestionsStateItemIgnoredReason
         ALREADY_APPLIED = 'already_applied'
         ISSUE_ALREADY_CLOSED = 'issue_already_closed'
-        VALUES = %w[already_applied issue_already_closed].freeze
+        VALUES = ['already_applied', 'issue_already_closed'].freeze
         def self.from_value(value)
           value
         end
@@ -175,7 +175,7 @@ module OctridevGithub
         LOW = 'low'
         MEDIUM = 'medium'
         HIGH = 'high'
-        VALUES = %w[low medium high].freeze
+        VALUES = ['low', 'medium', 'high'].freeze
         def self.from_value(value)
           value
         end
@@ -186,7 +186,7 @@ module OctridevGithub
         CREATED = 'created'
         UPDATED = 'updated'
         COMMENTS = 'comments'
-        VALUES = %w[created updated comments].freeze
+        VALUES = ['created', 'updated', 'comments'].freeze
         def self.from_value(value)
           value
         end
@@ -201,8 +201,8 @@ module OctridevGithub
         REPLACED = 'replaced'
         INVALIDATED = 'invalidated'
         ALL = 'all'
-        VALUES = %w[
-          pending applied approved dismissed replaced invalidated all
+        VALUES = [
+          'pending', 'applied', 'approved', 'dismissed', 'replaced', 'invalidated', 'all'
         ].freeze
         def self.from_value(value)
           value
@@ -214,7 +214,7 @@ module OctridevGithub
         CREATED = 'created'
         UPDATED = 'updated'
         COMMENTS = 'comments'
-        VALUES = %w[created updated comments].freeze
+        VALUES = ['created', 'updated', 'comments'].freeze
         def self.from_value(value)
           value
         end
@@ -224,7 +224,7 @@ module OctridevGithub
       module IssuesUpdateState
         OPEN = 'open'
         CLOSED = 'closed'
-        VALUES = %w[open closed].freeze
+        VALUES = ['open', 'closed'].freeze
         def self.from_value(value)
           value
         end
@@ -234,7 +234,7 @@ module OctridevGithub
       module IssuesListMilestonesParameter4b5b1f9b
         ASC = 'asc'
         DESC = 'desc'
-        VALUES = %w[asc desc].freeze
+        VALUES = ['asc', 'desc'].freeze
         def self.from_value(value)
           value
         end
@@ -245,7 +245,7 @@ module OctridevGithub
         OPEN = 'open'
         CLOSED = 'closed'
         ALL = 'all'
-        VALUES = %w[open closed all].freeze
+        VALUES = ['open', 'closed', 'all'].freeze
         def self.from_value(value)
           value
         end
@@ -256,7 +256,7 @@ module OctridevGithub
         CREATED = 'created'
         UPDATED = 'updated'
         COMMENTS = 'comments'
-        VALUES = %w[created updated comments].freeze
+        VALUES = ['created', 'updated', 'comments'].freeze
         def self.from_value(value)
           value
         end
@@ -268,7 +268,7 @@ module OctridevGithub
         NOT_PLANNED = 'not_planned'
         DUPLICATE = 'duplicate'
         REOPENED = 'reopened'
-        VALUES = %w[completed not_planned duplicate reopened].freeze
+        VALUES = ['completed', 'not_planned', 'duplicate', 'reopened'].freeze
         def self.from_value(value)
           value
         end
@@ -279,7 +279,7 @@ module OctridevGithub
         LOW = 'low'
         MEDIUM = 'medium'
         HIGH = 'high'
-        VALUES = %w[low medium high].freeze
+        VALUES = ['low', 'medium', 'high'].freeze
         def self.from_value(value)
           value
         end
@@ -323,11 +323,12 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(since) { Validation.validate_date_time('since', since) }
 
         SdkClient.request(
           'GET',
-          '/issues',
+          "/issues",
           config: config,
           query: {
             'filter' => QueryValue.new(filter, style: 'form', explode: true),
@@ -341,13 +342,13 @@ module OctridevGithub
             'owned' => QueryValue.new(owned, style: 'form', explode: true),
             'pulls' => QueryValue.new(pulls, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::Issue],
           decoder: :json,
           operation_id: 'issues_list',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -387,14 +388,15 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(since) { Validation.validate_date_time('since', since) }
 
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/issues'
+            "/issues"
           ].join,
           config: config,
           query: {
@@ -406,13 +408,13 @@ module OctridevGithub
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'since' => QueryValue.new(since, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::Issue],
           decoder: :json,
           operation_id: 'issues_list_for_org',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -434,25 +436,26 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/assignees'
+            "/assignees"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::SimpleUser],
           decoder: :json,
           operation_id: 'issues_list_assignees',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -471,21 +474,22 @@ module OctridevGithub
         assignee:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/assignees/',
+            "/assignees/",
             SdkClient.encode_path_segment(assignee)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'issues_check_user_can_be_assigned',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

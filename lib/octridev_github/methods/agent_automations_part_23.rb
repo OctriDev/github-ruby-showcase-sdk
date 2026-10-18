@@ -62,14 +62,15 @@ module OctridevGithub
         allowed_custom_agents: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/agents/repos/',
+            "/agents/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/automations/',
+            "/automations/",
             SdkClient.encode_path_segment(automation_id)
           ].join,
           config: config,
@@ -83,12 +84,12 @@ module OctridevGithub
             'triggers' => triggers,
             'prompt' => prompt,
             'tools' => tools,
-            'allowed_custom_agents' => allowed_custom_agents
+            'allowed_custom_agents' => allowed_custom_agents,
           },
           return_type: ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsEditRepoAutomationResponse,
           decoder: :json,
           operation_id: 'agent_automations_edit_repo_automation',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -106,20 +107,21 @@ module OctridevGithub
         automation_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/agents/repos/',
+            "/agents/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/automations/',
+            "/automations/",
             SdkClient.encode_path_segment(automation_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'agent_automations_delete_repo_automation',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

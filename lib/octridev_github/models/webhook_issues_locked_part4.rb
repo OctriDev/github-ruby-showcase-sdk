@@ -5,14 +5,14 @@
 
 # webhook_issues_locked domain models (part 4)
 module OctridevGithub
-  # Defines the WebhookIssuesLockedIssueUserType SDK namespace.
-  module WebhookIssuesLockedIssueUserType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookIssuesLockedIssueUserType SDK namespace.
+module WebhookIssuesLockedIssueUserType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 end

@@ -5,657 +5,658 @@
 
 # webhook_deployment_created domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalWebhookDeploymentCreatedDeploymentCreatorMetadata
-    FIELDS = {
-      avatar_url: 'avatar_url',
-      deleted: 'deleted',
-      email: 'email',
-      events_url: 'events_url',
-      followers_url: 'followers_url',
-      following_url: 'following_url',
-      gists_url: 'gists_url',
-      gravatar_id: 'gravatar_id',
-      html_url: 'html_url',
-      id: 'id',
-      login: 'login',
-      name: 'name',
-      node_id: 'node_id',
-      organizations_url: 'organizations_url',
-      received_events_url: 'received_events_url',
-      repos_url: 'repos_url',
-      site_admin: 'site_admin',
-      starred_url: 'starred_url',
-      subscriptions_url: 'subscriptions_url',
-      type: 'type',
-      url: 'url',
-      user_view_type: 'user_view_type'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      login
-    ].freeze
-    DECODERS = {
-      type: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentCreatorType.from_value(value)
-      end
-    }.freeze
+# Internal model hydration metadata.
+class SdkInternalWebhookDeploymentCreatedDeploymentCreatorMetadata
+  FIELDS = {
+    avatar_url: "avatar_url",
+    deleted: "deleted",
+    email: "email",
+    events_url: "events_url",
+    followers_url: "followers_url",
+    following_url: "following_url",
+    gists_url: "gists_url",
+    gravatar_id: "gravatar_id",
+    html_url: "html_url",
+    id: "id",
+    login: "login",
+    name: "name",
+    node_id: "node_id",
+    organizations_url: "organizations_url",
+    received_events_url: "received_events_url",
+    repos_url: "repos_url",
+    site_admin: "site_admin",
+    starred_url: "starred_url",
+    subscriptions_url: "subscriptions_url",
+    type: "type",
+    url: "url",
+    user_view_type: "user_view_type",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    login
+  ].freeze
+  DECODERS = {
+    type: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentCreatorType.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookDeploymentCreatedDeploymentCreator.
+# Required object value serialized in the `creator` wire field.
+class WebhookDeploymentCreatedDeploymentCreator
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookDeploymentCreatedDeploymentCreatorMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookDeploymentCreatedDeploymentCreatorMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookDeploymentCreatedDeploymentCreatorMetadata::DECODERS
+
+  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+  attr_reader :avatar_url
+  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+  attr_reader :deleted
+  # @return [String] Optional `string` value serialized in the `email` wire field.
+  attr_reader :email
+  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+  attr_reader :events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+  attr_reader :followers_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+  attr_reader :following_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+  attr_reader :gists_url
+  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+  attr_reader :gravatar_id
+  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `login` wire field.
+  attr_reader :login
+  # @return [String] Optional `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [String] Optional `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+  attr_reader :organizations_url
+  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+  attr_reader :received_events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+  attr_reader :repos_url
+  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+  attr_reader :site_admin
+  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+  attr_reader :starred_url
+  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+  attr_reader :subscriptions_url
+  # @return [WebhookDeploymentCreatedDeploymentCreatorType] Optional enumerated value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+  attr_reader :user_view_type
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookDeploymentCreatedDeploymentCreator.
-  # Required object value serialized in the `creator` wire field.
-  class WebhookDeploymentCreatedDeploymentCreator
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookDeploymentCreatedDeploymentCreatorMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookDeploymentCreatedDeploymentCreatorMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookDeploymentCreatedDeploymentCreatorMetadata::DECODERS
-
-    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-    attr_reader :avatar_url
-    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-    attr_reader :deleted
-    # @return [String] Optional `string` value serialized in the `email` wire field.
-    attr_reader :email
-    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-    attr_reader :events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-    attr_reader :followers_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-    attr_reader :following_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-    attr_reader :gists_url
-    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-    attr_reader :gravatar_id
-    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `login` wire field.
-    attr_reader :login
-    # @return [String] Optional `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [String] Optional `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-    attr_reader :organizations_url
-    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-    attr_reader :received_events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-    attr_reader :repos_url
-    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-    attr_reader :site_admin
-    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-    attr_reader :starred_url
-    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-    attr_reader :subscriptions_url
-    # @return [WebhookDeploymentCreatedDeploymentCreatorType] Optional enumerated value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-    attr_reader :user_view_type
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookDeploymentCreatedDeploymentPerformedViaGithubAppOwnerMetadata
-    FIELDS = {
-      avatar_url: 'avatar_url',
-      deleted: 'deleted',
-      email: 'email',
-      events_url: 'events_url',
-      followers_url: 'followers_url',
-      following_url: 'following_url',
-      gists_url: 'gists_url',
-      gravatar_id: 'gravatar_id',
-      html_url: 'html_url',
-      id: 'id',
-      login: 'login',
-      name: 'name',
-      node_id: 'node_id',
-      organizations_url: 'organizations_url',
-      received_events_url: 'received_events_url',
-      repos_url: 'repos_url',
-      site_admin: 'site_admin',
-      starred_url: 'starred_url',
-      subscriptions_url: 'subscriptions_url',
-      type: 'type',
-      url: 'url',
-      user_view_type: 'user_view_type'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      login
-    ].freeze
-    DECODERS = {
-      type: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppOwnerType.from_value(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookDeploymentCreatedDeploymentPerformedViaGithubAppOwnerMetadata
+  FIELDS = {
+    avatar_url: "avatar_url",
+    deleted: "deleted",
+    email: "email",
+    events_url: "events_url",
+    followers_url: "followers_url",
+    following_url: "following_url",
+    gists_url: "gists_url",
+    gravatar_id: "gravatar_id",
+    html_url: "html_url",
+    id: "id",
+    login: "login",
+    name: "name",
+    node_id: "node_id",
+    organizations_url: "organizations_url",
+    received_events_url: "received_events_url",
+    repos_url: "repos_url",
+    site_admin: "site_admin",
+    starred_url: "starred_url",
+    subscriptions_url: "subscriptions_url",
+    type: "type",
+    url: "url",
+    user_view_type: "user_view_type",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    login
+  ].freeze
+  DECODERS = {
+    type: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppOwnerType.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookDeploymentCreatedDeploymentPerformedViaGithubAppOwner.
+# Required object value serialized in the `owner` wire field.
+class WebhookDeploymentCreatedDeploymentPerformedViaGithubAppOwner
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookDeploymentCreatedDeploymentPerformedViaGithubAppOwnerMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookDeploymentCreatedDeploymentPerformedViaGithubAppOwnerMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookDeploymentCreatedDeploymentPerformedViaGithubAppOwnerMetadata::DECODERS
+
+  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+  attr_reader :avatar_url
+  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+  attr_reader :deleted
+  # @return [String] Optional `string` value serialized in the `email` wire field.
+  attr_reader :email
+  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+  attr_reader :events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+  attr_reader :followers_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+  attr_reader :following_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+  attr_reader :gists_url
+  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+  attr_reader :gravatar_id
+  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `login` wire field.
+  attr_reader :login
+  # @return [String] Optional `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [String] Optional `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+  attr_reader :organizations_url
+  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+  attr_reader :received_events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+  attr_reader :repos_url
+  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+  attr_reader :site_admin
+  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+  attr_reader :starred_url
+  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+  attr_reader :subscriptions_url
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppOwnerType] Optional enumerated value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+  attr_reader :user_view_type
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookDeploymentCreatedDeploymentPerformedViaGithubAppOwner.
-  # Required object value serialized in the `owner` wire field.
-  class WebhookDeploymentCreatedDeploymentPerformedViaGithubAppOwner
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookDeploymentCreatedDeploymentPerformedViaGithubAppOwnerMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookDeploymentCreatedDeploymentPerformedViaGithubAppOwnerMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookDeploymentCreatedDeploymentPerformedViaGithubAppOwnerMetadata::DECODERS
-
-    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-    attr_reader :avatar_url
-    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-    attr_reader :deleted
-    # @return [String] Optional `string` value serialized in the `email` wire field.
-    attr_reader :email
-    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-    attr_reader :events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-    attr_reader :followers_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-    attr_reader :following_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-    attr_reader :gists_url
-    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-    attr_reader :gravatar_id
-    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `login` wire field.
-    attr_reader :login
-    # @return [String] Optional `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [String] Optional `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-    attr_reader :organizations_url
-    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-    attr_reader :received_events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-    attr_reader :repos_url
-    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-    attr_reader :site_admin
-    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-    attr_reader :starred_url
-    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-    attr_reader :subscriptions_url
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppOwnerType] Optional enumerated value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-    attr_reader :user_view_type
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsMetadata
-    FIELDS = {
-      actions: 'actions',
-      administration: 'administration',
-      checks: 'checks',
-      content_references: 'content_references',
-      contents: 'contents',
-      deployments: 'deployments',
-      discussions: 'discussions',
-      emails: 'emails',
-      environments: 'environments',
-      issues: 'issues',
-      keys: 'keys',
-      members: 'members',
-      metadata: 'metadata',
-      organization_administration: 'organization_administration',
-      organization_hooks: 'organization_hooks',
-      organization_packages: 'organization_packages',
-      organization_plan: 'organization_plan',
-      organization_projects: 'organization_projects',
-      organization_secrets: 'organization_secrets',
-      organization_self_hosted_runners: 'organization_self_hosted_runners',
-      organization_user_blocking: 'organization_user_blocking',
-      packages: 'packages',
-      pages: 'pages',
-      pull_requests: 'pull_requests',
-      repository_hooks: 'repository_hooks',
-      repository_projects: 'repository_projects',
-      secret_scanning_alerts: 'secret_scanning_alerts',
-      secrets: 'secrets',
-      security_events: 'security_events',
-      security_scanning_alert: 'security_scanning_alert',
-      single_file: 'single_file',
-      statuses: 'statuses',
-      vulnerability_alerts: 'vulnerability_alerts',
-      workflows: 'workflows'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      actions: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXabac86940e.from_value(value)
-      end,
-      administration: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXb2e4e214ea.from_value(value)
-      end,
-      checks: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsChecks.from_value(value)
-      end,
-      content_references: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX7b02e240a9.from_value(value)
-      end,
-      contents: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXa472c7a9b7.from_value(value)
-      end,
-      deployments: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXf425d64b53.from_value(value)
-      end,
-      discussions: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX0640c342ac.from_value(value)
-      end,
-      emails: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsEmails.from_value(value)
-      end,
-      environments: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX67ad088bff.from_value(value)
-      end,
-      issues: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsIssues.from_value(value)
-      end,
-      keys: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsKeys.from_value(value)
-      end,
-      members: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX47cc859cb7.from_value(value)
-      end,
-      metadata: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXfc4addf8e7.from_value(value)
-      end,
-      organization_administration: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXc83e0c24c2.from_value(value)
-      end,
-      organization_hooks: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX5393364a56.from_value(value)
-      end,
-      organization_packages: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX6f8c3fbecd.from_value(value)
-      end,
-      organization_plan: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXcea895f9f8.from_value(value)
-      end,
-      organization_projects: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX724649161c.from_value(value)
-      end,
-      organization_secrets: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX4bfd526562.from_value(value)
-      end,
-      organization_self_hosted_runners: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXcb559a4c78.from_value(value)
-      end,
-      organization_user_blocking: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXfe62bebc30.from_value(value)
-      end,
-      packages: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX4d0094b878.from_value(value)
-      end,
-      pages: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsPages.from_value(value)
-      end,
-      pull_requests: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX0251d53d00.from_value(value)
-      end,
-      repository_hooks: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXe4e08fd967.from_value(value)
-      end,
-      repository_projects: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXc2d1d4b4af.from_value(value)
-      end,
-      secret_scanning_alerts: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXdc186e7dbf.from_value(value)
-      end,
-      secrets: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX714902169f.from_value(value)
-      end,
-      security_events: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX30a11584f9.from_value(value)
-      end,
-      security_scanning_alert: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX895a21d0c8.from_value(value)
-      end,
-      single_file: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXd1296c950e.from_value(value)
-      end,
-      statuses: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX836e5507db.from_value(value)
-      end,
-      vulnerability_alerts: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX347b955579.from_value(value)
-      end,
-      workflows: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX733f6fe6b1.from_value(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsMetadata
+  FIELDS = {
+    actions: "actions",
+    administration: "administration",
+    checks: "checks",
+    content_references: "content_references",
+    contents: "contents",
+    deployments: "deployments",
+    discussions: "discussions",
+    emails: "emails",
+    environments: "environments",
+    issues: "issues",
+    keys: "keys",
+    members: "members",
+    metadata: "metadata",
+    organization_administration: "organization_administration",
+    organization_hooks: "organization_hooks",
+    organization_packages: "organization_packages",
+    organization_plan: "organization_plan",
+    organization_projects: "organization_projects",
+    organization_secrets: "organization_secrets",
+    organization_self_hosted_runners: "organization_self_hosted_runners",
+    organization_user_blocking: "organization_user_blocking",
+    packages: "packages",
+    pages: "pages",
+    pull_requests: "pull_requests",
+    repository_hooks: "repository_hooks",
+    repository_projects: "repository_projects",
+    secret_scanning_alerts: "secret_scanning_alerts",
+    secrets: "secrets",
+    security_events: "security_events",
+    security_scanning_alert: "security_scanning_alert",
+    single_file: "single_file",
+    statuses: "statuses",
+    vulnerability_alerts: "vulnerability_alerts",
+    workflows: "workflows",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    actions: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXabac86940e.from_value(value)
+    end,
+    administration: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXb2e4e214ea.from_value(value)
+    end,
+    checks: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsChecks.from_value(value)
+    end,
+    content_references: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX7b02e240a9.from_value(value)
+    end,
+    contents: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXa472c7a9b7.from_value(value)
+    end,
+    deployments: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXf425d64b53.from_value(value)
+    end,
+    discussions: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX0640c342ac.from_value(value)
+    end,
+    emails: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsEmails.from_value(value)
+    end,
+    environments: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX67ad088bff.from_value(value)
+    end,
+    issues: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsIssues.from_value(value)
+    end,
+    keys: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsKeys.from_value(value)
+    end,
+    members: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX47cc859cb7.from_value(value)
+    end,
+    metadata: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXfc4addf8e7.from_value(value)
+    end,
+    organization_administration: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXc83e0c24c2.from_value(value)
+    end,
+    organization_hooks: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX5393364a56.from_value(value)
+    end,
+    organization_packages: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX6f8c3fbecd.from_value(value)
+    end,
+    organization_plan: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXcea895f9f8.from_value(value)
+    end,
+    organization_projects: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX724649161c.from_value(value)
+    end,
+    organization_secrets: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX4bfd526562.from_value(value)
+    end,
+    organization_self_hosted_runners: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXcb559a4c78.from_value(value)
+    end,
+    organization_user_blocking: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXfe62bebc30.from_value(value)
+    end,
+    packages: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX4d0094b878.from_value(value)
+    end,
+    pages: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsPages.from_value(value)
+    end,
+    pull_requests: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX0251d53d00.from_value(value)
+    end,
+    repository_hooks: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXe4e08fd967.from_value(value)
+    end,
+    repository_projects: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXc2d1d4b4af.from_value(value)
+    end,
+    secret_scanning_alerts: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXdc186e7dbf.from_value(value)
+    end,
+    secrets: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX714902169f.from_value(value)
+    end,
+    security_events: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX30a11584f9.from_value(value)
+    end,
+    security_scanning_alert: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX895a21d0c8.from_value(value)
+    end,
+    single_file: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXd1296c950e.from_value(value)
+    end,
+    statuses: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX836e5507db.from_value(value)
+    end,
+    vulnerability_alerts: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX347b955579.from_value(value)
+    end,
+    workflows: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX733f6fe6b1.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissions.
+# The set of permissions for the GitHub app
+class WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissions
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsMetadata::DECODERS
+
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXabac86940e] Optional enumerated value serialized in the `actions` wire field.
+  attr_reader :actions
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXb2e4e214ea] Optional enumerated value serialized in the `administration` wire field.
+  attr_reader :administration
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsChecks] Optional enumerated value serialized in the `checks` wire field.
+  attr_reader :checks
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX7b02e240a9] Optional enumerated value serialized in the `content_references` wire field.
+  attr_reader :content_references
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXa472c7a9b7] Optional enumerated value serialized in the `contents` wire field.
+  attr_reader :contents
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXf425d64b53] Optional enumerated value serialized in the `deployments` wire field.
+  attr_reader :deployments
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX0640c342ac] Optional enumerated value serialized in the `discussions` wire field.
+  attr_reader :discussions
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsEmails] Optional enumerated value serialized in the `emails` wire field.
+  attr_reader :emails
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX67ad088bff] Optional enumerated value serialized in the `environments` wire field.
+  attr_reader :environments
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsIssues] Optional enumerated value serialized in the `issues` wire field.
+  attr_reader :issues
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsKeys] Optional enumerated value serialized in the `keys` wire field.
+  attr_reader :keys
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX47cc859cb7] Optional enumerated value serialized in the `members` wire field.
+  attr_reader :members
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXfc4addf8e7] Optional enumerated value serialized in the `metadata` wire field.
+  attr_reader :metadata
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXc83e0c24c2] Optional enumerated value serialized in the `organization_administration` wire field.
+  attr_reader :organization_administration
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX5393364a56] Optional enumerated value serialized in the `organization_hooks` wire field.
+  attr_reader :organization_hooks
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX6f8c3fbecd] Optional enumerated value serialized in the `organization_packages` wire field.
+  attr_reader :organization_packages
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXcea895f9f8] Optional enumerated value serialized in the `organization_plan` wire field.
+  attr_reader :organization_plan
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX724649161c] Optional enumerated value serialized in the `organization_projects` wire field.
+  attr_reader :organization_projects
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX4bfd526562] Optional enumerated value serialized in the `organization_secrets` wire field.
+  attr_reader :organization_secrets
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXcb559a4c78] Optional enumerated value serialized in the `organization_self_hosted_runners` wire field.
+  attr_reader :organization_self_hosted_runners
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXfe62bebc30] Optional enumerated value serialized in the `organization_user_blocking` wire field.
+  attr_reader :organization_user_blocking
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX4d0094b878] Optional enumerated value serialized in the `packages` wire field.
+  attr_reader :packages
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsPages] Optional enumerated value serialized in the `pages` wire field.
+  attr_reader :pages
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX0251d53d00] Optional enumerated value serialized in the `pull_requests` wire field.
+  attr_reader :pull_requests
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXe4e08fd967] Optional enumerated value serialized in the `repository_hooks` wire field.
+  attr_reader :repository_hooks
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXc2d1d4b4af] Optional enumerated value serialized in the `repository_projects` wire field.
+  attr_reader :repository_projects
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXdc186e7dbf] Optional enumerated value serialized in the `secret_scanning_alerts` wire field.
+  attr_reader :secret_scanning_alerts
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX714902169f] Optional enumerated value serialized in the `secrets` wire field.
+  attr_reader :secrets
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX30a11584f9] Optional enumerated value serialized in the `security_events` wire field.
+  attr_reader :security_events
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX895a21d0c8] Optional enumerated value serialized in the `security_scanning_alert` wire field.
+  attr_reader :security_scanning_alert
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXd1296c950e] Optional enumerated value serialized in the `single_file` wire field.
+  attr_reader :single_file
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX836e5507db] Optional enumerated value serialized in the `statuses` wire field.
+  attr_reader :statuses
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX347b955579] Optional enumerated value serialized in the `vulnerability_alerts` wire field.
+  attr_reader :vulnerability_alerts
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX733f6fe6b1] Optional enumerated value serialized in the `workflows` wire field.
+  attr_reader :workflows
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissions.
-  # The set of permissions for the GitHub app
-  class WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissions
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsMetadata::DECODERS
-
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXabac86940e] Optional enumerated value serialized in the `actions` wire field.
-    attr_reader :actions
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXb2e4e214ea] Optional enumerated value serialized in the `administration` wire field.
-    attr_reader :administration
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsChecks] Optional enumerated value serialized in the `checks` wire field.
-    attr_reader :checks
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX7b02e240a9] Optional enumerated value serialized in the `content_references` wire field.
-    attr_reader :content_references
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXa472c7a9b7] Optional enumerated value serialized in the `contents` wire field.
-    attr_reader :contents
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXf425d64b53] Optional enumerated value serialized in the `deployments` wire field.
-    attr_reader :deployments
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX0640c342ac] Optional enumerated value serialized in the `discussions` wire field.
-    attr_reader :discussions
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsEmails] Optional enumerated value serialized in the `emails` wire field.
-    attr_reader :emails
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX67ad088bff] Optional enumerated value serialized in the `environments` wire field.
-    attr_reader :environments
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsIssues] Optional enumerated value serialized in the `issues` wire field.
-    attr_reader :issues
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsKeys] Optional enumerated value serialized in the `keys` wire field.
-    attr_reader :keys
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX47cc859cb7] Optional enumerated value serialized in the `members` wire field.
-    attr_reader :members
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXfc4addf8e7] Optional enumerated value serialized in the `metadata` wire field.
-    attr_reader :metadata
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXc83e0c24c2] Optional enumerated value serialized in the `organization_administration` wire field.
-    attr_reader :organization_administration
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX5393364a56] Optional enumerated value serialized in the `organization_hooks` wire field.
-    attr_reader :organization_hooks
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX6f8c3fbecd] Optional enumerated value serialized in the `organization_packages` wire field.
-    attr_reader :organization_packages
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXcea895f9f8] Optional enumerated value serialized in the `organization_plan` wire field.
-    attr_reader :organization_plan
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX724649161c] Optional enumerated value serialized in the `organization_projects` wire field.
-    attr_reader :organization_projects
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX4bfd526562] Optional enumerated value serialized in the `organization_secrets` wire field.
-    attr_reader :organization_secrets
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXcb559a4c78] Optional enumerated value serialized in the `organization_self_hosted_runners` wire field.
-    attr_reader :organization_self_hosted_runners
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXfe62bebc30] Optional enumerated value serialized in the `organization_user_blocking` wire field.
-    attr_reader :organization_user_blocking
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX4d0094b878] Optional enumerated value serialized in the `packages` wire field.
-    attr_reader :packages
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsPages] Optional enumerated value serialized in the `pages` wire field.
-    attr_reader :pages
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX0251d53d00] Optional enumerated value serialized in the `pull_requests` wire field.
-    attr_reader :pull_requests
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXe4e08fd967] Optional enumerated value serialized in the `repository_hooks` wire field.
-    attr_reader :repository_hooks
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXc2d1d4b4af] Optional enumerated value serialized in the `repository_projects` wire field.
-    attr_reader :repository_projects
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXdc186e7dbf] Optional enumerated value serialized in the `secret_scanning_alerts` wire field.
-    attr_reader :secret_scanning_alerts
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX714902169f] Optional enumerated value serialized in the `secrets` wire field.
-    attr_reader :secrets
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX30a11584f9] Optional enumerated value serialized in the `security_events` wire field.
-    attr_reader :security_events
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX895a21d0c8] Optional enumerated value serialized in the `security_scanning_alert` wire field.
-    attr_reader :security_scanning_alert
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXd1296c950e] Optional enumerated value serialized in the `single_file` wire field.
-    attr_reader :single_file
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX836e5507db] Optional enumerated value serialized in the `statuses` wire field.
-    attr_reader :statuses
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX347b955579] Optional enumerated value serialized in the `vulnerability_alerts` wire field.
-    attr_reader :vulnerability_alerts
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX733f6fe6b1] Optional enumerated value serialized in the `workflows` wire field.
-    attr_reader :workflows
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookDeploymentCreatedDeploymentPerformedViaGithubAppMetadata
-    FIELDS = {
-      created_at: 'created_at',
-      description: 'description',
-      events: 'events',
-      external_url: 'external_url',
-      html_url: 'html_url',
-      id: 'id',
-      name: 'name',
-      node_id: 'node_id',
-      owner: 'owner',
-      permissions: 'permissions',
-      slug: 'slug',
-      updated_at: 'updated_at'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      created_at
-      description
-      external_url
-      html_url
-      id
-      name
-      node_id
-      owner
-      updated_at
-    ].freeze
-    DECODERS = {
-      events: lambda do |value|
-        value&.map { |item| ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppEventsItem.from_value(item) }
-      end,
-      owner: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppOwner.from_hash(value)
-      end,
-      permissions: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissions.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      created_at
-      description
-      external_url
-      id
-      owner
-      updated_at
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookDeploymentCreatedDeploymentPerformedViaGithubAppMetadata
+  FIELDS = {
+    created_at: "created_at",
+    description: "description",
+    events: "events",
+    external_url: "external_url",
+    html_url: "html_url",
+    id: "id",
+    name: "name",
+    node_id: "node_id",
+    owner: "owner",
+    permissions: "permissions",
+    slug: "slug",
+    updated_at: "updated_at",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    created_at
+    description
+    external_url
+    html_url
+    id
+    name
+    node_id
+    owner
+    updated_at
+  ].freeze
+  DECODERS = {
+    events: lambda do |value|
+      value&.map { |item| ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppEventsItem.from_value(item) }
+    end,
+    owner: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppOwner.from_hash(value)
+    end,
+    permissions: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissions.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    created_at
+    description
+    external_url
+    id
+    owner
+    updated_at
+  ].freeze
+end
+
+# API model for WebhookDeploymentCreatedDeploymentPerformedViaGithubApp.
+# GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+class WebhookDeploymentCreatedDeploymentPerformedViaGithubApp
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookDeploymentCreatedDeploymentPerformedViaGithubAppMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookDeploymentCreatedDeploymentPerformedViaGithubAppMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookDeploymentCreatedDeploymentPerformedViaGithubAppMetadata::DECODERS
+
+  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [String] Required `string` value serialized in the `description` wire field.
+  attr_reader :description
+  # @return [Array_of_WebhookDeploymentCreatedDeploymentPerformedViaGithubAppEventsItem] The list of events for the GitHub app
+  attr_reader :events
+  # @return [String] Required `uri`-formatted value serialized in the `external_url` wire field.
+  attr_reader :external_url
+  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [Integer] Unique identifier of the GitHub app
+  attr_reader :id
+  # @return [String] The name of the GitHub app
+  attr_reader :name
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppOwner] Required object value serialized in the `owner` wire field.
+  attr_reader :owner
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissions] The set of permissions for the GitHub app
+  attr_reader :permissions
+  # @return [String] The slug name of the GitHub app
+  attr_reader :slug
+  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+  attr_reader :updated_at
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookDeploymentCreatedDeploymentPerformedViaGithubApp.
-  # GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
-  class WebhookDeploymentCreatedDeploymentPerformedViaGithubApp
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookDeploymentCreatedDeploymentPerformedViaGithubAppMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookDeploymentCreatedDeploymentPerformedViaGithubAppMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookDeploymentCreatedDeploymentPerformedViaGithubAppMetadata::DECODERS
-
-    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [String] Required `string` value serialized in the `description` wire field.
-    attr_reader :description
-    # @return [Array_of_WebhookDeploymentCreatedDeploymentPerformedViaGithubAppEventsItem] The list of events for the GitHub app
-    attr_reader :events
-    # @return [String] Required `uri`-formatted value serialized in the `external_url` wire field.
-    attr_reader :external_url
-    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [Integer] Unique identifier of the GitHub app
-    attr_reader :id
-    # @return [String] The name of the GitHub app
-    attr_reader :name
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppOwner] Required object value serialized in the `owner` wire field.
-    attr_reader :owner
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissions] The set of permissions for the GitHub app
-    attr_reader :permissions
-    # @return [String] The slug name of the GitHub app
-    attr_reader :slug
-    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-    attr_reader :updated_at
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookDeploymentCreatedDeploymentPerformedViaGithubAppMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookDeploymentCreatedDeploymentPerformedViaGithubAppMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookDeploymentCreatedDeploymentMetadata
-    FIELDS = {
-      created_at: 'created_at',
-      creator: 'creator',
-      description: 'description',
-      environment: 'environment',
-      id: 'id',
-      node_id: 'node_id',
-      original_environment: 'original_environment',
-      payload: 'payload',
-      performed_via_github_app: 'performed_via_github_app',
-      production_environment: 'production_environment',
-      ref: 'ref',
-      repository_url: 'repository_url',
-      sha: 'sha',
-      statuses_url: 'statuses_url',
-      task: 'task',
-      transient_environment: 'transient_environment',
-      updated_at: 'updated_at',
-      url: 'url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      created_at
-      creator
-      description
-      environment
-      id
-      node_id
-      original_environment
-      payload
-      ref
-      repository_url
-      sha
-      statuses_url
-      task
-      updated_at
-      url
-    ].freeze
-    DECODERS = {
-      creator: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentCreator.from_hash(value)
-      end,
-      payload: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPayload.from_hash(value)
-      end,
-      performed_via_github_app: lambda do |value|
-        ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubApp.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      creator
-      description
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookDeploymentCreatedDeploymentMetadata
+  FIELDS = {
+    created_at: "created_at",
+    creator: "creator",
+    description: "description",
+    environment: "environment",
+    id: "id",
+    node_id: "node_id",
+    original_environment: "original_environment",
+    payload: "payload",
+    performed_via_github_app: "performed_via_github_app",
+    production_environment: "production_environment",
+    ref: "ref",
+    repository_url: "repository_url",
+    sha: "sha",
+    statuses_url: "statuses_url",
+    task: "task",
+    transient_environment: "transient_environment",
+    updated_at: "updated_at",
+    url: "url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    created_at
+    creator
+    description
+    environment
+    id
+    node_id
+    original_environment
+    payload
+    ref
+    repository_url
+    sha
+    statuses_url
+    task
+    updated_at
+    url
+  ].freeze
+  DECODERS = {
+    creator: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentCreator.from_hash(value)
+    end,
+    payload: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPayload.from_hash(value)
+    end,
+    performed_via_github_app: lambda do |value|
+      ::OctridevGithub::WebhookDeploymentCreatedDeploymentPerformedViaGithubApp.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    creator
+    description
+  ].freeze
+end
+
+# API model for WebhookDeploymentCreatedDeployment.
+# The deployment.
+class WebhookDeploymentCreatedDeployment
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookDeploymentCreatedDeploymentMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookDeploymentCreatedDeploymentMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookDeploymentCreatedDeploymentMetadata::DECODERS
+
+  # @return [String] Required `string` value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [WebhookDeploymentCreatedDeploymentCreator] Required object value serialized in the `creator` wire field.
+  attr_reader :creator
+  # @return [String] Required `string` value serialized in the `description` wire field.
+  attr_reader :description
+  # @return [String] Required `string` value serialized in the `environment` wire field.
+  attr_reader :environment
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Required `string` value serialized in the `original_environment` wire field.
+  attr_reader :original_environment
+  # @return [WebhookDeploymentCreatedDeploymentPayload] Required API value serialized in the `payload` wire field.
+  attr_reader :payload
+  # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubApp] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+  attr_reader :performed_via_github_app
+  # @return [Boolean] Optional `boolean` value serialized in the `production_environment` wire field.
+  attr_reader :production_environment
+  # @return [String] Required `string` value serialized in the `ref` wire field.
+  attr_reader :ref
+  # @return [String] Required `uri`-formatted value serialized in the `repository_url` wire field.
+  attr_reader :repository_url
+  # @return [String] Required `string` value serialized in the `sha` wire field.
+  attr_reader :sha
+  # @return [String] Required `uri`-formatted value serialized in the `statuses_url` wire field.
+  attr_reader :statuses_url
+  # @return [String] Required `string` value serialized in the `task` wire field.
+  attr_reader :task
+  # @return [Boolean] Optional `boolean` value serialized in the `transient_environment` wire field.
+  attr_reader :transient_environment
+  # @return [String] Required `string` value serialized in the `updated_at` wire field.
+  attr_reader :updated_at
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookDeploymentCreatedDeployment.
-  # The deployment.
-  class WebhookDeploymentCreatedDeployment
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookDeploymentCreatedDeploymentMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookDeploymentCreatedDeploymentMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookDeploymentCreatedDeploymentMetadata::DECODERS
-
-    # @return [String] Required `string` value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [WebhookDeploymentCreatedDeploymentCreator] Required object value serialized in the `creator` wire field.
-    attr_reader :creator
-    # @return [String] Required `string` value serialized in the `description` wire field.
-    attr_reader :description
-    # @return [String] Required `string` value serialized in the `environment` wire field.
-    attr_reader :environment
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Required `string` value serialized in the `original_environment` wire field.
-    attr_reader :original_environment
-    # @return [WebhookDeploymentCreatedDeploymentPayload] Required API value serialized in the `payload` wire field.
-    attr_reader :payload
-    # @return [WebhookDeploymentCreatedDeploymentPerformedViaGithubApp] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
-    attr_reader :performed_via_github_app
-    # @return [Boolean] Optional `boolean` value serialized in the `production_environment` wire field.
-    attr_reader :production_environment
-    # @return [String] Required `string` value serialized in the `ref` wire field.
-    attr_reader :ref
-    # @return [String] Required `uri`-formatted value serialized in the `repository_url` wire field.
-    attr_reader :repository_url
-    # @return [String] Required `string` value serialized in the `sha` wire field.
-    attr_reader :sha
-    # @return [String] Required `uri`-formatted value serialized in the `statuses_url` wire field.
-    attr_reader :statuses_url
-    # @return [String] Required `string` value serialized in the `task` wire field.
-    attr_reader :task
-    # @return [Boolean] Optional `boolean` value serialized in the `transient_environment` wire field.
-    attr_reader :transient_environment
-    # @return [String] Required `string` value serialized in the `updated_at` wire field.
-    attr_reader :updated_at
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookDeploymentCreatedDeploymentMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookDeploymentCreatedDeploymentMetadata::NULLABLE_FIELDS)
   end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 end

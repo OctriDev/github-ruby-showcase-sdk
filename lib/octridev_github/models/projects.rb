@@ -5,673 +5,675 @@
 
 # projects domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalNullableProjectsV2StatusUpdateMetadata
-    FIELDS = {
-      id: 'id',
-      node_id: 'node_id',
-      project_node_id: 'project_node_id',
-      creator: 'creator',
-      created_at: 'created_at',
-      updated_at: 'updated_at',
-      status: 'status',
-      start_date: 'start_date',
-      target_date: 'target_date',
-      body: 'body'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      node_id
-      created_at
-      updated_at
-    ].freeze
-    DECODERS = {
-      creator: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end,
-      status: lambda do |value|
-        ::OctridevGithub::NullableProjectsV2StatusUpdateStatus.from_value(value)
-      end
-    }.freeze
+# Internal model hydration metadata.
+class SdkInternalNullableProjectsV2StatusUpdateMetadata
+  FIELDS = {
+    id: "id",
+    node_id: "node_id",
+    project_node_id: "project_node_id",
+    creator: "creator",
+    created_at: "created_at",
+    updated_at: "updated_at",
+    status: "status",
+    start_date: "start_date",
+    target_date: "target_date",
+    body: "body",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    node_id
+    created_at
+    updated_at
+  ].freeze
+  DECODERS = {
+    creator: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+    status: lambda do |value|
+      ::OctridevGithub::NullableProjectsV2StatusUpdateStatus.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for NullableProjectsV2StatusUpdate.
+# An status update belonging to a project
+class NullableProjectsV2StatusUpdate
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalNullableProjectsV2StatusUpdateMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalNullableProjectsV2StatusUpdateMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalNullableProjectsV2StatusUpdateMetadata::DECODERS
+
+  # @return [Float] The unique identifier of the status update.
+  attr_reader :id
+  # @return [String] The node ID of the status update.
+  attr_reader :node_id
+  # @return [String] The node ID of the project that this status update belongs to.
+  attr_reader :project_node_id
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :creator
+  # @return [String] The time when the status update was created.
+  attr_reader :created_at
+  # @return [String] The time when the status update was last updated.
+  attr_reader :updated_at
+  # @return [NullableProjectsV2StatusUpdateStatus] The current status.
+  attr_reader :status
+  # @return [String] The start date of the period covered by the update.
+  attr_reader :start_date
+  # @return [String] The target date associated with the update.
+  attr_reader :target_date
+  # @return [String] Body of the status update
+  attr_reader :body
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for NullableProjectsV2StatusUpdate.
-  # An status update belonging to a project
-  class NullableProjectsV2StatusUpdate
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalNullableProjectsV2StatusUpdateMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalNullableProjectsV2StatusUpdateMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalNullableProjectsV2StatusUpdateMetadata::DECODERS
-
-    # @return [Float] The unique identifier of the status update.
-    attr_reader :id
-    # @return [String] The node ID of the status update.
-    attr_reader :node_id
-    # @return [String] The node ID of the project that this status update belongs to.
-    attr_reader :project_node_id
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :creator
-    # @return [String] The time when the status update was created.
-    attr_reader :created_at
-    # @return [String] The time when the status update was last updated.
-    attr_reader :updated_at
-    # @return [NullableProjectsV2StatusUpdateStatus] The current status.
-    attr_reader :status
-    # @return [String] The start date of the period covered by the update.
-    attr_reader :start_date
-    # @return [String] The target date associated with the update.
-    attr_reader :target_date
-    # @return [String] Body of the status update
-    attr_reader :body
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the NullableProjectsV2StatusUpdateStatus SDK namespace.
-  module NullableProjectsV2StatusUpdateStatus
-    INACTIVE = 'INACTIVE'
-    ON_TRACK = 'ON_TRACK'
-    AT_RISK = 'AT_RISK'
-    OFF_TRACK = 'OFF_TRACK'
-    COMPLETE = 'COMPLETE'
-    VALUES = %w[INACTIVE ON_TRACK AT_RISK OFF_TRACK COMPLETE].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Defines the NullableProjectsV2StatusUpdateStatus SDK namespace.
+module NullableProjectsV2StatusUpdateStatus
+  INACTIVE = 'INACTIVE'
+  ON_TRACK = 'ON_TRACK'
+  AT_RISK = 'AT_RISK'
+  OFF_TRACK = 'OFF_TRACK'
+  COMPLETE = 'COMPLETE'
+  VALUES = ['INACTIVE', 'ON_TRACK', 'AT_RISK', 'OFF_TRACK', 'COMPLETE'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalProjectsV2Metadata
+  FIELDS = {
+    id: "id",
+    node_id: "node_id",
+    owner: "owner",
+    creator: "creator",
+    title: "title",
+    description: "description",
+    public: "public",
+    closed_at: "closed_at",
+    created_at: "created_at",
+    updated_at: "updated_at",
+    number: "number",
+    short_description: "short_description",
+    deleted_at: "deleted_at",
+    deleted_by: "deleted_by",
+    state: "state",
+    latest_status_update: "latest_status_update",
+    is_template: "is_template",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    node_id
+    owner
+    creator
+    title
+    description
+    public
+    closed_at
+    created_at
+    updated_at
+    number
+    short_description
+    deleted_at
+    deleted_by
+  ].freeze
+  DECODERS = {
+    owner: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+    creator: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+    deleted_by: lambda do |value|
+      ::OctridevGithub::NullableSimpleUser.from_hash(value)
+    end,
+    state: lambda do |value|
+      ::OctridevGithub::ProjectsV2State.from_value(value)
+    end,
+    latest_status_update: lambda do |value|
+      ::OctridevGithub::NullableProjectsV2StatusUpdate.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    description
+    closed_at
+    short_description
+    deleted_at
+    deleted_by
+  ].freeze
+end
+
+# API model for ProjectsV2.
+# A projects v2 project
+class ProjectsV2
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalProjectsV2Metadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalProjectsV2Metadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalProjectsV2Metadata::DECODERS
+
+  # @return [Float] The unique identifier of the project.
+  attr_reader :id
+  # @return [String] The node ID of the project.
+  attr_reader :node_id
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :owner
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :creator
+  # @return [String] The project title.
+  attr_reader :title
+  # @return [String] A short description of the project.
+  attr_reader :description
+  # @return [Boolean] Whether the project is visible to anyone with access to the owner.
+  attr_reader :public
+  # @return [String] The time when the project was closed.
+  attr_reader :closed_at
+  # @return [String] The time when the project was created.
+  attr_reader :created_at
+  # @return [String] The time when the project was last updated.
+  attr_reader :updated_at
+  # @return [Integer] The project number.
+  attr_reader :number
+  # @return [String] A concise summary of the project.
+  attr_reader :short_description
+  # @return [String] The time when the project was deleted.
+  attr_reader :deleted_at
+  # @return [NullableSimpleUser] A GitHub user.
+  attr_reader :deleted_by
+  # @return [ProjectsV2State] The current state of the project.
+  attr_reader :state
+  # @return [NullableProjectsV2StatusUpdate] An status update belonging to a project
+  attr_reader :latest_status_update
+  # @return [Boolean] Whether this project is a template
+  attr_reader :is_template
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalProjectsV2Metadata
-    FIELDS = {
-      id: 'id',
-      node_id: 'node_id',
-      owner: 'owner',
-      creator: 'creator',
-      title: 'title',
-      description: 'description',
-      public: 'public',
-      closed_at: 'closed_at',
-      created_at: 'created_at',
-      updated_at: 'updated_at',
-      number: 'number',
-      short_description: 'short_description',
-      deleted_at: 'deleted_at',
-      deleted_by: 'deleted_by',
-      state: 'state',
-      latest_status_update: 'latest_status_update',
-      is_template: 'is_template'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      node_id
-      owner
-      creator
-      title
-      description
-      public
-      closed_at
-      created_at
-      updated_at
-      number
-      short_description
-      deleted_at
-      deleted_by
-    ].freeze
-    DECODERS = {
-      owner: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end,
-      creator: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end,
-      deleted_by: lambda do |value|
-        ::OctridevGithub::NullableSimpleUser.from_hash(value)
-      end,
-      state: lambda do |value|
-        ::OctridevGithub::ProjectsV2State.from_value(value)
-      end,
-      latest_status_update: lambda do |value|
-        ::OctridevGithub::NullableProjectsV2StatusUpdate.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      description
-      closed_at
-      short_description
-      deleted_at
-      deleted_by
-    ].freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalProjectsV2Metadata::NULLABLE_FIELDS)
   end
 
-  # API model for ProjectsV2.
-  # A projects v2 project
-  class ProjectsV2
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalProjectsV2Metadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalProjectsV2Metadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalProjectsV2Metadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [Float] The unique identifier of the project.
-    attr_reader :id
-    # @return [String] The node ID of the project.
-    attr_reader :node_id
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :owner
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :creator
-    # @return [String] The project title.
-    attr_reader :title
-    # @return [String] A short description of the project.
-    attr_reader :description
-    # @return [Boolean] Whether the project is visible to anyone with access to the owner.
-    attr_reader :public
-    # @return [String] The time when the project was closed.
-    attr_reader :closed_at
-    # @return [String] The time when the project was created.
-    attr_reader :created_at
-    # @return [String] The time when the project was last updated.
-    attr_reader :updated_at
-    # @return [Integer] The project number.
-    attr_reader :number
-    # @return [String] A concise summary of the project.
-    attr_reader :short_description
-    # @return [String] The time when the project was deleted.
-    attr_reader :deleted_at
-    # @return [NullableSimpleUser] A GitHub user.
-    attr_reader :deleted_by
-    # @return [ProjectsV2State] The current state of the project.
-    attr_reader :state
-    # @return [NullableProjectsV2StatusUpdate] An status update belonging to a project
-    attr_reader :latest_status_update
-    # @return [Boolean] Whether this project is a template
-    attr_reader :is_template
+# Defines the ProjectsV2State SDK namespace.
+module ProjectsV2State
+  OPEN = 'open'
+  CLOSED = 'closed'
+  VALUES = ['open', 'closed'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# Internal model hydration metadata.
+class SdkInternalProjectsV2DraftIssueMetadata
+  FIELDS = {
+    id: "id",
+    node_id: "node_id",
+    title: "title",
+    body: "body",
+    user: "user",
+    created_at: "created_at",
+    updated_at: "updated_at",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    node_id
+    title
+    user
+    created_at
+    updated_at
+  ].freeze
+  DECODERS = {
+    user: lambda do |value|
+      ::OctridevGithub::NullableSimpleUser.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    user
+  ].freeze
+end
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalProjectsV2Metadata::NULLABLE_FIELDS)
-    end
+# API model for ProjectsV2DraftIssue.
+# A draft issue in a project
+class ProjectsV2DraftIssue
+  include ProjectsV2ItemSimpleContent
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalProjectsV2DraftIssueMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalProjectsV2DraftIssueMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalProjectsV2DraftIssueMetadata::DECODERS
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  # @return [Float] The ID of the draft issue
+  attr_reader :id
+  # @return [String] The node ID of the draft issue
+  attr_reader :node_id
+  # @return [String] The title of the draft issue
+  attr_reader :title
+  # @return [String] The body content of the draft issue
+  attr_reader :body
+  # @return [NullableSimpleUser] A GitHub user.
+  attr_reader :user
+  # @return [String] The time the draft issue was created
+  attr_reader :created_at
+  # @return [String] The time the draft issue was last updated
+  attr_reader :updated_at
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the ProjectsV2State SDK namespace.
-  module ProjectsV2State
-    OPEN = 'open'
-    CLOSED = 'closed'
-    VALUES = %w[open closed].freeze
-    def self.from_value(value)
-      value
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalProjectsV2DraftIssueMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalProjectsV2DraftIssueMetadata
-    FIELDS = {
-      id: 'id',
-      node_id: 'node_id',
-      title: 'title',
-      body: 'body',
-      user: 'user',
-      created_at: 'created_at',
-      updated_at: 'updated_at'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      node_id
-      title
-      user
-      created_at
-      updated_at
-    ].freeze
-    DECODERS = {
-      user: lambda do |value|
-        ::OctridevGithub::NullableSimpleUser.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      user
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalProjectsV2FieldConfigurationMetadata
+  FIELDS = {
+    start_day: "start_day",
+    duration: "duration",
+    iterations: "iterations",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    iterations: lambda do |value|
+      value&.map { |item| ::OctridevGithub::ProjectsV2IterationSettings.from_hash(item) }
+    end,
+  }.freeze
+end
+
+# API model for ProjectsV2FieldConfiguration.
+# Configuration for iteration fields.
+class ProjectsV2FieldConfiguration
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalProjectsV2FieldConfigurationMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalProjectsV2FieldConfigurationMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalProjectsV2FieldConfigurationMetadata::DECODERS
+
+  # @return [Integer] The day of the week when the iteration starts.
+  attr_reader :start_day
+  # @return [Integer] The duration of the iteration in days.
+  attr_reader :duration
+  # @return [Array_of_ProjectsV2IterationSettings] Optional array value serialized in the `iterations` wire field.
+  attr_reader :iterations
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ProjectsV2DraftIssue.
-  # A draft issue in a project
-  class ProjectsV2DraftIssue
-    include ProjectsV2ItemSimpleContent
-
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalProjectsV2DraftIssueMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalProjectsV2DraftIssueMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalProjectsV2DraftIssueMetadata::DECODERS
-
-    # @return [Float] The ID of the draft issue
-    attr_reader :id
-    # @return [String] The node ID of the draft issue
-    attr_reader :node_id
-    # @return [String] The title of the draft issue
-    attr_reader :title
-    # @return [String] The body content of the draft issue
-    attr_reader :body
-    # @return [NullableSimpleUser] A GitHub user.
-    attr_reader :user
-    # @return [String] The time the draft issue was created
-    attr_reader :created_at
-    # @return [String] The time the draft issue was last updated
-    attr_reader :updated_at
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalProjectsV2DraftIssueMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalProjectsV2FieldConfigurationMetadata
-    FIELDS = {
-      start_day: 'start_day',
-      duration: 'duration',
-      iterations: 'iterations'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      iterations: lambda do |value|
-        value&.map { |item| ::OctridevGithub::ProjectsV2IterationSettings.from_hash(item) }
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalProjectsV2FieldMetadata
+  FIELDS = {
+    id: "id",
+    issue_field_id: "issue_field_id",
+    node_id: "node_id",
+    project_url: "project_url",
+    name: "name",
+    data_type: "data_type",
+    options: "options",
+    configuration: "configuration",
+    created_at: "created_at",
+    updated_at: "updated_at",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    project_url
+    name
+    data_type
+    created_at
+    updated_at
+  ].freeze
+  DECODERS = {
+    data_type: lambda do |value|
+      ::OctridevGithub::ProjectsV2FieldDataType.from_value(value)
+    end,
+    options: lambda do |value|
+      value&.map { |item| ::OctridevGithub::ProjectsV2SingleSelectOptions.from_hash(item) }
+    end,
+    configuration: lambda do |value|
+      ::OctridevGithub::ProjectsV2FieldConfiguration.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for ProjectsV2Field.
+# A field inside a projects v2 project
+class ProjectsV2Field
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalProjectsV2FieldMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalProjectsV2FieldMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalProjectsV2FieldMetadata::DECODERS
+
+  # @return [Integer] The unique identifier of the field.
+  attr_reader :id
+  # @return [Integer] The ID of the issue field.
+  attr_reader :issue_field_id
+  # @return [String] The node ID of the field.
+  attr_reader :node_id
+  # @return [String] The API URL of the project that contains the field.
+  attr_reader :project_url
+  # @return [String] The name of the field.
+  attr_reader :name
+  # @return [ProjectsV2FieldDataType] The field's data type.
+  attr_reader :data_type
+  # @return [Array_of_ProjectsV2SingleSelectOptions] The options available for single select fields.
+  attr_reader :options
+  # @return [ProjectsV2FieldConfiguration] Configuration for iteration fields.
+  attr_reader :configuration
+  # @return [String] The time when the field was created.
+  attr_reader :created_at
+  # @return [String] The time when the field was last updated.
+  attr_reader :updated_at
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ProjectsV2FieldConfiguration.
-  # Configuration for iteration fields.
-  class ProjectsV2FieldConfiguration
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalProjectsV2FieldConfigurationMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalProjectsV2FieldConfigurationMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalProjectsV2FieldConfigurationMetadata::DECODERS
-
-    # @return [Integer] The day of the week when the iteration starts.
-    attr_reader :start_day
-    # @return [Integer] The duration of the iteration in days.
-    attr_reader :duration
-    # @return [Array_of_ProjectsV2IterationSettings] Optional array value serialized in the `iterations` wire field.
-    attr_reader :iterations
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalProjectsV2FieldMetadata
-    FIELDS = {
-      id: 'id',
-      issue_field_id: 'issue_field_id',
-      node_id: 'node_id',
-      project_url: 'project_url',
-      name: 'name',
-      data_type: 'data_type',
-      options: 'options',
-      configuration: 'configuration',
-      created_at: 'created_at',
-      updated_at: 'updated_at'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      project_url
-      name
-      data_type
-      created_at
-      updated_at
-    ].freeze
-    DECODERS = {
-      data_type: lambda do |value|
-        ::OctridevGithub::ProjectsV2FieldDataType.from_value(value)
-      end,
-      options: lambda do |value|
-        value&.map { |item| ::OctridevGithub::ProjectsV2SingleSelectOptions.from_hash(item) }
-      end,
-      configuration: lambda do |value|
-        ::OctridevGithub::ProjectsV2FieldConfiguration.from_hash(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Defines the ProjectsV2FieldDataType SDK namespace.
+module ProjectsV2FieldDataType
+  ASSIGNEES = 'assignees'
+  LINKED_PULL_REQUESTS = 'linked_pull_requests'
+  REVIEWERS = 'reviewers'
+  LABELS = 'labels'
+  MILESTONE = 'milestone'
+  REPOSITORY = 'repository'
+  TITLE = 'title'
+  TEXT = 'text'
+  SINGLE_SELECT = 'single_select'
+  NUMBER = 'number'
+  DATE = 'date'
+  ITERATION = 'iteration'
+  ISSUE_TYPE = 'issue_type'
+  PARENT_ISSUE = 'parent_issue'
+  SUB_ISSUES_PROGRESS = 'sub_issues_progress'
+  VALUES = [
+    'assignees', 'linked_pull_requests', 'reviewers', 'labels', 'milestone', 'repository', 'title',
+    'text', 'single_select', 'number', 'date', 'iteration', 'issue_type', 'parent_issue',
+    'sub_issues_progress'
+  ].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalProjectsV2FieldIterationConfigurationIterationsItemMetadata
+  FIELDS = {
+    title: "title",
+    start_date: "start_date",
+    duration: "duration",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    title
+    start_date
+    duration
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for ProjectsV2FieldIterationConfigurationIterationsItem.
+# Required object value serialized in the `iterations[]` wire field.
+class ProjectsV2FieldIterationConfigurationIterationsItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalProjectsV2FieldIterationConfigurationIterationsItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalProjectsV2FieldIterationConfigurationIterationsItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalProjectsV2FieldIterationConfigurationIterationsItemMetadata::DECODERS
+
+  # @return [String] The title of the iteration.
+  attr_reader :title
+  # @return [String] The start date of the iteration.
+  attr_reader :start_date
+  # @return [Integer] The duration of the iteration in days.
+  attr_reader :duration
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ProjectsV2Field.
-  # A field inside a projects v2 project
-  class ProjectsV2Field
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalProjectsV2FieldMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalProjectsV2FieldMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalProjectsV2FieldMetadata::DECODERS
-
-    # @return [Integer] The unique identifier of the field.
-    attr_reader :id
-    # @return [Integer] The ID of the issue field.
-    attr_reader :issue_field_id
-    # @return [String] The node ID of the field.
-    attr_reader :node_id
-    # @return [String] The API URL of the project that contains the field.
-    attr_reader :project_url
-    # @return [String] The name of the field.
-    attr_reader :name
-    # @return [ProjectsV2FieldDataType] The field's data type.
-    attr_reader :data_type
-    # @return [Array_of_ProjectsV2SingleSelectOptions] The options available for single select fields.
-    attr_reader :options
-    # @return [ProjectsV2FieldConfiguration] Configuration for iteration fields.
-    attr_reader :configuration
-    # @return [String] The time when the field was created.
-    attr_reader :created_at
-    # @return [String] The time when the field was last updated.
-    attr_reader :updated_at
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the ProjectsV2FieldDataType SDK namespace.
-  module ProjectsV2FieldDataType
-    ASSIGNEES = 'assignees'
-    LINKED_PULL_REQUESTS = 'linked_pull_requests'
-    REVIEWERS = 'reviewers'
-    LABELS = 'labels'
-    MILESTONE = 'milestone'
-    REPOSITORY = 'repository'
-    TITLE = 'title'
-    TEXT = 'text'
-    SINGLE_SELECT = 'single_select'
-    NUMBER = 'number'
-    DATE = 'date'
-    ITERATION = 'iteration'
-    ISSUE_TYPE = 'issue_type'
-    PARENT_ISSUE = 'parent_issue'
-    SUB_ISSUES_PROGRESS = 'sub_issues_progress'
-    VALUES = %w[
-      assignees linked_pull_requests reviewers labels milestone repository title
-      text single_select number date iteration issue_type parent_issue
-      sub_issues_progress
-    ].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalProjectsV2FieldIterationConfigurationMetadata
+  FIELDS = {
+    start_date: "start_date",
+    duration: "duration",
+    iterations: "iterations",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    start_date
+    duration
+  ].freeze
+  DECODERS = {
+    iterations: lambda do |value|
+      value&.map { |item| ::OctridevGithub::ProjectsV2FieldIterationConfigurationIterationsItem.from_hash(item) }
+    end,
+  }.freeze
+end
+
+# API model for ProjectsV2FieldIterationConfiguration.
+# The configuration for iteration fields.
+class ProjectsV2FieldIterationConfiguration
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalProjectsV2FieldIterationConfigurationMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalProjectsV2FieldIterationConfigurationMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalProjectsV2FieldIterationConfigurationMetadata::DECODERS
+
+  # @return [String] The start date of the first iteration.
+  attr_reader :start_date
+  # @return [Integer] The default duration for iterations in days. Individual iterations can override this value.
+  attr_reader :duration
+  # @return [Array_of_ProjectsV2FieldIterationConfigurationIterationsItem] Zero or more iterations for the field.
+  attr_reader :iterations
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalProjectsV2FieldIterationConfigurationIterationsItemMetadata
-    FIELDS = {
-      title: 'title',
-      start_date: 'start_date',
-      duration: 'duration'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      title
-      start_date
-      duration
-    ].freeze
-    DECODERS = {}.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for ProjectsV2FieldIterationConfigurationIterationsItem.
-  # Required object value serialized in the `iterations[]` wire field.
-  class ProjectsV2FieldIterationConfigurationIterationsItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalProjectsV2FieldIterationConfigurationIterationsItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalProjectsV2FieldIterationConfigurationIterationsItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalProjectsV2FieldIterationConfigurationIterationsItemMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [String] The title of the iteration.
-    attr_reader :title
-    # @return [String] The start date of the iteration.
-    attr_reader :start_date
-    # @return [Integer] The duration of the iteration in days.
-    attr_reader :duration
+# Internal model hydration metadata.
+class SdkInternalProjectsV2FieldSingleSelectOptionMetadata
+  FIELDS = {
+    name: "name",
+    color: "color",
+    description: "description",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    color: lambda do |value|
+      ::OctridevGithub::ProjectsV2FieldSingleSelectOptionColor.from_value(value)
+    end,
+  }.freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for ProjectsV2FieldSingleSelectOption.
+# Typed representation of the `ProjectsV2FieldSingleSelectOption` API schema.
+class ProjectsV2FieldSingleSelectOption
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalProjectsV2FieldSingleSelectOptionMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalProjectsV2FieldSingleSelectOptionMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalProjectsV2FieldSingleSelectOptionMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+  # @return [String] The display name of the option.
+  attr_reader :name
+  # @return [ProjectsV2FieldSingleSelectOptionColor] The color associated with the option.
+  attr_reader :color
+  # @return [String] The description of the option.
+  attr_reader :description
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalProjectsV2FieldIterationConfigurationMetadata
-    FIELDS = {
-      start_date: 'start_date',
-      duration: 'duration',
-      iterations: 'iterations'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      start_date
-      duration
-    ].freeze
-    DECODERS = {
-      iterations: lambda do |value|
-        value&.map { |item| ::OctridevGithub::ProjectsV2FieldIterationConfigurationIterationsItem.from_hash(item) }
-      end
-    }.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for ProjectsV2FieldIterationConfiguration.
-  # The configuration for iteration fields.
-  class ProjectsV2FieldIterationConfiguration
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalProjectsV2FieldIterationConfigurationMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalProjectsV2FieldIterationConfigurationMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalProjectsV2FieldIterationConfigurationMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [String] The start date of the first iteration.
-    attr_reader :start_date
-    # @return [Integer] The default duration for iterations in days. Individual iterations can override this value.
-    attr_reader :duration
-    # @return [Array_of_ProjectsV2FieldIterationConfigurationIterationsItem] Zero or more iterations for the field.
-    attr_reader :iterations
+# Defines the ProjectsV2FieldSingleSelectOptionColor SDK namespace.
+module ProjectsV2FieldSingleSelectOptionColor
+  BLUE = 'BLUE'
+  GRAY = 'GRAY'
+  GREEN = 'GREEN'
+  ORANGE = 'ORANGE'
+  PINK = 'PINK'
+  PURPLE = 'PURPLE'
+  RED = 'RED'
+  YELLOW = 'YELLOW'
+  VALUES = ['BLUE', 'GRAY', 'GREEN', 'ORANGE', 'PINK', 'PURPLE', 'RED', 'YELLOW'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# Internal model hydration metadata.
+class SdkInternalProjectsV2ItemMetadata
+  FIELDS = {
+    id: "id",
+    node_id: "node_id",
+    project_node_id: "project_node_id",
+    content_node_id: "content_node_id",
+    content_type: "content_type",
+    creator: "creator",
+    created_at: "created_at",
+    updated_at: "updated_at",
+    archived_at: "archived_at",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    content_node_id
+    content_type
+    created_at
+    updated_at
+    archived_at
+  ].freeze
+  DECODERS = {
+    content_type: lambda do |value|
+      ::OctridevGithub::ProjectsV2ItemContentType.from_value(value)
+    end,
+    creator: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    archived_at
+  ].freeze
+end
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+# API model for ProjectsV2Item.
+# An item belonging to a project
+class ProjectsV2Item
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalProjectsV2ItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalProjectsV2ItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalProjectsV2ItemMetadata::DECODERS
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  # @return [Float] The unique identifier of the project item.
+  attr_reader :id
+  # @return [String] The node ID of the project item.
+  attr_reader :node_id
+  # @return [String] The node ID of the project that contains this item.
+  attr_reader :project_node_id
+  # @return [String] The node ID of the content represented by this item.
+  attr_reader :content_node_id
+  # @return [ProjectsV2ItemContentType] The type of content tracked in a project item
+  attr_reader :content_type
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :creator
+  # @return [String] The time when the item was created.
+  attr_reader :created_at
+  # @return [String] The time when the item was last updated.
+  attr_reader :updated_at
+  # @return [String] The time when the item was archived.
+  attr_reader :archived_at
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalProjectsV2FieldSingleSelectOptionMetadata
-    FIELDS = {
-      name: 'name',
-      color: 'color',
-      description: 'description'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      color: lambda do |value|
-        ::OctridevGithub::ProjectsV2FieldSingleSelectOptionColor.from_value(value)
-      end
-    }.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalProjectsV2ItemMetadata::NULLABLE_FIELDS)
   end
 
-  # API model for ProjectsV2FieldSingleSelectOption.
-  # Typed representation of the `ProjectsV2FieldSingleSelectOption` API schema.
-  class ProjectsV2FieldSingleSelectOption
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalProjectsV2FieldSingleSelectOptionMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalProjectsV2FieldSingleSelectOptionMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalProjectsV2FieldSingleSelectOptionMetadata::DECODERS
-
-    # @return [String] The display name of the option.
-    attr_reader :name
-    # @return [ProjectsV2FieldSingleSelectOptionColor] The color associated with the option.
-    attr_reader :color
-    # @return [String] The description of the option.
-    attr_reader :description
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
 
-  # Defines the ProjectsV2FieldSingleSelectOptionColor SDK namespace.
-  module ProjectsV2FieldSingleSelectOptionColor
-    BLUE = 'BLUE'
-    GRAY = 'GRAY'
-    GREEN = 'GREEN'
-    ORANGE = 'ORANGE'
-    PINK = 'PINK'
-    PURPLE = 'PURPLE'
-    RED = 'RED'
-    YELLOW = 'YELLOW'
-    VALUES = %w[BLUE GRAY GREEN ORANGE PINK PURPLE RED YELLOW].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the ProjectsV2ItemContentType SDK namespace.
+module ProjectsV2ItemContentType
+  ISSUE = 'Issue'
+  PULL_REQUEST = 'PullRequest'
+  DRAFT_ISSUE = 'DraftIssue'
+  VALUES = ['Issue', 'PullRequest', 'DraftIssue'].freeze
+  def self.from_value(value)
+    value
   end
-
-  # Internal model hydration metadata.
-  class SdkInternalProjectsV2ItemMetadata
-    FIELDS = {
-      id: 'id',
-      node_id: 'node_id',
-      project_node_id: 'project_node_id',
-      content_node_id: 'content_node_id',
-      content_type: 'content_type',
-      creator: 'creator',
-      created_at: 'created_at',
-      updated_at: 'updated_at',
-      archived_at: 'archived_at'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      content_node_id
-      content_type
-      created_at
-      updated_at
-      archived_at
-    ].freeze
-    DECODERS = {
-      content_type: lambda do |value|
-        ::OctridevGithub::ProjectsV2ItemContentType.from_value(value)
-      end,
-      creator: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      archived_at
-    ].freeze
-  end
-
-  # API model for ProjectsV2Item.
-  # An item belonging to a project
-  class ProjectsV2Item
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalProjectsV2ItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalProjectsV2ItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalProjectsV2ItemMetadata::DECODERS
-
-    # @return [Float] The unique identifier of the project item.
-    attr_reader :id
-    # @return [String] The node ID of the project item.
-    attr_reader :node_id
-    # @return [String] The node ID of the project that contains this item.
-    attr_reader :project_node_id
-    # @return [String] The node ID of the content represented by this item.
-    attr_reader :content_node_id
-    # @return [ProjectsV2ItemContentType] The type of content tracked in a project item
-    attr_reader :content_type
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :creator
-    # @return [String] The time when the item was created.
-    attr_reader :created_at
-    # @return [String] The time when the item was last updated.
-    attr_reader :updated_at
-    # @return [String] The time when the item was archived.
-    attr_reader :archived_at
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalProjectsV2ItemMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
-  end
-
-  # Defines the ProjectsV2ItemContentType SDK namespace.
-  module ProjectsV2ItemContentType
-    ISSUE = 'Issue'
-    PULL_REQUEST = 'PullRequest'
-    DRAFT_ISSUE = 'DraftIssue'
-    VALUES = %w[Issue PullRequest DraftIssue].freeze
-    def self.from_value(value)
-      value
-    end
-  end
+end
 end

@@ -5,245 +5,245 @@
 
 # code_scanning_code_scanning domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalCodeScanningCodeqlDatabaseMetadata
-    FIELDS = {
-      id: 'id',
-      name: 'name',
-      language: 'language',
-      uploader: 'uploader',
-      content_type: 'content_type',
-      size: 'size',
-      created_at: 'created_at',
-      updated_at: 'updated_at',
-      url: 'url',
-      commit_oid: 'commit_oid'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      name
-      language
-      uploader
-      content_type
-      size
-      created_at
-      updated_at
-      url
-    ].freeze
-    DECODERS = {
-      uploader: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end
-    }.freeze
+# Internal model hydration metadata.
+class SdkInternalCodeScanningCodeqlDatabaseMetadata
+  FIELDS = {
+    id: "id",
+    name: "name",
+    language: "language",
+    uploader: "uploader",
+    content_type: "content_type",
+    size: "size",
+    created_at: "created_at",
+    updated_at: "updated_at",
+    url: "url",
+    commit_oid: "commit_oid",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    name
+    language
+    uploader
+    content_type
+    size
+    created_at
+    updated_at
+    url
+  ].freeze
+  DECODERS = {
+    uploader: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for CodeScanningCodeqlDatabase.
+# A CodeQL database.
+class CodeScanningCodeqlDatabase
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalCodeScanningCodeqlDatabaseMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalCodeScanningCodeqlDatabaseMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalCodeScanningCodeqlDatabaseMetadata::DECODERS
+
+  # @return [Integer] The ID of the CodeQL database.
+  attr_reader :id
+  # @return [String] The name of the CodeQL database.
+  attr_reader :name
+  # @return [String] The language of the CodeQL database.
+  attr_reader :language
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :uploader
+  # @return [String] The MIME type of the CodeQL database file.
+  attr_reader :content_type
+  # @return [Integer] The size of the CodeQL database file in bytes.
+  attr_reader :size
+  # @return [String] The date and time at which the CodeQL database was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
+  attr_reader :created_at
+  # @return [String] The date and time at which the CodeQL database was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
+  attr_reader :updated_at
+  # @return [String] The URL at which to download the CodeQL database. The `Accept` header must be set to the value of the `content_type` property.
+  attr_reader :url
+  # @return [String] The commit SHA of the repository at the time the CodeQL database was created.
+  attr_reader :commit_oid
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for CodeScanningCodeqlDatabase.
-  # A CodeQL database.
-  class CodeScanningCodeqlDatabase
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalCodeScanningCodeqlDatabaseMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalCodeScanningCodeqlDatabaseMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalCodeScanningCodeqlDatabaseMetadata::DECODERS
-
-    # @return [Integer] The ID of the CodeQL database.
-    attr_reader :id
-    # @return [String] The name of the CodeQL database.
-    attr_reader :name
-    # @return [String] The language of the CodeQL database.
-    attr_reader :language
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :uploader
-    # @return [String] The MIME type of the CodeQL database file.
-    attr_reader :content_type
-    # @return [Integer] The size of the CodeQL database file in bytes.
-    attr_reader :size
-    # @return [String] The date and time at which the CodeQL database was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
-    attr_reader :created_at
-    # @return [String] The date and time at which the CodeQL database was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
-    attr_reader :updated_at
-    # @return [String] The URL at which to download the CodeQL database. The `Accept` header must be set to the value of the `content_type` property.
-    attr_reader :url
-    # @return [String] The commit SHA of the repository at the time the CodeQL database was created.
-    attr_reader :commit_oid
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalCodeScanningOrganizationAlertItemsMetadata
-    FIELDS = {
-      number: 'number',
-      created_at: 'created_at',
-      updated_at: 'updated_at',
-      url: 'url',
-      html_url: 'html_url',
-      instances_url: 'instances_url',
-      state: 'state',
-      fixed_at: 'fixed_at',
-      dismissed_by: 'dismissed_by',
-      dismissed_at: 'dismissed_at',
-      dismissed_reason: 'dismissed_reason',
-      dismissed_comment: 'dismissed_comment',
-      rule: 'rule',
-      tool: 'tool',
-      most_recent_instance: 'most_recent_instance',
-      repository: 'repository',
-      dismissal_approved_by: 'dismissal_approved_by',
-      assignees: 'assignees'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      number
-      created_at
-      url
-      html_url
-      instances_url
-      state
-      dismissed_by
-      dismissed_at
-      dismissed_reason
-      rule
-      tool
-      most_recent_instance
-      repository
-    ].freeze
-    DECODERS = {
-      number: lambda do |value|
-        ::OctridevGithub::AlertNumber.from_value(value)
-      end,
-      created_at: lambda do |value|
-        ::OctridevGithub::AlertCreatedAt.from_value(value)
-      end,
-      updated_at: lambda do |value|
-        ::OctridevGithub::AlertUpdatedAt.from_value(value)
-      end,
-      url: lambda do |value|
-        ::OctridevGithub::AlertUrl.from_value(value)
-      end,
-      html_url: lambda do |value|
-        ::OctridevGithub::AlertHtmlUrl.from_value(value)
-      end,
-      instances_url: lambda do |value|
-        ::OctridevGithub::AlertInstancesUrl.from_value(value)
-      end,
-      state: lambda do |value|
-        ::OctridevGithub::CodeScanningAlertState.from_value(value)
-      end,
-      fixed_at: lambda do |value|
-        ::OctridevGithub::AlertFixedAt.from_value(value)
-      end,
-      dismissed_by: lambda do |value|
-        ::OctridevGithub::NullableSimpleUser.from_hash(value)
-      end,
-      dismissed_at: lambda do |value|
-        ::OctridevGithub::AlertDismissedAt.from_value(value)
-      end,
-      dismissed_reason: lambda do |value|
-        ::OctridevGithub::CodeScanningAlertDismissedReason.from_value(value)
-      end,
-      dismissed_comment: lambda do |value|
-        ::OctridevGithub::CodeScanningAlertDismissedComment.from_value(value)
-      end,
-      rule: lambda do |value|
-        ::OctridevGithub::CodeScanningAlertRuleSummary.from_hash(value)
-      end,
-      tool: lambda do |value|
-        ::OctridevGithub::CodeScanningAnalysisTool.from_hash(value)
-      end,
-      most_recent_instance: lambda do |value|
-        ::OctridevGithub::CodeScanningAlertInstance.from_hash(value)
-      end,
-      repository: lambda do |value|
-        ::OctridevGithub::SimpleRepository.from_hash(value)
-      end,
-      dismissal_approved_by: lambda do |value|
-        ::OctridevGithub::NullableSimpleUser.from_hash(value)
-      end,
-      assignees: lambda do |value|
-        value&.map { |item| ::OctridevGithub::SimpleUser.from_hash(item) }
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      state
-      dismissed_by
-      dismissed_at
-      dismissed_reason
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalCodeScanningOrganizationAlertItemsMetadata
+  FIELDS = {
+    number: "number",
+    created_at: "created_at",
+    updated_at: "updated_at",
+    url: "url",
+    html_url: "html_url",
+    instances_url: "instances_url",
+    state: "state",
+    fixed_at: "fixed_at",
+    dismissed_by: "dismissed_by",
+    dismissed_at: "dismissed_at",
+    dismissed_reason: "dismissed_reason",
+    dismissed_comment: "dismissed_comment",
+    rule: "rule",
+    tool: "tool",
+    most_recent_instance: "most_recent_instance",
+    repository: "repository",
+    dismissal_approved_by: "dismissal_approved_by",
+    assignees: "assignees",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    number
+    created_at
+    url
+    html_url
+    instances_url
+    state
+    dismissed_by
+    dismissed_at
+    dismissed_reason
+    rule
+    tool
+    most_recent_instance
+    repository
+  ].freeze
+  DECODERS = {
+    number: lambda do |value|
+      ::OctridevGithub::AlertNumber.from_value(value)
+    end,
+    created_at: lambda do |value|
+      ::OctridevGithub::AlertCreatedAt.from_value(value)
+    end,
+    updated_at: lambda do |value|
+      ::OctridevGithub::AlertUpdatedAt.from_value(value)
+    end,
+    url: lambda do |value|
+      ::OctridevGithub::AlertUrl.from_value(value)
+    end,
+    html_url: lambda do |value|
+      ::OctridevGithub::AlertHtmlUrl.from_value(value)
+    end,
+    instances_url: lambda do |value|
+      ::OctridevGithub::AlertInstancesUrl.from_value(value)
+    end,
+    state: lambda do |value|
+      ::OctridevGithub::CodeScanningAlertState.from_value(value)
+    end,
+    fixed_at: lambda do |value|
+      ::OctridevGithub::AlertFixedAt.from_value(value)
+    end,
+    dismissed_by: lambda do |value|
+      ::OctridevGithub::NullableSimpleUser.from_hash(value)
+    end,
+    dismissed_at: lambda do |value|
+      ::OctridevGithub::AlertDismissedAt.from_value(value)
+    end,
+    dismissed_reason: lambda do |value|
+      ::OctridevGithub::CodeScanningAlertDismissedReason.from_value(value)
+    end,
+    dismissed_comment: lambda do |value|
+      ::OctridevGithub::CodeScanningAlertDismissedComment.from_value(value)
+    end,
+    rule: lambda do |value|
+      ::OctridevGithub::CodeScanningAlertRuleSummary.from_hash(value)
+    end,
+    tool: lambda do |value|
+      ::OctridevGithub::CodeScanningAnalysisTool.from_hash(value)
+    end,
+    most_recent_instance: lambda do |value|
+      ::OctridevGithub::CodeScanningAlertInstance.from_hash(value)
+    end,
+    repository: lambda do |value|
+      ::OctridevGithub::SimpleRepository.from_hash(value)
+    end,
+    dismissal_approved_by: lambda do |value|
+      ::OctridevGithub::NullableSimpleUser.from_hash(value)
+    end,
+    assignees: lambda do |value|
+      value&.map { |item| ::OctridevGithub::SimpleUser.from_hash(item) }
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    state
+    dismissed_by
+    dismissed_at
+    dismissed_reason
+  ].freeze
+end
+
+# API model for CodeScanningOrganizationAlertItems.
+# Typed representation of the `CodeScanningOrganizationAlertItems` API schema.
+class CodeScanningOrganizationAlertItems
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalCodeScanningOrganizationAlertItemsMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalCodeScanningOrganizationAlertItemsMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalCodeScanningOrganizationAlertItemsMetadata::DECODERS
+
+  # @return [AlertNumber] The security alert number.
+  attr_reader :number
+  # @return [AlertCreatedAt] The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+  attr_reader :created_at
+  # @return [AlertUpdatedAt] The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+  attr_reader :updated_at
+  # @return [AlertUrl] The REST API URL of the alert resource.
+  attr_reader :url
+  # @return [AlertHtmlUrl] The GitHub URL of the alert resource.
+  attr_reader :html_url
+  # @return [AlertInstancesUrl] The REST API URL for fetching the list of instances for an alert.
+  attr_reader :instances_url
+  # @return [CodeScanningAlertState] State of a code scanning alert.
+  attr_reader :state
+  # @return [AlertFixedAt] The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+  attr_reader :fixed_at
+  # @return [NullableSimpleUser] A GitHub user.
+  attr_reader :dismissed_by
+  # @return [AlertDismissedAt] The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+  attr_reader :dismissed_at
+  # @return [CodeScanningAlertDismissedReason] **Required when the state is dismissed.** The reason for dismissing or closing the alert.
+  attr_reader :dismissed_reason
+  # @return [CodeScanningAlertDismissedComment] The dismissal comment associated with the dismissal of the alert.
+  attr_reader :dismissed_comment
+  # @return [CodeScanningAlertRuleSummary] Required object value serialized in the `rule` wire field.
+  attr_reader :rule
+  # @return [CodeScanningAnalysisTool] Required object value serialized in the `tool` wire field.
+  attr_reader :tool
+  # @return [CodeScanningAlertInstance] Required object value serialized in the `most_recent_instance` wire field.
+  attr_reader :most_recent_instance
+  # @return [SimpleRepository] A GitHub repository.
+  attr_reader :repository
+  # @return [NullableSimpleUser] A GitHub user.
+  attr_reader :dismissal_approved_by
+  # @return [Array_of_SimpleUser] Optional array value serialized in the `assignees` wire field.
+  attr_reader :assignees
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for CodeScanningOrganizationAlertItems.
-  # Typed representation of the `CodeScanningOrganizationAlertItems` API schema.
-  class CodeScanningOrganizationAlertItems
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalCodeScanningOrganizationAlertItemsMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalCodeScanningOrganizationAlertItemsMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalCodeScanningOrganizationAlertItemsMetadata::DECODERS
-
-    # @return [AlertNumber] The security alert number.
-    attr_reader :number
-    # @return [AlertCreatedAt] The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-    attr_reader :created_at
-    # @return [AlertUpdatedAt] The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-    attr_reader :updated_at
-    # @return [AlertUrl] The REST API URL of the alert resource.
-    attr_reader :url
-    # @return [AlertHtmlUrl] The GitHub URL of the alert resource.
-    attr_reader :html_url
-    # @return [AlertInstancesUrl] The REST API URL for fetching the list of instances for an alert.
-    attr_reader :instances_url
-    # @return [CodeScanningAlertState] State of a code scanning alert.
-    attr_reader :state
-    # @return [AlertFixedAt] The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-    attr_reader :fixed_at
-    # @return [NullableSimpleUser] A GitHub user.
-    attr_reader :dismissed_by
-    # @return [AlertDismissedAt] The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-    attr_reader :dismissed_at
-    # @return [CodeScanningAlertDismissedReason] **Required when the state is dismissed.** The reason for dismissing or closing the alert.
-    attr_reader :dismissed_reason
-    # @return [CodeScanningAlertDismissedComment] The dismissal comment associated with the dismissal of the alert.
-    attr_reader :dismissed_comment
-    # @return [CodeScanningAlertRuleSummary] Required object value serialized in the `rule` wire field.
-    attr_reader :rule
-    # @return [CodeScanningAnalysisTool] Required object value serialized in the `tool` wire field.
-    attr_reader :tool
-    # @return [CodeScanningAlertInstance] Required object value serialized in the `most_recent_instance` wire field.
-    attr_reader :most_recent_instance
-    # @return [SimpleRepository] A GitHub repository.
-    attr_reader :repository
-    # @return [NullableSimpleUser] A GitHub user.
-    attr_reader :dismissal_approved_by
-    # @return [Array_of_SimpleUser] Optional array value serialized in the `assignees` wire field.
-    attr_reader :assignees
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalCodeScanningOrganizationAlertItemsMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalCodeScanningOrganizationAlertItemsMetadata::NULLABLE_FIELDS)
   end
 
-  # Defines the CodeScanningRefFull SDK value decoder.
-  module CodeScanningRefFull
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
+
+# Defines the CodeScanningRefFull SDK value decoder.
+module CodeScanningRefFull
+  def self.from_value(value)
+    value
+  end
+end
 end

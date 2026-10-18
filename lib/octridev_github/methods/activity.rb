@@ -12,11 +12,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActivityMarkNotificationsAsReadMetadata
         FIELDS = {
-          last_read_at: 'last_read_at',
-          read: 'read'
+          last_read_at: "last_read_at",
+          read: "read",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ActivityMarkNotificationsAsRead.
@@ -48,10 +50,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActivityMarkNotificationsAsReadResponseMetadata
         FIELDS = {
-          message: 'message'
+          message: "message",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ActivityMarkNotificationsAsReadResponse.
@@ -80,10 +84,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActivitySetThreadSubscriptionMetadata
         FIELDS = {
-          ignored: 'ignored'
+          ignored: "ignored",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ActivitySetThreadSubscription.
@@ -113,10 +119,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActivityMarkRepoNotificationsAsReadMetadata
         FIELDS = {
-          last_read_at: 'last_read_at'
+          last_read_at: "last_read_at",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ActivityMarkRepoNotificationsAsRead.
@@ -146,11 +154,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActivityMarkRepoNotificationsAsReadResponseMetadata
         FIELDS = {
-          message: 'message',
-          url: 'url'
+          message: "message",
+          url: "url",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ActivityMarkRepoNotificationsAsReadResponse.
@@ -179,12 +189,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActivityGetStargazerCountForRepoResponseMetadata
         FIELDS = {
-          count: 'count'
+          count: "count",
         }.freeze
         REQUIRED_FIELDS = %i[
           count
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ActivityGetStargazerCountForRepoResponse.
@@ -213,11 +224,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActivitySetRepoSubscriptionMetadata
         FIELDS = {
-          subscribed: 'subscribed',
-          ignored: 'ignored'
+          subscribed: "subscribed",
+          ignored: "ignored",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ActivitySetRepoSubscription.
@@ -258,19 +271,20 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
-          '/events',
+          "/events",
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::Event],
           decoder: :json,
           operation_id: 'activity_list_public_events',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '403' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -279,14 +293,15 @@ module OctridevGithub
         config:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
-          '/feeds',
+          "/feeds",
           config: config,
           return_type: ::OctridevGithub::Feed,
           decoder: :json,
           operation_id: 'activity_get_feeds',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -308,25 +323,26 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/networks/',
+            "/networks/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/events'
+            "/events"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::Event],
           decoder: :json,
           operation_id: 'activity_list_public_events_for_repo_network',
           request_options: request_options,
-          errors: { '301' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '301' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -353,13 +369,14 @@ module OctridevGithub
         per_page: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(since) { Validation.validate_date_time('since', since) }
 
         Validation.if_given(before) { Validation.validate_date_time('before', before) }
 
         SdkClient.request(
           'GET',
-          '/notifications',
+          "/notifications",
           config: config,
           query: {
             'all' => QueryValue.new(all, style: 'form', explode: true),
@@ -367,13 +384,13 @@ module OctridevGithub
             'since' => QueryValue.new(since, style: 'form', explode: true),
             'before' => QueryValue.new(before, style: 'form', explode: true),
             'page' => QueryValue.new(page, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::Thread],
           decoder: :json,
           operation_id: 'activity_list_notifications_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -391,21 +408,22 @@ module OctridevGithub
         read: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(last_read_at) { Validation.validate_date_time('last_read_at', last_read_at) }
 
         SdkClient.request(
           'PUT',
-          '/notifications',
+          "/notifications",
           config: config,
           body: {
             'last_read_at' => last_read_at,
-            'read' => read
+            'read' => read,
           },
           return_type: ::OctridevGithub::Methods::Activity::ActivityMarkNotificationsAsReadResponse,
           decoder: :json,
           operation_id: 'activity_mark_notifications_as_read',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -421,10 +439,11 @@ module OctridevGithub
         thread_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/notifications/threads/',
+            "/notifications/threads/",
             SdkClient.encode_path_segment(thread_id)
           ].join,
           config: config,
@@ -432,7 +451,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'activity_get_thread',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -446,17 +465,18 @@ module OctridevGithub
         thread_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/notifications/threads/',
+            "/notifications/threads/",
             SdkClient.encode_path_segment(thread_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'activity_mark_thread_as_read',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -470,16 +490,17 @@ module OctridevGithub
         thread_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/notifications/threads/',
+            "/notifications/threads/",
             SdkClient.encode_path_segment(thread_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'activity_mark_thread_as_done',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -493,19 +514,20 @@ module OctridevGithub
         thread_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/notifications/threads/',
+            "/notifications/threads/",
             SdkClient.encode_path_segment(thread_id),
-            '/subscription'
+            "/subscription"
           ].join,
           config: config,
           return_type: ::OctridevGithub::ThreadSubscription,
           decoder: :json,
           operation_id: 'activity_get_thread_subscription_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -521,22 +543,23 @@ module OctridevGithub
         ignored: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/notifications/threads/',
+            "/notifications/threads/",
             SdkClient.encode_path_segment(thread_id),
-            '/subscription'
+            "/subscription"
           ].join,
           config: config,
           body: {
-            'ignored' => ignored
+            'ignored' => ignored,
           },
           return_type: ::OctridevGithub::ThreadSubscription,
           decoder: :json,
           operation_id: 'activity_set_thread_subscription',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
         ).data
       end
     end

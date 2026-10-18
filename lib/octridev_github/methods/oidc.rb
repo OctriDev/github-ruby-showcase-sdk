@@ -12,11 +12,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOidcUpdateOidcCustomSubTemplateForOrgMetadata
         FIELDS = {
-          include_claim_keys: 'include_claim_keys',
-          use_immutable_subject: 'use_immutable_subject'
+          include_claim_keys: "include_claim_keys",
+          use_immutable_subject: "use_immutable_subject",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for OidcUpdateOidcCustomSubTemplateForOrg.
@@ -54,19 +56,20 @@ module OctridevGithub
         enterprise:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/enterprises/',
+            "/enterprises/",
             SdkClient.encode_path_segment(enterprise),
-            '/actions/oidc/customization/properties/repo'
+            "/actions/oidc/customization/properties/repo"
           ].join,
           config: config,
           return_type: [::OctridevGithub::OidcCustomPropertyInclusion],
           decoder: :json,
           operation_id: 'oidc_list_oidc_custom_property_inclusions_for_enterprise',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -81,22 +84,23 @@ module OctridevGithub
         custom_property_name:,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/enterprises/',
+            "/enterprises/",
             SdkClient.encode_path_segment(enterprise),
-            '/actions/oidc/customization/properties/repo'
+            "/actions/oidc/customization/properties/repo"
           ].join,
           config: config,
           body: {
-            'custom_property_name' => custom_property_name
+            'custom_property_name' => custom_property_name,
           },
           return_type: ::OctridevGithub::OidcCustomPropertyInclusion,
           decoder: :json,
           operation_id: 'oidc_create_oidc_custom_property_inclusion_for_enterprise',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -111,19 +115,20 @@ module OctridevGithub
         custom_property_name:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/enterprises/',
+            "/enterprises/",
             SdkClient.encode_path_segment(enterprise),
-            '/actions/oidc/customization/properties/repo/',
+            "/actions/oidc/customization/properties/repo/",
             SdkClient.encode_path_segment(custom_property_name)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'oidc_delete_oidc_custom_property_inclusion_for_enterprise',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -135,19 +140,20 @@ module OctridevGithub
         org:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/actions/oidc/customization/properties/repo'
+            "/actions/oidc/customization/properties/repo"
           ].join,
           config: config,
           return_type: [::OctridevGithub::OidcCustomPropertyInclusion],
           decoder: :json,
           operation_id: 'oidc_list_oidc_custom_property_inclusions_for_org',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -162,22 +168,23 @@ module OctridevGithub
         custom_property_name:,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/actions/oidc/customization/properties/repo'
+            "/actions/oidc/customization/properties/repo"
           ].join,
           config: config,
           body: {
-            'custom_property_name' => custom_property_name
+            'custom_property_name' => custom_property_name,
           },
           return_type: ::OctridevGithub::OidcCustomPropertyInclusion,
           decoder: :json,
           operation_id: 'oidc_create_oidc_custom_property_inclusion_for_org',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -192,19 +199,20 @@ module OctridevGithub
         custom_property_name:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/actions/oidc/customization/properties/repo/',
+            "/actions/oidc/customization/properties/repo/",
             SdkClient.encode_path_segment(custom_property_name)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'oidc_delete_oidc_custom_property_inclusion_for_org',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -216,18 +224,19 @@ module OctridevGithub
         org:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/actions/oidc/customization/sub'
+            "/actions/oidc/customization/sub"
           ].join,
           config: config,
           return_type: ::OctridevGithub::OidcCustomSub,
           decoder: :json,
           operation_id: 'oidc_get_oidc_custom_sub_template_for_org',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -247,23 +256,24 @@ module OctridevGithub
         use_immutable_subject: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/actions/oidc/customization/sub'
+            "/actions/oidc/customization/sub"
           ].join,
           config: config,
           body: {
             'include_claim_keys' => include_claim_keys,
-            'use_immutable_subject' => use_immutable_subject
+            'use_immutable_subject' => use_immutable_subject,
           },
           return_type: ::OctridevGithub::EmptyObject,
           decoder: :json,
           operation_id: 'oidc_update_oidc_custom_sub_template_for_org',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end
