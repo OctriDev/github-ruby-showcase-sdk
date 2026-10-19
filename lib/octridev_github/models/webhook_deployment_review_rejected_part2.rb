@@ -5,670 +5,666 @@
 
 # webhook_deployment_review_rejected domain models (part 2)
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalWebhookDeploymentReviewRejectedWorkflowRunReferencedWorkflowsItemMetadata
-  FIELDS = {
-    path: "path",
-    ref: "ref",
-    sha: "sha",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    path
-    sha
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookDeploymentReviewRejectedWorkflowRunReferencedWorkflowsItem.
-# Required object value serialized in the `referenced_workflows[]` wire field.
-class WebhookDeploymentReviewRejectedWorkflowRunReferencedWorkflowsItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunReferencedWorkflowsItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunReferencedWorkflowsItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunReferencedWorkflowsItemMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `path` wire field.
-  attr_reader :path
-  # @return [String] Optional `string` value serialized in the `ref` wire field.
-  attr_reader :ref
-  # @return [String] Required `string` value serialized in the `sha` wire field.
-  attr_reader :sha
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookDeploymentReviewRejectedWorkflowRunReferencedWorkflowsItemMetadata
+    FIELDS = {
+      path: 'path',
+      ref: 'ref',
+      sha: 'sha'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      path
+      sha
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookDeploymentReviewRejectedWorkflowRunReferencedWorkflowsItem.
+  # Required object value serialized in the `referenced_workflows[]` wire field.
+  class WebhookDeploymentReviewRejectedWorkflowRunReferencedWorkflowsItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunReferencedWorkflowsItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunReferencedWorkflowsItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunReferencedWorkflowsItemMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `path` wire field.
+    attr_reader :path
+    # @return [String] Optional `string` value serialized in the `ref` wire field.
+    attr_reader :ref
+    # @return [String] Required `string` value serialized in the `sha` wire field.
+    attr_reader :sha
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookDeploymentReviewRejectedWorkflowRunRepositoryOwnerMetadata
-  FIELDS = {
-    avatar_url: "avatar_url",
-    events_url: "events_url",
-    followers_url: "followers_url",
-    following_url: "following_url",
-    gists_url: "gists_url",
-    gravatar_id: "gravatar_id",
-    html_url: "html_url",
-    id: "id",
-    login: "login",
-    node_id: "node_id",
-    organizations_url: "organizations_url",
-    received_events_url: "received_events_url",
-    repos_url: "repos_url",
-    site_admin: "site_admin",
-    starred_url: "starred_url",
-    subscriptions_url: "subscriptions_url",
-    type: "type",
-    url: "url",
-    user_view_type: "user_view_type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookDeploymentReviewRejectedWorkflowRunRepositoryOwner.
-# Optional object value serialized in the `owner` wire field.
-class WebhookDeploymentReviewRejectedWorkflowRunRepositoryOwner
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunRepositoryOwnerMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunRepositoryOwnerMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunRepositoryOwnerMetadata::DECODERS
-
-  # @return [String] Optional `string` value serialized in the `avatar_url` wire field.
-  attr_reader :avatar_url
-  # @return [String] Optional `string` value serialized in the `events_url` wire field.
-  attr_reader :events_url
-  # @return [String] Optional `string` value serialized in the `followers_url` wire field.
-  attr_reader :followers_url
-  # @return [String] Optional `string` value serialized in the `following_url` wire field.
-  attr_reader :following_url
-  # @return [String] Optional `string` value serialized in the `gists_url` wire field.
-  attr_reader :gists_url
-  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-  attr_reader :gravatar_id
-  # @return [String] Optional `string` value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Optional `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Optional `string` value serialized in the `login` wire field.
-  attr_reader :login
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Optional `string` value serialized in the `organizations_url` wire field.
-  attr_reader :organizations_url
-  # @return [String] Optional `string` value serialized in the `received_events_url` wire field.
-  attr_reader :received_events_url
-  # @return [String] Optional `string` value serialized in the `repos_url` wire field.
-  attr_reader :repos_url
-  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-  attr_reader :site_admin
-  # @return [String] Optional `string` value serialized in the `starred_url` wire field.
-  attr_reader :starred_url
-  # @return [String] Optional `string` value serialized in the `subscriptions_url` wire field.
-  attr_reader :subscriptions_url
-  # @return [String] Optional `string` value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [String] Optional `string` value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-  attr_reader :user_view_type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookDeploymentReviewRejectedWorkflowRunRepositoryOwnerMetadata
+    FIELDS = {
+      avatar_url: 'avatar_url',
+      events_url: 'events_url',
+      followers_url: 'followers_url',
+      following_url: 'following_url',
+      gists_url: 'gists_url',
+      gravatar_id: 'gravatar_id',
+      html_url: 'html_url',
+      id: 'id',
+      login: 'login',
+      node_id: 'node_id',
+      organizations_url: 'organizations_url',
+      received_events_url: 'received_events_url',
+      repos_url: 'repos_url',
+      site_admin: 'site_admin',
+      starred_url: 'starred_url',
+      subscriptions_url: 'subscriptions_url',
+      type: 'type',
+      url: 'url',
+      user_view_type: 'user_view_type'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookDeploymentReviewRejectedWorkflowRunRepositoryOwner.
+  # Optional object value serialized in the `owner` wire field.
+  class WebhookDeploymentReviewRejectedWorkflowRunRepositoryOwner
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunRepositoryOwnerMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunRepositoryOwnerMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunRepositoryOwnerMetadata::DECODERS
+
+    # @return [String] Optional `string` value serialized in the `avatar_url` wire field.
+    attr_reader :avatar_url
+    # @return [String] Optional `string` value serialized in the `events_url` wire field.
+    attr_reader :events_url
+    # @return [String] Optional `string` value serialized in the `followers_url` wire field.
+    attr_reader :followers_url
+    # @return [String] Optional `string` value serialized in the `following_url` wire field.
+    attr_reader :following_url
+    # @return [String] Optional `string` value serialized in the `gists_url` wire field.
+    attr_reader :gists_url
+    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+    attr_reader :gravatar_id
+    # @return [String] Optional `string` value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Optional `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Optional `string` value serialized in the `login` wire field.
+    attr_reader :login
+    # @return [String] Optional `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Optional `string` value serialized in the `organizations_url` wire field.
+    attr_reader :organizations_url
+    # @return [String] Optional `string` value serialized in the `received_events_url` wire field.
+    attr_reader :received_events_url
+    # @return [String] Optional `string` value serialized in the `repos_url` wire field.
+    attr_reader :repos_url
+    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+    attr_reader :site_admin
+    # @return [String] Optional `string` value serialized in the `starred_url` wire field.
+    attr_reader :starred_url
+    # @return [String] Optional `string` value serialized in the `subscriptions_url` wire field.
+    attr_reader :subscriptions_url
+    # @return [String] Optional `string` value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [String] Optional `string` value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+    attr_reader :user_view_type
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookDeploymentReviewRejectedWorkflowRunRepositoryMetadata
-  FIELDS = {
-    archive_url: "archive_url",
-    assignees_url: "assignees_url",
-    blobs_url: "blobs_url",
-    branches_url: "branches_url",
-    collaborators_url: "collaborators_url",
-    comments_url: "comments_url",
-    commits_url: "commits_url",
-    compare_url: "compare_url",
-    contents_url: "contents_url",
-    contributors_url: "contributors_url",
-    deployments_url: "deployments_url",
-    description: "description",
-    downloads_url: "downloads_url",
-    events_url: "events_url",
-    fork: "fork",
-    forks_url: "forks_url",
-    full_name: "full_name",
-    git_commits_url: "git_commits_url",
-    git_refs_url: "git_refs_url",
-    git_tags_url: "git_tags_url",
-    hooks_url: "hooks_url",
-    html_url: "html_url",
-    id: "id",
-    issue_comment_url: "issue_comment_url",
-    issue_events_url: "issue_events_url",
-    issues_url: "issues_url",
-    keys_url: "keys_url",
-    labels_url: "labels_url",
-    languages_url: "languages_url",
-    merges_url: "merges_url",
-    milestones_url: "milestones_url",
-    name: "name",
-    node_id: "node_id",
-    notifications_url: "notifications_url",
-    owner: "owner",
-    private: "private",
-    pulls_url: "pulls_url",
-    releases_url: "releases_url",
-    stargazers_url: "stargazers_url",
-    statuses_url: "statuses_url",
-    subscribers_url: "subscribers_url",
-    subscription_url: "subscription_url",
-    tags_url: "tags_url",
-    teams_url: "teams_url",
-    trees_url: "trees_url",
-    url: "url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    owner: lambda do |value|
-      ::OctridevGithub::WebhookDeploymentReviewRejectedWorkflowRunRepositoryOwner.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookDeploymentReviewRejectedWorkflowRunRepository.
-# Optional object value serialized in the `repository` wire field.
-class WebhookDeploymentReviewRejectedWorkflowRunRepository
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunRepositoryMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunRepositoryMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunRepositoryMetadata::DECODERS
-
-  # @return [String] Optional `string` value serialized in the `archive_url` wire field.
-  attr_reader :archive_url
-  # @return [String] Optional `string` value serialized in the `assignees_url` wire field.
-  attr_reader :assignees_url
-  # @return [String] Optional `string` value serialized in the `blobs_url` wire field.
-  attr_reader :blobs_url
-  # @return [String] Optional `string` value serialized in the `branches_url` wire field.
-  attr_reader :branches_url
-  # @return [String] Optional `string` value serialized in the `collaborators_url` wire field.
-  attr_reader :collaborators_url
-  # @return [String] Optional `string` value serialized in the `comments_url` wire field.
-  attr_reader :comments_url
-  # @return [String] Optional `string` value serialized in the `commits_url` wire field.
-  attr_reader :commits_url
-  # @return [String] Optional `string` value serialized in the `compare_url` wire field.
-  attr_reader :compare_url
-  # @return [String] Optional `string` value serialized in the `contents_url` wire field.
-  attr_reader :contents_url
-  # @return [String] Optional `string` value serialized in the `contributors_url` wire field.
-  attr_reader :contributors_url
-  # @return [String] Optional `string` value serialized in the `deployments_url` wire field.
-  attr_reader :deployments_url
-  # @return [String] Optional `string` value serialized in the `description` wire field.
-  attr_reader :description
-  # @return [String] Optional `string` value serialized in the `downloads_url` wire field.
-  attr_reader :downloads_url
-  # @return [String] Optional `string` value serialized in the `events_url` wire field.
-  attr_reader :events_url
-  # @return [Boolean] Optional `boolean` value serialized in the `fork` wire field.
-  attr_reader :fork
-  # @return [String] Optional `string` value serialized in the `forks_url` wire field.
-  attr_reader :forks_url
-  # @return [String] Optional `string` value serialized in the `full_name` wire field.
-  attr_reader :full_name
-  # @return [String] Optional `string` value serialized in the `git_commits_url` wire field.
-  attr_reader :git_commits_url
-  # @return [String] Optional `string` value serialized in the `git_refs_url` wire field.
-  attr_reader :git_refs_url
-  # @return [String] Optional `string` value serialized in the `git_tags_url` wire field.
-  attr_reader :git_tags_url
-  # @return [String] Optional `string` value serialized in the `hooks_url` wire field.
-  attr_reader :hooks_url
-  # @return [String] Optional `string` value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Optional `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Optional `string` value serialized in the `issue_comment_url` wire field.
-  attr_reader :issue_comment_url
-  # @return [String] Optional `string` value serialized in the `issue_events_url` wire field.
-  attr_reader :issue_events_url
-  # @return [String] Optional `string` value serialized in the `issues_url` wire field.
-  attr_reader :issues_url
-  # @return [String] Optional `string` value serialized in the `keys_url` wire field.
-  attr_reader :keys_url
-  # @return [String] Optional `string` value serialized in the `labels_url` wire field.
-  attr_reader :labels_url
-  # @return [String] Optional `string` value serialized in the `languages_url` wire field.
-  attr_reader :languages_url
-  # @return [String] Optional `string` value serialized in the `merges_url` wire field.
-  attr_reader :merges_url
-  # @return [String] Optional `string` value serialized in the `milestones_url` wire field.
-  attr_reader :milestones_url
-  # @return [String] Optional `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Optional `string` value serialized in the `notifications_url` wire field.
-  attr_reader :notifications_url
-  # @return [WebhookDeploymentReviewRejectedWorkflowRunRepositoryOwner] Optional object value serialized in the `owner` wire field.
-  attr_reader :owner
-  # @return [Boolean] Optional `boolean` value serialized in the `private` wire field.
-  attr_reader :private
-  # @return [String] Optional `string` value serialized in the `pulls_url` wire field.
-  attr_reader :pulls_url
-  # @return [String] Optional `string` value serialized in the `releases_url` wire field.
-  attr_reader :releases_url
-  # @return [String] Optional `string` value serialized in the `stargazers_url` wire field.
-  attr_reader :stargazers_url
-  # @return [String] Optional `string` value serialized in the `statuses_url` wire field.
-  attr_reader :statuses_url
-  # @return [String] Optional `string` value serialized in the `subscribers_url` wire field.
-  attr_reader :subscribers_url
-  # @return [String] Optional `string` value serialized in the `subscription_url` wire field.
-  attr_reader :subscription_url
-  # @return [String] Optional `string` value serialized in the `tags_url` wire field.
-  attr_reader :tags_url
-  # @return [String] Optional `string` value serialized in the `teams_url` wire field.
-  attr_reader :teams_url
-  # @return [String] Optional `string` value serialized in the `trees_url` wire field.
-  attr_reader :trees_url
-  # @return [String] Optional `string` value serialized in the `url` wire field.
-  attr_reader :url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookDeploymentReviewRejectedWorkflowRunRepositoryMetadata
+    FIELDS = {
+      archive_url: 'archive_url',
+      assignees_url: 'assignees_url',
+      blobs_url: 'blobs_url',
+      branches_url: 'branches_url',
+      collaborators_url: 'collaborators_url',
+      comments_url: 'comments_url',
+      commits_url: 'commits_url',
+      compare_url: 'compare_url',
+      contents_url: 'contents_url',
+      contributors_url: 'contributors_url',
+      deployments_url: 'deployments_url',
+      description: 'description',
+      downloads_url: 'downloads_url',
+      events_url: 'events_url',
+      fork: 'fork',
+      forks_url: 'forks_url',
+      full_name: 'full_name',
+      git_commits_url: 'git_commits_url',
+      git_refs_url: 'git_refs_url',
+      git_tags_url: 'git_tags_url',
+      hooks_url: 'hooks_url',
+      html_url: 'html_url',
+      id: 'id',
+      issue_comment_url: 'issue_comment_url',
+      issue_events_url: 'issue_events_url',
+      issues_url: 'issues_url',
+      keys_url: 'keys_url',
+      labels_url: 'labels_url',
+      languages_url: 'languages_url',
+      merges_url: 'merges_url',
+      milestones_url: 'milestones_url',
+      name: 'name',
+      node_id: 'node_id',
+      notifications_url: 'notifications_url',
+      owner: 'owner',
+      private: 'private',
+      pulls_url: 'pulls_url',
+      releases_url: 'releases_url',
+      stargazers_url: 'stargazers_url',
+      statuses_url: 'statuses_url',
+      subscribers_url: 'subscribers_url',
+      subscription_url: 'subscription_url',
+      tags_url: 'tags_url',
+      teams_url: 'teams_url',
+      trees_url: 'trees_url',
+      url: 'url'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      owner: lambda do |value|
+        ::OctridevGithub::WebhookDeploymentReviewRejectedWorkflowRunRepositoryOwner.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookDeploymentReviewRejectedWorkflowRunRepository.
+  # Optional object value serialized in the `repository` wire field.
+  class WebhookDeploymentReviewRejectedWorkflowRunRepository
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunRepositoryMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunRepositoryMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunRepositoryMetadata::DECODERS
+
+    # @return [String] Optional `string` value serialized in the `archive_url` wire field.
+    attr_reader :archive_url
+    # @return [String] Optional `string` value serialized in the `assignees_url` wire field.
+    attr_reader :assignees_url
+    # @return [String] Optional `string` value serialized in the `blobs_url` wire field.
+    attr_reader :blobs_url
+    # @return [String] Optional `string` value serialized in the `branches_url` wire field.
+    attr_reader :branches_url
+    # @return [String] Optional `string` value serialized in the `collaborators_url` wire field.
+    attr_reader :collaborators_url
+    # @return [String] Optional `string` value serialized in the `comments_url` wire field.
+    attr_reader :comments_url
+    # @return [String] Optional `string` value serialized in the `commits_url` wire field.
+    attr_reader :commits_url
+    # @return [String] Optional `string` value serialized in the `compare_url` wire field.
+    attr_reader :compare_url
+    # @return [String] Optional `string` value serialized in the `contents_url` wire field.
+    attr_reader :contents_url
+    # @return [String] Optional `string` value serialized in the `contributors_url` wire field.
+    attr_reader :contributors_url
+    # @return [String] Optional `string` value serialized in the `deployments_url` wire field.
+    attr_reader :deployments_url
+    # @return [String] Optional `string` value serialized in the `description` wire field.
+    attr_reader :description
+    # @return [String] Optional `string` value serialized in the `downloads_url` wire field.
+    attr_reader :downloads_url
+    # @return [String] Optional `string` value serialized in the `events_url` wire field.
+    attr_reader :events_url
+    # @return [Boolean] Optional `boolean` value serialized in the `fork` wire field.
+    attr_reader :fork
+    # @return [String] Optional `string` value serialized in the `forks_url` wire field.
+    attr_reader :forks_url
+    # @return [String] Optional `string` value serialized in the `full_name` wire field.
+    attr_reader :full_name
+    # @return [String] Optional `string` value serialized in the `git_commits_url` wire field.
+    attr_reader :git_commits_url
+    # @return [String] Optional `string` value serialized in the `git_refs_url` wire field.
+    attr_reader :git_refs_url
+    # @return [String] Optional `string` value serialized in the `git_tags_url` wire field.
+    attr_reader :git_tags_url
+    # @return [String] Optional `string` value serialized in the `hooks_url` wire field.
+    attr_reader :hooks_url
+    # @return [String] Optional `string` value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Optional `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Optional `string` value serialized in the `issue_comment_url` wire field.
+    attr_reader :issue_comment_url
+    # @return [String] Optional `string` value serialized in the `issue_events_url` wire field.
+    attr_reader :issue_events_url
+    # @return [String] Optional `string` value serialized in the `issues_url` wire field.
+    attr_reader :issues_url
+    # @return [String] Optional `string` value serialized in the `keys_url` wire field.
+    attr_reader :keys_url
+    # @return [String] Optional `string` value serialized in the `labels_url` wire field.
+    attr_reader :labels_url
+    # @return [String] Optional `string` value serialized in the `languages_url` wire field.
+    attr_reader :languages_url
+    # @return [String] Optional `string` value serialized in the `merges_url` wire field.
+    attr_reader :merges_url
+    # @return [String] Optional `string` value serialized in the `milestones_url` wire field.
+    attr_reader :milestones_url
+    # @return [String] Optional `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Optional `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Optional `string` value serialized in the `notifications_url` wire field.
+    attr_reader :notifications_url
+    # @return [WebhookDeploymentReviewRejectedWorkflowRunRepositoryOwner] Optional object value serialized in the `owner` wire field.
+    attr_reader :owner
+    # @return [Boolean] Optional `boolean` value serialized in the `private` wire field.
+    attr_reader :private
+    # @return [String] Optional `string` value serialized in the `pulls_url` wire field.
+    attr_reader :pulls_url
+    # @return [String] Optional `string` value serialized in the `releases_url` wire field.
+    attr_reader :releases_url
+    # @return [String] Optional `string` value serialized in the `stargazers_url` wire field.
+    attr_reader :stargazers_url
+    # @return [String] Optional `string` value serialized in the `statuses_url` wire field.
+    attr_reader :statuses_url
+    # @return [String] Optional `string` value serialized in the `subscribers_url` wire field.
+    attr_reader :subscribers_url
+    # @return [String] Optional `string` value serialized in the `subscription_url` wire field.
+    attr_reader :subscription_url
+    # @return [String] Optional `string` value serialized in the `tags_url` wire field.
+    attr_reader :tags_url
+    # @return [String] Optional `string` value serialized in the `teams_url` wire field.
+    attr_reader :teams_url
+    # @return [String] Optional `string` value serialized in the `trees_url` wire field.
+    attr_reader :trees_url
+    # @return [String] Optional `string` value serialized in the `url` wire field.
+    attr_reader :url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookDeploymentReviewRejectedWorkflowRunTriggeringActorMetadata
-  FIELDS = {
-    avatar_url: "avatar_url",
-    deleted: "deleted",
-    email: "email",
-    events_url: "events_url",
-    followers_url: "followers_url",
-    following_url: "following_url",
-    gists_url: "gists_url",
-    gravatar_id: "gravatar_id",
-    html_url: "html_url",
-    id: "id",
-    login: "login",
-    name: "name",
-    node_id: "node_id",
-    organizations_url: "organizations_url",
-    received_events_url: "received_events_url",
-    repos_url: "repos_url",
-    site_admin: "site_admin",
-    starred_url: "starred_url",
-    subscriptions_url: "subscriptions_url",
-    type: "type",
-    url: "url",
-    user_view_type: "user_view_type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    login
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::WebhookDeploymentReviewRejectedWorkflowRunTriggeringActorType.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookDeploymentReviewRejectedWorkflowRunTriggeringActor.
-# Required object value serialized in the `triggering_actor` wire field.
-class WebhookDeploymentReviewRejectedWorkflowRunTriggeringActor
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunTriggeringActorMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunTriggeringActorMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunTriggeringActorMetadata::DECODERS
-
-  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-  attr_reader :avatar_url
-  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-  attr_reader :deleted
-  # @return [String] Optional `string` value serialized in the `email` wire field.
-  attr_reader :email
-  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-  attr_reader :events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-  attr_reader :followers_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-  attr_reader :following_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-  attr_reader :gists_url
-  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-  attr_reader :gravatar_id
-  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `login` wire field.
-  attr_reader :login
-  # @return [String] Optional `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-  attr_reader :organizations_url
-  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-  attr_reader :received_events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-  attr_reader :repos_url
-  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-  attr_reader :site_admin
-  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-  attr_reader :starred_url
-  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-  attr_reader :subscriptions_url
-  # @return [WebhookDeploymentReviewRejectedWorkflowRunTriggeringActorType] Optional enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-  attr_reader :user_view_type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookDeploymentReviewRejectedWorkflowRunTriggeringActorMetadata
+    FIELDS = {
+      avatar_url: 'avatar_url',
+      deleted: 'deleted',
+      email: 'email',
+      events_url: 'events_url',
+      followers_url: 'followers_url',
+      following_url: 'following_url',
+      gists_url: 'gists_url',
+      gravatar_id: 'gravatar_id',
+      html_url: 'html_url',
+      id: 'id',
+      login: 'login',
+      name: 'name',
+      node_id: 'node_id',
+      organizations_url: 'organizations_url',
+      received_events_url: 'received_events_url',
+      repos_url: 'repos_url',
+      site_admin: 'site_admin',
+      starred_url: 'starred_url',
+      subscriptions_url: 'subscriptions_url',
+      type: 'type',
+      url: 'url',
+      user_view_type: 'user_view_type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      login
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::WebhookDeploymentReviewRejectedWorkflowRunTriggeringActorType.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookDeploymentReviewRejectedWorkflowRunTriggeringActor.
+  # Required object value serialized in the `triggering_actor` wire field.
+  class WebhookDeploymentReviewRejectedWorkflowRunTriggeringActor
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunTriggeringActorMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunTriggeringActorMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunTriggeringActorMetadata::DECODERS
+
+    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+    attr_reader :avatar_url
+    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+    attr_reader :deleted
+    # @return [String] Optional `string` value serialized in the `email` wire field.
+    attr_reader :email
+    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+    attr_reader :events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+    attr_reader :followers_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+    attr_reader :following_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+    attr_reader :gists_url
+    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+    attr_reader :gravatar_id
+    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `login` wire field.
+    attr_reader :login
+    # @return [String] Optional `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Optional `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+    attr_reader :organizations_url
+    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+    attr_reader :received_events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+    attr_reader :repos_url
+    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+    attr_reader :site_admin
+    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+    attr_reader :starred_url
+    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+    attr_reader :subscriptions_url
+    # @return [WebhookDeploymentReviewRejectedWorkflowRunTriggeringActorType] Optional enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+    attr_reader :user_view_type
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookDeploymentReviewRejectedWorkflowRunMetadata
-  FIELDS = {
-    actor: "actor",
-    artifacts_url: "artifacts_url",
-    cancel_url: "cancel_url",
-    check_suite_id: "check_suite_id",
-    check_suite_node_id: "check_suite_node_id",
-    check_suite_url: "check_suite_url",
-    conclusion: "conclusion",
-    created_at: "created_at",
-    event: "event",
-    head_branch: "head_branch",
-    head_commit: "head_commit",
-    head_repository: "head_repository",
-    head_sha: "head_sha",
-    html_url: "html_url",
-    id: "id",
-    jobs_url: "jobs_url",
-    logs_url: "logs_url",
-    name: "name",
-    node_id: "node_id",
-    path: "path",
-    previous_attempt_url: "previous_attempt_url",
-    pull_requests: "pull_requests",
-    referenced_workflows: "referenced_workflows",
-    repository: "repository",
-    rerun_url: "rerun_url",
-    run_attempt: "run_attempt",
-    run_number: "run_number",
-    run_started_at: "run_started_at",
-    status: "status",
-    triggering_actor: "triggering_actor",
-    updated_at: "updated_at",
-    url: "url",
-    workflow_id: "workflow_id",
-    workflow_url: "workflow_url",
-    display_title: "display_title",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    actor
-    check_suite_id
-    check_suite_node_id
-    conclusion
-    created_at
-    event
-    head_branch
-    head_sha
-    html_url
-    id
-    name
-    node_id
-    path
-    pull_requests
-    run_attempt
-    run_number
-    run_started_at
-    status
-    triggering_actor
-    updated_at
-    url
-    workflow_id
-    display_title
-  ].freeze
-  DECODERS = {
-    actor: lambda do |value|
-      ::OctridevGithub::WebhookDeploymentReviewRejectedWorkflowRunActor.from_hash(value)
-    end,
-    conclusion: lambda do |value|
-      ::OctridevGithub::WebhookDeploymentReviewRejectedWorkflowRunConclusion.from_value(value)
-    end,
-    head_repository: lambda do |value|
-      ::OctridevGithub::WebhookDeploymentReviewRejectedWorkflowRunHeadRepository.from_hash(value)
-    end,
-    pull_requests: lambda do |value|
-      value&.map { |item| ::OctridevGithub::WebhookDeploymentReviewRejectedWorkflowRunPullRequestsItem.from_hash(item) }
-    end,
-    referenced_workflows: lambda do |value|
-      value&.map { |item| ::OctridevGithub::WebhookDeploymentReviewRejectedWorkflowRunReferencedWorkflowsItem.from_hash(item) }
-    end,
-    repository: lambda do |value|
-      ::OctridevGithub::WebhookDeploymentReviewRejectedWorkflowRunRepository.from_hash(value)
-    end,
-    status: lambda do |value|
-      ::OctridevGithub::WebhookDeploymentReviewRejectedWorkflowRunStatus.from_value(value)
-    end,
-    triggering_actor: lambda do |value|
-      ::OctridevGithub::WebhookDeploymentReviewRejectedWorkflowRunTriggeringActor.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    actor
-    conclusion
-    triggering_actor
-  ].freeze
-end
-
-# API model for WebhookDeploymentReviewRejectedWorkflowRun.
-# Required object value serialized in the `workflow_run` wire field.
-class WebhookDeploymentReviewRejectedWorkflowRun
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunMetadata::DECODERS
-
-  # @return [WebhookDeploymentReviewRejectedWorkflowRunActor] Required object value serialized in the `actor` wire field.
-  attr_reader :actor
-  # @return [String] Optional `string` value serialized in the `artifacts_url` wire field.
-  attr_reader :artifacts_url
-  # @return [String] Optional `string` value serialized in the `cancel_url` wire field.
-  attr_reader :cancel_url
-  # @return [Integer] Required `integer` value serialized in the `check_suite_id` wire field.
-  attr_reader :check_suite_id
-  # @return [String] Required `string` value serialized in the `check_suite_node_id` wire field.
-  attr_reader :check_suite_node_id
-  # @return [String] Optional `string` value serialized in the `check_suite_url` wire field.
-  attr_reader :check_suite_url
-  # @return [WebhookDeploymentReviewRejectedWorkflowRunConclusion] Required enumerated value serialized in the `conclusion` wire field.
-  attr_reader :conclusion
-  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Required `string` value serialized in the `event` wire field.
-  attr_reader :event
-  # @return [String] Required `string` value serialized in the `head_branch` wire field.
-  attr_reader :head_branch
-  # @return [Hash] Optional object value serialized in the `head_commit` wire field.
-  attr_reader :head_commit
-  # @return [WebhookDeploymentReviewRejectedWorkflowRunHeadRepository] Optional object value serialized in the `head_repository` wire field.
-  attr_reader :head_repository
-  # @return [String] Required `string` value serialized in the `head_sha` wire field.
-  attr_reader :head_sha
-  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Optional `string` value serialized in the `jobs_url` wire field.
-  attr_reader :jobs_url
-  # @return [String] Optional `string` value serialized in the `logs_url` wire field.
-  attr_reader :logs_url
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Required `string` value serialized in the `path` wire field.
-  attr_reader :path
-  # @return [String] Optional `string` value serialized in the `previous_attempt_url` wire field.
-  attr_reader :previous_attempt_url
-  # @return [Array_of_WebhookDeploymentReviewRejectedWorkflowRunPullRequestsItem] Required array value serialized in the `pull_requests` wire field.
-  attr_reader :pull_requests
-  # @return [Array_of_WebhookDeploymentReviewRejectedWorkflowRunReferencedWorkflowsItem] Optional array value serialized in the `referenced_workflows` wire field.
-  attr_reader :referenced_workflows
-  # @return [WebhookDeploymentReviewRejectedWorkflowRunRepository] Optional object value serialized in the `repository` wire field.
-  attr_reader :repository
-  # @return [String] Optional `string` value serialized in the `rerun_url` wire field.
-  attr_reader :rerun_url
-  # @return [Integer] Required `integer` value serialized in the `run_attempt` wire field.
-  attr_reader :run_attempt
-  # @return [Integer] Required `integer` value serialized in the `run_number` wire field.
-  attr_reader :run_number
-  # @return [String] Required `date-time`-formatted value serialized in the `run_started_at` wire field.
-  attr_reader :run_started_at
-  # @return [WebhookDeploymentReviewRejectedWorkflowRunStatus] Required enumerated value serialized in the `status` wire field.
-  attr_reader :status
-  # @return [WebhookDeploymentReviewRejectedWorkflowRunTriggeringActor] Required object value serialized in the `triggering_actor` wire field.
-  attr_reader :triggering_actor
-  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [Integer] Required `integer` value serialized in the `workflow_id` wire field.
-  attr_reader :workflow_id
-  # @return [String] Optional `string` value serialized in the `workflow_url` wire field.
-  attr_reader :workflow_url
-  # @return [String] Required `string` value serialized in the `display_title` wire field.
-  attr_reader :display_title
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookDeploymentReviewRejectedWorkflowRunMetadata
+    FIELDS = {
+      actor: 'actor',
+      artifacts_url: 'artifacts_url',
+      cancel_url: 'cancel_url',
+      check_suite_id: 'check_suite_id',
+      check_suite_node_id: 'check_suite_node_id',
+      check_suite_url: 'check_suite_url',
+      conclusion: 'conclusion',
+      created_at: 'created_at',
+      event: 'event',
+      head_branch: 'head_branch',
+      head_commit: 'head_commit',
+      head_repository: 'head_repository',
+      head_sha: 'head_sha',
+      html_url: 'html_url',
+      id: 'id',
+      jobs_url: 'jobs_url',
+      logs_url: 'logs_url',
+      name: 'name',
+      node_id: 'node_id',
+      path: 'path',
+      previous_attempt_url: 'previous_attempt_url',
+      pull_requests: 'pull_requests',
+      referenced_workflows: 'referenced_workflows',
+      repository: 'repository',
+      rerun_url: 'rerun_url',
+      run_attempt: 'run_attempt',
+      run_number: 'run_number',
+      run_started_at: 'run_started_at',
+      status: 'status',
+      triggering_actor: 'triggering_actor',
+      updated_at: 'updated_at',
+      url: 'url',
+      workflow_id: 'workflow_id',
+      workflow_url: 'workflow_url',
+      display_title: 'display_title'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      actor
+      check_suite_id
+      check_suite_node_id
+      conclusion
+      created_at
+      event
+      head_branch
+      head_sha
+      html_url
+      id
+      name
+      node_id
+      path
+      pull_requests
+      run_attempt
+      run_number
+      run_started_at
+      status
+      triggering_actor
+      updated_at
+      url
+      workflow_id
+      display_title
+    ].freeze
+    DECODERS = {
+      actor: lambda do |value|
+        ::OctridevGithub::WebhookDeploymentReviewRejectedWorkflowRunActor.from_hash(value)
+      end,
+      conclusion: lambda do |value|
+        ::OctridevGithub::WebhookDeploymentReviewRejectedWorkflowRunConclusion.from_value(value)
+      end,
+      head_repository: lambda do |value|
+        ::OctridevGithub::WebhookDeploymentReviewRejectedWorkflowRunHeadRepository.from_hash(value)
+      end,
+      pull_requests: lambda do |value|
+        value&.map { |item| ::OctridevGithub::WebhookDeploymentReviewRejectedWorkflowRunPullRequestsItem.from_hash(item) }
+      end,
+      referenced_workflows: lambda do |value|
+        value&.map { |item| ::OctridevGithub::WebhookDeploymentReviewRejectedWorkflowRunReferencedWorkflowsItem.from_hash(item) }
+      end,
+      repository: lambda do |value|
+        ::OctridevGithub::WebhookDeploymentReviewRejectedWorkflowRunRepository.from_hash(value)
+      end,
+      status: lambda do |value|
+        ::OctridevGithub::WebhookDeploymentReviewRejectedWorkflowRunStatus.from_value(value)
+      end,
+      triggering_actor: lambda do |value|
+        ::OctridevGithub::WebhookDeploymentReviewRejectedWorkflowRunTriggeringActor.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      actor
+      conclusion
+      triggering_actor
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookDeploymentReviewRejectedWorkflowRunMetadata::NULLABLE_FIELDS)
+  # API model for WebhookDeploymentReviewRejectedWorkflowRun.
+  # Required object value serialized in the `workflow_run` wire field.
+  class WebhookDeploymentReviewRejectedWorkflowRun
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookDeploymentReviewRejectedWorkflowRunMetadata::DECODERS
+
+    # @return [WebhookDeploymentReviewRejectedWorkflowRunActor] Required object value serialized in the `actor` wire field.
+    attr_reader :actor
+    # @return [String] Optional `string` value serialized in the `artifacts_url` wire field.
+    attr_reader :artifacts_url
+    # @return [String] Optional `string` value serialized in the `cancel_url` wire field.
+    attr_reader :cancel_url
+    # @return [Integer] Required `integer` value serialized in the `check_suite_id` wire field.
+    attr_reader :check_suite_id
+    # @return [String] Required `string` value serialized in the `check_suite_node_id` wire field.
+    attr_reader :check_suite_node_id
+    # @return [String] Optional `string` value serialized in the `check_suite_url` wire field.
+    attr_reader :check_suite_url
+    # @return [WebhookDeploymentReviewRejectedWorkflowRunConclusion] Required enumerated value serialized in the `conclusion` wire field.
+    attr_reader :conclusion
+    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Required `string` value serialized in the `event` wire field.
+    attr_reader :event
+    # @return [String] Required `string` value serialized in the `head_branch` wire field.
+    attr_reader :head_branch
+    # @return [Hash] Optional object value serialized in the `head_commit` wire field.
+    attr_reader :head_commit
+    # @return [WebhookDeploymentReviewRejectedWorkflowRunHeadRepository] Optional object value serialized in the `head_repository` wire field.
+    attr_reader :head_repository
+    # @return [String] Required `string` value serialized in the `head_sha` wire field.
+    attr_reader :head_sha
+    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Optional `string` value serialized in the `jobs_url` wire field.
+    attr_reader :jobs_url
+    # @return [String] Optional `string` value serialized in the `logs_url` wire field.
+    attr_reader :logs_url
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Required `string` value serialized in the `path` wire field.
+    attr_reader :path
+    # @return [String] Optional `string` value serialized in the `previous_attempt_url` wire field.
+    attr_reader :previous_attempt_url
+    # @return [Array_of_WebhookDeploymentReviewRejectedWorkflowRunPullRequestsItem] Required array value serialized in the `pull_requests` wire field.
+    attr_reader :pull_requests
+    # @return [Array_of_WebhookDeploymentReviewRejectedWorkflowRunReferencedWorkflowsItem] Optional array value serialized in the `referenced_workflows` wire field.
+    attr_reader :referenced_workflows
+    # @return [WebhookDeploymentReviewRejectedWorkflowRunRepository] Optional object value serialized in the `repository` wire field.
+    attr_reader :repository
+    # @return [String] Optional `string` value serialized in the `rerun_url` wire field.
+    attr_reader :rerun_url
+    # @return [Integer] Required `integer` value serialized in the `run_attempt` wire field.
+    attr_reader :run_attempt
+    # @return [Integer] Required `integer` value serialized in the `run_number` wire field.
+    attr_reader :run_number
+    # @return [String] Required `date-time`-formatted value serialized in the `run_started_at` wire field.
+    attr_reader :run_started_at
+    # @return [WebhookDeploymentReviewRejectedWorkflowRunStatus] Required enumerated value serialized in the `status` wire field.
+    attr_reader :status
+    # @return [WebhookDeploymentReviewRejectedWorkflowRunTriggeringActor] Required object value serialized in the `triggering_actor` wire field.
+    attr_reader :triggering_actor
+    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [Integer] Required `integer` value serialized in the `workflow_id` wire field.
+    attr_reader :workflow_id
+    # @return [String] Optional `string` value serialized in the `workflow_url` wire field.
+    attr_reader :workflow_url
+    # @return [String] Required `string` value serialized in the `display_title` wire field.
+    attr_reader :display_title
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookDeploymentReviewRejectedWorkflowRunMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalWebhookDeploymentReviewRejectedMetadata
+    FIELDS = {
+      action: 'action',
+      approver: 'approver',
+      comment: 'comment',
+      enterprise: 'enterprise',
+      installation: 'installation',
+      organization: 'organization',
+      repository: 'repository',
+      reviewers: 'reviewers',
+      sender: 'sender',
+      since: 'since',
+      workflow_job_run: 'workflow_job_run',
+      workflow_job_runs: 'workflow_job_runs',
+      workflow_run: 'workflow_run'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      action
+      organization
+      repository
+      sender
+      since
+      workflow_run
+    ].freeze
+    DECODERS = {
+      action: lambda do |value|
+        ::OctridevGithub::WebhookDeploymentReviewRejectedAction.from_value(value)
+      end,
+      approver: lambda do |value|
+        ::OctridevGithub::WebhooksApprover.from_hash(value)
+      end,
+      enterprise: lambda do |value|
+        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+      end,
+      installation: lambda do |value|
+        ::OctridevGithub::SimpleInstallation.from_hash(value)
+      end,
+      organization: lambda do |value|
+        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+      end,
+      repository: lambda do |value|
+        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+      end,
+      reviewers: lambda do |value|
+        ::OctridevGithub::WebhooksReviewers.from_hash(value)
+      end,
+      sender: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end,
+      workflow_job_run: lambda do |value|
+        ::OctridevGithub::WebhooksWorkflowJobRun.from_hash(value)
+      end,
+      workflow_job_runs: lambda do |value|
+        value&.map { |item| ::OctridevGithub::WebhookDeploymentReviewRejectedWorkflowJobRunsItem.from_hash(item) }
+      end,
+      workflow_run: lambda do |value|
+        ::OctridevGithub::WebhookDeploymentReviewRejectedWorkflowRun.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      workflow_run
+    ].freeze
   end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookDeploymentReviewRejectedMetadata
-  FIELDS = {
-    action: "action",
-    approver: "approver",
-    comment: "comment",
-    enterprise: "enterprise",
-    installation: "installation",
-    organization: "organization",
-    repository: "repository",
-    reviewers: "reviewers",
-    sender: "sender",
-    since: "since",
-    workflow_job_run: "workflow_job_run",
-    workflow_job_runs: "workflow_job_runs",
-    workflow_run: "workflow_run",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    action
-    organization
-    repository
-    sender
-    since
-    workflow_run
-  ].freeze
-  DECODERS = {
-    action: lambda do |value|
-      ::OctridevGithub::WebhookDeploymentReviewRejectedAction.from_value(value)
-    end,
-    approver: lambda do |value|
-      ::OctridevGithub::WebhooksApprover.from_hash(value)
-    end,
-    enterprise: lambda do |value|
-      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-    end,
-    installation: lambda do |value|
-      ::OctridevGithub::SimpleInstallation.from_hash(value)
-    end,
-    organization: lambda do |value|
-      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-    end,
-    repository: lambda do |value|
-      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-    end,
-    reviewers: lambda do |value|
-      ::OctridevGithub::WebhooksReviewers.from_hash(value)
-    end,
-    sender: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-    workflow_job_run: lambda do |value|
-      ::OctridevGithub::WebhooksWorkflowJobRun.from_hash(value)
-    end,
-    workflow_job_runs: lambda do |value|
-      value&.map { |item| ::OctridevGithub::WebhookDeploymentReviewRejectedWorkflowJobRunsItem.from_hash(item) }
-    end,
-    workflow_run: lambda do |value|
-      ::OctridevGithub::WebhookDeploymentReviewRejectedWorkflowRun.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    workflow_run
-  ].freeze
-end
 end

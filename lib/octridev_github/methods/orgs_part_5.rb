@@ -15,8 +15,8 @@ module OctridevGithub
         INTERNET_EXPOSED = 'internet-exposed'
         LATERAL_MOVEMENT = 'lateral-movement'
         SENSITIVE_DATA = 'sensitive-data'
-        VALUES = [
-          'critical-resource', 'internet-exposed', 'lateral-movement', 'sensitive-data'
+        VALUES = %w[
+          critical-resource internet-exposed lateral-movement sensitive-data
         ].freeze
         def self.from_value(value)
           value
@@ -37,7 +37,7 @@ module OctridevGithub
         V_2_FA_DISABLED = '2fa_disabled'
         V_2_FA_INSECURE = '2fa_insecure'
         ALL = 'all'
-        VALUES = ['2fa_disabled', '2fa_insecure', 'all'].freeze
+        VALUES = %w[2fa_disabled 2fa_insecure all].freeze
         def self.from_value(value)
           value
         end
@@ -49,8 +49,8 @@ module OctridevGithub
         INTERNET_EXPOSED = 'internet-exposed'
         LATERAL_MOVEMENT = 'lateral-movement'
         SENSITIVE_DATA = 'sensitive-data'
-        VALUES = [
-          'critical-resource', 'internet-exposed', 'lateral-movement', 'sensitive-data'
+        VALUES = %w[
+          critical-resource internet-exposed lateral-movement sensitive-data
         ].freeze
         def self.from_value(value)
           value
@@ -61,7 +61,7 @@ module OctridevGithub
       module OrgsSetClusterDeploymentRecordsResponseErrorsItemCause
         UNAUTHORIZED = 'unauthorized'
         NOT_FOUND = 'not_found'
-        VALUES = ['unauthorized', 'not_found'].freeze
+        VALUES = %w[unauthorized not_found].freeze
         def self.from_value(value)
           value
         end
@@ -73,7 +73,7 @@ module OctridevGithub
         PROCESSING = 'processing'
         COMPLETED = 'completed'
         FAILED = 'failed'
-        VALUES = ['pending', 'processing', 'completed', 'failed'].freeze
+        VALUES = %w[pending processing completed failed].freeze
         def self.from_value(value)
           value
         end
@@ -84,7 +84,7 @@ module OctridevGithub
         ALL = 'all'
         ADMIN = 'admin'
         MEMBER = 'member'
-        VALUES = ['all', 'admin', 'member'].freeze
+        VALUES = %w[all admin member].freeze
         def self.from_value(value)
           value
         end
@@ -95,7 +95,7 @@ module OctridevGithub
         ALL = 'all'
         MEMBER = 'member'
         SCIM = 'scim'
-        VALUES = ['all', 'member', 'scim'].freeze
+        VALUES = %w[all member scim].freeze
         def self.from_value(value)
           value
         end
@@ -106,7 +106,7 @@ module OctridevGithub
         ALL = 'all'
         NONE = 'none'
         SELECTED = 'selected'
-        VALUES = ['all', 'none', 'selected'].freeze
+        VALUES = %w[all none selected].freeze
         def self.from_value(value)
           value
         end
@@ -117,7 +117,7 @@ module OctridevGithub
         V_2_FA_DISABLED = '2fa_disabled'
         V_2_FA_INSECURE = '2fa_insecure'
         ALL = 'all'
-        VALUES = ['2fa_disabled', '2fa_insecure', 'all'].freeze
+        VALUES = %w[2fa_disabled 2fa_insecure all].freeze
         def self.from_value(value)
           value
         end
@@ -129,7 +129,7 @@ module OctridevGithub
         WRITE = 'write'
         ADMIN = 'admin'
         NONE = 'none'
-        VALUES = ['read', 'write', 'admin', 'none'].freeze
+        VALUES = %w[read write admin none].freeze
         def self.from_value(value)
           value
         end
@@ -139,7 +139,7 @@ module OctridevGithub
       module OrgsReviewPatGrantRequestsInBulkAction
         APPROVE = 'approve'
         DENY = 'deny'
-        VALUES = ['approve', 'deny'].freeze
+        VALUES = %w[approve deny].freeze
         def self.from_value(value)
           value
         end
@@ -151,8 +151,8 @@ module OctridevGithub
         INTERNET_EXPOSED = 'internet-exposed'
         LATERAL_MOVEMENT = 'lateral-movement'
         SENSITIVE_DATA = 'sensitive-data'
-        VALUES = [
-          'critical-resource', 'internet-exposed', 'lateral-movement', 'sensitive-data'
+        VALUES = %w[
+          critical-resource internet-exposed lateral-movement sensitive-data
         ].freeze
         def self.from_value(value)
           value
@@ -164,7 +164,7 @@ module OctridevGithub
         ALL = 'all'
         PRIVATE = 'private'
         NONE = 'none'
-        VALUES = ['all', 'private', 'none'].freeze
+        VALUES = %w[all private none].freeze
         def self.from_value(value)
           value
         end
@@ -174,7 +174,7 @@ module OctridevGithub
       module OrgsCreateClusterDeploymentRecordsJobDeploymentsItemStatus
         DEPLOYED = 'deployed'
         DECOMMISSIONED = 'decommissioned'
-        VALUES = ['deployed', 'decommissioned'].freeze
+        VALUES = %w[deployed decommissioned].freeze
         def self.from_value(value)
           value
         end
@@ -184,7 +184,7 @@ module OctridevGithub
       module OrgsSetMembershipForUserRole
         ADMIN = 'admin'
         MEMBER = 'member'
-        VALUES = ['admin', 'member'].freeze
+        VALUES = %w[admin member].freeze
         def self.from_value(value)
           value
         end
@@ -194,7 +194,7 @@ module OctridevGithub
       module OrgsCreateArtifactDeploymentRecordStatus
         DEPLOYED = 'deployed'
         DECOMMISSIONED = 'decommissioned'
-        VALUES = ['deployed', 'decommissioned'].freeze
+        VALUES = %w[deployed decommissioned].freeze
         def self.from_value(value)
           value
         end
@@ -205,7 +205,7 @@ module OctridevGithub
         ACTIVE = 'active'
         EOL = 'eol'
         DELETED = 'deleted'
-        VALUES = ['active', 'eol', 'deleted'].freeze
+        VALUES = %w[active eol deleted].freeze
         def self.from_value(value)
           value
         end
@@ -215,7 +215,7 @@ module OctridevGithub
       module OrgsReviewPatGrantRequestAction
         APPROVE = 'approve'
         DENY = 'deny'
-        VALUES = ['approve', 'deny'].freeze
+        VALUES = %w[approve deny].freeze
         def self.from_value(value)
           value
         end
@@ -225,7 +225,7 @@ module OctridevGithub
       module OrgsListMembershipsForAuthenticatedUserParameter
         ACTIVE = 'active'
         PENDING = 'pending'
-        VALUES = ['active', 'pending'].freeze
+        VALUES = %w[active pending].freeze
         def self.from_value(value)
           value
         end
@@ -244,7 +244,7 @@ module OctridevGithub
       module OrgsEnableOrDisableSecurityProductOnAllOrgReposQuerySuite
         DEFAULT = 'default'
         EXTENDED = 'extended'
-        VALUES = ['default', 'extended'].freeze
+        VALUES = %w[default extended].freeze
         def self.from_value(value)
           value
         end
@@ -271,19 +271,18 @@ module OctridevGithub
         per_page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/organizations",
+          '/organizations',
           config: config,
           query: {
             'since' => QueryValue.new(since, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::OrganizationSimple],
           decoder: :json,
           operation_id: 'orgs_list',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -295,11 +294,10 @@ module OctridevGithub
         org:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org)
           ].join,
           config: config,
@@ -307,7 +305,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'orgs_get',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -463,21 +461,21 @@ module OctridevGithub
         deploy_keys_enabled_for_repositories: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org)
           ].join,
           config: config,
           body: __sdk_body_orgs_update_part1(billing_email: billing_email, company: company, email: email, twitter_username: twitter_username, location: location, name: name, description: description, has_organization_projects: has_organization_projects, has_repository_projects: has_repository_projects, default_repository_permission: default_repository_permission, members_can_create_repositories: members_can_create_repositories, members_can_create_internal_repositories: members_can_create_internal_repositories, members_can_create_private_repositories: members_can_create_private_repositories, members_can_create_public_repositories: members_can_create_public_repositories, members_allowed_repository_creation_type: members_allowed_repository_creation_type, members_can_create_pages: members_can_create_pages, members_can_create_public_pages: members_can_create_public_pages, members_can_create_private_pages: members_can_create_private_pages).merge(
-            __sdk_body_orgs_update_part2(members_can_fork_private_repositories: members_can_fork_private_repositories, web_commit_signoff_required: web_commit_signoff_required, blog: blog, advanced_security_enabled_for_new_repositories: advanced_security_enabled_for_new_repositories, dependabot_alerts_enabled_for_new_repositories: dependabot_alerts_enabled_for_new_repositories, dependabot_security_updates_enabled_for_new_repositories: dependabot_security_updates_enabled_for_new_repositories, dependency_graph_enabled_for_new_repositories: dependency_graph_enabled_for_new_repositories, secret_scanning_enabled_for_new_repositories: secret_scanning_enabled_for_new_repositories, secret_scanning_push_protection_enabled_for_new_repositories: secret_scanning_push_protection_enabled_for_new_repositories, secret_scanning_push_protection_custom_link_enabled: secret_scanning_push_protection_custom_link_enabled, secret_scanning_push_protection_custom_link: secret_scanning_push_protection_custom_link, deploy_keys_enabled_for_repositories: deploy_keys_enabled_for_repositories)),
+            __sdk_body_orgs_update_part2(members_can_fork_private_repositories: members_can_fork_private_repositories, web_commit_signoff_required: web_commit_signoff_required, blog: blog, advanced_security_enabled_for_new_repositories: advanced_security_enabled_for_new_repositories, dependabot_alerts_enabled_for_new_repositories: dependabot_alerts_enabled_for_new_repositories, dependabot_security_updates_enabled_for_new_repositories: dependabot_security_updates_enabled_for_new_repositories, dependency_graph_enabled_for_new_repositories: dependency_graph_enabled_for_new_repositories, secret_scanning_enabled_for_new_repositories: secret_scanning_enabled_for_new_repositories, secret_scanning_push_protection_enabled_for_new_repositories: secret_scanning_push_protection_enabled_for_new_repositories, secret_scanning_push_protection_custom_link_enabled: secret_scanning_push_protection_custom_link_enabled, secret_scanning_push_protection_custom_link: secret_scanning_push_protection_custom_link, deploy_keys_enabled_for_repositories: deploy_keys_enabled_for_repositories)
+          ),
           return_type: ::OctridevGithub::OrganizationFull,
           decoder: :json,
           operation_id: 'orgs_update',
           request_options: request_options,
-          errors: { '409' => ::OctridevGithub::BasicError },
+          errors: { '409' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -519,7 +517,7 @@ module OctridevGithub
           'members_allowed_repository_creation_type' => members_allowed_repository_creation_type,
           'members_can_create_pages' => members_can_create_pages,
           'members_can_create_public_pages' => members_can_create_public_pages,
-          'members_can_create_private_pages' => members_can_create_private_pages,
+          'members_can_create_private_pages' => members_can_create_private_pages
         }
       end
       private_class_method :__sdk_body_orgs_update_part1
@@ -550,7 +548,7 @@ module OctridevGithub
           'secret_scanning_push_protection_enabled_for_new_repositories' => secret_scanning_push_protection_enabled_for_new_repositories,
           'secret_scanning_push_protection_custom_link_enabled' => secret_scanning_push_protection_custom_link_enabled,
           'secret_scanning_push_protection_custom_link' => secret_scanning_push_protection_custom_link,
-          'deploy_keys_enabled_for_repositories' => deploy_keys_enabled_for_repositories,
+          'deploy_keys_enabled_for_repositories' => deploy_keys_enabled_for_repositories
         }
       end
       private_class_method :__sdk_body_orgs_update_part2
@@ -563,18 +561,17 @@ module OctridevGithub
         org:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org)
           ].join,
           config: config,
           decoder: :json,
           operation_id: 'orgs_delete',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

@@ -50,10 +50,9 @@ module OctridevGithub
         search_type: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/search/issues",
+          '/search/issues',
           config: config,
           query: {
             'q' => QueryValue.new(q_value, style: 'form', explode: true),
@@ -62,13 +61,13 @@ module OctridevGithub
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'page' => QueryValue.new(page, style: 'form', explode: true),
             'advanced_search' => QueryValue.new(advanced_search, style: 'form', explode: true),
-            'search_type' => QueryValue.new(search_type, style: 'form', explode: true),
+            'search_type' => QueryValue.new(search_type, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Search::SearchIssuesAndPullRequestsResponse,
           decoder: :json,
           operation_id: 'search_issues_and_pull_requests',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
 
@@ -97,10 +96,9 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/search/labels",
+          '/search/labels',
           config: config,
           query: {
             'repository_id' => QueryValue.new(repository_id, style: 'form', explode: true),
@@ -108,13 +106,13 @@ module OctridevGithub
             'sort' => QueryValue.new(sort, style: 'form', explode: true),
             'order' => QueryValue.new(order, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Search::SearchLabelsResponse,
           decoder: :json,
           operation_id: 'search_labels',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -145,23 +143,22 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/search/repositories",
+          '/search/repositories',
           config: config,
           query: {
             'q' => QueryValue.new(q_value, style: 'form', explode: true),
             'sort' => QueryValue.new(sort, style: 'form', explode: true),
             'order' => QueryValue.new(order, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Search::SearchReposResponse,
           decoder: :json,
           operation_id: 'search_repos',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable },
+          errors: { '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
 
@@ -183,20 +180,19 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/search/topics",
+          '/search/topics',
           config: config,
           query: {
             'q' => QueryValue.new(q_value, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Search::SearchTopicsResponse,
           decoder: :json,
           operation_id: 'search_topics',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -226,23 +222,22 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/search/users",
+          '/search/users',
           config: config,
           query: {
             'q' => QueryValue.new(q_value, style: 'form', explode: true),
             'sort' => QueryValue.new(sort, style: 'form', explode: true),
             'order' => QueryValue.new(order, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Search::SearchUsersResponse,
           decoder: :json,
           operation_id: 'search_users',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable },
+          errors: { '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
     end

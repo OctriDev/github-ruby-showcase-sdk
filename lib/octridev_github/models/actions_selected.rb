@@ -5,52 +5,50 @@
 
 # actions_selected domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalSelectedActionsMetadata
-  FIELDS = {
-    github_owned_allowed: "github_owned_allowed",
-    verified_allowed: "verified_allowed",
-    patterns_allowed: "patterns_allowed",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for SelectedActions.
-# Typed representation of the `SelectedActions` API schema.
-class SelectedActions
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalSelectedActionsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalSelectedActionsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalSelectedActionsMetadata::DECODERS
-
-  # @return [Boolean] Whether GitHub-owned actions are allowed. For example, this includes the actions in the `actions` organization.
-  attr_reader :github_owned_allowed
-  # @return [Boolean] Whether actions from GitHub Marketplace verified creators are allowed. Set to `true` to allow all actions by GitHub Marketplace verified creators.
-  attr_reader :verified_allowed
-  # @return [Array_of_String] Specifies a list of string-matching patterns to allow specific action(s) and reusable workflow(s). Wildcards, tags, and SHAs are allowed. For example, `monalisa/octocat@*`, `monalisa/octocat@v2`, `monalisa/*`. > [!NOTE] > The `patterns_allowed` setting only applies to public repositories.
-  attr_reader :patterns_allowed
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalSelectedActionsMetadata
+    FIELDS = {
+      github_owned_allowed: 'github_owned_allowed',
+      verified_allowed: 'verified_allowed',
+      patterns_allowed: 'patterns_allowed'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for SelectedActions.
+  # Typed representation of the `SelectedActions` API schema.
+  class SelectedActions
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalSelectedActionsMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalSelectedActionsMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalSelectedActionsMetadata::DECODERS
+
+    # @return [Boolean] Whether GitHub-owned actions are allowed. For example, this includes the actions in the `actions` organization.
+    attr_reader :github_owned_allowed
+    # @return [Boolean] Whether actions from GitHub Marketplace verified creators are allowed. Set to `true` to allow all actions by GitHub Marketplace verified creators.
+    attr_reader :verified_allowed
+    # @return [Array_of_String] Specifies a list of string-matching patterns to allow specific action(s) and reusable workflow(s). Wildcards, tags, and SHAs are allowed. For example, `monalisa/octocat@*`, `monalisa/octocat@v2`, `monalisa/*`. > [!NOTE] > The `patterns_allowed` setting only applies to public repositories.
+    attr_reader :patterns_allowed
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the SelectedActionsUrl SDK value decoder.
+  module SelectedActionsUrl
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the SelectedActionsUrl SDK value decoder.
-module SelectedActionsUrl
-  def self.from_value(value)
-    value
-  end
-end
 end

@@ -5,666 +5,669 @@
 
 # repos_repository_rule domain models (part 2)
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleCommitMessagePatternMetadata
-  FIELDS = {
-    type: "type",
-    parameters: "parameters",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleCommitMessagePatternType.from_value(value)
-    end,
-    parameters: lambda do |value|
-      ::OctridevGithub::RepositoryRuleCommitMessagePatternParameters.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleCommitMessagePattern.
-# Parameters to be used for the commit_message_pattern rule
-class RepositoryRuleCommitMessagePattern
-  include RepositoryRule
-  include OrgRules
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleCommitMessagePatternMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleCommitMessagePatternMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleCommitMessagePatternMetadata::DECODERS
-
-  # @return [RepositoryRuleCommitMessagePatternType] Required enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [RepositoryRuleCommitMessagePatternParameters] Optional object value serialized in the `parameters` wire field.
-  attr_reader :parameters
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleCommitMessagePatternMetadata
+    FIELDS = {
+      type: 'type',
+      parameters: 'parameters'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleCommitMessagePatternType.from_value(value)
+      end,
+      parameters: lambda do |value|
+        ::OctridevGithub::RepositoryRuleCommitMessagePatternParameters.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RepositoryRuleCommitMessagePattern.
+  # Parameters to be used for the commit_message_pattern rule
+  class RepositoryRuleCommitMessagePattern
+    include RepositoryRule
+    include OrgRules
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleCommitMessagePatternMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleCommitMessagePatternMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleCommitMessagePatternMetadata::DECODERS
+
+    # @return [RepositoryRuleCommitMessagePatternType] Required enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [RepositoryRuleCommitMessagePatternParameters] Optional object value serialized in the `parameters` wire field.
+    attr_reader :parameters
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the RepositoryRuleCommitMessagePatternParametersOperator SDK namespace.
-module RepositoryRuleCommitMessagePatternParametersOperator
-  STARTS_WITH = 'starts_with'
-  ENDS_WITH = 'ends_with'
-  CONTAINS = 'contains'
-  REGEX = 'regex'
-  VALUES = ['starts_with', 'ends_with', 'contains', 'regex'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the RepositoryRuleCommitMessagePatternType SDK namespace.
-module RepositoryRuleCommitMessagePatternType
-  COMMIT_MESSAGE_PATTERN = 'commit_message_pattern'
-  VALUES = ['commit_message_pattern'].freeze
-  def self.from_value(value)
-    return value if VALUES.include?(value)
-
-    raise SdkValidationError.new('RepositoryRuleCommitMessagePatternType', 'enum', "Unknown RepositoryRuleCommitMessagePatternType: #{value}")
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleCommitterEmailPatternParametersMetadata
-  FIELDS = {
-    name: "name",
-    negate: "negate",
-    operator: "operator",
-    pattern: "pattern",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    operator
-    pattern
-  ].freeze
-  DECODERS = {
-    operator: lambda do |value|
-      ::OctridevGithub::RepositoryRuleCommitterEmailPatternParametersOperator.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleCommitterEmailPatternParameters.
-# Optional object value serialized in the `parameters` wire field.
-class RepositoryRuleCommitterEmailPatternParameters
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleCommitterEmailPatternParametersMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleCommitterEmailPatternParametersMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleCommitterEmailPatternParametersMetadata::DECODERS
-
-  # @return [String] How this rule appears when configuring it.
-  attr_reader :name
-  # @return [Boolean] If true, the rule will fail if the pattern matches.
-  attr_reader :negate
-  # @return [RepositoryRuleCommitterEmailPatternParametersOperator] The operator to use for matching.
-  attr_reader :operator
-  # @return [String] The pattern to match with.
-  attr_reader :pattern
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the RepositoryRuleCommitMessagePatternParametersOperator SDK namespace.
+  module RepositoryRuleCommitMessagePatternParametersOperator
+    STARTS_WITH = 'starts_with'
+    ENDS_WITH = 'ends_with'
+    CONTAINS = 'contains'
+    REGEX = 'regex'
+    VALUES = %w[starts_with ends_with contains regex].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the RepositoryRuleCommitMessagePatternType SDK namespace.
+  module RepositoryRuleCommitMessagePatternType
+    COMMIT_MESSAGE_PATTERN = 'commit_message_pattern'
+    VALUES = ['commit_message_pattern'].freeze
+    def self.from_value(value)
+      return value if VALUES.include?(value)
+
+      raise SdkValidationError.new('RepositoryRuleCommitMessagePatternType', 'enum', "Unknown RepositoryRuleCommitMessagePatternType: #{value}")
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleCommitterEmailPatternMetadata
-  FIELDS = {
-    type: "type",
-    parameters: "parameters",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleCommitterEmailPatternType.from_value(value)
-    end,
-    parameters: lambda do |value|
-      ::OctridevGithub::RepositoryRuleCommitterEmailPatternParameters.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleCommitterEmailPattern.
-# Parameters to be used for the committer_email_pattern rule
-class RepositoryRuleCommitterEmailPattern
-  include RepositoryRule
-  include OrgRules
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleCommitterEmailPatternMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleCommitterEmailPatternMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleCommitterEmailPatternMetadata::DECODERS
-
-  # @return [RepositoryRuleCommitterEmailPatternType] Required enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [RepositoryRuleCommitterEmailPatternParameters] Optional object value serialized in the `parameters` wire field.
-  attr_reader :parameters
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleCommitterEmailPatternParametersMetadata
+    FIELDS = {
+      name: 'name',
+      negate: 'negate',
+      operator: 'operator',
+      pattern: 'pattern'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      operator
+      pattern
+    ].freeze
+    DECODERS = {
+      operator: lambda do |value|
+        ::OctridevGithub::RepositoryRuleCommitterEmailPatternParametersOperator.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RepositoryRuleCommitterEmailPatternParameters.
+  # Optional object value serialized in the `parameters` wire field.
+  class RepositoryRuleCommitterEmailPatternParameters
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleCommitterEmailPatternParametersMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleCommitterEmailPatternParametersMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleCommitterEmailPatternParametersMetadata::DECODERS
+
+    # @return [String] How this rule appears when configuring it.
+    attr_reader :name
+    # @return [Boolean] If true, the rule will fail if the pattern matches.
+    attr_reader :negate
+    # @return [RepositoryRuleCommitterEmailPatternParametersOperator] The operator to use for matching.
+    attr_reader :operator
+    # @return [String] The pattern to match with.
+    attr_reader :pattern
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the RepositoryRuleCommitterEmailPatternParametersOperator SDK namespace.
-module RepositoryRuleCommitterEmailPatternParametersOperator
-  STARTS_WITH = 'starts_with'
-  ENDS_WITH = 'ends_with'
-  CONTAINS = 'contains'
-  REGEX = 'regex'
-  VALUES = ['starts_with', 'ends_with', 'contains', 'regex'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the RepositoryRuleCommitterEmailPatternType SDK namespace.
-module RepositoryRuleCommitterEmailPatternType
-  COMMITTER_EMAIL_PATTERN = 'committer_email_pattern'
-  VALUES = ['committer_email_pattern'].freeze
-  def self.from_value(value)
-    return value if VALUES.include?(value)
-
-    raise SdkValidationError.new('RepositoryRuleCommitterEmailPatternType', 'enum', "Unknown RepositoryRuleCommitterEmailPatternType: #{value}")
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleCopilotCodeReviewParametersMetadata
-  FIELDS = {
-    review_draft_pull_requests: "review_draft_pull_requests",
-    review_on_push: "review_on_push",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for RepositoryRuleCopilotCodeReviewParameters.
-# Optional object value serialized in the `parameters` wire field.
-class RepositoryRuleCopilotCodeReviewParameters
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleCopilotCodeReviewParametersMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleCopilotCodeReviewParametersMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleCopilotCodeReviewParametersMetadata::DECODERS
-
-  # @return [Boolean] Copilot automatically reviews draft pull requests before they are marked as ready for review.
-  attr_reader :review_draft_pull_requests
-  # @return [Boolean] Copilot automatically reviews each new push to the pull request.
-  attr_reader :review_on_push
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleCommitterEmailPatternMetadata
+    FIELDS = {
+      type: 'type',
+      parameters: 'parameters'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleCommitterEmailPatternType.from_value(value)
+      end,
+      parameters: lambda do |value|
+        ::OctridevGithub::RepositoryRuleCommitterEmailPatternParameters.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RepositoryRuleCommitterEmailPattern.
+  # Parameters to be used for the committer_email_pattern rule
+  class RepositoryRuleCommitterEmailPattern
+    include RepositoryRule
+    include OrgRules
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleCommitterEmailPatternMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleCommitterEmailPatternMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleCommitterEmailPatternMetadata::DECODERS
+
+    # @return [RepositoryRuleCommitterEmailPatternType] Required enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [RepositoryRuleCommitterEmailPatternParameters] Optional object value serialized in the `parameters` wire field.
+    attr_reader :parameters
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleCopilotCodeReviewMetadata
-  FIELDS = {
-    type: "type",
-    parameters: "parameters",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleCopilotCodeReviewType.from_value(value)
-    end,
-    parameters: lambda do |value|
-      ::OctridevGithub::RepositoryRuleCopilotCodeReviewParameters.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleCopilotCodeReview.
-# Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and AI credits.
-class RepositoryRuleCopilotCodeReview
-  include RepositoryRule
-  include OrgRules
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleCopilotCodeReviewMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleCopilotCodeReviewMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleCopilotCodeReviewMetadata::DECODERS
-
-  # @return [RepositoryRuleCopilotCodeReviewType] Required enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [RepositoryRuleCopilotCodeReviewParameters] Optional object value serialized in the `parameters` wire field.
-  attr_reader :parameters
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the RepositoryRuleCommitterEmailPatternParametersOperator SDK namespace.
+  module RepositoryRuleCommitterEmailPatternParametersOperator
+    STARTS_WITH = 'starts_with'
+    ENDS_WITH = 'ends_with'
+    CONTAINS = 'contains'
+    REGEX = 'regex'
+    VALUES = %w[starts_with ends_with contains regex].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the RepositoryRuleCommitterEmailPatternType SDK namespace.
+  module RepositoryRuleCommitterEmailPatternType
+    COMMITTER_EMAIL_PATTERN = 'committer_email_pattern'
+    VALUES = ['committer_email_pattern'].freeze
+    def self.from_value(value)
+      return value if VALUES.include?(value)
+
+      raise SdkValidationError.new('RepositoryRuleCommitterEmailPatternType', 'enum', "Unknown RepositoryRuleCommitterEmailPatternType: #{value}")
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the RepositoryRuleCopilotCodeReviewType SDK namespace.
-module RepositoryRuleCopilotCodeReviewType
-  COPILOT_CODE_REVIEW = 'copilot_code_review'
-  VALUES = ['copilot_code_review'].freeze
-  def self.from_value(value)
-    return value if VALUES.include?(value)
-
-    raise SdkValidationError.new('RepositoryRuleCopilotCodeReviewType', 'enum', "Unknown RepositoryRuleCopilotCodeReviewType: #{value}")
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleCreationMetadata
-  FIELDS = {
-    type: "type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleCreationType.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleCreation.
-# Only allow users with bypass permission to create matching refs.
-class RepositoryRuleCreation
-  include RepositoryRule
-  include OrgRules
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleCreationMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleCreationMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleCreationMetadata::DECODERS
-
-  # @return [RepositoryRuleCreationType] Required enumerated value serialized in the `type` wire field.
-  attr_reader :type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleCopilotCodeReviewParametersMetadata
+    FIELDS = {
+      review_draft_pull_requests: 'review_draft_pull_requests',
+      review_on_push: 'review_on_push'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RepositoryRuleCopilotCodeReviewParameters.
+  # Optional object value serialized in the `parameters` wire field.
+  class RepositoryRuleCopilotCodeReviewParameters
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleCopilotCodeReviewParametersMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleCopilotCodeReviewParametersMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleCopilotCodeReviewParametersMetadata::DECODERS
+
+    # @return [Boolean] Copilot automatically reviews draft pull requests before they are marked as ready for review.
+    attr_reader :review_draft_pull_requests
+    # @return [Boolean] Copilot automatically reviews each new push to the pull request.
+    attr_reader :review_on_push
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the RepositoryRuleCreationType SDK namespace.
-module RepositoryRuleCreationType
-  CREATION = 'creation'
-  VALUES = ['creation'].freeze
-  def self.from_value(value)
-    return value if VALUES.include?(value)
-
-    raise SdkValidationError.new('RepositoryRuleCreationType', 'enum', "Unknown RepositoryRuleCreationType: #{value}")
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleDeletionMetadata
-  FIELDS = {
-    type: "type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleDeletionType.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleDeletion.
-# Only allow users with bypass permissions to delete matching refs.
-class RepositoryRuleDeletion
-  include RepositoryRule
-  include OrgRules
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleDeletionMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleDeletionMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleDeletionMetadata::DECODERS
-
-  # @return [RepositoryRuleDeletionType] Required enumerated value serialized in the `type` wire field.
-  attr_reader :type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleCopilotCodeReviewMetadata
+    FIELDS = {
+      type: 'type',
+      parameters: 'parameters'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleCopilotCodeReviewType.from_value(value)
+      end,
+      parameters: lambda do |value|
+        ::OctridevGithub::RepositoryRuleCopilotCodeReviewParameters.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RepositoryRuleCopilotCodeReview.
+  # Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and AI credits.
+  class RepositoryRuleCopilotCodeReview
+    include RepositoryRule
+    include OrgRules
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleCopilotCodeReviewMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleCopilotCodeReviewMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleCopilotCodeReviewMetadata::DECODERS
+
+    # @return [RepositoryRuleCopilotCodeReviewType] Required enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [RepositoryRuleCopilotCodeReviewParameters] Optional object value serialized in the `parameters` wire field.
+    attr_reader :parameters
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # Defines the RepositoryRuleCopilotCodeReviewType SDK namespace.
+  module RepositoryRuleCopilotCodeReviewType
+    COPILOT_CODE_REVIEW = 'copilot_code_review'
+    VALUES = ['copilot_code_review'].freeze
+    def self.from_value(value)
+      return value if VALUES.include?(value)
 
-# Defines the RepositoryRuleDeletionType SDK namespace.
-module RepositoryRuleDeletionType
-  DELETION = 'deletion'
-  VALUES = ['deletion'].freeze
-  def self.from_value(value)
-    return value if VALUES.include?(value)
-
-    raise SdkValidationError.new('RepositoryRuleDeletionType', 'enum', "Unknown RepositoryRuleDeletionType: #{value}")
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleDetailedVariant0Metadata
-  FIELDS = {
-    type: "type",
-    ruleset_source_type: "ruleset_source_type",
-    ruleset_source: "ruleset_source",
-    ruleset_id: "ruleset_id",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleCreationType.from_value(value)
-    end,
-    ruleset_source_type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleDetailedVariant0.
-class RepositoryRuleDetailedVariant0
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleDetailedVariant0Metadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleDetailedVariant0Metadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleDetailedVariant0Metadata::DECODERS
-
-  # @return [RepositoryRuleCreationType] Required enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
-  attr_reader :ruleset_source_type
-  # @return [String] The name of the source of the ruleset that includes this rule.
-  attr_reader :ruleset_source
-  # @return [Integer] The ID of the ruleset that includes this rule.
-  attr_reader :ruleset_id
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+      raise SdkValidationError.new('RepositoryRuleCopilotCodeReviewType', 'enum', "Unknown RepositoryRuleCopilotCodeReviewType: #{value}")
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleCreationMetadata
+    FIELDS = {
+      type: 'type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleCreationType.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for RepositoryRuleCreation.
+  # Only allow users with bypass permission to create matching refs.
+  class RepositoryRuleCreation
+    include RepositoryRule
+    include OrgRules
 
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleDetailedVariant1Metadata
-  FIELDS = {
-    type: "type",
-    parameters: "parameters",
-    ruleset_source_type: "ruleset_source_type",
-    ruleset_source: "ruleset_source",
-    ruleset_id: "ruleset_id",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleUpdateType.from_value(value)
-    end,
-    parameters: lambda do |value|
-      ::OctridevGithub::RepositoryRuleUpdateParameters.from_hash(value)
-    end,
-    ruleset_source_type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
-    end,
-  }.freeze
-end
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleCreationMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleCreationMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleCreationMetadata::DECODERS
 
-# API model for RepositoryRuleDetailedVariant1.
-class RepositoryRuleDetailedVariant1
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleDetailedVariant1Metadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleDetailedVariant1Metadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleDetailedVariant1Metadata::DECODERS
+    # @return [RepositoryRuleCreationType] Required enumerated value serialized in the `type` wire field.
+    attr_reader :type
 
-  # @return [RepositoryRuleUpdateType] Required enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [RepositoryRuleUpdateParameters] Optional object value serialized in the `parameters` wire field.
-  attr_reader :parameters
-  # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
-  attr_reader :ruleset_source_type
-  # @return [String] The name of the source of the ruleset that includes this rule.
-  attr_reader :ruleset_source
-  # @return [Integer] The ID of the ruleset that includes this rule.
-  attr_reader :ruleset_id
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the RepositoryRuleCreationType SDK namespace.
+  module RepositoryRuleCreationType
+    CREATION = 'creation'
+    VALUES = ['creation'].freeze
+    def self.from_value(value)
+      return value if VALUES.include?(value)
+
+      raise SdkValidationError.new('RepositoryRuleCreationType', 'enum', "Unknown RepositoryRuleCreationType: #{value}")
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleDetailedVariant2Metadata
-  FIELDS = {
-    type: "type",
-    ruleset_source_type: "ruleset_source_type",
-    ruleset_source: "ruleset_source",
-    ruleset_id: "ruleset_id",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleDeletionType.from_value(value)
-    end,
-    ruleset_source_type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleDetailedVariant2.
-class RepositoryRuleDetailedVariant2
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleDetailedVariant2Metadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleDetailedVariant2Metadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleDetailedVariant2Metadata::DECODERS
-
-  # @return [RepositoryRuleDeletionType] Required enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
-  attr_reader :ruleset_source_type
-  # @return [String] The name of the source of the ruleset that includes this rule.
-  attr_reader :ruleset_source
-  # @return [Integer] The ID of the ruleset that includes this rule.
-  attr_reader :ruleset_id
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleDeletionMetadata
+    FIELDS = {
+      type: 'type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleDeletionType.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RepositoryRuleDeletion.
+  # Only allow users with bypass permissions to delete matching refs.
+  class RepositoryRuleDeletion
+    include RepositoryRule
+    include OrgRules
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleDeletionMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleDeletionMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleDeletionMetadata::DECODERS
+
+    # @return [RepositoryRuleDeletionType] Required enumerated value serialized in the `type` wire field.
+    attr_reader :type
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # Defines the RepositoryRuleDeletionType SDK namespace.
+  module RepositoryRuleDeletionType
+    DELETION = 'deletion'
+    VALUES = ['deletion'].freeze
+    def self.from_value(value)
+      return value if VALUES.include?(value)
 
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleDetailedVariant3Metadata
-  FIELDS = {
-    type: "type",
-    ruleset_source_type: "ruleset_source_type",
-    ruleset_source: "ruleset_source",
-    ruleset_id: "ruleset_id",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleRequiredLinearHistoryType.from_value(value)
-    end,
-    ruleset_source_type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleDetailedVariant3.
-class RepositoryRuleDetailedVariant3
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleDetailedVariant3Metadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleDetailedVariant3Metadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleDetailedVariant3Metadata::DECODERS
-
-  # @return [RepositoryRuleRequiredLinearHistoryType] Required enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
-  attr_reader :ruleset_source_type
-  # @return [String] The name of the source of the ruleset that includes this rule.
-  attr_reader :ruleset_source
-  # @return [Integer] The ID of the ruleset that includes this rule.
-  attr_reader :ruleset_id
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+      raise SdkValidationError.new('RepositoryRuleDeletionType', 'enum', "Unknown RepositoryRuleDeletionType: #{value}")
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleDetailedVariant0Metadata
+    FIELDS = {
+      type: 'type',
+      ruleset_source_type: 'ruleset_source_type',
+      ruleset_source: 'ruleset_source',
+      ruleset_id: 'ruleset_id'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleCreationType.from_value(value)
+      end,
+      ruleset_source_type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for RepositoryRuleDetailedVariant0.
+  class RepositoryRuleDetailedVariant0
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleDetailedVariant0Metadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleDetailedVariant0Metadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleDetailedVariant0Metadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleDetailedVariant4Metadata
-  FIELDS = {
-    type: "type",
-    parameters: "parameters",
-    ruleset_source_type: "ruleset_source_type",
-    ruleset_source: "ruleset_source",
-    ruleset_id: "ruleset_id",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleMergeQueueType.from_value(value)
-    end,
-    parameters: lambda do |value|
-      ::OctridevGithub::RepositoryRuleMergeQueueParameters.from_hash(value)
-    end,
-    ruleset_source_type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
-    end,
-  }.freeze
-end
+    # @return [RepositoryRuleCreationType] Required enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
+    attr_reader :ruleset_source_type
+    # @return [String] The name of the source of the ruleset that includes this rule.
+    attr_reader :ruleset_source
+    # @return [Integer] The ID of the ruleset that includes this rule.
+    attr_reader :ruleset_id
 
-# API model for RepositoryRuleDetailedVariant4.
-class RepositoryRuleDetailedVariant4
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleDetailedVariant4Metadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleDetailedVariant4Metadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleDetailedVariant4Metadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [RepositoryRuleMergeQueueType] Required enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [RepositoryRuleMergeQueueParameters] Optional object value serialized in the `parameters` wire field.
-  attr_reader :parameters
-  # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
-  attr_reader :ruleset_source_type
-  # @return [String] The name of the source of the ruleset that includes this rule.
-  attr_reader :ruleset_source
-  # @return [Integer] The ID of the ruleset that includes this rule.
-  attr_reader :ruleset_id
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleDetailedVariant1Metadata
+    FIELDS = {
+      type: 'type',
+      parameters: 'parameters',
+      ruleset_source_type: 'ruleset_source_type',
+      ruleset_source: 'ruleset_source',
+      ruleset_id: 'ruleset_id'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleUpdateType.from_value(value)
+      end,
+      parameters: lambda do |value|
+        ::OctridevGithub::RepositoryRuleUpdateParameters.from_hash(value)
+      end,
+      ruleset_source_type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # API model for RepositoryRuleDetailedVariant1.
+  class RepositoryRuleDetailedVariant1
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleDetailedVariant1Metadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleDetailedVariant1Metadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleDetailedVariant1Metadata::DECODERS
+
+    # @return [RepositoryRuleUpdateType] Required enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [RepositoryRuleUpdateParameters] Optional object value serialized in the `parameters` wire field.
+    attr_reader :parameters
+    # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
+    attr_reader :ruleset_source_type
+    # @return [String] The name of the source of the ruleset that includes this rule.
+    attr_reader :ruleset_source
+    # @return [Integer] The ID of the ruleset that includes this rule.
+    attr_reader :ruleset_id
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
+
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleDetailedVariant2Metadata
+    FIELDS = {
+      type: 'type',
+      ruleset_source_type: 'ruleset_source_type',
+      ruleset_source: 'ruleset_source',
+      ruleset_id: 'ruleset_id'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleDeletionType.from_value(value)
+      end,
+      ruleset_source_type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
+      end
+    }.freeze
+  end
+
+  # API model for RepositoryRuleDetailedVariant2.
+  class RepositoryRuleDetailedVariant2
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleDetailedVariant2Metadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleDetailedVariant2Metadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleDetailedVariant2Metadata::DECODERS
+
+    # @return [RepositoryRuleDeletionType] Required enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
+    attr_reader :ruleset_source_type
+    # @return [String] The name of the source of the ruleset that includes this rule.
+    attr_reader :ruleset_source
+    # @return [Integer] The ID of the ruleset that includes this rule.
+    attr_reader :ruleset_id
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleDetailedVariant3Metadata
+    FIELDS = {
+      type: 'type',
+      ruleset_source_type: 'ruleset_source_type',
+      ruleset_source: 'ruleset_source',
+      ruleset_id: 'ruleset_id'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleRequiredLinearHistoryType.from_value(value)
+      end,
+      ruleset_source_type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
+      end
+    }.freeze
+  end
+
+  # API model for RepositoryRuleDetailedVariant3.
+  class RepositoryRuleDetailedVariant3
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleDetailedVariant3Metadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleDetailedVariant3Metadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleDetailedVariant3Metadata::DECODERS
+
+    # @return [RepositoryRuleRequiredLinearHistoryType] Required enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
+    attr_reader :ruleset_source_type
+    # @return [String] The name of the source of the ruleset that includes this rule.
+    attr_reader :ruleset_source
+    # @return [Integer] The ID of the ruleset that includes this rule.
+    attr_reader :ruleset_id
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleDetailedVariant4Metadata
+    FIELDS = {
+      type: 'type',
+      parameters: 'parameters',
+      ruleset_source_type: 'ruleset_source_type',
+      ruleset_source: 'ruleset_source',
+      ruleset_id: 'ruleset_id'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleMergeQueueType.from_value(value)
+      end,
+      parameters: lambda do |value|
+        ::OctridevGithub::RepositoryRuleMergeQueueParameters.from_hash(value)
+      end,
+      ruleset_source_type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
+      end
+    }.freeze
+  end
+
+  # API model for RepositoryRuleDetailedVariant4.
+  class RepositoryRuleDetailedVariant4
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleDetailedVariant4Metadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleDetailedVariant4Metadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleDetailedVariant4Metadata::DECODERS
+
+    # @return [RepositoryRuleMergeQueueType] Required enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [RepositoryRuleMergeQueueParameters] Optional object value serialized in the `parameters` wire field.
+    attr_reader :parameters
+    # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
+    attr_reader :ruleset_source_type
+    # @return [String] The name of the source of the ruleset that includes this rule.
+    attr_reader :ruleset_source
+    # @return [Integer] The ID of the ruleset that includes this rule.
+    attr_reader :ruleset_id
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
 end

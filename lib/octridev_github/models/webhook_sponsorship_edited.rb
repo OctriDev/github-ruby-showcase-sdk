@@ -5,173 +5,171 @@
 
 # webhook_sponsorship_edited domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalWebhookSponsorshipEditedChangesPrivacyLevelMetadata
-  FIELDS = {
-    from: "from",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    from
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookSponsorshipEditedChangesPrivacyLevel.
-# Optional object value serialized in the `privacy_level` wire field.
-class WebhookSponsorshipEditedChangesPrivacyLevel
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookSponsorshipEditedChangesPrivacyLevelMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookSponsorshipEditedChangesPrivacyLevelMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookSponsorshipEditedChangesPrivacyLevelMetadata::DECODERS
-
-  # @return [String] The `edited` event types include the details about the change when someone edits a sponsorship to change the privacy.
-  attr_reader :from
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookSponsorshipEditedChangesPrivacyLevelMetadata
+    FIELDS = {
+      from: 'from'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      from
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookSponsorshipEditedChangesPrivacyLevel.
+  # Optional object value serialized in the `privacy_level` wire field.
+  class WebhookSponsorshipEditedChangesPrivacyLevel
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookSponsorshipEditedChangesPrivacyLevelMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookSponsorshipEditedChangesPrivacyLevelMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookSponsorshipEditedChangesPrivacyLevelMetadata::DECODERS
+
+    # @return [String] The `edited` event types include the details about the change when someone edits a sponsorship to change the privacy.
+    attr_reader :from
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookSponsorshipEditedChangesMetadata
-  FIELDS = {
-    privacy_level: "privacy_level",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    privacy_level: lambda do |value|
-      ::OctridevGithub::WebhookSponsorshipEditedChangesPrivacyLevel.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookSponsorshipEditedChanges.
-# Required object value serialized in the `changes` wire field.
-class WebhookSponsorshipEditedChanges
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookSponsorshipEditedChangesMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookSponsorshipEditedChangesMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookSponsorshipEditedChangesMetadata::DECODERS
-
-  # @return [WebhookSponsorshipEditedChangesPrivacyLevel] Optional object value serialized in the `privacy_level` wire field.
-  attr_reader :privacy_level
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookSponsorshipEditedChangesMetadata
+    FIELDS = {
+      privacy_level: 'privacy_level'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      privacy_level: lambda do |value|
+        ::OctridevGithub::WebhookSponsorshipEditedChangesPrivacyLevel.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookSponsorshipEditedChanges.
+  # Required object value serialized in the `changes` wire field.
+  class WebhookSponsorshipEditedChanges
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookSponsorshipEditedChangesMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookSponsorshipEditedChangesMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookSponsorshipEditedChangesMetadata::DECODERS
+
+    # @return [WebhookSponsorshipEditedChangesPrivacyLevel] Optional object value serialized in the `privacy_level` wire field.
+    attr_reader :privacy_level
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookSponsorshipEditedMetadata
-  FIELDS = {
-    action: "action",
-    changes: "changes",
-    enterprise: "enterprise",
-    installation: "installation",
-    organization: "organization",
-    repository: "repository",
-    sender: "sender",
-    sponsorship: "sponsorship",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    action
-    changes
-    sender
-    sponsorship
-  ].freeze
-  DECODERS = {
-    action: lambda do |value|
-      ::OctridevGithub::WebhookSponsorshipEditedAction.from_value(value)
-    end,
-    changes: lambda do |value|
-      ::OctridevGithub::WebhookSponsorshipEditedChanges.from_hash(value)
-    end,
-    enterprise: lambda do |value|
-      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-    end,
-    installation: lambda do |value|
-      ::OctridevGithub::SimpleInstallation.from_hash(value)
-    end,
-    organization: lambda do |value|
-      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-    end,
-    repository: lambda do |value|
-      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-    end,
-    sender: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-    sponsorship: lambda do |value|
-      ::OctridevGithub::WebhooksSponsorship.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookSponsorshipEdited.
-# Typed representation of the `WebhookSponsorshipEdited` API schema.
-class WebhookSponsorshipEdited
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookSponsorshipEditedMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookSponsorshipEditedMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookSponsorshipEditedMetadata::DECODERS
-
-  # @return [WebhookSponsorshipEditedAction] Required enumerated value serialized in the `action` wire field.
-  attr_reader :action
-  # @return [WebhookSponsorshipEditedChanges] Required object value serialized in the `changes` wire field.
-  attr_reader :changes
-  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-  attr_reader :enterprise
-  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-  attr_reader :installation
-  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-  attr_reader :organization
-  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-  attr_reader :repository
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :sender
-  # @return [WebhooksSponsorship] Required object value serialized in the `sponsorship` wire field.
-  attr_reader :sponsorship
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookSponsorshipEditedMetadata
+    FIELDS = {
+      action: 'action',
+      changes: 'changes',
+      enterprise: 'enterprise',
+      installation: 'installation',
+      organization: 'organization',
+      repository: 'repository',
+      sender: 'sender',
+      sponsorship: 'sponsorship'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      action
+      changes
+      sender
+      sponsorship
+    ].freeze
+    DECODERS = {
+      action: lambda do |value|
+        ::OctridevGithub::WebhookSponsorshipEditedAction.from_value(value)
+      end,
+      changes: lambda do |value|
+        ::OctridevGithub::WebhookSponsorshipEditedChanges.from_hash(value)
+      end,
+      enterprise: lambda do |value|
+        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+      end,
+      installation: lambda do |value|
+        ::OctridevGithub::SimpleInstallation.from_hash(value)
+      end,
+      organization: lambda do |value|
+        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+      end,
+      repository: lambda do |value|
+        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+      end,
+      sender: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end,
+      sponsorship: lambda do |value|
+        ::OctridevGithub::WebhooksSponsorship.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookSponsorshipEdited.
+  # Typed representation of the `WebhookSponsorshipEdited` API schema.
+  class WebhookSponsorshipEdited
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookSponsorshipEditedMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookSponsorshipEditedMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookSponsorshipEditedMetadata::DECODERS
+
+    # @return [WebhookSponsorshipEditedAction] Required enumerated value serialized in the `action` wire field.
+    attr_reader :action
+    # @return [WebhookSponsorshipEditedChanges] Required object value serialized in the `changes` wire field.
+    attr_reader :changes
+    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+    attr_reader :enterprise
+    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+    attr_reader :installation
+    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+    attr_reader :organization
+    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+    attr_reader :repository
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :sender
+    # @return [WebhooksSponsorship] Required object value serialized in the `sponsorship` wire field.
+    attr_reader :sponsorship
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the WebhookSponsorshipEditedAction SDK namespace.
+  module WebhookSponsorshipEditedAction
+    EDITED = 'edited'
+    VALUES = ['edited'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the WebhookSponsorshipEditedAction SDK namespace.
-module WebhookSponsorshipEditedAction
-  EDITED = 'edited'
-  VALUES = ['edited'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

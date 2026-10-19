@@ -25,22 +25,21 @@ module OctridevGithub
         environment_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name)
           ].join,
           config: config,
           return_type: ::OctridevGithub::Environment,
           decoder: :json,
           operation_id: 'repos_get_environment',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -77,15 +76,14 @@ module OctridevGithub
         deployment_branch_policy: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name)
           ].join,
           config: config,
@@ -93,13 +91,13 @@ module OctridevGithub
             'wait_timer' => wait_timer,
             'prevent_self_review' => prevent_self_review,
             'reviewers' => reviewers,
-            'deployment_branch_policy' => deployment_branch_policy,
+            'deployment_branch_policy' => deployment_branch_policy
           },
           return_type: ::OctridevGithub::Environment,
           decoder: :json,
           operation_id: 'repos_create_or_update_environment',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::BasicError },
+          errors: { '422' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -119,21 +117,20 @@ module OctridevGithub
         environment_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_delete_an_environment',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -159,27 +156,26 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name),
-            "/deployment-branch-policies"
+            '/deployment-branch-policies'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Repos::ReposListDeploymentBranchPoliciesResponse,
           decoder: :json,
           operation_id: 'repos_list_deployment_branch_policies',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -208,27 +204,26 @@ module OctridevGithub
         type: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name),
-            "/deployment-branch-policies"
+            '/deployment-branch-policies'
           ].join,
           config: config,
           body: {
             'name' => name,
-            'type' => type,
+            'type' => type
           },
           return_type: ::OctridevGithub::DeploymentBranchPolicy,
           decoder: :json,
           operation_id: 'repos_create_deployment_branch_policy',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -251,24 +246,23 @@ module OctridevGithub
         branch_policy_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name),
-            "/deployment-branch-policies/",
+            '/deployment-branch-policies/',
             SdkClient.encode_path_segment(branch_policy_id)
           ].join,
           config: config,
           return_type: ::OctridevGithub::DeploymentBranchPolicy,
           decoder: :json,
           operation_id: 'repos_get_deployment_branch_policy',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -297,27 +291,26 @@ module OctridevGithub
         name:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name),
-            "/deployment-branch-policies/",
+            '/deployment-branch-policies/',
             SdkClient.encode_path_segment(branch_policy_id)
           ].join,
           config: config,
           body: {
-            'name' => name,
+            'name' => name
           },
           return_type: ::OctridevGithub::DeploymentBranchPolicy,
           decoder: :json,
           operation_id: 'repos_update_deployment_branch_policy',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -340,23 +333,22 @@ module OctridevGithub
         branch_policy_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name),
-            "/deployment-branch-policies/",
+            '/deployment-branch-policies/',
             SdkClient.encode_path_segment(branch_policy_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_delete_deployment_branch_policy',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -376,23 +368,22 @@ module OctridevGithub
         owner:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name),
-            "/deployment_protection_rules"
+            '/deployment_protection_rules'
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::Repos::ReposGetAllDeploymentProtectionRulesResponse,
           decoder: :json,
           operation_id: 'repos_get_all_deployment_protection_rules',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -415,26 +406,25 @@ module OctridevGithub
         integration_id: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name),
-            "/deployment_protection_rules"
+            '/deployment_protection_rules'
           ].join,
           config: config,
           body: {
-            'integration_id' => integration_id,
+            'integration_id' => integration_id
           },
           return_type: ::OctridevGithub::DeploymentProtectionRule,
           decoder: :json,
           operation_id: 'repos_create_deployment_protection_rule',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -460,27 +450,26 @@ module OctridevGithub
         per_page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name),
-            "/deployment_protection_rules/apps"
+            '/deployment_protection_rules/apps'
           ].join,
           config: config,
           query: {
             'page' => QueryValue.new(page, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Repos::ReposListCustomDeploymentRuleIntegrationsResponse,
           decoder: :json,
           operation_id: 'repos_list_custom_deployment_rule_integrations',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -503,24 +492,23 @@ module OctridevGithub
         protection_rule_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name),
-            "/deployment_protection_rules/",
+            '/deployment_protection_rules/',
             SdkClient.encode_path_segment(protection_rule_id)
           ].join,
           config: config,
           return_type: ::OctridevGithub::DeploymentProtectionRule,
           decoder: :json,
           operation_id: 'repos_get_custom_deployment_protection_rule',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -543,23 +531,22 @@ module OctridevGithub
         protection_rule_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name),
-            "/deployment_protection_rules/",
+            '/deployment_protection_rules/',
             SdkClient.encode_path_segment(protection_rule_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_disable_deployment_protection_rule',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

@@ -5,37 +5,36 @@
 
 # repos_repository_rule domain models
 module OctridevGithub
-# Defines the RepositoryRule SDK namespace.
-module RepositoryRule
-  DISCRIMINATOR_MAPPING = {
-    "creation" => -> { RepositoryRuleCreation },
-    "update" => -> { RepositoryRuleUpdate },
-    "deletion" => -> { RepositoryRuleDeletion },
-    "required_linear_history" => -> { RepositoryRuleRequiredLinearHistory },
-    "merge_queue" => -> { RepositoryRuleMergeQueue },
-    "required_deployments" => -> { RepositoryRuleRequiredDeployments },
-    "required_signatures" => -> { RepositoryRuleRequiredSignatures },
-    "pull_request" => -> { RepositoryRulePullRequest },
-    "required_status_checks" => -> { RepositoryRuleRequiredStatusChecks },
-    "non_fast_forward" => -> { RepositoryRuleNonFastForward },
-    "commit_message_pattern" => -> { RepositoryRuleCommitMessagePattern },
-    "commit_author_email_pattern" => -> { RepositoryRuleCommitAuthorEmailPattern },
-    "committer_email_pattern" => -> { RepositoryRuleCommitterEmailPattern },
-    "branch_name_pattern" => -> { RepositoryRuleBranchNamePattern },
-    "tag_name_pattern" => -> { RepositoryRuleTagNamePattern },
-    "workflows" => -> { RepositoryRuleWorkflows },
-    "code_scanning" => -> { RepositoryRuleCodeScanning },
-    "code_quality" => -> { RepositoryRuleCodeQuality },
-    "code_coverage" => -> { RepositoryRuleCodeCoverage },
-    "copilot_code_review" => -> { RepositoryRuleCopilotCodeReview },
-    "license_compliance_scanning" => -> { RepositoryRuleLicenseComplianceScanning },
-    "file_path_restriction" => -> { RepositoryRuleFilePathRestriction },
-    "max_file_path_length" => -> { RepositoryRuleMaxFilePathLength },
-    "file_extension_restriction" => -> { RepositoryRuleFileExtensionRestriction },
-    "max_file_size" => -> { RepositoryRuleMaxFileSize },
-  }.freeze
-  UNDECIDED_VARIANTS = (
-    [
+  # Defines the RepositoryRule SDK namespace.
+  module RepositoryRule
+    DISCRIMINATOR_MAPPING = {
+      'creation' => -> { RepositoryRuleCreation },
+      'update' => -> { RepositoryRuleUpdate },
+      'deletion' => -> { RepositoryRuleDeletion },
+      'required_linear_history' => -> { RepositoryRuleRequiredLinearHistory },
+      'merge_queue' => -> { RepositoryRuleMergeQueue },
+      'required_deployments' => -> { RepositoryRuleRequiredDeployments },
+      'required_signatures' => -> { RepositoryRuleRequiredSignatures },
+      'pull_request' => -> { RepositoryRulePullRequest },
+      'required_status_checks' => -> { RepositoryRuleRequiredStatusChecks },
+      'non_fast_forward' => -> { RepositoryRuleNonFastForward },
+      'commit_message_pattern' => -> { RepositoryRuleCommitMessagePattern },
+      'commit_author_email_pattern' => -> { RepositoryRuleCommitAuthorEmailPattern },
+      'committer_email_pattern' => -> { RepositoryRuleCommitterEmailPattern },
+      'branch_name_pattern' => -> { RepositoryRuleBranchNamePattern },
+      'tag_name_pattern' => -> { RepositoryRuleTagNamePattern },
+      'workflows' => -> { RepositoryRuleWorkflows },
+      'code_scanning' => -> { RepositoryRuleCodeScanning },
+      'code_quality' => -> { RepositoryRuleCodeQuality },
+      'code_coverage' => -> { RepositoryRuleCodeCoverage },
+      'copilot_code_review' => -> { RepositoryRuleCopilotCodeReview },
+      'license_compliance_scanning' => -> { RepositoryRuleLicenseComplianceScanning },
+      'file_path_restriction' => -> { RepositoryRuleFilePathRestriction },
+      'max_file_path_length' => -> { RepositoryRuleMaxFilePathLength },
+      'file_extension_restriction' => -> { RepositoryRuleFileExtensionRestriction },
+      'max_file_size' => -> { RepositoryRuleMaxFileSize }
+    }.freeze
+    UNDECIDED_VARIANTS = [
       -> { RepositoryRuleCreation },
       -> { RepositoryRuleUpdate },
       -> { RepositoryRuleDeletion },
@@ -60,616 +59,619 @@ module RepositoryRule
       -> { RepositoryRuleFilePathRestriction },
       -> { RepositoryRuleMaxFilePathLength },
       -> { RepositoryRuleFileExtensionRestriction },
-      -> { RepositoryRuleMaxFileSize },
-    ]
-  ).freeze
+      -> { RepositoryRuleMaxFileSize }
+    ].freeze
 
-  def self.from_hash(hash)
-    return hash unless hash.is_a?(::Hash)
-    type = DISCRIMINATOR_MAPPING[hash["type"]]&.call
-    return type.from_hash(hash) if type
+    def self.from_hash(hash)
+      return hash unless hash.is_a?(::Hash)
 
-    return SdkUnknownMember.new(hash) if hash["type"].is_a?(::String)
+      type = DISCRIMINATOR_MAPPING[hash['type']]&.call
+      return type.from_hash(hash) if type
 
-    raise SdkValidationError.new('RepositoryRule', 'variant', "Unknown RepositoryRule discriminator: #{hash["type"].inspect}")
-  end
-end
+      return SdkUnknownMember.new(hash) if hash['type'].is_a?(::String)
 
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleBranchNamePatternParametersMetadata
-  FIELDS = {
-    name: "name",
-    negate: "negate",
-    operator: "operator",
-    pattern: "pattern",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    operator
-    pattern
-  ].freeze
-  DECODERS = {
-    operator: lambda do |value|
-      ::OctridevGithub::RepositoryRuleBranchNamePatternParametersOperator.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleBranchNamePatternParameters.
-# Optional object value serialized in the `parameters` wire field.
-class RepositoryRuleBranchNamePatternParameters
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleBranchNamePatternParametersMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleBranchNamePatternParametersMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleBranchNamePatternParametersMetadata::DECODERS
-
-  # @return [String] How this rule appears when configuring it.
-  attr_reader :name
-  # @return [Boolean] If true, the rule will fail if the pattern matches.
-  attr_reader :negate
-  # @return [RepositoryRuleBranchNamePatternParametersOperator] The operator to use for matching.
-  attr_reader :operator
-  # @return [String] The pattern to match with.
-  attr_reader :pattern
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+      raise SdkValidationError.new('RepositoryRule', 'variant', "Unknown RepositoryRule discriminator: #{hash['type'].inspect}")
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleBranchNamePatternParametersMetadata
+    FIELDS = {
+      name: 'name',
+      negate: 'negate',
+      operator: 'operator',
+      pattern: 'pattern'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      operator
+      pattern
+    ].freeze
+    DECODERS = {
+      operator: lambda do |value|
+        ::OctridevGithub::RepositoryRuleBranchNamePatternParametersOperator.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for RepositoryRuleBranchNamePatternParameters.
+  # Optional object value serialized in the `parameters` wire field.
+  class RepositoryRuleBranchNamePatternParameters
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleBranchNamePatternParametersMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleBranchNamePatternParametersMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleBranchNamePatternParametersMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleBranchNamePatternMetadata
-  FIELDS = {
-    type: "type",
-    parameters: "parameters",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleBranchNamePatternType.from_value(value)
-    end,
-    parameters: lambda do |value|
-      ::OctridevGithub::RepositoryRuleBranchNamePatternParameters.from_hash(value)
-    end,
-  }.freeze
-end
+    # @return [String] How this rule appears when configuring it.
+    attr_reader :name
+    # @return [Boolean] If true, the rule will fail if the pattern matches.
+    attr_reader :negate
+    # @return [RepositoryRuleBranchNamePatternParametersOperator] The operator to use for matching.
+    attr_reader :operator
+    # @return [String] The pattern to match with.
+    attr_reader :pattern
 
-# API model for RepositoryRuleBranchNamePattern.
-# Parameters to be used for the branch_name_pattern rule
-class RepositoryRuleBranchNamePattern
-  include RepositoryRule
-  include OrgRules
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleBranchNamePatternMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleBranchNamePatternMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleBranchNamePatternMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [RepositoryRuleBranchNamePatternType] Required enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [RepositoryRuleBranchNamePatternParameters] Optional object value serialized in the `parameters` wire field.
-  attr_reader :parameters
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleBranchNamePatternMetadata
+    FIELDS = {
+      type: 'type',
+      parameters: 'parameters'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleBranchNamePatternType.from_value(value)
+      end,
+      parameters: lambda do |value|
+        ::OctridevGithub::RepositoryRuleBranchNamePatternParameters.from_hash(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for RepositoryRuleBranchNamePattern.
+  # Parameters to be used for the branch_name_pattern rule
+  class RepositoryRuleBranchNamePattern
+    include RepositoryRule
+    include OrgRules
 
-# Defines the RepositoryRuleBranchNamePatternParametersOperator SDK namespace.
-module RepositoryRuleBranchNamePatternParametersOperator
-  STARTS_WITH = 'starts_with'
-  ENDS_WITH = 'ends_with'
-  CONTAINS = 'contains'
-  REGEX = 'regex'
-  VALUES = ['starts_with', 'ends_with', 'contains', 'regex'].freeze
-  def self.from_value(value)
-    value
-  end
-end
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleBranchNamePatternMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleBranchNamePatternMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleBranchNamePatternMetadata::DECODERS
 
-# Defines the RepositoryRuleBranchNamePatternType SDK namespace.
-module RepositoryRuleBranchNamePatternType
-  BRANCH_NAME_PATTERN = 'branch_name_pattern'
-  VALUES = ['branch_name_pattern'].freeze
-  def self.from_value(value)
-    return value if VALUES.include?(value)
+    # @return [RepositoryRuleBranchNamePatternType] Required enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [RepositoryRuleBranchNamePatternParameters] Optional object value serialized in the `parameters` wire field.
+    attr_reader :parameters
 
-    raise SdkValidationError.new('RepositoryRuleBranchNamePatternType', 'enum', "Unknown RepositoryRuleBranchNamePatternType: #{value}")
-  end
-end
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleCodeCoverageParametersMetadata
-  FIELDS = {
-    max_coverage_drop: "max_coverage_drop",
-    minimum_coverage: "minimum_coverage",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-# API model for RepositoryRuleCodeCoverageParameters.
-# Optional object value serialized in the `parameters` wire field.
-class RepositoryRuleCodeCoverageParameters
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleCodeCoverageParametersMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleCodeCoverageParametersMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleCodeCoverageParametersMetadata::DECODERS
-
-  # @return [Float] The maximum percentage points that line coverage may drop relative to the default branch. Pull requests that reduce line coverage by more than this amount will be blocked.
-  attr_reader :max_coverage_drop
-  # @return [Float] The absolute minimum line coverage percentage required. Pull requests with line coverage below this threshold will be blocked.
-  attr_reader :minimum_coverage
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the RepositoryRuleBranchNamePatternParametersOperator SDK namespace.
+  module RepositoryRuleBranchNamePatternParametersOperator
+    STARTS_WITH = 'starts_with'
+    ENDS_WITH = 'ends_with'
+    CONTAINS = 'contains'
+    REGEX = 'regex'
+    VALUES = %w[starts_with ends_with contains regex].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # Defines the RepositoryRuleBranchNamePatternType SDK namespace.
+  module RepositoryRuleBranchNamePatternType
+    BRANCH_NAME_PATTERN = 'branch_name_pattern'
+    VALUES = ['branch_name_pattern'].freeze
+    def self.from_value(value)
+      return value if VALUES.include?(value)
 
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleCodeCoverageMetadata
-  FIELDS = {
-    type: "type",
-    parameters: "parameters",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleCodeCoverageType.from_value(value)
-    end,
-    parameters: lambda do |value|
-      ::OctridevGithub::RepositoryRuleCodeCoverageParameters.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleCodeCoverage.
-# Enforce minimum line coverage thresholds on pull requests. This rule evaluates uploaded coverage data but does not wait for coverage uploads. To ensure coverage is evaluated before merging, make each status check associated with a coverage upload a required status check.
-class RepositoryRuleCodeCoverage
-  include RepositoryRule
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleCodeCoverageMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleCodeCoverageMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleCodeCoverageMetadata::DECODERS
-
-  # @return [RepositoryRuleCodeCoverageType] Required enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [RepositoryRuleCodeCoverageParameters] Optional object value serialized in the `parameters` wire field.
-  attr_reader :parameters
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+      raise SdkValidationError.new('RepositoryRuleBranchNamePatternType', 'enum', "Unknown RepositoryRuleBranchNamePatternType: #{value}")
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleCodeCoverageParametersMetadata
+    FIELDS = {
+      max_coverage_drop: 'max_coverage_drop',
+      minimum_coverage: 'minimum_coverage'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for RepositoryRuleCodeCoverageParameters.
+  # Optional object value serialized in the `parameters` wire field.
+  class RepositoryRuleCodeCoverageParameters
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleCodeCoverageParametersMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleCodeCoverageParametersMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleCodeCoverageParametersMetadata::DECODERS
 
-# Defines the RepositoryRuleCodeCoverageType SDK namespace.
-module RepositoryRuleCodeCoverageType
-  CODE_COVERAGE = 'code_coverage'
-  VALUES = ['code_coverage'].freeze
-  def self.from_value(value)
-    return value if VALUES.include?(value)
+    # @return [Float] The maximum percentage points that line coverage may drop relative to the default branch. Pull requests that reduce line coverage by more than this amount will be blocked.
+    attr_reader :max_coverage_drop
+    # @return [Float] The absolute minimum line coverage percentage required. Pull requests with line coverage below this threshold will be blocked.
+    attr_reader :minimum_coverage
 
-    raise SdkValidationError.new('RepositoryRuleCodeCoverageType', 'enum', "Unknown RepositoryRuleCodeCoverageType: #{value}")
-  end
-end
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleCodeQualityParametersMetadata
-  FIELDS = {
-    severity: "severity",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    severity
-  ].freeze
-  DECODERS = {
-    severity: lambda do |value|
-      ::OctridevGithub::RepositoryRuleCodeQualityParametersSeverity.from_value(value)
-    end,
-  }.freeze
-end
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-# API model for RepositoryRuleCodeQualityParameters.
-# Optional object value serialized in the `parameters` wire field.
-class RepositoryRuleCodeQualityParameters
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleCodeQualityParametersMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleCodeQualityParametersMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleCodeQualityParametersMetadata::DECODERS
-
-  # @return [RepositoryRuleCodeQualityParametersSeverity] The lowest severity level at which code quality reviews need to be resolved before commits can be merged.
-  attr_reader :severity
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleCodeCoverageMetadata
+    FIELDS = {
+      type: 'type',
+      parameters: 'parameters'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleCodeCoverageType.from_value(value)
+      end,
+      parameters: lambda do |value|
+        ::OctridevGithub::RepositoryRuleCodeCoverageParameters.from_hash(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for RepositoryRuleCodeCoverage.
+  # Enforce minimum line coverage thresholds on pull requests. This rule evaluates uploaded coverage data but does not wait for coverage uploads. To ensure coverage is evaluated before merging, make each status check associated with a coverage upload a required status check.
+  class RepositoryRuleCodeCoverage
+    include RepositoryRule
 
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleCodeQualityMetadata
-  FIELDS = {
-    type: "type",
-    parameters: "parameters",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleCodeQualityType.from_value(value)
-    end,
-    parameters: lambda do |value|
-      ::OctridevGithub::RepositoryRuleCodeQualityParameters.from_hash(value)
-    end,
-  }.freeze
-end
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleCodeCoverageMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleCodeCoverageMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleCodeCoverageMetadata::DECODERS
 
-# API model for RepositoryRuleCodeQuality.
-# Choose which severity levels of code quality results should block pull request merges. When configured, a code quality analysis must be done on the pull request before the changes can be merged.
-class RepositoryRuleCodeQuality
-  include RepositoryRule
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleCodeQualityMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleCodeQualityMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleCodeQualityMetadata::DECODERS
+    # @return [RepositoryRuleCodeCoverageType] Required enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [RepositoryRuleCodeCoverageParameters] Optional object value serialized in the `parameters` wire field.
+    attr_reader :parameters
 
-  # @return [RepositoryRuleCodeQualityType] Required enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [RepositoryRuleCodeQualityParameters] Optional object value serialized in the `parameters` wire field.
-  attr_reader :parameters
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the RepositoryRuleCodeCoverageType SDK namespace.
+  module RepositoryRuleCodeCoverageType
+    CODE_COVERAGE = 'code_coverage'
+    VALUES = ['code_coverage'].freeze
+    def self.from_value(value)
+      return value if VALUES.include?(value)
+
+      raise SdkValidationError.new('RepositoryRuleCodeCoverageType', 'enum', "Unknown RepositoryRuleCodeCoverageType: #{value}")
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the RepositoryRuleCodeQualityParametersSeverity SDK namespace.
-module RepositoryRuleCodeQualityParametersSeverity
-  ERRORS = 'errors'
-  WARNINGS = 'warnings'
-  NOTES = 'notes'
-  ALL = 'all'
-  VALUES = ['errors', 'warnings', 'notes', 'all'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the RepositoryRuleCodeQualityType SDK namespace.
-module RepositoryRuleCodeQualityType
-  CODE_QUALITY = 'code_quality'
-  VALUES = ['code_quality'].freeze
-  def self.from_value(value)
-    return value if VALUES.include?(value)
-
-    raise SdkValidationError.new('RepositoryRuleCodeQualityType', 'enum', "Unknown RepositoryRuleCodeQualityType: #{value}")
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleCodeScanningParametersMetadata
-  FIELDS = {
-    code_scanning_tools: "code_scanning_tools",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    code_scanning_tools
-  ].freeze
-  DECODERS = {
-    code_scanning_tools: lambda do |value|
-      value&.map { |item| ::OctridevGithub::RepositoryRuleParamsCodeScanningTool.from_hash(item) }
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleCodeScanningParameters.
-# Optional object value serialized in the `parameters` wire field.
-class RepositoryRuleCodeScanningParameters
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleCodeScanningParametersMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleCodeScanningParametersMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleCodeScanningParametersMetadata::DECODERS
-
-  # @return [Array_of_RepositoryRuleParamsCodeScanningTool] Tools that must provide code scanning results for this rule to pass.
-  attr_reader :code_scanning_tools
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleCodeQualityParametersMetadata
+    FIELDS = {
+      severity: 'severity'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      severity
+    ].freeze
+    DECODERS = {
+      severity: lambda do |value|
+        ::OctridevGithub::RepositoryRuleCodeQualityParametersSeverity.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RepositoryRuleCodeQualityParameters.
+  # Optional object value serialized in the `parameters` wire field.
+  class RepositoryRuleCodeQualityParameters
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleCodeQualityParametersMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleCodeQualityParametersMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleCodeQualityParametersMetadata::DECODERS
+
+    # @return [RepositoryRuleCodeQualityParametersSeverity] The lowest severity level at which code quality reviews need to be resolved before commits can be merged.
+    attr_reader :severity
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleCodeScanningMetadata
-  FIELDS = {
-    type: "type",
-    parameters: "parameters",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleCodeScanningType.from_value(value)
-    end,
-    parameters: lambda do |value|
-      ::OctridevGithub::RepositoryRuleCodeScanningParameters.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleCodeScanning.
-# Choose which tools must provide code scanning results before the reference is updated. When configured, code scanning must be enabled and have results for both the commit and the reference being updated.
-class RepositoryRuleCodeScanning
-  include RepositoryRule
-  include OrgRules
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleCodeScanningMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleCodeScanningMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleCodeScanningMetadata::DECODERS
-
-  # @return [RepositoryRuleCodeScanningType] Required enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [RepositoryRuleCodeScanningParameters] Optional object value serialized in the `parameters` wire field.
-  attr_reader :parameters
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleCodeQualityMetadata
+    FIELDS = {
+      type: 'type',
+      parameters: 'parameters'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleCodeQualityType.from_value(value)
+      end,
+      parameters: lambda do |value|
+        ::OctridevGithub::RepositoryRuleCodeQualityParameters.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RepositoryRuleCodeQuality.
+  # Choose which severity levels of code quality results should block pull request merges. When configured, a code quality analysis must be done on the pull request before the changes can be merged.
+  class RepositoryRuleCodeQuality
+    include RepositoryRule
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleCodeQualityMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleCodeQualityMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleCodeQualityMetadata::DECODERS
+
+    # @return [RepositoryRuleCodeQualityType] Required enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [RepositoryRuleCodeQualityParameters] Optional object value serialized in the `parameters` wire field.
+    attr_reader :parameters
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the RepositoryRuleCodeScanningType SDK namespace.
-module RepositoryRuleCodeScanningType
-  CODE_SCANNING = 'code_scanning'
-  VALUES = ['code_scanning'].freeze
-  def self.from_value(value)
-    return value if VALUES.include?(value)
-
-    raise SdkValidationError.new('RepositoryRuleCodeScanningType', 'enum', "Unknown RepositoryRuleCodeScanningType: #{value}")
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleCommitAuthorEmailPatternParametersMetadata
-  FIELDS = {
-    name: "name",
-    negate: "negate",
-    operator: "operator",
-    pattern: "pattern",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    operator
-    pattern
-  ].freeze
-  DECODERS = {
-    operator: lambda do |value|
-      ::OctridevGithub::RepositoryRuleCommitAuthorEmailPatternParametersOperator.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleCommitAuthorEmailPatternParameters.
-# Optional object value serialized in the `parameters` wire field.
-class RepositoryRuleCommitAuthorEmailPatternParameters
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleCommitAuthorEmailPatternParametersMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleCommitAuthorEmailPatternParametersMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleCommitAuthorEmailPatternParametersMetadata::DECODERS
-
-  # @return [String] How this rule appears when configuring it.
-  attr_reader :name
-  # @return [Boolean] If true, the rule will fail if the pattern matches.
-  attr_reader :negate
-  # @return [RepositoryRuleCommitAuthorEmailPatternParametersOperator] The operator to use for matching.
-  attr_reader :operator
-  # @return [String] The pattern to match with.
-  attr_reader :pattern
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the RepositoryRuleCodeQualityParametersSeverity SDK namespace.
+  module RepositoryRuleCodeQualityParametersSeverity
+    ERRORS = 'errors'
+    WARNINGS = 'warnings'
+    NOTES = 'notes'
+    ALL = 'all'
+    VALUES = %w[errors warnings notes all].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the RepositoryRuleCodeQualityType SDK namespace.
+  module RepositoryRuleCodeQualityType
+    CODE_QUALITY = 'code_quality'
+    VALUES = ['code_quality'].freeze
+    def self.from_value(value)
+      return value if VALUES.include?(value)
+
+      raise SdkValidationError.new('RepositoryRuleCodeQualityType', 'enum', "Unknown RepositoryRuleCodeQualityType: #{value}")
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleCommitAuthorEmailPatternMetadata
-  FIELDS = {
-    type: "type",
-    parameters: "parameters",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleCommitAuthorEmailPatternType.from_value(value)
-    end,
-    parameters: lambda do |value|
-      ::OctridevGithub::RepositoryRuleCommitAuthorEmailPatternParameters.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleCommitAuthorEmailPattern.
-# Parameters to be used for the commit_author_email_pattern rule
-class RepositoryRuleCommitAuthorEmailPattern
-  include RepositoryRule
-  include OrgRules
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleCommitAuthorEmailPatternMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleCommitAuthorEmailPatternMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleCommitAuthorEmailPatternMetadata::DECODERS
-
-  # @return [RepositoryRuleCommitAuthorEmailPatternType] Required enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [RepositoryRuleCommitAuthorEmailPatternParameters] Optional object value serialized in the `parameters` wire field.
-  attr_reader :parameters
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleCodeScanningParametersMetadata
+    FIELDS = {
+      code_scanning_tools: 'code_scanning_tools'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      code_scanning_tools
+    ].freeze
+    DECODERS = {
+      code_scanning_tools: lambda do |value|
+        value&.map { |item| ::OctridevGithub::RepositoryRuleParamsCodeScanningTool.from_hash(item) }
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RepositoryRuleCodeScanningParameters.
+  # Optional object value serialized in the `parameters` wire field.
+  class RepositoryRuleCodeScanningParameters
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleCodeScanningParametersMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleCodeScanningParametersMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleCodeScanningParametersMetadata::DECODERS
+
+    # @return [Array_of_RepositoryRuleParamsCodeScanningTool] Tools that must provide code scanning results for this rule to pass.
+    attr_reader :code_scanning_tools
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the RepositoryRuleCommitAuthorEmailPatternParametersOperator SDK namespace.
-module RepositoryRuleCommitAuthorEmailPatternParametersOperator
-  STARTS_WITH = 'starts_with'
-  ENDS_WITH = 'ends_with'
-  CONTAINS = 'contains'
-  REGEX = 'regex'
-  VALUES = ['starts_with', 'ends_with', 'contains', 'regex'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the RepositoryRuleCommitAuthorEmailPatternType SDK namespace.
-module RepositoryRuleCommitAuthorEmailPatternType
-  COMMIT_AUTHOR_EMAIL_PATTERN = 'commit_author_email_pattern'
-  VALUES = ['commit_author_email_pattern'].freeze
-  def self.from_value(value)
-    return value if VALUES.include?(value)
-
-    raise SdkValidationError.new('RepositoryRuleCommitAuthorEmailPatternType', 'enum', "Unknown RepositoryRuleCommitAuthorEmailPatternType: #{value}")
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleCommitMessagePatternParametersMetadata
-  FIELDS = {
-    name: "name",
-    negate: "negate",
-    operator: "operator",
-    pattern: "pattern",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    operator
-    pattern
-  ].freeze
-  DECODERS = {
-    operator: lambda do |value|
-      ::OctridevGithub::RepositoryRuleCommitMessagePatternParametersOperator.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleCommitMessagePatternParameters.
-# Optional object value serialized in the `parameters` wire field.
-class RepositoryRuleCommitMessagePatternParameters
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleCommitMessagePatternParametersMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleCommitMessagePatternParametersMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleCommitMessagePatternParametersMetadata::DECODERS
-
-  # @return [String] How this rule appears when configuring it.
-  attr_reader :name
-  # @return [Boolean] If true, the rule will fail if the pattern matches.
-  attr_reader :negate
-  # @return [RepositoryRuleCommitMessagePatternParametersOperator] The operator to use for matching.
-  attr_reader :operator
-  # @return [String] The pattern to match with.
-  attr_reader :pattern
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleCodeScanningMetadata
+    FIELDS = {
+      type: 'type',
+      parameters: 'parameters'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleCodeScanningType.from_value(value)
+      end,
+      parameters: lambda do |value|
+        ::OctridevGithub::RepositoryRuleCodeScanningParameters.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RepositoryRuleCodeScanning.
+  # Choose which tools must provide code scanning results before the reference is updated. When configured, code scanning must be enabled and have results for both the commit and the reference being updated.
+  class RepositoryRuleCodeScanning
+    include RepositoryRule
+    include OrgRules
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleCodeScanningMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleCodeScanningMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleCodeScanningMetadata::DECODERS
+
+    # @return [RepositoryRuleCodeScanningType] Required enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [RepositoryRuleCodeScanningParameters] Optional object value serialized in the `parameters` wire field.
+    attr_reader :parameters
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the RepositoryRuleCodeScanningType SDK namespace.
+  module RepositoryRuleCodeScanningType
+    CODE_SCANNING = 'code_scanning'
+    VALUES = ['code_scanning'].freeze
+    def self.from_value(value)
+      return value if VALUES.include?(value)
+
+      raise SdkValidationError.new('RepositoryRuleCodeScanningType', 'enum', "Unknown RepositoryRuleCodeScanningType: #{value}")
+    end
   end
-end
+
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleCommitAuthorEmailPatternParametersMetadata
+    FIELDS = {
+      name: 'name',
+      negate: 'negate',
+      operator: 'operator',
+      pattern: 'pattern'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      operator
+      pattern
+    ].freeze
+    DECODERS = {
+      operator: lambda do |value|
+        ::OctridevGithub::RepositoryRuleCommitAuthorEmailPatternParametersOperator.from_value(value)
+      end
+    }.freeze
+  end
+
+  # API model for RepositoryRuleCommitAuthorEmailPatternParameters.
+  # Optional object value serialized in the `parameters` wire field.
+  class RepositoryRuleCommitAuthorEmailPatternParameters
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleCommitAuthorEmailPatternParametersMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleCommitAuthorEmailPatternParametersMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleCommitAuthorEmailPatternParametersMetadata::DECODERS
+
+    # @return [String] How this rule appears when configuring it.
+    attr_reader :name
+    # @return [Boolean] If true, the rule will fail if the pattern matches.
+    attr_reader :negate
+    # @return [RepositoryRuleCommitAuthorEmailPatternParametersOperator] The operator to use for matching.
+    attr_reader :operator
+    # @return [String] The pattern to match with.
+    attr_reader :pattern
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleCommitAuthorEmailPatternMetadata
+    FIELDS = {
+      type: 'type',
+      parameters: 'parameters'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleCommitAuthorEmailPatternType.from_value(value)
+      end,
+      parameters: lambda do |value|
+        ::OctridevGithub::RepositoryRuleCommitAuthorEmailPatternParameters.from_hash(value)
+      end
+    }.freeze
+  end
+
+  # API model for RepositoryRuleCommitAuthorEmailPattern.
+  # Parameters to be used for the commit_author_email_pattern rule
+  class RepositoryRuleCommitAuthorEmailPattern
+    include RepositoryRule
+    include OrgRules
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleCommitAuthorEmailPatternMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleCommitAuthorEmailPatternMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleCommitAuthorEmailPatternMetadata::DECODERS
+
+    # @return [RepositoryRuleCommitAuthorEmailPatternType] Required enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [RepositoryRuleCommitAuthorEmailPatternParameters] Optional object value serialized in the `parameters` wire field.
+    attr_reader :parameters
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Defines the RepositoryRuleCommitAuthorEmailPatternParametersOperator SDK namespace.
+  module RepositoryRuleCommitAuthorEmailPatternParametersOperator
+    STARTS_WITH = 'starts_with'
+    ENDS_WITH = 'ends_with'
+    CONTAINS = 'contains'
+    REGEX = 'regex'
+    VALUES = %w[starts_with ends_with contains regex].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Defines the RepositoryRuleCommitAuthorEmailPatternType SDK namespace.
+  module RepositoryRuleCommitAuthorEmailPatternType
+    COMMIT_AUTHOR_EMAIL_PATTERN = 'commit_author_email_pattern'
+    VALUES = ['commit_author_email_pattern'].freeze
+    def self.from_value(value)
+      return value if VALUES.include?(value)
+
+      raise SdkValidationError.new('RepositoryRuleCommitAuthorEmailPatternType', 'enum', "Unknown RepositoryRuleCommitAuthorEmailPatternType: #{value}")
+    end
+  end
+
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleCommitMessagePatternParametersMetadata
+    FIELDS = {
+      name: 'name',
+      negate: 'negate',
+      operator: 'operator',
+      pattern: 'pattern'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      operator
+      pattern
+    ].freeze
+    DECODERS = {
+      operator: lambda do |value|
+        ::OctridevGithub::RepositoryRuleCommitMessagePatternParametersOperator.from_value(value)
+      end
+    }.freeze
+  end
+
+  # API model for RepositoryRuleCommitMessagePatternParameters.
+  # Optional object value serialized in the `parameters` wire field.
+  class RepositoryRuleCommitMessagePatternParameters
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleCommitMessagePatternParametersMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleCommitMessagePatternParametersMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleCommitMessagePatternParametersMetadata::DECODERS
+
+    # @return [String] How this rule appears when configuring it.
+    attr_reader :name
+    # @return [Boolean] If true, the rule will fail if the pattern matches.
+    attr_reader :negate
+    # @return [RepositoryRuleCommitMessagePatternParametersOperator] The operator to use for matching.
+    attr_reader :operator
+    # @return [String] The pattern to match with.
+    attr_reader :pattern
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
 end

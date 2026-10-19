@@ -42,8 +42,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsListSelfHostedRunnersForRepoResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          runners: "runners",
+          total_count: 'total_count',
+          runners: 'runners'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -52,7 +52,7 @@ module OctridevGithub
         DECODERS = {
           runners: lambda do |value|
             value&.map { |item| ::OctridevGithub::Runner.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -82,15 +82,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsGetRunnerVersionDeprecationForRepoResponseMetadata
         FIELDS = {
-          runner_version: "runner_version",
-          registration_deprecates_at: "registration_deprecates_at",
-          runtime_deprecates_at: "runtime_deprecates_at",
+          runner_version: 'runner_version',
+          registration_deprecates_at: 'registration_deprecates_at',
+          runtime_deprecates_at: 'runtime_deprecates_at'
         }.freeze
         REQUIRED_FIELDS = %i[
           runner_version
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ActionsGetRunnerVersionDeprecationForRepoResponse.
@@ -124,18 +123,17 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsGenerateRunnerJitconfigForRepoMetadata
         FIELDS = {
-          name: "name",
-          runner_group_id: "runner_group_id",
-          labels: "labels",
-          work_folder: "work_folder",
+          name: 'name',
+          runner_group_id: 'runner_group_id',
+          labels: 'labels',
+          work_folder: 'work_folder'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
           runner_group_id
           labels
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ActionsGenerateRunnerJitconfigForRepo.
@@ -171,13 +169,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsAddCustomLabelsToSelfHostedRunnerForRepoMetadata
         FIELDS = {
-          labels: "labels",
+          labels: 'labels'
         }.freeze
         REQUIRED_FIELDS = %i[
           labels
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ActionsAddCustomLabelsToSelfHostedRunnerForRepo.
@@ -207,13 +204,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsSetCustomLabelsForSelfHostedRunnerForRepoMetadata
         FIELDS = {
-          labels: "labels",
+          labels: 'labels'
         }.freeze
         REQUIRED_FIELDS = %i[
           labels
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ActionsSetCustomLabelsForSelfHostedRunnerForRepo.
@@ -243,8 +239,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsListWorkflowRunsForRepoResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          workflow_runs: "workflow_runs",
+          total_count: 'total_count',
+          workflow_runs: 'workflow_runs'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -253,7 +249,7 @@ module OctridevGithub
         DECODERS = {
           workflow_runs: lambda do |value|
             value&.map { |item| ::OctridevGithub::WorkflowRun.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -283,8 +279,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsListWorkflowRunArtifactsResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          artifacts: "artifacts",
+          total_count: 'total_count',
+          artifacts: 'artifacts'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -293,7 +289,7 @@ module OctridevGithub
         DECODERS = {
           artifacts: lambda do |value|
             value&.map { |item| ::OctridevGithub::Artifact.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -323,8 +319,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsListJobsForWorkflowRunAttemptResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          jobs: "jobs",
+          total_count: 'total_count',
+          jobs: 'jobs'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -333,7 +329,7 @@ module OctridevGithub
         DECODERS = {
           jobs: lambda do |value|
             value&.map { |item| ::OctridevGithub::Job.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -363,8 +359,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsListJobsForWorkflowRunResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          jobs: "jobs",
+          total_count: 'total_count',
+          jobs: 'jobs'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -373,7 +369,7 @@ module OctridevGithub
         DECODERS = {
           jobs: lambda do |value|
             value&.map { |item| ::OctridevGithub::Job.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -403,9 +399,9 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsReviewPendingDeploymentsForRunMetadata
         FIELDS = {
-          environment_ids: "environment_ids",
-          state: "state",
-          comment: "comment",
+          environment_ids: 'environment_ids',
+          state: 'state',
+          comment: 'comment'
         }.freeze
         REQUIRED_FIELDS = %i[
           environment_ids
@@ -415,7 +411,7 @@ module OctridevGithub
         DECODERS = {
           state: lambda do |value|
             ::OctridevGithub::Methods::Actions::ActionsReviewPendingDeploymentsForRunState.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -450,12 +446,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsReRunWorkflowMetadata
         FIELDS = {
-          enable_debug_logging: "enable_debug_logging",
+          enable_debug_logging: 'enable_debug_logging'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ActionsReRunWorkflow.
@@ -485,12 +479,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsReRunWorkflowFailedJobsMetadata
         FIELDS = {
-          enable_debug_logging: "enable_debug_logging",
+          enable_debug_logging: 'enable_debug_logging'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ActionsReRunWorkflowFailedJobs.
@@ -520,8 +512,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsListRepoSecretsResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          secrets: "secrets",
+          total_count: 'total_count',
+          secrets: 'secrets'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -530,7 +522,7 @@ module OctridevGithub
         DECODERS = {
           secrets: lambda do |value|
             value&.map { |item| ::OctridevGithub::ActionsSecret.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 

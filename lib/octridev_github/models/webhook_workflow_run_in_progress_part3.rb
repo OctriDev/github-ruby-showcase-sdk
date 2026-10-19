@@ -5,379 +5,379 @@
 
 # webhook_workflow_run_in_progress domain models (part 3)
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalWebhookWorkflowRunInProgressWorkflowRunMetadata
-  FIELDS = {
-    actor: "actor",
-    artifacts_url: "artifacts_url",
-    cancel_url: "cancel_url",
-    check_suite_id: "check_suite_id",
-    check_suite_node_id: "check_suite_node_id",
-    check_suite_url: "check_suite_url",
-    conclusion: "conclusion",
-    created_at: "created_at",
-    event: "event",
-    head_branch: "head_branch",
-    head_commit: "head_commit",
-    head_repository: "head_repository",
-    head_sha: "head_sha",
-    html_url: "html_url",
-    id: "id",
-    jobs_url: "jobs_url",
-    logs_url: "logs_url",
-    name: "name",
-    node_id: "node_id",
-    path: "path",
-    previous_attempt_url: "previous_attempt_url",
-    pull_requests: "pull_requests",
-    referenced_workflows: "referenced_workflows",
-    repository: "repository",
-    rerun_url: "rerun_url",
-    run_attempt: "run_attempt",
-    run_number: "run_number",
-    run_started_at: "run_started_at",
-    status: "status",
-    triggering_actor: "triggering_actor",
-    updated_at: "updated_at",
-    url: "url",
-    workflow_id: "workflow_id",
-    workflow_url: "workflow_url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    actor
-    artifacts_url
-    cancel_url
-    check_suite_id
-    check_suite_node_id
-    check_suite_url
-    conclusion
-    created_at
-    event
-    head_branch
-    head_commit
-    head_repository
-    head_sha
-    html_url
-    id
-    jobs_url
-    logs_url
-    name
-    node_id
-    path
-    previous_attempt_url
-    pull_requests
-    repository
-    rerun_url
-    run_attempt
-    run_number
-    run_started_at
-    status
-    triggering_actor
-    updated_at
-    url
-    workflow_id
-    workflow_url
-  ].freeze
-  DECODERS = {
-    actor: lambda do |value|
-      ::OctridevGithub::WebhookWorkflowRunInProgressWorkflowRunActor.from_hash(value)
-    end,
-    conclusion: lambda do |value|
-      ::OctridevGithub::WebhookWorkflowRunInProgressWorkflowRunConclusion.from_value(value)
-    end,
-    head_commit: lambda do |value|
-      ::OctridevGithub::WebhookWorkflowRunInProgressWorkflowRunHeadCommit.from_hash(value)
-    end,
-    head_repository: lambda do |value|
-      ::OctridevGithub::WebhookWorkflowRunInProgressWorkflowRunHeadRepository.from_hash(value)
-    end,
-    pull_requests: lambda do |value|
-      value&.map { |item| item.nil? ? nil : ::OctridevGithub::WebhookWorkflowRunInProgressWorkflowRunPullRequestsItem.from_hash(item) }
-    end,
-    referenced_workflows: lambda do |value|
-      value&.map { |item| ::OctridevGithub::WebhookWorkflowRunInProgressWorkflowRunReferencedWorkflowsItem.from_hash(item) }
-    end,
-    repository: lambda do |value|
-      ::OctridevGithub::WebhookWorkflowRunInProgressWorkflowRunRepository.from_hash(value)
-    end,
-    status: lambda do |value|
-      ::OctridevGithub::WebhookWorkflowRunInProgressWorkflowRunStatus.from_value(value)
-    end,
-    triggering_actor: lambda do |value|
-      ::OctridevGithub::WebhookWorkflowRunInProgressWorkflowRunTriggeringActor.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    actor
-    conclusion
-    head_branch
-    name
-    previous_attempt_url
-    triggering_actor
-  ].freeze
-end
-
-# API model for WebhookWorkflowRunInProgressWorkflowRun.
-# Required object value serialized in the `workflow_run` wire field.
-class WebhookWorkflowRunInProgressWorkflowRun
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookWorkflowRunInProgressWorkflowRunMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookWorkflowRunInProgressWorkflowRunMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookWorkflowRunInProgressWorkflowRunMetadata::DECODERS
-
-  # @return [WebhookWorkflowRunInProgressWorkflowRunActor] Required object value serialized in the `actor` wire field.
-  attr_reader :actor
-  # @return [String] Required `uri`-formatted value serialized in the `artifacts_url` wire field.
-  attr_reader :artifacts_url
-  # @return [String] Required `uri`-formatted value serialized in the `cancel_url` wire field.
-  attr_reader :cancel_url
-  # @return [Integer] Required `integer` value serialized in the `check_suite_id` wire field.
-  attr_reader :check_suite_id
-  # @return [String] Required `string` value serialized in the `check_suite_node_id` wire field.
-  attr_reader :check_suite_node_id
-  # @return [String] Required `uri`-formatted value serialized in the `check_suite_url` wire field.
-  attr_reader :check_suite_url
-  # @return [WebhookWorkflowRunInProgressWorkflowRunConclusion] Required enumerated value serialized in the `conclusion` wire field.
-  attr_reader :conclusion
-  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Required `string` value serialized in the `event` wire field.
-  attr_reader :event
-  # @return [String] Required `string` value serialized in the `head_branch` wire field.
-  attr_reader :head_branch
-  # @return [WebhookWorkflowRunInProgressWorkflowRunHeadCommit] Required object value serialized in the `head_commit` wire field.
-  attr_reader :head_commit
-  # @return [WebhookWorkflowRunInProgressWorkflowRunHeadRepository] Required object value serialized in the `head_repository` wire field.
-  attr_reader :head_repository
-  # @return [String] Required `string` value serialized in the `head_sha` wire field.
-  attr_reader :head_sha
-  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `uri`-formatted value serialized in the `jobs_url` wire field.
-  attr_reader :jobs_url
-  # @return [String] Required `uri`-formatted value serialized in the `logs_url` wire field.
-  attr_reader :logs_url
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Required `string` value serialized in the `path` wire field.
-  attr_reader :path
-  # @return [String] Required `uri`-formatted value serialized in the `previous_attempt_url` wire field.
-  attr_reader :previous_attempt_url
-  # @return [Array_of_WebhookWorkflowRunInProgressWorkflowRunPullRequestsItem] Required array value serialized in the `pull_requests` wire field.
-  attr_reader :pull_requests
-  # @return [Array_of_WebhookWorkflowRunInProgressWorkflowRunReferencedWorkflowsItem] Optional array value serialized in the `referenced_workflows` wire field.
-  attr_reader :referenced_workflows
-  # @return [WebhookWorkflowRunInProgressWorkflowRunRepository] Required object value serialized in the `repository` wire field.
-  attr_reader :repository
-  # @return [String] Required `uri`-formatted value serialized in the `rerun_url` wire field.
-  attr_reader :rerun_url
-  # @return [Integer] Required `integer` value serialized in the `run_attempt` wire field.
-  attr_reader :run_attempt
-  # @return [Integer] Required `integer` value serialized in the `run_number` wire field.
-  attr_reader :run_number
-  # @return [String] Required `date-time`-formatted value serialized in the `run_started_at` wire field.
-  attr_reader :run_started_at
-  # @return [WebhookWorkflowRunInProgressWorkflowRunStatus] Required enumerated value serialized in the `status` wire field.
-  attr_reader :status
-  # @return [WebhookWorkflowRunInProgressWorkflowRunTriggeringActor] Required object value serialized in the `triggering_actor` wire field.
-  attr_reader :triggering_actor
-  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [Integer] Required `integer` value serialized in the `workflow_id` wire field.
-  attr_reader :workflow_id
-  # @return [String] Required `uri`-formatted value serialized in the `workflow_url` wire field.
-  attr_reader :workflow_url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookWorkflowRunInProgressWorkflowRunMetadata
+    FIELDS = {
+      actor: 'actor',
+      artifacts_url: 'artifacts_url',
+      cancel_url: 'cancel_url',
+      check_suite_id: 'check_suite_id',
+      check_suite_node_id: 'check_suite_node_id',
+      check_suite_url: 'check_suite_url',
+      conclusion: 'conclusion',
+      created_at: 'created_at',
+      event: 'event',
+      head_branch: 'head_branch',
+      head_commit: 'head_commit',
+      head_repository: 'head_repository',
+      head_sha: 'head_sha',
+      html_url: 'html_url',
+      id: 'id',
+      jobs_url: 'jobs_url',
+      logs_url: 'logs_url',
+      name: 'name',
+      node_id: 'node_id',
+      path: 'path',
+      previous_attempt_url: 'previous_attempt_url',
+      pull_requests: 'pull_requests',
+      referenced_workflows: 'referenced_workflows',
+      repository: 'repository',
+      rerun_url: 'rerun_url',
+      run_attempt: 'run_attempt',
+      run_number: 'run_number',
+      run_started_at: 'run_started_at',
+      status: 'status',
+      triggering_actor: 'triggering_actor',
+      updated_at: 'updated_at',
+      url: 'url',
+      workflow_id: 'workflow_id',
+      workflow_url: 'workflow_url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      actor
+      artifacts_url
+      cancel_url
+      check_suite_id
+      check_suite_node_id
+      check_suite_url
+      conclusion
+      created_at
+      event
+      head_branch
+      head_commit
+      head_repository
+      head_sha
+      html_url
+      id
+      jobs_url
+      logs_url
+      name
+      node_id
+      path
+      previous_attempt_url
+      pull_requests
+      repository
+      rerun_url
+      run_attempt
+      run_number
+      run_started_at
+      status
+      triggering_actor
+      updated_at
+      url
+      workflow_id
+      workflow_url
+    ].freeze
+    DECODERS = {
+      actor: lambda do |value|
+        ::OctridevGithub::WebhookWorkflowRunInProgressWorkflowRunActor.from_hash(value)
+      end,
+      conclusion: lambda do |value|
+        ::OctridevGithub::WebhookWorkflowRunInProgressWorkflowRunConclusion.from_value(value)
+      end,
+      head_commit: lambda do |value|
+        ::OctridevGithub::WebhookWorkflowRunInProgressWorkflowRunHeadCommit.from_hash(value)
+      end,
+      head_repository: lambda do |value|
+        ::OctridevGithub::WebhookWorkflowRunInProgressWorkflowRunHeadRepository.from_hash(value)
+      end,
+      pull_requests: lambda do |value|
+        value&.map { |item| item.nil? ? nil : ::OctridevGithub::WebhookWorkflowRunInProgressWorkflowRunPullRequestsItem.from_hash(item) }
+      end,
+      referenced_workflows: lambda do |value|
+        value&.map { |item| ::OctridevGithub::WebhookWorkflowRunInProgressWorkflowRunReferencedWorkflowsItem.from_hash(item) }
+      end,
+      repository: lambda do |value|
+        ::OctridevGithub::WebhookWorkflowRunInProgressWorkflowRunRepository.from_hash(value)
+      end,
+      status: lambda do |value|
+        ::OctridevGithub::WebhookWorkflowRunInProgressWorkflowRunStatus.from_value(value)
+      end,
+      triggering_actor: lambda do |value|
+        ::OctridevGithub::WebhookWorkflowRunInProgressWorkflowRunTriggeringActor.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      actor
+      conclusion
+      head_branch
+      name
+      previous_attempt_url
+      triggering_actor
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookWorkflowRunInProgressWorkflowRunMetadata::NULLABLE_FIELDS)
+  # API model for WebhookWorkflowRunInProgressWorkflowRun.
+  # Required object value serialized in the `workflow_run` wire field.
+  class WebhookWorkflowRunInProgressWorkflowRun
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookWorkflowRunInProgressWorkflowRunMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookWorkflowRunInProgressWorkflowRunMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookWorkflowRunInProgressWorkflowRunMetadata::DECODERS
+
+    # @return [WebhookWorkflowRunInProgressWorkflowRunActor] Required object value serialized in the `actor` wire field.
+    attr_reader :actor
+    # @return [String] Required `uri`-formatted value serialized in the `artifacts_url` wire field.
+    attr_reader :artifacts_url
+    # @return [String] Required `uri`-formatted value serialized in the `cancel_url` wire field.
+    attr_reader :cancel_url
+    # @return [Integer] Required `integer` value serialized in the `check_suite_id` wire field.
+    attr_reader :check_suite_id
+    # @return [String] Required `string` value serialized in the `check_suite_node_id` wire field.
+    attr_reader :check_suite_node_id
+    # @return [String] Required `uri`-formatted value serialized in the `check_suite_url` wire field.
+    attr_reader :check_suite_url
+    # @return [WebhookWorkflowRunInProgressWorkflowRunConclusion] Required enumerated value serialized in the `conclusion` wire field.
+    attr_reader :conclusion
+    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Required `string` value serialized in the `event` wire field.
+    attr_reader :event
+    # @return [String] Required `string` value serialized in the `head_branch` wire field.
+    attr_reader :head_branch
+    # @return [WebhookWorkflowRunInProgressWorkflowRunHeadCommit] Required object value serialized in the `head_commit` wire field.
+    attr_reader :head_commit
+    # @return [WebhookWorkflowRunInProgressWorkflowRunHeadRepository] Required object value serialized in the `head_repository` wire field.
+    attr_reader :head_repository
+    # @return [String] Required `string` value serialized in the `head_sha` wire field.
+    attr_reader :head_sha
+    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `uri`-formatted value serialized in the `jobs_url` wire field.
+    attr_reader :jobs_url
+    # @return [String] Required `uri`-formatted value serialized in the `logs_url` wire field.
+    attr_reader :logs_url
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Required `string` value serialized in the `path` wire field.
+    attr_reader :path
+    # @return [String] Required `uri`-formatted value serialized in the `previous_attempt_url` wire field.
+    attr_reader :previous_attempt_url
+    # @return [Array_of_WebhookWorkflowRunInProgressWorkflowRunPullRequestsItem] Required array value serialized in the `pull_requests` wire field.
+    attr_reader :pull_requests
+    # @return [Array_of_WebhookWorkflowRunInProgressWorkflowRunReferencedWorkflowsItem] Optional array value serialized in the `referenced_workflows` wire field.
+    attr_reader :referenced_workflows
+    # @return [WebhookWorkflowRunInProgressWorkflowRunRepository] Required object value serialized in the `repository` wire field.
+    attr_reader :repository
+    # @return [String] Required `uri`-formatted value serialized in the `rerun_url` wire field.
+    attr_reader :rerun_url
+    # @return [Integer] Required `integer` value serialized in the `run_attempt` wire field.
+    attr_reader :run_attempt
+    # @return [Integer] Required `integer` value serialized in the `run_number` wire field.
+    attr_reader :run_number
+    # @return [String] Required `date-time`-formatted value serialized in the `run_started_at` wire field.
+    attr_reader :run_started_at
+    # @return [WebhookWorkflowRunInProgressWorkflowRunStatus] Required enumerated value serialized in the `status` wire field.
+    attr_reader :status
+    # @return [WebhookWorkflowRunInProgressWorkflowRunTriggeringActor] Required object value serialized in the `triggering_actor` wire field.
+    attr_reader :triggering_actor
+    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [Integer] Required `integer` value serialized in the `workflow_id` wire field.
+    attr_reader :workflow_id
+    # @return [String] Required `uri`-formatted value serialized in the `workflow_url` wire field.
+    attr_reader :workflow_url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookWorkflowRunInProgressWorkflowRunMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookWorkflowRunInProgressMetadata
-  FIELDS = {
-    action: "action",
-    enterprise: "enterprise",
-    installation: "installation",
-    organization: "organization",
-    repository: "repository",
-    sender: "sender",
-    workflow: "workflow",
-    workflow_run: "workflow_run",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    action
-    repository
-    sender
-    workflow
-    workflow_run
-  ].freeze
-  DECODERS = {
-    action: lambda do |value|
-      ::OctridevGithub::WebhookWorkflowRunInProgressAction.from_value(value)
-    end,
-    enterprise: lambda do |value|
-      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-    end,
-    installation: lambda do |value|
-      ::OctridevGithub::SimpleInstallation.from_hash(value)
-    end,
-    organization: lambda do |value|
-      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-    end,
-    repository: lambda do |value|
-      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-    end,
-    sender: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-    workflow: lambda do |value|
-      ::OctridevGithub::WebhooksWorkflow.from_hash(value)
-    end,
-    workflow_run: lambda do |value|
-      ::OctridevGithub::WebhookWorkflowRunInProgressWorkflowRun.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    workflow
-  ].freeze
-end
-
-# API model for WebhookWorkflowRunInProgress.
-# Typed representation of the `WebhookWorkflowRunInProgress` API schema.
-class WebhookWorkflowRunInProgress
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookWorkflowRunInProgressMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookWorkflowRunInProgressMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookWorkflowRunInProgressMetadata::DECODERS
-
-  # @return [WebhookWorkflowRunInProgressAction] Required enumerated value serialized in the `action` wire field.
-  attr_reader :action
-  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-  attr_reader :enterprise
-  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-  attr_reader :installation
-  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-  attr_reader :organization
-  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-  attr_reader :repository
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :sender
-  # @return [WebhooksWorkflow] Required object value serialized in the `workflow` wire field.
-  attr_reader :workflow
-  # @return [WebhookWorkflowRunInProgressWorkflowRun] Required object value serialized in the `workflow_run` wire field.
-  attr_reader :workflow_run
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookWorkflowRunInProgressMetadata
+    FIELDS = {
+      action: 'action',
+      enterprise: 'enterprise',
+      installation: 'installation',
+      organization: 'organization',
+      repository: 'repository',
+      sender: 'sender',
+      workflow: 'workflow',
+      workflow_run: 'workflow_run'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      action
+      repository
+      sender
+      workflow
+      workflow_run
+    ].freeze
+    DECODERS = {
+      action: lambda do |value|
+        ::OctridevGithub::WebhookWorkflowRunInProgressAction.from_value(value)
+      end,
+      enterprise: lambda do |value|
+        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+      end,
+      installation: lambda do |value|
+        ::OctridevGithub::SimpleInstallation.from_hash(value)
+      end,
+      organization: lambda do |value|
+        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+      end,
+      repository: lambda do |value|
+        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+      end,
+      sender: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end,
+      workflow: lambda do |value|
+        ::OctridevGithub::WebhooksWorkflow.from_hash(value)
+      end,
+      workflow_run: lambda do |value|
+        ::OctridevGithub::WebhookWorkflowRunInProgressWorkflowRun.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      workflow
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookWorkflowRunInProgressMetadata::NULLABLE_FIELDS)
+  # API model for WebhookWorkflowRunInProgress.
+  # Typed representation of the `WebhookWorkflowRunInProgress` API schema.
+  class WebhookWorkflowRunInProgress
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookWorkflowRunInProgressMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookWorkflowRunInProgressMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookWorkflowRunInProgressMetadata::DECODERS
+
+    # @return [WebhookWorkflowRunInProgressAction] Required enumerated value serialized in the `action` wire field.
+    attr_reader :action
+    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+    attr_reader :enterprise
+    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+    attr_reader :installation
+    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+    attr_reader :organization
+    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+    attr_reader :repository
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :sender
+    # @return [WebhooksWorkflow] Required object value serialized in the `workflow` wire field.
+    attr_reader :workflow
+    # @return [WebhookWorkflowRunInProgressWorkflowRun] Required object value serialized in the `workflow_run` wire field.
+    attr_reader :workflow_run
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookWorkflowRunInProgressMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the WebhookWorkflowRunInProgressAction SDK namespace.
+  module WebhookWorkflowRunInProgressAction
+    IN_PROGRESS = 'in_progress'
+    VALUES = ['in_progress'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookWorkflowRunInProgressAction SDK namespace.
-module WebhookWorkflowRunInProgressAction
-  IN_PROGRESS = 'in_progress'
-  VALUES = ['in_progress'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookWorkflowRunInProgressWorkflowRunActorType SDK namespace.
+  module WebhookWorkflowRunInProgressWorkflowRunActorType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookWorkflowRunInProgressWorkflowRunActorType SDK namespace.
-module WebhookWorkflowRunInProgressWorkflowRunActorType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookWorkflowRunInProgressWorkflowRunConclusion SDK namespace.
+  module WebhookWorkflowRunInProgressWorkflowRunConclusion
+    ACTION_REQUIRED = 'action_required'
+    CANCELLED = 'cancelled'
+    FAILURE = 'failure'
+    NEUTRAL = 'neutral'
+    SKIPPED = 'skipped'
+    STALE = 'stale'
+    SUCCESS = 'success'
+    TIMED_OUT = 'timed_out'
+    VALUES = %w[
+      action_required cancelled failure neutral skipped stale success timed_out
+    ].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookWorkflowRunInProgressWorkflowRunConclusion SDK namespace.
-module WebhookWorkflowRunInProgressWorkflowRunConclusion
-  ACTION_REQUIRED = 'action_required'
-  CANCELLED = 'cancelled'
-  FAILURE = 'failure'
-  NEUTRAL = 'neutral'
-  SKIPPED = 'skipped'
-  STALE = 'stale'
-  SUCCESS = 'success'
-  TIMED_OUT = 'timed_out'
-  VALUES = [
-    'action_required', 'cancelled', 'failure', 'neutral', 'skipped', 'stale', 'success', 'timed_out'
-  ].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookWorkflowRunInProgressWorkflowRunHeadRepositoryOwnerType SDK namespace.
+  module WebhookWorkflowRunInProgressWorkflowRunHeadRepositoryOwnerType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookWorkflowRunInProgressWorkflowRunHeadRepositoryOwnerType SDK namespace.
-module WebhookWorkflowRunInProgressWorkflowRunHeadRepositoryOwnerType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookWorkflowRunInProgressWorkflowRunRepositoryOwnerType SDK namespace.
+  module WebhookWorkflowRunInProgressWorkflowRunRepositoryOwnerType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookWorkflowRunInProgressWorkflowRunRepositoryOwnerType SDK namespace.
-module WebhookWorkflowRunInProgressWorkflowRunRepositoryOwnerType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookWorkflowRunInProgressWorkflowRunStatus SDK namespace.
+  module WebhookWorkflowRunInProgressWorkflowRunStatus
+    REQUESTED = 'requested'
+    IN_PROGRESS = 'in_progress'
+    COMPLETED = 'completed'
+    QUEUED = 'queued'
+    PENDING = 'pending'
+    VALUES = %w[requested in_progress completed queued pending].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookWorkflowRunInProgressWorkflowRunStatus SDK namespace.
-module WebhookWorkflowRunInProgressWorkflowRunStatus
-  REQUESTED = 'requested'
-  IN_PROGRESS = 'in_progress'
-  COMPLETED = 'completed'
-  QUEUED = 'queued'
-  PENDING = 'pending'
-  VALUES = ['requested', 'in_progress', 'completed', 'queued', 'pending'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookWorkflowRunInProgressWorkflowRunTriggeringActorType SDK namespace.
+  module WebhookWorkflowRunInProgressWorkflowRunTriggeringActorType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the WebhookWorkflowRunInProgressWorkflowRunTriggeringActorType SDK namespace.
-module WebhookWorkflowRunInProgressWorkflowRunTriggeringActorType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

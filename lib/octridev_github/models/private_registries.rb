@@ -5,358 +5,358 @@
 
 # private_registries domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalOrgPrivateRegistryConfigurationMetadata
-  FIELDS = {
-    name: "name",
-    registry_type: "registry_type",
-    auth_type: "auth_type",
-    url: "url",
-    username: "username",
-    replaces_base: "replaces_base",
-    visibility: "visibility",
-    tenant_id: "tenant_id",
-    client_id: "client_id",
-    aws_region: "aws_region",
-    account_id: "account_id",
-    role_name: "role_name",
-    domain: "domain",
-    domain_owner: "domain_owner",
-    jfrog_oidc_provider_name: "jfrog_oidc_provider_name",
-    audience: "audience",
-    identity_mapping_name: "identity_mapping_name",
-    namespace: "namespace",
-    service_slug: "service_slug",
-    api_host: "api_host",
-    workload_identity_provider: "workload_identity_provider",
-    service_account: "service_account",
-    created_at: "created_at",
-    updated_at: "updated_at",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    name
-    registry_type
-    visibility
-    created_at
-    updated_at
-  ].freeze
-  DECODERS = {
-    registry_type: lambda do |value|
-      ::OctridevGithub::OrgPrivateRegistryConfigurationRegistryType.from_value(value)
-    end,
-    auth_type: lambda do |value|
-      ::OctridevGithub::OrgPrivateRegistryConfigurationAuthType.from_value(value)
-    end,
-    visibility: lambda do |value|
-      ::OctridevGithub::OrgPrivateRegistryConfigurationVisibility.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for OrgPrivateRegistryConfiguration.
-# Private registry configuration for an organization
-class OrgPrivateRegistryConfiguration
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalOrgPrivateRegistryConfigurationMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalOrgPrivateRegistryConfigurationMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalOrgPrivateRegistryConfigurationMetadata::DECODERS
-
-  # @return [String] The name of the private registry configuration.
-  attr_reader :name
-  # @return [OrgPrivateRegistryConfigurationRegistryType] The registry type.
-  attr_reader :registry_type
-  # @return [OrgPrivateRegistryConfigurationAuthType] The authentication type for the private registry.
-  attr_reader :auth_type
-  # @return [String] The URL of the private registry.
-  attr_reader :url
-  # @return [String] The username to use when authenticating with the private registry.
-  attr_reader :username
-  # @return [Boolean] Whether this private registry replaces the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When `true`, Dependabot will only use this registry and will not fall back to the public registry. When `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.
-  attr_reader :replaces_base
-  # @return [OrgPrivateRegistryConfigurationVisibility] Which type of organization repositories have access to the private registry.
-  attr_reader :visibility
-  # @return [String] The tenant ID of the Azure AD application.
-  attr_reader :tenant_id
-  # @return [String] The client ID of the Azure AD application.
-  attr_reader :client_id
-  # @return [String] The AWS region.
-  attr_reader :aws_region
-  # @return [String] The AWS account ID.
-  attr_reader :account_id
-  # @return [String] The AWS IAM role name.
-  attr_reader :role_name
-  # @return [String] The CodeArtifact domain.
-  attr_reader :domain
-  # @return [String] The CodeArtifact domain owner.
-  attr_reader :domain_owner
-  # @return [String] The JFrog OIDC provider name.
-  attr_reader :jfrog_oidc_provider_name
-  # @return [String] The OIDC audience.
-  attr_reader :audience
-  # @return [String] The JFrog identity mapping name.
-  attr_reader :identity_mapping_name
-  # @return [String] The Cloudsmith organization namespace.
-  attr_reader :namespace
-  # @return [String] The Cloudsmith service account slug.
-  attr_reader :service_slug
-  # @return [String] The Cloudsmith API host.
-  attr_reader :api_host
-  # @return [String] The full resource name of the GCP Workload Identity Provider (e.g. `projects/<NUM>/locations/global/workloadIdentityPools/<POOL>/providers/<PROVIDER>`).
-  attr_reader :workload_identity_provider
-  # @return [String] The GCP service account email to impersonate. If omitted, the federated token is used directly (direct WIF).
-  attr_reader :service_account
-  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalOrgPrivateRegistryConfigurationMetadata
+    FIELDS = {
+      name: 'name',
+      registry_type: 'registry_type',
+      auth_type: 'auth_type',
+      url: 'url',
+      username: 'username',
+      replaces_base: 'replaces_base',
+      visibility: 'visibility',
+      tenant_id: 'tenant_id',
+      client_id: 'client_id',
+      aws_region: 'aws_region',
+      account_id: 'account_id',
+      role_name: 'role_name',
+      domain: 'domain',
+      domain_owner: 'domain_owner',
+      jfrog_oidc_provider_name: 'jfrog_oidc_provider_name',
+      audience: 'audience',
+      identity_mapping_name: 'identity_mapping_name',
+      namespace: 'namespace',
+      service_slug: 'service_slug',
+      api_host: 'api_host',
+      workload_identity_provider: 'workload_identity_provider',
+      service_account: 'service_account',
+      created_at: 'created_at',
+      updated_at: 'updated_at'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      name
+      registry_type
+      visibility
+      created_at
+      updated_at
+    ].freeze
+    DECODERS = {
+      registry_type: lambda do |value|
+        ::OctridevGithub::OrgPrivateRegistryConfigurationRegistryType.from_value(value)
+      end,
+      auth_type: lambda do |value|
+        ::OctridevGithub::OrgPrivateRegistryConfigurationAuthType.from_value(value)
+      end,
+      visibility: lambda do |value|
+        ::OctridevGithub::OrgPrivateRegistryConfigurationVisibility.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for OrgPrivateRegistryConfiguration.
+  # Private registry configuration for an organization
+  class OrgPrivateRegistryConfiguration
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalOrgPrivateRegistryConfigurationMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalOrgPrivateRegistryConfigurationMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalOrgPrivateRegistryConfigurationMetadata::DECODERS
+
+    # @return [String] The name of the private registry configuration.
+    attr_reader :name
+    # @return [OrgPrivateRegistryConfigurationRegistryType] The registry type.
+    attr_reader :registry_type
+    # @return [OrgPrivateRegistryConfigurationAuthType] The authentication type for the private registry.
+    attr_reader :auth_type
+    # @return [String] The URL of the private registry.
+    attr_reader :url
+    # @return [String] The username to use when authenticating with the private registry.
+    attr_reader :username
+    # @return [Boolean] Whether this private registry replaces the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When `true`, Dependabot will only use this registry and will not fall back to the public registry. When `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.
+    attr_reader :replaces_base
+    # @return [OrgPrivateRegistryConfigurationVisibility] Which type of organization repositories have access to the private registry.
+    attr_reader :visibility
+    # @return [String] The tenant ID of the Azure AD application.
+    attr_reader :tenant_id
+    # @return [String] The client ID of the Azure AD application.
+    attr_reader :client_id
+    # @return [String] The AWS region.
+    attr_reader :aws_region
+    # @return [String] The AWS account ID.
+    attr_reader :account_id
+    # @return [String] The AWS IAM role name.
+    attr_reader :role_name
+    # @return [String] The CodeArtifact domain.
+    attr_reader :domain
+    # @return [String] The CodeArtifact domain owner.
+    attr_reader :domain_owner
+    # @return [String] The JFrog OIDC provider name.
+    attr_reader :jfrog_oidc_provider_name
+    # @return [String] The OIDC audience.
+    attr_reader :audience
+    # @return [String] The JFrog identity mapping name.
+    attr_reader :identity_mapping_name
+    # @return [String] The Cloudsmith organization namespace.
+    attr_reader :namespace
+    # @return [String] The Cloudsmith service account slug.
+    attr_reader :service_slug
+    # @return [String] The Cloudsmith API host.
+    attr_reader :api_host
+    # @return [String] The full resource name of the GCP Workload Identity Provider (e.g. `projects/<NUM>/locations/global/workloadIdentityPools/<POOL>/providers/<PROVIDER>`).
+    attr_reader :workload_identity_provider
+    # @return [String] The GCP service account email to impersonate. If omitted, the federated token is used directly (direct WIF).
+    attr_reader :service_account
+    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the OrgPrivateRegistryConfigurationAuthType SDK namespace.
-module OrgPrivateRegistryConfigurationAuthType
-  TOKEN = 'token'
-  USERNAME_PASSWORD = 'username_password'
-  OIDC_AZURE = 'oidc_azure'
-  OIDC_AWS = 'oidc_aws'
-  OIDC_JFROG = 'oidc_jfrog'
-  OIDC_CLOUDSMITH = 'oidc_cloudsmith'
-  OIDC_GCP = 'oidc_gcp'
-  ANONYMOUS = 'anonymous'
-  VALUES = [
-    'token', 'username_password', 'oidc_azure', 'oidc_aws', 'oidc_jfrog', 'oidc_cloudsmith',
-    'oidc_gcp', 'anonymous'
-  ].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the OrgPrivateRegistryConfigurationRegistryType SDK namespace.
-module OrgPrivateRegistryConfigurationRegistryType
-  MAVEN_REPOSITORY = 'maven_repository'
-  NUGET_FEED = 'nuget_feed'
-  GOPROXY_SERVER = 'goproxy_server'
-  NPM_REGISTRY = 'npm_registry'
-  RUBYGEMS_SERVER = 'rubygems_server'
-  CARGO_REGISTRY = 'cargo_registry'
-  COMPOSER_REPOSITORY = 'composer_repository'
-  DOCKER_REGISTRY = 'docker_registry'
-  GIT_SOURCE = 'git_source'
-  HELM_REGISTRY = 'helm_registry'
-  HEX_ORGANIZATION = 'hex_organization'
-  HEX_REPOSITORY = 'hex_repository'
-  PUB_REPOSITORY = 'pub_repository'
-  PYTHON_INDEX = 'python_index'
-  TERRAFORM_REGISTRY = 'terraform_registry'
-  VALUES = [
-    'maven_repository', 'nuget_feed', 'goproxy_server', 'npm_registry', 'rubygems_server',
-    'cargo_registry', 'composer_repository', 'docker_registry', 'git_source', 'helm_registry',
-    'hex_organization', 'hex_repository', 'pub_repository', 'python_index', 'terraform_registry'
-  ].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the OrgPrivateRegistryConfigurationVisibility SDK namespace.
-module OrgPrivateRegistryConfigurationVisibility
-  ALL = 'all'
-  PRIVATE = 'private'
-  SELECTED = 'selected'
-  VALUES = ['all', 'private', 'selected'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalOrgPrivateRegistryConfigurationWithSelectedRepositoriesMetadata
-  FIELDS = {
-    name: "name",
-    registry_type: "registry_type",
-    auth_type: "auth_type",
-    url: "url",
-    username: "username",
-    replaces_base: "replaces_base",
-    visibility: "visibility",
-    selected_repository_ids: "selected_repository_ids",
-    tenant_id: "tenant_id",
-    client_id: "client_id",
-    aws_region: "aws_region",
-    account_id: "account_id",
-    role_name: "role_name",
-    domain: "domain",
-    domain_owner: "domain_owner",
-    jfrog_oidc_provider_name: "jfrog_oidc_provider_name",
-    audience: "audience",
-    identity_mapping_name: "identity_mapping_name",
-    namespace: "namespace",
-    service_slug: "service_slug",
-    api_host: "api_host",
-    workload_identity_provider: "workload_identity_provider",
-    service_account: "service_account",
-    created_at: "created_at",
-    updated_at: "updated_at",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    name
-    registry_type
-    visibility
-    created_at
-    updated_at
-  ].freeze
-  DECODERS = {
-    registry_type: lambda do |value|
-      ::OctridevGithub::OrgPrivateRegistryConfigurationWithSelectedRepositoriesRegistryType.from_value(value)
-    end,
-    auth_type: lambda do |value|
-      ::OctridevGithub::OrgPrivateRegistryConfigurationWithSelectedRepositoriesAuthType.from_value(value)
-    end,
-    visibility: lambda do |value|
-      ::OctridevGithub::OrgPrivateRegistryConfigurationWithSelectedRepositoriesVisibility.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for OrgPrivateRegistryConfigurationWithSelectedRepositories.
-# Private registry configuration for an organization
-class OrgPrivateRegistryConfigurationWithSelectedRepositories
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalOrgPrivateRegistryConfigurationWithSelectedRepositoriesMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalOrgPrivateRegistryConfigurationWithSelectedRepositoriesMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalOrgPrivateRegistryConfigurationWithSelectedRepositoriesMetadata::DECODERS
-
-  # @return [String] The name of the private registry configuration.
-  attr_reader :name
-  # @return [OrgPrivateRegistryConfigurationWithSelectedRepositoriesRegistryType] The registry type.
-  attr_reader :registry_type
-  # @return [OrgPrivateRegistryConfigurationWithSelectedRepositoriesAuthType] The authentication type for the private registry.
-  attr_reader :auth_type
-  # @return [String] The URL of the private registry.
-  attr_reader :url
-  # @return [String] The username to use when authenticating with the private registry.
-  attr_reader :username
-  # @return [Boolean] Whether this private registry replaces the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When `true`, Dependabot will only use this registry and will not fall back to the public registry. When `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.
-  attr_reader :replaces_base
-  # @return [OrgPrivateRegistryConfigurationWithSelectedRepositoriesVisibility] Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry.
-  attr_reader :visibility
-  # @return [Array_of_Integer] An array of repository IDs that can access the organization private registry when `visibility` is set to `selected`.
-  attr_reader :selected_repository_ids
-  # @return [String] The tenant ID of the Azure AD application.
-  attr_reader :tenant_id
-  # @return [String] The client ID of the Azure AD application.
-  attr_reader :client_id
-  # @return [String] The AWS region.
-  attr_reader :aws_region
-  # @return [String] The AWS account ID.
-  attr_reader :account_id
-  # @return [String] The AWS IAM role name.
-  attr_reader :role_name
-  # @return [String] The CodeArtifact domain.
-  attr_reader :domain
-  # @return [String] The CodeArtifact domain owner.
-  attr_reader :domain_owner
-  # @return [String] The JFrog OIDC provider name.
-  attr_reader :jfrog_oidc_provider_name
-  # @return [String] The OIDC audience.
-  attr_reader :audience
-  # @return [String] The JFrog identity mapping name.
-  attr_reader :identity_mapping_name
-  # @return [String] The Cloudsmith organization namespace.
-  attr_reader :namespace
-  # @return [String] The Cloudsmith service account slug.
-  attr_reader :service_slug
-  # @return [String] The Cloudsmith API host.
-  attr_reader :api_host
-  # @return [String] The full resource name of the GCP Workload Identity Provider (e.g. `projects/<NUM>/locations/global/workloadIdentityPools/<POOL>/providers/<PROVIDER>`).
-  attr_reader :workload_identity_provider
-  # @return [String] The GCP service account email to impersonate. If omitted, the federated token is used directly (direct WIF).
-  attr_reader :service_account
-  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the OrgPrivateRegistryConfigurationAuthType SDK namespace.
+  module OrgPrivateRegistryConfigurationAuthType
+    TOKEN = 'token'
+    USERNAME_PASSWORD = 'username_password'
+    OIDC_AZURE = 'oidc_azure'
+    OIDC_AWS = 'oidc_aws'
+    OIDC_JFROG = 'oidc_jfrog'
+    OIDC_CLOUDSMITH = 'oidc_cloudsmith'
+    OIDC_GCP = 'oidc_gcp'
+    ANONYMOUS = 'anonymous'
+    VALUES = %w[
+      token username_password oidc_azure oidc_aws oidc_jfrog oidc_cloudsmith
+      oidc_gcp anonymous
+    ].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the OrgPrivateRegistryConfigurationRegistryType SDK namespace.
+  module OrgPrivateRegistryConfigurationRegistryType
+    MAVEN_REPOSITORY = 'maven_repository'
+    NUGET_FEED = 'nuget_feed'
+    GOPROXY_SERVER = 'goproxy_server'
+    NPM_REGISTRY = 'npm_registry'
+    RUBYGEMS_SERVER = 'rubygems_server'
+    CARGO_REGISTRY = 'cargo_registry'
+    COMPOSER_REPOSITORY = 'composer_repository'
+    DOCKER_REGISTRY = 'docker_registry'
+    GIT_SOURCE = 'git_source'
+    HELM_REGISTRY = 'helm_registry'
+    HEX_ORGANIZATION = 'hex_organization'
+    HEX_REPOSITORY = 'hex_repository'
+    PUB_REPOSITORY = 'pub_repository'
+    PYTHON_INDEX = 'python_index'
+    TERRAFORM_REGISTRY = 'terraform_registry'
+    VALUES = %w[
+      maven_repository nuget_feed goproxy_server npm_registry rubygems_server
+      cargo_registry composer_repository docker_registry git_source helm_registry
+      hex_organization hex_repository pub_repository python_index terraform_registry
+    ].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the OrgPrivateRegistryConfigurationVisibility SDK namespace.
+  module OrgPrivateRegistryConfigurationVisibility
+    ALL = 'all'
+    PRIVATE = 'private'
+    SELECTED = 'selected'
+    VALUES = %w[all private selected].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the OrgPrivateRegistryConfigurationWithSelectedRepositoriesAuthType SDK namespace.
-module OrgPrivateRegistryConfigurationWithSelectedRepositoriesAuthType
-  TOKEN = 'token'
-  USERNAME_PASSWORD = 'username_password'
-  OIDC_AZURE = 'oidc_azure'
-  OIDC_AWS = 'oidc_aws'
-  OIDC_JFROG = 'oidc_jfrog'
-  OIDC_CLOUDSMITH = 'oidc_cloudsmith'
-  OIDC_GCP = 'oidc_gcp'
-  ANONYMOUS = 'anonymous'
-  VALUES = [
-    'token', 'username_password', 'oidc_azure', 'oidc_aws', 'oidc_jfrog', 'oidc_cloudsmith',
-    'oidc_gcp', 'anonymous'
-  ].freeze
-  def self.from_value(value)
-    value
+  # Internal model hydration metadata.
+  class SdkInternalOrgPrivateRegistryConfigurationWithSelectedRepositoriesMetadata
+    FIELDS = {
+      name: 'name',
+      registry_type: 'registry_type',
+      auth_type: 'auth_type',
+      url: 'url',
+      username: 'username',
+      replaces_base: 'replaces_base',
+      visibility: 'visibility',
+      selected_repository_ids: 'selected_repository_ids',
+      tenant_id: 'tenant_id',
+      client_id: 'client_id',
+      aws_region: 'aws_region',
+      account_id: 'account_id',
+      role_name: 'role_name',
+      domain: 'domain',
+      domain_owner: 'domain_owner',
+      jfrog_oidc_provider_name: 'jfrog_oidc_provider_name',
+      audience: 'audience',
+      identity_mapping_name: 'identity_mapping_name',
+      namespace: 'namespace',
+      service_slug: 'service_slug',
+      api_host: 'api_host',
+      workload_identity_provider: 'workload_identity_provider',
+      service_account: 'service_account',
+      created_at: 'created_at',
+      updated_at: 'updated_at'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      name
+      registry_type
+      visibility
+      created_at
+      updated_at
+    ].freeze
+    DECODERS = {
+      registry_type: lambda do |value|
+        ::OctridevGithub::OrgPrivateRegistryConfigurationWithSelectedRepositoriesRegistryType.from_value(value)
+      end,
+      auth_type: lambda do |value|
+        ::OctridevGithub::OrgPrivateRegistryConfigurationWithSelectedRepositoriesAuthType.from_value(value)
+      end,
+      visibility: lambda do |value|
+        ::OctridevGithub::OrgPrivateRegistryConfigurationWithSelectedRepositoriesVisibility.from_value(value)
+      end
+    }.freeze
   end
-end
 
-# Defines the OrgPrivateRegistryConfigurationWithSelectedRepositoriesRegistryType SDK namespace.
-module OrgPrivateRegistryConfigurationWithSelectedRepositoriesRegistryType
-  MAVEN_REPOSITORY = 'maven_repository'
-  NUGET_FEED = 'nuget_feed'
-  GOPROXY_SERVER = 'goproxy_server'
-  NPM_REGISTRY = 'npm_registry'
-  RUBYGEMS_SERVER = 'rubygems_server'
-  CARGO_REGISTRY = 'cargo_registry'
-  COMPOSER_REPOSITORY = 'composer_repository'
-  DOCKER_REGISTRY = 'docker_registry'
-  GIT_SOURCE = 'git_source'
-  HELM_REGISTRY = 'helm_registry'
-  HEX_ORGANIZATION = 'hex_organization'
-  HEX_REPOSITORY = 'hex_repository'
-  PUB_REPOSITORY = 'pub_repository'
-  PYTHON_INDEX = 'python_index'
-  TERRAFORM_REGISTRY = 'terraform_registry'
-  VALUES = [
-    'maven_repository', 'nuget_feed', 'goproxy_server', 'npm_registry', 'rubygems_server',
-    'cargo_registry', 'composer_repository', 'docker_registry', 'git_source', 'helm_registry',
-    'hex_organization', 'hex_repository', 'pub_repository', 'python_index', 'terraform_registry'
-  ].freeze
-  def self.from_value(value)
-    value
-  end
-end
+  # API model for OrgPrivateRegistryConfigurationWithSelectedRepositories.
+  # Private registry configuration for an organization
+  class OrgPrivateRegistryConfigurationWithSelectedRepositories
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalOrgPrivateRegistryConfigurationWithSelectedRepositoriesMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalOrgPrivateRegistryConfigurationWithSelectedRepositoriesMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalOrgPrivateRegistryConfigurationWithSelectedRepositoriesMetadata::DECODERS
 
-# Defines the OrgPrivateRegistryConfigurationWithSelectedRepositoriesVisibility SDK namespace.
-module OrgPrivateRegistryConfigurationWithSelectedRepositoriesVisibility
-  ALL = 'all'
-  PRIVATE = 'private'
-  SELECTED = 'selected'
-  VALUES = ['all', 'private', 'selected'].freeze
-  def self.from_value(value)
-    value
+    # @return [String] The name of the private registry configuration.
+    attr_reader :name
+    # @return [OrgPrivateRegistryConfigurationWithSelectedRepositoriesRegistryType] The registry type.
+    attr_reader :registry_type
+    # @return [OrgPrivateRegistryConfigurationWithSelectedRepositoriesAuthType] The authentication type for the private registry.
+    attr_reader :auth_type
+    # @return [String] The URL of the private registry.
+    attr_reader :url
+    # @return [String] The username to use when authenticating with the private registry.
+    attr_reader :username
+    # @return [Boolean] Whether this private registry replaces the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When `true`, Dependabot will only use this registry and will not fall back to the public registry. When `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.
+    attr_reader :replaces_base
+    # @return [OrgPrivateRegistryConfigurationWithSelectedRepositoriesVisibility] Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry.
+    attr_reader :visibility
+    # @return [Array_of_Integer] An array of repository IDs that can access the organization private registry when `visibility` is set to `selected`.
+    attr_reader :selected_repository_ids
+    # @return [String] The tenant ID of the Azure AD application.
+    attr_reader :tenant_id
+    # @return [String] The client ID of the Azure AD application.
+    attr_reader :client_id
+    # @return [String] The AWS region.
+    attr_reader :aws_region
+    # @return [String] The AWS account ID.
+    attr_reader :account_id
+    # @return [String] The AWS IAM role name.
+    attr_reader :role_name
+    # @return [String] The CodeArtifact domain.
+    attr_reader :domain
+    # @return [String] The CodeArtifact domain owner.
+    attr_reader :domain_owner
+    # @return [String] The JFrog OIDC provider name.
+    attr_reader :jfrog_oidc_provider_name
+    # @return [String] The OIDC audience.
+    attr_reader :audience
+    # @return [String] The JFrog identity mapping name.
+    attr_reader :identity_mapping_name
+    # @return [String] The Cloudsmith organization namespace.
+    attr_reader :namespace
+    # @return [String] The Cloudsmith service account slug.
+    attr_reader :service_slug
+    # @return [String] The Cloudsmith API host.
+    attr_reader :api_host
+    # @return [String] The full resource name of the GCP Workload Identity Provider (e.g. `projects/<NUM>/locations/global/workloadIdentityPools/<POOL>/providers/<PROVIDER>`).
+    attr_reader :workload_identity_provider
+    # @return [String] The GCP service account email to impersonate. If omitted, the federated token is used directly (direct WIF).
+    attr_reader :service_account
+    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
+
+  # Defines the OrgPrivateRegistryConfigurationWithSelectedRepositoriesAuthType SDK namespace.
+  module OrgPrivateRegistryConfigurationWithSelectedRepositoriesAuthType
+    TOKEN = 'token'
+    USERNAME_PASSWORD = 'username_password'
+    OIDC_AZURE = 'oidc_azure'
+    OIDC_AWS = 'oidc_aws'
+    OIDC_JFROG = 'oidc_jfrog'
+    OIDC_CLOUDSMITH = 'oidc_cloudsmith'
+    OIDC_GCP = 'oidc_gcp'
+    ANONYMOUS = 'anonymous'
+    VALUES = %w[
+      token username_password oidc_azure oidc_aws oidc_jfrog oidc_cloudsmith
+      oidc_gcp anonymous
+    ].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Defines the OrgPrivateRegistryConfigurationWithSelectedRepositoriesRegistryType SDK namespace.
+  module OrgPrivateRegistryConfigurationWithSelectedRepositoriesRegistryType
+    MAVEN_REPOSITORY = 'maven_repository'
+    NUGET_FEED = 'nuget_feed'
+    GOPROXY_SERVER = 'goproxy_server'
+    NPM_REGISTRY = 'npm_registry'
+    RUBYGEMS_SERVER = 'rubygems_server'
+    CARGO_REGISTRY = 'cargo_registry'
+    COMPOSER_REPOSITORY = 'composer_repository'
+    DOCKER_REGISTRY = 'docker_registry'
+    GIT_SOURCE = 'git_source'
+    HELM_REGISTRY = 'helm_registry'
+    HEX_ORGANIZATION = 'hex_organization'
+    HEX_REPOSITORY = 'hex_repository'
+    PUB_REPOSITORY = 'pub_repository'
+    PYTHON_INDEX = 'python_index'
+    TERRAFORM_REGISTRY = 'terraform_registry'
+    VALUES = %w[
+      maven_repository nuget_feed goproxy_server npm_registry rubygems_server
+      cargo_registry composer_repository docker_registry git_source helm_registry
+      hex_organization hex_repository pub_repository python_index terraform_registry
+    ].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Defines the OrgPrivateRegistryConfigurationWithSelectedRepositoriesVisibility SDK namespace.
+  module OrgPrivateRegistryConfigurationWithSelectedRepositoriesVisibility
+    ALL = 'all'
+    PRIVATE = 'private'
+    SELECTED = 'selected'
+    VALUES = %w[all private selected].freeze
+    def self.from_value(value)
+      value
+    end
+  end
 end

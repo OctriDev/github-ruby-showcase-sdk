@@ -5,57 +5,56 @@
 
 # webhook_package_published_package_package_version_nuget_metadata_item_value domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalWebhookPackagePublishedPackagePackageVersionNugetMetadataItemX69135351c1Metadata
-  FIELDS = {
-    url: "url",
-    branch: "branch",
-    commit: "commit",
-    type: "type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookPackagePublishedPackagePackageVersionNugetMetadataItemX69135351c1.
-class WebhookPackagePublishedPackagePackageVersionNugetMetadataItemX69135351c1
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPackagePublishedPackagePackageVersionNugetMetadataItemX69135351c1Metadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPackagePublishedPackagePackageVersionNugetMetadataItemX69135351c1Metadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPackagePublishedPackagePackageVersionNugetMetadataItemX69135351c1Metadata::DECODERS
-
-  # @return [String] Optional `string` value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Optional `string` value serialized in the `branch` wire field.
-  attr_reader :branch
-  # @return [String] Optional `string` value serialized in the `commit` wire field.
-  attr_reader :commit
-  # @return [String] Optional `string` value serialized in the `type` wire field.
-  attr_reader :type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPackagePublishedPackagePackageVersionNugetMetadataItemX69135351c1Metadata
+    FIELDS = {
+      url: 'url',
+      branch: 'branch',
+      commit: 'commit',
+      type: 'type'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookPackagePublishedPackagePackageVersionNugetMetadataItemX69135351c1.
+  class WebhookPackagePublishedPackagePackageVersionNugetMetadataItemX69135351c1
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPackagePublishedPackagePackageVersionNugetMetadataItemX69135351c1Metadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPackagePublishedPackagePackageVersionNugetMetadataItemX69135351c1Metadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPackagePublishedPackagePackageVersionNugetMetadataItemX69135351c1Metadata::DECODERS
+
+    # @return [String] Optional `string` value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Optional `string` value serialized in the `branch` wire field.
+    attr_reader :branch
+    # @return [String] Optional `string` value serialized in the `commit` wire field.
+    attr_reader :commit
+    # @return [String] Optional `string` value serialized in the `type` wire field.
+    attr_reader :type
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # Defines the WebhookPackagePublishedPackagePackageVersionNugetMetadataItemValue SDK namespace.
+  module WebhookPackagePublishedPackagePackageVersionNugetMetadataItemValue
+    def self.from_hash(hash)
+      return hash if hash.is_a?(::String)
+      return hash if hash.is_a?(::Integer)
+      return Boolean.from_value(hash) if [true, false].include?(hash)
 
-# Defines the WebhookPackagePublishedPackagePackageVersionNugetMetadataItemValue SDK namespace.
-module WebhookPackagePublishedPackagePackageVersionNugetMetadataItemValue
-  def self.from_hash(hash)
-    return hash if hash.is_a?(::String)
-    return hash if hash.is_a?(::Integer)
-    return Boolean.from_value(hash) if [true, false].include?(hash)
-    return WebhookPackagePublishedPackagePackageVersionNugetMetadataItemX69135351c1.from_hash(hash)
+      WebhookPackagePublishedPackagePackageVersionNugetMetadataItemX69135351c1.from_hash(hash)
+    end
   end
-end
 end

@@ -5,326 +5,325 @@
 
 # agent_automations domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemArtifactsXff12b2977aMetadata
-  FIELDS = {
-    id: "id",
-    global_id: "global_id",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for AgentAutomationsListAutomationTasksResponseTasksItemArtifactsXff12b2977a.
-class AgentAutomationsListAutomationTasksResponseTasksItemArtifactsXff12b2977a
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemArtifactsXff12b2977aMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemArtifactsXff12b2977aMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemArtifactsXff12b2977aMetadata::DECODERS
-
-  # @return [Integer] GitHub resource ID
-  attr_reader :id
-  # @return [String] GraphQL global ID
-  attr_reader :global_id
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemArtifactsXff12b2977aMetadata
+    FIELDS = {
+      id: 'id',
+      global_id: 'global_id'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for AgentAutomationsListAutomationTasksResponseTasksItemArtifactsXff12b2977a.
+  class AgentAutomationsListAutomationTasksResponseTasksItemArtifactsXff12b2977a
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemArtifactsXff12b2977aMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemArtifactsXff12b2977aMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemArtifactsXff12b2977aMetadata::DECODERS
+
+    # @return [Integer] GitHub resource ID
+    attr_reader :id
+    # @return [String] GraphQL global ID
+    attr_reader :global_id
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemArtifactsX3f37b14db4Metadata
-  FIELDS = {
-    head_ref: "head_ref",
-    base_ref: "base_ref",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    head_ref
-    base_ref
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for AgentAutomationsListAutomationTasksResponseTasksItemArtifactsX3f37b14db4.
-class AgentAutomationsListAutomationTasksResponseTasksItemArtifactsX3f37b14db4
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemArtifactsX3f37b14db4Metadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemArtifactsX3f37b14db4Metadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemArtifactsX3f37b14db4Metadata::DECODERS
-
-  # @return [String] Head branch name
-  attr_reader :head_ref
-  # @return [String] Base branch name
-  attr_reader :base_ref
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemArtifactsX3f37b14db4Metadata
+    FIELDS = {
+      head_ref: 'head_ref',
+      base_ref: 'base_ref'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      head_ref
+      base_ref
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for AgentAutomationsListAutomationTasksResponseTasksItemArtifactsX3f37b14db4.
+  class AgentAutomationsListAutomationTasksResponseTasksItemArtifactsX3f37b14db4
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemArtifactsX3f37b14db4Metadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemArtifactsX3f37b14db4Metadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemArtifactsX3f37b14db4Metadata::DECODERS
+
+    # @return [String] Head branch name
+    attr_reader :head_ref
+    # @return [String] Base branch name
+    attr_reader :base_ref
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the AgentAutomationsListAutomationTasksResponseTasksItemArtifactsItemData SDK namespace.
-module AgentAutomationsListAutomationTasksResponseTasksItemArtifactsItemData
-  def self.from_hash(hash)
-    shape_mapping = {
-      "id" => AgentAutomationsListAutomationTasksResponseTasksItemArtifactsXff12b2977a,
-      "head_ref" => AgentAutomationsListAutomationTasksResponseTasksItemArtifactsX3f37b14db4,
-    }
-    type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
-    decoded = type&.from_hash(hash)
-    return decoded unless type.nil?
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX2732c6430fMetadata
-  FIELDS = {
-    type: "type",
-    min_length: "minLength",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::AgentAutomationsListAvailableAutomationTriggersResponseItemFiX6c461ef13f.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for AgentAutomationsListAvailableAutomationTriggersResponseItemFiX2732c6430f.
-class AgentAutomationsListAvailableAutomationTriggersResponseItemFiX2732c6430f
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX2732c6430fMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX2732c6430fMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX2732c6430fMetadata::DECODERS
-
-  attr_reader :type
-  # @return [Integer] The minimum accepted string length.
-  attr_reader :min_length
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the AgentAutomationsListAutomationTasksResponseTasksItemArtifactsItemData SDK namespace.
+  module AgentAutomationsListAutomationTasksResponseTasksItemArtifactsItemData
+    def self.from_hash(hash)
+      shape_mapping = {
+        'id' => AgentAutomationsListAutomationTasksResponseTasksItemArtifactsXff12b2977a,
+        'head_ref' => AgentAutomationsListAutomationTasksResponseTasksItemArtifactsX3f37b14db4
+      }
+      type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
+      decoded = type&.from_hash(hash)
+      decoded unless type.nil?
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX2732c6430fMetadata
+    FIELDS = {
+      type: 'type',
+      min_length: 'minLength'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::AgentAutomationsListAvailableAutomationTriggersResponseItemFiX6c461ef13f.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for AgentAutomationsListAvailableAutomationTriggersResponseItemFiX2732c6430f.
+  class AgentAutomationsListAvailableAutomationTriggersResponseItemFiX2732c6430f
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX2732c6430fMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX2732c6430fMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX2732c6430fMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX3c0c1332cbMetadata
-  FIELDS = {
-    type: "type",
-    min_length: "minLength",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::AgentAutomationsListAvailableAutomationTriggersResponseItemFiX6da060e0f6.from_value(value)
-    end,
-  }.freeze
-end
+    attr_reader :type
+    # @return [Integer] The minimum accepted string length.
+    attr_reader :min_length
 
-# API model for AgentAutomationsListAvailableAutomationTriggersResponseItemFiX3c0c1332cb.
-class AgentAutomationsListAvailableAutomationTriggersResponseItemFiX3c0c1332cb
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX3c0c1332cbMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX3c0c1332cbMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX3c0c1332cbMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  attr_reader :type
-  # @return [Integer] The minimum accepted string item length.
-  attr_reader :min_length
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX3c0c1332cbMetadata
+    FIELDS = {
+      type: 'type',
+      min_length: 'minLength'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::AgentAutomationsListAvailableAutomationTriggersResponseItemFiX6da060e0f6.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for AgentAutomationsListAvailableAutomationTriggersResponseItemFiX3c0c1332cb.
+  class AgentAutomationsListAvailableAutomationTriggersResponseItemFiX3c0c1332cb
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX3c0c1332cbMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX3c0c1332cbMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX3c0c1332cbMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX33c1ad0172Metadata
-  FIELDS = {
-    type: "type",
-    items: "items",
-    min_items: "minItems",
-    max_items: "maxItems",
-    unique_items: "uniqueItems",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-    items
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::AgentAutomationsListAvailableAutomationTriggersResponseItemFiXf26f7efb5e.from_value(value)
-    end,
-    items: lambda do |value|
-      ::OctridevGithub::AgentAutomationsListAvailableAutomationTriggersResponseItemFiX3c0c1332cb.from_hash(value)
-    end,
-  }.freeze
-end
+    attr_reader :type
+    # @return [Integer] The minimum accepted string item length.
+    attr_reader :min_length
 
-# API model for AgentAutomationsListAvailableAutomationTriggersResponseItemFiX33c1ad0172.
-class AgentAutomationsListAvailableAutomationTriggersResponseItemFiX33c1ad0172
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX33c1ad0172Metadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX33c1ad0172Metadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX33c1ad0172Metadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  attr_reader :type, :items
-  # @return [Integer] The minimum accepted number of array items.
-  attr_reader :min_items
-  # @return [Integer] The maximum accepted number of array items.
-  attr_reader :max_items
-  # @return [Boolean] Whether duplicate array items are rejected.
-  attr_reader :unique_items
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX33c1ad0172Metadata
+    FIELDS = {
+      type: 'type',
+      items: 'items',
+      min_items: 'minItems',
+      max_items: 'maxItems',
+      unique_items: 'uniqueItems'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+      items
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::AgentAutomationsListAvailableAutomationTriggersResponseItemFiXf26f7efb5e.from_value(value)
+      end,
+      items: lambda do |value|
+        ::OctridevGithub::AgentAutomationsListAvailableAutomationTriggersResponseItemFiX3c0c1332cb.from_hash(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for AgentAutomationsListAvailableAutomationTriggersResponseItemFiX33c1ad0172.
+  class AgentAutomationsListAvailableAutomationTriggersResponseItemFiX33c1ad0172
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX33c1ad0172Metadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX33c1ad0172Metadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiX33c1ad0172Metadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiXe26621da0fMetadata
-  FIELDS = {
-    type: "type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::AgentAutomationsListAvailableAutomationTriggersResponseItemFiX453baec979.from_value(value)
-    end,
-  }.freeze
-end
+    attr_reader :type, :items
+    # @return [Integer] The minimum accepted number of array items.
+    attr_reader :min_items
+    # @return [Integer] The maximum accepted number of array items.
+    attr_reader :max_items
+    # @return [Boolean] Whether duplicate array items are rejected.
+    attr_reader :unique_items
 
-# API model for AgentAutomationsListAvailableAutomationTriggersResponseItemFiXe26621da0f.
-class AgentAutomationsListAvailableAutomationTriggersResponseItemFiXe26621da0f
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiXe26621da0fMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiXe26621da0fMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiXe26621da0fMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  attr_reader :type
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiXe26621da0fMetadata
+    FIELDS = {
+      type: 'type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::AgentAutomationsListAvailableAutomationTriggersResponseItemFiX453baec979.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # API model for AgentAutomationsListAvailableAutomationTriggersResponseItemFiXe26621da0f.
+  class AgentAutomationsListAvailableAutomationTriggersResponseItemFiXe26621da0f
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiXe26621da0fMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiXe26621da0fMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalAgentAutomationsListAvailableAutomationTriggersResponseItemFiXe26621da0fMetadata::DECODERS
+
+    attr_reader :type
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
 
-# Defines the AgentAutomationsListAvailableAutomationTriggersResponseItemFiX8d60f6fda7 SDK namespace.
-module AgentAutomationsListAvailableAutomationTriggersResponseItemFiX8d60f6fda7
-  DISCRIMINATOR_MAPPING = {
-    "string" => -> { AgentAutomationsListAvailableAutomationTriggersResponseItemFiX2732c6430f },
-    "array" => -> { AgentAutomationsListAvailableAutomationTriggersResponseItemFiX33c1ad0172 },
-    "integer" => -> { AgentAutomationsListAvailableAutomationTriggersResponseItemFiXe26621da0f },
-  }.freeze
+  # Defines the AgentAutomationsListAvailableAutomationTriggersResponseItemFiX8d60f6fda7 SDK namespace.
+  module AgentAutomationsListAvailableAutomationTriggersResponseItemFiX8d60f6fda7
+    DISCRIMINATOR_MAPPING = {
+      'string' => -> { AgentAutomationsListAvailableAutomationTriggersResponseItemFiX2732c6430f },
+      'array' => -> { AgentAutomationsListAvailableAutomationTriggersResponseItemFiX33c1ad0172 },
+      'integer' => -> { AgentAutomationsListAvailableAutomationTriggersResponseItemFiXe26621da0f }
+    }.freeze
 
-  def self.from_hash(hash)
-    return hash unless hash.is_a?(::Hash)
-    type = DISCRIMINATOR_MAPPING[hash["type"]]&.call
-    return type.from_hash(hash) if type
+    def self.from_hash(hash)
+      return hash unless hash.is_a?(::Hash)
 
-    raise SdkValidationError.new('AgentAutomationsListAvailableAutomationTriggersResponseItemFiX8d60f6fda7', 'variant', "Unknown AgentAutomationsListAvailableAutomationTriggersResponseItemFiX8d60f6fda7 discriminator: #{hash["type"].inspect}")
+      type = DISCRIMINATOR_MAPPING[hash['type']]&.call
+      return type.from_hash(hash) if type
+
+      raise SdkValidationError.new('AgentAutomationsListAvailableAutomationTriggersResponseItemFiX8d60f6fda7', 'variant', "Unknown AgentAutomationsListAvailableAutomationTriggersResponseItemFiX8d60f6fda7 discriminator: #{hash['type'].inspect}")
+    end
   end
-end
 
-# Defines the AgentAutomationsListAvailableAutomationTriggersResponseItemFiX6c461ef13f SDK namespace.
-module AgentAutomationsListAvailableAutomationTriggersResponseItemFiX6c461ef13f
-  STRING = 'string'
-  VALUES = ['string'].freeze
-  def self.from_value(value)
-    return value if VALUES.include?(value)
+  # Defines the AgentAutomationsListAvailableAutomationTriggersResponseItemFiX6c461ef13f SDK namespace.
+  module AgentAutomationsListAvailableAutomationTriggersResponseItemFiX6c461ef13f
+    STRING = 'string'
+    VALUES = ['string'].freeze
+    def self.from_value(value)
+      return value if VALUES.include?(value)
 
-    raise SdkValidationError.new('AgentAutomationsListAvailableAutomationTriggersResponseItemFiX6c461ef13f', 'enum', "Unknown AgentAutomationsListAvailableAutomationTriggersResponseItemFiX6c461ef13f: #{value}")
+      raise SdkValidationError.new('AgentAutomationsListAvailableAutomationTriggersResponseItemFiX6c461ef13f', 'enum', "Unknown AgentAutomationsListAvailableAutomationTriggersResponseItemFiX6c461ef13f: #{value}")
+    end
   end
-end
 
-# Defines the AgentAutomationsListAvailableAutomationTriggersResponseItemFiX6da060e0f6 SDK namespace.
-module AgentAutomationsListAvailableAutomationTriggersResponseItemFiX6da060e0f6
-  STRING = 'string'
-  VALUES = ['string'].freeze
-  def self.from_value(value)
-    value
+  # Defines the AgentAutomationsListAvailableAutomationTriggersResponseItemFiX6da060e0f6 SDK namespace.
+  module AgentAutomationsListAvailableAutomationTriggersResponseItemFiX6da060e0f6
+    STRING = 'string'
+    VALUES = ['string'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the AgentAutomationsListAvailableAutomationTriggersResponseItemFiXf26f7efb5e SDK namespace.
-module AgentAutomationsListAvailableAutomationTriggersResponseItemFiXf26f7efb5e
-  ARRAY = 'array'
-  VALUES = ['array'].freeze
-  def self.from_value(value)
-    return value if VALUES.include?(value)
+  # Defines the AgentAutomationsListAvailableAutomationTriggersResponseItemFiXf26f7efb5e SDK namespace.
+  module AgentAutomationsListAvailableAutomationTriggersResponseItemFiXf26f7efb5e
+    ARRAY = 'array'
+    VALUES = ['array'].freeze
+    def self.from_value(value)
+      return value if VALUES.include?(value)
 
-    raise SdkValidationError.new('AgentAutomationsListAvailableAutomationTriggersResponseItemFiXf26f7efb5e', 'enum', "Unknown AgentAutomationsListAvailableAutomationTriggersResponseItemFiXf26f7efb5e: #{value}")
+      raise SdkValidationError.new('AgentAutomationsListAvailableAutomationTriggersResponseItemFiXf26f7efb5e', 'enum', "Unknown AgentAutomationsListAvailableAutomationTriggersResponseItemFiXf26f7efb5e: #{value}")
+    end
   end
-end
 
-# Defines the AgentAutomationsListAvailableAutomationTriggersResponseItemFiX453baec979 SDK namespace.
-module AgentAutomationsListAvailableAutomationTriggersResponseItemFiX453baec979
-  INTEGER = 'integer'
-  VALUES = ['integer'].freeze
-  def self.from_value(value)
-    return value if VALUES.include?(value)
+  # Defines the AgentAutomationsListAvailableAutomationTriggersResponseItemFiX453baec979 SDK namespace.
+  module AgentAutomationsListAvailableAutomationTriggersResponseItemFiX453baec979
+    INTEGER = 'integer'
+    VALUES = ['integer'].freeze
+    def self.from_value(value)
+      return value if VALUES.include?(value)
 
-    raise SdkValidationError.new('AgentAutomationsListAvailableAutomationTriggersResponseItemFiX453baec979', 'enum', "Unknown AgentAutomationsListAvailableAutomationTriggersResponseItemFiX453baec979: #{value}")
+      raise SdkValidationError.new('AgentAutomationsListAvailableAutomationTriggersResponseItemFiX453baec979', 'enum', "Unknown AgentAutomationsListAvailableAutomationTriggersResponseItemFiX453baec979: #{value}")
+    end
   end
-end
 end

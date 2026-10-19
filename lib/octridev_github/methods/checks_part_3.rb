@@ -42,17 +42,16 @@ module OctridevGithub
         app_id: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/commits/",
+            '/commits/',
             SdkClient.encode_path_segment(ref),
-            "/check-runs"
+            '/check-runs'
           ].join,
           config: config,
           query: {
@@ -61,12 +60,12 @@ module OctridevGithub
             'filter' => QueryValue.new(filter, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'page' => QueryValue.new(page, style: 'form', explode: true),
-            'app_id' => QueryValue.new(app_id, style: 'form', explode: true),
+            'app_id' => QueryValue.new(app_id, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Checks::ChecksListForRefResponse,
           decoder: :json,
           operation_id: 'checks_list_for_ref',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -96,29 +95,28 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/commits/",
+            '/commits/',
             SdkClient.encode_path_segment(ref),
-            "/check-suites"
+            '/check-suites'
           ].join,
           config: config,
           query: {
             'app_id' => QueryValue.new(app_id, style: 'form', explode: true),
             'check_name' => QueryValue.new(check_name, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Checks::ChecksListSuitesForRefResponse,
           decoder: :json,
           operation_id: 'checks_list_suites_for_ref',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

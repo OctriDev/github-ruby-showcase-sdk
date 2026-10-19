@@ -5,298 +5,295 @@
 
 # licenses domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalLicenseMetadata
-  FIELDS = {
-    key: "key",
-    name: "name",
-    spdx_id: "spdx_id",
-    url: "url",
-    node_id: "node_id",
-    html_url: "html_url",
-    description: "description",
-    implementation: "implementation",
-    permissions: "permissions",
-    conditions: "conditions",
-    limitations: "limitations",
-    body: "body",
-    featured: "featured",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    key
-    name
-    spdx_id
-    url
-    node_id
-    html_url
-    description
-    implementation
-    permissions
-    conditions
-    limitations
-    body
-    featured
-  ].freeze
-  DECODERS = {
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    spdx_id
-    url
-  ].freeze
-end
-
-# API model for License.
-# License
-class License
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalLicenseMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalLicenseMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalLicenseMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `key` wire field.
-  attr_reader :key
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Required `string` value serialized in the `spdx_id` wire field.
-  attr_reader :spdx_id
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [String] Required `string` value serialized in the `description` wire field.
-  attr_reader :description
-  # @return [String] Required `string` value serialized in the `implementation` wire field.
-  attr_reader :implementation
-  # @return [Array_of_String] Required array value serialized in the `permissions` wire field.
-  attr_reader :permissions
-  # @return [Array_of_String] Required array value serialized in the `conditions` wire field.
-  attr_reader :conditions
-  # @return [Array_of_String] Required array value serialized in the `limitations` wire field.
-  attr_reader :limitations
-  # @return [String] Required `string` value serialized in the `body` wire field.
-  attr_reader :body
-  # @return [Boolean] Required `boolean` value serialized in the `featured` wire field.
-  attr_reader :featured
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalLicenseMetadata
+    FIELDS = {
+      key: 'key',
+      name: 'name',
+      spdx_id: 'spdx_id',
+      url: 'url',
+      node_id: 'node_id',
+      html_url: 'html_url',
+      description: 'description',
+      implementation: 'implementation',
+      permissions: 'permissions',
+      conditions: 'conditions',
+      limitations: 'limitations',
+      body: 'body',
+      featured: 'featured'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      key
+      name
+      spdx_id
+      url
+      node_id
+      html_url
+      description
+      implementation
+      permissions
+      conditions
+      limitations
+      body
+      featured
+    ].freeze
+    DECODERS = {}.freeze
+    NULLABLE_FIELDS = %i[
+      spdx_id
+      url
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalLicenseMetadata::NULLABLE_FIELDS)
+  # API model for License.
+  # License
+  class License
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalLicenseMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalLicenseMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalLicenseMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `key` wire field.
+    attr_reader :key
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Required `string` value serialized in the `spdx_id` wire field.
+    attr_reader :spdx_id
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [String] Required `string` value serialized in the `description` wire field.
+    attr_reader :description
+    # @return [String] Required `string` value serialized in the `implementation` wire field.
+    attr_reader :implementation
+    # @return [Array_of_String] Required array value serialized in the `permissions` wire field.
+    attr_reader :permissions
+    # @return [Array_of_String] Required array value serialized in the `conditions` wire field.
+    attr_reader :conditions
+    # @return [Array_of_String] Required array value serialized in the `limitations` wire field.
+    attr_reader :limitations
+    # @return [String] Required `string` value serialized in the `body` wire field.
+    attr_reader :body
+    # @return [Boolean] Required `boolean` value serialized in the `featured` wire field.
+    attr_reader :featured
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalLicenseMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalLicenseContentLinksMetadata
-  FIELDS = {
-    git: "git",
-    html: "html",
-    self_: "self",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    git
-    html
-    self_
-  ].freeze
-  DECODERS = {
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    git
-    html
-  ].freeze
-end
-
-# API model for LicenseContentLinks.
-# Required object value serialized in the `_links` wire field.
-class LicenseContentLinks
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalLicenseContentLinksMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalLicenseContentLinksMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalLicenseContentLinksMetadata::DECODERS
-
-  # @return [String] Required `uri`-formatted value serialized in the `git` wire field.
-  attr_reader :git
-  # @return [String] Required `uri`-formatted value serialized in the `html` wire field.
-  attr_reader :html
-  # @return [String] Required `uri`-formatted value serialized in the `self` wire field.
-  attr_reader :self_
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalLicenseContentLinksMetadata
+    FIELDS = {
+      git: 'git',
+      html: 'html',
+      self_: 'self'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      git
+      html
+      self_
+    ].freeze
+    DECODERS = {}.freeze
+    NULLABLE_FIELDS = %i[
+      git
+      html
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalLicenseContentLinksMetadata::NULLABLE_FIELDS)
+  # API model for LicenseContentLinks.
+  # Required object value serialized in the `_links` wire field.
+  class LicenseContentLinks
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalLicenseContentLinksMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalLicenseContentLinksMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalLicenseContentLinksMetadata::DECODERS
+
+    # @return [String] Required `uri`-formatted value serialized in the `git` wire field.
+    attr_reader :git
+    # @return [String] Required `uri`-formatted value serialized in the `html` wire field.
+    attr_reader :html
+    # @return [String] Required `uri`-formatted value serialized in the `self` wire field.
+    attr_reader :self_
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalLicenseContentLinksMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalLicenseContentMetadata
-  FIELDS = {
-    name: "name",
-    path: "path",
-    sha: "sha",
-    size: "size",
-    url: "url",
-    html_url: "html_url",
-    git_url: "git_url",
-    download_url: "download_url",
-    type: "type",
-    content: "content",
-    encoding: "encoding",
-    links: "_links",
-    license: "license",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    name
-    path
-    sha
-    size
-    url
-    html_url
-    git_url
-    download_url
-    type
-    content
-    encoding
-    links
-    license
-  ].freeze
-  DECODERS = {
-    links: lambda do |value|
-      ::OctridevGithub::LicenseContentLinks.from_hash(value)
-    end,
-    license: lambda do |value|
-      ::OctridevGithub::NullableLicenseSimple.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    html_url
-    git_url
-    download_url
-    license
-  ].freeze
-end
-
-# API model for LicenseContent.
-# License Content
-class LicenseContent
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalLicenseContentMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalLicenseContentMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalLicenseContentMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Required `string` value serialized in the `path` wire field.
-  attr_reader :path
-  # @return [String] Required `string` value serialized in the `sha` wire field.
-  attr_reader :sha
-  # @return [Integer] Required `integer` value serialized in the `size` wire field.
-  attr_reader :size
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [String] Required `uri`-formatted value serialized in the `git_url` wire field.
-  attr_reader :git_url
-  # @return [String] Required `uri`-formatted value serialized in the `download_url` wire field.
-  attr_reader :download_url
-  # @return [String] Required `string` value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [String] Required `string` value serialized in the `content` wire field.
-  attr_reader :content
-  # @return [String] Required `string` value serialized in the `encoding` wire field.
-  attr_reader :encoding
-  # @return [LicenseContentLinks] Required object value serialized in the `_links` wire field.
-  attr_reader :links
-  # @return [NullableLicenseSimple] License Simple
-  attr_reader :license
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalLicenseContentMetadata
+    FIELDS = {
+      name: 'name',
+      path: 'path',
+      sha: 'sha',
+      size: 'size',
+      url: 'url',
+      html_url: 'html_url',
+      git_url: 'git_url',
+      download_url: 'download_url',
+      type: 'type',
+      content: 'content',
+      encoding: 'encoding',
+      links: '_links',
+      license: 'license'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      name
+      path
+      sha
+      size
+      url
+      html_url
+      git_url
+      download_url
+      type
+      content
+      encoding
+      links
+      license
+    ].freeze
+    DECODERS = {
+      links: lambda do |value|
+        ::OctridevGithub::LicenseContentLinks.from_hash(value)
+      end,
+      license: lambda do |value|
+        ::OctridevGithub::NullableLicenseSimple.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      html_url
+      git_url
+      download_url
+      license
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalLicenseContentMetadata::NULLABLE_FIELDS)
+  # API model for LicenseContent.
+  # License Content
+  class LicenseContent
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalLicenseContentMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalLicenseContentMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalLicenseContentMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Required `string` value serialized in the `path` wire field.
+    attr_reader :path
+    # @return [String] Required `string` value serialized in the `sha` wire field.
+    attr_reader :sha
+    # @return [Integer] Required `integer` value serialized in the `size` wire field.
+    attr_reader :size
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [String] Required `uri`-formatted value serialized in the `git_url` wire field.
+    attr_reader :git_url
+    # @return [String] Required `uri`-formatted value serialized in the `download_url` wire field.
+    attr_reader :download_url
+    # @return [String] Required `string` value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [String] Required `string` value serialized in the `content` wire field.
+    attr_reader :content
+    # @return [String] Required `string` value serialized in the `encoding` wire field.
+    attr_reader :encoding
+    # @return [LicenseContentLinks] Required object value serialized in the `_links` wire field.
+    attr_reader :links
+    # @return [NullableLicenseSimple] License Simple
+    attr_reader :license
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalLicenseContentMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalLicenseSimpleMetadata
-  FIELDS = {
-    key: "key",
-    name: "name",
-    url: "url",
-    spdx_id: "spdx_id",
-    node_id: "node_id",
-    html_url: "html_url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    key
-    name
-    url
-    spdx_id
-    node_id
-  ].freeze
-  DECODERS = {
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    url
-    spdx_id
-  ].freeze
-end
-
-# API model for LicenseSimple.
-# License Simple
-class LicenseSimple
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalLicenseSimpleMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalLicenseSimpleMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalLicenseSimpleMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `key` wire field.
-  attr_reader :key
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Required `string` value serialized in the `spdx_id` wire field.
-  attr_reader :spdx_id
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalLicenseSimpleMetadata
+    FIELDS = {
+      key: 'key',
+      name: 'name',
+      url: 'url',
+      spdx_id: 'spdx_id',
+      node_id: 'node_id',
+      html_url: 'html_url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      key
+      name
+      url
+      spdx_id
+      node_id
+    ].freeze
+    DECODERS = {}.freeze
+    NULLABLE_FIELDS = %i[
+      url
+      spdx_id
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalLicenseSimpleMetadata::NULLABLE_FIELDS)
-  end
+  # API model for LicenseSimple.
+  # License Simple
+  class LicenseSimple
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalLicenseSimpleMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalLicenseSimpleMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalLicenseSimpleMetadata::DECODERS
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+    # @return [String] Required `string` value serialized in the `key` wire field.
+    attr_reader :key
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Required `string` value serialized in the `spdx_id` wire field.
+    attr_reader :spdx_id
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalLicenseSimpleMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
 end

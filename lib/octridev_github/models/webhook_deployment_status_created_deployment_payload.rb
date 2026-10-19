@@ -5,12 +5,13 @@
 
 # webhook_deployment_status_created_deployment_payload domain models
 module OctridevGithub
-# Defines the WebhookDeploymentStatusCreatedDeploymentPayload SDK namespace.
-module WebhookDeploymentStatusCreatedDeploymentPayload
-  def self.from_hash(hash)
-    return hash if hash.is_a?(::String)
-    return hash if hash.is_a?(::Hash)
-    raise "Could not deserialize WebhookDeploymentStatusCreatedDeploymentPayload from #{hash.inspect}"
+  # Defines the WebhookDeploymentStatusCreatedDeploymentPayload SDK namespace.
+  module WebhookDeploymentStatusCreatedDeploymentPayload
+    def self.from_hash(hash)
+      return hash if hash.is_a?(::String)
+      return hash if hash.is_a?(::Hash)
+
+      raise "Could not deserialize WebhookDeploymentStatusCreatedDeploymentPayload from #{hash.inspect}"
+    end
   end
-end
 end

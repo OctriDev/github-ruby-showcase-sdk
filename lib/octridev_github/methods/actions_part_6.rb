@@ -12,15 +12,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsCreateOrUpdateRepoSecretMetadata
         FIELDS = {
-          encrypted_value: "encrypted_value",
-          key_id: "key_id",
+          encrypted_value: 'encrypted_value',
+          key_id: 'key_id'
         }.freeze
         REQUIRED_FIELDS = %i[
           encrypted_value
           key_id
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ActionsCreateOrUpdateRepoSecret.
@@ -52,8 +51,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsListRepoVariablesResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          variables: "variables",
+          total_count: 'total_count',
+          variables: 'variables'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -62,7 +61,7 @@ module OctridevGithub
         DECODERS = {
           variables: lambda do |value|
             value&.map { |item| ::OctridevGithub::ActionsVariable.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -92,15 +91,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsCreateRepoVariableMetadata
         FIELDS = {
-          name: "name",
-          value: "value",
+          name: 'name',
+          value: 'value'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
           value
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ActionsCreateRepoVariable.
@@ -132,13 +130,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsUpdateRepoVariableMetadata
         FIELDS = {
-          name: "name",
-          value: "value",
+          name: 'name',
+          value: 'value'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ActionsUpdateRepoVariable.
@@ -170,8 +166,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsListRepoWorkflowsResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          workflows: "workflows",
+          total_count: 'total_count',
+          workflows: 'workflows'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -180,7 +176,7 @@ module OctridevGithub
         DECODERS = {
           workflows: lambda do |value|
             value&.map { |item| ::OctridevGithub::Workflow.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -210,15 +206,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsCreateWorkflowDispatchMetadata
         FIELDS = {
-          ref: "ref",
-          inputs: "inputs",
-          return_run_details: "return_run_details",
+          ref: 'ref',
+          inputs: 'inputs',
+          return_run_details: 'return_run_details'
         }.freeze
         REQUIRED_FIELDS = %i[
           ref
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ActionsCreateWorkflowDispatch.
@@ -252,8 +247,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsListWorkflowRunsResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          workflow_runs: "workflow_runs",
+          total_count: 'total_count',
+          workflow_runs: 'workflow_runs'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -262,7 +257,7 @@ module OctridevGithub
         DECODERS = {
           workflow_runs: lambda do |value|
             value&.map { |item| ::OctridevGithub::WorkflowRun.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -292,8 +287,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsListEnvironmentSecretsResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          secrets: "secrets",
+          total_count: 'total_count',
+          secrets: 'secrets'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -302,7 +297,7 @@ module OctridevGithub
         DECODERS = {
           secrets: lambda do |value|
             value&.map { |item| ::OctridevGithub::ActionsSecret.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -332,15 +327,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsCreateOrUpdateEnvironmentSecretMetadata
         FIELDS = {
-          encrypted_value: "encrypted_value",
-          key_id: "key_id",
+          encrypted_value: 'encrypted_value',
+          key_id: 'key_id'
         }.freeze
         REQUIRED_FIELDS = %i[
           encrypted_value
           key_id
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ActionsCreateOrUpdateEnvironmentSecret.
@@ -372,8 +366,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsListEnvironmentVariablesResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          variables: "variables",
+          total_count: 'total_count',
+          variables: 'variables'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -382,7 +376,7 @@ module OctridevGithub
         DECODERS = {
           variables: lambda do |value|
             value&.map { |item| ::OctridevGithub::ActionsVariable.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -412,15 +406,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsCreateEnvironmentVariableMetadata
         FIELDS = {
-          name: "name",
-          value: "value",
+          name: 'name',
+          value: 'value'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
           value
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ActionsCreateEnvironmentVariable.
@@ -452,13 +445,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsUpdateEnvironmentVariableMetadata
         FIELDS = {
-          name: "name",
-          value: "value",
+          name: 'name',
+          value: 'value'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ActionsUpdateEnvironmentVariable.
@@ -492,7 +483,7 @@ module OctridevGithub
         ALL = 'all'
         PRIVATE = 'private'
         SELECTED = 'selected'
-        VALUES = ['all', 'private', 'selected'].freeze
+        VALUES = %w[all private selected].freeze
         def self.from_value(value)
           value
         end
@@ -503,7 +494,7 @@ module OctridevGithub
         ALL = 'all'
         PRIVATE = 'private'
         SELECTED = 'selected'
-        VALUES = ['all', 'private', 'selected'].freeze
+        VALUES = %w[all private selected].freeze
         def self.from_value(value)
           value
         end
@@ -513,7 +504,7 @@ module OctridevGithub
       module ActionsListJobsForWorkflowRunParameter
         LATEST = 'latest'
         ALL = 'all'
-        VALUES = ['latest', 'all'].freeze
+        VALUES = %w[latest all].freeze
         def self.from_value(value)
           value
         end
@@ -523,7 +514,7 @@ module OctridevGithub
       module ActionsReviewPendingDeploymentsForRunState
         APPROVED = 'approved'
         REJECTED = 'rejected'
-        VALUES = ['approved', 'rejected'].freeze
+        VALUES = %w[approved rejected].freeze
         def self.from_value(value)
           value
         end
@@ -534,7 +525,7 @@ module OctridevGithub
         SELECTED = 'selected'
         ALL = 'all'
         PRIVATE = 'private'
-        VALUES = ['selected', 'all', 'private'].freeze
+        VALUES = %w[selected all private].freeze
         def self.from_value(value)
           value
         end
@@ -545,7 +536,7 @@ module OctridevGithub
         GITHUB = 'github'
         PARTNER = 'partner'
         CUSTOM = 'custom'
-        VALUES = ['github', 'partner', 'custom'].freeze
+        VALUES = %w[github partner custom].freeze
         def self.from_value(value)
           value
         end
@@ -556,7 +547,7 @@ module OctridevGithub
         GITHUB = 'github'
         PARTNER = 'partner'
         CUSTOM = 'custom'
-        VALUES = ['github', 'partner', 'custom'].freeze
+        VALUES = %w[github partner custom].freeze
         def self.from_value(value)
           value
         end

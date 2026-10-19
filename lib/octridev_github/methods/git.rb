@@ -12,14 +12,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalGitCreateBlobMetadata
         FIELDS = {
-          content: "content",
-          encoding: "encoding",
+          content: 'content',
+          encoding: 'encoding'
         }.freeze
         REQUIRED_FIELDS = %i[
           content
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for GitCreateBlob.
@@ -51,16 +50,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalGitCreateCommitAuthorMetadata
         FIELDS = {
-          name: "name",
-          email: "email",
-          date: "date",
+          name: 'name',
+          email: 'email',
+          date: 'date'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
           email
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for GitCreateCommitAuthor.
@@ -95,14 +93,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalGitCreateCommitCommitterMetadata
         FIELDS = {
-          name: "name",
-          email: "email",
-          date: "date",
+          name: 'name',
+          email: 'email',
+          date: 'date'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for GitCreateCommitCommitter.
@@ -137,12 +133,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalGitCreateCommitMetadata
         FIELDS = {
-          message: "message",
-          tree: "tree",
-          parents: "parents",
-          author: "author",
-          committer: "committer",
-          signature: "signature",
+          message: 'message',
+          tree: 'tree',
+          parents: 'parents',
+          author: 'author',
+          committer: 'committer',
+          signature: 'signature'
         }.freeze
         REQUIRED_FIELDS = %i[
           message
@@ -154,7 +150,7 @@ module OctridevGithub
           end,
           committer: lambda do |value|
             ::OctridevGithub::Methods::Git::GitCreateCommitCommitter.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -195,15 +191,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalGitCreateRefMetadata
         FIELDS = {
-          ref: "ref",
-          sha: "sha",
+          ref: 'ref',
+          sha: 'sha'
         }.freeze
         REQUIRED_FIELDS = %i[
           ref
           sha
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for GitCreateRef.
@@ -235,14 +230,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalGitUpdateRefMetadata
         FIELDS = {
-          sha: "sha",
-          force: "force",
+          sha: 'sha',
+          force: 'force'
         }.freeze
         REQUIRED_FIELDS = %i[
           sha
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for GitUpdateRef.
@@ -274,16 +268,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalGitCreateTagTaggerMetadata
         FIELDS = {
-          name: "name",
-          email: "email",
-          date: "date",
+          name: 'name',
+          email: 'email',
+          date: 'date'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
           email
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for GitCreateTagTagger.
@@ -318,11 +311,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalGitCreateTagMetadata
         FIELDS = {
-          tag: "tag",
-          message: "message",
-          object: "object",
-          type: "type",
-          tagger: "tagger",
+          tag: 'tag',
+          message: 'message',
+          object: 'object',
+          type: 'type',
+          tagger: 'tagger'
         }.freeze
         REQUIRED_FIELDS = %i[
           tag
@@ -336,7 +329,7 @@ module OctridevGithub
           end,
           tagger: lambda do |value|
             ::OctridevGithub::Methods::Git::GitCreateTagTagger.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -375,21 +368,20 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalGitCreateTreeTreeItemMetadata
         FIELDS = {
-          path: "path",
-          mode: "mode",
-          type: "type",
-          sha: "sha",
-          content: "content",
+          path: 'path',
+          mode: 'mode',
+          type: 'type',
+          sha: 'sha',
+          content: 'content'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           mode: lambda do |value|
             ::OctridevGithub::Methods::Git::GitCreateTreeTreeItemMode.from_value(value)
           end,
           type: lambda do |value|
             ::OctridevGithub::Methods::Git::GitCreateTreeTreeItemType.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -428,8 +420,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalGitCreateTreeMetadata
         FIELDS = {
-          tree: "tree",
-          base_tree: "base_tree",
+          tree: 'tree',
+          base_tree: 'base_tree'
         }.freeze
         REQUIRED_FIELDS = %i[
           tree
@@ -437,7 +429,7 @@ module OctridevGithub
         DECODERS = {
           tree: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Git::GitCreateTreeTreeItem.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -472,7 +464,7 @@ module OctridevGithub
         COMMIT = 'commit'
         TREE = 'tree'
         BLOB = 'blob'
-        VALUES = ['commit', 'tree', 'blob'].freeze
+        VALUES = %w[commit tree blob].freeze
         def self.from_value(value)
           value
         end
@@ -483,7 +475,7 @@ module OctridevGithub
         BLOB = 'blob'
         TREE = 'tree'
         COMMIT = 'commit'
-        VALUES = ['blob', 'tree', 'commit'].freeze
+        VALUES = %w[blob tree commit].freeze
         def self.from_value(value)
           value
         end
@@ -496,7 +488,7 @@ module OctridevGithub
         V_040000 = '040000'
         V_160000 = '160000'
         V_120000 = '120000'
-        VALUES = ['100644', '100755', '040000', '160000', '120000'].freeze
+        VALUES = %w[100644 100755 040000 160000 120000].freeze
         def self.from_value(value)
           value
         end
@@ -519,26 +511,25 @@ module OctridevGithub
         encoding: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/git/blobs"
+            '/git/blobs'
           ].join,
           config: config,
           body: {
             'content' => content,
-            'encoding' => encoding,
+            'encoding' => encoding
           },
           return_type: ::OctridevGithub::ShortBlob,
           decoder: :json,
           operation_id: 'git_create_blob',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError }
         ).data
       end
     end

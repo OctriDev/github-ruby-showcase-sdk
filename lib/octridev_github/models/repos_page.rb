@@ -5,331 +5,328 @@
 
 # repos_page domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalPageMetadata
-  FIELDS = {
-    url: "url",
-    status: "status",
-    cname: "cname",
-    protected_domain_state: "protected_domain_state",
-    pending_domain_unverified_at: "pending_domain_unverified_at",
-    custom404: "custom_404",
-    html_url: "html_url",
-    build_type: "build_type",
-    source: "source",
-    public: "public",
-    https_certificate: "https_certificate",
-    https_enforced: "https_enforced",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    url
-    status
-    cname
-    custom404
-    public
-  ].freeze
-  DECODERS = {
-    status: lambda do |value|
-      ::OctridevGithub::PageStatus.from_value(value)
-    end,
-    protected_domain_state: lambda do |value|
-      ::OctridevGithub::PageProtectedDomainState.from_value(value)
-    end,
-    build_type: lambda do |value|
-      ::OctridevGithub::PageBuildType.from_value(value)
-    end,
-    source: lambda do |value|
-      ::OctridevGithub::PagesSourceHash.from_hash(value)
-    end,
-    https_certificate: lambda do |value|
-      ::OctridevGithub::PagesHttpsCertificate.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    status
-    cname
-  ].freeze
-end
-
-# API model for Page.
-# The configuration for GitHub Pages for a repository.
-class Page
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalPageMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalPageMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalPageMetadata::DECODERS
-
-  # @return [String] The API address for accessing this Page resource.
-  attr_reader :url
-  # @return [PageStatus] The status of the most recent build of the Page.
-  attr_reader :status
-  # @return [String] The Pages site's custom domain
-  attr_reader :cname
-  # @return [PageProtectedDomainState] The state if the domain is verified
-  attr_reader :protected_domain_state
-  # @return [String] The timestamp when a pending domain becomes unverified.
-  attr_reader :pending_domain_unverified_at
-  # @return [Boolean] Whether the Page has a custom 404 page.
-  attr_reader :custom404
-  # @return [String] The web address the Page can be accessed from.
-  attr_reader :html_url
-  # @return [PageBuildType] The process in which the Page will be built.
-  attr_reader :build_type
-  # @return [PagesSourceHash] Optional object value serialized in the `source` wire field.
-  attr_reader :source
-  # @return [Boolean] Whether the GitHub Pages site is publicly visible. If set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site.
-  attr_reader :public
-  # @return [PagesHttpsCertificate] Optional object value serialized in the `https_certificate` wire field.
-  attr_reader :https_certificate
-  # @return [Boolean] Whether https is enabled on the domain
-  attr_reader :https_enforced
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalPageMetadata
+    FIELDS = {
+      url: 'url',
+      status: 'status',
+      cname: 'cname',
+      protected_domain_state: 'protected_domain_state',
+      pending_domain_unverified_at: 'pending_domain_unverified_at',
+      custom404: 'custom_404',
+      html_url: 'html_url',
+      build_type: 'build_type',
+      source: 'source',
+      public: 'public',
+      https_certificate: 'https_certificate',
+      https_enforced: 'https_enforced'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      url
+      status
+      cname
+      custom404
+      public
+    ].freeze
+    DECODERS = {
+      status: lambda do |value|
+        ::OctridevGithub::PageStatus.from_value(value)
+      end,
+      protected_domain_state: lambda do |value|
+        ::OctridevGithub::PageProtectedDomainState.from_value(value)
+      end,
+      build_type: lambda do |value|
+        ::OctridevGithub::PageBuildType.from_value(value)
+      end,
+      source: lambda do |value|
+        ::OctridevGithub::PagesSourceHash.from_hash(value)
+      end,
+      https_certificate: lambda do |value|
+        ::OctridevGithub::PagesHttpsCertificate.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      status
+      cname
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalPageMetadata::NULLABLE_FIELDS)
+  # API model for Page.
+  # The configuration for GitHub Pages for a repository.
+  class Page
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalPageMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalPageMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalPageMetadata::DECODERS
+
+    # @return [String] The API address for accessing this Page resource.
+    attr_reader :url
+    # @return [PageStatus] The status of the most recent build of the Page.
+    attr_reader :status
+    # @return [String] The Pages site's custom domain
+    attr_reader :cname
+    # @return [PageProtectedDomainState] The state if the domain is verified
+    attr_reader :protected_domain_state
+    # @return [String] The timestamp when a pending domain becomes unverified.
+    attr_reader :pending_domain_unverified_at
+    # @return [Boolean] Whether the Page has a custom 404 page.
+    attr_reader :custom404
+    # @return [String] The web address the Page can be accessed from.
+    attr_reader :html_url
+    # @return [PageBuildType] The process in which the Page will be built.
+    attr_reader :build_type
+    # @return [PagesSourceHash] Optional object value serialized in the `source` wire field.
+    attr_reader :source
+    # @return [Boolean] Whether the GitHub Pages site is publicly visible. If set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site.
+    attr_reader :public
+    # @return [PagesHttpsCertificate] Optional object value serialized in the `https_certificate` wire field.
+    attr_reader :https_certificate
+    # @return [Boolean] Whether https is enabled on the domain
+    attr_reader :https_enforced
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalPageMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the PageBuildType SDK namespace.
-module PageBuildType
-  LEGACY = 'legacy'
-  WORKFLOW = 'workflow'
-  VALUES = ['legacy', 'workflow'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the PageProtectedDomainState SDK namespace.
-module PageProtectedDomainState
-  PENDING = 'pending'
-  VERIFIED = 'verified'
-  UNVERIFIED = 'unverified'
-  VALUES = ['pending', 'verified', 'unverified'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the PageStatus SDK namespace.
-module PageStatus
-  BUILT = 'built'
-  BUILDING = 'building'
-  ERRORED = 'errored'
-  VALUES = ['built', 'building', 'errored'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalPageBuildErrorMetadata
-  FIELDS = {
-    message: "message",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    message
-  ].freeze
-  DECODERS = {
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    message
-  ].freeze
-end
-
-# API model for PageBuildError.
-# Required object value serialized in the `error` wire field.
-class PageBuildError
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalPageBuildErrorMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalPageBuildErrorMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalPageBuildErrorMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `message` wire field.
-  attr_reader :message
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the PageBuildType SDK namespace.
+  module PageBuildType
+    LEGACY = 'legacy'
+    WORKFLOW = 'workflow'
+    VALUES = %w[legacy workflow].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalPageBuildErrorMetadata::NULLABLE_FIELDS)
+  # Defines the PageProtectedDomainState SDK namespace.
+  module PageProtectedDomainState
+    PENDING = 'pending'
+    VERIFIED = 'verified'
+    UNVERIFIED = 'unverified'
+    VALUES = %w[pending verified unverified].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalPageBuildMetadata
-  FIELDS = {
-    url: "url",
-    status: "status",
-    error: "error",
-    pusher: "pusher",
-    commit: "commit",
-    duration: "duration",
-    created_at: "created_at",
-    updated_at: "updated_at",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    url
-    status
-    error
-    pusher
-    commit
-    duration
-    created_at
-    updated_at
-  ].freeze
-  DECODERS = {
-    error: lambda do |value|
-      ::OctridevGithub::PageBuildError.from_hash(value)
-    end,
-    pusher: lambda do |value|
-      ::OctridevGithub::NullableSimpleUser.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    pusher
-  ].freeze
-end
-
-# API model for PageBuild.
-# Page Build
-class PageBuild
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalPageBuildMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalPageBuildMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalPageBuildMetadata::DECODERS
-
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Required `string` value serialized in the `status` wire field.
-  attr_reader :status
-  # @return [PageBuildError] Required object value serialized in the `error` wire field.
-  attr_reader :error
-  # @return [NullableSimpleUser] A GitHub user.
-  attr_reader :pusher
-  # @return [String] Required `string` value serialized in the `commit` wire field.
-  attr_reader :commit
-  # @return [Integer] Required `integer` value serialized in the `duration` wire field.
-  attr_reader :duration
-  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the PageStatus SDK namespace.
+  module PageStatus
+    BUILT = 'built'
+    BUILDING = 'building'
+    ERRORED = 'errored'
+    VALUES = %w[built building errored].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalPageBuildMetadata::NULLABLE_FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalPageBuildErrorMetadata
+    FIELDS = {
+      message: 'message'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      message
+    ].freeze
+    DECODERS = {}.freeze
+    NULLABLE_FIELDS = %i[
+      message
+    ].freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for PageBuildError.
+  # Required object value serialized in the `error` wire field.
+  class PageBuildError
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalPageBuildErrorMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalPageBuildErrorMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalPageBuildErrorMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalPageBuildStatusMetadata
-  FIELDS = {
-    url: "url",
-    status: "status",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    url
-    status
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    # @return [String] Required `string` value serialized in the `message` wire field.
+    attr_reader :message
 
-# API model for PageBuildStatus.
-# Page Build Status
-class PageBuildStatus
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalPageBuildStatusMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalPageBuildStatusMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalPageBuildStatusMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Required `string` value serialized in the `status` wire field.
-  attr_reader :status
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalPageBuildErrorMetadata::NULLABLE_FIELDS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalPageBuildMetadata
+    FIELDS = {
+      url: 'url',
+      status: 'status',
+      error: 'error',
+      pusher: 'pusher',
+      commit: 'commit',
+      duration: 'duration',
+      created_at: 'created_at',
+      updated_at: 'updated_at'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      url
+      status
+      error
+      pusher
+      commit
+      duration
+      created_at
+      updated_at
+    ].freeze
+    DECODERS = {
+      error: lambda do |value|
+        ::OctridevGithub::PageBuildError.from_hash(value)
+      end,
+      pusher: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      pusher
+    ].freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for PageBuild.
+  # Page Build
+  class PageBuild
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalPageBuildMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalPageBuildMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalPageBuildMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalPageDeploymentMetadata
-  FIELDS = {
-    id: "id",
-    status_url: "status_url",
-    page_url: "page_url",
-    preview_url: "preview_url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    status_url
-    page_url
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Required `string` value serialized in the `status` wire field.
+    attr_reader :status
+    # @return [PageBuildError] Required object value serialized in the `error` wire field.
+    attr_reader :error
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :pusher
+    # @return [String] Required `string` value serialized in the `commit` wire field.
+    attr_reader :commit
+    # @return [Integer] Required `integer` value serialized in the `duration` wire field.
+    attr_reader :duration
+    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
 
-# API model for PageDeployment.
-# The GitHub Pages deployment status.
-class PageDeployment
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalPageDeploymentMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalPageDeploymentMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalPageDeploymentMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [Object] The ID of the GitHub Pages deployment. This is the Git SHA of the deployed commit.
-  attr_reader :id
-  # @return [String] The URI to monitor GitHub Pages deployment status.
-  attr_reader :status_url
-  # @return [String] The URI to the deployed GitHub Pages.
-  attr_reader :page_url
-  # @return [String] The URI to the deployed GitHub Pages preview.
-  attr_reader :preview_url
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalPageBuildMetadata::NULLABLE_FIELDS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalPageBuildStatusMetadata
+    FIELDS = {
+      url: 'url',
+      status: 'status'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      url
+      status
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # API model for PageBuildStatus.
+  # Page Build Status
+  class PageBuildStatus
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalPageBuildStatusMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalPageBuildStatusMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalPageBuildStatusMetadata::DECODERS
+
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Required `string` value serialized in the `status` wire field.
+    attr_reader :status
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
+
+  # Internal model hydration metadata.
+  class SdkInternalPageDeploymentMetadata
+    FIELDS = {
+      id: 'id',
+      status_url: 'status_url',
+      page_url: 'page_url',
+      preview_url: 'preview_url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      status_url
+      page_url
+    ].freeze
+    DECODERS = {}.freeze
+  end
+
+  # API model for PageDeployment.
+  # The GitHub Pages deployment status.
+  class PageDeployment
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalPageDeploymentMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalPageDeploymentMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalPageDeploymentMetadata::DECODERS
+
+    # @return [Object] The ID of the GitHub Pages deployment. This is the Git SHA of the deployed commit.
+    attr_reader :id
+    # @return [String] The URI to monitor GitHub Pages deployment status.
+    attr_reader :status_url
+    # @return [String] The URI to the deployed GitHub Pages.
+    attr_reader :page_url
+    # @return [String] The URI to the deployed GitHub Pages preview.
+    attr_reader :preview_url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
 end

@@ -5,671 +5,668 @@
 
 # security_advisories domain models (part 2)
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalRepositoryAdvisoryCwesItemMetadata
-  FIELDS = {
-    cwe_id: "cwe_id",
-    name: "name",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    cwe_id
-    name
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for RepositoryAdvisoryCwesItem.
-# Required object value serialized in the `cwes[]` wire field.
-class RepositoryAdvisoryCwesItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryAdvisoryCwesItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryAdvisoryCwesItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryAdvisoryCwesItemMetadata::DECODERS
-
-  # @return [String] The Common Weakness Enumeration (CWE) identifier.
-  attr_reader :cwe_id
-  # @return [String] The name of the CWE.
-  attr_reader :name
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryAdvisoryCwesItemMetadata
+    FIELDS = {
+      cwe_id: 'cwe_id',
+      name: 'name'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      cwe_id
+      name
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RepositoryAdvisoryCwesItem.
+  # Required object value serialized in the `cwes[]` wire field.
+  class RepositoryAdvisoryCwesItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryAdvisoryCwesItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryAdvisoryCwesItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryAdvisoryCwesItemMetadata::DECODERS
+
+    # @return [String] The Common Weakness Enumeration (CWE) identifier.
+    attr_reader :cwe_id
+    # @return [String] The name of the CWE.
+    attr_reader :name
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryAdvisoryCreditsItemMetadata
-  FIELDS = {
-    login: "login",
-    type: "type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::SecurityAdvisoryCreditTypes.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryAdvisoryCreditsItem.
-# Required object value serialized in the `credits[]` wire field.
-class RepositoryAdvisoryCreditsItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryAdvisoryCreditsItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryAdvisoryCreditsItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryAdvisoryCreditsItemMetadata::DECODERS
-
-  # @return [String] The username of the user credited.
-  attr_reader :login
-  # @return [SecurityAdvisoryCreditTypes] The type of credit the user is receiving.
-  attr_reader :type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryAdvisoryCreditsItemMetadata
+    FIELDS = {
+      login: 'login',
+      type: 'type'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::SecurityAdvisoryCreditTypes.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RepositoryAdvisoryCreditsItem.
+  # Required object value serialized in the `credits[]` wire field.
+  class RepositoryAdvisoryCreditsItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryAdvisoryCreditsItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryAdvisoryCreditsItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryAdvisoryCreditsItemMetadata::DECODERS
+
+    # @return [String] The username of the user credited.
+    attr_reader :login
+    # @return [SecurityAdvisoryCreditTypes] The type of credit the user is receiving.
+    attr_reader :type
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryAdvisoryMetadata
-  FIELDS = {
-    ghsa_id: "ghsa_id",
-    cve_id: "cve_id",
-    url: "url",
-    html_url: "html_url",
-    summary: "summary",
-    description: "description",
-    severity: "severity",
-    author: "author",
-    publisher: "publisher",
-    identifiers: "identifiers",
-    state: "state",
-    created_at: "created_at",
-    updated_at: "updated_at",
-    published_at: "published_at",
-    closed_at: "closed_at",
-    withdrawn_at: "withdrawn_at",
-    submission: "submission",
-    vulnerabilities: "vulnerabilities",
-    cvss: "cvss",
-    cvss_severities: "cvss_severities",
-    cwes: "cwes",
-    cwe_ids: "cwe_ids",
-    credits: "credits",
-    credits_detailed: "credits_detailed",
-    collaborating_users: "collaborating_users",
-    collaborating_teams: "collaborating_teams",
-    private_fork: "private_fork",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    ghsa_id
-    cve_id
-    url
-    html_url
-    summary
-    description
-    severity
-    author
-    publisher
-    identifiers
-    state
-    created_at
-    updated_at
-    published_at
-    closed_at
-    withdrawn_at
-    submission
-    vulnerabilities
-    cvss
-    cwes
-    cwe_ids
-    credits
-    credits_detailed
-    collaborating_users
-    collaborating_teams
-    private_fork
-  ].freeze
-  DECODERS = {
-    severity: lambda do |value|
-      ::OctridevGithub::RepositoryAdvisorySeverity.from_value(value)
-    end,
-    author: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-    publisher: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-    identifiers: lambda do |value|
-      value&.map { |item| ::OctridevGithub::RepositoryAdvisoryIdentifiersItem.from_hash(item) }
-    end,
-    state: lambda do |value|
-      ::OctridevGithub::RepositoryAdvisoryState.from_value(value)
-    end,
-    submission: lambda do |value|
-      ::OctridevGithub::RepositoryAdvisorySubmission.from_hash(value)
-    end,
-    vulnerabilities: lambda do |value|
-      value&.map { |item| ::OctridevGithub::RepositoryAdvisoryVulnerability.from_hash(item) }
-    end,
-    cvss: lambda do |value|
-      ::OctridevGithub::RepositoryAdvisoryCvss.from_hash(value)
-    end,
-    cvss_severities: lambda do |value|
-      ::OctridevGithub::CvssSeverities.from_hash(value)
-    end,
-    cwes: lambda do |value|
-      value&.map { |item| ::OctridevGithub::RepositoryAdvisoryCwesItem.from_hash(item) }
-    end,
-    credits: lambda do |value|
-      value&.map { |item| ::OctridevGithub::RepositoryAdvisoryCreditsItem.from_hash(item) }
-    end,
-    credits_detailed: lambda do |value|
-      value&.map { |item| ::OctridevGithub::RepositoryAdvisoryCredit.from_hash(item) }
-    end,
-    collaborating_users: lambda do |value|
-      value&.map { |item| ::OctridevGithub::SimpleUser.from_hash(item) }
-    end,
-    collaborating_teams: lambda do |value|
-      value&.map { |item| ::OctridevGithub::Team.from_hash(item) }
-    end,
-    private_fork: lambda do |value|
-      ::OctridevGithub::SimpleRepository.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    cve_id
-    description
-    severity
-    author
-    publisher
-    created_at
-    updated_at
-    published_at
-    closed_at
-    withdrawn_at
-    submission
-    vulnerabilities
-    cvss
-    cwes
-    cwe_ids
-    credits
-    credits_detailed
-    collaborating_users
-    collaborating_teams
-    private_fork
-  ].freeze
-end
-
-# API model for RepositoryAdvisory.
-# A repository security advisory.
-class RepositoryAdvisory
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryAdvisoryMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryAdvisoryMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryAdvisoryMetadata::DECODERS
-
-  # @return [String] The GitHub Security Advisory ID.
-  attr_reader :ghsa_id
-  # @return [String] The Common Vulnerabilities and Exposures (CVE) ID.
-  attr_reader :cve_id
-  # @return [String] The API URL for the advisory.
-  attr_reader :url
-  # @return [String] The URL for the advisory.
-  attr_reader :html_url
-  # @return [String] A short summary of the advisory.
-  attr_reader :summary
-  # @return [String] A detailed description of what the advisory entails.
-  attr_reader :description
-  # @return [RepositoryAdvisorySeverity] The severity of the advisory.
-  attr_reader :severity
-  # @return [SimpleUser] The author of the advisory.
-  attr_reader :author
-  # @return [SimpleUser] The publisher of the advisory.
-  attr_reader :publisher
-  # @return [Array_of_RepositoryAdvisoryIdentifiersItem] Required array value serialized in the `identifiers` wire field.
-  attr_reader :identifiers
-  # @return [RepositoryAdvisoryState] The state of the advisory.
-  attr_reader :state
-  # @return [String] The date and time of when the advisory was created, in ISO 8601 format.
-  attr_reader :created_at
-  # @return [String] The date and time of when the advisory was last updated, in ISO 8601 format.
-  attr_reader :updated_at
-  # @return [String] The date and time of when the advisory was published, in ISO 8601 format.
-  attr_reader :published_at
-  # @return [String] The date and time of when the advisory was closed, in ISO 8601 format.
-  attr_reader :closed_at
-  # @return [String] The date and time of when the advisory was withdrawn, in ISO 8601 format.
-  attr_reader :withdrawn_at
-  # @return [RepositoryAdvisorySubmission] Required object value serialized in the `submission` wire field.
-  attr_reader :submission
-  # @return [Array_of_RepositoryAdvisoryVulnerability] Required array value serialized in the `vulnerabilities` wire field.
-  attr_reader :vulnerabilities
-  # @return [RepositoryAdvisoryCvss] Required object value serialized in the `cvss` wire field.
-  attr_reader :cvss
-  # @return [CvssSeverities] Optional object value serialized in the `cvss_severities` wire field.
-  attr_reader :cvss_severities
-  # @return [Array_of_RepositoryAdvisoryCwesItem] Required array value serialized in the `cwes` wire field.
-  attr_reader :cwes
-  # @return [Array_of_String] A list of only the CWE IDs.
-  attr_reader :cwe_ids
-  # @return [Array_of_RepositoryAdvisoryCreditsItem] Required array value serialized in the `credits` wire field.
-  attr_reader :credits
-  # @return [Array_of_RepositoryAdvisoryCredit] Required array value serialized in the `credits_detailed` wire field.
-  attr_reader :credits_detailed
-  # @return [Array_of_SimpleUser] A list of users that collaborate on the advisory.
-  attr_reader :collaborating_users
-  # @return [Array_of_Team] A list of teams that collaborate on the advisory.
-  attr_reader :collaborating_teams
-  # @return [SimpleRepository] A temporary private fork of the advisory's repository for collaborating on a fix.
-  attr_reader :private_fork
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryAdvisoryMetadata
+    FIELDS = {
+      ghsa_id: 'ghsa_id',
+      cve_id: 'cve_id',
+      url: 'url',
+      html_url: 'html_url',
+      summary: 'summary',
+      description: 'description',
+      severity: 'severity',
+      author: 'author',
+      publisher: 'publisher',
+      identifiers: 'identifiers',
+      state: 'state',
+      created_at: 'created_at',
+      updated_at: 'updated_at',
+      published_at: 'published_at',
+      closed_at: 'closed_at',
+      withdrawn_at: 'withdrawn_at',
+      submission: 'submission',
+      vulnerabilities: 'vulnerabilities',
+      cvss: 'cvss',
+      cvss_severities: 'cvss_severities',
+      cwes: 'cwes',
+      cwe_ids: 'cwe_ids',
+      credits: 'credits',
+      credits_detailed: 'credits_detailed',
+      collaborating_users: 'collaborating_users',
+      collaborating_teams: 'collaborating_teams',
+      private_fork: 'private_fork'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      ghsa_id
+      cve_id
+      url
+      html_url
+      summary
+      description
+      severity
+      author
+      publisher
+      identifiers
+      state
+      created_at
+      updated_at
+      published_at
+      closed_at
+      withdrawn_at
+      submission
+      vulnerabilities
+      cvss
+      cwes
+      cwe_ids
+      credits
+      credits_detailed
+      collaborating_users
+      collaborating_teams
+      private_fork
+    ].freeze
+    DECODERS = {
+      severity: lambda do |value|
+        ::OctridevGithub::RepositoryAdvisorySeverity.from_value(value)
+      end,
+      author: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end,
+      publisher: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end,
+      identifiers: lambda do |value|
+        value&.map { |item| ::OctridevGithub::RepositoryAdvisoryIdentifiersItem.from_hash(item) }
+      end,
+      state: lambda do |value|
+        ::OctridevGithub::RepositoryAdvisoryState.from_value(value)
+      end,
+      submission: lambda do |value|
+        ::OctridevGithub::RepositoryAdvisorySubmission.from_hash(value)
+      end,
+      vulnerabilities: lambda do |value|
+        value&.map { |item| ::OctridevGithub::RepositoryAdvisoryVulnerability.from_hash(item) }
+      end,
+      cvss: lambda do |value|
+        ::OctridevGithub::RepositoryAdvisoryCvss.from_hash(value)
+      end,
+      cvss_severities: lambda do |value|
+        ::OctridevGithub::CvssSeverities.from_hash(value)
+      end,
+      cwes: lambda do |value|
+        value&.map { |item| ::OctridevGithub::RepositoryAdvisoryCwesItem.from_hash(item) }
+      end,
+      credits: lambda do |value|
+        value&.map { |item| ::OctridevGithub::RepositoryAdvisoryCreditsItem.from_hash(item) }
+      end,
+      credits_detailed: lambda do |value|
+        value&.map { |item| ::OctridevGithub::RepositoryAdvisoryCredit.from_hash(item) }
+      end,
+      collaborating_users: lambda do |value|
+        value&.map { |item| ::OctridevGithub::SimpleUser.from_hash(item) }
+      end,
+      collaborating_teams: lambda do |value|
+        value&.map { |item| ::OctridevGithub::Team.from_hash(item) }
+      end,
+      private_fork: lambda do |value|
+        ::OctridevGithub::SimpleRepository.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      cve_id
+      description
+      severity
+      author
+      publisher
+      created_at
+      updated_at
+      published_at
+      closed_at
+      withdrawn_at
+      submission
+      vulnerabilities
+      cvss
+      cwes
+      cwe_ids
+      credits
+      credits_detailed
+      collaborating_users
+      collaborating_teams
+      private_fork
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalRepositoryAdvisoryMetadata::NULLABLE_FIELDS)
+  # API model for RepositoryAdvisory.
+  # A repository security advisory.
+  class RepositoryAdvisory
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryAdvisoryMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryAdvisoryMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryAdvisoryMetadata::DECODERS
+
+    # @return [String] The GitHub Security Advisory ID.
+    attr_reader :ghsa_id
+    # @return [String] The Common Vulnerabilities and Exposures (CVE) ID.
+    attr_reader :cve_id
+    # @return [String] The API URL for the advisory.
+    attr_reader :url
+    # @return [String] The URL for the advisory.
+    attr_reader :html_url
+    # @return [String] A short summary of the advisory.
+    attr_reader :summary
+    # @return [String] A detailed description of what the advisory entails.
+    attr_reader :description
+    # @return [RepositoryAdvisorySeverity] The severity of the advisory.
+    attr_reader :severity
+    # @return [SimpleUser] The author of the advisory.
+    attr_reader :author
+    # @return [SimpleUser] The publisher of the advisory.
+    attr_reader :publisher
+    # @return [Array_of_RepositoryAdvisoryIdentifiersItem] Required array value serialized in the `identifiers` wire field.
+    attr_reader :identifiers
+    # @return [RepositoryAdvisoryState] The state of the advisory.
+    attr_reader :state
+    # @return [String] The date and time of when the advisory was created, in ISO 8601 format.
+    attr_reader :created_at
+    # @return [String] The date and time of when the advisory was last updated, in ISO 8601 format.
+    attr_reader :updated_at
+    # @return [String] The date and time of when the advisory was published, in ISO 8601 format.
+    attr_reader :published_at
+    # @return [String] The date and time of when the advisory was closed, in ISO 8601 format.
+    attr_reader :closed_at
+    # @return [String] The date and time of when the advisory was withdrawn, in ISO 8601 format.
+    attr_reader :withdrawn_at
+    # @return [RepositoryAdvisorySubmission] Required object value serialized in the `submission` wire field.
+    attr_reader :submission
+    # @return [Array_of_RepositoryAdvisoryVulnerability] Required array value serialized in the `vulnerabilities` wire field.
+    attr_reader :vulnerabilities
+    # @return [RepositoryAdvisoryCvss] Required object value serialized in the `cvss` wire field.
+    attr_reader :cvss
+    # @return [CvssSeverities] Optional object value serialized in the `cvss_severities` wire field.
+    attr_reader :cvss_severities
+    # @return [Array_of_RepositoryAdvisoryCwesItem] Required array value serialized in the `cwes` wire field.
+    attr_reader :cwes
+    # @return [Array_of_String] A list of only the CWE IDs.
+    attr_reader :cwe_ids
+    # @return [Array_of_RepositoryAdvisoryCreditsItem] Required array value serialized in the `credits` wire field.
+    attr_reader :credits
+    # @return [Array_of_RepositoryAdvisoryCredit] Required array value serialized in the `credits_detailed` wire field.
+    attr_reader :credits_detailed
+    # @return [Array_of_SimpleUser] A list of users that collaborate on the advisory.
+    attr_reader :collaborating_users
+    # @return [Array_of_Team] A list of teams that collaborate on the advisory.
+    attr_reader :collaborating_teams
+    # @return [SimpleRepository] A temporary private fork of the advisory's repository for collaborating on a fix.
+    attr_reader :private_fork
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalRepositoryAdvisoryMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the RepositoryAdvisoryIdentifiersItemType SDK namespace.
-module RepositoryAdvisoryIdentifiersItemType
-  CVE = 'CVE'
-  GHSA = 'GHSA'
-  VALUES = ['CVE', 'GHSA'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the RepositoryAdvisorySeverity SDK namespace.
-module RepositoryAdvisorySeverity
-  CRITICAL = 'critical'
-  HIGH = 'high'
-  MEDIUM = 'medium'
-  LOW = 'low'
-  VALUES = ['critical', 'high', 'medium', 'low'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the RepositoryAdvisoryState SDK namespace.
-module RepositoryAdvisoryState
-  PUBLISHED = 'published'
-  CLOSED = 'closed'
-  WITHDRAWN = 'withdrawn'
-  DRAFT = 'draft'
-  TRIAGE = 'triage'
-  VALUES = ['published', 'closed', 'withdrawn', 'draft', 'triage'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryAdvisoryCreateVulnerabilitiesItemPackageMetadata
-  FIELDS = {
-    ecosystem: "ecosystem",
-    name: "name",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    ecosystem
-  ].freeze
-  DECODERS = {
-    ecosystem: lambda do |value|
-      ::OctridevGithub::SecurityAdvisoryEcosystems.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryAdvisoryCreateVulnerabilitiesItemPackage.
-# The name of the package affected by the vulnerability.
-class RepositoryAdvisoryCreateVulnerabilitiesItemPackage
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryAdvisoryCreateVulnerabilitiesItemPackageMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryAdvisoryCreateVulnerabilitiesItemPackageMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryAdvisoryCreateVulnerabilitiesItemPackageMetadata::DECODERS
-
-  # @return [SecurityAdvisoryEcosystems] The package's language or package management ecosystem.
-  attr_reader :ecosystem
-  # @return [String] The unique package name within its ecosystem.
-  attr_reader :name
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the RepositoryAdvisoryIdentifiersItemType SDK namespace.
+  module RepositoryAdvisoryIdentifiersItemType
+    CVE = 'CVE'
+    GHSA = 'GHSA'
+    VALUES = %w[CVE GHSA].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the RepositoryAdvisorySeverity SDK namespace.
+  module RepositoryAdvisorySeverity
+    CRITICAL = 'critical'
+    HIGH = 'high'
+    MEDIUM = 'medium'
+    LOW = 'low'
+    VALUES = %w[critical high medium low].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryAdvisoryCreateVulnerabilitiesItemMetadata
-  FIELDS = {
-    package: "package",
-    vulnerable_version_range: "vulnerable_version_range",
-    patched_versions: "patched_versions",
-    vulnerable_functions: "vulnerable_functions",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    package
-  ].freeze
-  DECODERS = {
-    package: lambda do |value|
-      ::OctridevGithub::RepositoryAdvisoryCreateVulnerabilitiesItemPackage.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryAdvisoryCreateVulnerabilitiesItem.
-# Required object value serialized in the `vulnerabilities[]` wire field.
-class RepositoryAdvisoryCreateVulnerabilitiesItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryAdvisoryCreateVulnerabilitiesItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryAdvisoryCreateVulnerabilitiesItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryAdvisoryCreateVulnerabilitiesItemMetadata::DECODERS
-
-  # @return [RepositoryAdvisoryCreateVulnerabilitiesItemPackage] The name of the package affected by the vulnerability.
-  attr_reader :package
-  # @return [String] The range of the package versions affected by the vulnerability.
-  attr_reader :vulnerable_version_range
-  # @return [String] The package version(s) that resolve the vulnerability.
-  attr_reader :patched_versions
-  # @return [Array_of_String] The functions in the package that are affected.
-  attr_reader :vulnerable_functions
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the RepositoryAdvisoryState SDK namespace.
+  module RepositoryAdvisoryState
+    PUBLISHED = 'published'
+    CLOSED = 'closed'
+    WITHDRAWN = 'withdrawn'
+    DRAFT = 'draft'
+    TRIAGE = 'triage'
+    VALUES = %w[published closed withdrawn draft triage].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryAdvisoryCreateVulnerabilitiesItemPackageMetadata
+    FIELDS = {
+      ecosystem: 'ecosystem',
+      name: 'name'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      ecosystem
+    ].freeze
+    DECODERS = {
+      ecosystem: lambda do |value|
+        ::OctridevGithub::SecurityAdvisoryEcosystems.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for RepositoryAdvisoryCreateVulnerabilitiesItemPackage.
+  # The name of the package affected by the vulnerability.
+  class RepositoryAdvisoryCreateVulnerabilitiesItemPackage
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryAdvisoryCreateVulnerabilitiesItemPackageMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryAdvisoryCreateVulnerabilitiesItemPackageMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryAdvisoryCreateVulnerabilitiesItemPackageMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalRepositoryAdvisoryCreateCreditsItemMetadata
-  FIELDS = {
-    login: "login",
-    type: "type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    login
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::SecurityAdvisoryCreditTypes.from_value(value)
-    end,
-  }.freeze
-end
+    # @return [SecurityAdvisoryEcosystems] The package's language or package management ecosystem.
+    attr_reader :ecosystem
+    # @return [String] The unique package name within its ecosystem.
+    attr_reader :name
 
-# API model for RepositoryAdvisoryCreateCreditsItem.
-# Required object value serialized in the `credits[]` wire field.
-class RepositoryAdvisoryCreateCreditsItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryAdvisoryCreateCreditsItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryAdvisoryCreateCreditsItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryAdvisoryCreateCreditsItemMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [String] The username of the user credited.
-  attr_reader :login
-  # @return [SecurityAdvisoryCreditTypes] The type of credit the user is receiving.
-  attr_reader :type
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryAdvisoryCreateVulnerabilitiesItemMetadata
+    FIELDS = {
+      package: 'package',
+      vulnerable_version_range: 'vulnerable_version_range',
+      patched_versions: 'patched_versions',
+      vulnerable_functions: 'vulnerable_functions'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      package
+    ].freeze
+    DECODERS = {
+      package: lambda do |value|
+        ::OctridevGithub::RepositoryAdvisoryCreateVulnerabilitiesItemPackage.from_hash(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for RepositoryAdvisoryCreateVulnerabilitiesItem.
+  # Required object value serialized in the `vulnerabilities[]` wire field.
+  class RepositoryAdvisoryCreateVulnerabilitiesItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryAdvisoryCreateVulnerabilitiesItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryAdvisoryCreateVulnerabilitiesItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryAdvisoryCreateVulnerabilitiesItemMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalRepositoryAdvisoryCreateMetadata
-  FIELDS = {
-    summary: "summary",
-    description: "description",
-    cve_id: "cve_id",
-    vulnerabilities: "vulnerabilities",
-    cwe_ids: "cwe_ids",
-    credits: "credits",
-    severity: "severity",
-    cvss_vector_string: "cvss_vector_string",
-    start_private_fork: "start_private_fork",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    summary
-    description
-    vulnerabilities
-  ].freeze
-  DECODERS = {
-    vulnerabilities: lambda do |value|
-      value&.map { |item| ::OctridevGithub::RepositoryAdvisoryCreateVulnerabilitiesItem.from_hash(item) }
-    end,
-    credits: lambda do |value|
-      value&.map { |item| ::OctridevGithub::RepositoryAdvisoryCreateCreditsItem.from_hash(item) }
-    end,
-    severity: lambda do |value|
-      ::OctridevGithub::RepositoryAdvisoryCreateSeverity.from_value(value)
-    end,
-  }.freeze
-end
+    # @return [RepositoryAdvisoryCreateVulnerabilitiesItemPackage] The name of the package affected by the vulnerability.
+    attr_reader :package
+    # @return [String] The range of the package versions affected by the vulnerability.
+    attr_reader :vulnerable_version_range
+    # @return [String] The package version(s) that resolve the vulnerability.
+    attr_reader :patched_versions
+    # @return [Array_of_String] The functions in the package that are affected.
+    attr_reader :vulnerable_functions
 
-# API model for RepositoryAdvisoryCreate.
-# Typed representation of the `RepositoryAdvisoryCreate` API schema.
-class RepositoryAdvisoryCreate
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryAdvisoryCreateMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryAdvisoryCreateMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryAdvisoryCreateMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [String] A short summary of the advisory.
-  attr_reader :summary
-  # @return [String] A detailed description of what the advisory impacts.
-  attr_reader :description
-  # @return [String] The Common Vulnerabilities and Exposures (CVE) ID.
-  attr_reader :cve_id
-  # @return [Array_of_RepositoryAdvisoryCreateVulnerabilitiesItem] A product affected by the vulnerability detailed in a repository security advisory.
-  attr_reader :vulnerabilities
-  # @return [Array_of_String] A list of Common Weakness Enumeration (CWE) IDs.
-  attr_reader :cwe_ids
-  # @return [Array_of_RepositoryAdvisoryCreateCreditsItem] A list of users receiving credit for their participation in the security advisory.
-  attr_reader :credits
-  # @return [RepositoryAdvisoryCreateSeverity] The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.
-  attr_reader :severity
-  # @return [String] The CVSS vector that calculates the severity of the advisory. You must choose between setting this field or `severity`.
-  attr_reader :cvss_vector_string
-  # @return [Boolean] Whether to create a temporary private fork of the repository to collaborate on a fix.
-  attr_reader :start_private_fork
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryAdvisoryCreateCreditsItemMetadata
+    FIELDS = {
+      login: 'login',
+      type: 'type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      login
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::SecurityAdvisoryCreditTypes.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for RepositoryAdvisoryCreateCreditsItem.
+  # Required object value serialized in the `credits[]` wire field.
+  class RepositoryAdvisoryCreateCreditsItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryAdvisoryCreateCreditsItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryAdvisoryCreateCreditsItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryAdvisoryCreateCreditsItemMetadata::DECODERS
 
-# Defines the RepositoryAdvisoryCreateSeverity SDK namespace.
-module RepositoryAdvisoryCreateSeverity
-  CRITICAL = 'critical'
-  HIGH = 'high'
-  MEDIUM = 'medium'
-  LOW = 'low'
-  VALUES = ['critical', 'high', 'medium', 'low'].freeze
-  def self.from_value(value)
-    value
-  end
-end
+    # @return [String] The username of the user credited.
+    attr_reader :login
+    # @return [SecurityAdvisoryCreditTypes] The type of credit the user is receiving.
+    attr_reader :type
 
-# Internal model hydration metadata.
-class SdkInternalRepositoryAdvisoryCreditMetadata
-  FIELDS = {
-    user: "user",
-    type: "type",
-    state: "state",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    user
-    type
-    state
-  ].freeze
-  DECODERS = {
-    user: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-    type: lambda do |value|
-      ::OctridevGithub::SecurityAdvisoryCreditTypes.from_value(value)
-    end,
-    state: lambda do |value|
-      ::OctridevGithub::RepositoryAdvisoryCreditState.from_value(value)
-    end,
-  }.freeze
-end
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-# API model for RepositoryAdvisoryCredit.
-# A credit given to a user for a repository security advisory.
-class RepositoryAdvisoryCredit
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryAdvisoryCreditMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryAdvisoryCreditMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryAdvisoryCreditMetadata::DECODERS
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :user
-  # @return [SecurityAdvisoryCreditTypes] The type of credit the user is receiving.
-  attr_reader :type
-  # @return [RepositoryAdvisoryCreditState] The state of the user's acceptance of the credit.
-  attr_reader :state
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryAdvisoryCreateMetadata
+    FIELDS = {
+      summary: 'summary',
+      description: 'description',
+      cve_id: 'cve_id',
+      vulnerabilities: 'vulnerabilities',
+      cwe_ids: 'cwe_ids',
+      credits: 'credits',
+      severity: 'severity',
+      cvss_vector_string: 'cvss_vector_string',
+      start_private_fork: 'start_private_fork'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      summary
+      description
+      vulnerabilities
+    ].freeze
+    DECODERS = {
+      vulnerabilities: lambda do |value|
+        value&.map { |item| ::OctridevGithub::RepositoryAdvisoryCreateVulnerabilitiesItem.from_hash(item) }
+      end,
+      credits: lambda do |value|
+        value&.map { |item| ::OctridevGithub::RepositoryAdvisoryCreateCreditsItem.from_hash(item) }
+      end,
+      severity: lambda do |value|
+        ::OctridevGithub::RepositoryAdvisoryCreateSeverity.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for RepositoryAdvisoryCreate.
+  # Typed representation of the `RepositoryAdvisoryCreate` API schema.
+  class RepositoryAdvisoryCreate
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryAdvisoryCreateMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryAdvisoryCreateMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryAdvisoryCreateMetadata::DECODERS
 
-# Defines the RepositoryAdvisoryCreditState SDK namespace.
-module RepositoryAdvisoryCreditState
-  ACCEPTED = 'accepted'
-  DECLINED = 'declined'
-  PENDING = 'pending'
-  VALUES = ['accepted', 'declined', 'pending'].freeze
-  def self.from_value(value)
-    value
-  end
-end
+    # @return [String] A short summary of the advisory.
+    attr_reader :summary
+    # @return [String] A detailed description of what the advisory impacts.
+    attr_reader :description
+    # @return [String] The Common Vulnerabilities and Exposures (CVE) ID.
+    attr_reader :cve_id
+    # @return [Array_of_RepositoryAdvisoryCreateVulnerabilitiesItem] A product affected by the vulnerability detailed in a repository security advisory.
+    attr_reader :vulnerabilities
+    # @return [Array_of_String] A list of Common Weakness Enumeration (CWE) IDs.
+    attr_reader :cwe_ids
+    # @return [Array_of_RepositoryAdvisoryCreateCreditsItem] A list of users receiving credit for their participation in the security advisory.
+    attr_reader :credits
+    # @return [RepositoryAdvisoryCreateSeverity] The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.
+    attr_reader :severity
+    # @return [String] The CVSS vector that calculates the severity of the advisory. You must choose between setting this field or `severity`.
+    attr_reader :cvss_vector_string
+    # @return [Boolean] Whether to create a temporary private fork of the repository to collaborate on a fix.
+    attr_reader :start_private_fork
 
-# Internal model hydration metadata.
-class SdkInternalRepositoryAdvisoryDescriptionValidationErrorErrorsItemMetadata
-  FIELDS = {
-    resource: "resource",
-    field: "field",
-    message: "message",
-    code: "code",
-    index: "index",
-    value: "value",
-    section: "section",
-    option: "option",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    code
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-# API model for RepositoryAdvisoryDescriptionValidationErrorErrorsItem.
-# Required object value serialized in the `errors[]` wire field.
-class RepositoryAdvisoryDescriptionValidationErrorErrorsItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryAdvisoryDescriptionValidationErrorErrorsItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryAdvisoryDescriptionValidationErrorErrorsItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryAdvisoryDescriptionValidationErrorErrorsItemMetadata::DECODERS
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  # @return [String] Optional `string` value serialized in the `resource` wire field.
-  attr_reader :resource
-  # @return [String] Optional `string` value serialized in the `field` wire field.
-  attr_reader :field
-  # @return [String] Optional `string` value serialized in the `message` wire field.
-  attr_reader :message
-  # @return [String] A machine-readable identifier for the problem. `missing_section`, `empty_section`, `unchecked_required_option`, and `sections_out_of_order` come from validating the description against the repository's report template; other codes are shared with other validation failures on this endpoint.
-  attr_reader :code
-  # @return [Integer] Optional `integer` value serialized in the `index` wire field.
-  attr_reader :index
-  # @return [Object] Optional API value serialized in the `value` wire field.
-  attr_reader :value
-  # @return [String] The report template section the violation concerns.
-  attr_reader :section
-  # @return [String] The checkbox option left unticked. Only present when `code` is `unchecked_required_option`.
-  attr_reader :option
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the RepositoryAdvisoryCreateSeverity SDK namespace.
+  module RepositoryAdvisoryCreateSeverity
+    CRITICAL = 'critical'
+    HIGH = 'high'
+    MEDIUM = 'medium'
+    LOW = 'low'
+    VALUES = %w[critical high medium low].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryAdvisoryCreditMetadata
+    FIELDS = {
+      user: 'user',
+      type: 'type',
+      state: 'state'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      user
+      type
+      state
+    ].freeze
+    DECODERS = {
+      user: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end,
+      type: lambda do |value|
+        ::OctridevGithub::SecurityAdvisoryCreditTypes.from_value(value)
+      end,
+      state: lambda do |value|
+        ::OctridevGithub::RepositoryAdvisoryCreditState.from_value(value)
+      end
+    }.freeze
   end
-end
+
+  # API model for RepositoryAdvisoryCredit.
+  # A credit given to a user for a repository security advisory.
+  class RepositoryAdvisoryCredit
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryAdvisoryCreditMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryAdvisoryCreditMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryAdvisoryCreditMetadata::DECODERS
+
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :user
+    # @return [SecurityAdvisoryCreditTypes] The type of credit the user is receiving.
+    attr_reader :type
+    # @return [RepositoryAdvisoryCreditState] The state of the user's acceptance of the credit.
+    attr_reader :state
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Defines the RepositoryAdvisoryCreditState SDK namespace.
+  module RepositoryAdvisoryCreditState
+    ACCEPTED = 'accepted'
+    DECLINED = 'declined'
+    PENDING = 'pending'
+    VALUES = %w[accepted declined pending].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryAdvisoryDescriptionValidationErrorErrorsItemMetadata
+    FIELDS = {
+      resource: 'resource',
+      field: 'field',
+      message: 'message',
+      code: 'code',
+      index: 'index',
+      value: 'value',
+      section: 'section',
+      option: 'option'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      code
+    ].freeze
+    DECODERS = {}.freeze
+  end
+
+  # API model for RepositoryAdvisoryDescriptionValidationErrorErrorsItem.
+  # Required object value serialized in the `errors[]` wire field.
+  class RepositoryAdvisoryDescriptionValidationErrorErrorsItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryAdvisoryDescriptionValidationErrorErrorsItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryAdvisoryDescriptionValidationErrorErrorsItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryAdvisoryDescriptionValidationErrorErrorsItemMetadata::DECODERS
+
+    # @return [String] Optional `string` value serialized in the `resource` wire field.
+    attr_reader :resource
+    # @return [String] Optional `string` value serialized in the `field` wire field.
+    attr_reader :field
+    # @return [String] Optional `string` value serialized in the `message` wire field.
+    attr_reader :message
+    # @return [String] A machine-readable identifier for the problem. `missing_section`, `empty_section`, `unchecked_required_option`, and `sections_out_of_order` come from validating the description against the repository's report template; other codes are shared with other validation failures on this endpoint.
+    attr_reader :code
+    # @return [Integer] Optional `integer` value serialized in the `index` wire field.
+    attr_reader :index
+    # @return [Object] Optional API value serialized in the `value` wire field.
+    attr_reader :value
+    # @return [String] The report template section the violation concerns.
+    attr_reader :section
+    # @return [String] The checkbox option left unticked. Only present when `code` is `unchecked_required_option`.
+    attr_reader :option
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
 end

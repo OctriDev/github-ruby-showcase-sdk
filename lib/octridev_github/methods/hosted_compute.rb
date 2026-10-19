@@ -12,8 +12,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalHostedComputeListNetworkConfigurationsForOrgResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          network_configurations: "network_configurations",
+          total_count: 'total_count',
+          network_configurations: 'network_configurations'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -22,7 +22,7 @@ module OctridevGithub
         DECODERS = {
           network_configurations: lambda do |value|
             value&.map { |item| ::OctridevGithub::NetworkConfiguration.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -52,11 +52,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalHostedComputeCreateNetworkConfigurationForOrgMetadata
         FIELDS = {
-          name: "name",
-          compute_service: "compute_service",
-          network_settings_ids: "network_settings_ids",
-          failover_network_settings_ids: "failover_network_settings_ids",
-          failover_network_enabled: "failover_network_enabled",
+          name: 'name',
+          compute_service: 'compute_service',
+          network_settings_ids: 'network_settings_ids',
+          failover_network_settings_ids: 'failover_network_settings_ids',
+          failover_network_enabled: 'failover_network_enabled'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
@@ -65,7 +65,7 @@ module OctridevGithub
         DECODERS = {
           compute_service: lambda do |value|
             ::OctridevGithub::Methods::HostedCompute::HostedComputeCreateNetworkConfigurationForOrgComputeService.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -104,18 +104,17 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalHostedComputeUpdateNetworkConfigurationForOrgMetadata
         FIELDS = {
-          name: "name",
-          compute_service: "compute_service",
-          network_settings_ids: "network_settings_ids",
-          failover_network_settings_ids: "failover_network_settings_ids",
-          failover_network_enabled: "failover_network_enabled",
+          name: 'name',
+          compute_service: 'compute_service',
+          network_settings_ids: 'network_settings_ids',
+          failover_network_settings_ids: 'failover_network_settings_ids',
+          failover_network_enabled: 'failover_network_enabled'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           compute_service: lambda do |value|
             ::OctridevGithub::Methods::HostedCompute::HostedComputeUpdateNetworkConfigurationForOrgComputeService.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -155,7 +154,7 @@ module OctridevGithub
       module HostedComputeUpdateNetworkConfigurationForOrgComputeService
         NONE = 'none'
         ACTIONS = 'actions'
-        VALUES = ['none', 'actions'].freeze
+        VALUES = %w[none actions].freeze
         def self.from_value(value)
           value
         end
@@ -165,7 +164,7 @@ module OctridevGithub
       module HostedComputeCreateNetworkConfigurationForOrgComputeService
         NONE = 'none'
         ACTIONS = 'actions'
-        VALUES = ['none', 'actions'].freeze
+        VALUES = %w[none actions].freeze
         def self.from_value(value)
           value
         end
@@ -185,23 +184,22 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/settings/network-configurations"
+            '/settings/network-configurations'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::HostedCompute::HostedComputeListNetworkConfigurationsForOrgResponse,
           decoder: :json,
           operation_id: 'hosted_compute_list_network_configurations_for_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -233,7 +231,6 @@ module OctridevGithub
         failover_network_enabled: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_items('network_settings_ids', network_settings_ids, min: 1, max: 1)
 
         Validation.if_given(failover_network_settings_ids) do
@@ -243,9 +240,9 @@ module OctridevGithub
         SdkClient.request(
           'POST',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/settings/network-configurations"
+            '/settings/network-configurations'
           ].join,
           config: config,
           body: {
@@ -253,12 +250,12 @@ module OctridevGithub
             'network_settings_ids' => network_settings_ids,
             'compute_service' => compute_service,
             'failover_network_settings_ids' => failover_network_settings_ids,
-            'failover_network_enabled' => failover_network_enabled,
+            'failover_network_enabled' => failover_network_enabled
           },
           return_type: ::OctridevGithub::NetworkConfiguration,
           decoder: :json,
           operation_id: 'hosted_compute_create_network_configuration_for_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -273,20 +270,19 @@ module OctridevGithub
         network_configuration_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/settings/network-configurations/",
+            '/settings/network-configurations/',
             SdkClient.encode_path_segment(network_configuration_id)
           ].join,
           config: config,
           return_type: ::OctridevGithub::NetworkConfiguration,
           decoder: :json,
           operation_id: 'hosted_compute_get_network_configuration_for_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -321,7 +317,6 @@ module OctridevGithub
         failover_network_enabled: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.if_given(network_settings_ids) do
           Validation.validate_items('network_settings_ids', network_settings_ids, min: 0, max: 1)
         end
@@ -333,9 +328,9 @@ module OctridevGithub
         SdkClient.request(
           'PATCH',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/settings/network-configurations/",
+            '/settings/network-configurations/',
             SdkClient.encode_path_segment(network_configuration_id)
           ].join,
           config: config,
@@ -344,12 +339,12 @@ module OctridevGithub
             'compute_service' => compute_service,
             'network_settings_ids' => network_settings_ids,
             'failover_network_settings_ids' => failover_network_settings_ids,
-            'failover_network_enabled' => failover_network_enabled,
+            'failover_network_enabled' => failover_network_enabled
           },
           return_type: ::OctridevGithub::NetworkConfiguration,
           decoder: :json,
           operation_id: 'hosted_compute_update_network_configuration_for_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -364,19 +359,18 @@ module OctridevGithub
         network_configuration_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/settings/network-configurations/",
+            '/settings/network-configurations/',
             SdkClient.encode_path_segment(network_configuration_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'hosted_compute_delete_network_configuration_from_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -391,20 +385,19 @@ module OctridevGithub
         network_settings_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/settings/network-settings/",
+            '/settings/network-settings/',
             SdkClient.encode_path_segment(network_settings_id)
           ].join,
           config: config,
           return_type: ::OctridevGithub::NetworkSettings,
           decoder: :json,
           operation_id: 'hosted_compute_get_network_settings_for_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end
