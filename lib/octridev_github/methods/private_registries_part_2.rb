@@ -110,24 +110,24 @@ module OctridevGithub
         service_account: NOT_GIVEN,
         request_options: nil
       )
+
         __sdk_validate_private_registries_create_org_private_registry(url: url, encrypted_value: encrypted_value)
 
         SdkClient.request(
           'POST',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/private-registries'
+            "/private-registries"
           ].join,
           config: config,
           body: __sdk_body_private_registries_create_org_private_registry_part1(registry_type: registry_type, url: url, visibility: visibility, username: username, replaces_base: replaces_base, encrypted_value: encrypted_value, key_id: key_id, selected_repository_ids: selected_repository_ids, auth_type: auth_type, tenant_id: tenant_id, client_id: client_id, aws_region: aws_region, account_id: account_id, role_name: role_name, domain: domain, domain_owner: domain_owner, jfrog_oidc_provider_name: jfrog_oidc_provider_name, audience: audience).merge(
-            __sdk_body_private_registries_create_org_private_registry_part2(identity_mapping_name: identity_mapping_name, namespace: namespace, service_slug: service_slug, api_host: api_host, workload_identity_provider: workload_identity_provider, service_account: service_account)
-          ),
+            __sdk_body_private_registries_create_org_private_registry_part2(identity_mapping_name: identity_mapping_name, namespace: namespace, service_slug: service_slug, api_host: api_host, workload_identity_provider: workload_identity_provider, service_account: service_account)),
           return_type: ::OctridevGithub::OrgPrivateRegistryConfigurationWithSelectedRepositories,
           decoder: :json,
           operation_id: 'private_registries_create_org_private_registry',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -181,7 +181,7 @@ module OctridevGithub
           'domain' => domain,
           'domain_owner' => domain_owner,
           'jfrog_oidc_provider_name' => jfrog_oidc_provider_name,
-          'audience' => audience
+          'audience' => audience,
         }
       end
       private_class_method :__sdk_body_private_registries_create_org_private_registry_part1
@@ -200,7 +200,7 @@ module OctridevGithub
           'service_slug' => service_slug,
           'api_host' => api_host,
           'workload_identity_provider' => workload_identity_provider,
-          'service_account' => service_account
+          'service_account' => service_account,
         }
       end
       private_class_method :__sdk_body_private_registries_create_org_private_registry_part2
@@ -213,19 +213,20 @@ module OctridevGithub
         org:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/private-registries/public-key'
+            "/private-registries/public-key"
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::PrivateRegistries::PrivateRegistriesGetOrgPublicKeyResponse,
           decoder: :json,
           operation_id: 'private_registries_get_org_public_key',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -239,12 +240,13 @@ module OctridevGithub
         secret_name:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/private-registries/',
+            "/private-registries/",
             SdkClient.encode_path_segment(secret_name)
           ].join,
           config: config,
@@ -252,7 +254,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'private_registries_get_org_private_registry',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -353,24 +355,24 @@ module OctridevGithub
         service_account: NOT_GIVEN,
         request_options: nil
       )
+
         __sdk_validate_private_registries_update_org_private_registry(url: url, encrypted_value: encrypted_value)
 
         SdkClient.request(
           'PATCH',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/private-registries/',
+            "/private-registries/",
             SdkClient.encode_path_segment(secret_name)
           ].join,
           config: config,
           body: __sdk_body_private_registries_update_org_private_registry_part1(registry_type: registry_type, url: url, username: username, replaces_base: replaces_base, encrypted_value: encrypted_value, key_id: key_id, visibility: visibility, selected_repository_ids: selected_repository_ids, auth_type: auth_type, tenant_id: tenant_id, client_id: client_id, aws_region: aws_region, account_id: account_id, role_name: role_name, domain: domain, domain_owner: domain_owner, jfrog_oidc_provider_name: jfrog_oidc_provider_name, audience: audience).merge(
-            __sdk_body_private_registries_update_org_private_registry_part2(identity_mapping_name: identity_mapping_name, namespace: namespace, service_slug: service_slug, api_host: api_host, workload_identity_provider: workload_identity_provider, service_account: service_account)
-          ),
+            __sdk_body_private_registries_update_org_private_registry_part2(identity_mapping_name: identity_mapping_name, namespace: namespace, service_slug: service_slug, api_host: api_host, workload_identity_provider: workload_identity_provider, service_account: service_account)),
           decoder: :empty,
           operation_id: 'private_registries_update_org_private_registry',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -424,7 +426,7 @@ module OctridevGithub
           'domain' => domain,
           'domain_owner' => domain_owner,
           'jfrog_oidc_provider_name' => jfrog_oidc_provider_name,
-          'audience' => audience
+          'audience' => audience,
         }
       end
       private_class_method :__sdk_body_private_registries_update_org_private_registry_part1
@@ -443,7 +445,7 @@ module OctridevGithub
           'service_slug' => service_slug,
           'api_host' => api_host,
           'workload_identity_provider' => workload_identity_provider,
-          'service_account' => service_account
+          'service_account' => service_account,
         }
       end
       private_class_method :__sdk_body_private_registries_update_org_private_registry_part2
@@ -458,19 +460,20 @@ module OctridevGithub
         secret_name:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/private-registries/',
+            "/private-registries/",
             SdkClient.encode_path_segment(secret_name)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'private_registries_delete_org_private_registry',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '400' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

@@ -5,255 +5,259 @@
 
 # webhook_label_edited domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalWebhookLabelEditedChangesColorMetadata
-    FIELDS = {
-      from: 'from'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      from
-    ].freeze
-    DECODERS = {}.freeze
+# Internal model hydration metadata.
+class SdkInternalWebhookLabelEditedChangesColorMetadata
+  FIELDS = {
+    from: "from",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    from
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhookLabelEditedChangesColor.
+# Optional object value serialized in the `color` wire field.
+class WebhookLabelEditedChangesColor
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookLabelEditedChangesColorMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookLabelEditedChangesColorMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookLabelEditedChangesColorMetadata::DECODERS
+
+  # @return [String] The previous version of the color if the action was `edited`.
+  attr_reader :from
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookLabelEditedChangesColor.
-  # Optional object value serialized in the `color` wire field.
-  class WebhookLabelEditedChangesColor
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookLabelEditedChangesColorMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookLabelEditedChangesColorMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookLabelEditedChangesColorMetadata::DECODERS
-
-    # @return [String] The previous version of the color if the action was `edited`.
-    attr_reader :from
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookLabelEditedChangesDescriptionMetadata
-    FIELDS = {
-      from: 'from'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      from
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookLabelEditedChangesDescriptionMetadata
+  FIELDS = {
+    from: "from",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    from
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhookLabelEditedChangesDescription.
+# Optional object value serialized in the `description` wire field.
+class WebhookLabelEditedChangesDescription
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookLabelEditedChangesDescriptionMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookLabelEditedChangesDescriptionMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookLabelEditedChangesDescriptionMetadata::DECODERS
+
+  # @return [String] The previous version of the description if the action was `edited`.
+  attr_reader :from
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookLabelEditedChangesDescription.
-  # Optional object value serialized in the `description` wire field.
-  class WebhookLabelEditedChangesDescription
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookLabelEditedChangesDescriptionMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookLabelEditedChangesDescriptionMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookLabelEditedChangesDescriptionMetadata::DECODERS
-
-    # @return [String] The previous version of the description if the action was `edited`.
-    attr_reader :from
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookLabelEditedChangesNameMetadata
-    FIELDS = {
-      from: 'from'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      from
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookLabelEditedChangesNameMetadata
+  FIELDS = {
+    from: "from",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    from
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhookLabelEditedChangesName.
+# Optional object value serialized in the `name` wire field.
+class WebhookLabelEditedChangesName
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookLabelEditedChangesNameMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookLabelEditedChangesNameMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookLabelEditedChangesNameMetadata::DECODERS
+
+  # @return [String] The previous version of the name if the action was `edited`.
+  attr_reader :from
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookLabelEditedChangesName.
-  # Optional object value serialized in the `name` wire field.
-  class WebhookLabelEditedChangesName
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookLabelEditedChangesNameMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookLabelEditedChangesNameMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookLabelEditedChangesNameMetadata::DECODERS
-
-    # @return [String] The previous version of the name if the action was `edited`.
-    attr_reader :from
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookLabelEditedChangesMetadata
-    FIELDS = {
-      color: 'color',
-      description: 'description',
-      name: 'name'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      color: lambda do |value|
-        ::OctridevGithub::WebhookLabelEditedChangesColor.from_hash(value)
-      end,
-      description: lambda do |value|
-        ::OctridevGithub::WebhookLabelEditedChangesDescription.from_hash(value)
-      end,
-      name: lambda do |value|
-        ::OctridevGithub::WebhookLabelEditedChangesName.from_hash(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookLabelEditedChangesMetadata
+  FIELDS = {
+    color: "color",
+    description: "description",
+    name: "name",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    color: lambda do |value|
+      ::OctridevGithub::WebhookLabelEditedChangesColor.from_hash(value)
+    end,
+    description: lambda do |value|
+      ::OctridevGithub::WebhookLabelEditedChangesDescription.from_hash(value)
+    end,
+    name: lambda do |value|
+      ::OctridevGithub::WebhookLabelEditedChangesName.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookLabelEditedChanges.
+# The changes to the label if the action was `edited`.
+class WebhookLabelEditedChanges
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookLabelEditedChangesMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookLabelEditedChangesMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookLabelEditedChangesMetadata::DECODERS
+
+  # @return [WebhookLabelEditedChangesColor] Optional object value serialized in the `color` wire field.
+  attr_reader :color
+  # @return [WebhookLabelEditedChangesDescription] Optional object value serialized in the `description` wire field.
+  attr_reader :description
+  # @return [WebhookLabelEditedChangesName] Optional object value serialized in the `name` wire field.
+  attr_reader :name
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookLabelEditedChanges.
-  # The changes to the label if the action was `edited`.
-  class WebhookLabelEditedChanges
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookLabelEditedChangesMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookLabelEditedChangesMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookLabelEditedChangesMetadata::DECODERS
-
-    # @return [WebhookLabelEditedChangesColor] Optional object value serialized in the `color` wire field.
-    attr_reader :color
-    # @return [WebhookLabelEditedChangesDescription] Optional object value serialized in the `description` wire field.
-    attr_reader :description
-    # @return [WebhookLabelEditedChangesName] Optional object value serialized in the `name` wire field.
-    attr_reader :name
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookLabelEditedMetadata
-    FIELDS = {
-      action: 'action',
-      changes: 'changes',
-      enterprise: 'enterprise',
-      installation: 'installation',
-      label: 'label',
-      organization: 'organization',
-      repository: 'repository',
-      sender: 'sender'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      action
-      label
-      repository
-      sender
-    ].freeze
-    DECODERS = {
-      action: lambda do |value|
-        ::OctridevGithub::WebhookLabelEditedAction.from_value(value)
-      end,
-      changes: lambda do |value|
-        ::OctridevGithub::WebhookLabelEditedChanges.from_hash(value)
-      end,
-      enterprise: lambda do |value|
-        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-      end,
-      installation: lambda do |value|
-        ::OctridevGithub::SimpleInstallation.from_hash(value)
-      end,
-      label: lambda do |value|
-        ::OctridevGithub::WebhooksLabel.from_hash(value)
-      end,
-      organization: lambda do |value|
-        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-      end,
-      repository: lambda do |value|
-        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-      end,
-      sender: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookLabelEditedMetadata
+  FIELDS = {
+    action: "action",
+    changes: "changes",
+    enterprise: "enterprise",
+    installation: "installation",
+    label: "label",
+    organization: "organization",
+    repository: "repository",
+    sender: "sender",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    action
+    label
+    repository
+    sender
+  ].freeze
+  DECODERS = {
+    action: lambda do |value|
+      ::OctridevGithub::WebhookLabelEditedAction.from_value(value)
+    end,
+    changes: lambda do |value|
+      ::OctridevGithub::WebhookLabelEditedChanges.from_hash(value)
+    end,
+    enterprise: lambda do |value|
+      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+    end,
+    installation: lambda do |value|
+      ::OctridevGithub::SimpleInstallation.from_hash(value)
+    end,
+    label: lambda do |value|
+      ::OctridevGithub::WebhooksLabel.from_hash(value)
+    end,
+    organization: lambda do |value|
+      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+    end,
+    repository: lambda do |value|
+      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+    end,
+    sender: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookLabelEdited.
+# Typed representation of the `WebhookLabelEdited` API schema.
+class WebhookLabelEdited
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookLabelEditedMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookLabelEditedMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookLabelEditedMetadata::DECODERS
+
+  # @return [WebhookLabelEditedAction] Required enumerated value serialized in the `action` wire field.
+  attr_reader :action
+  # @return [WebhookLabelEditedChanges] The changes to the label if the action was `edited`.
+  attr_reader :changes
+  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+  attr_reader :enterprise
+  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+  attr_reader :installation
+  # @return [WebhooksLabel] Required object value serialized in the `label` wire field.
+  attr_reader :label
+  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+  attr_reader :organization
+  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+  attr_reader :repository
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :sender
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookLabelEdited.
-  # Typed representation of the `WebhookLabelEdited` API schema.
-  class WebhookLabelEdited
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookLabelEditedMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookLabelEditedMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookLabelEditedMetadata::DECODERS
-
-    # @return [WebhookLabelEditedAction] Required enumerated value serialized in the `action` wire field.
-    attr_reader :action
-    # @return [WebhookLabelEditedChanges] The changes to the label if the action was `edited`.
-    attr_reader :changes
-    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-    attr_reader :enterprise
-    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-    attr_reader :installation
-    # @return [WebhooksLabel] Required object value serialized in the `label` wire field.
-    attr_reader :label
-    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-    attr_reader :organization
-    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-    attr_reader :repository
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :sender
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the WebhookLabelEditedAction SDK namespace.
-  module WebhookLabelEditedAction
-    EDITED = 'edited'
-    VALUES = ['edited'].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
+
+# Defines the WebhookLabelEditedAction SDK namespace.
+module WebhookLabelEditedAction
+  EDITED = 'edited'
+  VALUES = ['edited'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

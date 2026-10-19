@@ -5,628 +5,653 @@
 
 # webhook_repository_ruleset_edited domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalWebhookRepositoryRulesetEditedChangesNameMetadata
-    FIELDS = {
-      from: 'from'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+# Internal model hydration metadata.
+class SdkInternalWebhookRepositoryRulesetEditedChangesNameMetadata
+  FIELDS = {
+    from: "from",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhookRepositoryRulesetEditedChangesName.
+# Optional object value serialized in the `name` wire field.
+class WebhookRepositoryRulesetEditedChangesName
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesNameMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesNameMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesNameMetadata::DECODERS
+
+  # @return [String] Optional `string` value serialized in the `from` wire field.
+  attr_reader :from
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookRepositoryRulesetEditedChangesName.
-  # Optional object value serialized in the `name` wire field.
-  class WebhookRepositoryRulesetEditedChangesName
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesNameMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesNameMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesNameMetadata::DECODERS
-
-    # @return [String] Optional `string` value serialized in the `from` wire field.
-    attr_reader :from
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookRepositoryRulesetEditedChangesEnforcementMetadata
-    FIELDS = {
-      from: 'from'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookRepositoryRulesetEditedChangesEnforcementMetadata
+  FIELDS = {
+    from: "from",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhookRepositoryRulesetEditedChangesEnforcement.
+# Optional object value serialized in the `enforcement` wire field.
+class WebhookRepositoryRulesetEditedChangesEnforcement
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesEnforcementMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesEnforcementMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesEnforcementMetadata::DECODERS
+
+  # @return [String] Optional `string` value serialized in the `from` wire field.
+  attr_reader :from
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookRepositoryRulesetEditedChangesEnforcement.
-  # Optional object value serialized in the `enforcement` wire field.
-  class WebhookRepositoryRulesetEditedChangesEnforcement
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesEnforcementMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesEnforcementMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesEnforcementMetadata::DECODERS
-
-    # @return [String] Optional `string` value serialized in the `from` wire field.
-    attr_reader :from
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChaX690cc143d8Metadata
-    FIELDS = {
-      from: 'from'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChaX690cc143d8Metadata
+  FIELDS = {
+    from: "from",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChaX690cc143d8.
+# Optional object value serialized in the `condition_type` wire field.
+class WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChaX690cc143d8
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChaX690cc143d8Metadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChaX690cc143d8Metadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChaX690cc143d8Metadata::DECODERS
+
+  # @return [String] Optional `string` value serialized in the `from` wire field.
+  attr_reader :from
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChaX690cc143d8.
-  # Optional object value serialized in the `condition_type` wire field.
-  class WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChaX690cc143d8
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChaX690cc143d8Metadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChaX690cc143d8Metadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChaX690cc143d8Metadata::DECODERS
-
-    # @return [String] Optional `string` value serialized in the `from` wire field.
-    attr_reader :from
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesTargetMetadata
-    FIELDS = {
-      from: 'from'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesTargetMetadata
+  FIELDS = {
+    from: "from",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesTarget.
+# Optional object value serialized in the `target` wire field.
+class WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesTarget
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesTargetMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesTargetMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesTargetMetadata::DECODERS
+
+  # @return [String] Optional `string` value serialized in the `from` wire field.
+  attr_reader :from
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesTarget.
-  # Optional object value serialized in the `target` wire field.
-  class WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesTarget
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesTargetMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesTargetMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesTargetMetadata::DECODERS
-
-    # @return [String] Optional `string` value serialized in the `from` wire field.
-    attr_reader :from
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesIncludeMetadata
-    FIELDS = {
-      from: 'from'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesIncludeMetadata
+  FIELDS = {
+    from: "from",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesInclude.
+# Optional object value serialized in the `include` wire field.
+class WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesInclude
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesIncludeMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesIncludeMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesIncludeMetadata::DECODERS
+
+  # @return [Array_of_String] Optional array value serialized in the `from` wire field.
+  attr_reader :from
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesInclude.
-  # Optional object value serialized in the `include` wire field.
-  class WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesInclude
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesIncludeMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesIncludeMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesIncludeMetadata::DECODERS
-
-    # @return [Array_of_String] Optional array value serialized in the `from` wire field.
-    attr_reader :from
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesExcludeMetadata
-    FIELDS = {
-      from: 'from'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesExcludeMetadata
+  FIELDS = {
+    from: "from",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesExclude.
+# Optional object value serialized in the `exclude` wire field.
+class WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesExclude
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesExcludeMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesExcludeMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesExcludeMetadata::DECODERS
+
+  # @return [Array_of_String] Optional array value serialized in the `from` wire field.
+  attr_reader :from
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesExclude.
-  # Optional object value serialized in the `exclude` wire field.
-  class WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesExclude
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesExcludeMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesExcludeMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesExcludeMetadata::DECODERS
-
-    # @return [Array_of_String] Optional array value serialized in the `from` wire field.
-    attr_reader :from
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesMetadata
-    FIELDS = {
-      condition_type: 'condition_type',
-      target: 'target',
-      include: 'include',
-      exclude: 'exclude'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      condition_type: lambda do |value|
-        ::OctridevGithub::WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChaX690cc143d8.from_hash(value)
-      end,
-      target: lambda do |value|
-        ::OctridevGithub::WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesTarget.from_hash(value)
-      end,
-      include: lambda do |value|
-        ::OctridevGithub::WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesInclude.from_hash(value)
-      end,
-      exclude: lambda do |value|
-        ::OctridevGithub::WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesExclude.from_hash(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesMetadata
+  FIELDS = {
+    condition_type: "condition_type",
+    target: "target",
+    include: "include",
+    exclude: "exclude",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    condition_type: lambda do |value|
+      ::OctridevGithub::WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChaX690cc143d8.from_hash(value)
+    end,
+    target: lambda do |value|
+      ::OctridevGithub::WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesTarget.from_hash(value)
+    end,
+    include: lambda do |value|
+      ::OctridevGithub::WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesInclude.from_hash(value)
+    end,
+    exclude: lambda do |value|
+      ::OctridevGithub::WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesExclude.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChanges.
+# Optional object value serialized in the `changes` wire field.
+class WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChanges
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesMetadata::DECODERS
+
+  # @return [WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChaX690cc143d8] Optional object value serialized in the `condition_type` wire field.
+  attr_reader :condition_type
+  # @return [WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesTarget] Optional object value serialized in the `target` wire field.
+  attr_reader :target
+  # @return [WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesInclude] Optional object value serialized in the `include` wire field.
+  attr_reader :include
+  # @return [WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesExclude] Optional object value serialized in the `exclude` wire field.
+  attr_reader :exclude
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChanges.
-  # Optional object value serialized in the `changes` wire field.
-  class WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChanges
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesMetadata::DECODERS
-
-    # @return [WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChaX690cc143d8] Optional object value serialized in the `condition_type` wire field.
-    attr_reader :condition_type
-    # @return [WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesTarget] Optional object value serialized in the `target` wire field.
-    attr_reader :target
-    # @return [WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesInclude] Optional object value serialized in the `include` wire field.
-    attr_reader :include
-    # @return [WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChangesExclude] Optional object value serialized in the `exclude` wire field.
-    attr_reader :exclude
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemMetadata
-    FIELDS = {
-      condition: 'condition',
-      changes: 'changes'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      condition: lambda do |value|
-        ::OctridevGithub::RepositoryRulesetConditions.from_hash(value)
-      end,
-      changes: lambda do |value|
-        ::OctridevGithub::WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChanges.from_hash(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemMetadata
+  FIELDS = {
+    condition: "condition",
+    changes: "changes",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    condition: lambda do |value|
+      ::OctridevGithub::RepositoryRulesetConditions.from_hash(value)
+    end,
+    changes: lambda do |value|
+      ::OctridevGithub::WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChanges.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookRepositoryRulesetEditedChangesConditionsUpdatedItem.
+# Required object value serialized in the `updated[]` wire field.
+class WebhookRepositoryRulesetEditedChangesConditionsUpdatedItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemMetadata::DECODERS
+
+  # @return [RepositoryRulesetConditions] Parameters for a repository ruleset ref name condition
+  attr_reader :condition
+  # @return [WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChanges] Optional object value serialized in the `changes` wire field.
+  attr_reader :changes
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookRepositoryRulesetEditedChangesConditionsUpdatedItem.
-  # Required object value serialized in the `updated[]` wire field.
-  class WebhookRepositoryRulesetEditedChangesConditionsUpdatedItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsUpdatedItemMetadata::DECODERS
-
-    # @return [RepositoryRulesetConditions] Parameters for a repository ruleset ref name condition
-    attr_reader :condition
-    # @return [WebhookRepositoryRulesetEditedChangesConditionsUpdatedItemChanges] Optional object value serialized in the `changes` wire field.
-    attr_reader :changes
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookRepositoryRulesetEditedChangesConditionsMetadata
-    FIELDS = {
-      added: 'added',
-      deleted: 'deleted',
-      updated: 'updated'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      added: lambda do |value|
-        value&.map { |item| ::OctridevGithub::RepositoryRulesetConditions.from_hash(item) }
-      end,
-      deleted: lambda do |value|
-        value&.map { |item| ::OctridevGithub::RepositoryRulesetConditions.from_hash(item) }
-      end,
-      updated: lambda do |value|
-        value&.map { |item| ::OctridevGithub::WebhookRepositoryRulesetEditedChangesConditionsUpdatedItem.from_hash(item) }
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookRepositoryRulesetEditedChangesConditionsMetadata
+  FIELDS = {
+    added: "added",
+    deleted: "deleted",
+    updated: "updated",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    added: lambda do |value|
+      value&.map { |item| ::OctridevGithub::RepositoryRulesetConditions.from_hash(item) }
+    end,
+    deleted: lambda do |value|
+      value&.map { |item| ::OctridevGithub::RepositoryRulesetConditions.from_hash(item) }
+    end,
+    updated: lambda do |value|
+      value&.map { |item| ::OctridevGithub::WebhookRepositoryRulesetEditedChangesConditionsUpdatedItem.from_hash(item) }
+    end,
+  }.freeze
+end
+
+# API model for WebhookRepositoryRulesetEditedChangesConditions.
+# Optional object value serialized in the `conditions` wire field.
+class WebhookRepositoryRulesetEditedChangesConditions
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsMetadata::DECODERS
+
+  # @return [Array_of_RepositoryRulesetConditions] Optional array value serialized in the `added` wire field.
+  attr_reader :added
+  # @return [Array_of_RepositoryRulesetConditions] Optional array value serialized in the `deleted` wire field.
+  attr_reader :deleted
+  # @return [Array_of_WebhookRepositoryRulesetEditedChangesConditionsUpdatedItem] Optional array value serialized in the `updated` wire field.
+  attr_reader :updated
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookRepositoryRulesetEditedChangesConditions.
-  # Optional object value serialized in the `conditions` wire field.
-  class WebhookRepositoryRulesetEditedChangesConditions
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesConditionsMetadata::DECODERS
-
-    # @return [Array_of_RepositoryRulesetConditions] Optional array value serialized in the `added` wire field.
-    attr_reader :added
-    # @return [Array_of_RepositoryRulesetConditions] Optional array value serialized in the `deleted` wire field.
-    attr_reader :deleted
-    # @return [Array_of_WebhookRepositoryRulesetEditedChangesConditionsUpdatedItem] Optional array value serialized in the `updated` wire field.
-    attr_reader :updated
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesCX78a12d5efbMetadata
-    FIELDS = {
-      from: 'from'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesCX78a12d5efbMetadata
+  FIELDS = {
+    from: "from",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesCX78a12d5efb.
+# Optional object value serialized in the `configuration` wire field.
+class WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesCX78a12d5efb
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesCX78a12d5efbMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesCX78a12d5efbMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesCX78a12d5efbMetadata::DECODERS
+
+  # @return [String] Optional `string` value serialized in the `from` wire field.
+  attr_reader :from
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesCX78a12d5efb.
-  # Optional object value serialized in the `configuration` wire field.
-  class WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesCX78a12d5efb
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesCX78a12d5efbMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesCX78a12d5efbMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesCX78a12d5efbMetadata::DECODERS
-
-    # @return [String] Optional `string` value serialized in the `from` wire field.
-    attr_reader :from
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesRuleTypeMetadata
-    FIELDS = {
-      from: 'from'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesRuleTypeMetadata
+  FIELDS = {
+    from: "from",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesRuleType.
+# Optional object value serialized in the `rule_type` wire field.
+class WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesRuleType
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesRuleTypeMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesRuleTypeMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesRuleTypeMetadata::DECODERS
+
+  # @return [String] Optional `string` value serialized in the `from` wire field.
+  attr_reader :from
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesRuleType.
-  # Optional object value serialized in the `rule_type` wire field.
-  class WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesRuleType
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesRuleTypeMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesRuleTypeMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesRuleTypeMetadata::DECODERS
-
-    # @return [String] Optional `string` value serialized in the `from` wire field.
-    attr_reader :from
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesPatternMetadata
-    FIELDS = {
-      from: 'from'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesPatternMetadata
+  FIELDS = {
+    from: "from",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesPattern.
+# Optional object value serialized in the `pattern` wire field.
+class WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesPattern
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesPatternMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesPatternMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesPatternMetadata::DECODERS
+
+  # @return [String] Optional `string` value serialized in the `from` wire field.
+  attr_reader :from
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesPattern.
-  # Optional object value serialized in the `pattern` wire field.
-  class WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesPattern
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesPatternMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesPatternMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesPatternMetadata::DECODERS
-
-    # @return [String] Optional `string` value serialized in the `from` wire field.
-    attr_reader :from
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesMetadata
-    FIELDS = {
-      configuration: 'configuration',
-      rule_type: 'rule_type',
-      pattern: 'pattern'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      configuration: lambda do |value|
-        ::OctridevGithub::WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesCX78a12d5efb.from_hash(value)
-      end,
-      rule_type: lambda do |value|
-        ::OctridevGithub::WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesRuleType.from_hash(value)
-      end,
-      pattern: lambda do |value|
-        ::OctridevGithub::WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesPattern.from_hash(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesMetadata
+  FIELDS = {
+    configuration: "configuration",
+    rule_type: "rule_type",
+    pattern: "pattern",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    configuration: lambda do |value|
+      ::OctridevGithub::WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesCX78a12d5efb.from_hash(value)
+    end,
+    rule_type: lambda do |value|
+      ::OctridevGithub::WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesRuleType.from_hash(value)
+    end,
+    pattern: lambda do |value|
+      ::OctridevGithub::WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesPattern.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChanges.
+# Optional object value serialized in the `changes` wire field.
+class WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChanges
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesMetadata::DECODERS
+
+  # @return [WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesCX78a12d5efb] Optional object value serialized in the `configuration` wire field.
+  attr_reader :configuration
+  # @return [WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesRuleType] Optional object value serialized in the `rule_type` wire field.
+  attr_reader :rule_type
+  # @return [WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesPattern] Optional object value serialized in the `pattern` wire field.
+  attr_reader :pattern
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChanges.
-  # Optional object value serialized in the `changes` wire field.
-  class WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChanges
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesMetadata::DECODERS
-
-    # @return [WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesCX78a12d5efb] Optional object value serialized in the `configuration` wire field.
-    attr_reader :configuration
-    # @return [WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesRuleType] Optional object value serialized in the `rule_type` wire field.
-    attr_reader :rule_type
-    # @return [WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChangesPattern] Optional object value serialized in the `pattern` wire field.
-    attr_reader :pattern
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemMetadata
-    FIELDS = {
-      rule: 'rule',
-      changes: 'changes'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      rule: lambda do |value|
-        ::OctridevGithub::RepositoryRule.from_hash(value)
-      end,
-      changes: lambda do |value|
-        ::OctridevGithub::WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChanges.from_hash(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemMetadata
+  FIELDS = {
+    rule: "rule",
+    changes: "changes",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    rule: lambda do |value|
+      ::OctridevGithub::RepositoryRule.from_hash(value)
+    end,
+    changes: lambda do |value|
+      ::OctridevGithub::WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChanges.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookRepositoryRulesetEditedChangesRulesUpdatedItem.
+# Required object value serialized in the `updated[]` wire field.
+class WebhookRepositoryRulesetEditedChangesRulesUpdatedItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemMetadata::DECODERS
+
+  # @return [RepositoryRule] A repository rule.
+  attr_reader :rule
+  # @return [WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChanges] Optional object value serialized in the `changes` wire field.
+  attr_reader :changes
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookRepositoryRulesetEditedChangesRulesUpdatedItem.
-  # Required object value serialized in the `updated[]` wire field.
-  class WebhookRepositoryRulesetEditedChangesRulesUpdatedItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesUpdatedItemMetadata::DECODERS
-
-    # @return [RepositoryRule] A repository rule.
-    attr_reader :rule
-    # @return [WebhookRepositoryRulesetEditedChangesRulesUpdatedItemChanges] Optional object value serialized in the `changes` wire field.
-    attr_reader :changes
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookRepositoryRulesetEditedChangesRulesMetadata
-    FIELDS = {
-      added: 'added',
-      deleted: 'deleted',
-      updated: 'updated'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      added: lambda do |value|
-        value&.map { |item| ::OctridevGithub::RepositoryRule.from_hash(item) }
-      end,
-      deleted: lambda do |value|
-        value&.map { |item| ::OctridevGithub::RepositoryRule.from_hash(item) }
-      end,
-      updated: lambda do |value|
-        value&.map { |item| ::OctridevGithub::WebhookRepositoryRulesetEditedChangesRulesUpdatedItem.from_hash(item) }
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookRepositoryRulesetEditedChangesRulesMetadata
+  FIELDS = {
+    added: "added",
+    deleted: "deleted",
+    updated: "updated",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    added: lambda do |value|
+      value&.map { |item| ::OctridevGithub::RepositoryRule.from_hash(item) }
+    end,
+    deleted: lambda do |value|
+      value&.map { |item| ::OctridevGithub::RepositoryRule.from_hash(item) }
+    end,
+    updated: lambda do |value|
+      value&.map { |item| ::OctridevGithub::WebhookRepositoryRulesetEditedChangesRulesUpdatedItem.from_hash(item) }
+    end,
+  }.freeze
+end
+
+# API model for WebhookRepositoryRulesetEditedChangesRules.
+# Optional object value serialized in the `rules` wire field.
+class WebhookRepositoryRulesetEditedChangesRules
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesMetadata::DECODERS
+
+  # @return [Array_of_RepositoryRule] Optional array value serialized in the `added` wire field.
+  attr_reader :added
+  # @return [Array_of_RepositoryRule] Optional array value serialized in the `deleted` wire field.
+  attr_reader :deleted
+  # @return [Array_of_WebhookRepositoryRulesetEditedChangesRulesUpdatedItem] Optional array value serialized in the `updated` wire field.
+  attr_reader :updated
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookRepositoryRulesetEditedChangesRules.
-  # Optional object value serialized in the `rules` wire field.
-  class WebhookRepositoryRulesetEditedChangesRules
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesMetadata::DECODERS
-
-    # @return [Array_of_RepositoryRule] Optional array value serialized in the `added` wire field.
-    attr_reader :added
-    # @return [Array_of_RepositoryRule] Optional array value serialized in the `deleted` wire field.
-    attr_reader :deleted
-    # @return [Array_of_WebhookRepositoryRulesetEditedChangesRulesUpdatedItem] Optional array value serialized in the `updated` wire field.
-    attr_reader :updated
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookRepositoryRulesetEditedChangesMetadata
-    FIELDS = {
-      name: 'name',
-      enforcement: 'enforcement',
-      conditions: 'conditions',
-      rules: 'rules'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      name: lambda do |value|
-        ::OctridevGithub::WebhookRepositoryRulesetEditedChangesName.from_hash(value)
-      end,
-      enforcement: lambda do |value|
-        ::OctridevGithub::WebhookRepositoryRulesetEditedChangesEnforcement.from_hash(value)
-      end,
-      conditions: lambda do |value|
-        ::OctridevGithub::WebhookRepositoryRulesetEditedChangesConditions.from_hash(value)
-      end,
-      rules: lambda do |value|
-        ::OctridevGithub::WebhookRepositoryRulesetEditedChangesRules.from_hash(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookRepositoryRulesetEditedChangesMetadata
+  FIELDS = {
+    name: "name",
+    enforcement: "enforcement",
+    conditions: "conditions",
+    rules: "rules",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    name: lambda do |value|
+      ::OctridevGithub::WebhookRepositoryRulesetEditedChangesName.from_hash(value)
+    end,
+    enforcement: lambda do |value|
+      ::OctridevGithub::WebhookRepositoryRulesetEditedChangesEnforcement.from_hash(value)
+    end,
+    conditions: lambda do |value|
+      ::OctridevGithub::WebhookRepositoryRulesetEditedChangesConditions.from_hash(value)
+    end,
+    rules: lambda do |value|
+      ::OctridevGithub::WebhookRepositoryRulesetEditedChangesRules.from_hash(value)
+    end,
+  }.freeze
+end
 end

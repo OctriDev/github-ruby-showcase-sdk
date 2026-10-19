@@ -5,79 +5,80 @@
 
 # webhooks_deploy domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksDeployKeyMetadata
-    FIELDS = {
-      added_by: 'added_by',
-      created_at: 'created_at',
-      id: 'id',
-      key: 'key',
-      last_used: 'last_used',
-      read_only: 'read_only',
-      title: 'title',
-      url: 'url',
-      verified: 'verified',
-      enabled: 'enabled'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      created_at
-      id
-      key
-      read_only
-      title
-      url
-      verified
-    ].freeze
-    DECODERS = {}.freeze
+# Internal model hydration metadata.
+class SdkInternalWebhooksDeployKeyMetadata
+  FIELDS = {
+    added_by: "added_by",
+    created_at: "created_at",
+    id: "id",
+    key: "key",
+    last_used: "last_used",
+    read_only: "read_only",
+    title: "title",
+    url: "url",
+    verified: "verified",
+    enabled: "enabled",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    created_at
+    id
+    key
+    read_only
+    title
+    url
+    verified
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhooksDeployKey.
+# The `deploy key` resource.
+class WebhooksDeployKey
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksDeployKeyMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksDeployKeyMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksDeployKeyMetadata::DECODERS
+
+  # @return [String] Optional `string` value serialized in the `added_by` wire field.
+  attr_reader :added_by
+  # @return [String] Required `string` value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `key` wire field.
+  attr_reader :key
+  # @return [String] Optional `string` value serialized in the `last_used` wire field.
+  attr_reader :last_used
+  # @return [Boolean] Required `boolean` value serialized in the `read_only` wire field.
+  attr_reader :read_only
+  # @return [String] Required `string` value serialized in the `title` wire field.
+  attr_reader :title
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [Boolean] Required `boolean` value serialized in the `verified` wire field.
+  attr_reader :verified
+  # @return [Boolean] Optional `boolean` value serialized in the `enabled` wire field.
+  attr_reader :enabled
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhooksDeployKey.
-  # The `deploy key` resource.
-  class WebhooksDeployKey
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksDeployKeyMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksDeployKeyMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksDeployKeyMetadata::DECODERS
-
-    # @return [String] Optional `string` value serialized in the `added_by` wire field.
-    attr_reader :added_by
-    # @return [String] Required `string` value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `key` wire field.
-    attr_reader :key
-    # @return [String] Optional `string` value serialized in the `last_used` wire field.
-    attr_reader :last_used
-    # @return [Boolean] Required `boolean` value serialized in the `read_only` wire field.
-    attr_reader :read_only
-    # @return [String] Required `string` value serialized in the `title` wire field.
-    attr_reader :title
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [Boolean] Required `boolean` value serialized in the `verified` wire field.
-    attr_reader :verified
-    # @return [Boolean] Optional `boolean` value serialized in the `enabled` wire field.
-    attr_reader :enabled
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the WebhooksDeployPusherType SDK value decoder.
-  module WebhooksDeployPusherType
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
+
+# Defines the WebhooksDeployPusherType SDK value decoder.
+module WebhooksDeployPusherType
+  def self.from_value(value)
+    value
+  end
+end
 end

@@ -12,12 +12,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCredentialsRevokeMetadata
         FIELDS = {
-          credentials: 'credentials'
+          credentials: "credentials",
         }.freeze
         REQUIRED_FIELDS = %i[
           credentials
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for CredentialsRevoke.
@@ -53,19 +54,20 @@ module OctridevGithub
         credentials:,
         request_options: nil
       )
+
         Validation.validate_items('credentials', credentials, min: 1, max: 1000)
 
         SdkClient.request(
           'POST',
-          '/credentials/revoke',
+          "/credentials/revoke",
           config: config,
           body: {
-            'credentials' => credentials
+            'credentials' => credentials,
           },
           decoder: :json,
           operation_id: 'credentials_revoke',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationErrorSimple, '500' => ::OctridevGithub::BasicError }
+          errors: { '422' => ::OctridevGithub::ValidationErrorSimple, '500' => ::OctridevGithub::BasicError },
         ).data
       end
     end

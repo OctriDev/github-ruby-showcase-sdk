@@ -38,10 +38,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotSpacesUpdateResourceForUserMetadata
         FIELDS = {
-          metadata: 'metadata'
+          metadata: "metadata",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for CopilotSpacesUpdateResourceForUser.
@@ -75,8 +77,8 @@ module OctridevGithub
         FREE_TEXT = 'free_text'
         GITHUB_ISSUE = 'github_issue'
         GITHUB_PULL_REQUEST = 'github_pull_request'
-        VALUES = %w[
-          repository github_file free_text github_issue github_pull_request
+        VALUES = [
+          'repository', 'github_file', 'free_text', 'github_issue', 'github_pull_request'
         ].freeze
         def self.from_value(value)
           value
@@ -88,7 +90,7 @@ module OctridevGithub
         READER = 'reader'
         WRITER = 'writer'
         ADMIN = 'admin'
-        VALUES = %w[reader writer admin].freeze
+        VALUES = ['reader', 'writer', 'admin'].freeze
         def self.from_value(value)
           value
         end
@@ -103,9 +105,9 @@ module OctridevGithub
         GITHUB_PULL_REQUEST = 'github_pull_request'
         MEDIA_CONTENT = 'media_content'
         UPLOADED_TEXT_FILE = 'uploaded_text_file'
-        VALUES = %w[
-          repository github_file free_text github_issue github_pull_request
-          media_content uploaded_text_file
+        VALUES = [
+          'repository', 'github_file', 'free_text', 'github_issue', 'github_pull_request',
+          'media_content', 'uploaded_text_file'
         ].freeze
         def self.from_value(value)
           value
@@ -121,9 +123,9 @@ module OctridevGithub
         GITHUB_PULL_REQUEST = 'github_pull_request'
         MEDIA_CONTENT = 'media_content'
         UPLOADED_TEXT_FILE = 'uploaded_text_file'
-        VALUES = %w[
-          repository github_file free_text github_issue github_pull_request
-          media_content uploaded_text_file
+        VALUES = [
+          'repository', 'github_file', 'free_text', 'github_issue', 'github_pull_request',
+          'media_content', 'uploaded_text_file'
         ].freeze
         def self.from_value(value)
           value
@@ -136,7 +138,7 @@ module OctridevGithub
         WRITER = 'writer'
         ADMIN = 'admin'
         NO_ACCESS = 'no_access'
-        VALUES = %w[reader writer admin no_access].freeze
+        VALUES = ['reader', 'writer', 'admin', 'no_access'].freeze
         def self.from_value(value)
           value
         end
@@ -149,8 +151,8 @@ module OctridevGithub
         FREE_TEXT = 'free_text'
         GITHUB_ISSUE = 'github_issue'
         GITHUB_PULL_REQUEST = 'github_pull_request'
-        VALUES = %w[
-          repository github_file free_text github_issue github_pull_request
+        VALUES = [
+          'repository', 'github_file', 'free_text', 'github_issue', 'github_pull_request'
         ].freeze
         def self.from_value(value)
           value
@@ -163,7 +165,7 @@ module OctridevGithub
         WRITER = 'writer'
         ADMIN = 'admin'
         NO_ACCESS = 'no_access'
-        VALUES = %w[reader writer admin no_access].freeze
+        VALUES = ['reader', 'writer', 'admin', 'no_access'].freeze
         def self.from_value(value)
           value
         end
@@ -178,9 +180,9 @@ module OctridevGithub
         GITHUB_PULL_REQUEST = 'github_pull_request'
         MEDIA_CONTENT = 'media_content'
         UPLOADED_TEXT_FILE = 'uploaded_text_file'
-        VALUES = %w[
-          repository github_file free_text github_issue github_pull_request
-          media_content uploaded_text_file
+        VALUES = [
+          'repository', 'github_file', 'free_text', 'github_issue', 'github_pull_request',
+          'media_content', 'uploaded_text_file'
         ].freeze
         def self.from_value(value)
           value
@@ -193,7 +195,7 @@ module OctridevGithub
         WRITER = 'writer'
         ADMIN = 'admin'
         NO_ACCESS = 'no_access'
-        VALUES = %w[reader writer admin no_access].freeze
+        VALUES = ['reader', 'writer', 'admin', 'no_access'].freeze
         def self.from_value(value)
           value
         end
@@ -203,7 +205,7 @@ module OctridevGithub
       module CopilotSpacesUpdateCollaboratorForUserParameter
         USER = 'User'
         TEAM = 'Team'
-        VALUES = %w[User Team].freeze
+        VALUES = ['User', 'Team'].freeze
         def self.from_value(value)
           value
         end
@@ -214,7 +216,7 @@ module OctridevGithub
         READER = 'reader'
         WRITER = 'writer'
         ADMIN = 'admin'
-        VALUES = %w[reader writer admin].freeze
+        VALUES = ['reader', 'writer', 'admin'].freeze
         def self.from_value(value)
           value
         end
@@ -229,9 +231,9 @@ module OctridevGithub
         GITHUB_PULL_REQUEST = 'github_pull_request'
         MEDIA_CONTENT = 'media_content'
         UPLOADED_TEXT_FILE = 'uploaded_text_file'
-        VALUES = %w[
-          repository github_file free_text github_issue github_pull_request
-          media_content uploaded_text_file
+        VALUES = [
+          'repository', 'github_file', 'free_text', 'github_issue', 'github_pull_request',
+          'media_content', 'uploaded_text_file'
         ].freeze
         def self.from_value(value)
           value
@@ -242,7 +244,7 @@ module OctridevGithub
       module CopilotSpacesRemoveCollaboratorForUserParameter
         USER = 'User'
         TEAM = 'Team'
-        VALUES = %w[User Team].freeze
+        VALUES = ['User', 'Team'].freeze
         def self.from_value(value)
           value
         end
@@ -252,7 +254,7 @@ module OctridevGithub
       module CopilotSpacesUpdateCollaboratorForOrgParameter
         USER = 'User'
         TEAM = 'Team'
-        VALUES = %w[User Team].freeze
+        VALUES = ['User', 'Team'].freeze
         def self.from_value(value)
           value
         end
@@ -262,7 +264,7 @@ module OctridevGithub
       module CopilotSpacesUpdateForUserBaseRole
         READER = 'reader'
         NO_ACCESS = 'no_access'
-        VALUES = %w[reader no_access].freeze
+        VALUES = ['reader', 'no_access'].freeze
         def self.from_value(value)
           value
         end
@@ -274,7 +276,7 @@ module OctridevGithub
         WRITER = 'writer'
         ADMIN = 'admin'
         NO_ACCESS = 'no_access'
-        VALUES = %w[reader writer admin no_access].freeze
+        VALUES = ['reader', 'writer', 'admin', 'no_access'].freeze
         def self.from_value(value)
           value
         end
@@ -284,7 +286,7 @@ module OctridevGithub
       module CopilotSpacesAddCollaboratorForOrgActorType
         USER = 'User'
         TEAM = 'Team'
-        VALUES = %w[User Team].freeze
+        VALUES = ['User', 'Team'].freeze
         def self.from_value(value)
           value
         end
@@ -294,7 +296,7 @@ module OctridevGithub
       module CopilotSpacesRemoveCollaboratorForOrgParameter
         USER = 'User'
         TEAM = 'Team'
-        VALUES = %w[User Team].freeze
+        VALUES = ['User', 'Team'].freeze
         def self.from_value(value)
           value
         end
@@ -304,7 +306,7 @@ module OctridevGithub
       module CopilotSpacesAddCollaboratorForUserActorType
         USER = 'User'
         TEAM = 'Team'
-        VALUES = %w[User Team].freeze
+        VALUES = ['User', 'Team'].freeze
         def self.from_value(value)
           value
         end
@@ -314,7 +316,7 @@ module OctridevGithub
       module CopilotSpacesCreateForUserBaseRole
         READER = 'reader'
         NO_ACCESS = 'no_access'
-        VALUES = %w[reader no_access].freeze
+        VALUES = ['reader', 'no_access'].freeze
         def self.from_value(value)
           value
         end
@@ -336,26 +338,27 @@ module OctridevGithub
         after: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(per_page) { Validation.validate_range('per_page', per_page, min: 1, max: 100) }
 
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/copilot-spaces'
+            "/copilot-spaces"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'before' => QueryValue.new(before, style: 'form', explode: true),
-            'after' => QueryValue.new(after, style: 'form', explode: true)
+            'after' => QueryValue.new(after, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesListForOrgResponse,
           decoder: :json,
           operation_id: 'copilot_spaces_list_for_org',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -383,6 +386,7 @@ module OctridevGithub
         resources_attributes: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(general_instructions) do
           Validation.validate_length('general_instructions', general_instructions, max: 4000)
         end
@@ -390,9 +394,9 @@ module OctridevGithub
         SdkClient.request(
           'POST',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/copilot-spaces'
+            "/copilot-spaces"
           ].join,
           config: config,
           body: {
@@ -400,13 +404,13 @@ module OctridevGithub
             'description' => description,
             'general_instructions' => general_instructions,
             'base_role' => base_role,
-            'resources_attributes' => resources_attributes
+            'resources_attributes' => resources_attributes,
           },
           return_type: ::OctridevGithub::CopilotSpace,
           decoder: :json,
           operation_id: 'copilot_spaces_create_for_org',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -420,12 +424,13 @@ module OctridevGithub
         space_number:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/copilot-spaces/',
+            "/copilot-spaces/",
             SdkClient.encode_path_segment(space_number)
           ].join,
           config: config,
@@ -433,7 +438,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'copilot_spaces_get_for_org',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -464,6 +469,7 @@ module OctridevGithub
         resources_attributes: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(general_instructions) do
           Validation.validate_length('general_instructions', general_instructions, max: 4000)
         end
@@ -471,9 +477,9 @@ module OctridevGithub
         SdkClient.request(
           'PUT',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/copilot-spaces/',
+            "/copilot-spaces/",
             SdkClient.encode_path_segment(space_number)
           ].join,
           config: config,
@@ -482,13 +488,13 @@ module OctridevGithub
             'description' => description,
             'general_instructions' => general_instructions,
             'base_role' => base_role,
-            'resources_attributes' => resources_attributes
+            'resources_attributes' => resources_attributes,
           },
           return_type: ::OctridevGithub::CopilotSpace,
           decoder: :json,
           operation_id: 'copilot_spaces_update_for_org',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -502,19 +508,20 @@ module OctridevGithub
         space_number:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/copilot-spaces/',
+            "/copilot-spaces/",
             SdkClient.encode_path_segment(space_number)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'copilot_spaces_delete_for_org',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -528,21 +535,22 @@ module OctridevGithub
         space_number:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/copilot-spaces/',
+            "/copilot-spaces/",
             SdkClient.encode_path_segment(space_number),
-            '/collaborators'
+            "/collaborators"
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesListCollaboratorsForOrgResponse,
           decoder: :json,
           operation_id: 'copilot_spaces_list_collaborators_for_org',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

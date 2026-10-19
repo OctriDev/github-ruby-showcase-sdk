@@ -12,13 +12,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodeScanningUpdateAlertMetadata
         FIELDS = {
-          state: 'state',
-          dismissed_reason: 'dismissed_reason',
-          dismissed_comment: 'dismissed_comment',
-          create_request: 'create_request',
-          assignees: 'assignees'
+          state: "state",
+          dismissed_reason: "dismissed_reason",
+          dismissed_comment: "dismissed_comment",
+          create_request: "create_request",
+          assignees: "assignees",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           state: lambda do |value|
             ::OctridevGithub::CodeScanningAlertSetState.from_value(value)
@@ -34,7 +35,7 @@ module OctridevGithub
           end,
           assignees: lambda do |value|
             ::OctridevGithub::CodeScanningAlertAssignees.from_hash(value)
-          end
+          end,
         }.freeze
       end
 
@@ -73,11 +74,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodeScanningCreateVariantAnalysisMetadata
         FIELDS = {
-          language: 'language',
-          query_pack: 'query_pack',
-          repositories: 'repositories',
-          repository_lists: 'repository_lists',
-          repository_owners: 'repository_owners'
+          language: "language",
+          query_pack: "query_pack",
+          repositories: "repositories",
+          repository_lists: "repository_lists",
+          repository_owners: "repository_owners",
         }.freeze
         REQUIRED_FIELDS = %i[
           language
@@ -86,7 +87,7 @@ module OctridevGithub
         DECODERS = {
           language: lambda do |value|
             ::OctridevGithub::CodeScanningVariantAnalysisLanguage.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -125,13 +126,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodeScanningUploadSarifMetadata
         FIELDS = {
-          commit_sha: 'commit_sha',
-          ref: 'ref',
-          sarif: 'sarif',
-          checkout_uri: 'checkout_uri',
-          started_at: 'started_at',
-          tool_name: 'tool_name',
-          validate: 'validate'
+          commit_sha: "commit_sha",
+          ref: "ref",
+          sarif: "sarif",
+          checkout_uri: "checkout_uri",
+          started_at: "started_at",
+          tool_name: "tool_name",
+          validate: "validate",
         }.freeze
         REQUIRED_FIELDS = %i[
           commit_sha
@@ -147,7 +148,7 @@ module OctridevGithub
           end,
           sarif: lambda do |value|
             ::OctridevGithub::CodeScanningAnalysisSarifFile.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -191,7 +192,7 @@ module OctridevGithub
       module CodeScanningListAlertsForOrgParameter
         CREATED = 'created'
         UPDATED = 'updated'
-        VALUES = %w[created updated].freeze
+        VALUES = ['created', 'updated'].freeze
         def self.from_value(value)
           value
         end
@@ -210,7 +211,7 @@ module OctridevGithub
       module CodeScanningListAlertsForRepoParameter
         CREATED = 'created'
         UPDATED = 'updated'
-        VALUES = %w[created updated].freeze
+        VALUES = ['created', 'updated'].freeze
         def self.from_value(value)
           value
         end
@@ -224,19 +225,20 @@ module OctridevGithub
         org:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/code-scanning/ai-scan'
+            "/code-scanning/ai-scan"
           ].join,
           config: config,
           return_type: ::OctridevGithub::CodeScanningAiScanOrgSettings,
           decoder: :json,
           operation_id: 'code_scanning_get_ai_scan_enablement_for_org',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -254,22 +256,23 @@ module OctridevGithub
         pr_scan: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/code-scanning/ai-scan'
+            "/code-scanning/ai-scan"
           ].join,
           config: config,
           body: {
-            'pr_scan' => pr_scan
+            'pr_scan' => pr_scan,
           },
           return_type: ::OctridevGithub::CodeScanningAiScanOrgSettings,
           decoder: :json,
           operation_id: 'code_scanning_update_ai_scan_enablement_for_org',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -321,12 +324,13 @@ module OctridevGithub
         assignees: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/code-scanning/alerts'
+            "/code-scanning/alerts"
           ].join,
           config: config,
           query: {
@@ -340,13 +344,13 @@ module OctridevGithub
             'state' => QueryValue.new(state, style: 'form', explode: true),
             'sort' => QueryValue.new(sort, style: 'form', explode: true),
             'severity' => QueryValue.new(severity, style: 'form', explode: true),
-            'assignees' => QueryValue.new(assignees, style: 'form', explode: true)
+            'assignees' => QueryValue.new(assignees, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::CodeScanningOrganizationAlertItems],
           decoder: :json,
           operation_id: 'code_scanning_list_alerts_for_org',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -362,21 +366,22 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/code-scanning/ai-scan'
+            "/code-scanning/ai-scan"
           ].join,
           config: config,
           return_type: ::OctridevGithub::CodeScanningAiScanEnablement,
           decoder: :json,
           operation_id: 'code_scanning_get_ai_scan_enablement',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -395,24 +400,25 @@ module OctridevGithub
         pr_scan: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/code-scanning/ai-scan'
+            "/code-scanning/ai-scan"
           ].join,
           config: config,
           body: {
-            'pr_scan' => pr_scan
+            'pr_scan' => pr_scan,
           },
           return_type: ::OctridevGithub::CodeScanningAiScanEnablement,
           decoder: :json,
           operation_id: 'code_scanning_update_ai_scan_enablement',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -476,14 +482,15 @@ module OctridevGithub
         assignees: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/code-scanning/alerts'
+            "/code-scanning/alerts"
           ].join,
           config: config,
           query: {
@@ -499,13 +506,13 @@ module OctridevGithub
             'sort' => QueryValue.new(sort, style: 'form', explode: true),
             'state' => QueryValue.new(state, style: 'form', explode: true),
             'severity' => QueryValue.new(severity, style: 'form', explode: true),
-            'assignees' => QueryValue.new(assignees, style: 'form', explode: true)
+            'assignees' => QueryValue.new(assignees, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::CodeScanningAlertItems],
           decoder: :json,
           operation_id: 'code_scanning_list_alerts_for_repo',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -526,14 +533,15 @@ module OctridevGithub
         alert_number:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/code-scanning/alerts/',
+            "/code-scanning/alerts/",
             SdkClient.encode_path_segment(alert_number)
           ].join,
           config: config,
@@ -541,7 +549,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'code_scanning_get_alert',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
     end

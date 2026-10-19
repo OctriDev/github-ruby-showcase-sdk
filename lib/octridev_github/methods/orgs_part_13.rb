@@ -17,18 +17,19 @@ module OctridevGithub
         org:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/settings/immutable-releases'
+            "/settings/immutable-releases"
           ].join,
           config: config,
           return_type: ::OctridevGithub::ImmutableReleasesOrganizationSettings,
           decoder: :json,
           operation_id: 'orgs_get_immutable_releases_settings',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -51,21 +52,22 @@ module OctridevGithub
         selected_repository_ids: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/settings/immutable-releases'
+            "/settings/immutable-releases"
           ].join,
           config: config,
           body: {
             'enforced_repositories' => enforced_repositories,
-            'selected_repository_ids' => selected_repository_ids
+            'selected_repository_ids' => selected_repository_ids,
           },
           decoder: :empty,
           operation_id: 'orgs_set_immutable_releases_settings',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -83,22 +85,23 @@ module OctridevGithub
         per_page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/settings/immutable-releases/repositories'
+            "/settings/immutable-releases/repositories"
           ].join,
           config: config,
           query: {
             'page' => QueryValue.new(page, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::Methods::Orgs::OrgsGetImmutableReleasesSettingsRepositoriesResponse,
           decoder: :json,
           operation_id: 'orgs_get_immutable_releases_settings_repositories',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -117,20 +120,21 @@ module OctridevGithub
         selected_repository_ids:,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/settings/immutable-releases/repositories'
+            "/settings/immutable-releases/repositories"
           ].join,
           config: config,
           body: {
-            'selected_repository_ids' => selected_repository_ids
+            'selected_repository_ids' => selected_repository_ids,
           },
           decoder: :empty,
           operation_id: 'orgs_set_immutable_releases_settings_repositories',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -144,18 +148,19 @@ module OctridevGithub
         repository_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/settings/immutable-releases/repositories/',
+            "/settings/immutable-releases/repositories/",
             SdkClient.encode_path_segment(repository_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'orgs_enable_selected_repository_immutable_releases_organization',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -169,18 +174,19 @@ module OctridevGithub
         repository_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/settings/immutable-releases/repositories/',
+            "/settings/immutable-releases/repositories/",
             SdkClient.encode_path_segment(repository_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'orgs_disable_selected_repository_immutable_releases_organization',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -211,23 +217,24 @@ module OctridevGithub
         query_suite: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/',
+            "/",
             SdkClient.encode_path_segment(security_product),
-            '/',
+            "/",
             SdkClient.encode_path_segment(enablement)
           ].join,
           config: config,
           body: {
-            'query_suite' => query_suite
+            'query_suite' => query_suite,
           },
           decoder: :empty,
           operation_id: 'orgs_enable_or_disable_security_product_on_all_org_repos',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -247,20 +254,21 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
-          '/user/memberships/orgs',
+          "/user/memberships/orgs",
           config: config,
           query: {
             'state' => QueryValue.new(state, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::OrgMembership],
           decoder: :json,
           operation_id: 'orgs_list_memberships_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -272,10 +280,11 @@ module OctridevGithub
         org:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/user/memberships/orgs/',
+            "/user/memberships/orgs/",
             SdkClient.encode_path_segment(org)
           ].join,
           config: config,
@@ -283,7 +292,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'orgs_get_membership_for_authenticated_user',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -298,21 +307,22 @@ module OctridevGithub
         state:,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/user/memberships/orgs/',
+            "/user/memberships/orgs/",
             SdkClient.encode_path_segment(org)
           ].join,
           config: config,
           body: {
-            'state' => state
+            'state' => state,
           },
           return_type: ::OctridevGithub::OrgMembership,
           decoder: :json,
           operation_id: 'orgs_update_membership_for_authenticated_user',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -328,19 +338,20 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
-          '/user/orgs',
+          "/user/orgs",
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::OrganizationSimple],
           decoder: :json,
           operation_id: 'orgs_list_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -358,22 +369,23 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/users/',
+            "/users/",
             SdkClient.encode_path_segment(username),
-            '/orgs'
+            "/orgs"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::OrganizationSimple],
           decoder: :json,
           operation_id: 'orgs_list_for_user',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

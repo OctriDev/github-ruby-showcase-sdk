@@ -42,12 +42,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullsUpdateReviewMetadata
         FIELDS = {
-          body: 'body'
+          body: "body",
         }.freeze
         REQUIRED_FIELDS = %i[
           body
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for PullsUpdateReview.
@@ -77,8 +78,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullsDismissReviewMetadata
         FIELDS = {
-          message: 'message',
-          event: 'event'
+          message: "message",
+          event: "event",
         }.freeze
         REQUIRED_FIELDS = %i[
           message
@@ -86,7 +87,7 @@ module OctridevGithub
         DECODERS = {
           event: lambda do |value|
             ::OctridevGithub::Methods::Pulls::PullsDismissReviewEvent.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -118,8 +119,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullsSubmitReviewMetadata
         FIELDS = {
-          body: 'body',
-          event: 'event'
+          body: "body",
+          event: "event",
         }.freeze
         REQUIRED_FIELDS = %i[
           event
@@ -127,7 +128,7 @@ module OctridevGithub
         DECODERS = {
           event: lambda do |value|
             ::OctridevGithub::Methods::Pulls::PullsSubmitReviewEvent.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -160,10 +161,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullsUpdateBranchMetadata
         FIELDS = {
-          expected_head_sha: 'expected_head_sha'
+          expected_head_sha: "expected_head_sha",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for PullsUpdateBranch.
@@ -193,11 +196,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullsUpdateBranchResponseMetadata
         FIELDS = {
-          message: 'message',
-          url: 'url'
+          message: "message",
+          url: "url",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for PullsUpdateBranchResponse.
@@ -226,12 +231,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullRequestStacksCreateMetadata
         FIELDS = {
-          pull_requests: 'pull_requests'
+          pull_requests: "pull_requests",
         }.freeze
         REQUIRED_FIELDS = %i[
           pull_requests
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for PullRequestStacksCreate.
@@ -261,12 +267,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullRequestStacksCreateResponseBaseMetadata
         FIELDS = {
-          ref: 'ref'
+          ref: "ref",
         }.freeze
         REQUIRED_FIELDS = %i[
           ref
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for PullRequestStacksCreateResponseBase.
@@ -295,14 +302,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullRequestStacksCreateResponseMetadata
         FIELDS = {
-          id: 'id',
-          number: 'number',
-          node_id: 'node_id',
-          url: 'url',
-          base: 'base',
-          open: 'open',
-          created_at: 'created_at',
-          pull_requests: 'pull_requests'
+          id: "id",
+          number: "number",
+          node_id: "node_id",
+          url: "url",
+          base: "base",
+          open: "open",
+          created_at: "created_at",
+          pull_requests: "pull_requests",
         }.freeze
         REQUIRED_FIELDS = %i[
           id
@@ -320,7 +327,7 @@ module OctridevGithub
           end,
           pull_requests: lambda do |value|
             value&.map { |item| ::OctridevGithub::PullRequestStackPullRequest.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -352,12 +359,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullRequestStacksGetResponseBaseMetadata
         FIELDS = {
-          ref: 'ref'
+          ref: "ref",
         }.freeze
         REQUIRED_FIELDS = %i[
           ref
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for PullRequestStacksGetResponseBase.
@@ -386,14 +394,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullRequestStacksGetResponseMetadata
         FIELDS = {
-          id: 'id',
-          number: 'number',
-          node_id: 'node_id',
-          url: 'url',
-          base: 'base',
-          open: 'open',
-          created_at: 'created_at',
-          pull_requests: 'pull_requests'
+          id: "id",
+          number: "number",
+          node_id: "node_id",
+          url: "url",
+          base: "base",
+          open: "open",
+          created_at: "created_at",
+          pull_requests: "pull_requests",
         }.freeze
         REQUIRED_FIELDS = %i[
           id
@@ -411,7 +419,7 @@ module OctridevGithub
           end,
           pull_requests: lambda do |value|
             value&.map { |item| ::OctridevGithub::PullRequestStackPullRequest.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -443,12 +451,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullRequestStacksAddMetadata
         FIELDS = {
-          pull_requests: 'pull_requests'
+          pull_requests: "pull_requests",
         }.freeze
         REQUIRED_FIELDS = %i[
           pull_requests
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for PullRequestStacksAdd.
@@ -478,12 +487,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullRequestStacksAddResponseBaseMetadata
         FIELDS = {
-          ref: 'ref'
+          ref: "ref",
         }.freeze
         REQUIRED_FIELDS = %i[
           ref
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for PullRequestStacksAddResponseBase.
@@ -512,14 +522,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullRequestStacksAddResponseMetadata
         FIELDS = {
-          id: 'id',
-          number: 'number',
-          node_id: 'node_id',
-          url: 'url',
-          base: 'base',
-          open: 'open',
-          created_at: 'created_at',
-          pull_requests: 'pull_requests'
+          id: "id",
+          number: "number",
+          node_id: "node_id",
+          url: "url",
+          base: "base",
+          open: "open",
+          created_at: "created_at",
+          pull_requests: "pull_requests",
         }.freeze
         REQUIRED_FIELDS = %i[
           id
@@ -537,7 +547,7 @@ module OctridevGithub
           end,
           pull_requests: lambda do |value|
             value&.map { |item| ::OctridevGithub::PullRequestStackPullRequest.from_hash(item) }
-          end
+          end,
         }.freeze
       end
     end

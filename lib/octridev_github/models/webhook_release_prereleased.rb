@@ -5,646 +5,647 @@
 
 # webhook_release_prereleased domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalWebhookReleasePrereleasedReleaseAssetsItemUploaderMetadata
-    FIELDS = {
-      avatar_url: 'avatar_url',
-      deleted: 'deleted',
-      email: 'email',
-      events_url: 'events_url',
-      followers_url: 'followers_url',
-      following_url: 'following_url',
-      gists_url: 'gists_url',
-      gravatar_id: 'gravatar_id',
-      html_url: 'html_url',
-      id: 'id',
-      login: 'login',
-      name: 'name',
-      node_id: 'node_id',
-      organizations_url: 'organizations_url',
-      received_events_url: 'received_events_url',
-      repos_url: 'repos_url',
-      site_admin: 'site_admin',
-      starred_url: 'starred_url',
-      subscriptions_url: 'subscriptions_url',
-      type: 'type',
-      url: 'url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      login
-    ].freeze
-    DECODERS = {
-      type: lambda do |value|
-        ::OctridevGithub::WebhookReleasePrereleasedReleaseAssetsItemUploaderType.from_value(value)
-      end
-    }.freeze
+# Internal model hydration metadata.
+class SdkInternalWebhookReleasePrereleasedReleaseAssetsItemUploaderMetadata
+  FIELDS = {
+    avatar_url: "avatar_url",
+    deleted: "deleted",
+    email: "email",
+    events_url: "events_url",
+    followers_url: "followers_url",
+    following_url: "following_url",
+    gists_url: "gists_url",
+    gravatar_id: "gravatar_id",
+    html_url: "html_url",
+    id: "id",
+    login: "login",
+    name: "name",
+    node_id: "node_id",
+    organizations_url: "organizations_url",
+    received_events_url: "received_events_url",
+    repos_url: "repos_url",
+    site_admin: "site_admin",
+    starred_url: "starred_url",
+    subscriptions_url: "subscriptions_url",
+    type: "type",
+    url: "url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    login
+  ].freeze
+  DECODERS = {
+    type: lambda do |value|
+      ::OctridevGithub::WebhookReleasePrereleasedReleaseAssetsItemUploaderType.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookReleasePrereleasedReleaseAssetsItemUploader.
+# Optional object value serialized in the `uploader` wire field.
+class WebhookReleasePrereleasedReleaseAssetsItemUploader
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookReleasePrereleasedReleaseAssetsItemUploaderMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookReleasePrereleasedReleaseAssetsItemUploaderMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookReleasePrereleasedReleaseAssetsItemUploaderMetadata::DECODERS
+
+  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+  attr_reader :avatar_url
+  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+  attr_reader :deleted
+  # @return [String] Optional `string` value serialized in the `email` wire field.
+  attr_reader :email
+  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+  attr_reader :events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+  attr_reader :followers_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+  attr_reader :following_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+  attr_reader :gists_url
+  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+  attr_reader :gravatar_id
+  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `login` wire field.
+  attr_reader :login
+  # @return [String] Optional `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [String] Optional `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+  attr_reader :organizations_url
+  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+  attr_reader :received_events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+  attr_reader :repos_url
+  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+  attr_reader :site_admin
+  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+  attr_reader :starred_url
+  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+  attr_reader :subscriptions_url
+  # @return [WebhookReleasePrereleasedReleaseAssetsItemUploaderType] Optional enumerated value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookReleasePrereleasedReleaseAssetsItemUploader.
-  # Optional object value serialized in the `uploader` wire field.
-  class WebhookReleasePrereleasedReleaseAssetsItemUploader
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookReleasePrereleasedReleaseAssetsItemUploaderMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookReleasePrereleasedReleaseAssetsItemUploaderMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookReleasePrereleasedReleaseAssetsItemUploaderMetadata::DECODERS
-
-    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-    attr_reader :avatar_url
-    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-    attr_reader :deleted
-    # @return [String] Optional `string` value serialized in the `email` wire field.
-    attr_reader :email
-    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-    attr_reader :events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-    attr_reader :followers_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-    attr_reader :following_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-    attr_reader :gists_url
-    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-    attr_reader :gravatar_id
-    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `login` wire field.
-    attr_reader :login
-    # @return [String] Optional `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [String] Optional `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-    attr_reader :organizations_url
-    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-    attr_reader :received_events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-    attr_reader :repos_url
-    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-    attr_reader :site_admin
-    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-    attr_reader :starred_url
-    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-    attr_reader :subscriptions_url
-    # @return [WebhookReleasePrereleasedReleaseAssetsItemUploaderType] Optional enumerated value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookReleasePrereleasedReleaseAssetsItemMetadata
-    FIELDS = {
-      browser_download_url: 'browser_download_url',
-      content_type: 'content_type',
-      created_at: 'created_at',
-      download_count: 'download_count',
-      id: 'id',
-      label: 'label',
-      name: 'name',
-      node_id: 'node_id',
-      size: 'size',
-      digest: 'digest',
-      state: 'state',
-      updated_at: 'updated_at',
-      uploader: 'uploader',
-      url: 'url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      browser_download_url
-      content_type
-      created_at
-      download_count
-      id
-      label
-      name
-      node_id
-      size
-      digest
-      state
-      updated_at
-      url
-    ].freeze
-    DECODERS = {
-      state: lambda do |value|
-        ::OctridevGithub::WebhookReleasePrereleasedReleaseAssetsItemState.from_value(value)
-      end,
-      uploader: lambda do |value|
-        ::OctridevGithub::WebhookReleasePrereleasedReleaseAssetsItemUploader.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      label
-      digest
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookReleasePrereleasedReleaseAssetsItemMetadata
+  FIELDS = {
+    browser_download_url: "browser_download_url",
+    content_type: "content_type",
+    created_at: "created_at",
+    download_count: "download_count",
+    id: "id",
+    label: "label",
+    name: "name",
+    node_id: "node_id",
+    size: "size",
+    digest: "digest",
+    state: "state",
+    updated_at: "updated_at",
+    uploader: "uploader",
+    url: "url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    browser_download_url
+    content_type
+    created_at
+    download_count
+    id
+    label
+    name
+    node_id
+    size
+    digest
+    state
+    updated_at
+    url
+  ].freeze
+  DECODERS = {
+    state: lambda do |value|
+      ::OctridevGithub::WebhookReleasePrereleasedReleaseAssetsItemState.from_value(value)
+    end,
+    uploader: lambda do |value|
+      ::OctridevGithub::WebhookReleasePrereleasedReleaseAssetsItemUploader.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    label
+    digest
+  ].freeze
+end
+
+# API model for WebhookReleasePrereleasedReleaseAssetsItem.
+# Data related to a release.
+class WebhookReleasePrereleasedReleaseAssetsItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookReleasePrereleasedReleaseAssetsItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookReleasePrereleasedReleaseAssetsItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookReleasePrereleasedReleaseAssetsItemMetadata::DECODERS
+
+  # @return [String] Required `uri`-formatted value serialized in the `browser_download_url` wire field.
+  attr_reader :browser_download_url
+  # @return [String] Required `string` value serialized in the `content_type` wire field.
+  attr_reader :content_type
+  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [Integer] Required `integer` value serialized in the `download_count` wire field.
+  attr_reader :download_count
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `label` wire field.
+  attr_reader :label
+  # @return [String] The file name of the asset.
+  attr_reader :name
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [Integer] Required `integer` value serialized in the `size` wire field.
+  attr_reader :size
+  # @return [String] Required `string` value serialized in the `digest` wire field.
+  attr_reader :digest
+  # @return [WebhookReleasePrereleasedReleaseAssetsItemState] State of the release asset.
+  attr_reader :state
+  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+  attr_reader :updated_at
+  # @return [WebhookReleasePrereleasedReleaseAssetsItemUploader] Optional object value serialized in the `uploader` wire field.
+  attr_reader :uploader
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookReleasePrereleasedReleaseAssetsItem.
-  # Data related to a release.
-  class WebhookReleasePrereleasedReleaseAssetsItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookReleasePrereleasedReleaseAssetsItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookReleasePrereleasedReleaseAssetsItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookReleasePrereleasedReleaseAssetsItemMetadata::DECODERS
-
-    # @return [String] Required `uri`-formatted value serialized in the `browser_download_url` wire field.
-    attr_reader :browser_download_url
-    # @return [String] Required `string` value serialized in the `content_type` wire field.
-    attr_reader :content_type
-    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [Integer] Required `integer` value serialized in the `download_count` wire field.
-    attr_reader :download_count
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `label` wire field.
-    attr_reader :label
-    # @return [String] The file name of the asset.
-    attr_reader :name
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [Integer] Required `integer` value serialized in the `size` wire field.
-    attr_reader :size
-    # @return [String] Required `string` value serialized in the `digest` wire field.
-    attr_reader :digest
-    # @return [WebhookReleasePrereleasedReleaseAssetsItemState] State of the release asset.
-    attr_reader :state
-    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-    attr_reader :updated_at
-    # @return [WebhookReleasePrereleasedReleaseAssetsItemUploader] Optional object value serialized in the `uploader` wire field.
-    attr_reader :uploader
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookReleasePrereleasedReleaseAssetsItemMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookReleasePrereleasedReleaseAssetsItemMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookReleasePrereleasedReleaseAuthorMetadata
-    FIELDS = {
-      avatar_url: 'avatar_url',
-      deleted: 'deleted',
-      email: 'email',
-      events_url: 'events_url',
-      followers_url: 'followers_url',
-      following_url: 'following_url',
-      gists_url: 'gists_url',
-      gravatar_id: 'gravatar_id',
-      html_url: 'html_url',
-      id: 'id',
-      login: 'login',
-      name: 'name',
-      node_id: 'node_id',
-      organizations_url: 'organizations_url',
-      received_events_url: 'received_events_url',
-      repos_url: 'repos_url',
-      site_admin: 'site_admin',
-      starred_url: 'starred_url',
-      subscriptions_url: 'subscriptions_url',
-      type: 'type',
-      url: 'url',
-      user_view_type: 'user_view_type'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      login
-    ].freeze
-    DECODERS = {
-      type: lambda do |value|
-        ::OctridevGithub::WebhookReleasePrereleasedReleaseAuthorType.from_value(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookReleasePrereleasedReleaseAuthorMetadata
+  FIELDS = {
+    avatar_url: "avatar_url",
+    deleted: "deleted",
+    email: "email",
+    events_url: "events_url",
+    followers_url: "followers_url",
+    following_url: "following_url",
+    gists_url: "gists_url",
+    gravatar_id: "gravatar_id",
+    html_url: "html_url",
+    id: "id",
+    login: "login",
+    name: "name",
+    node_id: "node_id",
+    organizations_url: "organizations_url",
+    received_events_url: "received_events_url",
+    repos_url: "repos_url",
+    site_admin: "site_admin",
+    starred_url: "starred_url",
+    subscriptions_url: "subscriptions_url",
+    type: "type",
+    url: "url",
+    user_view_type: "user_view_type",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    login
+  ].freeze
+  DECODERS = {
+    type: lambda do |value|
+      ::OctridevGithub::WebhookReleasePrereleasedReleaseAuthorType.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookReleasePrereleasedReleaseAuthor.
+# Required object value serialized in the `author` wire field.
+class WebhookReleasePrereleasedReleaseAuthor
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookReleasePrereleasedReleaseAuthorMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookReleasePrereleasedReleaseAuthorMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookReleasePrereleasedReleaseAuthorMetadata::DECODERS
+
+  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+  attr_reader :avatar_url
+  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+  attr_reader :deleted
+  # @return [String] Optional `string` value serialized in the `email` wire field.
+  attr_reader :email
+  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+  attr_reader :events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+  attr_reader :followers_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+  attr_reader :following_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+  attr_reader :gists_url
+  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+  attr_reader :gravatar_id
+  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `login` wire field.
+  attr_reader :login
+  # @return [String] Optional `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [String] Optional `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+  attr_reader :organizations_url
+  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+  attr_reader :received_events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+  attr_reader :repos_url
+  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+  attr_reader :site_admin
+  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+  attr_reader :starred_url
+  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+  attr_reader :subscriptions_url
+  # @return [WebhookReleasePrereleasedReleaseAuthorType] Optional enumerated value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+  attr_reader :user_view_type
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookReleasePrereleasedReleaseAuthor.
-  # Required object value serialized in the `author` wire field.
-  class WebhookReleasePrereleasedReleaseAuthor
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookReleasePrereleasedReleaseAuthorMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookReleasePrereleasedReleaseAuthorMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookReleasePrereleasedReleaseAuthorMetadata::DECODERS
-
-    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-    attr_reader :avatar_url
-    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-    attr_reader :deleted
-    # @return [String] Optional `string` value serialized in the `email` wire field.
-    attr_reader :email
-    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-    attr_reader :events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-    attr_reader :followers_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-    attr_reader :following_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-    attr_reader :gists_url
-    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-    attr_reader :gravatar_id
-    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `login` wire field.
-    attr_reader :login
-    # @return [String] Optional `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [String] Optional `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-    attr_reader :organizations_url
-    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-    attr_reader :received_events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-    attr_reader :repos_url
-    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-    attr_reader :site_admin
-    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-    attr_reader :starred_url
-    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-    attr_reader :subscriptions_url
-    # @return [WebhookReleasePrereleasedReleaseAuthorType] Optional enumerated value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-    attr_reader :user_view_type
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookReleasePrereleasedReleaseReactionsMetadata
-    FIELDS = {
-      plus1: '+1',
-      minus1: '-1',
-      confused: 'confused',
-      eyes: 'eyes',
-      heart: 'heart',
-      hooray: 'hooray',
-      laugh: 'laugh',
-      rocket: 'rocket',
-      total_count: 'total_count',
-      url: 'url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      plus1
-      minus1
-      confused
-      eyes
-      heart
-      hooray
-      laugh
-      rocket
-      total_count
-      url
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookReleasePrereleasedReleaseReactionsMetadata
+  FIELDS = {
+    plus1: "+1",
+    minus1: "-1",
+    confused: "confused",
+    eyes: "eyes",
+    heart: "heart",
+    hooray: "hooray",
+    laugh: "laugh",
+    rocket: "rocket",
+    total_count: "total_count",
+    url: "url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    plus1
+    minus1
+    confused
+    eyes
+    heart
+    hooray
+    laugh
+    rocket
+    total_count
+    url
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhookReleasePrereleasedReleaseReactions.
+# Optional object value serialized in the `reactions` wire field.
+class WebhookReleasePrereleasedReleaseReactions
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookReleasePrereleasedReleaseReactionsMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookReleasePrereleasedReleaseReactionsMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookReleasePrereleasedReleaseReactionsMetadata::DECODERS
+
+  # @return [Integer] Required `integer` value serialized in the `+1` wire field.
+  attr_reader :plus1
+  # @return [Integer] Required `integer` value serialized in the `-1` wire field.
+  attr_reader :minus1
+  # @return [Integer] Required `integer` value serialized in the `confused` wire field.
+  attr_reader :confused
+  # @return [Integer] Required `integer` value serialized in the `eyes` wire field.
+  attr_reader :eyes
+  # @return [Integer] Required `integer` value serialized in the `heart` wire field.
+  attr_reader :heart
+  # @return [Integer] Required `integer` value serialized in the `hooray` wire field.
+  attr_reader :hooray
+  # @return [Integer] Required `integer` value serialized in the `laugh` wire field.
+  attr_reader :laugh
+  # @return [Integer] Required `integer` value serialized in the `rocket` wire field.
+  attr_reader :rocket
+  # @return [Integer] Required `integer` value serialized in the `total_count` wire field.
+  attr_reader :total_count
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookReleasePrereleasedReleaseReactions.
-  # Optional object value serialized in the `reactions` wire field.
-  class WebhookReleasePrereleasedReleaseReactions
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookReleasePrereleasedReleaseReactionsMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookReleasePrereleasedReleaseReactionsMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookReleasePrereleasedReleaseReactionsMetadata::DECODERS
-
-    # @return [Integer] Required `integer` value serialized in the `+1` wire field.
-    attr_reader :plus1
-    # @return [Integer] Required `integer` value serialized in the `-1` wire field.
-    attr_reader :minus1
-    # @return [Integer] Required `integer` value serialized in the `confused` wire field.
-    attr_reader :confused
-    # @return [Integer] Required `integer` value serialized in the `eyes` wire field.
-    attr_reader :eyes
-    # @return [Integer] Required `integer` value serialized in the `heart` wire field.
-    attr_reader :heart
-    # @return [Integer] Required `integer` value serialized in the `hooray` wire field.
-    attr_reader :hooray
-    # @return [Integer] Required `integer` value serialized in the `laugh` wire field.
-    attr_reader :laugh
-    # @return [Integer] Required `integer` value serialized in the `rocket` wire field.
-    attr_reader :rocket
-    # @return [Integer] Required `integer` value serialized in the `total_count` wire field.
-    attr_reader :total_count
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookReleasePrereleasedReleaseMetadata
-    FIELDS = {
-      assets: 'assets',
-      assets_url: 'assets_url',
-      author: 'author',
-      body: 'body',
-      created_at: 'created_at',
-      discussion_url: 'discussion_url',
-      draft: 'draft',
-      html_url: 'html_url',
-      id: 'id',
-      immutable: 'immutable',
-      name: 'name',
-      node_id: 'node_id',
-      prerelease: 'prerelease',
-      published_at: 'published_at',
-      reactions: 'reactions',
-      tag_name: 'tag_name',
-      tarball_url: 'tarball_url',
-      target_commitish: 'target_commitish',
-      upload_url: 'upload_url',
-      updated_at: 'updated_at',
-      url: 'url',
-      zipball_url: 'zipball_url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      assets
-      assets_url
-      author
-      body
-      created_at
-      draft
-      html_url
-      id
-      immutable
-      name
-      node_id
-      prerelease
-      published_at
-      tag_name
-      tarball_url
-      target_commitish
-      upload_url
-      updated_at
-      url
-      zipball_url
-    ].freeze
-    DECODERS = {
-      assets: lambda do |value|
-        value&.map { |item| item.nil? ? nil : ::OctridevGithub::WebhookReleasePrereleasedReleaseAssetsItem.from_hash(item) }
-      end,
-      author: lambda do |value|
-        ::OctridevGithub::WebhookReleasePrereleasedReleaseAuthor.from_hash(value)
-      end,
-      prerelease: lambda do |value|
-        ::OctridevGithub::WebhookReleasePrereleasedReleasePrerelease.from_value(value)
-      end,
-      reactions: lambda do |value|
-        ::OctridevGithub::WebhookReleasePrereleasedReleaseReactions.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      author
-      body
-      created_at
-      name
-      published_at
-      tarball_url
-      updated_at
-      zipball_url
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookReleasePrereleasedReleaseMetadata
+  FIELDS = {
+    assets: "assets",
+    assets_url: "assets_url",
+    author: "author",
+    body: "body",
+    created_at: "created_at",
+    discussion_url: "discussion_url",
+    draft: "draft",
+    html_url: "html_url",
+    id: "id",
+    immutable: "immutable",
+    name: "name",
+    node_id: "node_id",
+    prerelease: "prerelease",
+    published_at: "published_at",
+    reactions: "reactions",
+    tag_name: "tag_name",
+    tarball_url: "tarball_url",
+    target_commitish: "target_commitish",
+    upload_url: "upload_url",
+    updated_at: "updated_at",
+    url: "url",
+    zipball_url: "zipball_url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    assets
+    assets_url
+    author
+    body
+    created_at
+    draft
+    html_url
+    id
+    immutable
+    name
+    node_id
+    prerelease
+    published_at
+    tag_name
+    tarball_url
+    target_commitish
+    upload_url
+    updated_at
+    url
+    zipball_url
+  ].freeze
+  DECODERS = {
+    assets: lambda do |value|
+      value&.map { |item| item.nil? ? nil : ::OctridevGithub::WebhookReleasePrereleasedReleaseAssetsItem.from_hash(item) }
+    end,
+    author: lambda do |value|
+      ::OctridevGithub::WebhookReleasePrereleasedReleaseAuthor.from_hash(value)
+    end,
+    prerelease: lambda do |value|
+      ::OctridevGithub::WebhookReleasePrereleasedReleasePrerelease.from_value(value)
+    end,
+    reactions: lambda do |value|
+      ::OctridevGithub::WebhookReleasePrereleasedReleaseReactions.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    author
+    body
+    created_at
+    name
+    published_at
+    tarball_url
+    updated_at
+    zipball_url
+  ].freeze
+end
+
+# API model for WebhookReleasePrereleasedRelease.
+# The release object.
+class WebhookReleasePrereleasedRelease
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookReleasePrereleasedReleaseMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookReleasePrereleasedReleaseMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookReleasePrereleasedReleaseMetadata::DECODERS
+
+  # @return [Array_of_WebhookReleasePrereleasedReleaseAssetsItem] Required array value serialized in the `assets` wire field.
+  attr_reader :assets
+  # @return [String] Required `uri`-formatted value serialized in the `assets_url` wire field.
+  attr_reader :assets_url
+  # @return [WebhookReleasePrereleasedReleaseAuthor] Required object value serialized in the `author` wire field.
+  attr_reader :author
+  # @return [String] Required `string` value serialized in the `body` wire field.
+  attr_reader :body
+  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [String] Optional `uri`-formatted value serialized in the `discussion_url` wire field.
+  attr_reader :discussion_url
+  # @return [Boolean] Whether the release is a draft or published
+  attr_reader :draft
+  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [Boolean] Whether or not the release is immutable.
+  attr_reader :immutable
+  # @return [String] Required `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [WebhookReleasePrereleasedReleasePrerelease] Whether the release is identified as a prerelease or a full release.
+  attr_reader :prerelease
+  # @return [String] Required `date-time`-formatted value serialized in the `published_at` wire field.
+  attr_reader :published_at
+  # @return [WebhookReleasePrereleasedReleaseReactions] Optional object value serialized in the `reactions` wire field.
+  attr_reader :reactions
+  # @return [String] The name of the tag.
+  attr_reader :tag_name
+  # @return [String] Required `uri`-formatted value serialized in the `tarball_url` wire field.
+  attr_reader :tarball_url
+  # @return [String] Specifies the commitish value that determines where the Git tag is created from.
+  attr_reader :target_commitish
+  # @return [String] Required `uri-template`-formatted value serialized in the `upload_url` wire field.
+  attr_reader :upload_url
+  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+  attr_reader :updated_at
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Required `uri`-formatted value serialized in the `zipball_url` wire field.
+  attr_reader :zipball_url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookReleasePrereleasedRelease.
-  # The release object.
-  class WebhookReleasePrereleasedRelease
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookReleasePrereleasedReleaseMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookReleasePrereleasedReleaseMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookReleasePrereleasedReleaseMetadata::DECODERS
-
-    # @return [Array_of_WebhookReleasePrereleasedReleaseAssetsItem] Required array value serialized in the `assets` wire field.
-    attr_reader :assets
-    # @return [String] Required `uri`-formatted value serialized in the `assets_url` wire field.
-    attr_reader :assets_url
-    # @return [WebhookReleasePrereleasedReleaseAuthor] Required object value serialized in the `author` wire field.
-    attr_reader :author
-    # @return [String] Required `string` value serialized in the `body` wire field.
-    attr_reader :body
-    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [String] Optional `uri`-formatted value serialized in the `discussion_url` wire field.
-    attr_reader :discussion_url
-    # @return [Boolean] Whether the release is a draft or published
-    attr_reader :draft
-    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [Boolean] Whether or not the release is immutable.
-    attr_reader :immutable
-    # @return [String] Required `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [WebhookReleasePrereleasedReleasePrerelease] Whether the release is identified as a prerelease or a full release.
-    attr_reader :prerelease
-    # @return [String] Required `date-time`-formatted value serialized in the `published_at` wire field.
-    attr_reader :published_at
-    # @return [WebhookReleasePrereleasedReleaseReactions] Optional object value serialized in the `reactions` wire field.
-    attr_reader :reactions
-    # @return [String] The name of the tag.
-    attr_reader :tag_name
-    # @return [String] Required `uri`-formatted value serialized in the `tarball_url` wire field.
-    attr_reader :tarball_url
-    # @return [String] Specifies the commitish value that determines where the Git tag is created from.
-    attr_reader :target_commitish
-    # @return [String] Required `uri-template`-formatted value serialized in the `upload_url` wire field.
-    attr_reader :upload_url
-    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-    attr_reader :updated_at
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Required `uri`-formatted value serialized in the `zipball_url` wire field.
-    attr_reader :zipball_url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookReleasePrereleasedReleaseMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookReleasePrereleasedReleaseMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookReleasePrereleasedMetadata
-    FIELDS = {
-      action: 'action',
-      enterprise: 'enterprise',
-      installation: 'installation',
-      organization: 'organization',
-      release: 'release',
-      repository: 'repository',
-      sender: 'sender'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      action
-      release
-      repository
-    ].freeze
-    DECODERS = {
-      action: lambda do |value|
-        ::OctridevGithub::WebhookReleasePrereleasedAction.from_value(value)
-      end,
-      enterprise: lambda do |value|
-        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-      end,
-      installation: lambda do |value|
-        ::OctridevGithub::SimpleInstallation.from_hash(value)
-      end,
-      organization: lambda do |value|
-        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-      end,
-      release: lambda do |value|
-        ::OctridevGithub::WebhookReleasePrereleasedRelease.from_hash(value)
-      end,
-      repository: lambda do |value|
-        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-      end,
-      sender: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookReleasePrereleasedMetadata
+  FIELDS = {
+    action: "action",
+    enterprise: "enterprise",
+    installation: "installation",
+    organization: "organization",
+    release: "release",
+    repository: "repository",
+    sender: "sender",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    action
+    release
+    repository
+  ].freeze
+  DECODERS = {
+    action: lambda do |value|
+      ::OctridevGithub::WebhookReleasePrereleasedAction.from_value(value)
+    end,
+    enterprise: lambda do |value|
+      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+    end,
+    installation: lambda do |value|
+      ::OctridevGithub::SimpleInstallation.from_hash(value)
+    end,
+    organization: lambda do |value|
+      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+    end,
+    release: lambda do |value|
+      ::OctridevGithub::WebhookReleasePrereleasedRelease.from_hash(value)
+    end,
+    repository: lambda do |value|
+      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+    end,
+    sender: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookReleasePrereleased.
+# Typed representation of the `WebhookReleasePrereleased` API schema.
+class WebhookReleasePrereleased
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookReleasePrereleasedMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookReleasePrereleasedMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookReleasePrereleasedMetadata::DECODERS
+
+  # @return [WebhookReleasePrereleasedAction] Required enumerated value serialized in the `action` wire field.
+  attr_reader :action
+  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+  attr_reader :enterprise
+  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+  attr_reader :installation
+  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+  attr_reader :organization
+  # @return [WebhookReleasePrereleasedRelease] The release object.
+  attr_reader :release
+  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+  attr_reader :repository
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :sender
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookReleasePrereleased.
-  # Typed representation of the `WebhookReleasePrereleased` API schema.
-  class WebhookReleasePrereleased
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookReleasePrereleasedMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookReleasePrereleasedMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookReleasePrereleasedMetadata::DECODERS
-
-    # @return [WebhookReleasePrereleasedAction] Required enumerated value serialized in the `action` wire field.
-    attr_reader :action
-    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-    attr_reader :enterprise
-    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-    attr_reader :installation
-    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-    attr_reader :organization
-    # @return [WebhookReleasePrereleasedRelease] The release object.
-    attr_reader :release
-    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-    attr_reader :repository
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :sender
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the WebhookReleasePrereleasedAction SDK namespace.
-  module WebhookReleasePrereleasedAction
-    PRERELEASED = 'prereleased'
-    VALUES = ['prereleased'].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
 
-  # Defines the WebhookReleasePrereleasedReleaseAssetsItemState SDK namespace.
-  module WebhookReleasePrereleasedReleaseAssetsItemState
-    UPLOADED = 'uploaded'
-    VALUES = ['uploaded'].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookReleasePrereleasedAction SDK namespace.
+module WebhookReleasePrereleasedAction
+  PRERELEASED = 'prereleased'
+  VALUES = ['prereleased'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookReleasePrereleasedReleaseAssetsItemUploaderType SDK namespace.
-  module WebhookReleasePrereleasedReleaseAssetsItemUploaderType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookReleasePrereleasedReleaseAssetsItemState SDK namespace.
+module WebhookReleasePrereleasedReleaseAssetsItemState
+  UPLOADED = 'uploaded'
+  VALUES = ['uploaded'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookReleasePrereleasedReleaseAuthorType SDK namespace.
-  module WebhookReleasePrereleasedReleaseAuthorType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookReleasePrereleasedReleaseAssetsItemUploaderType SDK namespace.
+module WebhookReleasePrereleasedReleaseAssetsItemUploaderType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookReleasePrereleasedReleasePrerelease SDK namespace.
-  module WebhookReleasePrereleasedReleasePrerelease
-    TRUE = true
-    VALUES = [true].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookReleasePrereleasedReleaseAuthorType SDK namespace.
+module WebhookReleasePrereleasedReleaseAuthorType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
+
+# Defines the WebhookReleasePrereleasedReleasePrerelease SDK namespace.
+module WebhookReleasePrereleasedReleasePrerelease
+  TRUE = true
+  VALUES = [true].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

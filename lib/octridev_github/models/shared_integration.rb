@@ -5,156 +5,158 @@
 
 # shared_integration domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalIntegrationPermissionsMetadata
-    FIELDS = {
-      issues: 'issues',
-      checks: 'checks',
-      metadata: 'metadata',
-      contents: 'contents',
-      deployments: 'deployments'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+# Internal model hydration metadata.
+class SdkInternalIntegrationPermissionsMetadata
+  FIELDS = {
+    issues: "issues",
+    checks: "checks",
+    metadata: "metadata",
+    contents: "contents",
+    deployments: "deployments",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for IntegrationPermissions.
+# The set of permissions for the GitHub app
+class IntegrationPermissions
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalIntegrationPermissionsMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalIntegrationPermissionsMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalIntegrationPermissionsMetadata::DECODERS
+
+  # @return [String] Optional `string` value serialized in the `issues` wire field.
+  attr_reader :issues
+  # @return [String] Optional `string` value serialized in the `checks` wire field.
+  attr_reader :checks
+  # @return [String] Optional `string` value serialized in the `metadata` wire field.
+  attr_reader :metadata
+  # @return [String] Optional `string` value serialized in the `contents` wire field.
+  attr_reader :contents
+  # @return [String] Optional `string` value serialized in the `deployments` wire field.
+  attr_reader :deployments
+  # @return [Hash{String => Object}] Keys the schema admits beside the declared fields.
+  attr_reader :additional_properties
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS, extras: true)
+    freeze
   end
 
-  # API model for IntegrationPermissions.
-  # The set of permissions for the GitHub app
-  class IntegrationPermissions
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalIntegrationPermissionsMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalIntegrationPermissionsMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalIntegrationPermissionsMetadata::DECODERS
-
-    # @return [String] Optional `string` value serialized in the `issues` wire field.
-    attr_reader :issues
-    # @return [String] Optional `string` value serialized in the `checks` wire field.
-    attr_reader :checks
-    # @return [String] Optional `string` value serialized in the `metadata` wire field.
-    attr_reader :metadata
-    # @return [String] Optional `string` value serialized in the `contents` wire field.
-    attr_reader :contents
-    # @return [String] Optional `string` value serialized in the `deployments` wire field.
-    attr_reader :deployments
-    # @return [Hash{String => Object}] Keys the schema admits beside the declared fields.
-    attr_reader :additional_properties
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS, extras: true)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, extras: true)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS, extras: true)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, extras: true)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalIntegrationMetadata
-    FIELDS = {
-      id: 'id',
-      slug: 'slug',
-      node_id: 'node_id',
-      client_id: 'client_id',
-      owner: 'owner',
-      name: 'name',
-      description: 'description',
-      external_url: 'external_url',
-      html_url: 'html_url',
-      created_at: 'created_at',
-      updated_at: 'updated_at',
-      permissions: 'permissions',
-      events: 'events',
-      installations_count: 'installations_count'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      node_id
-      owner
-      name
-      description
-      external_url
-      html_url
-      created_at
-      updated_at
-      permissions
-      events
-    ].freeze
-    DECODERS = {
-      owner: lambda do |value|
-        ::OctridevGithub::IntegrationOwner.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      description
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS, extras: true)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalIntegrationMetadata
+  FIELDS = {
+    id: "id",
+    slug: "slug",
+    node_id: "node_id",
+    client_id: "client_id",
+    owner: "owner",
+    name: "name",
+    description: "description",
+    external_url: "external_url",
+    html_url: "html_url",
+    created_at: "created_at",
+    updated_at: "updated_at",
+    permissions: "permissions",
+    events: "events",
+    installations_count: "installations_count",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    node_id
+    owner
+    name
+    description
+    external_url
+    html_url
+    created_at
+    updated_at
+    permissions
+    events
+  ].freeze
+  DECODERS = {
+    owner: lambda do |value|
+      ::OctridevGithub::IntegrationOwner.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    description
+  ].freeze
+end
+
+# API model for Integration.
+# GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+class Integration
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalIntegrationMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalIntegrationMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalIntegrationMetadata::DECODERS
+
+  # @return [Integer] Unique identifier of the GitHub app
+  attr_reader :id
+  # @return [String] The slug name of the GitHub app
+  attr_reader :slug
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Optional `string` value serialized in the `client_id` wire field.
+  attr_reader :client_id
+  # @return [IntegrationOwner] Required API value serialized in the `owner` wire field.
+  attr_reader :owner
+  # @return [String] The name of the GitHub app
+  attr_reader :name
+  # @return [String] Required `string` value serialized in the `description` wire field.
+  attr_reader :description
+  # @return [String] Required `uri`-formatted value serialized in the `external_url` wire field.
+  attr_reader :external_url
+  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+  attr_reader :updated_at
+  # @return [IntegrationPermissions] The set of permissions for the GitHub app
+  attr_reader :permissions
+  # @return [Array_of_String] The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation.
+  attr_reader :events
+  # @return [Integer] The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself.
+  attr_reader :installations_count
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for Integration.
-  # GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
-  class Integration
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalIntegrationMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalIntegrationMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalIntegrationMetadata::DECODERS
-
-    # @return [Integer] Unique identifier of the GitHub app
-    attr_reader :id
-    # @return [String] The slug name of the GitHub app
-    attr_reader :slug
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Optional `string` value serialized in the `client_id` wire field.
-    attr_reader :client_id
-    # @return [IntegrationOwner] Required API value serialized in the `owner` wire field.
-    attr_reader :owner
-    # @return [String] The name of the GitHub app
-    attr_reader :name
-    # @return [String] Required `string` value serialized in the `description` wire field.
-    attr_reader :description
-    # @return [String] Required `uri`-formatted value serialized in the `external_url` wire field.
-    attr_reader :external_url
-    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-    attr_reader :updated_at
-    # @return [IntegrationPermissions] The set of permissions for the GitHub app
-    attr_reader :permissions
-    # @return [Array_of_String] The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation.
-    attr_reader :events
-    # @return [Integer] The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself.
-    attr_reader :installations_count
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalIntegrationMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalIntegrationMetadata::NULLABLE_FIELDS)
   end
 
-  # Defines the IntegrationOwner SDK namespace.
-  module IntegrationOwner
-    def self.from_hash(hash)
-      shape_mapping = {
-        'events_url' => SimpleUser,
-        'slug' => Enterprise
-      }
-      type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
-      decoded = type&.from_hash(hash)
-      decoded unless type.nil?
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
+
+# Defines the IntegrationOwner SDK namespace.
+module IntegrationOwner
+  def self.from_hash(hash)
+    shape_mapping = {
+      "events_url" => SimpleUser,
+      "slug" => Enterprise,
+    }
+    type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
+    decoded = type&.from_hash(hash)
+    return decoded unless type.nil?
+  end
+end
 end

@@ -5,89 +5,89 @@
 
 # webhook_project_column_created domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalWebhookProjectColumnCreatedMetadata
-    FIELDS = {
-      action: 'action',
-      enterprise: 'enterprise',
-      installation: 'installation',
-      organization: 'organization',
-      project_column: 'project_column',
-      repository: 'repository',
-      sender: 'sender'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      action
-      project_column
-    ].freeze
-    DECODERS = {
-      action: lambda do |value|
-        ::OctridevGithub::WebhookProjectColumnCreatedAction.from_value(value)
-      end,
-      enterprise: lambda do |value|
-        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-      end,
-      installation: lambda do |value|
-        ::OctridevGithub::SimpleInstallation.from_hash(value)
-      end,
-      organization: lambda do |value|
-        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-      end,
-      project_column: lambda do |value|
-        ::OctridevGithub::WebhooksProjectColumn.from_hash(value)
-      end,
-      repository: lambda do |value|
-        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-      end,
-      sender: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end
-    }.freeze
+# Internal model hydration metadata.
+class SdkInternalWebhookProjectColumnCreatedMetadata
+  FIELDS = {
+    action: "action",
+    enterprise: "enterprise",
+    installation: "installation",
+    organization: "organization",
+    project_column: "project_column",
+    repository: "repository",
+    sender: "sender",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    action
+    project_column
+  ].freeze
+  DECODERS = {
+    action: lambda do |value|
+      ::OctridevGithub::WebhookProjectColumnCreatedAction.from_value(value)
+    end,
+    enterprise: lambda do |value|
+      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+    end,
+    installation: lambda do |value|
+      ::OctridevGithub::SimpleInstallation.from_hash(value)
+    end,
+    organization: lambda do |value|
+      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+    end,
+    project_column: lambda do |value|
+      ::OctridevGithub::WebhooksProjectColumn.from_hash(value)
+    end,
+    repository: lambda do |value|
+      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+    end,
+    sender: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookProjectColumnCreated.
+# Typed representation of the `WebhookProjectColumnCreated` API schema.
+class WebhookProjectColumnCreated
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookProjectColumnCreatedMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookProjectColumnCreatedMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookProjectColumnCreatedMetadata::DECODERS
+
+  # @return [WebhookProjectColumnCreatedAction] Required enumerated value serialized in the `action` wire field.
+  attr_reader :action
+  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+  attr_reader :enterprise
+  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+  attr_reader :installation
+  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+  attr_reader :organization
+  # @return [WebhooksProjectColumn] Required object value serialized in the `project_column` wire field.
+  attr_reader :project_column
+  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+  attr_reader :repository
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :sender
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookProjectColumnCreated.
-  # Typed representation of the `WebhookProjectColumnCreated` API schema.
-  class WebhookProjectColumnCreated
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookProjectColumnCreatedMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookProjectColumnCreatedMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookProjectColumnCreatedMetadata::DECODERS
-
-    # @return [WebhookProjectColumnCreatedAction] Required enumerated value serialized in the `action` wire field.
-    attr_reader :action
-    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-    attr_reader :enterprise
-    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-    attr_reader :installation
-    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-    attr_reader :organization
-    # @return [WebhooksProjectColumn] Required object value serialized in the `project_column` wire field.
-    attr_reader :project_column
-    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-    attr_reader :repository
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :sender
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the WebhookProjectColumnCreatedAction SDK namespace.
-  module WebhookProjectColumnCreatedAction
-    CREATED = 'created'
-    VALUES = ['created'].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
+
+# Defines the WebhookProjectColumnCreatedAction SDK namespace.
+module WebhookProjectColumnCreatedAction
+  CREATED = 'created'
+  VALUES = ['created'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

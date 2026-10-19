@@ -5,94 +5,94 @@
 
 # webhook_org_block_blocked domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalWebhookOrgBlockBlockedMetadata
-    FIELDS = {
-      action: 'action',
-      blocked_user: 'blocked_user',
-      enterprise: 'enterprise',
-      installation: 'installation',
-      organization: 'organization',
-      repository: 'repository',
-      sender: 'sender'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      action
-      blocked_user
-      organization
-      sender
-    ].freeze
-    DECODERS = {
-      action: lambda do |value|
-        ::OctridevGithub::WebhookOrgBlockBlockedAction.from_value(value)
-      end,
-      blocked_user: lambda do |value|
-        ::OctridevGithub::WebhooksUser.from_hash(value)
-      end,
-      enterprise: lambda do |value|
-        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-      end,
-      installation: lambda do |value|
-        ::OctridevGithub::SimpleInstallation.from_hash(value)
-      end,
-      organization: lambda do |value|
-        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-      end,
-      repository: lambda do |value|
-        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-      end,
-      sender: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      blocked_user
-    ].freeze
+# Internal model hydration metadata.
+class SdkInternalWebhookOrgBlockBlockedMetadata
+  FIELDS = {
+    action: "action",
+    blocked_user: "blocked_user",
+    enterprise: "enterprise",
+    installation: "installation",
+    organization: "organization",
+    repository: "repository",
+    sender: "sender",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    action
+    blocked_user
+    organization
+    sender
+  ].freeze
+  DECODERS = {
+    action: lambda do |value|
+      ::OctridevGithub::WebhookOrgBlockBlockedAction.from_value(value)
+    end,
+    blocked_user: lambda do |value|
+      ::OctridevGithub::WebhooksUser.from_hash(value)
+    end,
+    enterprise: lambda do |value|
+      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+    end,
+    installation: lambda do |value|
+      ::OctridevGithub::SimpleInstallation.from_hash(value)
+    end,
+    organization: lambda do |value|
+      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+    end,
+    repository: lambda do |value|
+      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+    end,
+    sender: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    blocked_user
+  ].freeze
+end
+
+# API model for WebhookOrgBlockBlocked.
+# Typed representation of the `WebhookOrgBlockBlocked` API schema.
+class WebhookOrgBlockBlocked
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookOrgBlockBlockedMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookOrgBlockBlockedMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookOrgBlockBlockedMetadata::DECODERS
+
+  # @return [WebhookOrgBlockBlockedAction] Required enumerated value serialized in the `action` wire field.
+  attr_reader :action
+  # @return [WebhooksUser] Required object value serialized in the `blocked_user` wire field.
+  attr_reader :blocked_user
+  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+  attr_reader :enterprise
+  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+  attr_reader :installation
+  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+  attr_reader :organization
+  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+  attr_reader :repository
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :sender
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookOrgBlockBlocked.
-  # Typed representation of the `WebhookOrgBlockBlocked` API schema.
-  class WebhookOrgBlockBlocked
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookOrgBlockBlockedMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookOrgBlockBlockedMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookOrgBlockBlockedMetadata::DECODERS
-
-    # @return [WebhookOrgBlockBlockedAction] Required enumerated value serialized in the `action` wire field.
-    attr_reader :action
-    # @return [WebhooksUser] Required object value serialized in the `blocked_user` wire field.
-    attr_reader :blocked_user
-    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-    attr_reader :enterprise
-    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-    attr_reader :installation
-    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-    attr_reader :organization
-    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-    attr_reader :repository
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :sender
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookOrgBlockBlockedMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookOrgBlockBlockedMetadata::NULLABLE_FIELDS)
   end
 
-  # Defines the WebhookOrgBlockBlockedAction SDK namespace.
-  module WebhookOrgBlockBlockedAction
-    BLOCKED = 'blocked'
-    VALUES = ['blocked'].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
+
+# Defines the WebhookOrgBlockBlockedAction SDK namespace.
+module WebhookOrgBlockBlockedAction
+  BLOCKED = 'blocked'
+  VALUES = ['blocked'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

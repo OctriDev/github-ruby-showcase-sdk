@@ -5,100 +5,100 @@
 
 # webhook_marketplace_purchase_cancelled domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalWebhookMarketplacePurchaseCancelledMetadata
-    FIELDS = {
-      action: 'action',
-      effective_date: 'effective_date',
-      enterprise: 'enterprise',
-      installation: 'installation',
-      marketplace_purchase: 'marketplace_purchase',
-      organization: 'organization',
-      previous_marketplace_purchase: 'previous_marketplace_purchase',
-      repository: 'repository',
-      sender: 'sender'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      action
-      effective_date
-      marketplace_purchase
-      sender
-    ].freeze
-    DECODERS = {
-      action: lambda do |value|
-        ::OctridevGithub::WebhookMarketplacePurchaseCancelledAction.from_value(value)
-      end,
-      enterprise: lambda do |value|
-        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-      end,
-      installation: lambda do |value|
-        ::OctridevGithub::SimpleInstallation.from_hash(value)
-      end,
-      marketplace_purchase: lambda do |value|
-        ::OctridevGithub::WebhooksMarketplacePurchase.from_hash(value)
-      end,
-      organization: lambda do |value|
-        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-      end,
-      previous_marketplace_purchase: lambda do |value|
-        ::OctridevGithub::WebhooksPreviousMarketplacePurchase.from_hash(value)
-      end,
-      repository: lambda do |value|
-        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-      end,
-      sender: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end
-    }.freeze
+# Internal model hydration metadata.
+class SdkInternalWebhookMarketplacePurchaseCancelledMetadata
+  FIELDS = {
+    action: "action",
+    effective_date: "effective_date",
+    enterprise: "enterprise",
+    installation: "installation",
+    marketplace_purchase: "marketplace_purchase",
+    organization: "organization",
+    previous_marketplace_purchase: "previous_marketplace_purchase",
+    repository: "repository",
+    sender: "sender",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    action
+    effective_date
+    marketplace_purchase
+    sender
+  ].freeze
+  DECODERS = {
+    action: lambda do |value|
+      ::OctridevGithub::WebhookMarketplacePurchaseCancelledAction.from_value(value)
+    end,
+    enterprise: lambda do |value|
+      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+    end,
+    installation: lambda do |value|
+      ::OctridevGithub::SimpleInstallation.from_hash(value)
+    end,
+    marketplace_purchase: lambda do |value|
+      ::OctridevGithub::WebhooksMarketplacePurchase.from_hash(value)
+    end,
+    organization: lambda do |value|
+      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+    end,
+    previous_marketplace_purchase: lambda do |value|
+      ::OctridevGithub::WebhooksPreviousMarketplacePurchase.from_hash(value)
+    end,
+    repository: lambda do |value|
+      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+    end,
+    sender: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookMarketplacePurchaseCancelled.
+# Typed representation of the `WebhookMarketplacePurchaseCancelled` API schema.
+class WebhookMarketplacePurchaseCancelled
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookMarketplacePurchaseCancelledMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookMarketplacePurchaseCancelledMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookMarketplacePurchaseCancelledMetadata::DECODERS
+
+  # @return [WebhookMarketplacePurchaseCancelledAction] Required enumerated value serialized in the `action` wire field.
+  attr_reader :action
+  # @return [String] Required `string` value serialized in the `effective_date` wire field.
+  attr_reader :effective_date
+  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+  attr_reader :enterprise
+  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+  attr_reader :installation
+  # @return [WebhooksMarketplacePurchase] Required object value serialized in the `marketplace_purchase` wire field.
+  attr_reader :marketplace_purchase
+  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+  attr_reader :organization
+  # @return [WebhooksPreviousMarketplacePurchase] Optional object value serialized in the `previous_marketplace_purchase` wire field.
+  attr_reader :previous_marketplace_purchase
+  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+  attr_reader :repository
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :sender
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookMarketplacePurchaseCancelled.
-  # Typed representation of the `WebhookMarketplacePurchaseCancelled` API schema.
-  class WebhookMarketplacePurchaseCancelled
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookMarketplacePurchaseCancelledMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookMarketplacePurchaseCancelledMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookMarketplacePurchaseCancelledMetadata::DECODERS
-
-    # @return [WebhookMarketplacePurchaseCancelledAction] Required enumerated value serialized in the `action` wire field.
-    attr_reader :action
-    # @return [String] Required `string` value serialized in the `effective_date` wire field.
-    attr_reader :effective_date
-    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-    attr_reader :enterprise
-    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-    attr_reader :installation
-    # @return [WebhooksMarketplacePurchase] Required object value serialized in the `marketplace_purchase` wire field.
-    attr_reader :marketplace_purchase
-    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-    attr_reader :organization
-    # @return [WebhooksPreviousMarketplacePurchase] Optional object value serialized in the `previous_marketplace_purchase` wire field.
-    attr_reader :previous_marketplace_purchase
-    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-    attr_reader :repository
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :sender
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the WebhookMarketplacePurchaseCancelledAction SDK namespace.
-  module WebhookMarketplacePurchaseCancelledAction
-    CANCELLED = 'cancelled'
-    VALUES = ['cancelled'].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
+
+# Defines the WebhookMarketplacePurchaseCancelledAction SDK namespace.
+module WebhookMarketplacePurchaseCancelledAction
+  CANCELLED = 'cancelled'
+  VALUES = ['cancelled'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

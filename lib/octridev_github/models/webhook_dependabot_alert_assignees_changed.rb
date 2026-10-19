@@ -5,91 +5,91 @@
 
 # webhook_dependabot_alert_assignees_changed domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalWebhookDependabotAlertAssigneesChangedMetadata
-    FIELDS = {
-      action: 'action',
-      alert: 'alert',
-      installation: 'installation',
-      organization: 'organization',
-      enterprise: 'enterprise',
-      repository: 'repository',
-      sender: 'sender'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      action
-      alert
-      repository
-      sender
-    ].freeze
-    DECODERS = {
-      action: lambda do |value|
-        ::OctridevGithub::WebhookDependabotAlertAssigneesChangedAction.from_value(value)
-      end,
-      alert: lambda do |value|
-        ::OctridevGithub::DependabotAlert.from_hash(value)
-      end,
-      installation: lambda do |value|
-        ::OctridevGithub::SimpleInstallation.from_hash(value)
-      end,
-      organization: lambda do |value|
-        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-      end,
-      enterprise: lambda do |value|
-        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-      end,
-      repository: lambda do |value|
-        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-      end,
-      sender: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end
-    }.freeze
+# Internal model hydration metadata.
+class SdkInternalWebhookDependabotAlertAssigneesChangedMetadata
+  FIELDS = {
+    action: "action",
+    alert: "alert",
+    installation: "installation",
+    organization: "organization",
+    enterprise: "enterprise",
+    repository: "repository",
+    sender: "sender",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    action
+    alert
+    repository
+    sender
+  ].freeze
+  DECODERS = {
+    action: lambda do |value|
+      ::OctridevGithub::WebhookDependabotAlertAssigneesChangedAction.from_value(value)
+    end,
+    alert: lambda do |value|
+      ::OctridevGithub::DependabotAlert.from_hash(value)
+    end,
+    installation: lambda do |value|
+      ::OctridevGithub::SimpleInstallation.from_hash(value)
+    end,
+    organization: lambda do |value|
+      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+    end,
+    enterprise: lambda do |value|
+      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+    end,
+    repository: lambda do |value|
+      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+    end,
+    sender: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookDependabotAlertAssigneesChanged.
+# Typed representation of the `WebhookDependabotAlertAssigneesChanged` API schema.
+class WebhookDependabotAlertAssigneesChanged
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookDependabotAlertAssigneesChangedMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookDependabotAlertAssigneesChangedMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookDependabotAlertAssigneesChangedMetadata::DECODERS
+
+  # @return [WebhookDependabotAlertAssigneesChangedAction] Required enumerated value serialized in the `action` wire field.
+  attr_reader :action
+  # @return [DependabotAlert] A Dependabot alert.
+  attr_reader :alert
+  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+  attr_reader :installation
+  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+  attr_reader :organization
+  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+  attr_reader :enterprise
+  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+  attr_reader :repository
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :sender
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookDependabotAlertAssigneesChanged.
-  # Typed representation of the `WebhookDependabotAlertAssigneesChanged` API schema.
-  class WebhookDependabotAlertAssigneesChanged
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookDependabotAlertAssigneesChangedMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookDependabotAlertAssigneesChangedMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookDependabotAlertAssigneesChangedMetadata::DECODERS
-
-    # @return [WebhookDependabotAlertAssigneesChangedAction] Required enumerated value serialized in the `action` wire field.
-    attr_reader :action
-    # @return [DependabotAlert] A Dependabot alert.
-    attr_reader :alert
-    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-    attr_reader :installation
-    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-    attr_reader :organization
-    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-    attr_reader :enterprise
-    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-    attr_reader :repository
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :sender
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the WebhookDependabotAlertAssigneesChangedAction SDK namespace.
-  module WebhookDependabotAlertAssigneesChangedAction
-    ASSIGNEES_CHANGED = 'assignees_changed'
-    VALUES = ['assignees_changed'].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
+
+# Defines the WebhookDependabotAlertAssigneesChangedAction SDK namespace.
+module WebhookDependabotAlertAssigneesChangedAction
+  ASSIGNEES_CHANGED = 'assignees_changed'
+  VALUES = ['assignees_changed'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

@@ -5,39 +5,40 @@
 
 # webhook_secret_scanning_alert_location_created_form_encoded domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalWebhookSecretScanningAlertLocationCreatedFormEncodedMetadata
-    FIELDS = {
-      payload: 'payload'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      payload
-    ].freeze
-    DECODERS = {}.freeze
+# Internal model hydration metadata.
+class SdkInternalWebhookSecretScanningAlertLocationCreatedFormEncodedMetadata
+  FIELDS = {
+    payload: "payload",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    payload
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhookSecretScanningAlertLocationCreatedFormEncoded.
+# Typed representation of the `WebhookSecretScanningAlertLocationCreatedFormEncoded` API schema.
+class WebhookSecretScanningAlertLocationCreatedFormEncoded
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookSecretScanningAlertLocationCreatedFormEncodedMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookSecretScanningAlertLocationCreatedFormEncodedMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookSecretScanningAlertLocationCreatedFormEncodedMetadata::DECODERS
+
+  # @return [String] A URL-encoded string of the secret_scanning_alert_location.created JSON payload. The decoded payload is a JSON object.
+  attr_reader :payload
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookSecretScanningAlertLocationCreatedFormEncoded.
-  # Typed representation of the `WebhookSecretScanningAlertLocationCreatedFormEncoded` API schema.
-  class WebhookSecretScanningAlertLocationCreatedFormEncoded
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookSecretScanningAlertLocationCreatedFormEncodedMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookSecretScanningAlertLocationCreatedFormEncodedMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookSecretScanningAlertLocationCreatedFormEncodedMetadata::DECODERS
-
-    # @return [String] A URL-encoded string of the secret_scanning_alert_location.created JSON payload. The decoded payload is a JSON object.
-    attr_reader :payload
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 end

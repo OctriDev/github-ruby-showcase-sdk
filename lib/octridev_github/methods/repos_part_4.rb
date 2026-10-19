@@ -38,15 +38,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateStatusCheckProtectionMetadata
         FIELDS = {
-          strict: 'strict',
-          contexts: 'contexts',
-          checks: 'checks'
+          strict: "strict",
+          contexts: "contexts",
+          checks: "checks",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           checks: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Repos::ReposUpdateStatusCheckProtectionChecksItem.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -81,12 +82,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposAddAppAccessRestrictionsMetadata
         FIELDS = {
-          apps: 'apps'
+          apps: "apps",
         }.freeze
         REQUIRED_FIELDS = %i[
           apps
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ReposAddAppAccessRestrictions.
@@ -116,12 +118,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposSetAppAccessRestrictionsMetadata
         FIELDS = {
-          apps: 'apps'
+          apps: "apps",
         }.freeze
         REQUIRED_FIELDS = %i[
           apps
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ReposSetAppAccessRestrictions.
@@ -151,12 +154,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposRemoveAppAccessRestrictionsMetadata
         FIELDS = {
-          apps: 'apps'
+          apps: "apps",
         }.freeze
         REQUIRED_FIELDS = %i[
           apps
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ReposRemoveAppAccessRestrictions.
@@ -186,12 +190,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposAddUserAccessRestrictionsMetadata
         FIELDS = {
-          users: 'users'
+          users: "users",
         }.freeze
         REQUIRED_FIELDS = %i[
           users
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ReposAddUserAccessRestrictions.
@@ -221,12 +226,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposSetUserAccessRestrictionsMetadata
         FIELDS = {
-          users: 'users'
+          users: "users",
         }.freeze
         REQUIRED_FIELDS = %i[
           users
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ReposSetUserAccessRestrictions.
@@ -256,12 +262,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposRemoveUserAccessRestrictionsMetadata
         FIELDS = {
-          users: 'users'
+          users: "users",
         }.freeze
         REQUIRED_FIELDS = %i[
           users
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ReposRemoveUserAccessRestrictions.
@@ -291,12 +298,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposRenameBranchMetadata
         FIELDS = {
-          new_name: 'new_name'
+          new_name: "new_name",
         }.freeze
         REQUIRED_FIELDS = %i[
           new_name
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ReposRenameBranch.
@@ -326,10 +334,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposAddCollaboratorMetadata
         FIELDS = {
-          permission: 'permission'
+          permission: "permission",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ReposAddCollaborator.
@@ -359,12 +369,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateCommitCommentMetadata
         FIELDS = {
-          body: 'body'
+          body: "body",
         }.freeze
         REQUIRED_FIELDS = %i[
           body
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ReposUpdateCommitComment.
@@ -394,15 +405,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreateCommitCommentMetadata
         FIELDS = {
-          body: 'body',
-          path: 'path',
-          position: 'position',
-          line: 'line'
+          body: "body",
+          path: "path",
+          position: "position",
+          line: "line",
         }.freeze
         REQUIRED_FIELDS = %i[
           body
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ReposCreateCommitComment.
@@ -438,15 +450,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreateOrUpdateFileContentsCommitterMetadata
         FIELDS = {
-          name: 'name',
-          email: 'email',
-          date: 'date'
+          name: "name",
+          email: "email",
+          date: "date",
         }.freeze
         REQUIRED_FIELDS = %i[
           name
           email
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ReposCreateOrUpdateFileContentsCommitter.
@@ -480,15 +493,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreateOrUpdateFileContentsAuthorMetadata
         FIELDS = {
-          name: 'name',
-          email: 'email',
-          date: 'date'
+          name: "name",
+          email: "email",
+          date: "date",
         }.freeze
         REQUIRED_FIELDS = %i[
           name
           email
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ReposCreateOrUpdateFileContentsAuthor.
@@ -522,12 +536,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreateOrUpdateFileContentsMetadata
         FIELDS = {
-          message: 'message',
-          content: 'content',
-          sha: 'sha',
-          branch: 'branch',
-          committer: 'committer',
-          author: 'author'
+          message: "message",
+          content: "content",
+          sha: "sha",
+          branch: "branch",
+          committer: "committer",
+          author: "author",
         }.freeze
         REQUIRED_FIELDS = %i[
           message
@@ -539,7 +553,7 @@ module OctridevGithub
           end,
           author: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposCreateOrUpdateFileContentsAuthor.from_hash(value)
-          end
+          end,
         }.freeze
       end
     end

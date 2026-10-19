@@ -5,277 +5,280 @@
 
 # shared_hook domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalHookDeliveryRequestMetadata
-    FIELDS = {
-      headers: 'headers',
-      payload: 'payload'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      headers
-      payload
-    ].freeze
-    DECODERS = {}.freeze
-    NULLABLE_FIELDS = %i[
-      headers
-      payload
-    ].freeze
+# Internal model hydration metadata.
+class SdkInternalHookDeliveryRequestMetadata
+  FIELDS = {
+    headers: "headers",
+    payload: "payload",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    headers
+    payload
+  ].freeze
+  DECODERS = {
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    headers
+    payload
+  ].freeze
+end
+
+# API model for HookDeliveryRequest.
+# Required object value serialized in the `request` wire field.
+class HookDeliveryRequest
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalHookDeliveryRequestMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalHookDeliveryRequestMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalHookDeliveryRequestMetadata::DECODERS
+
+  # @return [Hash] The request headers sent with the webhook delivery.
+  attr_reader :headers
+  # @return [Hash] The webhook payload.
+  attr_reader :payload
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for HookDeliveryRequest.
-  # Required object value serialized in the `request` wire field.
-  class HookDeliveryRequest
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalHookDeliveryRequestMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalHookDeliveryRequestMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalHookDeliveryRequestMetadata::DECODERS
-
-    # @return [Hash] The request headers sent with the webhook delivery.
-    attr_reader :headers
-    # @return [Hash] The webhook payload.
-    attr_reader :payload
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalHookDeliveryRequestMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalHookDeliveryRequestMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalHookDeliveryResponseMetadata
-    FIELDS = {
-      headers: 'headers',
-      payload: 'payload'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      headers
-      payload
-    ].freeze
-    DECODERS = {}.freeze
-    NULLABLE_FIELDS = %i[
-      headers
-      payload
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalHookDeliveryResponseMetadata
+  FIELDS = {
+    headers: "headers",
+    payload: "payload",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    headers
+    payload
+  ].freeze
+  DECODERS = {
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    headers
+    payload
+  ].freeze
+end
+
+# API model for HookDeliveryResponse.
+# Required object value serialized in the `response` wire field.
+class HookDeliveryResponse
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalHookDeliveryResponseMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalHookDeliveryResponseMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalHookDeliveryResponseMetadata::DECODERS
+
+  # @return [Hash] The response headers received when the delivery was made.
+  attr_reader :headers
+  # @return [String] The response payload received.
+  attr_reader :payload
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for HookDeliveryResponse.
-  # Required object value serialized in the `response` wire field.
-  class HookDeliveryResponse
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalHookDeliveryResponseMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalHookDeliveryResponseMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalHookDeliveryResponseMetadata::DECODERS
-
-    # @return [Hash] The response headers received when the delivery was made.
-    attr_reader :headers
-    # @return [String] The response payload received.
-    attr_reader :payload
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalHookDeliveryResponseMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalHookDeliveryResponseMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalHookDeliveryMetadata
-    FIELDS = {
-      id: 'id',
-      guid: 'guid',
-      delivered_at: 'delivered_at',
-      redelivery: 'redelivery',
-      duration: 'duration',
-      status: 'status',
-      status_code: 'status_code',
-      event: 'event',
-      action: 'action',
-      installation_id: 'installation_id',
-      repository_id: 'repository_id',
-      throttled_at: 'throttled_at',
-      url: 'url',
-      request: 'request',
-      response: 'response'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      guid
-      delivered_at
-      redelivery
-      duration
-      status
-      status_code
-      event
-      action
-      installation_id
-      repository_id
-      request
-      response
-    ].freeze
-    DECODERS = {
-      request: lambda do |value|
-        ::OctridevGithub::HookDeliveryRequest.from_hash(value)
-      end,
-      response: lambda do |value|
-        ::OctridevGithub::HookDeliveryResponse.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      action
-      installation_id
-      repository_id
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalHookDeliveryMetadata
+  FIELDS = {
+    id: "id",
+    guid: "guid",
+    delivered_at: "delivered_at",
+    redelivery: "redelivery",
+    duration: "duration",
+    status: "status",
+    status_code: "status_code",
+    event: "event",
+    action: "action",
+    installation_id: "installation_id",
+    repository_id: "repository_id",
+    throttled_at: "throttled_at",
+    url: "url",
+    request: "request",
+    response: "response",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    guid
+    delivered_at
+    redelivery
+    duration
+    status
+    status_code
+    event
+    action
+    installation_id
+    repository_id
+    request
+    response
+  ].freeze
+  DECODERS = {
+    request: lambda do |value|
+      ::OctridevGithub::HookDeliveryRequest.from_hash(value)
+    end,
+    response: lambda do |value|
+      ::OctridevGithub::HookDeliveryResponse.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    action
+    installation_id
+    repository_id
+  ].freeze
+end
+
+# API model for HookDelivery.
+# Delivery made by a webhook.
+class HookDelivery
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalHookDeliveryMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalHookDeliveryMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalHookDeliveryMetadata::DECODERS
+
+  # @return [Integer] Unique identifier of the delivery.
+  attr_reader :id
+  # @return [String] Unique identifier for the event (shared with all deliveries for all webhooks that subscribe to this event).
+  attr_reader :guid
+  # @return [String] Time when the delivery was delivered.
+  attr_reader :delivered_at
+  # @return [Boolean] Whether the delivery is a redelivery.
+  attr_reader :redelivery
+  # @return [Float] Time spent delivering.
+  attr_reader :duration
+  # @return [String] Description of the status of the attempted delivery
+  attr_reader :status
+  # @return [Integer] Status code received when delivery was made.
+  attr_reader :status_code
+  # @return [String] The event that triggered the delivery.
+  attr_reader :event
+  # @return [String] The type of activity for the event that triggered the delivery.
+  attr_reader :action
+  # @return [Integer] The id of the GitHub App installation associated with this event.
+  attr_reader :installation_id
+  # @return [Integer] The id of the repository associated with this event.
+  attr_reader :repository_id
+  # @return [String] Time when the webhook delivery was throttled.
+  attr_reader :throttled_at
+  # @return [String] The URL target of the delivery.
+  attr_reader :url
+  # @return [HookDeliveryRequest] Required object value serialized in the `request` wire field.
+  attr_reader :request
+  # @return [HookDeliveryResponse] Required object value serialized in the `response` wire field.
+  attr_reader :response
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for HookDelivery.
-  # Delivery made by a webhook.
-  class HookDelivery
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalHookDeliveryMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalHookDeliveryMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalHookDeliveryMetadata::DECODERS
-
-    # @return [Integer] Unique identifier of the delivery.
-    attr_reader :id
-    # @return [String] Unique identifier for the event (shared with all deliveries for all webhooks that subscribe to this event).
-    attr_reader :guid
-    # @return [String] Time when the delivery was delivered.
-    attr_reader :delivered_at
-    # @return [Boolean] Whether the delivery is a redelivery.
-    attr_reader :redelivery
-    # @return [Float] Time spent delivering.
-    attr_reader :duration
-    # @return [String] Description of the status of the attempted delivery
-    attr_reader :status
-    # @return [Integer] Status code received when delivery was made.
-    attr_reader :status_code
-    # @return [String] The event that triggered the delivery.
-    attr_reader :event
-    # @return [String] The type of activity for the event that triggered the delivery.
-    attr_reader :action
-    # @return [Integer] The id of the GitHub App installation associated with this event.
-    attr_reader :installation_id
-    # @return [Integer] The id of the repository associated with this event.
-    attr_reader :repository_id
-    # @return [String] Time when the webhook delivery was throttled.
-    attr_reader :throttled_at
-    # @return [String] The URL target of the delivery.
-    attr_reader :url
-    # @return [HookDeliveryRequest] Required object value serialized in the `request` wire field.
-    attr_reader :request
-    # @return [HookDeliveryResponse] Required object value serialized in the `response` wire field.
-    attr_reader :response
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalHookDeliveryMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalHookDeliveryMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalHookDeliveryItemMetadata
-    FIELDS = {
-      id: 'id',
-      guid: 'guid',
-      delivered_at: 'delivered_at',
-      redelivery: 'redelivery',
-      duration: 'duration',
-      status: 'status',
-      status_code: 'status_code',
-      event: 'event',
-      action: 'action',
-      installation_id: 'installation_id',
-      repository_id: 'repository_id',
-      throttled_at: 'throttled_at'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      guid
-      delivered_at
-      redelivery
-      duration
-      status
-      status_code
-      event
-      action
-      installation_id
-      repository_id
-    ].freeze
-    DECODERS = {}.freeze
-    NULLABLE_FIELDS = %i[
-      action
-      installation_id
-      repository_id
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalHookDeliveryItemMetadata
+  FIELDS = {
+    id: "id",
+    guid: "guid",
+    delivered_at: "delivered_at",
+    redelivery: "redelivery",
+    duration: "duration",
+    status: "status",
+    status_code: "status_code",
+    event: "event",
+    action: "action",
+    installation_id: "installation_id",
+    repository_id: "repository_id",
+    throttled_at: "throttled_at",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    guid
+    delivered_at
+    redelivery
+    duration
+    status
+    status_code
+    event
+    action
+    installation_id
+    repository_id
+  ].freeze
+  DECODERS = {
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    action
+    installation_id
+    repository_id
+  ].freeze
+end
+
+# API model for HookDeliveryItem.
+# Delivery made by a webhook, without request and response information.
+class HookDeliveryItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalHookDeliveryItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalHookDeliveryItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalHookDeliveryItemMetadata::DECODERS
+
+  # @return [Integer] Unique identifier of the webhook delivery.
+  attr_reader :id
+  # @return [String] Unique identifier for the event (shared with all deliveries for all webhooks that subscribe to this event).
+  attr_reader :guid
+  # @return [String] Time when the webhook delivery occurred.
+  attr_reader :delivered_at
+  # @return [Boolean] Whether the webhook delivery is a redelivery.
+  attr_reader :redelivery
+  # @return [Float] Time spent delivering.
+  attr_reader :duration
+  # @return [String] Describes the response returned after attempting the delivery.
+  attr_reader :status
+  # @return [Integer] Status code received when delivery was made.
+  attr_reader :status_code
+  # @return [String] The event that triggered the delivery.
+  attr_reader :event
+  # @return [String] The type of activity for the event that triggered the delivery.
+  attr_reader :action
+  # @return [Integer] The id of the GitHub App installation associated with this event.
+  attr_reader :installation_id
+  # @return [Integer] The id of the repository associated with this event.
+  attr_reader :repository_id
+  # @return [String] Time when the webhook delivery was throttled.
+  attr_reader :throttled_at
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for HookDeliveryItem.
-  # Delivery made by a webhook, without request and response information.
-  class HookDeliveryItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalHookDeliveryItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalHookDeliveryItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalHookDeliveryItemMetadata::DECODERS
-
-    # @return [Integer] Unique identifier of the webhook delivery.
-    attr_reader :id
-    # @return [String] Unique identifier for the event (shared with all deliveries for all webhooks that subscribe to this event).
-    attr_reader :guid
-    # @return [String] Time when the webhook delivery occurred.
-    attr_reader :delivered_at
-    # @return [Boolean] Whether the webhook delivery is a redelivery.
-    attr_reader :redelivery
-    # @return [Float] Time spent delivering.
-    attr_reader :duration
-    # @return [String] Describes the response returned after attempting the delivery.
-    attr_reader :status
-    # @return [Integer] Status code received when delivery was made.
-    attr_reader :status_code
-    # @return [String] The event that triggered the delivery.
-    attr_reader :event
-    # @return [String] The type of activity for the event that triggered the delivery.
-    attr_reader :action
-    # @return [Integer] The id of the GitHub App installation associated with this event.
-    attr_reader :installation_id
-    # @return [Integer] The id of the repository associated with this event.
-    attr_reader :repository_id
-    # @return [String] Time when the webhook delivery was throttled.
-    attr_reader :throttled_at
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalHookDeliveryItemMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalHookDeliveryItemMetadata::NULLABLE_FIELDS)
   end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 end

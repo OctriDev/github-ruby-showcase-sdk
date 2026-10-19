@@ -12,10 +12,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentTasksCreateTaskInRepoResponseRepositoryMetadata
         FIELDS = {
-          id: 'id'
+          id: "id",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for AgentTasksCreateTaskInRepoResponseRepository.
@@ -46,9 +48,9 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentTasksCreateTaskInRepoResponseArtifactsItemMetadata
         FIELDS = {
-          provider: 'provider',
-          type: 'type',
-          data: 'data'
+          provider: "provider",
+          type: "type",
+          data: "data",
         }.freeze
         REQUIRED_FIELDS = %i[
           provider
@@ -64,7 +66,7 @@ module OctridevGithub
           end,
           data: lambda do |value|
             ::OctridevGithub::AgentTasksCreateTaskInRepoResponseArtifactsItemData.from_hash(value)
-          end
+          end,
         }.freeze
       end
 
@@ -100,10 +102,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentTasksCreateTaskInRepoResponseCustomAgentMetadata
         FIELDS = {
-          id: 'id'
+          id: "id",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for AgentTasksCreateTaskInRepoResponseCustomAgent.
@@ -134,22 +138,22 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentTasksCreateTaskInRepoResponseMetadata
         FIELDS = {
-          id: 'id',
-          url: 'url',
-          html_url: 'html_url',
-          name: 'name',
-          creator: 'creator',
-          creator_type: 'creator_type',
-          user_collaborators: 'user_collaborators',
-          owner: 'owner',
-          repository: 'repository',
-          state: 'state',
-          session_count: 'session_count',
-          artifacts: 'artifacts',
-          archived_at: 'archived_at',
-          updated_at: 'updated_at',
-          created_at: 'created_at',
-          custom_agent: 'custom_agent'
+          id: "id",
+          url: "url",
+          html_url: "html_url",
+          name: "name",
+          creator: "creator",
+          creator_type: "creator_type",
+          user_collaborators: "user_collaborators",
+          owner: "owner",
+          repository: "repository",
+          state: "state",
+          session_count: "session_count",
+          artifacts: "artifacts",
+          archived_at: "archived_at",
+          updated_at: "updated_at",
+          created_at: "created_at",
+          custom_agent: "custom_agent",
         }.freeze
         REQUIRED_FIELDS = %i[
           id
@@ -180,7 +184,7 @@ module OctridevGithub
           end,
           custom_agent: lambda do |value|
             ::OctridevGithub::Methods::AgentTasks::AgentTasksCreateTaskInRepoResponseCustomAgent.from_hash(value)
-          end
+          end,
         }.freeze
       end
 
@@ -241,10 +245,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant0CreatorMetadata
         FIELDS = {
-          id: 'id'
+          id: "id",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for AgentTasksGetTaskByRepoAndIdResponseVariant0Creator.
@@ -275,10 +281,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant0UserCollaboratorsItemMetadata
         FIELDS = {
-          id: 'id'
+          id: "id",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for AgentTasksGetTaskByRepoAndIdResponseVariant0UserCollaboratorsItem.
@@ -309,10 +317,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant0OwnerMetadata
         FIELDS = {
-          id: 'id'
+          id: "id",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for AgentTasksGetTaskByRepoAndIdResponseVariant0Owner.
@@ -343,10 +353,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant0RepositoryMetadata
         FIELDS = {
-          id: 'id'
+          id: "id",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for AgentTasksGetTaskByRepoAndIdResponseVariant0Repository.
@@ -377,13 +389,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant0ArtifactsItemDataVariant0Metadata
         FIELDS = {
-          id: 'id',
-          global_id: 'global_id'
+          id: "id",
+          global_id: "global_id",
         }.freeze
         REQUIRED_FIELDS = %i[
           id
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for AgentTasksGetTaskByRepoAndIdResponseVariant0ArtifactsItemDataVariant0.
@@ -416,14 +429,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant0ArtifactsItemDataVariant1Metadata
         FIELDS = {
-          head_ref: 'head_ref',
-          base_ref: 'base_ref'
+          head_ref: "head_ref",
+          base_ref: "base_ref",
         }.freeze
         REQUIRED_FIELDS = %i[
           head_ref
           base_ref
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for AgentTasksGetTaskByRepoAndIdResponseVariant0ArtifactsItemDataVariant1.
@@ -456,9 +470,9 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant0ArtifactsItemMetadata
         FIELDS = {
-          provider: 'provider',
-          type: 'type',
-          data: 'data'
+          provider: "provider",
+          type: "type",
+          data: "data",
         }.freeze
         REQUIRED_FIELDS = %i[
           provider
@@ -471,7 +485,7 @@ module OctridevGithub
           end,
           type: lambda do |value|
             ::OctridevGithub::Methods::AgentTasks::AgentTasksGetTaskByRepoAndIdResponseVariant0ArtifactsItemType.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -507,10 +521,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentTasksGetTaskByRepoAndIdResponseVariant0CustomAgentMetadata
         FIELDS = {
-          id: 'id'
+          id: "id",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for AgentTasksGetTaskByRepoAndIdResponseVariant0CustomAgent.

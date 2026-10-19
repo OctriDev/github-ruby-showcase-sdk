@@ -5,15 +5,15 @@
 
 # webhook_pull_request_synchronize domain models (part 7)
 module OctridevGithub
-  # Defines the WebhookPullRequestSynchronizePullRequestUserType SDK namespace.
-  module WebhookPullRequestSynchronizePullRequestUserType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    MANNEQUIN = 'Mannequin'
-    VALUES = %w[Bot User Organization Mannequin].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestSynchronizePullRequestUserType SDK namespace.
+module WebhookPullRequestSynchronizePullRequestUserType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  MANNEQUIN = 'Mannequin'
+  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
+  def self.from_value(value)
+    value
   end
+end
 end

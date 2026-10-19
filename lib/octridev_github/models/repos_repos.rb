@@ -5,86 +5,84 @@
 
 # repos_repos domain models
 module OctridevGithub
-  # Defines the ReposCreateDeploymentRequestPayload SDK namespace.
-  module ReposCreateDeploymentRequestPayload
-    def self.from_hash(hash)
-      return hash if hash.is_a?(::String)
-      return hash if hash.is_a?(::Hash)
+# Defines the ReposCreateDeploymentRequestPayload SDK namespace.
+module ReposCreateDeploymentRequestPayload
+  def self.from_hash(hash)
+    return hash if hash.is_a?(::String)
+    return hash if hash.is_a?(::Hash)
+    raise "Could not deserialize ReposCreateDeploymentRequestPayload from #{hash.inspect}"
+  end
+end
 
-      raise "Could not deserialize ReposCreateDeploymentRequestPayload from #{hash.inspect}"
-    end
+# Internal model hydration metadata.
+class SdkInternalReposUpdateInformationAboutPagesSiteRequestSourceVariant1Metadata
+  FIELDS = {
+    branch: "branch",
+    path: "path",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    branch
+    path
+  ].freeze
+  DECODERS = {
+    path: lambda do |value|
+      ::OctridevGithub::ReposUpdateInformationAboutPagesSiteRequestSourceVariant1Path.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for ReposUpdateInformationAboutPagesSiteRequestSourceVariant1.
+class ReposUpdateInformationAboutPagesSiteRequestSourceVariant1
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalReposUpdateInformationAboutPagesSiteRequestSourceVariant1Metadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalReposUpdateInformationAboutPagesSiteRequestSourceVariant1Metadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalReposUpdateInformationAboutPagesSiteRequestSourceVariant1Metadata::DECODERS
+
+  # @return [String] The repository branch used to publish your site's source files.
+  attr_reader :branch
+  # @return [ReposUpdateInformationAboutPagesSiteRequestSourceVariant1Path] The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`.
+  attr_reader :path
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalReposUpdateInformationAboutPagesSiteRequestSourceVariant1Metadata
-    FIELDS = {
-      branch: 'branch',
-      path: 'path'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      branch
-      path
-    ].freeze
-    DECODERS = {
-      path: lambda do |value|
-        ::OctridevGithub::ReposUpdateInformationAboutPagesSiteRequestSourceVariant1Path.from_value(value)
-      end
-    }.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for ReposUpdateInformationAboutPagesSiteRequestSourceVariant1.
-  class ReposUpdateInformationAboutPagesSiteRequestSourceVariant1
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalReposUpdateInformationAboutPagesSiteRequestSourceVariant1Metadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalReposUpdateInformationAboutPagesSiteRequestSourceVariant1Metadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalReposUpdateInformationAboutPagesSiteRequestSourceVariant1Metadata::DECODERS
-
-    # @return [String] The repository branch used to publish your site's source files.
-    attr_reader :branch
-    # @return [ReposUpdateInformationAboutPagesSiteRequestSourceVariant1Path] The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`.
-    attr_reader :path
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
 
-  # Defines the ReposUpdateInformationAboutPagesSiteRequestSource SDK namespace.
-  module ReposUpdateInformationAboutPagesSiteRequestSource
-    def self.from_hash(hash)
-      return ReposUpdateInformationAboutPagesSiteRequestSourceVariant0.from_value(hash) if hash.is_a?(::String)
-
-      ReposUpdateInformationAboutPagesSiteRequestSourceVariant1.from_hash(hash)
-    end
+# Defines the ReposUpdateInformationAboutPagesSiteRequestSource SDK namespace.
+module ReposUpdateInformationAboutPagesSiteRequestSource
+  def self.from_hash(hash)
+    return ReposUpdateInformationAboutPagesSiteRequestSourceVariant0.from_value(hash) if hash.is_a?(::String)
+    return ReposUpdateInformationAboutPagesSiteRequestSourceVariant1.from_hash(hash)
   end
+end
 
-  # Defines the ReposUpdateInformationAboutPagesSiteRequestSourceVariant0 SDK namespace.
-  module ReposUpdateInformationAboutPagesSiteRequestSourceVariant0
-    GH_PAGES = 'gh-pages'
-    MASTER = 'master'
-    MASTER_DOCS = 'master /docs'
-    VALUES = ['gh-pages', 'master', 'master /docs'].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the ReposUpdateInformationAboutPagesSiteRequestSourceVariant0 SDK namespace.
+module ReposUpdateInformationAboutPagesSiteRequestSourceVariant0
+  GH_PAGES = 'gh-pages'
+  MASTER = 'master'
+  MASTER_DOCS = 'master /docs'
+  VALUES = ['gh-pages', 'master', 'master /docs'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the ReposUpdateInformationAboutPagesSiteRequestSourceVariant1Path SDK namespace.
-  module ReposUpdateInformationAboutPagesSiteRequestSourceVariant1Path
-    UNKNOWN = '/'
-    DOCS = '/docs'
-    VALUES = ['/', '/docs'].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the ReposUpdateInformationAboutPagesSiteRequestSourceVariant1Path SDK namespace.
+module ReposUpdateInformationAboutPagesSiteRequestSourceVariant1Path
+  UNKNOWN = '/'
+  DOCS = '/docs'
+  VALUES = ['/', '/docs'].freeze
+  def self.from_value(value)
+    value
   end
+end
 end

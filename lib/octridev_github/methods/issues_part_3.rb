@@ -38,13 +38,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesSetIssueFieldValuesMetadata
         FIELDS = {
-          issue_field_values: 'issue_field_values'
+          issue_field_values: "issue_field_values",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           issue_field_values: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Issues::IssuesSetIssueFieldValuesIssueFieldValuesItem.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -75,13 +76,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesLockMetadata
         FIELDS = {
-          lock_reason: 'lock_reason'
+          lock_reason: "lock_reason",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           lock_reason: lambda do |value|
             ::OctridevGithub::Methods::Issues::IssuesLockLockReason.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -112,12 +114,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesAddRelatesToMetadata
         FIELDS = {
-          issue_id: 'issue_id'
+          issue_id: "issue_id",
         }.freeze
         REQUIRED_FIELDS = %i[
           issue_id
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for IssuesAddRelatesTo.
@@ -147,12 +150,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesRemoveSubIssueMetadata
         FIELDS = {
-          sub_issue_id: 'sub_issue_id'
+          sub_issue_id: "sub_issue_id",
         }.freeze
         REQUIRED_FIELDS = %i[
           sub_issue_id
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for IssuesRemoveSubIssue.
@@ -182,13 +186,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesAddSubIssueMetadata
         FIELDS = {
-          sub_issue_id: 'sub_issue_id',
-          replace_parent: 'replace_parent'
+          sub_issue_id: "sub_issue_id",
+          replace_parent: "replace_parent",
         }.freeze
         REQUIRED_FIELDS = %i[
           sub_issue_id
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for IssuesAddSubIssue.
@@ -220,14 +225,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesReprioritizeSubIssueMetadata
         FIELDS = {
-          sub_issue_id: 'sub_issue_id',
-          after_id: 'after_id',
-          before_id: 'before_id'
+          sub_issue_id: "sub_issue_id",
+          after_id: "after_id",
+          before_id: "before_id",
         }.freeze
         REQUIRED_FIELDS = %i[
           sub_issue_id
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for IssuesReprioritizeSubIssue.
@@ -261,14 +267,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesCreateLabelMetadata
         FIELDS = {
-          name: 'name',
-          color: 'color',
-          description: 'description'
+          name: "name",
+          color: "color",
+          description: "description",
         }.freeze
         REQUIRED_FIELDS = %i[
           name
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for IssuesCreateLabel.
@@ -302,13 +309,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesUpdateLabelMetadata
         FIELDS = {
-          new_name: 'new_name',
-          color: 'color',
-          description: 'description',
-          archived: 'archived'
+          new_name: "new_name",
+          color: "color",
+          description: "description",
+          archived: "archived",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for IssuesUpdateLabel.
@@ -344,10 +353,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesCreateMilestone277b065cMetadata
         FIELDS = {
-          title: 'title',
-          state: 'state',
-          description: 'description',
-          due_on: 'due_on'
+          title: "title",
+          state: "state",
+          description: "description",
+          due_on: "due_on",
         }.freeze
         REQUIRED_FIELDS = %i[
           title
@@ -355,7 +364,7 @@ module OctridevGithub
         DECODERS = {
           state: lambda do |value|
             ::OctridevGithub::Methods::Issues::IssuesCreateMilestoneState.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -392,16 +401,17 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIssuesUpdateMilestone5179c53dMetadata
         FIELDS = {
-          title: 'title',
-          state: 'state',
-          description: 'description',
-          due_on: 'due_on'
+          title: "title",
+          state: "state",
+          description: "description",
+          due_on: "due_on",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           state: lambda do |value|
             ::OctridevGithub::Methods::Issues::IssuesUpdateMilestoneState.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -442,7 +452,7 @@ module OctridevGithub
         ADD_FIELD = 'add_field'
         ADD_ASSIGNEE = 'add_assignee'
         CLOSE_ISSUE = 'close_issue'
-        VALUES = %w[set_type add_label add_field add_assignee close_issue].freeze
+        VALUES = ['set_type', 'add_label', 'add_field', 'add_assignee', 'close_issue'].freeze
         def self.from_value(value)
           value
         end
@@ -453,7 +463,7 @@ module OctridevGithub
         OPEN = 'open'
         CLOSED = 'closed'
         ALL = 'all'
-        VALUES = %w[open closed all].freeze
+        VALUES = ['open', 'closed', 'all'].freeze
         def self.from_value(value)
           value
         end
@@ -467,7 +477,7 @@ module OctridevGithub
         SUBSCRIBED = 'subscribed'
         REPOS = 'repos'
         ALL = 'all'
-        VALUES = %w[assigned created mentioned subscribed repos all].freeze
+        VALUES = ['assigned', 'created', 'mentioned', 'subscribed', 'repos', 'all'].freeze
         def self.from_value(value)
           value
         end
@@ -477,7 +487,7 @@ module OctridevGithub
       module IssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItemIgnoredReason
         ALREADY_APPLIED = 'already_applied'
         ISSUE_ALREADY_CLOSED = 'issue_already_closed'
-        VALUES = %w[already_applied issue_already_closed].freeze
+        VALUES = ['already_applied', 'issue_already_closed'].freeze
         def self.from_value(value)
           value
         end
@@ -488,7 +498,7 @@ module OctridevGithub
         CREATED = 'created'
         UPDATED = 'updated'
         COMMENTS = 'comments'
-        VALUES = %w[created updated comments].freeze
+        VALUES = ['created', 'updated', 'comments'].freeze
         def self.from_value(value)
           value
         end
@@ -499,7 +509,7 @@ module OctridevGithub
         OPEN = 'open'
         CLOSED = 'closed'
         ALL = 'all'
-        VALUES = %w[open closed all].freeze
+        VALUES = ['open', 'closed', 'all'].freeze
         def self.from_value(value)
           value
         end
@@ -510,7 +520,7 @@ module OctridevGithub
         OPEN = 'open'
         CLOSED = 'closed'
         ALL = 'all'
-        VALUES = %w[open closed all].freeze
+        VALUES = ['open', 'closed', 'all'].freeze
         def self.from_value(value)
           value
         end
@@ -521,7 +531,7 @@ module OctridevGithub
         LOW = 'low'
         MEDIUM = 'medium'
         HIGH = 'high'
-        VALUES = %w[low medium high].freeze
+        VALUES = ['low', 'medium', 'high'].freeze
         def self.from_value(value)
           value
         end
@@ -535,7 +545,7 @@ module OctridevGithub
         SUBSCRIBED = 'subscribed'
         REPOS = 'repos'
         ALL = 'all'
-        VALUES = %w[assigned created mentioned subscribed repos all].freeze
+        VALUES = ['assigned', 'created', 'mentioned', 'subscribed', 'repos', 'all'].freeze
         def self.from_value(value)
           value
         end
@@ -546,7 +556,7 @@ module OctridevGithub
         LOW = 'low'
         MEDIUM = 'medium'
         HIGH = 'high'
-        VALUES = %w[low medium high].freeze
+        VALUES = ['low', 'medium', 'high'].freeze
         def self.from_value(value)
           value
         end

@@ -5,148 +5,148 @@
 
 # webhook_gollum domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalWebhookGollumPagesItemMetadata
-    FIELDS = {
-      action: 'action',
-      html_url: 'html_url',
-      page_name: 'page_name',
-      sha: 'sha',
-      summary: 'summary',
-      title: 'title'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      action
-      html_url
-      page_name
-      sha
-      summary
-      title
-    ].freeze
-    DECODERS = {
-      action: lambda do |value|
-        ::OctridevGithub::WebhookGollumPagesItemAction.from_value(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      summary
-    ].freeze
+# Internal model hydration metadata.
+class SdkInternalWebhookGollumPagesItemMetadata
+  FIELDS = {
+    action: "action",
+    html_url: "html_url",
+    page_name: "page_name",
+    sha: "sha",
+    summary: "summary",
+    title: "title",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    action
+    html_url
+    page_name
+    sha
+    summary
+    title
+  ].freeze
+  DECODERS = {
+    action: lambda do |value|
+      ::OctridevGithub::WebhookGollumPagesItemAction.from_value(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    summary
+  ].freeze
+end
+
+# API model for WebhookGollumPagesItem.
+# Required object value serialized in the `pages[]` wire field.
+class WebhookGollumPagesItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookGollumPagesItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookGollumPagesItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookGollumPagesItemMetadata::DECODERS
+
+  # @return [WebhookGollumPagesItemAction] The action that was performed on the page. Can be `created` or `edited`.
+  attr_reader :action
+  # @return [String] Points to the HTML wiki page.
+  attr_reader :html_url
+  # @return [String] The name of the page.
+  attr_reader :page_name
+  # @return [String] The latest commit SHA of the page.
+  attr_reader :sha
+  # @return [String] Required `string` value serialized in the `summary` wire field.
+  attr_reader :summary
+  # @return [String] The current page title.
+  attr_reader :title
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookGollumPagesItem.
-  # Required object value serialized in the `pages[]` wire field.
-  class WebhookGollumPagesItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookGollumPagesItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookGollumPagesItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookGollumPagesItemMetadata::DECODERS
-
-    # @return [WebhookGollumPagesItemAction] The action that was performed on the page. Can be `created` or `edited`.
-    attr_reader :action
-    # @return [String] Points to the HTML wiki page.
-    attr_reader :html_url
-    # @return [String] The name of the page.
-    attr_reader :page_name
-    # @return [String] The latest commit SHA of the page.
-    attr_reader :sha
-    # @return [String] Required `string` value serialized in the `summary` wire field.
-    attr_reader :summary
-    # @return [String] The current page title.
-    attr_reader :title
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookGollumPagesItemMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookGollumPagesItemMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookGollumMetadata
-    FIELDS = {
-      enterprise: 'enterprise',
-      installation: 'installation',
-      organization: 'organization',
-      pages: 'pages',
-      repository: 'repository',
-      sender: 'sender'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      pages
-      repository
-      sender
-    ].freeze
-    DECODERS = {
-      enterprise: lambda do |value|
-        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-      end,
-      installation: lambda do |value|
-        ::OctridevGithub::SimpleInstallation.from_hash(value)
-      end,
-      organization: lambda do |value|
-        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-      end,
-      pages: lambda do |value|
-        value&.map { |item| ::OctridevGithub::WebhookGollumPagesItem.from_hash(item) }
-      end,
-      repository: lambda do |value|
-        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-      end,
-      sender: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookGollumMetadata
+  FIELDS = {
+    enterprise: "enterprise",
+    installation: "installation",
+    organization: "organization",
+    pages: "pages",
+    repository: "repository",
+    sender: "sender",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    pages
+    repository
+    sender
+  ].freeze
+  DECODERS = {
+    enterprise: lambda do |value|
+      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+    end,
+    installation: lambda do |value|
+      ::OctridevGithub::SimpleInstallation.from_hash(value)
+    end,
+    organization: lambda do |value|
+      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+    end,
+    pages: lambda do |value|
+      value&.map { |item| ::OctridevGithub::WebhookGollumPagesItem.from_hash(item) }
+    end,
+    repository: lambda do |value|
+      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+    end,
+    sender: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookGollum.
+# Typed representation of the `WebhookGollum` API schema.
+class WebhookGollum
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookGollumMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookGollumMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookGollumMetadata::DECODERS
+
+  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+  attr_reader :enterprise
+  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+  attr_reader :installation
+  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+  attr_reader :organization
+  # @return [Array_of_WebhookGollumPagesItem] The pages that were updated.
+  attr_reader :pages
+  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+  attr_reader :repository
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :sender
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookGollum.
-  # Typed representation of the `WebhookGollum` API schema.
-  class WebhookGollum
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookGollumMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookGollumMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookGollumMetadata::DECODERS
-
-    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-    attr_reader :enterprise
-    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-    attr_reader :installation
-    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-    attr_reader :organization
-    # @return [Array_of_WebhookGollumPagesItem] The pages that were updated.
-    attr_reader :pages
-    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-    attr_reader :repository
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :sender
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the WebhookGollumPagesItemAction SDK namespace.
-  module WebhookGollumPagesItemAction
-    CREATED = 'created'
-    EDITED = 'edited'
-    VALUES = %w[created edited].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
+
+# Defines the WebhookGollumPagesItemAction SDK namespace.
+module WebhookGollumPagesItemAction
+  CREATED = 'created'
+  EDITED = 'edited'
+  VALUES = ['created', 'edited'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

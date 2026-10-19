@@ -5,85 +5,85 @@
 
 # webhook_discussion_unanswered domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalWebhookDiscussionUnansweredMetadata
-    FIELDS = {
-      action: 'action',
-      discussion: 'discussion',
-      old_answer: 'old_answer',
-      organization: 'organization',
-      repository: 'repository',
-      sender: 'sender'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      action
-      discussion
-      old_answer
-      repository
-    ].freeze
-    DECODERS = {
-      action: lambda do |value|
-        ::OctridevGithub::WebhookDiscussionUnansweredAction.from_value(value)
-      end,
-      discussion: lambda do |value|
-        ::OctridevGithub::Discussion.from_hash(value)
-      end,
-      old_answer: lambda do |value|
-        ::OctridevGithub::WebhooksAnswer.from_hash(value)
-      end,
-      organization: lambda do |value|
-        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-      end,
-      repository: lambda do |value|
-        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-      end,
-      sender: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end
-    }.freeze
+# Internal model hydration metadata.
+class SdkInternalWebhookDiscussionUnansweredMetadata
+  FIELDS = {
+    action: "action",
+    discussion: "discussion",
+    old_answer: "old_answer",
+    organization: "organization",
+    repository: "repository",
+    sender: "sender",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    action
+    discussion
+    old_answer
+    repository
+  ].freeze
+  DECODERS = {
+    action: lambda do |value|
+      ::OctridevGithub::WebhookDiscussionUnansweredAction.from_value(value)
+    end,
+    discussion: lambda do |value|
+      ::OctridevGithub::Discussion.from_hash(value)
+    end,
+    old_answer: lambda do |value|
+      ::OctridevGithub::WebhooksAnswer.from_hash(value)
+    end,
+    organization: lambda do |value|
+      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+    end,
+    repository: lambda do |value|
+      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+    end,
+    sender: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookDiscussionUnanswered.
+# Typed representation of the `WebhookDiscussionUnanswered` API schema.
+class WebhookDiscussionUnanswered
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookDiscussionUnansweredMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookDiscussionUnansweredMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookDiscussionUnansweredMetadata::DECODERS
+
+  # @return [WebhookDiscussionUnansweredAction] Required enumerated value serialized in the `action` wire field.
+  attr_reader :action
+  # @return [Discussion] A Discussion in a repository.
+  attr_reader :discussion
+  # @return [WebhooksAnswer] Required object value serialized in the `old_answer` wire field.
+  attr_reader :old_answer
+  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+  attr_reader :organization
+  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+  attr_reader :repository
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :sender
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookDiscussionUnanswered.
-  # Typed representation of the `WebhookDiscussionUnanswered` API schema.
-  class WebhookDiscussionUnanswered
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookDiscussionUnansweredMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookDiscussionUnansweredMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookDiscussionUnansweredMetadata::DECODERS
-
-    # @return [WebhookDiscussionUnansweredAction] Required enumerated value serialized in the `action` wire field.
-    attr_reader :action
-    # @return [Discussion] A Discussion in a repository.
-    attr_reader :discussion
-    # @return [WebhooksAnswer] Required object value serialized in the `old_answer` wire field.
-    attr_reader :old_answer
-    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-    attr_reader :organization
-    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-    attr_reader :repository
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :sender
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the WebhookDiscussionUnansweredAction SDK namespace.
-  module WebhookDiscussionUnansweredAction
-    UNANSWERED = 'unanswered'
-    VALUES = ['unanswered'].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
+
+# Defines the WebhookDiscussionUnansweredAction SDK namespace.
+module WebhookDiscussionUnansweredAction
+  UNANSWERED = 'unanswered'
+  VALUES = ['unanswered'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

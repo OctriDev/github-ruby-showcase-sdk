@@ -12,8 +12,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentsListRepoVariablesResponseMetadata
         FIELDS = {
-          total_count: 'total_count',
-          variables: 'variables'
+          total_count: "total_count",
+          variables: "variables",
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -22,7 +22,7 @@ module OctridevGithub
         DECODERS = {
           variables: lambda do |value|
             value&.map { |item| ::OctridevGithub::ActionsVariable.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -52,14 +52,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentsCreateRepoVariableMetadata
         FIELDS = {
-          name: 'name',
-          value: 'value'
+          name: "name",
+          value: "value",
         }.freeze
         REQUIRED_FIELDS = %i[
           name
           value
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for AgentsCreateRepoVariable.
@@ -91,11 +92,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentsUpdateRepoVariableMetadata
         FIELDS = {
-          name: 'name',
-          value: 'value'
+          name: "name",
+          value: "value",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for AgentsUpdateRepoVariable.
@@ -129,7 +132,7 @@ module OctridevGithub
         ALL = 'all'
         PRIVATE = 'private'
         SELECTED = 'selected'
-        VALUES = %w[all private selected].freeze
+        VALUES = ['all', 'private', 'selected'].freeze
         def self.from_value(value)
           value
         end
@@ -140,7 +143,7 @@ module OctridevGithub
         ALL = 'all'
         PRIVATE = 'private'
         SELECTED = 'selected'
-        VALUES = %w[all private selected].freeze
+        VALUES = ['all', 'private', 'selected'].freeze
         def self.from_value(value)
           value
         end
@@ -151,7 +154,7 @@ module OctridevGithub
         ALL = 'all'
         PRIVATE = 'private'
         SELECTED = 'selected'
-        VALUES = %w[all private selected].freeze
+        VALUES = ['all', 'private', 'selected'].freeze
         def self.from_value(value)
           value
         end
@@ -171,22 +174,23 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/agents/secrets'
+            "/agents/secrets"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::Methods::Agents::AgentsListOrgSecretsResponse,
           decoder: :json,
           operation_id: 'agents_list_org_secrets',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -198,18 +202,19 @@ module OctridevGithub
         org:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/agents/secrets/public-key'
+            "/agents/secrets/public-key"
           ].join,
           config: config,
           return_type: ::OctridevGithub::ActionsPublicKey,
           decoder: :json,
           operation_id: 'agents_get_org_public_key',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -223,19 +228,20 @@ module OctridevGithub
         secret_name:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/agents/secrets/',
+            "/agents/secrets/",
             SdkClient.encode_path_segment(secret_name)
           ].join,
           config: config,
           return_type: ::OctridevGithub::OrganizationActionsSecret,
           decoder: :json,
           operation_id: 'agents_get_org_secret',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -268,14 +274,15 @@ module OctridevGithub
         selected_repository_ids: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_pattern('encrypted_value', encrypted_value, '^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$')
 
         SdkClient.request(
           'PUT',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/agents/secrets/',
+            "/agents/secrets/",
             SdkClient.encode_path_segment(secret_name)
           ].join,
           config: config,
@@ -283,12 +290,12 @@ module OctridevGithub
             'encrypted_value' => encrypted_value,
             'key_id' => key_id,
             'visibility' => visibility,
-            'selected_repository_ids' => selected_repository_ids
+            'selected_repository_ids' => selected_repository_ids,
           },
           return_type: ::OctridevGithub::EmptyObject,
           decoder: :json,
           operation_id: 'agents_create_or_update_org_secret',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -302,18 +309,19 @@ module OctridevGithub
         secret_name:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/agents/secrets/',
+            "/agents/secrets/",
             SdkClient.encode_path_segment(secret_name)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'agents_delete_org_secret',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -333,24 +341,25 @@ module OctridevGithub
         per_page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/agents/secrets/',
+            "/agents/secrets/",
             SdkClient.encode_path_segment(secret_name),
-            '/repositories'
+            "/repositories"
           ].join,
           config: config,
           query: {
             'page' => QueryValue.new(page, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::Methods::Agents::AgentsListSelectedReposForOrgSecretResponse,
           decoder: :json,
           operation_id: 'agents_list_selected_repos_for_org_secret',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -371,22 +380,23 @@ module OctridevGithub
         selected_repository_ids:,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/agents/secrets/',
+            "/agents/secrets/",
             SdkClient.encode_path_segment(secret_name),
-            '/repositories'
+            "/repositories"
           ].join,
           config: config,
           body: {
-            'selected_repository_ids' => selected_repository_ids
+            'selected_repository_ids' => selected_repository_ids,
           },
           decoder: :empty,
           operation_id: 'agents_set_selected_repos_for_org_secret',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -403,20 +413,21 @@ module OctridevGithub
         repository_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/agents/secrets/',
+            "/agents/secrets/",
             SdkClient.encode_path_segment(secret_name),
-            '/repositories/',
+            "/repositories/",
             SdkClient.encode_path_segment(repository_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'agents_add_selected_repo_to_org_secret',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -433,20 +444,21 @@ module OctridevGithub
         repository_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/agents/secrets/',
+            "/agents/secrets/",
             SdkClient.encode_path_segment(secret_name),
-            '/repositories/',
+            "/repositories/",
             SdkClient.encode_path_segment(repository_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'agents_remove_selected_repo_from_org_secret',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -464,22 +476,23 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/agents/variables'
+            "/agents/variables"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::Methods::Agents::AgentsListOrgVariablesResponse,
           decoder: :json,
           operation_id: 'agents_list_org_variables',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -504,24 +517,25 @@ module OctridevGithub
         selected_repository_ids: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/agents/variables'
+            "/agents/variables"
           ].join,
           config: config,
           body: {
             'name' => name,
             'value' => value,
             'visibility' => visibility,
-            'selected_repository_ids' => selected_repository_ids
+            'selected_repository_ids' => selected_repository_ids,
           },
           return_type: ::OctridevGithub::EmptyObject,
           decoder: :json,
           operation_id: 'agents_create_org_variable',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -535,19 +549,20 @@ module OctridevGithub
         name:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/agents/variables/',
+            "/agents/variables/",
             SdkClient.encode_path_segment(name)
           ].join,
           config: config,
           return_type: ::OctridevGithub::OrganizationActionsVariable,
           decoder: :json,
           operation_id: 'agents_get_org_variable',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

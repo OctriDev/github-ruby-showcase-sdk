@@ -5,495 +5,501 @@
 
 # search domain models (part 3)
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalSearchResultTextMatchesItemMetadata
-    FIELDS = {
-      object_url: 'object_url',
-      object_type: 'object_type',
-      property: 'property',
-      fragment: 'fragment',
-      matches: 'matches'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      matches: lambda do |value|
-        value&.map { |item| ::OctridevGithub::SearchResultTextMatchesItemMatchesItem.from_hash(item) }
-      end
-    }.freeze
+# Internal model hydration metadata.
+class SdkInternalSearchResultTextMatchesItemMetadata
+  FIELDS = {
+    object_url: "object_url",
+    object_type: "object_type",
+    property: "property",
+    fragment: "fragment",
+    matches: "matches",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    matches: lambda do |value|
+      value&.map { |item| ::OctridevGithub::SearchResultTextMatchesItemMatchesItem.from_hash(item) }
+    end,
+  }.freeze
+end
+
+# API model for SearchResultTextMatchesItem.
+# Required object value serialized in the `text_matches[]` wire field.
+class SearchResultTextMatchesItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalSearchResultTextMatchesItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalSearchResultTextMatchesItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalSearchResultTextMatchesItemMetadata::DECODERS
+
+  # @return [String] Optional `string` value serialized in the `object_url` wire field.
+  attr_reader :object_url
+  # @return [String] Optional `string` value serialized in the `object_type` wire field.
+  attr_reader :object_type
+  # @return [String] Optional `string` value serialized in the `property` wire field.
+  attr_reader :property
+  # @return [String] Optional `string` value serialized in the `fragment` wire field.
+  attr_reader :fragment
+  # @return [Array_of_SearchResultTextMatchesItemMatchesItem] Optional array value serialized in the `matches` wire field.
+  attr_reader :matches
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for SearchResultTextMatchesItem.
-  # Required object value serialized in the `text_matches[]` wire field.
-  class SearchResultTextMatchesItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalSearchResultTextMatchesItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalSearchResultTextMatchesItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalSearchResultTextMatchesItemMetadata::DECODERS
-
-    # @return [String] Optional `string` value serialized in the `object_url` wire field.
-    attr_reader :object_url
-    # @return [String] Optional `string` value serialized in the `object_type` wire field.
-    attr_reader :object_type
-    # @return [String] Optional `string` value serialized in the `property` wire field.
-    attr_reader :property
-    # @return [String] Optional `string` value serialized in the `fragment` wire field.
-    attr_reader :fragment
-    # @return [Array_of_SearchResultTextMatchesItemMatchesItem] Optional array value serialized in the `matches` wire field.
-    attr_reader :matches
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the SearchResultTextMatches SDK value decoder.
-  module SearchResultTextMatches
-    def self.from_hash(value)
-      return nil if value.nil?
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-      value&.map { |item| ::OctridevGithub::SearchResultTextMatchesItem.from_hash(item) }
-    end
+# Defines the SearchResultTextMatches SDK value decoder.
+module SearchResultTextMatches
+  def self.from_hash(value)
+    return nil if value.nil?
+    value&.map { |item| ::OctridevGithub::SearchResultTextMatchesItem.from_hash(item) }
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalTopicSearchResultItemRelatedItemTopicRelationMetadata
+  FIELDS = {
+    id: "id",
+    name: "name",
+    topic_id: "topic_id",
+    relation_type: "relation_type",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for TopicSearchResultItemRelatedItemTopicRelation.
+# Optional object value serialized in the `topic_relation` wire field.
+class TopicSearchResultItemRelatedItemTopicRelation
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalTopicSearchResultItemRelatedItemTopicRelationMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalTopicSearchResultItemRelatedItemTopicRelationMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalTopicSearchResultItemRelatedItemTopicRelationMetadata::DECODERS
+
+  # @return [Integer] Optional `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Optional `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [Integer] Optional `integer` value serialized in the `topic_id` wire field.
+  attr_reader :topic_id
+  # @return [String] Optional `string` value serialized in the `relation_type` wire field.
+  attr_reader :relation_type
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalTopicSearchResultItemRelatedItemTopicRelationMetadata
-    FIELDS = {
-      id: 'id',
-      name: 'name',
-      topic_id: 'topic_id',
-      relation_type: 'relation_type'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for TopicSearchResultItemRelatedItemTopicRelation.
-  # Optional object value serialized in the `topic_relation` wire field.
-  class TopicSearchResultItemRelatedItemTopicRelation
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalTopicSearchResultItemRelatedItemTopicRelationMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalTopicSearchResultItemRelatedItemTopicRelationMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalTopicSearchResultItemRelatedItemTopicRelationMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [Integer] Optional `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Optional `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [Integer] Optional `integer` value serialized in the `topic_id` wire field.
-    attr_reader :topic_id
-    # @return [String] Optional `string` value serialized in the `relation_type` wire field.
-    attr_reader :relation_type
+# Internal model hydration metadata.
+class SdkInternalTopicSearchResultItemRelatedItemMetadata
+  FIELDS = {
+    topic_relation: "topic_relation",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    topic_relation: lambda do |value|
+      ::OctridevGithub::TopicSearchResultItemRelatedItemTopicRelation.from_hash(value)
+    end,
+  }.freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for TopicSearchResultItemRelatedItem.
+# Required object value serialized in the `related[]` wire field.
+class TopicSearchResultItemRelatedItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalTopicSearchResultItemRelatedItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalTopicSearchResultItemRelatedItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalTopicSearchResultItemRelatedItemMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+  # @return [TopicSearchResultItemRelatedItemTopicRelation] Optional object value serialized in the `topic_relation` wire field.
+  attr_reader :topic_relation
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalTopicSearchResultItemRelatedItemMetadata
-    FIELDS = {
-      topic_relation: 'topic_relation'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      topic_relation: lambda do |value|
-        ::OctridevGithub::TopicSearchResultItemRelatedItemTopicRelation.from_hash(value)
-      end
-    }.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for TopicSearchResultItemRelatedItem.
-  # Required object value serialized in the `related[]` wire field.
-  class TopicSearchResultItemRelatedItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalTopicSearchResultItemRelatedItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalTopicSearchResultItemRelatedItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalTopicSearchResultItemRelatedItemMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [TopicSearchResultItemRelatedItemTopicRelation] Optional object value serialized in the `topic_relation` wire field.
-    attr_reader :topic_relation
+# Internal model hydration metadata.
+class SdkInternalTopicSearchResultItemAliasesItemTopicRelationMetadata
+  FIELDS = {
+    id: "id",
+    name: "name",
+    topic_id: "topic_id",
+    relation_type: "relation_type",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for TopicSearchResultItemAliasesItemTopicRelation.
+# Optional object value serialized in the `topic_relation` wire field.
+class TopicSearchResultItemAliasesItemTopicRelation
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalTopicSearchResultItemAliasesItemTopicRelationMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalTopicSearchResultItemAliasesItemTopicRelationMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalTopicSearchResultItemAliasesItemTopicRelationMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+  # @return [Integer] Optional `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Optional `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [Integer] Optional `integer` value serialized in the `topic_id` wire field.
+  attr_reader :topic_id
+  # @return [String] Optional `string` value serialized in the `relation_type` wire field.
+  attr_reader :relation_type
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalTopicSearchResultItemAliasesItemTopicRelationMetadata
-    FIELDS = {
-      id: 'id',
-      name: 'name',
-      topic_id: 'topic_id',
-      relation_type: 'relation_type'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for TopicSearchResultItemAliasesItemTopicRelation.
-  # Optional object value serialized in the `topic_relation` wire field.
-  class TopicSearchResultItemAliasesItemTopicRelation
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalTopicSearchResultItemAliasesItemTopicRelationMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalTopicSearchResultItemAliasesItemTopicRelationMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalTopicSearchResultItemAliasesItemTopicRelationMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [Integer] Optional `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Optional `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [Integer] Optional `integer` value serialized in the `topic_id` wire field.
-    attr_reader :topic_id
-    # @return [String] Optional `string` value serialized in the `relation_type` wire field.
-    attr_reader :relation_type
+# Internal model hydration metadata.
+class SdkInternalTopicSearchResultItemAliasesItemMetadata
+  FIELDS = {
+    topic_relation: "topic_relation",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    topic_relation: lambda do |value|
+      ::OctridevGithub::TopicSearchResultItemAliasesItemTopicRelation.from_hash(value)
+    end,
+  }.freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for TopicSearchResultItemAliasesItem.
+# Required object value serialized in the `aliases[]` wire field.
+class TopicSearchResultItemAliasesItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalTopicSearchResultItemAliasesItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalTopicSearchResultItemAliasesItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalTopicSearchResultItemAliasesItemMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+  # @return [TopicSearchResultItemAliasesItemTopicRelation] Optional object value serialized in the `topic_relation` wire field.
+  attr_reader :topic_relation
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalTopicSearchResultItemAliasesItemMetadata
-    FIELDS = {
-      topic_relation: 'topic_relation'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      topic_relation: lambda do |value|
-        ::OctridevGithub::TopicSearchResultItemAliasesItemTopicRelation.from_hash(value)
-      end
-    }.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for TopicSearchResultItemAliasesItem.
-  # Required object value serialized in the `aliases[]` wire field.
-  class TopicSearchResultItemAliasesItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalTopicSearchResultItemAliasesItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalTopicSearchResultItemAliasesItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalTopicSearchResultItemAliasesItemMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [TopicSearchResultItemAliasesItemTopicRelation] Optional object value serialized in the `topic_relation` wire field.
-    attr_reader :topic_relation
+# Internal model hydration metadata.
+class SdkInternalTopicSearchResultItemMetadata
+  FIELDS = {
+    name: "name",
+    display_name: "display_name",
+    short_description: "short_description",
+    description: "description",
+    created_by: "created_by",
+    released: "released",
+    created_at: "created_at",
+    updated_at: "updated_at",
+    featured: "featured",
+    curated: "curated",
+    score: "score",
+    repository_count: "repository_count",
+    logo_url: "logo_url",
+    text_matches: "text_matches",
+    related: "related",
+    aliases: "aliases",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    name
+    display_name
+    short_description
+    description
+    created_by
+    released
+    created_at
+    updated_at
+    featured
+    curated
+    score
+  ].freeze
+  DECODERS = {
+    text_matches: lambda do |value|
+      ::OctridevGithub::SearchResultTextMatches.from_hash(value)
+    end,
+    related: lambda do |value|
+      value&.map { |item| ::OctridevGithub::TopicSearchResultItemRelatedItem.from_hash(item) }
+    end,
+    aliases: lambda do |value|
+      value&.map { |item| ::OctridevGithub::TopicSearchResultItemAliasesItem.from_hash(item) }
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    display_name
+    short_description
+    description
+    created_by
+    released
+  ].freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for TopicSearchResultItem.
+# Topic Search Result Item
+class TopicSearchResultItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalTopicSearchResultItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalTopicSearchResultItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalTopicSearchResultItemMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+  # @return [String] Required `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [String] Required `string` value serialized in the `display_name` wire field.
+  attr_reader :display_name
+  # @return [String] Required `string` value serialized in the `short_description` wire field.
+  attr_reader :short_description
+  # @return [String] Required `string` value serialized in the `description` wire field.
+  attr_reader :description
+  # @return [String] Required `string` value serialized in the `created_by` wire field.
+  attr_reader :created_by
+  # @return [String] Required `string` value serialized in the `released` wire field.
+  attr_reader :released
+  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+  attr_reader :updated_at
+  # @return [Boolean] Required `boolean` value serialized in the `featured` wire field.
+  attr_reader :featured
+  # @return [Boolean] Required `boolean` value serialized in the `curated` wire field.
+  attr_reader :curated
+  # @return [Float] Required `number` value serialized in the `score` wire field.
+  attr_reader :score
+  # @return [Integer] Optional `integer` value serialized in the `repository_count` wire field.
+  attr_reader :repository_count
+  # @return [String] Optional `uri`-formatted value serialized in the `logo_url` wire field.
+  attr_reader :logo_url
+  # @return [SearchResultTextMatches] Optional array value serialized in the `text_matches` wire field.
+  attr_reader :text_matches
+  # @return [Array_of_TopicSearchResultItemRelatedItem] Optional array value serialized in the `related` wire field.
+  attr_reader :related
+  # @return [Array_of_TopicSearchResultItemAliasesItem] Optional array value serialized in the `aliases` wire field.
+  attr_reader :aliases
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalTopicSearchResultItemMetadata
-    FIELDS = {
-      name: 'name',
-      display_name: 'display_name',
-      short_description: 'short_description',
-      description: 'description',
-      created_by: 'created_by',
-      released: 'released',
-      created_at: 'created_at',
-      updated_at: 'updated_at',
-      featured: 'featured',
-      curated: 'curated',
-      score: 'score',
-      repository_count: 'repository_count',
-      logo_url: 'logo_url',
-      text_matches: 'text_matches',
-      related: 'related',
-      aliases: 'aliases'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      name
-      display_name
-      short_description
-      description
-      created_by
-      released
-      created_at
-      updated_at
-      featured
-      curated
-      score
-    ].freeze
-    DECODERS = {
-      text_matches: lambda do |value|
-        ::OctridevGithub::SearchResultTextMatches.from_hash(value)
-      end,
-      related: lambda do |value|
-        value&.map { |item| ::OctridevGithub::TopicSearchResultItemRelatedItem.from_hash(item) }
-      end,
-      aliases: lambda do |value|
-        value&.map { |item| ::OctridevGithub::TopicSearchResultItemAliasesItem.from_hash(item) }
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      display_name
-      short_description
-      description
-      created_by
-      released
-    ].freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalTopicSearchResultItemMetadata::NULLABLE_FIELDS)
   end
 
-  # API model for TopicSearchResultItem.
-  # Topic Search Result Item
-  class TopicSearchResultItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalTopicSearchResultItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalTopicSearchResultItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalTopicSearchResultItemMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [String] Required `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [String] Required `string` value serialized in the `display_name` wire field.
-    attr_reader :display_name
-    # @return [String] Required `string` value serialized in the `short_description` wire field.
-    attr_reader :short_description
-    # @return [String] Required `string` value serialized in the `description` wire field.
-    attr_reader :description
-    # @return [String] Required `string` value serialized in the `created_by` wire field.
-    attr_reader :created_by
-    # @return [String] Required `string` value serialized in the `released` wire field.
-    attr_reader :released
-    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-    attr_reader :updated_at
-    # @return [Boolean] Required `boolean` value serialized in the `featured` wire field.
-    attr_reader :featured
-    # @return [Boolean] Required `boolean` value serialized in the `curated` wire field.
-    attr_reader :curated
-    # @return [Float] Required `number` value serialized in the `score` wire field.
-    attr_reader :score
-    # @return [Integer] Optional `integer` value serialized in the `repository_count` wire field.
-    attr_reader :repository_count
-    # @return [String] Optional `uri`-formatted value serialized in the `logo_url` wire field.
-    attr_reader :logo_url
-    # @return [SearchResultTextMatches] Optional array value serialized in the `text_matches` wire field.
-    attr_reader :text_matches
-    # @return [Array_of_TopicSearchResultItemRelatedItem] Optional array value serialized in the `related` wire field.
-    attr_reader :related
-    # @return [Array_of_TopicSearchResultItemAliasesItem] Optional array value serialized in the `aliases` wire field.
-    attr_reader :aliases
+# Internal model hydration metadata.
+class SdkInternalUserSearchResultItemMetadata
+  FIELDS = {
+    login: "login",
+    id: "id",
+    node_id: "node_id",
+    avatar_url: "avatar_url",
+    gravatar_id: "gravatar_id",
+    url: "url",
+    html_url: "html_url",
+    followers_url: "followers_url",
+    subscriptions_url: "subscriptions_url",
+    organizations_url: "organizations_url",
+    repos_url: "repos_url",
+    received_events_url: "received_events_url",
+    type: "type",
+    score: "score",
+    following_url: "following_url",
+    gists_url: "gists_url",
+    starred_url: "starred_url",
+    events_url: "events_url",
+    public_repos: "public_repos",
+    public_gists: "public_gists",
+    followers: "followers",
+    following: "following",
+    created_at: "created_at",
+    updated_at: "updated_at",
+    name: "name",
+    bio: "bio",
+    email: "email",
+    location: "location",
+    site_admin: "site_admin",
+    hireable: "hireable",
+    text_matches: "text_matches",
+    blog: "blog",
+    company: "company",
+    suspended_at: "suspended_at",
+    user_view_type: "user_view_type",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    login
+    id
+    node_id
+    avatar_url
+    gravatar_id
+    url
+    html_url
+    followers_url
+    subscriptions_url
+    organizations_url
+    repos_url
+    received_events_url
+    type
+    score
+    following_url
+    gists_url
+    starred_url
+    events_url
+    site_admin
+  ].freeze
+  DECODERS = {
+    text_matches: lambda do |value|
+      ::OctridevGithub::SearchResultTextMatches.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    gravatar_id
+  ].freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for UserSearchResultItem.
+# User Search Result Item
+class UserSearchResultItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalUserSearchResultItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalUserSearchResultItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalUserSearchResultItemMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalTopicSearchResultItemMetadata::NULLABLE_FIELDS)
-    end
+  # @return [String] Required `string` value serialized in the `login` wire field.
+  attr_reader :login
+  # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Required `uri`-formatted value serialized in the `avatar_url` wire field.
+  attr_reader :avatar_url
+  # @return [String] Required `string` value serialized in the `gravatar_id` wire field.
+  attr_reader :gravatar_id
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [String] Required `uri`-formatted value serialized in the `followers_url` wire field.
+  attr_reader :followers_url
+  # @return [String] Required `uri`-formatted value serialized in the `subscriptions_url` wire field.
+  attr_reader :subscriptions_url
+  # @return [String] Required `uri`-formatted value serialized in the `organizations_url` wire field.
+  attr_reader :organizations_url
+  # @return [String] Required `uri`-formatted value serialized in the `repos_url` wire field.
+  attr_reader :repos_url
+  # @return [String] Required `uri`-formatted value serialized in the `received_events_url` wire field.
+  attr_reader :received_events_url
+  # @return [String] Required `string` value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [Float] Required `number` value serialized in the `score` wire field.
+  attr_reader :score
+  # @return [String] Required `string` value serialized in the `following_url` wire field.
+  attr_reader :following_url
+  # @return [String] Required `string` value serialized in the `gists_url` wire field.
+  attr_reader :gists_url
+  # @return [String] Required `string` value serialized in the `starred_url` wire field.
+  attr_reader :starred_url
+  # @return [String] Required `string` value serialized in the `events_url` wire field.
+  attr_reader :events_url
+  # @return [Integer] Optional `integer` value serialized in the `public_repos` wire field.
+  attr_reader :public_repos
+  # @return [Integer] Optional `integer` value serialized in the `public_gists` wire field.
+  attr_reader :public_gists
+  # @return [Integer] Optional `integer` value serialized in the `followers` wire field.
+  attr_reader :followers
+  # @return [Integer] Optional `integer` value serialized in the `following` wire field.
+  attr_reader :following
+  # @return [String] Optional `date-time`-formatted value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [String] Optional `date-time`-formatted value serialized in the `updated_at` wire field.
+  attr_reader :updated_at
+  # @return [String] Optional `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [String] Optional `string` value serialized in the `bio` wire field.
+  attr_reader :bio
+  # @return [String] Optional `email`-formatted value serialized in the `email` wire field.
+  attr_reader :email
+  # @return [String] Optional `string` value serialized in the `location` wire field.
+  attr_reader :location
+  # @return [Boolean] Required `boolean` value serialized in the `site_admin` wire field.
+  attr_reader :site_admin
+  # @return [Boolean] Optional `boolean` value serialized in the `hireable` wire field.
+  attr_reader :hireable
+  # @return [SearchResultTextMatches] Optional array value serialized in the `text_matches` wire field.
+  attr_reader :text_matches
+  # @return [String] Optional `string` value serialized in the `blog` wire field.
+  attr_reader :blog
+  # @return [String] Optional `string` value serialized in the `company` wire field.
+  attr_reader :company
+  # @return [String] Optional `date-time`-formatted value serialized in the `suspended_at` wire field.
+  attr_reader :suspended_at
+  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+  attr_reader :user_view_type
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalUserSearchResultItemMetadata
-    FIELDS = {
-      login: 'login',
-      id: 'id',
-      node_id: 'node_id',
-      avatar_url: 'avatar_url',
-      gravatar_id: 'gravatar_id',
-      url: 'url',
-      html_url: 'html_url',
-      followers_url: 'followers_url',
-      subscriptions_url: 'subscriptions_url',
-      organizations_url: 'organizations_url',
-      repos_url: 'repos_url',
-      received_events_url: 'received_events_url',
-      type: 'type',
-      score: 'score',
-      following_url: 'following_url',
-      gists_url: 'gists_url',
-      starred_url: 'starred_url',
-      events_url: 'events_url',
-      public_repos: 'public_repos',
-      public_gists: 'public_gists',
-      followers: 'followers',
-      following: 'following',
-      created_at: 'created_at',
-      updated_at: 'updated_at',
-      name: 'name',
-      bio: 'bio',
-      email: 'email',
-      location: 'location',
-      site_admin: 'site_admin',
-      hireable: 'hireable',
-      text_matches: 'text_matches',
-      blog: 'blog',
-      company: 'company',
-      suspended_at: 'suspended_at',
-      user_view_type: 'user_view_type'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      login
-      id
-      node_id
-      avatar_url
-      gravatar_id
-      url
-      html_url
-      followers_url
-      subscriptions_url
-      organizations_url
-      repos_url
-      received_events_url
-      type
-      score
-      following_url
-      gists_url
-      starred_url
-      events_url
-      site_admin
-    ].freeze
-    DECODERS = {
-      text_matches: lambda do |value|
-        ::OctridevGithub::SearchResultTextMatches.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      gravatar_id
-    ].freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalUserSearchResultItemMetadata::NULLABLE_FIELDS)
   end
 
-  # API model for UserSearchResultItem.
-  # User Search Result Item
-  class UserSearchResultItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalUserSearchResultItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalUserSearchResultItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalUserSearchResultItemMetadata::DECODERS
-
-    # @return [String] Required `string` value serialized in the `login` wire field.
-    attr_reader :login
-    # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Required `uri`-formatted value serialized in the `avatar_url` wire field.
-    attr_reader :avatar_url
-    # @return [String] Required `string` value serialized in the `gravatar_id` wire field.
-    attr_reader :gravatar_id
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [String] Required `uri`-formatted value serialized in the `followers_url` wire field.
-    attr_reader :followers_url
-    # @return [String] Required `uri`-formatted value serialized in the `subscriptions_url` wire field.
-    attr_reader :subscriptions_url
-    # @return [String] Required `uri`-formatted value serialized in the `organizations_url` wire field.
-    attr_reader :organizations_url
-    # @return [String] Required `uri`-formatted value serialized in the `repos_url` wire field.
-    attr_reader :repos_url
-    # @return [String] Required `uri`-formatted value serialized in the `received_events_url` wire field.
-    attr_reader :received_events_url
-    # @return [String] Required `string` value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [Float] Required `number` value serialized in the `score` wire field.
-    attr_reader :score
-    # @return [String] Required `string` value serialized in the `following_url` wire field.
-    attr_reader :following_url
-    # @return [String] Required `string` value serialized in the `gists_url` wire field.
-    attr_reader :gists_url
-    # @return [String] Required `string` value serialized in the `starred_url` wire field.
-    attr_reader :starred_url
-    # @return [String] Required `string` value serialized in the `events_url` wire field.
-    attr_reader :events_url
-    # @return [Integer] Optional `integer` value serialized in the `public_repos` wire field.
-    attr_reader :public_repos
-    # @return [Integer] Optional `integer` value serialized in the `public_gists` wire field.
-    attr_reader :public_gists
-    # @return [Integer] Optional `integer` value serialized in the `followers` wire field.
-    attr_reader :followers
-    # @return [Integer] Optional `integer` value serialized in the `following` wire field.
-    attr_reader :following
-    # @return [String] Optional `date-time`-formatted value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [String] Optional `date-time`-formatted value serialized in the `updated_at` wire field.
-    attr_reader :updated_at
-    # @return [String] Optional `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [String] Optional `string` value serialized in the `bio` wire field.
-    attr_reader :bio
-    # @return [String] Optional `email`-formatted value serialized in the `email` wire field.
-    attr_reader :email
-    # @return [String] Optional `string` value serialized in the `location` wire field.
-    attr_reader :location
-    # @return [Boolean] Required `boolean` value serialized in the `site_admin` wire field.
-    attr_reader :site_admin
-    # @return [Boolean] Optional `boolean` value serialized in the `hireable` wire field.
-    attr_reader :hireable
-    # @return [SearchResultTextMatches] Optional array value serialized in the `text_matches` wire field.
-    attr_reader :text_matches
-    # @return [String] Optional `string` value serialized in the `blog` wire field.
-    attr_reader :blog
-    # @return [String] Optional `string` value serialized in the `company` wire field.
-    attr_reader :company
-    # @return [String] Optional `date-time`-formatted value serialized in the `suspended_at` wire field.
-    attr_reader :suspended_at
-    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-    attr_reader :user_view_type
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalUserSearchResultItemMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
 end

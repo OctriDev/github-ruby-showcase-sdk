@@ -5,430 +5,432 @@
 
 # shared_commit domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalCommitCommitTreeMetadata
-    FIELDS = {
-      sha: 'sha',
-      url: 'url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      sha
-      url
-    ].freeze
-    DECODERS = {}.freeze
+# Internal model hydration metadata.
+class SdkInternalCommitCommitTreeMetadata
+  FIELDS = {
+    sha: "sha",
+    url: "url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    sha
+    url
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for CommitCommitTree.
+# Required object value serialized in the `tree` wire field.
+class CommitCommitTree
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalCommitCommitTreeMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalCommitCommitTreeMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalCommitCommitTreeMetadata::DECODERS
+
+  # @return [String] Required `string` value serialized in the `sha` wire field.
+  attr_reader :sha
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for CommitCommitTree.
-  # Required object value serialized in the `tree` wire field.
-  class CommitCommitTree
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalCommitCommitTreeMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalCommitCommitTreeMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalCommitCommitTreeMetadata::DECODERS
-
-    # @return [String] Required `string` value serialized in the `sha` wire field.
-    attr_reader :sha
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalCommitCommitMetadata
-    FIELDS = {
-      url: 'url',
-      author: 'author',
-      committer: 'committer',
-      message: 'message',
-      comment_count: 'comment_count',
-      tree: 'tree',
-      verification: 'verification'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      url
-      author
-      committer
-      message
-      comment_count
-      tree
-    ].freeze
-    DECODERS = {
-      author: lambda do |value|
-        ::OctridevGithub::NullableGitUser.from_hash(value)
-      end,
-      committer: lambda do |value|
-        ::OctridevGithub::NullableGitUser.from_hash(value)
-      end,
-      tree: lambda do |value|
-        ::OctridevGithub::CommitCommitTree.from_hash(value)
-      end,
-      verification: lambda do |value|
-        ::OctridevGithub::Verification.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      author
-      committer
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalCommitCommitMetadata
+  FIELDS = {
+    url: "url",
+    author: "author",
+    committer: "committer",
+    message: "message",
+    comment_count: "comment_count",
+    tree: "tree",
+    verification: "verification",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    url
+    author
+    committer
+    message
+    comment_count
+    tree
+  ].freeze
+  DECODERS = {
+    author: lambda do |value|
+      ::OctridevGithub::NullableGitUser.from_hash(value)
+    end,
+    committer: lambda do |value|
+      ::OctridevGithub::NullableGitUser.from_hash(value)
+    end,
+    tree: lambda do |value|
+      ::OctridevGithub::CommitCommitTree.from_hash(value)
+    end,
+    verification: lambda do |value|
+      ::OctridevGithub::Verification.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    author
+    committer
+  ].freeze
+end
+
+# API model for CommitCommit.
+# Required object value serialized in the `commit` wire field.
+class CommitCommit
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalCommitCommitMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalCommitCommitMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalCommitCommitMetadata::DECODERS
+
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [NullableGitUser] Metaproperties for Git author/committer information.
+  attr_reader :author
+  # @return [NullableGitUser] Metaproperties for Git author/committer information.
+  attr_reader :committer
+  # @return [String] Required `string` value serialized in the `message` wire field.
+  attr_reader :message
+  # @return [Integer] Required `integer` value serialized in the `comment_count` wire field.
+  attr_reader :comment_count
+  # @return [CommitCommitTree] Required object value serialized in the `tree` wire field.
+  attr_reader :tree
+  # @return [Verification] Optional object value serialized in the `verification` wire field.
+  attr_reader :verification
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for CommitCommit.
-  # Required object value serialized in the `commit` wire field.
-  class CommitCommit
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalCommitCommitMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalCommitCommitMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalCommitCommitMetadata::DECODERS
-
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [NullableGitUser] Metaproperties for Git author/committer information.
-    attr_reader :author
-    # @return [NullableGitUser] Metaproperties for Git author/committer information.
-    attr_reader :committer
-    # @return [String] Required `string` value serialized in the `message` wire field.
-    attr_reader :message
-    # @return [Integer] Required `integer` value serialized in the `comment_count` wire field.
-    attr_reader :comment_count
-    # @return [CommitCommitTree] Required object value serialized in the `tree` wire field.
-    attr_reader :tree
-    # @return [Verification] Optional object value serialized in the `verification` wire field.
-    attr_reader :verification
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalCommitCommitMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalCommitCommitMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalCommitParentsItemMetadata
-    FIELDS = {
-      sha: 'sha',
-      url: 'url',
-      html_url: 'html_url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      sha
-      url
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalCommitParentsItemMetadata
+  FIELDS = {
+    sha: "sha",
+    url: "url",
+    html_url: "html_url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    sha
+    url
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for CommitParentsItem.
+# Required object value serialized in the `parents[]` wire field.
+class CommitParentsItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalCommitParentsItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalCommitParentsItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalCommitParentsItemMetadata::DECODERS
+
+  # @return [String] Required `string` value serialized in the `sha` wire field.
+  attr_reader :sha
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for CommitParentsItem.
-  # Required object value serialized in the `parents[]` wire field.
-  class CommitParentsItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalCommitParentsItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalCommitParentsItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalCommitParentsItemMetadata::DECODERS
-
-    # @return [String] Required `string` value serialized in the `sha` wire field.
-    attr_reader :sha
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalCommitStatsMetadata
-    FIELDS = {
-      additions: 'additions',
-      deletions: 'deletions',
-      total: 'total'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalCommitStatsMetadata
+  FIELDS = {
+    additions: "additions",
+    deletions: "deletions",
+    total: "total",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for CommitStats.
+# Optional object value serialized in the `stats` wire field.
+class CommitStats
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalCommitStatsMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalCommitStatsMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalCommitStatsMetadata::DECODERS
+
+  # @return [Integer] Optional `integer` value serialized in the `additions` wire field.
+  attr_reader :additions
+  # @return [Integer] Optional `integer` value serialized in the `deletions` wire field.
+  attr_reader :deletions
+  # @return [Integer] Optional `integer` value serialized in the `total` wire field.
+  attr_reader :total
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for CommitStats.
-  # Optional object value serialized in the `stats` wire field.
-  class CommitStats
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalCommitStatsMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalCommitStatsMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalCommitStatsMetadata::DECODERS
-
-    # @return [Integer] Optional `integer` value serialized in the `additions` wire field.
-    attr_reader :additions
-    # @return [Integer] Optional `integer` value serialized in the `deletions` wire field.
-    attr_reader :deletions
-    # @return [Integer] Optional `integer` value serialized in the `total` wire field.
-    attr_reader :total
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalCommitMetadata
-    FIELDS = {
-      url: 'url',
-      sha: 'sha',
-      node_id: 'node_id',
-      html_url: 'html_url',
-      comments_url: 'comments_url',
-      commit: 'commit',
-      author: 'author',
-      committer: 'committer',
-      parents: 'parents',
-      stats: 'stats',
-      files: 'files'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      url
-      sha
-      node_id
-      html_url
-      comments_url
-      commit
-      author
-      committer
-      parents
-    ].freeze
-    DECODERS = {
-      commit: lambda do |value|
-        ::OctridevGithub::CommitCommit.from_hash(value)
-      end,
-      author: lambda do |value|
-        ::OctridevGithub::CommitAuthor.from_hash(value)
-      end,
-      committer: lambda do |value|
-        ::OctridevGithub::CommitCommitter.from_hash(value)
-      end,
-      parents: lambda do |value|
-        value&.map { |item| ::OctridevGithub::CommitParentsItem.from_hash(item) }
-      end,
-      stats: lambda do |value|
-        ::OctridevGithub::CommitStats.from_hash(value)
-      end,
-      files: lambda do |value|
-        value&.map { |item| ::OctridevGithub::DiffEntry.from_hash(item) }
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      author
-      committer
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalCommitMetadata
+  FIELDS = {
+    url: "url",
+    sha: "sha",
+    node_id: "node_id",
+    html_url: "html_url",
+    comments_url: "comments_url",
+    commit: "commit",
+    author: "author",
+    committer: "committer",
+    parents: "parents",
+    stats: "stats",
+    files: "files",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    url
+    sha
+    node_id
+    html_url
+    comments_url
+    commit
+    author
+    committer
+    parents
+  ].freeze
+  DECODERS = {
+    commit: lambda do |value|
+      ::OctridevGithub::CommitCommit.from_hash(value)
+    end,
+    author: lambda do |value|
+      ::OctridevGithub::CommitAuthor.from_hash(value)
+    end,
+    committer: lambda do |value|
+      ::OctridevGithub::CommitCommitter.from_hash(value)
+    end,
+    parents: lambda do |value|
+      value&.map { |item| ::OctridevGithub::CommitParentsItem.from_hash(item) }
+    end,
+    stats: lambda do |value|
+      ::OctridevGithub::CommitStats.from_hash(value)
+    end,
+    files: lambda do |value|
+      value&.map { |item| ::OctridevGithub::DiffEntry.from_hash(item) }
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    author
+    committer
+  ].freeze
+end
+
+# API model for Commit.
+# Commit
+class Commit
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalCommitMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalCommitMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalCommitMetadata::DECODERS
+
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Required `string` value serialized in the `sha` wire field.
+  attr_reader :sha
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [String] Required `uri`-formatted value serialized in the `comments_url` wire field.
+  attr_reader :comments_url
+  # @return [CommitCommit] Required object value serialized in the `commit` wire field.
+  attr_reader :commit
+  # @return [CommitAuthor] Required API value serialized in the `author` wire field.
+  attr_reader :author
+  # @return [CommitCommitter] Required API value serialized in the `committer` wire field.
+  attr_reader :committer
+  # @return [Array_of_CommitParentsItem] Required array value serialized in the `parents` wire field.
+  attr_reader :parents
+  # @return [CommitStats] Optional object value serialized in the `stats` wire field.
+  attr_reader :stats
+  # @return [Array_of_DiffEntry] Optional array value serialized in the `files` wire field.
+  attr_reader :files
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for Commit.
-  # Commit
-  class Commit
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalCommitMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalCommitMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalCommitMetadata::DECODERS
-
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Required `string` value serialized in the `sha` wire field.
-    attr_reader :sha
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [String] Required `uri`-formatted value serialized in the `comments_url` wire field.
-    attr_reader :comments_url
-    # @return [CommitCommit] Required object value serialized in the `commit` wire field.
-    attr_reader :commit
-    # @return [CommitAuthor] Required API value serialized in the `author` wire field.
-    attr_reader :author
-    # @return [CommitCommitter] Required API value serialized in the `committer` wire field.
-    attr_reader :committer
-    # @return [Array_of_CommitParentsItem] Required array value serialized in the `parents` wire field.
-    attr_reader :parents
-    # @return [CommitStats] Optional object value serialized in the `stats` wire field.
-    attr_reader :stats
-    # @return [Array_of_DiffEntry] Optional array value serialized in the `files` wire field.
-    attr_reader :files
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalCommitMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalCommitMetadata::NULLABLE_FIELDS)
   end
 
-  # Defines the CommitAuthor SDK namespace.
-  module CommitAuthor
-    def self.from_hash(hash)
-      shape_mapping = {
-        'avatar_url' => SimpleUser
-      }
-      type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
-      decoded = type&.from_hash(hash)
-      return decoded unless type.nil?
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-      EmptyObject.from_hash(hash)
-    end
+# Defines the CommitAuthor SDK namespace.
+module CommitAuthor
+  def self.from_hash(hash)
+    shape_mapping = {
+      "avatar_url" => SimpleUser,
+    }
+    type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
+    decoded = type&.from_hash(hash)
+    return decoded unless type.nil?
+    return EmptyObject.from_hash(hash)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalCommitCommentMetadata
+  FIELDS = {
+    html_url: "html_url",
+    url: "url",
+    id: "id",
+    node_id: "node_id",
+    body: "body",
+    path: "path",
+    position: "position",
+    line: "line",
+    commit_id: "commit_id",
+    user: "user",
+    created_at: "created_at",
+    updated_at: "updated_at",
+    author_association: "author_association",
+    reactions: "reactions",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    html_url
+    url
+    id
+    node_id
+    body
+    path
+    position
+    line
+    commit_id
+    user
+    created_at
+    updated_at
+    author_association
+  ].freeze
+  DECODERS = {
+    user: lambda do |value|
+      ::OctridevGithub::NullableSimpleUser.from_hash(value)
+    end,
+    author_association: lambda do |value|
+      ::OctridevGithub::AuthorAssociation.from_value(value)
+    end,
+    reactions: lambda do |value|
+      ::OctridevGithub::ReactionRollup.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    path
+    position
+    line
+    user
+  ].freeze
+end
+
+# API model for CommitComment.
+# Commit Comment
+class CommitComment
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalCommitCommentMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalCommitCommentMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalCommitCommentMetadata::DECODERS
+
+  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Required `string` value serialized in the `body` wire field.
+  attr_reader :body
+  # @return [String] Required `string` value serialized in the `path` wire field.
+  attr_reader :path
+  # @return [Integer] Required `integer` value serialized in the `position` wire field.
+  attr_reader :position
+  # @return [Integer] Required `integer` value serialized in the `line` wire field.
+  attr_reader :line
+  # @return [String] Required `string` value serialized in the `commit_id` wire field.
+  attr_reader :commit_id
+  # @return [NullableSimpleUser] A GitHub user.
+  attr_reader :user
+  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+  attr_reader :updated_at
+  # @return [AuthorAssociation] How the author is associated with the repository.
+  attr_reader :author_association
+  # @return [ReactionRollup] Optional object value serialized in the `reactions` wire field.
+  attr_reader :reactions
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalCommitCommentMetadata
-    FIELDS = {
-      html_url: 'html_url',
-      url: 'url',
-      id: 'id',
-      node_id: 'node_id',
-      body: 'body',
-      path: 'path',
-      position: 'position',
-      line: 'line',
-      commit_id: 'commit_id',
-      user: 'user',
-      created_at: 'created_at',
-      updated_at: 'updated_at',
-      author_association: 'author_association',
-      reactions: 'reactions'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      html_url
-      url
-      id
-      node_id
-      body
-      path
-      position
-      line
-      commit_id
-      user
-      created_at
-      updated_at
-      author_association
-    ].freeze
-    DECODERS = {
-      user: lambda do |value|
-        ::OctridevGithub::NullableSimpleUser.from_hash(value)
-      end,
-      author_association: lambda do |value|
-        ::OctridevGithub::AuthorAssociation.from_value(value)
-      end,
-      reactions: lambda do |value|
-        ::OctridevGithub::ReactionRollup.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      path
-      position
-      line
-      user
-    ].freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalCommitCommentMetadata::NULLABLE_FIELDS)
   end
 
-  # API model for CommitComment.
-  # Commit Comment
-  class CommitComment
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalCommitCommentMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalCommitCommentMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalCommitCommentMetadata::DECODERS
-
-    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Required `string` value serialized in the `body` wire field.
-    attr_reader :body
-    # @return [String] Required `string` value serialized in the `path` wire field.
-    attr_reader :path
-    # @return [Integer] Required `integer` value serialized in the `position` wire field.
-    attr_reader :position
-    # @return [Integer] Required `integer` value serialized in the `line` wire field.
-    attr_reader :line
-    # @return [String] Required `string` value serialized in the `commit_id` wire field.
-    attr_reader :commit_id
-    # @return [NullableSimpleUser] A GitHub user.
-    attr_reader :user
-    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-    attr_reader :updated_at
-    # @return [AuthorAssociation] How the author is associated with the repository.
-    attr_reader :author_association
-    # @return [ReactionRollup] Optional object value serialized in the `reactions` wire field.
-    attr_reader :reactions
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalCommitCommentMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
 
-  # Defines the CommitCommitter SDK namespace.
-  module CommitCommitter
-    def self.from_hash(hash)
-      shape_mapping = {
-        'avatar_url' => SimpleUser
-      }
-      type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
-      decoded = type&.from_hash(hash)
-      return decoded unless type.nil?
-
-      EmptyObject.from_hash(hash)
-    end
+# Defines the CommitCommitter SDK namespace.
+module CommitCommitter
+  def self.from_hash(hash)
+    shape_mapping = {
+      "avatar_url" => SimpleUser,
+    }
+    type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
+    decoded = type&.from_hash(hash)
+    return decoded unless type.nil?
+    return EmptyObject.from_hash(hash)
   end
+end
 end

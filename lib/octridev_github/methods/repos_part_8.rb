@@ -12,10 +12,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreateCommitStatusMetadata
         FIELDS = {
-          state: 'state',
-          target_url: 'target_url',
-          description: 'description',
-          context: 'context'
+          state: "state",
+          target_url: "target_url",
+          description: "description",
+          context: "context",
         }.freeze
         REQUIRED_FIELDS = %i[
           state
@@ -23,7 +23,7 @@ module OctridevGithub
         DECODERS = {
           state: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposCreateCommitStatusState.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -60,12 +60,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposReplaceAllTopicsMetadata
         FIELDS = {
-          names: 'names'
+          names: "names",
         }.freeze
         REQUIRED_FIELDS = %i[
           names
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ReposReplaceAllTopics.
@@ -95,14 +96,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposTransferMetadata
         FIELDS = {
-          new_owner: 'new_owner',
-          new_name: 'new_name',
-          team_ids: 'team_ids'
+          new_owner: "new_owner",
+          new_name: "new_name",
+          team_ids: "team_ids",
         }.freeze
         REQUIRED_FIELDS = %i[
           new_owner
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ReposTransfer.
@@ -136,16 +138,17 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreateUsingTemplateMetadata
         FIELDS = {
-          owner: 'owner',
-          name: 'name',
-          description: 'description',
-          include_all_branches: 'include_all_branches',
-          private: 'private'
+          owner: "owner",
+          name: "name",
+          description: "description",
+          include_all_branches: "include_all_branches",
+          private: "private",
         }.freeze
         REQUIRED_FIELDS = %i[
           name
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ReposCreateUsingTemplate.
@@ -183,29 +186,29 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreateForAuthenticatedUserMetadata
         FIELDS = {
-          name: 'name',
-          description: 'description',
-          homepage: 'homepage',
-          private: 'private',
-          has_issues: 'has_issues',
-          has_projects: 'has_projects',
-          has_wiki: 'has_wiki',
-          has_discussions: 'has_discussions',
-          team_id: 'team_id',
-          auto_init: 'auto_init',
-          gitignore_template: 'gitignore_template',
-          license_template: 'license_template',
-          allow_squash_merge: 'allow_squash_merge',
-          allow_merge_commit: 'allow_merge_commit',
-          allow_rebase_merge: 'allow_rebase_merge',
-          allow_auto_merge: 'allow_auto_merge',
-          delete_branch_on_merge: 'delete_branch_on_merge',
-          squash_merge_commit_title: 'squash_merge_commit_title',
-          squash_merge_commit_message: 'squash_merge_commit_message',
-          merge_commit_title: 'merge_commit_title',
-          merge_commit_message: 'merge_commit_message',
-          has_downloads: 'has_downloads',
-          is_template: 'is_template'
+          name: "name",
+          description: "description",
+          homepage: "homepage",
+          private: "private",
+          has_issues: "has_issues",
+          has_projects: "has_projects",
+          has_wiki: "has_wiki",
+          has_discussions: "has_discussions",
+          team_id: "team_id",
+          auto_init: "auto_init",
+          gitignore_template: "gitignore_template",
+          license_template: "license_template",
+          allow_squash_merge: "allow_squash_merge",
+          allow_merge_commit: "allow_merge_commit",
+          allow_rebase_merge: "allow_rebase_merge",
+          allow_auto_merge: "allow_auto_merge",
+          delete_branch_on_merge: "delete_branch_on_merge",
+          squash_merge_commit_title: "squash_merge_commit_title",
+          squash_merge_commit_message: "squash_merge_commit_message",
+          merge_commit_title: "merge_commit_title",
+          merge_commit_message: "merge_commit_message",
+          has_downloads: "has_downloads",
+          is_template: "is_template",
         }.freeze
         REQUIRED_FIELDS = %i[
           name
@@ -222,7 +225,7 @@ module OctridevGithub
           end,
           merge_commit_message: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposCreateForAuthenticatedUserMergeCommitMessage.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -299,7 +302,7 @@ module OctridevGithub
         PR_BODY = 'PR_BODY'
         PR_TITLE = 'PR_TITLE'
         BLANK = 'BLANK'
-        VALUES = %w[PR_BODY PR_TITLE BLANK].freeze
+        VALUES = ['PR_BODY', 'PR_TITLE', 'BLANK'].freeze
         def self.from_value(value)
           value
         end
@@ -310,7 +313,7 @@ module OctridevGithub
         PR_BODY = 'PR_BODY'
         PR_TITLE = 'PR_TITLE'
         BLANK = 'BLANK'
-        VALUES = %w[PR_BODY PR_TITLE BLANK].freeze
+        VALUES = ['PR_BODY', 'PR_TITLE', 'BLANK'].freeze
         def self.from_value(value)
           value
         end
@@ -321,7 +324,7 @@ module OctridevGithub
         BRANCH = 'branch'
         TAG = 'tag'
         PUSH = 'push'
-        VALUES = %w[branch tag push].freeze
+        VALUES = ['branch', 'tag', 'push'].freeze
         def self.from_value(value)
           value
         end
@@ -331,7 +334,7 @@ module OctridevGithub
       module ReposUpdateMergeCommitTitle
         PR_TITLE = 'PR_TITLE'
         MERGE_MESSAGE = 'MERGE_MESSAGE'
-        VALUES = %w[PR_TITLE MERGE_MESSAGE].freeze
+        VALUES = ['PR_TITLE', 'MERGE_MESSAGE'].freeze
         def self.from_value(value)
           value
         end
@@ -343,7 +346,7 @@ module OctridevGithub
         UPDATED = 'updated'
         PUSHED = 'pushed'
         FULL_NAME = 'full_name'
-        VALUES = %w[created updated pushed full_name].freeze
+        VALUES = ['created', 'updated', 'pushed', 'full_name'].freeze
         def self.from_value(value)
           value
         end
@@ -354,7 +357,7 @@ module OctridevGithub
         ALL = 'all'
         OWNER = 'owner'
         MEMBER = 'member'
-        VALUES = %w[all owner member].freeze
+        VALUES = ['all', 'owner', 'member'].freeze
         def self.from_value(value)
           value
         end
@@ -364,7 +367,7 @@ module OctridevGithub
       module ReposCreateInOrgSquashMergeCommitTitle
         PR_TITLE = 'PR_TITLE'
         COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
-        VALUES = %w[PR_TITLE COMMIT_OR_PR_TITLE].freeze
+        VALUES = ['PR_TITLE', 'COMMIT_OR_PR_TITLE'].freeze
         def self.from_value(value)
           value
         end
@@ -374,7 +377,7 @@ module OctridevGithub
       module ReposListForOrgParameter8b436ee9
         ASC = 'asc'
         DESC = 'desc'
-        VALUES = %w[asc desc].freeze
+        VALUES = ['asc', 'desc'].freeze
         def self.from_value(value)
           value
         end
@@ -384,7 +387,7 @@ module OctridevGithub
       module ReposCreateInOrgMergeCommitTitle
         PR_TITLE = 'PR_TITLE'
         MERGE_MESSAGE = 'MERGE_MESSAGE'
-        VALUES = %w[PR_TITLE MERGE_MESSAGE].freeze
+        VALUES = ['PR_TITLE', 'MERGE_MESSAGE'].freeze
         def self.from_value(value)
           value
         end
@@ -395,7 +398,7 @@ module OctridevGithub
         PR_BODY = 'PR_BODY'
         COMMIT_MESSAGES = 'COMMIT_MESSAGES'
         BLANK = 'BLANK'
-        VALUES = %w[PR_BODY COMMIT_MESSAGES BLANK].freeze
+        VALUES = ['PR_BODY', 'COMMIT_MESSAGES', 'BLANK'].freeze
         def self.from_value(value)
           value
         end
@@ -406,7 +409,7 @@ module OctridevGithub
         BRANCH = 'branch'
         TAG = 'tag'
         PUSH = 'push'
-        VALUES = %w[branch tag push].freeze
+        VALUES = ['branch', 'tag', 'push'].freeze
         def self.from_value(value)
           value
         end
@@ -416,7 +419,7 @@ module OctridevGithub
       module ReposCreateInOrgVisibility
         PUBLIC = 'public'
         PRIVATE = 'private'
-        VALUES = %w[public private].freeze
+        VALUES = ['public', 'private'].freeze
         def self.from_value(value)
           value
         end
@@ -429,7 +432,7 @@ module OctridevGithub
         MONTH = 'month'
         QUARTER = 'quarter'
         YEAR = 'year'
-        VALUES = %w[day week month quarter year].freeze
+        VALUES = ['day', 'week', 'month', 'quarter', 'year'].freeze
         def self.from_value(value)
           value
         end
@@ -440,7 +443,7 @@ module OctridevGithub
         TRUE = 'true'
         FALSE = 'false'
         LEGACY = 'legacy'
-        VALUES = %w[true false legacy].freeze
+        VALUES = ['true', 'false', 'legacy'].freeze
         def self.from_value(value)
           value
         end
@@ -452,7 +455,7 @@ module OctridevGithub
         OLDEST = 'oldest'
         STARGAZERS = 'stargazers'
         WATCHERS = 'watchers'
-        VALUES = %w[newest oldest stargazers watchers].freeze
+        VALUES = ['newest', 'oldest', 'stargazers', 'watchers'].freeze
         def self.from_value(value)
           value
         end
@@ -463,7 +466,7 @@ module OctridevGithub
         ALL = 'all'
         PUBLIC = 'public'
         PRIVATE = 'private'
-        VALUES = %w[all public private].freeze
+        VALUES = ['all', 'public', 'private'].freeze
         def self.from_value(value)
           value
         end
@@ -473,7 +476,7 @@ module OctridevGithub
       module ReposListForUserParameter098c291f
         ASC = 'asc'
         DESC = 'desc'
-        VALUES = %w[asc desc].freeze
+        VALUES = ['asc', 'desc'].freeze
         def self.from_value(value)
           value
         end
@@ -483,7 +486,7 @@ module OctridevGithub
       module ReposUpdateSecurityAndAnalysisSecretScanningDelegatedBypassOpX9eb28f8348
         TEAM = 'TEAM'
         ROLE = 'ROLE'
-        VALUES = %w[TEAM ROLE].freeze
+        VALUES = ['TEAM', 'ROLE'].freeze
         def self.from_value(value)
           value
         end
@@ -493,7 +496,7 @@ module OctridevGithub
       module ReposUpdatePullRequestCreationPolicy
         ALL = 'all'
         COLLABORATORS_ONLY = 'collaborators_only'
-        VALUES = %w[all collaborators_only].freeze
+        VALUES = ['all', 'collaborators_only'].freeze
         def self.from_value(value)
           value
         end
@@ -506,7 +509,7 @@ module OctridevGithub
         PUBLIC = 'public'
         PRIVATE = 'private'
         MEMBER = 'member'
-        VALUES = %w[all owner public private member].freeze
+        VALUES = ['all', 'owner', 'public', 'private', 'member'].freeze
         def self.from_value(value)
           value
         end
@@ -517,7 +520,7 @@ module OctridevGithub
         PR_BODY = 'PR_BODY'
         PR_TITLE = 'PR_TITLE'
         BLANK = 'BLANK'
-        VALUES = %w[PR_BODY PR_TITLE BLANK].freeze
+        VALUES = ['PR_BODY', 'PR_TITLE', 'BLANK'].freeze
         def self.from_value(value)
           value
         end
@@ -527,7 +530,7 @@ module OctridevGithub
       module ReposUpdateSecurityAndAnalysisSecretScanningDelegatedBypassOpX7ef3ce56ec
         ALWAYS = 'ALWAYS'
         EXEMPT = 'EXEMPT'
-        VALUES = %w[ALWAYS EXEMPT].freeze
+        VALUES = ['ALWAYS', 'EXEMPT'].freeze
         def self.from_value(value)
           value
         end
@@ -541,7 +544,7 @@ module OctridevGithub
         FORKS = 'forks'
         SOURCES = 'sources'
         MEMBER = 'member'
-        VALUES = %w[all public private forks sources member].freeze
+        VALUES = ['all', 'public', 'private', 'forks', 'sources', 'member'].freeze
         def self.from_value(value)
           value
         end
@@ -551,7 +554,7 @@ module OctridevGithub
       module ReposCreateForAuthenticatedUserMergeCommitTitle
         PR_TITLE = 'PR_TITLE'
         MERGE_MESSAGE = 'MERGE_MESSAGE'
-        VALUES = %w[PR_TITLE MERGE_MESSAGE].freeze
+        VALUES = ['PR_TITLE', 'MERGE_MESSAGE'].freeze
         def self.from_value(value)
           value
         end
@@ -561,7 +564,7 @@ module OctridevGithub
       module ReposUpdateSquashMergeCommitTitle
         PR_TITLE = 'PR_TITLE'
         COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
-        VALUES = %w[PR_TITLE COMMIT_OR_PR_TITLE].freeze
+        VALUES = ['PR_TITLE', 'COMMIT_OR_PR_TITLE'].freeze
         def self.from_value(value)
           value
         end

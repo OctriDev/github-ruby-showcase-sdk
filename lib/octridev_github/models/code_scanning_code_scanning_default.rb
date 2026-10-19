@@ -5,310 +5,314 @@
 
 # code_scanning_code_scanning_default domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalCodeScanningDefaultSetupMetadata
-    FIELDS = {
-      state: 'state',
-      languages: 'languages',
-      runner_type: 'runner_type',
-      runner_label: 'runner_label',
-      query_suite: 'query_suite',
-      threat_model: 'threat_model',
-      updated_at: 'updated_at',
-      schedule: 'schedule'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      state: lambda do |value|
-        ::OctridevGithub::CodeScanningDefaultSetupState.from_value(value)
-      end,
-      languages: lambda do |value|
-        value&.map { |item| ::OctridevGithub::CodeScanningDefaultSetupLanguagesItem.from_value(item) }
-      end,
-      runner_type: lambda do |value|
-        ::OctridevGithub::CodeScanningDefaultSetupRunnerType.from_value(value)
-      end,
-      query_suite: lambda do |value|
-        ::OctridevGithub::CodeScanningDefaultSetupQuerySuite.from_value(value)
-      end,
-      threat_model: lambda do |value|
-        ::OctridevGithub::CodeScanningDefaultSetupThreatModel.from_value(value)
-      end,
-      schedule: lambda do |value|
-        ::OctridevGithub::CodeScanningDefaultSetupSchedule.from_value(value)
-      end
-    }.freeze
+# Internal model hydration metadata.
+class SdkInternalCodeScanningDefaultSetupMetadata
+  FIELDS = {
+    state: "state",
+    languages: "languages",
+    runner_type: "runner_type",
+    runner_label: "runner_label",
+    query_suite: "query_suite",
+    threat_model: "threat_model",
+    updated_at: "updated_at",
+    schedule: "schedule",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    state: lambda do |value|
+      ::OctridevGithub::CodeScanningDefaultSetupState.from_value(value)
+    end,
+    languages: lambda do |value|
+      value&.map { |item| ::OctridevGithub::CodeScanningDefaultSetupLanguagesItem.from_value(item) }
+    end,
+    runner_type: lambda do |value|
+      ::OctridevGithub::CodeScanningDefaultSetupRunnerType.from_value(value)
+    end,
+    query_suite: lambda do |value|
+      ::OctridevGithub::CodeScanningDefaultSetupQuerySuite.from_value(value)
+    end,
+    threat_model: lambda do |value|
+      ::OctridevGithub::CodeScanningDefaultSetupThreatModel.from_value(value)
+    end,
+    schedule: lambda do |value|
+      ::OctridevGithub::CodeScanningDefaultSetupSchedule.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for CodeScanningDefaultSetup.
+# Configuration for code scanning default setup.
+class CodeScanningDefaultSetup
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalCodeScanningDefaultSetupMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalCodeScanningDefaultSetupMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalCodeScanningDefaultSetupMetadata::DECODERS
+
+  # @return [CodeScanningDefaultSetupState] Code scanning default setup has been configured or not.
+  attr_reader :state
+  # @return [Array_of_CodeScanningDefaultSetupLanguagesItem] Languages to be analyzed.
+  attr_reader :languages
+  # @return [CodeScanningDefaultSetupRunnerType] Runner type to be used.
+  attr_reader :runner_type
+  # @return [String] Runner label to be used if the runner type is labeled.
+  attr_reader :runner_label
+  # @return [CodeScanningDefaultSetupQuerySuite] CodeQL query suite to be used.
+  attr_reader :query_suite
+  # @return [CodeScanningDefaultSetupThreatModel] Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input.
+  attr_reader :threat_model
+  # @return [String] Timestamp of latest configuration update.
+  attr_reader :updated_at
+  # @return [CodeScanningDefaultSetupSchedule] The frequency of the periodic analysis.
+  attr_reader :schedule
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for CodeScanningDefaultSetup.
-  # Configuration for code scanning default setup.
-  class CodeScanningDefaultSetup
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalCodeScanningDefaultSetupMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalCodeScanningDefaultSetupMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalCodeScanningDefaultSetupMetadata::DECODERS
-
-    # @return [CodeScanningDefaultSetupState] Code scanning default setup has been configured or not.
-    attr_reader :state
-    # @return [Array_of_CodeScanningDefaultSetupLanguagesItem] Languages to be analyzed.
-    attr_reader :languages
-    # @return [CodeScanningDefaultSetupRunnerType] Runner type to be used.
-    attr_reader :runner_type
-    # @return [String] Runner label to be used if the runner type is labeled.
-    attr_reader :runner_label
-    # @return [CodeScanningDefaultSetupQuerySuite] CodeQL query suite to be used.
-    attr_reader :query_suite
-    # @return [CodeScanningDefaultSetupThreatModel] Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input.
-    attr_reader :threat_model
-    # @return [String] Timestamp of latest configuration update.
-    attr_reader :updated_at
-    # @return [CodeScanningDefaultSetupSchedule] The frequency of the periodic analysis.
-    attr_reader :schedule
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the CodeScanningDefaultSetupLanguagesItem SDK namespace.
-  module CodeScanningDefaultSetupLanguagesItem
-    ACTIONS = 'actions'
-    C_CPP = 'c-cpp'
-    CSHARP = 'csharp'
-    GO = 'go'
-    JAVA_KOTLIN = 'java-kotlin'
-    JAVASCRIPT_TYPESCRIPT = 'javascript-typescript'
-    JAVASCRIPT = 'javascript'
-    PYTHON = 'python'
-    RUBY = 'ruby'
-    TYPESCRIPT = 'typescript'
-    SWIFT = 'swift'
-    VALUES = %w[
-      actions c-cpp csharp go java-kotlin javascript-typescript javascript
-      python ruby typescript swift
-    ].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Defines the CodeScanningDefaultSetupLanguagesItem SDK namespace.
+module CodeScanningDefaultSetupLanguagesItem
+  ACTIONS = 'actions'
+  C_CPP = 'c-cpp'
+  CSHARP = 'csharp'
+  GO = 'go'
+  JAVA_KOTLIN = 'java-kotlin'
+  JAVASCRIPT_TYPESCRIPT = 'javascript-typescript'
+  JAVASCRIPT = 'javascript'
+  PYTHON = 'python'
+  RUBY = 'ruby'
+  TYPESCRIPT = 'typescript'
+  SWIFT = 'swift'
+  VALUES = [
+    'actions', 'c-cpp', 'csharp', 'go', 'java-kotlin', 'javascript-typescript', 'javascript',
+    'python', 'ruby', 'typescript', 'swift'
+  ].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the CodeScanningDefaultSetupQuerySuite SDK namespace.
+module CodeScanningDefaultSetupQuerySuite
+  DEFAULT = 'default'
+  EXTENDED = 'extended'
+  VALUES = ['default', 'extended'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the CodeScanningDefaultSetupRunnerType SDK namespace.
+module CodeScanningDefaultSetupRunnerType
+  STANDARD = 'standard'
+  LABELED = 'labeled'
+  VALUES = ['standard', 'labeled'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the CodeScanningDefaultSetupSchedule SDK namespace.
+module CodeScanningDefaultSetupSchedule
+  WEEKLY = 'weekly'
+  VALUES = ['weekly'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the CodeScanningDefaultSetupState SDK namespace.
+module CodeScanningDefaultSetupState
+  CONFIGURED = 'configured'
+  NOT_CONFIGURED = 'not-configured'
+  VALUES = ['configured', 'not-configured'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the CodeScanningDefaultSetupThreatModel SDK namespace.
+module CodeScanningDefaultSetupThreatModel
+  REMOTE = 'remote'
+  REMOTE_AND_LOCAL = 'remote_and_local'
+  VALUES = ['remote', 'remote_and_local'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalCodeScanningDefaultSetupUpdateMetadata
+  FIELDS = {
+    state: "state",
+    runner_type: "runner_type",
+    runner_label: "runner_label",
+    query_suite: "query_suite",
+    threat_model: "threat_model",
+    languages: "languages",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    state: lambda do |value|
+      ::OctridevGithub::CodeScanningDefaultSetupUpdateState.from_value(value)
+    end,
+    runner_type: lambda do |value|
+      ::OctridevGithub::CodeScanningDefaultSetupUpdateRunnerType.from_value(value)
+    end,
+    query_suite: lambda do |value|
+      ::OctridevGithub::CodeScanningDefaultSetupUpdateQuerySuite.from_value(value)
+    end,
+    threat_model: lambda do |value|
+      ::OctridevGithub::CodeScanningDefaultSetupUpdateThreatModel.from_value(value)
+    end,
+    languages: lambda do |value|
+      value&.map { |item| ::OctridevGithub::CodeScanningDefaultSetupUpdateLanguagesItem.from_value(item) }
+    end,
+  }.freeze
+end
+
+# API model for CodeScanningDefaultSetupUpdate.
+# Configuration for code scanning default setup.
+class CodeScanningDefaultSetupUpdate
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalCodeScanningDefaultSetupUpdateMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalCodeScanningDefaultSetupUpdateMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalCodeScanningDefaultSetupUpdateMetadata::DECODERS
+
+  # @return [CodeScanningDefaultSetupUpdateState] The desired state of code scanning default setup.
+  attr_reader :state
+  # @return [CodeScanningDefaultSetupUpdateRunnerType] Runner type to be used.
+  attr_reader :runner_type
+  # @return [String] Runner label to be used if the runner type is labeled.
+  attr_reader :runner_label
+  # @return [CodeScanningDefaultSetupUpdateQuerySuite] CodeQL query suite to be used.
+  attr_reader :query_suite
+  # @return [CodeScanningDefaultSetupUpdateThreatModel] Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input.
+  attr_reader :threat_model
+  # @return [Array_of_CodeScanningDefaultSetupUpdateLanguagesItem] CodeQL languages to be analyzed.
+  attr_reader :languages
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the CodeScanningDefaultSetupQuerySuite SDK namespace.
-  module CodeScanningDefaultSetupQuerySuite
-    DEFAULT = 'default'
-    EXTENDED = 'extended'
-    VALUES = %w[default extended].freeze
-    def self.from_value(value)
-      value
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the CodeScanningDefaultSetupRunnerType SDK namespace.
-  module CodeScanningDefaultSetupRunnerType
-    STANDARD = 'standard'
-    LABELED = 'labeled'
-    VALUES = %w[standard labeled].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Defines the CodeScanningDefaultSetupUpdateLanguagesItem SDK namespace.
+module CodeScanningDefaultSetupUpdateLanguagesItem
+  ACTIONS = 'actions'
+  C_CPP = 'c-cpp'
+  CSHARP = 'csharp'
+  GO = 'go'
+  JAVA_KOTLIN = 'java-kotlin'
+  JAVASCRIPT_TYPESCRIPT = 'javascript-typescript'
+  PYTHON = 'python'
+  RUBY = 'ruby'
+  SWIFT = 'swift'
+  VALUES = [
+    'actions', 'c-cpp', 'csharp', 'go', 'java-kotlin', 'javascript-typescript', 'python', 'ruby',
+    'swift'
+  ].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the CodeScanningDefaultSetupUpdateQuerySuite SDK namespace.
+module CodeScanningDefaultSetupUpdateQuerySuite
+  DEFAULT = 'default'
+  EXTENDED = 'extended'
+  VALUES = ['default', 'extended'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the CodeScanningDefaultSetupUpdateRunnerType SDK namespace.
+module CodeScanningDefaultSetupUpdateRunnerType
+  STANDARD = 'standard'
+  LABELED = 'labeled'
+  VALUES = ['standard', 'labeled'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the CodeScanningDefaultSetupUpdateState SDK namespace.
+module CodeScanningDefaultSetupUpdateState
+  CONFIGURED = 'configured'
+  NOT_CONFIGURED = 'not-configured'
+  VALUES = ['configured', 'not-configured'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the CodeScanningDefaultSetupUpdateThreatModel SDK namespace.
+module CodeScanningDefaultSetupUpdateThreatModel
+  REMOTE = 'remote'
+  REMOTE_AND_LOCAL = 'remote_and_local'
+  VALUES = ['remote', 'remote_and_local'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalCodeScanningDefaultSetupUpdateResponseMetadata
+  FIELDS = {
+    run_id: "run_id",
+    run_url: "run_url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for CodeScanningDefaultSetupUpdateResponse.
+# You can use `run_url` to track the status of the run. This includes a property status and conclusion. You should not rely on this always being an actions workflow run object.
+class CodeScanningDefaultSetupUpdateResponse
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalCodeScanningDefaultSetupUpdateResponseMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalCodeScanningDefaultSetupUpdateResponseMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalCodeScanningDefaultSetupUpdateResponseMetadata::DECODERS
+
+  # @return [Integer] ID of the corresponding run.
+  attr_reader :run_id
+  # @return [String] URL of the corresponding run.
+  attr_reader :run_url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the CodeScanningDefaultSetupSchedule SDK namespace.
-  module CodeScanningDefaultSetupSchedule
-    WEEKLY = 'weekly'
-    VALUES = ['weekly'].freeze
-    def self.from_value(value)
-      value
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the CodeScanningDefaultSetupState SDK namespace.
-  module CodeScanningDefaultSetupState
-    CONFIGURED = 'configured'
-    NOT_CONFIGURED = 'not-configured'
-    VALUES = %w[configured not-configured].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
-
-  # Defines the CodeScanningDefaultSetupThreatModel SDK namespace.
-  module CodeScanningDefaultSetupThreatModel
-    REMOTE = 'remote'
-    REMOTE_AND_LOCAL = 'remote_and_local'
-    VALUES = %w[remote remote_and_local].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Internal model hydration metadata.
-  class SdkInternalCodeScanningDefaultSetupUpdateMetadata
-    FIELDS = {
-      state: 'state',
-      runner_type: 'runner_type',
-      runner_label: 'runner_label',
-      query_suite: 'query_suite',
-      threat_model: 'threat_model',
-      languages: 'languages'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      state: lambda do |value|
-        ::OctridevGithub::CodeScanningDefaultSetupUpdateState.from_value(value)
-      end,
-      runner_type: lambda do |value|
-        ::OctridevGithub::CodeScanningDefaultSetupUpdateRunnerType.from_value(value)
-      end,
-      query_suite: lambda do |value|
-        ::OctridevGithub::CodeScanningDefaultSetupUpdateQuerySuite.from_value(value)
-      end,
-      threat_model: lambda do |value|
-        ::OctridevGithub::CodeScanningDefaultSetupUpdateThreatModel.from_value(value)
-      end,
-      languages: lambda do |value|
-        value&.map { |item| ::OctridevGithub::CodeScanningDefaultSetupUpdateLanguagesItem.from_value(item) }
-      end
-    }.freeze
-  end
-
-  # API model for CodeScanningDefaultSetupUpdate.
-  # Configuration for code scanning default setup.
-  class CodeScanningDefaultSetupUpdate
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalCodeScanningDefaultSetupUpdateMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalCodeScanningDefaultSetupUpdateMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalCodeScanningDefaultSetupUpdateMetadata::DECODERS
-
-    # @return [CodeScanningDefaultSetupUpdateState] The desired state of code scanning default setup.
-    attr_reader :state
-    # @return [CodeScanningDefaultSetupUpdateRunnerType] Runner type to be used.
-    attr_reader :runner_type
-    # @return [String] Runner label to be used if the runner type is labeled.
-    attr_reader :runner_label
-    # @return [CodeScanningDefaultSetupUpdateQuerySuite] CodeQL query suite to be used.
-    attr_reader :query_suite
-    # @return [CodeScanningDefaultSetupUpdateThreatModel] Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input.
-    attr_reader :threat_model
-    # @return [Array_of_CodeScanningDefaultSetupUpdateLanguagesItem] CodeQL languages to be analyzed.
-    attr_reader :languages
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
-  end
-
-  # Defines the CodeScanningDefaultSetupUpdateLanguagesItem SDK namespace.
-  module CodeScanningDefaultSetupUpdateLanguagesItem
-    ACTIONS = 'actions'
-    C_CPP = 'c-cpp'
-    CSHARP = 'csharp'
-    GO = 'go'
-    JAVA_KOTLIN = 'java-kotlin'
-    JAVASCRIPT_TYPESCRIPT = 'javascript-typescript'
-    PYTHON = 'python'
-    RUBY = 'ruby'
-    SWIFT = 'swift'
-    VALUES = %w[
-      actions c-cpp csharp go java-kotlin javascript-typescript python ruby
-      swift
-    ].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the CodeScanningDefaultSetupUpdateQuerySuite SDK namespace.
-  module CodeScanningDefaultSetupUpdateQuerySuite
-    DEFAULT = 'default'
-    EXTENDED = 'extended'
-    VALUES = %w[default extended].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the CodeScanningDefaultSetupUpdateRunnerType SDK namespace.
-  module CodeScanningDefaultSetupUpdateRunnerType
-    STANDARD = 'standard'
-    LABELED = 'labeled'
-    VALUES = %w[standard labeled].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the CodeScanningDefaultSetupUpdateState SDK namespace.
-  module CodeScanningDefaultSetupUpdateState
-    CONFIGURED = 'configured'
-    NOT_CONFIGURED = 'not-configured'
-    VALUES = %w[configured not-configured].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the CodeScanningDefaultSetupUpdateThreatModel SDK namespace.
-  module CodeScanningDefaultSetupUpdateThreatModel
-    REMOTE = 'remote'
-    REMOTE_AND_LOCAL = 'remote_and_local'
-    VALUES = %w[remote remote_and_local].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Internal model hydration metadata.
-  class SdkInternalCodeScanningDefaultSetupUpdateResponseMetadata
-    FIELDS = {
-      run_id: 'run_id',
-      run_url: 'run_url'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
-  end
-
-  # API model for CodeScanningDefaultSetupUpdateResponse.
-  # You can use `run_url` to track the status of the run. This includes a property status and conclusion. You should not rely on this always being an actions workflow run object.
-  class CodeScanningDefaultSetupUpdateResponse
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalCodeScanningDefaultSetupUpdateResponseMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalCodeScanningDefaultSetupUpdateResponseMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalCodeScanningDefaultSetupUpdateResponseMetadata::DECODERS
-
-    # @return [Integer] ID of the corresponding run.
-    attr_reader :run_id
-    # @return [String] URL of the corresponding run.
-    attr_reader :run_url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
-  end
+end
 end

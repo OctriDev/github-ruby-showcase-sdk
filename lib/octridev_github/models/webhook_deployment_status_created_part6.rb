@@ -5,258 +5,258 @@
 
 # webhook_deployment_status_created domain models (part 6)
 module OctridevGithub
-  # Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXe82092eb43 SDK namespace.
-  module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXe82092eb43
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXe82092eb43 SDK namespace.
+module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXe82092eb43
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXfff28337f8 SDK namespace.
-  module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXfff28337f8
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXfff28337f8 SDK namespace.
+module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXfff28337f8
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX89b420dc49 SDK namespace.
-  module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX89b420dc49
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX89b420dc49 SDK namespace.
+module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX89b420dc49
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX377f60b672 SDK namespace.
-  module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX377f60b672
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX377f60b672 SDK namespace.
+module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX377f60b672
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX005ffa064f SDK namespace.
-  module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX005ffa064f
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX005ffa064f SDK namespace.
+module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX005ffa064f
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX7afa32a574 SDK namespace.
-  module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX7afa32a574
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX7afa32a574 SDK namespace.
+module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX7afa32a574
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX78609a1e42 SDK namespace.
-  module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX78609a1e42
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX78609a1e42 SDK namespace.
+module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX78609a1e42
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXdab050fdbf SDK namespace.
-  module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXdab050fdbf
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXdab050fdbf SDK namespace.
+module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXdab050fdbf
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXf8ea9c770b SDK namespace.
-  module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXf8ea9c770b
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXf8ea9c770b SDK namespace.
+module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXf8ea9c770b
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX87a3e3e32c SDK namespace.
-  module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX87a3e3e32c
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX87a3e3e32c SDK namespace.
+module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX87a3e3e32c
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX06800013a4 SDK namespace.
-  module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX06800013a4
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX06800013a4 SDK namespace.
+module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX06800013a4
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX0fe8672416 SDK namespace.
-  module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX0fe8672416
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX0fe8672416 SDK namespace.
+module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX0fe8672416
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX383f26da85 SDK namespace.
-  module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX383f26da85
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX383f26da85 SDK namespace.
+module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX383f26da85
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX3b3a7dd769 SDK namespace.
-  module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX3b3a7dd769
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX3b3a7dd769 SDK namespace.
+module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX3b3a7dd769
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX7c0be600a4 SDK namespace.
-  module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX7c0be600a4
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX7c0be600a4 SDK namespace.
+module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX7c0be600a4
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXb01d2916b3 SDK namespace.
-  module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXb01d2916b3
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXb01d2916b3 SDK namespace.
+module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXb01d2916b3
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXdc550ed4b4 SDK namespace.
-  module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXdc550ed4b4
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXdc550ed4b4 SDK namespace.
+module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXdc550ed4b4
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXc854f50452 SDK namespace.
-  module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXc854f50452
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXc854f50452 SDK namespace.
+module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitXc854f50452
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX2e0b84c54a SDK namespace.
-  module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX2e0b84c54a
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX2e0b84c54a SDK namespace.
+module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX2e0b84c54a
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX7e95a609cb SDK namespace.
-  module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX7e95a609cb
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX7e95a609cb SDK namespace.
+module WebhookDeploymentStatusCreatedDeploymentStatusPerformedViaGitX7e95a609cb
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentStatusCreatedWorkflowRunActorType SDK namespace.
-  module WebhookDeploymentStatusCreatedWorkflowRunActorType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentStatusCreatedWorkflowRunActorType SDK namespace.
+module WebhookDeploymentStatusCreatedWorkflowRunActorType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentStatusCreatedWorkflowRunConclusion SDK namespace.
-  module WebhookDeploymentStatusCreatedWorkflowRunConclusion
-    SUCCESS = 'success'
-    FAILURE = 'failure'
-    NEUTRAL = 'neutral'
-    CANCELLED = 'cancelled'
-    TIMED_OUT = 'timed_out'
-    ACTION_REQUIRED = 'action_required'
-    STALE = 'stale'
-    STARTUP_FAILURE = 'startup_failure'
-    VALUES = %w[
-      success failure neutral cancelled timed_out action_required stale
-      startup_failure
-    ].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentStatusCreatedWorkflowRunConclusion SDK namespace.
+module WebhookDeploymentStatusCreatedWorkflowRunConclusion
+  SUCCESS = 'success'
+  FAILURE = 'failure'
+  NEUTRAL = 'neutral'
+  CANCELLED = 'cancelled'
+  TIMED_OUT = 'timed_out'
+  ACTION_REQUIRED = 'action_required'
+  STALE = 'stale'
+  STARTUP_FAILURE = 'startup_failure'
+  VALUES = [
+    'success', 'failure', 'neutral', 'cancelled', 'timed_out', 'action_required', 'stale',
+    'startup_failure'
+  ].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentStatusCreatedWorkflowRunStatus SDK namespace.
-  module WebhookDeploymentStatusCreatedWorkflowRunStatus
-    REQUESTED = 'requested'
-    IN_PROGRESS = 'in_progress'
-    COMPLETED = 'completed'
-    QUEUED = 'queued'
-    WAITING = 'waiting'
-    PENDING = 'pending'
-    VALUES = %w[requested in_progress completed queued waiting pending].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentStatusCreatedWorkflowRunStatus SDK namespace.
+module WebhookDeploymentStatusCreatedWorkflowRunStatus
+  REQUESTED = 'requested'
+  IN_PROGRESS = 'in_progress'
+  COMPLETED = 'completed'
+  QUEUED = 'queued'
+  WAITING = 'waiting'
+  PENDING = 'pending'
+  VALUES = ['requested', 'in_progress', 'completed', 'queued', 'waiting', 'pending'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentStatusCreatedWorkflowRunTriggeringActorType SDK namespace.
-  module WebhookDeploymentStatusCreatedWorkflowRunTriggeringActorType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentStatusCreatedWorkflowRunTriggeringActorType SDK namespace.
+module WebhookDeploymentStatusCreatedWorkflowRunTriggeringActorType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 end

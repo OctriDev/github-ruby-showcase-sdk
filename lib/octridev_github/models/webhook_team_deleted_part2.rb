@@ -5,34 +5,34 @@
 
 # webhook_team_deleted domain models (part 2)
 module OctridevGithub
-  # Defines the WebhookTeamDeletedAction SDK namespace.
-  module WebhookTeamDeletedAction
-    DELETED = 'deleted'
-    VALUES = ['deleted'].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookTeamDeletedAction SDK namespace.
+module WebhookTeamDeletedAction
+  DELETED = 'deleted'
+  VALUES = ['deleted'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookTeamDeletedRepositoryOwnerType SDK namespace.
-  module WebhookTeamDeletedRepositoryOwnerType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookTeamDeletedRepositoryOwnerType SDK namespace.
+module WebhookTeamDeletedRepositoryOwnerType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookTeamDeletedRepositoryVisibility SDK namespace.
-  module WebhookTeamDeletedRepositoryVisibility
-    PUBLIC = 'public'
-    PRIVATE = 'private'
-    INTERNAL = 'internal'
-    VALUES = %w[public private internal].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookTeamDeletedRepositoryVisibility SDK namespace.
+module WebhookTeamDeletedRepositoryVisibility
+  PUBLIC = 'public'
+  PRIVATE = 'private'
+  INTERNAL = 'internal'
+  VALUES = ['public', 'private', 'internal'].freeze
+  def self.from_value(value)
+    value
   end
+end
 end
