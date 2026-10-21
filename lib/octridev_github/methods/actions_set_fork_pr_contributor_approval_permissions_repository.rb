@@ -25,24 +25,23 @@ module OctridevGithub
         approval_policy:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/permissions/fork-pr-contributor-approval"
+            '/actions/permissions/fork-pr-contributor-approval'
           ].join,
           config: config,
           body: {
-            'approval_policy' => approval_policy,
+            'approval_policy' => approval_policy
           },
           decoder: :empty,
           operation_id: 'actions_set_fork_pr_contributor_approval_permissions_repository',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
     end

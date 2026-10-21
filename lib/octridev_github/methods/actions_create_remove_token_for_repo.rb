@@ -21,21 +21,20 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runners/remove-token"
+            '/actions/runners/remove-token'
           ].join,
           config: config,
           return_type: ::OctridevGithub::AuthenticationToken,
           decoder: :json,
           operation_id: 'actions_create_remove_token_for_repo',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

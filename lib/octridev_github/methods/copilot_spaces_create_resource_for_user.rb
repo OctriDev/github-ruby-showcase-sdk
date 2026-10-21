@@ -38,12 +38,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotSpacesUpdateResourceForUserMetadata
         FIELDS = {
-          metadata: "metadata",
+          metadata: 'metadata'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for CopilotSpacesUpdateResourceForUser.
@@ -77,8 +75,8 @@ module OctridevGithub
         FREE_TEXT = 'free_text'
         GITHUB_ISSUE = 'github_issue'
         GITHUB_PULL_REQUEST = 'github_pull_request'
-        VALUES = [
-          'repository', 'github_file', 'free_text', 'github_issue', 'github_pull_request'
+        VALUES = %w[
+          repository github_file free_text github_issue github_pull_request
         ].freeze
         def self.from_value(value)
           value
@@ -90,7 +88,7 @@ module OctridevGithub
         READER = 'reader'
         WRITER = 'writer'
         ADMIN = 'admin'
-        VALUES = ['reader', 'writer', 'admin'].freeze
+        VALUES = %w[reader writer admin].freeze
         def self.from_value(value)
           value
         end
@@ -105,9 +103,9 @@ module OctridevGithub
         GITHUB_PULL_REQUEST = 'github_pull_request'
         MEDIA_CONTENT = 'media_content'
         UPLOADED_TEXT_FILE = 'uploaded_text_file'
-        VALUES = [
-          'repository', 'github_file', 'free_text', 'github_issue', 'github_pull_request',
-          'media_content', 'uploaded_text_file'
+        VALUES = %w[
+          repository github_file free_text github_issue github_pull_request
+          media_content uploaded_text_file
         ].freeze
         def self.from_value(value)
           value
@@ -123,9 +121,9 @@ module OctridevGithub
         GITHUB_PULL_REQUEST = 'github_pull_request'
         MEDIA_CONTENT = 'media_content'
         UPLOADED_TEXT_FILE = 'uploaded_text_file'
-        VALUES = [
-          'repository', 'github_file', 'free_text', 'github_issue', 'github_pull_request',
-          'media_content', 'uploaded_text_file'
+        VALUES = %w[
+          repository github_file free_text github_issue github_pull_request
+          media_content uploaded_text_file
         ].freeze
         def self.from_value(value)
           value
@@ -138,7 +136,7 @@ module OctridevGithub
         WRITER = 'writer'
         ADMIN = 'admin'
         NO_ACCESS = 'no_access'
-        VALUES = ['reader', 'writer', 'admin', 'no_access'].freeze
+        VALUES = %w[reader writer admin no_access].freeze
         def self.from_value(value)
           value
         end
@@ -151,8 +149,8 @@ module OctridevGithub
         FREE_TEXT = 'free_text'
         GITHUB_ISSUE = 'github_issue'
         GITHUB_PULL_REQUEST = 'github_pull_request'
-        VALUES = [
-          'repository', 'github_file', 'free_text', 'github_issue', 'github_pull_request'
+        VALUES = %w[
+          repository github_file free_text github_issue github_pull_request
         ].freeze
         def self.from_value(value)
           value
@@ -165,7 +163,7 @@ module OctridevGithub
         WRITER = 'writer'
         ADMIN = 'admin'
         NO_ACCESS = 'no_access'
-        VALUES = ['reader', 'writer', 'admin', 'no_access'].freeze
+        VALUES = %w[reader writer admin no_access].freeze
         def self.from_value(value)
           value
         end
@@ -180,9 +178,9 @@ module OctridevGithub
         GITHUB_PULL_REQUEST = 'github_pull_request'
         MEDIA_CONTENT = 'media_content'
         UPLOADED_TEXT_FILE = 'uploaded_text_file'
-        VALUES = [
-          'repository', 'github_file', 'free_text', 'github_issue', 'github_pull_request',
-          'media_content', 'uploaded_text_file'
+        VALUES = %w[
+          repository github_file free_text github_issue github_pull_request
+          media_content uploaded_text_file
         ].freeze
         def self.from_value(value)
           value
@@ -195,7 +193,7 @@ module OctridevGithub
         WRITER = 'writer'
         ADMIN = 'admin'
         NO_ACCESS = 'no_access'
-        VALUES = ['reader', 'writer', 'admin', 'no_access'].freeze
+        VALUES = %w[reader writer admin no_access].freeze
         def self.from_value(value)
           value
         end
@@ -205,7 +203,7 @@ module OctridevGithub
       module CopilotSpacesUpdateCollaboratorForUserParameter
         USER = 'User'
         TEAM = 'Team'
-        VALUES = ['User', 'Team'].freeze
+        VALUES = %w[User Team].freeze
         def self.from_value(value)
           value
         end
@@ -216,7 +214,7 @@ module OctridevGithub
         READER = 'reader'
         WRITER = 'writer'
         ADMIN = 'admin'
-        VALUES = ['reader', 'writer', 'admin'].freeze
+        VALUES = %w[reader writer admin].freeze
         def self.from_value(value)
           value
         end
@@ -231,9 +229,9 @@ module OctridevGithub
         GITHUB_PULL_REQUEST = 'github_pull_request'
         MEDIA_CONTENT = 'media_content'
         UPLOADED_TEXT_FILE = 'uploaded_text_file'
-        VALUES = [
-          'repository', 'github_file', 'free_text', 'github_issue', 'github_pull_request',
-          'media_content', 'uploaded_text_file'
+        VALUES = %w[
+          repository github_file free_text github_issue github_pull_request
+          media_content uploaded_text_file
         ].freeze
         def self.from_value(value)
           value
@@ -244,7 +242,7 @@ module OctridevGithub
       module CopilotSpacesRemoveCollaboratorForUserParameter
         USER = 'User'
         TEAM = 'Team'
-        VALUES = ['User', 'Team'].freeze
+        VALUES = %w[User Team].freeze
         def self.from_value(value)
           value
         end
@@ -254,7 +252,7 @@ module OctridevGithub
       module CopilotSpacesUpdateCollaboratorForOrgParameter
         USER = 'User'
         TEAM = 'Team'
-        VALUES = ['User', 'Team'].freeze
+        VALUES = %w[User Team].freeze
         def self.from_value(value)
           value
         end
@@ -264,7 +262,7 @@ module OctridevGithub
       module CopilotSpacesUpdateForUserBaseRole
         READER = 'reader'
         NO_ACCESS = 'no_access'
-        VALUES = ['reader', 'no_access'].freeze
+        VALUES = %w[reader no_access].freeze
         def self.from_value(value)
           value
         end
@@ -276,7 +274,7 @@ module OctridevGithub
         WRITER = 'writer'
         ADMIN = 'admin'
         NO_ACCESS = 'no_access'
-        VALUES = ['reader', 'writer', 'admin', 'no_access'].freeze
+        VALUES = %w[reader writer admin no_access].freeze
         def self.from_value(value)
           value
         end
@@ -286,7 +284,7 @@ module OctridevGithub
       module CopilotSpacesAddCollaboratorForOrgActorType
         USER = 'User'
         TEAM = 'Team'
-        VALUES = ['User', 'Team'].freeze
+        VALUES = %w[User Team].freeze
         def self.from_value(value)
           value
         end
@@ -296,7 +294,7 @@ module OctridevGithub
       module CopilotSpacesRemoveCollaboratorForOrgParameter
         USER = 'User'
         TEAM = 'Team'
-        VALUES = ['User', 'Team'].freeze
+        VALUES = %w[User Team].freeze
         def self.from_value(value)
           value
         end
@@ -306,7 +304,7 @@ module OctridevGithub
       module CopilotSpacesAddCollaboratorForUserActorType
         USER = 'User'
         TEAM = 'Team'
-        VALUES = ['User', 'Team'].freeze
+        VALUES = %w[User Team].freeze
         def self.from_value(value)
           value
         end
@@ -316,7 +314,7 @@ module OctridevGithub
       module CopilotSpacesCreateForUserBaseRole
         READER = 'reader'
         NO_ACCESS = 'no_access'
-        VALUES = ['reader', 'no_access'].freeze
+        VALUES = %w[reader no_access].freeze
         def self.from_value(value)
           value
         end

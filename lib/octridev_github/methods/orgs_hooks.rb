@@ -23,24 +23,23 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/hooks"
+            '/hooks'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::OrgHook],
           decoder: :json,
           operation_id: 'orgs_list_webhooks',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -63,26 +62,25 @@ module OctridevGithub
         active: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/hooks"
+            '/hooks'
           ].join,
           config: config,
           body: {
             'name' => name,
             'config' => request_config,
             'events' => events,
-            'active' => active,
+            'active' => active
           },
           return_type: ::OctridevGithub::OrgHook,
           decoder: :json,
           operation_id: 'orgs_create_webhook',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -97,13 +95,12 @@ module OctridevGithub
         hook_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/hooks/",
+            '/hooks/',
             SdkClient.encode_path_segment(hook_id)
           ].join,
           config: config,
@@ -111,7 +108,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'orgs_get_webhook',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -138,13 +135,12 @@ module OctridevGithub
         name: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/hooks/",
+            '/hooks/',
             SdkClient.encode_path_segment(hook_id)
           ].join,
           config: config,
@@ -152,13 +148,13 @@ module OctridevGithub
             'config' => request_config,
             'events' => events,
             'active' => active,
-            'name' => name,
+            'name' => name
           },
           return_type: ::OctridevGithub::OrgHook,
           decoder: :json,
           operation_id: 'orgs_update_webhook',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -173,20 +169,19 @@ module OctridevGithub
         hook_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/hooks/",
+            '/hooks/',
             SdkClient.encode_path_segment(hook_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'orgs_delete_webhook',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -201,21 +196,20 @@ module OctridevGithub
         hook_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/hooks/",
+            '/hooks/',
             SdkClient.encode_path_segment(hook_id),
-            "/config"
+            '/config'
           ].join,
           config: config,
           return_type: ::OctridevGithub::WebhookConfig,
           decoder: :json,
           operation_id: 'orgs_get_webhook_config_for_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -244,29 +238,28 @@ module OctridevGithub
         insecure_ssl: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.if_given(url) { Validation.validate_uri('url', url) }
 
         SdkClient.request(
           'PATCH',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/hooks/",
+            '/hooks/',
             SdkClient.encode_path_segment(hook_id),
-            "/config"
+            '/config'
           ].join,
           config: config,
           body: {
             'url' => url,
             'content_type' => content_type,
             'secret' => secret,
-            'insecure_ssl' => insecure_ssl,
+            'insecure_ssl' => insecure_ssl
           },
           return_type: ::OctridevGithub::WebhookConfig,
           decoder: :json,
           operation_id: 'orgs_update_webhook_config_for_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -294,27 +287,26 @@ module OctridevGithub
         status: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/hooks/",
+            '/hooks/',
             SdkClient.encode_path_segment(hook_id),
-            "/deliveries"
+            '/deliveries'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'cursor' => QueryValue.new(cursor, style: 'form', explode: true),
-            'status' => QueryValue.new(status, style: 'form', explode: true),
+            'status' => QueryValue.new(status, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::HookDeliveryItem],
           decoder: :json,
           operation_id: 'orgs_list_webhook_deliveries',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '400' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -332,15 +324,14 @@ module OctridevGithub
         delivery_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/hooks/",
+            '/hooks/',
             SdkClient.encode_path_segment(hook_id),
-            "/deliveries/",
+            '/deliveries/',
             SdkClient.encode_path_segment(delivery_id)
           ].join,
           config: config,
@@ -348,7 +339,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'orgs_get_webhook_delivery',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '400' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -366,23 +357,22 @@ module OctridevGithub
         delivery_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/hooks/",
+            '/hooks/',
             SdkClient.encode_path_segment(hook_id),
-            "/deliveries/",
+            '/deliveries/',
             SdkClient.encode_path_segment(delivery_id),
-            "/attempts"
+            '/attempts'
           ].join,
           config: config,
           decoder: :json,
           operation_id: 'orgs_redeliver_webhook_delivery',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '400' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -397,21 +387,20 @@ module OctridevGithub
         hook_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/hooks/",
+            '/hooks/',
             SdkClient.encode_path_segment(hook_id),
-            "/pings"
+            '/pings'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'orgs_ping_webhook',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

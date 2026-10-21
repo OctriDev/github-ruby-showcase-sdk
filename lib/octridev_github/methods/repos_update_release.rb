@@ -52,15 +52,14 @@ module OctridevGithub
         discussion_category_name: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/releases/",
+            '/releases/',
             SdkClient.encode_path_segment(release_id)
           ].join,
           config: config,
@@ -72,13 +71,13 @@ module OctridevGithub
             'draft' => draft,
             'prerelease' => prerelease,
             'make_latest' => make_latest,
-            'discussion_category_name' => discussion_category_name,
+            'discussion_category_name' => discussion_category_name
           },
           return_type: ::OctridevGithub::Release,
           decoder: :json,
           operation_id: 'repos_update_release',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

@@ -29,26 +29,25 @@ module OctridevGithub
         lock_reason: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/issues/",
+            '/issues/',
             SdkClient.encode_path_segment(issue_number),
-            "/lock"
+            '/lock'
           ].join,
           config: config,
           body: {
-            'lock_reason' => lock_reason,
+            'lock_reason' => lock_reason
           },
           decoder: :empty,
           operation_id: 'issues_lock',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -66,23 +65,22 @@ module OctridevGithub
         issue_number:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/issues/",
+            '/issues/',
             SdkClient.encode_path_segment(issue_number),
-            "/lock"
+            '/lock'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'issues_unlock',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

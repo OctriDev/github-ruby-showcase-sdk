@@ -40,15 +40,14 @@ module OctridevGithub
         direction: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/caches"
+            '/actions/caches'
           ].join,
           config: config,
           query: {
@@ -57,12 +56,12 @@ module OctridevGithub
             'ref' => QueryValue.new(ref, style: 'form', explode: true),
             'key' => QueryValue.new(key, style: 'form', explode: true),
             'sort' => QueryValue.new(sort, style: 'form', explode: true),
-            'direction' => QueryValue.new(direction, style: 'form', explode: true),
+            'direction' => QueryValue.new(direction, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::ActionsCacheList,
           decoder: :json,
           operation_id: 'actions_get_actions_cache_list',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -84,25 +83,24 @@ module OctridevGithub
         ref: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/caches"
+            '/actions/caches'
           ].join,
           config: config,
           query: {
             'key' => QueryValue.new(key, style: 'form', explode: true),
-            'ref' => QueryValue.new(ref, style: 'form', explode: true),
+            'ref' => QueryValue.new(ref, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::ActionsCacheList,
           decoder: :json,
           operation_id: 'actions_delete_actions_cache_by_key',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -120,21 +118,20 @@ module OctridevGithub
         cache_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/caches/",
+            '/actions/caches/',
             SdkClient.encode_path_segment(cache_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'actions_delete_actions_cache_by_id',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

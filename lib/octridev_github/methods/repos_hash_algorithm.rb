@@ -21,22 +21,21 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/hash-algorithm"
+            '/hash-algorithm'
           ].join,
           config: config,
           return_type: ::OctridevGithub::RepositoryHashAlgorithm,
           decoder: :json,
           operation_id: 'repos_get_hash_algorithm',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

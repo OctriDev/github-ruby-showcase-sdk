@@ -23,25 +23,24 @@ module OctridevGithub
         per: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/traffic/clones"
+            '/traffic/clones'
           ].join,
           config: config,
           query: {
-            'per' => QueryValue.new(per, style: 'form', explode: true),
+            'per' => QueryValue.new(per, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::CloneTraffic,
           decoder: :json,
           operation_id: 'repos_get_clones',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -57,22 +56,21 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/traffic/popular/paths"
+            '/traffic/popular/paths'
           ].join,
           config: config,
           return_type: [::OctridevGithub::ContentTraffic],
           decoder: :json,
           operation_id: 'repos_get_top_paths',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -90,22 +88,21 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/traffic/popular/referrers"
+            '/traffic/popular/referrers'
           ].join,
           config: config,
           return_type: [::OctridevGithub::ReferrerTraffic],
           decoder: :json,
           operation_id: 'repos_get_top_referrers',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -123,25 +120,24 @@ module OctridevGithub
         per: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/traffic/views"
+            '/traffic/views'
           ].join,
           config: config,
           query: {
-            'per' => QueryValue.new(per, style: 'form', explode: true),
+            'per' => QueryValue.new(per, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::ViewTraffic,
           decoder: :json,
           operation_id: 'repos_get_views',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError }
         ).data
       end
     end

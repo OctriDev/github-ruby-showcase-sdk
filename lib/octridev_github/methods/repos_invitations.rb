@@ -27,25 +27,24 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/invitations"
+            '/invitations'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::RepositoryInvitation],
           decoder: :json,
           operation_id: 'repos_list_invitations',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -67,25 +66,24 @@ module OctridevGithub
         permissions: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/invitations/",
+            '/invitations/',
             SdkClient.encode_path_segment(invitation_id)
           ].join,
           config: config,
           body: {
-            'permissions' => permissions,
+            'permissions' => permissions
           },
           return_type: ::OctridevGithub::RepositoryInvitation,
           decoder: :json,
           operation_id: 'repos_update_invitation',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -103,21 +101,20 @@ module OctridevGithub
         invitation_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/invitations/",
+            '/invitations/',
             SdkClient.encode_path_segment(invitation_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_delete_invitation',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

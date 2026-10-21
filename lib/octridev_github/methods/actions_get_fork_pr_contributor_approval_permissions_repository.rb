@@ -21,22 +21,21 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/permissions/fork-pr-contributor-approval"
+            '/actions/permissions/fork-pr-contributor-approval'
           ].join,
           config: config,
           return_type: ::OctridevGithub::ActionsForkPrContributorApproval,
           decoder: :json,
           operation_id: 'actions_get_fork_pr_contributor_approval_permissions_repository',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

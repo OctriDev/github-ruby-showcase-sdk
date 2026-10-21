@@ -23,23 +23,22 @@ module OctridevGithub
         run_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runs/",
+            '/actions/runs/',
             SdkClient.encode_path_segment(run_id),
-            "/logs"
+            '/logs'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'actions_delete_workflow_run_logs',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
     end

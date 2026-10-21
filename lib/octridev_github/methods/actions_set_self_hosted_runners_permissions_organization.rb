@@ -22,22 +22,21 @@ module OctridevGithub
         enabled_repositories:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/permissions/self-hosted-runners"
+            '/actions/permissions/self-hosted-runners'
           ].join,
           config: config,
           body: {
-            'enabled_repositories' => enabled_repositories,
+            'enabled_repositories' => enabled_repositories
           },
           decoder: :empty,
           operation_id: 'actions_set_self_hosted_runners_permissions_organization',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
     end

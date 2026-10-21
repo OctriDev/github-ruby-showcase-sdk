@@ -17,19 +17,18 @@ module OctridevGithub
         org:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/codespaces/secrets/public-key"
+            '/codespaces/secrets/public-key'
           ].join,
           config: config,
           return_type: ::OctridevGithub::CodespacesPublicKey,
           decoder: :json,
           operation_id: 'codespaces_get_org_public_key',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

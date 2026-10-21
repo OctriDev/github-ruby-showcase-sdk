@@ -25,26 +25,25 @@ module OctridevGithub
         per_page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/codespaces/secrets/",
+            '/codespaces/secrets/',
             SdkClient.encode_path_segment(secret_name),
-            "/repositories"
+            '/repositories'
           ].join,
           config: config,
           query: {
             'page' => QueryValue.new(page, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Codespaces::CodespacesListSelectedReposForOrgSecretResponse,
           decoder: :json,
           operation_id: 'codespaces_list_selected_repos_for_org_secret',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

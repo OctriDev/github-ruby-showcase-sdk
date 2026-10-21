@@ -23,22 +23,21 @@ module OctridevGithub
         pull_number:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pulls/",
+            '/pulls/',
             SdkClient.encode_path_segment(pull_number),
-            "/merge"
+            '/merge'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'pulls_check_if_merged',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -65,30 +64,29 @@ module OctridevGithub
         merge_method: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pulls/",
+            '/pulls/',
             SdkClient.encode_path_segment(pull_number),
-            "/merge"
+            '/merge'
           ].join,
           config: config,
           body: {
             'commit_title' => commit_title,
             'commit_message' => commit_message,
             'sha' => sha,
-            'merge_method' => merge_method,
+            'merge_method' => merge_method
           },
           return_type: ::OctridevGithub::PullRequestMergeResult,
           decoder: :json,
           operation_id: 'pulls_merge',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
     end

@@ -125,23 +125,23 @@ module OctridevGithub
         web_commit_signoff_required: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo)
           ].join,
           config: config,
           body: __sdk_body_repos_update_part1(name: name, description: description, homepage: homepage, private: private, visibility: visibility, security_and_analysis: security_and_analysis, has_issues: has_issues, has_projects: has_projects, has_wiki: has_wiki, has_pull_requests: has_pull_requests, pull_request_creation_policy: pull_request_creation_policy, is_template: is_template, default_branch: default_branch, allow_squash_merge: allow_squash_merge, allow_merge_commit: allow_merge_commit, allow_rebase_merge: allow_rebase_merge, allow_auto_merge: allow_auto_merge, delete_branch_on_merge: delete_branch_on_merge).merge(
-            __sdk_body_repos_update_part2(allow_update_branch: allow_update_branch, use_squash_pr_title_as_default: use_squash_pr_title_as_default, squash_merge_commit_title: squash_merge_commit_title, squash_merge_commit_message: squash_merge_commit_message, merge_commit_title: merge_commit_title, merge_commit_message: merge_commit_message, archived: archived, allow_forking: allow_forking, web_commit_signoff_required: web_commit_signoff_required)),
+            __sdk_body_repos_update_part2(allow_update_branch: allow_update_branch, use_squash_pr_title_as_default: use_squash_pr_title_as_default, squash_merge_commit_title: squash_merge_commit_title, squash_merge_commit_message: squash_merge_commit_message, merge_commit_title: merge_commit_title, merge_commit_message: merge_commit_message, archived: archived, allow_forking: allow_forking, web_commit_signoff_required: web_commit_signoff_required)
+          ),
           return_type: ::OctridevGithub::FullRepository,
           decoder: :json,
           operation_id: 'repos_update',
           request_options: request_options,
-          errors: { '307' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '307' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -183,7 +183,7 @@ module OctridevGithub
           'allow_merge_commit' => allow_merge_commit,
           'allow_rebase_merge' => allow_rebase_merge,
           'allow_auto_merge' => allow_auto_merge,
-          'delete_branch_on_merge' => delete_branch_on_merge,
+          'delete_branch_on_merge' => delete_branch_on_merge
         }
       end
       private_class_method :__sdk_body_repos_update_part1
@@ -208,7 +208,7 @@ module OctridevGithub
           'merge_commit_message' => merge_commit_message,
           'archived' => archived,
           'allow_forking' => allow_forking,
-          'web_commit_signoff_required' => web_commit_signoff_required,
+          'web_commit_signoff_required' => web_commit_signoff_required
         }
       end
       private_class_method :__sdk_body_repos_update_part2

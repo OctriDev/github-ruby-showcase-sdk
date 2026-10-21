@@ -14,15 +14,14 @@ module OctridevGithub
         config:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/feeds",
+          '/feeds',
           config: config,
           return_type: ::OctridevGithub::Feed,
           decoder: :json,
           operation_id: 'activity_get_feeds',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

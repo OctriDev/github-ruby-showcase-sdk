@@ -5,40 +5,39 @@
 
 # webhook_check_run_completed_form_encoded domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalWebhookCheckRunCompletedFormEncodedMetadata
-  FIELDS = {
-    payload: "payload",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    payload
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookCheckRunCompletedFormEncoded.
-# The check_run.completed webhook encoded with URL encoding
-class WebhookCheckRunCompletedFormEncoded
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookCheckRunCompletedFormEncodedMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookCheckRunCompletedFormEncodedMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookCheckRunCompletedFormEncodedMetadata::DECODERS
-
-  # @return [String] A URL-encoded string of the check_run.completed JSON payload. The decoded payload is a JSON object.
-  attr_reader :payload
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookCheckRunCompletedFormEncodedMetadata
+    FIELDS = {
+      payload: 'payload'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      payload
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
+  # API model for WebhookCheckRunCompletedFormEncoded.
+  # The check_run.completed webhook encoded with URL encoding
+  class WebhookCheckRunCompletedFormEncoded
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookCheckRunCompletedFormEncodedMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookCheckRunCompletedFormEncodedMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookCheckRunCompletedFormEncodedMetadata::DECODERS
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+    # @return [String] A URL-encoded string of the check_run.completed JSON payload. The decoded payload is a JSON object.
+    attr_reader :payload
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
 end

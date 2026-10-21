@@ -5,101 +5,100 @@
 
 # actions_review domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalReviewCustomGatesCommentRequiredMetadata
-  FIELDS = {
-    environment_name: "environment_name",
-    comment: "comment",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    environment_name
-    comment
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for ReviewCustomGatesCommentRequired.
-# Typed representation of the `ReviewCustomGatesCommentRequired` API schema.
-class ReviewCustomGatesCommentRequired
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalReviewCustomGatesCommentRequiredMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalReviewCustomGatesCommentRequiredMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalReviewCustomGatesCommentRequiredMetadata::DECODERS
-
-  # @return [String] The name of the environment to approve or reject.
-  attr_reader :environment_name
-  # @return [String] Comment associated with the pending deployment protection rule. **Required when state is not provided.**
-  attr_reader :comment
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalReviewCustomGatesCommentRequiredMetadata
+    FIELDS = {
+      environment_name: 'environment_name',
+      comment: 'comment'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      environment_name
+      comment
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ReviewCustomGatesCommentRequired.
+  # Typed representation of the `ReviewCustomGatesCommentRequired` API schema.
+  class ReviewCustomGatesCommentRequired
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalReviewCustomGatesCommentRequiredMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalReviewCustomGatesCommentRequiredMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalReviewCustomGatesCommentRequiredMetadata::DECODERS
+
+    # @return [String] The name of the environment to approve or reject.
+    attr_reader :environment_name
+    # @return [String] Comment associated with the pending deployment protection rule. **Required when state is not provided.**
+    attr_reader :comment
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalReviewCustomGatesStateRequiredMetadata
-  FIELDS = {
-    environment_name: "environment_name",
-    state: "state",
-    comment: "comment",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    environment_name
-    state
-  ].freeze
-  DECODERS = {
-    state: lambda do |value|
-      ::OctridevGithub::ReviewCustomGatesStateRequiredState.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for ReviewCustomGatesStateRequired.
-# Typed representation of the `ReviewCustomGatesStateRequired` API schema.
-class ReviewCustomGatesStateRequired
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalReviewCustomGatesStateRequiredMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalReviewCustomGatesStateRequiredMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalReviewCustomGatesStateRequiredMetadata::DECODERS
-
-  # @return [String] The name of the environment to approve or reject.
-  attr_reader :environment_name
-  # @return [ReviewCustomGatesStateRequiredState] Whether to approve or reject deployment to the specified environments.
-  attr_reader :state
-  # @return [String] Optional comment to include with the review.
-  attr_reader :comment
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalReviewCustomGatesStateRequiredMetadata
+    FIELDS = {
+      environment_name: 'environment_name',
+      state: 'state',
+      comment: 'comment'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      environment_name
+      state
+    ].freeze
+    DECODERS = {
+      state: lambda do |value|
+        ::OctridevGithub::ReviewCustomGatesStateRequiredState.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ReviewCustomGatesStateRequired.
+  # Typed representation of the `ReviewCustomGatesStateRequired` API schema.
+  class ReviewCustomGatesStateRequired
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalReviewCustomGatesStateRequiredMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalReviewCustomGatesStateRequiredMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalReviewCustomGatesStateRequiredMetadata::DECODERS
+
+    # @return [String] The name of the environment to approve or reject.
+    attr_reader :environment_name
+    # @return [ReviewCustomGatesStateRequiredState] Whether to approve or reject deployment to the specified environments.
+    attr_reader :state
+    # @return [String] Optional comment to include with the review.
+    attr_reader :comment
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the ReviewCustomGatesStateRequiredState SDK namespace.
+  module ReviewCustomGatesStateRequiredState
+    APPROVED = 'approved'
+    REJECTED = 'rejected'
+    VALUES = %w[approved rejected].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the ReviewCustomGatesStateRequiredState SDK namespace.
-module ReviewCustomGatesStateRequiredState
-  APPROVED = 'approved'
-  REJECTED = 'rejected'
-  VALUES = ['approved', 'rejected'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

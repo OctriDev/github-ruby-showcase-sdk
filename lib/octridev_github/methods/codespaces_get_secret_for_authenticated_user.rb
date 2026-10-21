@@ -17,18 +17,17 @@ module OctridevGithub
         secret_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/user/codespaces/secrets/",
+            '/user/codespaces/secrets/',
             SdkClient.encode_path_segment(secret_name)
           ].join,
           config: config,
           return_type: ::OctridevGithub::CodespacesSecret,
           decoder: :json,
           operation_id: 'codespaces_get_secret_for_authenticated_user',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

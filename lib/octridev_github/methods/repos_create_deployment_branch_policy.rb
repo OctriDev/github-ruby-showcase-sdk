@@ -34,27 +34,26 @@ module OctridevGithub
         type: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name),
-            "/deployment-branch-policies"
+            '/deployment-branch-policies'
           ].join,
           config: config,
           body: {
             'name' => name,
-            'type' => type,
+            'type' => type
           },
           return_type: ::OctridevGithub::DeploymentBranchPolicy,
           decoder: :json,
           operation_id: 'repos_create_deployment_branch_policy',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

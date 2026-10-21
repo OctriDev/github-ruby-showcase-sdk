@@ -28,7 +28,6 @@ module OctridevGithub
         selected_usernames: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.if_given(selected_usernames) do
           Validation.validate_items('selected_usernames', selected_usernames, max: 100)
         end
@@ -36,19 +35,19 @@ module OctridevGithub
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/codespaces/access"
+            '/codespaces/access'
           ].join,
           config: config,
           body: {
             'visibility' => visibility,
-            'selected_usernames' => selected_usernames,
+            'selected_usernames' => selected_usernames
           },
           decoder: :empty,
           operation_id: 'codespaces_set_codespaces_access',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -66,24 +65,23 @@ module OctridevGithub
         selected_usernames:,
         request_options: nil
       )
-
         Validation.validate_items('selected_usernames', selected_usernames, max: 100)
 
         SdkClient.request(
           'POST',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/codespaces/access/selected_users"
+            '/codespaces/access/selected_users'
           ].join,
           config: config,
           body: {
-            'selected_usernames' => selected_usernames,
+            'selected_usernames' => selected_usernames
           },
           decoder: :empty,
           operation_id: 'codespaces_set_codespaces_access_users',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -101,24 +99,23 @@ module OctridevGithub
         selected_usernames:,
         request_options: nil
       )
-
         Validation.validate_items('selected_usernames', selected_usernames, max: 100)
 
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/codespaces/access/selected_users"
+            '/codespaces/access/selected_users'
           ].join,
           config: config,
           body: {
-            'selected_usernames' => selected_usernames,
+            'selected_usernames' => selected_usernames
           },
           decoder: :empty,
           operation_id: 'codespaces_delete_codespaces_access_users',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
     end

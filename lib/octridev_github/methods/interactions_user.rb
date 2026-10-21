@@ -14,14 +14,13 @@ module OctridevGithub
         config:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/user/interaction-limits",
+          '/user/interaction-limits',
           config: config,
           decoder: :json,
           operation_id: 'interactions_get_restrictions_for_authenticated_user',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -38,20 +37,19 @@ module OctridevGithub
         expiry: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
-          "/user/interaction-limits",
+          '/user/interaction-limits',
           config: config,
           body: {
             'limit' => limit,
-            'expiry' => expiry,
+            'expiry' => expiry
           },
           return_type: ::OctridevGithub::InteractionLimitResponse,
           decoder: :json,
           operation_id: 'interactions_set_restrictions_for_authenticated_user',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError },
+          errors: { '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -60,14 +58,13 @@ module OctridevGithub
         config:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
-          "/user/interaction-limits",
+          '/user/interaction-limits',
           config: config,
           decoder: :empty,
           operation_id: 'interactions_remove_restrictions_for_authenticated_user',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

@@ -25,23 +25,22 @@ module OctridevGithub
         reaction_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pulls/comments/",
+            '/pulls/comments/',
             SdkClient.encode_path_segment(comment_id),
-            "/reactions/",
+            '/reactions/',
             SdkClient.encode_path_segment(reaction_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'reactions_delete_for_pull_request_comment',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

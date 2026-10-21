@@ -5,686 +5,683 @@
 
 # secret_scanning domain models
 module OctridevGithub
-# Defines the NullableAlertUpdatedAt SDK value decoder.
-module NullableAlertUpdatedAt
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the NullableSecretScanningFirstDetectedLocation SDK namespace.
-module NullableSecretScanningFirstDetectedLocation
-  def self.from_hash(hash)
-    shape_mapping = {
-      "blob_url" => SecretScanningLocationCommit,
-      "page_url" => SecretScanningLocationWikiCommit,
-      "issue_title_url" => SecretScanningLocationIssueTitle,
-      "issue_body_url" => SecretScanningLocationIssueBody,
-      "issue_comment_url" => SecretScanningLocationIssueComment,
-      "discussion_title_url" => SecretScanningLocationDiscussionTitle,
-      "discussion_body_url" => SecretScanningLocationDiscussionBody,
-      "discussion_comment_url" => SecretScanningLocationDiscussionComment,
-      "pull_request_title_url" => SecretScanningLocationPullRequestTitle,
-      "pull_request_body_url" => SecretScanningLocationPullRequestBody,
-      "pull_request_comment_url" => SecretScanningLocationPullRequestComment,
-      "pull_request_review_url" => SecretScanningLocationPullRequestReview,
-      "pull_request_review_comment_url" => SecretScanningLocationPullRequestReviewComment,
-    }
-    type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
-    decoded = type&.from_hash(hash)
-    return decoded unless type.nil?
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalOrganizationSecretScanningAlertMetadata
-  FIELDS = {
-    number: "number",
-    created_at: "created_at",
-    updated_at: "updated_at",
-    url: "url",
-    html_url: "html_url",
-    locations_url: "locations_url",
-    state: "state",
-    resolution: "resolution",
-    resolved_at: "resolved_at",
-    resolved_by: "resolved_by",
-    secret_type: "secret_type",
-    secret_type_display_name: "secret_type_display_name",
-    provider: "provider",
-    provider_slug: "provider_slug",
-    secret: "secret",
-    repository: "repository",
-    push_protection_bypassed: "push_protection_bypassed",
-    push_protection_bypassed_by: "push_protection_bypassed_by",
-    push_protection_bypassed_at: "push_protection_bypassed_at",
-    push_protection_bypass_request_reviewer: "push_protection_bypass_request_reviewer",
-    push_protection_bypass_request_reviewer_comment: "push_protection_bypass_request_reviewer_comment",
-    push_protection_bypass_request_comment: "push_protection_bypass_request_comment",
-    push_protection_bypass_request_html_url: "push_protection_bypass_request_html_url",
-    resolution_comment: "resolution_comment",
-    validity: "validity",
-    publicly_leaked: "publicly_leaked",
-    multi_repo: "multi_repo",
-    is_base64_encoded: "is_base64_encoded",
-    first_location_detected: "first_location_detected",
-    has_more_locations: "has_more_locations",
-    assigned_to: "assigned_to",
-    closure_request_comment: "closure_request_comment",
-    closure_request_reviewer_comment: "closure_request_reviewer_comment",
-    closure_request_reviewer: "closure_request_reviewer",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    number: lambda do |value|
-      ::OctridevGithub::AlertNumber.from_value(value)
-    end,
-    created_at: lambda do |value|
-      ::OctridevGithub::AlertCreatedAt.from_value(value)
-    end,
-    updated_at: lambda do |value|
-      ::OctridevGithub::NullableAlertUpdatedAt.from_value(value)
-    end,
-    url: lambda do |value|
-      ::OctridevGithub::AlertUrl.from_value(value)
-    end,
-    html_url: lambda do |value|
-      ::OctridevGithub::AlertHtmlUrl.from_value(value)
-    end,
-    state: lambda do |value|
-      ::OctridevGithub::SecretScanningAlertState.from_value(value)
-    end,
-    resolution: lambda do |value|
-      ::OctridevGithub::SecretScanningAlertResolution.from_value(value)
-    end,
-    resolved_by: lambda do |value|
-      ::OctridevGithub::NullableSimpleUser.from_hash(value)
-    end,
-    repository: lambda do |value|
-      ::OctridevGithub::SimpleRepository.from_hash(value)
-    end,
-    push_protection_bypassed_by: lambda do |value|
-      ::OctridevGithub::NullableSimpleUser.from_hash(value)
-    end,
-    push_protection_bypass_request_reviewer: lambda do |value|
-      ::OctridevGithub::NullableSimpleUser.from_hash(value)
-    end,
-    validity: lambda do |value|
-      ::OctridevGithub::OrganizationSecretScanningAlertValidity.from_value(value)
-    end,
-    first_location_detected: lambda do |value|
-      ::OctridevGithub::NullableSecretScanningFirstDetectedLocation.from_hash(value)
-    end,
-    assigned_to: lambda do |value|
-      ::OctridevGithub::NullableSimpleUser.from_hash(value)
-    end,
-    closure_request_reviewer: lambda do |value|
-      ::OctridevGithub::NullableSimpleUser.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for OrganizationSecretScanningAlert.
-# Typed representation of the `OrganizationSecretScanningAlert` API schema.
-class OrganizationSecretScanningAlert
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalOrganizationSecretScanningAlertMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalOrganizationSecretScanningAlertMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalOrganizationSecretScanningAlertMetadata::DECODERS
-
-  # @return [AlertNumber] The security alert number.
-  attr_reader :number
-  # @return [AlertCreatedAt] The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-  attr_reader :created_at
-  # @return [NullableAlertUpdatedAt] The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-  attr_reader :updated_at
-  # @return [AlertUrl] The REST API URL of the alert resource.
-  attr_reader :url
-  # @return [AlertHtmlUrl] The GitHub URL of the alert resource.
-  attr_reader :html_url
-  # @return [String] The REST API URL of the code locations for this alert.
-  attr_reader :locations_url
-  # @return [SecretScanningAlertState] Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.
-  attr_reader :state
-  # @return [SecretScanningAlertResolution] **Required when the `state` is `resolved`.** The reason for resolving the alert.
-  attr_reader :resolution
-  # @return [String] The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-  attr_reader :resolved_at
-  # @return [NullableSimpleUser] A GitHub user.
-  attr_reader :resolved_by
-  # @return [String] The type of secret that secret scanning detected.
-  attr_reader :secret_type
-  # @return [String] User-friendly name for the detected secret, matching the `secret_type`. For a list of built-in patterns, see "Supported secret scanning patterns."
-  attr_reader :secret_type_display_name
-  # @return [String] The provider of the secret that was detected.
-  attr_reader :provider
-  # @return [String] The slug identifier for the provider of the secret that was detected. Use this value for filtering by provider with the `providers` or `exclude_providers` parameters.
-  attr_reader :provider_slug
-  # @return [String] The secret that was detected.
-  attr_reader :secret
-  # @return [SimpleRepository] A GitHub repository.
-  attr_reader :repository
-  # @return [Boolean] Whether push protection was bypassed for the detected secret.
-  attr_reader :push_protection_bypassed
-  # @return [NullableSimpleUser] A GitHub user.
-  attr_reader :push_protection_bypassed_by
-  # @return [String] The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-  attr_reader :push_protection_bypassed_at
-  # @return [NullableSimpleUser] A GitHub user.
-  attr_reader :push_protection_bypass_request_reviewer
-  # @return [String] An optional comment when reviewing a push protection bypass.
-  attr_reader :push_protection_bypass_request_reviewer_comment
-  # @return [String] An optional comment when requesting a push protection bypass.
-  attr_reader :push_protection_bypass_request_comment
-  # @return [String] The URL to a push protection bypass request.
-  attr_reader :push_protection_bypass_request_html_url
-  # @return [String] The comment that was optionally added when this alert was closed
-  attr_reader :resolution_comment
-  # @return [OrganizationSecretScanningAlertValidity] The token status as of the latest validity check.
-  attr_reader :validity
-  # @return [Boolean] Whether the secret was publicly leaked.
-  attr_reader :publicly_leaked
-  # @return [Boolean] Whether the detected secret was found in multiple repositories in the same organization or enterprise.
-  attr_reader :multi_repo
-  # @return [Boolean] A boolean value representing whether or not alert is base64 encoded
-  attr_reader :is_base64_encoded
-  # @return [NullableSecretScanningFirstDetectedLocation] Details on the location where the token was initially detected. This can be a commit, wiki commit, issue, discussion, pull request.
-  attr_reader :first_location_detected
-  # @return [Boolean] A boolean value representing whether or not the token in the alert was detected in more than one location.
-  attr_reader :has_more_locations
-  # @return [NullableSimpleUser] A GitHub user.
-  attr_reader :assigned_to
-  # @return [String] An optional comment from the closure request author.
-  attr_reader :closure_request_comment
-  # @return [String] An optional comment from the closure request reviewer.
-  attr_reader :closure_request_reviewer_comment
-  # @return [NullableSimpleUser] A GitHub user.
-  attr_reader :closure_request_reviewer
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the NullableAlertUpdatedAt SDK value decoder.
+  module NullableAlertUpdatedAt
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the NullableSecretScanningFirstDetectedLocation SDK namespace.
+  module NullableSecretScanningFirstDetectedLocation
+    def self.from_hash(hash)
+      shape_mapping = {
+        'blob_url' => SecretScanningLocationCommit,
+        'page_url' => SecretScanningLocationWikiCommit,
+        'issue_title_url' => SecretScanningLocationIssueTitle,
+        'issue_body_url' => SecretScanningLocationIssueBody,
+        'issue_comment_url' => SecretScanningLocationIssueComment,
+        'discussion_title_url' => SecretScanningLocationDiscussionTitle,
+        'discussion_body_url' => SecretScanningLocationDiscussionBody,
+        'discussion_comment_url' => SecretScanningLocationDiscussionComment,
+        'pull_request_title_url' => SecretScanningLocationPullRequestTitle,
+        'pull_request_body_url' => SecretScanningLocationPullRequestBody,
+        'pull_request_comment_url' => SecretScanningLocationPullRequestComment,
+        'pull_request_review_url' => SecretScanningLocationPullRequestReview,
+        'pull_request_review_comment_url' => SecretScanningLocationPullRequestReviewComment
+      }
+      type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
+      decoded = type&.from_hash(hash)
+      decoded unless type.nil?
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the OrganizationSecretScanningAlertValidity SDK namespace.
-module OrganizationSecretScanningAlertValidity
-  ACTIVE = 'active'
-  INACTIVE = 'inactive'
-  UNKNOWN = 'unknown'
-  VALUES = ['active', 'inactive', 'unknown'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalSecretScanningAlertMetadata
-  FIELDS = {
-    number: "number",
-    created_at: "created_at",
-    updated_at: "updated_at",
-    url: "url",
-    html_url: "html_url",
-    locations_url: "locations_url",
-    state: "state",
-    resolution: "resolution",
-    resolved_at: "resolved_at",
-    resolved_by: "resolved_by",
-    resolution_comment: "resolution_comment",
-    secret_type: "secret_type",
-    secret_type_display_name: "secret_type_display_name",
-    provider: "provider",
-    provider_slug: "provider_slug",
-    secret: "secret",
-    push_protection_bypassed: "push_protection_bypassed",
-    push_protection_bypassed_by: "push_protection_bypassed_by",
-    push_protection_bypassed_at: "push_protection_bypassed_at",
-    push_protection_bypass_request_reviewer: "push_protection_bypass_request_reviewer",
-    push_protection_bypass_request_reviewer_comment: "push_protection_bypass_request_reviewer_comment",
-    push_protection_bypass_request_comment: "push_protection_bypass_request_comment",
-    push_protection_bypass_request_html_url: "push_protection_bypass_request_html_url",
-    validity: "validity",
-    publicly_leaked: "publicly_leaked",
-    multi_repo: "multi_repo",
-    is_base64_encoded: "is_base64_encoded",
-    first_location_detected: "first_location_detected",
-    has_more_locations: "has_more_locations",
-    assigned_to: "assigned_to",
-    closure_request_comment: "closure_request_comment",
-    closure_request_reviewer_comment: "closure_request_reviewer_comment",
-    closure_request_reviewer: "closure_request_reviewer",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    number: lambda do |value|
-      ::OctridevGithub::AlertNumber.from_value(value)
-    end,
-    created_at: lambda do |value|
-      ::OctridevGithub::AlertCreatedAt.from_value(value)
-    end,
-    updated_at: lambda do |value|
-      ::OctridevGithub::NullableAlertUpdatedAt.from_value(value)
-    end,
-    url: lambda do |value|
-      ::OctridevGithub::AlertUrl.from_value(value)
-    end,
-    html_url: lambda do |value|
-      ::OctridevGithub::AlertHtmlUrl.from_value(value)
-    end,
-    state: lambda do |value|
-      ::OctridevGithub::SecretScanningAlertState.from_value(value)
-    end,
-    resolution: lambda do |value|
-      ::OctridevGithub::SecretScanningAlertResolution.from_value(value)
-    end,
-    resolved_by: lambda do |value|
-      ::OctridevGithub::NullableSimpleUser.from_hash(value)
-    end,
-    push_protection_bypassed_by: lambda do |value|
-      ::OctridevGithub::NullableSimpleUser.from_hash(value)
-    end,
-    push_protection_bypass_request_reviewer: lambda do |value|
-      ::OctridevGithub::NullableSimpleUser.from_hash(value)
-    end,
-    validity: lambda do |value|
-      ::OctridevGithub::SecretScanningAlertValidity.from_value(value)
-    end,
-    first_location_detected: lambda do |value|
-      ::OctridevGithub::NullableSecretScanningFirstDetectedLocation.from_hash(value)
-    end,
-    assigned_to: lambda do |value|
-      ::OctridevGithub::NullableSimpleUser.from_hash(value)
-    end,
-    closure_request_reviewer: lambda do |value|
-      ::OctridevGithub::NullableSimpleUser.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for SecretScanningAlert.
-# Typed representation of the `SecretScanningAlert` API schema.
-class SecretScanningAlert
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalSecretScanningAlertMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalSecretScanningAlertMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalSecretScanningAlertMetadata::DECODERS
-
-  # @return [AlertNumber] The security alert number.
-  attr_reader :number
-  # @return [AlertCreatedAt] The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-  attr_reader :created_at
-  # @return [NullableAlertUpdatedAt] The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-  attr_reader :updated_at
-  # @return [AlertUrl] The REST API URL of the alert resource.
-  attr_reader :url
-  # @return [AlertHtmlUrl] The GitHub URL of the alert resource.
-  attr_reader :html_url
-  # @return [String] The REST API URL of the code locations for this alert.
-  attr_reader :locations_url
-  # @return [SecretScanningAlertState] Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.
-  attr_reader :state
-  # @return [SecretScanningAlertResolution] **Required when the `state` is `resolved`.** The reason for resolving the alert.
-  attr_reader :resolution
-  # @return [String] The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-  attr_reader :resolved_at
-  # @return [NullableSimpleUser] A GitHub user.
-  attr_reader :resolved_by
-  # @return [String] An optional comment to resolve an alert.
-  attr_reader :resolution_comment
-  # @return [String] The type of secret that secret scanning detected.
-  attr_reader :secret_type
-  # @return [String] User-friendly name for the detected secret, matching the `secret_type`. For a list of built-in patterns, see "Supported secret scanning patterns."
-  attr_reader :secret_type_display_name
-  # @return [String] The provider of the secret that was detected.
-  attr_reader :provider
-  # @return [String] The slug identifier for the provider of the secret that was detected. Use this value for filtering by provider with the `providers` or `exclude_providers` parameters.
-  attr_reader :provider_slug
-  # @return [String] The secret that was detected.
-  attr_reader :secret
-  # @return [Boolean] Whether push protection was bypassed for the detected secret.
-  attr_reader :push_protection_bypassed
-  # @return [NullableSimpleUser] A GitHub user.
-  attr_reader :push_protection_bypassed_by
-  # @return [String] The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-  attr_reader :push_protection_bypassed_at
-  # @return [NullableSimpleUser] A GitHub user.
-  attr_reader :push_protection_bypass_request_reviewer
-  # @return [String] An optional comment when reviewing a push protection bypass.
-  attr_reader :push_protection_bypass_request_reviewer_comment
-  # @return [String] An optional comment when requesting a push protection bypass.
-  attr_reader :push_protection_bypass_request_comment
-  # @return [String] The URL to a push protection bypass request.
-  attr_reader :push_protection_bypass_request_html_url
-  # @return [SecretScanningAlertValidity] The token status as of the latest validity check.
-  attr_reader :validity
-  # @return [Boolean] Whether the detected secret was publicly leaked.
-  attr_reader :publicly_leaked
-  # @return [Boolean] Whether the detected secret was found in multiple repositories under the same organization or enterprise.
-  attr_reader :multi_repo
-  # @return [Boolean] A boolean value representing whether or not alert is base64 encoded
-  attr_reader :is_base64_encoded
-  # @return [NullableSecretScanningFirstDetectedLocation] Details on the location where the token was initially detected. This can be a commit, wiki commit, issue, discussion, pull request.
-  attr_reader :first_location_detected
-  # @return [Boolean] A boolean value representing whether or not the token in the alert was detected in more than one location.
-  attr_reader :has_more_locations
-  # @return [NullableSimpleUser] A GitHub user.
-  attr_reader :assigned_to
-  # @return [String] An optional comment from the closure request author.
-  attr_reader :closure_request_comment
-  # @return [String] An optional comment from the closure request reviewer.
-  attr_reader :closure_request_reviewer_comment
-  # @return [NullableSimpleUser] A GitHub user.
-  attr_reader :closure_request_reviewer
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalOrganizationSecretScanningAlertMetadata
+    FIELDS = {
+      number: 'number',
+      created_at: 'created_at',
+      updated_at: 'updated_at',
+      url: 'url',
+      html_url: 'html_url',
+      locations_url: 'locations_url',
+      state: 'state',
+      resolution: 'resolution',
+      resolved_at: 'resolved_at',
+      resolved_by: 'resolved_by',
+      secret_type: 'secret_type',
+      secret_type_display_name: 'secret_type_display_name',
+      provider: 'provider',
+      provider_slug: 'provider_slug',
+      secret: 'secret',
+      repository: 'repository',
+      push_protection_bypassed: 'push_protection_bypassed',
+      push_protection_bypassed_by: 'push_protection_bypassed_by',
+      push_protection_bypassed_at: 'push_protection_bypassed_at',
+      push_protection_bypass_request_reviewer: 'push_protection_bypass_request_reviewer',
+      push_protection_bypass_request_reviewer_comment: 'push_protection_bypass_request_reviewer_comment',
+      push_protection_bypass_request_comment: 'push_protection_bypass_request_comment',
+      push_protection_bypass_request_html_url: 'push_protection_bypass_request_html_url',
+      resolution_comment: 'resolution_comment',
+      validity: 'validity',
+      publicly_leaked: 'publicly_leaked',
+      multi_repo: 'multi_repo',
+      is_base64_encoded: 'is_base64_encoded',
+      first_location_detected: 'first_location_detected',
+      has_more_locations: 'has_more_locations',
+      assigned_to: 'assigned_to',
+      closure_request_comment: 'closure_request_comment',
+      closure_request_reviewer_comment: 'closure_request_reviewer_comment',
+      closure_request_reviewer: 'closure_request_reviewer'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      number: lambda do |value|
+        ::OctridevGithub::AlertNumber.from_value(value)
+      end,
+      created_at: lambda do |value|
+        ::OctridevGithub::AlertCreatedAt.from_value(value)
+      end,
+      updated_at: lambda do |value|
+        ::OctridevGithub::NullableAlertUpdatedAt.from_value(value)
+      end,
+      url: lambda do |value|
+        ::OctridevGithub::AlertUrl.from_value(value)
+      end,
+      html_url: lambda do |value|
+        ::OctridevGithub::AlertHtmlUrl.from_value(value)
+      end,
+      state: lambda do |value|
+        ::OctridevGithub::SecretScanningAlertState.from_value(value)
+      end,
+      resolution: lambda do |value|
+        ::OctridevGithub::SecretScanningAlertResolution.from_value(value)
+      end,
+      resolved_by: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end,
+      repository: lambda do |value|
+        ::OctridevGithub::SimpleRepository.from_hash(value)
+      end,
+      push_protection_bypassed_by: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end,
+      push_protection_bypass_request_reviewer: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end,
+      validity: lambda do |value|
+        ::OctridevGithub::OrganizationSecretScanningAlertValidity.from_value(value)
+      end,
+      first_location_detected: lambda do |value|
+        ::OctridevGithub::NullableSecretScanningFirstDetectedLocation.from_hash(value)
+      end,
+      assigned_to: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end,
+      closure_request_reviewer: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for OrganizationSecretScanningAlert.
+  # Typed representation of the `OrganizationSecretScanningAlert` API schema.
+  class OrganizationSecretScanningAlert
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalOrganizationSecretScanningAlertMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalOrganizationSecretScanningAlertMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalOrganizationSecretScanningAlertMetadata::DECODERS
+
+    # @return [AlertNumber] The security alert number.
+    attr_reader :number
+    # @return [AlertCreatedAt] The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+    attr_reader :created_at
+    # @return [NullableAlertUpdatedAt] The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+    attr_reader :updated_at
+    # @return [AlertUrl] The REST API URL of the alert resource.
+    attr_reader :url
+    # @return [AlertHtmlUrl] The GitHub URL of the alert resource.
+    attr_reader :html_url
+    # @return [String] The REST API URL of the code locations for this alert.
+    attr_reader :locations_url
+    # @return [SecretScanningAlertState] Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.
+    attr_reader :state
+    # @return [SecretScanningAlertResolution] **Required when the `state` is `resolved`.** The reason for resolving the alert.
+    attr_reader :resolution
+    # @return [String] The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+    attr_reader :resolved_at
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :resolved_by
+    # @return [String] The type of secret that secret scanning detected.
+    attr_reader :secret_type
+    # @return [String] User-friendly name for the detected secret, matching the `secret_type`. For a list of built-in patterns, see "Supported secret scanning patterns."
+    attr_reader :secret_type_display_name
+    # @return [String] The provider of the secret that was detected.
+    attr_reader :provider
+    # @return [String] The slug identifier for the provider of the secret that was detected. Use this value for filtering by provider with the `providers` or `exclude_providers` parameters.
+    attr_reader :provider_slug
+    # @return [String] The secret that was detected.
+    attr_reader :secret
+    # @return [SimpleRepository] A GitHub repository.
+    attr_reader :repository
+    # @return [Boolean] Whether push protection was bypassed for the detected secret.
+    attr_reader :push_protection_bypassed
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :push_protection_bypassed_by
+    # @return [String] The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+    attr_reader :push_protection_bypassed_at
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :push_protection_bypass_request_reviewer
+    # @return [String] An optional comment when reviewing a push protection bypass.
+    attr_reader :push_protection_bypass_request_reviewer_comment
+    # @return [String] An optional comment when requesting a push protection bypass.
+    attr_reader :push_protection_bypass_request_comment
+    # @return [String] The URL to a push protection bypass request.
+    attr_reader :push_protection_bypass_request_html_url
+    # @return [String] The comment that was optionally added when this alert was closed
+    attr_reader :resolution_comment
+    # @return [OrganizationSecretScanningAlertValidity] The token status as of the latest validity check.
+    attr_reader :validity
+    # @return [Boolean] Whether the secret was publicly leaked.
+    attr_reader :publicly_leaked
+    # @return [Boolean] Whether the detected secret was found in multiple repositories in the same organization or enterprise.
+    attr_reader :multi_repo
+    # @return [Boolean] A boolean value representing whether or not alert is base64 encoded
+    attr_reader :is_base64_encoded
+    # @return [NullableSecretScanningFirstDetectedLocation] Details on the location where the token was initially detected. This can be a commit, wiki commit, issue, discussion, pull request.
+    attr_reader :first_location_detected
+    # @return [Boolean] A boolean value representing whether or not the token in the alert was detected in more than one location.
+    attr_reader :has_more_locations
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :assigned_to
+    # @return [String] An optional comment from the closure request author.
+    attr_reader :closure_request_comment
+    # @return [String] An optional comment from the closure request reviewer.
+    attr_reader :closure_request_reviewer_comment
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :closure_request_reviewer
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the SecretScanningAlertValidity SDK namespace.
-module SecretScanningAlertValidity
-  ACTIVE = 'active'
-  INACTIVE = 'inactive'
-  UNKNOWN = 'unknown'
-  VALUES = ['active', 'inactive', 'unknown'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the SecretScanningAlertAssignee SDK value decoder.
-module SecretScanningAlertAssignee
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalSecretScanningAlertMetadataItemMetadata
-  FIELDS = {
-    key: "key",
-    value: "value",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    key
-    value
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for SecretScanningAlertMetadataItem.
-# Required object value serialized in the `metadata[]` wire field.
-class SecretScanningAlertMetadataItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalSecretScanningAlertMetadataItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalSecretScanningAlertMetadataItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalSecretScanningAlertMetadataItemMetadata::DECODERS
-
-  # @return [String] The metadata key.
-  attr_reader :key
-  # @return [String] The metadata value.
-  attr_reader :value
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the OrganizationSecretScanningAlertValidity SDK namespace.
+  module OrganizationSecretScanningAlertValidity
+    ACTIVE = 'active'
+    INACTIVE = 'inactive'
+    UNKNOWN = 'unknown'
+    VALUES = %w[active inactive unknown].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalSecretScanningAlertMetadata
+    FIELDS = {
+      number: 'number',
+      created_at: 'created_at',
+      updated_at: 'updated_at',
+      url: 'url',
+      html_url: 'html_url',
+      locations_url: 'locations_url',
+      state: 'state',
+      resolution: 'resolution',
+      resolved_at: 'resolved_at',
+      resolved_by: 'resolved_by',
+      resolution_comment: 'resolution_comment',
+      secret_type: 'secret_type',
+      secret_type_display_name: 'secret_type_display_name',
+      provider: 'provider',
+      provider_slug: 'provider_slug',
+      secret: 'secret',
+      push_protection_bypassed: 'push_protection_bypassed',
+      push_protection_bypassed_by: 'push_protection_bypassed_by',
+      push_protection_bypassed_at: 'push_protection_bypassed_at',
+      push_protection_bypass_request_reviewer: 'push_protection_bypass_request_reviewer',
+      push_protection_bypass_request_reviewer_comment: 'push_protection_bypass_request_reviewer_comment',
+      push_protection_bypass_request_comment: 'push_protection_bypass_request_comment',
+      push_protection_bypass_request_html_url: 'push_protection_bypass_request_html_url',
+      validity: 'validity',
+      publicly_leaked: 'publicly_leaked',
+      multi_repo: 'multi_repo',
+      is_base64_encoded: 'is_base64_encoded',
+      first_location_detected: 'first_location_detected',
+      has_more_locations: 'has_more_locations',
+      assigned_to: 'assigned_to',
+      closure_request_comment: 'closure_request_comment',
+      closure_request_reviewer_comment: 'closure_request_reviewer_comment',
+      closure_request_reviewer: 'closure_request_reviewer'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      number: lambda do |value|
+        ::OctridevGithub::AlertNumber.from_value(value)
+      end,
+      created_at: lambda do |value|
+        ::OctridevGithub::AlertCreatedAt.from_value(value)
+      end,
+      updated_at: lambda do |value|
+        ::OctridevGithub::NullableAlertUpdatedAt.from_value(value)
+      end,
+      url: lambda do |value|
+        ::OctridevGithub::AlertUrl.from_value(value)
+      end,
+      html_url: lambda do |value|
+        ::OctridevGithub::AlertHtmlUrl.from_value(value)
+      end,
+      state: lambda do |value|
+        ::OctridevGithub::SecretScanningAlertState.from_value(value)
+      end,
+      resolution: lambda do |value|
+        ::OctridevGithub::SecretScanningAlertResolution.from_value(value)
+      end,
+      resolved_by: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end,
+      push_protection_bypassed_by: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end,
+      push_protection_bypass_request_reviewer: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end,
+      validity: lambda do |value|
+        ::OctridevGithub::SecretScanningAlertValidity.from_value(value)
+      end,
+      first_location_detected: lambda do |value|
+        ::OctridevGithub::NullableSecretScanningFirstDetectedLocation.from_hash(value)
+      end,
+      assigned_to: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end,
+      closure_request_reviewer: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for SecretScanningAlert.
+  # Typed representation of the `SecretScanningAlert` API schema.
+  class SecretScanningAlert
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalSecretScanningAlertMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalSecretScanningAlertMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalSecretScanningAlertMetadata::DECODERS
 
-# Defines the SecretScanningAlertMetadata SDK value decoder.
-module SecretScanningAlertMetadata
-  def self.from_hash(value)
-    return nil if value.nil?
-    value&.map { |item| ::OctridevGithub::SecretScanningAlertMetadataItem.from_hash(item) }
-  end
-end
+    # @return [AlertNumber] The security alert number.
+    attr_reader :number
+    # @return [AlertCreatedAt] The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+    attr_reader :created_at
+    # @return [NullableAlertUpdatedAt] The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+    attr_reader :updated_at
+    # @return [AlertUrl] The REST API URL of the alert resource.
+    attr_reader :url
+    # @return [AlertHtmlUrl] The GitHub URL of the alert resource.
+    attr_reader :html_url
+    # @return [String] The REST API URL of the code locations for this alert.
+    attr_reader :locations_url
+    # @return [SecretScanningAlertState] Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.
+    attr_reader :state
+    # @return [SecretScanningAlertResolution] **Required when the `state` is `resolved`.** The reason for resolving the alert.
+    attr_reader :resolution
+    # @return [String] The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+    attr_reader :resolved_at
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :resolved_by
+    # @return [String] An optional comment to resolve an alert.
+    attr_reader :resolution_comment
+    # @return [String] The type of secret that secret scanning detected.
+    attr_reader :secret_type
+    # @return [String] User-friendly name for the detected secret, matching the `secret_type`. For a list of built-in patterns, see "Supported secret scanning patterns."
+    attr_reader :secret_type_display_name
+    # @return [String] The provider of the secret that was detected.
+    attr_reader :provider
+    # @return [String] The slug identifier for the provider of the secret that was detected. Use this value for filtering by provider with the `providers` or `exclude_providers` parameters.
+    attr_reader :provider_slug
+    # @return [String] The secret that was detected.
+    attr_reader :secret
+    # @return [Boolean] Whether push protection was bypassed for the detected secret.
+    attr_reader :push_protection_bypassed
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :push_protection_bypassed_by
+    # @return [String] The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+    attr_reader :push_protection_bypassed_at
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :push_protection_bypass_request_reviewer
+    # @return [String] An optional comment when reviewing a push protection bypass.
+    attr_reader :push_protection_bypass_request_reviewer_comment
+    # @return [String] An optional comment when requesting a push protection bypass.
+    attr_reader :push_protection_bypass_request_comment
+    # @return [String] The URL to a push protection bypass request.
+    attr_reader :push_protection_bypass_request_html_url
+    # @return [SecretScanningAlertValidity] The token status as of the latest validity check.
+    attr_reader :validity
+    # @return [Boolean] Whether the detected secret was publicly leaked.
+    attr_reader :publicly_leaked
+    # @return [Boolean] Whether the detected secret was found in multiple repositories under the same organization or enterprise.
+    attr_reader :multi_repo
+    # @return [Boolean] A boolean value representing whether or not alert is base64 encoded
+    attr_reader :is_base64_encoded
+    # @return [NullableSecretScanningFirstDetectedLocation] Details on the location where the token was initially detected. This can be a commit, wiki commit, issue, discussion, pull request.
+    attr_reader :first_location_detected
+    # @return [Boolean] A boolean value representing whether or not the token in the alert was detected in more than one location.
+    attr_reader :has_more_locations
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :assigned_to
+    # @return [String] An optional comment from the closure request author.
+    attr_reader :closure_request_comment
+    # @return [String] An optional comment from the closure request reviewer.
+    attr_reader :closure_request_reviewer_comment
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :closure_request_reviewer
 
-# Defines the SecretScanningAlertResolution SDK namespace.
-module SecretScanningAlertResolution
-  FALSE_POSITIVE = 'false_positive'
-  WONT_FIX = 'wont_fix'
-  REVOKED = 'revoked'
-  USED_IN_TESTS = 'used_in_tests'
-  VALUES = ['false_positive', 'wont_fix', 'revoked', 'used_in_tests'].freeze
-  def self.from_value(value)
-    value
-  end
-end
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-# Defines the SecretScanningAlertResolutionComment SDK value decoder.
-module SecretScanningAlertResolutionComment
-  def self.from_value(value)
-    value
-  end
-end
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-# Defines the SecretScanningAlertResolutionWebhook SDK namespace.
-module SecretScanningAlertResolutionWebhook
-  FALSE_POSITIVE = 'false_positive'
-  WONT_FIX = 'wont_fix'
-  REVOKED = 'revoked'
-  USED_IN_TESTS = 'used_in_tests'
-  PATTERN_DELETED = 'pattern_deleted'
-  PATTERN_EDITED = 'pattern_edited'
-  VALUES = [
-    'false_positive', 'wont_fix', 'revoked', 'used_in_tests', 'pattern_deleted', 'pattern_edited'
-  ].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the SecretScanningAlertState SDK namespace.
-module SecretScanningAlertState
-  OPEN = 'open'
-  RESOLVED = 'resolved'
-  VALUES = ['open', 'resolved'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalSecretScanningAlertWebhookMetadata
-  FIELDS = {
-    number: "number",
-    created_at: "created_at",
-    updated_at: "updated_at",
-    url: "url",
-    html_url: "html_url",
-    locations_url: "locations_url",
-    resolution: "resolution",
-    resolved_at: "resolved_at",
-    resolved_by: "resolved_by",
-    resolution_comment: "resolution_comment",
-    secret_type: "secret_type",
-    secret_type_display_name: "secret_type_display_name",
-    provider: "provider",
-    provider_slug: "provider_slug",
-    secret_category: "secret_category",
-    validity: "validity",
-    push_protection_bypassed: "push_protection_bypassed",
-    push_protection_bypassed_by: "push_protection_bypassed_by",
-    push_protection_bypassed_at: "push_protection_bypassed_at",
-    push_protection_bypass_request_reviewer: "push_protection_bypass_request_reviewer",
-    push_protection_bypass_request_reviewer_comment: "push_protection_bypass_request_reviewer_comment",
-    push_protection_bypass_request_comment: "push_protection_bypass_request_comment",
-    push_protection_bypass_request_html_url: "push_protection_bypass_request_html_url",
-    publicly_leaked: "publicly_leaked",
-    multi_repo: "multi_repo",
-    assigned_to: "assigned_to",
-    closure_request_comment: "closure_request_comment",
-    closure_request_reviewer_comment: "closure_request_reviewer_comment",
-    closure_request_reviewer: "closure_request_reviewer",
-    metadata: "metadata",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    number: lambda do |value|
-      ::OctridevGithub::AlertNumber.from_value(value)
-    end,
-    created_at: lambda do |value|
-      ::OctridevGithub::AlertCreatedAt.from_value(value)
-    end,
-    updated_at: lambda do |value|
-      ::OctridevGithub::NullableAlertUpdatedAt.from_value(value)
-    end,
-    url: lambda do |value|
-      ::OctridevGithub::AlertUrl.from_value(value)
-    end,
-    html_url: lambda do |value|
-      ::OctridevGithub::AlertHtmlUrl.from_value(value)
-    end,
-    resolution: lambda do |value|
-      ::OctridevGithub::SecretScanningAlertResolutionWebhook.from_value(value)
-    end,
-    resolved_by: lambda do |value|
-      ::OctridevGithub::NullableSimpleUser.from_hash(value)
-    end,
-    secret_category: lambda do |value|
-      ::OctridevGithub::SecretScanningAlertWebhookSecretCategory.from_value(value)
-    end,
-    validity: lambda do |value|
-      ::OctridevGithub::SecretScanningAlertWebhookValidity.from_value(value)
-    end,
-    push_protection_bypassed_by: lambda do |value|
-      ::OctridevGithub::NullableSimpleUser.from_hash(value)
-    end,
-    push_protection_bypass_request_reviewer: lambda do |value|
-      ::OctridevGithub::NullableSimpleUser.from_hash(value)
-    end,
-    assigned_to: lambda do |value|
-      ::OctridevGithub::NullableSimpleUser.from_hash(value)
-    end,
-    closure_request_reviewer: lambda do |value|
-      ::OctridevGithub::NullableSimpleUser.from_hash(value)
-    end,
-    metadata: lambda do |value|
-      ::OctridevGithub::SecretScanningAlertMetadata.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for SecretScanningAlertWebhook.
-# Typed representation of the `SecretScanningAlertWebhook` API schema.
-class SecretScanningAlertWebhook
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalSecretScanningAlertWebhookMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalSecretScanningAlertWebhookMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalSecretScanningAlertWebhookMetadata::DECODERS
-
-  # @return [AlertNumber] The security alert number.
-  attr_reader :number
-  # @return [AlertCreatedAt] The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-  attr_reader :created_at
-  # @return [NullableAlertUpdatedAt] The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-  attr_reader :updated_at
-  # @return [AlertUrl] The REST API URL of the alert resource.
-  attr_reader :url
-  # @return [AlertHtmlUrl] The GitHub URL of the alert resource.
-  attr_reader :html_url
-  # @return [String] The REST API URL of the code locations for this alert.
-  attr_reader :locations_url
-  # @return [SecretScanningAlertResolutionWebhook] The reason for resolving the alert.
-  attr_reader :resolution
-  # @return [String] The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-  attr_reader :resolved_at
-  # @return [NullableSimpleUser] A GitHub user.
-  attr_reader :resolved_by
-  # @return [String] An optional comment to resolve an alert.
-  attr_reader :resolution_comment
-  # @return [String] The type of secret that secret scanning detected.
-  attr_reader :secret_type
-  # @return [String] User-friendly name for the detected secret, matching the `secret_type`. For a list of built-in patterns, see "Supported secret scanning patterns."
-  attr_reader :secret_type_display_name
-  # @return [String] The provider of the secret that was detected.
-  attr_reader :provider
-  # @return [String] The slug identifier for the provider of the secret that was detected.
-  attr_reader :provider_slug
-  # @return [SecretScanningAlertWebhookSecretCategory] The category of the detected secret. `default` covers specific provider patterns and custom patterns; `generic` covers non-specific patterns and AI-detected secrets.
-  attr_reader :secret_category
-  # @return [SecretScanningAlertWebhookValidity] The token status as of the latest validity check.
-  attr_reader :validity
-  # @return [Boolean] Whether push protection was bypassed for the detected secret.
-  attr_reader :push_protection_bypassed
-  # @return [NullableSimpleUser] A GitHub user.
-  attr_reader :push_protection_bypassed_by
-  # @return [String] The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-  attr_reader :push_protection_bypassed_at
-  # @return [NullableSimpleUser] A GitHub user.
-  attr_reader :push_protection_bypass_request_reviewer
-  # @return [String] An optional comment when reviewing a push protection bypass.
-  attr_reader :push_protection_bypass_request_reviewer_comment
-  # @return [String] An optional comment when requesting a push protection bypass.
-  attr_reader :push_protection_bypass_request_comment
-  # @return [String] The URL to a push protection bypass request.
-  attr_reader :push_protection_bypass_request_html_url
-  # @return [Boolean] Whether the detected secret was publicly leaked.
-  attr_reader :publicly_leaked
-  # @return [Boolean] Whether the detected secret was found in multiple repositories in the same organization or business.
-  attr_reader :multi_repo
-  # @return [NullableSimpleUser] A GitHub user.
-  attr_reader :assigned_to
-  # @return [String] An optional comment from the closure request author.
-  attr_reader :closure_request_comment
-  # @return [String] An optional comment from the closure request reviewer.
-  attr_reader :closure_request_reviewer_comment
-  # @return [NullableSimpleUser] A GitHub user.
-  attr_reader :closure_request_reviewer
-  # @return [SecretScanningAlertMetadata] A list of metadata key/value pairs associated with the secret scanning alert.
-  attr_reader :metadata
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the SecretScanningAlertValidity SDK namespace.
+  module SecretScanningAlertValidity
+    ACTIVE = 'active'
+    INACTIVE = 'inactive'
+    UNKNOWN = 'unknown'
+    VALUES = %w[active inactive unknown].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the SecretScanningAlertAssignee SDK value decoder.
+  module SecretScanningAlertAssignee
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the SecretScanningAlertWebhookSecretCategory SDK namespace.
-module SecretScanningAlertWebhookSecretCategory
-  DEFAULT = 'default'
-  GENERIC = 'generic'
-  VALUES = ['default', 'generic'].freeze
-  def self.from_value(value)
-    value
+  # Internal model hydration metadata.
+  class SdkInternalSecretScanningAlertMetadataItemMetadata
+    FIELDS = {
+      key: 'key',
+      value: 'value'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      key
+      value
+    ].freeze
+    DECODERS = {}.freeze
   end
-end
+
+  # API model for SecretScanningAlertMetadataItem.
+  # Required object value serialized in the `metadata[]` wire field.
+  class SecretScanningAlertMetadataItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalSecretScanningAlertMetadataItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalSecretScanningAlertMetadataItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalSecretScanningAlertMetadataItemMetadata::DECODERS
+
+    # @return [String] The metadata key.
+    attr_reader :key
+    # @return [String] The metadata value.
+    attr_reader :value
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Defines the SecretScanningAlertMetadata SDK value decoder.
+  module SecretScanningAlertMetadata
+    def self.from_hash(value)
+      return nil if value.nil?
+
+      value&.map { |item| ::OctridevGithub::SecretScanningAlertMetadataItem.from_hash(item) }
+    end
+  end
+
+  # Defines the SecretScanningAlertResolution SDK namespace.
+  module SecretScanningAlertResolution
+    FALSE_POSITIVE = 'false_positive'
+    WONT_FIX = 'wont_fix'
+    REVOKED = 'revoked'
+    USED_IN_TESTS = 'used_in_tests'
+    VALUES = %w[false_positive wont_fix revoked used_in_tests].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Defines the SecretScanningAlertResolutionComment SDK value decoder.
+  module SecretScanningAlertResolutionComment
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Defines the SecretScanningAlertResolutionWebhook SDK namespace.
+  module SecretScanningAlertResolutionWebhook
+    FALSE_POSITIVE = 'false_positive'
+    WONT_FIX = 'wont_fix'
+    REVOKED = 'revoked'
+    USED_IN_TESTS = 'used_in_tests'
+    PATTERN_DELETED = 'pattern_deleted'
+    PATTERN_EDITED = 'pattern_edited'
+    VALUES = %w[
+      false_positive wont_fix revoked used_in_tests pattern_deleted pattern_edited
+    ].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Defines the SecretScanningAlertState SDK namespace.
+  module SecretScanningAlertState
+    OPEN = 'open'
+    RESOLVED = 'resolved'
+    VALUES = %w[open resolved].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Internal model hydration metadata.
+  class SdkInternalSecretScanningAlertWebhookMetadata
+    FIELDS = {
+      number: 'number',
+      created_at: 'created_at',
+      updated_at: 'updated_at',
+      url: 'url',
+      html_url: 'html_url',
+      locations_url: 'locations_url',
+      resolution: 'resolution',
+      resolved_at: 'resolved_at',
+      resolved_by: 'resolved_by',
+      resolution_comment: 'resolution_comment',
+      secret_type: 'secret_type',
+      secret_type_display_name: 'secret_type_display_name',
+      provider: 'provider',
+      provider_slug: 'provider_slug',
+      secret_category: 'secret_category',
+      validity: 'validity',
+      push_protection_bypassed: 'push_protection_bypassed',
+      push_protection_bypassed_by: 'push_protection_bypassed_by',
+      push_protection_bypassed_at: 'push_protection_bypassed_at',
+      push_protection_bypass_request_reviewer: 'push_protection_bypass_request_reviewer',
+      push_protection_bypass_request_reviewer_comment: 'push_protection_bypass_request_reviewer_comment',
+      push_protection_bypass_request_comment: 'push_protection_bypass_request_comment',
+      push_protection_bypass_request_html_url: 'push_protection_bypass_request_html_url',
+      publicly_leaked: 'publicly_leaked',
+      multi_repo: 'multi_repo',
+      assigned_to: 'assigned_to',
+      closure_request_comment: 'closure_request_comment',
+      closure_request_reviewer_comment: 'closure_request_reviewer_comment',
+      closure_request_reviewer: 'closure_request_reviewer',
+      metadata: 'metadata'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      number: lambda do |value|
+        ::OctridevGithub::AlertNumber.from_value(value)
+      end,
+      created_at: lambda do |value|
+        ::OctridevGithub::AlertCreatedAt.from_value(value)
+      end,
+      updated_at: lambda do |value|
+        ::OctridevGithub::NullableAlertUpdatedAt.from_value(value)
+      end,
+      url: lambda do |value|
+        ::OctridevGithub::AlertUrl.from_value(value)
+      end,
+      html_url: lambda do |value|
+        ::OctridevGithub::AlertHtmlUrl.from_value(value)
+      end,
+      resolution: lambda do |value|
+        ::OctridevGithub::SecretScanningAlertResolutionWebhook.from_value(value)
+      end,
+      resolved_by: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end,
+      secret_category: lambda do |value|
+        ::OctridevGithub::SecretScanningAlertWebhookSecretCategory.from_value(value)
+      end,
+      validity: lambda do |value|
+        ::OctridevGithub::SecretScanningAlertWebhookValidity.from_value(value)
+      end,
+      push_protection_bypassed_by: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end,
+      push_protection_bypass_request_reviewer: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end,
+      assigned_to: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end,
+      closure_request_reviewer: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end,
+      metadata: lambda do |value|
+        ::OctridevGithub::SecretScanningAlertMetadata.from_hash(value)
+      end
+    }.freeze
+  end
+
+  # API model for SecretScanningAlertWebhook.
+  # Typed representation of the `SecretScanningAlertWebhook` API schema.
+  class SecretScanningAlertWebhook
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalSecretScanningAlertWebhookMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalSecretScanningAlertWebhookMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalSecretScanningAlertWebhookMetadata::DECODERS
+
+    # @return [AlertNumber] The security alert number.
+    attr_reader :number
+    # @return [AlertCreatedAt] The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+    attr_reader :created_at
+    # @return [NullableAlertUpdatedAt] The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+    attr_reader :updated_at
+    # @return [AlertUrl] The REST API URL of the alert resource.
+    attr_reader :url
+    # @return [AlertHtmlUrl] The GitHub URL of the alert resource.
+    attr_reader :html_url
+    # @return [String] The REST API URL of the code locations for this alert.
+    attr_reader :locations_url
+    # @return [SecretScanningAlertResolutionWebhook] The reason for resolving the alert.
+    attr_reader :resolution
+    # @return [String] The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+    attr_reader :resolved_at
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :resolved_by
+    # @return [String] An optional comment to resolve an alert.
+    attr_reader :resolution_comment
+    # @return [String] The type of secret that secret scanning detected.
+    attr_reader :secret_type
+    # @return [String] User-friendly name for the detected secret, matching the `secret_type`. For a list of built-in patterns, see "Supported secret scanning patterns."
+    attr_reader :secret_type_display_name
+    # @return [String] The provider of the secret that was detected.
+    attr_reader :provider
+    # @return [String] The slug identifier for the provider of the secret that was detected.
+    attr_reader :provider_slug
+    # @return [SecretScanningAlertWebhookSecretCategory] The category of the detected secret. `default` covers specific provider patterns and custom patterns; `generic` covers non-specific patterns and AI-detected secrets.
+    attr_reader :secret_category
+    # @return [SecretScanningAlertWebhookValidity] The token status as of the latest validity check.
+    attr_reader :validity
+    # @return [Boolean] Whether push protection was bypassed for the detected secret.
+    attr_reader :push_protection_bypassed
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :push_protection_bypassed_by
+    # @return [String] The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+    attr_reader :push_protection_bypassed_at
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :push_protection_bypass_request_reviewer
+    # @return [String] An optional comment when reviewing a push protection bypass.
+    attr_reader :push_protection_bypass_request_reviewer_comment
+    # @return [String] An optional comment when requesting a push protection bypass.
+    attr_reader :push_protection_bypass_request_comment
+    # @return [String] The URL to a push protection bypass request.
+    attr_reader :push_protection_bypass_request_html_url
+    # @return [Boolean] Whether the detected secret was publicly leaked.
+    attr_reader :publicly_leaked
+    # @return [Boolean] Whether the detected secret was found in multiple repositories in the same organization or business.
+    attr_reader :multi_repo
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :assigned_to
+    # @return [String] An optional comment from the closure request author.
+    attr_reader :closure_request_comment
+    # @return [String] An optional comment from the closure request reviewer.
+    attr_reader :closure_request_reviewer_comment
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :closure_request_reviewer
+    # @return [SecretScanningAlertMetadata] A list of metadata key/value pairs associated with the secret scanning alert.
+    attr_reader :metadata
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Defines the SecretScanningAlertWebhookSecretCategory SDK namespace.
+  module SecretScanningAlertWebhookSecretCategory
+    DEFAULT = 'default'
+    GENERIC = 'generic'
+    VALUES = %w[default generic].freeze
+    def self.from_value(value)
+      value
+    end
+  end
 end

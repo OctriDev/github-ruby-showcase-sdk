@@ -20,13 +20,12 @@ module OctridevGithub
         configuration_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/enterprises/",
+            '/enterprises/',
             SdkClient.encode_path_segment(enterprise),
-            "/code-security/configurations/",
+            '/code-security/configurations/',
             SdkClient.encode_path_segment(configuration_id)
           ].join,
           config: config,
@@ -34,7 +33,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'code_security_get_single_configuration_for_enterprise',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

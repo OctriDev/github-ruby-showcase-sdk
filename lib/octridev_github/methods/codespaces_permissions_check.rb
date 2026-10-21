@@ -29,26 +29,25 @@ module OctridevGithub
         devcontainer_path:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/codespaces/permissions_check"
+            '/codespaces/permissions_check'
           ].join,
           config: config,
           query: {
             'ref' => QueryValue.new(ref, style: 'form', explode: true),
-            'devcontainer_path' => QueryValue.new(devcontainer_path, style: 'form', explode: true),
+            'devcontainer_path' => QueryValue.new(devcontainer_path, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::CodespacesPermissionsCheckForDevcontainer,
           decoder: :json,
           operation_id: 'codespaces_check_permissions_for_devcontainer',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
     end

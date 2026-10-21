@@ -26,27 +26,26 @@ module OctridevGithub
         users:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/branches/",
+            '/branches/',
             SdkClient.encode_path_segment(branch),
-            "/protection/restrictions/users"
+            '/protection/restrictions/users'
           ].join,
           config: config,
           body: {
-            'users' => users,
+            'users' => users
           },
           return_type: [::OctridevGithub::SimpleUser],
           decoder: :json,
           operation_id: 'repos_remove_user_access_restrictions',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError },
+          errors: { '422' => ::OctridevGithub::ValidationError }
         ).data
       end
     end

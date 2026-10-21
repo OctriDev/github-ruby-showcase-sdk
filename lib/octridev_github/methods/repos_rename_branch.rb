@@ -26,27 +26,26 @@ module OctridevGithub
         new_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/branches/",
+            '/branches/',
             SdkClient.encode_path_segment(branch),
-            "/rename"
+            '/rename'
           ].join,
           config: config,
           body: {
-            'new_name' => new_name,
+            'new_name' => new_name
           },
           return_type: ::OctridevGithub::BranchWithProtection,
           decoder: :json,
           operation_id: 'repos_rename_branch',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
     end

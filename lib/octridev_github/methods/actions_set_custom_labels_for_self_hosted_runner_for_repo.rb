@@ -26,29 +26,28 @@ module OctridevGithub
         labels:,
         request_options: nil
       )
-
         Validation.validate_items('labels', labels, min: 0, max: 100)
 
         SdkClient.request(
           'PUT',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runners/",
+            '/actions/runners/',
             SdkClient.encode_path_segment(runner_id),
-            "/labels"
+            '/labels'
           ].join,
           config: config,
           body: {
-            'labels' => labels,
+            'labels' => labels
           },
           return_type: ::OctridevGithub::ActionsRunnerLabels,
           decoder: :json,
           operation_id: 'actions_set_custom_labels_for_self_hosted_runner_for_repo',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple }
         ).data
       end
     end

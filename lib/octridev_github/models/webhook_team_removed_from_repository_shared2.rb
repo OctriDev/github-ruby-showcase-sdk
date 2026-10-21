@@ -5,34 +5,34 @@
 
 # webhook_team_removed_from_repository domain models
 module OctridevGithub
-# Defines the WebhookTeamRemovedFromRepositoryAction SDK namespace.
-module WebhookTeamRemovedFromRepositoryAction
-  REMOVED_FROM_REPOSITORY = 'removed_from_repository'
-  VALUES = ['removed_from_repository'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookTeamRemovedFromRepositoryAction SDK namespace.
+  module WebhookTeamRemovedFromRepositoryAction
+    REMOVED_FROM_REPOSITORY = 'removed_from_repository'
+    VALUES = ['removed_from_repository'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookTeamRemovedFromRepositoryRepositoryOwnerType SDK namespace.
-module WebhookTeamRemovedFromRepositoryRepositoryOwnerType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookTeamRemovedFromRepositoryRepositoryOwnerType SDK namespace.
+  module WebhookTeamRemovedFromRepositoryRepositoryOwnerType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookTeamRemovedFromRepositoryRepositoryVisibility SDK namespace.
-module WebhookTeamRemovedFromRepositoryRepositoryVisibility
-  PUBLIC = 'public'
-  PRIVATE = 'private'
-  INTERNAL = 'internal'
-  VALUES = ['public', 'private', 'internal'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookTeamRemovedFromRepositoryRepositoryVisibility SDK namespace.
+  module WebhookTeamRemovedFromRepositoryRepositoryVisibility
+    PUBLIC = 'public'
+    PRIVATE = 'private'
+    INTERNAL = 'internal'
+    VALUES = %w[public private internal].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 end

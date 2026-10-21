@@ -12,13 +12,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalBillingCreateOrganizationBudgetBudgetAlertingMetadata
         FIELDS = {
-          will_alert: "will_alert",
-          alert_recipients: "alert_recipients",
+          will_alert: 'will_alert',
+          alert_recipients: 'alert_recipients'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for BillingCreateOrganizationBudgetBudgetAlerting.
@@ -59,18 +57,17 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalBillingCreateOrganizationBudgetMetadata
         FIELDS = {
-          budget_amount: "budget_amount",
-          prevent_further_usage: "prevent_further_usage",
-          budget_alerting: "budget_alerting",
-          budget_scope: "budget_scope",
-          budget_entity_name: "budget_entity_name",
-          budget_type: "budget_type",
-          budget_product_sku: "budget_product_sku",
-          user: "user",
-          expires_at: "expires_at",
+          budget_amount: 'budget_amount',
+          prevent_further_usage: 'prevent_further_usage',
+          budget_alerting: 'budget_alerting',
+          budget_scope: 'budget_scope',
+          budget_entity_name: 'budget_entity_name',
+          budget_type: 'budget_type',
+          budget_product_sku: 'budget_product_sku',
+          user: 'user',
+          expires_at: 'expires_at'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           budget_alerting: lambda do |value|
             ::OctridevGithub::Methods::Billing::BillingCreateOrganizationBudgetBudgetAlerting.from_hash(value)
@@ -80,7 +77,7 @@ module OctridevGithub
           end,
           budget_type: lambda do |value|
             ::OctridevGithub::Methods::Billing::BillingCreateOrganizationBudgetBudgetTypeVariant0.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -126,13 +123,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalBillingUpdateBudgetOrgBudgetAlertingMetadata
         FIELDS = {
-          will_alert: "will_alert",
-          alert_recipients: "alert_recipients",
+          will_alert: 'will_alert',
+          alert_recipients: 'alert_recipients'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for BillingUpdateBudgetOrgBudgetAlerting.
@@ -164,17 +159,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalBillingUpdateBudgetOrgMetadata
         FIELDS = {
-          budget_amount: "budget_amount",
-          prevent_further_usage: "prevent_further_usage",
-          budget_alerting: "budget_alerting",
-          expires_at: "expires_at",
+          budget_amount: 'budget_amount',
+          prevent_further_usage: 'prevent_further_usage',
+          budget_alerting: 'budget_alerting',
+          expires_at: 'expires_at'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           budget_alerting: lambda do |value|
             ::OctridevGithub::Methods::Billing::BillingUpdateBudgetOrgBudgetAlerting.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -222,7 +216,7 @@ module OctridevGithub
         REPOSITORY = 'repository'
         MULTI_USER_CUSTOMER = 'multi_user_customer'
         USER = 'user'
-        VALUES = ['organization', 'repository', 'multi_user_customer', 'user'].freeze
+        VALUES = %w[organization repository multi_user_customer user].freeze
         def self.from_value(value)
           value
         end
@@ -236,8 +230,8 @@ module OctridevGithub
         COST_CENTER = 'cost_center'
         MULTI_USER_CUSTOMER = 'multi_user_customer'
         USER = 'user'
-        VALUES = [
-          'enterprise', 'organization', 'repository', 'cost_center', 'multi_user_customer', 'user'
+        VALUES = %w[
+          enterprise organization repository cost_center multi_user_customer user
         ].freeze
         def self.from_value(value)
           value

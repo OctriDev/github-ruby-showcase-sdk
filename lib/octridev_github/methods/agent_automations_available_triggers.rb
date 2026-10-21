@@ -14,14 +14,13 @@ module OctridevGithub
         config:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/agents/automations/available-triggers",
+          '/agents/automations/available-triggers',
           config: config,
           decoder: :json,
           operation_id: 'agent_automations_list_available_automation_triggers',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

@@ -24,22 +24,21 @@ module OctridevGithub
         branch:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/branches/",
+            '/branches/',
             SdkClient.encode_path_segment(branch),
-            "/protection/required_status_checks"
+            '/protection/required_status_checks'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_remove_status_check_protection',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

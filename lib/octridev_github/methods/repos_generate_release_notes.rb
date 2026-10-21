@@ -38,28 +38,27 @@ module OctridevGithub
         configuration_file_path: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/releases/generate-notes"
+            '/releases/generate-notes'
           ].join,
           config: config,
           body: {
             'tag_name' => tag_name,
             'target_commitish' => target_commitish,
             'previous_tag_name' => previous_tag_name,
-            'configuration_file_path' => configuration_file_path,
+            'configuration_file_path' => configuration_file_path
           },
           return_type: ::OctridevGithub::ReleaseNotesContent,
           decoder: :json,
           operation_id: 'repos_generate_release_notes',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

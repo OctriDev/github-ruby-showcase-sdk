@@ -25,27 +25,26 @@ module OctridevGithub
         sub_issue_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/issues/",
+            '/issues/',
             SdkClient.encode_path_segment(issue_number),
-            "/sub_issue"
+            '/sub_issue'
           ].join,
           config: config,
           body: {
-            'sub_issue_id' => sub_issue_id,
+            'sub_issue_id' => sub_issue_id
           },
           return_type: ::OctridevGithub::Issue,
           decoder: :json,
           operation_id: 'issues_remove_sub_issue',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

@@ -5,247 +5,247 @@
 
 # webhooks_issue domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalWebhooksIssueCommentUserMetadata
-  FIELDS = {
-    avatar_url: "avatar_url",
-    deleted: "deleted",
-    email: "email",
-    events_url: "events_url",
-    followers_url: "followers_url",
-    following_url: "following_url",
-    gists_url: "gists_url",
-    gravatar_id: "gravatar_id",
-    html_url: "html_url",
-    id: "id",
-    login: "login",
-    name: "name",
-    node_id: "node_id",
-    organizations_url: "organizations_url",
-    received_events_url: "received_events_url",
-    repos_url: "repos_url",
-    site_admin: "site_admin",
-    starred_url: "starred_url",
-    subscriptions_url: "subscriptions_url",
-    type: "type",
-    url: "url",
-    user_view_type: "user_view_type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    login
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::WebhooksIssueCommentUserType.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhooksIssueCommentUser.
-# Required object value serialized in the `user` wire field.
-class WebhooksIssueCommentUser
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhooksIssueCommentUserMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhooksIssueCommentUserMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhooksIssueCommentUserMetadata::DECODERS
-
-  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-  attr_reader :avatar_url
-  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-  attr_reader :deleted
-  # @return [String] Optional `string` value serialized in the `email` wire field.
-  attr_reader :email
-  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-  attr_reader :events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-  attr_reader :followers_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-  attr_reader :following_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-  attr_reader :gists_url
-  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-  attr_reader :gravatar_id
-  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `login` wire field.
-  attr_reader :login
-  # @return [String] Optional `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-  attr_reader :organizations_url
-  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-  attr_reader :received_events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-  attr_reader :repos_url
-  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-  attr_reader :site_admin
-  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-  attr_reader :starred_url
-  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-  attr_reader :subscriptions_url
-  # @return [WebhooksIssueCommentUserType] Optional enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-  attr_reader :user_view_type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhooksIssueCommentUserMetadata
+    FIELDS = {
+      avatar_url: 'avatar_url',
+      deleted: 'deleted',
+      email: 'email',
+      events_url: 'events_url',
+      followers_url: 'followers_url',
+      following_url: 'following_url',
+      gists_url: 'gists_url',
+      gravatar_id: 'gravatar_id',
+      html_url: 'html_url',
+      id: 'id',
+      login: 'login',
+      name: 'name',
+      node_id: 'node_id',
+      organizations_url: 'organizations_url',
+      received_events_url: 'received_events_url',
+      repos_url: 'repos_url',
+      site_admin: 'site_admin',
+      starred_url: 'starred_url',
+      subscriptions_url: 'subscriptions_url',
+      type: 'type',
+      url: 'url',
+      user_view_type: 'user_view_type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      login
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::WebhooksIssueCommentUserType.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhooksIssueCommentUser.
+  # Required object value serialized in the `user` wire field.
+  class WebhooksIssueCommentUser
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhooksIssueCommentUserMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhooksIssueCommentUserMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhooksIssueCommentUserMetadata::DECODERS
+
+    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+    attr_reader :avatar_url
+    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+    attr_reader :deleted
+    # @return [String] Optional `string` value serialized in the `email` wire field.
+    attr_reader :email
+    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+    attr_reader :events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+    attr_reader :followers_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+    attr_reader :following_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+    attr_reader :gists_url
+    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+    attr_reader :gravatar_id
+    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `login` wire field.
+    attr_reader :login
+    # @return [String] Optional `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Optional `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+    attr_reader :organizations_url
+    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+    attr_reader :received_events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+    attr_reader :repos_url
+    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+    attr_reader :site_admin
+    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+    attr_reader :starred_url
+    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+    attr_reader :subscriptions_url
+    # @return [WebhooksIssueCommentUserType] Optional enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+    attr_reader :user_view_type
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhooksIssueCommentMetadata
-  FIELDS = {
-    author_association: "author_association",
-    body: "body",
-    created_at: "created_at",
-    html_url: "html_url",
-    id: "id",
-    issue_url: "issue_url",
-    node_id: "node_id",
-    performed_via_github_app: "performed_via_github_app",
-    reactions: "reactions",
-    updated_at: "updated_at",
-    url: "url",
-    user: "user",
-    pin: "pin",
-    minimized: "minimized",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    author_association
-    body
-    created_at
-    html_url
-    id
-    issue_url
-    node_id
-    performed_via_github_app
-    reactions
-    updated_at
-    url
-    user
-  ].freeze
-  DECODERS = {
-    author_association: lambda do |value|
-      ::OctridevGithub::WebhooksIssueCommentAuthorAssociation.from_value(value)
-    end,
-    performed_via_github_app: lambda do |value|
-      ::OctridevGithub::Integration.from_hash(value)
-    end,
-    reactions: lambda do |value|
-      ::OctridevGithub::WebhooksIssueCommentReactions.from_hash(value)
-    end,
-    user: lambda do |value|
-      ::OctridevGithub::WebhooksIssueCommentUser.from_hash(value)
-    end,
-    pin: lambda do |value|
-      ::OctridevGithub::NullablePinnedIssueComment.from_hash(value)
-    end,
-    minimized: lambda do |value|
-      ::OctridevGithub::NullableIssueCommentMinimized.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    performed_via_github_app
-    user
-  ].freeze
-end
-
-# API model for WebhooksIssueComment.
-# The comment itself.
-class WebhooksIssueComment
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhooksIssueCommentMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhooksIssueCommentMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhooksIssueCommentMetadata::DECODERS
-
-  # @return [WebhooksIssueCommentAuthorAssociation] How the author is associated with the repository.
-  attr_reader :author_association
-  # @return [String] Contents of the issue comment
-  attr_reader :body
-  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Unique identifier of the issue comment
-  attr_reader :id
-  # @return [String] Required `uri`-formatted value serialized in the `issue_url` wire field.
-  attr_reader :issue_url
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [Integration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
-  attr_reader :performed_via_github_app
-  # @return [WebhooksIssueCommentReactions] Required object value serialized in the `reactions` wire field.
-  attr_reader :reactions
-  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-  # @return [String] URL for the issue comment
-  attr_reader :url
-  # @return [WebhooksIssueCommentUser] Required object value serialized in the `user` wire field.
-  attr_reader :user
-  # @return [NullablePinnedIssueComment] Context around who pinned an issue comment and when it was pinned.
-  attr_reader :pin
-  # @return [NullableIssueCommentMinimized] Details about why an issue comment was minimized.
-  attr_reader :minimized
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhooksIssueCommentMetadata
+    FIELDS = {
+      author_association: 'author_association',
+      body: 'body',
+      created_at: 'created_at',
+      html_url: 'html_url',
+      id: 'id',
+      issue_url: 'issue_url',
+      node_id: 'node_id',
+      performed_via_github_app: 'performed_via_github_app',
+      reactions: 'reactions',
+      updated_at: 'updated_at',
+      url: 'url',
+      user: 'user',
+      pin: 'pin',
+      minimized: 'minimized'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      author_association
+      body
+      created_at
+      html_url
+      id
+      issue_url
+      node_id
+      performed_via_github_app
+      reactions
+      updated_at
+      url
+      user
+    ].freeze
+    DECODERS = {
+      author_association: lambda do |value|
+        ::OctridevGithub::WebhooksIssueCommentAuthorAssociation.from_value(value)
+      end,
+      performed_via_github_app: lambda do |value|
+        ::OctridevGithub::Integration.from_hash(value)
+      end,
+      reactions: lambda do |value|
+        ::OctridevGithub::WebhooksIssueCommentReactions.from_hash(value)
+      end,
+      user: lambda do |value|
+        ::OctridevGithub::WebhooksIssueCommentUser.from_hash(value)
+      end,
+      pin: lambda do |value|
+        ::OctridevGithub::NullablePinnedIssueComment.from_hash(value)
+      end,
+      minimized: lambda do |value|
+        ::OctridevGithub::NullableIssueCommentMinimized.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      performed_via_github_app
+      user
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhooksIssueCommentMetadata::NULLABLE_FIELDS)
+  # API model for WebhooksIssueComment.
+  # The comment itself.
+  class WebhooksIssueComment
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhooksIssueCommentMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhooksIssueCommentMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhooksIssueCommentMetadata::DECODERS
+
+    # @return [WebhooksIssueCommentAuthorAssociation] How the author is associated with the repository.
+    attr_reader :author_association
+    # @return [String] Contents of the issue comment
+    attr_reader :body
+    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Unique identifier of the issue comment
+    attr_reader :id
+    # @return [String] Required `uri`-formatted value serialized in the `issue_url` wire field.
+    attr_reader :issue_url
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [Integration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+    attr_reader :performed_via_github_app
+    # @return [WebhooksIssueCommentReactions] Required object value serialized in the `reactions` wire field.
+    attr_reader :reactions
+    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+    # @return [String] URL for the issue comment
+    attr_reader :url
+    # @return [WebhooksIssueCommentUser] Required object value serialized in the `user` wire field.
+    attr_reader :user
+    # @return [NullablePinnedIssueComment] Context around who pinned an issue comment and when it was pinned.
+    attr_reader :pin
+    # @return [NullableIssueCommentMinimized] Details about why an issue comment was minimized.
+    attr_reader :minimized
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhooksIssueCommentMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the WebhooksIssueCommentAuthorAssociation SDK namespace.
+  module WebhooksIssueCommentAuthorAssociation
+    COLLABORATOR = 'COLLABORATOR'
+    CONTRIBUTOR = 'CONTRIBUTOR'
+    FIRST_TIMER = 'FIRST_TIMER'
+    FIRST_TIME_CONTRIBUTOR = 'FIRST_TIME_CONTRIBUTOR'
+    MANNEQUIN = 'MANNEQUIN'
+    MEMBER = 'MEMBER'
+    NONE = 'NONE'
+    OWNER = 'OWNER'
+    VALUES = %w[
+      COLLABORATOR CONTRIBUTOR FIRST_TIMER FIRST_TIME_CONTRIBUTOR MANNEQUIN MEMBER
+      NONE OWNER
+    ].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhooksIssueCommentAuthorAssociation SDK namespace.
-module WebhooksIssueCommentAuthorAssociation
-  COLLABORATOR = 'COLLABORATOR'
-  CONTRIBUTOR = 'CONTRIBUTOR'
-  FIRST_TIMER = 'FIRST_TIMER'
-  FIRST_TIME_CONTRIBUTOR = 'FIRST_TIME_CONTRIBUTOR'
-  MANNEQUIN = 'MANNEQUIN'
-  MEMBER = 'MEMBER'
-  NONE = 'NONE'
-  OWNER = 'OWNER'
-  VALUES = [
-    'COLLABORATOR', 'CONTRIBUTOR', 'FIRST_TIMER', 'FIRST_TIME_CONTRIBUTOR', 'MANNEQUIN', 'MEMBER',
-    'NONE', 'OWNER'
-  ].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhooksIssueCommentUserType SDK namespace.
+  module WebhooksIssueCommentUserType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    MANNEQUIN = 'Mannequin'
+    VALUES = %w[Bot User Organization Mannequin].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the WebhooksIssueCommentUserType SDK namespace.
-module WebhooksIssueCommentUserType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  MANNEQUIN = 'Mannequin'
-  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

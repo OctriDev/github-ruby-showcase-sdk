@@ -5,81 +5,79 @@
 
 # actions_actions_artifact domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalActionsArtifactAndLogRetentionMetadata
-  FIELDS = {
-    days: "days",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    days
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for ActionsArtifactAndLogRetention.
-# Typed representation of the `ActionsArtifactAndLogRetention` API schema.
-class ActionsArtifactAndLogRetention
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalActionsArtifactAndLogRetentionMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalActionsArtifactAndLogRetentionMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalActionsArtifactAndLogRetentionMetadata::DECODERS
-
-  # @return [Integer] The number of days to retain checks, workflow runs, commit statuses, artifacts, and logs
-  attr_reader :days
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalActionsArtifactAndLogRetentionMetadata
+    FIELDS = {
+      days: 'days'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      days
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ActionsArtifactAndLogRetention.
+  # Typed representation of the `ActionsArtifactAndLogRetention` API schema.
+  class ActionsArtifactAndLogRetention
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalActionsArtifactAndLogRetentionMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalActionsArtifactAndLogRetentionMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalActionsArtifactAndLogRetentionMetadata::DECODERS
+
+    # @return [Integer] The number of days to retain checks, workflow runs, commit statuses, artifacts, and logs
+    attr_reader :days
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalActionsArtifactAndLogRetentionResponseMetadata
-  FIELDS = {
-    days: "days",
-    maximum_allowed_days: "maximum_allowed_days",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    days
-    maximum_allowed_days
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for ActionsArtifactAndLogRetentionResponse.
-# Typed representation of the `ActionsArtifactAndLogRetentionResponse` API schema.
-class ActionsArtifactAndLogRetentionResponse
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalActionsArtifactAndLogRetentionResponseMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalActionsArtifactAndLogRetentionResponseMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalActionsArtifactAndLogRetentionResponseMetadata::DECODERS
-
-  # @return [Integer] The number of days checks, workflow runs, commit statuses, artifacts, and logs are retained
-  attr_reader :days
-  # @return [Integer] The maximum number of days that can be configured
-  attr_reader :maximum_allowed_days
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalActionsArtifactAndLogRetentionResponseMetadata
+    FIELDS = {
+      days: 'days',
+      maximum_allowed_days: 'maximum_allowed_days'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      days
+      maximum_allowed_days
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
+  # API model for ActionsArtifactAndLogRetentionResponse.
+  # Typed representation of the `ActionsArtifactAndLogRetentionResponse` API schema.
+  class ActionsArtifactAndLogRetentionResponse
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalActionsArtifactAndLogRetentionResponseMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalActionsArtifactAndLogRetentionResponseMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalActionsArtifactAndLogRetentionResponseMetadata::DECODERS
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+    # @return [Integer] The number of days checks, workflow runs, commit statuses, artifacts, and logs are retained
+    attr_reader :days
+    # @return [Integer] The maximum number of days that can be configured
+    attr_reader :maximum_allowed_days
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
 end

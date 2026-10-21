@@ -49,17 +49,16 @@ module OctridevGithub
         bypass_pull_request_allowances: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/branches/",
+            '/branches/',
             SdkClient.encode_path_segment(branch),
-            "/protection/required_pull_request_reviews"
+            '/protection/required_pull_request_reviews'
           ].join,
           config: config,
           body: {
@@ -68,13 +67,13 @@ module OctridevGithub
             'require_code_owner_reviews' => require_code_owner_reviews,
             'required_approving_review_count' => required_approving_review_count,
             'require_last_push_approval' => require_last_push_approval,
-            'bypass_pull_request_allowances' => bypass_pull_request_allowances,
+            'bypass_pull_request_allowances' => bypass_pull_request_allowances
           },
           return_type: ::OctridevGithub::ProtectedBranchPullRequestReview,
           decoder: :json,
           operation_id: 'repos_update_pull_request_review_protection',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError },
+          errors: { '422' => ::OctridevGithub::ValidationError }
         ).data
       end
     end

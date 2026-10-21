@@ -12,21 +12,20 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullsCreateMetadata
         FIELDS = {
-          title: "title",
-          head: "head",
-          head_repo: "head_repo",
-          base: "base",
-          body: "body",
-          maintainer_can_modify: "maintainer_can_modify",
-          draft: "draft",
-          issue: "issue",
+          title: 'title',
+          head: 'head',
+          head_repo: 'head_repo',
+          base: 'base',
+          body: 'body',
+          maintainer_can_modify: 'maintainer_can_modify',
+          draft: 'draft',
+          issue: 'issue'
         }.freeze
         REQUIRED_FIELDS = %i[
           head
           base
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for PullsCreate.
@@ -70,13 +69,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullsUpdateReviewCommentMetadata
         FIELDS = {
-          body: "body",
+          body: 'body'
         }.freeze
         REQUIRED_FIELDS = %i[
           body
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for PullsUpdateReviewComment.
@@ -106,18 +104,17 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullsUpdateMetadata
         FIELDS = {
-          title: "title",
-          body: "body",
-          state: "state",
-          base: "base",
-          maintainer_can_modify: "maintainer_can_modify",
+          title: 'title',
+          body: 'body',
+          state: 'state',
+          base: 'base',
+          maintainer_can_modify: 'maintainer_can_modify'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           state: lambda do |value|
             ::OctridevGithub::Methods::Pulls::PullsUpdateState.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -156,16 +153,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullsCreateReviewCommentMetadata
         FIELDS = {
-          body: "body",
-          commit_id: "commit_id",
-          path: "path",
-          position: "position",
-          side: "side",
-          line: "line",
-          start_line: "start_line",
-          start_side: "start_side",
-          in_reply_to: "in_reply_to",
-          subject_type: "subject_type",
+          body: 'body',
+          commit_id: 'commit_id',
+          path: 'path',
+          position: 'position',
+          side: 'side',
+          line: 'line',
+          start_line: 'start_line',
+          start_side: 'start_side',
+          in_reply_to: 'in_reply_to',
+          subject_type: 'subject_type'
         }.freeze
         REQUIRED_FIELDS = %i[
           body
@@ -181,7 +178,7 @@ module OctridevGithub
           end,
           subject_type: lambda do |value|
             ::OctridevGithub::Methods::Pulls::PullsCreateReviewCommentSubjectType.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -230,13 +227,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullsCreateReplyForReviewCommentMetadata
         FIELDS = {
-          body: "body",
+          body: 'body'
         }.freeze
         REQUIRED_FIELDS = %i[
           body
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for PullsCreateReplyForReviewComment.
@@ -266,17 +262,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullsMergeMetadata
         FIELDS = {
-          commit_title: "commit_title",
-          commit_message: "commit_message",
-          sha: "sha",
-          merge_method: "merge_method",
+          commit_title: 'commit_title',
+          commit_message: 'commit_message',
+          sha: 'sha',
+          merge_method: 'merge_method'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           merge_method: lambda do |value|
             ::OctridevGithub::Methods::Pulls::PullsMergeMergeMethod.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -313,22 +308,21 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullsMergeAsyncMetadata
         FIELDS = {
-          commit_title: "commit_title",
-          commit_message: "commit_message",
-          sha: "sha",
-          merge_method: "merge_method",
-          merge_action: "merge_action",
-          bypass_rules: "bypass_rules",
+          commit_title: 'commit_title',
+          commit_message: 'commit_message',
+          sha: 'sha',
+          merge_method: 'merge_method',
+          merge_action: 'merge_action',
+          bypass_rules: 'bypass_rules'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           merge_method: lambda do |value|
             ::OctridevGithub::Methods::Pulls::PullsMergeAsyncMergeMethod.from_value(value)
           end,
           merge_action: lambda do |value|
             ::OctridevGithub::Methods::Pulls::PullsMergeAsyncMergeAction.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -369,13 +363,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullsRequestReviewersMetadata
         FIELDS = {
-          reviewers: "reviewers",
-          team_reviewers: "team_reviewers",
+          reviewers: 'reviewers',
+          team_reviewers: 'team_reviewers'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for PullsRequestReviewers.
@@ -407,14 +399,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullsRemoveRequestedReviewersMetadata
         FIELDS = {
-          reviewers: "reviewers",
-          team_reviewers: "team_reviewers",
+          reviewers: 'reviewers',
+          team_reviewers: 'team_reviewers'
         }.freeze
         REQUIRED_FIELDS = %i[
           reviewers
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for PullsRemoveRequestedReviewers.
@@ -446,13 +437,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullsRerequestReviewersMetadata
         FIELDS = {
-          reviewers: "reviewers",
-          team_reviewers: "team_reviewers",
+          reviewers: 'reviewers',
+          team_reviewers: 'team_reviewers'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for PullsRerequestReviewers.
@@ -484,20 +473,19 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullsCreateReviewCommentsItemMetadata
         FIELDS = {
-          path: "path",
-          position: "position",
-          body: "body",
-          line: "line",
-          side: "side",
-          start_line: "start_line",
-          start_side: "start_side",
+          path: 'path',
+          position: 'position',
+          body: 'body',
+          line: 'line',
+          side: 'side',
+          start_line: 'start_line',
+          start_side: 'start_side'
         }.freeze
         REQUIRED_FIELDS = %i[
           path
           body
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for PullsCreateReviewCommentsItem.
@@ -532,20 +520,19 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullsCreateReviewMetadata
         FIELDS = {
-          commit_id: "commit_id",
-          body: "body",
-          event: "event",
-          comments: "comments",
+          commit_id: 'commit_id',
+          body: 'body',
+          event: 'event',
+          comments: 'comments'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           event: lambda do |value|
             ::OctridevGithub::Methods::Pulls::PullsCreateReviewEvent.from_value(value)
           end,
           comments: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Pulls::PullsCreateReviewCommentsItem.from_hash(item) }
-          end,
+          end
         }.freeze
       end
     end

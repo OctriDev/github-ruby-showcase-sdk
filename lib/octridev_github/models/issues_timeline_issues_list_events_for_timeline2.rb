@@ -5,192 +5,192 @@
 
 # issues_timeline domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalTimelineCrossReferencedEventSourceMetadata
-  FIELDS = {
-    type: "type",
-    issue: "issue",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    issue: lambda do |value|
-      ::OctridevGithub::Issue.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for TimelineCrossReferencedEventSource.
-# Required object value serialized in the `source` wire field.
-class TimelineCrossReferencedEventSource
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalTimelineCrossReferencedEventSourceMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalTimelineCrossReferencedEventSourceMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalTimelineCrossReferencedEventSourceMetadata::DECODERS
-
-  # @return [String] Optional `string` value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [Issue] Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.
-  attr_reader :issue
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalTimelineCrossReferencedEventSourceMetadata
+    FIELDS = {
+      type: 'type',
+      issue: 'issue'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      issue: lambda do |value|
+        ::OctridevGithub::Issue.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for TimelineCrossReferencedEventSource.
+  # Required object value serialized in the `source` wire field.
+  class TimelineCrossReferencedEventSource
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalTimelineCrossReferencedEventSourceMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalTimelineCrossReferencedEventSourceMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalTimelineCrossReferencedEventSourceMetadata::DECODERS
+
+    # @return [String] Optional `string` value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [Issue] Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.
+    attr_reader :issue
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalTimelineCrossReferencedEventMetadata
-  FIELDS = {
-    event: "event",
-    actor: "actor",
-    created_at: "created_at",
-    updated_at: "updated_at",
-    source: "source",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    event
-    created_at
-    updated_at
-    source
-  ].freeze
-  DECODERS = {
-    actor: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-    source: lambda do |value|
-      ::OctridevGithub::TimelineCrossReferencedEventSource.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for TimelineCrossReferencedEvent.
-# Timeline Cross Referenced Event
-class TimelineCrossReferencedEvent
-  include TimelineIssueEvents
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalTimelineCrossReferencedEventMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalTimelineCrossReferencedEventMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalTimelineCrossReferencedEventMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `event` wire field.
-  attr_reader :event
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :actor
-  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-  # @return [TimelineCrossReferencedEventSource] Required object value serialized in the `source` wire field.
-  attr_reader :source
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalTimelineCrossReferencedEventMetadata
+    FIELDS = {
+      event: 'event',
+      actor: 'actor',
+      created_at: 'created_at',
+      updated_at: 'updated_at',
+      source: 'source'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      event
+      created_at
+      updated_at
+      source
+    ].freeze
+    DECODERS = {
+      actor: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end,
+      source: lambda do |value|
+        ::OctridevGithub::TimelineCrossReferencedEventSource.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for TimelineCrossReferencedEvent.
+  # Timeline Cross Referenced Event
+  class TimelineCrossReferencedEvent
+    include TimelineIssueEvents
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalTimelineCrossReferencedEventMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalTimelineCrossReferencedEventMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalTimelineCrossReferencedEventMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `event` wire field.
+    attr_reader :event
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :actor
+    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+    # @return [TimelineCrossReferencedEventSource] Required object value serialized in the `source` wire field.
+    attr_reader :source
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalTimelineDisconnectedEventMetadata
-  FIELDS = {
-    id: "id",
-    node_id: "node_id",
-    url: "url",
-    actor: "actor",
-    event: "event",
-    commit_id: "commit_id",
-    commit_url: "commit_url",
-    created_at: "created_at",
-    performed_via_github_app: "performed_via_github_app",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    node_id
-    url
-    actor
-    event
-    commit_id
-    commit_url
-    created_at
-    performed_via_github_app
-  ].freeze
-  DECODERS = {
-    actor: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-    performed_via_github_app: lambda do |value|
-      ::OctridevGithub::NullableIntegration.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    commit_id
-    commit_url
-    performed_via_github_app
-  ].freeze
-end
-
-# API model for TimelineDisconnectedEvent.
-# Timeline Disconnected Event
-class TimelineDisconnectedEvent
-  include TimelineIssueEvents
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalTimelineDisconnectedEventMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalTimelineDisconnectedEventMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalTimelineDisconnectedEventMetadata::DECODERS
-
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Required `string` value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :actor
-  # @return [String] Required `string` value serialized in the `event` wire field.
-  attr_reader :event
-  # @return [String] Required `string` value serialized in the `commit_id` wire field.
-  attr_reader :commit_id
-  # @return [String] Required `string` value serialized in the `commit_url` wire field.
-  attr_reader :commit_url
-  # @return [String] Required `string` value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [NullableIntegration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
-  attr_reader :performed_via_github_app
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalTimelineDisconnectedEventMetadata
+    FIELDS = {
+      id: 'id',
+      node_id: 'node_id',
+      url: 'url',
+      actor: 'actor',
+      event: 'event',
+      commit_id: 'commit_id',
+      commit_url: 'commit_url',
+      created_at: 'created_at',
+      performed_via_github_app: 'performed_via_github_app'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      node_id
+      url
+      actor
+      event
+      commit_id
+      commit_url
+      created_at
+      performed_via_github_app
+    ].freeze
+    DECODERS = {
+      actor: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end,
+      performed_via_github_app: lambda do |value|
+        ::OctridevGithub::NullableIntegration.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      commit_id
+      commit_url
+      performed_via_github_app
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalTimelineDisconnectedEventMetadata::NULLABLE_FIELDS)
+  # API model for TimelineDisconnectedEvent.
+  # Timeline Disconnected Event
+  class TimelineDisconnectedEvent
+    include TimelineIssueEvents
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalTimelineDisconnectedEventMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalTimelineDisconnectedEventMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalTimelineDisconnectedEventMetadata::DECODERS
+
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Required `string` value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :actor
+    # @return [String] Required `string` value serialized in the `event` wire field.
+    attr_reader :event
+    # @return [String] Required `string` value serialized in the `commit_id` wire field.
+    attr_reader :commit_id
+    # @return [String] Required `string` value serialized in the `commit_url` wire field.
+    attr_reader :commit_url
+    # @return [String] Required `string` value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [NullableIntegration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+    attr_reader :performed_via_github_app
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalTimelineDisconnectedEventMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the TimelineIssueEvents SDK namespace.
-module TimelineIssueEvents
-  UNDECIDED_VARIANTS = (
-    [
+  # Defines the TimelineIssueEvents SDK namespace.
+  module TimelineIssueEvents
+    UNDECIDED_VARIANTS = [
       -> { LabeledIssueEvent },
       -> { UnlabeledIssueEvent },
       -> { MilestonedIssueEvent },
@@ -218,391 +218,391 @@ module TimelineIssueEvents
       -> { BlockingAddedIssueEvent },
       -> { BlockingRemovedIssueEvent },
       -> { TimelineConnectedEvent },
-      -> { TimelineDisconnectedEvent },
-    ]
-  ).freeze
+      -> { TimelineDisconnectedEvent }
+    ].freeze
 
-  def self.from_hash(hash)
-    shape_mapping = {
-      "rename" => RenamedIssueEvent,
-      "dismissed_review" => ReviewDismissedIssueEvent,
-      "lock_reason" => LockedIssueEvent,
-      "issue_url" => TimelineCommentEvent,
-      "source" => TimelineCrossReferencedEvent,
-      "sha" => TimelineCommittedEvent,
-      "state" => TimelineReviewedEvent,
-    }
-    type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
-    decoded = type&.from_hash(hash)
-    return decoded unless type.nil?
-    lossy = nil
-    UNDECIDED_VARIANTS.each do |variant|
-      type = variant.call
-      decoded = type.from_hash(hash)
-      return decoded if SdkModel.keeps_every_key?(hash, decoded)
+    def self.from_hash(hash)
+      shape_mapping = {
+        'rename' => RenamedIssueEvent,
+        'dismissed_review' => ReviewDismissedIssueEvent,
+        'lock_reason' => LockedIssueEvent,
+        'issue_url' => TimelineCommentEvent,
+        'source' => TimelineCrossReferencedEvent,
+        'sha' => TimelineCommittedEvent,
+        'state' => TimelineReviewedEvent
+      }
+      type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
+      decoded = type&.from_hash(hash)
+      return decoded unless type.nil?
 
-      lossy ||= decoded
-    rescue ::StandardError
-      next
+      lossy = nil
+      UNDECIDED_VARIANTS.each do |variant|
+        type = variant.call
+        decoded = type.from_hash(hash)
+        return decoded if SdkModel.keeps_every_key?(hash, decoded)
+
+        lossy ||= decoded
+      rescue ::StandardError
+        next
+      end
+      lossy unless lossy.nil?
     end
-    return lossy unless lossy.nil?
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalTimelineLineCommentedEventMetadata
-  FIELDS = {
-    event: "event",
-    node_id: "node_id",
-    comments: "comments",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    comments: lambda do |value|
-      value&.map { |item| ::OctridevGithub::PullRequestReviewComment.from_hash(item) }
-    end,
-  }.freeze
-end
-
-# API model for TimelineLineCommentedEvent.
-# Timeline Line Commented Event
-class TimelineLineCommentedEvent
-  include TimelineIssueEvents
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalTimelineLineCommentedEventMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalTimelineLineCommentedEventMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalTimelineLineCommentedEventMetadata::DECODERS
-
-  # @return [String] Optional `string` value serialized in the `event` wire field.
-  attr_reader :event
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [Array_of_PullRequestReviewComment] Optional array value serialized in the `comments` wire field.
-  attr_reader :comments
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalTimelineLineCommentedEventMetadata
+    FIELDS = {
+      event: 'event',
+      node_id: 'node_id',
+      comments: 'comments'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      comments: lambda do |value|
+        value&.map { |item| ::OctridevGithub::PullRequestReviewComment.from_hash(item) }
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for TimelineLineCommentedEvent.
+  # Timeline Line Commented Event
+  class TimelineLineCommentedEvent
+    include TimelineIssueEvents
 
-# Internal model hydration metadata.
-class SdkInternalTimelineReviewedEventLinksHtmlMetadata
-  FIELDS = {
-    href: "href",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    href
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalTimelineLineCommentedEventMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalTimelineLineCommentedEventMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalTimelineLineCommentedEventMetadata::DECODERS
 
-# API model for TimelineReviewedEventLinksHtml.
-# Required object value serialized in the `html` wire field.
-class TimelineReviewedEventLinksHtml
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalTimelineReviewedEventLinksHtmlMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalTimelineReviewedEventLinksHtmlMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalTimelineReviewedEventLinksHtmlMetadata::DECODERS
+    # @return [String] Optional `string` value serialized in the `event` wire field.
+    attr_reader :event
+    # @return [String] Optional `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [Array_of_PullRequestReviewComment] Optional array value serialized in the `comments` wire field.
+    attr_reader :comments
 
-  # @return [String] Required `string` value serialized in the `href` wire field.
-  attr_reader :href
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalTimelineReviewedEventLinksHtmlMetadata
+    FIELDS = {
+      href: 'href'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      href
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for TimelineReviewedEventLinksHtml.
+  # Required object value serialized in the `html` wire field.
+  class TimelineReviewedEventLinksHtml
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalTimelineReviewedEventLinksHtmlMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalTimelineReviewedEventLinksHtmlMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalTimelineReviewedEventLinksHtmlMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalTimelineReviewedEventLinksPullRequestMetadata
-  FIELDS = {
-    href: "href",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    href
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    # @return [String] Required `string` value serialized in the `href` wire field.
+    attr_reader :href
 
-# API model for TimelineReviewedEventLinksPullRequest.
-# Required object value serialized in the `pull_request` wire field.
-class TimelineReviewedEventLinksPullRequest
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalTimelineReviewedEventLinksPullRequestMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalTimelineReviewedEventLinksPullRequestMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalTimelineReviewedEventLinksPullRequestMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [String] Required `string` value serialized in the `href` wire field.
-  attr_reader :href
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalTimelineReviewedEventLinksPullRequestMetadata
+    FIELDS = {
+      href: 'href'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      href
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for TimelineReviewedEventLinksPullRequest.
+  # Required object value serialized in the `pull_request` wire field.
+  class TimelineReviewedEventLinksPullRequest
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalTimelineReviewedEventLinksPullRequestMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalTimelineReviewedEventLinksPullRequestMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalTimelineReviewedEventLinksPullRequestMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalTimelineReviewedEventLinksMetadata
-  FIELDS = {
-    html: "html",
-    pull_request: "pull_request",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    html
-    pull_request
-  ].freeze
-  DECODERS = {
-    html: lambda do |value|
-      ::OctridevGithub::TimelineReviewedEventLinksHtml.from_hash(value)
-    end,
-    pull_request: lambda do |value|
-      ::OctridevGithub::TimelineReviewedEventLinksPullRequest.from_hash(value)
-    end,
-  }.freeze
-end
+    # @return [String] Required `string` value serialized in the `href` wire field.
+    attr_reader :href
 
-# API model for TimelineReviewedEventLinks.
-# Required object value serialized in the `_links` wire field.
-class TimelineReviewedEventLinks
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalTimelineReviewedEventLinksMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalTimelineReviewedEventLinksMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalTimelineReviewedEventLinksMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [TimelineReviewedEventLinksHtml] Required object value serialized in the `html` wire field.
-  attr_reader :html
-  # @return [TimelineReviewedEventLinksPullRequest] Required object value serialized in the `pull_request` wire field.
-  attr_reader :pull_request
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalTimelineReviewedEventLinksMetadata
+    FIELDS = {
+      html: 'html',
+      pull_request: 'pull_request'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      html
+      pull_request
+    ].freeze
+    DECODERS = {
+      html: lambda do |value|
+        ::OctridevGithub::TimelineReviewedEventLinksHtml.from_hash(value)
+      end,
+      pull_request: lambda do |value|
+        ::OctridevGithub::TimelineReviewedEventLinksPullRequest.from_hash(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for TimelineReviewedEventLinks.
+  # Required object value serialized in the `_links` wire field.
+  class TimelineReviewedEventLinks
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalTimelineReviewedEventLinksMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalTimelineReviewedEventLinksMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalTimelineReviewedEventLinksMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalTimelineReviewedEventMetadata
-  FIELDS = {
-    event: "event",
-    id: "id",
-    node_id: "node_id",
-    user: "user",
-    body: "body",
-    state: "state",
-    html_url: "html_url",
-    pull_request_url: "pull_request_url",
-    links: "_links",
-    submitted_at: "submitted_at",
-    updated_at: "updated_at",
-    commit_id: "commit_id",
-    body_html: "body_html",
-    body_text: "body_text",
-    author_association: "author_association",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    event
-    id
-    node_id
-    user
-    body
-    state
-    html_url
-    pull_request_url
-    links
-    commit_id
-    author_association
-  ].freeze
-  DECODERS = {
-    user: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-    links: lambda do |value|
-      ::OctridevGithub::TimelineReviewedEventLinks.from_hash(value)
-    end,
-    author_association: lambda do |value|
-      ::OctridevGithub::AuthorAssociation.from_value(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    body
-  ].freeze
-end
+    # @return [TimelineReviewedEventLinksHtml] Required object value serialized in the `html` wire field.
+    attr_reader :html
+    # @return [TimelineReviewedEventLinksPullRequest] Required object value serialized in the `pull_request` wire field.
+    attr_reader :pull_request
 
-# API model for TimelineReviewedEvent.
-# Timeline Reviewed Event
-class TimelineReviewedEvent
-  include TimelineIssueEvents
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalTimelineReviewedEventMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalTimelineReviewedEventMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalTimelineReviewedEventMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [String] Required `string` value serialized in the `event` wire field.
-  attr_reader :event
-  # @return [Integer] Unique identifier of the review
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :user
-  # @return [String] The text of the review.
-  attr_reader :body
-  # @return [String] Required `string` value serialized in the `state` wire field.
-  attr_reader :state
-  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [String] Required `uri`-formatted value serialized in the `pull_request_url` wire field.
-  attr_reader :pull_request_url
-  # @return [TimelineReviewedEventLinks] Required object value serialized in the `_links` wire field.
-  attr_reader :links
-  # @return [String] Optional `date-time`-formatted value serialized in the `submitted_at` wire field.
-  attr_reader :submitted_at
-  # @return [String] Optional `date-time`-formatted value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-  # @return [String] A commit SHA for the review.
-  attr_reader :commit_id
-  # @return [String] Optional `string` value serialized in the `body_html` wire field.
-  attr_reader :body_html
-  # @return [String] Optional `string` value serialized in the `body_text` wire field.
-  attr_reader :body_text
-  # @return [AuthorAssociation] How the author is associated with the repository.
-  attr_reader :author_association
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalTimelineReviewedEventMetadata::NULLABLE_FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalTimelineReviewedEventMetadata
+    FIELDS = {
+      event: 'event',
+      id: 'id',
+      node_id: 'node_id',
+      user: 'user',
+      body: 'body',
+      state: 'state',
+      html_url: 'html_url',
+      pull_request_url: 'pull_request_url',
+      links: '_links',
+      submitted_at: 'submitted_at',
+      updated_at: 'updated_at',
+      commit_id: 'commit_id',
+      body_html: 'body_html',
+      body_text: 'body_text',
+      author_association: 'author_association'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      event
+      id
+      node_id
+      user
+      body
+      state
+      html_url
+      pull_request_url
+      links
+      commit_id
+      author_association
+    ].freeze
+    DECODERS = {
+      user: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end,
+      links: lambda do |value|
+        ::OctridevGithub::TimelineReviewedEventLinks.from_hash(value)
+      end,
+      author_association: lambda do |value|
+        ::OctridevGithub::AuthorAssociation.from_value(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      body
+    ].freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for TimelineReviewedEvent.
+  # Timeline Reviewed Event
+  class TimelineReviewedEvent
+    include TimelineIssueEvents
 
-# Internal model hydration metadata.
-class SdkInternalTimelineUnassignedIssueEventMetadata
-  FIELDS = {
-    id: "id",
-    node_id: "node_id",
-    url: "url",
-    actor: "actor",
-    event: "event",
-    commit_id: "commit_id",
-    commit_url: "commit_url",
-    created_at: "created_at",
-    performed_via_github_app: "performed_via_github_app",
-    assignee: "assignee",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    node_id
-    url
-    actor
-    event
-    commit_id
-    commit_url
-    created_at
-    performed_via_github_app
-    assignee
-  ].freeze
-  DECODERS = {
-    actor: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-    performed_via_github_app: lambda do |value|
-      ::OctridevGithub::NullableIntegration.from_hash(value)
-    end,
-    assignee: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    commit_id
-    commit_url
-    performed_via_github_app
-  ].freeze
-end
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalTimelineReviewedEventMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalTimelineReviewedEventMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalTimelineReviewedEventMetadata::DECODERS
 
-# API model for TimelineUnassignedIssueEvent.
-# Timeline Unassigned Issue Event
-class TimelineUnassignedIssueEvent
-  include TimelineIssueEvents
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalTimelineUnassignedIssueEventMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalTimelineUnassignedIssueEventMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalTimelineUnassignedIssueEventMetadata::DECODERS
+    # @return [String] Required `string` value serialized in the `event` wire field.
+    attr_reader :event
+    # @return [Integer] Unique identifier of the review
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :user
+    # @return [String] The text of the review.
+    attr_reader :body
+    # @return [String] Required `string` value serialized in the `state` wire field.
+    attr_reader :state
+    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [String] Required `uri`-formatted value serialized in the `pull_request_url` wire field.
+    attr_reader :pull_request_url
+    # @return [TimelineReviewedEventLinks] Required object value serialized in the `_links` wire field.
+    attr_reader :links
+    # @return [String] Optional `date-time`-formatted value serialized in the `submitted_at` wire field.
+    attr_reader :submitted_at
+    # @return [String] Optional `date-time`-formatted value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+    # @return [String] A commit SHA for the review.
+    attr_reader :commit_id
+    # @return [String] Optional `string` value serialized in the `body_html` wire field.
+    attr_reader :body_html
+    # @return [String] Optional `string` value serialized in the `body_text` wire field.
+    attr_reader :body_text
+    # @return [AuthorAssociation] How the author is associated with the repository.
+    attr_reader :author_association
 
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Required `string` value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :actor
-  # @return [String] Required `string` value serialized in the `event` wire field.
-  attr_reader :event
-  # @return [String] Required `string` value serialized in the `commit_id` wire field.
-  attr_reader :commit_id
-  # @return [String] Required `string` value serialized in the `commit_url` wire field.
-  attr_reader :commit_url
-  # @return [String] Required `string` value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [NullableIntegration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
-  attr_reader :performed_via_github_app
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :assignee
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalTimelineReviewedEventMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalTimelineUnassignedIssueEventMetadata::NULLABLE_FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalTimelineUnassignedIssueEventMetadata
+    FIELDS = {
+      id: 'id',
+      node_id: 'node_id',
+      url: 'url',
+      actor: 'actor',
+      event: 'event',
+      commit_id: 'commit_id',
+      commit_url: 'commit_url',
+      created_at: 'created_at',
+      performed_via_github_app: 'performed_via_github_app',
+      assignee: 'assignee'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      node_id
+      url
+      actor
+      event
+      commit_id
+      commit_url
+      created_at
+      performed_via_github_app
+      assignee
+    ].freeze
+    DECODERS = {
+      actor: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end,
+      performed_via_github_app: lambda do |value|
+        ::OctridevGithub::NullableIntegration.from_hash(value)
+      end,
+      assignee: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      commit_id
+      commit_url
+      performed_via_github_app
+    ].freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # API model for TimelineUnassignedIssueEvent.
+  # Timeline Unassigned Issue Event
+  class TimelineUnassignedIssueEvent
+    include TimelineIssueEvents
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalTimelineUnassignedIssueEventMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalTimelineUnassignedIssueEventMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalTimelineUnassignedIssueEventMetadata::DECODERS
+
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Required `string` value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :actor
+    # @return [String] Required `string` value serialized in the `event` wire field.
+    attr_reader :event
+    # @return [String] Required `string` value serialized in the `commit_id` wire field.
+    attr_reader :commit_id
+    # @return [String] Required `string` value serialized in the `commit_url` wire field.
+    attr_reader :commit_url
+    # @return [String] Required `string` value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [NullableIntegration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+    attr_reader :performed_via_github_app
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :assignee
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalTimelineUnassignedIssueEventMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
 end

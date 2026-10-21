@@ -17,20 +17,19 @@ module OctridevGithub
         org:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/properties/installations"
+            '/properties/installations'
           ].join,
           config: config,
           return_type: [::OctridevGithub::OrganizationExternalPropertyInstallation],
           decoder: :json,
           operation_id: 'orgs_external_properties_for_repos_get_organization_app_installations',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -53,27 +52,26 @@ module OctridevGithub
         installation_id: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('display_name', display_name, min: 1, max: 15)
         Validation.validate_pattern('display_name', display_name, '^[a-zA-Z0-9]+$')
 
         SdkClient.request(
           'POST',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/properties/installations"
+            '/properties/installations'
           ].join,
           config: config,
           body: {
             'display_name' => display_name,
-            'installation_id' => installation_id,
+            'installation_id' => installation_id
           },
           return_type: ::OctridevGithub::OrganizationExternalPropertyInstallation,
           decoder: :json,
           operation_id: 'orgs_external_properties_for_repos_register_organization_app_installation',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -85,20 +83,19 @@ module OctridevGithub
         org:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/properties/installations/schema"
+            '/properties/installations/schema'
           ].join,
           config: config,
           return_type: [::OctridevGithub::ExternalProperty],
           decoder: :json,
           operation_id: 'orgs_external_properties_for_repos_get_organization_definitions',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -116,25 +113,24 @@ module OctridevGithub
         properties:,
         request_options: nil
       )
-
         Validation.validate_items('repository_names', repository_names, min: 1, max: 30)
 
         SdkClient.request(
           'PATCH',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/properties/installations/values"
+            '/properties/installations/values'
           ].join,
           config: config,
           body: {
             'repository_names' => repository_names,
-            'properties' => properties,
+            'properties' => properties
           },
           decoder: :empty,
           operation_id: 'orgs_external_properties_for_repos_create_or_update_organization_values',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -152,25 +148,24 @@ module OctridevGithub
         repository_values:,
         request_options: nil
       )
-
         Validation.validate_items('repository_values', repository_values, min: 1, max: 100)
 
         SdkClient.request(
           'PATCH',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/properties/installations/values/",
+            '/properties/installations/values/',
             SdkClient.encode_path_segment(property_name)
           ].join,
           config: config,
           body: {
-            'repository_values' => repository_values,
+            'repository_values' => repository_values
           },
           decoder: :empty,
           operation_id: 'orgs_external_properties_for_repos_create_or_update_values_for_organization_property',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -184,20 +179,19 @@ module OctridevGithub
         property_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/properties/installations/values/",
+            '/properties/installations/values/',
             SdkClient.encode_path_segment(property_name)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'orgs_external_properties_for_repos_delete_organization_values',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -209,20 +203,19 @@ module OctridevGithub
         org:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/properties/schema"
+            '/properties/schema'
           ].join,
           config: config,
           return_type: [::OctridevGithub::CustomProperty],
           decoder: :json,
           operation_id: 'orgs_custom_properties_for_repos_get_organization_definitions',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -237,25 +230,24 @@ module OctridevGithub
         properties:,
         request_options: nil
       )
-
         Validation.validate_items('properties', properties, min: 1, max: 100)
 
         SdkClient.request(
           'PATCH',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/properties/schema"
+            '/properties/schema'
           ].join,
           config: config,
           body: {
-            'properties' => properties,
+            'properties' => properties
           },
           return_type: [::OctridevGithub::CustomProperty],
           decoder: :json,
           operation_id: 'orgs_custom_properties_for_repos_create_or_update_organization_definitions',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -269,13 +261,12 @@ module OctridevGithub
         custom_property_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/properties/schema/",
+            '/properties/schema/',
             SdkClient.encode_path_segment(custom_property_name)
           ].join,
           config: config,
@@ -283,7 +274,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'orgs_custom_properties_for_repos_get_organization_definition',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -316,13 +307,12 @@ module OctridevGithub
         require_explicit_values: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/properties/schema/",
+            '/properties/schema/',
             SdkClient.encode_path_segment(custom_property_name)
           ].join,
           config: config,
@@ -333,13 +323,13 @@ module OctridevGithub
             'description' => description,
             'allowed_values' => allowed_values,
             'values_editable_by' => values_editable_by,
-            'require_explicit_values' => require_explicit_values,
+            'require_explicit_values' => require_explicit_values
           },
           return_type: ::OctridevGithub::CustomProperty,
           decoder: :json,
           operation_id: 'orgs_custom_properties_for_repos_create_or_update_organization_definition',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -353,20 +343,19 @@ module OctridevGithub
         custom_property_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/properties/schema/",
+            '/properties/schema/',
             SdkClient.encode_path_segment(custom_property_name)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'orgs_custom_properties_for_repos_delete_organization_definition',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -391,25 +380,24 @@ module OctridevGithub
         repository_query: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/properties/values"
+            '/properties/values'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'page' => QueryValue.new(page, style: 'form', explode: true),
-            'repository_query' => QueryValue.new(repository_query, style: 'form', explode: true),
+            'repository_query' => QueryValue.new(repository_query, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::OrgRepoCustomPropertyValues],
           decoder: :json,
           operation_id: 'orgs_custom_properties_for_repos_get_organization_values',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -427,25 +415,24 @@ module OctridevGithub
         properties:,
         request_options: nil
       )
-
         Validation.validate_items('repository_names', repository_names, min: 1, max: 30)
 
         SdkClient.request(
           'PATCH',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/properties/values"
+            '/properties/values'
           ].join,
           config: config,
           body: {
             'repository_names' => repository_names,
-            'properties' => properties,
+            'properties' => properties
           },
           decoder: :empty,
           operation_id: 'orgs_custom_properties_for_repos_create_or_update_organization_values',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
     end

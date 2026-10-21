@@ -12,15 +12,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalChecksCreateOutputAnnotationsItemMetadata
         FIELDS = {
-          path: "path",
-          start_line: "start_line",
-          end_line: "end_line",
-          start_column: "start_column",
-          end_column: "end_column",
-          annotation_level: "annotation_level",
-          message: "message",
-          title: "title",
-          raw_details: "raw_details",
+          path: 'path',
+          start_line: 'start_line',
+          end_line: 'end_line',
+          start_column: 'start_column',
+          end_column: 'end_column',
+          annotation_level: 'annotation_level',
+          message: 'message',
+          title: 'title',
+          raw_details: 'raw_details'
         }.freeze
         REQUIRED_FIELDS = %i[
           path
@@ -32,7 +32,7 @@ module OctridevGithub
         DECODERS = {
           annotation_level: lambda do |value|
             ::OctridevGithub::Methods::Checks::ChecksCreateOutputAnnotationsItemAnnotationLevel.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -79,16 +79,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalChecksCreateOutputImagesItemMetadata
         FIELDS = {
-          alt: "alt",
-          image_url: "image_url",
-          caption: "caption",
+          alt: 'alt',
+          image_url: 'image_url',
+          caption: 'caption'
         }.freeze
         REQUIRED_FIELDS = %i[
           alt
           image_url
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ChecksCreateOutputImagesItem.
@@ -122,11 +121,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalChecksCreateOutputMetadata
         FIELDS = {
-          title: "title",
-          summary: "summary",
-          text: "text",
-          annotations: "annotations",
-          images: "images",
+          title: 'title',
+          summary: 'summary',
+          text: 'text',
+          annotations: 'annotations',
+          images: 'images'
         }.freeze
         REQUIRED_FIELDS = %i[
           title
@@ -138,7 +137,7 @@ module OctridevGithub
           end,
           images: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Checks::ChecksCreateOutputImagesItem.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -178,7 +177,7 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalChecksCreateVariant0Metadata
         FIELDS = {
-          status: "status",
+          status: 'status'
         }.freeze
         REQUIRED_FIELDS = %i[
           status
@@ -186,7 +185,7 @@ module OctridevGithub
         DECODERS = {
           status: lambda do |value|
             ::OctridevGithub::Methods::Checks::ChecksCreateVariant0Status.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -218,14 +217,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalChecksCreateVariant1Metadata
         FIELDS = {
-          status: "status",
+          status: 'status'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           status: lambda do |value|
             ::OctridevGithub::Methods::Checks::ChecksCreateVariant1Status.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -257,13 +255,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalChecksCreateSuiteMetadata
         FIELDS = {
-          head_sha: "head_sha",
+          head_sha: 'head_sha'
         }.freeze
         REQUIRED_FIELDS = %i[
           head_sha
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ChecksCreateSuite.
@@ -293,15 +290,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalChecksSetSuitesPreferencesAutoTriggerChecksItemMetadata
         FIELDS = {
-          app_id: "app_id",
-          setting: "setting",
+          app_id: 'app_id',
+          setting: 'setting'
         }.freeze
         REQUIRED_FIELDS = %i[
           app_id
           setting
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ChecksSetSuitesPreferencesAutoTriggerChecksItem.
@@ -333,14 +329,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalChecksSetSuitesPreferencesMetadata
         FIELDS = {
-          auto_trigger_checks: "auto_trigger_checks",
+          auto_trigger_checks: 'auto_trigger_checks'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           auto_trigger_checks: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Checks::ChecksSetSuitesPreferencesAutoTriggerChecksItem.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -371,8 +366,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalChecksListForSuiteResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          check_runs: "check_runs",
+          total_count: 'total_count',
+          check_runs: 'check_runs'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -381,7 +376,7 @@ module OctridevGithub
         DECODERS = {
           check_runs: lambda do |value|
             value&.map { |item| ::OctridevGithub::CheckRun.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -411,8 +406,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalChecksListForRefResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          check_runs: "check_runs",
+          total_count: 'total_count',
+          check_runs: 'check_runs'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -421,7 +416,7 @@ module OctridevGithub
         DECODERS = {
           check_runs: lambda do |value|
             value&.map { |item| ::OctridevGithub::CheckRun.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -451,8 +446,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalChecksListSuitesForRefResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          check_suites: "check_suites",
+          total_count: 'total_count',
+          check_suites: 'check_suites'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -461,7 +456,7 @@ module OctridevGithub
         DECODERS = {
           check_suites: lambda do |value|
             value&.map { |item| ::OctridevGithub::CheckSuite.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -492,7 +487,7 @@ module OctridevGithub
       module ChecksListForRefParameter
         LATEST = 'latest'
         ALL = 'all'
-        VALUES = ['latest', 'all'].freeze
+        VALUES = %w[latest all].freeze
         def self.from_value(value)
           value
         end
@@ -502,7 +497,7 @@ module OctridevGithub
       module ChecksUpdateVariant1Status
         QUEUED = 'queued'
         IN_PROGRESS = 'in_progress'
-        VALUES = ['queued', 'in_progress'].freeze
+        VALUES = %w[queued in_progress].freeze
         def self.from_value(value)
           value
         end
@@ -513,7 +508,7 @@ module OctridevGithub
         NOTICE = 'notice'
         WARNING = 'warning'
         FAILURE = 'failure'
-        VALUES = ['notice', 'warning', 'failure'].freeze
+        VALUES = %w[notice warning failure].freeze
         def self.from_value(value)
           value
         end
@@ -524,7 +519,7 @@ module OctridevGithub
         NOTICE = 'notice'
         WARNING = 'warning'
         FAILURE = 'failure'
-        VALUES = ['notice', 'warning', 'failure'].freeze
+        VALUES = %w[notice warning failure].freeze
         def self.from_value(value)
           value
         end
@@ -540,9 +535,9 @@ module OctridevGithub
         SKIPPED = 'skipped'
         STALE = 'stale'
         TIMED_OUT = 'timed_out'
-        VALUES = [
-          'action_required', 'cancelled', 'failure', 'neutral', 'success', 'skipped', 'stale',
-          'timed_out'
+        VALUES = %w[
+          action_required cancelled failure neutral success skipped stale
+          timed_out
         ].freeze
         def self.from_value(value)
           value
@@ -554,7 +549,7 @@ module OctridevGithub
         NOTICE = 'notice'
         WARNING = 'warning'
         FAILURE = 'failure'
-        VALUES = ['notice', 'warning', 'failure'].freeze
+        VALUES = %w[notice warning failure].freeze
         def self.from_value(value)
           value
         end

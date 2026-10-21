@@ -5,528 +5,523 @@
 
 # webhook_code_scanning_alert_created domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalWebhookCodeScanningAlertCreatedAlertMostRecentInstanceLocationMetadata
-  FIELDS = {
-    end_column: "end_column",
-    end_line: "end_line",
-    path: "path",
-    start_column: "start_column",
-    start_line: "start_line",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookCodeScanningAlertCreatedAlertMostRecentInstanceLocation.
-# Optional object value serialized in the `location` wire field.
-class WebhookCodeScanningAlertCreatedAlertMostRecentInstanceLocation
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookCodeScanningAlertCreatedAlertMostRecentInstanceLocationMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertCreatedAlertMostRecentInstanceLocationMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookCodeScanningAlertCreatedAlertMostRecentInstanceLocationMetadata::DECODERS
-
-  # @return [Integer] Optional `integer` value serialized in the `end_column` wire field.
-  attr_reader :end_column
-  # @return [Integer] Optional `integer` value serialized in the `end_line` wire field.
-  attr_reader :end_line
-  # @return [String] Optional `string` value serialized in the `path` wire field.
-  attr_reader :path
-  # @return [Integer] Optional `integer` value serialized in the `start_column` wire field.
-  attr_reader :start_column
-  # @return [Integer] Optional `integer` value serialized in the `start_line` wire field.
-  attr_reader :start_line
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookCodeScanningAlertCreatedAlertMostRecentInstanceLocationMetadata
+    FIELDS = {
+      end_column: 'end_column',
+      end_line: 'end_line',
+      path: 'path',
+      start_column: 'start_column',
+      start_line: 'start_line'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookCodeScanningAlertCreatedAlertMostRecentInstanceLocation.
+  # Optional object value serialized in the `location` wire field.
+  class WebhookCodeScanningAlertCreatedAlertMostRecentInstanceLocation
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookCodeScanningAlertCreatedAlertMostRecentInstanceLocationMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertCreatedAlertMostRecentInstanceLocationMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookCodeScanningAlertCreatedAlertMostRecentInstanceLocationMetadata::DECODERS
+
+    # @return [Integer] Optional `integer` value serialized in the `end_column` wire field.
+    attr_reader :end_column
+    # @return [Integer] Optional `integer` value serialized in the `end_line` wire field.
+    attr_reader :end_line
+    # @return [String] Optional `string` value serialized in the `path` wire field.
+    attr_reader :path
+    # @return [Integer] Optional `integer` value serialized in the `start_column` wire field.
+    attr_reader :start_column
+    # @return [Integer] Optional `integer` value serialized in the `start_line` wire field.
+    attr_reader :start_line
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookCodeScanningAlertCreatedAlertMostRecentInstanceMessageMetadata
-  FIELDS = {
-    text: "text",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookCodeScanningAlertCreatedAlertMostRecentInstanceMessage.
-# Optional object value serialized in the `message` wire field.
-class WebhookCodeScanningAlertCreatedAlertMostRecentInstanceMessage
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookCodeScanningAlertCreatedAlertMostRecentInstanceMessageMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertCreatedAlertMostRecentInstanceMessageMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookCodeScanningAlertCreatedAlertMostRecentInstanceMessageMetadata::DECODERS
-
-  # @return [String] Optional `string` value serialized in the `text` wire field.
-  attr_reader :text
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookCodeScanningAlertCreatedAlertMostRecentInstanceMessageMetadata
+    FIELDS = {
+      text: 'text'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookCodeScanningAlertCreatedAlertMostRecentInstanceMessage.
+  # Optional object value serialized in the `message` wire field.
+  class WebhookCodeScanningAlertCreatedAlertMostRecentInstanceMessage
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookCodeScanningAlertCreatedAlertMostRecentInstanceMessageMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertCreatedAlertMostRecentInstanceMessageMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookCodeScanningAlertCreatedAlertMostRecentInstanceMessageMetadata::DECODERS
+
+    # @return [String] Optional `string` value serialized in the `text` wire field.
+    attr_reader :text
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookCodeScanningAlertCreatedAlertMostRecentInstanceMetadata
-  FIELDS = {
-    analysis_key: "analysis_key",
-    category: "category",
-    classifications: "classifications",
-    commit_sha: "commit_sha",
-    environment: "environment",
-    location: "location",
-    message: "message",
-    ref: "ref",
-    state: "state",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    analysis_key
-    environment
-    ref
-    state
-  ].freeze
-  DECODERS = {
-    location: lambda do |value|
-      ::OctridevGithub::WebhookCodeScanningAlertCreatedAlertMostRecentInstanceLocation.from_hash(value)
-    end,
-    message: lambda do |value|
-      ::OctridevGithub::WebhookCodeScanningAlertCreatedAlertMostRecentInstanceMessage.from_hash(value)
-    end,
-    state: lambda do |value|
-      ::OctridevGithub::WebhookCodeScanningAlertCreatedAlertMostRecentInstanceState.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookCodeScanningAlertCreatedAlertMostRecentInstance.
-# Optional object value serialized in the `most_recent_instance` wire field.
-class WebhookCodeScanningAlertCreatedAlertMostRecentInstance
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookCodeScanningAlertCreatedAlertMostRecentInstanceMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertCreatedAlertMostRecentInstanceMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookCodeScanningAlertCreatedAlertMostRecentInstanceMetadata::DECODERS
-
-  # @return [String] Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
-  attr_reader :analysis_key
-  # @return [String] Identifies the configuration under which the analysis was executed.
-  attr_reader :category
-  # @return [Array_of_String] Optional array value serialized in the `classifications` wire field.
-  attr_reader :classifications
-  # @return [String] Optional `string` value serialized in the `commit_sha` wire field.
-  attr_reader :commit_sha
-  # @return [String] Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.
-  attr_reader :environment
-  # @return [WebhookCodeScanningAlertCreatedAlertMostRecentInstanceLocation] Optional object value serialized in the `location` wire field.
-  attr_reader :location
-  # @return [WebhookCodeScanningAlertCreatedAlertMostRecentInstanceMessage] Optional object value serialized in the `message` wire field.
-  attr_reader :message
-  # @return [String] The full Git reference, formatted as `refs/heads/<branch name>`.
-  attr_reader :ref
-  # @return [WebhookCodeScanningAlertCreatedAlertMostRecentInstanceState] State of a code scanning alert.
-  attr_reader :state
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookCodeScanningAlertCreatedAlertMostRecentInstanceMetadata
+    FIELDS = {
+      analysis_key: 'analysis_key',
+      category: 'category',
+      classifications: 'classifications',
+      commit_sha: 'commit_sha',
+      environment: 'environment',
+      location: 'location',
+      message: 'message',
+      ref: 'ref',
+      state: 'state'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      analysis_key
+      environment
+      ref
+      state
+    ].freeze
+    DECODERS = {
+      location: lambda do |value|
+        ::OctridevGithub::WebhookCodeScanningAlertCreatedAlertMostRecentInstanceLocation.from_hash(value)
+      end,
+      message: lambda do |value|
+        ::OctridevGithub::WebhookCodeScanningAlertCreatedAlertMostRecentInstanceMessage.from_hash(value)
+      end,
+      state: lambda do |value|
+        ::OctridevGithub::WebhookCodeScanningAlertCreatedAlertMostRecentInstanceState.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookCodeScanningAlertCreatedAlertMostRecentInstance.
+  # Optional object value serialized in the `most_recent_instance` wire field.
+  class WebhookCodeScanningAlertCreatedAlertMostRecentInstance
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookCodeScanningAlertCreatedAlertMostRecentInstanceMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertCreatedAlertMostRecentInstanceMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookCodeScanningAlertCreatedAlertMostRecentInstanceMetadata::DECODERS
+
+    # @return [String] Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
+    attr_reader :analysis_key
+    # @return [String] Identifies the configuration under which the analysis was executed.
+    attr_reader :category
+    # @return [Array_of_String] Optional array value serialized in the `classifications` wire field.
+    attr_reader :classifications
+    # @return [String] Optional `string` value serialized in the `commit_sha` wire field.
+    attr_reader :commit_sha
+    # @return [String] Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.
+    attr_reader :environment
+    # @return [WebhookCodeScanningAlertCreatedAlertMostRecentInstanceLocation] Optional object value serialized in the `location` wire field.
+    attr_reader :location
+    # @return [WebhookCodeScanningAlertCreatedAlertMostRecentInstanceMessage] Optional object value serialized in the `message` wire field.
+    attr_reader :message
+    # @return [String] The full Git reference, formatted as `refs/heads/<branch name>`.
+    attr_reader :ref
+    # @return [WebhookCodeScanningAlertCreatedAlertMostRecentInstanceState] State of a code scanning alert.
+    attr_reader :state
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookCodeScanningAlertCreatedAlertRuleMetadata
-  FIELDS = {
-    description: "description",
-    full_description: "full_description",
-    help: "help",
-    help_uri: "help_uri",
-    id: "id",
-    name: "name",
-    severity: "severity",
-    tags: "tags",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    description
-    id
-    severity
-  ].freeze
-  DECODERS = {
-    severity: lambda do |value|
-      ::OctridevGithub::WebhookCodeScanningAlertCreatedAlertRuleSeverity.from_value(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    severity
-  ].freeze
-end
-
-# API model for WebhookCodeScanningAlertCreatedAlertRule.
-# Required object value serialized in the `rule` wire field.
-class WebhookCodeScanningAlertCreatedAlertRule
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookCodeScanningAlertCreatedAlertRuleMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertCreatedAlertRuleMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookCodeScanningAlertCreatedAlertRuleMetadata::DECODERS
-
-  # @return [String] A short description of the rule used to detect the alert.
-  attr_reader :description
-  # @return [String] Optional `string` value serialized in the `full_description` wire field.
-  attr_reader :full_description
-  # @return [String] Optional `string` value serialized in the `help` wire field.
-  attr_reader :help
-  # @return [String] A link to the documentation for the rule used to detect the alert.
-  attr_reader :help_uri
-  # @return [String] A unique identifier for the rule used to detect the alert.
-  attr_reader :id
-  # @return [String] Optional `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [WebhookCodeScanningAlertCreatedAlertRuleSeverity] The severity of the alert.
-  attr_reader :severity
-  # @return [Array_of_String] Optional array value serialized in the `tags` wire field.
-  attr_reader :tags
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookCodeScanningAlertCreatedAlertRuleMetadata
+    FIELDS = {
+      description: 'description',
+      full_description: 'full_description',
+      help: 'help',
+      help_uri: 'help_uri',
+      id: 'id',
+      name: 'name',
+      severity: 'severity',
+      tags: 'tags'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      description
+      id
+      severity
+    ].freeze
+    DECODERS = {
+      severity: lambda do |value|
+        ::OctridevGithub::WebhookCodeScanningAlertCreatedAlertRuleSeverity.from_value(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      severity
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookCodeScanningAlertCreatedAlertRuleMetadata::NULLABLE_FIELDS)
+  # API model for WebhookCodeScanningAlertCreatedAlertRule.
+  # Required object value serialized in the `rule` wire field.
+  class WebhookCodeScanningAlertCreatedAlertRule
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookCodeScanningAlertCreatedAlertRuleMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertCreatedAlertRuleMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookCodeScanningAlertCreatedAlertRuleMetadata::DECODERS
+
+    # @return [String] A short description of the rule used to detect the alert.
+    attr_reader :description
+    # @return [String] Optional `string` value serialized in the `full_description` wire field.
+    attr_reader :full_description
+    # @return [String] Optional `string` value serialized in the `help` wire field.
+    attr_reader :help
+    # @return [String] A link to the documentation for the rule used to detect the alert.
+    attr_reader :help_uri
+    # @return [String] A unique identifier for the rule used to detect the alert.
+    attr_reader :id
+    # @return [String] Optional `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [WebhookCodeScanningAlertCreatedAlertRuleSeverity] The severity of the alert.
+    attr_reader :severity
+    # @return [Array_of_String] Optional array value serialized in the `tags` wire field.
+    attr_reader :tags
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookCodeScanningAlertCreatedAlertRuleMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookCodeScanningAlertCreatedAlertToolMetadata
-  FIELDS = {
-    guid: "guid",
-    name: "name",
-    version: "version",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    name
-    version
-  ].freeze
-  DECODERS = {
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    version
-  ].freeze
-end
-
-# API model for WebhookCodeScanningAlertCreatedAlertTool.
-# Required object value serialized in the `tool` wire field.
-class WebhookCodeScanningAlertCreatedAlertTool
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookCodeScanningAlertCreatedAlertToolMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertCreatedAlertToolMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookCodeScanningAlertCreatedAlertToolMetadata::DECODERS
-
-  # @return [String] Optional `string` value serialized in the `guid` wire field.
-  attr_reader :guid
-  # @return [String] The name of the tool used to generate the code scanning analysis alert.
-  attr_reader :name
-  # @return [String] The version of the tool used to detect the alert.
-  attr_reader :version
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookCodeScanningAlertCreatedAlertToolMetadata
+    FIELDS = {
+      guid: 'guid',
+      name: 'name',
+      version: 'version'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      name
+      version
+    ].freeze
+    DECODERS = {}.freeze
+    NULLABLE_FIELDS = %i[
+      version
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookCodeScanningAlertCreatedAlertToolMetadata::NULLABLE_FIELDS)
+  # API model for WebhookCodeScanningAlertCreatedAlertTool.
+  # Required object value serialized in the `tool` wire field.
+  class WebhookCodeScanningAlertCreatedAlertTool
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookCodeScanningAlertCreatedAlertToolMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertCreatedAlertToolMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookCodeScanningAlertCreatedAlertToolMetadata::DECODERS
+
+    # @return [String] Optional `string` value serialized in the `guid` wire field.
+    attr_reader :guid
+    # @return [String] The name of the tool used to generate the code scanning analysis alert.
+    attr_reader :name
+    # @return [String] The version of the tool used to detect the alert.
+    attr_reader :version
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookCodeScanningAlertCreatedAlertToolMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookCodeScanningAlertCreatedAlertMetadata
-  FIELDS = {
-    created_at: "created_at",
-    dismissed_at: "dismissed_at",
-    dismissed_by: "dismissed_by",
-    dismissed_comment: "dismissed_comment",
-    dismissed_reason: "dismissed_reason",
-    fixed_at: "fixed_at",
-    html_url: "html_url",
-    instances_url: "instances_url",
-    most_recent_instance: "most_recent_instance",
-    number: "number",
-    rule: "rule",
-    state: "state",
-    tool: "tool",
-    updated_at: "updated_at",
-    url: "url",
-    dismissal_approved_by: "dismissal_approved_by",
-    assignees: "assignees",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    created_at
-    dismissed_at
-    dismissed_by
-    dismissed_reason
-    html_url
-    number
-    rule
-    state
-    tool
-    url
-  ].freeze
-  DECODERS = {
-    dismissed_comment: lambda do |value|
-      ::OctridevGithub::CodeScanningAlertDismissedComment.from_value(value)
-    end,
-    most_recent_instance: lambda do |value|
-      ::OctridevGithub::WebhookCodeScanningAlertCreatedAlertMostRecentInstance.from_hash(value)
-    end,
-    rule: lambda do |value|
-      ::OctridevGithub::WebhookCodeScanningAlertCreatedAlertRule.from_hash(value)
-    end,
-    state: lambda do |value|
-      ::OctridevGithub::WebhookCodeScanningAlertCreatedAlertState.from_value(value)
-    end,
-    tool: lambda do |value|
-      ::OctridevGithub::WebhookCodeScanningAlertCreatedAlertTool.from_hash(value)
-    end,
-    assignees: lambda do |value|
-      value&.map { |item| ::OctridevGithub::SimpleUser.from_hash(item) }
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    created_at
-    dismissed_at
-    dismissed_by
-    dismissed_reason
-    state
-    tool
-  ].freeze
-end
-
-# API model for WebhookCodeScanningAlertCreatedAlert.
-# The code scanning alert involved in the event.
-class WebhookCodeScanningAlertCreatedAlert
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookCodeScanningAlertCreatedAlertMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertCreatedAlertMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookCodeScanningAlertCreatedAlertMetadata::DECODERS
-
-  # @return [String] The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
-  attr_reader :created_at
-  # @return [Object] The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-  attr_reader :dismissed_at
-  # @return [Object] Required API value serialized in the `dismissed_by` wire field.
-  attr_reader :dismissed_by
-  # @return [CodeScanningAlertDismissedComment] The dismissal comment associated with the dismissal of the alert.
-  attr_reader :dismissed_comment
-  # @return [Object] The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, `used in tests`, and `mitigated`.
-  attr_reader :dismissed_reason
-  # @return [Object] The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-  attr_reader :fixed_at
-  # @return [String] The GitHub URL of the alert resource.
-  attr_reader :html_url
-  # @return [String] Optional `string` value serialized in the `instances_url` wire field.
-  attr_reader :instances_url
-  # @return [WebhookCodeScanningAlertCreatedAlertMostRecentInstance] Optional object value serialized in the `most_recent_instance` wire field.
-  attr_reader :most_recent_instance
-  # @return [Integer] The code scanning alert number.
-  attr_reader :number
-  # @return [WebhookCodeScanningAlertCreatedAlertRule] Required object value serialized in the `rule` wire field.
-  attr_reader :rule
-  # @return [WebhookCodeScanningAlertCreatedAlertState] State of a code scanning alert. Events for alerts found outside the default branch will return a `null` value until they are dismissed or fixed.
-  attr_reader :state
-  # @return [WebhookCodeScanningAlertCreatedAlertTool] Required object value serialized in the `tool` wire field.
-  attr_reader :tool
-  # @return [String] Optional `string` value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [Object] Optional API value serialized in the `dismissal_approved_by` wire field.
-  attr_reader :dismissal_approved_by
-  # @return [Array_of_SimpleUser] Optional array value serialized in the `assignees` wire field.
-  attr_reader :assignees
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookCodeScanningAlertCreatedAlertMetadata
+    FIELDS = {
+      created_at: 'created_at',
+      dismissed_at: 'dismissed_at',
+      dismissed_by: 'dismissed_by',
+      dismissed_comment: 'dismissed_comment',
+      dismissed_reason: 'dismissed_reason',
+      fixed_at: 'fixed_at',
+      html_url: 'html_url',
+      instances_url: 'instances_url',
+      most_recent_instance: 'most_recent_instance',
+      number: 'number',
+      rule: 'rule',
+      state: 'state',
+      tool: 'tool',
+      updated_at: 'updated_at',
+      url: 'url',
+      dismissal_approved_by: 'dismissal_approved_by',
+      assignees: 'assignees'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      created_at
+      dismissed_at
+      dismissed_by
+      dismissed_reason
+      html_url
+      number
+      rule
+      state
+      tool
+      url
+    ].freeze
+    DECODERS = {
+      dismissed_comment: lambda do |value|
+        ::OctridevGithub::CodeScanningAlertDismissedComment.from_value(value)
+      end,
+      most_recent_instance: lambda do |value|
+        ::OctridevGithub::WebhookCodeScanningAlertCreatedAlertMostRecentInstance.from_hash(value)
+      end,
+      rule: lambda do |value|
+        ::OctridevGithub::WebhookCodeScanningAlertCreatedAlertRule.from_hash(value)
+      end,
+      state: lambda do |value|
+        ::OctridevGithub::WebhookCodeScanningAlertCreatedAlertState.from_value(value)
+      end,
+      tool: lambda do |value|
+        ::OctridevGithub::WebhookCodeScanningAlertCreatedAlertTool.from_hash(value)
+      end,
+      assignees: lambda do |value|
+        value&.map { |item| ::OctridevGithub::SimpleUser.from_hash(item) }
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      created_at
+      dismissed_at
+      dismissed_by
+      dismissed_reason
+      state
+      tool
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookCodeScanningAlertCreatedAlertMetadata::NULLABLE_FIELDS)
+  # API model for WebhookCodeScanningAlertCreatedAlert.
+  # The code scanning alert involved in the event.
+  class WebhookCodeScanningAlertCreatedAlert
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookCodeScanningAlertCreatedAlertMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertCreatedAlertMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookCodeScanningAlertCreatedAlertMetadata::DECODERS
+
+    # @return [String] The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
+    attr_reader :created_at
+    # @return [Object] The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+    attr_reader :dismissed_at
+    # @return [Object] Required API value serialized in the `dismissed_by` wire field.
+    attr_reader :dismissed_by
+    # @return [CodeScanningAlertDismissedComment] The dismissal comment associated with the dismissal of the alert.
+    attr_reader :dismissed_comment
+    # @return [Object] The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, `used in tests`, and `mitigated`.
+    attr_reader :dismissed_reason
+    # @return [Object] The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+    attr_reader :fixed_at
+    # @return [String] The GitHub URL of the alert resource.
+    attr_reader :html_url
+    # @return [String] Optional `string` value serialized in the `instances_url` wire field.
+    attr_reader :instances_url
+    # @return [WebhookCodeScanningAlertCreatedAlertMostRecentInstance] Optional object value serialized in the `most_recent_instance` wire field.
+    attr_reader :most_recent_instance
+    # @return [Integer] The code scanning alert number.
+    attr_reader :number
+    # @return [WebhookCodeScanningAlertCreatedAlertRule] Required object value serialized in the `rule` wire field.
+    attr_reader :rule
+    # @return [WebhookCodeScanningAlertCreatedAlertState] State of a code scanning alert. Events for alerts found outside the default branch will return a `null` value until they are dismissed or fixed.
+    attr_reader :state
+    # @return [WebhookCodeScanningAlertCreatedAlertTool] Required object value serialized in the `tool` wire field.
+    attr_reader :tool
+    # @return [String] Optional `string` value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [Object] Optional API value serialized in the `dismissal_approved_by` wire field.
+    attr_reader :dismissal_approved_by
+    # @return [Array_of_SimpleUser] Optional array value serialized in the `assignees` wire field.
+    attr_reader :assignees
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookCodeScanningAlertCreatedAlertMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookCodeScanningAlertCreatedMetadata
-  FIELDS = {
-    action: "action",
-    alert: "alert",
-    commit_oid: "commit_oid",
-    enterprise: "enterprise",
-    installation: "installation",
-    organization: "organization",
-    ref: "ref",
-    repository: "repository",
-    sender: "sender",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    action
-    alert
-    commit_oid
-    ref
-    repository
-    sender
-  ].freeze
-  DECODERS = {
-    action: lambda do |value|
-      ::OctridevGithub::WebhookCodeScanningAlertCreatedAction.from_value(value)
-    end,
-    alert: lambda do |value|
-      ::OctridevGithub::WebhookCodeScanningAlertCreatedAlert.from_hash(value)
-    end,
-    commit_oid: lambda do |value|
-      ::OctridevGithub::WebhooksCodeScanningCommitOid.from_value(value)
-    end,
-    enterprise: lambda do |value|
-      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-    end,
-    installation: lambda do |value|
-      ::OctridevGithub::SimpleInstallation.from_hash(value)
-    end,
-    organization: lambda do |value|
-      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-    end,
-    ref: lambda do |value|
-      ::OctridevGithub::WebhooksCodeScanningRef.from_value(value)
-    end,
-    repository: lambda do |value|
-      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-    end,
-    sender: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookCodeScanningAlertCreated.
-# Typed representation of the `WebhookCodeScanningAlertCreated` API schema.
-class WebhookCodeScanningAlertCreated
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookCodeScanningAlertCreatedMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertCreatedMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookCodeScanningAlertCreatedMetadata::DECODERS
-
-  # @return [WebhookCodeScanningAlertCreatedAction] Required enumerated value serialized in the `action` wire field.
-  attr_reader :action
-  # @return [WebhookCodeScanningAlertCreatedAlert] The code scanning alert involved in the event.
-  attr_reader :alert
-  # @return [WebhooksCodeScanningCommitOid] The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty.
-  attr_reader :commit_oid
-  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-  attr_reader :enterprise
-  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-  attr_reader :installation
-  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-  attr_reader :organization
-  # @return [WebhooksCodeScanningRef] The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty.
-  attr_reader :ref
-  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-  attr_reader :repository
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :sender
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookCodeScanningAlertCreatedMetadata
+    FIELDS = {
+      action: 'action',
+      alert: 'alert',
+      commit_oid: 'commit_oid',
+      enterprise: 'enterprise',
+      installation: 'installation',
+      organization: 'organization',
+      ref: 'ref',
+      repository: 'repository',
+      sender: 'sender'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      action
+      alert
+      commit_oid
+      ref
+      repository
+      sender
+    ].freeze
+    DECODERS = {
+      action: lambda do |value|
+        ::OctridevGithub::WebhookCodeScanningAlertCreatedAction.from_value(value)
+      end,
+      alert: lambda do |value|
+        ::OctridevGithub::WebhookCodeScanningAlertCreatedAlert.from_hash(value)
+      end,
+      commit_oid: lambda do |value|
+        ::OctridevGithub::WebhooksCodeScanningCommitOid.from_value(value)
+      end,
+      enterprise: lambda do |value|
+        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+      end,
+      installation: lambda do |value|
+        ::OctridevGithub::SimpleInstallation.from_hash(value)
+      end,
+      organization: lambda do |value|
+        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+      end,
+      ref: lambda do |value|
+        ::OctridevGithub::WebhooksCodeScanningRef.from_value(value)
+      end,
+      repository: lambda do |value|
+        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+      end,
+      sender: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookCodeScanningAlertCreated.
+  # Typed representation of the `WebhookCodeScanningAlertCreated` API schema.
+  class WebhookCodeScanningAlertCreated
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookCodeScanningAlertCreatedMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookCodeScanningAlertCreatedMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookCodeScanningAlertCreatedMetadata::DECODERS
+
+    # @return [WebhookCodeScanningAlertCreatedAction] Required enumerated value serialized in the `action` wire field.
+    attr_reader :action
+    # @return [WebhookCodeScanningAlertCreatedAlert] The code scanning alert involved in the event.
+    attr_reader :alert
+    # @return [WebhooksCodeScanningCommitOid] The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty.
+    attr_reader :commit_oid
+    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+    attr_reader :enterprise
+    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+    attr_reader :installation
+    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+    attr_reader :organization
+    # @return [WebhooksCodeScanningRef] The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty.
+    attr_reader :ref
+    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+    attr_reader :repository
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :sender
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the WebhookCodeScanningAlertCreatedAction SDK namespace.
+  module WebhookCodeScanningAlertCreatedAction
+    CREATED = 'created'
+    VALUES = ['created'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCodeScanningAlertCreatedAction SDK namespace.
-module WebhookCodeScanningAlertCreatedAction
-  CREATED = 'created'
-  VALUES = ['created'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCodeScanningAlertCreatedAlertMostRecentInstanceState SDK namespace.
+  module WebhookCodeScanningAlertCreatedAlertMostRecentInstanceState
+    OPEN = 'open'
+    DISMISSED = 'dismissed'
+    FIXED = 'fixed'
+    VALUES = %w[open dismissed fixed].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCodeScanningAlertCreatedAlertMostRecentInstanceState SDK namespace.
-module WebhookCodeScanningAlertCreatedAlertMostRecentInstanceState
-  OPEN = 'open'
-  DISMISSED = 'dismissed'
-  FIXED = 'fixed'
-  VALUES = ['open', 'dismissed', 'fixed'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCodeScanningAlertCreatedAlertRuleSeverity SDK namespace.
+  module WebhookCodeScanningAlertCreatedAlertRuleSeverity
+    NONE = 'none'
+    NOTE = 'note'
+    WARNING = 'warning'
+    ERROR = 'error'
+    VALUES = %w[none note warning error].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCodeScanningAlertCreatedAlertRuleSeverity SDK namespace.
-module WebhookCodeScanningAlertCreatedAlertRuleSeverity
-  NONE = 'none'
-  NOTE = 'note'
-  WARNING = 'warning'
-  ERROR = 'error'
-  VALUES = ['none', 'note', 'warning', 'error'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCodeScanningAlertCreatedAlertState SDK namespace.
+  module WebhookCodeScanningAlertCreatedAlertState
+    OPEN = 'open'
+    DISMISSED = 'dismissed'
+    VALUES = %w[open dismissed].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the WebhookCodeScanningAlertCreatedAlertState SDK namespace.
-module WebhookCodeScanningAlertCreatedAlertState
-  OPEN = 'open'
-  DISMISSED = 'dismissed'
-  VALUES = ['open', 'dismissed'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

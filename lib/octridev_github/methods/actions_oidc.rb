@@ -21,22 +21,21 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/oidc/customization/sub"
+            '/actions/oidc/customization/sub'
           ].join,
           config: config,
           return_type: ::OctridevGithub::OidcCustomSubRepo,
           decoder: :json,
           operation_id: 'actions_get_custom_oidc_sub_claim_for_repo',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '400' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -62,27 +61,26 @@ module OctridevGithub
         use_immutable_subject: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/oidc/customization/sub"
+            '/actions/oidc/customization/sub'
           ].join,
           config: config,
           body: {
             'use_default' => use_default,
             'include_claim_keys' => include_claim_keys,
-            'use_immutable_subject' => use_immutable_subject,
+            'use_immutable_subject' => use_immutable_subject
           },
           return_type: ::OctridevGithub::EmptyObject,
           decoder: :json,
           operation_id: 'actions_set_custom_oidc_sub_claim_for_repo',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple },
+          errors: { '400' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple }
         ).data
       end
     end

@@ -30,25 +30,24 @@ module OctridevGithub
         sha_pinning_required: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/permissions"
+            '/actions/permissions'
           ].join,
           config: config,
           body: {
             'enabled' => enabled,
             'allowed_actions' => allowed_actions,
-            'sha_pinning_required' => sha_pinning_required,
+            'sha_pinning_required' => sha_pinning_required
           },
           decoder: :empty,
           operation_id: 'actions_set_github_actions_permissions_repository',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

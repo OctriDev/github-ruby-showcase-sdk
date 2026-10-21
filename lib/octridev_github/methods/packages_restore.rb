@@ -28,26 +28,25 @@ module OctridevGithub
         token: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/packages/",
+            '/packages/',
             SdkClient.encode_path_segment(package_type),
-            "/",
+            '/',
             SdkClient.encode_path_segment(package_name),
-            "/restore"
+            '/restore'
           ].join,
           config: config,
           query: {
-            'token' => QueryValue.new(token, style: 'form', explode: true),
+            'token' => QueryValue.new(token, style: 'form', explode: true)
           },
           decoder: :empty,
           operation_id: 'packages_restore_package_for_org',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -68,24 +67,23 @@ module OctridevGithub
         token: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/user/packages/",
+            '/user/packages/',
             SdkClient.encode_path_segment(package_type),
-            "/",
+            '/',
             SdkClient.encode_path_segment(package_name),
-            "/restore"
+            '/restore'
           ].join,
           config: config,
           query: {
-            'token' => QueryValue.new(token, style: 'form', explode: true),
+            'token' => QueryValue.new(token, style: 'form', explode: true)
           },
           decoder: :empty,
           operation_id: 'packages_restore_package_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -108,26 +106,25 @@ module OctridevGithub
         token: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/users/",
+            '/users/',
             SdkClient.encode_path_segment(username),
-            "/packages/",
+            '/packages/',
             SdkClient.encode_path_segment(package_type),
-            "/",
+            '/',
             SdkClient.encode_path_segment(package_name),
-            "/restore"
+            '/restore'
           ].join,
           config: config,
           query: {
-            'token' => QueryValue.new(token, style: 'form', explode: true),
+            'token' => QueryValue.new(token, style: 'form', explode: true)
           },
           decoder: :empty,
           operation_id: 'packages_restore_package_for_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

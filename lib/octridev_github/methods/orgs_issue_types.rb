@@ -17,20 +17,19 @@ module OctridevGithub
         org:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/issue-types"
+            '/issue-types'
           ].join,
           config: config,
           return_type: [::OctridevGithub::IssueType],
           decoder: :json,
           operation_id: 'orgs_list_issue_types',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -51,26 +50,25 @@ module OctridevGithub
         color: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/issue-types"
+            '/issue-types'
           ].join,
           config: config,
           body: {
             'name' => name,
             'is_enabled' => is_enabled,
             'description' => description,
-            'color' => color,
+            'color' => color
           },
           return_type: ::OctridevGithub::IssueType,
           decoder: :json,
           operation_id: 'orgs_create_issue_type',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple }
         ).data
       end
 
@@ -93,13 +91,12 @@ module OctridevGithub
         color: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/issue-types/",
+            '/issue-types/',
             SdkClient.encode_path_segment(issue_type_id)
           ].join,
           config: config,
@@ -107,13 +104,13 @@ module OctridevGithub
             'name' => name,
             'is_enabled' => is_enabled,
             'description' => description,
-            'color' => color,
+            'color' => color
           },
           return_type: ::OctridevGithub::IssueType,
           decoder: :json,
           operation_id: 'orgs_update_issue_type',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple }
         ).data
       end
 
@@ -127,20 +124,19 @@ module OctridevGithub
         issue_type_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/issue-types/",
+            '/issue-types/',
             SdkClient.encode_path_segment(issue_type_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'orgs_delete_issue_type',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple }
         ).data
       end
     end

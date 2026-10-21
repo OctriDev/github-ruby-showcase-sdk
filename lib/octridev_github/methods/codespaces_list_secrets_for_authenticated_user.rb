@@ -21,19 +21,18 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/user/codespaces/secrets",
+          '/user/codespaces/secrets',
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Codespaces::CodespacesListSecretsForAuthenticatedUserResponse,
           decoder: :json,
           operation_id: 'codespaces_list_secrets_for_authenticated_user',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

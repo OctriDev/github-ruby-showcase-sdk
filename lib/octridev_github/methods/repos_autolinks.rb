@@ -21,21 +21,20 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/autolinks"
+            '/autolinks'
           ].join,
           config: config,
           return_type: [::OctridevGithub::Autolink],
           decoder: :json,
           operation_id: 'repos_list_autolinks',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -64,27 +63,26 @@ module OctridevGithub
         is_alphanumeric: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/autolinks"
+            '/autolinks'
           ].join,
           config: config,
           body: {
             'key_prefix' => key_prefix,
             'url_template' => url_template,
-            'is_alphanumeric' => is_alphanumeric,
+            'is_alphanumeric' => is_alphanumeric
           },
           return_type: ::OctridevGithub::Autolink,
           decoder: :json,
           operation_id: 'repos_create_autolink',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError },
+          errors: { '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -102,15 +100,14 @@ module OctridevGithub
         autolink_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/autolinks/",
+            '/autolinks/',
             SdkClient.encode_path_segment(autolink_id)
           ].join,
           config: config,
@@ -118,7 +115,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'repos_get_autolink',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -136,22 +133,21 @@ module OctridevGithub
         autolink_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/autolinks/",
+            '/autolinks/',
             SdkClient.encode_path_segment(autolink_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_delete_autolink',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

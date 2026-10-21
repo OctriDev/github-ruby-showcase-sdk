@@ -27,26 +27,25 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/rulesets/",
+            '/rulesets/',
             SdkClient.encode_path_segment(ruleset_id),
-            "/history"
+            '/history'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::RulesetVersion],
           decoder: :json,
           operation_id: 'orgs_get_org_ruleset_history',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -64,15 +63,14 @@ module OctridevGithub
         version_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/rulesets/",
+            '/rulesets/',
             SdkClient.encode_path_segment(ruleset_id),
-            "/history/",
+            '/history/',
             SdkClient.encode_path_segment(version_id)
           ].join,
           config: config,
@@ -80,7 +78,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'orgs_get_org_ruleset_version',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
     end

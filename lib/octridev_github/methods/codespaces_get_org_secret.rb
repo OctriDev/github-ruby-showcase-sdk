@@ -19,20 +19,19 @@ module OctridevGithub
         secret_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/codespaces/secrets/",
+            '/codespaces/secrets/',
             SdkClient.encode_path_segment(secret_name)
           ].join,
           config: config,
           return_type: ::OctridevGithub::CodespacesOrgSecret,
           decoder: :json,
           operation_id: 'codespaces_get_org_secret',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

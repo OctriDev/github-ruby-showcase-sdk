@@ -26,23 +26,22 @@ module OctridevGithub
         body:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runs/",
+            '/actions/runs/',
             SdkClient.encode_path_segment(run_id),
-            "/deployment_protection_rule"
+            '/deployment_protection_rule'
           ].join,
           config: config,
           body: body,
           decoder: :empty,
           operation_id: 'actions_review_custom_gates_for_run',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

@@ -19,20 +19,19 @@ module OctridevGithub
         runner_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/runners/",
+            '/actions/runners/',
             SdkClient.encode_path_segment(runner_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'actions_delete_self_hosted_runner_from_org',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationErrorSimple },
+          errors: { '422' => ::OctridevGithub::ValidationErrorSimple }
         ).data
       end
     end

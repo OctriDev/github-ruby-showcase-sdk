@@ -23,22 +23,21 @@ module OctridevGithub
         run_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runs/",
+            '/actions/runs/',
             SdkClient.encode_path_segment(run_id),
-            "/logs"
+            '/logs'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'actions_download_workflow_run_logs',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

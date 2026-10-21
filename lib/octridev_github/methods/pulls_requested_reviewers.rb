@@ -23,23 +23,22 @@ module OctridevGithub
         pull_number:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pulls/",
+            '/pulls/',
             SdkClient.encode_path_segment(pull_number),
-            "/requested_reviewers"
+            '/requested_reviewers'
           ].join,
           config: config,
           return_type: ::OctridevGithub::PullRequestReviewRequest,
           decoder: :json,
           operation_id: 'pulls_list_requested_reviewers',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -63,28 +62,27 @@ module OctridevGithub
         team_reviewers: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pulls/",
+            '/pulls/',
             SdkClient.encode_path_segment(pull_number),
-            "/requested_reviewers"
+            '/requested_reviewers'
           ].join,
           config: config,
           body: {
             'reviewers' => reviewers,
-            'team_reviewers' => team_reviewers,
+            'team_reviewers' => team_reviewers
           },
           return_type: ::OctridevGithub::PullRequestSimple,
           decoder: :json,
           operation_id: 'pulls_request_reviewers',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
+          errors: { '403' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
 
@@ -108,28 +106,27 @@ module OctridevGithub
         team_reviewers: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pulls/",
+            '/pulls/',
             SdkClient.encode_path_segment(pull_number),
-            "/requested_reviewers"
+            '/requested_reviewers'
           ].join,
           config: config,
           body: {
             'reviewers' => reviewers,
-            'team_reviewers' => team_reviewers,
+            'team_reviewers' => team_reviewers
           },
           return_type: ::OctridevGithub::PullRequestSimple,
           decoder: :json,
           operation_id: 'pulls_remove_requested_reviewers',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError },
+          errors: { '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -153,28 +150,27 @@ module OctridevGithub
         team_reviewers: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pulls/",
+            '/pulls/',
             SdkClient.encode_path_segment(pull_number),
-            "/requested_reviewers/rerequest"
+            '/requested_reviewers/rerequest'
           ].join,
           config: config,
           body: {
             'reviewers' => reviewers,
-            'team_reviewers' => team_reviewers,
+            'team_reviewers' => team_reviewers
           },
           return_type: ::OctridevGithub::PullRequestSimple,
           decoder: :json,
           operation_id: 'pulls_rerequest_reviewers',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError }
         ).data
       end
     end

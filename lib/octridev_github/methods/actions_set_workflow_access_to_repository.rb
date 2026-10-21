@@ -28,23 +28,22 @@ module OctridevGithub
         access_level:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/permissions/access"
+            '/actions/permissions/access'
           ].join,
           config: config,
           body: {
-            'access_level' => access_level,
+            'access_level' => access_level
           },
           decoder: :empty,
           operation_id: 'actions_set_workflow_access_to_repository',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

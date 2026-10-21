@@ -5,189 +5,188 @@
 
 # repos_status domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalStatusMetadata
-  FIELDS = {
-    url: "url",
-    avatar_url: "avatar_url",
-    id: "id",
-    node_id: "node_id",
-    state: "state",
-    description: "description",
-    target_url: "target_url",
-    context: "context",
-    created_at: "created_at",
-    updated_at: "updated_at",
-    creator: "creator",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    url
-    avatar_url
-    id
-    node_id
-    state
-    description
-    target_url
-    context
-    created_at
-    updated_at
-    creator
-  ].freeze
-  DECODERS = {
-    creator: lambda do |value|
-      ::OctridevGithub::NullableSimpleUser.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    avatar_url
-    description
-    target_url
-    creator
-  ].freeze
-end
-
-# API model for Status.
-# The status of a commit.
-class Status
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalStatusMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalStatusMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalStatusMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Required `string` value serialized in the `avatar_url` wire field.
-  attr_reader :avatar_url
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Required `string` value serialized in the `state` wire field.
-  attr_reader :state
-  # @return [String] Required `string` value serialized in the `description` wire field.
-  attr_reader :description
-  # @return [String] Required `string` value serialized in the `target_url` wire field.
-  attr_reader :target_url
-  # @return [String] Required `string` value serialized in the `context` wire field.
-  attr_reader :context
-  # @return [String] Required `string` value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Required `string` value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-  # @return [NullableSimpleUser] A GitHub user.
-  attr_reader :creator
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalStatusMetadata
+    FIELDS = {
+      url: 'url',
+      avatar_url: 'avatar_url',
+      id: 'id',
+      node_id: 'node_id',
+      state: 'state',
+      description: 'description',
+      target_url: 'target_url',
+      context: 'context',
+      created_at: 'created_at',
+      updated_at: 'updated_at',
+      creator: 'creator'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      url
+      avatar_url
+      id
+      node_id
+      state
+      description
+      target_url
+      context
+      created_at
+      updated_at
+      creator
+    ].freeze
+    DECODERS = {
+      creator: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      avatar_url
+      description
+      target_url
+      creator
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalStatusMetadata::NULLABLE_FIELDS)
+  # API model for Status.
+  # The status of a commit.
+  class Status
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalStatusMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalStatusMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalStatusMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Required `string` value serialized in the `avatar_url` wire field.
+    attr_reader :avatar_url
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Required `string` value serialized in the `state` wire field.
+    attr_reader :state
+    # @return [String] Required `string` value serialized in the `description` wire field.
+    attr_reader :description
+    # @return [String] Required `string` value serialized in the `target_url` wire field.
+    attr_reader :target_url
+    # @return [String] Required `string` value serialized in the `context` wire field.
+    attr_reader :context
+    # @return [String] Required `string` value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Required `string` value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :creator
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalStatusMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalStatusCheckPolicyChecksItemMetadata
-  FIELDS = {
-    context: "context",
-    app_id: "app_id",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    context
-    app_id
-  ].freeze
-  DECODERS = {
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    app_id
-  ].freeze
-end
-
-# API model for StatusCheckPolicyChecksItem.
-# Required object value serialized in the `checks[]` wire field.
-class StatusCheckPolicyChecksItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalStatusCheckPolicyChecksItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalStatusCheckPolicyChecksItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalStatusCheckPolicyChecksItemMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `context` wire field.
-  attr_reader :context
-  # @return [Integer] Required `integer` value serialized in the `app_id` wire field.
-  attr_reader :app_id
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalStatusCheckPolicyChecksItemMetadata
+    FIELDS = {
+      context: 'context',
+      app_id: 'app_id'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      context
+      app_id
+    ].freeze
+    DECODERS = {}.freeze
+    NULLABLE_FIELDS = %i[
+      app_id
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalStatusCheckPolicyChecksItemMetadata::NULLABLE_FIELDS)
+  # API model for StatusCheckPolicyChecksItem.
+  # Required object value serialized in the `checks[]` wire field.
+  class StatusCheckPolicyChecksItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalStatusCheckPolicyChecksItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalStatusCheckPolicyChecksItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalStatusCheckPolicyChecksItemMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `context` wire field.
+    attr_reader :context
+    # @return [Integer] Required `integer` value serialized in the `app_id` wire field.
+    attr_reader :app_id
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalStatusCheckPolicyChecksItemMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalStatusCheckPolicyMetadata
-  FIELDS = {
-    url: "url",
-    strict: "strict",
-    contexts: "contexts",
-    checks: "checks",
-    contexts_url: "contexts_url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    url
-    strict
-    contexts
-    checks
-    contexts_url
-  ].freeze
-  DECODERS = {
-    checks: lambda do |value|
-      value&.map { |item| ::OctridevGithub::StatusCheckPolicyChecksItem.from_hash(item) }
-    end,
-  }.freeze
-end
-
-# API model for StatusCheckPolicy.
-# Status Check Policy
-class StatusCheckPolicy
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalStatusCheckPolicyMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalStatusCheckPolicyMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalStatusCheckPolicyMetadata::DECODERS
-
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [Boolean] Required `boolean` value serialized in the `strict` wire field.
-  attr_reader :strict
-  # @return [Array_of_String] Required array value serialized in the `contexts` wire field.
-  attr_reader :contexts
-  # @return [Array_of_StatusCheckPolicyChecksItem] Required array value serialized in the `checks` wire field.
-  attr_reader :checks
-  # @return [String] Required `uri`-formatted value serialized in the `contexts_url` wire field.
-  attr_reader :contexts_url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalStatusCheckPolicyMetadata
+    FIELDS = {
+      url: 'url',
+      strict: 'strict',
+      contexts: 'contexts',
+      checks: 'checks',
+      contexts_url: 'contexts_url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      url
+      strict
+      contexts
+      checks
+      contexts_url
+    ].freeze
+    DECODERS = {
+      checks: lambda do |value|
+        value&.map { |item| ::OctridevGithub::StatusCheckPolicyChecksItem.from_hash(item) }
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
+  # API model for StatusCheckPolicy.
+  # Status Check Policy
+  class StatusCheckPolicy
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalStatusCheckPolicyMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalStatusCheckPolicyMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalStatusCheckPolicyMetadata::DECODERS
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [Boolean] Required `boolean` value serialized in the `strict` wire field.
+    attr_reader :strict
+    # @return [Array_of_String] Required array value serialized in the `contexts` wire field.
+    attr_reader :contexts
+    # @return [Array_of_StatusCheckPolicyChecksItem] Required array value serialized in the `checks` wire field.
+    attr_reader :checks
+    # @return [String] Required `uri`-formatted value serialized in the `contexts_url` wire field.
+    attr_reader :contexts_url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
 end

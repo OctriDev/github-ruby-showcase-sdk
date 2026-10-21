@@ -36,28 +36,27 @@ module OctridevGithub
         targets: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/rulesets"
+            '/rulesets'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'page' => QueryValue.new(page, style: 'form', explode: true),
             'includes_parents' => QueryValue.new(includes_parents, style: 'form', explode: true),
-            'targets' => QueryValue.new(targets, style: 'form', explode: true),
+            'targets' => QueryValue.new(targets, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::RepositoryRuleset],
           decoder: :json,
           operation_id: 'repos_get_repo_rulesets',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -92,15 +91,14 @@ module OctridevGithub
         rules: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/rulesets"
+            '/rulesets'
           ].join,
           config: config,
           body: {
@@ -109,13 +107,13 @@ module OctridevGithub
             'target' => target,
             'bypass_actors' => bypass_actors,
             'conditions' => conditions,
-            'rules' => rules,
+            'rules' => rules
           },
           return_type: ::OctridevGithub::RepositoryRuleset,
           decoder: :json,
           operation_id: 'repos_create_repo_ruleset',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -161,15 +159,14 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/rulesets/rule-suites"
+            '/rulesets/rule-suites'
           ].join,
           config: config,
           query: {
@@ -179,13 +176,13 @@ module OctridevGithub
             'rule_suite_result' => QueryValue.new(rule_suite_result, style: 'form', explode: true),
             'evaluate_status' => QueryValue.new(evaluate_status, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::RuleSuites,
           decoder: :json,
           operation_id: 'repos_get_repo_rule_suites',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -210,26 +207,25 @@ module OctridevGithub
         include_metadata: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/rulesets/rule-suites/",
+            '/rulesets/rule-suites/',
             SdkClient.encode_path_segment(rule_suite_id)
           ].join,
           config: config,
           query: {
-            'include_metadata' => QueryValue.new(include_metadata, style: 'form', explode: true),
+            'include_metadata' => QueryValue.new(include_metadata, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::RuleSuite,
           decoder: :json,
           operation_id: 'repos_get_repo_rule_suite',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -250,26 +246,25 @@ module OctridevGithub
         includes_parents: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/rulesets/",
+            '/rulesets/',
             SdkClient.encode_path_segment(ruleset_id)
           ].join,
           config: config,
           query: {
-            'includes_parents' => QueryValue.new(includes_parents, style: 'form', explode: true),
+            'includes_parents' => QueryValue.new(includes_parents, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::RepositoryRuleset,
           decoder: :json,
           operation_id: 'repos_get_repo_ruleset',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -306,15 +301,14 @@ module OctridevGithub
         rules: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/rulesets/",
+            '/rulesets/',
             SdkClient.encode_path_segment(ruleset_id)
           ].join,
           config: config,
@@ -324,13 +318,13 @@ module OctridevGithub
             'enforcement' => enforcement,
             'bypass_actors' => bypass_actors,
             'conditions' => conditions,
-            'rules' => rules,
+            'rules' => rules
           },
           return_type: ::OctridevGithub::RepositoryRuleset,
           decoder: :json,
           operation_id: 'repos_update_repo_ruleset',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -350,22 +344,21 @@ module OctridevGithub
         ruleset_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/rulesets/",
+            '/rulesets/',
             SdkClient.encode_path_segment(ruleset_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_delete_repo_ruleset',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -391,28 +384,27 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/rulesets/",
+            '/rulesets/',
             SdkClient.encode_path_segment(ruleset_id),
-            "/history"
+            '/history'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::RulesetVersion],
           decoder: :json,
           operation_id: 'repos_get_repo_ruleset_history',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -434,17 +426,16 @@ module OctridevGithub
         version_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/rulesets/",
+            '/rulesets/',
             SdkClient.encode_path_segment(ruleset_id),
-            "/history/",
+            '/history/',
             SdkClient.encode_path_segment(version_id)
           ].join,
           config: config,
@@ -452,7 +443,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'repos_get_repo_ruleset_version',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
     end

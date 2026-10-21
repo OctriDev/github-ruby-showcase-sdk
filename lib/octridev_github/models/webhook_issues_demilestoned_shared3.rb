@@ -5,691 +5,691 @@
 
 # webhook_issues_demilestoned domain models
 module OctridevGithub
-# API model for WebhookIssuesDemilestonedIssue.
-# The issue itself.
-class WebhookIssuesDemilestonedIssue
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookIssuesDemilestonedIssueMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookIssuesDemilestonedIssueMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookIssuesDemilestonedIssueMetadata::DECODERS
+  # API model for WebhookIssuesDemilestonedIssue.
+  # The issue itself.
+  class WebhookIssuesDemilestonedIssue
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookIssuesDemilestonedIssueMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookIssuesDemilestonedIssueMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookIssuesDemilestonedIssueMetadata::DECODERS
 
-  # @return [WebhookIssuesDemilestonedIssueActiveLockReason] Required enumerated value serialized in the `active_lock_reason` wire field.
-  attr_reader :active_lock_reason
-  # @return [WebhookIssuesDemilestonedIssueAssignee] Optional object value serialized in the `assignee` wire field.
-  attr_reader :assignee
-  # @return [Array_of_WebhookIssuesDemilestonedIssueAssigneesItem] Required array value serialized in the `assignees` wire field.
-  attr_reader :assignees
-  # @return [WebhookIssuesDemilestonedIssueAuthorAssociation] How the author is associated with the repository.
-  attr_reader :author_association
-  # @return [String] Contents of the issue
-  attr_reader :body
-  # @return [String] Required `date-time`-formatted value serialized in the `closed_at` wire field.
-  attr_reader :closed_at
-  # @return [Integer] Required `integer` value serialized in the `comments` wire field.
-  attr_reader :comments
-  # @return [String] Required `uri`-formatted value serialized in the `comments_url` wire field.
-  attr_reader :comments_url
-  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [Boolean] Optional `boolean` value serialized in the `draft` wire field.
-  attr_reader :draft
-  # @return [String] Required `uri`-formatted value serialized in the `events_url` wire field.
-  attr_reader :events_url
-  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [Array_of_WebhookIssuesDemilestonedIssueLabelsItem] Optional array value serialized in the `labels` wire field.
-  attr_reader :labels
-  # @return [String] Required `uri-template`-formatted value serialized in the `labels_url` wire field.
-  attr_reader :labels_url
-  # @return [Boolean] Optional `boolean` value serialized in the `locked` wire field.
-  attr_reader :locked
-  # @return [WebhookIssuesDemilestonedIssueMilestone] A collection of related issues and pull requests.
-  attr_reader :milestone
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [Integer] Required `integer` value serialized in the `number` wire field.
-  attr_reader :number
-  # @return [WebhookIssuesDemilestonedIssuePerformedViaGithubApp] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
-  attr_reader :performed_via_github_app
-  # @return [WebhookIssuesDemilestonedIssuePullRequest] Optional object value serialized in the `pull_request` wire field.
-  attr_reader :pull_request
-  # @return [WebhookIssuesDemilestonedIssueReactions] Required object value serialized in the `reactions` wire field.
-  attr_reader :reactions
-  # @return [String] Required `uri`-formatted value serialized in the `repository_url` wire field.
-  attr_reader :repository_url
-  # @return [NullableIssueComment] Comments provide a way for people to collaborate on an issue.
-  attr_reader :pinned_comment
-  # @return [SubIssuesSummary] Optional object value serialized in the `sub_issues_summary` wire field.
-  attr_reader :sub_issues_summary
-  # @return [IssueDependenciesSummary] Optional object value serialized in the `issue_dependencies_summary` wire field.
-  attr_reader :issue_dependencies_summary
-  # @return [Array_of_IssueFieldValue] Optional array value serialized in the `issue_field_values` wire field.
-  attr_reader :issue_field_values
-  # @return [WebhookIssuesDemilestonedIssueState] State of the issue; either 'open' or 'closed'
-  attr_reader :state
-  # @return [String] Optional `string` value serialized in the `state_reason` wire field.
-  attr_reader :state_reason
-  # @return [String] Optional `uri`-formatted value serialized in the `timeline_url` wire field.
-  attr_reader :timeline_url
-  # @return [String] Title of the issue
-  attr_reader :title
-  # @return [IssueType] The type assigned to the issue. This is only present for issues in repositories where issue types are supported.
-  attr_reader :type
-  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-  # @return [String] URL for the issue
-  attr_reader :url
-  # @return [WebhookIssuesDemilestonedIssueUser] Required object value serialized in the `user` wire field.
-  attr_reader :user
+    # @return [WebhookIssuesDemilestonedIssueActiveLockReason] Required enumerated value serialized in the `active_lock_reason` wire field.
+    attr_reader :active_lock_reason
+    # @return [WebhookIssuesDemilestonedIssueAssignee] Optional object value serialized in the `assignee` wire field.
+    attr_reader :assignee
+    # @return [Array_of_WebhookIssuesDemilestonedIssueAssigneesItem] Required array value serialized in the `assignees` wire field.
+    attr_reader :assignees
+    # @return [WebhookIssuesDemilestonedIssueAuthorAssociation] How the author is associated with the repository.
+    attr_reader :author_association
+    # @return [String] Contents of the issue
+    attr_reader :body
+    # @return [String] Required `date-time`-formatted value serialized in the `closed_at` wire field.
+    attr_reader :closed_at
+    # @return [Integer] Required `integer` value serialized in the `comments` wire field.
+    attr_reader :comments
+    # @return [String] Required `uri`-formatted value serialized in the `comments_url` wire field.
+    attr_reader :comments_url
+    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [Boolean] Optional `boolean` value serialized in the `draft` wire field.
+    attr_reader :draft
+    # @return [String] Required `uri`-formatted value serialized in the `events_url` wire field.
+    attr_reader :events_url
+    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [Array_of_WebhookIssuesDemilestonedIssueLabelsItem] Optional array value serialized in the `labels` wire field.
+    attr_reader :labels
+    # @return [String] Required `uri-template`-formatted value serialized in the `labels_url` wire field.
+    attr_reader :labels_url
+    # @return [Boolean] Optional `boolean` value serialized in the `locked` wire field.
+    attr_reader :locked
+    # @return [WebhookIssuesDemilestonedIssueMilestone] A collection of related issues and pull requests.
+    attr_reader :milestone
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [Integer] Required `integer` value serialized in the `number` wire field.
+    attr_reader :number
+    # @return [WebhookIssuesDemilestonedIssuePerformedViaGithubApp] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+    attr_reader :performed_via_github_app
+    # @return [WebhookIssuesDemilestonedIssuePullRequest] Optional object value serialized in the `pull_request` wire field.
+    attr_reader :pull_request
+    # @return [WebhookIssuesDemilestonedIssueReactions] Required object value serialized in the `reactions` wire field.
+    attr_reader :reactions
+    # @return [String] Required `uri`-formatted value serialized in the `repository_url` wire field.
+    attr_reader :repository_url
+    # @return [NullableIssueComment] Comments provide a way for people to collaborate on an issue.
+    attr_reader :pinned_comment
+    # @return [SubIssuesSummary] Optional object value serialized in the `sub_issues_summary` wire field.
+    attr_reader :sub_issues_summary
+    # @return [IssueDependenciesSummary] Optional object value serialized in the `issue_dependencies_summary` wire field.
+    attr_reader :issue_dependencies_summary
+    # @return [Array_of_IssueFieldValue] Optional array value serialized in the `issue_field_values` wire field.
+    attr_reader :issue_field_values
+    # @return [WebhookIssuesDemilestonedIssueState] State of the issue; either 'open' or 'closed'
+    attr_reader :state
+    # @return [String] Optional `string` value serialized in the `state_reason` wire field.
+    attr_reader :state_reason
+    # @return [String] Optional `uri`-formatted value serialized in the `timeline_url` wire field.
+    attr_reader :timeline_url
+    # @return [String] Title of the issue
+    attr_reader :title
+    # @return [IssueType] The type assigned to the issue. This is only present for issues in repositories where issue types are supported.
+    attr_reader :type
+    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+    # @return [String] URL for the issue
+    attr_reader :url
+    # @return [WebhookIssuesDemilestonedIssueUser] Required object value serialized in the `user` wire field.
+    attr_reader :user
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookIssuesDemilestonedIssueMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookIssuesDemilestonedIssueMetadata::NULLABLE_FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalWebhookIssuesDemilestonedMetadata
+    FIELDS = {
+      action: 'action',
+      enterprise: 'enterprise',
+      installation: 'installation',
+      issue: 'issue',
+      milestone: 'milestone',
+      organization: 'organization',
+      repository: 'repository',
+      sender: 'sender'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      action
+      issue
+      repository
+      sender
+    ].freeze
+    DECODERS = {
+      action: lambda do |value|
+        ::OctridevGithub::WebhookIssuesDemilestonedAction.from_value(value)
+      end,
+      enterprise: lambda do |value|
+        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+      end,
+      installation: lambda do |value|
+        ::OctridevGithub::SimpleInstallation.from_hash(value)
+      end,
+      issue: lambda do |value|
+        ::OctridevGithub::WebhookIssuesDemilestonedIssue.from_hash(value)
+      end,
+      milestone: lambda do |value|
+        ::OctridevGithub::WebhooksMilestone.from_hash(value)
+      end,
+      organization: lambda do |value|
+        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+      end,
+      repository: lambda do |value|
+        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+      end,
+      sender: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for WebhookIssuesDemilestoned.
+  # Typed representation of the `WebhookIssuesDemilestoned` API schema.
+  class WebhookIssuesDemilestoned
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookIssuesDemilestonedMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookIssuesDemilestonedMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookIssuesDemilestonedMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalWebhookIssuesDemilestonedMetadata
-  FIELDS = {
-    action: "action",
-    enterprise: "enterprise",
-    installation: "installation",
-    issue: "issue",
-    milestone: "milestone",
-    organization: "organization",
-    repository: "repository",
-    sender: "sender",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    action
-    issue
-    repository
-    sender
-  ].freeze
-  DECODERS = {
-    action: lambda do |value|
-      ::OctridevGithub::WebhookIssuesDemilestonedAction.from_value(value)
-    end,
-    enterprise: lambda do |value|
-      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-    end,
-    installation: lambda do |value|
-      ::OctridevGithub::SimpleInstallation.from_hash(value)
-    end,
-    issue: lambda do |value|
-      ::OctridevGithub::WebhookIssuesDemilestonedIssue.from_hash(value)
-    end,
-    milestone: lambda do |value|
-      ::OctridevGithub::WebhooksMilestone.from_hash(value)
-    end,
-    organization: lambda do |value|
-      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-    end,
-    repository: lambda do |value|
-      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-    end,
-    sender: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-  }.freeze
-end
+    # @return [WebhookIssuesDemilestonedAction] Required enumerated value serialized in the `action` wire field.
+    attr_reader :action
+    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+    attr_reader :enterprise
+    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+    attr_reader :installation
+    # @return [WebhookIssuesDemilestonedIssue] The issue itself.
+    attr_reader :issue
+    # @return [WebhooksMilestone] A collection of related issues and pull requests.
+    attr_reader :milestone
+    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+    attr_reader :organization
+    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+    attr_reader :repository
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :sender
 
-# API model for WebhookIssuesDemilestoned.
-# Typed representation of the `WebhookIssuesDemilestoned` API schema.
-class WebhookIssuesDemilestoned
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookIssuesDemilestonedMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookIssuesDemilestonedMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookIssuesDemilestonedMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [WebhookIssuesDemilestonedAction] Required enumerated value serialized in the `action` wire field.
-  attr_reader :action
-  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-  attr_reader :enterprise
-  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-  attr_reader :installation
-  # @return [WebhookIssuesDemilestonedIssue] The issue itself.
-  attr_reader :issue
-  # @return [WebhooksMilestone] A collection of related issues and pull requests.
-  attr_reader :milestone
-  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-  attr_reader :organization
-  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-  attr_reader :repository
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :sender
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the WebhookIssuesDemilestonedAction SDK namespace.
+  module WebhookIssuesDemilestonedAction
+    DEMILESTONED = 'demilestoned'
+    VALUES = ['demilestoned'].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the WebhookIssuesDemilestonedIssueActiveLockReason SDK namespace.
+  module WebhookIssuesDemilestonedIssueActiveLockReason
+    RESOLVED = 'resolved'
+    OFF_TOPIC = 'off-topic'
+    TOO_HEATED = 'too heated'
+    SPAM = 'spam'
+    VALUES = ['resolved', 'off-topic', 'too heated', 'spam'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedAction SDK namespace.
-module WebhookIssuesDemilestonedAction
-  DEMILESTONED = 'demilestoned'
-  VALUES = ['demilestoned'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssueAssigneeType SDK namespace.
+  module WebhookIssuesDemilestonedIssueAssigneeType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    MANNEQUIN = 'Mannequin'
+    VALUES = %w[Bot User Organization Mannequin].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssueActiveLockReason SDK namespace.
-module WebhookIssuesDemilestonedIssueActiveLockReason
-  RESOLVED = 'resolved'
-  OFF_TOPIC = 'off-topic'
-  TOO_HEATED = 'too heated'
-  SPAM = 'spam'
-  VALUES = ['resolved', 'off-topic', 'too heated', 'spam'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssueAssigneesItemType SDK namespace.
+  module WebhookIssuesDemilestonedIssueAssigneesItemType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    MANNEQUIN = 'Mannequin'
+    VALUES = %w[Bot User Organization Mannequin].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssueAssigneeType SDK namespace.
-module WebhookIssuesDemilestonedIssueAssigneeType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  MANNEQUIN = 'Mannequin'
-  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssueAuthorAssociation SDK namespace.
+  module WebhookIssuesDemilestonedIssueAuthorAssociation
+    COLLABORATOR = 'COLLABORATOR'
+    CONTRIBUTOR = 'CONTRIBUTOR'
+    FIRST_TIMER = 'FIRST_TIMER'
+    FIRST_TIME_CONTRIBUTOR = 'FIRST_TIME_CONTRIBUTOR'
+    MANNEQUIN = 'MANNEQUIN'
+    MEMBER = 'MEMBER'
+    NONE = 'NONE'
+    OWNER = 'OWNER'
+    VALUES = %w[
+      COLLABORATOR CONTRIBUTOR FIRST_TIMER FIRST_TIME_CONTRIBUTOR MANNEQUIN MEMBER
+      NONE OWNER
+    ].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssueAssigneesItemType SDK namespace.
-module WebhookIssuesDemilestonedIssueAssigneesItemType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  MANNEQUIN = 'Mannequin'
-  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssueMilestoneCreatorType SDK namespace.
+  module WebhookIssuesDemilestonedIssueMilestoneCreatorType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    MANNEQUIN = 'Mannequin'
+    VALUES = %w[Bot User Organization Mannequin].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssueAuthorAssociation SDK namespace.
-module WebhookIssuesDemilestonedIssueAuthorAssociation
-  COLLABORATOR = 'COLLABORATOR'
-  CONTRIBUTOR = 'CONTRIBUTOR'
-  FIRST_TIMER = 'FIRST_TIMER'
-  FIRST_TIME_CONTRIBUTOR = 'FIRST_TIME_CONTRIBUTOR'
-  MANNEQUIN = 'MANNEQUIN'
-  MEMBER = 'MEMBER'
-  NONE = 'NONE'
-  OWNER = 'OWNER'
-  VALUES = [
-    'COLLABORATOR', 'CONTRIBUTOR', 'FIRST_TIMER', 'FIRST_TIME_CONTRIBUTOR', 'MANNEQUIN', 'MEMBER',
-    'NONE', 'OWNER'
-  ].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssueMilestoneState SDK namespace.
+  module WebhookIssuesDemilestonedIssueMilestoneState
+    OPEN = 'open'
+    CLOSED = 'closed'
+    VALUES = %w[open closed].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssueMilestoneCreatorType SDK namespace.
-module WebhookIssuesDemilestonedIssueMilestoneCreatorType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  MANNEQUIN = 'Mannequin'
-  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppEventsItem SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppEventsItem
+    BRANCH_PROTECTION_RULE = 'branch_protection_rule'
+    CHECK_RUN = 'check_run'
+    CHECK_SUITE = 'check_suite'
+    CODE_SCANNING_ALERT = 'code_scanning_alert'
+    COMMIT_COMMENT = 'commit_comment'
+    CONTENT_REFERENCE = 'content_reference'
+    CREATE = 'create'
+    DELETE = 'delete'
+    DEPLOYMENT = 'deployment'
+    DEPLOYMENT_REVIEW = 'deployment_review'
+    DEPLOYMENT_STATUS = 'deployment_status'
+    DEPLOY_KEY = 'deploy_key'
+    DISCUSSION = 'discussion'
+    DISCUSSION_COMMENT = 'discussion_comment'
+    FORK = 'fork'
+    GOLLUM = 'gollum'
+    ISSUES = 'issues'
+    ISSUE_COMMENT = 'issue_comment'
+    LABEL = 'label'
+    MEMBER = 'member'
+    MEMBERSHIP = 'membership'
+    MILESTONE = 'milestone'
+    ORGANIZATION = 'organization'
+    ORG_BLOCK = 'org_block'
+    PAGE_BUILD = 'page_build'
+    PROJECT = 'project'
+    PROJECT_CARD = 'project_card'
+    PROJECT_COLUMN = 'project_column'
+    PUBLIC = 'public'
+    PULL_REQUEST = 'pull_request'
+    PULL_REQUEST_REVIEW = 'pull_request_review'
+    PULL_REQUEST_REVIEW_COMMENT = 'pull_request_review_comment'
+    PUSH = 'push'
+    REGISTRY_PACKAGE = 'registry_package'
+    RELEASE = 'release'
+    REPOSITORY = 'repository'
+    REPOSITORY_DISPATCH = 'repository_dispatch'
+    SECRET_SCANNING_ALERT = 'secret_scanning_alert'
+    STAR = 'star'
+    STATUS = 'status'
+    TEAM = 'team'
+    TEAM_ADD = 'team_add'
+    WATCH = 'watch'
+    WORKFLOW_DISPATCH = 'workflow_dispatch'
+    WORKFLOW_RUN = 'workflow_run'
+    VALUES = %w[
+      branch_protection_rule check_run check_suite code_scanning_alert commit_comment
+      content_reference create delete deployment deployment_review deployment_status
+      deploy_key discussion discussion_comment fork gollum issues issue_comment
+      label member membership milestone organization org_block page_build
+      project project_card project_column public pull_request pull_request_review
+      pull_request_review_comment push registry_package release repository
+      repository_dispatch secret_scanning_alert star status team team_add watch
+      workflow_dispatch workflow_run
+    ].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssueMilestoneState SDK namespace.
-module WebhookIssuesDemilestonedIssueMilestoneState
-  OPEN = 'open'
-  CLOSED = 'closed'
-  VALUES = ['open', 'closed'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppOwnerType SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppOwnerType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppEventsItem SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppEventsItem
-  BRANCH_PROTECTION_RULE = 'branch_protection_rule'
-  CHECK_RUN = 'check_run'
-  CHECK_SUITE = 'check_suite'
-  CODE_SCANNING_ALERT = 'code_scanning_alert'
-  COMMIT_COMMENT = 'commit_comment'
-  CONTENT_REFERENCE = 'content_reference'
-  CREATE = 'create'
-  DELETE = 'delete'
-  DEPLOYMENT = 'deployment'
-  DEPLOYMENT_REVIEW = 'deployment_review'
-  DEPLOYMENT_STATUS = 'deployment_status'
-  DEPLOY_KEY = 'deploy_key'
-  DISCUSSION = 'discussion'
-  DISCUSSION_COMMENT = 'discussion_comment'
-  FORK = 'fork'
-  GOLLUM = 'gollum'
-  ISSUES = 'issues'
-  ISSUE_COMMENT = 'issue_comment'
-  LABEL = 'label'
-  MEMBER = 'member'
-  MEMBERSHIP = 'membership'
-  MILESTONE = 'milestone'
-  ORGANIZATION = 'organization'
-  ORG_BLOCK = 'org_block'
-  PAGE_BUILD = 'page_build'
-  PROJECT = 'project'
-  PROJECT_CARD = 'project_card'
-  PROJECT_COLUMN = 'project_column'
-  PUBLIC = 'public'
-  PULL_REQUEST = 'pull_request'
-  PULL_REQUEST_REVIEW = 'pull_request_review'
-  PULL_REQUEST_REVIEW_COMMENT = 'pull_request_review_comment'
-  PUSH = 'push'
-  REGISTRY_PACKAGE = 'registry_package'
-  RELEASE = 'release'
-  REPOSITORY = 'repository'
-  REPOSITORY_DISPATCH = 'repository_dispatch'
-  SECRET_SCANNING_ALERT = 'secret_scanning_alert'
-  STAR = 'star'
-  STATUS = 'status'
-  TEAM = 'team'
-  TEAM_ADD = 'team_add'
-  WATCH = 'watch'
-  WORKFLOW_DISPATCH = 'workflow_dispatch'
-  WORKFLOW_RUN = 'workflow_run'
-  VALUES = [
-    'branch_protection_rule', 'check_run', 'check_suite', 'code_scanning_alert', 'commit_comment',
-    'content_reference', 'create', 'delete', 'deployment', 'deployment_review', 'deployment_status',
-    'deploy_key', 'discussion', 'discussion_comment', 'fork', 'gollum', 'issues', 'issue_comment',
-    'label', 'member', 'membership', 'milestone', 'organization', 'org_block', 'page_build',
-    'project', 'project_card', 'project_column', 'public', 'pull_request', 'pull_request_review',
-    'pull_request_review_comment', 'push', 'registry_package', 'release', 'repository',
-    'repository_dispatch', 'secret_scanning_alert', 'star', 'status', 'team', 'team_add', 'watch',
-    'workflow_dispatch', 'workflow_run'
-  ].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsActions SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsActions
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppOwnerType SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppOwnerType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX28042ba337 SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX28042ba337
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsActions SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsActions
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsChecks SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsChecks
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX28042ba337 SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX28042ba337
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX5496c328f2 SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX5496c328f2
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsChecks SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsChecks
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsContents SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsContents
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX5496c328f2 SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX5496c328f2
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX173db0765e SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX173db0765e
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsContents SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsContents
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX1b1a18e579 SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX1b1a18e579
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX173db0765e SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX173db0765e
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsEmails SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsEmails
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX1b1a18e579 SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX1b1a18e579
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX1c81e589ca SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX1c81e589ca
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsEmails SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsEmails
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsIssues SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsIssues
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX1c81e589ca SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX1c81e589ca
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsKeys SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsKeys
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsIssues SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsIssues
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsMembers SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsMembers
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsKeys SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsKeys
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsMetadata SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsMetadata
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsMembers SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsMembers
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX78b9566e2c SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX78b9566e2c
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsMetadata SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsMetadata
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX68ddc526ce SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX68ddc526ce
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX78b9566e2c SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX78b9566e2c
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX61404bb4c1 SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX61404bb4c1
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX68ddc526ce SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX68ddc526ce
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionXfe12c9aa97 SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionXfe12c9aa97
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX61404bb4c1 SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX61404bb4c1
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX8c768751be SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX8c768751be
+    READ = 'read'
+    WRITE = 'write'
+    ADMIN = 'admin'
+    VALUES = %w[read write admin].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionXfe12c9aa97 SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionXfe12c9aa97
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionXa56c7d7bc0 SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionXa56c7d7bc0
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX8c768751be SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX8c768751be
-  READ = 'read'
-  WRITE = 'write'
-  ADMIN = 'admin'
-  VALUES = ['read', 'write', 'admin'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionXd06f39a302 SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionXd06f39a302
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionXa56c7d7bc0 SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionXa56c7d7bc0
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX3d144907af SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX3d144907af
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionXd06f39a302 SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionXd06f39a302
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsPackages SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsPackages
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX3d144907af SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX3d144907af
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsPages SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsPages
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsPackages SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsPackages
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionXeb46dead8a SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionXeb46dead8a
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsPages SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsPages
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX91cda21a58 SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX91cda21a58
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionXeb46dead8a SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionXeb46dead8a
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX99f0a50d92 SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX99f0a50d92
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX91cda21a58 SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX91cda21a58
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX410d1f6147 SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX410d1f6147
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX99f0a50d92 SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX99f0a50d92
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsSecrets SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsSecrets
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX410d1f6147 SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX410d1f6147
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX06ec20830e SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX06ec20830e
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsSecrets SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsSecrets
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX5ec6af4ea8 SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX5ec6af4ea8
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX06ec20830e SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX06ec20830e
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsSingleFile SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsSingleFile
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX5ec6af4ea8 SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX5ec6af4ea8
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsStatuses SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsStatuses
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsSingleFile SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsSingleFile
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX4ebebaf183 SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX4ebebaf183
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsStatuses SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsStatuses
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsWorkflows SDK namespace.
+  module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsWorkflows
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX4ebebaf183 SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionX4ebebaf183
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesDemilestonedIssueState SDK namespace.
+  module WebhookIssuesDemilestonedIssueState
+    OPEN = 'open'
+    CLOSED = 'closed'
+    VALUES = %w[open closed].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsWorkflows SDK namespace.
-module WebhookIssuesDemilestonedIssuePerformedViaGithubAppPermissionsWorkflows
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookIssuesDemilestonedIssueState SDK namespace.
-module WebhookIssuesDemilestonedIssueState
-  OPEN = 'open'
-  CLOSED = 'closed'
-  VALUES = ['open', 'closed'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

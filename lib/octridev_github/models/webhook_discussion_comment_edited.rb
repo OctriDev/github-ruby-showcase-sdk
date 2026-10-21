@@ -5,182 +5,181 @@
 
 # webhook_discussion_comment_edited domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalWebhookDiscussionCommentEditedChangesBodyMetadata
-  FIELDS = {
-    from: "from",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    from
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookDiscussionCommentEditedChangesBody.
-# Required object value serialized in the `body` wire field.
-class WebhookDiscussionCommentEditedChangesBody
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookDiscussionCommentEditedChangesBodyMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookDiscussionCommentEditedChangesBodyMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookDiscussionCommentEditedChangesBodyMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `from` wire field.
-  attr_reader :from
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookDiscussionCommentEditedChangesBodyMetadata
+    FIELDS = {
+      from: 'from'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      from
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookDiscussionCommentEditedChangesBody.
+  # Required object value serialized in the `body` wire field.
+  class WebhookDiscussionCommentEditedChangesBody
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookDiscussionCommentEditedChangesBodyMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookDiscussionCommentEditedChangesBodyMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookDiscussionCommentEditedChangesBodyMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `from` wire field.
+    attr_reader :from
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookDiscussionCommentEditedChangesMetadata
-  FIELDS = {
-    body: "body",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    body
-  ].freeze
-  DECODERS = {
-    body: lambda do |value|
-      ::OctridevGithub::WebhookDiscussionCommentEditedChangesBody.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookDiscussionCommentEditedChanges.
-# Required object value serialized in the `changes` wire field.
-class WebhookDiscussionCommentEditedChanges
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookDiscussionCommentEditedChangesMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookDiscussionCommentEditedChangesMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookDiscussionCommentEditedChangesMetadata::DECODERS
-
-  # @return [WebhookDiscussionCommentEditedChangesBody] Required object value serialized in the `body` wire field.
-  attr_reader :body
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookDiscussionCommentEditedChangesMetadata
+    FIELDS = {
+      body: 'body'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      body
+    ].freeze
+    DECODERS = {
+      body: lambda do |value|
+        ::OctridevGithub::WebhookDiscussionCommentEditedChangesBody.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookDiscussionCommentEditedChanges.
+  # Required object value serialized in the `changes` wire field.
+  class WebhookDiscussionCommentEditedChanges
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookDiscussionCommentEditedChangesMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookDiscussionCommentEditedChangesMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookDiscussionCommentEditedChangesMetadata::DECODERS
+
+    # @return [WebhookDiscussionCommentEditedChangesBody] Required object value serialized in the `body` wire field.
+    attr_reader :body
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookDiscussionCommentEditedMetadata
-  FIELDS = {
-    action: "action",
-    changes: "changes",
-    comment: "comment",
-    discussion: "discussion",
-    enterprise: "enterprise",
-    installation: "installation",
-    organization: "organization",
-    repository: "repository",
-    sender: "sender",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    action
-    changes
-    comment
-    discussion
-    repository
-    sender
-  ].freeze
-  DECODERS = {
-    action: lambda do |value|
-      ::OctridevGithub::WebhookDiscussionCommentEditedAction.from_value(value)
-    end,
-    changes: lambda do |value|
-      ::OctridevGithub::WebhookDiscussionCommentEditedChanges.from_hash(value)
-    end,
-    comment: lambda do |value|
-      ::OctridevGithub::WebhooksComment.from_hash(value)
-    end,
-    discussion: lambda do |value|
-      ::OctridevGithub::Discussion.from_hash(value)
-    end,
-    enterprise: lambda do |value|
-      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-    end,
-    installation: lambda do |value|
-      ::OctridevGithub::SimpleInstallation.from_hash(value)
-    end,
-    organization: lambda do |value|
-      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-    end,
-    repository: lambda do |value|
-      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-    end,
-    sender: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookDiscussionCommentEdited.
-# Typed representation of the `WebhookDiscussionCommentEdited` API schema.
-class WebhookDiscussionCommentEdited
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookDiscussionCommentEditedMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookDiscussionCommentEditedMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookDiscussionCommentEditedMetadata::DECODERS
-
-  # @return [WebhookDiscussionCommentEditedAction] Required enumerated value serialized in the `action` wire field.
-  attr_reader :action
-  # @return [WebhookDiscussionCommentEditedChanges] Required object value serialized in the `changes` wire field.
-  attr_reader :changes
-  # @return [WebhooksComment] Required object value serialized in the `comment` wire field.
-  attr_reader :comment
-  # @return [Discussion] A Discussion in a repository.
-  attr_reader :discussion
-  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-  attr_reader :enterprise
-  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-  attr_reader :installation
-  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-  attr_reader :organization
-  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-  attr_reader :repository
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :sender
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookDiscussionCommentEditedMetadata
+    FIELDS = {
+      action: 'action',
+      changes: 'changes',
+      comment: 'comment',
+      discussion: 'discussion',
+      enterprise: 'enterprise',
+      installation: 'installation',
+      organization: 'organization',
+      repository: 'repository',
+      sender: 'sender'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      action
+      changes
+      comment
+      discussion
+      repository
+      sender
+    ].freeze
+    DECODERS = {
+      action: lambda do |value|
+        ::OctridevGithub::WebhookDiscussionCommentEditedAction.from_value(value)
+      end,
+      changes: lambda do |value|
+        ::OctridevGithub::WebhookDiscussionCommentEditedChanges.from_hash(value)
+      end,
+      comment: lambda do |value|
+        ::OctridevGithub::WebhooksComment.from_hash(value)
+      end,
+      discussion: lambda do |value|
+        ::OctridevGithub::Discussion.from_hash(value)
+      end,
+      enterprise: lambda do |value|
+        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+      end,
+      installation: lambda do |value|
+        ::OctridevGithub::SimpleInstallation.from_hash(value)
+      end,
+      organization: lambda do |value|
+        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+      end,
+      repository: lambda do |value|
+        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+      end,
+      sender: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookDiscussionCommentEdited.
+  # Typed representation of the `WebhookDiscussionCommentEdited` API schema.
+  class WebhookDiscussionCommentEdited
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookDiscussionCommentEditedMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookDiscussionCommentEditedMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookDiscussionCommentEditedMetadata::DECODERS
+
+    # @return [WebhookDiscussionCommentEditedAction] Required enumerated value serialized in the `action` wire field.
+    attr_reader :action
+    # @return [WebhookDiscussionCommentEditedChanges] Required object value serialized in the `changes` wire field.
+    attr_reader :changes
+    # @return [WebhooksComment] Required object value serialized in the `comment` wire field.
+    attr_reader :comment
+    # @return [Discussion] A Discussion in a repository.
+    attr_reader :discussion
+    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+    attr_reader :enterprise
+    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+    attr_reader :installation
+    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+    attr_reader :organization
+    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+    attr_reader :repository
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :sender
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the WebhookDiscussionCommentEditedAction SDK namespace.
+  module WebhookDiscussionCommentEditedAction
+    EDITED = 'edited'
+    VALUES = ['edited'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the WebhookDiscussionCommentEditedAction SDK namespace.
-module WebhookDiscussionCommentEditedAction
-  EDITED = 'edited'
-  VALUES = ['edited'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

@@ -27,26 +27,25 @@ module OctridevGithub
         assignees: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/issues/",
+            '/issues/',
             SdkClient.encode_path_segment(issue_number),
-            "/assignees"
+            '/assignees'
           ].join,
           config: config,
           body: {
-            'assignees' => assignees,
+            'assignees' => assignees
           },
           return_type: ::OctridevGithub::Issue,
           decoder: :json,
           operation_id: 'issues_add_assignees',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -70,26 +69,25 @@ module OctridevGithub
         assignees: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/issues/",
+            '/issues/',
             SdkClient.encode_path_segment(issue_number),
-            "/assignees"
+            '/assignees'
           ].join,
           config: config,
           body: {
-            'assignees' => assignees,
+            'assignees' => assignees
           },
           return_type: ::OctridevGithub::Issue,
           decoder: :json,
           operation_id: 'issues_remove_assignees',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -110,24 +108,23 @@ module OctridevGithub
         assignee:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/issues/",
+            '/issues/',
             SdkClient.encode_path_segment(issue_number),
-            "/assignees/",
+            '/assignees/',
             SdkClient.encode_path_segment(assignee)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'issues_check_user_can_be_assigned_to_issue',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

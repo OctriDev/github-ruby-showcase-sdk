@@ -45,7 +45,6 @@ module OctridevGithub
         creator_id: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.if_given(per_page) { Validation.validate_range('per_page', per_page, min: 1, max: 100) }
 
         Validation.if_given(page) { Validation.validate_range('page', page, min: 1) }
@@ -55,11 +54,11 @@ module OctridevGithub
         SdkClient.request(
           'GET',
           [
-            "/agents/repos/",
+            '/agents/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/tasks"
+            '/tasks'
           ].join,
           config: config,
           query: {
@@ -70,12 +69,12 @@ module OctridevGithub
             'state' => QueryValue.new(state, style: 'form', explode: true),
             'is_archived' => QueryValue.new(is_archived, style: 'form', explode: true),
             'since' => QueryValue.new(since, style: 'form', explode: true),
-            'creator_id' => QueryValue.new(creator_id, style: 'form', explode: true),
+            'creator_id' => QueryValue.new(creator_id, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::AgentTasks::AgentTasksListTasksForRepoResponse,
           decoder: :json,
           operation_id: 'agent_tasks_list_tasks_for_repo',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -112,15 +111,14 @@ module OctridevGithub
         head_ref: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/agents/repos/",
+            '/agents/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/tasks"
+            '/tasks'
           ].join,
           config: config,
           body: {
@@ -129,12 +127,12 @@ module OctridevGithub
             'custom_agent' => custom_agent,
             'create_pull_request' => create_pull_request,
             'base_ref' => base_ref,
-            'head_ref' => head_ref,
+            'head_ref' => head_ref
           },
           return_type: ::OctridevGithub::Methods::AgentTasks::AgentTasksCreateTaskInRepoResponse,
           decoder: :json,
           operation_id: 'agent_tasks_create_task_in_repo',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -152,22 +150,21 @@ module OctridevGithub
         task_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/agents/repos/",
+            '/agents/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/tasks/",
+            '/tasks/',
             SdkClient.encode_path_segment(task_id)
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::AgentTasks::AgentTasksGetTaskByRepoAndIdResponse,
           decoder: :json,
           operation_id: 'agent_tasks_get_task_by_repo_and_id',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -198,7 +195,6 @@ module OctridevGithub
         since: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.if_given(per_page) { Validation.validate_range('per_page', per_page, min: 1, max: 100) }
 
         Validation.if_given(page) { Validation.validate_range('page', page, min: 1) }
@@ -207,7 +203,7 @@ module OctridevGithub
 
         SdkClient.request(
           'GET',
-          "/agents/tasks",
+          '/agents/tasks',
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
@@ -216,12 +212,12 @@ module OctridevGithub
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'state' => QueryValue.new(state, style: 'form', explode: true),
             'is_archived' => QueryValue.new(is_archived, style: 'form', explode: true),
-            'since' => QueryValue.new(since, style: 'form', explode: true),
+            'since' => QueryValue.new(since, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::AgentTasks::AgentTasksListTasksResponse,
           decoder: :json,
           operation_id: 'agent_tasks_list_tasks',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -233,18 +229,17 @@ module OctridevGithub
         task_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/agents/tasks/",
+            '/agents/tasks/',
             SdkClient.encode_path_segment(task_id)
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::AgentTasks::AgentTasksGetTaskByIdResponse,
           decoder: :json,
           operation_id: 'agent_tasks_get_task_by_id',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

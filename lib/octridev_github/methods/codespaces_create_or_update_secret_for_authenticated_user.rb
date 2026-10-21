@@ -29,7 +29,6 @@ module OctridevGithub
         selected_repository_ids: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.if_given(encrypted_value) do
           Validation.validate_pattern('encrypted_value', encrypted_value, '^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$')
         end
@@ -37,20 +36,20 @@ module OctridevGithub
         SdkClient.request(
           'PUT',
           [
-            "/user/codespaces/secrets/",
+            '/user/codespaces/secrets/',
             SdkClient.encode_path_segment(secret_name)
           ].join,
           config: config,
           body: {
             'key_id' => key_id,
             'encrypted_value' => encrypted_value,
-            'selected_repository_ids' => selected_repository_ids,
+            'selected_repository_ids' => selected_repository_ids
           },
           return_type: ::OctridevGithub::EmptyObject,
           decoder: :json,
           operation_id: 'codespaces_create_or_update_secret_for_authenticated_user',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
     end

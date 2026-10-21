@@ -25,24 +25,23 @@ module OctridevGithub
         issue_number:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/issues/",
+            '/issues/',
             SdkClient.encode_path_segment(issue_number),
-            "/parent"
+            '/parent'
           ].join,
           config: config,
           return_type: ::OctridevGithub::Issue,
           decoder: :json,
           operation_id: 'issues_get_parent',
           request_options: request_options,
-          errors: { '301' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError },
+          errors: { '301' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError }
         ).data
       end
     end

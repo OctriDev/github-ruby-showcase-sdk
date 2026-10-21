@@ -24,21 +24,20 @@ module OctridevGithub
         ref:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/tarball/",
+            '/tarball/',
             SdkClient.encode_path_segment(ref)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_download_tarball_archive',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

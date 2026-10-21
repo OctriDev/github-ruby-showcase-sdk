@@ -23,24 +23,23 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/gists/",
+            '/gists/',
             SdkClient.encode_path_segment(gist_id),
-            "/comments"
+            '/comments'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::GistComment],
           decoder: :json,
           operation_id: 'gists_list_comments',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -54,25 +53,24 @@ module OctridevGithub
         body:,
         request_options: nil
       )
-
-        Validation.validate_length('body', body, max: 65535)
+        Validation.validate_length('body', body, max: 65_535)
 
         SdkClient.request(
           'POST',
           [
-            "/gists/",
+            '/gists/',
             SdkClient.encode_path_segment(gist_id),
-            "/comments"
+            '/comments'
           ].join,
           config: config,
           body: {
-            'body' => body,
+            'body' => body
           },
           return_type: ::OctridevGithub::GistComment,
           decoder: :json,
           operation_id: 'gists_create_comment',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -86,13 +84,12 @@ module OctridevGithub
         comment_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/gists/",
+            '/gists/',
             SdkClient.encode_path_segment(gist_id),
-            "/comments/",
+            '/comments/',
             SdkClient.encode_path_segment(comment_id)
           ].join,
           config: config,
@@ -100,7 +97,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'gists_get_comment',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::ForbiddenGist, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::ForbiddenGist, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -116,26 +113,25 @@ module OctridevGithub
         body:,
         request_options: nil
       )
-
-        Validation.validate_length('body', body, max: 65535)
+        Validation.validate_length('body', body, max: 65_535)
 
         SdkClient.request(
           'PATCH',
           [
-            "/gists/",
+            '/gists/',
             SdkClient.encode_path_segment(gist_id),
-            "/comments/",
+            '/comments/',
             SdkClient.encode_path_segment(comment_id)
           ].join,
           config: config,
           body: {
-            'body' => body,
+            'body' => body
           },
           return_type: ::OctridevGithub::GistComment,
           decoder: :json,
           operation_id: 'gists_update_comment',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -149,20 +145,19 @@ module OctridevGithub
         comment_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/gists/",
+            '/gists/',
             SdkClient.encode_path_segment(gist_id),
-            "/comments/",
+            '/comments/',
             SdkClient.encode_path_segment(comment_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'gists_delete_comment',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

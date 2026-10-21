@@ -5,203 +5,200 @@
 
 # repos_contributor domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalContributorMetadata
-  FIELDS = {
-    login: "login",
-    id: "id",
-    node_id: "node_id",
-    avatar_url: "avatar_url",
-    gravatar_id: "gravatar_id",
-    url: "url",
-    html_url: "html_url",
-    followers_url: "followers_url",
-    following_url: "following_url",
-    gists_url: "gists_url",
-    starred_url: "starred_url",
-    subscriptions_url: "subscriptions_url",
-    organizations_url: "organizations_url",
-    repos_url: "repos_url",
-    events_url: "events_url",
-    received_events_url: "received_events_url",
-    type: "type",
-    site_admin: "site_admin",
-    contributions: "contributions",
-    email: "email",
-    name: "name",
-    user_view_type: "user_view_type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-    contributions
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for Contributor.
-# Contributor
-class Contributor
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalContributorMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalContributorMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalContributorMetadata::DECODERS
-
-  # @return [String] Optional `string` value serialized in the `login` wire field.
-  attr_reader :login
-  # @return [Integer] Optional `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-  attr_reader :avatar_url
-  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-  attr_reader :gravatar_id
-  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-  attr_reader :followers_url
-  # @return [String] Optional `string` value serialized in the `following_url` wire field.
-  attr_reader :following_url
-  # @return [String] Optional `string` value serialized in the `gists_url` wire field.
-  attr_reader :gists_url
-  # @return [String] Optional `string` value serialized in the `starred_url` wire field.
-  attr_reader :starred_url
-  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-  attr_reader :subscriptions_url
-  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-  attr_reader :organizations_url
-  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-  attr_reader :repos_url
-  # @return [String] Optional `string` value serialized in the `events_url` wire field.
-  attr_reader :events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-  attr_reader :received_events_url
-  # @return [String] Required `string` value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-  attr_reader :site_admin
-  # @return [Integer] Required `integer` value serialized in the `contributions` wire field.
-  attr_reader :contributions
-  # @return [String] Optional `string` value serialized in the `email` wire field.
-  attr_reader :email
-  # @return [String] Optional `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-  attr_reader :user_view_type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalContributorMetadata
+    FIELDS = {
+      login: 'login',
+      id: 'id',
+      node_id: 'node_id',
+      avatar_url: 'avatar_url',
+      gravatar_id: 'gravatar_id',
+      url: 'url',
+      html_url: 'html_url',
+      followers_url: 'followers_url',
+      following_url: 'following_url',
+      gists_url: 'gists_url',
+      starred_url: 'starred_url',
+      subscriptions_url: 'subscriptions_url',
+      organizations_url: 'organizations_url',
+      repos_url: 'repos_url',
+      events_url: 'events_url',
+      received_events_url: 'received_events_url',
+      type: 'type',
+      site_admin: 'site_admin',
+      contributions: 'contributions',
+      email: 'email',
+      name: 'name',
+      user_view_type: 'user_view_type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+      contributions
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for Contributor.
+  # Contributor
+  class Contributor
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalContributorMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalContributorMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalContributorMetadata::DECODERS
+
+    # @return [String] Optional `string` value serialized in the `login` wire field.
+    attr_reader :login
+    # @return [Integer] Optional `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Optional `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+    attr_reader :avatar_url
+    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+    attr_reader :gravatar_id
+    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+    attr_reader :followers_url
+    # @return [String] Optional `string` value serialized in the `following_url` wire field.
+    attr_reader :following_url
+    # @return [String] Optional `string` value serialized in the `gists_url` wire field.
+    attr_reader :gists_url
+    # @return [String] Optional `string` value serialized in the `starred_url` wire field.
+    attr_reader :starred_url
+    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+    attr_reader :subscriptions_url
+    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+    attr_reader :organizations_url
+    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+    attr_reader :repos_url
+    # @return [String] Optional `string` value serialized in the `events_url` wire field.
+    attr_reader :events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+    attr_reader :received_events_url
+    # @return [String] Required `string` value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+    attr_reader :site_admin
+    # @return [Integer] Required `integer` value serialized in the `contributions` wire field.
+    attr_reader :contributions
+    # @return [String] Optional `string` value serialized in the `email` wire field.
+    attr_reader :email
+    # @return [String] Optional `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+    attr_reader :user_view_type
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalContributorActivityWeeksItemMetadata
-  FIELDS = {
-    w_value: "w",
-    a_value: "a",
-    d_value: "d",
-    c_value: "c",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for ContributorActivityWeeksItem.
-# Required object value serialized in the `weeks[]` wire field.
-class ContributorActivityWeeksItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalContributorActivityWeeksItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalContributorActivityWeeksItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalContributorActivityWeeksItemMetadata::DECODERS
-
-  # @return [Integer] Optional `integer` value serialized in the `w` wire field.
-  attr_reader :w_value
-  # @return [Integer] Optional `integer` value serialized in the `a` wire field.
-  attr_reader :a_value
-  # @return [Integer] Optional `integer` value serialized in the `d` wire field.
-  attr_reader :d_value
-  # @return [Integer] Optional `integer` value serialized in the `c` wire field.
-  attr_reader :c_value
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalContributorActivityWeeksItemMetadata
+    FIELDS = {
+      w_value: 'w',
+      a_value: 'a',
+      d_value: 'd',
+      c_value: 'c'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ContributorActivityWeeksItem.
+  # Required object value serialized in the `weeks[]` wire field.
+  class ContributorActivityWeeksItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalContributorActivityWeeksItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalContributorActivityWeeksItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalContributorActivityWeeksItemMetadata::DECODERS
+
+    # @return [Integer] Optional `integer` value serialized in the `w` wire field.
+    attr_reader :w_value
+    # @return [Integer] Optional `integer` value serialized in the `a` wire field.
+    attr_reader :a_value
+    # @return [Integer] Optional `integer` value serialized in the `d` wire field.
+    attr_reader :d_value
+    # @return [Integer] Optional `integer` value serialized in the `c` wire field.
+    attr_reader :c_value
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalContributorActivityMetadata
-  FIELDS = {
-    author: "author",
-    total: "total",
-    weeks: "weeks",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    author
-    total
-    weeks
-  ].freeze
-  DECODERS = {
-    author: lambda do |value|
-      ::OctridevGithub::NullableSimpleUser.from_hash(value)
-    end,
-    weeks: lambda do |value|
-      value&.map { |item| ::OctridevGithub::ContributorActivityWeeksItem.from_hash(item) }
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    author
-  ].freeze
-end
-
-# API model for ContributorActivity.
-# Contributor Activity
-class ContributorActivity
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalContributorActivityMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalContributorActivityMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalContributorActivityMetadata::DECODERS
-
-  # @return [NullableSimpleUser] A GitHub user.
-  attr_reader :author
-  # @return [Integer] Required `integer` value serialized in the `total` wire field.
-  attr_reader :total
-  # @return [Array_of_ContributorActivityWeeksItem] Required array value serialized in the `weeks` wire field.
-  attr_reader :weeks
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalContributorActivityMetadata
+    FIELDS = {
+      author: 'author',
+      total: 'total',
+      weeks: 'weeks'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      author
+      total
+      weeks
+    ].freeze
+    DECODERS = {
+      author: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end,
+      weeks: lambda do |value|
+        value&.map { |item| ::OctridevGithub::ContributorActivityWeeksItem.from_hash(item) }
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      author
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalContributorActivityMetadata::NULLABLE_FIELDS)
-  end
+  # API model for ContributorActivity.
+  # Contributor Activity
+  class ContributorActivity
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalContributorActivityMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalContributorActivityMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalContributorActivityMetadata::DECODERS
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :author
+    # @return [Integer] Required `integer` value serialized in the `total` wire field.
+    attr_reader :total
+    # @return [Array_of_ContributorActivityWeeksItem] Required array value serialized in the `weeks` wire field.
+    attr_reader :weeks
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalContributorActivityMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
 end

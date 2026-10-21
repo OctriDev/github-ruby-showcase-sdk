@@ -32,25 +32,24 @@ module OctridevGithub
         require_approval_for_fork_pr_workflows: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/permissions/fork-pr-workflows-private-repos"
+            '/actions/permissions/fork-pr-workflows-private-repos'
           ].join,
           config: config,
           body: {
             'run_workflows_from_fork_pull_requests' => run_workflows_from_fork_pull_requests,
             'send_write_tokens_to_workflows' => send_write_tokens_to_workflows,
             'send_secrets_and_variables' => send_secrets_and_variables,
-            'require_approval_for_fork_pr_workflows' => require_approval_for_fork_pr_workflows,
+            'require_approval_for_fork_pr_workflows' => require_approval_for_fork_pr_workflows
           },
           decoder: :empty,
           operation_id: 'actions_set_private_repo_fork_pr_workflows_settings_organization',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
     end

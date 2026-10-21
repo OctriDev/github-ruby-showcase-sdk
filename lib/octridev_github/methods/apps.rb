@@ -17,11 +17,10 @@ module OctridevGithub
         app_slug:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/apps/",
+            '/apps/',
             SdkClient.encode_path_segment(app_slug)
           ].join,
           config: config,
@@ -29,7 +28,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'apps_get_by_slug',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

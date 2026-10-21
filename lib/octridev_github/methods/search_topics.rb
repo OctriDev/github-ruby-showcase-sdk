@@ -27,20 +27,19 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/search/topics",
+          '/search/topics',
           config: config,
           query: {
             'q' => QueryValue.new(q_value, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Search::SearchTopicsResponse,
           decoder: :json,
           operation_id: 'search_topics',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

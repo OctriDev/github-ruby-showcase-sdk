@@ -21,24 +21,23 @@ module OctridevGithub
         private: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/user/codespaces/",
+            '/user/codespaces/',
             SdkClient.encode_path_segment(codespace_name),
-            "/publish"
+            '/publish'
           ].join,
           config: config,
           body: {
             'name' => name,
-            'private' => private,
+            'private' => private
           },
           return_type: ::OctridevGithub::CodespaceWithFullRepository,
           decoder: :json,
           operation_id: 'codespaces_publish_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
     end

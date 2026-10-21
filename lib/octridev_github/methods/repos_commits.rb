@@ -49,7 +49,6 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.if_given(since) { Validation.validate_date_time('since', since) }
 
         Validation.if_given(until_) { Validation.validate_date_time('until', until_) }
@@ -57,11 +56,11 @@ module OctridevGithub
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/commits"
+            '/commits'
           ].join,
           config: config,
           query: {
@@ -72,13 +71,13 @@ module OctridevGithub
             'since' => QueryValue.new(since, style: 'form', explode: true),
             'until' => QueryValue.new(until_, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::Commit],
           decoder: :json,
           operation_id: 'repos_list_commits',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '429' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
+          errors: { '400' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '429' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -96,24 +95,23 @@ module OctridevGithub
         commit_sha:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/commits/",
+            '/commits/',
             SdkClient.encode_path_segment(commit_sha),
-            "/branches-where-head"
+            '/branches-where-head'
           ].join,
           config: config,
           return_type: [::OctridevGithub::BranchShort],
           decoder: :json,
           operation_id: 'repos_list_branches_for_head_commit',
           request_options: request_options,
-          errors: { '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -137,27 +135,26 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/commits/",
+            '/commits/',
             SdkClient.encode_path_segment(commit_sha),
-            "/comments"
+            '/comments'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::CommitComment],
           decoder: :json,
           operation_id: 'repos_list_comments_for_commit',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -184,30 +181,29 @@ module OctridevGithub
         line: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/commits/",
+            '/commits/',
             SdkClient.encode_path_segment(commit_sha),
-            "/comments"
+            '/comments'
           ].join,
           config: config,
           body: {
             'body' => body,
             'path' => path,
             'position' => position,
-            'line' => line,
+            'line' => line
           },
           return_type: ::OctridevGithub::CommitComment,
           decoder: :json,
           operation_id: 'repos_create_commit_comment',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -231,28 +227,27 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/commits/",
+            '/commits/',
             SdkClient.encode_path_segment(commit_sha),
-            "/pulls"
+            '/pulls'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::PullRequestSimple],
           decoder: :json,
           operation_id: 'repos_list_pull_requests_associated_with_commit',
           request_options: request_options,
-          errors: { '409' => ::OctridevGithub::BasicError },
+          errors: { '409' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -278,27 +273,26 @@ module OctridevGithub
         per_page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/commits/",
+            '/commits/',
             SdkClient.encode_path_segment(ref)
           ].join,
           config: config,
           query: {
             'page' => QueryValue.new(page, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Commit,
           decoder: :json,
           operation_id: 'repos_get_commit',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '429' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
+          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '429' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
 
@@ -324,28 +318,27 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/commits/",
+            '/commits/',
             SdkClient.encode_path_segment(ref),
-            "/status"
+            '/status'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::CombinedCommitStatus,
           decoder: :json,
           operation_id: 'repos_get_combined_status_for_ref',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -371,28 +364,27 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/commits/",
+            '/commits/',
             SdkClient.encode_path_segment(ref),
-            "/statuses"
+            '/statuses'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::Status],
           decoder: :json,
           operation_id: 'repos_list_commit_statuses_for_ref',
           request_options: request_options,
-          errors: { '301' => ::OctridevGithub::BasicError },
+          errors: { '301' => ::OctridevGithub::BasicError }
         ).data
       end
     end

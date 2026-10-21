@@ -21,21 +21,20 @@ module OctridevGithub
         migration_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/migrations/",
+            '/migrations/',
             SdkClient.encode_path_segment(migration_id),
-            "/archive"
+            '/archive'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'migrations_download_archive_for_org',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -49,21 +48,20 @@ module OctridevGithub
         migration_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/migrations/",
+            '/migrations/',
             SdkClient.encode_path_segment(migration_id),
-            "/archive"
+            '/archive'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'migrations_delete_archive_for_org',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -75,19 +73,18 @@ module OctridevGithub
         migration_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/user/migrations/",
+            '/user/migrations/',
             SdkClient.encode_path_segment(migration_id),
-            "/archive"
+            '/archive'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'migrations_get_archive_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -99,19 +96,18 @@ module OctridevGithub
         migration_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/user/migrations/",
+            '/user/migrations/',
             SdkClient.encode_path_segment(migration_id),
-            "/archive"
+            '/archive'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'migrations_delete_archive_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

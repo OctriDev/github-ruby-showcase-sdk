@@ -5,411 +5,410 @@
 
 # actions_concurrency domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalConcurrencyGroupGroupMembersItemMetadata
-  FIELDS = {
-    run_id: "run_id",
-    run_name: "run_name",
-    run_url: "run_url",
-    run_html_url: "run_html_url",
-    job_id: "job_id",
-    job_name: "job_name",
-    job_url: "job_url",
-    job_html_url: "job_html_url",
-    status: "status",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    run_id
-    run_name
-    run_url
-    run_html_url
-    status
-  ].freeze
-  DECODERS = {
-    status: lambda do |value|
-      ::OctridevGithub::ConcurrencyGroupGroupMembersItemStatus.from_value(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    run_url
-    run_html_url
-  ].freeze
-end
-
-# API model for ConcurrencyGroupGroupMembersItem.
-# Required object value serialized in the `group_members[]` wire field.
-class ConcurrencyGroupGroupMembersItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalConcurrencyGroupGroupMembersItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalConcurrencyGroupGroupMembersItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalConcurrencyGroupGroupMembersItemMetadata::DECODERS
-
-  # @return [Integer] The ID of the workflow run.
-  attr_reader :run_id
-  # @return [String] The name of the workflow run.
-  attr_reader :run_name
-  # @return [String] API URL for the workflow run.
-  attr_reader :run_url
-  # @return [String] Web URL for the workflow run.
-  attr_reader :run_html_url
-  # @return [Integer] The ID of the job, when the item represents a job-level or reusable-workflow-level lease.
-  attr_reader :job_id
-  # @return [String] The display name of the job, when the item represents a job-level or reusable-workflow-level lease.
-  attr_reader :job_name
-  # @return [String] API URL for the job.
-  attr_reader :job_url
-  # @return [String] Web URL for the job.
-  attr_reader :job_html_url
-  # @return [ConcurrencyGroupGroupMembersItemStatus] Required enumerated value serialized in the `status` wire field.
-  attr_reader :status
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalConcurrencyGroupGroupMembersItemMetadata
+    FIELDS = {
+      run_id: 'run_id',
+      run_name: 'run_name',
+      run_url: 'run_url',
+      run_html_url: 'run_html_url',
+      job_id: 'job_id',
+      job_name: 'job_name',
+      job_url: 'job_url',
+      job_html_url: 'job_html_url',
+      status: 'status'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      run_id
+      run_name
+      run_url
+      run_html_url
+      status
+    ].freeze
+    DECODERS = {
+      status: lambda do |value|
+        ::OctridevGithub::ConcurrencyGroupGroupMembersItemStatus.from_value(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      run_url
+      run_html_url
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalConcurrencyGroupGroupMembersItemMetadata::NULLABLE_FIELDS)
+  # API model for ConcurrencyGroupGroupMembersItem.
+  # Required object value serialized in the `group_members[]` wire field.
+  class ConcurrencyGroupGroupMembersItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalConcurrencyGroupGroupMembersItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalConcurrencyGroupGroupMembersItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalConcurrencyGroupGroupMembersItemMetadata::DECODERS
+
+    # @return [Integer] The ID of the workflow run.
+    attr_reader :run_id
+    # @return [String] The name of the workflow run.
+    attr_reader :run_name
+    # @return [String] API URL for the workflow run.
+    attr_reader :run_url
+    # @return [String] Web URL for the workflow run.
+    attr_reader :run_html_url
+    # @return [Integer] The ID of the job, when the item represents a job-level or reusable-workflow-level lease.
+    attr_reader :job_id
+    # @return [String] The display name of the job, when the item represents a job-level or reusable-workflow-level lease.
+    attr_reader :job_name
+    # @return [String] API URL for the job.
+    attr_reader :job_url
+    # @return [String] Web URL for the job.
+    attr_reader :job_html_url
+    # @return [ConcurrencyGroupGroupMembersItemStatus] Required enumerated value serialized in the `status` wire field.
+    attr_reader :status
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalConcurrencyGroupGroupMembersItemMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalConcurrencyGroupMetadata
-  FIELDS = {
-    group_name: "group_name",
-    group_url: "group_url",
-    total_count: "total_count",
-    group_members: "group_members",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    group_name
-    group_url
-    total_count
-    group_members
-  ].freeze
-  DECODERS = {
-    group_members: lambda do |value|
-      value&.map { |item| ::OctridevGithub::ConcurrencyGroupGroupMembersItem.from_hash(item) }
-    end,
-  }.freeze
-end
-
-# API model for ConcurrencyGroup.
-# A concurrency group with the workflow runs and jobs that are either currently holding or waiting for the concurrency group lease.
-class ConcurrencyGroup
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalConcurrencyGroupMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalConcurrencyGroupMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalConcurrencyGroupMetadata::DECODERS
-
-  # @return [String] The name of the concurrency group.
-  attr_reader :group_name
-  # @return [String] API URL for this concurrency group.
-  attr_reader :group_url
-  # @return [Integer] Required `integer` value serialized in the `total_count` wire field.
-  attr_reader :total_count
-  # @return [Array_of_ConcurrencyGroupGroupMembersItem] Required array value serialized in the `group_members` wire field.
-  attr_reader :group_members
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalConcurrencyGroupMetadata
+    FIELDS = {
+      group_name: 'group_name',
+      group_url: 'group_url',
+      total_count: 'total_count',
+      group_members: 'group_members'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      group_name
+      group_url
+      total_count
+      group_members
+    ].freeze
+    DECODERS = {
+      group_members: lambda do |value|
+        value&.map { |item| ::OctridevGithub::ConcurrencyGroupGroupMembersItem.from_hash(item) }
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ConcurrencyGroup.
+  # A concurrency group with the workflow runs and jobs that are either currently holding or waiting for the concurrency group lease.
+  class ConcurrencyGroup
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalConcurrencyGroupMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalConcurrencyGroupMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalConcurrencyGroupMetadata::DECODERS
+
+    # @return [String] The name of the concurrency group.
+    attr_reader :group_name
+    # @return [String] API URL for this concurrency group.
+    attr_reader :group_url
+    # @return [Integer] Required `integer` value serialized in the `total_count` wire field.
+    attr_reader :total_count
+    # @return [Array_of_ConcurrencyGroupGroupMembersItem] Required array value serialized in the `group_members` wire field.
+    attr_reader :group_members
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the ConcurrencyGroupGroupMembersItemStatus SDK namespace.
-module ConcurrencyGroupGroupMembersItemStatus
-  IN_PROGRESS = 'in_progress'
-  PENDING = 'pending'
-  VALUES = ['in_progress', 'pending'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalConcurrencyGroupListConcurrencyGroupsItemMetadata
-  FIELDS = {
-    group_name: "group_name",
-    group_url: "group_url",
-    last_acquired_at: "last_acquired_at",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    group_name
-    group_url
-    last_acquired_at
-  ].freeze
-  DECODERS = {
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    last_acquired_at
-  ].freeze
-end
-
-# API model for ConcurrencyGroupListConcurrencyGroupsItem.
-# Required object value serialized in the `concurrency_groups[]` wire field.
-class ConcurrencyGroupListConcurrencyGroupsItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalConcurrencyGroupListConcurrencyGroupsItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalConcurrencyGroupListConcurrencyGroupsItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalConcurrencyGroupListConcurrencyGroupsItemMetadata::DECODERS
-
-  # @return [String] The name of the concurrency group.
-  attr_reader :group_name
-  # @return [String] API URL for this concurrency group.
-  attr_reader :group_url
-  # @return [String] Required `date-time`-formatted value serialized in the `last_acquired_at` wire field.
-  attr_reader :last_acquired_at
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the ConcurrencyGroupGroupMembersItemStatus SDK namespace.
+  module ConcurrencyGroupGroupMembersItemStatus
+    IN_PROGRESS = 'in_progress'
+    PENDING = 'pending'
+    VALUES = %w[in_progress pending].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalConcurrencyGroupListConcurrencyGroupsItemMetadata::NULLABLE_FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalConcurrencyGroupListConcurrencyGroupsItemMetadata
+    FIELDS = {
+      group_name: 'group_name',
+      group_url: 'group_url',
+      last_acquired_at: 'last_acquired_at'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      group_name
+      group_url
+      last_acquired_at
+    ].freeze
+    DECODERS = {}.freeze
+    NULLABLE_FIELDS = %i[
+      last_acquired_at
+    ].freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for ConcurrencyGroupListConcurrencyGroupsItem.
+  # Required object value serialized in the `concurrency_groups[]` wire field.
+  class ConcurrencyGroupListConcurrencyGroupsItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalConcurrencyGroupListConcurrencyGroupsItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalConcurrencyGroupListConcurrencyGroupsItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalConcurrencyGroupListConcurrencyGroupsItemMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalConcurrencyGroupListMetadata
-  FIELDS = {
-    total_count: "total_count",
-    concurrency_groups: "concurrency_groups",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    total_count
-    concurrency_groups
-  ].freeze
-  DECODERS = {
-    concurrency_groups: lambda do |value|
-      value&.map { |item| ::OctridevGithub::ConcurrencyGroupListConcurrencyGroupsItem.from_hash(item) }
-    end,
-  }.freeze
-end
+    # @return [String] The name of the concurrency group.
+    attr_reader :group_name
+    # @return [String] API URL for this concurrency group.
+    attr_reader :group_url
+    # @return [String] Required `date-time`-formatted value serialized in the `last_acquired_at` wire field.
+    attr_reader :last_acquired_at
 
-# API model for ConcurrencyGroupList.
-# A list of active concurrency groups for a repository.
-class ConcurrencyGroupList
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalConcurrencyGroupListMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalConcurrencyGroupListMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalConcurrencyGroupListMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [Integer] Required `integer` value serialized in the `total_count` wire field.
-  attr_reader :total_count
-  # @return [Array_of_ConcurrencyGroupListConcurrencyGroupsItem] Required array value serialized in the `concurrency_groups` wire field.
-  attr_reader :concurrency_groups
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalConcurrencyGroupListConcurrencyGroupsItemMetadata::NULLABLE_FIELDS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalConcurrencyGroupListMetadata
+    FIELDS = {
+      total_count: 'total_count',
+      concurrency_groups: 'concurrency_groups'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      total_count
+      concurrency_groups
+    ].freeze
+    DECODERS = {
+      concurrency_groups: lambda do |value|
+        value&.map { |item| ::OctridevGithub::ConcurrencyGroupListConcurrencyGroupsItem.from_hash(item) }
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for ConcurrencyGroupList.
+  # A list of active concurrency groups for a repository.
+  class ConcurrencyGroupList
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalConcurrencyGroupListMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalConcurrencyGroupListMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalConcurrencyGroupListMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItemMetadata
-  FIELDS = {
-    run_id: "run_id",
-    run_name: "run_name",
-    run_url: "run_url",
-    run_html_url: "run_html_url",
-    position: "position",
-    position_url: "position_url",
-    job_id: "job_id",
-    job_name: "job_name",
-    job_url: "job_url",
-    job_html_url: "job_html_url",
-    status: "status",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    run_id
-    run_name
-    run_url
-    run_html_url
-    position
-    position_url
-    status
-  ].freeze
-  DECODERS = {
-    status: lambda do |value|
-      ::OctridevGithub::ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItemStatus.from_value(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    run_url
-    run_html_url
-  ].freeze
-end
+    # @return [Integer] Required `integer` value serialized in the `total_count` wire field.
+    attr_reader :total_count
+    # @return [Array_of_ConcurrencyGroupListConcurrencyGroupsItem] Required array value serialized in the `concurrency_groups` wire field.
+    attr_reader :concurrency_groups
 
-# API model for ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItem.
-# Required object value serialized in the `group_members[]` wire field.
-class ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItemMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [Integer] The ID of the workflow run.
-  attr_reader :run_id
-  # @return [String] The name of the workflow run.
-  attr_reader :run_name
-  # @return [String] API URL for the workflow run.
-  attr_reader :run_url
-  # @return [String] Web URL for the workflow run.
-  attr_reader :run_html_url
-  # @return [Integer] Queue position. 0 means the item holds the concurrency lease (in_progress), 1 or higher means queued (pending).
-  attr_reader :position
-  # @return [String] API URL to get items ahead of this item in the concurrency group.
-  attr_reader :position_url
-  # @return [Integer] The ID of the job, when the item represents a job-level or reusable-workflow-level lease.
-  attr_reader :job_id
-  # @return [String] The display name of the job, when the item represents a job-level or reusable-workflow-level lease.
-  attr_reader :job_name
-  # @return [String] API URL for the job.
-  attr_reader :job_url
-  # @return [String] Web URL for the job.
-  attr_reader :job_html_url
-  # @return [ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItemStatus] Required enumerated value serialized in the `status` wire field.
-  attr_reader :status
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItemMetadata::NULLABLE_FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItemMetadata
+    FIELDS = {
+      run_id: 'run_id',
+      run_name: 'run_name',
+      run_url: 'run_url',
+      run_html_url: 'run_html_url',
+      position: 'position',
+      position_url: 'position_url',
+      job_id: 'job_id',
+      job_name: 'job_name',
+      job_url: 'job_url',
+      job_html_url: 'job_html_url',
+      status: 'status'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      run_id
+      run_name
+      run_url
+      run_html_url
+      position
+      position_url
+      status
+    ].freeze
+    DECODERS = {
+      status: lambda do |value|
+        ::OctridevGithub::ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItemStatus.from_value(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      run_url
+      run_html_url
+    ].freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItem.
+  # Required object value serialized in the `group_members[]` wire field.
+  class ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItemMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalConcurrencyGroupRunListConcurrencyGroupsItemMetadata
-  FIELDS = {
-    group_name: "group_name",
-    group_url: "group_url",
-    group_members: "group_members",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    group_name
-    group_url
-    group_members
-  ].freeze
-  DECODERS = {
-    group_members: lambda do |value|
-      value&.map { |item| ::OctridevGithub::ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItem.from_hash(item) }
-    end,
-  }.freeze
-end
+    # @return [Integer] The ID of the workflow run.
+    attr_reader :run_id
+    # @return [String] The name of the workflow run.
+    attr_reader :run_name
+    # @return [String] API URL for the workflow run.
+    attr_reader :run_url
+    # @return [String] Web URL for the workflow run.
+    attr_reader :run_html_url
+    # @return [Integer] Queue position. 0 means the item holds the concurrency lease (in_progress), 1 or higher means queued (pending).
+    attr_reader :position
+    # @return [String] API URL to get items ahead of this item in the concurrency group.
+    attr_reader :position_url
+    # @return [Integer] The ID of the job, when the item represents a job-level or reusable-workflow-level lease.
+    attr_reader :job_id
+    # @return [String] The display name of the job, when the item represents a job-level or reusable-workflow-level lease.
+    attr_reader :job_name
+    # @return [String] API URL for the job.
+    attr_reader :job_url
+    # @return [String] Web URL for the job.
+    attr_reader :job_html_url
+    # @return [ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItemStatus] Required enumerated value serialized in the `status` wire field.
+    attr_reader :status
 
-# API model for ConcurrencyGroupRunListConcurrencyGroupsItem.
-# Required object value serialized in the `concurrency_groups[]` wire field.
-class ConcurrencyGroupRunListConcurrencyGroupsItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalConcurrencyGroupRunListConcurrencyGroupsItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalConcurrencyGroupRunListConcurrencyGroupsItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalConcurrencyGroupRunListConcurrencyGroupsItemMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [String] The name of the concurrency group.
-  attr_reader :group_name
-  # @return [String] API URL for this concurrency group. May return 404 if the group has no active items at the time it is requested, since the get-by-name endpoint reports the live repo-wide state of a group while this endpoint lists groups associated with a run by configuration.
-  attr_reader :group_url
-  # @return [Array_of_ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItem] Items belonging to this workflow run that are either currently holding or waiting for the concurrency group lease. May be empty if the run no longer has any active or queued items in this group.
-  attr_reader :group_members
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItemMetadata::NULLABLE_FIELDS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalConcurrencyGroupRunListMetadata
-  FIELDS = {
-    total_count: "total_count",
-    concurrency_groups: "concurrency_groups",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    total_count
-    concurrency_groups
-  ].freeze
-  DECODERS = {
-    concurrency_groups: lambda do |value|
-      value&.map { |item| ::OctridevGithub::ConcurrencyGroupRunListConcurrencyGroupsItem.from_hash(item) }
-    end,
-  }.freeze
-end
-
-# API model for ConcurrencyGroupRunList.
-# A list of concurrency groups associated with a workflow run.
-class ConcurrencyGroupRunList
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalConcurrencyGroupRunListMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalConcurrencyGroupRunListMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalConcurrencyGroupRunListMetadata::DECODERS
-
-  # @return [Integer] The total number of concurrency groups this workflow run participates in, derived from the run's configuration. This count is not filtered by whether the run currently holds or is waiting in each group, so it can include groups whose `group_members` array is empty (for example, when the run has already released its lease in that group).
-  attr_reader :total_count
-  # @return [Array_of_ConcurrencyGroupRunListConcurrencyGroupsItem] Required array value serialized in the `concurrency_groups` wire field.
-  attr_reader :concurrency_groups
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalConcurrencyGroupRunListConcurrencyGroupsItemMetadata
+    FIELDS = {
+      group_name: 'group_name',
+      group_url: 'group_url',
+      group_members: 'group_members'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      group_name
+      group_url
+      group_members
+    ].freeze
+    DECODERS = {
+      group_members: lambda do |value|
+        value&.map { |item| ::OctridevGithub::ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItem.from_hash(item) }
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ConcurrencyGroupRunListConcurrencyGroupsItem.
+  # Required object value serialized in the `concurrency_groups[]` wire field.
+  class ConcurrencyGroupRunListConcurrencyGroupsItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalConcurrencyGroupRunListConcurrencyGroupsItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalConcurrencyGroupRunListConcurrencyGroupsItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalConcurrencyGroupRunListConcurrencyGroupsItemMetadata::DECODERS
+
+    # @return [String] The name of the concurrency group.
+    attr_reader :group_name
+    # @return [String] API URL for this concurrency group. May return 404 if the group has no active items at the time it is requested, since the get-by-name endpoint reports the live repo-wide state of a group while this endpoint lists groups associated with a run by configuration.
+    attr_reader :group_url
+    # @return [Array_of_ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItem] Items belonging to this workflow run that are either currently holding or waiting for the concurrency group lease. May be empty if the run no longer has any active or queued items in this group.
+    attr_reader :group_members
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalConcurrencyGroupRunListMetadata
+    FIELDS = {
+      total_count: 'total_count',
+      concurrency_groups: 'concurrency_groups'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      total_count
+      concurrency_groups
+    ].freeze
+    DECODERS = {
+      concurrency_groups: lambda do |value|
+        value&.map { |item| ::OctridevGithub::ConcurrencyGroupRunListConcurrencyGroupsItem.from_hash(item) }
+      end
+    }.freeze
   end
-end
 
-# Defines the ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItemStatus SDK namespace.
-module ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItemStatus
-  IN_PROGRESS = 'in_progress'
-  PENDING = 'pending'
-  VALUES = ['in_progress', 'pending'].freeze
-  def self.from_value(value)
-    value
+  # API model for ConcurrencyGroupRunList.
+  # A list of concurrency groups associated with a workflow run.
+  class ConcurrencyGroupRunList
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalConcurrencyGroupRunListMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalConcurrencyGroupRunListMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalConcurrencyGroupRunListMetadata::DECODERS
+
+    # @return [Integer] The total number of concurrency groups this workflow run participates in, derived from the run's configuration. This count is not filtered by whether the run currently holds or is waiting in each group, so it can include groups whose `group_members` array is empty (for example, when the run has already released its lease in that group).
+    attr_reader :total_count
+    # @return [Array_of_ConcurrencyGroupRunListConcurrencyGroupsItem] Required array value serialized in the `concurrency_groups` wire field.
+    attr_reader :concurrency_groups
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
+
+  # Defines the ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItemStatus SDK namespace.
+  module ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItemStatus
+    IN_PROGRESS = 'in_progress'
+    PENDING = 'pending'
+    VALUES = %w[in_progress pending].freeze
+    def self.from_value(value)
+      value
+    end
+  end
 end

@@ -21,22 +21,21 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/permissions/artifact-and-log-retention"
+            '/actions/permissions/artifact-and-log-retention'
           ].join,
           config: config,
           return_type: ::OctridevGithub::ActionsArtifactAndLogRetentionResponse,
           decoder: :json,
           operation_id: 'actions_get_artifact_and_log_retention_settings_repository',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

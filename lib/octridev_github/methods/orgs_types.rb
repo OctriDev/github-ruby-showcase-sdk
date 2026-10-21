@@ -12,46 +12,45 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsUpdateMetadata
         FIELDS = {
-          billing_email: "billing_email",
-          company: "company",
-          email: "email",
-          twitter_username: "twitter_username",
-          location: "location",
-          name: "name",
-          description: "description",
-          has_organization_projects: "has_organization_projects",
-          has_repository_projects: "has_repository_projects",
-          default_repository_permission: "default_repository_permission",
-          members_can_create_repositories: "members_can_create_repositories",
-          members_can_create_internal_repositories: "members_can_create_internal_repositories",
-          members_can_create_private_repositories: "members_can_create_private_repositories",
-          members_can_create_public_repositories: "members_can_create_public_repositories",
-          members_allowed_repository_creation_type: "members_allowed_repository_creation_type",
-          members_can_create_pages: "members_can_create_pages",
-          members_can_create_public_pages: "members_can_create_public_pages",
-          members_can_create_private_pages: "members_can_create_private_pages",
-          members_can_fork_private_repositories: "members_can_fork_private_repositories",
-          web_commit_signoff_required: "web_commit_signoff_required",
-          blog: "blog",
-          advanced_security_enabled_for_new_repositories: "advanced_security_enabled_for_new_repositories",
-          dependabot_alerts_enabled_for_new_repositories: "dependabot_alerts_enabled_for_new_repositories",
-          dependabot_security_updates_enabled_for_new_repositories: "dependabot_security_updates_enabled_for_new_repositories",
-          dependency_graph_enabled_for_new_repositories: "dependency_graph_enabled_for_new_repositories",
-          secret_scanning_enabled_for_new_repositories: "secret_scanning_enabled_for_new_repositories",
-          secret_scanning_push_protection_enabled_for_new_repositories: "secret_scanning_push_protection_enabled_for_new_repositories",
-          secret_scanning_push_protection_custom_link_enabled: "secret_scanning_push_protection_custom_link_enabled",
-          secret_scanning_push_protection_custom_link: "secret_scanning_push_protection_custom_link",
-          deploy_keys_enabled_for_repositories: "deploy_keys_enabled_for_repositories",
+          billing_email: 'billing_email',
+          company: 'company',
+          email: 'email',
+          twitter_username: 'twitter_username',
+          location: 'location',
+          name: 'name',
+          description: 'description',
+          has_organization_projects: 'has_organization_projects',
+          has_repository_projects: 'has_repository_projects',
+          default_repository_permission: 'default_repository_permission',
+          members_can_create_repositories: 'members_can_create_repositories',
+          members_can_create_internal_repositories: 'members_can_create_internal_repositories',
+          members_can_create_private_repositories: 'members_can_create_private_repositories',
+          members_can_create_public_repositories: 'members_can_create_public_repositories',
+          members_allowed_repository_creation_type: 'members_allowed_repository_creation_type',
+          members_can_create_pages: 'members_can_create_pages',
+          members_can_create_public_pages: 'members_can_create_public_pages',
+          members_can_create_private_pages: 'members_can_create_private_pages',
+          members_can_fork_private_repositories: 'members_can_fork_private_repositories',
+          web_commit_signoff_required: 'web_commit_signoff_required',
+          blog: 'blog',
+          advanced_security_enabled_for_new_repositories: 'advanced_security_enabled_for_new_repositories',
+          dependabot_alerts_enabled_for_new_repositories: 'dependabot_alerts_enabled_for_new_repositories',
+          dependabot_security_updates_enabled_for_new_repositories: 'dependabot_security_updates_enabled_for_new_repositories',
+          dependency_graph_enabled_for_new_repositories: 'dependency_graph_enabled_for_new_repositories',
+          secret_scanning_enabled_for_new_repositories: 'secret_scanning_enabled_for_new_repositories',
+          secret_scanning_push_protection_enabled_for_new_repositories: 'secret_scanning_push_protection_enabled_for_new_repositories',
+          secret_scanning_push_protection_custom_link_enabled: 'secret_scanning_push_protection_custom_link_enabled',
+          secret_scanning_push_protection_custom_link: 'secret_scanning_push_protection_custom_link',
+          deploy_keys_enabled_for_repositories: 'deploy_keys_enabled_for_repositories'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           default_repository_permission: lambda do |value|
             ::OctridevGithub::Methods::Orgs::OrgsUpdateDefaultRepositoryPermission.from_value(value)
           end,
           members_allowed_repository_creation_type: lambda do |value|
             ::OctridevGithub::Methods::Orgs::OrgsUpdateMembersAllowedRepositoryCreationType.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -139,18 +138,18 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsCreateArtifactDeploymentRecordMetadata
         FIELDS = {
-          name: "name",
-          digest: "digest",
-          version: "version",
-          status: "status",
-          logical_environment: "logical_environment",
-          physical_environment: "physical_environment",
-          cluster: "cluster",
-          deployment_name: "deployment_name",
-          tags: "tags",
-          runtime_risks: "runtime_risks",
-          github_repository: "github_repository",
-          return_records: "return_records",
+          name: 'name',
+          digest: 'digest',
+          version: 'version',
+          status: 'status',
+          logical_environment: 'logical_environment',
+          physical_environment: 'physical_environment',
+          cluster: 'cluster',
+          deployment_name: 'deployment_name',
+          tags: 'tags',
+          runtime_risks: 'runtime_risks',
+          github_repository: 'github_repository',
+          return_records: 'return_records'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
@@ -165,7 +164,7 @@ module OctridevGithub
           end,
           runtime_risks: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Orgs::OrgsCreateArtifactDeploymentRecordRuntimeRisksItem.from_value(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -218,8 +217,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsCreateArtifactDeploymentRecordResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          deployment_records: "deployment_records",
+          total_count: 'total_count',
+          deployment_records: 'deployment_records'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -227,7 +226,7 @@ module OctridevGithub
         DECODERS = {
           deployment_records: lambda do |value|
             value&.map { |item| ::OctridevGithub::ArtifactDeploymentRecord.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -259,14 +258,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsSetClusterDeploymentRecordsDeploymentsItemMetadata
         FIELDS = {
-          name: "name",
-          digest: "digest",
-          version: "version",
-          status: "status",
-          deployment_name: "deployment_name",
-          github_repository: "github_repository",
-          tags: "tags",
-          runtime_risks: "runtime_risks",
+          name: 'name',
+          digest: 'digest',
+          version: 'version',
+          status: 'status',
+          deployment_name: 'deployment_name',
+          github_repository: 'github_repository',
+          tags: 'tags',
+          runtime_risks: 'runtime_risks'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
@@ -279,7 +278,7 @@ module OctridevGithub
           end,
           runtime_risks: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Orgs::OrgsSetClusterDeploymentRecordsDeploymentsItemRuntimeRisksItem.from_value(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -324,11 +323,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsSetClusterDeploymentRecordsMetadata
         FIELDS = {
-          logical_environment: "logical_environment",
-          physical_environment: "physical_environment",
-          deployments: "deployments",
-          partial_success: "partial_success",
-          return_records: "return_records",
+          logical_environment: 'logical_environment',
+          physical_environment: 'physical_environment',
+          deployments: 'deployments',
+          partial_success: 'partial_success',
+          return_records: 'return_records'
         }.freeze
         REQUIRED_FIELDS = %i[
           logical_environment
@@ -337,7 +336,7 @@ module OctridevGithub
         DECODERS = {
           deployments: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Orgs::OrgsSetClusterDeploymentRecordsDeploymentsItem.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -376,8 +375,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsSetClusterDeploymentRecordsResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          deployment_records: "deployment_records",
+          total_count: 'total_count',
+          deployment_records: 'deployment_records'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -385,7 +384,7 @@ module OctridevGithub
         DECODERS = {
           deployment_records: lambda do |value|
             value&.map { |item| ::OctridevGithub::ArtifactDeploymentRecord.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -417,14 +416,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsCreateClusterDeploymentRecordsJobDeploymentsItemMetadata
         FIELDS = {
-          name: "name",
-          digest: "digest",
-          version: "version",
-          status: "status",
-          deployment_name: "deployment_name",
-          github_repository: "github_repository",
-          tags: "tags",
-          runtime_risks: "runtime_risks",
+          name: 'name',
+          digest: 'digest',
+          version: 'version',
+          status: 'status',
+          deployment_name: 'deployment_name',
+          github_repository: 'github_repository',
+          tags: 'tags',
+          runtime_risks: 'runtime_risks'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
@@ -437,7 +436,7 @@ module OctridevGithub
           end,
           runtime_risks: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Orgs::OrgsCreateClusterDeploymentRecordsJobDeploymentsItemRuntimeRisksItem.from_value(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -482,9 +481,9 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsCreateClusterDeploymentRecordsJobMetadata
         FIELDS = {
-          logical_environment: "logical_environment",
-          physical_environment: "physical_environment",
-          deployments: "deployments",
+          logical_environment: 'logical_environment',
+          physical_environment: 'physical_environment',
+          deployments: 'deployments'
         }.freeze
         REQUIRED_FIELDS = %i[
           logical_environment
@@ -493,7 +492,7 @@ module OctridevGithub
         DECODERS = {
           deployments: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Orgs::OrgsCreateClusterDeploymentRecordsJobDeploymentsItem.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -528,14 +527,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsCreateClusterDeploymentRecordsJobResponseMetadata
         FIELDS = {
-          job_id: "job_id",
-          errors: "errors",
+          job_id: 'job_id',
+          errors: 'errors'
         }.freeze
         REQUIRED_FIELDS = %i[
           job_id
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for OrgsCreateClusterDeploymentRecordsJobResponse.

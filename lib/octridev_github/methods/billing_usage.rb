@@ -29,25 +29,24 @@ module OctridevGithub
         day: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/organizations/",
+            '/organizations/',
             SdkClient.encode_path_segment(org),
-            "/settings/billing/usage"
+            '/settings/billing/usage'
           ].join,
           config: config,
           query: {
             'year' => QueryValue.new(year, style: 'form', explode: true),
             'month' => QueryValue.new(month, style: 'form', explode: true),
-            'day' => QueryValue.new(day, style: 'form', explode: true),
+            'day' => QueryValue.new(day, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::BillingUsageReport,
           decoder: :json,
           operation_id: 'billing_get_github_billing_usage_report_org',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
 
@@ -79,13 +78,12 @@ module OctridevGithub
         sku: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/organizations/",
+            '/organizations/',
             SdkClient.encode_path_segment(org),
-            "/settings/billing/usage/summary"
+            '/settings/billing/usage/summary'
           ].join,
           config: config,
           query: {
@@ -94,13 +92,13 @@ module OctridevGithub
             'day' => QueryValue.new(day, style: 'form', explode: true),
             'repository' => QueryValue.new(repository, style: 'form', explode: true),
             'product' => QueryValue.new(product, style: 'form', explode: true),
-            'sku' => QueryValue.new(sku, style: 'form', explode: true),
+            'sku' => QueryValue.new(sku, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::BillingUsageSummaryReportOrg,
           decoder: :json,
           operation_id: 'billing_get_github_billing_usage_summary_report_org',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
 
@@ -124,25 +122,24 @@ module OctridevGithub
         day: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/users/",
+            '/users/',
             SdkClient.encode_path_segment(username),
-            "/settings/billing/usage"
+            '/settings/billing/usage'
           ].join,
           config: config,
           query: {
             'year' => QueryValue.new(year, style: 'form', explode: true),
             'month' => QueryValue.new(month, style: 'form', explode: true),
-            'day' => QueryValue.new(day, style: 'form', explode: true),
+            'day' => QueryValue.new(day, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::BillingUsageReportUser,
           decoder: :json,
           operation_id: 'billing_get_github_billing_usage_report_user',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
 
@@ -174,13 +171,12 @@ module OctridevGithub
         sku: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/users/",
+            '/users/',
             SdkClient.encode_path_segment(username),
-            "/settings/billing/usage/summary"
+            '/settings/billing/usage/summary'
           ].join,
           config: config,
           query: {
@@ -189,13 +185,13 @@ module OctridevGithub
             'day' => QueryValue.new(day, style: 'form', explode: true),
             'repository' => QueryValue.new(repository, style: 'form', explode: true),
             'product' => QueryValue.new(product, style: 'form', explode: true),
-            'sku' => QueryValue.new(sku, style: 'form', explode: true),
+            'sku' => QueryValue.new(sku, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::BillingUsageSummaryReportUser,
           decoder: :json,
           operation_id: 'billing_get_github_billing_usage_summary_report_user',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
     end
