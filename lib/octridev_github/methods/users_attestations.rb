@@ -35,29 +35,30 @@ module OctridevGithub
         predicate_type: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_items('subject_digests', subject_digests, min: 1, max: 1024)
 
         SdkClient.request(
           'POST',
           [
-            '/users/',
+            "/users/",
             SdkClient.encode_path_segment(username),
-            '/attestations/bulk-list'
+            "/attestations/bulk-list"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'before' => QueryValue.new(before, style: 'form', explode: true),
-            'after' => QueryValue.new(after, style: 'form', explode: true)
+            'after' => QueryValue.new(after, style: 'form', explode: true),
           },
           body: {
             'subject_digests' => subject_digests,
-            'predicate_type' => predicate_type
+            'predicate_type' => predicate_type,
           },
           return_type: ::OctridevGithub::Methods::Users::UsersListAttestationsBulkResponse,
           decoder: :json,
           operation_id: 'users_list_attestations_bulk',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -74,19 +75,20 @@ module OctridevGithub
         body:,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/users/',
+            "/users/",
             SdkClient.encode_path_segment(username),
-            '/attestations/delete-request'
+            "/attestations/delete-request"
           ].join,
           config: config,
           body: body,
           decoder: :empty,
           operation_id: 'users_delete_attestations_bulk',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -102,19 +104,20 @@ module OctridevGithub
         subject_digest:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/users/',
+            "/users/",
             SdkClient.encode_path_segment(username),
-            '/attestations/digest/',
+            "/attestations/digest/",
             SdkClient.encode_path_segment(subject_digest)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'users_delete_attestations_by_subject_digest',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -128,19 +131,20 @@ module OctridevGithub
         attestation_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/users/',
+            "/users/",
             SdkClient.encode_path_segment(username),
-            '/attestations/',
+            "/attestations/",
             SdkClient.encode_path_segment(attestation_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'users_delete_attestations_by_id',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -169,12 +173,13 @@ module OctridevGithub
         predicate_type: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/users/',
+            "/users/",
             SdkClient.encode_path_segment(username),
-            '/attestations/',
+            "/attestations/",
             SdkClient.encode_path_segment(subject_digest)
           ].join,
           config: config,
@@ -182,13 +187,13 @@ module OctridevGithub
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'before' => QueryValue.new(before, style: 'form', explode: true),
             'after' => QueryValue.new(after, style: 'form', explode: true),
-            'predicate_type' => QueryValue.new(predicate_type, style: 'form', explode: true)
+            'predicate_type' => QueryValue.new(predicate_type, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::Methods::Users::UsersListAttestationsResponse,
           decoder: :json,
           operation_id: 'users_list_attestations',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

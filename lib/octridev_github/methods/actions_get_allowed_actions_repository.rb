@@ -21,20 +21,21 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/actions/permissions/selected-actions'
+            "/actions/permissions/selected-actions"
           ].join,
           config: config,
           return_type: ::OctridevGithub::SelectedActions,
           decoder: :json,
           operation_id: 'actions_get_allowed_actions_repository',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

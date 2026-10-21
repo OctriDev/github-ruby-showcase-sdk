@@ -19,19 +19,20 @@ module OctridevGithub
         org:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/copilot/content_exclusion'
+            "/copilot/content_exclusion"
           ].join,
           config: config,
           return_type: ::OctridevGithub::CopilotOrganizationContentExclusionDetails,
           decoder: :json,
           operation_id: 'copilot_copilot_content_exclusion_for_organization',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -46,12 +47,13 @@ module OctridevGithub
         body:,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/copilot/content_exclusion'
+            "/copilot/content_exclusion"
           ].join,
           config: config,
           body: body,
@@ -59,7 +61,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'copilot_set_copilot_content_exclusion_for_organization',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '413' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple, '500' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '413' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple, '500' => ::OctridevGithub::BasicError },
         ).data
       end
     end

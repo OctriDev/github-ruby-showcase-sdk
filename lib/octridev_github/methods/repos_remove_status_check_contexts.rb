@@ -27,23 +27,24 @@ module OctridevGithub
         body: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/branches/',
+            "/branches/",
             SdkClient.encode_path_segment(branch),
-            '/protection/required_status_checks/contexts'
+            "/protection/required_status_checks/contexts"
           ].join,
           config: config,
           body: body,
           decoder: :json,
           operation_id: 'repos_remove_status_check_contexts',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end

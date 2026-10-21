@@ -23,23 +23,24 @@ module OctridevGithub
         run_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/actions/runs/',
+            "/actions/runs/",
             SdkClient.encode_path_segment(run_id),
-            '/cancel'
+            "/cancel"
           ].join,
           config: config,
           return_type: ::OctridevGithub::EmptyObject,
           decoder: :json,
           operation_id: 'actions_cancel_workflow_run',
           request_options: request_options,
-          errors: { '409' => ::OctridevGithub::BasicError }
+          errors: { '409' => ::OctridevGithub::BasicError },
         ).data
       end
     end

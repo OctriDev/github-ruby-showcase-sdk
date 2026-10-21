@@ -17,18 +17,19 @@ module OctridevGithub
         org:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/actions/runners/downloads'
+            "/actions/runners/downloads"
           ].join,
           config: config,
           return_type: [::OctridevGithub::RunnerApplication],
           decoder: :json,
           operation_id: 'actions_list_runner_applications_for_org',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

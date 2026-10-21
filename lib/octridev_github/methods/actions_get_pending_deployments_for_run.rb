@@ -23,22 +23,23 @@ module OctridevGithub
         run_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/actions/runs/',
+            "/actions/runs/",
             SdkClient.encode_path_segment(run_id),
-            '/pending_deployments'
+            "/pending_deployments"
           ].join,
           config: config,
           return_type: [::OctridevGithub::PendingDeployment],
           decoder: :json,
           operation_id: 'actions_get_pending_deployments_for_run',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

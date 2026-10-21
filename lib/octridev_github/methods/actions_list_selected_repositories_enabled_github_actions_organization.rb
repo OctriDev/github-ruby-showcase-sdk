@@ -23,22 +23,23 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/actions/permissions/repositories'
+            "/actions/permissions/repositories"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::Methods::Actions::ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse,
           decoder: :json,
           operation_id: 'actions_list_selected_repositories_enabled_github_actions_organization',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

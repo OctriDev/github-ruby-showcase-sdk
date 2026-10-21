@@ -27,25 +27,26 @@ module OctridevGithub
         client_ip: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/codespaces/new'
+            "/codespaces/new"
           ].join,
           config: config,
           query: {
             'ref' => QueryValue.new(ref, style: 'form', explode: true),
-            'client_ip' => QueryValue.new(client_ip, style: 'form', explode: true)
+            'client_ip' => QueryValue.new(client_ip, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::Methods::Codespaces::CodespacesPreFlightWithRepoForAuthenticatedUserResponse,
           decoder: :json,
           operation_id: 'codespaces_pre_flight_with_repo_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

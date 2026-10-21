@@ -5,670 +5,671 @@
 
 # webhooks domain models
 module OctridevGithub
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsAdministration SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsAdministration
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsAdministration SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsAdministration
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsChecks SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsChecks
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsContentReferences SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsContentReferences
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsContents SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsContents
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsDeployments SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsDeployments
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsDiscussions SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsDiscussions
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsEmails SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsEmails
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsEnvironments SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsEnvironments
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsIssues SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsIssues
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsKeys SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsKeys
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsMembers SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsMembers
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsMetadata SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsMetadata
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationAdministration SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationAdministration
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationHooks SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationHooks
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationPackages SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationPackages
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationPlan SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationPlan
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationProjects SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationProjects
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationSecrets SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationSecrets
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationSelX58867b364b SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationSelX58867b364b
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationUserBlocking SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationUserBlocking
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsPackages SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsPackages
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsPages SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsPages
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsPullRequests SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsPullRequests
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsRepositoryHooks SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsRepositoryHooks
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsRepositoryProjects SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsRepositoryProjects
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsSecretScanningAlerts SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsSecretScanningAlerts
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsSecrets SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsSecrets
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsSecurityEvents SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsSecurityEvents
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsSecurityScanningAlert SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsSecurityScanningAlert
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsSingleFile SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsSingleFile
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsStatuses SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsStatuses
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsVulnerabilityAlerts SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsVulnerabilityAlerts
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsWorkflows SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsWorkflows
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2State SDK namespace.
+module WebhooksIssue2State
+  OPEN = 'open'
+  CLOSED = 'closed'
+  VALUES = ['open', 'closed'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksIssue2UserType SDK namespace.
+module WebhooksIssue2UserType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhooksMarketplacePurchaseAccountMetadata
+  FIELDS = {
+    id: "id",
+    login: "login",
+    node_id: "node_id",
+    organization_billing_email: "organization_billing_email",
+    type: "type",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    login
+    node_id
+    organization_billing_email
+    type
+  ].freeze
+  DECODERS = {
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    organization_billing_email
+  ].freeze
+end
+
+# API model for WebhooksMarketplacePurchaseAccount.
+# Required object value serialized in the `account` wire field.
+class WebhooksMarketplacePurchaseAccount
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksMarketplacePurchaseAccountMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksMarketplacePurchaseAccountMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksMarketplacePurchaseAccountMetadata::DECODERS
+
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `login` wire field.
+  attr_reader :login
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Required `string` value serialized in the `organization_billing_email` wire field.
+  attr_reader :organization_billing_email
+  # @return [String] Required `string` value serialized in the `type` wire field.
+  attr_reader :type
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsChecks SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsChecks
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhooksMarketplacePurchaseAccountMetadata::NULLABLE_FIELDS)
   end
 
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsContentReferences SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsContentReferences
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhooksMarketplacePurchasePlanMetadata
+  FIELDS = {
+    bullets: "bullets",
+    description: "description",
+    has_free_trial: "has_free_trial",
+    id: "id",
+    monthly_price_in_cents: "monthly_price_in_cents",
+    name: "name",
+    price_model: "price_model",
+    unit_name: "unit_name",
+    yearly_price_in_cents: "yearly_price_in_cents",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    bullets
+    description
+    has_free_trial
+    id
+    monthly_price_in_cents
+    name
+    price_model
+    unit_name
+    yearly_price_in_cents
+  ].freeze
+  DECODERS = {
+    price_model: lambda do |value|
+      ::OctridevGithub::WebhooksMarketplacePurchasePlanPriceModel.from_value(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    unit_name
+  ].freeze
+end
+
+# API model for WebhooksMarketplacePurchasePlan.
+# Required object value serialized in the `plan` wire field.
+class WebhooksMarketplacePurchasePlan
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksMarketplacePurchasePlanMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksMarketplacePurchasePlanMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksMarketplacePurchasePlanMetadata::DECODERS
+
+  # @return [Array_of_String] Required array value serialized in the `bullets` wire field.
+  attr_reader :bullets
+  # @return [String] Required `string` value serialized in the `description` wire field.
+  attr_reader :description
+  # @return [Boolean] Required `boolean` value serialized in the `has_free_trial` wire field.
+  attr_reader :has_free_trial
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [Integer] Required `integer` value serialized in the `monthly_price_in_cents` wire field.
+  attr_reader :monthly_price_in_cents
+  # @return [String] Required `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [WebhooksMarketplacePurchasePlanPriceModel] Required enumerated value serialized in the `price_model` wire field.
+  attr_reader :price_model
+  # @return [String] Required `string` value serialized in the `unit_name` wire field.
+  attr_reader :unit_name
+  # @return [Integer] Required `integer` value serialized in the `yearly_price_in_cents` wire field.
+  attr_reader :yearly_price_in_cents
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsContents SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsContents
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhooksMarketplacePurchasePlanMetadata::NULLABLE_FIELDS)
   end
 
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsDeployments SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsDeployments
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhooksMarketplacePurchaseMetadata
+  FIELDS = {
+    account: "account",
+    billing_cycle: "billing_cycle",
+    free_trial_ends_on: "free_trial_ends_on",
+    next_billing_date: "next_billing_date",
+    on_free_trial: "on_free_trial",
+    plan: "plan",
+    unit_count: "unit_count",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    account
+    billing_cycle
+    free_trial_ends_on
+    next_billing_date
+    on_free_trial
+    plan
+    unit_count
+  ].freeze
+  DECODERS = {
+    account: lambda do |value|
+      ::OctridevGithub::WebhooksMarketplacePurchaseAccount.from_hash(value)
+    end,
+    plan: lambda do |value|
+      ::OctridevGithub::WebhooksMarketplacePurchasePlan.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    free_trial_ends_on
+    next_billing_date
+  ].freeze
+end
+
+# API model for WebhooksMarketplacePurchase.
+# Typed representation of the `WebhooksMarketplacePurchase` API schema.
+class WebhooksMarketplacePurchase
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksMarketplacePurchaseMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksMarketplacePurchaseMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksMarketplacePurchaseMetadata::DECODERS
+
+  # @return [WebhooksMarketplacePurchaseAccount] Required object value serialized in the `account` wire field.
+  attr_reader :account
+  # @return [String] Required `string` value serialized in the `billing_cycle` wire field.
+  attr_reader :billing_cycle
+  # @return [String] Required `string` value serialized in the `free_trial_ends_on` wire field.
+  attr_reader :free_trial_ends_on
+  # @return [String] Required `string` value serialized in the `next_billing_date` wire field.
+  attr_reader :next_billing_date
+  # @return [Boolean] Required `boolean` value serialized in the `on_free_trial` wire field.
+  attr_reader :on_free_trial
+  # @return [WebhooksMarketplacePurchasePlan] Required object value serialized in the `plan` wire field.
+  attr_reader :plan
+  # @return [Integer] Required `integer` value serialized in the `unit_count` wire field.
+  attr_reader :unit_count
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsDiscussions SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsDiscussions
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhooksMarketplacePurchaseMetadata::NULLABLE_FIELDS)
   end
 
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsEmails SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsEmails
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Defines the WebhooksMarketplacePurchasePlanPriceModel SDK namespace.
+module WebhooksMarketplacePurchasePlanPriceModel
+  FREE = 'FREE'
+  FLAT_RATE = 'FLAT_RATE'
+  PER_UNIT = 'PER_UNIT'
+  VALUES = ['FREE', 'FLAT_RATE', 'PER_UNIT'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhooksMembershipUserMetadata
+  FIELDS = {
+    avatar_url: "avatar_url",
+    deleted: "deleted",
+    email: "email",
+    events_url: "events_url",
+    followers_url: "followers_url",
+    following_url: "following_url",
+    gists_url: "gists_url",
+    gravatar_id: "gravatar_id",
+    html_url: "html_url",
+    id: "id",
+    login: "login",
+    name: "name",
+    node_id: "node_id",
+    organizations_url: "organizations_url",
+    received_events_url: "received_events_url",
+    repos_url: "repos_url",
+    site_admin: "site_admin",
+    starred_url: "starred_url",
+    subscriptions_url: "subscriptions_url",
+    type: "type",
+    url: "url",
+    user_view_type: "user_view_type",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    login
+  ].freeze
+  DECODERS = {
+    type: lambda do |value|
+      ::OctridevGithub::WebhooksMembershipUserType.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhooksMembershipUser.
+# Required object value serialized in the `user` wire field.
+class WebhooksMembershipUser
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksMembershipUserMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksMembershipUserMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksMembershipUserMetadata::DECODERS
+
+  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+  attr_reader :avatar_url
+  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+  attr_reader :deleted
+  # @return [String] Optional `string` value serialized in the `email` wire field.
+  attr_reader :email
+  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+  attr_reader :events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+  attr_reader :followers_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+  attr_reader :following_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+  attr_reader :gists_url
+  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+  attr_reader :gravatar_id
+  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `login` wire field.
+  attr_reader :login
+  # @return [String] Optional `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [String] Optional `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+  attr_reader :organizations_url
+  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+  attr_reader :received_events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+  attr_reader :repos_url
+  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+  attr_reader :site_admin
+  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+  attr_reader :starred_url
+  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+  attr_reader :subscriptions_url
+  # @return [WebhooksMembershipUserType] Optional enumerated value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+  attr_reader :user_view_type
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsEnvironments SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsEnvironments
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsIssues SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsIssues
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
-
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsKeys SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsKeys
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsMembers SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsMembers
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsMetadata SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsMetadata
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationAdministration SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationAdministration
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationHooks SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationHooks
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationPackages SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationPackages
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationPlan SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationPlan
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationProjects SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationProjects
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationSecrets SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationSecrets
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationSelX58867b364b SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationSelX58867b364b
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationUserBlocking SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsOrganizationUserBlocking
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsPackages SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsPackages
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsPages SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsPages
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsPullRequests SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsPullRequests
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsRepositoryHooks SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsRepositoryHooks
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsRepositoryProjects SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsRepositoryProjects
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsSecretScanningAlerts SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsSecretScanningAlerts
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsSecrets SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsSecrets
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsSecurityEvents SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsSecurityEvents
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsSecurityScanningAlert SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsSecurityScanningAlert
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsSingleFile SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsSingleFile
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsStatuses SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsStatuses
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsVulnerabilityAlerts SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsVulnerabilityAlerts
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsWorkflows SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsWorkflows
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the WebhooksIssue2State SDK namespace.
-  module WebhooksIssue2State
-    OPEN = 'open'
-    CLOSED = 'closed'
-    VALUES = %w[open closed].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Defines the WebhooksIssue2UserType SDK namespace.
-  module WebhooksIssue2UserType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksMarketplacePurchaseAccountMetadata
-    FIELDS = {
-      id: 'id',
-      login: 'login',
-      node_id: 'node_id',
-      organization_billing_email: 'organization_billing_email',
-      type: 'type'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      login
-      node_id
-      organization_billing_email
-      type
-    ].freeze
-    DECODERS = {}.freeze
-    NULLABLE_FIELDS = %i[
-      organization_billing_email
-    ].freeze
-  end
-
-  # API model for WebhooksMarketplacePurchaseAccount.
-  # Required object value serialized in the `account` wire field.
-  class WebhooksMarketplacePurchaseAccount
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksMarketplacePurchaseAccountMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksMarketplacePurchaseAccountMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksMarketplacePurchaseAccountMetadata::DECODERS
-
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `login` wire field.
-    attr_reader :login
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Required `string` value serialized in the `organization_billing_email` wire field.
-    attr_reader :organization_billing_email
-    # @return [String] Required `string` value serialized in the `type` wire field.
-    attr_reader :type
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhooksMarketplacePurchaseAccountMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
-  end
-
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksMarketplacePurchasePlanMetadata
-    FIELDS = {
-      bullets: 'bullets',
-      description: 'description',
-      has_free_trial: 'has_free_trial',
-      id: 'id',
-      monthly_price_in_cents: 'monthly_price_in_cents',
-      name: 'name',
-      price_model: 'price_model',
-      unit_name: 'unit_name',
-      yearly_price_in_cents: 'yearly_price_in_cents'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      bullets
-      description
-      has_free_trial
-      id
-      monthly_price_in_cents
-      name
-      price_model
-      unit_name
-      yearly_price_in_cents
-    ].freeze
-    DECODERS = {
-      price_model: lambda do |value|
-        ::OctridevGithub::WebhooksMarketplacePurchasePlanPriceModel.from_value(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      unit_name
-    ].freeze
-  end
-
-  # API model for WebhooksMarketplacePurchasePlan.
-  # Required object value serialized in the `plan` wire field.
-  class WebhooksMarketplacePurchasePlan
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksMarketplacePurchasePlanMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksMarketplacePurchasePlanMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksMarketplacePurchasePlanMetadata::DECODERS
-
-    # @return [Array_of_String] Required array value serialized in the `bullets` wire field.
-    attr_reader :bullets
-    # @return [String] Required `string` value serialized in the `description` wire field.
-    attr_reader :description
-    # @return [Boolean] Required `boolean` value serialized in the `has_free_trial` wire field.
-    attr_reader :has_free_trial
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [Integer] Required `integer` value serialized in the `monthly_price_in_cents` wire field.
-    attr_reader :monthly_price_in_cents
-    # @return [String] Required `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [WebhooksMarketplacePurchasePlanPriceModel] Required enumerated value serialized in the `price_model` wire field.
-    attr_reader :price_model
-    # @return [String] Required `string` value serialized in the `unit_name` wire field.
-    attr_reader :unit_name
-    # @return [Integer] Required `integer` value serialized in the `yearly_price_in_cents` wire field.
-    attr_reader :yearly_price_in_cents
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhooksMarketplacePurchasePlanMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
-  end
-
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksMarketplacePurchaseMetadata
-    FIELDS = {
-      account: 'account',
-      billing_cycle: 'billing_cycle',
-      free_trial_ends_on: 'free_trial_ends_on',
-      next_billing_date: 'next_billing_date',
-      on_free_trial: 'on_free_trial',
-      plan: 'plan',
-      unit_count: 'unit_count'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      account
-      billing_cycle
-      free_trial_ends_on
-      next_billing_date
-      on_free_trial
-      plan
-      unit_count
-    ].freeze
-    DECODERS = {
-      account: lambda do |value|
-        ::OctridevGithub::WebhooksMarketplacePurchaseAccount.from_hash(value)
-      end,
-      plan: lambda do |value|
-        ::OctridevGithub::WebhooksMarketplacePurchasePlan.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      free_trial_ends_on
-      next_billing_date
-    ].freeze
-  end
-
-  # API model for WebhooksMarketplacePurchase.
-  # Typed representation of the `WebhooksMarketplacePurchase` API schema.
-  class WebhooksMarketplacePurchase
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksMarketplacePurchaseMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksMarketplacePurchaseMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksMarketplacePurchaseMetadata::DECODERS
-
-    # @return [WebhooksMarketplacePurchaseAccount] Required object value serialized in the `account` wire field.
-    attr_reader :account
-    # @return [String] Required `string` value serialized in the `billing_cycle` wire field.
-    attr_reader :billing_cycle
-    # @return [String] Required `string` value serialized in the `free_trial_ends_on` wire field.
-    attr_reader :free_trial_ends_on
-    # @return [String] Required `string` value serialized in the `next_billing_date` wire field.
-    attr_reader :next_billing_date
-    # @return [Boolean] Required `boolean` value serialized in the `on_free_trial` wire field.
-    attr_reader :on_free_trial
-    # @return [WebhooksMarketplacePurchasePlan] Required object value serialized in the `plan` wire field.
-    attr_reader :plan
-    # @return [Integer] Required `integer` value serialized in the `unit_count` wire field.
-    attr_reader :unit_count
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhooksMarketplacePurchaseMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
-  end
-
-  # Defines the WebhooksMarketplacePurchasePlanPriceModel SDK namespace.
-  module WebhooksMarketplacePurchasePlanPriceModel
-    FREE = 'FREE'
-    FLAT_RATE = 'FLAT_RATE'
-    PER_UNIT = 'PER_UNIT'
-    VALUES = %w[FREE FLAT_RATE PER_UNIT].freeze
-    def self.from_value(value)
-      value
-    end
-  end
-
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksMembershipUserMetadata
-    FIELDS = {
-      avatar_url: 'avatar_url',
-      deleted: 'deleted',
-      email: 'email',
-      events_url: 'events_url',
-      followers_url: 'followers_url',
-      following_url: 'following_url',
-      gists_url: 'gists_url',
-      gravatar_id: 'gravatar_id',
-      html_url: 'html_url',
-      id: 'id',
-      login: 'login',
-      name: 'name',
-      node_id: 'node_id',
-      organizations_url: 'organizations_url',
-      received_events_url: 'received_events_url',
-      repos_url: 'repos_url',
-      site_admin: 'site_admin',
-      starred_url: 'starred_url',
-      subscriptions_url: 'subscriptions_url',
-      type: 'type',
-      url: 'url',
-      user_view_type: 'user_view_type'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      login
-    ].freeze
-    DECODERS = {
-      type: lambda do |value|
-        ::OctridevGithub::WebhooksMembershipUserType.from_value(value)
-      end
-    }.freeze
-  end
-
-  # API model for WebhooksMembershipUser.
-  # Required object value serialized in the `user` wire field.
-  class WebhooksMembershipUser
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksMembershipUserMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksMembershipUserMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksMembershipUserMetadata::DECODERS
-
-    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-    attr_reader :avatar_url
-    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-    attr_reader :deleted
-    # @return [String] Optional `string` value serialized in the `email` wire field.
-    attr_reader :email
-    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-    attr_reader :events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-    attr_reader :followers_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-    attr_reader :following_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-    attr_reader :gists_url
-    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-    attr_reader :gravatar_id
-    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `login` wire field.
-    attr_reader :login
-    # @return [String] Optional `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [String] Optional `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-    attr_reader :organizations_url
-    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-    attr_reader :received_events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-    attr_reader :repos_url
-    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-    attr_reader :site_admin
-    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-    attr_reader :starred_url
-    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-    attr_reader :subscriptions_url
-    # @return [WebhooksMembershipUserType] Optional enumerated value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-    attr_reader :user_view_type
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
-  end
+end
 end

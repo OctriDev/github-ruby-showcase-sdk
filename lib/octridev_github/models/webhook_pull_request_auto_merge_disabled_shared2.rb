@@ -5,558 +5,560 @@
 
 # webhook_pull_request_auto_merge_disabled domain models
 module OctridevGithub
-  # API model for WebhookPullRequestAutoMergeDisabledPullRequestAutoMergeEnabledBy.
-  # Required object value serialized in the `enabled_by` wire field.
-  class WebhookPullRequestAutoMergeDisabledPullRequestAutoMergeEnabledBy
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestAutoMergeEnabledByMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestAutoMergeEnabledByMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestAutoMergeEnabledByMetadata::DECODERS
+# API model for WebhookPullRequestAutoMergeDisabledPullRequestAutoMergeEnabledBy.
+# Required object value serialized in the `enabled_by` wire field.
+class WebhookPullRequestAutoMergeDisabledPullRequestAutoMergeEnabledBy
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestAutoMergeEnabledByMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestAutoMergeEnabledByMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestAutoMergeEnabledByMetadata::DECODERS
 
-    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-    attr_reader :avatar_url
-    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-    attr_reader :deleted
-    # @return [String] Optional `string` value serialized in the `email` wire field.
-    attr_reader :email
-    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-    attr_reader :events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-    attr_reader :followers_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-    attr_reader :following_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-    attr_reader :gists_url
-    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-    attr_reader :gravatar_id
-    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `login` wire field.
-    attr_reader :login
-    # @return [String] Optional `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [String] Optional `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-    attr_reader :organizations_url
-    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-    attr_reader :received_events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-    attr_reader :repos_url
-    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-    attr_reader :site_admin
-    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-    attr_reader :starred_url
-    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-    attr_reader :subscriptions_url
-    # @return [WebhookPullRequestAutoMergeDisabledPullRequestAutoMergeEnabledByType] Optional enumerated value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-    attr_reader :user_view_type
+  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+  attr_reader :avatar_url
+  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+  attr_reader :deleted
+  # @return [String] Optional `string` value serialized in the `email` wire field.
+  attr_reader :email
+  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+  attr_reader :events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+  attr_reader :followers_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+  attr_reader :following_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+  attr_reader :gists_url
+  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+  attr_reader :gravatar_id
+  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `login` wire field.
+  attr_reader :login
+  # @return [String] Optional `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [String] Optional `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+  attr_reader :organizations_url
+  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+  attr_reader :received_events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+  attr_reader :repos_url
+  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+  attr_reader :site_admin
+  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+  attr_reader :starred_url
+  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+  attr_reader :subscriptions_url
+  # @return [WebhookPullRequestAutoMergeDisabledPullRequestAutoMergeEnabledByType] Optional enumerated value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+  attr_reader :user_view_type
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestAutoMergeMetadata
-    FIELDS = {
-      commit_message: 'commit_message',
-      commit_title: 'commit_title',
-      enabled_by: 'enabled_by',
-      merge_method: 'merge_method'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      commit_message
-      commit_title
-      enabled_by
-      merge_method
-    ].freeze
-    DECODERS = {
-      enabled_by: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestAutoMergeDisabledPullRequestAutoMergeEnabledBy.from_hash(value)
-      end,
-      merge_method: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestAutoMergeDisabledPullRequestAutoMergeMergeMethod.from_value(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      commit_message
-      commit_title
-      enabled_by
-    ].freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for WebhookPullRequestAutoMergeDisabledPullRequestAutoMerge.
-  # The status of auto merging a pull request.
-  class WebhookPullRequestAutoMergeDisabledPullRequestAutoMerge
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestAutoMergeMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestAutoMergeMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestAutoMergeMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [String] Commit message for the merge commit.
-    attr_reader :commit_message
-    # @return [String] Title for the merge commit message.
-    attr_reader :commit_title
-    # @return [WebhookPullRequestAutoMergeDisabledPullRequestAutoMergeEnabledBy] Required object value serialized in the `enabled_by` wire field.
-    attr_reader :enabled_by
-    # @return [WebhookPullRequestAutoMergeDisabledPullRequestAutoMergeMergeMethod] The merge method to use.
-    attr_reader :merge_method
+# Internal model hydration metadata.
+class SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestAutoMergeMetadata
+  FIELDS = {
+    commit_message: "commit_message",
+    commit_title: "commit_title",
+    enabled_by: "enabled_by",
+    merge_method: "merge_method",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    commit_message
+    commit_title
+    enabled_by
+    merge_method
+  ].freeze
+  DECODERS = {
+    enabled_by: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestAutoMergeDisabledPullRequestAutoMergeEnabledBy.from_hash(value)
+    end,
+    merge_method: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestAutoMergeDisabledPullRequestAutoMergeMergeMethod.from_value(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    commit_message
+    commit_title
+    enabled_by
+  ].freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for WebhookPullRequestAutoMergeDisabledPullRequestAutoMerge.
+# The status of auto merging a pull request.
+class WebhookPullRequestAutoMergeDisabledPullRequestAutoMerge
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestAutoMergeMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestAutoMergeMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestAutoMergeMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestAutoMergeMetadata::NULLABLE_FIELDS)
-    end
+  # @return [String] Commit message for the merge commit.
+  attr_reader :commit_message
+  # @return [String] Title for the merge commit message.
+  attr_reader :commit_title
+  # @return [WebhookPullRequestAutoMergeDisabledPullRequestAutoMergeEnabledBy] Required object value serialized in the `enabled_by` wire field.
+  attr_reader :enabled_by
+  # @return [WebhookPullRequestAutoMergeDisabledPullRequestAutoMergeMergeMethod] The merge method to use.
+  attr_reader :merge_method
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoLicenseMetadata
-    FIELDS = {
-      key: 'key',
-      name: 'name',
-      node_id: 'node_id',
-      spdx_id: 'spdx_id',
-      url: 'url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      key
-      name
-      node_id
-      spdx_id
-      url
-    ].freeze
-    DECODERS = {}.freeze
-    NULLABLE_FIELDS = %i[
-      url
-    ].freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestAutoMergeMetadata::NULLABLE_FIELDS)
   end
 
-  # API model for WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoLicense.
-  # Required object value serialized in the `license` wire field.
-  class WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoLicense
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoLicenseMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoLicenseMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoLicenseMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [String] Required `string` value serialized in the `key` wire field.
-    attr_reader :key
-    # @return [String] Required `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Required `string` value serialized in the `spdx_id` wire field.
-    attr_reader :spdx_id
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
+# Internal model hydration metadata.
+class SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoLicenseMetadata
+  FIELDS = {
+    key: "key",
+    name: "name",
+    node_id: "node_id",
+    spdx_id: "spdx_id",
+    url: "url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    key
+    name
+    node_id
+    spdx_id
+    url
+  ].freeze
+  DECODERS = {
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    url
+  ].freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoLicense.
+# Required object value serialized in the `license` wire field.
+class WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoLicense
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoLicenseMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoLicenseMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoLicenseMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoLicenseMetadata::NULLABLE_FIELDS)
-    end
+  # @return [String] Required `string` value serialized in the `key` wire field.
+  attr_reader :key
+  # @return [String] Required `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Required `string` value serialized in the `spdx_id` wire field.
+  attr_reader :spdx_id
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoOwnerMetadata
-    FIELDS = {
-      avatar_url: 'avatar_url',
-      deleted: 'deleted',
-      email: 'email',
-      events_url: 'events_url',
-      followers_url: 'followers_url',
-      following_url: 'following_url',
-      gists_url: 'gists_url',
-      gravatar_id: 'gravatar_id',
-      html_url: 'html_url',
-      id: 'id',
-      login: 'login',
-      name: 'name',
-      node_id: 'node_id',
-      organizations_url: 'organizations_url',
-      received_events_url: 'received_events_url',
-      repos_url: 'repos_url',
-      site_admin: 'site_admin',
-      starred_url: 'starred_url',
-      subscriptions_url: 'subscriptions_url',
-      type: 'type',
-      url: 'url',
-      user_view_type: 'user_view_type'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      login
-    ].freeze
-    DECODERS = {
-      type: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoOwnerType.from_value(value)
-      end
-    }.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoLicenseMetadata::NULLABLE_FIELDS)
   end
 
-  # API model for WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoOwner.
-  # Required object value serialized in the `owner` wire field.
-  class WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoOwner
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoOwnerMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoOwnerMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoOwnerMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-    attr_reader :avatar_url
-    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-    attr_reader :deleted
-    # @return [String] Optional `string` value serialized in the `email` wire field.
-    attr_reader :email
-    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-    attr_reader :events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-    attr_reader :followers_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-    attr_reader :following_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-    attr_reader :gists_url
-    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-    attr_reader :gravatar_id
-    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `login` wire field.
-    attr_reader :login
-    # @return [String] Optional `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [String] Optional `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-    attr_reader :organizations_url
-    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-    attr_reader :received_events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-    attr_reader :repos_url
-    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-    attr_reader :site_admin
-    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-    attr_reader :starred_url
-    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-    attr_reader :subscriptions_url
-    # @return [WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoOwnerType] Optional enumerated value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-    attr_reader :user_view_type
+# Internal model hydration metadata.
+class SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoOwnerMetadata
+  FIELDS = {
+    avatar_url: "avatar_url",
+    deleted: "deleted",
+    email: "email",
+    events_url: "events_url",
+    followers_url: "followers_url",
+    following_url: "following_url",
+    gists_url: "gists_url",
+    gravatar_id: "gravatar_id",
+    html_url: "html_url",
+    id: "id",
+    login: "login",
+    name: "name",
+    node_id: "node_id",
+    organizations_url: "organizations_url",
+    received_events_url: "received_events_url",
+    repos_url: "repos_url",
+    site_admin: "site_admin",
+    starred_url: "starred_url",
+    subscriptions_url: "subscriptions_url",
+    type: "type",
+    url: "url",
+    user_view_type: "user_view_type",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    login
+  ].freeze
+  DECODERS = {
+    type: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoOwnerType.from_value(value)
+    end,
+  }.freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoOwner.
+# Required object value serialized in the `owner` wire field.
+class WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoOwner
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoOwnerMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoOwnerMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoOwnerMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+  attr_reader :avatar_url
+  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+  attr_reader :deleted
+  # @return [String] Optional `string` value serialized in the `email` wire field.
+  attr_reader :email
+  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+  attr_reader :events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+  attr_reader :followers_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+  attr_reader :following_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+  attr_reader :gists_url
+  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+  attr_reader :gravatar_id
+  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `login` wire field.
+  attr_reader :login
+  # @return [String] Optional `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [String] Optional `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+  attr_reader :organizations_url
+  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+  attr_reader :received_events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+  attr_reader :repos_url
+  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+  attr_reader :site_admin
+  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+  attr_reader :starred_url
+  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+  attr_reader :subscriptions_url
+  # @return [WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoOwnerType] Optional enumerated value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+  attr_reader :user_view_type
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoPermissionsMetadata
-    FIELDS = {
-      admin: 'admin',
-      maintain: 'maintain',
-      pull: 'pull',
-      push: 'push',
-      triage: 'triage'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      admin
-      pull
-      push
-    ].freeze
-    DECODERS = {}.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoPermissions.
-  # Optional object value serialized in the `permissions` wire field.
-  class WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoPermissions
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoPermissionsMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoPermissionsMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoPermissionsMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [Boolean] Required `boolean` value serialized in the `admin` wire field.
-    attr_reader :admin
-    # @return [Boolean] Optional `boolean` value serialized in the `maintain` wire field.
-    attr_reader :maintain
-    # @return [Boolean] Required `boolean` value serialized in the `pull` wire field.
-    attr_reader :pull
-    # @return [Boolean] Required `boolean` value serialized in the `push` wire field.
-    attr_reader :push
-    # @return [Boolean] Optional `boolean` value serialized in the `triage` wire field.
-    attr_reader :triage
+# Internal model hydration metadata.
+class SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoPermissionsMetadata
+  FIELDS = {
+    admin: "admin",
+    maintain: "maintain",
+    pull: "pull",
+    push: "push",
+    triage: "triage",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    admin
+    pull
+    push
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoPermissions.
+# Optional object value serialized in the `permissions` wire field.
+class WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoPermissions
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoPermissionsMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoPermissionsMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoPermissionsMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+  # @return [Boolean] Required `boolean` value serialized in the `admin` wire field.
+  attr_reader :admin
+  # @return [Boolean] Optional `boolean` value serialized in the `maintain` wire field.
+  attr_reader :maintain
+  # @return [Boolean] Required `boolean` value serialized in the `pull` wire field.
+  attr_reader :pull
+  # @return [Boolean] Required `boolean` value serialized in the `push` wire field.
+  attr_reader :push
+  # @return [Boolean] Optional `boolean` value serialized in the `triage` wire field.
+  attr_reader :triage
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoMetadata
-    FIELDS = {
-      allow_auto_merge: 'allow_auto_merge',
-      allow_forking: 'allow_forking',
-      allow_merge_commit: 'allow_merge_commit',
-      allow_rebase_merge: 'allow_rebase_merge',
-      allow_squash_merge: 'allow_squash_merge',
-      allow_update_branch: 'allow_update_branch',
-      archive_url: 'archive_url',
-      archived: 'archived',
-      assignees_url: 'assignees_url',
-      blobs_url: 'blobs_url',
-      branches_url: 'branches_url',
-      clone_url: 'clone_url',
-      collaborators_url: 'collaborators_url',
-      comments_url: 'comments_url',
-      commits_url: 'commits_url',
-      compare_url: 'compare_url',
-      contents_url: 'contents_url',
-      contributors_url: 'contributors_url',
-      created_at: 'created_at',
-      default_branch: 'default_branch',
-      delete_branch_on_merge: 'delete_branch_on_merge',
-      deployments_url: 'deployments_url',
-      description: 'description',
-      disabled: 'disabled',
-      downloads_url: 'downloads_url',
-      events_url: 'events_url',
-      fork: 'fork',
-      forks: 'forks',
-      forks_count: 'forks_count',
-      forks_url: 'forks_url',
-      full_name: 'full_name',
-      git_commits_url: 'git_commits_url',
-      git_refs_url: 'git_refs_url',
-      git_tags_url: 'git_tags_url',
-      git_url: 'git_url',
-      has_downloads: 'has_downloads',
-      has_issues: 'has_issues',
-      has_discussions: 'has_discussions',
-      has_pull_requests: 'has_pull_requests',
-      pull_request_creation_policy: 'pull_request_creation_policy',
-      has_pages: 'has_pages',
-      has_projects: 'has_projects',
-      has_wiki: 'has_wiki',
-      homepage: 'homepage',
-      hooks_url: 'hooks_url',
-      html_url: 'html_url',
-      id: 'id',
-      is_template: 'is_template',
-      issue_comment_url: 'issue_comment_url',
-      issue_events_url: 'issue_events_url',
-      issues_url: 'issues_url',
-      keys_url: 'keys_url',
-      labels_url: 'labels_url',
-      language: 'language',
-      languages_url: 'languages_url',
-      license: 'license',
-      master_branch: 'master_branch',
-      merge_commit_message: 'merge_commit_message',
-      merge_commit_title: 'merge_commit_title',
-      merges_url: 'merges_url',
-      milestones_url: 'milestones_url',
-      mirror_url: 'mirror_url',
-      name: 'name',
-      node_id: 'node_id',
-      notifications_url: 'notifications_url',
-      open_issues: 'open_issues',
-      open_issues_count: 'open_issues_count',
-      organization: 'organization',
-      owner: 'owner',
-      permissions: 'permissions',
-      private: 'private',
-      public: 'public',
-      pulls_url: 'pulls_url',
-      pushed_at: 'pushed_at',
-      releases_url: 'releases_url',
-      role_name: 'role_name',
-      size: 'size',
-      squash_merge_commit_message: 'squash_merge_commit_message',
-      squash_merge_commit_title: 'squash_merge_commit_title',
-      ssh_url: 'ssh_url',
-      stargazers: 'stargazers',
-      stargazers_count: 'stargazers_count',
-      stargazers_url: 'stargazers_url',
-      statuses_url: 'statuses_url',
-      subscribers_url: 'subscribers_url',
-      subscription_url: 'subscription_url',
-      svn_url: 'svn_url',
-      tags_url: 'tags_url',
-      teams_url: 'teams_url',
-      topics: 'topics',
-      trees_url: 'trees_url',
-      updated_at: 'updated_at',
-      url: 'url',
-      use_squash_pr_title_as_default: 'use_squash_pr_title_as_default',
-      visibility: 'visibility',
-      watchers: 'watchers',
-      watchers_count: 'watchers_count',
-      web_commit_signoff_required: 'web_commit_signoff_required'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      archive_url
-      archived
-      assignees_url
-      blobs_url
-      branches_url
-      clone_url
-      collaborators_url
-      comments_url
-      commits_url
-      compare_url
-      contents_url
-      contributors_url
-      created_at
-      default_branch
-      deployments_url
-      description
-      downloads_url
-      events_url
-      fork
-      forks
-      forks_count
-      forks_url
-      full_name
-      git_commits_url
-      git_refs_url
-      git_tags_url
-      git_url
-      has_downloads
-      has_issues
-      has_discussions
-      has_pages
-      has_projects
-      has_wiki
-      homepage
-      hooks_url
-      html_url
-      id
-      issue_comment_url
-      issue_events_url
-      issues_url
-      keys_url
-      labels_url
-      language
-      languages_url
-      license
-      merges_url
-      milestones_url
-      mirror_url
-      name
-      node_id
-      notifications_url
-      open_issues
-      open_issues_count
-      owner
-      private
-      pulls_url
-      pushed_at
-      releases_url
-      size
-      ssh_url
-      stargazers_count
-      stargazers_url
-      statuses_url
-      subscribers_url
-      subscription_url
-      svn_url
-      tags_url
-      teams_url
-      topics
-      trees_url
-      updated_at
-      url
-      visibility
-      watchers
-      watchers_count
-    ].freeze
-    DECODERS = {
-      pull_request_creation_policy: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoPullReqXc029a559af.from_value(value)
-      end,
-      license: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoLicense.from_hash(value)
-      end,
-      merge_commit_message: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoMergeCommitMessage.from_value(value)
-      end,
-      merge_commit_title: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoMergeCommitTitle.from_value(value)
-      end,
-      owner: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoOwner.from_hash(value)
-      end,
-      permissions: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoPermissions.from_hash(value)
-      end,
-      squash_merge_commit_message: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoSquashMXe1c59c1aeb.from_value(value)
-      end,
-      squash_merge_commit_title: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoSquashMX572d68da36.from_value(value)
-      end,
-      visibility: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoVisibility.from_value(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      description
-      homepage
-      language
-      license
-      mirror_url
-      owner
-      pushed_at
-    ].freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookPullRequestAutoMergeDisabledPullRequestBaseRepoMetadata
+  FIELDS = {
+    allow_auto_merge: "allow_auto_merge",
+    allow_forking: "allow_forking",
+    allow_merge_commit: "allow_merge_commit",
+    allow_rebase_merge: "allow_rebase_merge",
+    allow_squash_merge: "allow_squash_merge",
+    allow_update_branch: "allow_update_branch",
+    archive_url: "archive_url",
+    archived: "archived",
+    assignees_url: "assignees_url",
+    blobs_url: "blobs_url",
+    branches_url: "branches_url",
+    clone_url: "clone_url",
+    collaborators_url: "collaborators_url",
+    comments_url: "comments_url",
+    commits_url: "commits_url",
+    compare_url: "compare_url",
+    contents_url: "contents_url",
+    contributors_url: "contributors_url",
+    created_at: "created_at",
+    default_branch: "default_branch",
+    delete_branch_on_merge: "delete_branch_on_merge",
+    deployments_url: "deployments_url",
+    description: "description",
+    disabled: "disabled",
+    downloads_url: "downloads_url",
+    events_url: "events_url",
+    fork: "fork",
+    forks: "forks",
+    forks_count: "forks_count",
+    forks_url: "forks_url",
+    full_name: "full_name",
+    git_commits_url: "git_commits_url",
+    git_refs_url: "git_refs_url",
+    git_tags_url: "git_tags_url",
+    git_url: "git_url",
+    has_downloads: "has_downloads",
+    has_issues: "has_issues",
+    has_discussions: "has_discussions",
+    has_pull_requests: "has_pull_requests",
+    pull_request_creation_policy: "pull_request_creation_policy",
+    has_pages: "has_pages",
+    has_projects: "has_projects",
+    has_wiki: "has_wiki",
+    homepage: "homepage",
+    hooks_url: "hooks_url",
+    html_url: "html_url",
+    id: "id",
+    is_template: "is_template",
+    issue_comment_url: "issue_comment_url",
+    issue_events_url: "issue_events_url",
+    issues_url: "issues_url",
+    keys_url: "keys_url",
+    labels_url: "labels_url",
+    language: "language",
+    languages_url: "languages_url",
+    license: "license",
+    master_branch: "master_branch",
+    merge_commit_message: "merge_commit_message",
+    merge_commit_title: "merge_commit_title",
+    merges_url: "merges_url",
+    milestones_url: "milestones_url",
+    mirror_url: "mirror_url",
+    name: "name",
+    node_id: "node_id",
+    notifications_url: "notifications_url",
+    open_issues: "open_issues",
+    open_issues_count: "open_issues_count",
+    organization: "organization",
+    owner: "owner",
+    permissions: "permissions",
+    private: "private",
+    public: "public",
+    pulls_url: "pulls_url",
+    pushed_at: "pushed_at",
+    releases_url: "releases_url",
+    role_name: "role_name",
+    size: "size",
+    squash_merge_commit_message: "squash_merge_commit_message",
+    squash_merge_commit_title: "squash_merge_commit_title",
+    ssh_url: "ssh_url",
+    stargazers: "stargazers",
+    stargazers_count: "stargazers_count",
+    stargazers_url: "stargazers_url",
+    statuses_url: "statuses_url",
+    subscribers_url: "subscribers_url",
+    subscription_url: "subscription_url",
+    svn_url: "svn_url",
+    tags_url: "tags_url",
+    teams_url: "teams_url",
+    topics: "topics",
+    trees_url: "trees_url",
+    updated_at: "updated_at",
+    url: "url",
+    use_squash_pr_title_as_default: "use_squash_pr_title_as_default",
+    visibility: "visibility",
+    watchers: "watchers",
+    watchers_count: "watchers_count",
+    web_commit_signoff_required: "web_commit_signoff_required",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    archive_url
+    archived
+    assignees_url
+    blobs_url
+    branches_url
+    clone_url
+    collaborators_url
+    comments_url
+    commits_url
+    compare_url
+    contents_url
+    contributors_url
+    created_at
+    default_branch
+    deployments_url
+    description
+    downloads_url
+    events_url
+    fork
+    forks
+    forks_count
+    forks_url
+    full_name
+    git_commits_url
+    git_refs_url
+    git_tags_url
+    git_url
+    has_downloads
+    has_issues
+    has_discussions
+    has_pages
+    has_projects
+    has_wiki
+    homepage
+    hooks_url
+    html_url
+    id
+    issue_comment_url
+    issue_events_url
+    issues_url
+    keys_url
+    labels_url
+    language
+    languages_url
+    license
+    merges_url
+    milestones_url
+    mirror_url
+    name
+    node_id
+    notifications_url
+    open_issues
+    open_issues_count
+    owner
+    private
+    pulls_url
+    pushed_at
+    releases_url
+    size
+    ssh_url
+    stargazers_count
+    stargazers_url
+    statuses_url
+    subscribers_url
+    subscription_url
+    svn_url
+    tags_url
+    teams_url
+    topics
+    trees_url
+    updated_at
+    url
+    visibility
+    watchers
+    watchers_count
+  ].freeze
+  DECODERS = {
+    pull_request_creation_policy: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoPullReqXc029a559af.from_value(value)
+    end,
+    license: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoLicense.from_hash(value)
+    end,
+    merge_commit_message: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoMergeCommitMessage.from_value(value)
+    end,
+    merge_commit_title: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoMergeCommitTitle.from_value(value)
+    end,
+    owner: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoOwner.from_hash(value)
+    end,
+    permissions: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoPermissions.from_hash(value)
+    end,
+    squash_merge_commit_message: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoSquashMXe1c59c1aeb.from_value(value)
+    end,
+    squash_merge_commit_title: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoSquashMX572d68da36.from_value(value)
+    end,
+    visibility: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestAutoMergeDisabledPullRequestBaseRepoVisibility.from_value(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    description
+    homepage
+    language
+    license
+    mirror_url
+    owner
+    pushed_at
+  ].freeze
+end
 end

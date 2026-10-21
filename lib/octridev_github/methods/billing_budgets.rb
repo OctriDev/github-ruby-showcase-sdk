@@ -30,25 +30,26 @@ module OctridevGithub
         user: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/organizations/',
+            "/organizations/",
             SdkClient.encode_path_segment(org),
-            '/settings/billing/budgets'
+            "/settings/billing/budgets"
           ].join,
           config: config,
           query: {
             'page' => QueryValue.new(page, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'scope' => QueryValue.new(scope, style: 'form', explode: true),
-            'user' => QueryValue.new(user, style: 'form', explode: true)
+            'user' => QueryValue.new(user, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::GetAllBudgets,
           decoder: :json,
           operation_id: 'billing_get_all_budgets_org',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -99,14 +100,15 @@ module OctridevGithub
         expires_at: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(expires_at) { Validation.validate_date('expires_at', expires_at) }
 
         SdkClient.request(
           'POST',
           [
-            '/organizations/',
+            "/organizations/",
             SdkClient.encode_path_segment(org),
-            '/settings/billing/budgets'
+            "/settings/billing/budgets"
           ].join,
           config: config,
           body: {
@@ -118,13 +120,13 @@ module OctridevGithub
             'budget_type' => budget_type,
             'budget_product_sku' => budget_product_sku,
             'user' => user,
-            'expires_at' => expires_at
+            'expires_at' => expires_at,
           },
           return_type: ::OctridevGithub::CreateBudget,
           decoder: :json,
           operation_id: 'billing_create_organization_budget',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError }
+          errors: { '400' => ::OctridevGithub::BasicError, '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -138,12 +140,13 @@ module OctridevGithub
         budget_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/organizations/',
+            "/organizations/",
             SdkClient.encode_path_segment(org),
-            '/settings/billing/budgets/',
+            "/settings/billing/budgets/",
             SdkClient.encode_path_segment(budget_id)
           ].join,
           config: config,
@@ -151,7 +154,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'billing_get_budget_org',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -180,12 +183,13 @@ module OctridevGithub
         expires_at: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/organizations/',
+            "/organizations/",
             SdkClient.encode_path_segment(org),
-            '/settings/billing/budgets/',
+            "/settings/billing/budgets/",
             SdkClient.encode_path_segment(budget_id)
           ].join,
           config: config,
@@ -193,13 +197,13 @@ module OctridevGithub
             'budget_amount' => budget_amount,
             'prevent_further_usage' => prevent_further_usage,
             'budget_alerting' => budget_alerting,
-            'expires_at' => expires_at
+            'expires_at' => expires_at,
           },
           return_type: ::OctridevGithub::UpdateBudget,
           decoder: :json,
           operation_id: 'billing_update_budget_org',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError }
+          errors: { '400' => ::OctridevGithub::BasicError, '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -213,12 +217,13 @@ module OctridevGithub
         budget_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/organizations/',
+            "/organizations/",
             SdkClient.encode_path_segment(org),
-            '/settings/billing/budgets/',
+            "/settings/billing/budgets/",
             SdkClient.encode_path_segment(budget_id)
           ].join,
           config: config,
@@ -226,7 +231,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'billing_delete_budget_org',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
     end

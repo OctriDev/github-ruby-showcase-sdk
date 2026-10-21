@@ -17,10 +17,11 @@ module OctridevGithub
         key_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/user/keys/',
+            "/user/keys/",
             SdkClient.encode_path_segment(key_id)
           ].join,
           config: config,
@@ -28,7 +29,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'users_get_public_ssh_key_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

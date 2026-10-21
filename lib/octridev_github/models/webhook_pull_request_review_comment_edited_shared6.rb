@@ -5,513 +5,513 @@
 
 # webhook_pull_request_review_comment_edited domain models
 module OctridevGithub
-  # API model for WebhookPullRequestReviewCommentEditedPullRequest.
-  # Required object value serialized in the `pull_request` wire field.
-  class WebhookPullRequestReviewCommentEditedPullRequest
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookPullRequestReviewCommentEditedPullRequestMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewCommentEditedPullRequestMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookPullRequestReviewCommentEditedPullRequestMetadata::DECODERS
+# API model for WebhookPullRequestReviewCommentEditedPullRequest.
+# Required object value serialized in the `pull_request` wire field.
+class WebhookPullRequestReviewCommentEditedPullRequest
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookPullRequestReviewCommentEditedPullRequestMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewCommentEditedPullRequestMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookPullRequestReviewCommentEditedPullRequestMetadata::DECODERS
 
-    # @return [WebhookPullRequestReviewCommentEditedPullRequestLinks] Required object value serialized in the `_links` wire field.
-    attr_reader :links
-    # @return [WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason] Required enumerated value serialized in the `active_lock_reason` wire field.
-    attr_reader :active_lock_reason
-    # @return [WebhookPullRequestReviewCommentEditedPullRequestAssignee] Required object value serialized in the `assignee` wire field.
-    attr_reader :assignee
-    # @return [Array_of_WebhookPullRequestReviewCommentEditedPullRequestAssigneesItem] Required array value serialized in the `assignees` wire field.
-    attr_reader :assignees
-    # @return [WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation] How the author is associated with the repository.
-    attr_reader :author_association
-    # @return [WebhookPullRequestReviewCommentEditedPullRequestAutoMerge] The status of auto merging a pull request.
-    attr_reader :auto_merge
-    # @return [WebhookPullRequestReviewCommentEditedPullRequestBase] Required object value serialized in the `base` wire field.
-    attr_reader :base
-    # @return [String] Required `string` value serialized in the `body` wire field.
-    attr_reader :body
-    # @return [String] Required `string` value serialized in the `closed_at` wire field.
-    attr_reader :closed_at
-    # @return [String] Required `uri`-formatted value serialized in the `comments_url` wire field.
-    attr_reader :comments_url
-    # @return [String] Required `uri`-formatted value serialized in the `commits_url` wire field.
-    attr_reader :commits_url
-    # @return [String] Required `string` value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [String] Required `uri`-formatted value serialized in the `diff_url` wire field.
-    attr_reader :diff_url
-    # @return [Boolean] Optional `boolean` value serialized in the `draft` wire field.
-    attr_reader :draft
-    # @return [WebhookPullRequestReviewCommentEditedPullRequestHead] Required object value serialized in the `head` wire field.
-    attr_reader :head
-    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `uri`-formatted value serialized in the `issue_url` wire field.
-    attr_reader :issue_url
-    # @return [Array_of_WebhookPullRequestReviewCommentEditedPullRequestLabelsItem] Required array value serialized in the `labels` wire field.
-    attr_reader :labels
-    # @return [Boolean] Required `boolean` value serialized in the `locked` wire field.
-    attr_reader :locked
-    # @return [String] Required `string` value serialized in the `merge_commit_sha` wire field.
-    attr_reader :merge_commit_sha
-    # @return [String] Required `string` value serialized in the `merged_at` wire field.
-    attr_reader :merged_at
-    # @return [WebhookPullRequestReviewCommentEditedPullRequestMilestone] A collection of related issues and pull requests.
-    attr_reader :milestone
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [Integer] Required `integer` value serialized in the `number` wire field.
-    attr_reader :number
-    # @return [String] Required `uri`-formatted value serialized in the `patch_url` wire field.
-    attr_reader :patch_url
-    # @return [Array_of_WebhookPullRequestReviewCommentEditedPullRequestRequestedReviewersItem] Required array value serialized in the `requested_reviewers` wire field.
-    attr_reader :requested_reviewers
-    # @return [Array_of_WebhookPullRequestReviewCommentEditedPullRequestRequestedTeamsItem] Required array value serialized in the `requested_teams` wire field.
-    attr_reader :requested_teams
-    # @return [String] Required `uri-template`-formatted value serialized in the `review_comment_url` wire field.
-    attr_reader :review_comment_url
-    # @return [String] Required `uri`-formatted value serialized in the `review_comments_url` wire field.
-    attr_reader :review_comments_url
-    # @return [PullRequestStack] The stack information associated with a pull request.
-    attr_reader :stack
-    # @return [WebhookPullRequestReviewCommentEditedPullRequestState] Required enumerated value serialized in the `state` wire field.
-    attr_reader :state
-    # @return [String] Required `uri`-formatted value serialized in the `statuses_url` wire field.
-    attr_reader :statuses_url
-    # @return [String] Required `string` value serialized in the `title` wire field.
-    attr_reader :title
-    # @return [String] Required `string` value serialized in the `updated_at` wire field.
-    attr_reader :updated_at
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [WebhookPullRequestReviewCommentEditedPullRequestUser] Required object value serialized in the `user` wire field.
-    attr_reader :user
+  # @return [WebhookPullRequestReviewCommentEditedPullRequestLinks] Required object value serialized in the `_links` wire field.
+  attr_reader :links
+  # @return [WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason] Required enumerated value serialized in the `active_lock_reason` wire field.
+  attr_reader :active_lock_reason
+  # @return [WebhookPullRequestReviewCommentEditedPullRequestAssignee] Required object value serialized in the `assignee` wire field.
+  attr_reader :assignee
+  # @return [Array_of_WebhookPullRequestReviewCommentEditedPullRequestAssigneesItem] Required array value serialized in the `assignees` wire field.
+  attr_reader :assignees
+  # @return [WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation] How the author is associated with the repository.
+  attr_reader :author_association
+  # @return [WebhookPullRequestReviewCommentEditedPullRequestAutoMerge] The status of auto merging a pull request.
+  attr_reader :auto_merge
+  # @return [WebhookPullRequestReviewCommentEditedPullRequestBase] Required object value serialized in the `base` wire field.
+  attr_reader :base
+  # @return [String] Required `string` value serialized in the `body` wire field.
+  attr_reader :body
+  # @return [String] Required `string` value serialized in the `closed_at` wire field.
+  attr_reader :closed_at
+  # @return [String] Required `uri`-formatted value serialized in the `comments_url` wire field.
+  attr_reader :comments_url
+  # @return [String] Required `uri`-formatted value serialized in the `commits_url` wire field.
+  attr_reader :commits_url
+  # @return [String] Required `string` value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [String] Required `uri`-formatted value serialized in the `diff_url` wire field.
+  attr_reader :diff_url
+  # @return [Boolean] Optional `boolean` value serialized in the `draft` wire field.
+  attr_reader :draft
+  # @return [WebhookPullRequestReviewCommentEditedPullRequestHead] Required object value serialized in the `head` wire field.
+  attr_reader :head
+  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `uri`-formatted value serialized in the `issue_url` wire field.
+  attr_reader :issue_url
+  # @return [Array_of_WebhookPullRequestReviewCommentEditedPullRequestLabelsItem] Required array value serialized in the `labels` wire field.
+  attr_reader :labels
+  # @return [Boolean] Required `boolean` value serialized in the `locked` wire field.
+  attr_reader :locked
+  # @return [String] Required `string` value serialized in the `merge_commit_sha` wire field.
+  attr_reader :merge_commit_sha
+  # @return [String] Required `string` value serialized in the `merged_at` wire field.
+  attr_reader :merged_at
+  # @return [WebhookPullRequestReviewCommentEditedPullRequestMilestone] A collection of related issues and pull requests.
+  attr_reader :milestone
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [Integer] Required `integer` value serialized in the `number` wire field.
+  attr_reader :number
+  # @return [String] Required `uri`-formatted value serialized in the `patch_url` wire field.
+  attr_reader :patch_url
+  # @return [Array_of_WebhookPullRequestReviewCommentEditedPullRequestRequestedReviewersItem] Required array value serialized in the `requested_reviewers` wire field.
+  attr_reader :requested_reviewers
+  # @return [Array_of_WebhookPullRequestReviewCommentEditedPullRequestRequestedTeamsItem] Required array value serialized in the `requested_teams` wire field.
+  attr_reader :requested_teams
+  # @return [String] Required `uri-template`-formatted value serialized in the `review_comment_url` wire field.
+  attr_reader :review_comment_url
+  # @return [String] Required `uri`-formatted value serialized in the `review_comments_url` wire field.
+  attr_reader :review_comments_url
+  # @return [PullRequestStack] The stack information associated with a pull request.
+  attr_reader :stack
+  # @return [WebhookPullRequestReviewCommentEditedPullRequestState] Required enumerated value serialized in the `state` wire field.
+  attr_reader :state
+  # @return [String] Required `uri`-formatted value serialized in the `statuses_url` wire field.
+  attr_reader :statuses_url
+  # @return [String] Required `string` value serialized in the `title` wire field.
+  attr_reader :title
+  # @return [String] Required `string` value serialized in the `updated_at` wire field.
+  attr_reader :updated_at
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [WebhookPullRequestReviewCommentEditedPullRequestUser] Required object value serialized in the `user` wire field.
+  attr_reader :user
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPullRequestReviewCommentEditedPullRequestMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookPullRequestReviewCommentEditedMetadata
-    FIELDS = {
-      action: 'action',
-      changes: 'changes',
-      comment: 'comment',
-      enterprise: 'enterprise',
-      installation: 'installation',
-      organization: 'organization',
-      pull_request: 'pull_request',
-      repository: 'repository',
-      sender: 'sender'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      action
-      changes
-      comment
-      pull_request
-      repository
-      sender
-    ].freeze
-    DECODERS = {
-      action: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestReviewCommentEditedAction.from_value(value)
-      end,
-      changes: lambda do |value|
-        ::OctridevGithub::WebhooksChanges.from_hash(value)
-      end,
-      comment: lambda do |value|
-        ::OctridevGithub::WebhooksReviewComment.from_hash(value)
-      end,
-      enterprise: lambda do |value|
-        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-      end,
-      installation: lambda do |value|
-        ::OctridevGithub::SimpleInstallation.from_hash(value)
-      end,
-      organization: lambda do |value|
-        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-      end,
-      pull_request: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestReviewCommentEditedPullRequest.from_hash(value)
-      end,
-      repository: lambda do |value|
-        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-      end,
-      sender: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end
-    }.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPullRequestReviewCommentEditedPullRequestMetadata::NULLABLE_FIELDS)
   end
 
-  # API model for WebhookPullRequestReviewCommentEdited.
-  # Typed representation of the `WebhookPullRequestReviewCommentEdited` API schema.
-  class WebhookPullRequestReviewCommentEdited
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookPullRequestReviewCommentEditedMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewCommentEditedMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookPullRequestReviewCommentEditedMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [WebhookPullRequestReviewCommentEditedAction] Required enumerated value serialized in the `action` wire field.
-    attr_reader :action
-    # @return [WebhooksChanges] The changes to the comment.
-    attr_reader :changes
-    # @return [WebhooksReviewComment] The comment itself.
-    attr_reader :comment
-    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-    attr_reader :enterprise
-    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-    attr_reader :installation
-    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-    attr_reader :organization
-    # @return [WebhookPullRequestReviewCommentEditedPullRequest] Required object value serialized in the `pull_request` wire field.
-    attr_reader :pull_request
-    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-    attr_reader :repository
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :sender
+# Internal model hydration metadata.
+class SdkInternalWebhookPullRequestReviewCommentEditedMetadata
+  FIELDS = {
+    action: "action",
+    changes: "changes",
+    comment: "comment",
+    enterprise: "enterprise",
+    installation: "installation",
+    organization: "organization",
+    pull_request: "pull_request",
+    repository: "repository",
+    sender: "sender",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    action
+    changes
+    comment
+    pull_request
+    repository
+    sender
+  ].freeze
+  DECODERS = {
+    action: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestReviewCommentEditedAction.from_value(value)
+    end,
+    changes: lambda do |value|
+      ::OctridevGithub::WebhooksChanges.from_hash(value)
+    end,
+    comment: lambda do |value|
+      ::OctridevGithub::WebhooksReviewComment.from_hash(value)
+    end,
+    enterprise: lambda do |value|
+      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+    end,
+    installation: lambda do |value|
+      ::OctridevGithub::SimpleInstallation.from_hash(value)
+    end,
+    organization: lambda do |value|
+      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+    end,
+    pull_request: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestReviewCommentEditedPullRequest.from_hash(value)
+    end,
+    repository: lambda do |value|
+      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+    end,
+    sender: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+  }.freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for WebhookPullRequestReviewCommentEdited.
+# Typed representation of the `WebhookPullRequestReviewCommentEdited` API schema.
+class WebhookPullRequestReviewCommentEdited
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookPullRequestReviewCommentEditedMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewCommentEditedMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookPullRequestReviewCommentEditedMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+  # @return [WebhookPullRequestReviewCommentEditedAction] Required enumerated value serialized in the `action` wire field.
+  attr_reader :action
+  # @return [WebhooksChanges] The changes to the comment.
+  attr_reader :changes
+  # @return [WebhooksReviewComment] The comment itself.
+  attr_reader :comment
+  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+  attr_reader :enterprise
+  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+  attr_reader :installation
+  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+  attr_reader :organization
+  # @return [WebhookPullRequestReviewCommentEditedPullRequest] Required object value serialized in the `pull_request` wire field.
+  attr_reader :pull_request
+  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+  attr_reader :repository
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :sender
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the WebhookPullRequestReviewCommentEditedAction SDK namespace.
-  module WebhookPullRequestReviewCommentEditedAction
-    EDITED = 'edited'
-    VALUES = ['edited'].freeze
-    def self.from_value(value)
-      value
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason
-    RESOLVED = 'resolved'
-    OFF_TOPIC = 'off-topic'
-    TOO_HEATED = 'too heated'
-    SPAM = 'spam'
-    VALUES = ['resolved', 'off-topic', 'too heated', 'spam'].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestAssigneeType SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestAssigneeType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentEditedAction SDK namespace.
+module WebhookPullRequestReviewCommentEditedAction
+  EDITED = 'edited'
+  VALUES = ['edited'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestAssigneesItemType SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestAssigneesItemType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason
+  RESOLVED = 'resolved'
+  OFF_TOPIC = 'off-topic'
+  TOO_HEATED = 'too heated'
+  SPAM = 'spam'
+  VALUES = ['resolved', 'off-topic', 'too heated', 'spam'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation
-    COLLABORATOR = 'COLLABORATOR'
-    CONTRIBUTOR = 'CONTRIBUTOR'
-    FIRST_TIMER = 'FIRST_TIMER'
-    FIRST_TIME_CONTRIBUTOR = 'FIRST_TIME_CONTRIBUTOR'
-    MANNEQUIN = 'MANNEQUIN'
-    MEMBER = 'MEMBER'
-    NONE = 'NONE'
-    OWNER = 'OWNER'
-    VALUES = %w[
-      COLLABORATOR CONTRIBUTOR FIRST_TIMER FIRST_TIME_CONTRIBUTOR MANNEQUIN MEMBER
-      NONE OWNER
-    ].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestAssigneeType SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestAssigneeType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestAutoMergeEnabledByType SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestAutoMergeEnabledByType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestAssigneesItemType SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestAssigneesItemType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestAutoMergeMergeMethod SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestAutoMergeMergeMethod
-    MERGE = 'merge'
-    SQUASH = 'squash'
-    REBASE = 'rebase'
-    VALUES = %w[merge squash rebase].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation
+  COLLABORATOR = 'COLLABORATOR'
+  CONTRIBUTOR = 'CONTRIBUTOR'
+  FIRST_TIMER = 'FIRST_TIMER'
+  FIRST_TIME_CONTRIBUTOR = 'FIRST_TIME_CONTRIBUTOR'
+  MANNEQUIN = 'MANNEQUIN'
+  MEMBER = 'MEMBER'
+  NONE = 'NONE'
+  OWNER = 'OWNER'
+  VALUES = [
+    'COLLABORATOR', 'CONTRIBUTOR', 'FIRST_TIMER', 'FIRST_TIME_CONTRIBUTOR', 'MANNEQUIN', 'MEMBER',
+    'NONE', 'OWNER'
+  ].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestBaseRepoMergeXb4325773ba SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestBaseRepoMergeXb4325773ba
-    PR_BODY = 'PR_BODY'
-    PR_TITLE = 'PR_TITLE'
-    BLANK = 'BLANK'
-    VALUES = %w[PR_BODY PR_TITLE BLANK].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestAutoMergeEnabledByType SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestAutoMergeEnabledByType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestBaseRepoMergeCommitTitle SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestBaseRepoMergeCommitTitle
-    PR_TITLE = 'PR_TITLE'
-    MERGE_MESSAGE = 'MERGE_MESSAGE'
-    VALUES = %w[PR_TITLE MERGE_MESSAGE].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestAutoMergeMergeMethod SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestAutoMergeMergeMethod
+  MERGE = 'merge'
+  SQUASH = 'squash'
+  REBASE = 'rebase'
+  VALUES = ['merge', 'squash', 'rebase'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestBaseRepoOwnerType SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestBaseRepoOwnerType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestBaseRepoMergeXb4325773ba SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestBaseRepoMergeXb4325773ba
+  PR_BODY = 'PR_BODY'
+  PR_TITLE = 'PR_TITLE'
+  BLANK = 'BLANK'
+  VALUES = ['PR_BODY', 'PR_TITLE', 'BLANK'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestBaseRepoPullRX44e5355846 SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestBaseRepoPullRX44e5355846
-    ALL = 'all'
-    COLLABORATORS_ONLY = 'collaborators_only'
-    VALUES = %w[all collaborators_only].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestBaseRepoMergeCommitTitle SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestBaseRepoMergeCommitTitle
+  PR_TITLE = 'PR_TITLE'
+  MERGE_MESSAGE = 'MERGE_MESSAGE'
+  VALUES = ['PR_TITLE', 'MERGE_MESSAGE'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestBaseRepoSquasXdd22fe6c63 SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestBaseRepoSquasXdd22fe6c63
-    PR_BODY = 'PR_BODY'
-    COMMIT_MESSAGES = 'COMMIT_MESSAGES'
-    BLANK = 'BLANK'
-    VALUES = %w[PR_BODY COMMIT_MESSAGES BLANK].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestBaseRepoOwnerType SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestBaseRepoOwnerType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestBaseRepoSquasX716908b9d6 SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestBaseRepoSquasX716908b9d6
-    PR_TITLE = 'PR_TITLE'
-    COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
-    VALUES = %w[PR_TITLE COMMIT_OR_PR_TITLE].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestBaseRepoPullRX44e5355846 SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestBaseRepoPullRX44e5355846
+  ALL = 'all'
+  COLLABORATORS_ONLY = 'collaborators_only'
+  VALUES = ['all', 'collaborators_only'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestBaseRepoVisibility SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestBaseRepoVisibility
-    PUBLIC = 'public'
-    PRIVATE = 'private'
-    INTERNAL = 'internal'
-    VALUES = %w[public private internal].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestBaseRepoSquasXdd22fe6c63 SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestBaseRepoSquasXdd22fe6c63
+  PR_BODY = 'PR_BODY'
+  COMMIT_MESSAGES = 'COMMIT_MESSAGES'
+  BLANK = 'BLANK'
+  VALUES = ['PR_BODY', 'COMMIT_MESSAGES', 'BLANK'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestBaseUserType SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestBaseUserType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestBaseRepoSquasX716908b9d6 SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestBaseRepoSquasX716908b9d6
+  PR_TITLE = 'PR_TITLE'
+  COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
+  VALUES = ['PR_TITLE', 'COMMIT_OR_PR_TITLE'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestHeadRepoMergeX18634d2765 SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestHeadRepoMergeX18634d2765
-    PR_BODY = 'PR_BODY'
-    PR_TITLE = 'PR_TITLE'
-    BLANK = 'BLANK'
-    VALUES = %w[PR_BODY PR_TITLE BLANK].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestBaseRepoVisibility SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestBaseRepoVisibility
+  PUBLIC = 'public'
+  PRIVATE = 'private'
+  INTERNAL = 'internal'
+  VALUES = ['public', 'private', 'internal'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestHeadRepoMergeCommitTitle SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestHeadRepoMergeCommitTitle
-    PR_TITLE = 'PR_TITLE'
-    MERGE_MESSAGE = 'MERGE_MESSAGE'
-    VALUES = %w[PR_TITLE MERGE_MESSAGE].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestBaseUserType SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestBaseUserType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestHeadRepoOwnerType SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestHeadRepoOwnerType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestHeadRepoMergeX18634d2765 SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestHeadRepoMergeX18634d2765
+  PR_BODY = 'PR_BODY'
+  PR_TITLE = 'PR_TITLE'
+  BLANK = 'BLANK'
+  VALUES = ['PR_BODY', 'PR_TITLE', 'BLANK'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestHeadRepoPullRX71b88095d7 SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestHeadRepoPullRX71b88095d7
-    ALL = 'all'
-    COLLABORATORS_ONLY = 'collaborators_only'
-    VALUES = %w[all collaborators_only].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestHeadRepoMergeCommitTitle SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestHeadRepoMergeCommitTitle
+  PR_TITLE = 'PR_TITLE'
+  MERGE_MESSAGE = 'MERGE_MESSAGE'
+  VALUES = ['PR_TITLE', 'MERGE_MESSAGE'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestHeadRepoSquasX7636d27daa SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestHeadRepoSquasX7636d27daa
-    PR_BODY = 'PR_BODY'
-    COMMIT_MESSAGES = 'COMMIT_MESSAGES'
-    BLANK = 'BLANK'
-    VALUES = %w[PR_BODY COMMIT_MESSAGES BLANK].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestHeadRepoOwnerType SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestHeadRepoOwnerType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestHeadRepoSquasX120b6c95f5 SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestHeadRepoSquasX120b6c95f5
-    PR_TITLE = 'PR_TITLE'
-    COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
-    VALUES = %w[PR_TITLE COMMIT_OR_PR_TITLE].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestHeadRepoPullRX71b88095d7 SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestHeadRepoPullRX71b88095d7
+  ALL = 'all'
+  COLLABORATORS_ONLY = 'collaborators_only'
+  VALUES = ['all', 'collaborators_only'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestHeadRepoVisibility SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestHeadRepoVisibility
-    PUBLIC = 'public'
-    PRIVATE = 'private'
-    INTERNAL = 'internal'
-    VALUES = %w[public private internal].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestHeadRepoSquasX7636d27daa SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestHeadRepoSquasX7636d27daa
+  PR_BODY = 'PR_BODY'
+  COMMIT_MESSAGES = 'COMMIT_MESSAGES'
+  BLANK = 'BLANK'
+  VALUES = ['PR_BODY', 'COMMIT_MESSAGES', 'BLANK'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestHeadUserType SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestHeadUserType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestHeadRepoSquasX120b6c95f5 SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestHeadRepoSquasX120b6c95f5
+  PR_TITLE = 'PR_TITLE'
+  COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
+  VALUES = ['PR_TITLE', 'COMMIT_OR_PR_TITLE'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestMilestoneCreatorType SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestMilestoneCreatorType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    MANNEQUIN = 'Mannequin'
-    VALUES = %w[Bot User Organization Mannequin].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestHeadRepoVisibility SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestHeadRepoVisibility
+  PUBLIC = 'public'
+  PRIVATE = 'private'
+  INTERNAL = 'internal'
+  VALUES = ['public', 'private', 'internal'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestMilestoneState SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestMilestoneState
-    OPEN = 'open'
-    CLOSED = 'closed'
-    VALUES = %w[open closed].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestHeadUserType SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestHeadUserType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestRequestedTeamX0444249073 SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestRequestedTeamX0444249073
-    OPEN = 'open'
-    CLOSED = 'closed'
-    SECRET = 'secret'
-    VALUES = %w[open closed secret].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestMilestoneCreatorType SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestMilestoneCreatorType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  MANNEQUIN = 'Mannequin'
+  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestRequestedTeamXcf65557666 SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestRequestedTeamXcf65557666
-    OPEN = 'open'
-    CLOSED = 'closed'
-    SECRET = 'secret'
-    VALUES = %w[open closed secret].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestMilestoneState SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestMilestoneState
+  OPEN = 'open'
+  CLOSED = 'closed'
+  VALUES = ['open', 'closed'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestState SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestState
-    OPEN = 'open'
-    CLOSED = 'closed'
-    VALUES = %w[open closed].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestRequestedTeamX0444249073 SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestRequestedTeamX0444249073
+  OPEN = 'open'
+  CLOSED = 'closed'
+  SECRET = 'secret'
+  VALUES = ['open', 'closed', 'secret'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewCommentEditedPullRequestUserType SDK namespace.
-  module WebhookPullRequestReviewCommentEditedPullRequestUserType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    MANNEQUIN = 'Mannequin'
-    VALUES = %w[Bot User Organization Mannequin].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestRequestedTeamXcf65557666 SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestRequestedTeamXcf65557666
+  OPEN = 'open'
+  CLOSED = 'closed'
+  SECRET = 'secret'
+  VALUES = ['open', 'closed', 'secret'].freeze
+  def self.from_value(value)
+    value
   end
+end
+
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestState SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestState
+  OPEN = 'open'
+  CLOSED = 'closed'
+  VALUES = ['open', 'closed'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhookPullRequestReviewCommentEditedPullRequestUserType SDK namespace.
+module WebhookPullRequestReviewCommentEditedPullRequestUserType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  MANNEQUIN = 'Mannequin'
+  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

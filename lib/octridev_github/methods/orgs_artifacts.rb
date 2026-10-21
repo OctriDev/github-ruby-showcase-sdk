@@ -53,6 +53,7 @@ module OctridevGithub
         return_records: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_length('name', name, min: 1, max: 256)
 
         Validation.validate_length('digest', digest, min: 71, max: 71)
@@ -80,9 +81,9 @@ module OctridevGithub
         SdkClient.request(
           'POST',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/artifacts/metadata/deployment-record'
+            "/artifacts/metadata/deployment-record"
           ].join,
           config: config,
           body: {
@@ -97,13 +98,13 @@ module OctridevGithub
             'tags' => tags,
             'runtime_risks' => runtime_risks,
             'github_repository' => github_repository,
-            'return_records' => return_records
+            'return_records' => return_records,
           },
           return_type: ::OctridevGithub::Methods::Orgs::OrgsCreateArtifactDeploymentRecordResponse,
           decoder: :json,
           operation_id: 'orgs_create_artifact_deployment_record',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -134,6 +135,7 @@ module OctridevGithub
         return_records: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_length('cluster', cluster, min: 1, max: 128)
         Validation.validate_pattern('cluster', cluster, '^[a-zA-Z0-9._-]+$')
 
@@ -148,9 +150,9 @@ module OctridevGithub
         SdkClient.request(
           'POST',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/artifacts/metadata/deployment-record/cluster/',
+            "/artifacts/metadata/deployment-record/cluster/",
             SdkClient.encode_path_segment(cluster)
           ].join,
           config: config,
@@ -159,13 +161,13 @@ module OctridevGithub
             'deployments' => deployments,
             'physical_environment' => physical_environment,
             'partial_success' => partial_success,
-            'return_records' => return_records
+            'return_records' => return_records,
           },
           return_type: ::OctridevGithub::Methods::Orgs::OrgsSetClusterDeploymentRecordsResponse,
           decoder: :json,
           operation_id: 'orgs_set_cluster_deployment_records',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -185,6 +187,7 @@ module OctridevGithub
         physical_environment: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_length('cluster', cluster, min: 1, max: 128)
         Validation.validate_pattern('cluster', cluster, '^[a-zA-Z0-9._-]+$')
 
@@ -199,23 +202,23 @@ module OctridevGithub
         SdkClient.request(
           'POST',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/artifacts/metadata/deployment-record/cluster/',
+            "/artifacts/metadata/deployment-record/cluster/",
             SdkClient.encode_path_segment(cluster),
-            '/jobs'
+            "/jobs"
           ].join,
           config: config,
           body: {
             'logical_environment' => logical_environment,
             'deployments' => deployments,
-            'physical_environment' => physical_environment
+            'physical_environment' => physical_environment,
           },
           return_type: ::OctridevGithub::Methods::Orgs::OrgsCreateClusterDeploymentRecordsJobResponse,
           decoder: :json,
           operation_id: 'orgs_create_cluster_deployment_records_job',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError }
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -231,17 +234,18 @@ module OctridevGithub
         job_id:,
         request_options: nil
       )
+
         Validation.validate_length('cluster', cluster, min: 1, max: 128)
         Validation.validate_pattern('cluster', cluster, '^[a-zA-Z0-9._-]+$')
 
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/artifacts/metadata/deployment-record/cluster/',
+            "/artifacts/metadata/deployment-record/cluster/",
             SdkClient.encode_path_segment(cluster),
-            '/jobs/',
+            "/jobs/",
             SdkClient.encode_path_segment(job_id)
           ].join,
           config: config,
@@ -249,7 +253,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'orgs_get_cluster_deployment_records_job',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -289,6 +293,7 @@ module OctridevGithub
         return_records: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_length('name', name, min: 1, max: 256)
 
         Validation.validate_length('digest', digest, min: 71, max: 71)
@@ -321,9 +326,9 @@ module OctridevGithub
         SdkClient.request(
           'POST',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/artifacts/metadata/storage-record'
+            "/artifacts/metadata/storage-record"
           ].join,
           config: config,
           body: {
@@ -336,13 +341,13 @@ module OctridevGithub
             'repository' => repository,
             'status' => status,
             'github_repository' => github_repository,
-            'return_records' => return_records
+            'return_records' => return_records,
           },
           return_type: ::OctridevGithub::Methods::Orgs::OrgsCreateArtifactStorageRecordResponse,
           decoder: :json,
           operation_id: 'orgs_create_artifact_storage_record',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -357,23 +362,24 @@ module OctridevGithub
         subject_digest:,
         request_options: nil
       )
+
         Validation.validate_length('subject_digest', subject_digest, min: 71, max: 71)
         Validation.validate_pattern('subject_digest', subject_digest, '^sha256:[a-f0-9]{64}$')
 
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/artifacts/',
+            "/artifacts/",
             SdkClient.encode_path_segment(subject_digest),
-            '/metadata/deployment-records'
+            "/metadata/deployment-records"
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::Orgs::OrgsListArtifactDeploymentRecordsResponse,
           decoder: :json,
           operation_id: 'orgs_list_artifact_deployment_records',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -388,23 +394,24 @@ module OctridevGithub
         subject_digest:,
         request_options: nil
       )
+
         Validation.validate_length('subject_digest', subject_digest, min: 71, max: 71)
         Validation.validate_pattern('subject_digest', subject_digest, '^sha256:[a-f0-9]{64}$')
 
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/artifacts/',
+            "/artifacts/",
             SdkClient.encode_path_segment(subject_digest),
-            '/metadata/storage-records'
+            "/metadata/storage-records"
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::Orgs::OrgsListArtifactStorageRecordsResponse,
           decoder: :json,
           operation_id: 'orgs_list_artifact_storage_records',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

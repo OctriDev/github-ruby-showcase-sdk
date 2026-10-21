@@ -89,18 +89,18 @@ module OctridevGithub
         is_template: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
-          '/user/repos',
+          "/user/repos",
           config: config,
           body: __sdk_body_repos_create_for_authenticated_user_part1(name: name, description: description, homepage: homepage, private: private, has_issues: has_issues, has_projects: has_projects, has_wiki: has_wiki, has_discussions: has_discussions, team_id: team_id, auto_init: auto_init, gitignore_template: gitignore_template, license_template: license_template, allow_squash_merge: allow_squash_merge, allow_merge_commit: allow_merge_commit, allow_rebase_merge: allow_rebase_merge, allow_auto_merge: allow_auto_merge, delete_branch_on_merge: delete_branch_on_merge, squash_merge_commit_title: squash_merge_commit_title).merge(
-            __sdk_body_repos_create_for_authenticated_user_part2(squash_merge_commit_message: squash_merge_commit_message, merge_commit_title: merge_commit_title, merge_commit_message: merge_commit_message, has_downloads: has_downloads, is_template: is_template)
-          ),
+            __sdk_body_repos_create_for_authenticated_user_part2(squash_merge_commit_message: squash_merge_commit_message, merge_commit_title: merge_commit_title, merge_commit_message: merge_commit_message, has_downloads: has_downloads, is_template: is_template)),
           return_type: ::OctridevGithub::FullRepository,
           decoder: :json,
           operation_id: 'repos_create_for_authenticated_user',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '400' => ::OctridevGithub::BasicError, '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -142,7 +142,7 @@ module OctridevGithub
           'allow_rebase_merge' => allow_rebase_merge,
           'allow_auto_merge' => allow_auto_merge,
           'delete_branch_on_merge' => delete_branch_on_merge,
-          'squash_merge_commit_title' => squash_merge_commit_title
+          'squash_merge_commit_title' => squash_merge_commit_title,
         }
       end
       private_class_method :__sdk_body_repos_create_for_authenticated_user_part1
@@ -159,7 +159,7 @@ module OctridevGithub
           'merge_commit_title' => merge_commit_title,
           'merge_commit_message' => merge_commit_message,
           'has_downloads' => has_downloads,
-          'is_template' => is_template
+          'is_template' => is_template,
         }
       end
       private_class_method :__sdk_body_repos_create_for_authenticated_user_part2

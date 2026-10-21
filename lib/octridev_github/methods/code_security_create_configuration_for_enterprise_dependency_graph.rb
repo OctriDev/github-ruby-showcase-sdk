@@ -14,7 +14,7 @@ module OctridevGithub
         ENABLED = 'enabled'
         DISABLED = 'disabled'
         NOT_SET = 'not_set'
-        VALUES = %w[enabled disabled not_set].freeze
+        VALUES = ['enabled', 'disabled', 'not_set'].freeze
         def self.from_value(value)
           value
         end
@@ -25,7 +25,7 @@ module OctridevGithub
         ENABLED = 'enabled'
         DISABLED = 'disabled'
         NOT_SET = 'not_set'
-        VALUES = %w[enabled disabled not_set].freeze
+        VALUES = ['enabled', 'disabled', 'not_set'].freeze
         def self.from_value(value)
           value
         end

@@ -31,27 +31,28 @@ module OctridevGithub
         comment:,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/actions/runs/',
+            "/actions/runs/",
             SdkClient.encode_path_segment(run_id),
-            '/pending_deployments'
+            "/pending_deployments"
           ].join,
           config: config,
           body: {
             'environment_ids' => environment_ids,
             'state' => state,
-            'comment' => comment
+            'comment' => comment,
           },
           return_type: [::OctridevGithub::Deployment],
           decoder: :json,
           operation_id: 'actions_review_pending_deployments_for_run',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

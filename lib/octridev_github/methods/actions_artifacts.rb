@@ -30,25 +30,26 @@ module OctridevGithub
         name: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/actions/artifacts'
+            "/actions/artifacts"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'page' => QueryValue.new(page, style: 'form', explode: true),
-            'name' => QueryValue.new(name, style: 'form', explode: true)
+            'name' => QueryValue.new(name, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::Methods::Actions::ActionsListArtifactsForRepoResponse,
           decoder: :json,
           operation_id: 'actions_list_artifacts_for_repo',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -66,21 +67,22 @@ module OctridevGithub
         artifact_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/actions/artifacts/',
+            "/actions/artifacts/",
             SdkClient.encode_path_segment(artifact_id)
           ].join,
           config: config,
           return_type: ::OctridevGithub::Artifact,
           decoder: :json,
           operation_id: 'actions_get_artifact',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -98,20 +100,21 @@ module OctridevGithub
         artifact_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/actions/artifacts/',
+            "/actions/artifacts/",
             SdkClient.encode_path_segment(artifact_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'actions_delete_artifact',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -132,23 +135,24 @@ module OctridevGithub
         archive_format:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/actions/artifacts/',
+            "/actions/artifacts/",
             SdkClient.encode_path_segment(artifact_id),
-            '/',
+            "/",
             SdkClient.encode_path_segment(archive_format)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'actions_download_artifact',
           request_options: request_options,
-          errors: { '410' => ::OctridevGithub::BasicError }
+          errors: { '410' => ::OctridevGithub::BasicError },
         ).data
       end
     end

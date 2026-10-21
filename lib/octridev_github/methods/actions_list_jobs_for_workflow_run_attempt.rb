@@ -31,29 +31,30 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/actions/runs/',
+            "/actions/runs/",
             SdkClient.encode_path_segment(run_id),
-            '/attempts/',
+            "/attempts/",
             SdkClient.encode_path_segment(attempt_number),
-            '/jobs'
+            "/jobs"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::Methods::Actions::ActionsListJobsForWorkflowRunAttemptResponse,
           decoder: :json,
           operation_id: 'actions_list_jobs_for_workflow_run_attempt',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

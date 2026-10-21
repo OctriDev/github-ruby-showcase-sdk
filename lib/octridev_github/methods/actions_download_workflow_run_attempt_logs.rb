@@ -25,23 +25,24 @@ module OctridevGithub
         attempt_number:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/actions/runs/',
+            "/actions/runs/",
             SdkClient.encode_path_segment(run_id),
-            '/attempts/',
+            "/attempts/",
             SdkClient.encode_path_segment(attempt_number),
-            '/logs'
+            "/logs"
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'actions_download_workflow_run_attempt_logs',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

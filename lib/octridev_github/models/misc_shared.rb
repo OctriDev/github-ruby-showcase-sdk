@@ -5,675 +5,685 @@
 
 # misc domain models
 module OctridevGithub
-  # Defines the CampaignAlertType SDK namespace.
-  module CampaignAlertType
-    CODE_SCANNING = 'code_scanning'
-    SECRET_SCANNING = 'secret_scanning'
-    VALUES = %w[code_scanning secret_scanning].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the CampaignAlertType SDK namespace.
+module CampaignAlertType
+  CODE_SCANNING = 'code_scanning'
+  SECRET_SCANNING = 'secret_scanning'
+  VALUES = ['code_scanning', 'secret_scanning'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalCheckRunWithSimpleCheckSuiteOutputMetadata
+  FIELDS = {
+    annotations_count: "annotations_count",
+    annotations_url: "annotations_url",
+    summary: "summary",
+    text: "text",
+    title: "title",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    annotations_count
+    annotations_url
+    summary
+    text
+    title
+  ].freeze
+  DECODERS = {
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    summary
+    text
+    title
+  ].freeze
+end
+
+# API model for CheckRunWithSimpleCheckSuiteOutput.
+# Required object value serialized in the `output` wire field.
+class CheckRunWithSimpleCheckSuiteOutput
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalCheckRunWithSimpleCheckSuiteOutputMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalCheckRunWithSimpleCheckSuiteOutputMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalCheckRunWithSimpleCheckSuiteOutputMetadata::DECODERS
+
+  # @return [Integer] Required `integer` value serialized in the `annotations_count` wire field.
+  attr_reader :annotations_count
+  # @return [String] Required `uri`-formatted value serialized in the `annotations_url` wire field.
+  attr_reader :annotations_url
+  # @return [String] Required `string` value serialized in the `summary` wire field.
+  attr_reader :summary
+  # @return [String] Required `string` value serialized in the `text` wire field.
+  attr_reader :text
+  # @return [String] Required `string` value serialized in the `title` wire field.
+  attr_reader :title
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalCheckRunWithSimpleCheckSuiteOutputMetadata
-    FIELDS = {
-      annotations_count: 'annotations_count',
-      annotations_url: 'annotations_url',
-      summary: 'summary',
-      text: 'text',
-      title: 'title'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      annotations_count
-      annotations_url
-      summary
-      text
-      title
-    ].freeze
-    DECODERS = {}.freeze
-    NULLABLE_FIELDS = %i[
-      summary
-      text
-      title
-    ].freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalCheckRunWithSimpleCheckSuiteOutputMetadata::NULLABLE_FIELDS)
   end
 
-  # API model for CheckRunWithSimpleCheckSuiteOutput.
-  # Required object value serialized in the `output` wire field.
-  class CheckRunWithSimpleCheckSuiteOutput
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalCheckRunWithSimpleCheckSuiteOutputMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalCheckRunWithSimpleCheckSuiteOutputMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalCheckRunWithSimpleCheckSuiteOutputMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [Integer] Required `integer` value serialized in the `annotations_count` wire field.
-    attr_reader :annotations_count
-    # @return [String] Required `uri`-formatted value serialized in the `annotations_url` wire field.
-    attr_reader :annotations_url
-    # @return [String] Required `string` value serialized in the `summary` wire field.
-    attr_reader :summary
-    # @return [String] Required `string` value serialized in the `text` wire field.
-    attr_reader :text
-    # @return [String] Required `string` value serialized in the `title` wire field.
-    attr_reader :title
+# Internal model hydration metadata.
+class SdkInternalCheckRunWithSimpleCheckSuiteMetadata
+  FIELDS = {
+    app: "app",
+    check_suite: "check_suite",
+    completed_at: "completed_at",
+    conclusion: "conclusion",
+    deployment: "deployment",
+    details_url: "details_url",
+    external_id: "external_id",
+    head_sha: "head_sha",
+    html_url: "html_url",
+    id: "id",
+    name: "name",
+    node_id: "node_id",
+    output: "output",
+    pull_requests: "pull_requests",
+    started_at: "started_at",
+    status: "status",
+    url: "url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    app
+    check_suite
+    completed_at
+    conclusion
+    details_url
+    external_id
+    head_sha
+    html_url
+    id
+    name
+    node_id
+    output
+    pull_requests
+    started_at
+    status
+    url
+  ].freeze
+  DECODERS = {
+    app: lambda do |value|
+      ::OctridevGithub::Integration.from_hash(value)
+    end,
+    check_suite: lambda do |value|
+      ::OctridevGithub::SimpleCheckSuite.from_hash(value)
+    end,
+    conclusion: lambda do |value|
+      ::OctridevGithub::CheckRunWithSimpleCheckSuiteConclusion.from_value(value)
+    end,
+    deployment: lambda do |value|
+      ::OctridevGithub::DeploymentSimple.from_hash(value)
+    end,
+    output: lambda do |value|
+      ::OctridevGithub::CheckRunWithSimpleCheckSuiteOutput.from_hash(value)
+    end,
+    pull_requests: lambda do |value|
+      value&.map { |item| ::OctridevGithub::PullRequestMinimal.from_hash(item) }
+    end,
+    status: lambda do |value|
+      ::OctridevGithub::CheckRunWithSimpleCheckSuiteStatus.from_value(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    app
+    completed_at
+    conclusion
+  ].freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for CheckRunWithSimpleCheckSuite.
+# A check performed on the code of a given code change
+class CheckRunWithSimpleCheckSuite
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalCheckRunWithSimpleCheckSuiteMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalCheckRunWithSimpleCheckSuiteMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalCheckRunWithSimpleCheckSuiteMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalCheckRunWithSimpleCheckSuiteOutputMetadata::NULLABLE_FIELDS)
-    end
+  # @return [Integration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+  attr_reader :app
+  # @return [SimpleCheckSuite] A suite of checks performed on the code of a given code change
+  attr_reader :check_suite
+  # @return [String] Required `date-time`-formatted value serialized in the `completed_at` wire field.
+  attr_reader :completed_at
+  # @return [CheckRunWithSimpleCheckSuiteConclusion] Required enumerated value serialized in the `conclusion` wire field.
+  attr_reader :conclusion
+  # @return [DeploymentSimple] A deployment created as the result of an Actions check run from a workflow that references an environment
+  attr_reader :deployment
+  # @return [String] Required `string` value serialized in the `details_url` wire field.
+  attr_reader :details_url
+  # @return [String] Required `string` value serialized in the `external_id` wire field.
+  attr_reader :external_id
+  # @return [String] The SHA of the commit that is being checked.
+  attr_reader :head_sha
+  # @return [String] Required `string` value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [Integer] The id of the check.
+  attr_reader :id
+  # @return [String] The name of the check.
+  attr_reader :name
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [CheckRunWithSimpleCheckSuiteOutput] Required object value serialized in the `output` wire field.
+  attr_reader :output
+  # @return [Array_of_PullRequestMinimal] Required array value serialized in the `pull_requests` wire field.
+  attr_reader :pull_requests
+  # @return [String] Required `date-time`-formatted value serialized in the `started_at` wire field.
+  attr_reader :started_at
+  # @return [CheckRunWithSimpleCheckSuiteStatus] The phase of the lifecycle that the check is currently in.
+  attr_reader :status
+  # @return [String] Required `string` value serialized in the `url` wire field.
+  attr_reader :url
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalCheckRunWithSimpleCheckSuiteMetadata
-    FIELDS = {
-      app: 'app',
-      check_suite: 'check_suite',
-      completed_at: 'completed_at',
-      conclusion: 'conclusion',
-      deployment: 'deployment',
-      details_url: 'details_url',
-      external_id: 'external_id',
-      head_sha: 'head_sha',
-      html_url: 'html_url',
-      id: 'id',
-      name: 'name',
-      node_id: 'node_id',
-      output: 'output',
-      pull_requests: 'pull_requests',
-      started_at: 'started_at',
-      status: 'status',
-      url: 'url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      app
-      check_suite
-      completed_at
-      conclusion
-      details_url
-      external_id
-      head_sha
-      html_url
-      id
-      name
-      node_id
-      output
-      pull_requests
-      started_at
-      status
-      url
-    ].freeze
-    DECODERS = {
-      app: lambda do |value|
-        ::OctridevGithub::Integration.from_hash(value)
-      end,
-      check_suite: lambda do |value|
-        ::OctridevGithub::SimpleCheckSuite.from_hash(value)
-      end,
-      conclusion: lambda do |value|
-        ::OctridevGithub::CheckRunWithSimpleCheckSuiteConclusion.from_value(value)
-      end,
-      deployment: lambda do |value|
-        ::OctridevGithub::DeploymentSimple.from_hash(value)
-      end,
-      output: lambda do |value|
-        ::OctridevGithub::CheckRunWithSimpleCheckSuiteOutput.from_hash(value)
-      end,
-      pull_requests: lambda do |value|
-        value&.map { |item| ::OctridevGithub::PullRequestMinimal.from_hash(item) }
-      end,
-      status: lambda do |value|
-        ::OctridevGithub::CheckRunWithSimpleCheckSuiteStatus.from_value(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      app
-      completed_at
-      conclusion
-    ].freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalCheckRunWithSimpleCheckSuiteMetadata::NULLABLE_FIELDS)
   end
 
-  # API model for CheckRunWithSimpleCheckSuite.
-  # A check performed on the code of a given code change
-  class CheckRunWithSimpleCheckSuite
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalCheckRunWithSimpleCheckSuiteMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalCheckRunWithSimpleCheckSuiteMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalCheckRunWithSimpleCheckSuiteMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [Integration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
-    attr_reader :app
-    # @return [SimpleCheckSuite] A suite of checks performed on the code of a given code change
-    attr_reader :check_suite
-    # @return [String] Required `date-time`-formatted value serialized in the `completed_at` wire field.
-    attr_reader :completed_at
-    # @return [CheckRunWithSimpleCheckSuiteConclusion] Required enumerated value serialized in the `conclusion` wire field.
-    attr_reader :conclusion
-    # @return [DeploymentSimple] A deployment created as the result of an Actions check run from a workflow that references an environment
-    attr_reader :deployment
-    # @return [String] Required `string` value serialized in the `details_url` wire field.
-    attr_reader :details_url
-    # @return [String] Required `string` value serialized in the `external_id` wire field.
-    attr_reader :external_id
-    # @return [String] The SHA of the commit that is being checked.
-    attr_reader :head_sha
-    # @return [String] Required `string` value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [Integer] The id of the check.
-    attr_reader :id
-    # @return [String] The name of the check.
-    attr_reader :name
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [CheckRunWithSimpleCheckSuiteOutput] Required object value serialized in the `output` wire field.
-    attr_reader :output
-    # @return [Array_of_PullRequestMinimal] Required array value serialized in the `pull_requests` wire field.
-    attr_reader :pull_requests
-    # @return [String] Required `date-time`-formatted value serialized in the `started_at` wire field.
-    attr_reader :started_at
-    # @return [CheckRunWithSimpleCheckSuiteStatus] The phase of the lifecycle that the check is currently in.
-    attr_reader :status
-    # @return [String] Required `string` value serialized in the `url` wire field.
-    attr_reader :url
+# Defines the CheckRunWithSimpleCheckSuiteConclusion SDK namespace.
+module CheckRunWithSimpleCheckSuiteConclusion
+  WAITING = 'waiting'
+  PENDING = 'pending'
+  STARTUP_FAILURE = 'startup_failure'
+  STALE = 'stale'
+  SUCCESS = 'success'
+  FAILURE = 'failure'
+  NEUTRAL = 'neutral'
+  CANCELLED = 'cancelled'
+  SKIPPED = 'skipped'
+  TIMED_OUT = 'timed_out'
+  ACTION_REQUIRED = 'action_required'
+  VALUES = [
+    'waiting', 'pending', 'startup_failure', 'stale', 'success', 'failure', 'neutral', 'cancelled',
+    'skipped', 'timed_out', 'action_required'
+  ].freeze
+  def self.from_value(value)
+    value
+  end
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# Defines the CheckRunWithSimpleCheckSuiteStatus SDK namespace.
+module CheckRunWithSimpleCheckSuiteStatus
+  QUEUED = 'queued'
+  IN_PROGRESS = 'in_progress'
+  COMPLETED = 'completed'
+  PENDING = 'pending'
+  VALUES = ['queued', 'in_progress', 'completed', 'pending'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalCheckRunWithSimpleCheckSuiteMetadata::NULLABLE_FIELDS)
-    end
+# Internal model hydration metadata.
+class SdkInternalEnterpriseWebhooksMetadata
+  FIELDS = {
+    description: "description",
+    html_url: "html_url",
+    website_url: "website_url",
+    id: "id",
+    node_id: "node_id",
+    name: "name",
+    slug: "slug",
+    created_at: "created_at",
+    updated_at: "updated_at",
+    avatar_url: "avatar_url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    html_url
+    id
+    node_id
+    name
+    slug
+    created_at
+    updated_at
+    avatar_url
+  ].freeze
+  DECODERS = {
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    created_at
+    updated_at
+  ].freeze
+end
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+# API model for EnterpriseWebhooks.
+# An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+class EnterpriseWebhooks
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalEnterpriseWebhooksMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalEnterpriseWebhooksMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalEnterpriseWebhooksMetadata::DECODERS
+
+  # @return [String] A short description of the enterprise.
+  attr_reader :description
+  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [String] The enterprise's website URL.
+  attr_reader :website_url
+  # @return [Integer] Unique identifier of the enterprise
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] The name of the enterprise.
+  attr_reader :name
+  # @return [String] The slug url identifier for the enterprise.
+  attr_reader :slug
+  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+  attr_reader :updated_at
+  # @return [String] Required `uri`-formatted value serialized in the `avatar_url` wire field.
+  attr_reader :avatar_url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the CheckRunWithSimpleCheckSuiteConclusion SDK namespace.
-  module CheckRunWithSimpleCheckSuiteConclusion
-    WAITING = 'waiting'
-    PENDING = 'pending'
-    STARTUP_FAILURE = 'startup_failure'
-    STALE = 'stale'
-    SUCCESS = 'success'
-    FAILURE = 'failure'
-    NEUTRAL = 'neutral'
-    CANCELLED = 'cancelled'
-    SKIPPED = 'skipped'
-    TIMED_OUT = 'timed_out'
-    ACTION_REQUIRED = 'action_required'
-    VALUES = %w[
-      waiting pending startup_failure stale success failure neutral cancelled
-      skipped timed_out action_required
-    ].freeze
-    def self.from_value(value)
-      value
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalEnterpriseWebhooksMetadata::NULLABLE_FIELDS)
   end
 
-  # Defines the CheckRunWithSimpleCheckSuiteStatus SDK namespace.
-  module CheckRunWithSimpleCheckSuiteStatus
-    QUEUED = 'queued'
-    IN_PROGRESS = 'in_progress'
-    COMPLETED = 'completed'
-    PENDING = 'pending'
-    VALUES = %w[queued in_progress completed pending].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalIssueReferenceIssueTypeMetadata
+  FIELDS = {
+    id: "id",
+    node_id: "node_id",
+    name: "name",
+    color: "color",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    node_id
+    name
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for IssueReferenceIssueType.
+# The type of the referenced issue.
+class IssueReferenceIssueType
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalIssueReferenceIssueTypeMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalIssueReferenceIssueTypeMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalIssueReferenceIssueTypeMetadata::DECODERS
+
+  # @return [Integer] The unique identifier of the issue type.
+  attr_reader :id
+  # @return [String] The node identifier of the issue type.
+  attr_reader :node_id
+  # @return [String] The name of the issue type.
+  attr_reader :name
+  # @return [String] The color of the issue type.
+  attr_reader :color
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalEnterpriseWebhooksMetadata
-    FIELDS = {
-      description: 'description',
-      html_url: 'html_url',
-      website_url: 'website_url',
-      id: 'id',
-      node_id: 'node_id',
-      name: 'name',
-      slug: 'slug',
-      created_at: 'created_at',
-      updated_at: 'updated_at',
-      avatar_url: 'avatar_url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      html_url
-      id
-      node_id
-      name
-      slug
-      created_at
-      updated_at
-      avatar_url
-    ].freeze
-    DECODERS = {}.freeze
-    NULLABLE_FIELDS = %i[
-      created_at
-      updated_at
-    ].freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for EnterpriseWebhooks.
-  # An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-  class EnterpriseWebhooks
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalEnterpriseWebhooksMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalEnterpriseWebhooksMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalEnterpriseWebhooksMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [String] A short description of the enterprise.
-    attr_reader :description
-    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [String] The enterprise's website URL.
-    attr_reader :website_url
-    # @return [Integer] Unique identifier of the enterprise
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] The name of the enterprise.
-    attr_reader :name
-    # @return [String] The slug url identifier for the enterprise.
-    attr_reader :slug
-    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-    attr_reader :updated_at
-    # @return [String] Required `uri`-formatted value serialized in the `avatar_url` wire field.
-    attr_reader :avatar_url
+# Internal model hydration metadata.
+class SdkInternalIssueReferenceMetadata
+  FIELDS = {
+    number: "number",
+    title: "title",
+    state: "state",
+    state_reason: "state_reason",
+    repository: "repository",
+    issue_type: "issue_type",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    number
+    title
+    state
+    repository
+    issue_type
+  ].freeze
+  DECODERS = {
+    repository: lambda do |value|
+      ::OctridevGithub::SimpleRepository.from_hash(value)
+    end,
+    issue_type: lambda do |value|
+      ::OctridevGithub::IssueReferenceIssueType.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    issue_type
+  ].freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for IssueReference.
+# A minimal reference to an issue linked from a timeline event (e.g. sub-issue, parent-issue, or dependency events).
+class IssueReference
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalIssueReferenceMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalIssueReferenceMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalIssueReferenceMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalEnterpriseWebhooksMetadata::NULLABLE_FIELDS)
-    end
+  # @return [Integer] The number of the referenced issue.
+  attr_reader :number
+  # @return [String] The title of the referenced issue.
+  attr_reader :title
+  # @return [String] The state of the referenced issue.
+  attr_reader :state
+  # @return [String] The reason for the referenced issue's state.
+  attr_reader :state_reason
+  # @return [SimpleRepository] A GitHub repository.
+  attr_reader :repository
+  # @return [IssueReferenceIssueType] The type of the referenced issue.
+  attr_reader :issue_type
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalIssueReferenceIssueTypeMetadata
-    FIELDS = {
-      id: 'id',
-      node_id: 'node_id',
-      name: 'name',
-      color: 'color'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      node_id
-      name
-    ].freeze
-    DECODERS = {}.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalIssueReferenceMetadata::NULLABLE_FIELDS)
   end
 
-  # API model for IssueReferenceIssueType.
-  # The type of the referenced issue.
-  class IssueReferenceIssueType
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalIssueReferenceIssueTypeMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalIssueReferenceIssueTypeMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalIssueReferenceIssueTypeMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [Integer] The unique identifier of the issue type.
-    attr_reader :id
-    # @return [String] The node identifier of the issue type.
-    attr_reader :node_id
-    # @return [String] The name of the issue type.
-    attr_reader :name
-    # @return [String] The color of the issue type.
-    attr_reader :color
+# Internal model hydration metadata.
+class SdkInternalMergeGroupMetadata
+  FIELDS = {
+    head_sha: "head_sha",
+    head_ref: "head_ref",
+    base_sha: "base_sha",
+    base_ref: "base_ref",
+    head_commit: "head_commit",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    head_sha
+    head_ref
+    base_sha
+    base_ref
+    head_commit
+  ].freeze
+  DECODERS = {
+    head_commit: lambda do |value|
+      ::OctridevGithub::SimpleCommit.from_hash(value)
+    end,
+  }.freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for MergeGroup.
+# A group of pull requests that the merge queue has grouped together to be merged.
+class MergeGroup
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalMergeGroupMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalMergeGroupMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalMergeGroupMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+  # @return [String] The SHA of the merge group.
+  attr_reader :head_sha
+  # @return [String] The full ref of the merge group.
+  attr_reader :head_ref
+  # @return [String] The SHA of the merge group's parent commit.
+  attr_reader :base_sha
+  # @return [String] The full ref of the branch the merge group will be merged into.
+  attr_reader :base_ref
+  # @return [SimpleCommit] A commit.
+  attr_reader :head_commit
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalIssueReferenceMetadata
-    FIELDS = {
-      number: 'number',
-      title: 'title',
-      state: 'state',
-      state_reason: 'state_reason',
-      repository: 'repository',
-      issue_type: 'issue_type'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      number
-      title
-      state
-      repository
-      issue_type
-    ].freeze
-    DECODERS = {
-      repository: lambda do |value|
-        ::OctridevGithub::SimpleRepository.from_hash(value)
-      end,
-      issue_type: lambda do |value|
-        ::OctridevGithub::IssueReferenceIssueType.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      issue_type
-    ].freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for IssueReference.
-  # A minimal reference to an issue linked from a timeline event (e.g. sub-issue, parent-issue, or dependency events).
-  class IssueReference
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalIssueReferenceMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalIssueReferenceMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalIssueReferenceMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [Integer] The number of the referenced issue.
-    attr_reader :number
-    # @return [String] The title of the referenced issue.
-    attr_reader :title
-    # @return [String] The state of the referenced issue.
-    attr_reader :state
-    # @return [String] The reason for the referenced issue's state.
-    attr_reader :state_reason
-    # @return [SimpleRepository] A GitHub repository.
-    attr_reader :repository
-    # @return [IssueReferenceIssueType] The type of the referenced issue.
-    attr_reader :issue_type
+# Internal model hydration metadata.
+class SdkInternalOrganizationSimpleWebhooksMetadata
+  FIELDS = {
+    login: "login",
+    id: "id",
+    node_id: "node_id",
+    url: "url",
+    repos_url: "repos_url",
+    events_url: "events_url",
+    hooks_url: "hooks_url",
+    issues_url: "issues_url",
+    members_url: "members_url",
+    public_members_url: "public_members_url",
+    avatar_url: "avatar_url",
+    description: "description",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    login
+    id
+    node_id
+    url
+    repos_url
+    events_url
+    hooks_url
+    issues_url
+    members_url
+    public_members_url
+    avatar_url
+    description
+  ].freeze
+  DECODERS = {
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    description
+  ].freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for OrganizationSimpleWebhooks.
+# A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+class OrganizationSimpleWebhooks
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalOrganizationSimpleWebhooksMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalOrganizationSimpleWebhooksMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalOrganizationSimpleWebhooksMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalIssueReferenceMetadata::NULLABLE_FIELDS)
-    end
+  # @return [String] Required `string` value serialized in the `login` wire field.
+  attr_reader :login
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Required `uri`-formatted value serialized in the `repos_url` wire field.
+  attr_reader :repos_url
+  # @return [String] Required `uri`-formatted value serialized in the `events_url` wire field.
+  attr_reader :events_url
+  # @return [String] Required `string` value serialized in the `hooks_url` wire field.
+  attr_reader :hooks_url
+  # @return [String] Required `string` value serialized in the `issues_url` wire field.
+  attr_reader :issues_url
+  # @return [String] Required `string` value serialized in the `members_url` wire field.
+  attr_reader :members_url
+  # @return [String] Required `string` value serialized in the `public_members_url` wire field.
+  attr_reader :public_members_url
+  # @return [String] Required `string` value serialized in the `avatar_url` wire field.
+  attr_reader :avatar_url
+  # @return [String] Required `string` value serialized in the `description` wire field.
+  attr_reader :description
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalMergeGroupMetadata
-    FIELDS = {
-      head_sha: 'head_sha',
-      head_ref: 'head_ref',
-      base_sha: 'base_sha',
-      base_ref: 'base_ref',
-      head_commit: 'head_commit'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      head_sha
-      head_ref
-      base_sha
-      base_ref
-      head_commit
-    ].freeze
-    DECODERS = {
-      head_commit: lambda do |value|
-        ::OctridevGithub::SimpleCommit.from_hash(value)
-      end
-    }.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalOrganizationSimpleWebhooksMetadata::NULLABLE_FIELDS)
   end
 
-  # API model for MergeGroup.
-  # A group of pull requests that the merge queue has grouped together to be merged.
-  class MergeGroup
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalMergeGroupMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalMergeGroupMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalMergeGroupMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [String] The SHA of the merge group.
-    attr_reader :head_sha
-    # @return [String] The full ref of the merge group.
-    attr_reader :head_ref
-    # @return [String] The SHA of the merge group's parent commit.
-    attr_reader :base_sha
-    # @return [String] The full ref of the branch the merge group will be merged into.
-    attr_reader :base_ref
-    # @return [SimpleCommit] A commit.
-    attr_reader :head_commit
+# Internal model hydration metadata.
+class SdkInternalPersonalAccessTokenRequestPermissionsAddedMetadata
+  FIELDS = {
+    organization: "organization",
+    repository: "repository",
+    other: "other",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for PersonalAccessTokenRequestPermissionsAdded.
+# New requested permissions, categorized by type of permission.
+class PersonalAccessTokenRequestPermissionsAdded
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalPersonalAccessTokenRequestPermissionsAddedMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalPersonalAccessTokenRequestPermissionsAddedMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalPersonalAccessTokenRequestPermissionsAddedMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+  # @return [Hash] Optional object value serialized in the `organization` wire field.
+  attr_reader :organization
+  # @return [Hash] Optional object value serialized in the `repository` wire field.
+  attr_reader :repository
+  # @return [Hash] Optional object value serialized in the `other` wire field.
+  attr_reader :other
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalOrganizationSimpleWebhooksMetadata
-    FIELDS = {
-      login: 'login',
-      id: 'id',
-      node_id: 'node_id',
-      url: 'url',
-      repos_url: 'repos_url',
-      events_url: 'events_url',
-      hooks_url: 'hooks_url',
-      issues_url: 'issues_url',
-      members_url: 'members_url',
-      public_members_url: 'public_members_url',
-      avatar_url: 'avatar_url',
-      description: 'description'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      login
-      id
-      node_id
-      url
-      repos_url
-      events_url
-      hooks_url
-      issues_url
-      members_url
-      public_members_url
-      avatar_url
-      description
-    ].freeze
-    DECODERS = {}.freeze
-    NULLABLE_FIELDS = %i[
-      description
-    ].freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for OrganizationSimpleWebhooks.
-  # A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-  class OrganizationSimpleWebhooks
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalOrganizationSimpleWebhooksMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalOrganizationSimpleWebhooksMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalOrganizationSimpleWebhooksMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [String] Required `string` value serialized in the `login` wire field.
-    attr_reader :login
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Required `uri`-formatted value serialized in the `repos_url` wire field.
-    attr_reader :repos_url
-    # @return [String] Required `uri`-formatted value serialized in the `events_url` wire field.
-    attr_reader :events_url
-    # @return [String] Required `string` value serialized in the `hooks_url` wire field.
-    attr_reader :hooks_url
-    # @return [String] Required `string` value serialized in the `issues_url` wire field.
-    attr_reader :issues_url
-    # @return [String] Required `string` value serialized in the `members_url` wire field.
-    attr_reader :members_url
-    # @return [String] Required `string` value serialized in the `public_members_url` wire field.
-    attr_reader :public_members_url
-    # @return [String] Required `string` value serialized in the `avatar_url` wire field.
-    attr_reader :avatar_url
-    # @return [String] Required `string` value serialized in the `description` wire field.
-    attr_reader :description
+# Internal model hydration metadata.
+class SdkInternalPersonalAccessTokenRequestPermissionsUpgradedMetadata
+  FIELDS = {
+    organization: "organization",
+    repository: "repository",
+    other: "other",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for PersonalAccessTokenRequestPermissionsUpgraded.
+# Requested permissions that elevate access for a previously approved request for access, categorized by type of permission.
+class PersonalAccessTokenRequestPermissionsUpgraded
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalPersonalAccessTokenRequestPermissionsUpgradedMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalPersonalAccessTokenRequestPermissionsUpgradedMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalPersonalAccessTokenRequestPermissionsUpgradedMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalOrganizationSimpleWebhooksMetadata::NULLABLE_FIELDS)
-    end
+  # @return [Hash] Optional object value serialized in the `organization` wire field.
+  attr_reader :organization
+  # @return [Hash] Optional object value serialized in the `repository` wire field.
+  attr_reader :repository
+  # @return [Hash] Optional object value serialized in the `other` wire field.
+  attr_reader :other
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalPersonalAccessTokenRequestPermissionsAddedMetadata
-    FIELDS = {
-      organization: 'organization',
-      repository: 'repository',
-      other: 'other'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for PersonalAccessTokenRequestPermissionsAdded.
-  # New requested permissions, categorized by type of permission.
-  class PersonalAccessTokenRequestPermissionsAdded
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalPersonalAccessTokenRequestPermissionsAddedMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalPersonalAccessTokenRequestPermissionsAddedMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalPersonalAccessTokenRequestPermissionsAddedMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [Hash] Optional object value serialized in the `organization` wire field.
-    attr_reader :organization
-    # @return [Hash] Optional object value serialized in the `repository` wire field.
-    attr_reader :repository
-    # @return [Hash] Optional object value serialized in the `other` wire field.
-    attr_reader :other
+# Internal model hydration metadata.
+class SdkInternalPersonalAccessTokenRequestPermissionsResultMetadata
+  FIELDS = {
+    organization: "organization",
+    repository: "repository",
+    other: "other",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for PersonalAccessTokenRequestPermissionsResult.
+# Permissions requested, categorized by type of permission. This field incorporates `permissions_added` and `permissions_upgraded`.
+class PersonalAccessTokenRequestPermissionsResult
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalPersonalAccessTokenRequestPermissionsResultMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalPersonalAccessTokenRequestPermissionsResultMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalPersonalAccessTokenRequestPermissionsResultMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+  # @return [Hash] Optional object value serialized in the `organization` wire field.
+  attr_reader :organization
+  # @return [Hash] Optional object value serialized in the `repository` wire field.
+  attr_reader :repository
+  # @return [Hash] Optional object value serialized in the `other` wire field.
+  attr_reader :other
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalPersonalAccessTokenRequestPermissionsUpgradedMetadata
-    FIELDS = {
-      organization: 'organization',
-      repository: 'repository',
-      other: 'other'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for PersonalAccessTokenRequestPermissionsUpgraded.
-  # Requested permissions that elevate access for a previously approved request for access, categorized by type of permission.
-  class PersonalAccessTokenRequestPermissionsUpgraded
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalPersonalAccessTokenRequestPermissionsUpgradedMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalPersonalAccessTokenRequestPermissionsUpgradedMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalPersonalAccessTokenRequestPermissionsUpgradedMetadata::DECODERS
-
-    # @return [Hash] Optional object value serialized in the `organization` wire field.
-    attr_reader :organization
-    # @return [Hash] Optional object value serialized in the `repository` wire field.
-    attr_reader :repository
-    # @return [Hash] Optional object value serialized in the `other` wire field.
-    attr_reader :other
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
-
-  # Internal model hydration metadata.
-  class SdkInternalPersonalAccessTokenRequestPermissionsResultMetadata
-    FIELDS = {
-      organization: 'organization',
-      repository: 'repository',
-      other: 'other'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
-  end
-
-  # API model for PersonalAccessTokenRequestPermissionsResult.
-  # Permissions requested, categorized by type of permission. This field incorporates `permissions_added` and `permissions_upgraded`.
-  class PersonalAccessTokenRequestPermissionsResult
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalPersonalAccessTokenRequestPermissionsResultMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalPersonalAccessTokenRequestPermissionsResultMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalPersonalAccessTokenRequestPermissionsResultMetadata::DECODERS
-
-    # @return [Hash] Optional object value serialized in the `organization` wire field.
-    attr_reader :organization
-    # @return [Hash] Optional object value serialized in the `repository` wire field.
-    attr_reader :repository
-    # @return [Hash] Optional object value serialized in the `other` wire field.
-    attr_reader :other
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
-  end
+end
 end

@@ -12,16 +12,17 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsGetAutomationResponseRepositoryMetadata
         FIELDS = {
-          id: 'id',
-          owner: 'owner',
-          name: 'name'
+          id: "id",
+          owner: "owner",
+          name: "name",
         }.freeze
         REQUIRED_FIELDS = %i[
           id
           owner
           name
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for AgentAutomationsGetAutomationResponseRepository.
@@ -56,11 +57,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsGetAutomationResponseTriggersIntervalMetadata
         FIELDS = {
-          cadence: 'cadence',
-          hour_utc: 'hour_utc',
-          day_of_week: 'day_of_week',
-          minute_utc: 'minute_utc',
-          write_scope: 'write_scope'
+          cadence: "cadence",
+          hour_utc: "hour_utc",
+          day_of_week: "day_of_week",
+          minute_utc: "minute_utc",
+          write_scope: "write_scope",
         }.freeze
         REQUIRED_FIELDS = %i[
           cadence
@@ -74,7 +75,7 @@ module OctridevGithub
           end,
           write_scope: lambda do |value|
             ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersIntervalWriteScope.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -113,14 +114,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsGetAutomationResponseTriggersIssueOpenedMetadata
         FIELDS = {
-          query: 'query',
-          write_scope: 'write_scope'
+          query: "query",
+          write_scope: "write_scope",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           write_scope: lambda do |value|
             ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersIssueOpenedWriteScope.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -153,15 +155,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsGetAutomationResponseTriggersIssueLabeledMetadata
         FIELDS = {
-          query: 'query',
-          labels: 'labels',
-          write_scope: 'write_scope'
+          query: "query",
+          labels: "labels",
+          write_scope: "write_scope",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           write_scope: lambda do |value|
             ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersIssueLabeledWriteScope.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -196,10 +199,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsGetAutomationResponseTriggersWorkflowRunMetadata
         FIELDS = {
-          workflows: 'workflows',
-          conclusions: 'conclusions',
-          query: 'query',
-          write_scope: 'write_scope'
+          workflows: "workflows",
+          conclusions: "conclusions",
+          query: "query",
+          write_scope: "write_scope",
         }.freeze
         REQUIRED_FIELDS = %i[
           workflows
@@ -211,7 +214,7 @@ module OctridevGithub
           end,
           write_scope: lambda do |value|
             ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersWorkflowRunWriteScope.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -248,15 +251,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsGetAutomationResponseTriggersPullRequestOpenedMetadata
         FIELDS = {
-          query: 'query',
-          paths: 'paths',
-          write_scope: 'write_scope'
+          query: "query",
+          paths: "paths",
+          write_scope: "write_scope",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           write_scope: lambda do |value|
             ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersPullRequestOpenedWriteScope.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -291,15 +295,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsGetAutomationResponseTriggersPullRequestSynchronizeMetadata
         FIELDS = {
-          query: 'query',
-          paths: 'paths',
-          write_scope: 'write_scope'
+          query: "query",
+          paths: "paths",
+          write_scope: "write_scope",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           write_scope: lambda do |value|
             ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersPullRequestSynchX73ec5da5ff.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -334,15 +339,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsGetAutomationResponseTriggersPullRequestMergedMetadata
         FIELDS = {
-          query: 'query',
-          paths: 'paths',
-          write_scope: 'write_scope'
+          query: "query",
+          paths: "paths",
+          write_scope: "write_scope",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           write_scope: lambda do |value|
             ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersPullRequestMergedWriteScope.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -377,14 +383,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsGetAutomationResponseTriggersIssueCommentMetadata
         FIELDS = {
-          body_substring: 'body_substring',
-          write_scope: 'write_scope'
+          body_substring: "body_substring",
+          write_scope: "write_scope",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           write_scope: lambda do |value|
             ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersIssueCommentWriteScope.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -417,9 +424,9 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsGetAutomationResponseTriggersPullRequestCommentMetadata
         FIELDS = {
-          comment_types: 'comment_types',
-          body_substring: 'body_substring',
-          write_scope: 'write_scope'
+          comment_types: "comment_types",
+          body_substring: "body_substring",
+          write_scope: "write_scope",
         }.freeze
         REQUIRED_FIELDS = %i[
           comment_types
@@ -430,7 +437,7 @@ module OctridevGithub
           end,
           write_scope: lambda do |value|
             ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersPullRequestCommeX223c9d064b.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -465,15 +472,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsGetAutomationResponseTriggersDiscussionOpenedMetadata
         FIELDS = {
-          categories: 'categories',
-          body_substring: 'body_substring',
-          write_scope: 'write_scope'
+          categories: "categories",
+          body_substring: "body_substring",
+          write_scope: "write_scope",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           write_scope: lambda do |value|
             ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersDiscussionOpenedWriteScope.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -508,15 +516,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsGetAutomationResponseTriggersDiscussionUpdatedMetadata
         FIELDS = {
-          categories: 'categories',
-          body_substring: 'body_substring',
-          write_scope: 'write_scope'
+          categories: "categories",
+          body_substring: "body_substring",
+          write_scope: "write_scope",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           write_scope: lambda do |value|
             ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersDiscussionUpdatedWriteScope.from_value(value)
-          end
+          end,
         }.freeze
       end
 

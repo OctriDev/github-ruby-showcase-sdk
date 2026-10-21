@@ -5,234 +5,234 @@
 
 # webhook_membership_removed domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalWebhookMembershipRemovedSenderMetadata
-    FIELDS = {
-      avatar_url: 'avatar_url',
-      deleted: 'deleted',
-      email: 'email',
-      events_url: 'events_url',
-      followers_url: 'followers_url',
-      following_url: 'following_url',
-      gists_url: 'gists_url',
-      gravatar_id: 'gravatar_id',
-      html_url: 'html_url',
-      id: 'id',
-      login: 'login',
-      name: 'name',
-      node_id: 'node_id',
-      organizations_url: 'organizations_url',
-      received_events_url: 'received_events_url',
-      repos_url: 'repos_url',
-      site_admin: 'site_admin',
-      starred_url: 'starred_url',
-      subscriptions_url: 'subscriptions_url',
-      type: 'type',
-      url: 'url',
-      user_view_type: 'user_view_type'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      login
-    ].freeze
-    DECODERS = {
-      type: lambda do |value|
-        ::OctridevGithub::WebhookMembershipRemovedSenderType.from_value(value)
-      end
-    }.freeze
+# Internal model hydration metadata.
+class SdkInternalWebhookMembershipRemovedSenderMetadata
+  FIELDS = {
+    avatar_url: "avatar_url",
+    deleted: "deleted",
+    email: "email",
+    events_url: "events_url",
+    followers_url: "followers_url",
+    following_url: "following_url",
+    gists_url: "gists_url",
+    gravatar_id: "gravatar_id",
+    html_url: "html_url",
+    id: "id",
+    login: "login",
+    name: "name",
+    node_id: "node_id",
+    organizations_url: "organizations_url",
+    received_events_url: "received_events_url",
+    repos_url: "repos_url",
+    site_admin: "site_admin",
+    starred_url: "starred_url",
+    subscriptions_url: "subscriptions_url",
+    type: "type",
+    url: "url",
+    user_view_type: "user_view_type",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    login
+  ].freeze
+  DECODERS = {
+    type: lambda do |value|
+      ::OctridevGithub::WebhookMembershipRemovedSenderType.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookMembershipRemovedSender.
+# Required object value serialized in the `sender` wire field.
+class WebhookMembershipRemovedSender
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookMembershipRemovedSenderMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookMembershipRemovedSenderMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookMembershipRemovedSenderMetadata::DECODERS
+
+  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+  attr_reader :avatar_url
+  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+  attr_reader :deleted
+  # @return [String] Optional `string` value serialized in the `email` wire field.
+  attr_reader :email
+  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+  attr_reader :events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+  attr_reader :followers_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+  attr_reader :following_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+  attr_reader :gists_url
+  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+  attr_reader :gravatar_id
+  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `login` wire field.
+  attr_reader :login
+  # @return [String] Optional `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [String] Optional `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+  attr_reader :organizations_url
+  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+  attr_reader :received_events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+  attr_reader :repos_url
+  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+  attr_reader :site_admin
+  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+  attr_reader :starred_url
+  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+  attr_reader :subscriptions_url
+  # @return [WebhookMembershipRemovedSenderType] Optional enumerated value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+  attr_reader :user_view_type
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookMembershipRemovedSender.
-  # Required object value serialized in the `sender` wire field.
-  class WebhookMembershipRemovedSender
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookMembershipRemovedSenderMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookMembershipRemovedSenderMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookMembershipRemovedSenderMetadata::DECODERS
-
-    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-    attr_reader :avatar_url
-    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-    attr_reader :deleted
-    # @return [String] Optional `string` value serialized in the `email` wire field.
-    attr_reader :email
-    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-    attr_reader :events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-    attr_reader :followers_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-    attr_reader :following_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-    attr_reader :gists_url
-    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-    attr_reader :gravatar_id
-    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `login` wire field.
-    attr_reader :login
-    # @return [String] Optional `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [String] Optional `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-    attr_reader :organizations_url
-    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-    attr_reader :received_events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-    attr_reader :repos_url
-    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-    attr_reader :site_admin
-    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-    attr_reader :starred_url
-    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-    attr_reader :subscriptions_url
-    # @return [WebhookMembershipRemovedSenderType] Optional enumerated value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-    attr_reader :user_view_type
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookMembershipRemovedMetadata
-    FIELDS = {
-      action: 'action',
-      enterprise: 'enterprise',
-      installation: 'installation',
-      member: 'member',
-      organization: 'organization',
-      repository: 'repository',
-      scope: 'scope',
-      sender: 'sender',
-      team: 'team'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      action
-      member
-      organization
-      scope
-      sender
-      team
-    ].freeze
-    DECODERS = {
-      action: lambda do |value|
-        ::OctridevGithub::WebhookMembershipRemovedAction.from_value(value)
-      end,
-      enterprise: lambda do |value|
-        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-      end,
-      installation: lambda do |value|
-        ::OctridevGithub::SimpleInstallation.from_hash(value)
-      end,
-      member: lambda do |value|
-        ::OctridevGithub::WebhooksUser.from_hash(value)
-      end,
-      organization: lambda do |value|
-        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-      end,
-      repository: lambda do |value|
-        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-      end,
-      scope: lambda do |value|
-        ::OctridevGithub::WebhookMembershipRemovedScope.from_value(value)
-      end,
-      sender: lambda do |value|
-        ::OctridevGithub::WebhookMembershipRemovedSender.from_hash(value)
-      end,
-      team: lambda do |value|
-        ::OctridevGithub::WebhooksTeam.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      member
-      sender
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookMembershipRemovedMetadata
+  FIELDS = {
+    action: "action",
+    enterprise: "enterprise",
+    installation: "installation",
+    member: "member",
+    organization: "organization",
+    repository: "repository",
+    scope: "scope",
+    sender: "sender",
+    team: "team",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    action
+    member
+    organization
+    scope
+    sender
+    team
+  ].freeze
+  DECODERS = {
+    action: lambda do |value|
+      ::OctridevGithub::WebhookMembershipRemovedAction.from_value(value)
+    end,
+    enterprise: lambda do |value|
+      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+    end,
+    installation: lambda do |value|
+      ::OctridevGithub::SimpleInstallation.from_hash(value)
+    end,
+    member: lambda do |value|
+      ::OctridevGithub::WebhooksUser.from_hash(value)
+    end,
+    organization: lambda do |value|
+      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+    end,
+    repository: lambda do |value|
+      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+    end,
+    scope: lambda do |value|
+      ::OctridevGithub::WebhookMembershipRemovedScope.from_value(value)
+    end,
+    sender: lambda do |value|
+      ::OctridevGithub::WebhookMembershipRemovedSender.from_hash(value)
+    end,
+    team: lambda do |value|
+      ::OctridevGithub::WebhooksTeam.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    member
+    sender
+  ].freeze
+end
+
+# API model for WebhookMembershipRemoved.
+# Typed representation of the `WebhookMembershipRemoved` API schema.
+class WebhookMembershipRemoved
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookMembershipRemovedMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookMembershipRemovedMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookMembershipRemovedMetadata::DECODERS
+
+  # @return [WebhookMembershipRemovedAction] Required enumerated value serialized in the `action` wire field.
+  attr_reader :action
+  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+  attr_reader :enterprise
+  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+  attr_reader :installation
+  # @return [WebhooksUser] Required object value serialized in the `member` wire field.
+  attr_reader :member
+  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+  attr_reader :organization
+  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+  attr_reader :repository
+  # @return [WebhookMembershipRemovedScope] The scope of the membership. Currently, can only be `team`.
+  attr_reader :scope
+  # @return [WebhookMembershipRemovedSender] Required object value serialized in the `sender` wire field.
+  attr_reader :sender
+  # @return [WebhooksTeam] Groups of organization members that gives permissions on specified repositories.
+  attr_reader :team
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookMembershipRemoved.
-  # Typed representation of the `WebhookMembershipRemoved` API schema.
-  class WebhookMembershipRemoved
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookMembershipRemovedMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookMembershipRemovedMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookMembershipRemovedMetadata::DECODERS
-
-    # @return [WebhookMembershipRemovedAction] Required enumerated value serialized in the `action` wire field.
-    attr_reader :action
-    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-    attr_reader :enterprise
-    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-    attr_reader :installation
-    # @return [WebhooksUser] Required object value serialized in the `member` wire field.
-    attr_reader :member
-    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-    attr_reader :organization
-    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-    attr_reader :repository
-    # @return [WebhookMembershipRemovedScope] The scope of the membership. Currently, can only be `team`.
-    attr_reader :scope
-    # @return [WebhookMembershipRemovedSender] Required object value serialized in the `sender` wire field.
-    attr_reader :sender
-    # @return [WebhooksTeam] Groups of organization members that gives permissions on specified repositories.
-    attr_reader :team
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookMembershipRemovedMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookMembershipRemovedMetadata::NULLABLE_FIELDS)
   end
 
-  # Defines the WebhookMembershipRemovedAction SDK namespace.
-  module WebhookMembershipRemovedAction
-    REMOVED = 'removed'
-    VALUES = ['removed'].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
 
-  # Defines the WebhookMembershipRemovedScope SDK namespace.
-  module WebhookMembershipRemovedScope
-    TEAM = 'team'
-    ORGANIZATION = 'organization'
-    VALUES = %w[team organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookMembershipRemovedAction SDK namespace.
+module WebhookMembershipRemovedAction
+  REMOVED = 'removed'
+  VALUES = ['removed'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookMembershipRemovedSenderType SDK namespace.
-  module WebhookMembershipRemovedSenderType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookMembershipRemovedScope SDK namespace.
+module WebhookMembershipRemovedScope
+  TEAM = 'team'
+  ORGANIZATION = 'organization'
+  VALUES = ['team', 'organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
+
+# Defines the WebhookMembershipRemovedSenderType SDK namespace.
+module WebhookMembershipRemovedSenderType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

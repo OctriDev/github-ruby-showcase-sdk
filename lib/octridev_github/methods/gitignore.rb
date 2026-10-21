@@ -14,13 +14,14 @@ module OctridevGithub
         config:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
-          '/gitignore/templates',
+          "/gitignore/templates",
           config: config,
           decoder: :json,
           operation_id: 'list_templates',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -32,17 +33,18 @@ module OctridevGithub
         name:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/gitignore/templates/',
+            "/gitignore/templates/",
             SdkClient.encode_path_segment(name)
           ].join,
           config: config,
           return_type: ::OctridevGithub::GitignoreTemplate,
           decoder: :json,
           operation_id: 'gitignore_get_template',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

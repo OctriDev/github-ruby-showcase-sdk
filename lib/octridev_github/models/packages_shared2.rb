@@ -5,121 +5,121 @@
 
 # packages domain models
 module OctridevGithub
-  # API model for PackageVersionMetadata.
-  # Optional object value serialized in the `metadata` wire field.
-  class PackageVersionMetadata
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalPackageVersionMetadataMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalPackageVersionMetadataMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalPackageVersionMetadataMetadata::DECODERS
+# API model for PackageVersionMetadata.
+# Optional object value serialized in the `metadata` wire field.
+class PackageVersionMetadata
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalPackageVersionMetadataMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalPackageVersionMetadataMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalPackageVersionMetadataMetadata::DECODERS
 
-    # @return [PackageVersionMetadataPackageType] Required enumerated value serialized in the `package_type` wire field.
-    attr_reader :package_type
-    # @return [PackageVersionMetadataContainer] Optional object value serialized in the `container` wire field.
-    attr_reader :container
-    # @return [PackageVersionMetadataDocker] Optional object value serialized in the `docker` wire field.
-    attr_reader :docker
+  # @return [PackageVersionMetadataPackageType] Required enumerated value serialized in the `package_type` wire field.
+  attr_reader :package_type
+  # @return [PackageVersionMetadataContainer] Optional object value serialized in the `container` wire field.
+  attr_reader :container
+  # @return [PackageVersionMetadataDocker] Optional object value serialized in the `docker` wire field.
+  attr_reader :docker
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalPackageVersionMetadata
-    FIELDS = {
-      id: 'id',
-      name: 'name',
-      url: 'url',
-      package_html_url: 'package_html_url',
-      html_url: 'html_url',
-      license: 'license',
-      description: 'description',
-      created_at: 'created_at',
-      updated_at: 'updated_at',
-      deleted_at: 'deleted_at',
-      metadata: 'metadata'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      name
-      url
-      package_html_url
-      created_at
-      updated_at
-    ].freeze
-    DECODERS = {
-      metadata: lambda do |value|
-        ::OctridevGithub::PackageVersionMetadata.from_hash(value)
-      end
-    }.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for PackageVersion.
-  # A version of a software package
-  class PackageVersion
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalPackageVersionMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalPackageVersionMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalPackageVersionMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [Integer] Unique identifier of the package version.
-    attr_reader :id
-    # @return [String] The name of the package version.
-    attr_reader :name
-    # @return [String] Required `string` value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Required `string` value serialized in the `package_html_url` wire field.
-    attr_reader :package_html_url
-    # @return [String] Optional `string` value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [String] Optional `string` value serialized in the `license` wire field.
-    attr_reader :license
-    # @return [String] Optional `string` value serialized in the `description` wire field.
-    attr_reader :description
-    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-    attr_reader :updated_at
-    # @return [String] Optional `date-time`-formatted value serialized in the `deleted_at` wire field.
-    attr_reader :deleted_at
-    # @return [PackageVersionMetadata] Optional object value serialized in the `metadata` wire field.
-    attr_reader :metadata
+# Internal model hydration metadata.
+class SdkInternalPackageVersionMetadata
+  FIELDS = {
+    id: "id",
+    name: "name",
+    url: "url",
+    package_html_url: "package_html_url",
+    html_url: "html_url",
+    license: "license",
+    description: "description",
+    created_at: "created_at",
+    updated_at: "updated_at",
+    deleted_at: "deleted_at",
+    metadata: "metadata",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    name
+    url
+    package_html_url
+    created_at
+    updated_at
+  ].freeze
+  DECODERS = {
+    metadata: lambda do |value|
+      ::OctridevGithub::PackageVersionMetadata.from_hash(value)
+    end,
+  }.freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for PackageVersion.
+# A version of a software package
+class PackageVersion
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalPackageVersionMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalPackageVersionMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalPackageVersionMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+  # @return [Integer] Unique identifier of the package version.
+  attr_reader :id
+  # @return [String] The name of the package version.
+  attr_reader :name
+  # @return [String] Required `string` value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Required `string` value serialized in the `package_html_url` wire field.
+  attr_reader :package_html_url
+  # @return [String] Optional `string` value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [String] Optional `string` value serialized in the `license` wire field.
+  attr_reader :license
+  # @return [String] Optional `string` value serialized in the `description` wire field.
+  attr_reader :description
+  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+  attr_reader :updated_at
+  # @return [String] Optional `date-time`-formatted value serialized in the `deleted_at` wire field.
+  attr_reader :deleted_at
+  # @return [PackageVersionMetadata] Optional object value serialized in the `metadata` wire field.
+  attr_reader :metadata
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the PackageVersionMetadataPackageType SDK namespace.
-  module PackageVersionMetadataPackageType
-    NPM = 'npm'
-    MAVEN = 'maven'
-    RUBYGEMS = 'rubygems'
-    DOCKER = 'docker'
-    NUGET = 'nuget'
-    CONTAINER = 'container'
-    VALUES = %w[npm maven rubygems docker nuget container].freeze
-    def self.from_value(value)
-      value
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Defines the PackageVersionMetadataPackageType SDK namespace.
+module PackageVersionMetadataPackageType
+  NPM = 'npm'
+  MAVEN = 'maven'
+  RUBYGEMS = 'rubygems'
+  DOCKER = 'docker'
+  NUGET = 'nuget'
+  CONTAINER = 'container'
+  VALUES = ['npm', 'maven', 'rubygems', 'docker', 'nuget', 'container'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

@@ -23,23 +23,24 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/codespaces'
+            "/codespaces"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::Methods::Codespaces::CodespacesListInOrganizationResponse,
           decoder: :json,
           operation_id: 'codespaces_list_in_organization',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -59,25 +60,26 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/members/',
+            "/members/",
             SdkClient.encode_path_segment(username),
-            '/codespaces'
+            "/codespaces"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::Methods::Codespaces::CodespacesGetCodespacesForUserInOrgResponse,
           decoder: :json,
           operation_id: 'codespaces_get_codespaces_for_user_in_org',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -93,21 +95,22 @@ module OctridevGithub
         codespace_name:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/members/',
+            "/members/",
             SdkClient.encode_path_segment(username),
-            '/codespaces/',
+            "/codespaces/",
             SdkClient.encode_path_segment(codespace_name)
           ].join,
           config: config,
           decoder: :json,
           operation_id: 'codespaces_delete_from_organization',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -129,25 +132,26 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/codespaces'
+            "/codespaces"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::Methods::Codespaces::CodespacesListInRepositoryForAuthenticatedUserResponse,
           decoder: :json,
           operation_id: 'codespaces_list_in_repository_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -195,14 +199,15 @@ module OctridevGithub
         retention_period_minutes: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/codespaces'
+            "/codespaces"
           ].join,
           config: config,
           body: {
@@ -216,13 +221,13 @@ module OctridevGithub
             'working_directory' => working_directory,
             'idle_timeout_minutes' => idle_timeout_minutes,
             'display_name' => display_name,
-            'retention_period_minutes' => retention_period_minutes
+            'retention_period_minutes' => retention_period_minutes,
           },
           return_type: ::OctridevGithub::Codespace,
           decoder: :json,
           operation_id: 'codespaces_create_with_repo_for_authenticated_user',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '400' => ::OctridevGithub::BasicError, '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -270,16 +275,17 @@ module OctridevGithub
         retention_period_minutes: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/pulls/',
+            "/pulls/",
             SdkClient.encode_path_segment(pull_number),
-            '/codespaces'
+            "/codespaces"
           ].join,
           config: config,
           body: {
@@ -292,13 +298,13 @@ module OctridevGithub
             'working_directory' => working_directory,
             'idle_timeout_minutes' => idle_timeout_minutes,
             'display_name' => display_name,
-            'retention_period_minutes' => retention_period_minutes
+            'retention_period_minutes' => retention_period_minutes,
           },
           return_type: ::OctridevGithub::Codespace,
           decoder: :json,
           operation_id: 'codespaces_create_with_pr_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -316,20 +322,21 @@ module OctridevGithub
         repository_id: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
-          '/user/codespaces',
+          "/user/codespaces",
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'page' => QueryValue.new(page, style: 'form', explode: true),
-            'repository_id' => QueryValue.new(repository_id, style: 'form', explode: true)
+            'repository_id' => QueryValue.new(repository_id, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::Methods::Codespaces::CodespacesListForAuthenticatedUserResponse,
           decoder: :json,
           operation_id: 'codespaces_list_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -341,16 +348,17 @@ module OctridevGithub
         body:,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
-          '/user/codespaces',
+          "/user/codespaces",
           config: config,
           body: body,
           return_type: ::OctridevGithub::Codespace,
           decoder: :json,
           operation_id: 'codespaces_create_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -362,10 +370,11 @@ module OctridevGithub
         codespace_name:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/user/codespaces/',
+            "/user/codespaces/",
             SdkClient.encode_path_segment(codespace_name)
           ].join,
           config: config,
@@ -373,7 +382,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'codespaces_get_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -393,23 +402,24 @@ module OctridevGithub
         recent_folders: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/user/codespaces/',
+            "/user/codespaces/",
             SdkClient.encode_path_segment(codespace_name)
           ].join,
           config: config,
           body: {
             'machine' => machine,
             'display_name' => display_name,
-            'recent_folders' => recent_folders
+            'recent_folders' => recent_folders,
           },
           return_type: ::OctridevGithub::Codespace,
           decoder: :json,
           operation_id: 'codespaces_update_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -421,17 +431,18 @@ module OctridevGithub
         codespace_name:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/user/codespaces/',
+            "/user/codespaces/",
             SdkClient.encode_path_segment(codespace_name)
           ].join,
           config: config,
           decoder: :json,
           operation_id: 'codespaces_delete_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
     end

@@ -5,347 +5,345 @@
 
 # issues_review domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalReviewDismissedIssueEventDismissedReviewMetadata
-    FIELDS = {
-      state: 'state',
-      review_id: 'review_id',
-      dismissal_message: 'dismissal_message',
-      dismissal_commit_id: 'dismissal_commit_id'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      state
-      review_id
-      dismissal_message
-    ].freeze
-    DECODERS = {}.freeze
-    NULLABLE_FIELDS = %i[
-      dismissal_message
-    ].freeze
+# Internal model hydration metadata.
+class SdkInternalReviewDismissedIssueEventDismissedReviewMetadata
+  FIELDS = {
+    state: "state",
+    review_id: "review_id",
+    dismissal_message: "dismissal_message",
+    dismissal_commit_id: "dismissal_commit_id",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    state
+    review_id
+    dismissal_message
+  ].freeze
+  DECODERS = {
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    dismissal_message
+  ].freeze
+end
+
+# API model for ReviewDismissedIssueEventDismissedReview.
+# Required object value serialized in the `dismissed_review` wire field.
+class ReviewDismissedIssueEventDismissedReview
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalReviewDismissedIssueEventDismissedReviewMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalReviewDismissedIssueEventDismissedReviewMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalReviewDismissedIssueEventDismissedReviewMetadata::DECODERS
+
+  # @return [String] Required `string` value serialized in the `state` wire field.
+  attr_reader :state
+  # @return [Integer] Required `integer` value serialized in the `review_id` wire field.
+  attr_reader :review_id
+  # @return [String] Required `string` value serialized in the `dismissal_message` wire field.
+  attr_reader :dismissal_message
+  # @return [String] Optional `string` value serialized in the `dismissal_commit_id` wire field.
+  attr_reader :dismissal_commit_id
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ReviewDismissedIssueEventDismissedReview.
-  # Required object value serialized in the `dismissed_review` wire field.
-  class ReviewDismissedIssueEventDismissedReview
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalReviewDismissedIssueEventDismissedReviewMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalReviewDismissedIssueEventDismissedReviewMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalReviewDismissedIssueEventDismissedReviewMetadata::DECODERS
-
-    # @return [String] Required `string` value serialized in the `state` wire field.
-    attr_reader :state
-    # @return [Integer] Required `integer` value serialized in the `review_id` wire field.
-    attr_reader :review_id
-    # @return [String] Required `string` value serialized in the `dismissal_message` wire field.
-    attr_reader :dismissal_message
-    # @return [String] Optional `string` value serialized in the `dismissal_commit_id` wire field.
-    attr_reader :dismissal_commit_id
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalReviewDismissedIssueEventDismissedReviewMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalReviewDismissedIssueEventDismissedReviewMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalReviewDismissedIssueEventMetadata
-    FIELDS = {
-      id: 'id',
-      node_id: 'node_id',
-      url: 'url',
-      actor: 'actor',
-      event: 'event',
-      commit_id: 'commit_id',
-      commit_url: 'commit_url',
-      created_at: 'created_at',
-      performed_via_github_app: 'performed_via_github_app',
-      dismissed_review: 'dismissed_review'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      node_id
-      url
-      actor
-      event
-      commit_id
-      commit_url
-      created_at
-      performed_via_github_app
-      dismissed_review
-    ].freeze
-    DECODERS = {
-      actor: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end,
-      performed_via_github_app: lambda do |value|
-        ::OctridevGithub::NullableIntegration.from_hash(value)
-      end,
-      dismissed_review: lambda do |value|
-        ::OctridevGithub::ReviewDismissedIssueEventDismissedReview.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      commit_id
-      commit_url
-      performed_via_github_app
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalReviewDismissedIssueEventMetadata
+  FIELDS = {
+    id: "id",
+    node_id: "node_id",
+    url: "url",
+    actor: "actor",
+    event: "event",
+    commit_id: "commit_id",
+    commit_url: "commit_url",
+    created_at: "created_at",
+    performed_via_github_app: "performed_via_github_app",
+    dismissed_review: "dismissed_review",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    node_id
+    url
+    actor
+    event
+    commit_id
+    commit_url
+    created_at
+    performed_via_github_app
+    dismissed_review
+  ].freeze
+  DECODERS = {
+    actor: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+    performed_via_github_app: lambda do |value|
+      ::OctridevGithub::NullableIntegration.from_hash(value)
+    end,
+    dismissed_review: lambda do |value|
+      ::OctridevGithub::ReviewDismissedIssueEventDismissedReview.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    commit_id
+    commit_url
+    performed_via_github_app
+  ].freeze
+end
+
+# API model for ReviewDismissedIssueEvent.
+# Review Dismissed Issue Event
+class ReviewDismissedIssueEvent
+  include IssueEventForIssue
+  include TimelineIssueEvents
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalReviewDismissedIssueEventMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalReviewDismissedIssueEventMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalReviewDismissedIssueEventMetadata::DECODERS
+
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Required `string` value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :actor
+  # @return [String] Required `string` value serialized in the `event` wire field.
+  attr_reader :event
+  # @return [String] Required `string` value serialized in the `commit_id` wire field.
+  attr_reader :commit_id
+  # @return [String] Required `string` value serialized in the `commit_url` wire field.
+  attr_reader :commit_url
+  # @return [String] Required `string` value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [NullableIntegration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+  attr_reader :performed_via_github_app
+  # @return [ReviewDismissedIssueEventDismissedReview] Required object value serialized in the `dismissed_review` wire field.
+  attr_reader :dismissed_review
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ReviewDismissedIssueEvent.
-  # Review Dismissed Issue Event
-  class ReviewDismissedIssueEvent
-    include IssueEventForIssue
-    include TimelineIssueEvents
-
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalReviewDismissedIssueEventMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalReviewDismissedIssueEventMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalReviewDismissedIssueEventMetadata::DECODERS
-
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Required `string` value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :actor
-    # @return [String] Required `string` value serialized in the `event` wire field.
-    attr_reader :event
-    # @return [String] Required `string` value serialized in the `commit_id` wire field.
-    attr_reader :commit_id
-    # @return [String] Required `string` value serialized in the `commit_url` wire field.
-    attr_reader :commit_url
-    # @return [String] Required `string` value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [NullableIntegration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
-    attr_reader :performed_via_github_app
-    # @return [ReviewDismissedIssueEventDismissedReview] Required object value serialized in the `dismissed_review` wire field.
-    attr_reader :dismissed_review
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalReviewDismissedIssueEventMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalReviewDismissedIssueEventMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalReviewRequestedIssueEventMetadata
-    FIELDS = {
-      id: 'id',
-      node_id: 'node_id',
-      url: 'url',
-      actor: 'actor',
-      event: 'event',
-      commit_id: 'commit_id',
-      commit_url: 'commit_url',
-      created_at: 'created_at',
-      performed_via_github_app: 'performed_via_github_app',
-      review_requester: 'review_requester',
-      requested_team: 'requested_team',
-      requested_reviewer: 'requested_reviewer'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      node_id
-      url
-      actor
-      event
-      commit_id
-      commit_url
-      created_at
-      performed_via_github_app
-      review_requester
-    ].freeze
-    DECODERS = {
-      actor: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end,
-      performed_via_github_app: lambda do |value|
-        ::OctridevGithub::NullableIntegration.from_hash(value)
-      end,
-      review_requester: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end,
-      requested_team: lambda do |value|
-        ::OctridevGithub::Team.from_hash(value)
-      end,
-      requested_reviewer: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      commit_id
-      commit_url
-      performed_via_github_app
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalReviewRequestedIssueEventMetadata
+  FIELDS = {
+    id: "id",
+    node_id: "node_id",
+    url: "url",
+    actor: "actor",
+    event: "event",
+    commit_id: "commit_id",
+    commit_url: "commit_url",
+    created_at: "created_at",
+    performed_via_github_app: "performed_via_github_app",
+    review_requester: "review_requester",
+    requested_team: "requested_team",
+    requested_reviewer: "requested_reviewer",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    node_id
+    url
+    actor
+    event
+    commit_id
+    commit_url
+    created_at
+    performed_via_github_app
+    review_requester
+  ].freeze
+  DECODERS = {
+    actor: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+    performed_via_github_app: lambda do |value|
+      ::OctridevGithub::NullableIntegration.from_hash(value)
+    end,
+    review_requester: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+    requested_team: lambda do |value|
+      ::OctridevGithub::Team.from_hash(value)
+    end,
+    requested_reviewer: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    commit_id
+    commit_url
+    performed_via_github_app
+  ].freeze
+end
+
+# API model for ReviewRequestedIssueEvent.
+# Review Requested Issue Event
+class ReviewRequestedIssueEvent
+  include IssueEventForIssue
+  include TimelineIssueEvents
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalReviewRequestedIssueEventMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalReviewRequestedIssueEventMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalReviewRequestedIssueEventMetadata::DECODERS
+
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Required `string` value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :actor
+  # @return [String] Required `string` value serialized in the `event` wire field.
+  attr_reader :event
+  # @return [String] Required `string` value serialized in the `commit_id` wire field.
+  attr_reader :commit_id
+  # @return [String] Required `string` value serialized in the `commit_url` wire field.
+  attr_reader :commit_url
+  # @return [String] Required `string` value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [NullableIntegration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+  attr_reader :performed_via_github_app
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :review_requester
+  # @return [Team] Groups of organization members that gives permissions on specified repositories.
+  attr_reader :requested_team
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :requested_reviewer
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ReviewRequestedIssueEvent.
-  # Review Requested Issue Event
-  class ReviewRequestedIssueEvent
-    include IssueEventForIssue
-    include TimelineIssueEvents
-
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalReviewRequestedIssueEventMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalReviewRequestedIssueEventMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalReviewRequestedIssueEventMetadata::DECODERS
-
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Required `string` value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :actor
-    # @return [String] Required `string` value serialized in the `event` wire field.
-    attr_reader :event
-    # @return [String] Required `string` value serialized in the `commit_id` wire field.
-    attr_reader :commit_id
-    # @return [String] Required `string` value serialized in the `commit_url` wire field.
-    attr_reader :commit_url
-    # @return [String] Required `string` value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [NullableIntegration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
-    attr_reader :performed_via_github_app
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :review_requester
-    # @return [Team] Groups of organization members that gives permissions on specified repositories.
-    attr_reader :requested_team
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :requested_reviewer
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalReviewRequestedIssueEventMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalReviewRequestedIssueEventMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalReviewRequestRemovedIssueEventMetadata
-    FIELDS = {
-      id: 'id',
-      node_id: 'node_id',
-      url: 'url',
-      actor: 'actor',
-      event: 'event',
-      commit_id: 'commit_id',
-      commit_url: 'commit_url',
-      created_at: 'created_at',
-      performed_via_github_app: 'performed_via_github_app',
-      review_requester: 'review_requester',
-      requested_team: 'requested_team',
-      requested_reviewer: 'requested_reviewer'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      node_id
-      url
-      actor
-      event
-      commit_id
-      commit_url
-      created_at
-      performed_via_github_app
-      review_requester
-    ].freeze
-    DECODERS = {
-      actor: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end,
-      performed_via_github_app: lambda do |value|
-        ::OctridevGithub::NullableIntegration.from_hash(value)
-      end,
-      review_requester: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end,
-      requested_team: lambda do |value|
-        ::OctridevGithub::Team.from_hash(value)
-      end,
-      requested_reviewer: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      commit_id
-      commit_url
-      performed_via_github_app
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalReviewRequestRemovedIssueEventMetadata
+  FIELDS = {
+    id: "id",
+    node_id: "node_id",
+    url: "url",
+    actor: "actor",
+    event: "event",
+    commit_id: "commit_id",
+    commit_url: "commit_url",
+    created_at: "created_at",
+    performed_via_github_app: "performed_via_github_app",
+    review_requester: "review_requester",
+    requested_team: "requested_team",
+    requested_reviewer: "requested_reviewer",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    node_id
+    url
+    actor
+    event
+    commit_id
+    commit_url
+    created_at
+    performed_via_github_app
+    review_requester
+  ].freeze
+  DECODERS = {
+    actor: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+    performed_via_github_app: lambda do |value|
+      ::OctridevGithub::NullableIntegration.from_hash(value)
+    end,
+    review_requester: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+    requested_team: lambda do |value|
+      ::OctridevGithub::Team.from_hash(value)
+    end,
+    requested_reviewer: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    commit_id
+    commit_url
+    performed_via_github_app
+  ].freeze
+end
+
+# API model for ReviewRequestRemovedIssueEvent.
+# Review Request Removed Issue Event
+class ReviewRequestRemovedIssueEvent
+  include IssueEventForIssue
+  include TimelineIssueEvents
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalReviewRequestRemovedIssueEventMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalReviewRequestRemovedIssueEventMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalReviewRequestRemovedIssueEventMetadata::DECODERS
+
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Required `string` value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :actor
+  # @return [String] Required `string` value serialized in the `event` wire field.
+  attr_reader :event
+  # @return [String] Required `string` value serialized in the `commit_id` wire field.
+  attr_reader :commit_id
+  # @return [String] Required `string` value serialized in the `commit_url` wire field.
+  attr_reader :commit_url
+  # @return [String] Required `string` value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [NullableIntegration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+  attr_reader :performed_via_github_app
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :review_requester
+  # @return [Team] Groups of organization members that gives permissions on specified repositories.
+  attr_reader :requested_team
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :requested_reviewer
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ReviewRequestRemovedIssueEvent.
-  # Review Request Removed Issue Event
-  class ReviewRequestRemovedIssueEvent
-    include IssueEventForIssue
-    include TimelineIssueEvents
-
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalReviewRequestRemovedIssueEventMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalReviewRequestRemovedIssueEventMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalReviewRequestRemovedIssueEventMetadata::DECODERS
-
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Required `string` value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :actor
-    # @return [String] Required `string` value serialized in the `event` wire field.
-    attr_reader :event
-    # @return [String] Required `string` value serialized in the `commit_id` wire field.
-    attr_reader :commit_id
-    # @return [String] Required `string` value serialized in the `commit_url` wire field.
-    attr_reader :commit_url
-    # @return [String] Required `string` value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [NullableIntegration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
-    attr_reader :performed_via_github_app
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :review_requester
-    # @return [Team] Groups of organization members that gives permissions on specified repositories.
-    attr_reader :requested_team
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :requested_reviewer
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalReviewRequestRemovedIssueEventMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalReviewRequestRemovedIssueEventMetadata::NULLABLE_FIELDS)
   end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 end

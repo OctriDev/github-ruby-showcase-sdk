@@ -35,22 +35,23 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
-          '/search/users',
+          "/search/users",
           config: config,
           query: {
             'q' => QueryValue.new(q_value, style: 'form', explode: true),
             'sort' => QueryValue.new(sort, style: 'form', explode: true),
             'order' => QueryValue.new(order, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::Methods::Search::SearchUsersResponse,
           decoder: :json,
           operation_id: 'search_users',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
     end

@@ -21,20 +21,21 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/automated-security-fixes'
+            "/automated-security-fixes"
           ].join,
           config: config,
           return_type: ::OctridevGithub::CheckAutomatedSecurityFixes,
           decoder: :json,
           operation_id: 'repos_check_automated_security_fixes',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -50,19 +51,20 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/automated-security-fixes'
+            "/automated-security-fixes"
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_enable_automated_security_fixes',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -78,19 +80,20 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/automated-security-fixes'
+            "/automated-security-fixes"
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_disable_automated_security_fixes',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

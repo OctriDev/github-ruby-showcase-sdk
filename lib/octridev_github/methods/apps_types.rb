@@ -12,14 +12,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalIntegrationPermissionsMetadata
         FIELDS = {
-          issues: 'issues',
-          checks: 'checks',
-          metadata: 'metadata',
-          contents: 'contents',
-          deployments: 'deployments'
+          issues: "issues",
+          checks: "checks",
+          metadata: "metadata",
+          contents: "contents",
+          deployments: "deployments",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for IntegrationPermissions.
@@ -60,23 +62,23 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAppsCreateFromManifestResponseMetadata
         FIELDS = {
-          id: 'id',
-          slug: 'slug',
-          node_id: 'node_id',
-          client_id: 'client_id',
-          owner: 'owner',
-          name: 'name',
-          description: 'description',
-          external_url: 'external_url',
-          html_url: 'html_url',
-          created_at: 'created_at',
-          updated_at: 'updated_at',
-          permissions: 'permissions',
-          events: 'events',
-          installations_count: 'installations_count',
-          client_secret: 'client_secret',
-          webhook_secret: 'webhook_secret',
-          pem: 'pem'
+          id: "id",
+          slug: "slug",
+          node_id: "node_id",
+          client_id: "client_id",
+          owner: "owner",
+          name: "name",
+          description: "description",
+          external_url: "external_url",
+          html_url: "html_url",
+          created_at: "created_at",
+          updated_at: "updated_at",
+          permissions: "permissions",
+          events: "events",
+          installations_count: "installations_count",
+          client_secret: "client_secret",
+          webhook_secret: "webhook_secret",
+          pem: "pem",
         }.freeze
         REQUIRED_FIELDS = %i[
           id
@@ -98,7 +100,7 @@ module OctridevGithub
         DECODERS = {
           owner: lambda do |value|
             ::OctridevGithub::IntegrationOwner.from_hash(value)
-          end
+          end,
         }.freeze
         NULLABLE_FIELDS = %i[
           description
@@ -160,12 +162,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAppsUpdateWebhookConfigForAppMetadata
         FIELDS = {
-          url: 'url',
-          content_type: 'content_type',
-          secret: 'secret',
-          insecure_ssl: 'insecure_ssl'
+          url: "url",
+          content_type: "content_type",
+          secret: "secret",
+          insecure_ssl: "insecure_ssl",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           url: lambda do |value|
             ::OctridevGithub::WebhookConfigUrl.from_value(value)
@@ -178,7 +181,7 @@ module OctridevGithub
           end,
           insecure_ssl: lambda do |value|
             ::OctridevGithub::WebhookConfigInsecureSsl.from_hash(value)
-          end
+          end,
         }.freeze
       end
 
@@ -214,15 +217,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAppsCreateInstallationAccessTokenMetadata
         FIELDS = {
-          repositories: 'repositories',
-          repository_ids: 'repository_ids',
-          permissions: 'permissions'
+          repositories: "repositories",
+          repository_ids: "repository_ids",
+          permissions: "permissions",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           permissions: lambda do |value|
             ::OctridevGithub::AppPermissions.from_hash(value)
-          end
+          end,
         }.freeze
       end
 
@@ -257,12 +261,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAppsDeleteAuthorizationMetadata
         FIELDS = {
-          access_token: 'access_token'
+          access_token: "access_token",
         }.freeze
         REQUIRED_FIELDS = %i[
           access_token
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for AppsDeleteAuthorization.
@@ -292,12 +297,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAppsCheckTokenMetadata
         FIELDS = {
-          access_token: 'access_token'
+          access_token: "access_token",
         }.freeze
         REQUIRED_FIELDS = %i[
           access_token
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for AppsCheckToken.
@@ -327,12 +333,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAppsResetTokenMetadata
         FIELDS = {
-          access_token: 'access_token'
+          access_token: "access_token",
         }.freeze
         REQUIRED_FIELDS = %i[
           access_token
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for AppsResetToken.
@@ -362,12 +369,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAppsDeleteTokenMetadata
         FIELDS = {
-          access_token: 'access_token'
+          access_token: "access_token",
         }.freeze
         REQUIRED_FIELDS = %i[
           access_token
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for AppsDeleteToken.
@@ -397,12 +405,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAppsScopeTokenMetadata
         FIELDS = {
-          access_token: 'access_token',
-          target: 'target',
-          target_id: 'target_id',
-          repositories: 'repositories',
-          repository_ids: 'repository_ids',
-          permissions: 'permissions'
+          access_token: "access_token",
+          target: "target",
+          target_id: "target_id",
+          repositories: "repositories",
+          repository_ids: "repository_ids",
+          permissions: "permissions",
         }.freeze
         REQUIRED_FIELDS = %i[
           access_token
@@ -410,7 +418,7 @@ module OctridevGithub
         DECODERS = {
           permissions: lambda do |value|
             ::OctridevGithub::AppPermissions.from_hash(value)
-          end
+          end,
         }.freeze
       end
 
@@ -451,18 +459,19 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAppsListReposAccessibleToInstallationResponseRepositoriesItemPermissionsMetadata
         FIELDS = {
-          admin: 'admin',
-          pull: 'pull',
-          triage: 'triage',
-          push: 'push',
-          maintain: 'maintain'
+          admin: "admin",
+          pull: "pull",
+          triage: "triage",
+          push: "push",
+          maintain: "maintain",
         }.freeze
         REQUIRED_FIELDS = %i[
           admin
           pull
           push
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for AppsListReposAccessibleToInstallationResponseRepositoriesItemPermissions.
@@ -501,11 +510,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAppsListReposAccessibleToInstallationResponseRepositoriesItemXbc571f6d86Metadata
         FIELDS = {
-          lexical_search_ok: 'lexical_search_ok',
-          lexical_commit_sha: 'lexical_commit_sha'
+          lexical_search_ok: "lexical_search_ok",
+          lexical_commit_sha: "lexical_commit_sha",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for AppsListReposAccessibleToInstallationResponseRepositoriesItemXbc571f6d86.

@@ -13,7 +13,7 @@ module OctridevGithub
       module PackagesGetAllPackageVersionsForPackageOwnedByOrgParameter
         ACTIVE = 'active'
         DELETED = 'deleted'
-        VALUES = %w[active deleted].freeze
+        VALUES = ['active', 'deleted'].freeze
         def self.from_value(value)
           value
         end
@@ -27,7 +27,7 @@ module OctridevGithub
         DOCKER = 'docker'
         NUGET = 'nuget'
         CONTAINER = 'container'
-        VALUES = %w[npm maven rubygems docker nuget container].freeze
+        VALUES = ['npm', 'maven', 'rubygems', 'docker', 'nuget', 'container'].freeze
         def self.from_value(value)
           value
         end
@@ -41,7 +41,7 @@ module OctridevGithub
         DOCKER = 'docker'
         NUGET = 'nuget'
         CONTAINER = 'container'
-        VALUES = %w[npm maven rubygems docker nuget container].freeze
+        VALUES = ['npm', 'maven', 'rubygems', 'docker', 'nuget', 'container'].freeze
         def self.from_value(value)
           value
         end
@@ -55,7 +55,7 @@ module OctridevGithub
         DOCKER = 'docker'
         NUGET = 'nuget'
         CONTAINER = 'container'
-        VALUES = %w[npm maven rubygems docker nuget container].freeze
+        VALUES = ['npm', 'maven', 'rubygems', 'docker', 'nuget', 'container'].freeze
         def self.from_value(value)
           value
         end
@@ -65,7 +65,7 @@ module OctridevGithub
       module PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParameter
         ACTIVE = 'active'
         DELETED = 'deleted'
-        VALUES = %w[active deleted].freeze
+        VALUES = ['active', 'deleted'].freeze
         def self.from_value(value)
           value
         end

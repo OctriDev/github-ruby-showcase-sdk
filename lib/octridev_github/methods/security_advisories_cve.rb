@@ -24,22 +24,23 @@ module OctridevGithub
         ghsa_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/security-advisories/',
+            "/security-advisories/",
             SdkClient.encode_path_segment(ghsa_id),
-            '/cve'
+            "/cve"
           ].join,
           config: config,
           decoder: :json,
           operation_id: 'security_advisories_create_repository_advisory_cve_request',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end

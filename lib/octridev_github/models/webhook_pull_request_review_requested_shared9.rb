@@ -5,697 +5,697 @@
 
 # webhook_pull_request_review_requested domain models
 module OctridevGithub
-  # API model for WebhookPullRequestReviewRequestedVariant1PullRequest.
-  class WebhookPullRequestReviewRequestedVariant1PullRequest
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestMetadata::DECODERS
+# API model for WebhookPullRequestReviewRequestedVariant1PullRequest.
+class WebhookPullRequestReviewRequestedVariant1PullRequest
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestMetadata::DECODERS
 
-    attr_reader :links, :active_lock_reason, :additions, :assignee, :assignees, :base, :body,
-                :changed_files, :closed_at, :comments, :comments_url, :commits, :commits_url,
-                :created_at, :deletions, :diff_url, :head, :html_url, :id, :issue_url, :labels,
-                :locked, :merge_commit_sha, :mergeable, :mergeable_state, :merged, :merged_at,
-                :merged_by, :node_id, :patch_url, :rebaseable, :requested_reviewers, :requested_teams,
-                :review_comment_url, :review_comments, :review_comments_url, :statuses_url,
-                :updated_at, :url, :user
-    # @return [WebhookPullRequestReviewRequestedVariant1PullRequestAuthorAssociation] How the author is associated with the repository.
-    attr_reader :author_association
-    # @return [WebhookPullRequestReviewRequestedVariant1PullRequestAutoMerge] The status of auto merging a pull request.
-    attr_reader :auto_merge
-    # @return [Boolean] Indicates whether or not the pull request is a draft.
-    attr_reader :draft
-    # @return [Boolean] Indicates whether maintainers can modify the pull request.
-    attr_reader :maintainer_can_modify
-    # @return [WebhookPullRequestReviewRequestedVariant1PullRequestMilestone] A collection of related issues and pull requests.
-    attr_reader :milestone
-    # @return [Integer] Number uniquely identifying the pull request within its repository.
-    attr_reader :number
-    # @return [PullRequestStack] The stack information associated with a pull request.
-    attr_reader :stack
-    # @return [WebhookPullRequestReviewRequestedVariant1PullRequestState] State of this Pull Request. Either `open` or `closed`.
-    attr_reader :state
-    # @return [String] The title of the pull request.
-    attr_reader :title
+  attr_reader :links, :active_lock_reason, :additions, :assignee, :assignees, :base, :body,
+              :changed_files, :closed_at, :comments, :comments_url, :commits, :commits_url,
+              :created_at, :deletions, :diff_url, :head, :html_url, :id, :issue_url, :labels,
+              :locked, :merge_commit_sha, :mergeable, :mergeable_state, :merged, :merged_at,
+              :merged_by, :node_id, :patch_url, :rebaseable, :requested_reviewers, :requested_teams,
+              :review_comment_url, :review_comments, :review_comments_url, :statuses_url,
+              :updated_at, :url, :user
+  # @return [WebhookPullRequestReviewRequestedVariant1PullRequestAuthorAssociation] How the author is associated with the repository.
+  attr_reader :author_association
+  # @return [WebhookPullRequestReviewRequestedVariant1PullRequestAutoMerge] The status of auto merging a pull request.
+  attr_reader :auto_merge
+  # @return [Boolean] Indicates whether or not the pull request is a draft.
+  attr_reader :draft
+  # @return [Boolean] Indicates whether maintainers can modify the pull request.
+  attr_reader :maintainer_can_modify
+  # @return [WebhookPullRequestReviewRequestedVariant1PullRequestMilestone] A collection of related issues and pull requests.
+  attr_reader :milestone
+  # @return [Integer] Number uniquely identifying the pull request within its repository.
+  attr_reader :number
+  # @return [PullRequestStack] The stack information associated with a pull request.
+  attr_reader :stack
+  # @return [WebhookPullRequestReviewRequestedVariant1PullRequestState] State of this Pull Request. Either `open` or `closed`.
+  attr_reader :state
+  # @return [String] The title of the pull request.
+  attr_reader :title
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookPullRequestReviewRequestedVariant1RequestedTeamParentMetadata
-    FIELDS = {
-      description: 'description',
-      html_url: 'html_url',
-      id: 'id',
-      members_url: 'members_url',
-      name: 'name',
-      node_id: 'node_id',
-      permission: 'permission',
-      privacy: 'privacy',
-      repositories_url: 'repositories_url',
-      slug: 'slug',
-      url: 'url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      description
-      html_url
-      id
-      members_url
-      name
-      node_id
-      permission
-      privacy
-      repositories_url
-      slug
-      url
-    ].freeze
-    DECODERS = {
-      privacy: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1RequestedTeamParentPrivacy.from_value(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      description
-    ].freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPullRequestReviewRequestedVariant1PullRequestMetadata::NULLABLE_FIELDS)
   end
 
-  # API model for WebhookPullRequestReviewRequestedVariant1RequestedTeamParent.
-  class WebhookPullRequestReviewRequestedVariant1RequestedTeamParent
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1RequestedTeamParentMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1RequestedTeamParentMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1RequestedTeamParentMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    attr_reader :html_url, :members_url, :node_id, :privacy, :repositories_url, :slug
-    # @return [String] Description of the team
-    attr_reader :description
-    # @return [Integer] Unique identifier of the team
-    attr_reader :id
-    # @return [String] Name of the team
-    attr_reader :name
-    # @return [String] Permission that the team will have for its repositories
-    attr_reader :permission
-    # @return [String] URL for the team
-    attr_reader :url
+# Internal model hydration metadata.
+class SdkInternalWebhookPullRequestReviewRequestedVariant1RequestedTeamParentMetadata
+  FIELDS = {
+    description: "description",
+    html_url: "html_url",
+    id: "id",
+    members_url: "members_url",
+    name: "name",
+    node_id: "node_id",
+    permission: "permission",
+    privacy: "privacy",
+    repositories_url: "repositories_url",
+    slug: "slug",
+    url: "url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    description
+    html_url
+    id
+    members_url
+    name
+    node_id
+    permission
+    privacy
+    repositories_url
+    slug
+    url
+  ].freeze
+  DECODERS = {
+    privacy: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1RequestedTeamParentPrivacy.from_value(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    description
+  ].freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for WebhookPullRequestReviewRequestedVariant1RequestedTeamParent.
+class WebhookPullRequestReviewRequestedVariant1RequestedTeamParent
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1RequestedTeamParentMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1RequestedTeamParentMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1RequestedTeamParentMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPullRequestReviewRequestedVariant1RequestedTeamParentMetadata::NULLABLE_FIELDS)
-    end
+  attr_reader :html_url, :members_url, :node_id, :privacy, :repositories_url, :slug
+  # @return [String] Description of the team
+  attr_reader :description
+  # @return [Integer] Unique identifier of the team
+  attr_reader :id
+  # @return [String] Name of the team
+  attr_reader :name
+  # @return [String] Permission that the team will have for its repositories
+  attr_reader :permission
+  # @return [String] URL for the team
+  attr_reader :url
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookPullRequestReviewRequestedVariant1RequestedTeamMetadata
-    FIELDS = {
-      deleted: 'deleted',
-      description: 'description',
-      html_url: 'html_url',
-      id: 'id',
-      members_url: 'members_url',
-      name: 'name',
-      node_id: 'node_id',
-      parent: 'parent',
-      permission: 'permission',
-      privacy: 'privacy',
-      repositories_url: 'repositories_url',
-      slug: 'slug',
-      url: 'url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      name
-    ].freeze
-    DECODERS = {
-      parent: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1RequestedTeamParent.from_hash(value)
-      end,
-      privacy: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1RequestedTeamPrivacy.from_value(value)
-      end
-    }.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPullRequestReviewRequestedVariant1RequestedTeamParentMetadata::NULLABLE_FIELDS)
   end
 
-  # API model for WebhookPullRequestReviewRequestedVariant1RequestedTeam.
-  # Groups of organization members that gives permissions on specified repositories.
-  class WebhookPullRequestReviewRequestedVariant1RequestedTeam
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1RequestedTeamMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1RequestedTeamMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1RequestedTeamMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    attr_reader :deleted, :html_url, :members_url, :node_id, :parent, :privacy, :repositories_url,
-                :slug
-    # @return [String] Description of the team
-    attr_reader :description
-    # @return [Integer] Unique identifier of the team
-    attr_reader :id
-    # @return [String] Name of the team
-    attr_reader :name
-    # @return [String] Permission that the team will have for its repositories
-    attr_reader :permission
-    # @return [String] URL for the team
-    attr_reader :url
+# Internal model hydration metadata.
+class SdkInternalWebhookPullRequestReviewRequestedVariant1RequestedTeamMetadata
+  FIELDS = {
+    deleted: "deleted",
+    description: "description",
+    html_url: "html_url",
+    id: "id",
+    members_url: "members_url",
+    name: "name",
+    node_id: "node_id",
+    parent: "parent",
+    permission: "permission",
+    privacy: "privacy",
+    repositories_url: "repositories_url",
+    slug: "slug",
+    url: "url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    name
+  ].freeze
+  DECODERS = {
+    parent: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1RequestedTeamParent.from_hash(value)
+    end,
+    privacy: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1RequestedTeamPrivacy.from_value(value)
+    end,
+  }.freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for WebhookPullRequestReviewRequestedVariant1RequestedTeam.
+# Groups of organization members that gives permissions on specified repositories.
+class WebhookPullRequestReviewRequestedVariant1RequestedTeam
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1RequestedTeamMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1RequestedTeamMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1RequestedTeamMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+  attr_reader :deleted, :html_url, :members_url, :node_id, :parent, :privacy, :repositories_url,
+              :slug
+  # @return [String] Description of the team
+  attr_reader :description
+  # @return [Integer] Unique identifier of the team
+  attr_reader :id
+  # @return [String] Name of the team
+  attr_reader :name
+  # @return [String] Permission that the team will have for its repositories
+  attr_reader :permission
+  # @return [String] URL for the team
+  attr_reader :url
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookPullRequestReviewRequestedVariant1Metadata
-    FIELDS = {
-      action: 'action',
-      enterprise: 'enterprise',
-      installation: 'installation',
-      number: 'number',
-      organization: 'organization',
-      pull_request: 'pull_request',
-      repository: 'repository',
-      requested_team: 'requested_team',
-      sender: 'sender'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      action
-      number
-      pull_request
-      repository
-      requested_team
-      sender
-    ].freeze
-    DECODERS = {
-      action: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1Action.from_value(value)
-      end,
-      enterprise: lambda do |value|
-        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-      end,
-      installation: lambda do |value|
-        ::OctridevGithub::SimpleInstallation.from_hash(value)
-      end,
-      organization: lambda do |value|
-        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-      end,
-      pull_request: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequest.from_hash(value)
-      end,
-      repository: lambda do |value|
-        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-      end,
-      requested_team: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1RequestedTeam.from_hash(value)
-      end,
-      sender: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end
-    }.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for WebhookPullRequestReviewRequestedVariant1.
-  class WebhookPullRequestReviewRequestedVariant1
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1Metadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1Metadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1Metadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    attr_reader :action, :pull_request
-    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-    attr_reader :enterprise
-    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-    attr_reader :installation
-    # @return [Integer] The pull request number.
-    attr_reader :number
-    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-    attr_reader :organization
-    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-    attr_reader :repository
-    # @return [WebhookPullRequestReviewRequestedVariant1RequestedTeam] Groups of organization members that gives permissions on specified repositories.
-    attr_reader :requested_team
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :sender
+# Internal model hydration metadata.
+class SdkInternalWebhookPullRequestReviewRequestedVariant1Metadata
+  FIELDS = {
+    action: "action",
+    enterprise: "enterprise",
+    installation: "installation",
+    number: "number",
+    organization: "organization",
+    pull_request: "pull_request",
+    repository: "repository",
+    requested_team: "requested_team",
+    sender: "sender",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    action
+    number
+    pull_request
+    repository
+    requested_team
+    sender
+  ].freeze
+  DECODERS = {
+    action: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1Action.from_value(value)
+    end,
+    enterprise: lambda do |value|
+      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+    end,
+    installation: lambda do |value|
+      ::OctridevGithub::SimpleInstallation.from_hash(value)
+    end,
+    organization: lambda do |value|
+      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+    end,
+    pull_request: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1PullRequest.from_hash(value)
+    end,
+    repository: lambda do |value|
+      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+    end,
+    requested_team: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestReviewRequestedVariant1RequestedTeam.from_hash(value)
+    end,
+    sender: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+  }.freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for WebhookPullRequestReviewRequestedVariant1.
+class WebhookPullRequestReviewRequestedVariant1
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1Metadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewRequestedVariant1Metadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookPullRequestReviewRequestedVariant1Metadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+  attr_reader :action, :pull_request
+  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+  attr_reader :enterprise
+  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+  attr_reader :installation
+  # @return [Integer] The pull request number.
+  attr_reader :number
+  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+  attr_reader :organization
+  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+  attr_reader :repository
+  # @return [WebhookPullRequestReviewRequestedVariant1RequestedTeam] Groups of organization members that gives permissions on specified repositories.
+  attr_reader :requested_team
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :sender
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the WebhookPullRequestReviewRequested SDK namespace.
-  module WebhookPullRequestReviewRequested
-    def self.from_hash(hash)
-      shape_mapping = {
-        'requested_reviewer' => WebhookPullRequestReviewRequestedVariant0,
-        'requested_team' => WebhookPullRequestReviewRequestedVariant1
-      }
-      type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
-      decoded = type&.from_hash(hash)
-      decoded unless type.nil?
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0Action SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0Action
-    REVIEW_REQUESTED = 'review_requested'
-    VALUES = ['review_requested'].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestActiveLockReason SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestActiveLockReason
-    RESOLVED = 'resolved'
-    OFF_TOPIC = 'off-topic'
-    TOO_HEATED = 'too heated'
-    SPAM = 'spam'
-    VALUES = ['resolved', 'off-topic', 'too heated', 'spam'].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequested SDK namespace.
+module WebhookPullRequestReviewRequested
+  def self.from_hash(hash)
+    shape_mapping = {
+      "requested_reviewer" => WebhookPullRequestReviewRequestedVariant0,
+      "requested_team" => WebhookPullRequestReviewRequestedVariant1,
+    }
+    type = shape_mapping.find { |required, _type| hash.is_a?(::Hash) && hash.key?(required) }&.last
+    decoded = type&.from_hash(hash)
+    return decoded unless type.nil?
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestAssigneeType SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestAssigneeType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    MANNEQUIN = 'Mannequin'
-    VALUES = %w[Bot User Organization Mannequin].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0Action SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0Action
+  REVIEW_REQUESTED = 'review_requested'
+  VALUES = ['review_requested'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestAssigneesItemType SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestAssigneesItemType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    MANNEQUIN = 'Mannequin'
-    VALUES = %w[Bot User Organization Mannequin].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestActiveLockReason SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestActiveLockReason
+  RESOLVED = 'resolved'
+  OFF_TOPIC = 'off-topic'
+  TOO_HEATED = 'too heated'
+  SPAM = 'spam'
+  VALUES = ['resolved', 'off-topic', 'too heated', 'spam'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestAuthorAssociation SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestAuthorAssociation
-    COLLABORATOR = 'COLLABORATOR'
-    CONTRIBUTOR = 'CONTRIBUTOR'
-    FIRST_TIMER = 'FIRST_TIMER'
-    FIRST_TIME_CONTRIBUTOR = 'FIRST_TIME_CONTRIBUTOR'
-    MANNEQUIN = 'MANNEQUIN'
-    MEMBER = 'MEMBER'
-    NONE = 'NONE'
-    OWNER = 'OWNER'
-    VALUES = %w[
-      COLLABORATOR CONTRIBUTOR FIRST_TIMER FIRST_TIME_CONTRIBUTOR MANNEQUIN MEMBER
-      NONE OWNER
-    ].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestAssigneeType SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestAssigneeType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  MANNEQUIN = 'Mannequin'
+  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestAutoMergeX0f8aafc5d3 SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestAutoMergeX0f8aafc5d3
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestAssigneesItemType SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestAssigneesItemType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  MANNEQUIN = 'Mannequin'
+  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestAutoMergeMergeMethod SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestAutoMergeMergeMethod
-    MERGE = 'merge'
-    SQUASH = 'squash'
-    REBASE = 'rebase'
-    VALUES = %w[merge squash rebase].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestAuthorAssociation SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestAuthorAssociation
+  COLLABORATOR = 'COLLABORATOR'
+  CONTRIBUTOR = 'CONTRIBUTOR'
+  FIRST_TIMER = 'FIRST_TIMER'
+  FIRST_TIME_CONTRIBUTOR = 'FIRST_TIME_CONTRIBUTOR'
+  MANNEQUIN = 'MANNEQUIN'
+  MEMBER = 'MEMBER'
+  NONE = 'NONE'
+  OWNER = 'OWNER'
+  VALUES = [
+    'COLLABORATOR', 'CONTRIBUTOR', 'FIRST_TIMER', 'FIRST_TIME_CONTRIBUTOR', 'MANNEQUIN', 'MEMBER',
+    'NONE', 'OWNER'
+  ].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoMXab5cd7c75e SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoMXab5cd7c75e
-    PR_BODY = 'PR_BODY'
-    PR_TITLE = 'PR_TITLE'
-    BLANK = 'BLANK'
-    VALUES = %w[PR_BODY PR_TITLE BLANK].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestAutoMergeX0f8aafc5d3 SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestAutoMergeX0f8aafc5d3
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoMX2b1ed74c82 SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoMX2b1ed74c82
-    PR_TITLE = 'PR_TITLE'
-    MERGE_MESSAGE = 'MERGE_MESSAGE'
-    VALUES = %w[PR_TITLE MERGE_MESSAGE].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestAutoMergeMergeMethod SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestAutoMergeMergeMethod
+  MERGE = 'merge'
+  SQUASH = 'squash'
+  REBASE = 'rebase'
+  VALUES = ['merge', 'squash', 'rebase'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoOwnerType SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoOwnerType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoMXab5cd7c75e SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoMXab5cd7c75e
+  PR_BODY = 'PR_BODY'
+  PR_TITLE = 'PR_TITLE'
+  BLANK = 'BLANK'
+  VALUES = ['PR_BODY', 'PR_TITLE', 'BLANK'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoPX30edb8fc34 SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoPX30edb8fc34
-    ALL = 'all'
-    COLLABORATORS_ONLY = 'collaborators_only'
-    VALUES = %w[all collaborators_only].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoMX2b1ed74c82 SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoMX2b1ed74c82
+  PR_TITLE = 'PR_TITLE'
+  MERGE_MESSAGE = 'MERGE_MESSAGE'
+  VALUES = ['PR_TITLE', 'MERGE_MESSAGE'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoSX2b203c9876 SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoSX2b203c9876
-    PR_BODY = 'PR_BODY'
-    COMMIT_MESSAGES = 'COMMIT_MESSAGES'
-    BLANK = 'BLANK'
-    VALUES = %w[PR_BODY COMMIT_MESSAGES BLANK].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoOwnerType SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoOwnerType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoSX3c5d6c30e1 SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoSX3c5d6c30e1
-    PR_TITLE = 'PR_TITLE'
-    COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
-    VALUES = %w[PR_TITLE COMMIT_OR_PR_TITLE].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoPX30edb8fc34 SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoPX30edb8fc34
+  ALL = 'all'
+  COLLABORATORS_ONLY = 'collaborators_only'
+  VALUES = ['all', 'collaborators_only'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoVisibility SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoVisibility
-    PUBLIC = 'public'
-    PRIVATE = 'private'
-    INTERNAL = 'internal'
-    VALUES = %w[public private internal].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoSX2b203c9876 SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoSX2b203c9876
+  PR_BODY = 'PR_BODY'
+  COMMIT_MESSAGES = 'COMMIT_MESSAGES'
+  BLANK = 'BLANK'
+  VALUES = ['PR_BODY', 'COMMIT_MESSAGES', 'BLANK'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestBaseUserType SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestBaseUserType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoSX3c5d6c30e1 SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoSX3c5d6c30e1
+  PR_TITLE = 'PR_TITLE'
+  COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
+  VALUES = ['PR_TITLE', 'COMMIT_OR_PR_TITLE'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoMX1d75301435 SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoMX1d75301435
-    PR_BODY = 'PR_BODY'
-    PR_TITLE = 'PR_TITLE'
-    BLANK = 'BLANK'
-    VALUES = %w[PR_BODY PR_TITLE BLANK].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoVisibility SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestBaseRepoVisibility
+  PUBLIC = 'public'
+  PRIVATE = 'private'
+  INTERNAL = 'internal'
+  VALUES = ['public', 'private', 'internal'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoMXaf74b04a2f SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoMXaf74b04a2f
-    PR_TITLE = 'PR_TITLE'
-    MERGE_MESSAGE = 'MERGE_MESSAGE'
-    VALUES = %w[PR_TITLE MERGE_MESSAGE].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestBaseUserType SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestBaseUserType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoOwnerType SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoOwnerType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoMX1d75301435 SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoMX1d75301435
+  PR_BODY = 'PR_BODY'
+  PR_TITLE = 'PR_TITLE'
+  BLANK = 'BLANK'
+  VALUES = ['PR_BODY', 'PR_TITLE', 'BLANK'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoPX22901efd14 SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoPX22901efd14
-    ALL = 'all'
-    COLLABORATORS_ONLY = 'collaborators_only'
-    VALUES = %w[all collaborators_only].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoMXaf74b04a2f SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoMXaf74b04a2f
+  PR_TITLE = 'PR_TITLE'
+  MERGE_MESSAGE = 'MERGE_MESSAGE'
+  VALUES = ['PR_TITLE', 'MERGE_MESSAGE'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoSXa5505d771e SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoSXa5505d771e
-    PR_BODY = 'PR_BODY'
-    COMMIT_MESSAGES = 'COMMIT_MESSAGES'
-    BLANK = 'BLANK'
-    VALUES = %w[PR_BODY COMMIT_MESSAGES BLANK].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoOwnerType SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoOwnerType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoSX00b42dec53 SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoSX00b42dec53
-    PR_TITLE = 'PR_TITLE'
-    COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
-    VALUES = %w[PR_TITLE COMMIT_OR_PR_TITLE].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoPX22901efd14 SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoPX22901efd14
+  ALL = 'all'
+  COLLABORATORS_ONLY = 'collaborators_only'
+  VALUES = ['all', 'collaborators_only'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoVisibility SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoVisibility
-    PUBLIC = 'public'
-    PRIVATE = 'private'
-    INTERNAL = 'internal'
-    VALUES = %w[public private internal].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoSXa5505d771e SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoSXa5505d771e
+  PR_BODY = 'PR_BODY'
+  COMMIT_MESSAGES = 'COMMIT_MESSAGES'
+  BLANK = 'BLANK'
+  VALUES = ['PR_BODY', 'COMMIT_MESSAGES', 'BLANK'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestHeadUserType SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestHeadUserType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoSX00b42dec53 SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoSX00b42dec53
+  PR_TITLE = 'PR_TITLE'
+  COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
+  VALUES = ['PR_TITLE', 'COMMIT_OR_PR_TITLE'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestMergedByType SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestMergedByType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoVisibility SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestHeadRepoVisibility
+  PUBLIC = 'public'
+  PRIVATE = 'private'
+  INTERNAL = 'internal'
+  VALUES = ['public', 'private', 'internal'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestMilestoneCreatorType SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestMilestoneCreatorType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    MANNEQUIN = 'Mannequin'
-    VALUES = %w[Bot User Organization Mannequin].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestHeadUserType SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestHeadUserType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestMilestoneState SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestMilestoneState
-    OPEN = 'open'
-    CLOSED = 'closed'
-    VALUES = %w[open closed].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestMergedByType SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestMergedByType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestRequestedX5177f61575 SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestRequestedX5177f61575
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestMilestoneCreatorType SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestMilestoneCreatorType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  MANNEQUIN = 'Mannequin'
+  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestRequestedX42edbb26dd SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestRequestedX42edbb26dd
-    OPEN = 'open'
-    CLOSED = 'closed'
-    SECRET = 'secret'
-    VALUES = %w[open closed secret].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestMilestoneState SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestMilestoneState
+  OPEN = 'open'
+  CLOSED = 'closed'
+  VALUES = ['open', 'closed'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestRequestedX26567f40db SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestRequestedX26567f40db
-    OPEN = 'open'
-    CLOSED = 'closed'
-    SECRET = 'secret'
-    VALUES = %w[open closed secret].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestRequestedX5177f61575 SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestRequestedX5177f61575
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestRequestedX5793e9a656 SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestRequestedX5793e9a656
-    OPEN = 'open'
-    CLOSED = 'closed'
-    SECRET = 'secret'
-    VALUES = %w[open closed secret].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestRequestedX42edbb26dd SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestRequestedX42edbb26dd
+  OPEN = 'open'
+  CLOSED = 'closed'
+  SECRET = 'secret'
+  VALUES = ['open', 'closed', 'secret'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestRequestedXe691f9513d SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestRequestedXe691f9513d
-    OPEN = 'open'
-    CLOSED = 'closed'
-    SECRET = 'secret'
-    VALUES = %w[open closed secret].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestRequestedX26567f40db SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestRequestedX26567f40db
+  OPEN = 'open'
+  CLOSED = 'closed'
+  SECRET = 'secret'
+  VALUES = ['open', 'closed', 'secret'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestState SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestState
-    OPEN = 'open'
-    CLOSED = 'closed'
-    VALUES = %w[open closed].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestRequestedX5793e9a656 SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestRequestedX5793e9a656
+  OPEN = 'open'
+  CLOSED = 'closed'
+  SECRET = 'secret'
+  VALUES = ['open', 'closed', 'secret'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0PullRequestUserType SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0PullRequestUserType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    MANNEQUIN = 'Mannequin'
-    VALUES = %w[Bot User Organization Mannequin].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestRequestedXe691f9513d SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestRequestedXe691f9513d
+  OPEN = 'open'
+  CLOSED = 'closed'
+  SECRET = 'secret'
+  VALUES = ['open', 'closed', 'secret'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant0RequestedReviewerType SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant0RequestedReviewerType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    MANNEQUIN = 'Mannequin'
-    VALUES = %w[Bot User Organization Mannequin].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestState SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestState
+  OPEN = 'open'
+  CLOSED = 'closed'
+  VALUES = ['open', 'closed'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant1Action SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant1Action
-    REVIEW_REQUESTED = 'review_requested'
-    VALUES = ['review_requested'].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0PullRequestUserType SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0PullRequestUserType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  MANNEQUIN = 'Mannequin'
+  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant1PullRequestActiveLockReason SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant1PullRequestActiveLockReason
-    RESOLVED = 'resolved'
-    OFF_TOPIC = 'off-topic'
-    TOO_HEATED = 'too heated'
-    SPAM = 'spam'
-    VALUES = ['resolved', 'off-topic', 'too heated', 'spam'].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant0RequestedReviewerType SDK namespace.
+module WebhookPullRequestReviewRequestedVariant0RequestedReviewerType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  MANNEQUIN = 'Mannequin'
+  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewRequestedVariant1PullRequestAssigneeType SDK namespace.
-  module WebhookPullRequestReviewRequestedVariant1PullRequestAssigneeType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    MANNEQUIN = 'Mannequin'
-    VALUES = %w[Bot User Organization Mannequin].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewRequestedVariant1Action SDK namespace.
+module WebhookPullRequestReviewRequestedVariant1Action
+  REVIEW_REQUESTED = 'review_requested'
+  VALUES = ['review_requested'].freeze
+  def self.from_value(value)
+    value
   end
+end
+
+# Defines the WebhookPullRequestReviewRequestedVariant1PullRequestActiveLockReason SDK namespace.
+module WebhookPullRequestReviewRequestedVariant1PullRequestActiveLockReason
+  RESOLVED = 'resolved'
+  OFF_TOPIC = 'off-topic'
+  TOO_HEATED = 'too heated'
+  SPAM = 'spam'
+  VALUES = ['resolved', 'off-topic', 'too heated', 'spam'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhookPullRequestReviewRequestedVariant1PullRequestAssigneeType SDK namespace.
+module WebhookPullRequestReviewRequestedVariant1PullRequestAssigneeType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  MANNEQUIN = 'Mannequin'
+  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

@@ -5,103 +5,103 @@
 
 # webhook_issue_dependencies_blocking_added domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalWebhookIssueDependenciesBlockingAddedMetadata
-    FIELDS = {
-      action: 'action',
-      blocked_issue_id: 'blocked_issue_id',
-      blocked_issue: 'blocked_issue',
-      blocked_issue_repo: 'blocked_issue_repo',
-      blocking_issue_id: 'blocking_issue_id',
-      blocking_issue: 'blocking_issue',
-      installation: 'installation',
-      organization: 'organization',
-      repository: 'repository',
-      sender: 'sender'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      action
-      organization
-      repository
-      sender
-    ].freeze
-    DECODERS = {
-      action: lambda do |value|
-        ::OctridevGithub::WebhookIssueDependenciesBlockingAddedAction.from_value(value)
-      end,
-      blocked_issue: lambda do |value|
-        ::OctridevGithub::Issue.from_hash(value)
-      end,
-      blocked_issue_repo: lambda do |value|
-        ::OctridevGithub::Repository.from_hash(value)
-      end,
-      blocking_issue: lambda do |value|
-        ::OctridevGithub::Issue.from_hash(value)
-      end,
-      installation: lambda do |value|
-        ::OctridevGithub::SimpleInstallation.from_hash(value)
-      end,
-      organization: lambda do |value|
-        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-      end,
-      repository: lambda do |value|
-        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-      end,
-      sender: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end
-    }.freeze
+# Internal model hydration metadata.
+class SdkInternalWebhookIssueDependenciesBlockingAddedMetadata
+  FIELDS = {
+    action: "action",
+    blocked_issue_id: "blocked_issue_id",
+    blocked_issue: "blocked_issue",
+    blocked_issue_repo: "blocked_issue_repo",
+    blocking_issue_id: "blocking_issue_id",
+    blocking_issue: "blocking_issue",
+    installation: "installation",
+    organization: "organization",
+    repository: "repository",
+    sender: "sender",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    action
+    organization
+    repository
+    sender
+  ].freeze
+  DECODERS = {
+    action: lambda do |value|
+      ::OctridevGithub::WebhookIssueDependenciesBlockingAddedAction.from_value(value)
+    end,
+    blocked_issue: lambda do |value|
+      ::OctridevGithub::Issue.from_hash(value)
+    end,
+    blocked_issue_repo: lambda do |value|
+      ::OctridevGithub::Repository.from_hash(value)
+    end,
+    blocking_issue: lambda do |value|
+      ::OctridevGithub::Issue.from_hash(value)
+    end,
+    installation: lambda do |value|
+      ::OctridevGithub::SimpleInstallation.from_hash(value)
+    end,
+    organization: lambda do |value|
+      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+    end,
+    repository: lambda do |value|
+      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+    end,
+    sender: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookIssueDependenciesBlockingAdded.
+# Typed representation of the `WebhookIssueDependenciesBlockingAdded` API schema.
+class WebhookIssueDependenciesBlockingAdded
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookIssueDependenciesBlockingAddedMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookIssueDependenciesBlockingAddedMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookIssueDependenciesBlockingAddedMetadata::DECODERS
+
+  # @return [WebhookIssueDependenciesBlockingAddedAction] Required enumerated value serialized in the `action` wire field.
+  attr_reader :action
+  # @return [Float] The ID of the blocked issue.
+  attr_reader :blocked_issue_id
+  # @return [Issue] Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.
+  attr_reader :blocked_issue
+  # @return [Repository] A repository on GitHub.
+  attr_reader :blocked_issue_repo
+  # @return [Float] The ID of the blocking issue.
+  attr_reader :blocking_issue_id
+  # @return [Issue] Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.
+  attr_reader :blocking_issue
+  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+  attr_reader :installation
+  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+  attr_reader :organization
+  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+  attr_reader :repository
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :sender
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookIssueDependenciesBlockingAdded.
-  # Typed representation of the `WebhookIssueDependenciesBlockingAdded` API schema.
-  class WebhookIssueDependenciesBlockingAdded
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookIssueDependenciesBlockingAddedMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookIssueDependenciesBlockingAddedMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookIssueDependenciesBlockingAddedMetadata::DECODERS
-
-    # @return [WebhookIssueDependenciesBlockingAddedAction] Required enumerated value serialized in the `action` wire field.
-    attr_reader :action
-    # @return [Float] The ID of the blocked issue.
-    attr_reader :blocked_issue_id
-    # @return [Issue] Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.
-    attr_reader :blocked_issue
-    # @return [Repository] A repository on GitHub.
-    attr_reader :blocked_issue_repo
-    # @return [Float] The ID of the blocking issue.
-    attr_reader :blocking_issue_id
-    # @return [Issue] Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.
-    attr_reader :blocking_issue
-    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-    attr_reader :installation
-    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-    attr_reader :organization
-    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-    attr_reader :repository
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :sender
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the WebhookIssueDependenciesBlockingAddedAction SDK namespace.
-  module WebhookIssueDependenciesBlockingAddedAction
-    BLOCKING_ADDED = 'blocking_added'
-    VALUES = ['blocking_added'].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
+
+# Defines the WebhookIssueDependenciesBlockingAddedAction SDK namespace.
+module WebhookIssueDependenciesBlockingAddedAction
+  BLOCKING_ADDED = 'blocking_added'
+  VALUES = ['blocking_added'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

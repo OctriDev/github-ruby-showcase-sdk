@@ -12,8 +12,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPrivateRegistriesListOrgPrivateRegistriesResponseMetadata
         FIELDS = {
-          total_count: 'total_count',
-          configurations: 'configurations'
+          total_count: "total_count",
+          configurations: "configurations",
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -22,7 +22,7 @@ module OctridevGithub
         DECODERS = {
           configurations: lambda do |value|
             value&.map { |item| ::OctridevGithub::OrgPrivateRegistryConfiguration.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -52,30 +52,30 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPrivateRegistriesCreateOrgPrivateRegistryMetadata
         FIELDS = {
-          registry_type: 'registry_type',
-          url: 'url',
-          username: 'username',
-          replaces_base: 'replaces_base',
-          encrypted_value: 'encrypted_value',
-          key_id: 'key_id',
-          visibility: 'visibility',
-          selected_repository_ids: 'selected_repository_ids',
-          auth_type: 'auth_type',
-          tenant_id: 'tenant_id',
-          client_id: 'client_id',
-          aws_region: 'aws_region',
-          account_id: 'account_id',
-          role_name: 'role_name',
-          domain: 'domain',
-          domain_owner: 'domain_owner',
-          jfrog_oidc_provider_name: 'jfrog_oidc_provider_name',
-          audience: 'audience',
-          identity_mapping_name: 'identity_mapping_name',
-          namespace: 'namespace',
-          service_slug: 'service_slug',
-          api_host: 'api_host',
-          workload_identity_provider: 'workload_identity_provider',
-          service_account: 'service_account'
+          registry_type: "registry_type",
+          url: "url",
+          username: "username",
+          replaces_base: "replaces_base",
+          encrypted_value: "encrypted_value",
+          key_id: "key_id",
+          visibility: "visibility",
+          selected_repository_ids: "selected_repository_ids",
+          auth_type: "auth_type",
+          tenant_id: "tenant_id",
+          client_id: "client_id",
+          aws_region: "aws_region",
+          account_id: "account_id",
+          role_name: "role_name",
+          domain: "domain",
+          domain_owner: "domain_owner",
+          jfrog_oidc_provider_name: "jfrog_oidc_provider_name",
+          audience: "audience",
+          identity_mapping_name: "identity_mapping_name",
+          namespace: "namespace",
+          service_slug: "service_slug",
+          api_host: "api_host",
+          workload_identity_provider: "workload_identity_provider",
+          service_account: "service_account",
         }.freeze
         REQUIRED_FIELDS = %i[
           registry_type
@@ -91,7 +91,7 @@ module OctridevGithub
           end,
           auth_type: lambda do |value|
             ::OctridevGithub::Methods::PrivateRegistries::PrivateRegistriesCreateOrgPrivateRegistryAuthType.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -168,14 +168,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPrivateRegistriesGetOrgPublicKeyResponseMetadata
         FIELDS = {
-          key_id: 'key_id',
-          key: 'key'
+          key_id: "key_id",
+          key: "key",
         }.freeze
         REQUIRED_FIELDS = %i[
           key_id
           key
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for PrivateRegistriesGetOrgPublicKeyResponse.
@@ -207,32 +208,33 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPrivateRegistriesUpdateOrgPrivateRegistryMetadata
         FIELDS = {
-          registry_type: 'registry_type',
-          url: 'url',
-          username: 'username',
-          replaces_base: 'replaces_base',
-          encrypted_value: 'encrypted_value',
-          key_id: 'key_id',
-          visibility: 'visibility',
-          selected_repository_ids: 'selected_repository_ids',
-          auth_type: 'auth_type',
-          tenant_id: 'tenant_id',
-          client_id: 'client_id',
-          aws_region: 'aws_region',
-          account_id: 'account_id',
-          role_name: 'role_name',
-          domain: 'domain',
-          domain_owner: 'domain_owner',
-          jfrog_oidc_provider_name: 'jfrog_oidc_provider_name',
-          audience: 'audience',
-          identity_mapping_name: 'identity_mapping_name',
-          namespace: 'namespace',
-          service_slug: 'service_slug',
-          api_host: 'api_host',
-          workload_identity_provider: 'workload_identity_provider',
-          service_account: 'service_account'
+          registry_type: "registry_type",
+          url: "url",
+          username: "username",
+          replaces_base: "replaces_base",
+          encrypted_value: "encrypted_value",
+          key_id: "key_id",
+          visibility: "visibility",
+          selected_repository_ids: "selected_repository_ids",
+          auth_type: "auth_type",
+          tenant_id: "tenant_id",
+          client_id: "client_id",
+          aws_region: "aws_region",
+          account_id: "account_id",
+          role_name: "role_name",
+          domain: "domain",
+          domain_owner: "domain_owner",
+          jfrog_oidc_provider_name: "jfrog_oidc_provider_name",
+          audience: "audience",
+          identity_mapping_name: "identity_mapping_name",
+          namespace: "namespace",
+          service_slug: "service_slug",
+          api_host: "api_host",
+          workload_identity_provider: "workload_identity_provider",
+          service_account: "service_account",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           registry_type: lambda do |value|
             ::OctridevGithub::Methods::PrivateRegistries::PrivateRegistriesUpdateOrgPrivateRegistryRegistryType.from_value(value)
@@ -242,7 +244,7 @@ module OctridevGithub
           end,
           auth_type: lambda do |value|
             ::OctridevGithub::Methods::PrivateRegistries::PrivateRegistriesUpdateOrgPrivateRegistryAuthType.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -321,7 +323,7 @@ module OctridevGithub
         ALL = 'all'
         PRIVATE = 'private'
         SELECTED = 'selected'
-        VALUES = %w[all private selected].freeze
+        VALUES = ['all', 'private', 'selected'].freeze
         def self.from_value(value)
           value
         end
@@ -344,11 +346,11 @@ module OctridevGithub
         PUB_REPOSITORY = 'pub_repository'
         PYTHON_INDEX = 'python_index'
         TERRAFORM_REGISTRY = 'terraform_registry'
-        VALUES = %w[
-          maven_repository nuget_feed goproxy_server npm_registry rubygems_server
-          cargo_registry composer_repository docker_registry git_source helm_registry
-          hex_organization hex_repository pub_repository python_index
-          terraform_registry
+        VALUES = [
+          'maven_repository', 'nuget_feed', 'goproxy_server', 'npm_registry', 'rubygems_server',
+          'cargo_registry', 'composer_repository', 'docker_registry', 'git_source', 'helm_registry',
+          'hex_organization', 'hex_repository', 'pub_repository', 'python_index',
+          'terraform_registry'
         ].freeze
         def self.from_value(value)
           value
@@ -372,11 +374,11 @@ module OctridevGithub
         PUB_REPOSITORY = 'pub_repository'
         PYTHON_INDEX = 'python_index'
         TERRAFORM_REGISTRY = 'terraform_registry'
-        VALUES = %w[
-          maven_repository nuget_feed goproxy_server npm_registry rubygems_server
-          cargo_registry composer_repository docker_registry git_source helm_registry
-          hex_organization hex_repository pub_repository python_index
-          terraform_registry
+        VALUES = [
+          'maven_repository', 'nuget_feed', 'goproxy_server', 'npm_registry', 'rubygems_server',
+          'cargo_registry', 'composer_repository', 'docker_registry', 'git_source', 'helm_registry',
+          'hex_organization', 'hex_repository', 'pub_repository', 'python_index',
+          'terraform_registry'
         ].freeze
         def self.from_value(value)
           value
@@ -393,9 +395,9 @@ module OctridevGithub
         OIDC_CLOUDSMITH = 'oidc_cloudsmith'
         OIDC_GCP = 'oidc_gcp'
         ANONYMOUS = 'anonymous'
-        VALUES = %w[
-          token username_password oidc_azure oidc_aws oidc_jfrog oidc_cloudsmith
-          oidc_gcp anonymous
+        VALUES = [
+          'token', 'username_password', 'oidc_azure', 'oidc_aws', 'oidc_jfrog', 'oidc_cloudsmith',
+          'oidc_gcp', 'anonymous'
         ].freeze
         def self.from_value(value)
           value
@@ -407,7 +409,7 @@ module OctridevGithub
         ALL = 'all'
         PRIVATE = 'private'
         SELECTED = 'selected'
-        VALUES = %w[all private selected].freeze
+        VALUES = ['all', 'private', 'selected'].freeze
         def self.from_value(value)
           value
         end
@@ -423,9 +425,9 @@ module OctridevGithub
         OIDC_CLOUDSMITH = 'oidc_cloudsmith'
         OIDC_GCP = 'oidc_gcp'
         ANONYMOUS = 'anonymous'
-        VALUES = %w[
-          token username_password oidc_azure oidc_aws oidc_jfrog oidc_cloudsmith
-          oidc_gcp anonymous
+        VALUES = [
+          'token', 'username_password', 'oidc_azure', 'oidc_aws', 'oidc_jfrog', 'oidc_cloudsmith',
+          'oidc_gcp', 'anonymous'
         ].freeze
         def self.from_value(value)
           value

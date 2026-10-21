@@ -23,21 +23,22 @@ module OctridevGithub
         release_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/releases/',
+            "/releases/",
             SdkClient.encode_path_segment(release_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_delete_release',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

@@ -37,14 +37,15 @@ module OctridevGithub
         context: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/statuses/',
+            "/statuses/",
             SdkClient.encode_path_segment(sha)
           ].join,
           config: config,
@@ -52,12 +53,12 @@ module OctridevGithub
             'state' => state,
             'target_url' => target_url,
             'description' => description,
-            'context' => context
+            'context' => context,
           },
           return_type: ::OctridevGithub::Status,
           decoder: :json,
           operation_id: 'repos_create_commit_status',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

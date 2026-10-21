@@ -5,256 +5,260 @@
 
 # webhook_milestone_edited domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalWebhookMilestoneEditedChangesDescriptionMetadata
-    FIELDS = {
-      from: 'from'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      from
-    ].freeze
-    DECODERS = {}.freeze
+# Internal model hydration metadata.
+class SdkInternalWebhookMilestoneEditedChangesDescriptionMetadata
+  FIELDS = {
+    from: "from",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    from
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhookMilestoneEditedChangesDescription.
+# Optional object value serialized in the `description` wire field.
+class WebhookMilestoneEditedChangesDescription
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookMilestoneEditedChangesDescriptionMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookMilestoneEditedChangesDescriptionMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookMilestoneEditedChangesDescriptionMetadata::DECODERS
+
+  # @return [String] The previous version of the description if the action was `edited`.
+  attr_reader :from
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookMilestoneEditedChangesDescription.
-  # Optional object value serialized in the `description` wire field.
-  class WebhookMilestoneEditedChangesDescription
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookMilestoneEditedChangesDescriptionMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookMilestoneEditedChangesDescriptionMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookMilestoneEditedChangesDescriptionMetadata::DECODERS
-
-    # @return [String] The previous version of the description if the action was `edited`.
-    attr_reader :from
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookMilestoneEditedChangesDueOnMetadata
-    FIELDS = {
-      from: 'from'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      from
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookMilestoneEditedChangesDueOnMetadata
+  FIELDS = {
+    from: "from",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    from
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhookMilestoneEditedChangesDueOn.
+# Optional object value serialized in the `due_on` wire field.
+class WebhookMilestoneEditedChangesDueOn
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookMilestoneEditedChangesDueOnMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookMilestoneEditedChangesDueOnMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookMilestoneEditedChangesDueOnMetadata::DECODERS
+
+  # @return [String] The previous version of the due date if the action was `edited`.
+  attr_reader :from
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookMilestoneEditedChangesDueOn.
-  # Optional object value serialized in the `due_on` wire field.
-  class WebhookMilestoneEditedChangesDueOn
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookMilestoneEditedChangesDueOnMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookMilestoneEditedChangesDueOnMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookMilestoneEditedChangesDueOnMetadata::DECODERS
-
-    # @return [String] The previous version of the due date if the action was `edited`.
-    attr_reader :from
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookMilestoneEditedChangesTitleMetadata
-    FIELDS = {
-      from: 'from'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      from
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookMilestoneEditedChangesTitleMetadata
+  FIELDS = {
+    from: "from",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    from
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhookMilestoneEditedChangesTitle.
+# Optional object value serialized in the `title` wire field.
+class WebhookMilestoneEditedChangesTitle
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookMilestoneEditedChangesTitleMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookMilestoneEditedChangesTitleMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookMilestoneEditedChangesTitleMetadata::DECODERS
+
+  # @return [String] The previous version of the title if the action was `edited`.
+  attr_reader :from
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookMilestoneEditedChangesTitle.
-  # Optional object value serialized in the `title` wire field.
-  class WebhookMilestoneEditedChangesTitle
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookMilestoneEditedChangesTitleMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookMilestoneEditedChangesTitleMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookMilestoneEditedChangesTitleMetadata::DECODERS
-
-    # @return [String] The previous version of the title if the action was `edited`.
-    attr_reader :from
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookMilestoneEditedChangesMetadata
-    FIELDS = {
-      description: 'description',
-      due_on: 'due_on',
-      title: 'title'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      description: lambda do |value|
-        ::OctridevGithub::WebhookMilestoneEditedChangesDescription.from_hash(value)
-      end,
-      due_on: lambda do |value|
-        ::OctridevGithub::WebhookMilestoneEditedChangesDueOn.from_hash(value)
-      end,
-      title: lambda do |value|
-        ::OctridevGithub::WebhookMilestoneEditedChangesTitle.from_hash(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookMilestoneEditedChangesMetadata
+  FIELDS = {
+    description: "description",
+    due_on: "due_on",
+    title: "title",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    description: lambda do |value|
+      ::OctridevGithub::WebhookMilestoneEditedChangesDescription.from_hash(value)
+    end,
+    due_on: lambda do |value|
+      ::OctridevGithub::WebhookMilestoneEditedChangesDueOn.from_hash(value)
+    end,
+    title: lambda do |value|
+      ::OctridevGithub::WebhookMilestoneEditedChangesTitle.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookMilestoneEditedChanges.
+# The changes to the milestone if the action was `edited`.
+class WebhookMilestoneEditedChanges
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookMilestoneEditedChangesMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookMilestoneEditedChangesMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookMilestoneEditedChangesMetadata::DECODERS
+
+  # @return [WebhookMilestoneEditedChangesDescription] Optional object value serialized in the `description` wire field.
+  attr_reader :description
+  # @return [WebhookMilestoneEditedChangesDueOn] Optional object value serialized in the `due_on` wire field.
+  attr_reader :due_on
+  # @return [WebhookMilestoneEditedChangesTitle] Optional object value serialized in the `title` wire field.
+  attr_reader :title
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookMilestoneEditedChanges.
-  # The changes to the milestone if the action was `edited`.
-  class WebhookMilestoneEditedChanges
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookMilestoneEditedChangesMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookMilestoneEditedChangesMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookMilestoneEditedChangesMetadata::DECODERS
-
-    # @return [WebhookMilestoneEditedChangesDescription] Optional object value serialized in the `description` wire field.
-    attr_reader :description
-    # @return [WebhookMilestoneEditedChangesDueOn] Optional object value serialized in the `due_on` wire field.
-    attr_reader :due_on
-    # @return [WebhookMilestoneEditedChangesTitle] Optional object value serialized in the `title` wire field.
-    attr_reader :title
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookMilestoneEditedMetadata
-    FIELDS = {
-      action: 'action',
-      changes: 'changes',
-      enterprise: 'enterprise',
-      installation: 'installation',
-      milestone: 'milestone',
-      organization: 'organization',
-      repository: 'repository',
-      sender: 'sender'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      action
-      changes
-      milestone
-      repository
-      sender
-    ].freeze
-    DECODERS = {
-      action: lambda do |value|
-        ::OctridevGithub::WebhookMilestoneEditedAction.from_value(value)
-      end,
-      changes: lambda do |value|
-        ::OctridevGithub::WebhookMilestoneEditedChanges.from_hash(value)
-      end,
-      enterprise: lambda do |value|
-        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-      end,
-      installation: lambda do |value|
-        ::OctridevGithub::SimpleInstallation.from_hash(value)
-      end,
-      milestone: lambda do |value|
-        ::OctridevGithub::WebhooksMilestone.from_hash(value)
-      end,
-      organization: lambda do |value|
-        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-      end,
-      repository: lambda do |value|
-        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-      end,
-      sender: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookMilestoneEditedMetadata
+  FIELDS = {
+    action: "action",
+    changes: "changes",
+    enterprise: "enterprise",
+    installation: "installation",
+    milestone: "milestone",
+    organization: "organization",
+    repository: "repository",
+    sender: "sender",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    action
+    changes
+    milestone
+    repository
+    sender
+  ].freeze
+  DECODERS = {
+    action: lambda do |value|
+      ::OctridevGithub::WebhookMilestoneEditedAction.from_value(value)
+    end,
+    changes: lambda do |value|
+      ::OctridevGithub::WebhookMilestoneEditedChanges.from_hash(value)
+    end,
+    enterprise: lambda do |value|
+      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+    end,
+    installation: lambda do |value|
+      ::OctridevGithub::SimpleInstallation.from_hash(value)
+    end,
+    milestone: lambda do |value|
+      ::OctridevGithub::WebhooksMilestone.from_hash(value)
+    end,
+    organization: lambda do |value|
+      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+    end,
+    repository: lambda do |value|
+      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+    end,
+    sender: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookMilestoneEdited.
+# Typed representation of the `WebhookMilestoneEdited` API schema.
+class WebhookMilestoneEdited
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookMilestoneEditedMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookMilestoneEditedMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookMilestoneEditedMetadata::DECODERS
+
+  # @return [WebhookMilestoneEditedAction] Required enumerated value serialized in the `action` wire field.
+  attr_reader :action
+  # @return [WebhookMilestoneEditedChanges] The changes to the milestone if the action was `edited`.
+  attr_reader :changes
+  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+  attr_reader :enterprise
+  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+  attr_reader :installation
+  # @return [WebhooksMilestone] A collection of related issues and pull requests.
+  attr_reader :milestone
+  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+  attr_reader :organization
+  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+  attr_reader :repository
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :sender
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookMilestoneEdited.
-  # Typed representation of the `WebhookMilestoneEdited` API schema.
-  class WebhookMilestoneEdited
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookMilestoneEditedMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookMilestoneEditedMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookMilestoneEditedMetadata::DECODERS
-
-    # @return [WebhookMilestoneEditedAction] Required enumerated value serialized in the `action` wire field.
-    attr_reader :action
-    # @return [WebhookMilestoneEditedChanges] The changes to the milestone if the action was `edited`.
-    attr_reader :changes
-    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-    attr_reader :enterprise
-    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-    attr_reader :installation
-    # @return [WebhooksMilestone] A collection of related issues and pull requests.
-    attr_reader :milestone
-    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-    attr_reader :organization
-    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-    attr_reader :repository
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :sender
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the WebhookMilestoneEditedAction SDK namespace.
-  module WebhookMilestoneEditedAction
-    EDITED = 'edited'
-    VALUES = ['edited'].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
+
+# Defines the WebhookMilestoneEditedAction SDK namespace.
+module WebhookMilestoneEditedAction
+  EDITED = 'edited'
+  VALUES = ['edited'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

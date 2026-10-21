@@ -14,7 +14,7 @@ module OctridevGithub
         ALL = 'all'
         SELECTED = 'selected'
         NONE = 'none'
-        VALUES = %w[all selected none].freeze
+        VALUES = ['all', 'selected', 'none'].freeze
         def self.from_value(value)
           value
         end
@@ -25,7 +25,7 @@ module OctridevGithub
         ALL = 'all'
         PRIVATE = 'private'
         SELECTED = 'selected'
-        VALUES = %w[all private selected].freeze
+        VALUES = ['all', 'private', 'selected'].freeze
         def self.from_value(value)
           value
         end
@@ -36,7 +36,7 @@ module OctridevGithub
         SELECTED = 'selected'
         ALL = 'all'
         PRIVATE = 'private'
-        VALUES = %w[selected all private].freeze
+        VALUES = ['selected', 'all', 'private'].freeze
         def self.from_value(value)
           value
         end

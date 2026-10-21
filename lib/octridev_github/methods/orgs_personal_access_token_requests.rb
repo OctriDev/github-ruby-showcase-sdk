@@ -47,6 +47,7 @@ module OctridevGithub
         token_id: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(owner) { Validation.validate_items('owner', owner, max: 10) }
 
         Validation.if_given(last_used_before) do
@@ -60,9 +61,9 @@ module OctridevGithub
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/personal-access-token-requests'
+            "/personal-access-token-requests"
           ].join,
           config: config,
           query: {
@@ -75,13 +76,13 @@ module OctridevGithub
             'permission' => QueryValue.new(permission, style: 'form', explode: true),
             'last_used_before' => QueryValue.new(last_used_before, style: 'form', explode: true),
             'last_used_after' => QueryValue.new(last_used_after, style: 'form', explode: true),
-            'token_id' => QueryValue.new(token_id, style: 'form', explode: true)
+            'token_id' => QueryValue.new(token_id, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::OrganizationProgrammaticAccessGrantRequest],
           decoder: :json,
           operation_id: 'orgs_list_pat_grant_requests',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -103,6 +104,7 @@ module OctridevGithub
         reason: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(pat_request_ids) do
           Validation.validate_items('pat_request_ids', pat_request_ids, min: 1, max: 100)
         end
@@ -112,20 +114,20 @@ module OctridevGithub
         SdkClient.request(
           'POST',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/personal-access-token-requests'
+            "/personal-access-token-requests"
           ].join,
           config: config,
           body: {
             'action' => action,
             'pat_request_ids' => pat_request_ids,
-            'reason' => reason
+            'reason' => reason,
           },
           decoder: :json,
           operation_id: 'orgs_review_pat_grant_requests_in_bulk',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -146,25 +148,26 @@ module OctridevGithub
         reason: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(reason) { Validation.validate_length('reason', reason, max: 1024) }
 
         SdkClient.request(
           'POST',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/personal-access-token-requests/',
+            "/personal-access-token-requests/",
             SdkClient.encode_path_segment(pat_request_id)
           ].join,
           config: config,
           body: {
             'action' => action,
-            'reason' => reason
+            'reason' => reason,
           },
           decoder: :empty,
           operation_id: 'orgs_review_pat_grant_request',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -185,25 +188,26 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/personal-access-token-requests/',
+            "/personal-access-token-requests/",
             SdkClient.encode_path_segment(pat_request_id),
-            '/repositories'
+            "/repositories"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::MinimalRepository],
           decoder: :json,
           operation_id: 'orgs_list_pat_grant_request_repositories',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
     end

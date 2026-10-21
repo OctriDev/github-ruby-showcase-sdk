@@ -24,14 +24,15 @@ module OctridevGithub
         branch:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/branches/',
+            "/branches/",
             SdkClient.encode_path_segment(branch)
           ].join,
           config: config,
@@ -39,7 +40,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'repos_get_branch',
           request_options: request_options,
-          errors: { '301' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '301' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

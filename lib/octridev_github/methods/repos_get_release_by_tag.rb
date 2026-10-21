@@ -25,14 +25,15 @@ module OctridevGithub
         tag:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/releases/tags/',
+            "/releases/tags/",
             SdkClient.encode_path_segment(tag)
           ].join,
           config: config,
@@ -40,7 +41,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'repos_get_release_by_tag',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

@@ -47,11 +47,12 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(since) { Validation.validate_date_time('since', since) }
 
         SdkClient.request(
           'GET',
-          '/issues',
+          "/issues",
           config: config,
           query: {
             'filter' => QueryValue.new(filter, style: 'form', explode: true),
@@ -65,13 +66,13 @@ module OctridevGithub
             'owned' => QueryValue.new(owned, style: 'form', explode: true),
             'pulls' => QueryValue.new(pulls, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::Issue],
           decoder: :json,
           operation_id: 'issues_list',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -111,14 +112,15 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(since) { Validation.validate_date_time('since', since) }
 
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/issues'
+            "/issues"
           ].join,
           config: config,
           query: {
@@ -130,13 +132,13 @@ module OctridevGithub
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'since' => QueryValue.new(since, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::Issue],
           decoder: :json,
           operation_id: 'issues_list_for_org',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -197,16 +199,17 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(since) { Validation.validate_date_time('since', since) }
 
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/issues'
+            "/issues"
           ].join,
           config: config,
           query: {
@@ -222,13 +225,13 @@ module OctridevGithub
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'since' => QueryValue.new(since, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::Issue],
           decoder: :json,
           operation_id: 'issues_list_for_repo',
           request_options: request_options,
-          errors: { '301' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '301' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -277,14 +280,15 @@ module OctridevGithub
         parent_issue_id: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/issues'
+            "/issues"
           ].join,
           config: config,
           body: {
@@ -296,13 +300,13 @@ module OctridevGithub
             'assignees' => assignees,
             'issue_field_values' => issue_field_values,
             'type' => type,
-            'parent_issue_id' => parent_issue_id
+            'parent_issue_id' => parent_issue_id,
           },
           return_type: ::OctridevGithub::Issue,
           decoder: :json,
           operation_id: 'issues_create',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -322,14 +326,15 @@ module OctridevGithub
         issue_number:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/issues/',
+            "/issues/",
             SdkClient.encode_path_segment(issue_number)
           ].join,
           config: config,
@@ -337,7 +342,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'issues_get',
           request_options: request_options,
-          errors: { '301' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError }
+          errors: { '301' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -396,14 +401,15 @@ module OctridevGithub
         type: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/issues/',
+            "/issues/",
             SdkClient.encode_path_segment(issue_number)
           ].join,
           config: config,
@@ -418,13 +424,13 @@ module OctridevGithub
             'labels' => labels,
             'assignees' => assignees,
             'issue_field_values' => issue_field_values,
-            'type' => type
+            'type' => type,
           },
           return_type: ::OctridevGithub::Methods::Issues::IssuesUpdateResponse,
           decoder: :json,
           operation_id: 'issues_update',
           request_options: request_options,
-          errors: { '301' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '301' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -462,11 +468,12 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(since) { Validation.validate_date_time('since', since) }
 
         SdkClient.request(
           'GET',
-          '/user/issues',
+          "/user/issues",
           config: config,
           query: {
             'filter' => QueryValue.new(filter, style: 'form', explode: true),
@@ -476,13 +483,13 @@ module OctridevGithub
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'since' => QueryValue.new(since, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::Issue],
           decoder: :json,
           operation_id: 'issues_list_for_authenticated_user',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

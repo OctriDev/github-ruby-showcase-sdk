@@ -21,21 +21,22 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/issue-types'
+            "/issue-types"
           ].join,
           config: config,
           return_type: [::OctridevGithub::IssueType],
           decoder: :json,
           operation_id: 'repos_list_issue_types',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

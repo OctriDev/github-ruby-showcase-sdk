@@ -14,14 +14,15 @@ module OctridevGithub
         config:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
-          '/user/codespaces/secrets/public-key',
+          "/user/codespaces/secrets/public-key",
           config: config,
           return_type: ::OctridevGithub::CodespacesUserPublicKey,
           decoder: :json,
           operation_id: 'codespaces_get_public_key_for_authenticated_user',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

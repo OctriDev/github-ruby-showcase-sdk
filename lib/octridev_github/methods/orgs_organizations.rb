@@ -21,18 +21,19 @@ module OctridevGithub
         per_page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
-          '/organizations',
+          "/organizations",
           config: config,
           query: {
             'since' => QueryValue.new(since, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::OrganizationSimple],
           decoder: :json,
           operation_id: 'orgs_list',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

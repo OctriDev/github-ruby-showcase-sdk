@@ -35,29 +35,30 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/issues/',
+            "/issues/",
             SdkClient.encode_path_segment(issue_number),
-            '/suggestions'
+            "/suggestions"
           ].join,
           config: config,
           query: {
             'state' => QueryValue.new(state, style: 'form', explode: true),
             'action' => QueryValue.new(action, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::IssueSuggestion],
           decoder: :json,
           operation_id: 'issues_list_suggestions',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -77,25 +78,26 @@ module OctridevGithub
         suggestion_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/issues/',
+            "/issues/",
             SdkClient.encode_path_segment(issue_number),
-            '/suggestions/',
+            "/suggestions/",
             SdkClient.encode_path_segment(suggestion_id),
-            '/approve'
+            "/approve"
           ].join,
           config: config,
           return_type: ::OctridevGithub::IssueSuggestion,
           decoder: :json,
           operation_id: 'issues_approve_suggestion',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -115,25 +117,26 @@ module OctridevGithub
         suggestion_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/issues/',
+            "/issues/",
             SdkClient.encode_path_segment(issue_number),
-            '/suggestions/',
+            "/suggestions/",
             SdkClient.encode_path_segment(suggestion_id),
-            '/dismiss'
+            "/dismiss"
           ].join,
           config: config,
           return_type: ::OctridevGithub::IssueSuggestion,
           decoder: :json,
           operation_id: 'issues_dismiss_suggestion',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end

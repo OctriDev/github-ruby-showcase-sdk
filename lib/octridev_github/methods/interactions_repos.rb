@@ -21,19 +21,20 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/interaction-limits'
+            "/interaction-limits"
           ].join,
           config: config,
           decoder: :json,
           operation_id: 'interactions_get_restrictions_for_repo',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -56,24 +57,25 @@ module OctridevGithub
         expiry: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/interaction-limits'
+            "/interaction-limits"
           ].join,
           config: config,
           body: {
             'limit' => limit,
-            'expiry' => expiry
+            'expiry' => expiry,
           },
           return_type: ::OctridevGithub::InteractionLimitResponse,
           decoder: :json,
           operation_id: 'interactions_set_restrictions_for_repo',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -89,19 +91,20 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/interaction-limits'
+            "/interaction-limits"
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'interactions_remove_restrictions_for_repo',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -117,21 +120,22 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/interaction-limits/pulls/bypass-list'
+            "/interaction-limits/pulls/bypass-list"
           ].join,
           config: config,
           return_type: [::OctridevGithub::SimpleUser],
           decoder: :json,
           operation_id: 'interactions_get_pull_request_bypass_list_for_repo',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -150,23 +154,24 @@ module OctridevGithub
         users:,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/interaction-limits/pulls/bypass-list'
+            "/interaction-limits/pulls/bypass-list"
           ].join,
           config: config,
           body: {
-            'users' => users
+            'users' => users,
           },
           decoder: :empty,
           operation_id: 'interactions_set_pull_request_bypass_list_for_repo',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -185,23 +190,24 @@ module OctridevGithub
         users:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/interaction-limits/pulls/bypass-list'
+            "/interaction-limits/pulls/bypass-list"
           ].join,
           config: config,
           body: {
-            'users' => users
+            'users' => users,
           },
           decoder: :empty,
           operation_id: 'interactions_remove_pull_request_bypass_list_for_repo',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -217,21 +223,22 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/interaction-limits/pulls/creation-cap'
+            "/interaction-limits/pulls/creation-cap"
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::Interactions::InteractionsGetPullRequestCreationCapForRepoResponse,
           decoder: :json,
           operation_id: 'interactions_get_pull_request_creation_cap_for_repo',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '405' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '405' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -255,6 +262,7 @@ module OctridevGithub
         include_drafts: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(max_open_pull_requests) do
           Validation.validate_range('max_open_pull_requests', max_open_pull_requests, min: 1, max: 1000)
         end
@@ -262,23 +270,23 @@ module OctridevGithub
         SdkClient.request(
           'PATCH',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/interaction-limits/pulls/creation-cap'
+            "/interaction-limits/pulls/creation-cap"
           ].join,
           config: config,
           body: {
             'enabled' => enabled,
             'max_open_pull_requests' => max_open_pull_requests,
-            'include_drafts' => include_drafts
+            'include_drafts' => include_drafts,
           },
           return_type: ::OctridevGithub::Methods::Interactions::InteractionsUpdatePullRequestCreationCapForRepoResponse,
           decoder: :json,
           operation_id: 'interactions_update_pull_request_creation_cap_for_repo',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '405' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '405' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end

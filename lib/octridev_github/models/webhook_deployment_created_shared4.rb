@@ -5,475 +5,475 @@
 
 # webhook_deployment_created domain models
 module OctridevGithub
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppEventsItem SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppEventsItem
-    BRANCH_PROTECTION_RULE = 'branch_protection_rule'
-    CHECK_RUN = 'check_run'
-    CHECK_SUITE = 'check_suite'
-    CODE_SCANNING_ALERT = 'code_scanning_alert'
-    COMMIT_COMMENT = 'commit_comment'
-    CONTENT_REFERENCE = 'content_reference'
-    CREATE = 'create'
-    DELETE = 'delete'
-    DEPLOYMENT = 'deployment'
-    DEPLOYMENT_REVIEW = 'deployment_review'
-    DEPLOYMENT_STATUS = 'deployment_status'
-    DEPLOY_KEY = 'deploy_key'
-    DISCUSSION = 'discussion'
-    DISCUSSION_COMMENT = 'discussion_comment'
-    FORK = 'fork'
-    GOLLUM = 'gollum'
-    ISSUES = 'issues'
-    ISSUE_COMMENT = 'issue_comment'
-    LABEL = 'label'
-    MEMBER = 'member'
-    MEMBERSHIP = 'membership'
-    MILESTONE = 'milestone'
-    ORGANIZATION = 'organization'
-    ORG_BLOCK = 'org_block'
-    PAGE_BUILD = 'page_build'
-    PROJECT = 'project'
-    PROJECT_CARD = 'project_card'
-    PROJECT_COLUMN = 'project_column'
-    PUBLIC = 'public'
-    PULL_REQUEST = 'pull_request'
-    PULL_REQUEST_REVIEW = 'pull_request_review'
-    PULL_REQUEST_REVIEW_COMMENT = 'pull_request_review_comment'
-    PUSH = 'push'
-    REGISTRY_PACKAGE = 'registry_package'
-    RELEASE = 'release'
-    REPOSITORY = 'repository'
-    REPOSITORY_DISPATCH = 'repository_dispatch'
-    SECRET_SCANNING_ALERT = 'secret_scanning_alert'
-    STAR = 'star'
-    STATUS = 'status'
-    TEAM = 'team'
-    TEAM_ADD = 'team_add'
-    WATCH = 'watch'
-    WORKFLOW_DISPATCH = 'workflow_dispatch'
-    WORKFLOW_RUN = 'workflow_run'
-    WORKFLOW_JOB = 'workflow_job'
-    PULL_REQUEST_REVIEW_THREAD = 'pull_request_review_thread'
-    MERGE_QUEUE_ENTRY = 'merge_queue_entry'
-    SECRET_SCANNING_ALERT_LOCATION = 'secret_scanning_alert_location'
-    MERGE_GROUP = 'merge_group'
-    VALUES = %w[
-      branch_protection_rule check_run check_suite code_scanning_alert commit_comment
-      content_reference create delete deployment deployment_review deployment_status
-      deploy_key discussion discussion_comment fork gollum issues issue_comment
-      label member membership milestone organization org_block page_build
-      project project_card project_column public pull_request pull_request_review
-      pull_request_review_comment push registry_package release repository
-      repository_dispatch secret_scanning_alert star status team team_add watch
-      workflow_dispatch workflow_run workflow_job pull_request_review_thread
-      merge_queue_entry secret_scanning_alert_location merge_group
-    ].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppEventsItem SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppEventsItem
+  BRANCH_PROTECTION_RULE = 'branch_protection_rule'
+  CHECK_RUN = 'check_run'
+  CHECK_SUITE = 'check_suite'
+  CODE_SCANNING_ALERT = 'code_scanning_alert'
+  COMMIT_COMMENT = 'commit_comment'
+  CONTENT_REFERENCE = 'content_reference'
+  CREATE = 'create'
+  DELETE = 'delete'
+  DEPLOYMENT = 'deployment'
+  DEPLOYMENT_REVIEW = 'deployment_review'
+  DEPLOYMENT_STATUS = 'deployment_status'
+  DEPLOY_KEY = 'deploy_key'
+  DISCUSSION = 'discussion'
+  DISCUSSION_COMMENT = 'discussion_comment'
+  FORK = 'fork'
+  GOLLUM = 'gollum'
+  ISSUES = 'issues'
+  ISSUE_COMMENT = 'issue_comment'
+  LABEL = 'label'
+  MEMBER = 'member'
+  MEMBERSHIP = 'membership'
+  MILESTONE = 'milestone'
+  ORGANIZATION = 'organization'
+  ORG_BLOCK = 'org_block'
+  PAGE_BUILD = 'page_build'
+  PROJECT = 'project'
+  PROJECT_CARD = 'project_card'
+  PROJECT_COLUMN = 'project_column'
+  PUBLIC = 'public'
+  PULL_REQUEST = 'pull_request'
+  PULL_REQUEST_REVIEW = 'pull_request_review'
+  PULL_REQUEST_REVIEW_COMMENT = 'pull_request_review_comment'
+  PUSH = 'push'
+  REGISTRY_PACKAGE = 'registry_package'
+  RELEASE = 'release'
+  REPOSITORY = 'repository'
+  REPOSITORY_DISPATCH = 'repository_dispatch'
+  SECRET_SCANNING_ALERT = 'secret_scanning_alert'
+  STAR = 'star'
+  STATUS = 'status'
+  TEAM = 'team'
+  TEAM_ADD = 'team_add'
+  WATCH = 'watch'
+  WORKFLOW_DISPATCH = 'workflow_dispatch'
+  WORKFLOW_RUN = 'workflow_run'
+  WORKFLOW_JOB = 'workflow_job'
+  PULL_REQUEST_REVIEW_THREAD = 'pull_request_review_thread'
+  MERGE_QUEUE_ENTRY = 'merge_queue_entry'
+  SECRET_SCANNING_ALERT_LOCATION = 'secret_scanning_alert_location'
+  MERGE_GROUP = 'merge_group'
+  VALUES = [
+    'branch_protection_rule', 'check_run', 'check_suite', 'code_scanning_alert', 'commit_comment',
+    'content_reference', 'create', 'delete', 'deployment', 'deployment_review', 'deployment_status',
+    'deploy_key', 'discussion', 'discussion_comment', 'fork', 'gollum', 'issues', 'issue_comment',
+    'label', 'member', 'membership', 'milestone', 'organization', 'org_block', 'page_build',
+    'project', 'project_card', 'project_column', 'public', 'pull_request', 'pull_request_review',
+    'pull_request_review_comment', 'push', 'registry_package', 'release', 'repository',
+    'repository_dispatch', 'secret_scanning_alert', 'star', 'status', 'team', 'team_add', 'watch',
+    'workflow_dispatch', 'workflow_run', 'workflow_job', 'pull_request_review_thread',
+    'merge_queue_entry', 'secret_scanning_alert_location', 'merge_group'
+  ].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppOwnerType SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppOwnerType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppOwnerType SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppOwnerType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXabac86940e SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXabac86940e
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXabac86940e SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXabac86940e
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXb2e4e214ea SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXb2e4e214ea
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXb2e4e214ea SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXb2e4e214ea
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsChecks SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsChecks
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsChecks SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsChecks
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX7b02e240a9 SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX7b02e240a9
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX7b02e240a9 SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX7b02e240a9
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXa472c7a9b7 SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXa472c7a9b7
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXa472c7a9b7 SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXa472c7a9b7
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXf425d64b53 SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXf425d64b53
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXf425d64b53 SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXf425d64b53
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX0640c342ac SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX0640c342ac
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX0640c342ac SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX0640c342ac
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsEmails SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsEmails
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsEmails SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsEmails
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX67ad088bff SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX67ad088bff
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX67ad088bff SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX67ad088bff
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsIssues SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsIssues
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsIssues SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsIssues
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsKeys SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsKeys
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsKeys SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsKeys
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX47cc859cb7 SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX47cc859cb7
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX47cc859cb7 SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX47cc859cb7
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXfc4addf8e7 SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXfc4addf8e7
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXfc4addf8e7 SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXfc4addf8e7
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXc83e0c24c2 SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXc83e0c24c2
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXc83e0c24c2 SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXc83e0c24c2
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX5393364a56 SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX5393364a56
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX5393364a56 SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX5393364a56
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX6f8c3fbecd SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX6f8c3fbecd
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX6f8c3fbecd SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX6f8c3fbecd
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXcea895f9f8 SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXcea895f9f8
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXcea895f9f8 SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXcea895f9f8
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX724649161c SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX724649161c
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX724649161c SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX724649161c
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX4bfd526562 SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX4bfd526562
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX4bfd526562 SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX4bfd526562
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXcb559a4c78 SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXcb559a4c78
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXcb559a4c78 SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXcb559a4c78
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXfe62bebc30 SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXfe62bebc30
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXfe62bebc30 SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXfe62bebc30
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX4d0094b878 SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX4d0094b878
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX4d0094b878 SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX4d0094b878
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsPages SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsPages
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsPages SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermissionsPages
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX0251d53d00 SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX0251d53d00
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX0251d53d00 SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX0251d53d00
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXe4e08fd967 SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXe4e08fd967
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXe4e08fd967 SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXe4e08fd967
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXc2d1d4b4af SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXc2d1d4b4af
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXc2d1d4b4af SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXc2d1d4b4af
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXdc186e7dbf SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXdc186e7dbf
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXdc186e7dbf SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXdc186e7dbf
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX714902169f SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX714902169f
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX714902169f SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX714902169f
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX30a11584f9 SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX30a11584f9
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX30a11584f9 SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX30a11584f9
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX895a21d0c8 SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX895a21d0c8
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX895a21d0c8 SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX895a21d0c8
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXd1296c950e SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXd1296c950e
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXd1296c950e SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisXd1296c950e
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX836e5507db SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX836e5507db
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX836e5507db SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX836e5507db
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX347b955579 SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX347b955579
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX347b955579 SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX347b955579
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX733f6fe6b1 SDK namespace.
-  module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX733f6fe6b1
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX733f6fe6b1 SDK namespace.
+module WebhookDeploymentCreatedDeploymentPerformedViaGithubAppPermisX733f6fe6b1
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedWorkflowRunActorType SDK namespace.
-  module WebhookDeploymentCreatedWorkflowRunActorType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedWorkflowRunActorType SDK namespace.
+module WebhookDeploymentCreatedWorkflowRunActorType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedWorkflowRunConclusion SDK namespace.
-  module WebhookDeploymentCreatedWorkflowRunConclusion
-    SUCCESS = 'success'
-    FAILURE = 'failure'
-    NEUTRAL = 'neutral'
-    CANCELLED = 'cancelled'
-    TIMED_OUT = 'timed_out'
-    ACTION_REQUIRED = 'action_required'
-    STALE = 'stale'
-    VALUES = %w[
-      success failure neutral cancelled timed_out action_required stale
-    ].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedWorkflowRunConclusion SDK namespace.
+module WebhookDeploymentCreatedWorkflowRunConclusion
+  SUCCESS = 'success'
+  FAILURE = 'failure'
+  NEUTRAL = 'neutral'
+  CANCELLED = 'cancelled'
+  TIMED_OUT = 'timed_out'
+  ACTION_REQUIRED = 'action_required'
+  STALE = 'stale'
+  VALUES = [
+    'success', 'failure', 'neutral', 'cancelled', 'timed_out', 'action_required', 'stale'
+  ].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedWorkflowRunStatus SDK namespace.
-  module WebhookDeploymentCreatedWorkflowRunStatus
-    REQUESTED = 'requested'
-    IN_PROGRESS = 'in_progress'
-    COMPLETED = 'completed'
-    QUEUED = 'queued'
-    WAITING = 'waiting'
-    PENDING = 'pending'
-    VALUES = %w[requested in_progress completed queued waiting pending].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedWorkflowRunStatus SDK namespace.
+module WebhookDeploymentCreatedWorkflowRunStatus
+  REQUESTED = 'requested'
+  IN_PROGRESS = 'in_progress'
+  COMPLETED = 'completed'
+  QUEUED = 'queued'
+  WAITING = 'waiting'
+  PENDING = 'pending'
+  VALUES = ['requested', 'in_progress', 'completed', 'queued', 'waiting', 'pending'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookDeploymentCreatedWorkflowRunTriggeringActorType SDK namespace.
-  module WebhookDeploymentCreatedWorkflowRunTriggeringActorType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookDeploymentCreatedWorkflowRunTriggeringActorType SDK namespace.
+module WebhookDeploymentCreatedWorkflowRunTriggeringActorType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 end

@@ -23,20 +23,21 @@ module OctridevGithub
         secret_name:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/codespaces/secrets/',
+            "/codespaces/secrets/",
             SdkClient.encode_path_segment(secret_name)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'codespaces_delete_repo_secret',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

@@ -5,84 +5,84 @@
 
 # webhook_branch_protection_configuration_enabled domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalWebhookBranchProtectionConfigurationEnabledMetadata
-    FIELDS = {
-      action: 'action',
-      enterprise: 'enterprise',
-      installation: 'installation',
-      organization: 'organization',
-      repository: 'repository',
-      sender: 'sender'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      action
-      repository
-      sender
-    ].freeze
-    DECODERS = {
-      action: lambda do |value|
-        ::OctridevGithub::WebhookBranchProtectionConfigurationEnabledAction.from_value(value)
-      end,
-      enterprise: lambda do |value|
-        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-      end,
-      installation: lambda do |value|
-        ::OctridevGithub::SimpleInstallation.from_hash(value)
-      end,
-      organization: lambda do |value|
-        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-      end,
-      repository: lambda do |value|
-        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-      end,
-      sender: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end
-    }.freeze
+# Internal model hydration metadata.
+class SdkInternalWebhookBranchProtectionConfigurationEnabledMetadata
+  FIELDS = {
+    action: "action",
+    enterprise: "enterprise",
+    installation: "installation",
+    organization: "organization",
+    repository: "repository",
+    sender: "sender",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    action
+    repository
+    sender
+  ].freeze
+  DECODERS = {
+    action: lambda do |value|
+      ::OctridevGithub::WebhookBranchProtectionConfigurationEnabledAction.from_value(value)
+    end,
+    enterprise: lambda do |value|
+      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+    end,
+    installation: lambda do |value|
+      ::OctridevGithub::SimpleInstallation.from_hash(value)
+    end,
+    organization: lambda do |value|
+      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+    end,
+    repository: lambda do |value|
+      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+    end,
+    sender: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookBranchProtectionConfigurationEnabled.
+# Typed representation of the `WebhookBranchProtectionConfigurationEnabled` API schema.
+class WebhookBranchProtectionConfigurationEnabled
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookBranchProtectionConfigurationEnabledMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookBranchProtectionConfigurationEnabledMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookBranchProtectionConfigurationEnabledMetadata::DECODERS
+
+  # @return [WebhookBranchProtectionConfigurationEnabledAction] Required enumerated value serialized in the `action` wire field.
+  attr_reader :action
+  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+  attr_reader :enterprise
+  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+  attr_reader :installation
+  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+  attr_reader :organization
+  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+  attr_reader :repository
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :sender
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookBranchProtectionConfigurationEnabled.
-  # Typed representation of the `WebhookBranchProtectionConfigurationEnabled` API schema.
-  class WebhookBranchProtectionConfigurationEnabled
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookBranchProtectionConfigurationEnabledMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookBranchProtectionConfigurationEnabledMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookBranchProtectionConfigurationEnabledMetadata::DECODERS
-
-    # @return [WebhookBranchProtectionConfigurationEnabledAction] Required enumerated value serialized in the `action` wire field.
-    attr_reader :action
-    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-    attr_reader :enterprise
-    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-    attr_reader :installation
-    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-    attr_reader :organization
-    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-    attr_reader :repository
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :sender
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the WebhookBranchProtectionConfigurationEnabledAction SDK namespace.
-  module WebhookBranchProtectionConfigurationEnabledAction
-    ENABLED = 'enabled'
-    VALUES = ['enabled'].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
+
+# Defines the WebhookBranchProtectionConfigurationEnabledAction SDK namespace.
+module WebhookBranchProtectionConfigurationEnabledAction
+  ENABLED = 'enabled'
+  VALUES = ['enabled'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

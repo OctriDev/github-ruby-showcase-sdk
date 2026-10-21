@@ -12,7 +12,7 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotSetEnterpriseCodingAgentPolicyMetadata
         FIELDS = {
-          policy_state: 'policy_state'
+          policy_state: "policy_state",
         }.freeze
         REQUIRED_FIELDS = %i[
           policy_state
@@ -20,7 +20,7 @@ module OctridevGithub
         DECODERS = {
           policy_state: lambda do |value|
             ::OctridevGithub::Methods::Copilot::CopilotSetEnterpriseCodingAgentPolicyPolicyState.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -51,14 +51,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotAddOrganizationsToEnterpriseCodingAgentPolicyCustomPropertiesItemMetadata
         FIELDS = {
-          property_name: 'property_name',
-          values: 'values'
+          property_name: "property_name",
+          values: "values",
         }.freeze
         REQUIRED_FIELDS = %i[
           property_name
           values
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for CopilotAddOrganizationsToEnterpriseCodingAgentPolicyCustomPropertiesItem.
@@ -90,14 +91,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotAddOrganizationsToEnterpriseCodingAgentPolicyMetadata
         FIELDS = {
-          organizations: 'organizations',
-          custom_properties: 'custom_properties'
+          organizations: "organizations",
+          custom_properties: "custom_properties",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           custom_properties: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Copilot::CopilotAddOrganizationsToEnterpriseCodingAgentPolicyCustomPropertiesItem.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -130,14 +132,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotRemoveOrganizationsFromEnterpriseCodingAgentPolicyCustX6572c3b03cMetadata
         FIELDS = {
-          property_name: 'property_name',
-          values: 'values'
+          property_name: "property_name",
+          values: "values",
         }.freeze
         REQUIRED_FIELDS = %i[
           property_name
           values
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for CopilotRemoveOrganizationsFromEnterpriseCodingAgentPolicyCustX6572c3b03c.
@@ -169,14 +172,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotRemoveOrganizationsFromEnterpriseCodingAgentPolicyMetadata
         FIELDS = {
-          organizations: 'organizations',
-          custom_properties: 'custom_properties'
+          organizations: "organizations",
+          custom_properties: "custom_properties",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           custom_properties: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Copilot::CopilotRemoveOrganizationsFromEnterpriseCodingAgentPolicyCustX6572c3b03c.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -209,14 +213,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotListCopilotSeatsResponseMetadata
         FIELDS = {
-          total_seats: 'total_seats',
-          seats: 'seats'
+          total_seats: "total_seats",
+          seats: "seats",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           seats: lambda do |value|
             value&.map { |item| ::OctridevGithub::CopilotSeatDetails.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -248,12 +253,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotAddCopilotSeatsForTeamsMetadata
         FIELDS = {
-          selected_teams: 'selected_teams'
+          selected_teams: "selected_teams",
         }.freeze
         REQUIRED_FIELDS = %i[
           selected_teams
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for CopilotAddCopilotSeatsForTeams.
@@ -283,12 +289,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotAddCopilotSeatsForTeamsResponseMetadata
         FIELDS = {
-          seats_created: 'seats_created'
+          seats_created: "seats_created",
         }.freeze
         REQUIRED_FIELDS = %i[
           seats_created
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for CopilotAddCopilotSeatsForTeamsResponse.
@@ -318,12 +325,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotCancelCopilotSeatAssignmentForTeamsMetadata
         FIELDS = {
-          selected_teams: 'selected_teams'
+          selected_teams: "selected_teams",
         }.freeze
         REQUIRED_FIELDS = %i[
           selected_teams
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for CopilotCancelCopilotSeatAssignmentForTeams.
@@ -353,12 +361,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotCancelCopilotSeatAssignmentForTeamsResponseMetadata
         FIELDS = {
-          seats_cancelled: 'seats_cancelled'
+          seats_cancelled: "seats_cancelled",
         }.freeze
         REQUIRED_FIELDS = %i[
           seats_cancelled
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for CopilotCancelCopilotSeatAssignmentForTeamsResponse.
@@ -388,12 +397,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotAddCopilotSeatsForUsersMetadata
         FIELDS = {
-          selected_usernames: 'selected_usernames'
+          selected_usernames: "selected_usernames",
         }.freeze
         REQUIRED_FIELDS = %i[
           selected_usernames
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for CopilotAddCopilotSeatsForUsers.
@@ -423,12 +433,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotAddCopilotSeatsForUsersResponseMetadata
         FIELDS = {
-          seats_created: 'seats_created'
+          seats_created: "seats_created",
         }.freeze
         REQUIRED_FIELDS = %i[
           seats_created
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for CopilotAddCopilotSeatsForUsersResponse.
@@ -458,12 +469,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotCancelCopilotSeatAssignmentForUsersMetadata
         FIELDS = {
-          selected_usernames: 'selected_usernames'
+          selected_usernames: "selected_usernames",
         }.freeze
         REQUIRED_FIELDS = %i[
           selected_usernames
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for CopilotCancelCopilotSeatAssignmentForUsers.
@@ -493,12 +505,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotCancelCopilotSeatAssignmentForUsersResponseMetadata
         FIELDS = {
-          seats_cancelled: 'seats_cancelled'
+          seats_cancelled: "seats_cancelled",
         }.freeze
         REQUIRED_FIELDS = %i[
           seats_cancelled
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for CopilotCancelCopilotSeatAssignmentForUsersResponse.
@@ -528,8 +541,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCopilotGetCopilotCodingAgentPermissionsOrganizationResponseMetadata
         FIELDS = {
-          enabled_repositories: 'enabled_repositories',
-          selected_repositories_url: 'selected_repositories_url'
+          enabled_repositories: "enabled_repositories",
+          selected_repositories_url: "selected_repositories_url",
         }.freeze
         REQUIRED_FIELDS = %i[
           enabled_repositories
@@ -537,7 +550,7 @@ module OctridevGithub
         DECODERS = {
           enabled_repositories: lambda do |value|
             ::OctridevGithub::Methods::Copilot::CopilotGetCopilotCodingAgentPermissionsOrganizationResponseEnX3894dc52d1.from_value(value)
-          end
+          end,
         }.freeze
       end
     end

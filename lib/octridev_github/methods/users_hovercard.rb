@@ -25,23 +25,24 @@ module OctridevGithub
         subject_id: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/users/',
+            "/users/",
             SdkClient.encode_path_segment(username),
-            '/hovercard'
+            "/hovercard"
           ].join,
           config: config,
           query: {
             'subject_type' => QueryValue.new(subject_type, style: 'form', explode: true),
-            'subject_id' => QueryValue.new(subject_id, style: 'form', explode: true)
+            'subject_id' => QueryValue.new(subject_id, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::Hovercard,
           decoder: :json,
           operation_id: 'users_get_context_for_user',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end

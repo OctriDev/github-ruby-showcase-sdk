@@ -5,675 +5,677 @@
 
 # secret_scanning domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalSecretScanningLocationDiscussionBodyMetadata
-    FIELDS = {
-      discussion_body_url: 'discussion_body_url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      discussion_body_url
-    ].freeze
-    DECODERS = {}.freeze
+# Internal model hydration metadata.
+class SdkInternalSecretScanningLocationDiscussionBodyMetadata
+  FIELDS = {
+    discussion_body_url: "discussion_body_url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    discussion_body_url
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for SecretScanningLocationDiscussionBody.
+# Represents a 'discussion_body' secret scanning location type. This location type shows that a secret was detected in the body of a discussion.
+class SecretScanningLocationDiscussionBody
+  include NullableSecretScanningFirstDetectedLocation
+  include SecretScanningLocationDetails
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalSecretScanningLocationDiscussionBodyMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalSecretScanningLocationDiscussionBodyMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalSecretScanningLocationDiscussionBodyMetadata::DECODERS
+
+  # @return [String] The URL to the discussion where the secret was detected.
+  attr_reader :discussion_body_url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for SecretScanningLocationDiscussionBody.
-  # Represents a 'discussion_body' secret scanning location type. This location type shows that a secret was detected in the body of a discussion.
-  class SecretScanningLocationDiscussionBody
-    include NullableSecretScanningFirstDetectedLocation
-    include SecretScanningLocationDetails
-
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalSecretScanningLocationDiscussionBodyMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalSecretScanningLocationDiscussionBodyMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalSecretScanningLocationDiscussionBodyMetadata::DECODERS
-
-    # @return [String] The URL to the discussion where the secret was detected.
-    attr_reader :discussion_body_url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalSecretScanningLocationDiscussionCommentMetadata
-    FIELDS = {
-      discussion_comment_url: 'discussion_comment_url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      discussion_comment_url
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalSecretScanningLocationDiscussionCommentMetadata
+  FIELDS = {
+    discussion_comment_url: "discussion_comment_url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    discussion_comment_url
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for SecretScanningLocationDiscussionComment.
+# Represents a 'discussion_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a discussion.
+class SecretScanningLocationDiscussionComment
+  include NullableSecretScanningFirstDetectedLocation
+  include SecretScanningLocationDetails
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalSecretScanningLocationDiscussionCommentMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalSecretScanningLocationDiscussionCommentMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalSecretScanningLocationDiscussionCommentMetadata::DECODERS
+
+  # @return [String] The API URL to get the discussion comment where the secret was detected.
+  attr_reader :discussion_comment_url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for SecretScanningLocationDiscussionComment.
-  # Represents a 'discussion_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a discussion.
-  class SecretScanningLocationDiscussionComment
-    include NullableSecretScanningFirstDetectedLocation
-    include SecretScanningLocationDetails
-
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalSecretScanningLocationDiscussionCommentMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalSecretScanningLocationDiscussionCommentMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalSecretScanningLocationDiscussionCommentMetadata::DECODERS
-
-    # @return [String] The API URL to get the discussion comment where the secret was detected.
-    attr_reader :discussion_comment_url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalSecretScanningLocationDiscussionTitleMetadata
-    FIELDS = {
-      discussion_title_url: 'discussion_title_url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      discussion_title_url
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalSecretScanningLocationDiscussionTitleMetadata
+  FIELDS = {
+    discussion_title_url: "discussion_title_url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    discussion_title_url
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for SecretScanningLocationDiscussionTitle.
+# Represents a 'discussion_title' secret scanning location type. This location type shows that a secret was detected in the title of a discussion.
+class SecretScanningLocationDiscussionTitle
+  include NullableSecretScanningFirstDetectedLocation
+  include SecretScanningLocationDetails
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalSecretScanningLocationDiscussionTitleMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalSecretScanningLocationDiscussionTitleMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalSecretScanningLocationDiscussionTitleMetadata::DECODERS
+
+  # @return [String] The URL to the discussion where the secret was detected.
+  attr_reader :discussion_title_url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for SecretScanningLocationDiscussionTitle.
-  # Represents a 'discussion_title' secret scanning location type. This location type shows that a secret was detected in the title of a discussion.
-  class SecretScanningLocationDiscussionTitle
-    include NullableSecretScanningFirstDetectedLocation
-    include SecretScanningLocationDetails
-
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalSecretScanningLocationDiscussionTitleMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalSecretScanningLocationDiscussionTitleMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalSecretScanningLocationDiscussionTitleMetadata::DECODERS
-
-    # @return [String] The URL to the discussion where the secret was detected.
-    attr_reader :discussion_title_url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalSecretScanningLocationIssueBodyMetadata
-    FIELDS = {
-      issue_body_url: 'issue_body_url',
-      html_url: 'html_url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      issue_body_url
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalSecretScanningLocationIssueBodyMetadata
+  FIELDS = {
+    issue_body_url: "issue_body_url",
+    html_url: "html_url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    issue_body_url
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for SecretScanningLocationIssueBody.
+# Represents an 'issue_body' secret scanning location type. This location type shows that a secret was detected in the body of an issue.
+class SecretScanningLocationIssueBody
+  include NullableSecretScanningFirstDetectedLocation
+  include SecretScanningLocationDetails
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalSecretScanningLocationIssueBodyMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalSecretScanningLocationIssueBodyMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalSecretScanningLocationIssueBodyMetadata::DECODERS
+
+  # @return [String] The API URL to get the issue where the secret was detected.
+  attr_reader :issue_body_url
+  # @return [String] The GitHub URL for the issue where the secret was detected.
+  attr_reader :html_url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for SecretScanningLocationIssueBody.
-  # Represents an 'issue_body' secret scanning location type. This location type shows that a secret was detected in the body of an issue.
-  class SecretScanningLocationIssueBody
-    include NullableSecretScanningFirstDetectedLocation
-    include SecretScanningLocationDetails
-
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalSecretScanningLocationIssueBodyMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalSecretScanningLocationIssueBodyMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalSecretScanningLocationIssueBodyMetadata::DECODERS
-
-    # @return [String] The API URL to get the issue where the secret was detected.
-    attr_reader :issue_body_url
-    # @return [String] The GitHub URL for the issue where the secret was detected.
-    attr_reader :html_url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalSecretScanningLocationIssueCommentMetadata
-    FIELDS = {
-      issue_comment_url: 'issue_comment_url',
-      html_url: 'html_url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      issue_comment_url
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalSecretScanningLocationIssueCommentMetadata
+  FIELDS = {
+    issue_comment_url: "issue_comment_url",
+    html_url: "html_url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    issue_comment_url
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for SecretScanningLocationIssueComment.
+# Represents an 'issue_comment' secret scanning location type. This location type shows that a secret was detected in a comment on an issue.
+class SecretScanningLocationIssueComment
+  include NullableSecretScanningFirstDetectedLocation
+  include SecretScanningLocationDetails
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalSecretScanningLocationIssueCommentMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalSecretScanningLocationIssueCommentMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalSecretScanningLocationIssueCommentMetadata::DECODERS
+
+  # @return [String] The API URL to get the issue comment where the secret was detected.
+  attr_reader :issue_comment_url
+  # @return [String] The GitHub URL for the issue comment where the secret was detected.
+  attr_reader :html_url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for SecretScanningLocationIssueComment.
-  # Represents an 'issue_comment' secret scanning location type. This location type shows that a secret was detected in a comment on an issue.
-  class SecretScanningLocationIssueComment
-    include NullableSecretScanningFirstDetectedLocation
-    include SecretScanningLocationDetails
-
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalSecretScanningLocationIssueCommentMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalSecretScanningLocationIssueCommentMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalSecretScanningLocationIssueCommentMetadata::DECODERS
-
-    # @return [String] The API URL to get the issue comment where the secret was detected.
-    attr_reader :issue_comment_url
-    # @return [String] The GitHub URL for the issue comment where the secret was detected.
-    attr_reader :html_url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalSecretScanningLocationIssueTitleMetadata
-    FIELDS = {
-      issue_title_url: 'issue_title_url',
-      html_url: 'html_url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      issue_title_url
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalSecretScanningLocationIssueTitleMetadata
+  FIELDS = {
+    issue_title_url: "issue_title_url",
+    html_url: "html_url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    issue_title_url
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for SecretScanningLocationIssueTitle.
+# Represents an 'issue_title' secret scanning location type. This location type shows that a secret was detected in the title of an issue.
+class SecretScanningLocationIssueTitle
+  include NullableSecretScanningFirstDetectedLocation
+  include SecretScanningLocationDetails
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalSecretScanningLocationIssueTitleMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalSecretScanningLocationIssueTitleMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalSecretScanningLocationIssueTitleMetadata::DECODERS
+
+  # @return [String] The API URL to get the issue where the secret was detected.
+  attr_reader :issue_title_url
+  # @return [String] The GitHub URL for the issue where the secret was detected.
+  attr_reader :html_url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for SecretScanningLocationIssueTitle.
-  # Represents an 'issue_title' secret scanning location type. This location type shows that a secret was detected in the title of an issue.
-  class SecretScanningLocationIssueTitle
-    include NullableSecretScanningFirstDetectedLocation
-    include SecretScanningLocationDetails
-
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalSecretScanningLocationIssueTitleMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalSecretScanningLocationIssueTitleMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalSecretScanningLocationIssueTitleMetadata::DECODERS
-
-    # @return [String] The API URL to get the issue where the secret was detected.
-    attr_reader :issue_title_url
-    # @return [String] The GitHub URL for the issue where the secret was detected.
-    attr_reader :html_url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalSecretScanningLocationPullRequestBodyMetadata
-    FIELDS = {
-      pull_request_body_url: 'pull_request_body_url',
-      html_url: 'html_url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      pull_request_body_url
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalSecretScanningLocationPullRequestBodyMetadata
+  FIELDS = {
+    pull_request_body_url: "pull_request_body_url",
+    html_url: "html_url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    pull_request_body_url
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for SecretScanningLocationPullRequestBody.
+# Represents a 'pull_request_body' secret scanning location type. This location type shows that a secret was detected in the body of a pull request.
+class SecretScanningLocationPullRequestBody
+  include NullableSecretScanningFirstDetectedLocation
+  include SecretScanningLocationDetails
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalSecretScanningLocationPullRequestBodyMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalSecretScanningLocationPullRequestBodyMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalSecretScanningLocationPullRequestBodyMetadata::DECODERS
+
+  # @return [String] The API URL to get the pull request where the secret was detected.
+  attr_reader :pull_request_body_url
+  # @return [String] The GitHub URL for the pull request where the secret was detected.
+  attr_reader :html_url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for SecretScanningLocationPullRequestBody.
-  # Represents a 'pull_request_body' secret scanning location type. This location type shows that a secret was detected in the body of a pull request.
-  class SecretScanningLocationPullRequestBody
-    include NullableSecretScanningFirstDetectedLocation
-    include SecretScanningLocationDetails
-
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalSecretScanningLocationPullRequestBodyMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalSecretScanningLocationPullRequestBodyMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalSecretScanningLocationPullRequestBodyMetadata::DECODERS
-
-    # @return [String] The API URL to get the pull request where the secret was detected.
-    attr_reader :pull_request_body_url
-    # @return [String] The GitHub URL for the pull request where the secret was detected.
-    attr_reader :html_url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalSecretScanningLocationPullRequestCommentMetadata
-    FIELDS = {
-      pull_request_comment_url: 'pull_request_comment_url',
-      html_url: 'html_url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      pull_request_comment_url
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalSecretScanningLocationPullRequestCommentMetadata
+  FIELDS = {
+    pull_request_comment_url: "pull_request_comment_url",
+    html_url: "html_url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    pull_request_comment_url
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for SecretScanningLocationPullRequestComment.
+# Represents a 'pull_request_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a pull request.
+class SecretScanningLocationPullRequestComment
+  include NullableSecretScanningFirstDetectedLocation
+  include SecretScanningLocationDetails
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalSecretScanningLocationPullRequestCommentMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalSecretScanningLocationPullRequestCommentMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalSecretScanningLocationPullRequestCommentMetadata::DECODERS
+
+  # @return [String] The API URL to get the pull request comment where the secret was detected.
+  attr_reader :pull_request_comment_url
+  # @return [String] The GitHub URL for the pull request comment where the secret was detected.
+  attr_reader :html_url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for SecretScanningLocationPullRequestComment.
-  # Represents a 'pull_request_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a pull request.
-  class SecretScanningLocationPullRequestComment
-    include NullableSecretScanningFirstDetectedLocation
-    include SecretScanningLocationDetails
-
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalSecretScanningLocationPullRequestCommentMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalSecretScanningLocationPullRequestCommentMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalSecretScanningLocationPullRequestCommentMetadata::DECODERS
-
-    # @return [String] The API URL to get the pull request comment where the secret was detected.
-    attr_reader :pull_request_comment_url
-    # @return [String] The GitHub URL for the pull request comment where the secret was detected.
-    attr_reader :html_url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalSecretScanningLocationPullRequestReviewMetadata
-    FIELDS = {
-      pull_request_review_url: 'pull_request_review_url',
-      html_url: 'html_url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      pull_request_review_url
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalSecretScanningLocationPullRequestReviewMetadata
+  FIELDS = {
+    pull_request_review_url: "pull_request_review_url",
+    html_url: "html_url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    pull_request_review_url
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for SecretScanningLocationPullRequestReview.
+# Represents a 'pull_request_review' secret scanning location type. This location type shows that a secret was detected in a review on a pull request.
+class SecretScanningLocationPullRequestReview
+  include NullableSecretScanningFirstDetectedLocation
+  include SecretScanningLocationDetails
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalSecretScanningLocationPullRequestReviewMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalSecretScanningLocationPullRequestReviewMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalSecretScanningLocationPullRequestReviewMetadata::DECODERS
+
+  # @return [String] The API URL to get the pull request review where the secret was detected.
+  attr_reader :pull_request_review_url
+  # @return [String] The GitHub URL for the pull request review where the secret was detected.
+  attr_reader :html_url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for SecretScanningLocationPullRequestReview.
-  # Represents a 'pull_request_review' secret scanning location type. This location type shows that a secret was detected in a review on a pull request.
-  class SecretScanningLocationPullRequestReview
-    include NullableSecretScanningFirstDetectedLocation
-    include SecretScanningLocationDetails
-
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalSecretScanningLocationPullRequestReviewMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalSecretScanningLocationPullRequestReviewMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalSecretScanningLocationPullRequestReviewMetadata::DECODERS
-
-    # @return [String] The API URL to get the pull request review where the secret was detected.
-    attr_reader :pull_request_review_url
-    # @return [String] The GitHub URL for the pull request review where the secret was detected.
-    attr_reader :html_url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalSecretScanningLocationPullRequestReviewCommentMetadata
-    FIELDS = {
-      pull_request_review_comment_url: 'pull_request_review_comment_url',
-      html_url: 'html_url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      pull_request_review_comment_url
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalSecretScanningLocationPullRequestReviewCommentMetadata
+  FIELDS = {
+    pull_request_review_comment_url: "pull_request_review_comment_url",
+    html_url: "html_url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    pull_request_review_comment_url
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for SecretScanningLocationPullRequestReviewComment.
+# Represents a 'pull_request_review_comment' secret scanning location type. This location type shows that a secret was detected in a review comment on a pull request.
+class SecretScanningLocationPullRequestReviewComment
+  include NullableSecretScanningFirstDetectedLocation
+  include SecretScanningLocationDetails
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalSecretScanningLocationPullRequestReviewCommentMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalSecretScanningLocationPullRequestReviewCommentMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalSecretScanningLocationPullRequestReviewCommentMetadata::DECODERS
+
+  # @return [String] The API URL to get the pull request review comment where the secret was detected.
+  attr_reader :pull_request_review_comment_url
+  # @return [String] The GitHub URL for the pull request review comment where the secret was detected.
+  attr_reader :html_url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for SecretScanningLocationPullRequestReviewComment.
-  # Represents a 'pull_request_review_comment' secret scanning location type. This location type shows that a secret was detected in a review comment on a pull request.
-  class SecretScanningLocationPullRequestReviewComment
-    include NullableSecretScanningFirstDetectedLocation
-    include SecretScanningLocationDetails
-
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalSecretScanningLocationPullRequestReviewCommentMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalSecretScanningLocationPullRequestReviewCommentMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalSecretScanningLocationPullRequestReviewCommentMetadata::DECODERS
-
-    # @return [String] The API URL to get the pull request review comment where the secret was detected.
-    attr_reader :pull_request_review_comment_url
-    # @return [String] The GitHub URL for the pull request review comment where the secret was detected.
-    attr_reader :html_url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalSecretScanningLocationPullRequestTitleMetadata
-    FIELDS = {
-      pull_request_title_url: 'pull_request_title_url',
-      html_url: 'html_url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      pull_request_title_url
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalSecretScanningLocationPullRequestTitleMetadata
+  FIELDS = {
+    pull_request_title_url: "pull_request_title_url",
+    html_url: "html_url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    pull_request_title_url
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for SecretScanningLocationPullRequestTitle.
+# Represents a 'pull_request_title' secret scanning location type. This location type shows that a secret was detected in the title of a pull request.
+class SecretScanningLocationPullRequestTitle
+  include NullableSecretScanningFirstDetectedLocation
+  include SecretScanningLocationDetails
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalSecretScanningLocationPullRequestTitleMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalSecretScanningLocationPullRequestTitleMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalSecretScanningLocationPullRequestTitleMetadata::DECODERS
+
+  # @return [String] The API URL to get the pull request where the secret was detected.
+  attr_reader :pull_request_title_url
+  # @return [String] The GitHub URL for the pull request where the secret was detected.
+  attr_reader :html_url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for SecretScanningLocationPullRequestTitle.
-  # Represents a 'pull_request_title' secret scanning location type. This location type shows that a secret was detected in the title of a pull request.
-  class SecretScanningLocationPullRequestTitle
-    include NullableSecretScanningFirstDetectedLocation
-    include SecretScanningLocationDetails
-
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalSecretScanningLocationPullRequestTitleMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalSecretScanningLocationPullRequestTitleMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalSecretScanningLocationPullRequestTitleMetadata::DECODERS
-
-    # @return [String] The API URL to get the pull request where the secret was detected.
-    attr_reader :pull_request_title_url
-    # @return [String] The GitHub URL for the pull request where the secret was detected.
-    attr_reader :html_url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalSecretScanningLocationWikiCommitMetadata
-    FIELDS = {
-      path: 'path',
-      start_line: 'start_line',
-      end_line: 'end_line',
-      start_column: 'start_column',
-      end_column: 'end_column',
-      blob_sha: 'blob_sha',
-      page_url: 'page_url',
-      commit_sha: 'commit_sha',
-      commit_url: 'commit_url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      path
-      start_line
-      end_line
-      start_column
-      end_column
-      blob_sha
-      page_url
-      commit_sha
-      commit_url
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalSecretScanningLocationWikiCommitMetadata
+  FIELDS = {
+    path: "path",
+    start_line: "start_line",
+    end_line: "end_line",
+    start_column: "start_column",
+    end_column: "end_column",
+    blob_sha: "blob_sha",
+    page_url: "page_url",
+    commit_sha: "commit_sha",
+    commit_url: "commit_url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    path
+    start_line
+    end_line
+    start_column
+    end_column
+    blob_sha
+    page_url
+    commit_sha
+    commit_url
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for SecretScanningLocationWikiCommit.
+# Represents a 'wiki_commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository wiki.
+class SecretScanningLocationWikiCommit
+  include NullableSecretScanningFirstDetectedLocation
+  include SecretScanningLocationDetails
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalSecretScanningLocationWikiCommitMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalSecretScanningLocationWikiCommitMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalSecretScanningLocationWikiCommitMetadata::DECODERS
+
+  # @return [String] The file path of the wiki page
+  attr_reader :path
+  # @return [Float] Line number at which the secret starts in the file
+  attr_reader :start_line
+  # @return [Float] Line number at which the secret ends in the file
+  attr_reader :end_line
+  # @return [Float] The column at which the secret starts within the start line when the file is interpreted as 8-bit ASCII.
+  attr_reader :start_column
+  # @return [Float] The column at which the secret ends within the end line when the file is interpreted as 8-bit ASCII.
+  attr_reader :end_column
+  # @return [String] SHA-1 hash ID of the associated blob
+  attr_reader :blob_sha
+  # @return [String] The GitHub URL to get the associated wiki page
+  attr_reader :page_url
+  # @return [String] SHA-1 hash ID of the associated commit
+  attr_reader :commit_sha
+  # @return [String] The GitHub URL to get the associated wiki commit
+  attr_reader :commit_url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for SecretScanningLocationWikiCommit.
-  # Represents a 'wiki_commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository wiki.
-  class SecretScanningLocationWikiCommit
-    include NullableSecretScanningFirstDetectedLocation
-    include SecretScanningLocationDetails
-
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalSecretScanningLocationWikiCommitMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalSecretScanningLocationWikiCommitMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalSecretScanningLocationWikiCommitMetadata::DECODERS
-
-    # @return [String] The file path of the wiki page
-    attr_reader :path
-    # @return [Float] Line number at which the secret starts in the file
-    attr_reader :start_line
-    # @return [Float] Line number at which the secret ends in the file
-    attr_reader :end_line
-    # @return [Float] The column at which the secret starts within the start line when the file is interpreted as 8-bit ASCII.
-    attr_reader :start_column
-    # @return [Float] The column at which the secret ends within the end line when the file is interpreted as 8-bit ASCII.
-    attr_reader :end_column
-    # @return [String] SHA-1 hash ID of the associated blob
-    attr_reader :blob_sha
-    # @return [String] The GitHub URL to get the associated wiki page
-    attr_reader :page_url
-    # @return [String] SHA-1 hash ID of the associated commit
-    attr_reader :commit_sha
-    # @return [String] The GitHub URL to get the associated wiki commit
-    attr_reader :commit_url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalSecretScanningPatternConfigurationMetadata
-    FIELDS = {
-      pattern_config_version: 'pattern_config_version',
-      provider_pattern_overrides: 'provider_pattern_overrides',
-      custom_pattern_overrides: 'custom_pattern_overrides'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      pattern_config_version: lambda do |value|
-        ::OctridevGithub::SecretScanningRowVersion.from_value(value)
-      end,
-      provider_pattern_overrides: lambda do |value|
-        value&.map { |item| ::OctridevGithub::SecretScanningPatternOverride.from_hash(item) }
-      end,
-      custom_pattern_overrides: lambda do |value|
-        value&.map { |item| ::OctridevGithub::SecretScanningPatternOverride.from_hash(item) }
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalSecretScanningPatternConfigurationMetadata
+  FIELDS = {
+    pattern_config_version: "pattern_config_version",
+    provider_pattern_overrides: "provider_pattern_overrides",
+    custom_pattern_overrides: "custom_pattern_overrides",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    pattern_config_version: lambda do |value|
+      ::OctridevGithub::SecretScanningRowVersion.from_value(value)
+    end,
+    provider_pattern_overrides: lambda do |value|
+      value&.map { |item| ::OctridevGithub::SecretScanningPatternOverride.from_hash(item) }
+    end,
+    custom_pattern_overrides: lambda do |value|
+      value&.map { |item| ::OctridevGithub::SecretScanningPatternOverride.from_hash(item) }
+    end,
+  }.freeze
+end
+
+# API model for SecretScanningPatternConfiguration.
+# A collection of secret scanning patterns and their settings related to push protection.
+class SecretScanningPatternConfiguration
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalSecretScanningPatternConfigurationMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalSecretScanningPatternConfigurationMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalSecretScanningPatternConfigurationMetadata::DECODERS
+
+  # @return [SecretScanningRowVersion] The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.
+  attr_reader :pattern_config_version
+  # @return [Array_of_SecretScanningPatternOverride] Overrides for partner patterns.
+  attr_reader :provider_pattern_overrides
+  # @return [Array_of_SecretScanningPatternOverride] Overrides for custom patterns defined by the organization.
+  attr_reader :custom_pattern_overrides
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for SecretScanningPatternConfiguration.
-  # A collection of secret scanning patterns and their settings related to push protection.
-  class SecretScanningPatternConfiguration
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalSecretScanningPatternConfigurationMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalSecretScanningPatternConfigurationMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalSecretScanningPatternConfigurationMetadata::DECODERS
-
-    # @return [SecretScanningRowVersion] The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.
-    attr_reader :pattern_config_version
-    # @return [Array_of_SecretScanningPatternOverride] Overrides for partner patterns.
-    attr_reader :provider_pattern_overrides
-    # @return [Array_of_SecretScanningPatternOverride] Overrides for custom patterns defined by the organization.
-    attr_reader :custom_pattern_overrides
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalSecretScanningPatternOverrideMetadata
-    FIELDS = {
-      token_type: 'token_type',
-      custom_pattern_version: 'custom_pattern_version',
-      slug: 'slug',
-      display_name: 'display_name',
-      alert_total: 'alert_total',
-      alert_total_percentage: 'alert_total_percentage',
-      false_positives: 'false_positives',
-      false_positive_rate: 'false_positive_rate',
-      bypass_rate: 'bypass_rate',
-      default_setting: 'default_setting',
-      enterprise_setting: 'enterprise_setting',
-      setting: 'setting'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      default_setting: lambda do |value|
-        ::OctridevGithub::SecretScanningPatternOverrideDefaultSetting.from_value(value)
-      end,
-      enterprise_setting: lambda do |value|
-        ::OctridevGithub::SecretScanningPatternOverrideEnterpriseSetting.from_value(value)
-      end,
-      setting: lambda do |value|
-        ::OctridevGithub::SecretScanningPatternOverrideSetting.from_value(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalSecretScanningPatternOverrideMetadata
+  FIELDS = {
+    token_type: "token_type",
+    custom_pattern_version: "custom_pattern_version",
+    slug: "slug",
+    display_name: "display_name",
+    alert_total: "alert_total",
+    alert_total_percentage: "alert_total_percentage",
+    false_positives: "false_positives",
+    false_positive_rate: "false_positive_rate",
+    bypass_rate: "bypass_rate",
+    default_setting: "default_setting",
+    enterprise_setting: "enterprise_setting",
+    setting: "setting",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    default_setting: lambda do |value|
+      ::OctridevGithub::SecretScanningPatternOverrideDefaultSetting.from_value(value)
+    end,
+    enterprise_setting: lambda do |value|
+      ::OctridevGithub::SecretScanningPatternOverrideEnterpriseSetting.from_value(value)
+    end,
+    setting: lambda do |value|
+      ::OctridevGithub::SecretScanningPatternOverrideSetting.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for SecretScanningPatternOverride.
+# Typed representation of the `SecretScanningPatternOverride` API schema.
+class SecretScanningPatternOverride
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalSecretScanningPatternOverrideMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalSecretScanningPatternOverrideMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalSecretScanningPatternOverrideMetadata::DECODERS
+
+  # @return [String] The ID of the pattern.
+  attr_reader :token_type
+  # @return [String] The version of this pattern if it's a custom pattern.
+  attr_reader :custom_pattern_version
+  # @return [String] The slug of the pattern.
+  attr_reader :slug
+  # @return [String] The user-friendly name for the pattern.
+  attr_reader :display_name
+  # @return [Integer] The total number of alerts generated by this pattern.
+  attr_reader :alert_total
+  # @return [Integer] The percentage of all alerts that this pattern represents, rounded to the nearest integer.
+  attr_reader :alert_total_percentage
+  # @return [Integer] The number of false positive alerts generated by this pattern.
+  attr_reader :false_positives
+  # @return [Integer] The percentage of alerts from this pattern that are false positives, rounded to the nearest integer.
+  attr_reader :false_positive_rate
+  # @return [Integer] The percentage of blocks for this pattern that were bypassed, rounded to the nearest integer.
+  attr_reader :bypass_rate
+  # @return [SecretScanningPatternOverrideDefaultSetting] The default push protection setting for this pattern.
+  attr_reader :default_setting
+  # @return [SecretScanningPatternOverrideEnterpriseSetting] The push protection setting for this pattern set at the enterprise level. Only present for partner patterns when the organization has a parent enterprise.
+  attr_reader :enterprise_setting
+  # @return [SecretScanningPatternOverrideSetting] The current push protection setting for this pattern. If this is `not-set`, then it inherits either the enterprise setting if it exists or the default setting.
+  attr_reader :setting
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for SecretScanningPatternOverride.
-  # Typed representation of the `SecretScanningPatternOverride` API schema.
-  class SecretScanningPatternOverride
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalSecretScanningPatternOverrideMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalSecretScanningPatternOverrideMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalSecretScanningPatternOverrideMetadata::DECODERS
-
-    # @return [String] The ID of the pattern.
-    attr_reader :token_type
-    # @return [String] The version of this pattern if it's a custom pattern.
-    attr_reader :custom_pattern_version
-    # @return [String] The slug of the pattern.
-    attr_reader :slug
-    # @return [String] The user-friendly name for the pattern.
-    attr_reader :display_name
-    # @return [Integer] The total number of alerts generated by this pattern.
-    attr_reader :alert_total
-    # @return [Integer] The percentage of all alerts that this pattern represents, rounded to the nearest integer.
-    attr_reader :alert_total_percentage
-    # @return [Integer] The number of false positive alerts generated by this pattern.
-    attr_reader :false_positives
-    # @return [Integer] The percentage of alerts from this pattern that are false positives, rounded to the nearest integer.
-    attr_reader :false_positive_rate
-    # @return [Integer] The percentage of blocks for this pattern that were bypassed, rounded to the nearest integer.
-    attr_reader :bypass_rate
-    # @return [SecretScanningPatternOverrideDefaultSetting] The default push protection setting for this pattern.
-    attr_reader :default_setting
-    # @return [SecretScanningPatternOverrideEnterpriseSetting] The push protection setting for this pattern set at the enterprise level. Only present for partner patterns when the organization has a parent enterprise.
-    attr_reader :enterprise_setting
-    # @return [SecretScanningPatternOverrideSetting] The current push protection setting for this pattern. If this is `not-set`, then it inherits either the enterprise setting if it exists or the default setting.
-    attr_reader :setting
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the SecretScanningPatternOverrideDefaultSetting SDK namespace.
-  module SecretScanningPatternOverrideDefaultSetting
-    DISABLED = 'disabled'
-    ENABLED = 'enabled'
-    VALUES = %w[disabled enabled].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
 
-  # Defines the SecretScanningPatternOverrideEnterpriseSetting SDK namespace.
-  module SecretScanningPatternOverrideEnterpriseSetting
-    NOT_SET = 'not-set'
-    DISABLED = 'disabled'
-    ENABLED = 'enabled'
-    VALUES = %w[not-set disabled enabled].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the SecretScanningPatternOverrideDefaultSetting SDK namespace.
+module SecretScanningPatternOverrideDefaultSetting
+  DISABLED = 'disabled'
+  ENABLED = 'enabled'
+  VALUES = ['disabled', 'enabled'].freeze
+  def self.from_value(value)
+    value
   end
+end
+
+# Defines the SecretScanningPatternOverrideEnterpriseSetting SDK namespace.
+module SecretScanningPatternOverrideEnterpriseSetting
+  NOT_SET = 'not-set'
+  DISABLED = 'disabled'
+  ENABLED = 'enabled'
+  VALUES = ['not-set', 'disabled', 'enabled'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

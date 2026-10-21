@@ -20,23 +20,24 @@ module OctridevGithub
         selected_repository_ids:,
         request_options: nil
       )
+
         Validation.validate_items('selected_repository_ids', selected_repository_ids, min: 1, max: 250)
 
         SdkClient.request(
           'DELETE',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/code-security/configurations/detach'
+            "/code-security/configurations/detach"
           ].join,
           config: config,
           body: {
-            'selected_repository_ids' => selected_repository_ids
+            'selected_repository_ids' => selected_repository_ids,
           },
           decoder: :empty,
           operation_id: 'code_security_detach_configuration',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError }
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError },
         ).data
       end
     end

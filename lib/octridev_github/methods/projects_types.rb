@@ -12,13 +12,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalProjectsCreateDraftItemForOrgMetadata
         FIELDS = {
-          title: 'title',
-          body: 'body'
+          title: "title",
+          body: "body",
         }.freeze
         REQUIRED_FIELDS = %i[
           title
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ProjectsCreateDraftItemForOrg.
@@ -50,11 +51,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalProjectsAddItemForOrgMetadata
         FIELDS = {
-          type: 'type',
-          id: 'id',
-          owner: 'owner',
-          repo: 'repo',
-          number: 'number'
+          type: "type",
+          id: "id",
+          owner: "owner",
+          repo: "repo",
+          number: "number",
         }.freeze
         REQUIRED_FIELDS = %i[
           type
@@ -62,7 +63,7 @@ module OctridevGithub
         DECODERS = {
           type: lambda do |value|
             ::OctridevGithub::Methods::Projects::ProjectsAddItemForOrgType.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -101,14 +102,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalProjectsUpdateItemForOrgFieldsItemMetadata
         FIELDS = {
-          id: 'id',
-          value: 'value'
+          id: "id",
+          value: "value",
         }.freeze
         REQUIRED_FIELDS = %i[
           id
           value
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
         NULLABLE_FIELDS = %i[
           value
         ].freeze
@@ -143,7 +145,7 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalProjectsUpdateItemForOrgMetadata
         FIELDS = {
-          fields: 'fields'
+          fields: "fields",
         }.freeze
         REQUIRED_FIELDS = %i[
           fields
@@ -151,7 +153,7 @@ module OctridevGithub
         DECODERS = {
           fields: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Projects::ProjectsUpdateItemForOrgFieldsItem.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -182,13 +184,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalProjectsCreateViewForOrgMetadata
         FIELDS = {
-          name: 'name',
-          layout: 'layout',
-          filter: 'filter',
-          visible_fields: 'visible_fields',
-          sort_by: 'sort_by',
-          group_by: 'group_by',
-          vertical_group_by: 'vertical_group_by'
+          name: "name",
+          layout: "layout",
+          filter: "filter",
+          visible_fields: "visible_fields",
+          sort_by: "sort_by",
+          group_by: "group_by",
+          vertical_group_by: "vertical_group_by",
         }.freeze
         REQUIRED_FIELDS = %i[
           name
@@ -197,7 +199,7 @@ module OctridevGithub
         DECODERS = {
           layout: lambda do |value|
             ::OctridevGithub::Methods::Projects::ProjectsCreateViewForOrgLayout.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -240,13 +242,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalProjectsCreateDraftItemForAuthenticatedUserMetadata
         FIELDS = {
-          title: 'title',
-          body: 'body'
+          title: "title",
+          body: "body",
         }.freeze
         REQUIRED_FIELDS = %i[
           title
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for ProjectsCreateDraftItemForAuthenticatedUser.
@@ -278,13 +281,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalProjectsCreateViewForUserMetadata
         FIELDS = {
-          name: 'name',
-          layout: 'layout',
-          filter: 'filter',
-          visible_fields: 'visible_fields',
-          sort_by: 'sort_by',
-          group_by: 'group_by',
-          vertical_group_by: 'vertical_group_by'
+          name: "name",
+          layout: "layout",
+          filter: "filter",
+          visible_fields: "visible_fields",
+          sort_by: "sort_by",
+          group_by: "group_by",
+          vertical_group_by: "vertical_group_by",
         }.freeze
         REQUIRED_FIELDS = %i[
           name
@@ -293,7 +296,7 @@ module OctridevGithub
         DECODERS = {
           layout: lambda do |value|
             ::OctridevGithub::Methods::Projects::ProjectsCreateViewForUserLayout.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -336,11 +339,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalProjectsAddItemForUserMetadata
         FIELDS = {
-          type: 'type',
-          id: 'id',
-          owner: 'owner',
-          repo: 'repo',
-          number: 'number'
+          type: "type",
+          id: "id",
+          owner: "owner",
+          repo: "repo",
+          number: "number",
         }.freeze
         REQUIRED_FIELDS = %i[
           type
@@ -348,7 +351,7 @@ module OctridevGithub
         DECODERS = {
           type: lambda do |value|
             ::OctridevGithub::Methods::Projects::ProjectsAddItemForUserType.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -387,14 +390,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalProjectsUpdateItemForUserFieldsItemMetadata
         FIELDS = {
-          id: 'id',
-          value: 'value'
+          id: "id",
+          value: "value",
         }.freeze
         REQUIRED_FIELDS = %i[
           id
           value
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
         NULLABLE_FIELDS = %i[
           value
         ].freeze
@@ -429,7 +433,7 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalProjectsUpdateItemForUserMetadata
         FIELDS = {
-          fields: 'fields'
+          fields: "fields",
         }.freeze
         REQUIRED_FIELDS = %i[
           fields
@@ -437,7 +441,7 @@ module OctridevGithub
         DECODERS = {
           fields: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Projects::ProjectsUpdateItemForUserFieldsItem.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -478,7 +482,7 @@ module OctridevGithub
       module ProjectsAddItemForUserType
         ISSUE = 'Issue'
         PULL_REQUEST = 'PullRequest'
-        VALUES = %w[Issue PullRequest].freeze
+        VALUES = ['Issue', 'PullRequest'].freeze
         def self.from_value(value)
           value
         end
@@ -489,7 +493,7 @@ module OctridevGithub
         TEXT = 'text'
         NUMBER = 'number'
         DATE = 'date'
-        VALUES = %w[text number date].freeze
+        VALUES = ['text', 'number', 'date'].freeze
         def self.from_value(value)
           value
         end
@@ -509,7 +513,7 @@ module OctridevGithub
         TABLE = 'table'
         BOARD = 'board'
         ROADMAP = 'roadmap'
-        VALUES = %w[table board roadmap].freeze
+        VALUES = ['table', 'board', 'roadmap'].freeze
         def self.from_value(value)
           value
         end
@@ -519,7 +523,7 @@ module OctridevGithub
       module ProjectsAddItemForOrgType
         ISSUE = 'Issue'
         PULL_REQUEST = 'PullRequest'
-        VALUES = %w[Issue PullRequest].freeze
+        VALUES = ['Issue', 'PullRequest'].freeze
         def self.from_value(value)
           value
         end
@@ -548,7 +552,7 @@ module OctridevGithub
         TEXT = 'text'
         NUMBER = 'number'
         DATE = 'date'
-        VALUES = %w[text number date].freeze
+        VALUES = ['text', 'number', 'date'].freeze
         def self.from_value(value)
           value
         end

@@ -17,19 +17,20 @@ module OctridevGithub
         org:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/actions/permissions/artifact-and-log-retention'
+            "/actions/permissions/artifact-and-log-retention"
           ].join,
           config: config,
           return_type: ::OctridevGithub::ActionsArtifactAndLogRetentionResponse,
           decoder: :json,
           operation_id: 'actions_get_artifact_and_log_retention_settings_organization',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

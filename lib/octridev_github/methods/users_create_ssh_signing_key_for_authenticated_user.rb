@@ -20,21 +20,22 @@ module OctridevGithub
         title: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_pattern('key', key, '^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) |^(sk-ssh-ed25519|sk-ecdsa-sha2-nistp256)@openssh.com ')
 
         SdkClient.request(
           'POST',
-          '/user/ssh_signing_keys',
+          "/user/ssh_signing_keys",
           config: config,
           body: {
             'key' => key,
-            'title' => title
+            'title' => title,
           },
           return_type: ::OctridevGithub::SshSigningKey,
           decoder: :json,
           operation_id: 'users_create_ssh_signing_key_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end

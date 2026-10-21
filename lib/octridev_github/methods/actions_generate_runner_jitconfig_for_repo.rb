@@ -32,29 +32,30 @@ module OctridevGithub
         work_folder: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_items('labels', labels, min: 1, max: 100)
 
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/actions/runners/generate-jitconfig'
+            "/actions/runners/generate-jitconfig"
           ].join,
           config: config,
           body: {
             'name' => name,
             'runner_group_id' => runner_group_id,
             'labels' => labels,
-            'work_folder' => work_folder
+            'work_folder' => work_folder,
           },
           return_type: ::OctridevGithub::ActionsRunnerJitconfig,
           decoder: :json,
           operation_id: 'actions_generate_runner_jitconfig_for_repo',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple }
+          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple },
         ).data
       end
     end

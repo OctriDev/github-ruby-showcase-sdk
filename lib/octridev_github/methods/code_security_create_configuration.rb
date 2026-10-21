@@ -114,24 +114,24 @@ module OctridevGithub
         enforcement: NOT_GIVEN,
         request_options: nil
       )
+
         __sdk_validate_code_security_create_configuration(description: description)
 
         SdkClient.request(
           'POST',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/code-security/configurations'
+            "/code-security/configurations"
           ].join,
           config: config,
           body: __sdk_body_code_security_create_configuration_part1(name: name, description: description, advanced_security: advanced_security, code_security: code_security, dependency_graph: dependency_graph, dependency_graph_autosubmit_action: dependency_graph_autosubmit_action, dependency_graph_autosubmit_action_options: dependency_graph_autosubmit_action_options, dependabot_alerts: dependabot_alerts, dependabot_security_updates: dependabot_security_updates, dependabot_delegated_alert_dismissal: dependabot_delegated_alert_dismissal, code_scanning_options: code_scanning_options, code_scanning_default_setup: code_scanning_default_setup, code_scanning_default_setup_options: code_scanning_default_setup_options, code_scanning_delegated_alert_dismissal: code_scanning_delegated_alert_dismissal, secret_protection: secret_protection, secret_scanning: secret_scanning, secret_scanning_push_protection: secret_scanning_push_protection, secret_scanning_delegated_bypass: secret_scanning_delegated_bypass).merge(
-            __sdk_body_code_security_create_configuration_part2(secret_scanning_delegated_bypass_options: secret_scanning_delegated_bypass_options, secret_scanning_validity_checks: secret_scanning_validity_checks, secret_scanning_non_provider_patterns: secret_scanning_non_provider_patterns, secret_scanning_generic_secrets: secret_scanning_generic_secrets, secret_scanning_delegated_alert_dismissal: secret_scanning_delegated_alert_dismissal, secret_scanning_extended_metadata: secret_scanning_extended_metadata, private_vulnerability_reporting: private_vulnerability_reporting, enforcement: enforcement)
-          ),
+            __sdk_body_code_security_create_configuration_part2(secret_scanning_delegated_bypass_options: secret_scanning_delegated_bypass_options, secret_scanning_validity_checks: secret_scanning_validity_checks, secret_scanning_non_provider_patterns: secret_scanning_non_provider_patterns, secret_scanning_generic_secrets: secret_scanning_generic_secrets, secret_scanning_delegated_alert_dismissal: secret_scanning_delegated_alert_dismissal, secret_scanning_extended_metadata: secret_scanning_extended_metadata, private_vulnerability_reporting: private_vulnerability_reporting, enforcement: enforcement)),
           return_type: ::OctridevGithub::CodeSecurityConfiguration,
           decoder: :json,
           operation_id: 'code_security_create_configuration',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple }
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple },
         ).data
       end
 
@@ -180,7 +180,7 @@ module OctridevGithub
           'secret_protection' => secret_protection,
           'secret_scanning' => secret_scanning,
           'secret_scanning_push_protection' => secret_scanning_push_protection,
-          'secret_scanning_delegated_bypass' => secret_scanning_delegated_bypass
+          'secret_scanning_delegated_bypass' => secret_scanning_delegated_bypass,
         }
       end
       private_class_method :__sdk_body_code_security_create_configuration_part1
@@ -203,7 +203,7 @@ module OctridevGithub
           'secret_scanning_delegated_alert_dismissal' => secret_scanning_delegated_alert_dismissal,
           'secret_scanning_extended_metadata' => secret_scanning_extended_metadata,
           'private_vulnerability_reporting' => private_vulnerability_reporting,
-          'enforcement' => enforcement
+          'enforcement' => enforcement,
         }
       end
       private_class_method :__sdk_body_code_security_create_configuration_part2

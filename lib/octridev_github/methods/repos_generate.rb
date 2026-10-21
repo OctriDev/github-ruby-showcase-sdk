@@ -36,14 +36,15 @@ module OctridevGithub
         private: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(template_owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(template_repo),
-            '/generate'
+            "/generate"
           ].join,
           config: config,
           body: {
@@ -51,12 +52,12 @@ module OctridevGithub
             'owner' => owner,
             'description' => description,
             'include_all_branches' => include_all_branches,
-            'private' => private
+            'private' => private,
           },
           return_type: ::OctridevGithub::FullRepository,
           decoder: :json,
           operation_id: 'repos_create_using_template',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

@@ -21,19 +21,20 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
-          '/installation/repositories',
+          "/installation/repositories",
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::Methods::Apps::AppsListReposAccessibleToInstallationResponse,
           decoder: :json,
           operation_id: 'apps_list_repos_accessible_to_installation',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -42,13 +43,14 @@ module OctridevGithub
         config:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
-          '/installation/token',
+          "/installation/token",
           config: config,
           decoder: :empty,
           operation_id: 'apps_revoke_installation_access_token',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

@@ -29,25 +29,26 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/issues/events'
+            "/issues/events"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::IssueEvent],
           decoder: :json,
           operation_id: 'issues_list_events_for_repo',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError }
+          errors: { '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -66,14 +67,15 @@ module OctridevGithub
         event_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/issues/events/',
+            "/issues/events/",
             SdkClient.encode_path_segment(event_id)
           ].join,
           config: config,
@@ -81,7 +83,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'issues_get_event',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -107,27 +109,28 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/issues/',
+            "/issues/",
             SdkClient.encode_path_segment(issue_number),
-            '/events'
+            "/events"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::IssueEventForIssue],
           decoder: :json,
           operation_id: 'issues_list_events',
           request_options: request_options,
-          errors: { '410' => ::OctridevGithub::BasicError }
+          errors: { '410' => ::OctridevGithub::BasicError },
         ).data
       end
     end

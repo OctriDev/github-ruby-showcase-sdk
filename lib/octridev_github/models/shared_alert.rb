@@ -5,52 +5,52 @@
 
 # shared_alert domain models
 module OctridevGithub
-  # Defines the AlertCreatedAt SDK value decoder.
-  module AlertCreatedAt
-    def self.from_value(value)
-      value
-    end
+# Defines the AlertCreatedAt SDK value decoder.
+module AlertCreatedAt
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the AlertDismissedAt SDK value decoder.
-  module AlertDismissedAt
-    def self.from_value(value)
-      value
-    end
+# Defines the AlertDismissedAt SDK value decoder.
+module AlertDismissedAt
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the AlertFixedAt SDK value decoder.
-  module AlertFixedAt
-    def self.from_value(value)
-      value
-    end
+# Defines the AlertFixedAt SDK value decoder.
+module AlertFixedAt
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the AlertHtmlUrl SDK value decoder.
-  module AlertHtmlUrl
-    def self.from_value(value)
-      value
-    end
+# Defines the AlertHtmlUrl SDK value decoder.
+module AlertHtmlUrl
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the AlertNumber SDK value decoder.
-  module AlertNumber
-    def self.from_value(value)
-      value
-    end
+# Defines the AlertNumber SDK value decoder.
+module AlertNumber
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the AlertUpdatedAt SDK value decoder.
-  module AlertUpdatedAt
-    def self.from_value(value)
-      value
-    end
+# Defines the AlertUpdatedAt SDK value decoder.
+module AlertUpdatedAt
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the AlertUrl SDK value decoder.
-  module AlertUrl
-    def self.from_value(value)
-      value
-    end
+# Defines the AlertUrl SDK value decoder.
+module AlertUrl
+  def self.from_value(value)
+    value
   end
+end
 end

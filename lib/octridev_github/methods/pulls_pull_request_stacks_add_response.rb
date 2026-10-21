@@ -37,12 +37,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullRequestStacksUnstackResponseBaseMetadata
         FIELDS = {
-          ref: 'ref'
+          ref: "ref",
         }.freeze
         REQUIRED_FIELDS = %i[
           ref
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for PullRequestStacksUnstackResponseBase.
@@ -71,14 +72,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalPullRequestStacksUnstackResponseMetadata
         FIELDS = {
-          id: 'id',
-          number: 'number',
-          node_id: 'node_id',
-          url: 'url',
-          base: 'base',
-          open: 'open',
-          created_at: 'created_at',
-          pull_requests: 'pull_requests'
+          id: "id",
+          number: "number",
+          node_id: "node_id",
+          url: "url",
+          base: "base",
+          open: "open",
+          created_at: "created_at",
+          pull_requests: "pull_requests",
         }.freeze
         REQUIRED_FIELDS = %i[
           id
@@ -96,7 +97,7 @@ module OctridevGithub
           end,
           pull_requests: lambda do |value|
             value&.map { |item| ::OctridevGithub::PullRequestStackPullRequest.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -130,7 +131,7 @@ module OctridevGithub
         MERGE = 'merge'
         SQUASH = 'squash'
         REBASE = 'rebase'
-        VALUES = %w[merge squash rebase].freeze
+        VALUES = ['merge', 'squash', 'rebase'].freeze
         def self.from_value(value)
           value
         end
@@ -140,7 +141,7 @@ module OctridevGithub
       module PullsListParameterF37e00f7
         ASC = 'asc'
         DESC = 'desc'
-        VALUES = %w[asc desc].freeze
+        VALUES = ['asc', 'desc'].freeze
         def self.from_value(value)
           value
         end
@@ -152,7 +153,7 @@ module OctridevGithub
         UPDATED = 'updated'
         POPULARITY = 'popularity'
         LONG_RUNNING = 'long-running'
-        VALUES = %w[created updated popularity long-running].freeze
+        VALUES = ['created', 'updated', 'popularity', 'long-running'].freeze
         def self.from_value(value)
           value
         end
@@ -171,7 +172,7 @@ module OctridevGithub
       module PullsListReviewCommentsForRepoParameter7977536e
         ASC = 'asc'
         DESC = 'desc'
-        VALUES = %w[asc desc].freeze
+        VALUES = ['asc', 'desc'].freeze
         def self.from_value(value)
           value
         end
@@ -182,7 +183,7 @@ module OctridevGithub
         LEFT = 'LEFT'
         RIGHT = 'RIGHT'
         SIDE = 'side'
-        VALUES = %w[LEFT RIGHT side].freeze
+        VALUES = ['LEFT', 'RIGHT', 'side'].freeze
         def self.from_value(value)
           value
         end
@@ -193,7 +194,7 @@ module OctridevGithub
         OPEN = 'open'
         CLOSED = 'closed'
         ALL = 'all'
-        VALUES = %w[open closed all].freeze
+        VALUES = ['open', 'closed', 'all'].freeze
         def self.from_value(value)
           value
         end
@@ -204,7 +205,7 @@ module OctridevGithub
         CREATED = 'created'
         UPDATED = 'updated'
         CREATED_AT = 'created_at'
-        VALUES = %w[created updated created_at].freeze
+        VALUES = ['created', 'updated', 'created_at'].freeze
         def self.from_value(value)
           value
         end
@@ -215,7 +216,7 @@ module OctridevGithub
         DEFAULT = 'default'
         DIRECT_MERGE = 'direct_merge'
         MERGE_QUEUE = 'merge_queue'
-        VALUES = %w[default direct_merge merge_queue].freeze
+        VALUES = ['default', 'direct_merge', 'merge_queue'].freeze
         def self.from_value(value)
           value
         end
@@ -225,7 +226,7 @@ module OctridevGithub
       module PullsCreateReviewCommentSide
         LEFT = 'LEFT'
         RIGHT = 'RIGHT'
-        VALUES = %w[LEFT RIGHT].freeze
+        VALUES = ['LEFT', 'RIGHT'].freeze
         def self.from_value(value)
           value
         end
@@ -235,7 +236,7 @@ module OctridevGithub
       module PullsListReviewCommentsParameter
         ASC = 'asc'
         DESC = 'desc'
-        VALUES = %w[asc desc].freeze
+        VALUES = ['asc', 'desc'].freeze
         def self.from_value(value)
           value
         end
@@ -245,7 +246,7 @@ module OctridevGithub
       module PullsUpdateState
         OPEN = 'open'
         CLOSED = 'closed'
-        VALUES = %w[open closed].freeze
+        VALUES = ['open', 'closed'].freeze
         def self.from_value(value)
           value
         end
@@ -256,7 +257,7 @@ module OctridevGithub
         MERGE = 'merge'
         SQUASH = 'squash'
         REBASE = 'rebase'
-        VALUES = %w[merge squash rebase].freeze
+        VALUES = ['merge', 'squash', 'rebase'].freeze
         def self.from_value(value)
           value
         end
@@ -266,7 +267,7 @@ module OctridevGithub
       module PullsCreateReviewCommentSubjectType
         LINE = 'line'
         FILE = 'file'
-        VALUES = %w[line file].freeze
+        VALUES = ['line', 'file'].freeze
         def self.from_value(value)
           value
         end
@@ -277,7 +278,7 @@ module OctridevGithub
         APPROVE = 'APPROVE'
         REQUEST_CHANGES = 'REQUEST_CHANGES'
         COMMENT = 'COMMENT'
-        VALUES = %w[APPROVE REQUEST_CHANGES COMMENT].freeze
+        VALUES = ['APPROVE', 'REQUEST_CHANGES', 'COMMENT'].freeze
         def self.from_value(value)
           value
         end
@@ -288,7 +289,7 @@ module OctridevGithub
         APPROVE = 'APPROVE'
         REQUEST_CHANGES = 'REQUEST_CHANGES'
         COMMENT = 'COMMENT'
-        VALUES = %w[APPROVE REQUEST_CHANGES COMMENT].freeze
+        VALUES = ['APPROVE', 'REQUEST_CHANGES', 'COMMENT'].freeze
         def self.from_value(value)
           value
         end

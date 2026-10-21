@@ -26,24 +26,25 @@ module OctridevGithub
         team_type: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/teams'
+            "/teams"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'page' => QueryValue.new(page, style: 'form', explode: true),
-            'team_type' => QueryValue.new(team_type, style: 'form', explode: true)
+            'team_type' => QueryValue.new(team_type, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::Team],
           decoder: :json,
           operation_id: 'teams_list',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -87,12 +88,13 @@ module OctridevGithub
         parent_team_slug: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/teams'
+            "/teams"
           ].join,
           config: config,
           body: {
@@ -104,13 +106,13 @@ module OctridevGithub
             'notification_setting' => notification_setting,
             'permission' => permission,
             'parent_team_id' => parent_team_id,
-            'parent_team_slug' => parent_team_slug
+            'parent_team_slug' => parent_team_slug,
           },
           return_type: ::OctridevGithub::TeamFull,
           decoder: :json,
           operation_id: 'teams_create',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -124,12 +126,13 @@ module OctridevGithub
         team_slug:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/teams/',
+            "/teams/",
             SdkClient.encode_path_segment(team_slug)
           ].join,
           config: config,
@@ -137,7 +140,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'teams_get_by_name',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -178,12 +181,13 @@ module OctridevGithub
         parent_team_slug: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/teams/',
+            "/teams/",
             SdkClient.encode_path_segment(team_slug)
           ].join,
           config: config,
@@ -194,13 +198,13 @@ module OctridevGithub
             'notification_setting' => notification_setting,
             'permission' => permission,
             'parent_team_id' => parent_team_id,
-            'parent_team_slug' => parent_team_slug
+            'parent_team_slug' => parent_team_slug,
           },
           return_type: ::OctridevGithub::TeamFull,
           decoder: :json,
           operation_id: 'teams_update_in_org',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -214,18 +218,19 @@ module OctridevGithub
         team_slug:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/teams/',
+            "/teams/",
             SdkClient.encode_path_segment(team_slug)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'teams_delete_in_org',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -245,24 +250,25 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/teams/',
+            "/teams/",
             SdkClient.encode_path_segment(team_slug),
-            '/teams'
+            "/teams"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::Team],
           decoder: :json,
           operation_id: 'teams_list_child_in_org',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -276,10 +282,11 @@ module OctridevGithub
         team_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/teams/',
+            "/teams/",
             SdkClient.encode_path_segment(team_id)
           ].join,
           config: config,
@@ -287,7 +294,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'teams_get_legacy',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -327,10 +334,11 @@ module OctridevGithub
         parent_team_slug: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/teams/',
+            "/teams/",
             SdkClient.encode_path_segment(team_id)
           ].join,
           config: config,
@@ -341,13 +349,13 @@ module OctridevGithub
             'notification_setting' => notification_setting,
             'permission' => permission,
             'parent_team_id' => parent_team_id,
-            'parent_team_slug' => parent_team_slug
+            'parent_team_slug' => parent_team_slug,
           },
           return_type: ::OctridevGithub::TeamFull,
           decoder: :json,
           operation_id: 'teams_update_legacy',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -361,17 +369,18 @@ module OctridevGithub
         team_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/teams/',
+            "/teams/",
             SdkClient.encode_path_segment(team_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'teams_delete_legacy',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -391,23 +400,24 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/teams/',
+            "/teams/",
             SdkClient.encode_path_segment(team_id),
-            '/teams'
+            "/teams"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::Team],
           decoder: :json,
           operation_id: 'teams_list_child_legacy',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -423,19 +433,20 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
-          '/user/teams',
+          "/user/teams",
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::TeamFull],
           decoder: :json,
           operation_id: 'teams_list_for_authenticated_user',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

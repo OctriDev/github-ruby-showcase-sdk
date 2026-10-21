@@ -27,24 +27,25 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/events'
+            "/events"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::Event],
           decoder: :json,
           operation_id: 'activity_list_repo_events',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -77,6 +78,7 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(since) { Validation.validate_date_time('since', since) }
 
         Validation.if_given(before) { Validation.validate_date_time('before', before) }
@@ -84,11 +86,11 @@ module OctridevGithub
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/notifications'
+            "/notifications"
           ].join,
           config: config,
           query: {
@@ -97,12 +99,12 @@ module OctridevGithub
             'since' => QueryValue.new(since, style: 'form', explode: true),
             'before' => QueryValue.new(before, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::Thread],
           decoder: :json,
           operation_id: 'activity_list_repo_notifications_for_authenticated_user',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -124,25 +126,26 @@ module OctridevGithub
         last_read_at: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(last_read_at) { Validation.validate_date_time('last_read_at', last_read_at) }
 
         SdkClient.request(
           'PUT',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/notifications'
+            "/notifications"
           ].join,
           config: config,
           body: {
-            'last_read_at' => last_read_at
+            'last_read_at' => last_read_at,
           },
           return_type: ::OctridevGithub::Methods::Activity::ActivityMarkRepoNotificationsAsReadResponse,
           decoder: :json,
           operation_id: 'activity_mark_repo_notifications_as_read',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -164,24 +167,25 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/stargazers'
+            "/stargazers"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           decoder: :json,
           operation_id: 'activity_list_stargazers_for_repo',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError }
+          errors: { '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -197,21 +201,22 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/stargazers/count'
+            "/stargazers/count"
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::Activity::ActivityGetStargazerCountForRepoResponse,
           decoder: :json,
           operation_id: 'activity_get_stargazer_count_for_repo',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -233,6 +238,7 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(per_page) { Validation.validate_range('per_page', per_page, min: 1, max: 30) }
 
         Validation.if_given(page) { Validation.validate_range('page', page, min: 1, max: 100) }
@@ -240,22 +246,22 @@ module OctridevGithub
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/stargazers/history'
+            "/stargazers/history"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::StargazerHistory],
           decoder: :json,
           operation_id: 'activity_get_stargazer_history_for_repo',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError }
+          errors: { '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -277,24 +283,25 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/subscribers'
+            "/subscribers"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::SimpleUser],
           decoder: :json,
           operation_id: 'activity_list_watchers_for_repo',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -310,21 +317,22 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/subscription'
+            "/subscription"
           ].join,
           config: config,
           return_type: ::OctridevGithub::RepositorySubscription,
           decoder: :json,
           operation_id: 'activity_get_repo_subscription',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -346,24 +354,25 @@ module OctridevGithub
         ignored: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/subscription'
+            "/subscription"
           ].join,
           config: config,
           body: {
             'subscribed' => subscribed,
-            'ignored' => ignored
+            'ignored' => ignored,
           },
           return_type: ::OctridevGithub::RepositorySubscription,
           decoder: :json,
           operation_id: 'activity_set_repo_subscription',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -379,19 +388,20 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/subscription'
+            "/subscription"
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'activity_delete_repo_subscription',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

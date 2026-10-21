@@ -12,10 +12,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalDependencyGraphGenerateSbomReportResponseMetadata
         FIELDS = {
-          sbom_url: 'sbom_url'
+          sbom_url: "sbom_url",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for DependencyGraphGenerateSbomReportResponse.
@@ -45,10 +47,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalDependencyGraphCreateRepositorySnapshotResponseMetadata
         FIELDS = {
-          id: 'id',
-          created_at: 'created_at',
-          result: 'result',
-          message: 'message'
+          id: "id",
+          created_at: "created_at",
+          result: "result",
+          message: "message",
         }.freeze
         REQUIRED_FIELDS = %i[
           id
@@ -56,7 +58,8 @@ module OctridevGithub
           result
           message
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for DependencyGraphCreateRepositorySnapshotResponse.
@@ -109,25 +112,26 @@ module OctridevGithub
         name: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/dependency-graph/compare/',
+            "/dependency-graph/compare/",
             SdkClient.encode_path_segment(basehead)
           ].join,
           config: config,
           query: {
-            'name' => QueryValue.new(name, style: 'form', explode: true)
+            'name' => QueryValue.new(name, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::DependencyGraphDiff,
           decoder: :json,
           operation_id: 'dependency_graph_diff_range',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -145,21 +149,22 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/dependency-graph/sbom'
+            "/dependency-graph/sbom"
           ].join,
           config: config,
           return_type: ::OctridevGithub::DependencyGraphSpdxSbom,
           decoder: :json,
           operation_id: 'dependency_graph_export_sbom',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -177,21 +182,22 @@ module OctridevGithub
         sbom_uuid:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/dependency-graph/sbom/fetch-report/',
+            "/dependency-graph/sbom/fetch-report/",
             SdkClient.encode_path_segment(sbom_uuid)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'dependency_graph_fetch_sbom_report',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -207,21 +213,22 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/dependency-graph/sbom/generate-report'
+            "/dependency-graph/sbom/generate-report"
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::DependencyGraph::DependencyGraphGenerateSbomReportResponse,
           decoder: :json,
           operation_id: 'dependency_graph_generate_sbom_report',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -260,6 +267,7 @@ module OctridevGithub
         manifests: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_length('sha', sha, min: 40, max: 64)
 
         Validation.validate_pattern('ref', ref, '^refs/')
@@ -269,11 +277,11 @@ module OctridevGithub
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/dependency-graph/snapshots'
+            "/dependency-graph/snapshots"
           ].join,
           config: config,
           body: {
@@ -284,12 +292,12 @@ module OctridevGithub
             'detector' => detector,
             'scanned' => scanned,
             'metadata' => metadata,
-            'manifests' => manifests
+            'manifests' => manifests,
           },
           return_type: ::OctridevGithub::Methods::DependencyGraph::DependencyGraphCreateRepositorySnapshotResponse,
           decoder: :json,
           operation_id: 'dependency_graph_create_repository_snapshot',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

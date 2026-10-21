@@ -24,22 +24,23 @@ module OctridevGithub
         branch:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/branches/',
+            "/branches/",
             SdkClient.encode_path_segment(branch),
-            '/protection/enforce_admins'
+            "/protection/enforce_admins"
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_delete_admin_branch_protection',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

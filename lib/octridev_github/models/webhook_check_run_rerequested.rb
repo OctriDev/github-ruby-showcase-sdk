@@ -5,90 +5,90 @@
 
 # webhook_check_run_rerequested domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalWebhookCheckRunRerequestedMetadata
-    FIELDS = {
-      action: 'action',
-      check_run: 'check_run',
-      installation: 'installation',
-      enterprise: 'enterprise',
-      organization: 'organization',
-      repository: 'repository',
-      sender: 'sender'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      check_run
-      repository
-      sender
-    ].freeze
-    DECODERS = {
-      action: lambda do |value|
-        ::OctridevGithub::WebhookCheckRunRerequestedAction.from_value(value)
-      end,
-      check_run: lambda do |value|
-        ::OctridevGithub::CheckRunWithSimpleCheckSuite.from_hash(value)
-      end,
-      installation: lambda do |value|
-        ::OctridevGithub::SimpleInstallation.from_hash(value)
-      end,
-      enterprise: lambda do |value|
-        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-      end,
-      organization: lambda do |value|
-        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-      end,
-      repository: lambda do |value|
-        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-      end,
-      sender: lambda do |value|
-        ::OctridevGithub::SimpleUser.from_hash(value)
-      end
-    }.freeze
+# Internal model hydration metadata.
+class SdkInternalWebhookCheckRunRerequestedMetadata
+  FIELDS = {
+    action: "action",
+    check_run: "check_run",
+    installation: "installation",
+    enterprise: "enterprise",
+    organization: "organization",
+    repository: "repository",
+    sender: "sender",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    check_run
+    repository
+    sender
+  ].freeze
+  DECODERS = {
+    action: lambda do |value|
+      ::OctridevGithub::WebhookCheckRunRerequestedAction.from_value(value)
+    end,
+    check_run: lambda do |value|
+      ::OctridevGithub::CheckRunWithSimpleCheckSuite.from_hash(value)
+    end,
+    installation: lambda do |value|
+      ::OctridevGithub::SimpleInstallation.from_hash(value)
+    end,
+    enterprise: lambda do |value|
+      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+    end,
+    organization: lambda do |value|
+      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+    end,
+    repository: lambda do |value|
+      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+    end,
+    sender: lambda do |value|
+      ::OctridevGithub::SimpleUser.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookCheckRunRerequested.
+# Typed representation of the `WebhookCheckRunRerequested` API schema.
+class WebhookCheckRunRerequested
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookCheckRunRerequestedMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookCheckRunRerequestedMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookCheckRunRerequestedMetadata::DECODERS
+
+  # @return [WebhookCheckRunRerequestedAction] Optional enumerated value serialized in the `action` wire field.
+  attr_reader :action
+  # @return [CheckRunWithSimpleCheckSuite] A check performed on the code of a given code change
+  attr_reader :check_run
+  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+  attr_reader :installation
+  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+  attr_reader :enterprise
+  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+  attr_reader :organization
+  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+  attr_reader :repository
+  # @return [SimpleUser] A GitHub user.
+  attr_reader :sender
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookCheckRunRerequested.
-  # Typed representation of the `WebhookCheckRunRerequested` API schema.
-  class WebhookCheckRunRerequested
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookCheckRunRerequestedMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookCheckRunRerequestedMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookCheckRunRerequestedMetadata::DECODERS
-
-    # @return [WebhookCheckRunRerequestedAction] Optional enumerated value serialized in the `action` wire field.
-    attr_reader :action
-    # @return [CheckRunWithSimpleCheckSuite] A check performed on the code of a given code change
-    attr_reader :check_run
-    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-    attr_reader :installation
-    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-    attr_reader :enterprise
-    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-    attr_reader :organization
-    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-    attr_reader :repository
-    # @return [SimpleUser] A GitHub user.
-    attr_reader :sender
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the WebhookCheckRunRerequestedAction SDK namespace.
-  module WebhookCheckRunRerequestedAction
-    REREQUESTED = 'rerequested'
-    VALUES = ['rerequested'].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
+
+# Defines the WebhookCheckRunRerequestedAction SDK namespace.
+module WebhookCheckRunRerequestedAction
+  REREQUESTED = 'rerequested'
+  VALUES = ['rerequested'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

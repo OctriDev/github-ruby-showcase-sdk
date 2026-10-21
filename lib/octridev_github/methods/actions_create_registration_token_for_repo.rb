@@ -21,20 +21,21 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/actions/runners/registration-token'
+            "/actions/runners/registration-token"
           ].join,
           config: config,
           return_type: ::OctridevGithub::AuthenticationToken,
           decoder: :json,
           operation_id: 'actions_create_registration_token_for_repo',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

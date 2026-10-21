@@ -29,26 +29,27 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/pulls/',
+            "/pulls/",
             SdkClient.encode_path_segment(pull_number),
-            '/commits'
+            "/commits"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::Commit],
           decoder: :json,
           operation_id: 'pulls_list_commits',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

@@ -45,18 +45,19 @@ module OctridevGithub
         start_private_fork: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_length('summary', summary, max: 1024)
 
-        Validation.validate_length('description', description, max: 65_535)
+        Validation.validate_length('description', description, max: 65535)
 
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/security-advisories/reports'
+            "/security-advisories/reports"
           ].join,
           config: config,
           body: {
@@ -66,13 +67,13 @@ module OctridevGithub
             'cwe_ids' => cwe_ids,
             'severity' => severity,
             'cvss_vector_string' => cvss_vector_string,
-            'start_private_fork' => start_private_fork
+            'start_private_fork' => start_private_fork,
           },
           return_type: ::OctridevGithub::RepositoryAdvisory,
           decoder: :json,
           operation_id: 'security_advisories_create_private_vulnerability_report',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::RepositoryAdvisoryDescriptionValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::RepositoryAdvisoryDescriptionValidationError },
         ).data
       end
     end

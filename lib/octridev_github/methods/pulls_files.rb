@@ -29,27 +29,28 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/pulls/',
+            "/pulls/",
             SdkClient.encode_path_segment(pull_number),
-            '/files'
+            "/files"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::DiffEntry],
           decoder: :json,
           operation_id: 'pulls_list_files',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
     end

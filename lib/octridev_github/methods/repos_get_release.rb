@@ -23,21 +23,22 @@ module OctridevGithub
         release_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/releases/',
+            "/releases/",
             SdkClient.encode_path_segment(release_id)
           ].join,
           config: config,
           return_type: ::OctridevGithub::Release,
           decoder: :json,
           operation_id: 'repos_get_release',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

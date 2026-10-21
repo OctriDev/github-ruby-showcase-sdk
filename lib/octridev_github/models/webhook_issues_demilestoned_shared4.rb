@@ -5,15 +5,15 @@
 
 # webhook_issues_demilestoned domain models
 module OctridevGithub
-  # Defines the WebhookIssuesDemilestonedIssueUserType SDK namespace.
-  module WebhookIssuesDemilestonedIssueUserType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    MANNEQUIN = 'Mannequin'
-    VALUES = %w[Bot User Organization Mannequin].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookIssuesDemilestonedIssueUserType SDK namespace.
+module WebhookIssuesDemilestonedIssueUserType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  MANNEQUIN = 'Mannequin'
+  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
+  def self.from_value(value)
+    value
   end
+end
 end

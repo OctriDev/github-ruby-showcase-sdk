@@ -19,21 +19,22 @@ module OctridevGithub
         space_number:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/copilot-spaces/',
+            "/copilot-spaces/",
             SdkClient.encode_path_segment(space_number),
-            '/resources'
+            "/resources"
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesListResourcesForOrgResponse,
           decoder: :json,
           operation_id: 'copilot_spaces_list_resources_for_org',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -52,25 +53,26 @@ module OctridevGithub
         metadata:,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/copilot-spaces/',
+            "/copilot-spaces/",
             SdkClient.encode_path_segment(space_number),
-            '/resources'
+            "/resources"
           ].join,
           config: config,
           body: {
             'resource_type' => resource_type,
-            'metadata' => metadata
+            'metadata' => metadata,
           },
           return_type: ::OctridevGithub::CopilotSpaceResource,
           decoder: :json,
           operation_id: 'copilot_spaces_create_resource_for_org',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -86,14 +88,15 @@ module OctridevGithub
         space_resource_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/copilot-spaces/',
+            "/copilot-spaces/",
             SdkClient.encode_path_segment(space_number),
-            '/resources/',
+            "/resources/",
             SdkClient.encode_path_segment(space_resource_id)
           ].join,
           config: config,
@@ -101,7 +104,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'copilot_spaces_get_resource_for_org',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -119,25 +122,26 @@ module OctridevGithub
         metadata: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/copilot-spaces/',
+            "/copilot-spaces/",
             SdkClient.encode_path_segment(space_number),
-            '/resources/',
+            "/resources/",
             SdkClient.encode_path_segment(space_resource_id)
           ].join,
           config: config,
           body: {
-            'metadata' => metadata
+            'metadata' => metadata,
           },
           return_type: ::OctridevGithub::CopilotSpaceResource,
           decoder: :json,
           operation_id: 'copilot_spaces_update_resource_for_org',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -153,21 +157,22 @@ module OctridevGithub
         space_resource_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/copilot-spaces/',
+            "/copilot-spaces/",
             SdkClient.encode_path_segment(space_number),
-            '/resources/',
+            "/resources/",
             SdkClient.encode_path_segment(space_resource_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'copilot_spaces_delete_resource_for_org',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -181,21 +186,22 @@ module OctridevGithub
         space_number:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/users/',
+            "/users/",
             SdkClient.encode_path_segment(username),
-            '/copilot-spaces/',
+            "/copilot-spaces/",
             SdkClient.encode_path_segment(space_number),
-            '/resources'
+            "/resources"
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesListResourcesForUserResponse,
           decoder: :json,
           operation_id: 'copilot_spaces_list_resources_for_user',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -214,25 +220,26 @@ module OctridevGithub
         metadata:,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/users/',
+            "/users/",
             SdkClient.encode_path_segment(username),
-            '/copilot-spaces/',
+            "/copilot-spaces/",
             SdkClient.encode_path_segment(space_number),
-            '/resources'
+            "/resources"
           ].join,
           config: config,
           body: {
             'resource_type' => resource_type,
-            'metadata' => metadata
+            'metadata' => metadata,
           },
           return_type: ::OctridevGithub::CopilotSpaceResource,
           decoder: :json,
           operation_id: 'copilot_spaces_create_resource_for_user',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -248,14 +255,15 @@ module OctridevGithub
         space_resource_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/users/',
+            "/users/",
             SdkClient.encode_path_segment(username),
-            '/copilot-spaces/',
+            "/copilot-spaces/",
             SdkClient.encode_path_segment(space_number),
-            '/resources/',
+            "/resources/",
             SdkClient.encode_path_segment(space_resource_id)
           ].join,
           config: config,
@@ -263,7 +271,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'copilot_spaces_get_resource_for_user',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -281,25 +289,26 @@ module OctridevGithub
         metadata: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/users/',
+            "/users/",
             SdkClient.encode_path_segment(username),
-            '/copilot-spaces/',
+            "/copilot-spaces/",
             SdkClient.encode_path_segment(space_number),
-            '/resources/',
+            "/resources/",
             SdkClient.encode_path_segment(space_resource_id)
           ].join,
           config: config,
           body: {
-            'metadata' => metadata
+            'metadata' => metadata,
           },
           return_type: ::OctridevGithub::CopilotSpaceResource,
           decoder: :json,
           operation_id: 'copilot_spaces_update_resource_for_user',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -315,21 +324,22 @@ module OctridevGithub
         space_resource_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/users/',
+            "/users/",
             SdkClient.encode_path_segment(username),
-            '/copilot-spaces/',
+            "/copilot-spaces/",
             SdkClient.encode_path_segment(space_number),
-            '/resources/',
+            "/resources/",
             SdkClient.encode_path_segment(space_resource_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'copilot_spaces_delete_resource_for_user',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

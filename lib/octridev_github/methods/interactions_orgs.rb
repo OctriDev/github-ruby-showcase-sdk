@@ -17,17 +17,18 @@ module OctridevGithub
         org:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/interaction-limits'
+            "/interaction-limits"
           ].join,
           config: config,
           decoder: :json,
           operation_id: 'interactions_get_restrictions_for_org',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -46,23 +47,24 @@ module OctridevGithub
         expiry: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/interaction-limits'
+            "/interaction-limits"
           ].join,
           config: config,
           body: {
             'limit' => limit,
-            'expiry' => expiry
+            'expiry' => expiry,
           },
           return_type: ::OctridevGithub::InteractionLimitResponse,
           decoder: :json,
           operation_id: 'interactions_set_restrictions_for_org',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError }
+          errors: { '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -74,17 +76,18 @@ module OctridevGithub
         org:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/interaction-limits'
+            "/interaction-limits"
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'interactions_remove_restrictions_for_org',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -96,19 +99,20 @@ module OctridevGithub
         org:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/interaction-limits/pulls/creation-cap'
+            "/interaction-limits/pulls/creation-cap"
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::Interactions::InteractionsGetPullRequestCreationCapForOrgResponse,
           decoder: :json,
           operation_id: 'interactions_get_pull_request_creation_cap_for_org',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '405' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '405' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -128,6 +132,7 @@ module OctridevGithub
         include_drafts: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(max_open_pull_requests) do
           Validation.validate_range('max_open_pull_requests', max_open_pull_requests, min: 1, max: 1000)
         end
@@ -135,21 +140,21 @@ module OctridevGithub
         SdkClient.request(
           'PATCH',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/interaction-limits/pulls/creation-cap'
+            "/interaction-limits/pulls/creation-cap"
           ].join,
           config: config,
           body: {
             'enabled' => enabled,
             'max_open_pull_requests' => max_open_pull_requests,
-            'include_drafts' => include_drafts
+            'include_drafts' => include_drafts,
           },
           return_type: ::OctridevGithub::Methods::Interactions::InteractionsUpdatePullRequestCreationCapForOrgResponse,
           decoder: :json,
           operation_id: 'interactions_update_pull_request_creation_cap_for_org',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '405' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '405' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end

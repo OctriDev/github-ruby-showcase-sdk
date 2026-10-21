@@ -21,21 +21,22 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/properties/values'
+            "/properties/values"
           ].join,
           config: config,
           return_type: [::OctridevGithub::CustomPropertyValue],
           decoder: :json,
           operation_id: 'repos_custom_properties_for_repos_get_repository_values',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -54,23 +55,24 @@ module OctridevGithub
         properties:,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/properties/values'
+            "/properties/values"
           ].join,
           config: config,
           body: {
-            'properties' => properties
+            'properties' => properties,
           },
           decoder: :empty,
           operation_id: 'repos_custom_properties_for_repos_create_or_update_repository_values',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end

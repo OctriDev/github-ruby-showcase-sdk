@@ -29,23 +29,24 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/outside_collaborators'
+            "/outside_collaborators"
           ].join,
           config: config,
           query: {
             'filter' => QueryValue.new(filter, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::SimpleUser],
           decoder: :json,
           operation_id: 'orgs_list_outside_collaborators',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -63,22 +64,23 @@ module OctridevGithub
         async: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/outside_collaborators/',
+            "/outside_collaborators/",
             SdkClient.encode_path_segment(username)
           ].join,
           config: config,
           body: {
-            'async' => async
+            'async' => async,
           },
           decoder: :json,
           operation_id: 'orgs_convert_member_to_outside_collaborator',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -92,18 +94,19 @@ module OctridevGithub
         username:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/outside_collaborators/',
+            "/outside_collaborators/",
             SdkClient.encode_path_segment(username)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'orgs_remove_outside_collaborator',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

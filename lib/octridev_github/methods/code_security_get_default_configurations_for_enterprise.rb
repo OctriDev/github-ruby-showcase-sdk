@@ -17,18 +17,19 @@ module OctridevGithub
         enterprise:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/enterprises/',
+            "/enterprises/",
             SdkClient.encode_path_segment(enterprise),
-            '/code-security/configurations/defaults'
+            "/code-security/configurations/defaults"
           ].join,
           config: config,
           return_type: ::OctridevGithub::CodeSecurityDefaultConfigurations,
           decoder: :json,
           operation_id: 'code_security_get_default_configurations_for_enterprise',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

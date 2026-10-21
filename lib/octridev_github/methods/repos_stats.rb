@@ -21,20 +21,21 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/stats/code_frequency'
+            "/stats/code_frequency"
           ].join,
           config: config,
           return_type: [::OctridevGithub::CodeFrequencyStat],
           decoder: :json,
           operation_id: 'repos_get_code_frequency_stats',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -50,20 +51,21 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/stats/commit_activity'
+            "/stats/commit_activity"
           ].join,
           config: config,
           return_type: [::OctridevGithub::CommitActivity],
           decoder: :json,
           operation_id: 'repos_get_commit_activity_stats',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -79,20 +81,21 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/stats/contributors'
+            "/stats/contributors"
           ].join,
           config: config,
           return_type: [::OctridevGithub::ContributorActivity],
           decoder: :json,
           operation_id: 'repos_get_contributors_stats',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -108,21 +111,22 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/stats/participation'
+            "/stats/participation"
           ].join,
           config: config,
           return_type: ::OctridevGithub::ParticipationStats,
           decoder: :json,
           operation_id: 'repos_get_participation_stats',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -138,20 +142,21 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/stats/punch_card'
+            "/stats/punch_card"
           ].join,
           config: config,
           return_type: [::OctridevGithub::CodeFrequencyStat],
           decoder: :json,
           operation_id: 'repos_get_punch_card_stats',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

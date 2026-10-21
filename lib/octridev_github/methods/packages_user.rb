@@ -14,14 +14,15 @@ module OctridevGithub
         config:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
-          '/user/docker/conflicts',
+          "/user/docker/conflicts",
           config: config,
           return_type: [::OctridevGithub::Package],
           decoder: :json,
           operation_id: 'packages_list_docker_migration_conflicting_packages_for_authenticated_user',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

@@ -27,24 +27,25 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/comments'
+            "/comments"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::CommitComment],
           decoder: :json,
           operation_id: 'repos_list_commit_comments_for_repo',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -62,14 +63,15 @@ module OctridevGithub
         comment_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/comments/',
+            "/comments/",
             SdkClient.encode_path_segment(comment_id)
           ].join,
           config: config,
@@ -77,7 +79,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'repos_get_commit_comment',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -97,25 +99,26 @@ module OctridevGithub
         body:,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/comments/',
+            "/comments/",
             SdkClient.encode_path_segment(comment_id)
           ].join,
           config: config,
           body: {
-            'body' => body
+            'body' => body,
           },
           return_type: ::OctridevGithub::CommitComment,
           decoder: :json,
           operation_id: 'repos_update_commit_comment',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -133,21 +136,22 @@ module OctridevGithub
         comment_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/comments/',
+            "/comments/",
             SdkClient.encode_path_segment(comment_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_delete_commit_comment',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

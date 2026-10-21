@@ -25,16 +25,17 @@ module OctridevGithub
         name:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/actions/runners/',
+            "/actions/runners/",
             SdkClient.encode_path_segment(runner_id),
-            '/labels/',
+            "/labels/",
             SdkClient.encode_path_segment(name)
           ].join,
           config: config,
@@ -42,7 +43,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'actions_remove_custom_label_from_self_hosted_runner_for_repo',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple }
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple },
         ).data
       end
     end

@@ -28,25 +28,26 @@ module OctridevGithub
         integration_id: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/environments/',
+            "/environments/",
             SdkClient.encode_path_segment(environment_name),
-            '/deployment_protection_rules'
+            "/deployment_protection_rules"
           ].join,
           config: config,
           body: {
-            'integration_id' => integration_id
+            'integration_id' => integration_id,
           },
           return_type: ::OctridevGithub::DeploymentProtectionRule,
           decoder: :json,
           operation_id: 'repos_create_deployment_protection_rule',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

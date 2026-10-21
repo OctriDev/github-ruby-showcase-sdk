@@ -19,19 +19,20 @@ module OctridevGithub
         name: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
-          '/user/gpg_keys',
+          "/user/gpg_keys",
           config: config,
           body: {
             'armored_public_key' => armored_public_key,
-            'name' => name
+            'name' => name,
           },
           return_type: ::OctridevGithub::GpgKey,
           decoder: :json,
           operation_id: 'users_create_gpg_key_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end

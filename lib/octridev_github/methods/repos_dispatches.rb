@@ -29,26 +29,27 @@ module OctridevGithub
         client_payload: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_length('event_type', event_type, min: 1, max: 100)
 
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/dispatches'
+            "/dispatches"
           ].join,
           config: config,
           body: {
             'event_type' => event_type,
-            'client_payload' => client_payload
+            'client_payload' => client_payload,
           },
           decoder: :empty,
           operation_id: 'repos_create_dispatch_event',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end

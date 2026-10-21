@@ -26,26 +26,27 @@ module OctridevGithub
         content:,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/pulls/comments/',
+            "/pulls/comments/",
             SdkClient.encode_path_segment(comment_id),
-            '/reactions'
+            "/reactions"
           ].join,
           config: config,
           body: {
-            'content' => content
+            'content' => content,
           },
           return_type: ::OctridevGithub::Reaction,
           decoder: :json,
           operation_id: 'reactions_create_for_pull_request_review_comment',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError }
+          errors: { '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end

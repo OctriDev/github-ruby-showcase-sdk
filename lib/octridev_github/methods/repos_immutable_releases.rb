@@ -21,20 +21,21 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/immutable-releases'
+            "/immutable-releases"
           ].join,
           config: config,
           return_type: ::OctridevGithub::CheckImmutableReleases,
           decoder: :json,
           operation_id: 'repos_check_immutable_releases',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -50,20 +51,21 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/immutable-releases'
+            "/immutable-releases"
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_enable_immutable_releases',
           request_options: request_options,
-          errors: { '409' => ::OctridevGithub::BasicError }
+          errors: { '409' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -79,20 +81,21 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/immutable-releases'
+            "/immutable-releases"
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_disable_immutable_releases',
           request_options: request_options,
-          errors: { '409' => ::OctridevGithub::BasicError }
+          errors: { '409' => ::OctridevGithub::BasicError },
         ).data
       end
     end

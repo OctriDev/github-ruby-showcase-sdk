@@ -5,125 +5,125 @@
 
 # webhooks_repositories domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksRepositoriesItemMetadata
-    FIELDS = {
-      full_name: 'full_name',
-      id: 'id',
-      name: 'name',
-      node_id: 'node_id',
-      private: 'private'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      full_name
-      id
-      name
-      node_id
-      private
-    ].freeze
-    DECODERS = {}.freeze
+# Internal model hydration metadata.
+class SdkInternalWebhooksRepositoriesItemMetadata
+  FIELDS = {
+    full_name: "full_name",
+    id: "id",
+    name: "name",
+    node_id: "node_id",
+    private: "private",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    full_name
+    id
+    name
+    node_id
+    private
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhooksRepositoriesItem.
+# Required object value serialized in the `repositories[]` wire field.
+class WebhooksRepositoriesItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksRepositoriesItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksRepositoriesItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksRepositoriesItemMetadata::DECODERS
+
+  # @return [String] Required `string` value serialized in the `full_name` wire field.
+  attr_reader :full_name
+  # @return [Integer] Unique identifier of the repository
+  attr_reader :id
+  # @return [String] The name of the repository.
+  attr_reader :name
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [Boolean] Whether the repository is private or public.
+  attr_reader :private
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhooksRepositoriesItem.
-  # Required object value serialized in the `repositories[]` wire field.
-  class WebhooksRepositoriesItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksRepositoriesItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksRepositoriesItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksRepositoriesItemMetadata::DECODERS
-
-    # @return [String] Required `string` value serialized in the `full_name` wire field.
-    attr_reader :full_name
-    # @return [Integer] Unique identifier of the repository
-    attr_reader :id
-    # @return [String] The name of the repository.
-    attr_reader :name
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [Boolean] Whether the repository is private or public.
-    attr_reader :private
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the WebhooksRepositories SDK value decoder.
-  module WebhooksRepositories
-    def self.from_hash(value)
-      return nil if value.nil?
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-      value&.map { |item| ::OctridevGithub::WebhooksRepositoriesItem.from_hash(item) }
-    end
+# Defines the WebhooksRepositories SDK value decoder.
+module WebhooksRepositories
+  def self.from_hash(value)
+    return nil if value.nil?
+    value&.map { |item| ::OctridevGithub::WebhooksRepositoriesItem.from_hash(item) }
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhooksRepositoriesAddedItemMetadata
+  FIELDS = {
+    full_name: "full_name",
+    id: "id",
+    name: "name",
+    node_id: "node_id",
+    private: "private",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    full_name
+    id
+    name
+    node_id
+    private
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhooksRepositoriesAddedItem.
+# Required object value serialized in the `repositories_added[]` wire field.
+class WebhooksRepositoriesAddedItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksRepositoriesAddedItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksRepositoriesAddedItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksRepositoriesAddedItemMetadata::DECODERS
+
+  # @return [String] Required `string` value serialized in the `full_name` wire field.
+  attr_reader :full_name
+  # @return [Integer] Unique identifier of the repository
+  attr_reader :id
+  # @return [String] The name of the repository.
+  attr_reader :name
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [Boolean] Whether the repository is private or public.
+  attr_reader :private
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksRepositoriesAddedItemMetadata
-    FIELDS = {
-      full_name: 'full_name',
-      id: 'id',
-      name: 'name',
-      node_id: 'node_id',
-      private: 'private'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      full_name
-      id
-      name
-      node_id
-      private
-    ].freeze
-    DECODERS = {}.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for WebhooksRepositoriesAddedItem.
-  # Required object value serialized in the `repositories_added[]` wire field.
-  class WebhooksRepositoriesAddedItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksRepositoriesAddedItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksRepositoriesAddedItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksRepositoriesAddedItemMetadata::DECODERS
-
-    # @return [String] Required `string` value serialized in the `full_name` wire field.
-    attr_reader :full_name
-    # @return [Integer] Unique identifier of the repository
-    attr_reader :id
-    # @return [String] The name of the repository.
-    attr_reader :name
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [Boolean] Whether the repository is private or public.
-    attr_reader :private
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
 
-  # Defines the WebhooksRepositoriesAdded SDK value decoder.
-  module WebhooksRepositoriesAdded
-    def self.from_hash(value)
-      return nil if value.nil?
-
-      value&.map { |item| ::OctridevGithub::WebhooksRepositoriesAddedItem.from_hash(item) }
-    end
+# Defines the WebhooksRepositoriesAdded SDK value decoder.
+module WebhooksRepositoriesAdded
+  def self.from_hash(value)
+    return nil if value.nil?
+    value&.map { |item| ::OctridevGithub::WebhooksRepositoriesAddedItem.from_hash(item) }
   end
+end
 end

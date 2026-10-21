@@ -5,670 +5,671 @@
 
 # webhook_pull_request_enqueued domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalWebhookPullRequestEnqueuedPullRequestHeadRepoMetadata
-    FIELDS = {
-      allow_auto_merge: 'allow_auto_merge',
-      allow_forking: 'allow_forking',
-      allow_merge_commit: 'allow_merge_commit',
-      allow_rebase_merge: 'allow_rebase_merge',
-      allow_squash_merge: 'allow_squash_merge',
-      allow_update_branch: 'allow_update_branch',
-      archive_url: 'archive_url',
-      archived: 'archived',
-      assignees_url: 'assignees_url',
-      blobs_url: 'blobs_url',
-      branches_url: 'branches_url',
-      clone_url: 'clone_url',
-      collaborators_url: 'collaborators_url',
-      comments_url: 'comments_url',
-      commits_url: 'commits_url',
-      compare_url: 'compare_url',
-      contents_url: 'contents_url',
-      contributors_url: 'contributors_url',
-      created_at: 'created_at',
-      default_branch: 'default_branch',
-      delete_branch_on_merge: 'delete_branch_on_merge',
-      deployments_url: 'deployments_url',
-      description: 'description',
-      disabled: 'disabled',
-      downloads_url: 'downloads_url',
-      events_url: 'events_url',
-      fork: 'fork',
-      forks: 'forks',
-      forks_count: 'forks_count',
-      forks_url: 'forks_url',
-      full_name: 'full_name',
-      git_commits_url: 'git_commits_url',
-      git_refs_url: 'git_refs_url',
-      git_tags_url: 'git_tags_url',
-      git_url: 'git_url',
-      has_downloads: 'has_downloads',
-      has_issues: 'has_issues',
-      has_pages: 'has_pages',
-      has_projects: 'has_projects',
-      has_wiki: 'has_wiki',
-      has_discussions: 'has_discussions',
-      has_pull_requests: 'has_pull_requests',
-      pull_request_creation_policy: 'pull_request_creation_policy',
-      homepage: 'homepage',
-      hooks_url: 'hooks_url',
-      html_url: 'html_url',
-      id: 'id',
-      is_template: 'is_template',
-      issue_comment_url: 'issue_comment_url',
-      issue_events_url: 'issue_events_url',
-      issues_url: 'issues_url',
-      keys_url: 'keys_url',
-      labels_url: 'labels_url',
-      language: 'language',
-      languages_url: 'languages_url',
-      license: 'license',
-      master_branch: 'master_branch',
-      merge_commit_message: 'merge_commit_message',
-      merge_commit_title: 'merge_commit_title',
-      merges_url: 'merges_url',
-      milestones_url: 'milestones_url',
-      mirror_url: 'mirror_url',
-      name: 'name',
-      node_id: 'node_id',
-      notifications_url: 'notifications_url',
-      open_issues: 'open_issues',
-      open_issues_count: 'open_issues_count',
-      organization: 'organization',
-      owner: 'owner',
-      permissions: 'permissions',
-      private: 'private',
-      public: 'public',
-      pulls_url: 'pulls_url',
-      pushed_at: 'pushed_at',
-      releases_url: 'releases_url',
-      role_name: 'role_name',
-      size: 'size',
-      squash_merge_commit_message: 'squash_merge_commit_message',
-      squash_merge_commit_title: 'squash_merge_commit_title',
-      ssh_url: 'ssh_url',
-      stargazers: 'stargazers',
-      stargazers_count: 'stargazers_count',
-      stargazers_url: 'stargazers_url',
-      statuses_url: 'statuses_url',
-      subscribers_url: 'subscribers_url',
-      subscription_url: 'subscription_url',
-      svn_url: 'svn_url',
-      tags_url: 'tags_url',
-      teams_url: 'teams_url',
-      topics: 'topics',
-      trees_url: 'trees_url',
-      updated_at: 'updated_at',
-      url: 'url',
-      use_squash_pr_title_as_default: 'use_squash_pr_title_as_default',
-      visibility: 'visibility',
-      watchers: 'watchers',
-      watchers_count: 'watchers_count',
-      web_commit_signoff_required: 'web_commit_signoff_required'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      archive_url
-      archived
-      assignees_url
-      blobs_url
-      branches_url
-      clone_url
-      collaborators_url
-      comments_url
-      commits_url
-      compare_url
-      contents_url
-      contributors_url
-      created_at
-      default_branch
-      deployments_url
-      description
-      downloads_url
-      events_url
-      fork
-      forks
-      forks_count
-      forks_url
-      full_name
-      git_commits_url
-      git_refs_url
-      git_tags_url
-      git_url
-      has_downloads
-      has_issues
-      has_pages
-      has_projects
-      has_wiki
-      has_discussions
-      homepage
-      hooks_url
-      html_url
-      id
-      issue_comment_url
-      issue_events_url
-      issues_url
-      keys_url
-      labels_url
-      language
-      languages_url
-      license
-      merges_url
-      milestones_url
-      mirror_url
-      name
-      node_id
-      notifications_url
-      open_issues
-      open_issues_count
-      owner
-      private
-      pulls_url
-      pushed_at
-      releases_url
-      size
-      ssh_url
-      stargazers_count
-      stargazers_url
-      statuses_url
-      subscribers_url
-      subscription_url
-      svn_url
-      tags_url
-      teams_url
-      topics
-      trees_url
-      updated_at
-      url
-      visibility
-      watchers
-      watchers_count
-    ].freeze
-    DECODERS = {
-      pull_request_creation_policy: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestEnqueuedPullRequestHeadRepoPullRequestCreationPolicy.from_value(value)
-      end,
-      license: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestEnqueuedPullRequestHeadRepoLicense.from_hash(value)
-      end,
-      merge_commit_message: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestEnqueuedPullRequestHeadRepoMergeCommitMessage.from_value(value)
-      end,
-      merge_commit_title: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestEnqueuedPullRequestHeadRepoMergeCommitTitle.from_value(value)
-      end,
-      owner: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestEnqueuedPullRequestHeadRepoOwner.from_hash(value)
-      end,
-      permissions: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestEnqueuedPullRequestHeadRepoPermissions.from_hash(value)
-      end,
-      squash_merge_commit_message: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestEnqueuedPullRequestHeadRepoSquashMergeCommitMessage.from_value(value)
-      end,
-      squash_merge_commit_title: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestEnqueuedPullRequestHeadRepoSquashMergeCommitTitle.from_value(value)
-      end,
-      visibility: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestEnqueuedPullRequestHeadRepoVisibility.from_value(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      description
-      homepage
-      language
-      license
-      mirror_url
-      owner
-      pushed_at
-    ].freeze
+# Internal model hydration metadata.
+class SdkInternalWebhookPullRequestEnqueuedPullRequestHeadRepoMetadata
+  FIELDS = {
+    allow_auto_merge: "allow_auto_merge",
+    allow_forking: "allow_forking",
+    allow_merge_commit: "allow_merge_commit",
+    allow_rebase_merge: "allow_rebase_merge",
+    allow_squash_merge: "allow_squash_merge",
+    allow_update_branch: "allow_update_branch",
+    archive_url: "archive_url",
+    archived: "archived",
+    assignees_url: "assignees_url",
+    blobs_url: "blobs_url",
+    branches_url: "branches_url",
+    clone_url: "clone_url",
+    collaborators_url: "collaborators_url",
+    comments_url: "comments_url",
+    commits_url: "commits_url",
+    compare_url: "compare_url",
+    contents_url: "contents_url",
+    contributors_url: "contributors_url",
+    created_at: "created_at",
+    default_branch: "default_branch",
+    delete_branch_on_merge: "delete_branch_on_merge",
+    deployments_url: "deployments_url",
+    description: "description",
+    disabled: "disabled",
+    downloads_url: "downloads_url",
+    events_url: "events_url",
+    fork: "fork",
+    forks: "forks",
+    forks_count: "forks_count",
+    forks_url: "forks_url",
+    full_name: "full_name",
+    git_commits_url: "git_commits_url",
+    git_refs_url: "git_refs_url",
+    git_tags_url: "git_tags_url",
+    git_url: "git_url",
+    has_downloads: "has_downloads",
+    has_issues: "has_issues",
+    has_pages: "has_pages",
+    has_projects: "has_projects",
+    has_wiki: "has_wiki",
+    has_discussions: "has_discussions",
+    has_pull_requests: "has_pull_requests",
+    pull_request_creation_policy: "pull_request_creation_policy",
+    homepage: "homepage",
+    hooks_url: "hooks_url",
+    html_url: "html_url",
+    id: "id",
+    is_template: "is_template",
+    issue_comment_url: "issue_comment_url",
+    issue_events_url: "issue_events_url",
+    issues_url: "issues_url",
+    keys_url: "keys_url",
+    labels_url: "labels_url",
+    language: "language",
+    languages_url: "languages_url",
+    license: "license",
+    master_branch: "master_branch",
+    merge_commit_message: "merge_commit_message",
+    merge_commit_title: "merge_commit_title",
+    merges_url: "merges_url",
+    milestones_url: "milestones_url",
+    mirror_url: "mirror_url",
+    name: "name",
+    node_id: "node_id",
+    notifications_url: "notifications_url",
+    open_issues: "open_issues",
+    open_issues_count: "open_issues_count",
+    organization: "organization",
+    owner: "owner",
+    permissions: "permissions",
+    private: "private",
+    public: "public",
+    pulls_url: "pulls_url",
+    pushed_at: "pushed_at",
+    releases_url: "releases_url",
+    role_name: "role_name",
+    size: "size",
+    squash_merge_commit_message: "squash_merge_commit_message",
+    squash_merge_commit_title: "squash_merge_commit_title",
+    ssh_url: "ssh_url",
+    stargazers: "stargazers",
+    stargazers_count: "stargazers_count",
+    stargazers_url: "stargazers_url",
+    statuses_url: "statuses_url",
+    subscribers_url: "subscribers_url",
+    subscription_url: "subscription_url",
+    svn_url: "svn_url",
+    tags_url: "tags_url",
+    teams_url: "teams_url",
+    topics: "topics",
+    trees_url: "trees_url",
+    updated_at: "updated_at",
+    url: "url",
+    use_squash_pr_title_as_default: "use_squash_pr_title_as_default",
+    visibility: "visibility",
+    watchers: "watchers",
+    watchers_count: "watchers_count",
+    web_commit_signoff_required: "web_commit_signoff_required",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    archive_url
+    archived
+    assignees_url
+    blobs_url
+    branches_url
+    clone_url
+    collaborators_url
+    comments_url
+    commits_url
+    compare_url
+    contents_url
+    contributors_url
+    created_at
+    default_branch
+    deployments_url
+    description
+    downloads_url
+    events_url
+    fork
+    forks
+    forks_count
+    forks_url
+    full_name
+    git_commits_url
+    git_refs_url
+    git_tags_url
+    git_url
+    has_downloads
+    has_issues
+    has_pages
+    has_projects
+    has_wiki
+    has_discussions
+    homepage
+    hooks_url
+    html_url
+    id
+    issue_comment_url
+    issue_events_url
+    issues_url
+    keys_url
+    labels_url
+    language
+    languages_url
+    license
+    merges_url
+    milestones_url
+    mirror_url
+    name
+    node_id
+    notifications_url
+    open_issues
+    open_issues_count
+    owner
+    private
+    pulls_url
+    pushed_at
+    releases_url
+    size
+    ssh_url
+    stargazers_count
+    stargazers_url
+    statuses_url
+    subscribers_url
+    subscription_url
+    svn_url
+    tags_url
+    teams_url
+    topics
+    trees_url
+    updated_at
+    url
+    visibility
+    watchers
+    watchers_count
+  ].freeze
+  DECODERS = {
+    pull_request_creation_policy: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestEnqueuedPullRequestHeadRepoPullRequestCreationPolicy.from_value(value)
+    end,
+    license: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestEnqueuedPullRequestHeadRepoLicense.from_hash(value)
+    end,
+    merge_commit_message: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestEnqueuedPullRequestHeadRepoMergeCommitMessage.from_value(value)
+    end,
+    merge_commit_title: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestEnqueuedPullRequestHeadRepoMergeCommitTitle.from_value(value)
+    end,
+    owner: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestEnqueuedPullRequestHeadRepoOwner.from_hash(value)
+    end,
+    permissions: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestEnqueuedPullRequestHeadRepoPermissions.from_hash(value)
+    end,
+    squash_merge_commit_message: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestEnqueuedPullRequestHeadRepoSquashMergeCommitMessage.from_value(value)
+    end,
+    squash_merge_commit_title: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestEnqueuedPullRequestHeadRepoSquashMergeCommitTitle.from_value(value)
+    end,
+    visibility: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestEnqueuedPullRequestHeadRepoVisibility.from_value(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    description
+    homepage
+    language
+    license
+    mirror_url
+    owner
+    pushed_at
+  ].freeze
+end
+
+# API model for WebhookPullRequestEnqueuedPullRequestHeadRepo.
+# A git repository
+class WebhookPullRequestEnqueuedPullRequestHeadRepo
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookPullRequestEnqueuedPullRequestHeadRepoMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookPullRequestEnqueuedPullRequestHeadRepoMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookPullRequestEnqueuedPullRequestHeadRepoMetadata::DECODERS
+
+  # @return [Boolean] Whether to allow auto-merge for pull requests.
+  attr_reader :allow_auto_merge
+  # @return [Boolean] Whether to allow private forks
+  attr_reader :allow_forking
+  # @return [Boolean] Whether to allow merge commits for pull requests.
+  attr_reader :allow_merge_commit
+  # @return [Boolean] Whether to allow rebase merges for pull requests.
+  attr_reader :allow_rebase_merge
+  # @return [Boolean] Whether to allow squash merges for pull requests.
+  attr_reader :allow_squash_merge
+  # @return [Boolean] Optional `boolean` value serialized in the `allow_update_branch` wire field.
+  attr_reader :allow_update_branch
+  # @return [String] Required `uri-template`-formatted value serialized in the `archive_url` wire field.
+  attr_reader :archive_url
+  # @return [Boolean] Whether the repository is archived.
+  attr_reader :archived
+  # @return [String] Required `uri-template`-formatted value serialized in the `assignees_url` wire field.
+  attr_reader :assignees_url
+  # @return [String] Required `uri-template`-formatted value serialized in the `blobs_url` wire field.
+  attr_reader :blobs_url
+  # @return [String] Required `uri-template`-formatted value serialized in the `branches_url` wire field.
+  attr_reader :branches_url
+  # @return [String] Required `uri`-formatted value serialized in the `clone_url` wire field.
+  attr_reader :clone_url
+  # @return [String] Required `uri-template`-formatted value serialized in the `collaborators_url` wire field.
+  attr_reader :collaborators_url
+  # @return [String] Required `uri-template`-formatted value serialized in the `comments_url` wire field.
+  attr_reader :comments_url
+  # @return [String] Required `uri-template`-formatted value serialized in the `commits_url` wire field.
+  attr_reader :commits_url
+  # @return [String] Required `uri-template`-formatted value serialized in the `compare_url` wire field.
+  attr_reader :compare_url
+  # @return [String] Required `uri-template`-formatted value serialized in the `contents_url` wire field.
+  attr_reader :contents_url
+  # @return [String] Required `uri`-formatted value serialized in the `contributors_url` wire field.
+  attr_reader :contributors_url
+  # @return [Object] Required API value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [String] The default branch of the repository.
+  attr_reader :default_branch
+  # @return [Boolean] Whether to delete head branches when pull requests are merged
+  attr_reader :delete_branch_on_merge
+  # @return [String] Required `uri`-formatted value serialized in the `deployments_url` wire field.
+  attr_reader :deployments_url
+  # @return [String] Required `string` value serialized in the `description` wire field.
+  attr_reader :description
+  # @return [Boolean] Returns whether or not this repository is disabled.
+  attr_reader :disabled
+  # @return [String] Required `uri`-formatted value serialized in the `downloads_url` wire field.
+  attr_reader :downloads_url
+  # @return [String] Required `uri`-formatted value serialized in the `events_url` wire field.
+  attr_reader :events_url
+  # @return [Boolean] Required `boolean` value serialized in the `fork` wire field.
+  attr_reader :fork
+  # @return [Integer] Required `integer` value serialized in the `forks` wire field.
+  attr_reader :forks
+  # @return [Integer] Required `integer` value serialized in the `forks_count` wire field.
+  attr_reader :forks_count
+  # @return [String] Required `uri`-formatted value serialized in the `forks_url` wire field.
+  attr_reader :forks_url
+  # @return [String] Required `string` value serialized in the `full_name` wire field.
+  attr_reader :full_name
+  # @return [String] Required `uri-template`-formatted value serialized in the `git_commits_url` wire field.
+  attr_reader :git_commits_url
+  # @return [String] Required `uri-template`-formatted value serialized in the `git_refs_url` wire field.
+  attr_reader :git_refs_url
+  # @return [String] Required `uri-template`-formatted value serialized in the `git_tags_url` wire field.
+  attr_reader :git_tags_url
+  # @return [String] Required `uri`-formatted value serialized in the `git_url` wire field.
+  attr_reader :git_url
+  # @return [Boolean] Whether downloads are enabled.
+  attr_reader :has_downloads
+  # @return [Boolean] Whether issues are enabled.
+  attr_reader :has_issues
+  # @return [Boolean] Required `boolean` value serialized in the `has_pages` wire field.
+  attr_reader :has_pages
+  # @return [Boolean] Whether projects are enabled.
+  attr_reader :has_projects
+  # @return [Boolean] Whether the wiki is enabled.
+  attr_reader :has_wiki
+  # @return [Boolean] Whether discussions are enabled.
+  attr_reader :has_discussions
+  # @return [Boolean] Whether pull requests are enabled.
+  attr_reader :has_pull_requests
+  # @return [WebhookPullRequestEnqueuedPullRequestHeadRepoPullRequestCreationPolicy] The policy controlling who can create pull requests: all or collaborators_only.
+  attr_reader :pull_request_creation_policy
+  # @return [String] Required `string` value serialized in the `homepage` wire field.
+  attr_reader :homepage
+  # @return [String] Required `uri`-formatted value serialized in the `hooks_url` wire field.
+  attr_reader :hooks_url
+  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [Integer] Unique identifier of the repository
+  attr_reader :id
+  # @return [Boolean] Optional `boolean` value serialized in the `is_template` wire field.
+  attr_reader :is_template
+  # @return [String] Required `uri-template`-formatted value serialized in the `issue_comment_url` wire field.
+  attr_reader :issue_comment_url
+  # @return [String] Required `uri-template`-formatted value serialized in the `issue_events_url` wire field.
+  attr_reader :issue_events_url
+  # @return [String] Required `uri-template`-formatted value serialized in the `issues_url` wire field.
+  attr_reader :issues_url
+  # @return [String] Required `uri-template`-formatted value serialized in the `keys_url` wire field.
+  attr_reader :keys_url
+  # @return [String] Required `uri-template`-formatted value serialized in the `labels_url` wire field.
+  attr_reader :labels_url
+  # @return [String] Required `string` value serialized in the `language` wire field.
+  attr_reader :language
+  # @return [String] Required `uri`-formatted value serialized in the `languages_url` wire field.
+  attr_reader :languages_url
+  # @return [WebhookPullRequestEnqueuedPullRequestHeadRepoLicense] Required object value serialized in the `license` wire field.
+  attr_reader :license
+  # @return [String] Optional `string` value serialized in the `master_branch` wire field.
+  attr_reader :master_branch
+  # @return [WebhookPullRequestEnqueuedPullRequestHeadRepoMergeCommitMessage] The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message.
+  attr_reader :merge_commit_message
+  # @return [WebhookPullRequestEnqueuedPullRequestHeadRepoMergeCommitTitle] The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+  attr_reader :merge_commit_title
+  # @return [String] Required `uri`-formatted value serialized in the `merges_url` wire field.
+  attr_reader :merges_url
+  # @return [String] Required `uri-template`-formatted value serialized in the `milestones_url` wire field.
+  attr_reader :milestones_url
+  # @return [String] Required `uri`-formatted value serialized in the `mirror_url` wire field.
+  attr_reader :mirror_url
+  # @return [String] The name of the repository.
+  attr_reader :name
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Required `uri-template`-formatted value serialized in the `notifications_url` wire field.
+  attr_reader :notifications_url
+  # @return [Integer] Required `integer` value serialized in the `open_issues` wire field.
+  attr_reader :open_issues
+  # @return [Integer] Required `integer` value serialized in the `open_issues_count` wire field.
+  attr_reader :open_issues_count
+  # @return [String] Optional `string` value serialized in the `organization` wire field.
+  attr_reader :organization
+  # @return [WebhookPullRequestEnqueuedPullRequestHeadRepoOwner] Required object value serialized in the `owner` wire field.
+  attr_reader :owner
+  # @return [WebhookPullRequestEnqueuedPullRequestHeadRepoPermissions] Optional object value serialized in the `permissions` wire field.
+  attr_reader :permissions
+  # @return [Boolean] Whether the repository is private or public.
+  attr_reader :private
+  # @return [Boolean] Optional `boolean` value serialized in the `public` wire field.
+  attr_reader :public
+  # @return [String] Required `uri-template`-formatted value serialized in the `pulls_url` wire field.
+  attr_reader :pulls_url
+  # @return [Object] Required API value serialized in the `pushed_at` wire field.
+  attr_reader :pushed_at
+  # @return [String] Required `uri-template`-formatted value serialized in the `releases_url` wire field.
+  attr_reader :releases_url
+  # @return [String] Optional `string` value serialized in the `role_name` wire field.
+  attr_reader :role_name
+  # @return [Integer] Required `integer` value serialized in the `size` wire field.
+  attr_reader :size
+  # @return [WebhookPullRequestEnqueuedPullRequestHeadRepoSquashMergeCommitMessage] The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message.
+  attr_reader :squash_merge_commit_message
+  # @return [WebhookPullRequestEnqueuedPullRequestHeadRepoSquashMergeCommitTitle] The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+  attr_reader :squash_merge_commit_title
+  # @return [String] Required `string` value serialized in the `ssh_url` wire field.
+  attr_reader :ssh_url
+  # @return [Integer] Optional `integer` value serialized in the `stargazers` wire field.
+  attr_reader :stargazers
+  # @return [Integer] Required `integer` value serialized in the `stargazers_count` wire field.
+  attr_reader :stargazers_count
+  # @return [String] Required `uri`-formatted value serialized in the `stargazers_url` wire field.
+  attr_reader :stargazers_url
+  # @return [String] Required `uri-template`-formatted value serialized in the `statuses_url` wire field.
+  attr_reader :statuses_url
+  # @return [String] Required `uri`-formatted value serialized in the `subscribers_url` wire field.
+  attr_reader :subscribers_url
+  # @return [String] Required `uri`-formatted value serialized in the `subscription_url` wire field.
+  attr_reader :subscription_url
+  # @return [String] Required `uri`-formatted value serialized in the `svn_url` wire field.
+  attr_reader :svn_url
+  # @return [String] Required `uri`-formatted value serialized in the `tags_url` wire field.
+  attr_reader :tags_url
+  # @return [String] Required `uri`-formatted value serialized in the `teams_url` wire field.
+  attr_reader :teams_url
+  # @return [Array_of_String] Required array value serialized in the `topics` wire field.
+  attr_reader :topics
+  # @return [String] Required `uri-template`-formatted value serialized in the `trees_url` wire field.
+  attr_reader :trees_url
+  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+  attr_reader :updated_at
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [Boolean] Whether a squash merge commit can use the pull request title as default. **This property is closing down. Please use `squash_merge_commit_title` instead.
+  attr_reader :use_squash_pr_title_as_default
+  # @return [WebhookPullRequestEnqueuedPullRequestHeadRepoVisibility] Required enumerated value serialized in the `visibility` wire field.
+  attr_reader :visibility
+  # @return [Integer] Required `integer` value serialized in the `watchers` wire field.
+  attr_reader :watchers
+  # @return [Integer] Required `integer` value serialized in the `watchers_count` wire field.
+  attr_reader :watchers_count
+  # @return [Boolean] Whether to require contributors to sign off on web-based commits
+  attr_reader :web_commit_signoff_required
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookPullRequestEnqueuedPullRequestHeadRepo.
-  # A git repository
-  class WebhookPullRequestEnqueuedPullRequestHeadRepo
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookPullRequestEnqueuedPullRequestHeadRepoMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookPullRequestEnqueuedPullRequestHeadRepoMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookPullRequestEnqueuedPullRequestHeadRepoMetadata::DECODERS
-
-    # @return [Boolean] Whether to allow auto-merge for pull requests.
-    attr_reader :allow_auto_merge
-    # @return [Boolean] Whether to allow private forks
-    attr_reader :allow_forking
-    # @return [Boolean] Whether to allow merge commits for pull requests.
-    attr_reader :allow_merge_commit
-    # @return [Boolean] Whether to allow rebase merges for pull requests.
-    attr_reader :allow_rebase_merge
-    # @return [Boolean] Whether to allow squash merges for pull requests.
-    attr_reader :allow_squash_merge
-    # @return [Boolean] Optional `boolean` value serialized in the `allow_update_branch` wire field.
-    attr_reader :allow_update_branch
-    # @return [String] Required `uri-template`-formatted value serialized in the `archive_url` wire field.
-    attr_reader :archive_url
-    # @return [Boolean] Whether the repository is archived.
-    attr_reader :archived
-    # @return [String] Required `uri-template`-formatted value serialized in the `assignees_url` wire field.
-    attr_reader :assignees_url
-    # @return [String] Required `uri-template`-formatted value serialized in the `blobs_url` wire field.
-    attr_reader :blobs_url
-    # @return [String] Required `uri-template`-formatted value serialized in the `branches_url` wire field.
-    attr_reader :branches_url
-    # @return [String] Required `uri`-formatted value serialized in the `clone_url` wire field.
-    attr_reader :clone_url
-    # @return [String] Required `uri-template`-formatted value serialized in the `collaborators_url` wire field.
-    attr_reader :collaborators_url
-    # @return [String] Required `uri-template`-formatted value serialized in the `comments_url` wire field.
-    attr_reader :comments_url
-    # @return [String] Required `uri-template`-formatted value serialized in the `commits_url` wire field.
-    attr_reader :commits_url
-    # @return [String] Required `uri-template`-formatted value serialized in the `compare_url` wire field.
-    attr_reader :compare_url
-    # @return [String] Required `uri-template`-formatted value serialized in the `contents_url` wire field.
-    attr_reader :contents_url
-    # @return [String] Required `uri`-formatted value serialized in the `contributors_url` wire field.
-    attr_reader :contributors_url
-    # @return [Object] Required API value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [String] The default branch of the repository.
-    attr_reader :default_branch
-    # @return [Boolean] Whether to delete head branches when pull requests are merged
-    attr_reader :delete_branch_on_merge
-    # @return [String] Required `uri`-formatted value serialized in the `deployments_url` wire field.
-    attr_reader :deployments_url
-    # @return [String] Required `string` value serialized in the `description` wire field.
-    attr_reader :description
-    # @return [Boolean] Returns whether or not this repository is disabled.
-    attr_reader :disabled
-    # @return [String] Required `uri`-formatted value serialized in the `downloads_url` wire field.
-    attr_reader :downloads_url
-    # @return [String] Required `uri`-formatted value serialized in the `events_url` wire field.
-    attr_reader :events_url
-    # @return [Boolean] Required `boolean` value serialized in the `fork` wire field.
-    attr_reader :fork
-    # @return [Integer] Required `integer` value serialized in the `forks` wire field.
-    attr_reader :forks
-    # @return [Integer] Required `integer` value serialized in the `forks_count` wire field.
-    attr_reader :forks_count
-    # @return [String] Required `uri`-formatted value serialized in the `forks_url` wire field.
-    attr_reader :forks_url
-    # @return [String] Required `string` value serialized in the `full_name` wire field.
-    attr_reader :full_name
-    # @return [String] Required `uri-template`-formatted value serialized in the `git_commits_url` wire field.
-    attr_reader :git_commits_url
-    # @return [String] Required `uri-template`-formatted value serialized in the `git_refs_url` wire field.
-    attr_reader :git_refs_url
-    # @return [String] Required `uri-template`-formatted value serialized in the `git_tags_url` wire field.
-    attr_reader :git_tags_url
-    # @return [String] Required `uri`-formatted value serialized in the `git_url` wire field.
-    attr_reader :git_url
-    # @return [Boolean] Whether downloads are enabled.
-    attr_reader :has_downloads
-    # @return [Boolean] Whether issues are enabled.
-    attr_reader :has_issues
-    # @return [Boolean] Required `boolean` value serialized in the `has_pages` wire field.
-    attr_reader :has_pages
-    # @return [Boolean] Whether projects are enabled.
-    attr_reader :has_projects
-    # @return [Boolean] Whether the wiki is enabled.
-    attr_reader :has_wiki
-    # @return [Boolean] Whether discussions are enabled.
-    attr_reader :has_discussions
-    # @return [Boolean] Whether pull requests are enabled.
-    attr_reader :has_pull_requests
-    # @return [WebhookPullRequestEnqueuedPullRequestHeadRepoPullRequestCreationPolicy] The policy controlling who can create pull requests: all or collaborators_only.
-    attr_reader :pull_request_creation_policy
-    # @return [String] Required `string` value serialized in the `homepage` wire field.
-    attr_reader :homepage
-    # @return [String] Required `uri`-formatted value serialized in the `hooks_url` wire field.
-    attr_reader :hooks_url
-    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [Integer] Unique identifier of the repository
-    attr_reader :id
-    # @return [Boolean] Optional `boolean` value serialized in the `is_template` wire field.
-    attr_reader :is_template
-    # @return [String] Required `uri-template`-formatted value serialized in the `issue_comment_url` wire field.
-    attr_reader :issue_comment_url
-    # @return [String] Required `uri-template`-formatted value serialized in the `issue_events_url` wire field.
-    attr_reader :issue_events_url
-    # @return [String] Required `uri-template`-formatted value serialized in the `issues_url` wire field.
-    attr_reader :issues_url
-    # @return [String] Required `uri-template`-formatted value serialized in the `keys_url` wire field.
-    attr_reader :keys_url
-    # @return [String] Required `uri-template`-formatted value serialized in the `labels_url` wire field.
-    attr_reader :labels_url
-    # @return [String] Required `string` value serialized in the `language` wire field.
-    attr_reader :language
-    # @return [String] Required `uri`-formatted value serialized in the `languages_url` wire field.
-    attr_reader :languages_url
-    # @return [WebhookPullRequestEnqueuedPullRequestHeadRepoLicense] Required object value serialized in the `license` wire field.
-    attr_reader :license
-    # @return [String] Optional `string` value serialized in the `master_branch` wire field.
-    attr_reader :master_branch
-    # @return [WebhookPullRequestEnqueuedPullRequestHeadRepoMergeCommitMessage] The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message.
-    attr_reader :merge_commit_message
-    # @return [WebhookPullRequestEnqueuedPullRequestHeadRepoMergeCommitTitle] The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
-    attr_reader :merge_commit_title
-    # @return [String] Required `uri`-formatted value serialized in the `merges_url` wire field.
-    attr_reader :merges_url
-    # @return [String] Required `uri-template`-formatted value serialized in the `milestones_url` wire field.
-    attr_reader :milestones_url
-    # @return [String] Required `uri`-formatted value serialized in the `mirror_url` wire field.
-    attr_reader :mirror_url
-    # @return [String] The name of the repository.
-    attr_reader :name
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Required `uri-template`-formatted value serialized in the `notifications_url` wire field.
-    attr_reader :notifications_url
-    # @return [Integer] Required `integer` value serialized in the `open_issues` wire field.
-    attr_reader :open_issues
-    # @return [Integer] Required `integer` value serialized in the `open_issues_count` wire field.
-    attr_reader :open_issues_count
-    # @return [String] Optional `string` value serialized in the `organization` wire field.
-    attr_reader :organization
-    # @return [WebhookPullRequestEnqueuedPullRequestHeadRepoOwner] Required object value serialized in the `owner` wire field.
-    attr_reader :owner
-    # @return [WebhookPullRequestEnqueuedPullRequestHeadRepoPermissions] Optional object value serialized in the `permissions` wire field.
-    attr_reader :permissions
-    # @return [Boolean] Whether the repository is private or public.
-    attr_reader :private
-    # @return [Boolean] Optional `boolean` value serialized in the `public` wire field.
-    attr_reader :public
-    # @return [String] Required `uri-template`-formatted value serialized in the `pulls_url` wire field.
-    attr_reader :pulls_url
-    # @return [Object] Required API value serialized in the `pushed_at` wire field.
-    attr_reader :pushed_at
-    # @return [String] Required `uri-template`-formatted value serialized in the `releases_url` wire field.
-    attr_reader :releases_url
-    # @return [String] Optional `string` value serialized in the `role_name` wire field.
-    attr_reader :role_name
-    # @return [Integer] Required `integer` value serialized in the `size` wire field.
-    attr_reader :size
-    # @return [WebhookPullRequestEnqueuedPullRequestHeadRepoSquashMergeCommitMessage] The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message.
-    attr_reader :squash_merge_commit_message
-    # @return [WebhookPullRequestEnqueuedPullRequestHeadRepoSquashMergeCommitTitle] The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
-    attr_reader :squash_merge_commit_title
-    # @return [String] Required `string` value serialized in the `ssh_url` wire field.
-    attr_reader :ssh_url
-    # @return [Integer] Optional `integer` value serialized in the `stargazers` wire field.
-    attr_reader :stargazers
-    # @return [Integer] Required `integer` value serialized in the `stargazers_count` wire field.
-    attr_reader :stargazers_count
-    # @return [String] Required `uri`-formatted value serialized in the `stargazers_url` wire field.
-    attr_reader :stargazers_url
-    # @return [String] Required `uri-template`-formatted value serialized in the `statuses_url` wire field.
-    attr_reader :statuses_url
-    # @return [String] Required `uri`-formatted value serialized in the `subscribers_url` wire field.
-    attr_reader :subscribers_url
-    # @return [String] Required `uri`-formatted value serialized in the `subscription_url` wire field.
-    attr_reader :subscription_url
-    # @return [String] Required `uri`-formatted value serialized in the `svn_url` wire field.
-    attr_reader :svn_url
-    # @return [String] Required `uri`-formatted value serialized in the `tags_url` wire field.
-    attr_reader :tags_url
-    # @return [String] Required `uri`-formatted value serialized in the `teams_url` wire field.
-    attr_reader :teams_url
-    # @return [Array_of_String] Required array value serialized in the `topics` wire field.
-    attr_reader :topics
-    # @return [String] Required `uri-template`-formatted value serialized in the `trees_url` wire field.
-    attr_reader :trees_url
-    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-    attr_reader :updated_at
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [Boolean] Whether a squash merge commit can use the pull request title as default. **This property is closing down. Please use `squash_merge_commit_title` instead.
-    attr_reader :use_squash_pr_title_as_default
-    # @return [WebhookPullRequestEnqueuedPullRequestHeadRepoVisibility] Required enumerated value serialized in the `visibility` wire field.
-    attr_reader :visibility
-    # @return [Integer] Required `integer` value serialized in the `watchers` wire field.
-    attr_reader :watchers
-    # @return [Integer] Required `integer` value serialized in the `watchers_count` wire field.
-    attr_reader :watchers_count
-    # @return [Boolean] Whether to require contributors to sign off on web-based commits
-    attr_reader :web_commit_signoff_required
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPullRequestEnqueuedPullRequestHeadRepoMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPullRequestEnqueuedPullRequestHeadRepoMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookPullRequestEnqueuedPullRequestHeadUserMetadata
-    FIELDS = {
-      avatar_url: 'avatar_url',
-      deleted: 'deleted',
-      email: 'email',
-      events_url: 'events_url',
-      followers_url: 'followers_url',
-      following_url: 'following_url',
-      gists_url: 'gists_url',
-      gravatar_id: 'gravatar_id',
-      html_url: 'html_url',
-      id: 'id',
-      login: 'login',
-      name: 'name',
-      node_id: 'node_id',
-      organizations_url: 'organizations_url',
-      received_events_url: 'received_events_url',
-      repos_url: 'repos_url',
-      site_admin: 'site_admin',
-      starred_url: 'starred_url',
-      subscriptions_url: 'subscriptions_url',
-      type: 'type',
-      url: 'url',
-      user_view_type: 'user_view_type'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      login
-    ].freeze
-    DECODERS = {
-      type: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestEnqueuedPullRequestHeadUserType.from_value(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookPullRequestEnqueuedPullRequestHeadUserMetadata
+  FIELDS = {
+    avatar_url: "avatar_url",
+    deleted: "deleted",
+    email: "email",
+    events_url: "events_url",
+    followers_url: "followers_url",
+    following_url: "following_url",
+    gists_url: "gists_url",
+    gravatar_id: "gravatar_id",
+    html_url: "html_url",
+    id: "id",
+    login: "login",
+    name: "name",
+    node_id: "node_id",
+    organizations_url: "organizations_url",
+    received_events_url: "received_events_url",
+    repos_url: "repos_url",
+    site_admin: "site_admin",
+    starred_url: "starred_url",
+    subscriptions_url: "subscriptions_url",
+    type: "type",
+    url: "url",
+    user_view_type: "user_view_type",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    login
+  ].freeze
+  DECODERS = {
+    type: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestEnqueuedPullRequestHeadUserType.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookPullRequestEnqueuedPullRequestHeadUser.
+# Required object value serialized in the `user` wire field.
+class WebhookPullRequestEnqueuedPullRequestHeadUser
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookPullRequestEnqueuedPullRequestHeadUserMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookPullRequestEnqueuedPullRequestHeadUserMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookPullRequestEnqueuedPullRequestHeadUserMetadata::DECODERS
+
+  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+  attr_reader :avatar_url
+  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+  attr_reader :deleted
+  # @return [String] Optional `string` value serialized in the `email` wire field.
+  attr_reader :email
+  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+  attr_reader :events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+  attr_reader :followers_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+  attr_reader :following_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+  attr_reader :gists_url
+  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+  attr_reader :gravatar_id
+  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `login` wire field.
+  attr_reader :login
+  # @return [String] Optional `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [String] Optional `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+  attr_reader :organizations_url
+  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+  attr_reader :received_events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+  attr_reader :repos_url
+  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+  attr_reader :site_admin
+  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+  attr_reader :starred_url
+  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+  attr_reader :subscriptions_url
+  # @return [WebhookPullRequestEnqueuedPullRequestHeadUserType] Optional enumerated value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+  attr_reader :user_view_type
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookPullRequestEnqueuedPullRequestHeadUser.
-  # Required object value serialized in the `user` wire field.
-  class WebhookPullRequestEnqueuedPullRequestHeadUser
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookPullRequestEnqueuedPullRequestHeadUserMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookPullRequestEnqueuedPullRequestHeadUserMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookPullRequestEnqueuedPullRequestHeadUserMetadata::DECODERS
-
-    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-    attr_reader :avatar_url
-    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-    attr_reader :deleted
-    # @return [String] Optional `string` value serialized in the `email` wire field.
-    attr_reader :email
-    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-    attr_reader :events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-    attr_reader :followers_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-    attr_reader :following_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-    attr_reader :gists_url
-    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-    attr_reader :gravatar_id
-    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `login` wire field.
-    attr_reader :login
-    # @return [String] Optional `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [String] Optional `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-    attr_reader :organizations_url
-    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-    attr_reader :received_events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-    attr_reader :repos_url
-    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-    attr_reader :site_admin
-    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-    attr_reader :starred_url
-    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-    attr_reader :subscriptions_url
-    # @return [WebhookPullRequestEnqueuedPullRequestHeadUserType] Optional enumerated value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-    attr_reader :user_view_type
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookPullRequestEnqueuedPullRequestHeadMetadata
-    FIELDS = {
-      label: 'label',
-      ref: 'ref',
-      repo: 'repo',
-      sha: 'sha',
-      user: 'user'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      label
-      ref
-      repo
-      sha
-      user
-    ].freeze
-    DECODERS = {
-      repo: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestEnqueuedPullRequestHeadRepo.from_hash(value)
-      end,
-      user: lambda do |value|
-        ::OctridevGithub::WebhookPullRequestEnqueuedPullRequestHeadUser.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      user
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookPullRequestEnqueuedPullRequestHeadMetadata
+  FIELDS = {
+    label: "label",
+    ref: "ref",
+    repo: "repo",
+    sha: "sha",
+    user: "user",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    label
+    ref
+    repo
+    sha
+    user
+  ].freeze
+  DECODERS = {
+    repo: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestEnqueuedPullRequestHeadRepo.from_hash(value)
+    end,
+    user: lambda do |value|
+      ::OctridevGithub::WebhookPullRequestEnqueuedPullRequestHeadUser.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    user
+  ].freeze
+end
+
+# API model for WebhookPullRequestEnqueuedPullRequestHead.
+# Required object value serialized in the `head` wire field.
+class WebhookPullRequestEnqueuedPullRequestHead
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookPullRequestEnqueuedPullRequestHeadMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookPullRequestEnqueuedPullRequestHeadMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookPullRequestEnqueuedPullRequestHeadMetadata::DECODERS
+
+  # @return [String] Required `string` value serialized in the `label` wire field.
+  attr_reader :label
+  # @return [String] Required `string` value serialized in the `ref` wire field.
+  attr_reader :ref
+  # @return [WebhookPullRequestEnqueuedPullRequestHeadRepo] A git repository
+  attr_reader :repo
+  # @return [String] Required `string` value serialized in the `sha` wire field.
+  attr_reader :sha
+  # @return [WebhookPullRequestEnqueuedPullRequestHeadUser] Required object value serialized in the `user` wire field.
+  attr_reader :user
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookPullRequestEnqueuedPullRequestHead.
-  # Required object value serialized in the `head` wire field.
-  class WebhookPullRequestEnqueuedPullRequestHead
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookPullRequestEnqueuedPullRequestHeadMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookPullRequestEnqueuedPullRequestHeadMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookPullRequestEnqueuedPullRequestHeadMetadata::DECODERS
-
-    # @return [String] Required `string` value serialized in the `label` wire field.
-    attr_reader :label
-    # @return [String] Required `string` value serialized in the `ref` wire field.
-    attr_reader :ref
-    # @return [WebhookPullRequestEnqueuedPullRequestHeadRepo] A git repository
-    attr_reader :repo
-    # @return [String] Required `string` value serialized in the `sha` wire field.
-    attr_reader :sha
-    # @return [WebhookPullRequestEnqueuedPullRequestHeadUser] Required object value serialized in the `user` wire field.
-    attr_reader :user
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPullRequestEnqueuedPullRequestHeadMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPullRequestEnqueuedPullRequestHeadMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookPullRequestEnqueuedPullRequestLabelsItemMetadata
-    FIELDS = {
-      color: 'color',
-      default: 'default',
-      description: 'description',
-      id: 'id',
-      name: 'name',
-      node_id: 'node_id',
-      url: 'url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      color
-      default
-      description
-      id
-      name
-      node_id
-      url
-    ].freeze
-    DECODERS = {}.freeze
-    NULLABLE_FIELDS = %i[
-      description
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookPullRequestEnqueuedPullRequestLabelsItemMetadata
+  FIELDS = {
+    color: "color",
+    default: "default",
+    description: "description",
+    id: "id",
+    name: "name",
+    node_id: "node_id",
+    url: "url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    color
+    default
+    description
+    id
+    name
+    node_id
+    url
+  ].freeze
+  DECODERS = {
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    description
+  ].freeze
+end
+
+# API model for WebhookPullRequestEnqueuedPullRequestLabelsItem.
+# Required object value serialized in the `labels[]` wire field.
+class WebhookPullRequestEnqueuedPullRequestLabelsItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookPullRequestEnqueuedPullRequestLabelsItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookPullRequestEnqueuedPullRequestLabelsItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookPullRequestEnqueuedPullRequestLabelsItemMetadata::DECODERS
+
+  # @return [String] 6-character hex code, without the leading #, identifying the color
+  attr_reader :color
+  # @return [Boolean] Required `boolean` value serialized in the `default` wire field.
+  attr_reader :default
+  # @return [String] Required `string` value serialized in the `description` wire field.
+  attr_reader :description
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] The name of the label.
+  attr_reader :name
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] URL for the label
+  attr_reader :url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookPullRequestEnqueuedPullRequestLabelsItem.
-  # Required object value serialized in the `labels[]` wire field.
-  class WebhookPullRequestEnqueuedPullRequestLabelsItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookPullRequestEnqueuedPullRequestLabelsItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookPullRequestEnqueuedPullRequestLabelsItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookPullRequestEnqueuedPullRequestLabelsItemMetadata::DECODERS
-
-    # @return [String] 6-character hex code, without the leading #, identifying the color
-    attr_reader :color
-    # @return [Boolean] Required `boolean` value serialized in the `default` wire field.
-    attr_reader :default
-    # @return [String] Required `string` value serialized in the `description` wire field.
-    attr_reader :description
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] The name of the label.
-    attr_reader :name
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] URL for the label
-    attr_reader :url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPullRequestEnqueuedPullRequestLabelsItemMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPullRequestEnqueuedPullRequestLabelsItemMetadata::NULLABLE_FIELDS)
   end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 end

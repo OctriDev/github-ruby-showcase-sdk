@@ -24,23 +24,24 @@ module OctridevGithub
         branch:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/branches/',
+            "/branches/",
             SdkClient.encode_path_segment(branch),
-            '/protection/restrictions/users'
+            "/protection/restrictions/users"
           ].join,
           config: config,
           return_type: [::OctridevGithub::SimpleUser],
           decoder: :json,
           operation_id: 'repos_get_users_with_access_to_protected_branch',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

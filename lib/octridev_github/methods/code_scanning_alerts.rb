@@ -57,12 +57,13 @@ module OctridevGithub
         assignees: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/code-scanning/alerts'
+            "/code-scanning/alerts"
           ].join,
           config: config,
           query: {
@@ -76,13 +77,13 @@ module OctridevGithub
             'state' => QueryValue.new(state, style: 'form', explode: true),
             'sort' => QueryValue.new(sort, style: 'form', explode: true),
             'severity' => QueryValue.new(severity, style: 'form', explode: true),
-            'assignees' => QueryValue.new(assignees, style: 'form', explode: true)
+            'assignees' => QueryValue.new(assignees, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::CodeScanningOrganizationAlertItems],
           decoder: :json,
           operation_id: 'code_scanning_list_alerts_for_org',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -146,14 +147,15 @@ module OctridevGithub
         assignees: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/code-scanning/alerts'
+            "/code-scanning/alerts"
           ].join,
           config: config,
           query: {
@@ -169,13 +171,13 @@ module OctridevGithub
             'sort' => QueryValue.new(sort, style: 'form', explode: true),
             'state' => QueryValue.new(state, style: 'form', explode: true),
             'severity' => QueryValue.new(severity, style: 'form', explode: true),
-            'assignees' => QueryValue.new(assignees, style: 'form', explode: true)
+            'assignees' => QueryValue.new(assignees, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::CodeScanningAlertItems],
           decoder: :json,
           operation_id: 'code_scanning_list_alerts_for_repo',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -196,14 +198,15 @@ module OctridevGithub
         alert_number:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/code-scanning/alerts/',
+            "/code-scanning/alerts/",
             SdkClient.encode_path_segment(alert_number)
           ].join,
           config: config,
@@ -211,7 +214,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'code_scanning_get_alert',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -249,6 +252,7 @@ module OctridevGithub
         assignees: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(dismissed_comment) do
           Validation.validate_length('dismissed_comment', dismissed_comment, max: 280)
         end
@@ -256,11 +260,11 @@ module OctridevGithub
         SdkClient.request(
           'PATCH',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/code-scanning/alerts/',
+            "/code-scanning/alerts/",
             SdkClient.encode_path_segment(alert_number)
           ].join,
           config: config,
@@ -269,13 +273,13 @@ module OctridevGithub
             'dismissed_reason' => dismissed_reason,
             'dismissed_comment' => dismissed_comment,
             'create_request' => create_request,
-            'assignees' => assignees
+            'assignees' => assignees,
           },
           return_type: ::OctridevGithub::CodeScanningAlert,
           decoder: :json,
           operation_id: 'code_scanning_update_alert',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -296,23 +300,24 @@ module OctridevGithub
         alert_number:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/code-scanning/alerts/',
+            "/code-scanning/alerts/",
             SdkClient.encode_path_segment(alert_number),
-            '/autofix'
+            "/autofix"
           ].join,
           config: config,
           return_type: ::OctridevGithub::CodeScanningAutofix,
           decoder: :json,
           operation_id: 'code_scanning_get_autofix',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -335,23 +340,24 @@ module OctridevGithub
         alert_number:,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/code-scanning/alerts/',
+            "/code-scanning/alerts/",
             SdkClient.encode_path_segment(alert_number),
-            '/autofix'
+            "/autofix"
           ].join,
           config: config,
           return_type: ::OctridevGithub::CodeScanningAutofix,
           decoder: :json,
           operation_id: 'code_scanning_create_autofix',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -378,27 +384,28 @@ module OctridevGithub
         message: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/code-scanning/alerts/',
+            "/code-scanning/alerts/",
             SdkClient.encode_path_segment(alert_number),
-            '/autofix/commits'
+            "/autofix/commits"
           ].join,
           config: config,
           body: {
             'target_ref' => target_ref,
-            'message' => message
+            'message' => message,
           },
           return_type: ::OctridevGithub::CodeScanningAutofixCommitsResponse,
           decoder: :json,
           operation_id: 'code_scanning_commit_autofix',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -433,29 +440,30 @@ module OctridevGithub
         pr: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/code-scanning/alerts/',
+            "/code-scanning/alerts/",
             SdkClient.encode_path_segment(alert_number),
-            '/instances'
+            "/instances"
           ].join,
           config: config,
           query: {
             'page' => QueryValue.new(page, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'ref' => QueryValue.new(ref, style: 'form', explode: true),
-            'pr' => QueryValue.new(pr, style: 'form', explode: true)
+            'pr' => QueryValue.new(pr, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::CodeScanningAlertInstanceList],
           decoder: :json,
           operation_id: 'code_scanning_list_alert_instances',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
     end

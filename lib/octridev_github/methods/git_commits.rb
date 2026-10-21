@@ -46,14 +46,15 @@ module OctridevGithub
         signature: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/git/commits'
+            "/git/commits"
           ].join,
           config: config,
           body: {
@@ -62,13 +63,13 @@ module OctridevGithub
             'parents' => parents,
             'author' => author,
             'committer' => committer,
-            'signature' => signature
+            'signature' => signature,
           },
           return_type: ::OctridevGithub::GitCommit,
           decoder: :json,
           operation_id: 'git_create_commit',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -86,14 +87,15 @@ module OctridevGithub
         commit_sha:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/git/commits/',
+            "/git/commits/",
             SdkClient.encode_path_segment(commit_sha)
           ].join,
           config: config,
@@ -101,7 +103,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'git_get_commit',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError },
         ).data
       end
     end

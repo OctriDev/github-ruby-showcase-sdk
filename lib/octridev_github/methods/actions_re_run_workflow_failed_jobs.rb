@@ -26,25 +26,26 @@ module OctridevGithub
         enable_debug_logging: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/actions/runs/',
+            "/actions/runs/",
             SdkClient.encode_path_segment(run_id),
-            '/rerun-failed-jobs'
+            "/rerun-failed-jobs"
           ].join,
           config: config,
           body: {
-            'enable_debug_logging' => enable_debug_logging
+            'enable_debug_logging' => enable_debug_logging,
           },
           return_type: ::OctridevGithub::EmptyObject,
           decoder: :json,
           operation_id: 'actions_re_run_workflow_failed_jobs',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

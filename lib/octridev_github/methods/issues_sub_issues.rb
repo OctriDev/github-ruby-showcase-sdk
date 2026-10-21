@@ -31,27 +31,28 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/issues/',
+            "/issues/",
             SdkClient.encode_path_segment(issue_number),
-            '/sub_issues'
+            "/sub_issues"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::Issue],
           decoder: :json,
           operation_id: 'issues_list_sub_issues',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -77,27 +78,28 @@ module OctridevGithub
         replace_parent: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/issues/',
+            "/issues/",
             SdkClient.encode_path_segment(issue_number),
-            '/sub_issues'
+            "/sub_issues"
           ].join,
           config: config,
           body: {
             'sub_issue_id' => sub_issue_id,
-            'replace_parent' => replace_parent
+            'replace_parent' => replace_parent,
           },
           return_type: ::OctridevGithub::Issue,
           decoder: :json,
           operation_id: 'issues_add_sub_issue',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -123,28 +125,29 @@ module OctridevGithub
         before_id: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/issues/',
+            "/issues/",
             SdkClient.encode_path_segment(issue_number),
-            '/sub_issues/priority'
+            "/sub_issues/priority"
           ].join,
           config: config,
           body: {
             'sub_issue_id' => sub_issue_id,
             'after_id' => after_id,
-            'before_id' => before_id
+            'before_id' => before_id,
           },
           return_type: ::OctridevGithub::Issue,
           decoder: :json,
           operation_id: 'issues_reprioritize_sub_issue',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
     end

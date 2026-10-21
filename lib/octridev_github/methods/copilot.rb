@@ -19,21 +19,22 @@ module OctridevGithub
         username:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/members/',
+            "/members/",
             SdkClient.encode_path_segment(username),
-            '/copilot'
+            "/copilot"
           ].join,
           config: config,
           return_type: ::OctridevGithub::CopilotSeatDetails,
           decoder: :json,
           operation_id: 'copilot_get_copilot_seat_details_for_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
     end

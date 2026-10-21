@@ -35,16 +35,17 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(since) { Validation.validate_date_time('since', since) }
 
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/issues/comments'
+            "/issues/comments"
           ].join,
           config: config,
           query: {
@@ -52,13 +53,13 @@ module OctridevGithub
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'since' => QueryValue.new(since, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::IssueComment],
           decoder: :json,
           operation_id: 'issues_list_comments_for_repo',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -76,14 +77,15 @@ module OctridevGithub
         comment_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/issues/comments/',
+            "/issues/comments/",
             SdkClient.encode_path_segment(comment_id)
           ].join,
           config: config,
@@ -91,7 +93,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'issues_get_comment',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -111,25 +113,26 @@ module OctridevGithub
         body:,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/issues/comments/',
+            "/issues/comments/",
             SdkClient.encode_path_segment(comment_id)
           ].join,
           config: config,
           body: {
-            'body' => body
+            'body' => body,
           },
           return_type: ::OctridevGithub::IssueComment,
           decoder: :json,
           operation_id: 'issues_update_comment',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError }
+          errors: { '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -147,20 +150,21 @@ module OctridevGithub
         comment_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/issues/comments/',
+            "/issues/comments/",
             SdkClient.encode_path_segment(comment_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'issues_delete_comment',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -180,23 +184,24 @@ module OctridevGithub
         comment_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/issues/comments/',
+            "/issues/comments/",
             SdkClient.encode_path_segment(comment_id),
-            '/pin'
+            "/pin"
           ].join,
           config: config,
           return_type: ::OctridevGithub::IssueComment,
           decoder: :json,
           operation_id: 'issues_pin_comment',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -216,22 +221,23 @@ module OctridevGithub
         comment_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/issues/comments/',
+            "/issues/comments/",
             SdkClient.encode_path_segment(comment_id),
-            '/pin'
+            "/pin"
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'issues_unpin_comment',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -260,30 +266,31 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(since) { Validation.validate_date_time('since', since) }
 
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/issues/',
+            "/issues/",
             SdkClient.encode_path_segment(issue_number),
-            '/comments'
+            "/comments"
           ].join,
           config: config,
           query: {
             'since' => QueryValue.new(since, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::IssueComment],
           decoder: :json,
           operation_id: 'issues_list_comments',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -305,26 +312,27 @@ module OctridevGithub
         body:,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/issues/',
+            "/issues/",
             SdkClient.encode_path_segment(issue_number),
-            '/comments'
+            "/comments"
           ].join,
           config: config,
           body: {
-            'body' => body
+            'body' => body,
           },
           return_type: ::OctridevGithub::IssueComment,
           decoder: :json,
           operation_id: 'issues_create_comment',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end

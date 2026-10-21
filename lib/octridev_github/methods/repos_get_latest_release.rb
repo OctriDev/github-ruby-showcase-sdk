@@ -21,21 +21,22 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/releases/latest'
+            "/releases/latest"
           ].join,
           config: config,
           return_type: ::OctridevGithub::Release,
           decoder: :json,
           operation_id: 'repos_get_latest_release',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

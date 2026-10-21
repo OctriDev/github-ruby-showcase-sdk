@@ -17,17 +17,18 @@ module OctridevGithub
         username:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/user/following/',
+            "/user/following/",
             SdkClient.encode_path_segment(username)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'users_check_person_is_followed_by_authenticated',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

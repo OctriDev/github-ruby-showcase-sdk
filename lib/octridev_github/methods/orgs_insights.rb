@@ -43,14 +43,15 @@ module OctridevGithub
         api_route_substring: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/insights/api/route-stats/',
+            "/insights/api/route-stats/",
             SdkClient.encode_path_segment(actor_type),
-            '/',
+            "/",
             SdkClient.encode_path_segment(actor_id)
           ].join,
           config: config,
@@ -61,12 +62,12 @@ module OctridevGithub
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'sort' => QueryValue.new(sort, style: 'form', explode: true),
-            'api_route_substring' => QueryValue.new(api_route_substring, style: 'form', explode: true)
+            'api_route_substring' => QueryValue.new(api_route_substring, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::ApiInsightsRouteStats,
           decoder: :json,
           operation_id: 'api_insights_get_route_stats_by_actor',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -101,12 +102,13 @@ module OctridevGithub
         subject_name_substring: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/insights/api/subject-stats'
+            "/insights/api/subject-stats"
           ].join,
           config: config,
           query: {
@@ -116,12 +118,12 @@ module OctridevGithub
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'sort' => QueryValue.new(sort, style: 'form', explode: true),
-            'subject_name_substring' => QueryValue.new(subject_name_substring, style: 'form', explode: true)
+            'subject_name_substring' => QueryValue.new(subject_name_substring, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::ApiInsightsSubjectStats,
           decoder: :json,
           operation_id: 'api_insights_get_subject_stats',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -140,22 +142,23 @@ module OctridevGithub
         max_timestamp: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/insights/api/summary-stats'
+            "/insights/api/summary-stats"
           ].join,
           config: config,
           query: {
             'min_timestamp' => QueryValue.new(min_timestamp, style: 'form', explode: true),
-            'max_timestamp' => QueryValue.new(max_timestamp, style: 'form', explode: true)
+            'max_timestamp' => QueryValue.new(max_timestamp, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::ApiInsightsSummaryStats,
           decoder: :json,
           operation_id: 'api_insights_get_summary_stats',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -176,23 +179,24 @@ module OctridevGithub
         max_timestamp: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/insights/api/summary-stats/users/',
+            "/insights/api/summary-stats/users/",
             SdkClient.encode_path_segment(user_id)
           ].join,
           config: config,
           query: {
             'min_timestamp' => QueryValue.new(min_timestamp, style: 'form', explode: true),
-            'max_timestamp' => QueryValue.new(max_timestamp, style: 'form', explode: true)
+            'max_timestamp' => QueryValue.new(max_timestamp, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::ApiInsightsSummaryStats,
           decoder: :json,
           operation_id: 'api_insights_get_summary_stats_by_user',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -215,25 +219,26 @@ module OctridevGithub
         max_timestamp: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/insights/api/summary-stats/',
+            "/insights/api/summary-stats/",
             SdkClient.encode_path_segment(actor_type),
-            '/',
+            "/",
             SdkClient.encode_path_segment(actor_id)
           ].join,
           config: config,
           query: {
             'min_timestamp' => QueryValue.new(min_timestamp, style: 'form', explode: true),
-            'max_timestamp' => QueryValue.new(max_timestamp, style: 'form', explode: true)
+            'max_timestamp' => QueryValue.new(max_timestamp, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::ApiInsightsSummaryStats,
           decoder: :json,
           operation_id: 'api_insights_get_summary_stats_by_actor',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -255,23 +260,24 @@ module OctridevGithub
         max_timestamp: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/insights/api/time-stats'
+            "/insights/api/time-stats"
           ].join,
           config: config,
           query: {
             'min_timestamp' => QueryValue.new(min_timestamp, style: 'form', explode: true),
             'timestamp_increment' => QueryValue.new(timestamp_increment, style: 'form', explode: true),
-            'max_timestamp' => QueryValue.new(max_timestamp, style: 'form', explode: true)
+            'max_timestamp' => QueryValue.new(max_timestamp, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::ApiInsightsTimeStats,
           decoder: :json,
           operation_id: 'api_insights_get_time_stats',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -295,24 +301,25 @@ module OctridevGithub
         max_timestamp: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/insights/api/time-stats/users/',
+            "/insights/api/time-stats/users/",
             SdkClient.encode_path_segment(user_id)
           ].join,
           config: config,
           query: {
             'min_timestamp' => QueryValue.new(min_timestamp, style: 'form', explode: true),
             'timestamp_increment' => QueryValue.new(timestamp_increment, style: 'form', explode: true),
-            'max_timestamp' => QueryValue.new(max_timestamp, style: 'form', explode: true)
+            'max_timestamp' => QueryValue.new(max_timestamp, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::ApiInsightsTimeStats,
           decoder: :json,
           operation_id: 'api_insights_get_time_stats_by_user',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -338,26 +345,27 @@ module OctridevGithub
         max_timestamp: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/insights/api/time-stats/',
+            "/insights/api/time-stats/",
             SdkClient.encode_path_segment(actor_type),
-            '/',
+            "/",
             SdkClient.encode_path_segment(actor_id)
           ].join,
           config: config,
           query: {
             'min_timestamp' => QueryValue.new(min_timestamp, style: 'form', explode: true),
             'timestamp_increment' => QueryValue.new(timestamp_increment, style: 'form', explode: true),
-            'max_timestamp' => QueryValue.new(max_timestamp, style: 'form', explode: true)
+            'max_timestamp' => QueryValue.new(max_timestamp, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::ApiInsightsTimeStats,
           decoder: :json,
           operation_id: 'api_insights_get_time_stats_by_actor',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -394,12 +402,13 @@ module OctridevGithub
         actor_name_substring: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/insights/api/user-stats/',
+            "/insights/api/user-stats/",
             SdkClient.encode_path_segment(user_id)
           ].join,
           config: config,
@@ -410,12 +419,12 @@ module OctridevGithub
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'sort' => QueryValue.new(sort, style: 'form', explode: true),
-            'actor_name_substring' => QueryValue.new(actor_name_substring, style: 'form', explode: true)
+            'actor_name_substring' => QueryValue.new(actor_name_substring, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::ApiInsightsUserStats,
           decoder: :json,
           operation_id: 'api_insights_get_user_stats',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

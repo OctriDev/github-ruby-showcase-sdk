@@ -19,19 +19,20 @@ module OctridevGithub
         version:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/actions/runners/deprecations/',
+            "/actions/runners/deprecations/",
             SdkClient.encode_path_segment(version)
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::Actions::ActionsGetRunnerVersionDeprecationForOrgResponse,
           decoder: :json,
           operation_id: 'actions_get_runner_version_deprecation_for_org',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

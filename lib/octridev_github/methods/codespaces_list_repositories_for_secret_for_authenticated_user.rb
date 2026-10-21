@@ -17,19 +17,20 @@ module OctridevGithub
         secret_name:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/user/codespaces/secrets/',
+            "/user/codespaces/secrets/",
             SdkClient.encode_path_segment(secret_name),
-            '/repositories'
+            "/repositories"
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::Codespaces::CodespacesListRepositoriesForSecretForAuthenticatedUserResponse,
           decoder: :json,
           operation_id: 'codespaces_list_repositories_for_secret_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
     end

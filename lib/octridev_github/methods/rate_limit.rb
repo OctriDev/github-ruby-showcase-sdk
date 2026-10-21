@@ -14,15 +14,16 @@ module OctridevGithub
         config:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
-          '/rate_limit',
+          "/rate_limit",
           config: config,
           return_type: ::OctridevGithub::RateLimitOverview,
           decoder: :json,
           operation_id: 'rate_limit_get',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

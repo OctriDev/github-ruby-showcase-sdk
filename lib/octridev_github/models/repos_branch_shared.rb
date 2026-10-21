@@ -5,631 +5,653 @@
 
 # repos_branch domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalBranchProtectionRequiredLinearHistoryMetadata
-    FIELDS = {
-      enabled: 'enabled'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+# Internal model hydration metadata.
+class SdkInternalBranchProtectionRequiredLinearHistoryMetadata
+  FIELDS = {
+    enabled: "enabled",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for BranchProtectionRequiredLinearHistory.
+# Optional object value serialized in the `required_linear_history` wire field.
+class BranchProtectionRequiredLinearHistory
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalBranchProtectionRequiredLinearHistoryMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalBranchProtectionRequiredLinearHistoryMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalBranchProtectionRequiredLinearHistoryMetadata::DECODERS
+
+  # @return [Boolean] Optional `boolean` value serialized in the `enabled` wire field.
+  attr_reader :enabled
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for BranchProtectionRequiredLinearHistory.
-  # Optional object value serialized in the `required_linear_history` wire field.
-  class BranchProtectionRequiredLinearHistory
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalBranchProtectionRequiredLinearHistoryMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalBranchProtectionRequiredLinearHistoryMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalBranchProtectionRequiredLinearHistoryMetadata::DECODERS
-
-    # @return [Boolean] Optional `boolean` value serialized in the `enabled` wire field.
-    attr_reader :enabled
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalBranchProtectionAllowForcePushesMetadata
-    FIELDS = {
-      enabled: 'enabled'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalBranchProtectionAllowForcePushesMetadata
+  FIELDS = {
+    enabled: "enabled",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for BranchProtectionAllowForcePushes.
+# Optional object value serialized in the `allow_force_pushes` wire field.
+class BranchProtectionAllowForcePushes
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalBranchProtectionAllowForcePushesMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalBranchProtectionAllowForcePushesMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalBranchProtectionAllowForcePushesMetadata::DECODERS
+
+  # @return [Boolean] Optional `boolean` value serialized in the `enabled` wire field.
+  attr_reader :enabled
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for BranchProtectionAllowForcePushes.
-  # Optional object value serialized in the `allow_force_pushes` wire field.
-  class BranchProtectionAllowForcePushes
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalBranchProtectionAllowForcePushesMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalBranchProtectionAllowForcePushesMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalBranchProtectionAllowForcePushesMetadata::DECODERS
-
-    # @return [Boolean] Optional `boolean` value serialized in the `enabled` wire field.
-    attr_reader :enabled
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalBranchProtectionAllowDeletionsMetadata
-    FIELDS = {
-      enabled: 'enabled'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalBranchProtectionAllowDeletionsMetadata
+  FIELDS = {
+    enabled: "enabled",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for BranchProtectionAllowDeletions.
+# Optional object value serialized in the `allow_deletions` wire field.
+class BranchProtectionAllowDeletions
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalBranchProtectionAllowDeletionsMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalBranchProtectionAllowDeletionsMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalBranchProtectionAllowDeletionsMetadata::DECODERS
+
+  # @return [Boolean] Optional `boolean` value serialized in the `enabled` wire field.
+  attr_reader :enabled
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for BranchProtectionAllowDeletions.
-  # Optional object value serialized in the `allow_deletions` wire field.
-  class BranchProtectionAllowDeletions
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalBranchProtectionAllowDeletionsMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalBranchProtectionAllowDeletionsMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalBranchProtectionAllowDeletionsMetadata::DECODERS
-
-    # @return [Boolean] Optional `boolean` value serialized in the `enabled` wire field.
-    attr_reader :enabled
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalBranchProtectionBlockCreationsMetadata
-    FIELDS = {
-      enabled: 'enabled'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalBranchProtectionBlockCreationsMetadata
+  FIELDS = {
+    enabled: "enabled",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for BranchProtectionBlockCreations.
+# Optional object value serialized in the `block_creations` wire field.
+class BranchProtectionBlockCreations
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalBranchProtectionBlockCreationsMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalBranchProtectionBlockCreationsMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalBranchProtectionBlockCreationsMetadata::DECODERS
+
+  # @return [Boolean] Optional `boolean` value serialized in the `enabled` wire field.
+  attr_reader :enabled
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for BranchProtectionBlockCreations.
-  # Optional object value serialized in the `block_creations` wire field.
-  class BranchProtectionBlockCreations
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalBranchProtectionBlockCreationsMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalBranchProtectionBlockCreationsMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalBranchProtectionBlockCreationsMetadata::DECODERS
-
-    # @return [Boolean] Optional `boolean` value serialized in the `enabled` wire field.
-    attr_reader :enabled
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalBranchProtectionRequiredConversationResolutionMetadata
-    FIELDS = {
-      enabled: 'enabled'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalBranchProtectionRequiredConversationResolutionMetadata
+  FIELDS = {
+    enabled: "enabled",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for BranchProtectionRequiredConversationResolution.
+# Optional object value serialized in the `required_conversation_resolution` wire field.
+class BranchProtectionRequiredConversationResolution
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalBranchProtectionRequiredConversationResolutionMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalBranchProtectionRequiredConversationResolutionMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalBranchProtectionRequiredConversationResolutionMetadata::DECODERS
+
+  # @return [Boolean] Optional `boolean` value serialized in the `enabled` wire field.
+  attr_reader :enabled
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for BranchProtectionRequiredConversationResolution.
-  # Optional object value serialized in the `required_conversation_resolution` wire field.
-  class BranchProtectionRequiredConversationResolution
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalBranchProtectionRequiredConversationResolutionMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalBranchProtectionRequiredConversationResolutionMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalBranchProtectionRequiredConversationResolutionMetadata::DECODERS
-
-    # @return [Boolean] Optional `boolean` value serialized in the `enabled` wire field.
-    attr_reader :enabled
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalBranchProtectionRequiredSignaturesMetadata
-    FIELDS = {
-      url: 'url',
-      enabled: 'enabled'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      url
-      enabled
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalBranchProtectionRequiredSignaturesMetadata
+  FIELDS = {
+    url: "url",
+    enabled: "enabled",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    url
+    enabled
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for BranchProtectionRequiredSignatures.
+# Optional object value serialized in the `required_signatures` wire field.
+class BranchProtectionRequiredSignatures
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalBranchProtectionRequiredSignaturesMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalBranchProtectionRequiredSignaturesMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalBranchProtectionRequiredSignaturesMetadata::DECODERS
+
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [Boolean] Required `boolean` value serialized in the `enabled` wire field.
+  attr_reader :enabled
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for BranchProtectionRequiredSignatures.
-  # Optional object value serialized in the `required_signatures` wire field.
-  class BranchProtectionRequiredSignatures
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalBranchProtectionRequiredSignaturesMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalBranchProtectionRequiredSignaturesMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalBranchProtectionRequiredSignaturesMetadata::DECODERS
-
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [Boolean] Required `boolean` value serialized in the `enabled` wire field.
-    attr_reader :enabled
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalBranchProtectionLockBranchMetadata
-    FIELDS = {
-      enabled: 'enabled'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalBranchProtectionLockBranchMetadata
+  FIELDS = {
+    enabled: "enabled",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for BranchProtectionLockBranch.
+# Whether to set the branch as read-only. If this is true, users will not be able to push to the branch.
+class BranchProtectionLockBranch
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalBranchProtectionLockBranchMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalBranchProtectionLockBranchMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalBranchProtectionLockBranchMetadata::DECODERS
+
+  # @return [Boolean] Optional `boolean` value serialized in the `enabled` wire field.
+  attr_reader :enabled
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for BranchProtectionLockBranch.
-  # Whether to set the branch as read-only. If this is true, users will not be able to push to the branch.
-  class BranchProtectionLockBranch
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalBranchProtectionLockBranchMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalBranchProtectionLockBranchMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalBranchProtectionLockBranchMetadata::DECODERS
-
-    # @return [Boolean] Optional `boolean` value serialized in the `enabled` wire field.
-    attr_reader :enabled
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalBranchProtectionAllowForkSyncingMetadata
-    FIELDS = {
-      enabled: 'enabled'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalBranchProtectionAllowForkSyncingMetadata
+  FIELDS = {
+    enabled: "enabled",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for BranchProtectionAllowForkSyncing.
+# Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing.
+class BranchProtectionAllowForkSyncing
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalBranchProtectionAllowForkSyncingMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalBranchProtectionAllowForkSyncingMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalBranchProtectionAllowForkSyncingMetadata::DECODERS
+
+  # @return [Boolean] Optional `boolean` value serialized in the `enabled` wire field.
+  attr_reader :enabled
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for BranchProtectionAllowForkSyncing.
-  # Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing.
-  class BranchProtectionAllowForkSyncing
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalBranchProtectionAllowForkSyncingMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalBranchProtectionAllowForkSyncingMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalBranchProtectionAllowForkSyncingMetadata::DECODERS
-
-    # @return [Boolean] Optional `boolean` value serialized in the `enabled` wire field.
-    attr_reader :enabled
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalBranchProtectionMetadata
-    FIELDS = {
-      url: 'url',
-      enabled: 'enabled',
-      required_status_checks: 'required_status_checks',
-      enforce_admins: 'enforce_admins',
-      required_pull_request_reviews: 'required_pull_request_reviews',
-      restrictions: 'restrictions',
-      required_linear_history: 'required_linear_history',
-      allow_force_pushes: 'allow_force_pushes',
-      allow_deletions: 'allow_deletions',
-      block_creations: 'block_creations',
-      required_conversation_resolution: 'required_conversation_resolution',
-      name: 'name',
-      protection_url: 'protection_url',
-      required_signatures: 'required_signatures',
-      lock_branch: 'lock_branch',
-      allow_fork_syncing: 'allow_fork_syncing'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      required_status_checks: lambda do |value|
-        ::OctridevGithub::ProtectedBranchRequiredStatusCheck.from_hash(value)
-      end,
-      enforce_admins: lambda do |value|
-        ::OctridevGithub::ProtectedBranchAdminEnforced.from_hash(value)
-      end,
-      required_pull_request_reviews: lambda do |value|
-        ::OctridevGithub::ProtectedBranchPullRequestReview.from_hash(value)
-      end,
-      restrictions: lambda do |value|
-        ::OctridevGithub::BranchRestrictionPolicy.from_hash(value)
-      end,
-      required_linear_history: lambda do |value|
-        ::OctridevGithub::BranchProtectionRequiredLinearHistory.from_hash(value)
-      end,
-      allow_force_pushes: lambda do |value|
-        ::OctridevGithub::BranchProtectionAllowForcePushes.from_hash(value)
-      end,
-      allow_deletions: lambda do |value|
-        ::OctridevGithub::BranchProtectionAllowDeletions.from_hash(value)
-      end,
-      block_creations: lambda do |value|
-        ::OctridevGithub::BranchProtectionBlockCreations.from_hash(value)
-      end,
-      required_conversation_resolution: lambda do |value|
-        ::OctridevGithub::BranchProtectionRequiredConversationResolution.from_hash(value)
-      end,
-      required_signatures: lambda do |value|
-        ::OctridevGithub::BranchProtectionRequiredSignatures.from_hash(value)
-      end,
-      lock_branch: lambda do |value|
-        ::OctridevGithub::BranchProtectionLockBranch.from_hash(value)
-      end,
-      allow_fork_syncing: lambda do |value|
-        ::OctridevGithub::BranchProtectionAllowForkSyncing.from_hash(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalBranchProtectionMetadata
+  FIELDS = {
+    url: "url",
+    enabled: "enabled",
+    required_status_checks: "required_status_checks",
+    enforce_admins: "enforce_admins",
+    required_pull_request_reviews: "required_pull_request_reviews",
+    restrictions: "restrictions",
+    required_linear_history: "required_linear_history",
+    allow_force_pushes: "allow_force_pushes",
+    allow_deletions: "allow_deletions",
+    block_creations: "block_creations",
+    required_conversation_resolution: "required_conversation_resolution",
+    name: "name",
+    protection_url: "protection_url",
+    required_signatures: "required_signatures",
+    lock_branch: "lock_branch",
+    allow_fork_syncing: "allow_fork_syncing",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    required_status_checks: lambda do |value|
+      ::OctridevGithub::ProtectedBranchRequiredStatusCheck.from_hash(value)
+    end,
+    enforce_admins: lambda do |value|
+      ::OctridevGithub::ProtectedBranchAdminEnforced.from_hash(value)
+    end,
+    required_pull_request_reviews: lambda do |value|
+      ::OctridevGithub::ProtectedBranchPullRequestReview.from_hash(value)
+    end,
+    restrictions: lambda do |value|
+      ::OctridevGithub::BranchRestrictionPolicy.from_hash(value)
+    end,
+    required_linear_history: lambda do |value|
+      ::OctridevGithub::BranchProtectionRequiredLinearHistory.from_hash(value)
+    end,
+    allow_force_pushes: lambda do |value|
+      ::OctridevGithub::BranchProtectionAllowForcePushes.from_hash(value)
+    end,
+    allow_deletions: lambda do |value|
+      ::OctridevGithub::BranchProtectionAllowDeletions.from_hash(value)
+    end,
+    block_creations: lambda do |value|
+      ::OctridevGithub::BranchProtectionBlockCreations.from_hash(value)
+    end,
+    required_conversation_resolution: lambda do |value|
+      ::OctridevGithub::BranchProtectionRequiredConversationResolution.from_hash(value)
+    end,
+    required_signatures: lambda do |value|
+      ::OctridevGithub::BranchProtectionRequiredSignatures.from_hash(value)
+    end,
+    lock_branch: lambda do |value|
+      ::OctridevGithub::BranchProtectionLockBranch.from_hash(value)
+    end,
+    allow_fork_syncing: lambda do |value|
+      ::OctridevGithub::BranchProtectionAllowForkSyncing.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for BranchProtection.
+# Branch Protection
+class BranchProtection
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalBranchProtectionMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalBranchProtectionMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalBranchProtectionMetadata::DECODERS
+
+  # @return [String] Optional `string` value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [Boolean] Optional `boolean` value serialized in the `enabled` wire field.
+  attr_reader :enabled
+  # @return [ProtectedBranchRequiredStatusCheck] Protected Branch Required Status Check
+  attr_reader :required_status_checks
+  # @return [ProtectedBranchAdminEnforced] Protected Branch Admin Enforced
+  attr_reader :enforce_admins
+  # @return [ProtectedBranchPullRequestReview] Protected Branch Pull Request Review
+  attr_reader :required_pull_request_reviews
+  # @return [BranchRestrictionPolicy] Branch Restriction Policy
+  attr_reader :restrictions
+  # @return [BranchProtectionRequiredLinearHistory] Optional object value serialized in the `required_linear_history` wire field.
+  attr_reader :required_linear_history
+  # @return [BranchProtectionAllowForcePushes] Optional object value serialized in the `allow_force_pushes` wire field.
+  attr_reader :allow_force_pushes
+  # @return [BranchProtectionAllowDeletions] Optional object value serialized in the `allow_deletions` wire field.
+  attr_reader :allow_deletions
+  # @return [BranchProtectionBlockCreations] Optional object value serialized in the `block_creations` wire field.
+  attr_reader :block_creations
+  # @return [BranchProtectionRequiredConversationResolution] Optional object value serialized in the `required_conversation_resolution` wire field.
+  attr_reader :required_conversation_resolution
+  # @return [String] Optional `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [String] Optional `string` value serialized in the `protection_url` wire field.
+  attr_reader :protection_url
+  # @return [BranchProtectionRequiredSignatures] Optional object value serialized in the `required_signatures` wire field.
+  attr_reader :required_signatures
+  # @return [BranchProtectionLockBranch] Whether to set the branch as read-only. If this is true, users will not be able to push to the branch.
+  attr_reader :lock_branch
+  # @return [BranchProtectionAllowForkSyncing] Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing.
+  attr_reader :allow_fork_syncing
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for BranchProtection.
-  # Branch Protection
-  class BranchProtection
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalBranchProtectionMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalBranchProtectionMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalBranchProtectionMetadata::DECODERS
-
-    # @return [String] Optional `string` value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [Boolean] Optional `boolean` value serialized in the `enabled` wire field.
-    attr_reader :enabled
-    # @return [ProtectedBranchRequiredStatusCheck] Protected Branch Required Status Check
-    attr_reader :required_status_checks
-    # @return [ProtectedBranchAdminEnforced] Protected Branch Admin Enforced
-    attr_reader :enforce_admins
-    # @return [ProtectedBranchPullRequestReview] Protected Branch Pull Request Review
-    attr_reader :required_pull_request_reviews
-    # @return [BranchRestrictionPolicy] Branch Restriction Policy
-    attr_reader :restrictions
-    # @return [BranchProtectionRequiredLinearHistory] Optional object value serialized in the `required_linear_history` wire field.
-    attr_reader :required_linear_history
-    # @return [BranchProtectionAllowForcePushes] Optional object value serialized in the `allow_force_pushes` wire field.
-    attr_reader :allow_force_pushes
-    # @return [BranchProtectionAllowDeletions] Optional object value serialized in the `allow_deletions` wire field.
-    attr_reader :allow_deletions
-    # @return [BranchProtectionBlockCreations] Optional object value serialized in the `block_creations` wire field.
-    attr_reader :block_creations
-    # @return [BranchProtectionRequiredConversationResolution] Optional object value serialized in the `required_conversation_resolution` wire field.
-    attr_reader :required_conversation_resolution
-    # @return [String] Optional `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [String] Optional `string` value serialized in the `protection_url` wire field.
-    attr_reader :protection_url
-    # @return [BranchProtectionRequiredSignatures] Optional object value serialized in the `required_signatures` wire field.
-    attr_reader :required_signatures
-    # @return [BranchProtectionLockBranch] Whether to set the branch as read-only. If this is true, users will not be able to push to the branch.
-    attr_reader :lock_branch
-    # @return [BranchProtectionAllowForkSyncing] Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing.
-    attr_reader :allow_fork_syncing
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalBranchRestrictionPolicyUsersItemMetadata
-    FIELDS = {
-      login: 'login',
-      id: 'id',
-      node_id: 'node_id',
-      avatar_url: 'avatar_url',
-      gravatar_id: 'gravatar_id',
-      url: 'url',
-      html_url: 'html_url',
-      followers_url: 'followers_url',
-      following_url: 'following_url',
-      gists_url: 'gists_url',
-      starred_url: 'starred_url',
-      subscriptions_url: 'subscriptions_url',
-      organizations_url: 'organizations_url',
-      repos_url: 'repos_url',
-      events_url: 'events_url',
-      received_events_url: 'received_events_url',
-      type: 'type',
-      site_admin: 'site_admin',
-      user_view_type: 'user_view_type'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalBranchRestrictionPolicyUsersItemMetadata
+  FIELDS = {
+    login: "login",
+    id: "id",
+    node_id: "node_id",
+    avatar_url: "avatar_url",
+    gravatar_id: "gravatar_id",
+    url: "url",
+    html_url: "html_url",
+    followers_url: "followers_url",
+    following_url: "following_url",
+    gists_url: "gists_url",
+    starred_url: "starred_url",
+    subscriptions_url: "subscriptions_url",
+    organizations_url: "organizations_url",
+    repos_url: "repos_url",
+    events_url: "events_url",
+    received_events_url: "received_events_url",
+    type: "type",
+    site_admin: "site_admin",
+    user_view_type: "user_view_type",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for BranchRestrictionPolicyUsersItem.
+# Required object value serialized in the `users[]` wire field.
+class BranchRestrictionPolicyUsersItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalBranchRestrictionPolicyUsersItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalBranchRestrictionPolicyUsersItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalBranchRestrictionPolicyUsersItemMetadata::DECODERS
+
+  # @return [String] Optional `string` value serialized in the `login` wire field.
+  attr_reader :login
+  # @return [Integer] Optional `int64`-formatted value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Optional `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Optional `string` value serialized in the `avatar_url` wire field.
+  attr_reader :avatar_url
+  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+  attr_reader :gravatar_id
+  # @return [String] Optional `string` value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Optional `string` value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [String] Optional `string` value serialized in the `followers_url` wire field.
+  attr_reader :followers_url
+  # @return [String] Optional `string` value serialized in the `following_url` wire field.
+  attr_reader :following_url
+  # @return [String] Optional `string` value serialized in the `gists_url` wire field.
+  attr_reader :gists_url
+  # @return [String] Optional `string` value serialized in the `starred_url` wire field.
+  attr_reader :starred_url
+  # @return [String] Optional `string` value serialized in the `subscriptions_url` wire field.
+  attr_reader :subscriptions_url
+  # @return [String] Optional `string` value serialized in the `organizations_url` wire field.
+  attr_reader :organizations_url
+  # @return [String] Optional `string` value serialized in the `repos_url` wire field.
+  attr_reader :repos_url
+  # @return [String] Optional `string` value serialized in the `events_url` wire field.
+  attr_reader :events_url
+  # @return [String] Optional `string` value serialized in the `received_events_url` wire field.
+  attr_reader :received_events_url
+  # @return [String] Optional `string` value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+  attr_reader :site_admin
+  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+  attr_reader :user_view_type
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for BranchRestrictionPolicyUsersItem.
-  # Required object value serialized in the `users[]` wire field.
-  class BranchRestrictionPolicyUsersItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalBranchRestrictionPolicyUsersItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalBranchRestrictionPolicyUsersItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalBranchRestrictionPolicyUsersItemMetadata::DECODERS
-
-    # @return [String] Optional `string` value serialized in the `login` wire field.
-    attr_reader :login
-    # @return [Integer] Optional `int64`-formatted value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Optional `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Optional `string` value serialized in the `avatar_url` wire field.
-    attr_reader :avatar_url
-    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-    attr_reader :gravatar_id
-    # @return [String] Optional `string` value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Optional `string` value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [String] Optional `string` value serialized in the `followers_url` wire field.
-    attr_reader :followers_url
-    # @return [String] Optional `string` value serialized in the `following_url` wire field.
-    attr_reader :following_url
-    # @return [String] Optional `string` value serialized in the `gists_url` wire field.
-    attr_reader :gists_url
-    # @return [String] Optional `string` value serialized in the `starred_url` wire field.
-    attr_reader :starred_url
-    # @return [String] Optional `string` value serialized in the `subscriptions_url` wire field.
-    attr_reader :subscriptions_url
-    # @return [String] Optional `string` value serialized in the `organizations_url` wire field.
-    attr_reader :organizations_url
-    # @return [String] Optional `string` value serialized in the `repos_url` wire field.
-    attr_reader :repos_url
-    # @return [String] Optional `string` value serialized in the `events_url` wire field.
-    attr_reader :events_url
-    # @return [String] Optional `string` value serialized in the `received_events_url` wire field.
-    attr_reader :received_events_url
-    # @return [String] Optional `string` value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-    attr_reader :site_admin
-    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-    attr_reader :user_view_type
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalBranchRestrictionPolicyAppsItemOwnerMetadata
-    FIELDS = {
-      login: 'login',
-      id: 'id',
-      node_id: 'node_id',
-      url: 'url',
-      repos_url: 'repos_url',
-      events_url: 'events_url',
-      hooks_url: 'hooks_url',
-      issues_url: 'issues_url',
-      members_url: 'members_url',
-      public_members_url: 'public_members_url',
-      avatar_url: 'avatar_url',
-      description: 'description',
-      gravatar_id: 'gravatar_id',
-      html_url: 'html_url',
-      followers_url: 'followers_url',
-      following_url: 'following_url',
-      gists_url: 'gists_url',
-      starred_url: 'starred_url',
-      subscriptions_url: 'subscriptions_url',
-      organizations_url: 'organizations_url',
-      received_events_url: 'received_events_url',
-      type: 'type',
-      site_admin: 'site_admin',
-      user_view_type: 'user_view_type'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalBranchRestrictionPolicyAppsItemOwnerMetadata
+  FIELDS = {
+    login: "login",
+    id: "id",
+    node_id: "node_id",
+    url: "url",
+    repos_url: "repos_url",
+    events_url: "events_url",
+    hooks_url: "hooks_url",
+    issues_url: "issues_url",
+    members_url: "members_url",
+    public_members_url: "public_members_url",
+    avatar_url: "avatar_url",
+    description: "description",
+    gravatar_id: "gravatar_id",
+    html_url: "html_url",
+    followers_url: "followers_url",
+    following_url: "following_url",
+    gists_url: "gists_url",
+    starred_url: "starred_url",
+    subscriptions_url: "subscriptions_url",
+    organizations_url: "organizations_url",
+    received_events_url: "received_events_url",
+    type: "type",
+    site_admin: "site_admin",
+    user_view_type: "user_view_type",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for BranchRestrictionPolicyAppsItemOwner.
+# Optional object value serialized in the `owner` wire field.
+class BranchRestrictionPolicyAppsItemOwner
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalBranchRestrictionPolicyAppsItemOwnerMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalBranchRestrictionPolicyAppsItemOwnerMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalBranchRestrictionPolicyAppsItemOwnerMetadata::DECODERS
+
+  # @return [String] Optional `string` value serialized in the `login` wire field.
+  attr_reader :login
+  # @return [Integer] Optional `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Optional `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Optional `string` value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Optional `string` value serialized in the `repos_url` wire field.
+  attr_reader :repos_url
+  # @return [String] Optional `string` value serialized in the `events_url` wire field.
+  attr_reader :events_url
+  # @return [String] Optional `string` value serialized in the `hooks_url` wire field.
+  attr_reader :hooks_url
+  # @return [String] Optional `string` value serialized in the `issues_url` wire field.
+  attr_reader :issues_url
+  # @return [String] Optional `string` value serialized in the `members_url` wire field.
+  attr_reader :members_url
+  # @return [String] Optional `string` value serialized in the `public_members_url` wire field.
+  attr_reader :public_members_url
+  # @return [String] Optional `string` value serialized in the `avatar_url` wire field.
+  attr_reader :avatar_url
+  # @return [String] Optional `string` value serialized in the `description` wire field.
+  attr_reader :description
+  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+  attr_reader :gravatar_id
+  # @return [String] Optional `string` value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [String] Optional `string` value serialized in the `followers_url` wire field.
+  attr_reader :followers_url
+  # @return [String] Optional `string` value serialized in the `following_url` wire field.
+  attr_reader :following_url
+  # @return [String] Optional `string` value serialized in the `gists_url` wire field.
+  attr_reader :gists_url
+  # @return [String] Optional `string` value serialized in the `starred_url` wire field.
+  attr_reader :starred_url
+  # @return [String] Optional `string` value serialized in the `subscriptions_url` wire field.
+  attr_reader :subscriptions_url
+  # @return [String] Optional `string` value serialized in the `organizations_url` wire field.
+  attr_reader :organizations_url
+  # @return [String] Optional `string` value serialized in the `received_events_url` wire field.
+  attr_reader :received_events_url
+  # @return [String] Optional `string` value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+  attr_reader :site_admin
+  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+  attr_reader :user_view_type
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for BranchRestrictionPolicyAppsItemOwner.
-  # Optional object value serialized in the `owner` wire field.
-  class BranchRestrictionPolicyAppsItemOwner
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalBranchRestrictionPolicyAppsItemOwnerMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalBranchRestrictionPolicyAppsItemOwnerMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalBranchRestrictionPolicyAppsItemOwnerMetadata::DECODERS
-
-    # @return [String] Optional `string` value serialized in the `login` wire field.
-    attr_reader :login
-    # @return [Integer] Optional `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Optional `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Optional `string` value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Optional `string` value serialized in the `repos_url` wire field.
-    attr_reader :repos_url
-    # @return [String] Optional `string` value serialized in the `events_url` wire field.
-    attr_reader :events_url
-    # @return [String] Optional `string` value serialized in the `hooks_url` wire field.
-    attr_reader :hooks_url
-    # @return [String] Optional `string` value serialized in the `issues_url` wire field.
-    attr_reader :issues_url
-    # @return [String] Optional `string` value serialized in the `members_url` wire field.
-    attr_reader :members_url
-    # @return [String] Optional `string` value serialized in the `public_members_url` wire field.
-    attr_reader :public_members_url
-    # @return [String] Optional `string` value serialized in the `avatar_url` wire field.
-    attr_reader :avatar_url
-    # @return [String] Optional `string` value serialized in the `description` wire field.
-    attr_reader :description
-    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-    attr_reader :gravatar_id
-    # @return [String] Optional `string` value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [String] Optional `string` value serialized in the `followers_url` wire field.
-    attr_reader :followers_url
-    # @return [String] Optional `string` value serialized in the `following_url` wire field.
-    attr_reader :following_url
-    # @return [String] Optional `string` value serialized in the `gists_url` wire field.
-    attr_reader :gists_url
-    # @return [String] Optional `string` value serialized in the `starred_url` wire field.
-    attr_reader :starred_url
-    # @return [String] Optional `string` value serialized in the `subscriptions_url` wire field.
-    attr_reader :subscriptions_url
-    # @return [String] Optional `string` value serialized in the `organizations_url` wire field.
-    attr_reader :organizations_url
-    # @return [String] Optional `string` value serialized in the `received_events_url` wire field.
-    attr_reader :received_events_url
-    # @return [String] Optional `string` value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-    attr_reader :site_admin
-    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-    attr_reader :user_view_type
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalBranchRestrictionPolicyAppsItemPermissionsMetadata
-    FIELDS = {
-      metadata: 'metadata',
-      contents: 'contents',
-      issues: 'issues',
-      single_file: 'single_file'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalBranchRestrictionPolicyAppsItemPermissionsMetadata
+  FIELDS = {
+    metadata: "metadata",
+    contents: "contents",
+    issues: "issues",
+    single_file: "single_file",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for BranchRestrictionPolicyAppsItemPermissions.
+# Optional object value serialized in the `permissions` wire field.
+class BranchRestrictionPolicyAppsItemPermissions
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalBranchRestrictionPolicyAppsItemPermissionsMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalBranchRestrictionPolicyAppsItemPermissionsMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalBranchRestrictionPolicyAppsItemPermissionsMetadata::DECODERS
+
+  # @return [String] Optional `string` value serialized in the `metadata` wire field.
+  attr_reader :metadata
+  # @return [String] Optional `string` value serialized in the `contents` wire field.
+  attr_reader :contents
+  # @return [String] Optional `string` value serialized in the `issues` wire field.
+  attr_reader :issues
+  # @return [String] Optional `string` value serialized in the `single_file` wire field.
+  attr_reader :single_file
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for BranchRestrictionPolicyAppsItemPermissions.
-  # Optional object value serialized in the `permissions` wire field.
-  class BranchRestrictionPolicyAppsItemPermissions
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalBranchRestrictionPolicyAppsItemPermissionsMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalBranchRestrictionPolicyAppsItemPermissionsMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalBranchRestrictionPolicyAppsItemPermissionsMetadata::DECODERS
-
-    # @return [String] Optional `string` value serialized in the `metadata` wire field.
-    attr_reader :metadata
-    # @return [String] Optional `string` value serialized in the `contents` wire field.
-    attr_reader :contents
-    # @return [String] Optional `string` value serialized in the `issues` wire field.
-    attr_reader :issues
-    # @return [String] Optional `string` value serialized in the `single_file` wire field.
-    attr_reader :single_file
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 end

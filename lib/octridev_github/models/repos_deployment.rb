@@ -5,357 +5,360 @@
 
 # repos_deployment domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalDeploymentBranchPolicyMetadata
-    FIELDS = {
-      id: 'id',
-      node_id: 'node_id',
-      name: 'name',
-      type: 'type'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      type: lambda do |value|
-        ::OctridevGithub::DeploymentBranchPolicyType.from_value(value)
-      end
-    }.freeze
+# Internal model hydration metadata.
+class SdkInternalDeploymentBranchPolicyMetadata
+  FIELDS = {
+    id: "id",
+    node_id: "node_id",
+    name: "name",
+    type: "type",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    type: lambda do |value|
+      ::OctridevGithub::DeploymentBranchPolicyType.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for DeploymentBranchPolicy.
+# Details of a deployment branch or tag policy.
+class DeploymentBranchPolicy
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalDeploymentBranchPolicyMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalDeploymentBranchPolicyMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalDeploymentBranchPolicyMetadata::DECODERS
+
+  # @return [Integer] The unique identifier of the branch or tag policy.
+  attr_reader :id
+  # @return [String] Optional `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] The name pattern that branches or tags must match in order to deploy to the environment.
+  attr_reader :name
+  # @return [DeploymentBranchPolicyType] Whether this rule targets a branch or tag.
+  attr_reader :type
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for DeploymentBranchPolicy.
-  # Details of a deployment branch or tag policy.
-  class DeploymentBranchPolicy
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalDeploymentBranchPolicyMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalDeploymentBranchPolicyMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalDeploymentBranchPolicyMetadata::DECODERS
-
-    # @return [Integer] The unique identifier of the branch or tag policy.
-    attr_reader :id
-    # @return [String] Optional `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] The name pattern that branches or tags must match in order to deploy to the environment.
-    attr_reader :name
-    # @return [DeploymentBranchPolicyType] Whether this rule targets a branch or tag.
-    attr_reader :type
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the DeploymentBranchPolicyType SDK namespace.
-  module DeploymentBranchPolicyType
-    BRANCH = 'branch'
-    TAG = 'tag'
-    VALUES = %w[branch tag].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Defines the DeploymentBranchPolicyType SDK namespace.
+module DeploymentBranchPolicyType
+  BRANCH = 'branch'
+  TAG = 'tag'
+  VALUES = ['branch', 'tag'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalDeploymentBranchPolicyNamePatternMetadata
+  FIELDS = {
+    name: "name",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    name
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for DeploymentBranchPolicyNamePattern.
+# Typed representation of the `DeploymentBranchPolicyNamePattern` API schema.
+class DeploymentBranchPolicyNamePattern
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalDeploymentBranchPolicyNamePatternMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalDeploymentBranchPolicyNamePatternMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalDeploymentBranchPolicyNamePatternMetadata::DECODERS
+
+  # @return [String] The name pattern that branches must match in order to deploy to the environment. Wildcard characters will not match `/`. For example, to match branches that begin with `release/` and contain an additional single slash, use `release/*/*`. For more information about pattern matching syntax, see the Ruby File.fnmatch documentation.
+  attr_reader :name
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalDeploymentBranchPolicyNamePatternMetadata
-    FIELDS = {
-      name: 'name'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      name
-    ].freeze
-    DECODERS = {}.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for DeploymentBranchPolicyNamePattern.
-  # Typed representation of the `DeploymentBranchPolicyNamePattern` API schema.
-  class DeploymentBranchPolicyNamePattern
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalDeploymentBranchPolicyNamePatternMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalDeploymentBranchPolicyNamePatternMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalDeploymentBranchPolicyNamePatternMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [String] The name pattern that branches must match in order to deploy to the environment. Wildcard characters will not match `/`. For example, to match branches that begin with `release/` and contain an additional single slash, use `release/*/*`. For more information about pattern matching syntax, see the Ruby File.fnmatch documentation.
-    attr_reader :name
+# Internal model hydration metadata.
+class SdkInternalDeploymentBranchPolicyNamePatternWithTypeMetadata
+  FIELDS = {
+    name: "name",
+    type: "type",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    name
+  ].freeze
+  DECODERS = {
+    type: lambda do |value|
+      ::OctridevGithub::DeploymentBranchPolicyNamePatternWithTypeType.from_value(value)
+    end,
+  }.freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for DeploymentBranchPolicyNamePatternWithType.
+# Typed representation of the `DeploymentBranchPolicyNamePatternWithType` API schema.
+class DeploymentBranchPolicyNamePatternWithType
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalDeploymentBranchPolicyNamePatternWithTypeMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalDeploymentBranchPolicyNamePatternWithTypeMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalDeploymentBranchPolicyNamePatternWithTypeMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+  # @return [String] The name pattern that branches or tags must match in order to deploy to the environment. Wildcard characters will not match `/`. For example, to match branches that begin with `release/` and contain an additional single slash, use `release/*/*`. For more information about pattern matching syntax, see the Ruby File.fnmatch documentation.
+  attr_reader :name
+  # @return [DeploymentBranchPolicyNamePatternWithTypeType] Whether this rule targets a branch or tag
+  attr_reader :type
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalDeploymentBranchPolicyNamePatternWithTypeMetadata
-    FIELDS = {
-      name: 'name',
-      type: 'type'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      name
-    ].freeze
-    DECODERS = {
-      type: lambda do |value|
-        ::OctridevGithub::DeploymentBranchPolicyNamePatternWithTypeType.from_value(value)
-      end
-    }.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for DeploymentBranchPolicyNamePatternWithType.
-  # Typed representation of the `DeploymentBranchPolicyNamePatternWithType` API schema.
-  class DeploymentBranchPolicyNamePatternWithType
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalDeploymentBranchPolicyNamePatternWithTypeMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalDeploymentBranchPolicyNamePatternWithTypeMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalDeploymentBranchPolicyNamePatternWithTypeMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [String] The name pattern that branches or tags must match in order to deploy to the environment. Wildcard characters will not match `/`. For example, to match branches that begin with `release/` and contain an additional single slash, use `release/*/*`. For more information about pattern matching syntax, see the Ruby File.fnmatch documentation.
-    attr_reader :name
-    # @return [DeploymentBranchPolicyNamePatternWithTypeType] Whether this rule targets a branch or tag
-    attr_reader :type
+# Defines the DeploymentBranchPolicyNamePatternWithTypeType SDK namespace.
+module DeploymentBranchPolicyNamePatternWithTypeType
+  BRANCH = 'branch'
+  TAG = 'tag'
+  VALUES = ['branch', 'tag'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# Internal model hydration metadata.
+class SdkInternalDeploymentBranchPolicySettingsMetadata
+  FIELDS = {
+    protected_branches: "protected_branches",
+    custom_branch_policies: "custom_branch_policies",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    protected_branches
+    custom_branch_policies
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+# API model for DeploymentBranchPolicySettings.
+# The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.
+class DeploymentBranchPolicySettings
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalDeploymentBranchPolicySettingsMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalDeploymentBranchPolicySettingsMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalDeploymentBranchPolicySettingsMetadata::DECODERS
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  # @return [Boolean] Whether only branches with branch protection rules can deploy to this environment. If `protected_branches` is `true`, `custom_branch_policies` must be `false`; if `protected_branches` is `false`, `custom_branch_policies` must be `true`.
+  attr_reader :protected_branches
+  # @return [Boolean] Whether only branches that match the specified name patterns can deploy to this environment. If `custom_branch_policies` is `true`, `protected_branches` must be `false`; if `custom_branch_policies` is `false`, `protected_branches` must be `true`.
+  attr_reader :custom_branch_policies
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the DeploymentBranchPolicyNamePatternWithTypeType SDK namespace.
-  module DeploymentBranchPolicyNamePatternWithTypeType
-    BRANCH = 'branch'
-    TAG = 'tag'
-    VALUES = %w[branch tag].freeze
-    def self.from_value(value)
-      value
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalDeploymentBranchPolicySettingsMetadata
-    FIELDS = {
-      protected_branches: 'protected_branches',
-      custom_branch_policies: 'custom_branch_policies'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      protected_branches
-      custom_branch_policies
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalDeploymentProtectionRuleMetadata
+  FIELDS = {
+    id: "id",
+    node_id: "node_id",
+    enabled: "enabled",
+    app: "app",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    node_id
+    enabled
+    app
+  ].freeze
+  DECODERS = {
+    app: lambda do |value|
+      ::OctridevGithub::CustomDeploymentRuleApp.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for DeploymentProtectionRule.
+# Deployment protection rule
+class DeploymentProtectionRule
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalDeploymentProtectionRuleMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalDeploymentProtectionRuleMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalDeploymentProtectionRuleMetadata::DECODERS
+
+  # @return [Integer] The unique identifier for the deployment protection rule.
+  attr_reader :id
+  # @return [String] The node ID for the deployment protection rule.
+  attr_reader :node_id
+  # @return [Boolean] Whether the deployment protection rule is enabled for the environment.
+  attr_reader :enabled
+  # @return [CustomDeploymentRuleApp] A GitHub App that is providing a custom deployment protection rule.
+  attr_reader :app
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for DeploymentBranchPolicySettings.
-  # The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.
-  class DeploymentBranchPolicySettings
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalDeploymentBranchPolicySettingsMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalDeploymentBranchPolicySettingsMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalDeploymentBranchPolicySettingsMetadata::DECODERS
-
-    # @return [Boolean] Whether only branches with branch protection rules can deploy to this environment. If `protected_branches` is `true`, `custom_branch_policies` must be `false`; if `protected_branches` is `false`, `custom_branch_policies` must be `true`.
-    attr_reader :protected_branches
-    # @return [Boolean] Whether only branches that match the specified name patterns can deploy to this environment. If `custom_branch_policies` is `true`, `protected_branches` must be `false`; if `custom_branch_policies` is `false`, `protected_branches` must be `true`.
-    attr_reader :custom_branch_policies
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalDeploymentProtectionRuleMetadata
-    FIELDS = {
-      id: 'id',
-      node_id: 'node_id',
-      enabled: 'enabled',
-      app: 'app'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      node_id
-      enabled
-      app
-    ].freeze
-    DECODERS = {
-      app: lambda do |value|
-        ::OctridevGithub::CustomDeploymentRuleApp.from_hash(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalDeploymentStatusMetadata
+  FIELDS = {
+    url: "url",
+    id: "id",
+    node_id: "node_id",
+    state: "state",
+    creator: "creator",
+    description: "description",
+    environment: "environment",
+    target_url: "target_url",
+    created_at: "created_at",
+    updated_at: "updated_at",
+    deployment_url: "deployment_url",
+    repository_url: "repository_url",
+    environment_url: "environment_url",
+    log_url: "log_url",
+    performed_via_github_app: "performed_via_github_app",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    url
+    id
+    node_id
+    state
+    creator
+    description
+    target_url
+    created_at
+    updated_at
+    deployment_url
+    repository_url
+  ].freeze
+  DECODERS = {
+    state: lambda do |value|
+      ::OctridevGithub::DeploymentStatusState.from_value(value)
+    end,
+    creator: lambda do |value|
+      ::OctridevGithub::NullableSimpleUser.from_hash(value)
+    end,
+    performed_via_github_app: lambda do |value|
+      ::OctridevGithub::NullableIntegration.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    creator
+  ].freeze
+end
+
+# API model for DeploymentStatus.
+# The status of a deployment.
+class DeploymentStatus
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalDeploymentStatusMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalDeploymentStatusMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalDeploymentStatusMetadata::DECODERS
+
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [DeploymentStatusState] The state of the status.
+  attr_reader :state
+  # @return [NullableSimpleUser] A GitHub user.
+  attr_reader :creator
+  # @return [String] A short description of the status.
+  attr_reader :description
+  # @return [String] The environment of the deployment that the status is for.
+  attr_reader :environment
+  # @return [String] Closing down notice: the URL to associate with this status.
+  attr_reader :target_url
+  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+  attr_reader :updated_at
+  # @return [String] Required `uri`-formatted value serialized in the `deployment_url` wire field.
+  attr_reader :deployment_url
+  # @return [String] Required `uri`-formatted value serialized in the `repository_url` wire field.
+  attr_reader :repository_url
+  # @return [String] The URL for accessing your environment.
+  attr_reader :environment_url
+  # @return [String] The URL to associate with this status.
+  attr_reader :log_url
+  # @return [NullableIntegration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+  attr_reader :performed_via_github_app
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for DeploymentProtectionRule.
-  # Deployment protection rule
-  class DeploymentProtectionRule
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalDeploymentProtectionRuleMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalDeploymentProtectionRuleMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalDeploymentProtectionRuleMetadata::DECODERS
-
-    # @return [Integer] The unique identifier for the deployment protection rule.
-    attr_reader :id
-    # @return [String] The node ID for the deployment protection rule.
-    attr_reader :node_id
-    # @return [Boolean] Whether the deployment protection rule is enabled for the environment.
-    attr_reader :enabled
-    # @return [CustomDeploymentRuleApp] A GitHub App that is providing a custom deployment protection rule.
-    attr_reader :app
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalDeploymentStatusMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalDeploymentStatusMetadata
-    FIELDS = {
-      url: 'url',
-      id: 'id',
-      node_id: 'node_id',
-      state: 'state',
-      creator: 'creator',
-      description: 'description',
-      environment: 'environment',
-      target_url: 'target_url',
-      created_at: 'created_at',
-      updated_at: 'updated_at',
-      deployment_url: 'deployment_url',
-      repository_url: 'repository_url',
-      environment_url: 'environment_url',
-      log_url: 'log_url',
-      performed_via_github_app: 'performed_via_github_app'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      url
-      id
-      node_id
-      state
-      creator
-      description
-      target_url
-      created_at
-      updated_at
-      deployment_url
-      repository_url
-    ].freeze
-    DECODERS = {
-      state: lambda do |value|
-        ::OctridevGithub::DeploymentStatusState.from_value(value)
-      end,
-      creator: lambda do |value|
-        ::OctridevGithub::NullableSimpleUser.from_hash(value)
-      end,
-      performed_via_github_app: lambda do |value|
-        ::OctridevGithub::NullableIntegration.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      creator
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
 
-  # API model for DeploymentStatus.
-  # The status of a deployment.
-  class DeploymentStatus
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalDeploymentStatusMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalDeploymentStatusMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalDeploymentStatusMetadata::DECODERS
-
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [DeploymentStatusState] The state of the status.
-    attr_reader :state
-    # @return [NullableSimpleUser] A GitHub user.
-    attr_reader :creator
-    # @return [String] A short description of the status.
-    attr_reader :description
-    # @return [String] The environment of the deployment that the status is for.
-    attr_reader :environment
-    # @return [String] Closing down notice: the URL to associate with this status.
-    attr_reader :target_url
-    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-    attr_reader :updated_at
-    # @return [String] Required `uri`-formatted value serialized in the `deployment_url` wire field.
-    attr_reader :deployment_url
-    # @return [String] Required `uri`-formatted value serialized in the `repository_url` wire field.
-    attr_reader :repository_url
-    # @return [String] The URL for accessing your environment.
-    attr_reader :environment_url
-    # @return [String] The URL to associate with this status.
-    attr_reader :log_url
-    # @return [NullableIntegration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
-    attr_reader :performed_via_github_app
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalDeploymentStatusMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+# Defines the DeploymentStatusState SDK namespace.
+module DeploymentStatusState
+  ERROR = 'error'
+  FAILURE = 'failure'
+  INACTIVE = 'inactive'
+  PENDING = 'pending'
+  SUCCESS = 'success'
+  QUEUED = 'queued'
+  IN_PROGRESS = 'in_progress'
+  VALUES = ['error', 'failure', 'inactive', 'pending', 'success', 'queued', 'in_progress'].freeze
+  def self.from_value(value)
+    value
   end
-
-  # Defines the DeploymentStatusState SDK namespace.
-  module DeploymentStatusState
-    ERROR = 'error'
-    FAILURE = 'failure'
-    INACTIVE = 'inactive'
-    PENDING = 'pending'
-    SUCCESS = 'success'
-    QUEUED = 'queued'
-    IN_PROGRESS = 'in_progress'
-    VALUES = %w[error failure inactive pending success queued in_progress].freeze
-    def self.from_value(value)
-      value
-    end
-  end
+end
 end

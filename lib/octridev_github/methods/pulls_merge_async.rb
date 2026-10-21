@@ -47,16 +47,17 @@ module OctridevGithub
         bypass_rules: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/pulls/',
+            "/pulls/",
             SdkClient.encode_path_segment(pull_number),
-            '/merge-async'
+            "/merge-async"
           ].join,
           config: config,
           body: {
@@ -65,13 +66,13 @@ module OctridevGithub
             'sha' => sha,
             'merge_method' => merge_method,
             'merge_action' => merge_action,
-            'bypass_rules' => bypass_rules
+            'bypass_rules' => bypass_rules,
           },
           return_type: ::OctridevGithub::PullRequestMergeAsyncResult,
           decoder: :json,
           operation_id: 'pulls_merge_async',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::PullRequestMergeAsyncResult, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::PullRequestMergeAsyncResult, '422' => ::OctridevGithub::ValidationError }
+          errors: { '400' => ::OctridevGithub::PullRequestMergeAsyncResult, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::PullRequestMergeAsyncResult, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -92,16 +93,17 @@ module OctridevGithub
         uuid:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/pulls/',
+            "/pulls/",
             SdkClient.encode_path_segment(pull_number),
-            '/merge-async/',
+            "/merge-async/",
             SdkClient.encode_path_segment(uuid)
           ].join,
           config: config,
@@ -109,7 +111,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'pulls_get_merge_async_result',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

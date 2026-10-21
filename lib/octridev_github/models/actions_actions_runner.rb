@@ -5,135 +5,135 @@
 
 # actions_actions_runner domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalActionsRunnerJitconfigMetadata
-    FIELDS = {
-      runner: 'runner',
-      encoded_jit_config: 'encoded_jit_config'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      runner
-      encoded_jit_config
-    ].freeze
-    DECODERS = {
-      runner: lambda do |value|
-        ::OctridevGithub::Runner.from_hash(value)
-      end
-    }.freeze
+# Internal model hydration metadata.
+class SdkInternalActionsRunnerJitconfigMetadata
+  FIELDS = {
+    runner: "runner",
+    encoded_jit_config: "encoded_jit_config",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    runner
+    encoded_jit_config
+  ].freeze
+  DECODERS = {
+    runner: lambda do |value|
+      ::OctridevGithub::Runner.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for ActionsRunnerJitconfig.
+# Typed representation of the `ActionsRunnerJitconfig` API schema.
+class ActionsRunnerJitconfig
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalActionsRunnerJitconfigMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalActionsRunnerJitconfigMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalActionsRunnerJitconfigMetadata::DECODERS
+
+  # @return [Runner] A self hosted runner
+  attr_reader :runner
+  # @return [String] The base64 encoded runner configuration.
+  attr_reader :encoded_jit_config
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ActionsRunnerJitconfig.
-  # Typed representation of the `ActionsRunnerJitconfig` API schema.
-  class ActionsRunnerJitconfig
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalActionsRunnerJitconfigMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalActionsRunnerJitconfigMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalActionsRunnerJitconfigMetadata::DECODERS
-
-    # @return [Runner] A self hosted runner
-    attr_reader :runner
-    # @return [String] The base64 encoded runner configuration.
-    attr_reader :encoded_jit_config
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalActionsRunnerLabelsMetadata
-    FIELDS = {
-      total_count: 'total_count',
-      labels: 'labels'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      total_count
-      labels
-    ].freeze
-    DECODERS = {
-      labels: lambda do |value|
-        value&.map { |item| ::OctridevGithub::RunnerLabel.from_hash(item) }
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalActionsRunnerLabelsMetadata
+  FIELDS = {
+    total_count: "total_count",
+    labels: "labels",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    total_count
+    labels
+  ].freeze
+  DECODERS = {
+    labels: lambda do |value|
+      value&.map { |item| ::OctridevGithub::RunnerLabel.from_hash(item) }
+    end,
+  }.freeze
+end
+
+# API model for ActionsRunnerLabels.
+# Typed representation of the `ActionsRunnerLabels` API schema.
+class ActionsRunnerLabels
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalActionsRunnerLabelsMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalActionsRunnerLabelsMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalActionsRunnerLabelsMetadata::DECODERS
+
+  # @return [Integer] Required `integer` value serialized in the `total_count` wire field.
+  attr_reader :total_count
+  # @return [Array_of_RunnerLabel] Required array value serialized in the `labels` wire field.
+  attr_reader :labels
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ActionsRunnerLabels.
-  # Typed representation of the `ActionsRunnerLabels` API schema.
-  class ActionsRunnerLabels
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalActionsRunnerLabelsMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalActionsRunnerLabelsMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalActionsRunnerLabelsMetadata::DECODERS
-
-    # @return [Integer] Required `integer` value serialized in the `total_count` wire field.
-    attr_reader :total_count
-    # @return [Array_of_RunnerLabel] Required array value serialized in the `labels` wire field.
-    attr_reader :labels
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalActionsRunnerLabelsReadonlyMetadata
-    FIELDS = {
-      total_count: 'total_count',
-      labels: 'labels'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      total_count
-      labels
-    ].freeze
-    DECODERS = {
-      labels: lambda do |value|
-        value&.map { |item| ::OctridevGithub::RunnerLabel.from_hash(item) }
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalActionsRunnerLabelsReadonlyMetadata
+  FIELDS = {
+    total_count: "total_count",
+    labels: "labels",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    total_count
+    labels
+  ].freeze
+  DECODERS = {
+    labels: lambda do |value|
+      value&.map { |item| ::OctridevGithub::RunnerLabel.from_hash(item) }
+    end,
+  }.freeze
+end
+
+# API model for ActionsRunnerLabelsReadonly.
+# Typed representation of the `ActionsRunnerLabelsReadonly` API schema.
+class ActionsRunnerLabelsReadonly
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalActionsRunnerLabelsReadonlyMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalActionsRunnerLabelsReadonlyMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalActionsRunnerLabelsReadonlyMetadata::DECODERS
+
+  # @return [Integer] Required `integer` value serialized in the `total_count` wire field.
+  attr_reader :total_count
+  # @return [Array_of_RunnerLabel] Required array value serialized in the `labels` wire field.
+  attr_reader :labels
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ActionsRunnerLabelsReadonly.
-  # Typed representation of the `ActionsRunnerLabelsReadonly` API schema.
-  class ActionsRunnerLabelsReadonly
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalActionsRunnerLabelsReadonlyMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalActionsRunnerLabelsReadonlyMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalActionsRunnerLabelsReadonlyMetadata::DECODERS
-
-    # @return [Integer] Required `integer` value serialized in the `total_count` wire field.
-    attr_reader :total_count
-    # @return [Array_of_RunnerLabel] Required array value serialized in the `labels` wire field.
-    attr_reader :labels
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 end

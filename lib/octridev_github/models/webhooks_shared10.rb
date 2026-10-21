@@ -5,671 +5,674 @@
 
 # webhooks domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksSecurityAdvisoryMetadata
-    FIELDS = {
-      cvss: 'cvss',
-      cvss_severities: 'cvss_severities',
-      cwes: 'cwes',
-      description: 'description',
-      ghsa_id: 'ghsa_id',
-      identifiers: 'identifiers',
-      published_at: 'published_at',
-      references: 'references',
-      severity: 'severity',
-      summary: 'summary',
-      updated_at: 'updated_at',
-      vulnerabilities: 'vulnerabilities',
-      withdrawn_at: 'withdrawn_at'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      cvss
-      cwes
-      description
-      ghsa_id
-      identifiers
-      published_at
-      references
-      severity
-      summary
-      updated_at
-      vulnerabilities
-      withdrawn_at
-    ].freeze
-    DECODERS = {
-      cvss: lambda do |value|
-        ::OctridevGithub::WebhooksSecurityAdvisoryCvss.from_hash(value)
-      end,
-      cvss_severities: lambda do |value|
-        ::OctridevGithub::CvssSeverities.from_hash(value)
-      end,
-      cwes: lambda do |value|
-        value&.map { |item| ::OctridevGithub::WebhooksSecurityAdvisoryCwesItem.from_hash(item) }
-      end,
-      identifiers: lambda do |value|
-        value&.map { |item| ::OctridevGithub::WebhooksSecurityAdvisoryIdentifiersItem.from_hash(item) }
-      end,
-      references: lambda do |value|
-        value&.map { |item| ::OctridevGithub::WebhooksSecurityAdvisoryReferencesItem.from_hash(item) }
-      end,
-      vulnerabilities: lambda do |value|
-        value&.map { |item| ::OctridevGithub::WebhooksSecurityAdvisoryVulnerabilitiesItem.from_hash(item) }
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      withdrawn_at
-    ].freeze
+# Internal model hydration metadata.
+class SdkInternalWebhooksSecurityAdvisoryMetadata
+  FIELDS = {
+    cvss: "cvss",
+    cvss_severities: "cvss_severities",
+    cwes: "cwes",
+    description: "description",
+    ghsa_id: "ghsa_id",
+    identifiers: "identifiers",
+    published_at: "published_at",
+    references: "references",
+    severity: "severity",
+    summary: "summary",
+    updated_at: "updated_at",
+    vulnerabilities: "vulnerabilities",
+    withdrawn_at: "withdrawn_at",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    cvss
+    cwes
+    description
+    ghsa_id
+    identifiers
+    published_at
+    references
+    severity
+    summary
+    updated_at
+    vulnerabilities
+    withdrawn_at
+  ].freeze
+  DECODERS = {
+    cvss: lambda do |value|
+      ::OctridevGithub::WebhooksSecurityAdvisoryCvss.from_hash(value)
+    end,
+    cvss_severities: lambda do |value|
+      ::OctridevGithub::CvssSeverities.from_hash(value)
+    end,
+    cwes: lambda do |value|
+      value&.map { |item| ::OctridevGithub::WebhooksSecurityAdvisoryCwesItem.from_hash(item) }
+    end,
+    identifiers: lambda do |value|
+      value&.map { |item| ::OctridevGithub::WebhooksSecurityAdvisoryIdentifiersItem.from_hash(item) }
+    end,
+    references: lambda do |value|
+      value&.map { |item| ::OctridevGithub::WebhooksSecurityAdvisoryReferencesItem.from_hash(item) }
+    end,
+    vulnerabilities: lambda do |value|
+      value&.map { |item| ::OctridevGithub::WebhooksSecurityAdvisoryVulnerabilitiesItem.from_hash(item) }
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    withdrawn_at
+  ].freeze
+end
+
+# API model for WebhooksSecurityAdvisory.
+# The details of the security advisory, including summary, description, and severity.
+class WebhooksSecurityAdvisory
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksSecurityAdvisoryMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksSecurityAdvisoryMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksSecurityAdvisoryMetadata::DECODERS
+
+  # @return [WebhooksSecurityAdvisoryCvss] Required object value serialized in the `cvss` wire field.
+  attr_reader :cvss
+  # @return [CvssSeverities] Optional object value serialized in the `cvss_severities` wire field.
+  attr_reader :cvss_severities
+  # @return [Array_of_WebhooksSecurityAdvisoryCwesItem] Required array value serialized in the `cwes` wire field.
+  attr_reader :cwes
+  # @return [String] Required `string` value serialized in the `description` wire field.
+  attr_reader :description
+  # @return [String] Required `string` value serialized in the `ghsa_id` wire field.
+  attr_reader :ghsa_id
+  # @return [Array_of_WebhooksSecurityAdvisoryIdentifiersItem] Required array value serialized in the `identifiers` wire field.
+  attr_reader :identifiers
+  # @return [String] Required `string` value serialized in the `published_at` wire field.
+  attr_reader :published_at
+  # @return [Array_of_WebhooksSecurityAdvisoryReferencesItem] Required array value serialized in the `references` wire field.
+  attr_reader :references
+  # @return [String] Required `string` value serialized in the `severity` wire field.
+  attr_reader :severity
+  # @return [String] Required `string` value serialized in the `summary` wire field.
+  attr_reader :summary
+  # @return [String] Required `string` value serialized in the `updated_at` wire field.
+  attr_reader :updated_at
+  # @return [Array_of_WebhooksSecurityAdvisoryVulnerabilitiesItem] Required array value serialized in the `vulnerabilities` wire field.
+  attr_reader :vulnerabilities
+  # @return [String] Required `string` value serialized in the `withdrawn_at` wire field.
+  attr_reader :withdrawn_at
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhooksSecurityAdvisory.
-  # The details of the security advisory, including summary, description, and severity.
-  class WebhooksSecurityAdvisory
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksSecurityAdvisoryMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksSecurityAdvisoryMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksSecurityAdvisoryMetadata::DECODERS
-
-    # @return [WebhooksSecurityAdvisoryCvss] Required object value serialized in the `cvss` wire field.
-    attr_reader :cvss
-    # @return [CvssSeverities] Optional object value serialized in the `cvss_severities` wire field.
-    attr_reader :cvss_severities
-    # @return [Array_of_WebhooksSecurityAdvisoryCwesItem] Required array value serialized in the `cwes` wire field.
-    attr_reader :cwes
-    # @return [String] Required `string` value serialized in the `description` wire field.
-    attr_reader :description
-    # @return [String] Required `string` value serialized in the `ghsa_id` wire field.
-    attr_reader :ghsa_id
-    # @return [Array_of_WebhooksSecurityAdvisoryIdentifiersItem] Required array value serialized in the `identifiers` wire field.
-    attr_reader :identifiers
-    # @return [String] Required `string` value serialized in the `published_at` wire field.
-    attr_reader :published_at
-    # @return [Array_of_WebhooksSecurityAdvisoryReferencesItem] Required array value serialized in the `references` wire field.
-    attr_reader :references
-    # @return [String] Required `string` value serialized in the `severity` wire field.
-    attr_reader :severity
-    # @return [String] Required `string` value serialized in the `summary` wire field.
-    attr_reader :summary
-    # @return [String] Required `string` value serialized in the `updated_at` wire field.
-    attr_reader :updated_at
-    # @return [Array_of_WebhooksSecurityAdvisoryVulnerabilitiesItem] Required array value serialized in the `vulnerabilities` wire field.
-    attr_reader :vulnerabilities
-    # @return [String] Required `string` value serialized in the `withdrawn_at` wire field.
-    attr_reader :withdrawn_at
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhooksSecurityAdvisoryMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhooksSecurityAdvisoryMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksSponsorshipMaintainerMetadata
-    FIELDS = {
-      avatar_url: 'avatar_url',
-      events_url: 'events_url',
-      followers_url: 'followers_url',
-      following_url: 'following_url',
-      gists_url: 'gists_url',
-      gravatar_id: 'gravatar_id',
-      html_url: 'html_url',
-      id: 'id',
-      login: 'login',
-      node_id: 'node_id',
-      organizations_url: 'organizations_url',
-      received_events_url: 'received_events_url',
-      repos_url: 'repos_url',
-      site_admin: 'site_admin',
-      starred_url: 'starred_url',
-      subscriptions_url: 'subscriptions_url',
-      type: 'type',
-      url: 'url',
-      user_view_type: 'user_view_type'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhooksSponsorshipMaintainerMetadata
+  FIELDS = {
+    avatar_url: "avatar_url",
+    events_url: "events_url",
+    followers_url: "followers_url",
+    following_url: "following_url",
+    gists_url: "gists_url",
+    gravatar_id: "gravatar_id",
+    html_url: "html_url",
+    id: "id",
+    login: "login",
+    node_id: "node_id",
+    organizations_url: "organizations_url",
+    received_events_url: "received_events_url",
+    repos_url: "repos_url",
+    site_admin: "site_admin",
+    starred_url: "starred_url",
+    subscriptions_url: "subscriptions_url",
+    type: "type",
+    url: "url",
+    user_view_type: "user_view_type",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhooksSponsorshipMaintainer.
+# Optional object value serialized in the `maintainer` wire field.
+class WebhooksSponsorshipMaintainer
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksSponsorshipMaintainerMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksSponsorshipMaintainerMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksSponsorshipMaintainerMetadata::DECODERS
+
+  # @return [String] Optional `string` value serialized in the `avatar_url` wire field.
+  attr_reader :avatar_url
+  # @return [String] Optional `string` value serialized in the `events_url` wire field.
+  attr_reader :events_url
+  # @return [String] Optional `string` value serialized in the `followers_url` wire field.
+  attr_reader :followers_url
+  # @return [String] Optional `string` value serialized in the `following_url` wire field.
+  attr_reader :following_url
+  # @return [String] Optional `string` value serialized in the `gists_url` wire field.
+  attr_reader :gists_url
+  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+  attr_reader :gravatar_id
+  # @return [String] Optional `string` value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [Integer] Optional `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Optional `string` value serialized in the `login` wire field.
+  attr_reader :login
+  # @return [String] Optional `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Optional `string` value serialized in the `organizations_url` wire field.
+  attr_reader :organizations_url
+  # @return [String] Optional `string` value serialized in the `received_events_url` wire field.
+  attr_reader :received_events_url
+  # @return [String] Optional `string` value serialized in the `repos_url` wire field.
+  attr_reader :repos_url
+  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+  attr_reader :site_admin
+  # @return [String] Optional `string` value serialized in the `starred_url` wire field.
+  attr_reader :starred_url
+  # @return [String] Optional `string` value serialized in the `subscriptions_url` wire field.
+  attr_reader :subscriptions_url
+  # @return [String] Optional `string` value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [String] Optional `string` value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+  attr_reader :user_view_type
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhooksSponsorshipMaintainer.
-  # Optional object value serialized in the `maintainer` wire field.
-  class WebhooksSponsorshipMaintainer
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksSponsorshipMaintainerMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksSponsorshipMaintainerMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksSponsorshipMaintainerMetadata::DECODERS
-
-    # @return [String] Optional `string` value serialized in the `avatar_url` wire field.
-    attr_reader :avatar_url
-    # @return [String] Optional `string` value serialized in the `events_url` wire field.
-    attr_reader :events_url
-    # @return [String] Optional `string` value serialized in the `followers_url` wire field.
-    attr_reader :followers_url
-    # @return [String] Optional `string` value serialized in the `following_url` wire field.
-    attr_reader :following_url
-    # @return [String] Optional `string` value serialized in the `gists_url` wire field.
-    attr_reader :gists_url
-    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-    attr_reader :gravatar_id
-    # @return [String] Optional `string` value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [Integer] Optional `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Optional `string` value serialized in the `login` wire field.
-    attr_reader :login
-    # @return [String] Optional `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Optional `string` value serialized in the `organizations_url` wire field.
-    attr_reader :organizations_url
-    # @return [String] Optional `string` value serialized in the `received_events_url` wire field.
-    attr_reader :received_events_url
-    # @return [String] Optional `string` value serialized in the `repos_url` wire field.
-    attr_reader :repos_url
-    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-    attr_reader :site_admin
-    # @return [String] Optional `string` value serialized in the `starred_url` wire field.
-    attr_reader :starred_url
-    # @return [String] Optional `string` value serialized in the `subscriptions_url` wire field.
-    attr_reader :subscriptions_url
-    # @return [String] Optional `string` value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [String] Optional `string` value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-    attr_reader :user_view_type
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksSponsorshipSponsorMetadata
-    FIELDS = {
-      avatar_url: 'avatar_url',
-      deleted: 'deleted',
-      email: 'email',
-      events_url: 'events_url',
-      followers_url: 'followers_url',
-      following_url: 'following_url',
-      gists_url: 'gists_url',
-      gravatar_id: 'gravatar_id',
-      html_url: 'html_url',
-      id: 'id',
-      login: 'login',
-      name: 'name',
-      node_id: 'node_id',
-      organizations_url: 'organizations_url',
-      received_events_url: 'received_events_url',
-      repos_url: 'repos_url',
-      site_admin: 'site_admin',
-      starred_url: 'starred_url',
-      subscriptions_url: 'subscriptions_url',
-      type: 'type',
-      url: 'url',
-      user_view_type: 'user_view_type'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      login
-    ].freeze
-    DECODERS = {
-      type: lambda do |value|
-        ::OctridevGithub::WebhooksSponsorshipSponsorType.from_value(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhooksSponsorshipSponsorMetadata
+  FIELDS = {
+    avatar_url: "avatar_url",
+    deleted: "deleted",
+    email: "email",
+    events_url: "events_url",
+    followers_url: "followers_url",
+    following_url: "following_url",
+    gists_url: "gists_url",
+    gravatar_id: "gravatar_id",
+    html_url: "html_url",
+    id: "id",
+    login: "login",
+    name: "name",
+    node_id: "node_id",
+    organizations_url: "organizations_url",
+    received_events_url: "received_events_url",
+    repos_url: "repos_url",
+    site_admin: "site_admin",
+    starred_url: "starred_url",
+    subscriptions_url: "subscriptions_url",
+    type: "type",
+    url: "url",
+    user_view_type: "user_view_type",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    login
+  ].freeze
+  DECODERS = {
+    type: lambda do |value|
+      ::OctridevGithub::WebhooksSponsorshipSponsorType.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhooksSponsorshipSponsor.
+# Required object value serialized in the `sponsor` wire field.
+class WebhooksSponsorshipSponsor
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksSponsorshipSponsorMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksSponsorshipSponsorMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksSponsorshipSponsorMetadata::DECODERS
+
+  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+  attr_reader :avatar_url
+  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+  attr_reader :deleted
+  # @return [String] Optional `string` value serialized in the `email` wire field.
+  attr_reader :email
+  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+  attr_reader :events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+  attr_reader :followers_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+  attr_reader :following_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+  attr_reader :gists_url
+  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+  attr_reader :gravatar_id
+  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `login` wire field.
+  attr_reader :login
+  # @return [String] Optional `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [String] Optional `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+  attr_reader :organizations_url
+  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+  attr_reader :received_events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+  attr_reader :repos_url
+  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+  attr_reader :site_admin
+  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+  attr_reader :starred_url
+  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+  attr_reader :subscriptions_url
+  # @return [WebhooksSponsorshipSponsorType] Optional enumerated value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+  attr_reader :user_view_type
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhooksSponsorshipSponsor.
-  # Required object value serialized in the `sponsor` wire field.
-  class WebhooksSponsorshipSponsor
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksSponsorshipSponsorMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksSponsorshipSponsorMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksSponsorshipSponsorMetadata::DECODERS
-
-    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-    attr_reader :avatar_url
-    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-    attr_reader :deleted
-    # @return [String] Optional `string` value serialized in the `email` wire field.
-    attr_reader :email
-    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-    attr_reader :events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-    attr_reader :followers_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-    attr_reader :following_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-    attr_reader :gists_url
-    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-    attr_reader :gravatar_id
-    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `login` wire field.
-    attr_reader :login
-    # @return [String] Optional `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [String] Optional `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-    attr_reader :organizations_url
-    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-    attr_reader :received_events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-    attr_reader :repos_url
-    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-    attr_reader :site_admin
-    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-    attr_reader :starred_url
-    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-    attr_reader :subscriptions_url
-    # @return [WebhooksSponsorshipSponsorType] Optional enumerated value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-    attr_reader :user_view_type
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksSponsorshipSponsorableMetadata
-    FIELDS = {
-      avatar_url: 'avatar_url',
-      deleted: 'deleted',
-      email: 'email',
-      events_url: 'events_url',
-      followers_url: 'followers_url',
-      following_url: 'following_url',
-      gists_url: 'gists_url',
-      gravatar_id: 'gravatar_id',
-      html_url: 'html_url',
-      id: 'id',
-      login: 'login',
-      name: 'name',
-      node_id: 'node_id',
-      organizations_url: 'organizations_url',
-      received_events_url: 'received_events_url',
-      repos_url: 'repos_url',
-      site_admin: 'site_admin',
-      starred_url: 'starred_url',
-      subscriptions_url: 'subscriptions_url',
-      type: 'type',
-      url: 'url',
-      user_view_type: 'user_view_type'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      login
-    ].freeze
-    DECODERS = {
-      type: lambda do |value|
-        ::OctridevGithub::WebhooksSponsorshipSponsorableType.from_value(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhooksSponsorshipSponsorableMetadata
+  FIELDS = {
+    avatar_url: "avatar_url",
+    deleted: "deleted",
+    email: "email",
+    events_url: "events_url",
+    followers_url: "followers_url",
+    following_url: "following_url",
+    gists_url: "gists_url",
+    gravatar_id: "gravatar_id",
+    html_url: "html_url",
+    id: "id",
+    login: "login",
+    name: "name",
+    node_id: "node_id",
+    organizations_url: "organizations_url",
+    received_events_url: "received_events_url",
+    repos_url: "repos_url",
+    site_admin: "site_admin",
+    starred_url: "starred_url",
+    subscriptions_url: "subscriptions_url",
+    type: "type",
+    url: "url",
+    user_view_type: "user_view_type",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    login
+  ].freeze
+  DECODERS = {
+    type: lambda do |value|
+      ::OctridevGithub::WebhooksSponsorshipSponsorableType.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhooksSponsorshipSponsorable.
+# Required object value serialized in the `sponsorable` wire field.
+class WebhooksSponsorshipSponsorable
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksSponsorshipSponsorableMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksSponsorshipSponsorableMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksSponsorshipSponsorableMetadata::DECODERS
+
+  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+  attr_reader :avatar_url
+  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+  attr_reader :deleted
+  # @return [String] Optional `string` value serialized in the `email` wire field.
+  attr_reader :email
+  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+  attr_reader :events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+  attr_reader :followers_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+  attr_reader :following_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+  attr_reader :gists_url
+  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+  attr_reader :gravatar_id
+  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `login` wire field.
+  attr_reader :login
+  # @return [String] Optional `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [String] Optional `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+  attr_reader :organizations_url
+  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+  attr_reader :received_events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+  attr_reader :repos_url
+  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+  attr_reader :site_admin
+  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+  attr_reader :starred_url
+  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+  attr_reader :subscriptions_url
+  # @return [WebhooksSponsorshipSponsorableType] Optional enumerated value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+  attr_reader :user_view_type
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhooksSponsorshipSponsorable.
-  # Required object value serialized in the `sponsorable` wire field.
-  class WebhooksSponsorshipSponsorable
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksSponsorshipSponsorableMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksSponsorshipSponsorableMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksSponsorshipSponsorableMetadata::DECODERS
-
-    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-    attr_reader :avatar_url
-    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-    attr_reader :deleted
-    # @return [String] Optional `string` value serialized in the `email` wire field.
-    attr_reader :email
-    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-    attr_reader :events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-    attr_reader :followers_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-    attr_reader :following_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-    attr_reader :gists_url
-    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-    attr_reader :gravatar_id
-    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `login` wire field.
-    attr_reader :login
-    # @return [String] Optional `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [String] Optional `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-    attr_reader :organizations_url
-    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-    attr_reader :received_events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-    attr_reader :repos_url
-    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-    attr_reader :site_admin
-    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-    attr_reader :starred_url
-    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-    attr_reader :subscriptions_url
-    # @return [WebhooksSponsorshipSponsorableType] Optional enumerated value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-    attr_reader :user_view_type
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksSponsorshipTierMetadata
-    FIELDS = {
-      created_at: 'created_at',
-      description: 'description',
-      is_custom_ammount: 'is_custom_ammount',
-      is_custom_amount: 'is_custom_amount',
-      is_one_time: 'is_one_time',
-      monthly_price_in_cents: 'monthly_price_in_cents',
-      monthly_price_in_dollars: 'monthly_price_in_dollars',
-      name: 'name',
-      node_id: 'node_id'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      created_at
-      description
-      is_one_time
-      monthly_price_in_cents
-      monthly_price_in_dollars
-      name
-      node_id
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhooksSponsorshipTierMetadata
+  FIELDS = {
+    created_at: "created_at",
+    description: "description",
+    is_custom_ammount: "is_custom_ammount",
+    is_custom_amount: "is_custom_amount",
+    is_one_time: "is_one_time",
+    monthly_price_in_cents: "monthly_price_in_cents",
+    monthly_price_in_dollars: "monthly_price_in_dollars",
+    name: "name",
+    node_id: "node_id",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    created_at
+    description
+    is_one_time
+    monthly_price_in_cents
+    monthly_price_in_dollars
+    name
+    node_id
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhooksSponsorshipTier.
+# The `tier_changed` and `pending_tier_change` will include the original tier before the change or pending change. For more information, see the pending tier change payload.
+class WebhooksSponsorshipTier
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksSponsorshipTierMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksSponsorshipTierMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksSponsorshipTierMetadata::DECODERS
+
+  # @return [String] Required `string` value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [String] Required `string` value serialized in the `description` wire field.
+  attr_reader :description
+  # @return [Boolean] Optional `boolean` value serialized in the `is_custom_ammount` wire field.
+  attr_reader :is_custom_ammount
+  # @return [Boolean] Optional `boolean` value serialized in the `is_custom_amount` wire field.
+  attr_reader :is_custom_amount
+  # @return [Boolean] Required `boolean` value serialized in the `is_one_time` wire field.
+  attr_reader :is_one_time
+  # @return [Integer] Required `integer` value serialized in the `monthly_price_in_cents` wire field.
+  attr_reader :monthly_price_in_cents
+  # @return [Integer] Required `integer` value serialized in the `monthly_price_in_dollars` wire field.
+  attr_reader :monthly_price_in_dollars
+  # @return [String] Required `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhooksSponsorshipTier.
-  # The `tier_changed` and `pending_tier_change` will include the original tier before the change or pending change. For more information, see the pending tier change payload.
-  class WebhooksSponsorshipTier
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksSponsorshipTierMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksSponsorshipTierMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksSponsorshipTierMetadata::DECODERS
-
-    # @return [String] Required `string` value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [String] Required `string` value serialized in the `description` wire field.
-    attr_reader :description
-    # @return [Boolean] Optional `boolean` value serialized in the `is_custom_ammount` wire field.
-    attr_reader :is_custom_ammount
-    # @return [Boolean] Optional `boolean` value serialized in the `is_custom_amount` wire field.
-    attr_reader :is_custom_amount
-    # @return [Boolean] Required `boolean` value serialized in the `is_one_time` wire field.
-    attr_reader :is_one_time
-    # @return [Integer] Required `integer` value serialized in the `monthly_price_in_cents` wire field.
-    attr_reader :monthly_price_in_cents
-    # @return [Integer] Required `integer` value serialized in the `monthly_price_in_dollars` wire field.
-    attr_reader :monthly_price_in_dollars
-    # @return [String] Required `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksSponsorshipMetadata
-    FIELDS = {
-      created_at: 'created_at',
-      maintainer: 'maintainer',
-      node_id: 'node_id',
-      privacy_level: 'privacy_level',
-      sponsor: 'sponsor',
-      sponsorable: 'sponsorable',
-      tier: 'tier'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      created_at
-      node_id
-      privacy_level
-      sponsor
-      sponsorable
-      tier
-    ].freeze
-    DECODERS = {
-      maintainer: lambda do |value|
-        ::OctridevGithub::WebhooksSponsorshipMaintainer.from_hash(value)
-      end,
-      sponsor: lambda do |value|
-        ::OctridevGithub::WebhooksSponsorshipSponsor.from_hash(value)
-      end,
-      sponsorable: lambda do |value|
-        ::OctridevGithub::WebhooksSponsorshipSponsorable.from_hash(value)
-      end,
-      tier: lambda do |value|
-        ::OctridevGithub::WebhooksSponsorshipTier.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      sponsor
-      sponsorable
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhooksSponsorshipMetadata
+  FIELDS = {
+    created_at: "created_at",
+    maintainer: "maintainer",
+    node_id: "node_id",
+    privacy_level: "privacy_level",
+    sponsor: "sponsor",
+    sponsorable: "sponsorable",
+    tier: "tier",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    created_at
+    node_id
+    privacy_level
+    sponsor
+    sponsorable
+    tier
+  ].freeze
+  DECODERS = {
+    maintainer: lambda do |value|
+      ::OctridevGithub::WebhooksSponsorshipMaintainer.from_hash(value)
+    end,
+    sponsor: lambda do |value|
+      ::OctridevGithub::WebhooksSponsorshipSponsor.from_hash(value)
+    end,
+    sponsorable: lambda do |value|
+      ::OctridevGithub::WebhooksSponsorshipSponsorable.from_hash(value)
+    end,
+    tier: lambda do |value|
+      ::OctridevGithub::WebhooksSponsorshipTier.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    sponsor
+    sponsorable
+  ].freeze
+end
+
+# API model for WebhooksSponsorship.
+# Typed representation of the `WebhooksSponsorship` API schema.
+class WebhooksSponsorship
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksSponsorshipMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksSponsorshipMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksSponsorshipMetadata::DECODERS
+
+  # @return [String] Required `string` value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [WebhooksSponsorshipMaintainer] Optional object value serialized in the `maintainer` wire field.
+  attr_reader :maintainer
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Required `string` value serialized in the `privacy_level` wire field.
+  attr_reader :privacy_level
+  # @return [WebhooksSponsorshipSponsor] Required object value serialized in the `sponsor` wire field.
+  attr_reader :sponsor
+  # @return [WebhooksSponsorshipSponsorable] Required object value serialized in the `sponsorable` wire field.
+  attr_reader :sponsorable
+  # @return [WebhooksSponsorshipTier] The `tier_changed` and `pending_tier_change` will include the original tier before the change or pending change. For more information, see the pending tier change payload.
+  attr_reader :tier
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhooksSponsorship.
-  # Typed representation of the `WebhooksSponsorship` API schema.
-  class WebhooksSponsorship
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksSponsorshipMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksSponsorshipMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksSponsorshipMetadata::DECODERS
-
-    # @return [String] Required `string` value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [WebhooksSponsorshipMaintainer] Optional object value serialized in the `maintainer` wire field.
-    attr_reader :maintainer
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Required `string` value serialized in the `privacy_level` wire field.
-    attr_reader :privacy_level
-    # @return [WebhooksSponsorshipSponsor] Required object value serialized in the `sponsor` wire field.
-    attr_reader :sponsor
-    # @return [WebhooksSponsorshipSponsorable] Required object value serialized in the `sponsorable` wire field.
-    attr_reader :sponsorable
-    # @return [WebhooksSponsorshipTier] The `tier_changed` and `pending_tier_change` will include the original tier before the change or pending change. For more information, see the pending tier change payload.
-    attr_reader :tier
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhooksSponsorshipMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhooksSponsorshipMetadata::NULLABLE_FIELDS)
   end
 
-  # Defines the WebhooksSponsorshipSponsorType SDK namespace.
-  module WebhooksSponsorshipSponsorType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Defines the WebhooksSponsorshipSponsorType SDK namespace.
+module WebhooksSponsorshipSponsorType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Defines the WebhooksSponsorshipSponsorableType SDK namespace.
+module WebhooksSponsorshipSponsorableType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhooksTeamParentMetadata
+  FIELDS = {
+    description: "description",
+    html_url: "html_url",
+    id: "id",
+    members_url: "members_url",
+    name: "name",
+    node_id: "node_id",
+    permission: "permission",
+    privacy: "privacy",
+    notification_setting: "notification_setting",
+    repositories_url: "repositories_url",
+    slug: "slug",
+    url: "url",
+    type: "type",
+    organization_id: "organization_id",
+    enterprise_id: "enterprise_id",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    description
+    html_url
+    id
+    members_url
+    name
+    node_id
+    permission
+    privacy
+    notification_setting
+    repositories_url
+    slug
+    url
+    type
+  ].freeze
+  DECODERS = {
+    privacy: lambda do |value|
+      ::OctridevGithub::WebhooksTeamParentPrivacy.from_value(value)
+    end,
+    notification_setting: lambda do |value|
+      ::OctridevGithub::WebhooksTeamParentNotificationSetting.from_value(value)
+    end,
+    type: lambda do |value|
+      ::OctridevGithub::WebhooksTeamParentType.from_value(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    description
+  ].freeze
+end
+
+# API model for WebhooksTeamParent.
+# Optional object value serialized in the `parent` wire field.
+class WebhooksTeamParent
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksTeamParentMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksTeamParentMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksTeamParentMetadata::DECODERS
+
+  # @return [String] Description of the team
+  attr_reader :description
+  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [Integer] Unique identifier of the team
+  attr_reader :id
+  # @return [String] Required `uri-template`-formatted value serialized in the `members_url` wire field.
+  attr_reader :members_url
+  # @return [String] Name of the team
+  attr_reader :name
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Permission that the team will have for its repositories
+  attr_reader :permission
+  # @return [WebhooksTeamParentPrivacy] Required enumerated value serialized in the `privacy` wire field.
+  attr_reader :privacy
+  # @return [WebhooksTeamParentNotificationSetting] Whether team members will receive notifications when their team is @mentioned
+  attr_reader :notification_setting
+  # @return [String] Required `uri`-formatted value serialized in the `repositories_url` wire field.
+  attr_reader :repositories_url
+  # @return [String] Required `string` value serialized in the `slug` wire field.
+  attr_reader :slug
+  # @return [String] URL for the team
+  attr_reader :url
+  # @return [WebhooksTeamParentType] The ownership type of the team
+  attr_reader :type
+  # @return [Integer] Unique identifier of the organization to which this team belongs
+  attr_reader :organization_id
+  # @return [Integer] Unique identifier of the enterprise to which this team belongs
+  attr_reader :enterprise_id
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the WebhooksSponsorshipSponsorableType SDK namespace.
-  module WebhooksSponsorshipSponsorableType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhooksTeamParentMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksTeamParentMetadata
-    FIELDS = {
-      description: 'description',
-      html_url: 'html_url',
-      id: 'id',
-      members_url: 'members_url',
-      name: 'name',
-      node_id: 'node_id',
-      permission: 'permission',
-      privacy: 'privacy',
-      notification_setting: 'notification_setting',
-      repositories_url: 'repositories_url',
-      slug: 'slug',
-      url: 'url',
-      type: 'type',
-      organization_id: 'organization_id',
-      enterprise_id: 'enterprise_id'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      description
-      html_url
-      id
-      members_url
-      name
-      node_id
-      permission
-      privacy
-      notification_setting
-      repositories_url
-      slug
-      url
-      type
-    ].freeze
-    DECODERS = {
-      privacy: lambda do |value|
-        ::OctridevGithub::WebhooksTeamParentPrivacy.from_value(value)
-      end,
-      notification_setting: lambda do |value|
-        ::OctridevGithub::WebhooksTeamParentNotificationSetting.from_value(value)
-      end,
-      type: lambda do |value|
-        ::OctridevGithub::WebhooksTeamParentType.from_value(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      description
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
-
-  # API model for WebhooksTeamParent.
-  # Optional object value serialized in the `parent` wire field.
-  class WebhooksTeamParent
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksTeamParentMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksTeamParentMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksTeamParentMetadata::DECODERS
-
-    # @return [String] Description of the team
-    attr_reader :description
-    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [Integer] Unique identifier of the team
-    attr_reader :id
-    # @return [String] Required `uri-template`-formatted value serialized in the `members_url` wire field.
-    attr_reader :members_url
-    # @return [String] Name of the team
-    attr_reader :name
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Permission that the team will have for its repositories
-    attr_reader :permission
-    # @return [WebhooksTeamParentPrivacy] Required enumerated value serialized in the `privacy` wire field.
-    attr_reader :privacy
-    # @return [WebhooksTeamParentNotificationSetting] Whether team members will receive notifications when their team is @mentioned
-    attr_reader :notification_setting
-    # @return [String] Required `uri`-formatted value serialized in the `repositories_url` wire field.
-    attr_reader :repositories_url
-    # @return [String] Required `string` value serialized in the `slug` wire field.
-    attr_reader :slug
-    # @return [String] URL for the team
-    attr_reader :url
-    # @return [WebhooksTeamParentType] The ownership type of the team
-    attr_reader :type
-    # @return [Integer] Unique identifier of the organization to which this team belongs
-    attr_reader :organization_id
-    # @return [Integer] Unique identifier of the enterprise to which this team belongs
-    attr_reader :enterprise_id
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhooksTeamParentMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
-  end
+end
 end

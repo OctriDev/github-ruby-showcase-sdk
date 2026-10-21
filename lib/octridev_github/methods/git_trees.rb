@@ -32,25 +32,26 @@ module OctridevGithub
         base_tree: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/git/trees'
+            "/git/trees"
           ].join,
           config: config,
           body: {
             'tree' => tree,
-            'base_tree' => base_tree
+            'base_tree' => base_tree,
           },
           return_type: ::OctridevGithub::GitTree,
           decoder: :json,
           operation_id: 'git_create_tree',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -75,25 +76,26 @@ module OctridevGithub
         recursive: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/git/trees/',
+            "/git/trees/",
             SdkClient.encode_path_segment(tree_sha)
           ].join,
           config: config,
           query: {
-            'recursive' => QueryValue.new(recursive, style: 'form', explode: true)
+            'recursive' => QueryValue.new(recursive, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::GitTree,
           decoder: :json,
           operation_id: 'git_get_tree',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end

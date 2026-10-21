@@ -19,18 +19,19 @@ module OctridevGithub
         org:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/security-managers'
+            "/security-managers"
           ].join,
           config: config,
           return_type: [::OctridevGithub::TeamSimple],
           decoder: :json,
           operation_id: 'orgs_list_security_manager_teams',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -46,18 +47,19 @@ module OctridevGithub
         team_slug:,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/security-managers/teams/',
+            "/security-managers/teams/",
             SdkClient.encode_path_segment(team_slug)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'orgs_add_security_manager_team',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -73,18 +75,19 @@ module OctridevGithub
         team_slug:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/security-managers/teams/',
+            "/security-managers/teams/",
             SdkClient.encode_path_segment(team_slug)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'orgs_remove_security_manager_team',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

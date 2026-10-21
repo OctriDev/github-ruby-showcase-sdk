@@ -19,19 +19,20 @@ module OctridevGithub
         org:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/copilot/billing'
+            "/copilot/billing"
           ].join,
           config: config,
           return_type: ::OctridevGithub::CopilotOrganizationDetails,
           decoder: :json,
           operation_id: 'copilot_get_copilot_organization_details',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -49,23 +50,24 @@ module OctridevGithub
         per_page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/copilot/billing/seats'
+            "/copilot/billing/seats"
           ].join,
           config: config,
           query: {
             'page' => QueryValue.new(page, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::Methods::Copilot::CopilotListCopilotSeatsResponse,
           decoder: :json,
           operation_id: 'copilot_list_copilot_seats',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -82,24 +84,25 @@ module OctridevGithub
         selected_teams:,
         request_options: nil
       )
+
         Validation.validate_items('selected_teams', selected_teams, min: 1)
 
         SdkClient.request(
           'POST',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/copilot/billing/selected_teams'
+            "/copilot/billing/selected_teams"
           ].join,
           config: config,
           body: {
-            'selected_teams' => selected_teams
+            'selected_teams' => selected_teams,
           },
           return_type: ::OctridevGithub::Methods::Copilot::CopilotAddCopilotSeatsForTeamsResponse,
           decoder: :json,
           operation_id: 'copilot_add_copilot_seats_for_teams',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -116,24 +119,25 @@ module OctridevGithub
         selected_teams:,
         request_options: nil
       )
+
         Validation.validate_items('selected_teams', selected_teams, min: 1)
 
         SdkClient.request(
           'DELETE',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/copilot/billing/selected_teams'
+            "/copilot/billing/selected_teams"
           ].join,
           config: config,
           body: {
-            'selected_teams' => selected_teams
+            'selected_teams' => selected_teams,
           },
           return_type: ::OctridevGithub::Methods::Copilot::CopilotCancelCopilotSeatAssignmentForTeamsResponse,
           decoder: :json,
           operation_id: 'copilot_cancel_copilot_seat_assignment_for_teams',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -150,24 +154,25 @@ module OctridevGithub
         selected_usernames:,
         request_options: nil
       )
+
         Validation.validate_items('selected_usernames', selected_usernames, min: 1)
 
         SdkClient.request(
           'POST',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/copilot/billing/selected_users'
+            "/copilot/billing/selected_users"
           ].join,
           config: config,
           body: {
-            'selected_usernames' => selected_usernames
+            'selected_usernames' => selected_usernames,
           },
           return_type: ::OctridevGithub::Methods::Copilot::CopilotAddCopilotSeatsForUsersResponse,
           decoder: :json,
           operation_id: 'copilot_add_copilot_seats_for_users',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -184,24 +189,25 @@ module OctridevGithub
         selected_usernames:,
         request_options: nil
       )
+
         Validation.validate_items('selected_usernames', selected_usernames, min: 1)
 
         SdkClient.request(
           'DELETE',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/copilot/billing/selected_users'
+            "/copilot/billing/selected_users"
           ].join,
           config: config,
           body: {
-            'selected_usernames' => selected_usernames
+            'selected_usernames' => selected_usernames,
           },
           return_type: ::OctridevGithub::Methods::Copilot::CopilotCancelCopilotSeatAssignmentForUsersResponse,
           decoder: :json,
           operation_id: 'copilot_cancel_copilot_seat_assignment_for_users',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
     end

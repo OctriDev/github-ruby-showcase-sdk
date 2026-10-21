@@ -47,13 +47,14 @@ module OctridevGithub
         before: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(since) { Validation.validate_date_time('since', since) }
 
         Validation.if_given(before) { Validation.validate_date_time('before', before) }
 
         SdkClient.request(
           'GET',
-          '/user/repos',
+          "/user/repos",
           config: config,
           query: {
             'visibility' => QueryValue.new(visibility, style: 'form', explode: true),
@@ -64,13 +65,13 @@ module OctridevGithub
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'page' => QueryValue.new(page, style: 'form', explode: true),
             'since' => QueryValue.new(since, style: 'form', explode: true),
-            'before' => QueryValue.new(before, style: 'form', explode: true)
+            'before' => QueryValue.new(before, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::Repository],
           decoder: :json,
           operation_id: 'repos_list_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end

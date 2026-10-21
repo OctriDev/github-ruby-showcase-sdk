@@ -23,22 +23,23 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/installations'
+            "/installations"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::Methods::Orgs::OrgsListAppInstallationsResponse,
           decoder: :json,
           operation_id: 'orgs_list_app_installations',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

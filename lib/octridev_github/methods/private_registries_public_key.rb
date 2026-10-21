@@ -17,19 +17,20 @@ module OctridevGithub
         org:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/private-registries/public-key'
+            "/private-registries/public-key"
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::PrivateRegistries::PrivateRegistriesGetOrgPublicKeyResponse,
           decoder: :json,
           operation_id: 'private_registries_get_org_public_key',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

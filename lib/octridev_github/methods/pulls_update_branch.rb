@@ -30,26 +30,27 @@ module OctridevGithub
         expected_head_sha: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/pulls/',
+            "/pulls/",
             SdkClient.encode_path_segment(pull_number),
-            '/update-branch'
+            "/update-branch"
           ].join,
           config: config,
           body: {
-            'expected_head_sha' => expected_head_sha
+            'expected_head_sha' => expected_head_sha,
           },
           return_type: ::OctridevGithub::Methods::Pulls::PullsUpdateBranchResponse,
           decoder: :json,
           operation_id: 'pulls_update_branch',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end

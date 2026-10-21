@@ -18,17 +18,18 @@ module OctridevGithub
         ssh_signing_key_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/user/ssh_signing_keys/',
+            "/user/ssh_signing_keys/",
             SdkClient.encode_path_segment(ssh_signing_key_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'users_delete_ssh_signing_key_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

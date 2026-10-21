@@ -5,147 +5,150 @@
 
 # shared_actions domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalActionsPublicKeyMetadata
-    FIELDS = {
-      key_id: 'key_id',
-      key: 'key',
-      id: 'id',
-      url: 'url',
-      title: 'title',
-      created_at: 'created_at'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      key_id
-      key
-    ].freeze
-    DECODERS = {}.freeze
+# Internal model hydration metadata.
+class SdkInternalActionsPublicKeyMetadata
+  FIELDS = {
+    key_id: "key_id",
+    key: "key",
+    id: "id",
+    url: "url",
+    title: "title",
+    created_at: "created_at",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    key_id
+    key
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for ActionsPublicKey.
+# The public key used for setting Actions Secrets.
+class ActionsPublicKey
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalActionsPublicKeyMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalActionsPublicKeyMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalActionsPublicKeyMetadata::DECODERS
+
+  # @return [String] The identifier for the key.
+  attr_reader :key_id
+  # @return [String] The Base64 encoded public key.
+  attr_reader :key
+  # @return [Integer] Optional `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Optional `string` value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Optional `string` value serialized in the `title` wire field.
+  attr_reader :title
+  # @return [String] Optional `string` value serialized in the `created_at` wire field.
+  attr_reader :created_at
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ActionsPublicKey.
-  # The public key used for setting Actions Secrets.
-  class ActionsPublicKey
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalActionsPublicKeyMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalActionsPublicKeyMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalActionsPublicKeyMetadata::DECODERS
-
-    # @return [String] The identifier for the key.
-    attr_reader :key_id
-    # @return [String] The Base64 encoded public key.
-    attr_reader :key
-    # @return [Integer] Optional `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Optional `string` value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Optional `string` value serialized in the `title` wire field.
-    attr_reader :title
-    # @return [String] Optional `string` value serialized in the `created_at` wire field.
-    attr_reader :created_at
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalActionsSecretMetadata
-    FIELDS = {
-      name: 'name',
-      created_at: 'created_at',
-      updated_at: 'updated_at'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      name
-      created_at
-      updated_at
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalActionsSecretMetadata
+  FIELDS = {
+    name: "name",
+    created_at: "created_at",
+    updated_at: "updated_at",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    name
+    created_at
+    updated_at
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for ActionsSecret.
+# Set secrets for GitHub Actions.
+class ActionsSecret
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalActionsSecretMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalActionsSecretMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalActionsSecretMetadata::DECODERS
+
+  # @return [String] The name of the secret.
+  attr_reader :name
+  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+  attr_reader :updated_at
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ActionsSecret.
-  # Set secrets for GitHub Actions.
-  class ActionsSecret
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalActionsSecretMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalActionsSecretMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalActionsSecretMetadata::DECODERS
-
-    # @return [String] The name of the secret.
-    attr_reader :name
-    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-    attr_reader :updated_at
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalActionsVariableMetadata
-    FIELDS = {
-      name: 'name',
-      value: 'value',
-      created_at: 'created_at',
-      updated_at: 'updated_at'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      name
-      value
-      created_at
-      updated_at
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalActionsVariableMetadata
+  FIELDS = {
+    name: "name",
+    value: "value",
+    created_at: "created_at",
+    updated_at: "updated_at",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    name
+    value
+    created_at
+    updated_at
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for ActionsVariable.
+# Typed representation of the `ActionsVariable` API schema.
+class ActionsVariable
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalActionsVariableMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalActionsVariableMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalActionsVariableMetadata::DECODERS
+
+  # @return [String] The name of the variable.
+  attr_reader :name
+  # @return [String] The value of the variable.
+  attr_reader :value
+  # @return [String] The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
+  attr_reader :created_at
+  # @return [String] The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
+  attr_reader :updated_at
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ActionsVariable.
-  # Typed representation of the `ActionsVariable` API schema.
-  class ActionsVariable
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalActionsVariableMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalActionsVariableMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalActionsVariableMetadata::DECODERS
-
-    # @return [String] The name of the variable.
-    attr_reader :name
-    # @return [String] The value of the variable.
-    attr_reader :value
-    # @return [String] The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
-    attr_reader :created_at
-    # @return [String] The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
-    attr_reader :updated_at
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 end

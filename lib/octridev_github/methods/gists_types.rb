@@ -12,14 +12,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalGistsCreateMetadata
         FIELDS = {
-          description: 'description',
-          files: 'files',
-          public: 'public'
+          description: "description",
+          files: "files",
+          public: "public",
         }.freeze
         REQUIRED_FIELDS = %i[
           files
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for GistsCreate.
@@ -52,11 +53,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalGistsUpdateMetadata
         FIELDS = {
-          description: 'description',
-          files: 'files'
+          description: "description",
+          files: "files",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for GistsUpdate.
@@ -88,12 +91,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalGistsCreateCommentMetadata
         FIELDS = {
-          body: 'body'
+          body: "body",
         }.freeze
         REQUIRED_FIELDS = %i[
           body
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for GistsCreateComment.
@@ -123,12 +127,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalGistsUpdateCommentMetadata
         FIELDS = {
-          body: 'body'
+          body: "body",
         }.freeze
         REQUIRED_FIELDS = %i[
           body
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for GistsUpdateComment.
@@ -159,7 +164,7 @@ module OctridevGithub
       module GistsCreatePublicVariant1
         TRUE = 'true'
         FALSE = 'false'
-        VALUES = %w[true false].freeze
+        VALUES = ['true', 'false'].freeze
         def self.from_value(value)
           value
         end

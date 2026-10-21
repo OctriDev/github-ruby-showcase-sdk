@@ -25,24 +25,25 @@ module OctridevGithub
         default_for_new_repos: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/enterprises/',
+            "/enterprises/",
             SdkClient.encode_path_segment(enterprise),
-            '/code-security/configurations/',
+            "/code-security/configurations/",
             SdkClient.encode_path_segment(configuration_id),
-            '/defaults'
+            "/defaults"
           ].join,
           config: config,
           body: {
-            'default_for_new_repos' => default_for_new_repos
+            'default_for_new_repos' => default_for_new_repos,
           },
           return_type: ::OctridevGithub::Methods::CodeSecurity::CodeSecuritySetConfigurationAsDefaultForEnterpriseResponse,
           decoder: :json,
           operation_id: 'code_security_set_configuration_as_default_for_enterprise',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple },
         ).data
       end
     end

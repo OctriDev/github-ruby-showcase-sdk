@@ -23,22 +23,23 @@ module OctridevGithub
         run_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/actions/runs/',
+            "/actions/runs/",
             SdkClient.encode_path_segment(run_id),
-            '/approvals'
+            "/approvals"
           ].join,
           config: config,
           return_type: [::OctridevGithub::EnvironmentApprovals],
           decoder: :json,
           operation_id: 'actions_get_reviews_for_run',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

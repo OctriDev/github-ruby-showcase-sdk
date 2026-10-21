@@ -19,9 +19,9 @@ module OctridevGithub
         SKIPPED = 'skipped'
         STALE = 'stale'
         TIMED_OUT = 'timed_out'
-        VALUES = %w[
-          action_required cancelled failure neutral success skipped stale
-          timed_out
+        VALUES = [
+          'action_required', 'cancelled', 'failure', 'neutral', 'success', 'skipped', 'stale',
+          'timed_out'
         ].freeze
         def self.from_value(value)
           value
@@ -32,7 +32,7 @@ module OctridevGithub
       module ChecksCreateVariant1Status
         QUEUED = 'queued'
         IN_PROGRESS = 'in_progress'
-        VALUES = %w[queued in_progress].freeze
+        VALUES = ['queued', 'in_progress'].freeze
         def self.from_value(value)
           return value if VALUES.include?(value)
 
@@ -57,7 +57,7 @@ module OctridevGithub
         WAITING = 'waiting'
         REQUESTED = 'requested'
         PENDING = 'pending'
-        VALUES = %w[queued in_progress completed waiting requested pending].freeze
+        VALUES = ['queued', 'in_progress', 'completed', 'waiting', 'requested', 'pending'].freeze
         def self.from_value(value)
           value
         end
@@ -67,7 +67,7 @@ module OctridevGithub
       module ChecksListForSuiteParameter
         LATEST = 'latest'
         ALL = 'all'
-        VALUES = %w[latest all].freeze
+        VALUES = ['latest', 'all'].freeze
         def self.from_value(value)
           value
         end
@@ -94,9 +94,9 @@ module OctridevGithub
         SKIPPED = 'skipped'
         STALE = 'stale'
         TIMED_OUT = 'timed_out'
-        VALUES = %w[
-          action_required cancelled failure neutral success skipped stale
-          timed_out
+        VALUES = [
+          'action_required', 'cancelled', 'failure', 'neutral', 'success', 'skipped', 'stale',
+          'timed_out'
         ].freeze
         def self.from_value(value)
           value

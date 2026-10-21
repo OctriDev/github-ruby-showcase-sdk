@@ -30,25 +30,26 @@ module OctridevGithub
         per_page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/projectsV2'
+            "/projectsV2"
           ].join,
           config: config,
           query: {
             'q' => QueryValue.new(q_value, style: 'form', explode: true),
             'before' => QueryValue.new(before, style: 'form', explode: true),
             'after' => QueryValue.new(after, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::ProjectsV2],
           decoder: :json,
           operation_id: 'projects_list_for_org',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -64,12 +65,13 @@ module OctridevGithub
         org:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/projectsV2/',
+            "/projectsV2/",
             SdkClient.encode_path_segment(project_number)
           ].join,
           config: config,
@@ -77,7 +79,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'projects_get_for_org',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -97,25 +99,26 @@ module OctridevGithub
         body: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/projectsV2/',
+            "/projectsV2/",
             SdkClient.encode_path_segment(project_number),
-            '/drafts'
+            "/drafts"
           ].join,
           config: config,
           body: {
             'title' => title,
-            'body' => body
+            'body' => body,
           },
           return_type: ::OctridevGithub::ProjectsV2ItemSimple,
           decoder: :json,
           operation_id: 'projects_create_draft_item_for_org',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -140,26 +143,27 @@ module OctridevGithub
         after: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/projectsV2/',
+            "/projectsV2/",
             SdkClient.encode_path_segment(project_number),
-            '/fields'
+            "/fields"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'before' => QueryValue.new(before, style: 'form', explode: true),
-            'after' => QueryValue.new(after, style: 'form', explode: true)
+            'after' => QueryValue.new(after, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::ProjectsV2Field],
           decoder: :json,
           operation_id: 'projects_list_fields_for_org',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -176,14 +180,15 @@ module OctridevGithub
         body:,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/projectsV2/',
+            "/projectsV2/",
             SdkClient.encode_path_segment(project_number),
-            '/fields'
+            "/fields"
           ].join,
           config: config,
           body: body,
@@ -191,7 +196,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'projects_add_field_for_org',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -207,14 +212,15 @@ module OctridevGithub
         org:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/projectsV2/',
+            "/projectsV2/",
             SdkClient.encode_path_segment(project_number),
-            '/fields/',
+            "/fields/",
             SdkClient.encode_path_segment(field_id)
           ].join,
           config: config,
@@ -222,7 +228,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'projects_get_field_for_org',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -254,14 +260,15 @@ module OctridevGithub
         per_page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/projectsV2/',
+            "/projectsV2/",
             SdkClient.encode_path_segment(project_number),
-            '/items'
+            "/items"
           ].join,
           config: config,
           query: {
@@ -269,13 +276,13 @@ module OctridevGithub
             'fields' => QueryValue.new(fields, style: 'form', explode: true),
             'before' => QueryValue.new(before, style: 'form', explode: true),
             'after' => QueryValue.new(after, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::ProjectsV2ItemWithContent],
           decoder: :json,
           operation_id: 'projects_list_items_for_org',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -301,14 +308,15 @@ module OctridevGithub
         number: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/projectsV2/',
+            "/projectsV2/",
             SdkClient.encode_path_segment(project_number),
-            '/items'
+            "/items"
           ].join,
           config: config,
           body: {
@@ -316,13 +324,13 @@ module OctridevGithub
             'id' => id,
             'owner' => owner,
             'repo' => repo,
-            'number' => number
+            'number' => number,
           },
           return_type: ::OctridevGithub::ProjectsV2ItemSimple,
           decoder: :json,
           operation_id: 'projects_add_item_for_org',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -342,25 +350,26 @@ module OctridevGithub
         fields: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/projectsV2/',
+            "/projectsV2/",
             SdkClient.encode_path_segment(project_number),
-            '/items/',
+            "/items/",
             SdkClient.encode_path_segment(item_id)
           ].join,
           config: config,
           query: {
-            'fields' => QueryValue.new(fields, style: 'form', explode: true)
+            'fields' => QueryValue.new(fields, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::ProjectsV2ItemWithContent,
           decoder: :json,
           operation_id: 'projects_get_org_item',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -378,25 +387,26 @@ module OctridevGithub
         fields:,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/projectsV2/',
+            "/projectsV2/",
             SdkClient.encode_path_segment(project_number),
-            '/items/',
+            "/items/",
             SdkClient.encode_path_segment(item_id)
           ].join,
           config: config,
           body: {
-            'fields' => fields
+            'fields' => fields,
           },
           return_type: ::OctridevGithub::ProjectsV2ItemWithContent,
           decoder: :json,
           operation_id: 'projects_update_item_for_org',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -412,21 +422,22 @@ module OctridevGithub
         item_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/projectsV2/',
+            "/projectsV2/",
             SdkClient.encode_path_segment(project_number),
-            '/items/',
+            "/items/",
             SdkClient.encode_path_segment(item_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'projects_delete_item_for_org',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -468,6 +479,7 @@ module OctridevGithub
         vertical_group_by: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(group_by) { Validation.validate_items('group_by', group_by, max: 1) }
 
         Validation.if_given(vertical_group_by) do
@@ -477,11 +489,11 @@ module OctridevGithub
         SdkClient.request(
           'POST',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/projectsV2/',
+            "/projectsV2/",
             SdkClient.encode_path_segment(project_number),
-            '/views'
+            "/views"
           ].join,
           config: config,
           body: {
@@ -491,13 +503,13 @@ module OctridevGithub
             'visible_fields' => visible_fields,
             'sort_by' => sort_by,
             'group_by' => group_by,
-            'vertical_group_by' => vertical_group_by
+            'vertical_group_by' => vertical_group_by,
           },
           return_type: ::OctridevGithub::ProjectsV2View,
           decoder: :json,
           operation_id: 'projects_create_view_for_org',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -528,29 +540,30 @@ module OctridevGithub
         per_page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/projectsV2/',
+            "/projectsV2/",
             SdkClient.encode_path_segment(project_number),
-            '/views/',
+            "/views/",
             SdkClient.encode_path_segment(view_number),
-            '/items'
+            "/items"
           ].join,
           config: config,
           query: {
             'fields' => QueryValue.new(fields, style: 'form', explode: true),
             'before' => QueryValue.new(before, style: 'form', explode: true),
             'after' => QueryValue.new(after, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::ProjectsV2ItemWithContent],
           decoder: :json,
           operation_id: 'projects_list_view_items_for_org',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

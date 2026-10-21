@@ -5,486 +5,487 @@
 
 # repos_repository_rule domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalRepositoryRuleDetailedVariant17Metadata
-    FIELDS = {
-      type: 'type',
-      parameters: 'parameters',
-      ruleset_source_type: 'ruleset_source_type',
-      ruleset_source: 'ruleset_source',
-      ruleset_id: 'ruleset_id'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      type
-    ].freeze
-    DECODERS = {
-      type: lambda do |value|
-        ::OctridevGithub::RepositoryRuleCodeQualityType.from_value(value)
-      end,
-      parameters: lambda do |value|
-        ::OctridevGithub::RepositoryRuleCodeQualityParameters.from_hash(value)
-      end,
-      ruleset_source_type: lambda do |value|
-        ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
-      end
-    }.freeze
+# Internal model hydration metadata.
+class SdkInternalRepositoryRuleDetailedVariant17Metadata
+  FIELDS = {
+    type: "type",
+    parameters: "parameters",
+    ruleset_source_type: "ruleset_source_type",
+    ruleset_source: "ruleset_source",
+    ruleset_id: "ruleset_id",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    type
+  ].freeze
+  DECODERS = {
+    type: lambda do |value|
+      ::OctridevGithub::RepositoryRuleCodeQualityType.from_value(value)
+    end,
+    parameters: lambda do |value|
+      ::OctridevGithub::RepositoryRuleCodeQualityParameters.from_hash(value)
+    end,
+    ruleset_source_type: lambda do |value|
+      ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for RepositoryRuleDetailedVariant17.
+class RepositoryRuleDetailedVariant17
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalRepositoryRuleDetailedVariant17Metadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalRepositoryRuleDetailedVariant17Metadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalRepositoryRuleDetailedVariant17Metadata::DECODERS
+
+  # @return [RepositoryRuleCodeQualityType] Required enumerated value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [RepositoryRuleCodeQualityParameters] Optional object value serialized in the `parameters` wire field.
+  attr_reader :parameters
+  # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
+  attr_reader :ruleset_source_type
+  # @return [String] The name of the source of the ruleset that includes this rule.
+  attr_reader :ruleset_source
+  # @return [Integer] The ID of the ruleset that includes this rule.
+  attr_reader :ruleset_id
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for RepositoryRuleDetailedVariant17.
-  class RepositoryRuleDetailedVariant17
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalRepositoryRuleDetailedVariant17Metadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalRepositoryRuleDetailedVariant17Metadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalRepositoryRuleDetailedVariant17Metadata::DECODERS
-
-    # @return [RepositoryRuleCodeQualityType] Required enumerated value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [RepositoryRuleCodeQualityParameters] Optional object value serialized in the `parameters` wire field.
-    attr_reader :parameters
-    # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
-    attr_reader :ruleset_source_type
-    # @return [String] The name of the source of the ruleset that includes this rule.
-    attr_reader :ruleset_source
-    # @return [Integer] The ID of the ruleset that includes this rule.
-    attr_reader :ruleset_id
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalRepositoryRuleDetailedVariant18Metadata
-    FIELDS = {
-      type: 'type',
-      parameters: 'parameters',
-      ruleset_source_type: 'ruleset_source_type',
-      ruleset_source: 'ruleset_source',
-      ruleset_id: 'ruleset_id'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      type
-    ].freeze
-    DECODERS = {
-      type: lambda do |value|
-        ::OctridevGithub::RepositoryRuleCodeCoverageType.from_value(value)
-      end,
-      parameters: lambda do |value|
-        ::OctridevGithub::RepositoryRuleCodeCoverageParameters.from_hash(value)
-      end,
-      ruleset_source_type: lambda do |value|
-        ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalRepositoryRuleDetailedVariant18Metadata
+  FIELDS = {
+    type: "type",
+    parameters: "parameters",
+    ruleset_source_type: "ruleset_source_type",
+    ruleset_source: "ruleset_source",
+    ruleset_id: "ruleset_id",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    type
+  ].freeze
+  DECODERS = {
+    type: lambda do |value|
+      ::OctridevGithub::RepositoryRuleCodeCoverageType.from_value(value)
+    end,
+    parameters: lambda do |value|
+      ::OctridevGithub::RepositoryRuleCodeCoverageParameters.from_hash(value)
+    end,
+    ruleset_source_type: lambda do |value|
+      ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for RepositoryRuleDetailedVariant18.
+class RepositoryRuleDetailedVariant18
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalRepositoryRuleDetailedVariant18Metadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalRepositoryRuleDetailedVariant18Metadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalRepositoryRuleDetailedVariant18Metadata::DECODERS
+
+  # @return [RepositoryRuleCodeCoverageType] Required enumerated value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [RepositoryRuleCodeCoverageParameters] Optional object value serialized in the `parameters` wire field.
+  attr_reader :parameters
+  # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
+  attr_reader :ruleset_source_type
+  # @return [String] The name of the source of the ruleset that includes this rule.
+  attr_reader :ruleset_source
+  # @return [Integer] The ID of the ruleset that includes this rule.
+  attr_reader :ruleset_id
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for RepositoryRuleDetailedVariant18.
-  class RepositoryRuleDetailedVariant18
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalRepositoryRuleDetailedVariant18Metadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalRepositoryRuleDetailedVariant18Metadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalRepositoryRuleDetailedVariant18Metadata::DECODERS
-
-    # @return [RepositoryRuleCodeCoverageType] Required enumerated value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [RepositoryRuleCodeCoverageParameters] Optional object value serialized in the `parameters` wire field.
-    attr_reader :parameters
-    # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
-    attr_reader :ruleset_source_type
-    # @return [String] The name of the source of the ruleset that includes this rule.
-    attr_reader :ruleset_source
-    # @return [Integer] The ID of the ruleset that includes this rule.
-    attr_reader :ruleset_id
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalRepositoryRuleDetailedVariant19Metadata
-    FIELDS = {
-      type: 'type',
-      parameters: 'parameters',
-      ruleset_source_type: 'ruleset_source_type',
-      ruleset_source: 'ruleset_source',
-      ruleset_id: 'ruleset_id'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      type
-    ].freeze
-    DECODERS = {
-      type: lambda do |value|
-        ::OctridevGithub::RepositoryRuleCopilotCodeReviewType.from_value(value)
-      end,
-      parameters: lambda do |value|
-        ::OctridevGithub::RepositoryRuleCopilotCodeReviewParameters.from_hash(value)
-      end,
-      ruleset_source_type: lambda do |value|
-        ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalRepositoryRuleDetailedVariant19Metadata
+  FIELDS = {
+    type: "type",
+    parameters: "parameters",
+    ruleset_source_type: "ruleset_source_type",
+    ruleset_source: "ruleset_source",
+    ruleset_id: "ruleset_id",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    type
+  ].freeze
+  DECODERS = {
+    type: lambda do |value|
+      ::OctridevGithub::RepositoryRuleCopilotCodeReviewType.from_value(value)
+    end,
+    parameters: lambda do |value|
+      ::OctridevGithub::RepositoryRuleCopilotCodeReviewParameters.from_hash(value)
+    end,
+    ruleset_source_type: lambda do |value|
+      ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for RepositoryRuleDetailedVariant19.
+class RepositoryRuleDetailedVariant19
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalRepositoryRuleDetailedVariant19Metadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalRepositoryRuleDetailedVariant19Metadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalRepositoryRuleDetailedVariant19Metadata::DECODERS
+
+  # @return [RepositoryRuleCopilotCodeReviewType] Required enumerated value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [RepositoryRuleCopilotCodeReviewParameters] Optional object value serialized in the `parameters` wire field.
+  attr_reader :parameters
+  # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
+  attr_reader :ruleset_source_type
+  # @return [String] The name of the source of the ruleset that includes this rule.
+  attr_reader :ruleset_source
+  # @return [Integer] The ID of the ruleset that includes this rule.
+  attr_reader :ruleset_id
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for RepositoryRuleDetailedVariant19.
-  class RepositoryRuleDetailedVariant19
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalRepositoryRuleDetailedVariant19Metadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalRepositoryRuleDetailedVariant19Metadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalRepositoryRuleDetailedVariant19Metadata::DECODERS
-
-    # @return [RepositoryRuleCopilotCodeReviewType] Required enumerated value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [RepositoryRuleCopilotCodeReviewParameters] Optional object value serialized in the `parameters` wire field.
-    attr_reader :parameters
-    # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
-    attr_reader :ruleset_source_type
-    # @return [String] The name of the source of the ruleset that includes this rule.
-    attr_reader :ruleset_source
-    # @return [Integer] The ID of the ruleset that includes this rule.
-    attr_reader :ruleset_id
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalRepositoryRuleDetailedVariant20Metadata
-    FIELDS = {
-      type: 'type',
-      ruleset_source_type: 'ruleset_source_type',
-      ruleset_source: 'ruleset_source',
-      ruleset_id: 'ruleset_id'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      type
-    ].freeze
-    DECODERS = {
-      type: lambda do |value|
-        ::OctridevGithub::RepositoryRuleLicenseComplianceScanningType.from_value(value)
-      end,
-      ruleset_source_type: lambda do |value|
-        ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalRepositoryRuleDetailedVariant20Metadata
+  FIELDS = {
+    type: "type",
+    ruleset_source_type: "ruleset_source_type",
+    ruleset_source: "ruleset_source",
+    ruleset_id: "ruleset_id",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    type
+  ].freeze
+  DECODERS = {
+    type: lambda do |value|
+      ::OctridevGithub::RepositoryRuleLicenseComplianceScanningType.from_value(value)
+    end,
+    ruleset_source_type: lambda do |value|
+      ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for RepositoryRuleDetailedVariant20.
+class RepositoryRuleDetailedVariant20
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalRepositoryRuleDetailedVariant20Metadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalRepositoryRuleDetailedVariant20Metadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalRepositoryRuleDetailedVariant20Metadata::DECODERS
+
+  # @return [RepositoryRuleLicenseComplianceScanningType] Required enumerated value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
+  attr_reader :ruleset_source_type
+  # @return [String] The name of the source of the ruleset that includes this rule.
+  attr_reader :ruleset_source
+  # @return [Integer] The ID of the ruleset that includes this rule.
+  attr_reader :ruleset_id
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for RepositoryRuleDetailedVariant20.
-  class RepositoryRuleDetailedVariant20
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalRepositoryRuleDetailedVariant20Metadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalRepositoryRuleDetailedVariant20Metadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalRepositoryRuleDetailedVariant20Metadata::DECODERS
-
-    # @return [RepositoryRuleLicenseComplianceScanningType] Required enumerated value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
-    attr_reader :ruleset_source_type
-    # @return [String] The name of the source of the ruleset that includes this rule.
-    attr_reader :ruleset_source
-    # @return [Integer] The ID of the ruleset that includes this rule.
-    attr_reader :ruleset_id
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalRepositoryRuleDetailedVariant21Metadata
-    FIELDS = {
-      type: 'type',
-      parameters: 'parameters',
-      ruleset_source_type: 'ruleset_source_type',
-      ruleset_source: 'ruleset_source',
-      ruleset_id: 'ruleset_id'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      type
-    ].freeze
-    DECODERS = {
-      type: lambda do |value|
-        ::OctridevGithub::RepositoryRuleFilePathRestrictionType.from_value(value)
-      end,
-      parameters: lambda do |value|
-        ::OctridevGithub::RepositoryRuleFilePathRestrictionParameters.from_hash(value)
-      end,
-      ruleset_source_type: lambda do |value|
-        ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalRepositoryRuleDetailedVariant21Metadata
+  FIELDS = {
+    type: "type",
+    parameters: "parameters",
+    ruleset_source_type: "ruleset_source_type",
+    ruleset_source: "ruleset_source",
+    ruleset_id: "ruleset_id",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    type
+  ].freeze
+  DECODERS = {
+    type: lambda do |value|
+      ::OctridevGithub::RepositoryRuleFilePathRestrictionType.from_value(value)
+    end,
+    parameters: lambda do |value|
+      ::OctridevGithub::RepositoryRuleFilePathRestrictionParameters.from_hash(value)
+    end,
+    ruleset_source_type: lambda do |value|
+      ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for RepositoryRuleDetailedVariant21.
+class RepositoryRuleDetailedVariant21
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalRepositoryRuleDetailedVariant21Metadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalRepositoryRuleDetailedVariant21Metadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalRepositoryRuleDetailedVariant21Metadata::DECODERS
+
+  # @return [RepositoryRuleFilePathRestrictionType] Required enumerated value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [RepositoryRuleFilePathRestrictionParameters] Optional object value serialized in the `parameters` wire field.
+  attr_reader :parameters
+  # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
+  attr_reader :ruleset_source_type
+  # @return [String] The name of the source of the ruleset that includes this rule.
+  attr_reader :ruleset_source
+  # @return [Integer] The ID of the ruleset that includes this rule.
+  attr_reader :ruleset_id
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for RepositoryRuleDetailedVariant21.
-  class RepositoryRuleDetailedVariant21
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalRepositoryRuleDetailedVariant21Metadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalRepositoryRuleDetailedVariant21Metadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalRepositoryRuleDetailedVariant21Metadata::DECODERS
-
-    # @return [RepositoryRuleFilePathRestrictionType] Required enumerated value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [RepositoryRuleFilePathRestrictionParameters] Optional object value serialized in the `parameters` wire field.
-    attr_reader :parameters
-    # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
-    attr_reader :ruleset_source_type
-    # @return [String] The name of the source of the ruleset that includes this rule.
-    attr_reader :ruleset_source
-    # @return [Integer] The ID of the ruleset that includes this rule.
-    attr_reader :ruleset_id
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalRepositoryRuleDetailedVariant22Metadata
-    FIELDS = {
-      type: 'type',
-      parameters: 'parameters',
-      ruleset_source_type: 'ruleset_source_type',
-      ruleset_source: 'ruleset_source',
-      ruleset_id: 'ruleset_id'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      type
-    ].freeze
-    DECODERS = {
-      type: lambda do |value|
-        ::OctridevGithub::RepositoryRuleMaxFilePathLengthType.from_value(value)
-      end,
-      parameters: lambda do |value|
-        ::OctridevGithub::RepositoryRuleMaxFilePathLengthParameters.from_hash(value)
-      end,
-      ruleset_source_type: lambda do |value|
-        ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalRepositoryRuleDetailedVariant22Metadata
+  FIELDS = {
+    type: "type",
+    parameters: "parameters",
+    ruleset_source_type: "ruleset_source_type",
+    ruleset_source: "ruleset_source",
+    ruleset_id: "ruleset_id",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    type
+  ].freeze
+  DECODERS = {
+    type: lambda do |value|
+      ::OctridevGithub::RepositoryRuleMaxFilePathLengthType.from_value(value)
+    end,
+    parameters: lambda do |value|
+      ::OctridevGithub::RepositoryRuleMaxFilePathLengthParameters.from_hash(value)
+    end,
+    ruleset_source_type: lambda do |value|
+      ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for RepositoryRuleDetailedVariant22.
+class RepositoryRuleDetailedVariant22
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalRepositoryRuleDetailedVariant22Metadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalRepositoryRuleDetailedVariant22Metadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalRepositoryRuleDetailedVariant22Metadata::DECODERS
+
+  # @return [RepositoryRuleMaxFilePathLengthType] Required enumerated value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [RepositoryRuleMaxFilePathLengthParameters] Optional object value serialized in the `parameters` wire field.
+  attr_reader :parameters
+  # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
+  attr_reader :ruleset_source_type
+  # @return [String] The name of the source of the ruleset that includes this rule.
+  attr_reader :ruleset_source
+  # @return [Integer] The ID of the ruleset that includes this rule.
+  attr_reader :ruleset_id
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for RepositoryRuleDetailedVariant22.
-  class RepositoryRuleDetailedVariant22
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalRepositoryRuleDetailedVariant22Metadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalRepositoryRuleDetailedVariant22Metadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalRepositoryRuleDetailedVariant22Metadata::DECODERS
-
-    # @return [RepositoryRuleMaxFilePathLengthType] Required enumerated value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [RepositoryRuleMaxFilePathLengthParameters] Optional object value serialized in the `parameters` wire field.
-    attr_reader :parameters
-    # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
-    attr_reader :ruleset_source_type
-    # @return [String] The name of the source of the ruleset that includes this rule.
-    attr_reader :ruleset_source
-    # @return [Integer] The ID of the ruleset that includes this rule.
-    attr_reader :ruleset_id
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalRepositoryRuleDetailedVariant23Metadata
-    FIELDS = {
-      type: 'type',
-      parameters: 'parameters',
-      ruleset_source_type: 'ruleset_source_type',
-      ruleset_source: 'ruleset_source',
-      ruleset_id: 'ruleset_id'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      type
-    ].freeze
-    DECODERS = {
-      type: lambda do |value|
-        ::OctridevGithub::RepositoryRuleFileExtensionRestrictionType.from_value(value)
-      end,
-      parameters: lambda do |value|
-        ::OctridevGithub::RepositoryRuleFileExtensionRestrictionParameters.from_hash(value)
-      end,
-      ruleset_source_type: lambda do |value|
-        ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalRepositoryRuleDetailedVariant23Metadata
+  FIELDS = {
+    type: "type",
+    parameters: "parameters",
+    ruleset_source_type: "ruleset_source_type",
+    ruleset_source: "ruleset_source",
+    ruleset_id: "ruleset_id",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    type
+  ].freeze
+  DECODERS = {
+    type: lambda do |value|
+      ::OctridevGithub::RepositoryRuleFileExtensionRestrictionType.from_value(value)
+    end,
+    parameters: lambda do |value|
+      ::OctridevGithub::RepositoryRuleFileExtensionRestrictionParameters.from_hash(value)
+    end,
+    ruleset_source_type: lambda do |value|
+      ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for RepositoryRuleDetailedVariant23.
+class RepositoryRuleDetailedVariant23
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalRepositoryRuleDetailedVariant23Metadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalRepositoryRuleDetailedVariant23Metadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalRepositoryRuleDetailedVariant23Metadata::DECODERS
+
+  # @return [RepositoryRuleFileExtensionRestrictionType] Required enumerated value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [RepositoryRuleFileExtensionRestrictionParameters] Optional object value serialized in the `parameters` wire field.
+  attr_reader :parameters
+  # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
+  attr_reader :ruleset_source_type
+  # @return [String] The name of the source of the ruleset that includes this rule.
+  attr_reader :ruleset_source
+  # @return [Integer] The ID of the ruleset that includes this rule.
+  attr_reader :ruleset_id
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for RepositoryRuleDetailedVariant23.
-  class RepositoryRuleDetailedVariant23
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalRepositoryRuleDetailedVariant23Metadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalRepositoryRuleDetailedVariant23Metadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalRepositoryRuleDetailedVariant23Metadata::DECODERS
-
-    # @return [RepositoryRuleFileExtensionRestrictionType] Required enumerated value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [RepositoryRuleFileExtensionRestrictionParameters] Optional object value serialized in the `parameters` wire field.
-    attr_reader :parameters
-    # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
-    attr_reader :ruleset_source_type
-    # @return [String] The name of the source of the ruleset that includes this rule.
-    attr_reader :ruleset_source
-    # @return [Integer] The ID of the ruleset that includes this rule.
-    attr_reader :ruleset_id
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalRepositoryRuleDetailedVariant24Metadata
-    FIELDS = {
-      type: 'type',
-      parameters: 'parameters',
-      ruleset_source_type: 'ruleset_source_type',
-      ruleset_source: 'ruleset_source',
-      ruleset_id: 'ruleset_id'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      type
-    ].freeze
-    DECODERS = {
-      type: lambda do |value|
-        ::OctridevGithub::RepositoryRuleMaxFileSizeType.from_value(value)
-      end,
-      parameters: lambda do |value|
-        ::OctridevGithub::RepositoryRuleMaxFileSizeParameters.from_hash(value)
-      end,
-      ruleset_source_type: lambda do |value|
-        ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalRepositoryRuleDetailedVariant24Metadata
+  FIELDS = {
+    type: "type",
+    parameters: "parameters",
+    ruleset_source_type: "ruleset_source_type",
+    ruleset_source: "ruleset_source",
+    ruleset_id: "ruleset_id",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    type
+  ].freeze
+  DECODERS = {
+    type: lambda do |value|
+      ::OctridevGithub::RepositoryRuleMaxFileSizeType.from_value(value)
+    end,
+    parameters: lambda do |value|
+      ::OctridevGithub::RepositoryRuleMaxFileSizeParameters.from_hash(value)
+    end,
+    ruleset_source_type: lambda do |value|
+      ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for RepositoryRuleDetailedVariant24.
+class RepositoryRuleDetailedVariant24
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalRepositoryRuleDetailedVariant24Metadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalRepositoryRuleDetailedVariant24Metadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalRepositoryRuleDetailedVariant24Metadata::DECODERS
+
+  # @return [RepositoryRuleMaxFileSizeType] Required enumerated value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [RepositoryRuleMaxFileSizeParameters] Optional object value serialized in the `parameters` wire field.
+  attr_reader :parameters
+  # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
+  attr_reader :ruleset_source_type
+  # @return [String] The name of the source of the ruleset that includes this rule.
+  attr_reader :ruleset_source
+  # @return [Integer] The ID of the ruleset that includes this rule.
+  attr_reader :ruleset_id
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for RepositoryRuleDetailedVariant24.
-  class RepositoryRuleDetailedVariant24
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalRepositoryRuleDetailedVariant24Metadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalRepositoryRuleDetailedVariant24Metadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalRepositoryRuleDetailedVariant24Metadata::DECODERS
-
-    # @return [RepositoryRuleMaxFileSizeType] Required enumerated value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [RepositoryRuleMaxFileSizeParameters] Optional object value serialized in the `parameters` wire field.
-    attr_reader :parameters
-    # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
-    attr_reader :ruleset_source_type
-    # @return [String] The name of the source of the ruleset that includes this rule.
-    attr_reader :ruleset_source
-    # @return [Integer] The ID of the ruleset that includes this rule.
-    attr_reader :ruleset_id
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the RepositoryRuleDetailed SDK namespace.
-  module RepositoryRuleDetailed
-    DISCRIMINATOR_MAPPING = {
-      'creation' => -> { RepositoryRuleDetailedVariant0 },
-      'update' => -> { RepositoryRuleDetailedVariant1 },
-      'deletion' => -> { RepositoryRuleDetailedVariant2 },
-      'required_linear_history' => -> { RepositoryRuleDetailedVariant3 },
-      'merge_queue' => -> { RepositoryRuleDetailedVariant4 },
-      'required_deployments' => -> { RepositoryRuleDetailedVariant5 },
-      'required_signatures' => -> { RepositoryRuleDetailedVariant6 },
-      'pull_request' => -> { RepositoryRuleDetailedVariant7 },
-      'required_status_checks' => -> { RepositoryRuleDetailedVariant8 },
-      'non_fast_forward' => -> { RepositoryRuleDetailedVariant9 },
-      'commit_message_pattern' => -> { RepositoryRuleDetailedVariant10 },
-      'commit_author_email_pattern' => -> { RepositoryRuleDetailedVariant11 },
-      'committer_email_pattern' => -> { RepositoryRuleDetailedVariant12 },
-      'branch_name_pattern' => -> { RepositoryRuleDetailedVariant13 },
-      'tag_name_pattern' => -> { RepositoryRuleDetailedVariant14 },
-      'workflows' => -> { RepositoryRuleDetailedVariant15 },
-      'code_scanning' => -> { RepositoryRuleDetailedVariant16 },
-      'code_quality' => -> { RepositoryRuleDetailedVariant17 },
-      'code_coverage' => -> { RepositoryRuleDetailedVariant18 },
-      'copilot_code_review' => -> { RepositoryRuleDetailedVariant19 },
-      'license_compliance_scanning' => -> { RepositoryRuleDetailedVariant20 },
-      'file_path_restriction' => -> { RepositoryRuleDetailedVariant21 },
-      'max_file_path_length' => -> { RepositoryRuleDetailedVariant22 },
-      'file_extension_restriction' => -> { RepositoryRuleDetailedVariant23 },
-      'max_file_size' => -> { RepositoryRuleDetailedVariant24 }
-    }.freeze
-    UNDECIDED_VARIANTS = [
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Defines the RepositoryRuleDetailed SDK namespace.
+module RepositoryRuleDetailed
+  DISCRIMINATOR_MAPPING = {
+    "creation" => -> { RepositoryRuleDetailedVariant0 },
+    "update" => -> { RepositoryRuleDetailedVariant1 },
+    "deletion" => -> { RepositoryRuleDetailedVariant2 },
+    "required_linear_history" => -> { RepositoryRuleDetailedVariant3 },
+    "merge_queue" => -> { RepositoryRuleDetailedVariant4 },
+    "required_deployments" => -> { RepositoryRuleDetailedVariant5 },
+    "required_signatures" => -> { RepositoryRuleDetailedVariant6 },
+    "pull_request" => -> { RepositoryRuleDetailedVariant7 },
+    "required_status_checks" => -> { RepositoryRuleDetailedVariant8 },
+    "non_fast_forward" => -> { RepositoryRuleDetailedVariant9 },
+    "commit_message_pattern" => -> { RepositoryRuleDetailedVariant10 },
+    "commit_author_email_pattern" => -> { RepositoryRuleDetailedVariant11 },
+    "committer_email_pattern" => -> { RepositoryRuleDetailedVariant12 },
+    "branch_name_pattern" => -> { RepositoryRuleDetailedVariant13 },
+    "tag_name_pattern" => -> { RepositoryRuleDetailedVariant14 },
+    "workflows" => -> { RepositoryRuleDetailedVariant15 },
+    "code_scanning" => -> { RepositoryRuleDetailedVariant16 },
+    "code_quality" => -> { RepositoryRuleDetailedVariant17 },
+    "code_coverage" => -> { RepositoryRuleDetailedVariant18 },
+    "copilot_code_review" => -> { RepositoryRuleDetailedVariant19 },
+    "license_compliance_scanning" => -> { RepositoryRuleDetailedVariant20 },
+    "file_path_restriction" => -> { RepositoryRuleDetailedVariant21 },
+    "max_file_path_length" => -> { RepositoryRuleDetailedVariant22 },
+    "file_extension_restriction" => -> { RepositoryRuleDetailedVariant23 },
+    "max_file_size" => -> { RepositoryRuleDetailedVariant24 },
+  }.freeze
+  UNDECIDED_VARIANTS = (
+    [
       -> { RepositoryRuleDetailedVariant0 },
       -> { RepositoryRuleDetailedVariant1 },
       -> { RepositoryRuleDetailedVariant2 },
@@ -509,167 +510,168 @@ module OctridevGithub
       -> { RepositoryRuleDetailedVariant21 },
       -> { RepositoryRuleDetailedVariant22 },
       -> { RepositoryRuleDetailedVariant23 },
-      -> { RepositoryRuleDetailedVariant24 }
-    ].freeze
+      -> { RepositoryRuleDetailedVariant24 },
+    ]
+  ).freeze
 
-    def self.from_hash(hash)
-      return hash unless hash.is_a?(::Hash)
+  def self.from_hash(hash)
+    return hash unless hash.is_a?(::Hash)
+    type = DISCRIMINATOR_MAPPING[hash["type"]]&.call
+    return type.from_hash(hash) if type
 
-      type = DISCRIMINATOR_MAPPING[hash['type']]&.call
-      return type.from_hash(hash) if type
+    raise SdkValidationError.new('RepositoryRuleDetailed', 'variant', "Unknown RepositoryRuleDetailed discriminator: #{hash["type"].inspect}")
+  end
+end
 
-      raise SdkValidationError.new('RepositoryRuleDetailed', 'variant', "Unknown RepositoryRuleDetailed discriminator: #{hash['type'].inspect}")
-    end
+# Internal model hydration metadata.
+class SdkInternalRepositoryRuleFileExtensionRestrictionParametersMetadata
+  FIELDS = {
+    restricted_file_extensions: "restricted_file_extensions",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    restricted_file_extensions
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for RepositoryRuleFileExtensionRestrictionParameters.
+# Optional object value serialized in the `parameters` wire field.
+class RepositoryRuleFileExtensionRestrictionParameters
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalRepositoryRuleFileExtensionRestrictionParametersMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalRepositoryRuleFileExtensionRestrictionParametersMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalRepositoryRuleFileExtensionRestrictionParametersMetadata::DECODERS
+
+  # @return [Array_of_String] The file extensions that are restricted from being pushed to the commit graph.
+  attr_reader :restricted_file_extensions
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalRepositoryRuleFileExtensionRestrictionParametersMetadata
-    FIELDS = {
-      restricted_file_extensions: 'restricted_file_extensions'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      restricted_file_extensions
-    ].freeze
-    DECODERS = {}.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for RepositoryRuleFileExtensionRestrictionParameters.
-  # Optional object value serialized in the `parameters` wire field.
-  class RepositoryRuleFileExtensionRestrictionParameters
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalRepositoryRuleFileExtensionRestrictionParametersMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalRepositoryRuleFileExtensionRestrictionParametersMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalRepositoryRuleFileExtensionRestrictionParametersMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [Array_of_String] The file extensions that are restricted from being pushed to the commit graph.
-    attr_reader :restricted_file_extensions
+# Internal model hydration metadata.
+class SdkInternalRepositoryRuleFileExtensionRestrictionMetadata
+  FIELDS = {
+    type: "type",
+    parameters: "parameters",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    type
+  ].freeze
+  DECODERS = {
+    type: lambda do |value|
+      ::OctridevGithub::RepositoryRuleFileExtensionRestrictionType.from_value(value)
+    end,
+    parameters: lambda do |value|
+      ::OctridevGithub::RepositoryRuleFileExtensionRestrictionParameters.from_hash(value)
+    end,
+  }.freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for RepositoryRuleFileExtensionRestriction.
+# Prevent commits that include files with specified file extensions from being pushed to the commit graph.
+class RepositoryRuleFileExtensionRestriction
+  include RepositoryRule
+  include OrgRules
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalRepositoryRuleFileExtensionRestrictionMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalRepositoryRuleFileExtensionRestrictionMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalRepositoryRuleFileExtensionRestrictionMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+  # @return [RepositoryRuleFileExtensionRestrictionType] Required enumerated value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [RepositoryRuleFileExtensionRestrictionParameters] Optional object value serialized in the `parameters` wire field.
+  attr_reader :parameters
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalRepositoryRuleFileExtensionRestrictionMetadata
-    FIELDS = {
-      type: 'type',
-      parameters: 'parameters'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      type
-    ].freeze
-    DECODERS = {
-      type: lambda do |value|
-        ::OctridevGithub::RepositoryRuleFileExtensionRestrictionType.from_value(value)
-      end,
-      parameters: lambda do |value|
-        ::OctridevGithub::RepositoryRuleFileExtensionRestrictionParameters.from_hash(value)
-      end
-    }.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for RepositoryRuleFileExtensionRestriction.
-  # Prevent commits that include files with specified file extensions from being pushed to the commit graph.
-  class RepositoryRuleFileExtensionRestriction
-    include RepositoryRule
-    include OrgRules
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalRepositoryRuleFileExtensionRestrictionMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalRepositoryRuleFileExtensionRestrictionMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalRepositoryRuleFileExtensionRestrictionMetadata::DECODERS
+# Defines the RepositoryRuleFileExtensionRestrictionType SDK namespace.
+module RepositoryRuleFileExtensionRestrictionType
+  FILE_EXTENSION_RESTRICTION = 'file_extension_restriction'
+  VALUES = ['file_extension_restriction'].freeze
+  def self.from_value(value)
+    return value if VALUES.include?(value)
 
-    # @return [RepositoryRuleFileExtensionRestrictionType] Required enumerated value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [RepositoryRuleFileExtensionRestrictionParameters] Optional object value serialized in the `parameters` wire field.
-    attr_reader :parameters
+    raise SdkValidationError.new('RepositoryRuleFileExtensionRestrictionType', 'enum', "Unknown RepositoryRuleFileExtensionRestrictionType: #{value}")
+  end
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# Internal model hydration metadata.
+class SdkInternalRepositoryRuleFilePathRestrictionParametersMetadata
+  FIELDS = {
+    restricted_file_paths: "restricted_file_paths",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    restricted_file_paths
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+# API model for RepositoryRuleFilePathRestrictionParameters.
+# Optional object value serialized in the `parameters` wire field.
+class RepositoryRuleFilePathRestrictionParameters
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalRepositoryRuleFilePathRestrictionParametersMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalRepositoryRuleFilePathRestrictionParametersMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalRepositoryRuleFilePathRestrictionParametersMetadata::DECODERS
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  # @return [Array_of_String] The file paths that are restricted from being pushed to the commit graph.
+  attr_reader :restricted_file_paths
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the RepositoryRuleFileExtensionRestrictionType SDK namespace.
-  module RepositoryRuleFileExtensionRestrictionType
-    FILE_EXTENSION_RESTRICTION = 'file_extension_restriction'
-    VALUES = ['file_extension_restriction'].freeze
-    def self.from_value(value)
-      return value if VALUES.include?(value)
-
-      raise SdkValidationError.new('RepositoryRuleFileExtensionRestrictionType', 'enum', "Unknown RepositoryRuleFileExtensionRestrictionType: #{value}")
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalRepositoryRuleFilePathRestrictionParametersMetadata
-    FIELDS = {
-      restricted_file_paths: 'restricted_file_paths'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      restricted_file_paths
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
 
-  # API model for RepositoryRuleFilePathRestrictionParameters.
-  # Optional object value serialized in the `parameters` wire field.
-  class RepositoryRuleFilePathRestrictionParameters
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalRepositoryRuleFilePathRestrictionParametersMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalRepositoryRuleFilePathRestrictionParametersMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalRepositoryRuleFilePathRestrictionParametersMetadata::DECODERS
-
-    # @return [Array_of_String] The file paths that are restricted from being pushed to the commit graph.
-    attr_reader :restricted_file_paths
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
-  end
-
-  # Internal model hydration metadata.
-  class SdkInternalRepositoryRuleFilePathRestrictionMetadata
-    FIELDS = {
-      type: 'type',
-      parameters: 'parameters'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      type
-    ].freeze
-    DECODERS = {
-      type: lambda do |value|
-        ::OctridevGithub::RepositoryRuleFilePathRestrictionType.from_value(value)
-      end,
-      parameters: lambda do |value|
-        ::OctridevGithub::RepositoryRuleFilePathRestrictionParameters.from_hash(value)
-      end
-    }.freeze
-  end
+# Internal model hydration metadata.
+class SdkInternalRepositoryRuleFilePathRestrictionMetadata
+  FIELDS = {
+    type: "type",
+    parameters: "parameters",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    type
+  ].freeze
+  DECODERS = {
+    type: lambda do |value|
+      ::OctridevGithub::RepositoryRuleFilePathRestrictionType.from_value(value)
+    end,
+    parameters: lambda do |value|
+      ::OctridevGithub::RepositoryRuleFilePathRestrictionParameters.from_hash(value)
+    end,
+  }.freeze
+end
 end

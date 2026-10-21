@@ -17,17 +17,18 @@ module OctridevGithub
         username:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/user/following/',
+            "/user/following/",
             SdkClient.encode_path_segment(username)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'users_unfollow',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

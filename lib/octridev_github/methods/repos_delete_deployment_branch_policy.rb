@@ -28,22 +28,23 @@ module OctridevGithub
         branch_policy_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/environments/',
+            "/environments/",
             SdkClient.encode_path_segment(environment_name),
-            '/deployment-branch-policies/',
+            "/deployment-branch-policies/",
             SdkClient.encode_path_segment(branch_policy_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_delete_deployment_branch_policy',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

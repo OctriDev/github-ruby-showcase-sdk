@@ -24,14 +24,15 @@ module OctridevGithub
         ref:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/git/matching-refs/',
+            "/git/matching-refs/",
             SdkClient.encode_path_segment(ref)
           ].join,
           config: config,
@@ -39,7 +40,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'git_list_matching_refs',
           request_options: request_options,
-          errors: { '409' => ::OctridevGithub::BasicError }
+          errors: { '409' => ::OctridevGithub::BasicError },
         ).data
       end
     end

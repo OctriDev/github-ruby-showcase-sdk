@@ -35,6 +35,7 @@ module OctridevGithub
         is_archived: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(per_page) { Validation.validate_range('per_page', per_page, min: 1, max: 100) }
 
         Validation.if_given(page) { Validation.validate_range('page', page, min: 1) }
@@ -42,9 +43,9 @@ module OctridevGithub
         SdkClient.request(
           'GET',
           [
-            '/agents/automations/',
+            "/agents/automations/",
             SdkClient.encode_path_segment(automation_id),
-            '/tasks'
+            "/tasks"
           ].join,
           config: config,
           query: {
@@ -53,12 +54,12 @@ module OctridevGithub
             'sort' => QueryValue.new(sort, style: 'form', explode: true),
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'state' => QueryValue.new(state, style: 'form', explode: true),
-            'is_archived' => QueryValue.new(is_archived, style: 'form', explode: true)
+            'is_archived' => QueryValue.new(is_archived, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsListAutomationTasksResponse,
           decoder: :json,
           operation_id: 'agent_automations_list_automation_tasks',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

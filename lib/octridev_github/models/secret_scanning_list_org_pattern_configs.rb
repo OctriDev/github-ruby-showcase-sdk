@@ -5,230 +5,236 @@
 
 # secret_scanning domain models
 module OctridevGithub
-  # Defines the SecretScanningPatternOverrideSetting SDK namespace.
-  module SecretScanningPatternOverrideSetting
-    NOT_SET = 'not-set'
-    DISABLED = 'disabled'
-    ENABLED = 'enabled'
-    VALUES = %w[not-set disabled enabled].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the SecretScanningPatternOverrideSetting SDK namespace.
+module SecretScanningPatternOverrideSetting
+  NOT_SET = 'not-set'
+  DISABLED = 'disabled'
+  ENABLED = 'enabled'
+  VALUES = ['not-set', 'disabled', 'enabled'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalSecretScanningPushProtectionBypassMetadata
+  FIELDS = {
+    reason: "reason",
+    expire_at: "expire_at",
+    token_type: "token_type",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    reason: lambda do |value|
+      ::OctridevGithub::SecretScanningPushProtectionBypassReason.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for SecretScanningPushProtectionBypass.
+# Typed representation of the `SecretScanningPushProtectionBypass` API schema.
+class SecretScanningPushProtectionBypass
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalSecretScanningPushProtectionBypassMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalSecretScanningPushProtectionBypassMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalSecretScanningPushProtectionBypassMetadata::DECODERS
+
+  # @return [SecretScanningPushProtectionBypassReason] The reason for bypassing push protection.
+  attr_reader :reason
+  # @return [String] The time that the bypass will expire in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+  attr_reader :expire_at
+  # @return [String] The token type this bypass is for.
+  attr_reader :token_type
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalSecretScanningPushProtectionBypassMetadata
-    FIELDS = {
-      reason: 'reason',
-      expire_at: 'expire_at',
-      token_type: 'token_type'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      reason: lambda do |value|
-        ::OctridevGithub::SecretScanningPushProtectionBypassReason.from_value(value)
-      end
-    }.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for SecretScanningPushProtectionBypass.
-  # Typed representation of the `SecretScanningPushProtectionBypass` API schema.
-  class SecretScanningPushProtectionBypass
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalSecretScanningPushProtectionBypassMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalSecretScanningPushProtectionBypassMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalSecretScanningPushProtectionBypassMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [SecretScanningPushProtectionBypassReason] The reason for bypassing push protection.
-    attr_reader :reason
-    # @return [String] The time that the bypass will expire in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-    attr_reader :expire_at
-    # @return [String] The token type this bypass is for.
-    attr_reader :token_type
+# Defines the SecretScanningPushProtectionBypassReason SDK namespace.
+module SecretScanningPushProtectionBypassReason
+  FALSE_POSITIVE = 'false_positive'
+  USED_IN_TESTS = 'used_in_tests'
+  WILL_FIX_LATER = 'will_fix_later'
+  VALUES = ['false_positive', 'used_in_tests', 'will_fix_later'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# Defines the SecretScanningRowVersion SDK value decoder.
+module SecretScanningRowVersion
+  def self.from_value(value)
+    value
+  end
+end
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+# Internal model hydration metadata.
+class SdkInternalSecretScanningScanMetadata
+  FIELDS = {
+    type: "type",
+    status: "status",
+    completed_at: "completed_at",
+    started_at: "started_at",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+# API model for SecretScanningScan.
+# Information on a single scan performed by secret scanning on the repository
+class SecretScanningScan
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalSecretScanningScanMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalSecretScanningScanMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalSecretScanningScanMetadata::DECODERS
+
+  # @return [String] The type of scan
+  attr_reader :type
+  # @return [String] The state of the scan. Either "completed", "running", "pending", "failed", or "unknown". "failed": this scan type has hit its retry limit and has been marked permanently failed. This usually resolves on its own at the next scheduled scan attempt. If "failed" persists, contact Support. "unknown": the scan is in an unrecognized or currently unhandled state.
+  attr_reader :status
+  # @return [String] The time that the scan was completed. Empty if the scan is running
+  attr_reader :completed_at
+  # @return [String] The time that the scan was started. Empty if the scan is pending
+  attr_reader :started_at
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Defines the SecretScanningPushProtectionBypassReason SDK namespace.
-  module SecretScanningPushProtectionBypassReason
-    FALSE_POSITIVE = 'false_positive'
-    USED_IN_TESTS = 'used_in_tests'
-    WILL_FIX_LATER = 'will_fix_later'
-    VALUES = %w[false_positive used_in_tests will_fix_later].freeze
-    def self.from_value(value)
-      value
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the SecretScanningRowVersion SDK value decoder.
-  module SecretScanningRowVersion
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalSecretScanningScanHistoryCustomPatternBackfillScansItemMetadata
+  FIELDS = {
+    type: "type",
+    status: "status",
+    completed_at: "completed_at",
+    started_at: "started_at",
+    pattern_name: "pattern_name",
+    pattern_scope: "pattern_scope",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for SecretScanningScanHistoryCustomPatternBackfillScansItem.
+# Required object value serialized in the `custom_pattern_backfill_scans[]` wire field.
+class SecretScanningScanHistoryCustomPatternBackfillScansItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalSecretScanningScanHistoryCustomPatternBackfillScansItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalSecretScanningScanHistoryCustomPatternBackfillScansItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalSecretScanningScanHistoryCustomPatternBackfillScansItemMetadata::DECODERS
+
+  # @return [String] The type of scan
+  attr_reader :type
+  # @return [String] The state of the scan. Either "completed", "running", "pending", "failed", or "unknown". "failed": this scan type has hit its retry limit and has been marked permanently failed. This usually resolves on its own at the next scheduled scan attempt. If "failed" persists, contact Support. "unknown": the scan is in an unrecognized or currently unhandled state.
+  attr_reader :status
+  # @return [String] The time that the scan was completed. Empty if the scan is running
+  attr_reader :completed_at
+  # @return [String] The time that the scan was started. Empty if the scan is pending
+  attr_reader :started_at
+  # @return [String] Name of the custom pattern for custom pattern scans
+  attr_reader :pattern_name
+  # @return [String] Level at which the custom pattern is defined, one of "repository", "organization", or "enterprise"
+  attr_reader :pattern_scope
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalSecretScanningScanMetadata
-    FIELDS = {
-      type: 'type',
-      status: 'status',
-      completed_at: 'completed_at',
-      started_at: 'started_at'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for SecretScanningScan.
-  # Information on a single scan performed by secret scanning on the repository
-  class SecretScanningScan
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalSecretScanningScanMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalSecretScanningScanMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalSecretScanningScanMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [String] The type of scan
-    attr_reader :type
-    # @return [String] The state of the scan. Either "completed", "running", "pending", "failed", or "unknown". "failed": this scan type has hit its retry limit and has been marked permanently failed. This usually resolves on its own at the next scheduled scan attempt. If "failed" persists, contact Support. "unknown": the scan is in an unrecognized or currently unhandled state.
-    attr_reader :status
-    # @return [String] The time that the scan was completed. Empty if the scan is running
-    attr_reader :completed_at
-    # @return [String] The time that the scan was started. Empty if the scan is pending
-    attr_reader :started_at
+# Internal model hydration metadata.
+class SdkInternalSecretScanningScanHistoryMetadata
+  FIELDS = {
+    incremental_scans: "incremental_scans",
+    pattern_update_scans: "pattern_update_scans",
+    backfill_scans: "backfill_scans",
+    custom_pattern_backfill_scans: "custom_pattern_backfill_scans",
+    generic_secrets_backfill_scans: "generic_secrets_backfill_scans",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    incremental_scans: lambda do |value|
+      value&.map { |item| ::OctridevGithub::SecretScanningScan.from_hash(item) }
+    end,
+    pattern_update_scans: lambda do |value|
+      value&.map { |item| ::OctridevGithub::SecretScanningScan.from_hash(item) }
+    end,
+    backfill_scans: lambda do |value|
+      value&.map { |item| ::OctridevGithub::SecretScanningScan.from_hash(item) }
+    end,
+    custom_pattern_backfill_scans: lambda do |value|
+      value&.map { |item| ::OctridevGithub::SecretScanningScanHistoryCustomPatternBackfillScansItem.from_hash(item) }
+    end,
+    generic_secrets_backfill_scans: lambda do |value|
+      value&.map { |item| ::OctridevGithub::SecretScanningScan.from_hash(item) }
+    end,
+  }.freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for SecretScanningScanHistory.
+# Typed representation of the `SecretScanningScanHistory` API schema.
+class SecretScanningScanHistory
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalSecretScanningScanHistoryMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalSecretScanningScanHistoryMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalSecretScanningScanHistoryMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+  # @return [Array_of_SecretScanningScan] Optional array value serialized in the `incremental_scans` wire field.
+  attr_reader :incremental_scans
+  # @return [Array_of_SecretScanningScan] Optional array value serialized in the `pattern_update_scans` wire field.
+  attr_reader :pattern_update_scans
+  # @return [Array_of_SecretScanningScan] Optional array value serialized in the `backfill_scans` wire field.
+  attr_reader :backfill_scans
+  # @return [Array_of_SecretScanningScanHistoryCustomPatternBackfillScansItem] Optional array value serialized in the `custom_pattern_backfill_scans` wire field.
+  attr_reader :custom_pattern_backfill_scans
+  # @return [Array_of_SecretScanningScan] Optional array value serialized in the `generic_secrets_backfill_scans` wire field.
+  attr_reader :generic_secrets_backfill_scans
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalSecretScanningScanHistoryCustomPatternBackfillScansItemMetadata
-    FIELDS = {
-      type: 'type',
-      status: 'status',
-      completed_at: 'completed_at',
-      started_at: 'started_at',
-      pattern_name: 'pattern_name',
-      pattern_scope: 'pattern_scope'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for SecretScanningScanHistoryCustomPatternBackfillScansItem.
-  # Required object value serialized in the `custom_pattern_backfill_scans[]` wire field.
-  class SecretScanningScanHistoryCustomPatternBackfillScansItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalSecretScanningScanHistoryCustomPatternBackfillScansItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalSecretScanningScanHistoryCustomPatternBackfillScansItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalSecretScanningScanHistoryCustomPatternBackfillScansItemMetadata::DECODERS
-
-    # @return [String] The type of scan
-    attr_reader :type
-    # @return [String] The state of the scan. Either "completed", "running", "pending", "failed", or "unknown". "failed": this scan type has hit its retry limit and has been marked permanently failed. This usually resolves on its own at the next scheduled scan attempt. If "failed" persists, contact Support. "unknown": the scan is in an unrecognized or currently unhandled state.
-    attr_reader :status
-    # @return [String] The time that the scan was completed. Empty if the scan is running
-    attr_reader :completed_at
-    # @return [String] The time that the scan was started. Empty if the scan is pending
-    attr_reader :started_at
-    # @return [String] Name of the custom pattern for custom pattern scans
-    attr_reader :pattern_name
-    # @return [String] Level at which the custom pattern is defined, one of "repository", "organization", or "enterprise"
-    attr_reader :pattern_scope
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
-
-  # Internal model hydration metadata.
-  class SdkInternalSecretScanningScanHistoryMetadata
-    FIELDS = {
-      incremental_scans: 'incremental_scans',
-      pattern_update_scans: 'pattern_update_scans',
-      backfill_scans: 'backfill_scans',
-      custom_pattern_backfill_scans: 'custom_pattern_backfill_scans',
-      generic_secrets_backfill_scans: 'generic_secrets_backfill_scans'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      incremental_scans: lambda do |value|
-        value&.map { |item| ::OctridevGithub::SecretScanningScan.from_hash(item) }
-      end,
-      pattern_update_scans: lambda do |value|
-        value&.map { |item| ::OctridevGithub::SecretScanningScan.from_hash(item) }
-      end,
-      backfill_scans: lambda do |value|
-        value&.map { |item| ::OctridevGithub::SecretScanningScan.from_hash(item) }
-      end,
-      custom_pattern_backfill_scans: lambda do |value|
-        value&.map { |item| ::OctridevGithub::SecretScanningScanHistoryCustomPatternBackfillScansItem.from_hash(item) }
-      end,
-      generic_secrets_backfill_scans: lambda do |value|
-        value&.map { |item| ::OctridevGithub::SecretScanningScan.from_hash(item) }
-      end
-    }.freeze
-  end
-
-  # API model for SecretScanningScanHistory.
-  # Typed representation of the `SecretScanningScanHistory` API schema.
-  class SecretScanningScanHistory
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalSecretScanningScanHistoryMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalSecretScanningScanHistoryMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalSecretScanningScanHistoryMetadata::DECODERS
-
-    # @return [Array_of_SecretScanningScan] Optional array value serialized in the `incremental_scans` wire field.
-    attr_reader :incremental_scans
-    # @return [Array_of_SecretScanningScan] Optional array value serialized in the `pattern_update_scans` wire field.
-    attr_reader :pattern_update_scans
-    # @return [Array_of_SecretScanningScan] Optional array value serialized in the `backfill_scans` wire field.
-    attr_reader :backfill_scans
-    # @return [Array_of_SecretScanningScanHistoryCustomPatternBackfillScansItem] Optional array value serialized in the `custom_pattern_backfill_scans` wire field.
-    attr_reader :custom_pattern_backfill_scans
-    # @return [Array_of_SecretScanningScan] Optional array value serialized in the `generic_secrets_backfill_scans` wire field.
-    attr_reader :generic_secrets_backfill_scans
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
-  end
+end
 end

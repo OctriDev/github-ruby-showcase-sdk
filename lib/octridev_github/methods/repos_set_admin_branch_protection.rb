@@ -24,22 +24,23 @@ module OctridevGithub
         branch:,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/branches/',
+            "/branches/",
             SdkClient.encode_path_segment(branch),
-            '/protection/enforce_admins'
+            "/protection/enforce_admins"
           ].join,
           config: config,
           return_type: ::OctridevGithub::ProtectedBranchAdminEnforced,
           decoder: :json,
           operation_id: 'repos_set_admin_branch_protection',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

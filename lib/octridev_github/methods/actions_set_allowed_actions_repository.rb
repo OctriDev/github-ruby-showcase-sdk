@@ -35,24 +35,25 @@ module OctridevGithub
         patterns_allowed: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/actions/permissions/selected-actions'
+            "/actions/permissions/selected-actions"
           ].join,
           config: config,
           body: {
             'github_owned_allowed' => github_owned_allowed,
             'verified_allowed' => verified_allowed,
-            'patterns_allowed' => patterns_allowed
+            'patterns_allowed' => patterns_allowed,
           },
           decoder: :empty,
           operation_id: 'actions_set_allowed_actions_repository',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

@@ -25,24 +25,25 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/teams/',
+            "/teams/",
             SdkClient.encode_path_segment(team_slug),
-            '/invitations'
+            "/invitations"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::OrganizationInvitation],
           decoder: :json,
           operation_id: 'teams_list_pending_invitations_in_org',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -62,22 +63,23 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/teams/',
+            "/teams/",
             SdkClient.encode_path_segment(team_id),
-            '/invitations'
+            "/invitations"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::OrganizationInvitation],
           decoder: :json,
           operation_id: 'teams_list_pending_invitations_legacy',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

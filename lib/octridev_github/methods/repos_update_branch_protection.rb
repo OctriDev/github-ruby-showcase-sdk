@@ -79,16 +79,17 @@ module OctridevGithub
         allow_fork_syncing: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/branches/',
+            "/branches/",
             SdkClient.encode_path_segment(branch),
-            '/protection'
+            "/protection"
           ].join,
           config: config,
           body: {
@@ -102,13 +103,13 @@ module OctridevGithub
             'block_creations' => block_creations,
             'required_conversation_resolution' => required_conversation_resolution,
             'lock_branch' => lock_branch,
-            'allow_fork_syncing' => allow_fork_syncing
+            'allow_fork_syncing' => allow_fork_syncing,
           },
           return_type: ::OctridevGithub::ProtectedBranch,
           decoder: :json,
           operation_id: 'repos_update_branch_protection',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple },
         ).data
       end
     end

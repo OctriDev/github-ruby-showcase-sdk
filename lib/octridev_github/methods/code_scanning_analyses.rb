@@ -53,14 +53,15 @@ module OctridevGithub
         sort: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/code-scanning/analyses'
+            "/code-scanning/analyses"
           ].join,
           config: config,
           query: {
@@ -72,13 +73,13 @@ module OctridevGithub
             'ref' => QueryValue.new(ref, style: 'form', explode: true),
             'sarif_id' => QueryValue.new(sarif_id, style: 'form', explode: true),
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
-            'sort' => QueryValue.new(sort, style: 'form', explode: true)
+            'sort' => QueryValue.new(sort, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::CodeScanningAnalysis],
           decoder: :json,
           operation_id: 'code_scanning_list_recent_analyses',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -97,14 +98,15 @@ module OctridevGithub
         analysis_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/code-scanning/analyses/',
+            "/code-scanning/analyses/",
             SdkClient.encode_path_segment(analysis_id)
           ].join,
           config: config,
@@ -112,7 +114,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'code_scanning_get_analysis',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -137,25 +139,26 @@ module OctridevGithub
         confirm_delete: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/code-scanning/analyses/',
+            "/code-scanning/analyses/",
             SdkClient.encode_path_segment(analysis_id)
           ].join,
           config: config,
           query: {
-            'confirm_delete' => QueryValue.new(confirm_delete, style: 'form', explode: true)
+            'confirm_delete' => QueryValue.new(confirm_delete, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::CodeScanningAnalysisDeletion,
           decoder: :json,
           operation_id: 'code_scanning_delete_analysis',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
     end

@@ -17,10 +17,11 @@ module OctridevGithub
         org:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org)
           ].join,
           config: config,
@@ -28,7 +29,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'orgs_get',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -184,21 +185,21 @@ module OctridevGithub
         deploy_keys_enabled_for_repositories: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org)
           ].join,
           config: config,
           body: __sdk_body_orgs_update_part1(billing_email: billing_email, company: company, email: email, twitter_username: twitter_username, location: location, name: name, description: description, has_organization_projects: has_organization_projects, has_repository_projects: has_repository_projects, default_repository_permission: default_repository_permission, members_can_create_repositories: members_can_create_repositories, members_can_create_internal_repositories: members_can_create_internal_repositories, members_can_create_private_repositories: members_can_create_private_repositories, members_can_create_public_repositories: members_can_create_public_repositories, members_allowed_repository_creation_type: members_allowed_repository_creation_type, members_can_create_pages: members_can_create_pages, members_can_create_public_pages: members_can_create_public_pages, members_can_create_private_pages: members_can_create_private_pages).merge(
-            __sdk_body_orgs_update_part2(members_can_fork_private_repositories: members_can_fork_private_repositories, web_commit_signoff_required: web_commit_signoff_required, blog: blog, advanced_security_enabled_for_new_repositories: advanced_security_enabled_for_new_repositories, dependabot_alerts_enabled_for_new_repositories: dependabot_alerts_enabled_for_new_repositories, dependabot_security_updates_enabled_for_new_repositories: dependabot_security_updates_enabled_for_new_repositories, dependency_graph_enabled_for_new_repositories: dependency_graph_enabled_for_new_repositories, secret_scanning_enabled_for_new_repositories: secret_scanning_enabled_for_new_repositories, secret_scanning_push_protection_enabled_for_new_repositories: secret_scanning_push_protection_enabled_for_new_repositories, secret_scanning_push_protection_custom_link_enabled: secret_scanning_push_protection_custom_link_enabled, secret_scanning_push_protection_custom_link: secret_scanning_push_protection_custom_link, deploy_keys_enabled_for_repositories: deploy_keys_enabled_for_repositories)
-          ),
+            __sdk_body_orgs_update_part2(members_can_fork_private_repositories: members_can_fork_private_repositories, web_commit_signoff_required: web_commit_signoff_required, blog: blog, advanced_security_enabled_for_new_repositories: advanced_security_enabled_for_new_repositories, dependabot_alerts_enabled_for_new_repositories: dependabot_alerts_enabled_for_new_repositories, dependabot_security_updates_enabled_for_new_repositories: dependabot_security_updates_enabled_for_new_repositories, dependency_graph_enabled_for_new_repositories: dependency_graph_enabled_for_new_repositories, secret_scanning_enabled_for_new_repositories: secret_scanning_enabled_for_new_repositories, secret_scanning_push_protection_enabled_for_new_repositories: secret_scanning_push_protection_enabled_for_new_repositories, secret_scanning_push_protection_custom_link_enabled: secret_scanning_push_protection_custom_link_enabled, secret_scanning_push_protection_custom_link: secret_scanning_push_protection_custom_link, deploy_keys_enabled_for_repositories: deploy_keys_enabled_for_repositories)),
           return_type: ::OctridevGithub::OrganizationFull,
           decoder: :json,
           operation_id: 'orgs_update',
           request_options: request_options,
-          errors: { '409' => ::OctridevGithub::BasicError }
+          errors: { '409' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -240,7 +241,7 @@ module OctridevGithub
           'members_allowed_repository_creation_type' => members_allowed_repository_creation_type,
           'members_can_create_pages' => members_can_create_pages,
           'members_can_create_public_pages' => members_can_create_public_pages,
-          'members_can_create_private_pages' => members_can_create_private_pages
+          'members_can_create_private_pages' => members_can_create_private_pages,
         }
       end
       private_class_method :__sdk_body_orgs_update_part1
@@ -271,7 +272,7 @@ module OctridevGithub
           'secret_scanning_push_protection_enabled_for_new_repositories' => secret_scanning_push_protection_enabled_for_new_repositories,
           'secret_scanning_push_protection_custom_link_enabled' => secret_scanning_push_protection_custom_link_enabled,
           'secret_scanning_push_protection_custom_link' => secret_scanning_push_protection_custom_link,
-          'deploy_keys_enabled_for_repositories' => deploy_keys_enabled_for_repositories
+          'deploy_keys_enabled_for_repositories' => deploy_keys_enabled_for_repositories,
         }
       end
       private_class_method :__sdk_body_orgs_update_part2
@@ -284,17 +285,18 @@ module OctridevGithub
         org:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org)
           ].join,
           config: config,
           decoder: :json,
           operation_id: 'orgs_delete',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -325,23 +327,24 @@ module OctridevGithub
         query_suite: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/',
+            "/",
             SdkClient.encode_path_segment(security_product),
-            '/',
+            "/",
             SdkClient.encode_path_segment(enablement)
           ].join,
           config: config,
           body: {
-            'query_suite' => query_suite
+            'query_suite' => query_suite,
           },
           decoder: :empty,
           operation_id: 'orgs_enable_or_disable_security_product_on_all_org_repos',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -361,20 +364,21 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
-          '/user/memberships/orgs',
+          "/user/memberships/orgs",
           config: config,
           query: {
             'state' => QueryValue.new(state, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::OrgMembership],
           decoder: :json,
           operation_id: 'orgs_list_memberships_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -386,10 +390,11 @@ module OctridevGithub
         org:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/user/memberships/orgs/',
+            "/user/memberships/orgs/",
             SdkClient.encode_path_segment(org)
           ].join,
           config: config,
@@ -397,7 +402,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'orgs_get_membership_for_authenticated_user',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -412,21 +417,22 @@ module OctridevGithub
         state:,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/user/memberships/orgs/',
+            "/user/memberships/orgs/",
             SdkClient.encode_path_segment(org)
           ].join,
           config: config,
           body: {
-            'state' => state
+            'state' => state,
           },
           return_type: ::OctridevGithub::OrgMembership,
           decoder: :json,
           operation_id: 'orgs_update_membership_for_authenticated_user',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -442,19 +448,20 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
-          '/user/orgs',
+          "/user/orgs",
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::OrganizationSimple],
           decoder: :json,
           operation_id: 'orgs_list_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -472,22 +479,23 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/users/',
+            "/users/",
             SdkClient.encode_path_segment(username),
-            '/orgs'
+            "/orgs"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::OrganizationSimple],
           decoder: :json,
           operation_id: 'orgs_list_for_user',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

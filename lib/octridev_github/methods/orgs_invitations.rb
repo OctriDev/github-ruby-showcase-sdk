@@ -29,25 +29,26 @@ module OctridevGithub
         invitation_source: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/invitations'
+            "/invitations"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'page' => QueryValue.new(page, style: 'form', explode: true),
             'role' => QueryValue.new(role, style: 'form', explode: true),
-            'invitation_source' => QueryValue.new(invitation_source, style: 'form', explode: true)
+            'invitation_source' => QueryValue.new(invitation_source, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::OrganizationInvitation],
           decoder: :json,
           operation_id: 'orgs_list_pending_invitations',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -78,25 +79,26 @@ module OctridevGithub
         team_ids: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/invitations'
+            "/invitations"
           ].join,
           config: config,
           body: {
             'invitee_id' => invitee_id,
             'email' => email,
             'role' => role,
-            'team_ids' => team_ids
+            'team_ids' => team_ids,
           },
           return_type: ::OctridevGithub::OrganizationInvitation,
           decoder: :json,
           operation_id: 'orgs_create_invitation',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -110,19 +112,20 @@ module OctridevGithub
         invitation_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/invitations/',
+            "/invitations/",
             SdkClient.encode_path_segment(invitation_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'orgs_cancel_invitation',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -142,25 +145,26 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/invitations/',
+            "/invitations/",
             SdkClient.encode_path_segment(invitation_id),
-            '/teams'
+            "/teams"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::Team],
           decoder: :json,
           operation_id: 'orgs_list_invitation_teams',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

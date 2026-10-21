@@ -5,665 +5,669 @@
 
 # webhook_check_suite_completed domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalWebhookCheckSuiteCompletedCheckSuiteAppOwnerMetadata
-    FIELDS = {
-      avatar_url: 'avatar_url',
-      deleted: 'deleted',
-      email: 'email',
-      events_url: 'events_url',
-      followers_url: 'followers_url',
-      following_url: 'following_url',
-      gists_url: 'gists_url',
-      gravatar_id: 'gravatar_id',
-      html_url: 'html_url',
-      id: 'id',
-      login: 'login',
-      name: 'name',
-      node_id: 'node_id',
-      organizations_url: 'organizations_url',
-      received_events_url: 'received_events_url',
-      repos_url: 'repos_url',
-      site_admin: 'site_admin',
-      starred_url: 'starred_url',
-      subscriptions_url: 'subscriptions_url',
-      type: 'type',
-      url: 'url',
-      user_view_type: 'user_view_type'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      login
-    ].freeze
-    DECODERS = {
-      type: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppOwnerType.from_value(value)
-      end
-    }.freeze
+# Internal model hydration metadata.
+class SdkInternalWebhookCheckSuiteCompletedCheckSuiteAppOwnerMetadata
+  FIELDS = {
+    avatar_url: "avatar_url",
+    deleted: "deleted",
+    email: "email",
+    events_url: "events_url",
+    followers_url: "followers_url",
+    following_url: "following_url",
+    gists_url: "gists_url",
+    gravatar_id: "gravatar_id",
+    html_url: "html_url",
+    id: "id",
+    login: "login",
+    name: "name",
+    node_id: "node_id",
+    organizations_url: "organizations_url",
+    received_events_url: "received_events_url",
+    repos_url: "repos_url",
+    site_admin: "site_admin",
+    starred_url: "starred_url",
+    subscriptions_url: "subscriptions_url",
+    type: "type",
+    url: "url",
+    user_view_type: "user_view_type",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    login
+  ].freeze
+  DECODERS = {
+    type: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppOwnerType.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookCheckSuiteCompletedCheckSuiteAppOwner.
+# Required object value serialized in the `owner` wire field.
+class WebhookCheckSuiteCompletedCheckSuiteAppOwner
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteAppOwnerMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteAppOwnerMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteAppOwnerMetadata::DECODERS
+
+  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+  attr_reader :avatar_url
+  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+  attr_reader :deleted
+  # @return [String] Optional `string` value serialized in the `email` wire field.
+  attr_reader :email
+  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+  attr_reader :events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+  attr_reader :followers_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+  attr_reader :following_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+  attr_reader :gists_url
+  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+  attr_reader :gravatar_id
+  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `login` wire field.
+  attr_reader :login
+  # @return [String] Optional `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [String] Optional `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+  attr_reader :organizations_url
+  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+  attr_reader :received_events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+  attr_reader :repos_url
+  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+  attr_reader :site_admin
+  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+  attr_reader :starred_url
+  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+  attr_reader :subscriptions_url
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppOwnerType] Optional enumerated value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+  attr_reader :user_view_type
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookCheckSuiteCompletedCheckSuiteAppOwner.
-  # Required object value serialized in the `owner` wire field.
-  class WebhookCheckSuiteCompletedCheckSuiteAppOwner
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteAppOwnerMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteAppOwnerMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteAppOwnerMetadata::DECODERS
-
-    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-    attr_reader :avatar_url
-    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-    attr_reader :deleted
-    # @return [String] Optional `string` value serialized in the `email` wire field.
-    attr_reader :email
-    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-    attr_reader :events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-    attr_reader :followers_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-    attr_reader :following_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-    attr_reader :gists_url
-    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-    attr_reader :gravatar_id
-    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `login` wire field.
-    attr_reader :login
-    # @return [String] Optional `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [String] Optional `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-    attr_reader :organizations_url
-    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-    attr_reader :received_events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-    attr_reader :repos_url
-    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-    attr_reader :site_admin
-    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-    attr_reader :starred_url
-    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-    attr_reader :subscriptions_url
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppOwnerType] Optional enumerated value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-    attr_reader :user_view_type
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookCheckSuiteCompletedCheckSuiteAppPermissionsMetadata
-    FIELDS = {
-      actions: 'actions',
-      administration: 'administration',
-      checks: 'checks',
-      content_references: 'content_references',
-      contents: 'contents',
-      deployments: 'deployments',
-      discussions: 'discussions',
-      emails: 'emails',
-      environments: 'environments',
-      issues: 'issues',
-      keys: 'keys',
-      members: 'members',
-      metadata: 'metadata',
-      organization_administration: 'organization_administration',
-      organization_hooks: 'organization_hooks',
-      organization_packages: 'organization_packages',
-      organization_plan: 'organization_plan',
-      organization_projects: 'organization_projects',
-      organization_secrets: 'organization_secrets',
-      organization_self_hosted_runners: 'organization_self_hosted_runners',
-      organization_user_blocking: 'organization_user_blocking',
-      packages: 'packages',
-      pages: 'pages',
-      pull_requests: 'pull_requests',
-      repository_hooks: 'repository_hooks',
-      repository_projects: 'repository_projects',
-      secret_scanning_alerts: 'secret_scanning_alerts',
-      secrets: 'secrets',
-      security_events: 'security_events',
-      security_scanning_alert: 'security_scanning_alert',
-      single_file: 'single_file',
-      statuses: 'statuses',
-      vulnerability_alerts: 'vulnerability_alerts',
-      workflows: 'workflows'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      actions: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsActions.from_value(value)
-      end,
-      administration: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsAdministration.from_value(value)
-      end,
-      checks: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsChecks.from_value(value)
-      end,
-      content_references: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsContentReferences.from_value(value)
-      end,
-      contents: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsContents.from_value(value)
-      end,
-      deployments: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsDeployments.from_value(value)
-      end,
-      discussions: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsDiscussions.from_value(value)
-      end,
-      emails: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsEmails.from_value(value)
-      end,
-      environments: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsEnvironments.from_value(value)
-      end,
-      issues: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsIssues.from_value(value)
-      end,
-      keys: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsKeys.from_value(value)
-      end,
-      members: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsMembers.from_value(value)
-      end,
-      metadata: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsMetadata.from_value(value)
-      end,
-      organization_administration: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizatioX8ff7d9c6e2.from_value(value)
-      end,
-      organization_hooks: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationHooks.from_value(value)
-      end,
-      organization_packages: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationPackages.from_value(value)
-      end,
-      organization_plan: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationPlan.from_value(value)
-      end,
-      organization_projects: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationProjects.from_value(value)
-      end,
-      organization_secrets: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationSecrets.from_value(value)
-      end,
-      organization_self_hosted_runners: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizatioX27d7ffcd97.from_value(value)
-      end,
-      organization_user_blocking: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizatioX0c909af858.from_value(value)
-      end,
-      packages: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsPackages.from_value(value)
-      end,
-      pages: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsPages.from_value(value)
-      end,
-      pull_requests: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsPullRequests.from_value(value)
-      end,
-      repository_hooks: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsRepositoryHooks.from_value(value)
-      end,
-      repository_projects: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsRepositoryProjects.from_value(value)
-      end,
-      secret_scanning_alerts: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsSecretScanningAlerts.from_value(value)
-      end,
-      secrets: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsSecrets.from_value(value)
-      end,
-      security_events: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsSecurityEvents.from_value(value)
-      end,
-      security_scanning_alert: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsSecurityScanningAlert.from_value(value)
-      end,
-      single_file: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsSingleFile.from_value(value)
-      end,
-      statuses: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsStatuses.from_value(value)
-      end,
-      vulnerability_alerts: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsVulnerabilityAlerts.from_value(value)
-      end,
-      workflows: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsWorkflows.from_value(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookCheckSuiteCompletedCheckSuiteAppPermissionsMetadata
+  FIELDS = {
+    actions: "actions",
+    administration: "administration",
+    checks: "checks",
+    content_references: "content_references",
+    contents: "contents",
+    deployments: "deployments",
+    discussions: "discussions",
+    emails: "emails",
+    environments: "environments",
+    issues: "issues",
+    keys: "keys",
+    members: "members",
+    metadata: "metadata",
+    organization_administration: "organization_administration",
+    organization_hooks: "organization_hooks",
+    organization_packages: "organization_packages",
+    organization_plan: "organization_plan",
+    organization_projects: "organization_projects",
+    organization_secrets: "organization_secrets",
+    organization_self_hosted_runners: "organization_self_hosted_runners",
+    organization_user_blocking: "organization_user_blocking",
+    packages: "packages",
+    pages: "pages",
+    pull_requests: "pull_requests",
+    repository_hooks: "repository_hooks",
+    repository_projects: "repository_projects",
+    secret_scanning_alerts: "secret_scanning_alerts",
+    secrets: "secrets",
+    security_events: "security_events",
+    security_scanning_alert: "security_scanning_alert",
+    single_file: "single_file",
+    statuses: "statuses",
+    vulnerability_alerts: "vulnerability_alerts",
+    workflows: "workflows",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    actions: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsActions.from_value(value)
+    end,
+    administration: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsAdministration.from_value(value)
+    end,
+    checks: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsChecks.from_value(value)
+    end,
+    content_references: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsContentReferences.from_value(value)
+    end,
+    contents: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsContents.from_value(value)
+    end,
+    deployments: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsDeployments.from_value(value)
+    end,
+    discussions: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsDiscussions.from_value(value)
+    end,
+    emails: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsEmails.from_value(value)
+    end,
+    environments: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsEnvironments.from_value(value)
+    end,
+    issues: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsIssues.from_value(value)
+    end,
+    keys: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsKeys.from_value(value)
+    end,
+    members: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsMembers.from_value(value)
+    end,
+    metadata: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsMetadata.from_value(value)
+    end,
+    organization_administration: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizatioX8ff7d9c6e2.from_value(value)
+    end,
+    organization_hooks: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationHooks.from_value(value)
+    end,
+    organization_packages: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationPackages.from_value(value)
+    end,
+    organization_plan: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationPlan.from_value(value)
+    end,
+    organization_projects: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationProjects.from_value(value)
+    end,
+    organization_secrets: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationSecrets.from_value(value)
+    end,
+    organization_self_hosted_runners: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizatioX27d7ffcd97.from_value(value)
+    end,
+    organization_user_blocking: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizatioX0c909af858.from_value(value)
+    end,
+    packages: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsPackages.from_value(value)
+    end,
+    pages: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsPages.from_value(value)
+    end,
+    pull_requests: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsPullRequests.from_value(value)
+    end,
+    repository_hooks: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsRepositoryHooks.from_value(value)
+    end,
+    repository_projects: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsRepositoryProjects.from_value(value)
+    end,
+    secret_scanning_alerts: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsSecretScanningAlerts.from_value(value)
+    end,
+    secrets: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsSecrets.from_value(value)
+    end,
+    security_events: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsSecurityEvents.from_value(value)
+    end,
+    security_scanning_alert: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsSecurityScanningAlert.from_value(value)
+    end,
+    single_file: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsSingleFile.from_value(value)
+    end,
+    statuses: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsStatuses.from_value(value)
+    end,
+    vulnerability_alerts: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsVulnerabilityAlerts.from_value(value)
+    end,
+    workflows: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissionsWorkflows.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookCheckSuiteCompletedCheckSuiteAppPermissions.
+# The set of permissions for the GitHub app
+class WebhookCheckSuiteCompletedCheckSuiteAppPermissions
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteAppPermissionsMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteAppPermissionsMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteAppPermissionsMetadata::DECODERS
+
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsActions] Optional enumerated value serialized in the `actions` wire field.
+  attr_reader :actions
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsAdministration] Optional enumerated value serialized in the `administration` wire field.
+  attr_reader :administration
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsChecks] Optional enumerated value serialized in the `checks` wire field.
+  attr_reader :checks
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsContentReferences] Optional enumerated value serialized in the `content_references` wire field.
+  attr_reader :content_references
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsContents] Optional enumerated value serialized in the `contents` wire field.
+  attr_reader :contents
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsDeployments] Optional enumerated value serialized in the `deployments` wire field.
+  attr_reader :deployments
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsDiscussions] Optional enumerated value serialized in the `discussions` wire field.
+  attr_reader :discussions
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsEmails] Optional enumerated value serialized in the `emails` wire field.
+  attr_reader :emails
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsEnvironments] Optional enumerated value serialized in the `environments` wire field.
+  attr_reader :environments
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsIssues] Optional enumerated value serialized in the `issues` wire field.
+  attr_reader :issues
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsKeys] Optional enumerated value serialized in the `keys` wire field.
+  attr_reader :keys
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsMembers] Optional enumerated value serialized in the `members` wire field.
+  attr_reader :members
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsMetadata] Optional enumerated value serialized in the `metadata` wire field.
+  attr_reader :metadata
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizatioX8ff7d9c6e2] Optional enumerated value serialized in the `organization_administration` wire field.
+  attr_reader :organization_administration
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationHooks] Optional enumerated value serialized in the `organization_hooks` wire field.
+  attr_reader :organization_hooks
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationPackages] Optional enumerated value serialized in the `organization_packages` wire field.
+  attr_reader :organization_packages
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationPlan] Optional enumerated value serialized in the `organization_plan` wire field.
+  attr_reader :organization_plan
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationProjects] Optional enumerated value serialized in the `organization_projects` wire field.
+  attr_reader :organization_projects
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationSecrets] Optional enumerated value serialized in the `organization_secrets` wire field.
+  attr_reader :organization_secrets
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizatioX27d7ffcd97] Optional enumerated value serialized in the `organization_self_hosted_runners` wire field.
+  attr_reader :organization_self_hosted_runners
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizatioX0c909af858] Optional enumerated value serialized in the `organization_user_blocking` wire field.
+  attr_reader :organization_user_blocking
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsPackages] Optional enumerated value serialized in the `packages` wire field.
+  attr_reader :packages
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsPages] Optional enumerated value serialized in the `pages` wire field.
+  attr_reader :pages
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsPullRequests] Optional enumerated value serialized in the `pull_requests` wire field.
+  attr_reader :pull_requests
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsRepositoryHooks] Optional enumerated value serialized in the `repository_hooks` wire field.
+  attr_reader :repository_hooks
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsRepositoryProjects] Optional enumerated value serialized in the `repository_projects` wire field.
+  attr_reader :repository_projects
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsSecretScanningAlerts] Optional enumerated value serialized in the `secret_scanning_alerts` wire field.
+  attr_reader :secret_scanning_alerts
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsSecrets] Optional enumerated value serialized in the `secrets` wire field.
+  attr_reader :secrets
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsSecurityEvents] Optional enumerated value serialized in the `security_events` wire field.
+  attr_reader :security_events
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsSecurityScanningAlert] Optional enumerated value serialized in the `security_scanning_alert` wire field.
+  attr_reader :security_scanning_alert
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsSingleFile] Optional enumerated value serialized in the `single_file` wire field.
+  attr_reader :single_file
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsStatuses] Optional enumerated value serialized in the `statuses` wire field.
+  attr_reader :statuses
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsVulnerabilityAlerts] Optional enumerated value serialized in the `vulnerability_alerts` wire field.
+  attr_reader :vulnerability_alerts
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsWorkflows] Optional enumerated value serialized in the `workflows` wire field.
+  attr_reader :workflows
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookCheckSuiteCompletedCheckSuiteAppPermissions.
-  # The set of permissions for the GitHub app
-  class WebhookCheckSuiteCompletedCheckSuiteAppPermissions
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteAppPermissionsMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteAppPermissionsMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteAppPermissionsMetadata::DECODERS
-
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsActions] Optional enumerated value serialized in the `actions` wire field.
-    attr_reader :actions
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsAdministration] Optional enumerated value serialized in the `administration` wire field.
-    attr_reader :administration
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsChecks] Optional enumerated value serialized in the `checks` wire field.
-    attr_reader :checks
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsContentReferences] Optional enumerated value serialized in the `content_references` wire field.
-    attr_reader :content_references
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsContents] Optional enumerated value serialized in the `contents` wire field.
-    attr_reader :contents
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsDeployments] Optional enumerated value serialized in the `deployments` wire field.
-    attr_reader :deployments
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsDiscussions] Optional enumerated value serialized in the `discussions` wire field.
-    attr_reader :discussions
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsEmails] Optional enumerated value serialized in the `emails` wire field.
-    attr_reader :emails
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsEnvironments] Optional enumerated value serialized in the `environments` wire field.
-    attr_reader :environments
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsIssues] Optional enumerated value serialized in the `issues` wire field.
-    attr_reader :issues
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsKeys] Optional enumerated value serialized in the `keys` wire field.
-    attr_reader :keys
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsMembers] Optional enumerated value serialized in the `members` wire field.
-    attr_reader :members
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsMetadata] Optional enumerated value serialized in the `metadata` wire field.
-    attr_reader :metadata
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizatioX8ff7d9c6e2] Optional enumerated value serialized in the `organization_administration` wire field.
-    attr_reader :organization_administration
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationHooks] Optional enumerated value serialized in the `organization_hooks` wire field.
-    attr_reader :organization_hooks
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationPackages] Optional enumerated value serialized in the `organization_packages` wire field.
-    attr_reader :organization_packages
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationPlan] Optional enumerated value serialized in the `organization_plan` wire field.
-    attr_reader :organization_plan
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationProjects] Optional enumerated value serialized in the `organization_projects` wire field.
-    attr_reader :organization_projects
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizationSecrets] Optional enumerated value serialized in the `organization_secrets` wire field.
-    attr_reader :organization_secrets
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizatioX27d7ffcd97] Optional enumerated value serialized in the `organization_self_hosted_runners` wire field.
-    attr_reader :organization_self_hosted_runners
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsOrganizatioX0c909af858] Optional enumerated value serialized in the `organization_user_blocking` wire field.
-    attr_reader :organization_user_blocking
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsPackages] Optional enumerated value serialized in the `packages` wire field.
-    attr_reader :packages
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsPages] Optional enumerated value serialized in the `pages` wire field.
-    attr_reader :pages
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsPullRequests] Optional enumerated value serialized in the `pull_requests` wire field.
-    attr_reader :pull_requests
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsRepositoryHooks] Optional enumerated value serialized in the `repository_hooks` wire field.
-    attr_reader :repository_hooks
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsRepositoryProjects] Optional enumerated value serialized in the `repository_projects` wire field.
-    attr_reader :repository_projects
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsSecretScanningAlerts] Optional enumerated value serialized in the `secret_scanning_alerts` wire field.
-    attr_reader :secret_scanning_alerts
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsSecrets] Optional enumerated value serialized in the `secrets` wire field.
-    attr_reader :secrets
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsSecurityEvents] Optional enumerated value serialized in the `security_events` wire field.
-    attr_reader :security_events
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsSecurityScanningAlert] Optional enumerated value serialized in the `security_scanning_alert` wire field.
-    attr_reader :security_scanning_alert
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsSingleFile] Optional enumerated value serialized in the `single_file` wire field.
-    attr_reader :single_file
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsStatuses] Optional enumerated value serialized in the `statuses` wire field.
-    attr_reader :statuses
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsVulnerabilityAlerts] Optional enumerated value serialized in the `vulnerability_alerts` wire field.
-    attr_reader :vulnerability_alerts
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissionsWorkflows] Optional enumerated value serialized in the `workflows` wire field.
-    attr_reader :workflows
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookCheckSuiteCompletedCheckSuiteAppMetadata
-    FIELDS = {
-      created_at: 'created_at',
-      description: 'description',
-      events: 'events',
-      external_url: 'external_url',
-      html_url: 'html_url',
-      id: 'id',
-      client_id: 'client_id',
-      name: 'name',
-      node_id: 'node_id',
-      owner: 'owner',
-      permissions: 'permissions',
-      slug: 'slug',
-      updated_at: 'updated_at'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      created_at
-      description
-      external_url
-      html_url
-      id
-      name
-      node_id
-      owner
-      updated_at
-    ].freeze
-    DECODERS = {
-      events: lambda do |value|
-        value&.map { |item| ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppEventsItem.from_value(item) }
-      end,
-      owner: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppOwner.from_hash(value)
-      end,
-      permissions: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissions.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      created_at
-      description
-      external_url
-      id
-      owner
-      updated_at
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookCheckSuiteCompletedCheckSuiteAppMetadata
+  FIELDS = {
+    created_at: "created_at",
+    description: "description",
+    events: "events",
+    external_url: "external_url",
+    html_url: "html_url",
+    id: "id",
+    client_id: "client_id",
+    name: "name",
+    node_id: "node_id",
+    owner: "owner",
+    permissions: "permissions",
+    slug: "slug",
+    updated_at: "updated_at",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    created_at
+    description
+    external_url
+    html_url
+    id
+    name
+    node_id
+    owner
+    updated_at
+  ].freeze
+  DECODERS = {
+    events: lambda do |value|
+      value&.map { |item| ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppEventsItem.from_value(item) }
+    end,
+    owner: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppOwner.from_hash(value)
+    end,
+    permissions: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteAppPermissions.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    created_at
+    description
+    external_url
+    id
+    owner
+    updated_at
+  ].freeze
+end
+
+# API model for WebhookCheckSuiteCompletedCheckSuiteApp.
+# GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+class WebhookCheckSuiteCompletedCheckSuiteApp
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteAppMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteAppMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteAppMetadata::DECODERS
+
+  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [String] Required `string` value serialized in the `description` wire field.
+  attr_reader :description
+  # @return [Array_of_WebhookCheckSuiteCompletedCheckSuiteAppEventsItem] The list of events for the GitHub app
+  attr_reader :events
+  # @return [String] Required `uri`-formatted value serialized in the `external_url` wire field.
+  attr_reader :external_url
+  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [Integer] Unique identifier of the GitHub app
+  attr_reader :id
+  # @return [String] The client ID of the GitHub app
+  attr_reader :client_id
+  # @return [String] The name of the GitHub app
+  attr_reader :name
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppOwner] Required object value serialized in the `owner` wire field.
+  attr_reader :owner
+  # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissions] The set of permissions for the GitHub app
+  attr_reader :permissions
+  # @return [String] The slug name of the GitHub app
+  attr_reader :slug
+  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+  attr_reader :updated_at
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookCheckSuiteCompletedCheckSuiteApp.
-  # GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
-  class WebhookCheckSuiteCompletedCheckSuiteApp
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteAppMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteAppMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteAppMetadata::DECODERS
-
-    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [String] Required `string` value serialized in the `description` wire field.
-    attr_reader :description
-    # @return [Array_of_WebhookCheckSuiteCompletedCheckSuiteAppEventsItem] The list of events for the GitHub app
-    attr_reader :events
-    # @return [String] Required `uri`-formatted value serialized in the `external_url` wire field.
-    attr_reader :external_url
-    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [Integer] Unique identifier of the GitHub app
-    attr_reader :id
-    # @return [String] The client ID of the GitHub app
-    attr_reader :client_id
-    # @return [String] The name of the GitHub app
-    attr_reader :name
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppOwner] Required object value serialized in the `owner` wire field.
-    attr_reader :owner
-    # @return [WebhookCheckSuiteCompletedCheckSuiteAppPermissions] The set of permissions for the GitHub app
-    attr_reader :permissions
-    # @return [String] The slug name of the GitHub app
-    attr_reader :slug
-    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-    attr_reader :updated_at
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookCheckSuiteCompletedCheckSuiteAppMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookCheckSuiteCompletedCheckSuiteAppMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitAuthorMetadata
-    FIELDS = {
-      date: 'date',
-      email: 'email',
-      name: 'name',
-      username: 'username'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      email
-      name
-    ].freeze
-    DECODERS = {}.freeze
-    NULLABLE_FIELDS = %i[
-      email
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitAuthorMetadata
+  FIELDS = {
+    date: "date",
+    email: "email",
+    name: "name",
+    username: "username",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    email
+    name
+  ].freeze
+  DECODERS = {
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    email
+  ].freeze
+end
+
+# API model for WebhookCheckSuiteCompletedCheckSuiteHeadCommitAuthor.
+# Metaproperties for Git author/committer information.
+class WebhookCheckSuiteCompletedCheckSuiteHeadCommitAuthor
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitAuthorMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitAuthorMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitAuthorMetadata::DECODERS
+
+  # @return [String] Optional `date-time`-formatted value serialized in the `date` wire field.
+  attr_reader :date
+  # @return [String] Required `email`-formatted value serialized in the `email` wire field.
+  attr_reader :email
+  # @return [String] The git author's name.
+  attr_reader :name
+  # @return [String] Optional `string` value serialized in the `username` wire field.
+  attr_reader :username
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookCheckSuiteCompletedCheckSuiteHeadCommitAuthor.
-  # Metaproperties for Git author/committer information.
-  class WebhookCheckSuiteCompletedCheckSuiteHeadCommitAuthor
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitAuthorMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitAuthorMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitAuthorMetadata::DECODERS
-
-    # @return [String] Optional `date-time`-formatted value serialized in the `date` wire field.
-    attr_reader :date
-    # @return [String] Required `email`-formatted value serialized in the `email` wire field.
-    attr_reader :email
-    # @return [String] The git author's name.
-    attr_reader :name
-    # @return [String] Optional `string` value serialized in the `username` wire field.
-    attr_reader :username
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitAuthorMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitAuthorMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitCommitterMetadata
-    FIELDS = {
-      date: 'date',
-      email: 'email',
-      name: 'name',
-      username: 'username'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      email
-      name
-    ].freeze
-    DECODERS = {}.freeze
-    NULLABLE_FIELDS = %i[
-      email
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitCommitterMetadata
+  FIELDS = {
+    date: "date",
+    email: "email",
+    name: "name",
+    username: "username",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    email
+    name
+  ].freeze
+  DECODERS = {
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    email
+  ].freeze
+end
+
+# API model for WebhookCheckSuiteCompletedCheckSuiteHeadCommitCommitter.
+# Metaproperties for Git author/committer information.
+class WebhookCheckSuiteCompletedCheckSuiteHeadCommitCommitter
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitCommitterMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitCommitterMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitCommitterMetadata::DECODERS
+
+  # @return [String] Optional `date-time`-formatted value serialized in the `date` wire field.
+  attr_reader :date
+  # @return [String] Required `email`-formatted value serialized in the `email` wire field.
+  attr_reader :email
+  # @return [String] The git author's name.
+  attr_reader :name
+  # @return [String] Optional `string` value serialized in the `username` wire field.
+  attr_reader :username
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookCheckSuiteCompletedCheckSuiteHeadCommitCommitter.
-  # Metaproperties for Git author/committer information.
-  class WebhookCheckSuiteCompletedCheckSuiteHeadCommitCommitter
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitCommitterMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitCommitterMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitCommitterMetadata::DECODERS
-
-    # @return [String] Optional `date-time`-formatted value serialized in the `date` wire field.
-    attr_reader :date
-    # @return [String] Required `email`-formatted value serialized in the `email` wire field.
-    attr_reader :email
-    # @return [String] The git author's name.
-    attr_reader :name
-    # @return [String] Optional `string` value serialized in the `username` wire field.
-    attr_reader :username
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitCommitterMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitCommitterMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitMetadata
-    FIELDS = {
-      author: 'author',
-      committer: 'committer',
-      id: 'id',
-      message: 'message',
-      timestamp: 'timestamp',
-      tree_id: 'tree_id'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      author
-      committer
-      id
-      message
-      timestamp
-      tree_id
-    ].freeze
-    DECODERS = {
-      author: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteHeadCommitAuthor.from_hash(value)
-      end,
-      committer: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteHeadCommitCommitter.from_hash(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitMetadata
+  FIELDS = {
+    author: "author",
+    committer: "committer",
+    id: "id",
+    message: "message",
+    timestamp: "timestamp",
+    tree_id: "tree_id",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    author
+    committer
+    id
+    message
+    timestamp
+    tree_id
+  ].freeze
+  DECODERS = {
+    author: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteHeadCommitAuthor.from_hash(value)
+    end,
+    committer: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuiteHeadCommitCommitter.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhookCheckSuiteCompletedCheckSuiteHeadCommit.
+# Required object value serialized in the `head_commit` wire field.
+class WebhookCheckSuiteCompletedCheckSuiteHeadCommit
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitMetadata::DECODERS
+
+  # @return [WebhookCheckSuiteCompletedCheckSuiteHeadCommitAuthor] Metaproperties for Git author/committer information.
+  attr_reader :author
+  # @return [WebhookCheckSuiteCompletedCheckSuiteHeadCommitCommitter] Metaproperties for Git author/committer information.
+  attr_reader :committer
+  # @return [String] Required `string` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `message` wire field.
+  attr_reader :message
+  # @return [String] Required `string` value serialized in the `timestamp` wire field.
+  attr_reader :timestamp
+  # @return [String] Required `string` value serialized in the `tree_id` wire field.
+  attr_reader :tree_id
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookCheckSuiteCompletedCheckSuiteHeadCommit.
-  # Required object value serialized in the `head_commit` wire field.
-  class WebhookCheckSuiteCompletedCheckSuiteHeadCommit
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookCheckSuiteCompletedCheckSuiteHeadCommitMetadata::DECODERS
-
-    # @return [WebhookCheckSuiteCompletedCheckSuiteHeadCommitAuthor] Metaproperties for Git author/committer information.
-    attr_reader :author
-    # @return [WebhookCheckSuiteCompletedCheckSuiteHeadCommitCommitter] Metaproperties for Git author/committer information.
-    attr_reader :committer
-    # @return [String] Required `string` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `message` wire field.
-    attr_reader :message
-    # @return [String] Required `string` value serialized in the `timestamp` wire field.
-    attr_reader :timestamp
-    # @return [String] Required `string` value serialized in the `tree_id` wire field.
-    attr_reader :tree_id
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemBaseRepoMetadata
-    FIELDS = {
-      id: 'id',
-      name: 'name',
-      url: 'url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      name
-      url
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemBaseRepoMetadata
+  FIELDS = {
+    id: "id",
+    name: "name",
+    url: "url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    name
+    url
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhookCheckSuiteCompletedCheckSuitePullRequestsItemBaseRepo.
+# Required object value serialized in the `repo` wire field.
+class WebhookCheckSuiteCompletedCheckSuitePullRequestsItemBaseRepo
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemBaseRepoMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemBaseRepoMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemBaseRepoMetadata::DECODERS
+
+  # @return [Integer] Required `integer` value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhookCheckSuiteCompletedCheckSuitePullRequestsItemBaseRepo.
-  # Required object value serialized in the `repo` wire field.
-  class WebhookCheckSuiteCompletedCheckSuitePullRequestsItemBaseRepo
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemBaseRepoMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemBaseRepoMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemBaseRepoMetadata::DECODERS
-
-    # @return [Integer] Required `integer` value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemBaseMetadata
-    FIELDS = {
-      ref: 'ref',
-      repo: 'repo',
-      sha: 'sha'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      ref
-      repo
-      sha
-    ].freeze
-    DECODERS = {
-      repo: lambda do |value|
-        ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuitePullRequestsItemBaseRepo.from_hash(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhookCheckSuiteCompletedCheckSuitePullRequestsItemBaseMetadata
+  FIELDS = {
+    ref: "ref",
+    repo: "repo",
+    sha: "sha",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    ref
+    repo
+    sha
+  ].freeze
+  DECODERS = {
+    repo: lambda do |value|
+      ::OctridevGithub::WebhookCheckSuiteCompletedCheckSuitePullRequestsItemBaseRepo.from_hash(value)
+    end,
+  }.freeze
+end
 end

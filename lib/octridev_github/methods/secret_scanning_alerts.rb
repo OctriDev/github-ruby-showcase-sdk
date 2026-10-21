@@ -106,22 +106,22 @@ module OctridevGithub
         owner_email_hash: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/secret-scanning/alerts'
+            "/secret-scanning/alerts"
           ].join,
           config: config,
           query: __sdk_query_secret_scanning_list_alerts_for_org_part1(state: state, secret_type: secret_type, exclude_secret_types: exclude_secret_types, exclude_providers: exclude_providers, providers: providers, resolution: resolution, assignee: assignee, sort: sort, direction: direction, page: page, per_page: per_page, before: before, after: after, validity: validity, is_publicly_leaked: is_publicly_leaked, is_multi_repo: is_multi_repo, hide_secret: hide_secret, is_bypassed: is_bypassed).merge(
-            __sdk_query_secret_scanning_list_alerts_for_org_part2(included_metadata: included_metadata, owner_email_hash: owner_email_hash)
-          ),
+            __sdk_query_secret_scanning_list_alerts_for_org_part2(included_metadata: included_metadata, owner_email_hash: owner_email_hash)),
           return_type: [::OctridevGithub::OrganizationSecretScanningAlert],
           decoder: :json,
           operation_id: 'secret_scanning_list_alerts_for_org',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -163,7 +163,7 @@ module OctridevGithub
           'is_publicly_leaked' => QueryValue.new(is_publicly_leaked, style: 'form', explode: true),
           'is_multi_repo' => QueryValue.new(is_multi_repo, style: 'form', explode: true),
           'hide_secret' => QueryValue.new(hide_secret, style: 'form', explode: true),
-          'is_bypassed' => QueryValue.new(is_bypassed, style: 'form', explode: true)
+          'is_bypassed' => QueryValue.new(is_bypassed, style: 'form', explode: true),
         }
       end
       private_class_method :__sdk_query_secret_scanning_list_alerts_for_org_part1
@@ -174,7 +174,7 @@ module OctridevGithub
       )
         {
           'included_metadata' => QueryValue.new(included_metadata, style: 'form', explode: true),
-          'owner_email_hash' => QueryValue.new(owner_email_hash, style: 'form', explode: true)
+          'owner_email_hash' => QueryValue.new(owner_email_hash, style: 'form', explode: true),
         }
       end
       private_class_method :__sdk_query_secret_scanning_list_alerts_for_org_part2
@@ -280,24 +280,24 @@ module OctridevGithub
         owner_email_hash: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/secret-scanning/alerts'
+            "/secret-scanning/alerts"
           ].join,
           config: config,
           query: __sdk_query_secret_scanning_list_alerts_for_repo_part1(state: state, secret_type: secret_type, exclude_secret_types: exclude_secret_types, exclude_providers: exclude_providers, providers: providers, resolution: resolution, assignee: assignee, sort: sort, direction: direction, page: page, per_page: per_page, before: before, after: after, validity: validity, is_publicly_leaked: is_publicly_leaked, is_multi_repo: is_multi_repo, hide_secret: hide_secret, is_bypassed: is_bypassed).merge(
-            __sdk_query_secret_scanning_list_alerts_for_repo_part2(included_metadata: included_metadata, owner_email_hash: owner_email_hash)
-          ),
+            __sdk_query_secret_scanning_list_alerts_for_repo_part2(included_metadata: included_metadata, owner_email_hash: owner_email_hash)),
           return_type: [::OctridevGithub::SecretScanningAlert],
           decoder: :json,
           operation_id: 'secret_scanning_list_alerts_for_repo',
           request_options: request_options,
-          errors: { '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -339,7 +339,7 @@ module OctridevGithub
           'is_publicly_leaked' => QueryValue.new(is_publicly_leaked, style: 'form', explode: true),
           'is_multi_repo' => QueryValue.new(is_multi_repo, style: 'form', explode: true),
           'hide_secret' => QueryValue.new(hide_secret, style: 'form', explode: true),
-          'is_bypassed' => QueryValue.new(is_bypassed, style: 'form', explode: true)
+          'is_bypassed' => QueryValue.new(is_bypassed, style: 'form', explode: true),
         }
       end
       private_class_method :__sdk_query_secret_scanning_list_alerts_for_repo_part1
@@ -350,7 +350,7 @@ module OctridevGithub
       )
         {
           'included_metadata' => QueryValue.new(included_metadata, style: 'form', explode: true),
-          'owner_email_hash' => QueryValue.new(owner_email_hash, style: 'form', explode: true)
+          'owner_email_hash' => QueryValue.new(owner_email_hash, style: 'form', explode: true),
         }
       end
       private_class_method :__sdk_query_secret_scanning_list_alerts_for_repo_part2
@@ -375,25 +375,26 @@ module OctridevGithub
         hide_secret: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/secret-scanning/alerts/',
+            "/secret-scanning/alerts/",
             SdkClient.encode_path_segment(alert_number)
           ].join,
           config: config,
           query: {
-            'hide_secret' => QueryValue.new(hide_secret, style: 'form', explode: true)
+            'hide_secret' => QueryValue.new(hide_secret, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::SecretScanningAlertWithMetadata,
           decoder: :json,
           operation_id: 'secret_scanning_get_alert',
           request_options: request_options,
-          errors: { '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -431,14 +432,15 @@ module OctridevGithub
         validity: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/secret-scanning/alerts/',
+            "/secret-scanning/alerts/",
             SdkClient.encode_path_segment(alert_number)
           ].join,
           config: config,
@@ -447,13 +449,13 @@ module OctridevGithub
             'resolution' => resolution,
             'resolution_comment' => resolution_comment,
             'assignee' => assignee,
-            'validity' => validity
+            'validity' => validity,
           },
           return_type: ::OctridevGithub::SecretScanningAlertWithMetadata,
           decoder: :json,
           operation_id: 'secret_scanning_update_alert',
           request_options: request_options,
-          errors: { '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -480,27 +482,28 @@ module OctridevGithub
         per_page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/secret-scanning/alerts/',
+            "/secret-scanning/alerts/",
             SdkClient.encode_path_segment(alert_number),
-            '/locations'
+            "/locations"
           ].join,
           config: config,
           query: {
             'page' => QueryValue.new(page, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::SecretScanningLocation],
           decoder: :json,
           operation_id: 'secret_scanning_list_locations_for_alert',
           request_options: request_options,
-          errors: { '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
     end

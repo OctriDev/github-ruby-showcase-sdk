@@ -24,22 +24,23 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(since) { Validation.validate_date_time('since', since) }
 
         SdkClient.request(
           'GET',
-          '/gists',
+          "/gists",
           config: config,
           query: {
             'since' => QueryValue.new(since, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::BaseGist],
           decoder: :json,
           operation_id: 'gists_list',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -56,20 +57,21 @@ module OctridevGithub
         public: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
-          '/gists',
+          "/gists",
           config: config,
           body: {
             'files' => files,
             'description' => description,
-            'public' => public
+            'public' => public,
           },
           return_type: ::OctridevGithub::GistSimple,
           decoder: :json,
           operation_id: 'gists_create',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -81,10 +83,11 @@ module OctridevGithub
         gist_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/gists/',
+            "/gists/",
             SdkClient.encode_path_segment(gist_id)
           ].join,
           config: config,
@@ -92,7 +95,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'gists_get',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::ForbiddenGist, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::ForbiddenGist, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -112,22 +115,23 @@ module OctridevGithub
         files: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/gists/',
+            "/gists/",
             SdkClient.encode_path_segment(gist_id)
           ].join,
           config: config,
           body: {
             'description' => description,
-            'files' => files
+            'files' => files,
           },
           return_type: ::OctridevGithub::GistSimple,
           decoder: :json,
           operation_id: 'gists_update',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -139,17 +143,18 @@ module OctridevGithub
         gist_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/gists/',
+            "/gists/",
             SdkClient.encode_path_segment(gist_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'gists_delete',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -164,12 +169,13 @@ module OctridevGithub
         sha:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/gists/',
+            "/gists/",
             SdkClient.encode_path_segment(gist_id),
-            '/',
+            "/",
             SdkClient.encode_path_segment(sha)
           ].join,
           config: config,
@@ -177,7 +183,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'gists_get_revision',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -200,26 +206,27 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(since) { Validation.validate_date_time('since', since) }
 
         SdkClient.request(
           'GET',
           [
-            '/users/',
+            "/users/",
             SdkClient.encode_path_segment(username),
-            '/gists'
+            "/gists"
           ].join,
           config: config,
           query: {
             'since' => QueryValue.new(since, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::BaseGist],
           decoder: :json,
           operation_id: 'gists_list_for_user',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError }
+          errors: { '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end

@@ -21,21 +21,22 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/secret-scanning/scan-history'
+            "/secret-scanning/scan-history"
           ].join,
           config: config,
           return_type: ::OctridevGithub::SecretScanningScanHistory,
           decoder: :json,
           operation_id: 'secret_scanning_get_scan_history',
           request_options: request_options,
-          errors: { '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
     end

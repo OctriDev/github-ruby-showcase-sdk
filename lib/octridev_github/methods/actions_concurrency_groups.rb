@@ -28,25 +28,26 @@ module OctridevGithub
         after: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/actions/concurrency_groups'
+            "/actions/concurrency_groups"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'after' => QueryValue.new(after, style: 'form', explode: true)
+            'after' => QueryValue.new(after, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::ConcurrencyGroupList,
           decoder: :json,
           operation_id: 'actions_list_concurrency_groups_for_repository',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError }
+          errors: { '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -74,6 +75,7 @@ module OctridevGithub
         ahead_of_job: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.if_given(ahead_of_run) { Validation.validate_range('ahead_of_run', ahead_of_run, min: 1) }
 
         Validation.if_given(ahead_of_job) { Validation.validate_range('ahead_of_job', ahead_of_job, min: 1) }
@@ -81,23 +83,23 @@ module OctridevGithub
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/actions/concurrency_groups/',
+            "/actions/concurrency_groups/",
             SdkClient.encode_path_segment(concurrency_group_name)
           ].join,
           config: config,
           query: {
             'ahead_of_run' => QueryValue.new(ahead_of_run, style: 'form', explode: true),
-            'ahead_of_job' => QueryValue.new(ahead_of_job, style: 'form', explode: true)
+            'ahead_of_job' => QueryValue.new(ahead_of_job, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::ConcurrencyGroup,
           decoder: :json,
           operation_id: 'actions_get_concurrency_group_for_repository',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end

@@ -17,18 +17,19 @@ module OctridevGithub
         org:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/installation'
+            "/installation"
           ].join,
           config: config,
           return_type: ::OctridevGithub::Installation,
           decoder: :json,
           operation_id: 'apps_get_org_installation',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

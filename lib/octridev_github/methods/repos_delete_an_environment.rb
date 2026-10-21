@@ -25,20 +25,21 @@ module OctridevGithub
         environment_name:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/environments/',
+            "/environments/",
             SdkClient.encode_path_segment(environment_name)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_delete_an_environment',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

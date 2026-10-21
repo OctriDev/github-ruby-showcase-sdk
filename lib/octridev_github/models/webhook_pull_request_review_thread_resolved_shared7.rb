@@ -5,267 +5,267 @@
 
 # webhook_pull_request_review_thread_resolved domain models
 module OctridevGithub
-  # Defines the WebhookPullRequestReviewThreadResolvedPullRequestAssigneesItemType SDK namespace.
-  module WebhookPullRequestReviewThreadResolvedPullRequestAssigneesItemType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewThreadResolvedPullRequestAssigneesItemType SDK namespace.
+module WebhookPullRequestReviewThreadResolvedPullRequestAssigneesItemType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewThreadResolvedPullRequestAuthorAssociation SDK namespace.
-  module WebhookPullRequestReviewThreadResolvedPullRequestAuthorAssociation
-    COLLABORATOR = 'COLLABORATOR'
-    CONTRIBUTOR = 'CONTRIBUTOR'
-    FIRST_TIMER = 'FIRST_TIMER'
-    FIRST_TIME_CONTRIBUTOR = 'FIRST_TIME_CONTRIBUTOR'
-    MANNEQUIN = 'MANNEQUIN'
-    MEMBER = 'MEMBER'
-    NONE = 'NONE'
-    OWNER = 'OWNER'
-    VALUES = %w[
-      COLLABORATOR CONTRIBUTOR FIRST_TIMER FIRST_TIME_CONTRIBUTOR MANNEQUIN MEMBER
-      NONE OWNER
-    ].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewThreadResolvedPullRequestAuthorAssociation SDK namespace.
+module WebhookPullRequestReviewThreadResolvedPullRequestAuthorAssociation
+  COLLABORATOR = 'COLLABORATOR'
+  CONTRIBUTOR = 'CONTRIBUTOR'
+  FIRST_TIMER = 'FIRST_TIMER'
+  FIRST_TIME_CONTRIBUTOR = 'FIRST_TIME_CONTRIBUTOR'
+  MANNEQUIN = 'MANNEQUIN'
+  MEMBER = 'MEMBER'
+  NONE = 'NONE'
+  OWNER = 'OWNER'
+  VALUES = [
+    'COLLABORATOR', 'CONTRIBUTOR', 'FIRST_TIMER', 'FIRST_TIME_CONTRIBUTOR', 'MANNEQUIN', 'MEMBER',
+    'NONE', 'OWNER'
+  ].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewThreadResolvedPullRequestAutoMergeEnabledByType SDK namespace.
-  module WebhookPullRequestReviewThreadResolvedPullRequestAutoMergeEnabledByType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewThreadResolvedPullRequestAutoMergeEnabledByType SDK namespace.
+module WebhookPullRequestReviewThreadResolvedPullRequestAutoMergeEnabledByType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewThreadResolvedPullRequestAutoMergeMergeMethod SDK namespace.
-  module WebhookPullRequestReviewThreadResolvedPullRequestAutoMergeMergeMethod
-    MERGE = 'merge'
-    SQUASH = 'squash'
-    REBASE = 'rebase'
-    VALUES = %w[merge squash rebase].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewThreadResolvedPullRequestAutoMergeMergeMethod SDK namespace.
+module WebhookPullRequestReviewThreadResolvedPullRequestAutoMergeMergeMethod
+  MERGE = 'merge'
+  SQUASH = 'squash'
+  REBASE = 'rebase'
+  VALUES = ['merge', 'squash', 'rebase'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewThreadResolvedPullRequestBaseRepoOwnerType SDK namespace.
-  module WebhookPullRequestReviewThreadResolvedPullRequestBaseRepoOwnerType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewThreadResolvedPullRequestBaseRepoOwnerType SDK namespace.
+module WebhookPullRequestReviewThreadResolvedPullRequestBaseRepoOwnerType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewThreadResolvedPullRequestBaseRepoPullX8d42e1035e SDK namespace.
-  module WebhookPullRequestReviewThreadResolvedPullRequestBaseRepoPullX8d42e1035e
-    ALL = 'all'
-    COLLABORATORS_ONLY = 'collaborators_only'
-    VALUES = %w[all collaborators_only].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewThreadResolvedPullRequestBaseRepoPullX8d42e1035e SDK namespace.
+module WebhookPullRequestReviewThreadResolvedPullRequestBaseRepoPullX8d42e1035e
+  ALL = 'all'
+  COLLABORATORS_ONLY = 'collaborators_only'
+  VALUES = ['all', 'collaborators_only'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewThreadResolvedPullRequestBaseRepoVisibility SDK namespace.
-  module WebhookPullRequestReviewThreadResolvedPullRequestBaseRepoVisibility
-    PUBLIC = 'public'
-    PRIVATE = 'private'
-    INTERNAL = 'internal'
-    VALUES = %w[public private internal].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewThreadResolvedPullRequestBaseRepoVisibility SDK namespace.
+module WebhookPullRequestReviewThreadResolvedPullRequestBaseRepoVisibility
+  PUBLIC = 'public'
+  PRIVATE = 'private'
+  INTERNAL = 'internal'
+  VALUES = ['public', 'private', 'internal'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewThreadResolvedPullRequestBaseUserType SDK namespace.
-  module WebhookPullRequestReviewThreadResolvedPullRequestBaseUserType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewThreadResolvedPullRequestBaseUserType SDK namespace.
+module WebhookPullRequestReviewThreadResolvedPullRequestBaseUserType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewThreadResolvedPullRequestHeadRepoOwnerType SDK namespace.
-  module WebhookPullRequestReviewThreadResolvedPullRequestHeadRepoOwnerType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewThreadResolvedPullRequestHeadRepoOwnerType SDK namespace.
+module WebhookPullRequestReviewThreadResolvedPullRequestHeadRepoOwnerType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewThreadResolvedPullRequestHeadRepoPullXc8730a7d00 SDK namespace.
-  module WebhookPullRequestReviewThreadResolvedPullRequestHeadRepoPullXc8730a7d00
-    ALL = 'all'
-    COLLABORATORS_ONLY = 'collaborators_only'
-    VALUES = %w[all collaborators_only].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewThreadResolvedPullRequestHeadRepoPullXc8730a7d00 SDK namespace.
+module WebhookPullRequestReviewThreadResolvedPullRequestHeadRepoPullXc8730a7d00
+  ALL = 'all'
+  COLLABORATORS_ONLY = 'collaborators_only'
+  VALUES = ['all', 'collaborators_only'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewThreadResolvedPullRequestHeadRepoVisibility SDK namespace.
-  module WebhookPullRequestReviewThreadResolvedPullRequestHeadRepoVisibility
-    PUBLIC = 'public'
-    PRIVATE = 'private'
-    INTERNAL = 'internal'
-    VALUES = %w[public private internal].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewThreadResolvedPullRequestHeadRepoVisibility SDK namespace.
+module WebhookPullRequestReviewThreadResolvedPullRequestHeadRepoVisibility
+  PUBLIC = 'public'
+  PRIVATE = 'private'
+  INTERNAL = 'internal'
+  VALUES = ['public', 'private', 'internal'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewThreadResolvedPullRequestHeadUserType SDK namespace.
-  module WebhookPullRequestReviewThreadResolvedPullRequestHeadUserType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewThreadResolvedPullRequestHeadUserType SDK namespace.
+module WebhookPullRequestReviewThreadResolvedPullRequestHeadUserType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewThreadResolvedPullRequestMilestoneCreatorType SDK namespace.
-  module WebhookPullRequestReviewThreadResolvedPullRequestMilestoneCreatorType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewThreadResolvedPullRequestMilestoneCreatorType SDK namespace.
+module WebhookPullRequestReviewThreadResolvedPullRequestMilestoneCreatorType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewThreadResolvedPullRequestMilestoneState SDK namespace.
-  module WebhookPullRequestReviewThreadResolvedPullRequestMilestoneState
-    OPEN = 'open'
-    CLOSED = 'closed'
-    VALUES = %w[open closed].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewThreadResolvedPullRequestMilestoneState SDK namespace.
+module WebhookPullRequestReviewThreadResolvedPullRequestMilestoneState
+  OPEN = 'open'
+  CLOSED = 'closed'
+  VALUES = ['open', 'closed'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewThreadResolvedPullRequestRequestedTeaXdde344797b SDK namespace.
-  module WebhookPullRequestReviewThreadResolvedPullRequestRequestedTeaXdde344797b
-    OPEN = 'open'
-    CLOSED = 'closed'
-    SECRET = 'secret'
-    VALUES = %w[open closed secret].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewThreadResolvedPullRequestRequestedTeaXdde344797b SDK namespace.
+module WebhookPullRequestReviewThreadResolvedPullRequestRequestedTeaXdde344797b
+  OPEN = 'open'
+  CLOSED = 'closed'
+  SECRET = 'secret'
+  VALUES = ['open', 'closed', 'secret'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewThreadResolvedPullRequestRequestedTeaX620644c332 SDK namespace.
-  module WebhookPullRequestReviewThreadResolvedPullRequestRequestedTeaX620644c332
-    OPEN = 'open'
-    CLOSED = 'closed'
-    SECRET = 'secret'
-    VALUES = %w[open closed secret].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewThreadResolvedPullRequestRequestedTeaX620644c332 SDK namespace.
+module WebhookPullRequestReviewThreadResolvedPullRequestRequestedTeaX620644c332
+  OPEN = 'open'
+  CLOSED = 'closed'
+  SECRET = 'secret'
+  VALUES = ['open', 'closed', 'secret'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewThreadResolvedPullRequestState SDK namespace.
-  module WebhookPullRequestReviewThreadResolvedPullRequestState
-    OPEN = 'open'
-    CLOSED = 'closed'
-    VALUES = %w[open closed].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewThreadResolvedPullRequestState SDK namespace.
+module WebhookPullRequestReviewThreadResolvedPullRequestState
+  OPEN = 'open'
+  CLOSED = 'closed'
+  VALUES = ['open', 'closed'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewThreadResolvedPullRequestUserType SDK namespace.
-  module WebhookPullRequestReviewThreadResolvedPullRequestUserType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    MANNEQUIN = 'Mannequin'
-    VALUES = %w[Bot User Organization Mannequin].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewThreadResolvedPullRequestUserType SDK namespace.
+module WebhookPullRequestReviewThreadResolvedPullRequestUserType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  MANNEQUIN = 'Mannequin'
+  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewThreadResolvedThreadCommentsItemAuthoX1b529938eb SDK namespace.
-  module WebhookPullRequestReviewThreadResolvedThreadCommentsItemAuthoX1b529938eb
-    COLLABORATOR = 'COLLABORATOR'
-    CONTRIBUTOR = 'CONTRIBUTOR'
-    FIRST_TIMER = 'FIRST_TIMER'
-    FIRST_TIME_CONTRIBUTOR = 'FIRST_TIME_CONTRIBUTOR'
-    MANNEQUIN = 'MANNEQUIN'
-    MEMBER = 'MEMBER'
-    NONE = 'NONE'
-    OWNER = 'OWNER'
-    VALUES = %w[
-      COLLABORATOR CONTRIBUTOR FIRST_TIMER FIRST_TIME_CONTRIBUTOR MANNEQUIN MEMBER
-      NONE OWNER
-    ].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewThreadResolvedThreadCommentsItemAuthoX1b529938eb SDK namespace.
+module WebhookPullRequestReviewThreadResolvedThreadCommentsItemAuthoX1b529938eb
+  COLLABORATOR = 'COLLABORATOR'
+  CONTRIBUTOR = 'CONTRIBUTOR'
+  FIRST_TIMER = 'FIRST_TIMER'
+  FIRST_TIME_CONTRIBUTOR = 'FIRST_TIME_CONTRIBUTOR'
+  MANNEQUIN = 'MANNEQUIN'
+  MEMBER = 'MEMBER'
+  NONE = 'NONE'
+  OWNER = 'OWNER'
+  VALUES = [
+    'COLLABORATOR', 'CONTRIBUTOR', 'FIRST_TIMER', 'FIRST_TIME_CONTRIBUTOR', 'MANNEQUIN', 'MEMBER',
+    'NONE', 'OWNER'
+  ].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewThreadResolvedThreadCommentsItemSide SDK namespace.
-  module WebhookPullRequestReviewThreadResolvedThreadCommentsItemSide
-    LEFT = 'LEFT'
-    RIGHT = 'RIGHT'
-    VALUES = %w[LEFT RIGHT].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewThreadResolvedThreadCommentsItemSide SDK namespace.
+module WebhookPullRequestReviewThreadResolvedThreadCommentsItemSide
+  LEFT = 'LEFT'
+  RIGHT = 'RIGHT'
+  VALUES = ['LEFT', 'RIGHT'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewThreadResolvedThreadCommentsItemStartSide SDK namespace.
-  module WebhookPullRequestReviewThreadResolvedThreadCommentsItemStartSide
-    LEFT = 'LEFT'
-    RIGHT = 'RIGHT'
-    VALUES = %w[LEFT RIGHT].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewThreadResolvedThreadCommentsItemStartSide SDK namespace.
+module WebhookPullRequestReviewThreadResolvedThreadCommentsItemStartSide
+  LEFT = 'LEFT'
+  RIGHT = 'RIGHT'
+  VALUES = ['LEFT', 'RIGHT'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewThreadResolvedThreadCommentsItemSubjectType SDK namespace.
-  module WebhookPullRequestReviewThreadResolvedThreadCommentsItemSubjectType
-    LINE = 'line'
-    FILE = 'file'
-    VALUES = %w[line file].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewThreadResolvedThreadCommentsItemSubjectType SDK namespace.
+module WebhookPullRequestReviewThreadResolvedThreadCommentsItemSubjectType
+  LINE = 'line'
+  FILE = 'file'
+  VALUES = ['line', 'file'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhookPullRequestReviewThreadResolvedThreadCommentsItemUserType SDK namespace.
-  module WebhookPullRequestReviewThreadResolvedThreadCommentsItemUserType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    MANNEQUIN = 'Mannequin'
-    VALUES = %w[Bot User Organization Mannequin].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhookPullRequestReviewThreadResolvedThreadCommentsItemUserType SDK namespace.
+module WebhookPullRequestReviewThreadResolvedThreadCommentsItemUserType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  MANNEQUIN = 'Mannequin'
+  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
+  def self.from_value(value)
+    value
   end
+end
 end

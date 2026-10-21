@@ -55,14 +55,15 @@ module OctridevGithub
         make_latest: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/releases'
+            "/releases"
           ].join,
           config: config,
           body: {
@@ -74,13 +75,13 @@ module OctridevGithub
             'prerelease' => prerelease,
             'discussion_category_name' => discussion_category_name,
             'generate_release_notes' => generate_release_notes,
-            'make_latest' => make_latest
+            'make_latest' => make_latest,
           },
           return_type: ::OctridevGithub::Release,
           decoder: :json,
           operation_id: 'repos_create_release',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end

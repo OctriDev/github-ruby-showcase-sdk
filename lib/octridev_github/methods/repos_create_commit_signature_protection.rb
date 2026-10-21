@@ -24,23 +24,24 @@ module OctridevGithub
         branch:,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/branches/',
+            "/branches/",
             SdkClient.encode_path_segment(branch),
-            '/protection/required_signatures'
+            "/protection/required_signatures"
           ].join,
           config: config,
           return_type: ::OctridevGithub::ProtectedBranchAdminEnforced,
           decoder: :json,
           operation_id: 'repos_create_commit_signature_protection',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

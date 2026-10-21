@@ -25,21 +25,22 @@ module OctridevGithub
         can_approve_pull_request_reviews: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/actions/permissions/workflow'
+            "/actions/permissions/workflow"
           ].join,
           config: config,
           body: {
             'default_workflow_permissions' => default_workflow_permissions,
-            'can_approve_pull_request_reviews' => can_approve_pull_request_reviews
+            'can_approve_pull_request_reviews' => can_approve_pull_request_reviews,
           },
           decoder: :empty,
           operation_id: 'actions_set_github_actions_default_workflow_permissions_organization',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

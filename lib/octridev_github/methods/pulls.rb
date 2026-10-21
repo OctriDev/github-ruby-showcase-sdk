@@ -45,14 +45,15 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/pulls'
+            "/pulls"
           ].join,
           config: config,
           query: {
@@ -62,13 +63,13 @@ module OctridevGithub
             'sort' => QueryValue.new(sort, style: 'form', explode: true),
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::PullRequestSimple],
           decoder: :json,
           operation_id: 'pulls_list',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError }
+          errors: { '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -112,14 +113,15 @@ module OctridevGithub
         issue: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/pulls'
+            "/pulls"
           ].join,
           config: config,
           body: {
@@ -130,13 +132,13 @@ module OctridevGithub
             'body' => body,
             'maintainer_can_modify' => maintainer_can_modify,
             'draft' => draft,
-            'issue' => issue
+            'issue' => issue,
           },
           return_type: ::OctridevGithub::PullRequest,
           decoder: :json,
           operation_id: 'pulls_create',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -154,14 +156,15 @@ module OctridevGithub
         pull_number:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/pulls/',
+            "/pulls/",
             SdkClient.encode_path_segment(pull_number)
           ].join,
           config: config,
@@ -169,7 +172,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'pulls_get',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '406' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '404' => ::OctridevGithub::BasicError, '406' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
 
@@ -202,14 +205,15 @@ module OctridevGithub
         maintainer_can_modify: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/pulls/',
+            "/pulls/",
             SdkClient.encode_path_segment(pull_number)
           ].join,
           config: config,
@@ -218,13 +222,13 @@ module OctridevGithub
             'body' => body,
             'state' => state,
             'base' => base,
-            'maintainer_can_modify' => maintainer_can_modify
+            'maintainer_can_modify' => maintainer_can_modify,
           },
           return_type: ::OctridevGithub::PullRequest,
           decoder: :json,
           operation_id: 'pulls_update',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end

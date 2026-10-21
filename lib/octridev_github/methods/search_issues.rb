@@ -50,9 +50,10 @@ module OctridevGithub
         search_type: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
-          '/search/issues',
+          "/search/issues",
           config: config,
           query: {
             'q' => QueryValue.new(q_value, style: 'form', explode: true),
@@ -61,13 +62,13 @@ module OctridevGithub
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'page' => QueryValue.new(page, style: 'form', explode: true),
             'advanced_search' => QueryValue.new(advanced_search, style: 'form', explode: true),
-            'search_type' => QueryValue.new(search_type, style: 'form', explode: true)
+            'search_type' => QueryValue.new(search_type, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::Methods::Search::SearchIssuesAndPullRequestsResponse,
           decoder: :json,
           operation_id: 'search_issues_and_pull_requests',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable },
         ).data
       end
     end

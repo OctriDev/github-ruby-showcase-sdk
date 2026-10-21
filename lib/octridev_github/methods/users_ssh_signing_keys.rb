@@ -23,22 +23,23 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/users/',
+            "/users/",
             SdkClient.encode_path_segment(username),
-            '/ssh_signing_keys'
+            "/ssh_signing_keys"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::SshSigningKey],
           decoder: :json,
           operation_id: 'users_list_ssh_signing_keys_for_user',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

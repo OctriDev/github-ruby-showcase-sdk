@@ -5,132 +5,134 @@
 
 # oidc domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalOidcCustomPropertyInclusionMetadata
-    FIELDS = {
-      custom_property_name: 'custom_property_name',
-      inclusion_source: 'inclusion_source'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      custom_property_name
-      inclusion_source
-    ].freeze
-    DECODERS = {
-      inclusion_source: lambda do |value|
-        ::OctridevGithub::OidcCustomPropertyInclusionInclusionSource.from_value(value)
-      end
-    }.freeze
+# Internal model hydration metadata.
+class SdkInternalOidcCustomPropertyInclusionMetadata
+  FIELDS = {
+    custom_property_name: "custom_property_name",
+    inclusion_source: "inclusion_source",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    custom_property_name
+    inclusion_source
+  ].freeze
+  DECODERS = {
+    inclusion_source: lambda do |value|
+      ::OctridevGithub::OidcCustomPropertyInclusionInclusionSource.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for OidcCustomPropertyInclusion.
+# An OIDC custom property inclusion for repository properties
+class OidcCustomPropertyInclusion
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalOidcCustomPropertyInclusionMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalOidcCustomPropertyInclusionMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalOidcCustomPropertyInclusionMetadata::DECODERS
+
+  # @return [String] The name of the custom property that is included in the OIDC token
+  attr_reader :custom_property_name
+  # @return [OidcCustomPropertyInclusionInclusionSource] Whether the inclusion was defined at the organization or enterprise level
+  attr_reader :inclusion_source
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for OidcCustomPropertyInclusion.
-  # An OIDC custom property inclusion for repository properties
-  class OidcCustomPropertyInclusion
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalOidcCustomPropertyInclusionMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalOidcCustomPropertyInclusionMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalOidcCustomPropertyInclusionMetadata::DECODERS
-
-    # @return [String] The name of the custom property that is included in the OIDC token
-    attr_reader :custom_property_name
-    # @return [OidcCustomPropertyInclusionInclusionSource] Whether the inclusion was defined at the organization or enterprise level
-    attr_reader :inclusion_source
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the OidcCustomPropertyInclusionInclusionSource SDK namespace.
-  module OidcCustomPropertyInclusionInclusionSource
-    ORGANIZATION = 'organization'
-    ENTERPRISE = 'enterprise'
-    VALUES = %w[organization enterprise].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Defines the OidcCustomPropertyInclusionInclusionSource SDK namespace.
+module OidcCustomPropertyInclusionInclusionSource
+  ORGANIZATION = 'organization'
+  ENTERPRISE = 'enterprise'
+  VALUES = ['organization', 'enterprise'].freeze
+  def self.from_value(value)
+    value
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalOidcCustomPropertyInclusionInputMetadata
+  FIELDS = {
+    custom_property_name: "custom_property_name",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    custom_property_name
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for OidcCustomPropertyInclusionInput.
+# Input for creating an OIDC custom property inclusion
+class OidcCustomPropertyInclusionInput
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalOidcCustomPropertyInclusionInputMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalOidcCustomPropertyInclusionInputMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalOidcCustomPropertyInclusionInputMetadata::DECODERS
+
+  # @return [String] The name of the custom property to include in the OIDC token
+  attr_reader :custom_property_name
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalOidcCustomPropertyInclusionInputMetadata
-    FIELDS = {
-      custom_property_name: 'custom_property_name'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      custom_property_name
-    ].freeze
-    DECODERS = {}.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for OidcCustomPropertyInclusionInput.
-  # Input for creating an OIDC custom property inclusion
-  class OidcCustomPropertyInclusionInput
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalOidcCustomPropertyInclusionInputMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalOidcCustomPropertyInclusionInputMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalOidcCustomPropertyInclusionInputMetadata::DECODERS
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 
-    # @return [String] The name of the custom property to include in the OIDC token
-    attr_reader :custom_property_name
+# Internal model hydration metadata.
+class SdkInternalOidcCustomSubMetadata
+  FIELDS = {
+    include_claim_keys: "include_claim_keys",
+    use_immutable_subject: "use_immutable_subject",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    include_claim_keys
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
 
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
+# API model for OidcCustomSub.
+# Actions OIDC Subject customization
+class OidcCustomSub
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalOidcCustomSubMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalOidcCustomSubMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalOidcCustomSubMetadata::DECODERS
 
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
+  # @return [Array_of_String] Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.
+  attr_reader :include_claim_keys
+  # @return [Boolean] Whether to opt in to the immutable OIDC subject claim format for the organization. When `true`, new OIDC tokens will use a stable, repository-ID-based `sub` claim instead of the name-based format.
+  attr_reader :use_immutable_subject
 
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalOidcCustomSubMetadata
-    FIELDS = {
-      include_claim_keys: 'include_claim_keys',
-      use_immutable_subject: 'use_immutable_subject'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      include_claim_keys
-    ].freeze
-    DECODERS = {}.freeze
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # API model for OidcCustomSub.
-  # Actions OIDC Subject customization
-  class OidcCustomSub
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalOidcCustomSubMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalOidcCustomSubMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalOidcCustomSubMetadata::DECODERS
-
-    # @return [Array_of_String] Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.
-    attr_reader :include_claim_keys
-    # @return [Boolean] Whether to opt in to the immutable OIDC subject claim format for the organization. When `true`, new OIDC tokens will use a stable, repository-ID-based `sub` claim instead of the name-based format.
-    attr_reader :use_immutable_subject
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
 end

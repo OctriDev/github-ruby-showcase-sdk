@@ -35,28 +35,29 @@ module OctridevGithub
         checks: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/branches/',
+            "/branches/",
             SdkClient.encode_path_segment(branch),
-            '/protection/required_status_checks'
+            "/protection/required_status_checks"
           ].join,
           config: config,
           body: {
             'strict' => strict,
             'contexts' => contexts,
-            'checks' => checks
+            'checks' => checks,
           },
           return_type: ::OctridevGithub::StatusCheckPolicy,
           decoder: :json,
           operation_id: 'repos_update_status_check_protection',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end

@@ -28,22 +28,23 @@ module OctridevGithub
         protection_rule_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/environments/',
+            "/environments/",
             SdkClient.encode_path_segment(environment_name),
-            '/deployment_protection_rules/',
+            "/deployment_protection_rules/",
             SdkClient.encode_path_segment(protection_rule_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_disable_deployment_protection_rule',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

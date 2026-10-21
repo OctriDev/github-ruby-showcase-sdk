@@ -22,17 +22,18 @@ module OctridevGithub
         assignment_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/assignments/',
+            "/assignments/",
             SdkClient.encode_path_segment(assignment_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'classroom_get_an_assignment',
           request_options: request_options,
-          errors: { '410' => ::OctridevGithub::BasicError }
+          errors: { '410' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -49,18 +50,19 @@ module OctridevGithub
         assignment_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/assignments/',
+            "/assignments/",
             SdkClient.encode_path_segment(assignment_id),
-            '/accepted_assignments'
+            "/accepted_assignments"
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'classroom_list_accepted_assignments_for_an_assignment',
           request_options: request_options,
-          errors: { '410' => ::OctridevGithub::BasicError }
+          errors: { '410' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -77,18 +79,19 @@ module OctridevGithub
         assignment_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/assignments/',
+            "/assignments/",
             SdkClient.encode_path_segment(assignment_id),
-            '/grades'
+            "/grades"
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'classroom_get_assignment_grades',
           request_options: request_options,
-          errors: { '410' => ::OctridevGithub::BasicError }
+          errors: { '410' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -101,14 +104,15 @@ module OctridevGithub
         config:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
-          '/classrooms',
+          "/classrooms",
           config: config,
           decoder: :empty,
           operation_id: 'classroom_list_classrooms',
           request_options: request_options,
-          errors: { '410' => ::OctridevGithub::BasicError }
+          errors: { '410' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -124,17 +128,18 @@ module OctridevGithub
         classroom_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/classrooms/',
+            "/classrooms/",
             SdkClient.encode_path_segment(classroom_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'classroom_get_aclassroom',
           request_options: request_options,
-          errors: { '410' => ::OctridevGithub::BasicError }
+          errors: { '410' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -150,18 +155,19 @@ module OctridevGithub
         classroom_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/classrooms/',
+            "/classrooms/",
             SdkClient.encode_path_segment(classroom_id),
-            '/assignments'
+            "/assignments"
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'classroom_list_assignments_for_aclassroom',
           request_options: request_options,
-          errors: { '410' => ::OctridevGithub::BasicError }
+          errors: { '410' => ::OctridevGithub::BasicError },
         ).data
       end
     end

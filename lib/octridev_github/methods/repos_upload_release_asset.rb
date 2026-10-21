@@ -28,28 +28,29 @@ module OctridevGithub
         body: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/releases/',
+            "/releases/",
             SdkClient.encode_path_segment(release_id),
-            '/assets'
+            "/assets"
           ].join,
           config: config,
           query: {
             'name' => QueryValue.new(name, style: 'form', explode: true),
-            'label' => QueryValue.new(label, style: 'form', explode: true)
+            'label' => QueryValue.new(label, style: 'form', explode: true),
           },
           body: body,
           content_type: 'application/octet-stream',
           return_type: ::OctridevGithub::ReleaseAsset,
           decoder: :json,
           operation_id: 'repos_upload_release_asset',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

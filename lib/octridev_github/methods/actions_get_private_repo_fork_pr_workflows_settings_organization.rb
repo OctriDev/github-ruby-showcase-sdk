@@ -17,19 +17,20 @@ module OctridevGithub
         org:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/actions/permissions/fork-pr-workflows-private-repos'
+            "/actions/permissions/fork-pr-workflows-private-repos"
           ].join,
           config: config,
           return_type: ::OctridevGithub::ActionsForkPrWorkflowsPrivateRepos,
           decoder: :json,
           operation_id: 'actions_get_private_repo_fork_pr_workflows_settings_organization',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

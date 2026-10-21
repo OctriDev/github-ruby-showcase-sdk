@@ -17,10 +17,11 @@ module OctridevGithub
         account_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/marketplace_listing/accounts/',
+            "/marketplace_listing/accounts/",
             SdkClient.encode_path_segment(account_id)
           ].join,
           config: config,
@@ -28,7 +29,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'apps_get_subscription_plan_for_account',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -44,19 +45,20 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
-          '/marketplace_listing/plans',
+          "/marketplace_listing/plans",
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::MarketplaceListingPlan],
           decoder: :json,
           operation_id: 'apps_list_plans',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -79,25 +81,26 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/marketplace_listing/plans/',
+            "/marketplace_listing/plans/",
             SdkClient.encode_path_segment(plan_id),
-            '/accounts'
+            "/accounts"
           ].join,
           config: config,
           query: {
             'sort' => QueryValue.new(sort, style: 'form', explode: true),
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::MarketplacePurchase],
           decoder: :json,
           operation_id: 'apps_list_accounts_for_plan',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '401' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -109,10 +112,11 @@ module OctridevGithub
         account_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/marketplace_listing/stubbed/accounts/',
+            "/marketplace_listing/stubbed/accounts/",
             SdkClient.encode_path_segment(account_id)
           ].join,
           config: config,
@@ -120,7 +124,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'apps_get_subscription_plan_for_account_stubbed',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -136,19 +140,20 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
-          '/marketplace_listing/stubbed/plans',
+          "/marketplace_listing/stubbed/plans",
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::MarketplaceListingPlan],
           decoder: :json,
           operation_id: 'apps_list_plans_stubbed',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -171,25 +176,26 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/marketplace_listing/stubbed/plans/',
+            "/marketplace_listing/stubbed/plans/",
             SdkClient.encode_path_segment(plan_id),
-            '/accounts'
+            "/accounts"
           ].join,
           config: config,
           query: {
             'sort' => QueryValue.new(sort, style: 'form', explode: true),
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::MarketplacePurchase],
           decoder: :json,
           operation_id: 'apps_list_accounts_for_plan_stubbed',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError },
         ).data
       end
     end

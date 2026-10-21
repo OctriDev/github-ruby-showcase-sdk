@@ -26,23 +26,24 @@ module OctridevGithub
         selected_repository_ids:,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/codespaces/secrets/',
+            "/codespaces/secrets/",
             SdkClient.encode_path_segment(secret_name),
-            '/repositories'
+            "/repositories"
           ].join,
           config: config,
           body: {
-            'selected_repository_ids' => selected_repository_ids
+            'selected_repository_ids' => selected_repository_ids,
           },
           decoder: :empty,
           operation_id: 'codespaces_set_selected_repos_for_org_secret',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
     end

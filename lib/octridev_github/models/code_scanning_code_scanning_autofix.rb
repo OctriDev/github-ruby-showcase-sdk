@@ -5,160 +5,164 @@
 
 # code_scanning_code_scanning_autofix domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalCodeScanningAutofixMetadata
-    FIELDS = {
-      status: 'status',
-      description: 'description',
-      started_at: 'started_at'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      status
-      description
-      started_at
-    ].freeze
-    DECODERS = {
-      status: lambda do |value|
-        ::OctridevGithub::CodeScanningAutofixStatus.from_value(value)
-      end,
-      description: lambda do |value|
-        ::OctridevGithub::CodeScanningAutofixDescription.from_value(value)
-      end,
-      started_at: lambda do |value|
-        ::OctridevGithub::CodeScanningAutofixStartedAt.from_value(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      description
-    ].freeze
+# Internal model hydration metadata.
+class SdkInternalCodeScanningAutofixMetadata
+  FIELDS = {
+    status: "status",
+    description: "description",
+    started_at: "started_at",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    status
+    description
+    started_at
+  ].freeze
+  DECODERS = {
+    status: lambda do |value|
+      ::OctridevGithub::CodeScanningAutofixStatus.from_value(value)
+    end,
+    description: lambda do |value|
+      ::OctridevGithub::CodeScanningAutofixDescription.from_value(value)
+    end,
+    started_at: lambda do |value|
+      ::OctridevGithub::CodeScanningAutofixStartedAt.from_value(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    description
+  ].freeze
+end
+
+# API model for CodeScanningAutofix.
+# Typed representation of the `CodeScanningAutofix` API schema.
+class CodeScanningAutofix
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalCodeScanningAutofixMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalCodeScanningAutofixMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalCodeScanningAutofixMetadata::DECODERS
+
+  # @return [CodeScanningAutofixStatus] The status of an autofix.
+  attr_reader :status
+  # @return [CodeScanningAutofixDescription] The description of an autofix.
+  attr_reader :description
+  # @return [CodeScanningAutofixStartedAt] The start time of an autofix in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+  attr_reader :started_at
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for CodeScanningAutofix.
-  # Typed representation of the `CodeScanningAutofix` API schema.
-  class CodeScanningAutofix
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalCodeScanningAutofixMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalCodeScanningAutofixMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalCodeScanningAutofixMetadata::DECODERS
-
-    # @return [CodeScanningAutofixStatus] The status of an autofix.
-    attr_reader :status
-    # @return [CodeScanningAutofixDescription] The description of an autofix.
-    attr_reader :description
-    # @return [CodeScanningAutofixStartedAt] The start time of an autofix in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-    attr_reader :started_at
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalCodeScanningAutofixMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalCodeScanningAutofixMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalCodeScanningAutofixCommitsMetadata
-    FIELDS = {
-      target_ref: 'target_ref',
-      message: 'message'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalCodeScanningAutofixCommitsMetadata
+  FIELDS = {
+    target_ref: "target_ref",
+    message: "message",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for CodeScanningAutofixCommits.
+# Commit an autofix for a code scanning alert
+class CodeScanningAutofixCommits
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalCodeScanningAutofixCommitsMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalCodeScanningAutofixCommitsMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalCodeScanningAutofixCommitsMetadata::DECODERS
+
+  # @return [String] The Git reference of target branch for the commit. Branch needs to already exist. For more information, see "Git References" in the Git documentation.
+  attr_reader :target_ref
+  # @return [String] Commit message to be used.
+  attr_reader :message
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for CodeScanningAutofixCommits.
-  # Commit an autofix for a code scanning alert
-  class CodeScanningAutofixCommits
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalCodeScanningAutofixCommitsMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalCodeScanningAutofixCommitsMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalCodeScanningAutofixCommitsMetadata::DECODERS
-
-    # @return [String] The Git reference of target branch for the commit. Branch needs to already exist. For more information, see "Git References" in the Git documentation.
-    attr_reader :target_ref
-    # @return [String] Commit message to be used.
-    attr_reader :message
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalCodeScanningAutofixCommitsResponseMetadata
-    FIELDS = {
-      target_ref: 'target_ref',
-      sha: 'sha'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalCodeScanningAutofixCommitsResponseMetadata
+  FIELDS = {
+    target_ref: "target_ref",
+    sha: "sha",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for CodeScanningAutofixCommitsResponse.
+# Typed representation of the `CodeScanningAutofixCommitsResponse` API schema.
+class CodeScanningAutofixCommitsResponse
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalCodeScanningAutofixCommitsResponseMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalCodeScanningAutofixCommitsResponseMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalCodeScanningAutofixCommitsResponseMetadata::DECODERS
+
+  # @return [String] The Git reference of target branch for the commit. For more information, see "Git References" in the Git documentation.
+  attr_reader :target_ref
+  # @return [String] SHA of commit with autofix.
+  attr_reader :sha
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for CodeScanningAutofixCommitsResponse.
-  # Typed representation of the `CodeScanningAutofixCommitsResponse` API schema.
-  class CodeScanningAutofixCommitsResponse
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalCodeScanningAutofixCommitsResponseMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalCodeScanningAutofixCommitsResponseMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalCodeScanningAutofixCommitsResponseMetadata::DECODERS
-
-    # @return [String] The Git reference of target branch for the commit. For more information, see "Git References" in the Git documentation.
-    attr_reader :target_ref
-    # @return [String] SHA of commit with autofix.
-    attr_reader :sha
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the CodeScanningAutofixDescription SDK value decoder.
-  module CodeScanningAutofixDescription
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
 
-  # Defines the CodeScanningAutofixStartedAt SDK value decoder.
-  module CodeScanningAutofixStartedAt
-    def self.from_value(value)
-      value
-    end
+# Defines the CodeScanningAutofixDescription SDK value decoder.
+module CodeScanningAutofixDescription
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the CodeScanningAutofixStatus SDK namespace.
-  module CodeScanningAutofixStatus
-    PENDING = 'pending'
-    ERROR = 'error'
-    SUCCESS = 'success'
-    OUTDATED = 'outdated'
-    VALUES = %w[pending error success outdated].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the CodeScanningAutofixStartedAt SDK value decoder.
+module CodeScanningAutofixStartedAt
+  def self.from_value(value)
+    value
   end
+end
+
+# Defines the CodeScanningAutofixStatus SDK namespace.
+module CodeScanningAutofixStatus
+  PENDING = 'pending'
+  ERROR = 'error'
+  SUCCESS = 'success'
+  OUTDATED = 'outdated'
+  VALUES = ['pending', 'error', 'success', 'outdated'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

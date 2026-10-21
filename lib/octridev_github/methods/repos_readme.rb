@@ -24,24 +24,25 @@ module OctridevGithub
         ref: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/readme'
+            "/readme"
           ].join,
           config: config,
           query: {
-            'ref' => QueryValue.new(ref, style: 'form', explode: true)
+            'ref' => QueryValue.new(ref, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::ContentFile,
           decoder: :json,
           operation_id: 'repos_get_readme',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -62,25 +63,26 @@ module OctridevGithub
         ref: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/readme/',
+            "/readme/",
             SdkClient.encode_path_segment(dir)
           ].join,
           config: config,
           query: {
-            'ref' => QueryValue.new(ref, style: 'form', explode: true)
+            'ref' => QueryValue.new(ref, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::ContentFile,
           decoder: :json,
           operation_id: 'repos_get_readme_in_directory',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end

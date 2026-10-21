@@ -5,691 +5,694 @@
 
 # webhooks domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksIssue2PerformedViaGithubAppMetadata
-    FIELDS = {
-      created_at: 'created_at',
-      description: 'description',
-      events: 'events',
-      external_url: 'external_url',
-      html_url: 'html_url',
-      id: 'id',
-      name: 'name',
-      node_id: 'node_id',
-      owner: 'owner',
-      permissions: 'permissions',
-      slug: 'slug',
-      updated_at: 'updated_at'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      created_at
-      description
-      external_url
-      html_url
-      id
-      name
-      node_id
-      owner
-      updated_at
-    ].freeze
-    DECODERS = {
-      events: lambda do |value|
-        value&.map { |item| ::OctridevGithub::WebhooksIssue2PerformedViaGithubAppEventsItem.from_value(item) }
-      end,
-      owner: lambda do |value|
-        ::OctridevGithub::WebhooksIssue2PerformedViaGithubAppOwner.from_hash(value)
-      end,
-      permissions: lambda do |value|
-        ::OctridevGithub::WebhooksIssue2PerformedViaGithubAppPermissions.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      created_at
-      description
-      external_url
-      id
-      owner
-      updated_at
-    ].freeze
+# Internal model hydration metadata.
+class SdkInternalWebhooksIssue2PerformedViaGithubAppMetadata
+  FIELDS = {
+    created_at: "created_at",
+    description: "description",
+    events: "events",
+    external_url: "external_url",
+    html_url: "html_url",
+    id: "id",
+    name: "name",
+    node_id: "node_id",
+    owner: "owner",
+    permissions: "permissions",
+    slug: "slug",
+    updated_at: "updated_at",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    created_at
+    description
+    external_url
+    html_url
+    id
+    name
+    node_id
+    owner
+    updated_at
+  ].freeze
+  DECODERS = {
+    events: lambda do |value|
+      value&.map { |item| ::OctridevGithub::WebhooksIssue2PerformedViaGithubAppEventsItem.from_value(item) }
+    end,
+    owner: lambda do |value|
+      ::OctridevGithub::WebhooksIssue2PerformedViaGithubAppOwner.from_hash(value)
+    end,
+    permissions: lambda do |value|
+      ::OctridevGithub::WebhooksIssue2PerformedViaGithubAppPermissions.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    created_at
+    description
+    external_url
+    id
+    owner
+    updated_at
+  ].freeze
+end
+
+# API model for WebhooksIssue2PerformedViaGithubApp.
+# GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+class WebhooksIssue2PerformedViaGithubApp
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksIssue2PerformedViaGithubAppMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksIssue2PerformedViaGithubAppMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksIssue2PerformedViaGithubAppMetadata::DECODERS
+
+  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [String] Required `string` value serialized in the `description` wire field.
+  attr_reader :description
+  # @return [Array_of_WebhooksIssue2PerformedViaGithubAppEventsItem] The list of events for the GitHub app
+  attr_reader :events
+  # @return [String] Required `uri`-formatted value serialized in the `external_url` wire field.
+  attr_reader :external_url
+  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [Integer] Unique identifier of the GitHub app
+  attr_reader :id
+  # @return [String] The name of the GitHub app
+  attr_reader :name
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [WebhooksIssue2PerformedViaGithubAppOwner] Required object value serialized in the `owner` wire field.
+  attr_reader :owner
+  # @return [WebhooksIssue2PerformedViaGithubAppPermissions] The set of permissions for the GitHub app
+  attr_reader :permissions
+  # @return [String] The slug name of the GitHub app
+  attr_reader :slug
+  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+  attr_reader :updated_at
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhooksIssue2PerformedViaGithubApp.
-  # GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
-  class WebhooksIssue2PerformedViaGithubApp
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksIssue2PerformedViaGithubAppMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksIssue2PerformedViaGithubAppMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksIssue2PerformedViaGithubAppMetadata::DECODERS
-
-    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [String] Required `string` value serialized in the `description` wire field.
-    attr_reader :description
-    # @return [Array_of_WebhooksIssue2PerformedViaGithubAppEventsItem] The list of events for the GitHub app
-    attr_reader :events
-    # @return [String] Required `uri`-formatted value serialized in the `external_url` wire field.
-    attr_reader :external_url
-    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [Integer] Unique identifier of the GitHub app
-    attr_reader :id
-    # @return [String] The name of the GitHub app
-    attr_reader :name
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [WebhooksIssue2PerformedViaGithubAppOwner] Required object value serialized in the `owner` wire field.
-    attr_reader :owner
-    # @return [WebhooksIssue2PerformedViaGithubAppPermissions] The set of permissions for the GitHub app
-    attr_reader :permissions
-    # @return [String] The slug name of the GitHub app
-    attr_reader :slug
-    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-    attr_reader :updated_at
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhooksIssue2PerformedViaGithubAppMetadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhooksIssue2PerformedViaGithubAppMetadata::NULLABLE_FIELDS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksIssue2PullRequestMetadata
-    FIELDS = {
-      diff_url: 'diff_url',
-      html_url: 'html_url',
-      merged_at: 'merged_at',
-      patch_url: 'patch_url',
-      url: 'url'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhooksIssue2PullRequestMetadata
+  FIELDS = {
+    diff_url: "diff_url",
+    html_url: "html_url",
+    merged_at: "merged_at",
+    patch_url: "patch_url",
+    url: "url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhooksIssue2PullRequest.
+# Optional object value serialized in the `pull_request` wire field.
+class WebhooksIssue2PullRequest
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksIssue2PullRequestMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksIssue2PullRequestMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksIssue2PullRequestMetadata::DECODERS
+
+  # @return [String] Optional `uri`-formatted value serialized in the `diff_url` wire field.
+  attr_reader :diff_url
+  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [String] Optional `date-time`-formatted value serialized in the `merged_at` wire field.
+  attr_reader :merged_at
+  # @return [String] Optional `uri`-formatted value serialized in the `patch_url` wire field.
+  attr_reader :patch_url
+  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhooksIssue2PullRequest.
-  # Optional object value serialized in the `pull_request` wire field.
-  class WebhooksIssue2PullRequest
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksIssue2PullRequestMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksIssue2PullRequestMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksIssue2PullRequestMetadata::DECODERS
-
-    # @return [String] Optional `uri`-formatted value serialized in the `diff_url` wire field.
-    attr_reader :diff_url
-    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [String] Optional `date-time`-formatted value serialized in the `merged_at` wire field.
-    attr_reader :merged_at
-    # @return [String] Optional `uri`-formatted value serialized in the `patch_url` wire field.
-    attr_reader :patch_url
-    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksIssue2ReactionsMetadata
-    FIELDS = {
-      plus1: '+1',
-      minus1: '-1',
-      confused: 'confused',
-      eyes: 'eyes',
-      heart: 'heart',
-      hooray: 'hooray',
-      laugh: 'laugh',
-      rocket: 'rocket',
-      total_count: 'total_count',
-      url: 'url'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      plus1
-      minus1
-      confused
-      eyes
-      heart
-      hooray
-      laugh
-      rocket
-      total_count
-      url
-    ].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhooksIssue2ReactionsMetadata
+  FIELDS = {
+    plus1: "+1",
+    minus1: "-1",
+    confused: "confused",
+    eyes: "eyes",
+    heart: "heart",
+    hooray: "hooray",
+    laugh: "laugh",
+    rocket: "rocket",
+    total_count: "total_count",
+    url: "url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    plus1
+    minus1
+    confused
+    eyes
+    heart
+    hooray
+    laugh
+    rocket
+    total_count
+    url
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for WebhooksIssue2Reactions.
+# Required object value serialized in the `reactions` wire field.
+class WebhooksIssue2Reactions
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksIssue2ReactionsMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksIssue2ReactionsMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksIssue2ReactionsMetadata::DECODERS
+
+  # @return [Integer] Required `integer` value serialized in the `+1` wire field.
+  attr_reader :plus1
+  # @return [Integer] Required `integer` value serialized in the `-1` wire field.
+  attr_reader :minus1
+  # @return [Integer] Required `integer` value serialized in the `confused` wire field.
+  attr_reader :confused
+  # @return [Integer] Required `integer` value serialized in the `eyes` wire field.
+  attr_reader :eyes
+  # @return [Integer] Required `integer` value serialized in the `heart` wire field.
+  attr_reader :heart
+  # @return [Integer] Required `integer` value serialized in the `hooray` wire field.
+  attr_reader :hooray
+  # @return [Integer] Required `integer` value serialized in the `laugh` wire field.
+  attr_reader :laugh
+  # @return [Integer] Required `integer` value serialized in the `rocket` wire field.
+  attr_reader :rocket
+  # @return [Integer] Required `integer` value serialized in the `total_count` wire field.
+  attr_reader :total_count
+  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhooksIssue2Reactions.
-  # Required object value serialized in the `reactions` wire field.
-  class WebhooksIssue2Reactions
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksIssue2ReactionsMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksIssue2ReactionsMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksIssue2ReactionsMetadata::DECODERS
-
-    # @return [Integer] Required `integer` value serialized in the `+1` wire field.
-    attr_reader :plus1
-    # @return [Integer] Required `integer` value serialized in the `-1` wire field.
-    attr_reader :minus1
-    # @return [Integer] Required `integer` value serialized in the `confused` wire field.
-    attr_reader :confused
-    # @return [Integer] Required `integer` value serialized in the `eyes` wire field.
-    attr_reader :eyes
-    # @return [Integer] Required `integer` value serialized in the `heart` wire field.
-    attr_reader :heart
-    # @return [Integer] Required `integer` value serialized in the `hooray` wire field.
-    attr_reader :hooray
-    # @return [Integer] Required `integer` value serialized in the `laugh` wire field.
-    attr_reader :laugh
-    # @return [Integer] Required `integer` value serialized in the `rocket` wire field.
-    attr_reader :rocket
-    # @return [Integer] Required `integer` value serialized in the `total_count` wire field.
-    attr_reader :total_count
-    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksIssue2UserMetadata
-    FIELDS = {
-      avatar_url: 'avatar_url',
-      deleted: 'deleted',
-      email: 'email',
-      events_url: 'events_url',
-      followers_url: 'followers_url',
-      following_url: 'following_url',
-      gists_url: 'gists_url',
-      gravatar_id: 'gravatar_id',
-      html_url: 'html_url',
-      id: 'id',
-      login: 'login',
-      name: 'name',
-      node_id: 'node_id',
-      organizations_url: 'organizations_url',
-      received_events_url: 'received_events_url',
-      repos_url: 'repos_url',
-      site_admin: 'site_admin',
-      starred_url: 'starred_url',
-      subscriptions_url: 'subscriptions_url',
-      type: 'type',
-      url: 'url',
-      user_view_type: 'user_view_type'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      id
-      login
-    ].freeze
-    DECODERS = {
-      type: lambda do |value|
-        ::OctridevGithub::WebhooksIssue2UserType.from_value(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhooksIssue2UserMetadata
+  FIELDS = {
+    avatar_url: "avatar_url",
+    deleted: "deleted",
+    email: "email",
+    events_url: "events_url",
+    followers_url: "followers_url",
+    following_url: "following_url",
+    gists_url: "gists_url",
+    gravatar_id: "gravatar_id",
+    html_url: "html_url",
+    id: "id",
+    login: "login",
+    name: "name",
+    node_id: "node_id",
+    organizations_url: "organizations_url",
+    received_events_url: "received_events_url",
+    repos_url: "repos_url",
+    site_admin: "site_admin",
+    starred_url: "starred_url",
+    subscriptions_url: "subscriptions_url",
+    type: "type",
+    url: "url",
+    user_view_type: "user_view_type",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    id
+    login
+  ].freeze
+  DECODERS = {
+    type: lambda do |value|
+      ::OctridevGithub::WebhooksIssue2UserType.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for WebhooksIssue2User.
+# Required object value serialized in the `user` wire field.
+class WebhooksIssue2User
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksIssue2UserMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksIssue2UserMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksIssue2UserMetadata::DECODERS
+
+  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+  attr_reader :avatar_url
+  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+  attr_reader :deleted
+  # @return [String] Optional `string` value serialized in the `email` wire field.
+  attr_reader :email
+  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+  attr_reader :events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+  attr_reader :followers_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+  attr_reader :following_url
+  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+  attr_reader :gists_url
+  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+  attr_reader :gravatar_id
+  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [String] Required `string` value serialized in the `login` wire field.
+  attr_reader :login
+  # @return [String] Optional `string` value serialized in the `name` wire field.
+  attr_reader :name
+  # @return [String] Optional `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+  attr_reader :organizations_url
+  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+  attr_reader :received_events_url
+  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+  attr_reader :repos_url
+  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+  attr_reader :site_admin
+  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+  attr_reader :starred_url
+  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+  attr_reader :subscriptions_url
+  # @return [WebhooksIssue2UserType] Optional enumerated value serialized in the `type` wire field.
+  attr_reader :type
+  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+  attr_reader :user_view_type
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhooksIssue2User.
-  # Required object value serialized in the `user` wire field.
-  class WebhooksIssue2User
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksIssue2UserMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksIssue2UserMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksIssue2UserMetadata::DECODERS
-
-    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-    attr_reader :avatar_url
-    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-    attr_reader :deleted
-    # @return [String] Optional `string` value serialized in the `email` wire field.
-    attr_reader :email
-    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-    attr_reader :events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-    attr_reader :followers_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-    attr_reader :following_url
-    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-    attr_reader :gists_url
-    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-    attr_reader :gravatar_id
-    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [String] Required `string` value serialized in the `login` wire field.
-    attr_reader :login
-    # @return [String] Optional `string` value serialized in the `name` wire field.
-    attr_reader :name
-    # @return [String] Optional `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-    attr_reader :organizations_url
-    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-    attr_reader :received_events_url
-    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-    attr_reader :repos_url
-    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-    attr_reader :site_admin
-    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-    attr_reader :starred_url
-    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-    attr_reader :subscriptions_url
-    # @return [WebhooksIssue2UserType] Optional enumerated value serialized in the `type` wire field.
-    attr_reader :type
-    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-    attr_reader :user_view_type
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalWebhooksIssue2Metadata
-    FIELDS = {
-      active_lock_reason: 'active_lock_reason',
-      assignee: 'assignee',
-      assignees: 'assignees',
-      author_association: 'author_association',
-      body: 'body',
-      closed_at: 'closed_at',
-      comments: 'comments',
-      comments_url: 'comments_url',
-      created_at: 'created_at',
-      draft: 'draft',
-      events_url: 'events_url',
-      html_url: 'html_url',
-      id: 'id',
-      labels: 'labels',
-      labels_url: 'labels_url',
-      locked: 'locked',
-      milestone: 'milestone',
-      node_id: 'node_id',
-      number: 'number',
-      performed_via_github_app: 'performed_via_github_app',
-      pull_request: 'pull_request',
-      reactions: 'reactions',
-      repository_url: 'repository_url',
-      pinned_comment: 'pinned_comment',
-      sub_issues_summary: 'sub_issues_summary',
-      issue_dependencies_summary: 'issue_dependencies_summary',
-      issue_field_values: 'issue_field_values',
-      state: 'state',
-      state_reason: 'state_reason',
-      timeline_url: 'timeline_url',
-      title: 'title',
-      type: 'type',
-      updated_at: 'updated_at',
-      url: 'url',
-      user: 'user'
-    }.freeze
-    REQUIRED_FIELDS = %i[
-      active_lock_reason
-      assignees
-      author_association
-      body
-      closed_at
-      comments
-      comments_url
-      created_at
-      events_url
-      html_url
-      id
-      labels_url
-      milestone
-      node_id
-      number
-      reactions
-      repository_url
-      title
-      updated_at
-      url
-      user
-    ].freeze
-    DECODERS = {
-      active_lock_reason: lambda do |value|
-        ::OctridevGithub::WebhooksIssue2ActiveLockReason.from_value(value)
-      end,
-      assignee: lambda do |value|
-        ::OctridevGithub::WebhooksIssue2Assignee.from_hash(value)
-      end,
-      assignees: lambda do |value|
-        value&.map { |item| item.nil? ? nil : ::OctridevGithub::WebhooksIssue2AssigneesItem.from_hash(item) }
-      end,
-      author_association: lambda do |value|
-        ::OctridevGithub::WebhooksIssue2AuthorAssociation.from_value(value)
-      end,
-      labels: lambda do |value|
-        value&.map { |item| ::OctridevGithub::WebhooksIssue2LabelsItem.from_hash(item) }
-      end,
-      milestone: lambda do |value|
-        ::OctridevGithub::WebhooksIssue2Milestone.from_hash(value)
-      end,
-      performed_via_github_app: lambda do |value|
-        ::OctridevGithub::WebhooksIssue2PerformedViaGithubApp.from_hash(value)
-      end,
-      pull_request: lambda do |value|
-        ::OctridevGithub::WebhooksIssue2PullRequest.from_hash(value)
-      end,
-      reactions: lambda do |value|
-        ::OctridevGithub::WebhooksIssue2Reactions.from_hash(value)
-      end,
-      pinned_comment: lambda do |value|
-        ::OctridevGithub::NullableIssueComment.from_hash(value)
-      end,
-      sub_issues_summary: lambda do |value|
-        ::OctridevGithub::SubIssuesSummary.from_hash(value)
-      end,
-      issue_dependencies_summary: lambda do |value|
-        ::OctridevGithub::IssueDependenciesSummary.from_hash(value)
-      end,
-      issue_field_values: lambda do |value|
-        value&.map { |item| ::OctridevGithub::IssueFieldValue.from_hash(item) }
-      end,
-      state: lambda do |value|
-        ::OctridevGithub::WebhooksIssue2State.from_value(value)
-      end,
-      type: lambda do |value|
-        ::OctridevGithub::IssueType.from_hash(value)
-      end,
-      user: lambda do |value|
-        ::OctridevGithub::WebhooksIssue2User.from_hash(value)
-      end
-    }.freeze
-    NULLABLE_FIELDS = %i[
-      active_lock_reason
-      body
-      closed_at
-      milestone
-      user
-    ].freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalWebhooksIssue2Metadata
+  FIELDS = {
+    active_lock_reason: "active_lock_reason",
+    assignee: "assignee",
+    assignees: "assignees",
+    author_association: "author_association",
+    body: "body",
+    closed_at: "closed_at",
+    comments: "comments",
+    comments_url: "comments_url",
+    created_at: "created_at",
+    draft: "draft",
+    events_url: "events_url",
+    html_url: "html_url",
+    id: "id",
+    labels: "labels",
+    labels_url: "labels_url",
+    locked: "locked",
+    milestone: "milestone",
+    node_id: "node_id",
+    number: "number",
+    performed_via_github_app: "performed_via_github_app",
+    pull_request: "pull_request",
+    reactions: "reactions",
+    repository_url: "repository_url",
+    pinned_comment: "pinned_comment",
+    sub_issues_summary: "sub_issues_summary",
+    issue_dependencies_summary: "issue_dependencies_summary",
+    issue_field_values: "issue_field_values",
+    state: "state",
+    state_reason: "state_reason",
+    timeline_url: "timeline_url",
+    title: "title",
+    type: "type",
+    updated_at: "updated_at",
+    url: "url",
+    user: "user",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+    active_lock_reason
+    assignees
+    author_association
+    body
+    closed_at
+    comments
+    comments_url
+    created_at
+    events_url
+    html_url
+    id
+    labels_url
+    milestone
+    node_id
+    number
+    reactions
+    repository_url
+    title
+    updated_at
+    url
+    user
+  ].freeze
+  DECODERS = {
+    active_lock_reason: lambda do |value|
+      ::OctridevGithub::WebhooksIssue2ActiveLockReason.from_value(value)
+    end,
+    assignee: lambda do |value|
+      ::OctridevGithub::WebhooksIssue2Assignee.from_hash(value)
+    end,
+    assignees: lambda do |value|
+      value&.map { |item| item.nil? ? nil : ::OctridevGithub::WebhooksIssue2AssigneesItem.from_hash(item) }
+    end,
+    author_association: lambda do |value|
+      ::OctridevGithub::WebhooksIssue2AuthorAssociation.from_value(value)
+    end,
+    labels: lambda do |value|
+      value&.map { |item| ::OctridevGithub::WebhooksIssue2LabelsItem.from_hash(item) }
+    end,
+    milestone: lambda do |value|
+      ::OctridevGithub::WebhooksIssue2Milestone.from_hash(value)
+    end,
+    performed_via_github_app: lambda do |value|
+      ::OctridevGithub::WebhooksIssue2PerformedViaGithubApp.from_hash(value)
+    end,
+    pull_request: lambda do |value|
+      ::OctridevGithub::WebhooksIssue2PullRequest.from_hash(value)
+    end,
+    reactions: lambda do |value|
+      ::OctridevGithub::WebhooksIssue2Reactions.from_hash(value)
+    end,
+    pinned_comment: lambda do |value|
+      ::OctridevGithub::NullableIssueComment.from_hash(value)
+    end,
+    sub_issues_summary: lambda do |value|
+      ::OctridevGithub::SubIssuesSummary.from_hash(value)
+    end,
+    issue_dependencies_summary: lambda do |value|
+      ::OctridevGithub::IssueDependenciesSummary.from_hash(value)
+    end,
+    issue_field_values: lambda do |value|
+      value&.map { |item| ::OctridevGithub::IssueFieldValue.from_hash(item) }
+    end,
+    state: lambda do |value|
+      ::OctridevGithub::WebhooksIssue2State.from_value(value)
+    end,
+    type: lambda do |value|
+      ::OctridevGithub::IssueType.from_hash(value)
+    end,
+    user: lambda do |value|
+      ::OctridevGithub::WebhooksIssue2User.from_hash(value)
+    end,
+  }.freeze
+  NULLABLE_FIELDS = %i[
+    active_lock_reason
+    body
+    closed_at
+    milestone
+    user
+  ].freeze
+end
+
+# API model for WebhooksIssue2.
+# The issue itself.
+class WebhooksIssue2
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalWebhooksIssue2Metadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalWebhooksIssue2Metadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalWebhooksIssue2Metadata::DECODERS
+
+  # @return [WebhooksIssue2ActiveLockReason] Required enumerated value serialized in the `active_lock_reason` wire field.
+  attr_reader :active_lock_reason
+  # @return [WebhooksIssue2Assignee] Optional object value serialized in the `assignee` wire field.
+  attr_reader :assignee
+  # @return [Array_of_WebhooksIssue2AssigneesItem] Required array value serialized in the `assignees` wire field.
+  attr_reader :assignees
+  # @return [WebhooksIssue2AuthorAssociation] How the author is associated with the repository.
+  attr_reader :author_association
+  # @return [String] Contents of the issue
+  attr_reader :body
+  # @return [String] Required `date-time`-formatted value serialized in the `closed_at` wire field.
+  attr_reader :closed_at
+  # @return [Integer] Required `integer` value serialized in the `comments` wire field.
+  attr_reader :comments
+  # @return [String] Required `uri`-formatted value serialized in the `comments_url` wire field.
+  attr_reader :comments_url
+  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+  attr_reader :created_at
+  # @return [Boolean] Optional `boolean` value serialized in the `draft` wire field.
+  attr_reader :draft
+  # @return [String] Required `uri`-formatted value serialized in the `events_url` wire field.
+  attr_reader :events_url
+  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+  attr_reader :html_url
+  # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
+  attr_reader :id
+  # @return [Array_of_WebhooksIssue2LabelsItem] Optional array value serialized in the `labels` wire field.
+  attr_reader :labels
+  # @return [String] Required `uri-template`-formatted value serialized in the `labels_url` wire field.
+  attr_reader :labels_url
+  # @return [Boolean] Optional `boolean` value serialized in the `locked` wire field.
+  attr_reader :locked
+  # @return [WebhooksIssue2Milestone] A collection of related issues and pull requests.
+  attr_reader :milestone
+  # @return [String] Required `string` value serialized in the `node_id` wire field.
+  attr_reader :node_id
+  # @return [Integer] Required `integer` value serialized in the `number` wire field.
+  attr_reader :number
+  # @return [WebhooksIssue2PerformedViaGithubApp] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+  attr_reader :performed_via_github_app
+  # @return [WebhooksIssue2PullRequest] Optional object value serialized in the `pull_request` wire field.
+  attr_reader :pull_request
+  # @return [WebhooksIssue2Reactions] Required object value serialized in the `reactions` wire field.
+  attr_reader :reactions
+  # @return [String] Required `uri`-formatted value serialized in the `repository_url` wire field.
+  attr_reader :repository_url
+  # @return [NullableIssueComment] Comments provide a way for people to collaborate on an issue.
+  attr_reader :pinned_comment
+  # @return [SubIssuesSummary] Optional object value serialized in the `sub_issues_summary` wire field.
+  attr_reader :sub_issues_summary
+  # @return [IssueDependenciesSummary] Optional object value serialized in the `issue_dependencies_summary` wire field.
+  attr_reader :issue_dependencies_summary
+  # @return [Array_of_IssueFieldValue] Optional array value serialized in the `issue_field_values` wire field.
+  attr_reader :issue_field_values
+  # @return [WebhooksIssue2State] State of the issue; either 'open' or 'closed'
+  attr_reader :state
+  # @return [String] Optional `string` value serialized in the `state_reason` wire field.
+  attr_reader :state_reason
+  # @return [String] Optional `uri`-formatted value serialized in the `timeline_url` wire field.
+  attr_reader :timeline_url
+  # @return [String] Title of the issue
+  attr_reader :title
+  # @return [IssueType] The type assigned to the issue. This is only present for issues in repositories where issue types are supported.
+  attr_reader :type
+  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+  attr_reader :updated_at
+  # @return [String] URL for the issue
+  attr_reader :url
+  # @return [WebhooksIssue2User] Required object value serialized in the `user` wire field.
+  attr_reader :user
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for WebhooksIssue2.
-  # The issue itself.
-  class WebhooksIssue2
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalWebhooksIssue2Metadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalWebhooksIssue2Metadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalWebhooksIssue2Metadata::DECODERS
-
-    # @return [WebhooksIssue2ActiveLockReason] Required enumerated value serialized in the `active_lock_reason` wire field.
-    attr_reader :active_lock_reason
-    # @return [WebhooksIssue2Assignee] Optional object value serialized in the `assignee` wire field.
-    attr_reader :assignee
-    # @return [Array_of_WebhooksIssue2AssigneesItem] Required array value serialized in the `assignees` wire field.
-    attr_reader :assignees
-    # @return [WebhooksIssue2AuthorAssociation] How the author is associated with the repository.
-    attr_reader :author_association
-    # @return [String] Contents of the issue
-    attr_reader :body
-    # @return [String] Required `date-time`-formatted value serialized in the `closed_at` wire field.
-    attr_reader :closed_at
-    # @return [Integer] Required `integer` value serialized in the `comments` wire field.
-    attr_reader :comments
-    # @return [String] Required `uri`-formatted value serialized in the `comments_url` wire field.
-    attr_reader :comments_url
-    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-    attr_reader :created_at
-    # @return [Boolean] Optional `boolean` value serialized in the `draft` wire field.
-    attr_reader :draft
-    # @return [String] Required `uri`-formatted value serialized in the `events_url` wire field.
-    attr_reader :events_url
-    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-    attr_reader :html_url
-    # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
-    attr_reader :id
-    # @return [Array_of_WebhooksIssue2LabelsItem] Optional array value serialized in the `labels` wire field.
-    attr_reader :labels
-    # @return [String] Required `uri-template`-formatted value serialized in the `labels_url` wire field.
-    attr_reader :labels_url
-    # @return [Boolean] Optional `boolean` value serialized in the `locked` wire field.
-    attr_reader :locked
-    # @return [WebhooksIssue2Milestone] A collection of related issues and pull requests.
-    attr_reader :milestone
-    # @return [String] Required `string` value serialized in the `node_id` wire field.
-    attr_reader :node_id
-    # @return [Integer] Required `integer` value serialized in the `number` wire field.
-    attr_reader :number
-    # @return [WebhooksIssue2PerformedViaGithubApp] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
-    attr_reader :performed_via_github_app
-    # @return [WebhooksIssue2PullRequest] Optional object value serialized in the `pull_request` wire field.
-    attr_reader :pull_request
-    # @return [WebhooksIssue2Reactions] Required object value serialized in the `reactions` wire field.
-    attr_reader :reactions
-    # @return [String] Required `uri`-formatted value serialized in the `repository_url` wire field.
-    attr_reader :repository_url
-    # @return [NullableIssueComment] Comments provide a way for people to collaborate on an issue.
-    attr_reader :pinned_comment
-    # @return [SubIssuesSummary] Optional object value serialized in the `sub_issues_summary` wire field.
-    attr_reader :sub_issues_summary
-    # @return [IssueDependenciesSummary] Optional object value serialized in the `issue_dependencies_summary` wire field.
-    attr_reader :issue_dependencies_summary
-    # @return [Array_of_IssueFieldValue] Optional array value serialized in the `issue_field_values` wire field.
-    attr_reader :issue_field_values
-    # @return [WebhooksIssue2State] State of the issue; either 'open' or 'closed'
-    attr_reader :state
-    # @return [String] Optional `string` value serialized in the `state_reason` wire field.
-    attr_reader :state_reason
-    # @return [String] Optional `uri`-formatted value serialized in the `timeline_url` wire field.
-    attr_reader :timeline_url
-    # @return [String] Title of the issue
-    attr_reader :title
-    # @return [IssueType] The type assigned to the issue. This is only present for issues in repositories where issue types are supported.
-    attr_reader :type
-    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-    attr_reader :updated_at
-    # @return [String] URL for the issue
-    attr_reader :url
-    # @return [WebhooksIssue2User] Required object value serialized in the `user` wire field.
-    attr_reader :user
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhooksIssue2Metadata::NULLABLE_FIELDS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhooksIssue2Metadata::NULLABLE_FIELDS)
   end
 
-  # Defines the WebhooksIssue2ActiveLockReason SDK namespace.
-  module WebhooksIssue2ActiveLockReason
-    RESOLVED = 'resolved'
-    OFF_TOPIC = 'off-topic'
-    TOO_HEATED = 'too heated'
-    SPAM = 'spam'
-    VALUES = ['resolved', 'off-topic', 'too heated', 'spam'].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
 
-  # Defines the WebhooksIssue2AssigneeType SDK namespace.
-  module WebhooksIssue2AssigneeType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhooksIssue2ActiveLockReason SDK namespace.
+module WebhooksIssue2ActiveLockReason
+  RESOLVED = 'resolved'
+  OFF_TOPIC = 'off-topic'
+  TOO_HEATED = 'too heated'
+  SPAM = 'spam'
+  VALUES = ['resolved', 'off-topic', 'too heated', 'spam'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhooksIssue2AssigneesItemType SDK namespace.
-  module WebhooksIssue2AssigneesItemType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhooksIssue2AssigneeType SDK namespace.
+module WebhooksIssue2AssigneeType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhooksIssue2AuthorAssociation SDK namespace.
-  module WebhooksIssue2AuthorAssociation
-    COLLABORATOR = 'COLLABORATOR'
-    CONTRIBUTOR = 'CONTRIBUTOR'
-    FIRST_TIMER = 'FIRST_TIMER'
-    FIRST_TIME_CONTRIBUTOR = 'FIRST_TIME_CONTRIBUTOR'
-    MANNEQUIN = 'MANNEQUIN'
-    MEMBER = 'MEMBER'
-    NONE = 'NONE'
-    OWNER = 'OWNER'
-    VALUES = %w[
-      COLLABORATOR CONTRIBUTOR FIRST_TIMER FIRST_TIME_CONTRIBUTOR MANNEQUIN MEMBER
-      NONE OWNER
-    ].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhooksIssue2AssigneesItemType SDK namespace.
+module WebhooksIssue2AssigneesItemType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhooksIssue2MilestoneCreatorType SDK namespace.
-  module WebhooksIssue2MilestoneCreatorType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhooksIssue2AuthorAssociation SDK namespace.
+module WebhooksIssue2AuthorAssociation
+  COLLABORATOR = 'COLLABORATOR'
+  CONTRIBUTOR = 'CONTRIBUTOR'
+  FIRST_TIMER = 'FIRST_TIMER'
+  FIRST_TIME_CONTRIBUTOR = 'FIRST_TIME_CONTRIBUTOR'
+  MANNEQUIN = 'MANNEQUIN'
+  MEMBER = 'MEMBER'
+  NONE = 'NONE'
+  OWNER = 'OWNER'
+  VALUES = [
+    'COLLABORATOR', 'CONTRIBUTOR', 'FIRST_TIMER', 'FIRST_TIME_CONTRIBUTOR', 'MANNEQUIN', 'MEMBER',
+    'NONE', 'OWNER'
+  ].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhooksIssue2MilestoneState SDK namespace.
-  module WebhooksIssue2MilestoneState
-    OPEN = 'open'
-    CLOSED = 'closed'
-    VALUES = %w[open closed].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhooksIssue2MilestoneCreatorType SDK namespace.
+module WebhooksIssue2MilestoneCreatorType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhooksIssue2PerformedViaGithubAppEventsItem SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppEventsItem
-    BRANCH_PROTECTION_RULE = 'branch_protection_rule'
-    CHECK_RUN = 'check_run'
-    CHECK_SUITE = 'check_suite'
-    CODE_SCANNING_ALERT = 'code_scanning_alert'
-    COMMIT_COMMENT = 'commit_comment'
-    CONTENT_REFERENCE = 'content_reference'
-    CREATE = 'create'
-    DELETE = 'delete'
-    DEPLOYMENT = 'deployment'
-    DEPLOYMENT_REVIEW = 'deployment_review'
-    DEPLOYMENT_STATUS = 'deployment_status'
-    DEPLOY_KEY = 'deploy_key'
-    DISCUSSION = 'discussion'
-    DISCUSSION_COMMENT = 'discussion_comment'
-    FORK = 'fork'
-    GOLLUM = 'gollum'
-    ISSUES = 'issues'
-    ISSUE_COMMENT = 'issue_comment'
-    LABEL = 'label'
-    MEMBER = 'member'
-    MEMBERSHIP = 'membership'
-    MILESTONE = 'milestone'
-    ORGANIZATION = 'organization'
-    ORG_BLOCK = 'org_block'
-    PAGE_BUILD = 'page_build'
-    PROJECT = 'project'
-    PROJECT_CARD = 'project_card'
-    PROJECT_COLUMN = 'project_column'
-    PUBLIC = 'public'
-    PULL_REQUEST = 'pull_request'
-    PULL_REQUEST_REVIEW = 'pull_request_review'
-    PULL_REQUEST_REVIEW_COMMENT = 'pull_request_review_comment'
-    PUSH = 'push'
-    REGISTRY_PACKAGE = 'registry_package'
-    RELEASE = 'release'
-    REPOSITORY = 'repository'
-    REPOSITORY_DISPATCH = 'repository_dispatch'
-    SECRET_SCANNING_ALERT = 'secret_scanning_alert'
-    STAR = 'star'
-    STATUS = 'status'
-    TEAM = 'team'
-    TEAM_ADD = 'team_add'
-    WATCH = 'watch'
-    WORKFLOW_DISPATCH = 'workflow_dispatch'
-    WORKFLOW_RUN = 'workflow_run'
-    VALUES = %w[
-      branch_protection_rule check_run check_suite code_scanning_alert commit_comment
-      content_reference create delete deployment deployment_review deployment_status
-      deploy_key discussion discussion_comment fork gollum issues issue_comment
-      label member membership milestone organization org_block page_build
-      project project_card project_column public pull_request pull_request_review
-      pull_request_review_comment push registry_package release repository
-      repository_dispatch secret_scanning_alert star status team team_add watch
-      workflow_dispatch workflow_run
-    ].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhooksIssue2MilestoneState SDK namespace.
+module WebhooksIssue2MilestoneState
+  OPEN = 'open'
+  CLOSED = 'closed'
+  VALUES = ['open', 'closed'].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhooksIssue2PerformedViaGithubAppOwnerType SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppOwnerType
-    BOT = 'Bot'
-    USER = 'User'
-    ORGANIZATION = 'Organization'
-    VALUES = %w[Bot User Organization].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhooksIssue2PerformedViaGithubAppEventsItem SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppEventsItem
+  BRANCH_PROTECTION_RULE = 'branch_protection_rule'
+  CHECK_RUN = 'check_run'
+  CHECK_SUITE = 'check_suite'
+  CODE_SCANNING_ALERT = 'code_scanning_alert'
+  COMMIT_COMMENT = 'commit_comment'
+  CONTENT_REFERENCE = 'content_reference'
+  CREATE = 'create'
+  DELETE = 'delete'
+  DEPLOYMENT = 'deployment'
+  DEPLOYMENT_REVIEW = 'deployment_review'
+  DEPLOYMENT_STATUS = 'deployment_status'
+  DEPLOY_KEY = 'deploy_key'
+  DISCUSSION = 'discussion'
+  DISCUSSION_COMMENT = 'discussion_comment'
+  FORK = 'fork'
+  GOLLUM = 'gollum'
+  ISSUES = 'issues'
+  ISSUE_COMMENT = 'issue_comment'
+  LABEL = 'label'
+  MEMBER = 'member'
+  MEMBERSHIP = 'membership'
+  MILESTONE = 'milestone'
+  ORGANIZATION = 'organization'
+  ORG_BLOCK = 'org_block'
+  PAGE_BUILD = 'page_build'
+  PROJECT = 'project'
+  PROJECT_CARD = 'project_card'
+  PROJECT_COLUMN = 'project_column'
+  PUBLIC = 'public'
+  PULL_REQUEST = 'pull_request'
+  PULL_REQUEST_REVIEW = 'pull_request_review'
+  PULL_REQUEST_REVIEW_COMMENT = 'pull_request_review_comment'
+  PUSH = 'push'
+  REGISTRY_PACKAGE = 'registry_package'
+  RELEASE = 'release'
+  REPOSITORY = 'repository'
+  REPOSITORY_DISPATCH = 'repository_dispatch'
+  SECRET_SCANNING_ALERT = 'secret_scanning_alert'
+  STAR = 'star'
+  STATUS = 'status'
+  TEAM = 'team'
+  TEAM_ADD = 'team_add'
+  WATCH = 'watch'
+  WORKFLOW_DISPATCH = 'workflow_dispatch'
+  WORKFLOW_RUN = 'workflow_run'
+  VALUES = [
+    'branch_protection_rule', 'check_run', 'check_suite', 'code_scanning_alert', 'commit_comment',
+    'content_reference', 'create', 'delete', 'deployment', 'deployment_review', 'deployment_status',
+    'deploy_key', 'discussion', 'discussion_comment', 'fork', 'gollum', 'issues', 'issue_comment',
+    'label', 'member', 'membership', 'milestone', 'organization', 'org_block', 'page_build',
+    'project', 'project_card', 'project_column', 'public', 'pull_request', 'pull_request_review',
+    'pull_request_review_comment', 'push', 'registry_package', 'release', 'repository',
+    'repository_dispatch', 'secret_scanning_alert', 'star', 'status', 'team', 'team_add', 'watch',
+    'workflow_dispatch', 'workflow_run'
+  ].freeze
+  def self.from_value(value)
+    value
   end
+end
 
-  # Defines the WebhooksIssue2PerformedViaGithubAppPermissionsActions SDK namespace.
-  module WebhooksIssue2PerformedViaGithubAppPermissionsActions
-    READ = 'read'
-    WRITE = 'write'
-    VALUES = %w[read write].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the WebhooksIssue2PerformedViaGithubAppOwnerType SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppOwnerType
+  BOT = 'Bot'
+  USER = 'User'
+  ORGANIZATION = 'Organization'
+  VALUES = ['Bot', 'User', 'Organization'].freeze
+  def self.from_value(value)
+    value
   end
+end
+
+# Defines the WebhooksIssue2PerformedViaGithubAppPermissionsActions SDK namespace.
+module WebhooksIssue2PerformedViaGithubAppPermissionsActions
+  READ = 'read'
+  WRITE = 'write'
+  VALUES = ['read', 'write'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

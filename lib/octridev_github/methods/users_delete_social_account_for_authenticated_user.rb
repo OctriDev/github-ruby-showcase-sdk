@@ -18,17 +18,18 @@ module OctridevGithub
         account_urls:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
-          '/user/social_accounts',
+          "/user/social_accounts",
           config: config,
           body: {
-            'account_urls' => account_urls
+            'account_urls' => account_urls,
           },
           decoder: :empty,
           operation_id: 'users_delete_social_account_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end

@@ -23,22 +23,23 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/public_members'
+            "/public_members"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::SimpleUser],
           decoder: :json,
           operation_id: 'orgs_list_public_members',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -52,18 +53,19 @@ module OctridevGithub
         username:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/public_members/',
+            "/public_members/",
             SdkClient.encode_path_segment(username)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'orgs_check_public_membership_for_user',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -77,19 +79,20 @@ module OctridevGithub
         username:,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/public_members/',
+            "/public_members/",
             SdkClient.encode_path_segment(username)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'orgs_set_public_membership_for_authenticated_user',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -103,18 +106,19 @@ module OctridevGithub
         username:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/public_members/',
+            "/public_members/",
             SdkClient.encode_path_segment(username)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'orgs_remove_public_membership_for_authenticated_user',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

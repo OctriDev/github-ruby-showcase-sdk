@@ -26,25 +26,26 @@ module OctridevGithub
         encoding: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/git/blobs'
+            "/git/blobs"
           ].join,
           config: config,
           body: {
             'content' => content,
-            'encoding' => encoding
+            'encoding' => encoding,
           },
           return_type: ::OctridevGithub::ShortBlob,
           decoder: :json,
           operation_id: 'git_create_blob',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -63,14 +64,15 @@ module OctridevGithub
         file_sha:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/git/blobs/',
+            "/git/blobs/",
             SdkClient.encode_path_segment(file_sha)
           ].join,
           config: config,
@@ -78,7 +80,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'git_get_blob',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end

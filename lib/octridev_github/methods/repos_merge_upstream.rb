@@ -24,23 +24,24 @@ module OctridevGithub
         branch:,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/merge-upstream'
+            "/merge-upstream"
           ].join,
           config: config,
           body: {
-            'branch' => branch
+            'branch' => branch,
           },
           return_type: ::OctridevGithub::MergedUpstream,
           decoder: :json,
           operation_id: 'repos_merge_upstream',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

@@ -27,25 +27,26 @@ module OctridevGithub
         sha:,
         request_options: nil
       )
+
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/git/refs'
+            "/git/refs"
           ].join,
           config: config,
           body: {
             'ref' => ref,
-            'sha' => sha
+            'sha' => sha,
           },
           return_type: ::OctridevGithub::GitRef,
           decoder: :json,
           operation_id: 'git_create_ref',
           request_options: request_options,
-          errors: { '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -70,26 +71,27 @@ module OctridevGithub
         force: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/git/refs/',
+            "/git/refs/",
             SdkClient.encode_path_segment(ref)
           ].join,
           config: config,
           body: {
             'sha' => sha,
-            'force' => force
+            'force' => force,
           },
           return_type: ::OctridevGithub::GitRef,
           decoder: :json,
           operation_id: 'git_update_ref',
           request_options: request_options,
-          errors: { '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -110,21 +112,22 @@ module OctridevGithub
         ref:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/git/refs/',
+            "/git/refs/",
             SdkClient.encode_path_segment(ref)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'git_delete_ref',
           request_options: request_options,
-          errors: { '409' => ::OctridevGithub::BasicError }
+          errors: { '409' => ::OctridevGithub::BasicError },
         ).data
       end
     end

@@ -19,24 +19,25 @@ module OctridevGithub
         day:,
         request_options: nil
       )
+
         Validation.validate_date('day', day)
 
         SdkClient.request(
           'GET',
           [
-            '/enterprises/',
+            "/enterprises/",
             SdkClient.encode_path_segment(enterprise),
-            '/copilot/metrics/reports/enterprise-1-day'
+            "/copilot/metrics/reports/enterprise-1-day"
           ].join,
           config: config,
           query: {
-            'day' => QueryValue.new(day, style: 'form', explode: true)
+            'day' => QueryValue.new(day, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::CopilotUsageMetrics1DayReport,
           decoder: :json,
           operation_id: 'copilot_copilot_enterprise_one_day_usage_metrics',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -48,19 +49,20 @@ module OctridevGithub
         enterprise:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/enterprises/',
+            "/enterprises/",
             SdkClient.encode_path_segment(enterprise),
-            '/copilot/metrics/reports/enterprise-28-day/latest'
+            "/copilot/metrics/reports/enterprise-28-day/latest"
           ].join,
           config: config,
           return_type: ::OctridevGithub::CopilotUsageMetrics28DayReport,
           decoder: :json,
           operation_id: 'copilot_copilot_enterprise_usage_metrics',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -74,24 +76,25 @@ module OctridevGithub
         day:,
         request_options: nil
       )
+
         Validation.validate_date('day', day)
 
         SdkClient.request(
           'GET',
           [
-            '/enterprises/',
+            "/enterprises/",
             SdkClient.encode_path_segment(enterprise),
-            '/copilot/metrics/reports/repos-1-day'
+            "/copilot/metrics/reports/repos-1-day"
           ].join,
           config: config,
           query: {
-            'day' => QueryValue.new(day, style: 'form', explode: true)
+            'day' => QueryValue.new(day, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::CopilotUsageMetrics1DayReport,
           decoder: :json,
           operation_id: 'copilot_copilot_enterprise_repos_one_day_report',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -105,24 +108,25 @@ module OctridevGithub
         day:,
         request_options: nil
       )
+
         Validation.validate_date('day', day)
 
         SdkClient.request(
           'GET',
           [
-            '/enterprises/',
+            "/enterprises/",
             SdkClient.encode_path_segment(enterprise),
-            '/copilot/metrics/reports/user-teams-1-day'
+            "/copilot/metrics/reports/user-teams-1-day"
           ].join,
           config: config,
           query: {
-            'day' => QueryValue.new(day, style: 'form', explode: true)
+            'day' => QueryValue.new(day, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::CopilotUsageMetrics1DayReport,
           decoder: :json,
           operation_id: 'copilot_copilot_enterprise_user_teams_one_day_report',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -136,24 +140,25 @@ module OctridevGithub
         day:,
         request_options: nil
       )
+
         Validation.validate_date('day', day)
 
         SdkClient.request(
           'GET',
           [
-            '/enterprises/',
+            "/enterprises/",
             SdkClient.encode_path_segment(enterprise),
-            '/copilot/metrics/reports/users-1-day'
+            "/copilot/metrics/reports/users-1-day"
           ].join,
           config: config,
           query: {
-            'day' => QueryValue.new(day, style: 'form', explode: true)
+            'day' => QueryValue.new(day, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::CopilotUsageMetrics1DayReport,
           decoder: :json,
           operation_id: 'copilot_copilot_users_one_day_usage_metrics',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -165,19 +170,20 @@ module OctridevGithub
         enterprise:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/enterprises/',
+            "/enterprises/",
             SdkClient.encode_path_segment(enterprise),
-            '/copilot/metrics/reports/users-28-day/latest'
+            "/copilot/metrics/reports/users-28-day/latest"
           ].join,
           config: config,
           return_type: ::OctridevGithub::CopilotUsageMetrics28DayReport,
           decoder: :json,
           operation_id: 'copilot_copilot_users_usage_metrics',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -191,24 +197,25 @@ module OctridevGithub
         day:,
         request_options: nil
       )
+
         Validation.validate_date('day', day)
 
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/copilot/metrics/reports/organization-1-day'
+            "/copilot/metrics/reports/organization-1-day"
           ].join,
           config: config,
           query: {
-            'day' => QueryValue.new(day, style: 'form', explode: true)
+            'day' => QueryValue.new(day, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::CopilotUsageMetrics1DayReport,
           decoder: :json,
           operation_id: 'copilot_copilot_organization_one_day_usage_metrics',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -220,19 +227,20 @@ module OctridevGithub
         org:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/copilot/metrics/reports/organization-28-day/latest'
+            "/copilot/metrics/reports/organization-28-day/latest"
           ].join,
           config: config,
           return_type: ::OctridevGithub::CopilotUsageMetrics28DayReport,
           decoder: :json,
           operation_id: 'copilot_copilot_organization_usage_metrics',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -246,24 +254,25 @@ module OctridevGithub
         day:,
         request_options: nil
       )
+
         Validation.validate_date('day', day)
 
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/copilot/metrics/reports/repos-1-day'
+            "/copilot/metrics/reports/repos-1-day"
           ].join,
           config: config,
           query: {
-            'day' => QueryValue.new(day, style: 'form', explode: true)
+            'day' => QueryValue.new(day, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::CopilotUsageMetrics1DayReport,
           decoder: :json,
           operation_id: 'copilot_copilot_organization_repos_one_day_report',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -277,24 +286,25 @@ module OctridevGithub
         day:,
         request_options: nil
       )
+
         Validation.validate_date('day', day)
 
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/copilot/metrics/reports/user-teams-1-day'
+            "/copilot/metrics/reports/user-teams-1-day"
           ].join,
           config: config,
           query: {
-            'day' => QueryValue.new(day, style: 'form', explode: true)
+            'day' => QueryValue.new(day, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::CopilotUsageMetrics1DayReport,
           decoder: :json,
           operation_id: 'copilot_copilot_organization_user_teams_one_day_report',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -308,24 +318,25 @@ module OctridevGithub
         day:,
         request_options: nil
       )
+
         Validation.validate_date('day', day)
 
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/copilot/metrics/reports/users-1-day'
+            "/copilot/metrics/reports/users-1-day"
           ].join,
           config: config,
           query: {
-            'day' => QueryValue.new(day, style: 'form', explode: true)
+            'day' => QueryValue.new(day, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::CopilotUsageMetrics1DayReport,
           decoder: :json,
           operation_id: 'copilot_copilot_organization_users_one_day_usage_metrics',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -337,19 +348,20 @@ module OctridevGithub
         org:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/copilot/metrics/reports/users-28-day/latest'
+            "/copilot/metrics/reports/users-28-day/latest"
           ].join,
           config: config,
           return_type: ::OctridevGithub::CopilotUsageMetrics28DayReport,
           decoder: :json,
           operation_id: 'copilot_copilot_organization_users_usage_metrics',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
         ).data
       end
     end

@@ -35,28 +35,29 @@ module OctridevGithub
         direction: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/actions/runs/',
+            "/actions/runs/",
             SdkClient.encode_path_segment(run_id),
-            '/artifacts'
+            "/artifacts"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'page' => QueryValue.new(page, style: 'form', explode: true),
             'name' => QueryValue.new(name, style: 'form', explode: true),
-            'direction' => QueryValue.new(direction, style: 'form', explode: true)
+            'direction' => QueryValue.new(direction, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::Methods::Actions::ActionsListWorkflowRunArtifactsResponse,
           decoder: :json,
           operation_id: 'actions_list_workflow_run_artifacts',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

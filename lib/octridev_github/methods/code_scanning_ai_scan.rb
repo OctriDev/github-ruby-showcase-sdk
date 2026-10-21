@@ -17,19 +17,20 @@ module OctridevGithub
         org:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/code-scanning/ai-scan'
+            "/code-scanning/ai-scan"
           ].join,
           config: config,
           return_type: ::OctridevGithub::CodeScanningAiScanOrgSettings,
           decoder: :json,
           operation_id: 'code_scanning_get_ai_scan_enablement_for_org',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -47,22 +48,23 @@ module OctridevGithub
         pr_scan: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/code-scanning/ai-scan'
+            "/code-scanning/ai-scan"
           ].join,
           config: config,
           body: {
-            'pr_scan' => pr_scan
+            'pr_scan' => pr_scan,
           },
           return_type: ::OctridevGithub::CodeScanningAiScanOrgSettings,
           decoder: :json,
           operation_id: 'code_scanning_update_ai_scan_enablement_for_org',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -78,21 +80,22 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/code-scanning/ai-scan'
+            "/code-scanning/ai-scan"
           ].join,
           config: config,
           return_type: ::OctridevGithub::CodeScanningAiScanEnablement,
           decoder: :json,
           operation_id: 'code_scanning_get_ai_scan_enablement',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -111,24 +114,25 @@ module OctridevGithub
         pr_scan: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/code-scanning/ai-scan'
+            "/code-scanning/ai-scan"
           ].join,
           config: config,
           body: {
-            'pr_scan' => pr_scan
+            'pr_scan' => pr_scan,
           },
           return_type: ::OctridevGithub::CodeScanningAiScanEnablement,
           decoder: :json,
           operation_id: 'code_scanning_update_ai_scan_enablement',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end

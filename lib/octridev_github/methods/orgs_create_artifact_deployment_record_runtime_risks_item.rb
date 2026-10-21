@@ -15,8 +15,8 @@ module OctridevGithub
         INTERNET_EXPOSED = 'internet-exposed'
         LATERAL_MOVEMENT = 'lateral-movement'
         SENSITIVE_DATA = 'sensitive-data'
-        VALUES = %w[
-          critical-resource internet-exposed lateral-movement sensitive-data
+        VALUES = [
+          'critical-resource', 'internet-exposed', 'lateral-movement', 'sensitive-data'
         ].freeze
         def self.from_value(value)
           value
@@ -37,7 +37,7 @@ module OctridevGithub
         V_2_FA_DISABLED = '2fa_disabled'
         V_2_FA_INSECURE = '2fa_insecure'
         ALL = 'all'
-        VALUES = %w[2fa_disabled 2fa_insecure all].freeze
+        VALUES = ['2fa_disabled', '2fa_insecure', 'all'].freeze
         def self.from_value(value)
           value
         end
@@ -49,8 +49,8 @@ module OctridevGithub
         INTERNET_EXPOSED = 'internet-exposed'
         LATERAL_MOVEMENT = 'lateral-movement'
         SENSITIVE_DATA = 'sensitive-data'
-        VALUES = %w[
-          critical-resource internet-exposed lateral-movement sensitive-data
+        VALUES = [
+          'critical-resource', 'internet-exposed', 'lateral-movement', 'sensitive-data'
         ].freeze
         def self.from_value(value)
           value
@@ -61,7 +61,7 @@ module OctridevGithub
       module OrgsSetClusterDeploymentRecordsResponseErrorsItemCause
         UNAUTHORIZED = 'unauthorized'
         NOT_FOUND = 'not_found'
-        VALUES = %w[unauthorized not_found].freeze
+        VALUES = ['unauthorized', 'not_found'].freeze
         def self.from_value(value)
           value
         end
@@ -73,7 +73,7 @@ module OctridevGithub
         PROCESSING = 'processing'
         COMPLETED = 'completed'
         FAILED = 'failed'
-        VALUES = %w[pending processing completed failed].freeze
+        VALUES = ['pending', 'processing', 'completed', 'failed'].freeze
         def self.from_value(value)
           value
         end
@@ -84,7 +84,7 @@ module OctridevGithub
         ALL = 'all'
         ADMIN = 'admin'
         MEMBER = 'member'
-        VALUES = %w[all admin member].freeze
+        VALUES = ['all', 'admin', 'member'].freeze
         def self.from_value(value)
           value
         end
@@ -95,7 +95,7 @@ module OctridevGithub
         ALL = 'all'
         MEMBER = 'member'
         SCIM = 'scim'
-        VALUES = %w[all member scim].freeze
+        VALUES = ['all', 'member', 'scim'].freeze
         def self.from_value(value)
           value
         end
@@ -106,7 +106,7 @@ module OctridevGithub
         ALL = 'all'
         NONE = 'none'
         SELECTED = 'selected'
-        VALUES = %w[all none selected].freeze
+        VALUES = ['all', 'none', 'selected'].freeze
         def self.from_value(value)
           value
         end
@@ -117,7 +117,7 @@ module OctridevGithub
         V_2_FA_DISABLED = '2fa_disabled'
         V_2_FA_INSECURE = '2fa_insecure'
         ALL = 'all'
-        VALUES = %w[2fa_disabled 2fa_insecure all].freeze
+        VALUES = ['2fa_disabled', '2fa_insecure', 'all'].freeze
         def self.from_value(value)
           value
         end
@@ -129,7 +129,7 @@ module OctridevGithub
         WRITE = 'write'
         ADMIN = 'admin'
         NONE = 'none'
-        VALUES = %w[read write admin none].freeze
+        VALUES = ['read', 'write', 'admin', 'none'].freeze
         def self.from_value(value)
           value
         end
@@ -139,7 +139,7 @@ module OctridevGithub
       module OrgsReviewPatGrantRequestsInBulkAction
         APPROVE = 'approve'
         DENY = 'deny'
-        VALUES = %w[approve deny].freeze
+        VALUES = ['approve', 'deny'].freeze
         def self.from_value(value)
           value
         end
@@ -151,8 +151,8 @@ module OctridevGithub
         INTERNET_EXPOSED = 'internet-exposed'
         LATERAL_MOVEMENT = 'lateral-movement'
         SENSITIVE_DATA = 'sensitive-data'
-        VALUES = %w[
-          critical-resource internet-exposed lateral-movement sensitive-data
+        VALUES = [
+          'critical-resource', 'internet-exposed', 'lateral-movement', 'sensitive-data'
         ].freeze
         def self.from_value(value)
           value
@@ -164,7 +164,7 @@ module OctridevGithub
         ALL = 'all'
         PRIVATE = 'private'
         NONE = 'none'
-        VALUES = %w[all private none].freeze
+        VALUES = ['all', 'private', 'none'].freeze
         def self.from_value(value)
           value
         end
@@ -174,7 +174,7 @@ module OctridevGithub
       module OrgsCreateClusterDeploymentRecordsJobDeploymentsItemStatus
         DEPLOYED = 'deployed'
         DECOMMISSIONED = 'decommissioned'
-        VALUES = %w[deployed decommissioned].freeze
+        VALUES = ['deployed', 'decommissioned'].freeze
         def self.from_value(value)
           value
         end
@@ -184,7 +184,7 @@ module OctridevGithub
       module OrgsSetMembershipForUserRole
         ADMIN = 'admin'
         MEMBER = 'member'
-        VALUES = %w[admin member].freeze
+        VALUES = ['admin', 'member'].freeze
         def self.from_value(value)
           value
         end
@@ -194,7 +194,7 @@ module OctridevGithub
       module OrgsCreateArtifactDeploymentRecordStatus
         DEPLOYED = 'deployed'
         DECOMMISSIONED = 'decommissioned'
-        VALUES = %w[deployed decommissioned].freeze
+        VALUES = ['deployed', 'decommissioned'].freeze
         def self.from_value(value)
           value
         end
@@ -205,7 +205,7 @@ module OctridevGithub
         ACTIVE = 'active'
         EOL = 'eol'
         DELETED = 'deleted'
-        VALUES = %w[active eol deleted].freeze
+        VALUES = ['active', 'eol', 'deleted'].freeze
         def self.from_value(value)
           value
         end
@@ -215,7 +215,7 @@ module OctridevGithub
       module OrgsReviewPatGrantRequestAction
         APPROVE = 'approve'
         DENY = 'deny'
-        VALUES = %w[approve deny].freeze
+        VALUES = ['approve', 'deny'].freeze
         def self.from_value(value)
           value
         end
@@ -225,7 +225,7 @@ module OctridevGithub
       module OrgsListMembershipsForAuthenticatedUserParameter
         ACTIVE = 'active'
         PENDING = 'pending'
-        VALUES = %w[active pending].freeze
+        VALUES = ['active', 'pending'].freeze
         def self.from_value(value)
           value
         end
@@ -244,7 +244,7 @@ module OctridevGithub
       module OrgsEnableOrDisableSecurityProductOnAllOrgReposQuerySuite
         DEFAULT = 'default'
         EXTENDED = 'extended'
-        VALUES = %w[default extended].freeze
+        VALUES = ['default', 'extended'].freeze
         def self.from_value(value)
           value
         end

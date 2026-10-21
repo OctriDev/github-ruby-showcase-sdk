@@ -25,24 +25,25 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/teams/',
+            "/teams/",
             SdkClient.encode_path_segment(team_slug),
-            '/repos'
+            "/repos"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::MinimalRepository],
           decoder: :json,
           operation_id: 'teams_list_repos_in_org',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -62,23 +63,24 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/teams/',
+            "/teams/",
             SdkClient.encode_path_segment(team_slug),
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo)
           ].join,
           config: config,
           return_type: ::OctridevGithub::TeamRepository,
           decoder: :json,
           operation_id: 'teams_check_permissions_for_repo_in_org',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -105,25 +107,26 @@ module OctridevGithub
         permission: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/teams/',
+            "/teams/",
             SdkClient.encode_path_segment(team_slug),
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo)
           ].join,
           config: config,
           body: {
-            'permission' => permission
+            'permission' => permission,
           },
           decoder: :empty,
           operation_id: 'teams_add_or_update_repo_permissions_in_org',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -143,22 +146,23 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/teams/',
+            "/teams/",
             SdkClient.encode_path_segment(team_slug),
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'teams_remove_repo_in_org',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -178,23 +182,24 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/teams/',
+            "/teams/",
             SdkClient.encode_path_segment(team_id),
-            '/repos'
+            "/repos"
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::MinimalRepository],
           decoder: :json,
           operation_id: 'teams_list_repos_legacy',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -214,21 +219,22 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/teams/',
+            "/teams/",
             SdkClient.encode_path_segment(team_id),
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo)
           ].join,
           config: config,
           return_type: ::OctridevGithub::TeamRepository,
           decoder: :json,
           operation_id: 'teams_check_permissions_for_repo_legacy',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -253,24 +259,25 @@ module OctridevGithub
         permission: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/teams/',
+            "/teams/",
             SdkClient.encode_path_segment(team_id),
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo)
           ].join,
           config: config,
           body: {
-            'permission' => permission
+            'permission' => permission,
           },
           decoder: :empty,
           operation_id: 'teams_add_or_update_repo_permissions_legacy',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -290,20 +297,21 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/teams/',
+            "/teams/",
             SdkClient.encode_path_segment(team_id),
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'teams_remove_repo_legacy',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

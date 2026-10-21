@@ -5,99 +5,101 @@
 
 # code_scanning_code_scanning_sarifs domain models
 module OctridevGithub
-  # Internal model hydration metadata.
-  class SdkInternalCodeScanningSarifsReceiptMetadata
-    FIELDS = {
-      id: 'id',
-      url: 'url'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      id: lambda do |value|
-        ::OctridevGithub::CodeScanningAnalysisSarifId.from_value(value)
-      end
-    }.freeze
+# Internal model hydration metadata.
+class SdkInternalCodeScanningSarifsReceiptMetadata
+  FIELDS = {
+    id: "id",
+    url: "url",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    id: lambda do |value|
+      ::OctridevGithub::CodeScanningAnalysisSarifId.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for CodeScanningSarifsReceipt.
+# Typed representation of the `CodeScanningSarifsReceipt` API schema.
+class CodeScanningSarifsReceipt
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalCodeScanningSarifsReceiptMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalCodeScanningSarifsReceiptMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalCodeScanningSarifsReceiptMetadata::DECODERS
+
+  # @return [CodeScanningAnalysisSarifId] An identifier for the upload.
+  attr_reader :id
+  # @return [String] The REST API URL for checking the status of the upload.
+  attr_reader :url
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for CodeScanningSarifsReceipt.
-  # Typed representation of the `CodeScanningSarifsReceipt` API schema.
-  class CodeScanningSarifsReceipt
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalCodeScanningSarifsReceiptMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalCodeScanningSarifsReceiptMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalCodeScanningSarifsReceiptMetadata::DECODERS
-
-    # @return [CodeScanningAnalysisSarifId] An identifier for the upload.
-    attr_reader :id
-    # @return [String] The REST API URL for checking the status of the upload.
-    attr_reader :url
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalCodeScanningSarifsStatusMetadata
-    FIELDS = {
-      processing_status: 'processing_status',
-      analyses_url: 'analyses_url',
-      errors: 'errors'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      processing_status: lambda do |value|
-        ::OctridevGithub::CodeScanningSarifsStatusProcessingStatus.from_value(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalCodeScanningSarifsStatusMetadata
+  FIELDS = {
+    processing_status: "processing_status",
+    analyses_url: "analyses_url",
+    errors: "errors",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    processing_status: lambda do |value|
+      ::OctridevGithub::CodeScanningSarifsStatusProcessingStatus.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for CodeScanningSarifsStatus.
+# Typed representation of the `CodeScanningSarifsStatus` API schema.
+class CodeScanningSarifsStatus
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalCodeScanningSarifsStatusMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalCodeScanningSarifsStatusMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalCodeScanningSarifsStatusMetadata::DECODERS
+
+  # @return [CodeScanningSarifsStatusProcessingStatus] `pending` files have not yet been processed, while `complete` means results from the SARIF have been stored. `failed` files have either not been processed at all, or could only be partially processed.
+  attr_reader :processing_status
+  # @return [String] The REST API URL for getting the analyses associated with the upload.
+  attr_reader :analyses_url
+  # @return [Array_of_String] Any errors that ocurred during processing of the delivery.
+  attr_reader :errors
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for CodeScanningSarifsStatus.
-  # Typed representation of the `CodeScanningSarifsStatus` API schema.
-  class CodeScanningSarifsStatus
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalCodeScanningSarifsStatusMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalCodeScanningSarifsStatusMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalCodeScanningSarifsStatusMetadata::DECODERS
-
-    # @return [CodeScanningSarifsStatusProcessingStatus] `pending` files have not yet been processed, while `complete` means results from the SARIF have been stored. `failed` files have either not been processed at all, or could only be partially processed.
-    attr_reader :processing_status
-    # @return [String] The REST API URL for getting the analyses associated with the upload.
-    attr_reader :analyses_url
-    # @return [Array_of_String] Any errors that ocurred during processing of the delivery.
-    attr_reader :errors
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the CodeScanningSarifsStatusProcessingStatus SDK namespace.
-  module CodeScanningSarifsStatusProcessingStatus
-    PENDING = 'pending'
-    COMPLETE = 'complete'
-    FAILED = 'failed'
-    VALUES = %w[pending complete failed].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
+
+# Defines the CodeScanningSarifsStatusProcessingStatus SDK namespace.
+module CodeScanningSarifsStatusProcessingStatus
+  PENDING = 'pending'
+  COMPLETE = 'complete'
+  FAILED = 'failed'
+  VALUES = ['pending', 'complete', 'failed'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

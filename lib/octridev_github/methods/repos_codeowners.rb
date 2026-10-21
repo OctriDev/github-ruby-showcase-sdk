@@ -25,23 +25,24 @@ module OctridevGithub
         ref: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/codeowners/errors'
+            "/codeowners/errors"
           ].join,
           config: config,
           query: {
-            'ref' => QueryValue.new(ref, style: 'form', explode: true)
+            'ref' => QueryValue.new(ref, style: 'form', explode: true),
           },
           return_type: ::OctridevGithub::CodeownersErrors,
           decoder: :json,
           operation_id: 'repos_codeowners_errors',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

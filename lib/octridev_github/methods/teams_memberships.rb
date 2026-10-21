@@ -21,21 +21,22 @@ module OctridevGithub
         username:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/teams/',
+            "/teams/",
             SdkClient.encode_path_segment(team_slug),
-            '/memberships/',
+            "/memberships/",
             SdkClient.encode_path_segment(username)
           ].join,
           config: config,
           return_type: ::OctridevGithub::TeamMembership,
           decoder: :json,
           operation_id: 'teams_get_membership_for_user_in_org',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -54,24 +55,25 @@ module OctridevGithub
         role: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/teams/',
+            "/teams/",
             SdkClient.encode_path_segment(team_slug),
-            '/memberships/',
+            "/memberships/",
             SdkClient.encode_path_segment(username)
           ].join,
           config: config,
           body: {
-            'role' => role
+            'role' => role,
           },
           return_type: ::OctridevGithub::TeamMembership,
           decoder: :json,
           operation_id: 'teams_add_or_update_membership_for_user_in_org',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -87,20 +89,21 @@ module OctridevGithub
         username:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/teams/',
+            "/teams/",
             SdkClient.encode_path_segment(team_slug),
-            '/memberships/',
+            "/memberships/",
             SdkClient.encode_path_segment(username)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'teams_remove_membership_for_user_in_org',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -116,12 +119,13 @@ module OctridevGithub
         username:,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/teams/',
+            "/teams/",
             SdkClient.encode_path_segment(team_id),
-            '/memberships/',
+            "/memberships/",
             SdkClient.encode_path_segment(username)
           ].join,
           config: config,
@@ -129,7 +133,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'teams_get_membership_for_user_legacy',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -148,23 +152,24 @@ module OctridevGithub
         role: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PUT',
           [
-            '/teams/',
+            "/teams/",
             SdkClient.encode_path_segment(team_id),
-            '/memberships/',
+            "/memberships/",
             SdkClient.encode_path_segment(username)
           ].join,
           config: config,
           body: {
-            'role' => role
+            'role' => role,
           },
           return_type: ::OctridevGithub::TeamMembership,
           decoder: :json,
           operation_id: 'teams_add_or_update_membership_for_user_legacy',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -180,18 +185,19 @@ module OctridevGithub
         username:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/teams/',
+            "/teams/",
             SdkClient.encode_path_segment(team_id),
-            '/memberships/',
+            "/memberships/",
             SdkClient.encode_path_segment(username)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'teams_remove_membership_for_user_legacy',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

@@ -19,18 +19,19 @@ module OctridevGithub
         visibility:,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
-          '/user/email/visibility',
+          "/user/email/visibility",
           config: config,
           body: {
-            'visibility' => visibility
+            'visibility' => visibility,
           },
           return_type: [::OctridevGithub::Email],
           decoder: :json,
           operation_id: 'users_set_primary_email_visibility_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end

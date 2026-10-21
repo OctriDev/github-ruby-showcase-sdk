@@ -20,19 +20,20 @@ module OctridevGithub
         configuration_id:,
         request_options: nil
       )
+
         SdkClient.request(
           'DELETE',
           [
-            '/enterprises/',
+            "/enterprises/",
             SdkClient.encode_path_segment(enterprise),
-            '/code-security/configurations/',
+            "/code-security/configurations/",
             SdkClient.encode_path_segment(configuration_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'code_security_delete_configuration_for_enterprise',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError }
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError },
         ).data
       end
     end

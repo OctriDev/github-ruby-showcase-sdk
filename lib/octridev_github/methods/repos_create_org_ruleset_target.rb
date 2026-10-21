@@ -15,7 +15,7 @@ module OctridevGithub
         TAG = 'tag'
         PUSH = 'push'
         REPOSITORY = 'repository'
-        VALUES = %w[branch tag push repository].freeze
+        VALUES = ['branch', 'tag', 'push', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -29,9 +29,9 @@ module OctridevGithub
         BRANCH_DELETION = 'branch_deletion'
         PR_MERGE = 'pr_merge'
         MERGE_QUEUE_MERGE = 'merge_queue_merge'
-        VALUES = %w[
-          push force_push branch_creation branch_deletion pr_merge
-          merge_queue_merge
+        VALUES = [
+          'push', 'force_push', 'branch_creation', 'branch_deletion', 'pr_merge',
+          'merge_queue_merge'
         ].freeze
         def self.from_value(value)
           value
@@ -43,7 +43,7 @@ module OctridevGithub
         OUTSIDE = 'outside'
         DIRECT = 'direct'
         ALL = 'all'
-        VALUES = %w[outside direct all].freeze
+        VALUES = ['outside', 'direct', 'all'].freeze
         def self.from_value(value)
           value
         end
@@ -65,7 +65,7 @@ module OctridevGithub
         FAILURE = 'failure'
         PENDING = 'pending'
         SUCCESS = 'success'
-        VALUES = %w[error failure pending success].freeze
+        VALUES = ['error', 'failure', 'pending', 'success'].freeze
         def self.from_value(value)
           value
         end
@@ -76,7 +76,7 @@ module OctridevGithub
         TRUE = 'true'
         FALSE = 'false'
         LEGACY = 'legacy'
-        VALUES = %w[true false legacy].freeze
+        VALUES = ['true', 'false', 'legacy'].freeze
         def self.from_value(value)
           value
         end
@@ -90,7 +90,7 @@ module OctridevGithub
         PUSH = 'push'
         MAINTAIN = 'maintain'
         ADMIN = 'admin'
-        VALUES = %w[pull triage triage_plus push maintain admin].freeze
+        VALUES = ['pull', 'triage', 'triage_plus', 'push', 'maintain', 'admin'].freeze
         def self.from_value(value)
           value
         end
@@ -100,7 +100,7 @@ module OctridevGithub
       module ReposCreatePagesSiteBuildType
         LEGACY = 'legacy'
         WORKFLOW = 'workflow'
-        VALUES = %w[legacy workflow].freeze
+        VALUES = ['legacy', 'workflow'].freeze
         def self.from_value(value)
           value
         end
@@ -111,7 +111,7 @@ module OctridevGithub
         PR_BODY = 'PR_BODY'
         COMMIT_MESSAGES = 'COMMIT_MESSAGES'
         BLANK = 'BLANK'
-        VALUES = %w[PR_BODY COMMIT_MESSAGES BLANK].freeze
+        VALUES = ['PR_BODY', 'COMMIT_MESSAGES', 'BLANK'].freeze
         def self.from_value(value)
           value
         end
@@ -121,7 +121,7 @@ module OctridevGithub
       module ReposListForAuthenticatedUserParameterA1a095b2
         ASC = 'asc'
         DESC = 'desc'
-        VALUES = %w[asc desc].freeze
+        VALUES = ['asc', 'desc'].freeze
         def self.from_value(value)
           value
         end
@@ -133,7 +133,7 @@ module OctridevGithub
         UPDATED = 'updated'
         PUSHED = 'pushed'
         FULL_NAME = 'full_name'
-        VALUES = %w[created updated pushed full_name].freeze
+        VALUES = ['created', 'updated', 'pushed', 'full_name'].freeze
         def self.from_value(value)
           value
         end
@@ -144,7 +144,7 @@ module OctridevGithub
         PR_BODY = 'PR_BODY'
         COMMIT_MESSAGES = 'COMMIT_MESSAGES'
         BLANK = 'BLANK'
-        VALUES = %w[PR_BODY COMMIT_MESSAGES BLANK].freeze
+        VALUES = ['PR_BODY', 'COMMIT_MESSAGES', 'BLANK'].freeze
         def self.from_value(value)
           value
         end
@@ -154,7 +154,7 @@ module OctridevGithub
       module ReposUpdateVisibility
         PUBLIC = 'public'
         PRIVATE = 'private'
-        VALUES = %w[public private].freeze
+        VALUES = ['public', 'private'].freeze
         def self.from_value(value)
           value
         end
@@ -167,7 +167,7 @@ module OctridevGithub
         MAINTAIN = 'maintain'
         TRIAGE = 'triage'
         ADMIN = 'admin'
-        VALUES = %w[read write maintain triage admin].freeze
+        VALUES = ['read', 'write', 'maintain', 'triage', 'admin'].freeze
         def self.from_value(value)
           value
         end
@@ -177,7 +177,7 @@ module OctridevGithub
       module ReposCreateForAuthenticatedUserSquashMergeCommitTitle
         PR_TITLE = 'PR_TITLE'
         COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
-        VALUES = %w[PR_TITLE COMMIT_OR_PR_TITLE].freeze
+        VALUES = ['PR_TITLE', 'COMMIT_OR_PR_TITLE'].freeze
         def self.from_value(value)
           value
         end
@@ -189,7 +189,7 @@ module OctridevGithub
         TAG = 'tag'
         PUSH = 'push'
         REPOSITORY = 'repository'
-        VALUES = %w[branch tag push repository].freeze
+        VALUES = ['branch', 'tag', 'push', 'repository'].freeze
         def self.from_value(value)
           value
         end
@@ -204,8 +204,8 @@ module OctridevGithub
         QUEUED = 'queued'
         PENDING = 'pending'
         SUCCESS = 'success'
-        VALUES = %w[
-          error failure inactive in_progress queued pending success
+        VALUES = [
+          'error', 'failure', 'inactive', 'in_progress', 'queued', 'pending', 'success'
         ].freeze
         def self.from_value(value)
           value
@@ -218,7 +218,7 @@ module OctridevGithub
         UPDATED = 'updated'
         PUSHED = 'pushed'
         FULL_NAME = 'full_name'
-        VALUES = %w[created updated pushed full_name].freeze
+        VALUES = ['created', 'updated', 'pushed', 'full_name'].freeze
         def self.from_value(value)
           value
         end
@@ -228,7 +228,7 @@ module OctridevGithub
       module ReposUpdateInformationAboutPagesSiteBuildType
         LEGACY = 'legacy'
         WORKFLOW = 'workflow'
-        VALUES = %w[legacy workflow].freeze
+        VALUES = ['legacy', 'workflow'].freeze
         def self.from_value(value)
           value
         end

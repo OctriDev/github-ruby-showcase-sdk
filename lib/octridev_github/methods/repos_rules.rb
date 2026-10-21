@@ -30,25 +30,26 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/rules/branches/',
+            "/rules/branches/",
             SdkClient.encode_path_segment(branch)
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true)
+            'page' => QueryValue.new(page, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::RepositoryRuleDetailed],
           decoder: :json,
           operation_id: 'repos_get_branch_rules',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

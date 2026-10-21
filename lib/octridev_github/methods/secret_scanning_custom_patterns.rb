@@ -37,12 +37,13 @@ module OctridevGithub
         after: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/secret-scanning/custom-patterns'
+            "/secret-scanning/custom-patterns"
           ].join,
           config: config,
           query: {
@@ -51,13 +52,13 @@ module OctridevGithub
             'sort' => QueryValue.new(sort, style: 'form', explode: true),
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'before' => QueryValue.new(before, style: 'form', explode: true),
-            'after' => QueryValue.new(after, style: 'form', explode: true)
+            'after' => QueryValue.new(after, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::SecretScanningCustomPattern],
           decoder: :json,
           operation_id: 'secret_scanning_list_org_custom_patterns',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -72,24 +73,25 @@ module OctridevGithub
         patterns:,
         request_options: nil
       )
+
         Validation.validate_items('patterns', patterns, max: 100)
 
         SdkClient.request(
           'POST',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/secret-scanning/custom-patterns'
+            "/secret-scanning/custom-patterns"
           ].join,
           config: config,
           body: {
-            'patterns' => patterns
+            'patterns' => patterns,
           },
           return_type: ::OctridevGithub::Methods::SecretScanning::SecretScanningBulkCreateOrgCustomPatternsResponse,
           decoder: :json,
           operation_id: 'secret_scanning_bulk_create_org_custom_patterns',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -110,24 +112,25 @@ module OctridevGithub
         post_delete_action: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_items('patterns', patterns, max: 500)
 
         SdkClient.request(
           'DELETE',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/secret-scanning/custom-patterns'
+            "/secret-scanning/custom-patterns"
           ].join,
           config: config,
           body: {
             'patterns' => patterns,
-            'post_delete_action' => post_delete_action
+            'post_delete_action' => post_delete_action,
           },
           decoder: :empty,
           operation_id: 'secret_scanning_bulk_delete_org_custom_patterns',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '412' => ::OctridevGithub::BasicError }
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '412' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -160,12 +163,13 @@ module OctridevGithub
         must_not_match: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/orgs/',
+            "/orgs/",
             SdkClient.encode_path_segment(org),
-            '/secret-scanning/custom-patterns/',
+            "/secret-scanning/custom-patterns/",
             SdkClient.encode_path_segment(pattern_id)
           ].join,
           config: config,
@@ -175,13 +179,13 @@ module OctridevGithub
             'start_delimiter' => start_delimiter,
             'end_delimiter' => end_delimiter,
             'must_match' => must_match,
-            'must_not_match' => must_not_match
+            'must_not_match' => must_not_match,
           },
           return_type: ::OctridevGithub::SecretScanningCustomPattern,
           decoder: :json,
           operation_id: 'secret_scanning_update_org_custom_pattern',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '412' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '412' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
 
@@ -217,14 +221,15 @@ module OctridevGithub
         after: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'GET',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/secret-scanning/custom-patterns'
+            "/secret-scanning/custom-patterns"
           ].join,
           config: config,
           query: {
@@ -233,13 +238,13 @@ module OctridevGithub
             'sort' => QueryValue.new(sort, style: 'form', explode: true),
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'before' => QueryValue.new(before, style: 'form', explode: true),
-            'after' => QueryValue.new(after, style: 'form', explode: true)
+            'after' => QueryValue.new(after, style: 'form', explode: true),
           },
           return_type: [::OctridevGithub::SecretScanningCustomPattern],
           decoder: :json,
           operation_id: 'secret_scanning_list_repo_custom_patterns',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -258,26 +263,27 @@ module OctridevGithub
         patterns:,
         request_options: nil
       )
+
         Validation.validate_items('patterns', patterns, max: 100)
 
         SdkClient.request(
           'POST',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/secret-scanning/custom-patterns'
+            "/secret-scanning/custom-patterns"
           ].join,
           config: config,
           body: {
-            'patterns' => patterns
+            'patterns' => patterns,
           },
           return_type: ::OctridevGithub::Methods::SecretScanning::SecretScanningBulkCreateRepoCustomPatternsResponse,
           decoder: :json,
           operation_id: 'secret_scanning_bulk_create_repo_custom_patterns',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -302,26 +308,27 @@ module OctridevGithub
         post_delete_action: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_items('patterns', patterns, max: 500)
 
         SdkClient.request(
           'DELETE',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/secret-scanning/custom-patterns'
+            "/secret-scanning/custom-patterns"
           ].join,
           config: config,
           body: {
             'patterns' => patterns,
-            'post_delete_action' => post_delete_action
+            'post_delete_action' => post_delete_action,
           },
           decoder: :empty,
           operation_id: 'secret_scanning_bulk_delete_repo_custom_patterns',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '412' => ::OctridevGithub::BasicError }
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '412' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -358,14 +365,15 @@ module OctridevGithub
         must_not_match: NOT_GIVEN,
         request_options: nil
       )
+
         SdkClient.request(
           'PATCH',
           [
-            '/repos/',
+            "/repos/",
             SdkClient.encode_path_segment(owner),
-            '/',
+            "/",
             SdkClient.encode_path_segment(repo),
-            '/secret-scanning/custom-patterns/',
+            "/secret-scanning/custom-patterns/",
             SdkClient.encode_path_segment(pattern_id)
           ].join,
           config: config,
@@ -375,13 +383,13 @@ module OctridevGithub
             'start_delimiter' => start_delimiter,
             'end_delimiter' => end_delimiter,
             'must_match' => must_match,
-            'must_not_match' => must_not_match
+            'must_not_match' => must_not_match,
           },
           return_type: ::OctridevGithub::SecretScanningCustomPattern,
           decoder: :json,
           operation_id: 'secret_scanning_update_repo_custom_pattern',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '412' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '412' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end
