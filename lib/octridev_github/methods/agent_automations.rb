@@ -9,567 +9,366 @@ module OctridevGithub
   module Methods
     # Defines the AgentAutomations SDK namespace.
     module AgentAutomations
-      # Internal model hydration metadata.
-      class SdkInternalAgentAutomationsGetAutomationResponseRepositoryMetadata
-        FIELDS = {
-          id: 'id',
-          owner: 'owner',
-          name: 'name'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          id
-          owner
-          name
-        ].freeze
-        DECODERS = {}.freeze
+      # Returns automations whose `created_by` user is the authenticated caller, across repositories the caller can read. This includes both user-owned and repository-owned automations created by the caller but excludes repository-owned automations created by someone else even if the caller has write access to the repository. Use the repository-scoped list operation for those automations. The `owner_type` filter only narrows this creator-scoped collection. **Fine-grained access…
+      #
+      # @param page [Integer] The page number of the results to fetch.
+      # @param per_page [Integer] The number of results per page (max 100).
+      # @param owner_type [AgentAutomationsListAutomationsParameter] Filter
+      #   automations by owner type. `user` returns automations owned by their
+      #   creator, `repository` returns automations owned by the repository. Omit to
+      #   return both.
+      def self.agent_automations_list_automations(
+        config:,
+        page: NOT_GIVEN,
+        per_page: NOT_GIVEN,
+        owner_type: NOT_GIVEN,
+        request_options: nil
+      )
+        Validation.if_given(page) { Validation.validate_range('page', page, min: 1) }
+
+        Validation.if_given(per_page) { Validation.validate_range('per_page', per_page, min: 1, max: 100) }
+
+        SdkClient.request(
+          'GET',
+          '/agents/automations',
+          config: config,
+          query: {
+            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'owner_type' => QueryValue.new(owner_type, style: 'form', explode: true)
+          },
+          decoder: :json,
+          operation_id: 'agent_automations_list_automations',
+          request_options: request_options
+        ).data
       end
 
-      # API model for AgentAutomationsGetAutomationResponseRepository.
-      # Repository identity for an automation in cross-repository list responses.
-      class AgentAutomationsGetAutomationResponseRepository
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentAutomationsGetAutomationResponseRepositoryMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentAutomationsGetAutomationResponseRepositoryMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentAutomationsGetAutomationResponseRepositoryMetadata::DECODERS
-
-        # @return [Integer] The unique identifier of the repository.
-        attr_reader :id
-        # @return [String] The repository owner login.
-        attr_reader :owner
-        # @return [String] The repository name.
-        attr_reader :name
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
+      # Returns an automation by ID without requiring repository context when its `created_by` user is the authenticated caller and the caller can read its repository. This includes both user-owned and repository-owned automations created by the caller but excludes repository-owned automations created by someone else even if the caller has write access to the repository. Use the repository-scoped get operation for those automations. The response includes repository identity so…
+      #
+      # @param automation_id [String] The unique identifier of the automation.
+      def self.agent_automations_get_automation(
+        config:,
+        automation_id:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/agents/automations/',
+            SdkClient.encode_path_segment(automation_id)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponse,
+          decoder: :json,
+          operation_id: 'agent_automations_get_automation',
+          request_options: request_options
+        ).data
       end
 
-      # Internal model hydration metadata.
-      class SdkInternalAgentAutomationsGetAutomationResponseTriggersIntervalMetadata
-        FIELDS = {
-          cadence: 'cadence',
-          hour_utc: 'hour_utc',
-          day_of_week: 'day_of_week',
-          minute_utc: 'minute_utc',
-          write_scope: 'write_scope'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          cadence
-        ].freeze
-        DECODERS = {
-          cadence: lambda do |value|
-            value&.map { |item| ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersIntervalCadenceItem.from_value(item) }
-          end,
-          minute_utc: lambda do |value|
-            ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersIntervalMinuteUtc.from_value(value)
-          end,
-          write_scope: lambda do |value|
-            ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersIntervalWriteScope.from_value(value)
-          end
-        }.freeze
+      # Returns a paginated list of the authenticated user's automations for a repository, together with every repository-owned automation in it. `total_count` is the number of caller-visible automations matching the supplied filters across all pages. Repository-owned automations are visible to anyone with read access to the repository, so the results are not limited to automations the caller created. Use the `owner_type` field on each automation to tell the two apart.…
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository. The name is not case
+      #   sensitive.
+      # @param page [Integer] The page number of the results to fetch.
+      # @param per_page [Integer] The number of results per page (max 100).
+      # @param owner_type [AgentAutomationsListRepoAutomationsParameter] Filter
+      #   automations by owner type. `user` returns automations owned by their
+      #   creator, `repository` returns automations owned by the repository. Omit to
+      #   return both.
+      def self.agent_automations_list_repo_automations(
+        config:,
+        owner:,
+        repo:,
+        page: NOT_GIVEN,
+        per_page: NOT_GIVEN,
+        owner_type: NOT_GIVEN,
+        request_options: nil
+      )
+        Validation.if_given(page) { Validation.validate_range('page', page, min: 1) }
+
+        Validation.if_given(per_page) { Validation.validate_range('per_page', per_page, min: 1, max: 100) }
+
+        SdkClient.request(
+          'GET',
+          [
+            '/agents/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/automations'
+          ].join,
+          config: config,
+          query: {
+            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'owner_type' => QueryValue.new(owner_type, style: 'form', explode: true)
+          },
+          return_type: ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsListRepoAutomationsResponse,
+          decoder: :json,
+          operation_id: 'agent_automations_list_repo_automations',
+          request_options: request_options
+        ).data
       end
 
-      # API model for AgentAutomationsGetAutomationResponseTriggersInterval.
-      class AgentAutomationsGetAutomationResponseTriggersInterval
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentAutomationsGetAutomationResponseTriggersIntervalMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentAutomationsGetAutomationResponseTriggersIntervalMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentAutomationsGetAutomationResponseTriggersIntervalMetadata::DECODERS
-
-        # @return [Array_of_AgentAutomationsGetAutomationResponseTriggersIntervalCadenceItem] One or more schedules on which the Automation runs.
-        attr_reader :cadence
-        # @return [Integer] UTC hour anchor (0 through 23) for daily and weekly schedules. Omitted daily and weekly values default to `0` (midnight UTC).
-        attr_reader :hour_utc
-        # @return [Integer] UTC weekday anchor for weekly schedules, where `0` is Sunday and `6` is Saturday. Omitted weekly values default to Monday (`1`).
-        attr_reader :day_of_week
-        # @return [AgentAutomationsGetAutomationResponseTriggersIntervalMinuteUtc] UTC minute anchor for daily and weekly schedules. Omitted daily and weekly values default to `0`. Must be omitted whenever `cadence` includes `hourly`.
-        attr_reader :minute_utc
-        # @return [AgentAutomationsGetAutomationResponseTriggersIntervalWriteScope] Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.
-        attr_reader :write_scope
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
+      # Creates a new automation in a repository. User-owned automations remain private to their creator. Repository-owned automations are visible to anyone with read access to the repository and manageable by anyone with write access to the repository. **Fine-grained access tokens for "Create an automation for a repository"** This endpoint works with the following fine-grained token types: * GitHub App user access tokens * Fine-grained personal access tokens The fine-grained token…
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository. The name is not case
+      #   sensitive.
+      # @param name [String] The name of the automation.
+      # @param prompt [String] The prompt template for the automation.
+      # @param triggers [AgentAutomationsCreateRepoAutomationTriggers] Public
+      #   trigger configuration keyed by stable public trigger identifier. Each
+      #   trigger has a closed, trigger-specific configuration schema.
+      # @param model [String] The model to use for sessions triggered by this
+      #   automation. Omit to use the platform default.
+      # @param reasoning_effort [String] The reasoning effort to use for sessions
+      #   triggered by this automation. Omit or leave empty for no override. Currently
+      #   supported values: `none`, `low`, `medium`, `high`, `xhigh`, `max`
+      # @param tools [Array_of_String] The tools available to the automation.
+      # @param allowed_custom_agents [Array_of_String] Custom agents (subagents)
+      #   this automation is allowed to invoke.
+      # @param enabled [Boolean] Whether the automation should be created enabled.
+      #   Defaults to true when omitted.
+      # @param owner_type [AgentAutomationsCreateRepoAutomationOwnerType] Who owns
+      #   the automation, fixed at creation. `user` keeps it private to its creator
+      #   and its runs act as that user. `repository` makes it belong to the
+      #   repository, visible to anyone with read access to the repository and
+      #   maintainable by anyone with write access to the repository, and its runs act
+      #   as the Copilot app rather than as a person. `repository` is rejected when
+      #   repository ownership is not available for the repository. Supported values:
+      #   `user`, `repository`. Defaults to…
+      # @param write_scope [AgentAutomationsCreateRepoAutomationWriteScope] Controls
+      #   which repository resources a run may modify. `trigger` limits writes to the
+      #   resource that started the run, when one exists, and resources created during
+      #   the run; `repository` allows writes to any resource in the repository.
+      #   Supported values: `trigger`, `repository`.
+      # @param require_actor_write_permission [Boolean] When true, event-triggered
+      #   runs require the event actor to have repo write permission, even when the
+      #   org's allow_read_access_triggers policy is enabled. Does not apply to
+      #   interval-scheduled runs, which always run as the automation owner. Defaults
+      #   to false.
+      def self.agent_automations_create_repo_automation(
+        config:,
+        owner:,
+        repo:,
+        name:,
+        prompt:,
+        triggers: NOT_GIVEN,
+        model: NOT_GIVEN,
+        reasoning_effort: NOT_GIVEN,
+        tools: NOT_GIVEN,
+        allowed_custom_agents: NOT_GIVEN,
+        enabled: NOT_GIVEN,
+        owner_type: NOT_GIVEN,
+        write_scope: NOT_GIVEN,
+        require_actor_write_permission: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'POST',
+          [
+            '/agents/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/automations'
+          ].join,
+          config: config,
+          body: {
+            'name' => name,
+            'prompt' => prompt,
+            'triggers' => triggers,
+            'model' => model,
+            'reasoning_effort' => reasoning_effort,
+            'tools' => tools,
+            'allowed_custom_agents' => allowed_custom_agents,
+            'enabled' => enabled,
+            'owner_type' => owner_type,
+            'write_scope' => write_scope,
+            'require_actor_write_permission' => require_actor_write_permission
+          },
+          return_type: ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsCreateRepoAutomationResponse,
+          decoder: :json,
+          operation_id: 'agent_automations_create_repo_automation',
+          request_options: request_options
+        ).data
       end
 
-      # Internal model hydration metadata.
-      class SdkInternalAgentAutomationsGetAutomationResponseTriggersIssueOpenedMetadata
-        FIELDS = {
-          query: 'query',
-          write_scope: 'write_scope'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          write_scope: lambda do |value|
-            ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersIssueOpenedWriteScope.from_value(value)
-          end
-        }.freeze
+      # Returns an automation by ID in a repository. User-owned automations are visible only to their creator. Repository-owned automations are visible to anyone with read access to the repository. The `created_by` field identifies the creator and is distinct from the automation's `owner_type`. **Fine-grained access tokens for "Get an automation for a repository"** This endpoint works with the following fine-grained token types: * GitHub App user access tokens * Fine-grained…
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository. The name is not case
+      #   sensitive.
+      # @param automation_id [String] The unique identifier of the automation.
+      def self.agent_automations_get_repo_automation(
+        config:,
+        owner:,
+        repo:,
+        automation_id:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/agents/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/automations/',
+            SdkClient.encode_path_segment(automation_id)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetRepoAutomationResponse,
+          decoder: :json,
+          operation_id: 'agent_automations_get_repo_automation',
+          request_options: request_options
+        ).data
       end
 
-      # API model for AgentAutomationsGetAutomationResponseTriggersIssueOpened.
-      class AgentAutomationsGetAutomationResponseTriggersIssueOpened
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentAutomationsGetAutomationResponseTriggersIssueOpenedMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentAutomationsGetAutomationResponseTriggersIssueOpenedMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentAutomationsGetAutomationResponseTriggersIssueOpenedMetadata::DECODERS
-
-        # @return [String] A GitHub issue or pull request search query.
-        attr_reader :query
-        # @return [AgentAutomationsGetAutomationResponseTriggersIssueOpenedWriteScope] Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.
-        attr_reader :write_scope
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
+      # Edits specified fields on an existing automation in a repository. Omitted fields are left unchanged. The automation's `owner_type` is immutable and cannot be changed by this operation. **Fine-grained access tokens for "Edit an automation for a repository"** This endpoint works with the following fine-grained token types: * GitHub App user access tokens * Fine-grained personal access tokens The fine-grained token must have one of the following permission sets for each…
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository. The name is not case
+      #   sensitive.
+      # @param automation_id [String] The unique identifier of the automation.
+      # @param name [String] The name of the automation.
+      # @param enabled [Boolean] Set to true to enable, false to disable. Omit to
+      #   leave unchanged.
+      # @param write_scope [AgentAutomationsEditRepoAutomationWriteScope] Controls
+      #   which repository resources a run may modify. `trigger` limits writes to the
+      #   resource that started the run, when one exists, and resources created during
+      #   the run; `repository` allows writes to any resource in the repository.
+      #   Supported values: `trigger`, `repository`. Omit to leave unchanged.
+      # @param require_actor_write_permission [Boolean] When true, event-triggered
+      #   runs require the event actor to have repo write permission, even when the
+      #   org's allow_read_access_triggers policy is enabled. Does not apply to
+      #   interval-scheduled runs, which always run as the automation owner. Omit to
+      #   leave unchanged.
+      # @param model [String] The model to use for sessions triggered by this
+      #   automation. Omit to leave unchanged. Send an empty string to clear the model
+      #   and revert to the platform default.
+      # @param reasoning_effort [String] The reasoning effort to use for sessions
+      #   triggered by this automation. Omit to leave unchanged. Send an empty string
+      #   to clear the override. Currently supported values: `none`, `low`, `medium`,
+      #   `high`, `xhigh`, `max`
+      # @param triggers [AgentAutomationsEditRepoAutomationTriggers] Public trigger
+      #   configuration keyed by stable public trigger identifier. Each trigger has a
+      #   closed, trigger-specific configuration schema.
+      # @param prompt [String] The prompt template for the automation.
+      # @param tools [Array_of_String] The tools available to the automation. Send
+      #   an empty array to clear all tools.
+      # @param allowed_custom_agents [Array_of_String] Custom agents (subagents)
+      #   this automation is allowed to invoke. Send an empty array to clear all
+      #   custom agents.
+      def self.agent_automations_edit_repo_automation(
+        config:,
+        owner:,
+        repo:,
+        automation_id:,
+        name: NOT_GIVEN,
+        enabled: NOT_GIVEN,
+        write_scope: NOT_GIVEN,
+        require_actor_write_permission: NOT_GIVEN,
+        model: NOT_GIVEN,
+        reasoning_effort: NOT_GIVEN,
+        triggers: NOT_GIVEN,
+        prompt: NOT_GIVEN,
+        tools: NOT_GIVEN,
+        allowed_custom_agents: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'PATCH',
+          [
+            '/agents/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/automations/',
+            SdkClient.encode_path_segment(automation_id)
+          ].join,
+          config: config,
+          body: {
+            'name' => name,
+            'enabled' => enabled,
+            'write_scope' => write_scope,
+            'require_actor_write_permission' => require_actor_write_permission,
+            'model' => model,
+            'reasoning_effort' => reasoning_effort,
+            'triggers' => triggers,
+            'prompt' => prompt,
+            'tools' => tools,
+            'allowed_custom_agents' => allowed_custom_agents
+          },
+          return_type: ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsEditRepoAutomationResponse,
+          decoder: :json,
+          operation_id: 'agent_automations_edit_repo_automation',
+          request_options: request_options
+        ).data
       end
 
-      # Internal model hydration metadata.
-      class SdkInternalAgentAutomationsGetAutomationResponseTriggersIssueLabeledMetadata
-        FIELDS = {
-          query: 'query',
-          labels: 'labels',
-          write_scope: 'write_scope'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          write_scope: lambda do |value|
-            ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersIssueLabeledWriteScope.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for AgentAutomationsGetAutomationResponseTriggersIssueLabeled.
-      class AgentAutomationsGetAutomationResponseTriggersIssueLabeled
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentAutomationsGetAutomationResponseTriggersIssueLabeledMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentAutomationsGetAutomationResponseTriggersIssueLabeledMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentAutomationsGetAutomationResponseTriggersIssueLabeledMetadata::DECODERS
-
-        # @return [String] A GitHub issue or pull request search query.
-        attr_reader :query
-        # @return [Array_of_String] Label names matched case-insensitively against the label added by the event. Omit or use an empty array to match every added label.
-        attr_reader :labels
-        # @return [AgentAutomationsGetAutomationResponseTriggersIssueLabeledWriteScope] Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.
-        attr_reader :write_scope
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalAgentAutomationsGetAutomationResponseTriggersWorkflowRunMetadata
-        FIELDS = {
-          workflows: 'workflows',
-          conclusions: 'conclusions',
-          query: 'query',
-          write_scope: 'write_scope'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          workflows
-          conclusions
-        ].freeze
-        DECODERS = {
-          conclusions: lambda do |value|
-            value&.map { |item| ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersWorkflowRunConclusionsItem.from_value(item) }
-          end,
-          write_scope: lambda do |value|
-            ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersWorkflowRunWriteScope.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for AgentAutomationsGetAutomationResponseTriggersWorkflowRun.
-      class AgentAutomationsGetAutomationResponseTriggersWorkflowRun
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentAutomationsGetAutomationResponseTriggersWorkflowRunMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentAutomationsGetAutomationResponseTriggersWorkflowRunMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentAutomationsGetAutomationResponseTriggersWorkflowRunMetadata::DECODERS
-
-        # @return [Array_of_String] Workflow names matched against the name in each workflow YAML file.
-        attr_reader :workflows
-        # @return [Array_of_AgentAutomationsGetAutomationResponseTriggersWorkflowRunConclusionsItem] Workflow conclusions to match. The current trigger supports failure.
-        attr_reader :conclusions
-        # @return [String] A GitHub issue or pull request search query.
-        attr_reader :query
-        # @return [AgentAutomationsGetAutomationResponseTriggersWorkflowRunWriteScope] Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.
-        attr_reader :write_scope
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalAgentAutomationsGetAutomationResponseTriggersPullRequestOpenedMetadata
-        FIELDS = {
-          query: 'query',
-          paths: 'paths',
-          write_scope: 'write_scope'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          write_scope: lambda do |value|
-            ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersPullRequestOpenedWriteScope.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for AgentAutomationsGetAutomationResponseTriggersPullRequestOpened.
-      class AgentAutomationsGetAutomationResponseTriggersPullRequestOpened
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentAutomationsGetAutomationResponseTriggersPullRequestOpenedMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentAutomationsGetAutomationResponseTriggersPullRequestOpenedMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentAutomationsGetAutomationResponseTriggersPullRequestOpenedMetadata::DECODERS
-
-        # @return [String] A GitHub issue or pull request search query.
-        attr_reader :query
-        # @return [Array_of_String] Gitignore-style changed-file path globs.
-        attr_reader :paths
-        # @return [AgentAutomationsGetAutomationResponseTriggersPullRequestOpenedWriteScope] Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.
-        attr_reader :write_scope
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalAgentAutomationsGetAutomationResponseTriggersPullRequestSynchronizeMetadata
-        FIELDS = {
-          query: 'query',
-          paths: 'paths',
-          write_scope: 'write_scope'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          write_scope: lambda do |value|
-            ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersPullRequestSynchX73ec5da5ff.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for AgentAutomationsGetAutomationResponseTriggersPullRequestSynchronize.
-      class AgentAutomationsGetAutomationResponseTriggersPullRequestSynchronize
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentAutomationsGetAutomationResponseTriggersPullRequestSynchronizeMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentAutomationsGetAutomationResponseTriggersPullRequestSynchronizeMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentAutomationsGetAutomationResponseTriggersPullRequestSynchronizeMetadata::DECODERS
-
-        # @return [String] A GitHub issue or pull request search query.
-        attr_reader :query
-        # @return [Array_of_String] Gitignore-style changed-file path globs.
-        attr_reader :paths
-        # @return [AgentAutomationsGetAutomationResponseTriggersPullRequestSynchX73ec5da5ff] Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.
-        attr_reader :write_scope
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalAgentAutomationsGetAutomationResponseTriggersPullRequestMergedMetadata
-        FIELDS = {
-          query: 'query',
-          paths: 'paths',
-          write_scope: 'write_scope'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          write_scope: lambda do |value|
-            ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersPullRequestMergedWriteScope.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for AgentAutomationsGetAutomationResponseTriggersPullRequestMerged.
-      class AgentAutomationsGetAutomationResponseTriggersPullRequestMerged
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentAutomationsGetAutomationResponseTriggersPullRequestMergedMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentAutomationsGetAutomationResponseTriggersPullRequestMergedMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentAutomationsGetAutomationResponseTriggersPullRequestMergedMetadata::DECODERS
-
-        # @return [String] A GitHub issue or pull request search query.
-        attr_reader :query
-        # @return [Array_of_String] Gitignore-style changed-file path globs.
-        attr_reader :paths
-        # @return [AgentAutomationsGetAutomationResponseTriggersPullRequestMergedWriteScope] Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.
-        attr_reader :write_scope
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalAgentAutomationsGetAutomationResponseTriggersIssueCommentMetadata
-        FIELDS = {
-          body_substring: 'body_substring',
-          write_scope: 'write_scope'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          write_scope: lambda do |value|
-            ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersIssueCommentWriteScope.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for AgentAutomationsGetAutomationResponseTriggersIssueComment.
-      class AgentAutomationsGetAutomationResponseTriggersIssueComment
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentAutomationsGetAutomationResponseTriggersIssueCommentMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentAutomationsGetAutomationResponseTriggersIssueCommentMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentAutomationsGetAutomationResponseTriggersIssueCommentMetadata::DECODERS
-
-        # @return [String] A case-insensitive substring matched against the event body.
-        attr_reader :body_substring
-        # @return [AgentAutomationsGetAutomationResponseTriggersIssueCommentWriteScope] Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.
-        attr_reader :write_scope
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalAgentAutomationsGetAutomationResponseTriggersPullRequestCommentMetadata
-        FIELDS = {
-          comment_types: 'comment_types',
-          body_substring: 'body_substring',
-          write_scope: 'write_scope'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          comment_types
-        ].freeze
-        DECODERS = {
-          comment_types: lambda do |value|
-            value&.map { |item| ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersPullRequestCommeX6840452c27.from_value(item) }
-          end,
-          write_scope: lambda do |value|
-            ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersPullRequestCommeX223c9d064b.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for AgentAutomationsGetAutomationResponseTriggersPullRequestComment.
-      class AgentAutomationsGetAutomationResponseTriggersPullRequestComment
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentAutomationsGetAutomationResponseTriggersPullRequestCommentMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentAutomationsGetAutomationResponseTriggersPullRequestCommentMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentAutomationsGetAutomationResponseTriggersPullRequestCommentMetadata::DECODERS
-
-        # @return [Array_of_AgentAutomationsGetAutomationResponseTriggersPullRequestCommeX6840452c27] Pull request conversation and inline review comment types to match.
-        attr_reader :comment_types
-        # @return [String] A case-insensitive substring matched against the event body.
-        attr_reader :body_substring
-        # @return [AgentAutomationsGetAutomationResponseTriggersPullRequestCommeX223c9d064b] Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.
-        attr_reader :write_scope
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalAgentAutomationsGetAutomationResponseTriggersDiscussionOpenedMetadata
-        FIELDS = {
-          categories: 'categories',
-          body_substring: 'body_substring',
-          write_scope: 'write_scope'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          write_scope: lambda do |value|
-            ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersDiscussionOpenedWriteScope.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for AgentAutomationsGetAutomationResponseTriggersDiscussionOpened.
-      class AgentAutomationsGetAutomationResponseTriggersDiscussionOpened
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentAutomationsGetAutomationResponseTriggersDiscussionOpenedMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentAutomationsGetAutomationResponseTriggersDiscussionOpenedMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentAutomationsGetAutomationResponseTriggersDiscussionOpenedMetadata::DECODERS
-
-        # @return [Array_of_String] Discussion category names matched case-insensitively.
-        attr_reader :categories
-        # @return [String] A case-insensitive substring matched against the event body.
-        attr_reader :body_substring
-        # @return [AgentAutomationsGetAutomationResponseTriggersDiscussionOpenedWriteScope] Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.
-        attr_reader :write_scope
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalAgentAutomationsGetAutomationResponseTriggersDiscussionUpdatedMetadata
-        FIELDS = {
-          categories: 'categories',
-          body_substring: 'body_substring',
-          write_scope: 'write_scope'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          write_scope: lambda do |value|
-            ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersDiscussionUpdatedWriteScope.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for AgentAutomationsGetAutomationResponseTriggersDiscussionUpdated.
-      class AgentAutomationsGetAutomationResponseTriggersDiscussionUpdated
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentAutomationsGetAutomationResponseTriggersDiscussionUpdatedMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentAutomationsGetAutomationResponseTriggersDiscussionUpdatedMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentAutomationsGetAutomationResponseTriggersDiscussionUpdatedMetadata::DECODERS
-
-        # @return [Array_of_String] Discussion category names matched case-insensitively.
-        attr_reader :categories
-        # @return [String] A case-insensitive substring matched against the event body.
-        attr_reader :body_substring
-        # @return [AgentAutomationsGetAutomationResponseTriggersDiscussionUpdatedWriteScope] Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.
-        attr_reader :write_scope
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
+      # Deletes an automation in a repository. **Fine-grained access tokens for "Delete an automation for a repository"** This endpoint works with the following fine-grained token types: * GitHub App user access tokens * Fine-grained personal access tokens The fine-grained token must have one of the following permission sets for each repository accessed by this request: * "Agent tasks" repository permissions (read and write) * "Contents" repository permissions (read and write) The…
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository. The name is not case
+      #   sensitive.
+      # @param automation_id [String] The unique identifier of the automation.
+      def self.agent_automations_delete_repo_automation(
+        config:,
+        owner:,
+        repo:,
+        automation_id:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'DELETE',
+          [
+            '/agents/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/automations/',
+            SdkClient.encode_path_segment(automation_id)
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'agent_automations_delete_repo_automation',
+          request_options: request_options
+        ).data
       end
     end
   end
 end
 
-require_relative 'agent_automations_part_2'
-require_relative 'agent_automations_part_3'
-require_relative 'agent_automations_part_4'
-require_relative 'agent_automations_part_5'
-require_relative 'agent_automations_part_6'
-require_relative 'agent_automations_part_7'
-require_relative 'agent_automations_part_8'
-require_relative 'agent_automations_part_9'
-require_relative 'agent_automations_part_10'
-require_relative 'agent_automations_part_11'
-require_relative 'agent_automations_part_12'
-require_relative 'agent_automations_part_13'
-require_relative 'agent_automations_part_14'
-require_relative 'agent_automations_part_15'
-require_relative 'agent_automations_part_16'
-require_relative 'agent_automations_part_17'
-require_relative 'agent_automations_part_18'
-require_relative 'agent_automations_part_19'
-require_relative 'agent_automations_part_20'
-require_relative 'agent_automations_part_21'
-require_relative 'agent_automations_part_22'
-require_relative 'agent_automations_part_23'
+require_relative 'agent_automations_types'
+require_relative 'agent_automations_sdk_internal_agent_automations_get_automation_response_triggers_discussion_com'
+require_relative 'agent_automations_get_automation_response_triggers'
+require_relative 'agent_automations_sdk_internal_agent_automations_list_repo_automations_response_automations_item'
+require_relative 'agent_automations_sdk_internal_agent_automations_list_repo_automations_response_automations_item2'
+require_relative 'agent_automations_list_repo_automations_response_automations_item_created_by'
+require_relative 'agent_automations_create_repo_automation_triggers_pull_request_comment'
+require_relative 'agent_automations_create_repo_automation_triggers_automation_completed'
+require_relative 'agent_automations_create_repo_automation_response_triggers_pull_request_merged'
+require_relative 'agent_automations_create_repo_automation_response_triggers_pull_reque_xc15b10caca'
+require_relative 'agent_automations_get_repo_automation_response_triggers_workflow_run'
+require_relative 'agent_automations_get_repo_automation_response_triggers_pull_request_rxc82d37bd70'
+require_relative 'agent_automations_edit_repo_automation_triggers_interval'
+require_relative 'agent_automations_edit_repo_automation_triggers_issue_assigned'
+require_relative 'agent_automations_edit_repo_automation'
+require_relative 'agent_automations_sdk_internal_agent_automations_edit_repo_automation_response_triggers_discussi'
+require_relative 'agent_automations_edit_repo_automation_response_triggers'
+require_relative 'agent_automations_edit_repo_automation_triggers_discussion_comment_write_scope'
+require_relative 'agent_automations_list_automations_response_item_triggers_pull_reques_xc47ff36cb0'
+require_relative 'agent_automations_get_automation_response_triggers_discussion_updated_write_scope'
+require_relative 'agent_automations_get_repo_automation_response_triggers_pull_request_cx15b4780a96'
+require_relative 'agent_automations_list_repo_automations_response_automations_item_tri_x6ca880397e'
+require_relative 'agent_automations_available_tools'
+require_relative 'agent_automations_available_triggers'
+require_relative 'agent_automations_tasks'

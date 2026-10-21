@@ -9,541 +9,96 @@ module OctridevGithub
   module Methods
     # Defines the Users SDK namespace.
     module Users
-      # Internal model hydration metadata.
-      class SdkInternalUsersUpdateAuthenticatedMetadata
-        FIELDS = {
-          name: 'name',
-          email: 'email',
-          blog: 'blog',
-          twitter_username: 'twitter_username',
-          company: 'company',
-          location: 'location',
-          hireable: 'hireable',
-          bio: 'bio'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+      # Lists all users, in the order that they signed up on GitHub. This list includes personal user accounts and organization accounts. Note: Pagination is powered exclusively by the `since` parameter. Use the Link header to get the URL for the next page of users.
+      #
+      # @param since [Integer] A user ID. Only return users with an ID greater than
+      #   this ID.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      def self.users_list(
+        config:,
+        since: NOT_GIVEN,
+        per_page: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          '/users',
+          config: config,
+          query: {
+            'since' => QueryValue.new(since, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
+          },
+          return_type: [::OctridevGithub::SimpleUser],
+          decoder: :json,
+          operation_id: 'users_list',
+          request_options: request_options
+        ).data
       end
 
-      # API model for UsersUpdateAuthenticated.
-      class UsersUpdateAuthenticated
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalUsersUpdateAuthenticatedMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalUsersUpdateAuthenticatedMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalUsersUpdateAuthenticatedMetadata::DECODERS
-
-        # @return [String] The new name of the user.
-        attr_reader :name
-        # @return [String] The publicly visible email address of the user.
-        attr_reader :email
-        # @return [String] The new blog URL of the user.
-        attr_reader :blog
-        # @return [String] The new Twitter username of the user.
-        attr_reader :twitter_username
-        # @return [String] The new company of the user.
-        attr_reader :company
-        # @return [String] The new location of the user.
-        attr_reader :location
-        # @return [Boolean] The new hiring availability of the user.
-        attr_reader :hireable
-        # @return [String] The new short biography of the user.
-        attr_reader :bio
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalUsersSetPrimaryEmailVisibilityForAuthenticatedUserMetadata
-        FIELDS = {
-          visibility: 'visibility'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          visibility
-        ].freeze
-        DECODERS = {
-          visibility: lambda do |value|
-            ::OctridevGithub::Methods::Users::UsersSetPrimaryEmailVisibilityForAuthenticatedUserVisibility.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for UsersSetPrimaryEmailVisibilityForAuthenticatedUser.
-      class UsersSetPrimaryEmailVisibilityForAuthenticatedUser
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalUsersSetPrimaryEmailVisibilityForAuthenticatedUserMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalUsersSetPrimaryEmailVisibilityForAuthenticatedUserMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalUsersSetPrimaryEmailVisibilityForAuthenticatedUserMetadata::DECODERS
-
-        # @return [UsersSetPrimaryEmailVisibilityForAuthenticatedUserVisibility] Denotes whether an email is publicly visible.
-        attr_reader :visibility
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalUsersCreateGpgKeyForAuthenticatedUserMetadata
-        FIELDS = {
-          name: 'name',
-          armored_public_key: 'armored_public_key'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          armored_public_key
-        ].freeze
-        DECODERS = {}.freeze
-      end
-
-      # API model for UsersCreateGpgKeyForAuthenticatedUser.
-      class UsersCreateGpgKeyForAuthenticatedUser
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalUsersCreateGpgKeyForAuthenticatedUserMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalUsersCreateGpgKeyForAuthenticatedUserMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalUsersCreateGpgKeyForAuthenticatedUserMetadata::DECODERS
-
-        # @return [String] A descriptive name for the new key.
-        attr_reader :name
-        # @return [String] A GPG key in ASCII-armored format.
-        attr_reader :armored_public_key
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalUsersCreatePublicSshKeyForAuthenticatedUserMetadata
-        FIELDS = {
-          title: 'title',
-          key: 'key'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          key
-        ].freeze
-        DECODERS = {}.freeze
-      end
-
-      # API model for UsersCreatePublicSshKeyForAuthenticatedUser.
-      class UsersCreatePublicSshKeyForAuthenticatedUser
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalUsersCreatePublicSshKeyForAuthenticatedUserMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalUsersCreatePublicSshKeyForAuthenticatedUserMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalUsersCreatePublicSshKeyForAuthenticatedUserMetadata::DECODERS
-
-        # @return [String] A descriptive name for the new key.
-        attr_reader :title
-        # @return [String] The public SSH key to add to your GitHub account.
-        attr_reader :key
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalUsersAddSocialAccountForAuthenticatedUserMetadata
-        FIELDS = {
-          account_urls: 'account_urls'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          account_urls
-        ].freeze
-        DECODERS = {}.freeze
-      end
-
-      # API model for UsersAddSocialAccountForAuthenticatedUser.
-      class UsersAddSocialAccountForAuthenticatedUser
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalUsersAddSocialAccountForAuthenticatedUserMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalUsersAddSocialAccountForAuthenticatedUserMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalUsersAddSocialAccountForAuthenticatedUserMetadata::DECODERS
-
-        # @return [Array_of_String] Full URLs for the social media profiles to add.
-        attr_reader :account_urls
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalUsersDeleteSocialAccountForAuthenticatedUserMetadata
-        FIELDS = {
-          account_urls: 'account_urls'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          account_urls
-        ].freeze
-        DECODERS = {}.freeze
-      end
-
-      # API model for UsersDeleteSocialAccountForAuthenticatedUser.
-      class UsersDeleteSocialAccountForAuthenticatedUser
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalUsersDeleteSocialAccountForAuthenticatedUserMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalUsersDeleteSocialAccountForAuthenticatedUserMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalUsersDeleteSocialAccountForAuthenticatedUserMetadata::DECODERS
-
-        # @return [Array_of_String] Full URLs for the social media profiles to delete.
-        attr_reader :account_urls
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalUsersCreateSshSigningKeyForAuthenticatedUserMetadata
-        FIELDS = {
-          title: 'title',
-          key: 'key'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          key
-        ].freeze
-        DECODERS = {}.freeze
-      end
-
-      # API model for UsersCreateSshSigningKeyForAuthenticatedUser.
-      class UsersCreateSshSigningKeyForAuthenticatedUser
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalUsersCreateSshSigningKeyForAuthenticatedUserMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalUsersCreateSshSigningKeyForAuthenticatedUserMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalUsersCreateSshSigningKeyForAuthenticatedUserMetadata::DECODERS
-
-        # @return [String] A descriptive name for the new key.
-        attr_reader :title
-        # @return [String] The public SSH key to add to your GitHub account. For more information, see "Checking for existing SSH keys."
-        attr_reader :key
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalUsersListAttestationsBulkMetadata
-        FIELDS = {
-          subject_digests: 'subject_digests',
-          predicate_type: 'predicate_type'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          subject_digests
-        ].freeze
-        DECODERS = {}.freeze
-      end
-
-      # API model for UsersListAttestationsBulk.
-      class UsersListAttestationsBulk
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalUsersListAttestationsBulkMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalUsersListAttestationsBulkMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalUsersListAttestationsBulkMetadata::DECODERS
-
-        # @return [Array_of_String] List of subject digests to fetch attestations for.
-        attr_reader :subject_digests
-        # @return [String] Optional filter for fetching attestations with a given predicate type. This option accepts `provenance`, `sbom`, `release`, or freeform text for custom predicate types.
-        attr_reader :predicate_type
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalUsersListAttestationsBulkResponsePageInfoMetadata
-        FIELDS = {
-          has_next: 'has_next',
-          has_previous: 'has_previous',
-          next_: 'next',
-          previous: 'previous'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
-      end
-
-      # API model for UsersListAttestationsBulkResponsePageInfo.
-      # Information about the current page.
-      class UsersListAttestationsBulkResponsePageInfo
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalUsersListAttestationsBulkResponsePageInfoMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalUsersListAttestationsBulkResponsePageInfoMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalUsersListAttestationsBulkResponsePageInfoMetadata::DECODERS
-
-        # @return [Boolean] Indicates whether there is a next page.
-        attr_reader :has_next
-        # @return [Boolean] Indicates whether there is a previous page.
-        attr_reader :has_previous
-        # @return [String] The cursor to the next page.
-        attr_reader :next_
-        # @return [String] The cursor to the previous page.
-        attr_reader :previous
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalUsersListAttestationsBulkResponseMetadata
-        FIELDS = {
-          attestations_subject_digests: 'attestations_subject_digests',
-          page_info: 'page_info'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          page_info: lambda do |value|
-            ::OctridevGithub::Methods::Users::UsersListAttestationsBulkResponsePageInfo.from_hash(value)
-          end
-        }.freeze
-      end
-
-      # API model for UsersListAttestationsBulkResponse.
-      class UsersListAttestationsBulkResponse
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalUsersListAttestationsBulkResponseMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalUsersListAttestationsBulkResponseMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalUsersListAttestationsBulkResponseMetadata::DECODERS
-
-        # @return [Hash] Mapping of subject digest to bundles.
-        attr_reader :attestations_subject_digests
-        # @return [UsersListAttestationsBulkResponsePageInfo] Information about the current page.
-        attr_reader :page_info
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalUsersListAttestationsResponseAttestationsItemBundleMetadata
-        FIELDS = {
-          media_type: 'mediaType',
-          verification_material: 'verificationMaterial',
-          dsse_envelope: 'dsseEnvelope'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
-      end
-
-      # API model for UsersListAttestationsResponseAttestationsItemBundle.
-      # The attestation's Sigstore Bundle. Refer to the Sigstore Bundle Specification for more information.
-      class UsersListAttestationsResponseAttestationsItemBundle
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalUsersListAttestationsResponseAttestationsItemBundleMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalUsersListAttestationsResponseAttestationsItemBundleMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalUsersListAttestationsResponseAttestationsItemBundleMetadata::DECODERS
-
-        attr_reader :media_type, :verification_material, :dsse_envelope
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalUsersListAttestationsResponseAttestationsItemMetadata
-        FIELDS = {
-          bundle: 'bundle',
-          repository_id: 'repository_id',
-          bundle_url: 'bundle_url',
-          initiator: 'initiator'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          bundle: lambda do |value|
-            ::OctridevGithub::Methods::Users::UsersListAttestationsResponseAttestationsItemBundle.from_hash(value)
-          end
-        }.freeze
-      end
-
-      # API model for UsersListAttestationsResponseAttestationsItem.
-      class UsersListAttestationsResponseAttestationsItem
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalUsersListAttestationsResponseAttestationsItemMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalUsersListAttestationsResponseAttestationsItemMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalUsersListAttestationsResponseAttestationsItemMetadata::DECODERS
-
-        attr_reader :repository_id, :bundle_url, :initiator
-        # @return [UsersListAttestationsResponseAttestationsItemBundle] The attestation's Sigstore Bundle. Refer to the Sigstore Bundle Specification for more information.
-        attr_reader :bundle
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalUsersListAttestationsResponseMetadata
-        FIELDS = {
-          attestations: 'attestations'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          attestations: lambda do |value|
-            value&.map { |item| ::OctridevGithub::Methods::Users::UsersListAttestationsResponseAttestationsItem.from_hash(item) }
-          end
-        }.freeze
-      end
-
-      # API model for UsersListAttestationsResponse.
-      class UsersListAttestationsResponse
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalUsersListAttestationsResponseMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalUsersListAttestationsResponseMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalUsersListAttestationsResponseMetadata::DECODERS
-
-        attr_reader :attestations
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Defines the UsersGetContextForUserParameter SDK namespace.
-      module UsersGetContextForUserParameter
-        ORGANIZATION = 'organization'
-        REPOSITORY = 'repository'
-        ISSUE = 'issue'
-        PULL_REQUEST = 'pull_request'
-        VALUES = %w[organization repository issue pull_request].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the UsersSetPrimaryEmailVisibilityForAuthenticatedUserVisibility SDK namespace.
-      module UsersSetPrimaryEmailVisibilityForAuthenticatedUserVisibility
-        PUBLIC = 'public'
-        PRIVATE = 'private'
-        VALUES = %w[public private].freeze
-        def self.from_value(value)
-          value
-        end
+      # Provides publicly available information about someone with a GitHub account. If the specified user has a private profile, the `followers` and `following` values are `0` unless the request is authenticated as that user. A request authenticated as the specified user returns the actual values even if the token has no OAuth scopes. The `events_url` value is a URI template. Replace `{/privacy}` with `/public` to retrieve only public events. Omit it to retrieve public events and,…
+      #
+      # @param username [String] The handle for the GitHub user account.
+      def self.users_get_by_username(
+        config:,
+        username:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/users/',
+            SdkClient.encode_path_segment(username)
+          ].join,
+          config: config,
+          decoder: :json,
+          operation_id: 'users_get_by_username',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError }
+        ).data
       end
     end
   end
 end
 
-require_relative 'users_part_2'
-require_relative 'users_part_3'
-require_relative 'users_part_4'
+require_relative 'users_types'
+require_relative 'users_get_authenticated'
+require_relative 'users_update_authenticated'
+require_relative 'users_list_blocked_by_authenticated_user'
+require_relative 'users_check_blocked'
+require_relative 'users_block'
+require_relative 'users_unblock'
+require_relative 'users_set_primary_email_visibility_for_authenticated_user'
+require_relative 'users_list_emails_for_authenticated_user'
+require_relative 'users_add_email_for_authenticated_user'
+require_relative 'users_delete_email_for_authenticated_user'
+require_relative 'users_list_followers_for_authenticated_user'
+require_relative 'users_list_followed_by_authenticated_user'
+require_relative 'users_check_person_is_followed_by_authenticated'
+require_relative 'users_follow'
+require_relative 'users_unfollow'
+require_relative 'users_list_gpg_keys_for_authenticated_user'
+require_relative 'users_create_gpg_key_for_authenticated_user'
+require_relative 'users_get_gpg_key_for_authenticated_user'
+require_relative 'users_delete_gpg_key_for_authenticated_user'
+require_relative 'users_list_public_ssh_keys_for_authenticated_user'
+require_relative 'users_create_public_ssh_key_for_authenticated_user'
+require_relative 'users_get_public_ssh_key_for_authenticated_user'
+require_relative 'users_delete_public_ssh_key_for_authenticated_user'
+require_relative 'users_list_public_emails_for_authenticated_user'
+require_relative 'users_list_social_accounts_for_authenticated_user'
+require_relative 'users_add_social_account_for_authenticated_user'
+require_relative 'users_delete_social_account_for_authenticated_user'
+require_relative 'users_list_ssh_signing_keys_for_authenticated_user'
+require_relative 'users_create_ssh_signing_key_for_authenticated_user'
+require_relative 'users_get_ssh_signing_key_for_authenticated_user'
+require_relative 'users_delete_ssh_signing_key_for_authenticated_user'
+require_relative 'users_get_by_id'
+require_relative 'users_attestations'
+require_relative 'users_followers'
+require_relative 'users_following'
+require_relative 'users_gpg_keys'
+require_relative 'users_hovercard'
+require_relative 'users_keys'
+require_relative 'users_social_accounts'
+require_relative 'users_ssh_signing_keys'

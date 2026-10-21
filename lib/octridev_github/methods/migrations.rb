@@ -9,373 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Migrations SDK namespace.
     module Migrations
-      # Internal model hydration metadata.
-      class SdkInternalMigrationsStartForOrgMetadata
-        FIELDS = {
-          repositories: 'repositories',
-          lock_repositories: 'lock_repositories',
-          exclude_metadata: 'exclude_metadata',
-          exclude_git_data: 'exclude_git_data',
-          exclude_attachments: 'exclude_attachments',
-          exclude_releases: 'exclude_releases',
-          exclude_owner_projects: 'exclude_owner_projects',
-          org_metadata_only: 'org_metadata_only',
-          exclude: 'exclude'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          repositories
-        ].freeze
-        DECODERS = {
-          exclude: lambda do |value|
-            value&.map { |item| ::OctridevGithub::Methods::Migrations::MigrationsStartForOrgExcludeItem.from_value(item) }
-          end
-        }.freeze
-      end
-
-      # API model for MigrationsStartForOrg.
-      class MigrationsStartForOrg
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalMigrationsStartForOrgMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalMigrationsStartForOrgMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalMigrationsStartForOrgMetadata::DECODERS
-
-        # @return [Array_of_String] A list of arrays indicating which repositories should be migrated.
-        attr_reader :repositories
-        # @return [Boolean] Indicates whether repositories should be locked (to prevent manipulation) while migrating data.
-        attr_reader :lock_repositories
-        # @return [Boolean] Indicates whether metadata should be excluded and only git source should be included for the migration.
-        attr_reader :exclude_metadata
-        # @return [Boolean] Indicates whether the repository git data should be excluded from the migration.
-        attr_reader :exclude_git_data
-        # @return [Boolean] Indicates whether attachments should be excluded from the migration (to reduce migration archive file size).
-        attr_reader :exclude_attachments
-        # @return [Boolean] Indicates whether releases should be excluded from the migration (to reduce migration archive file size).
-        attr_reader :exclude_releases
-        # @return [Boolean] Indicates whether projects owned by the organization or users should be excluded. from the migration.
-        attr_reader :exclude_owner_projects
-        # @return [Boolean] Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).
-        attr_reader :org_metadata_only
-        # @return [Array_of_MigrationsStartForOrgExcludeItem] Exclude related items from being returned in the response in order to improve performance of the request.
-        attr_reader :exclude
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalMigrationsStartImportMetadata
-        FIELDS = {
-          vcs_url: 'vcs_url',
-          vcs: 'vcs',
-          vcs_username: 'vcs_username',
-          vcs_password: 'vcs_password',
-          tfvc_project: 'tfvc_project'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          vcs_url
-        ].freeze
-        DECODERS = {
-          vcs: lambda do |value|
-            ::OctridevGithub::Methods::Migrations::MigrationsStartImportVcs.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for MigrationsStartImport.
-      class MigrationsStartImport
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalMigrationsStartImportMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalMigrationsStartImportMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalMigrationsStartImportMetadata::DECODERS
-
-        # @return [String] The URL of the originating repository.
-        attr_reader :vcs_url
-        # @return [MigrationsStartImportVcs] The originating VCS type. Without this parameter, the import job will take additional time to detect the VCS type before beginning the import. This detection step will be reflected in the response.
-        attr_reader :vcs
-        # @return [String] If authentication is required, the username to provide to `vcs_url`.
-        attr_reader :vcs_username
-        # @return [String] If authentication is required, the password to provide to `vcs_url`.
-        attr_reader :vcs_password
-        # @return [String] For a tfvc import, the name of the project that is being imported.
-        attr_reader :tfvc_project
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalMigrationsUpdateImportMetadata
-        FIELDS = {
-          vcs_username: 'vcs_username',
-          vcs_password: 'vcs_password',
-          vcs: 'vcs',
-          tfvc_project: 'tfvc_project'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          vcs: lambda do |value|
-            ::OctridevGithub::Methods::Migrations::MigrationsUpdateImportVcs.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for MigrationsUpdateImport.
-      class MigrationsUpdateImport
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalMigrationsUpdateImportMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalMigrationsUpdateImportMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalMigrationsUpdateImportMetadata::DECODERS
-
-        # @return [String] The username to provide to the originating repository.
-        attr_reader :vcs_username
-        # @return [String] The password to provide to the originating repository.
-        attr_reader :vcs_password
-        # @return [MigrationsUpdateImportVcs] The type of version control system you are migrating from.
-        attr_reader :vcs
-        # @return [String] For a tfvc import, the name of the project that is being imported.
-        attr_reader :tfvc_project
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalMigrationsMapCommitAuthorMetadata
-        FIELDS = {
-          email: 'email',
-          name: 'name'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
-      end
-
-      # API model for MigrationsMapCommitAuthor.
-      class MigrationsMapCommitAuthor
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalMigrationsMapCommitAuthorMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalMigrationsMapCommitAuthorMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalMigrationsMapCommitAuthorMetadata::DECODERS
-
-        # @return [String] The new Git author email.
-        attr_reader :email
-        # @return [String] The new Git author name.
-        attr_reader :name
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalMigrationsSetLfsPreferenceMetadata
-        FIELDS = {
-          use_lfs: 'use_lfs'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          use_lfs
-        ].freeze
-        DECODERS = {
-          use_lfs: lambda do |value|
-            ::OctridevGithub::Methods::Migrations::MigrationsSetLfsPreferenceUseLfs.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for MigrationsSetLfsPreference.
-      class MigrationsSetLfsPreference
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalMigrationsSetLfsPreferenceMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalMigrationsSetLfsPreferenceMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalMigrationsSetLfsPreferenceMetadata::DECODERS
-
-        # @return [MigrationsSetLfsPreferenceUseLfs] Whether to store large files during the import. `opt_in` means large files will be stored using Git LFS. `opt_out` means large files will be removed during the import.
-        attr_reader :use_lfs
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalMigrationsStartForAuthenticatedUserMetadata
-        FIELDS = {
-          lock_repositories: 'lock_repositories',
-          exclude_metadata: 'exclude_metadata',
-          exclude_git_data: 'exclude_git_data',
-          exclude_attachments: 'exclude_attachments',
-          exclude_releases: 'exclude_releases',
-          exclude_owner_projects: 'exclude_owner_projects',
-          org_metadata_only: 'org_metadata_only',
-          exclude: 'exclude',
-          repositories: 'repositories'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          repositories
-        ].freeze
-        DECODERS = {
-          exclude: lambda do |value|
-            value&.map { |item| ::OctridevGithub::Methods::Migrations::MigrationsStartForAuthenticatedUserExcludeItem.from_value(item) }
-          end
-        }.freeze
-      end
-
-      # API model for MigrationsStartForAuthenticatedUser.
-      class MigrationsStartForAuthenticatedUser
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalMigrationsStartForAuthenticatedUserMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalMigrationsStartForAuthenticatedUserMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalMigrationsStartForAuthenticatedUserMetadata::DECODERS
-
-        attr_reader :repositories
-        # @return [Boolean] Lock the repositories being migrated at the start of the migration
-        attr_reader :lock_repositories
-        # @return [Boolean] Indicates whether metadata should be excluded and only git source should be included for the migration.
-        attr_reader :exclude_metadata
-        # @return [Boolean] Indicates whether the repository git data should be excluded from the migration.
-        attr_reader :exclude_git_data
-        # @return [Boolean] Do not include attachments in the migration
-        attr_reader :exclude_attachments
-        # @return [Boolean] Do not include releases in the migration
-        attr_reader :exclude_releases
-        # @return [Boolean] Indicates whether projects owned by the organization or users should be excluded.
-        attr_reader :exclude_owner_projects
-        # @return [Boolean] Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).
-        attr_reader :org_metadata_only
-        # @return [Array_of_MigrationsStartForAuthenticatedUserExcludeItem] Exclude attributes from the API response to improve performance
-        attr_reader :exclude
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Defines the MigrationsStartForAuthenticatedUserExcludeItem SDK namespace.
-      module MigrationsStartForAuthenticatedUserExcludeItem
-        REPOSITORIES = 'repositories'
-        VALUES = ['repositories'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the MigrationsSetLfsPreferenceUseLfs SDK namespace.
-      module MigrationsSetLfsPreferenceUseLfs
-        OPT_IN = 'opt_in'
-        OPT_OUT = 'opt_out'
-        VALUES = %w[opt_in opt_out].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the MigrationsGetStatusForOrgParameterItem SDK namespace.
-      module MigrationsGetStatusForOrgParameterItem
-        REPOSITORIES = 'repositories'
-        VALUES = ['repositories'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the MigrationsUpdateImportVcs SDK namespace.
-      module MigrationsUpdateImportVcs
-        SUBVERSION = 'subversion'
-        TFVC = 'tfvc'
-        GIT = 'git'
-        MERCURIAL = 'mercurial'
-        VALUES = %w[subversion tfvc git mercurial].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the MigrationsStartImportVcs SDK namespace.
-      module MigrationsStartImportVcs
-        SUBVERSION = 'subversion'
-        GIT = 'git'
-        MERCURIAL = 'mercurial'
-        TFVC = 'tfvc'
-        VALUES = %w[subversion git mercurial tfvc].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the MigrationsListForOrgParameterItem SDK namespace.
-      module MigrationsListForOrgParameterItem
-        REPOSITORIES = 'repositories'
-        VALUES = ['repositories'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the MigrationsStartForOrgExcludeItem SDK namespace.
-      module MigrationsStartForOrgExcludeItem
-        REPOSITORIES = 'repositories'
-        VALUES = ['repositories'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
       # Lists the most recent migrations, including both exports (which can be started through the REST API) and imports (which cannot be started using the REST API). A list of `repositories` is only returned for export migrations.
       #
       # @param org [String] The organization name. The name is not case sensitive.
@@ -512,37 +145,125 @@ module OctridevGithub
         ).data
       end
 
-      # Retrieves the download URL for an organization's migration archive. Identify the migration with `org` and `migration_id`; the response redirects to the archive URL.
+      # Lists migrations started by the authenticated user, including their state and repository details when available. Use `page` and `per_page` to paginate the results; `per_page` defaults to 30 and is capped at 100.
       #
-      # Fetches the URL to a migration archive.
+      # Lists all migrations a user has started.
       #
-      # @param org [String] The organization name. The name is not case sensitive.
-      # @param migration_id [Integer] The unique identifier of the migration.
-      def self.migrations_download_archive_for_org(
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.migrations_list_for_authenticated_user(
         config:,
-        org:,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          '/user/migrations',
+          config: config,
+          query: {
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
+          },
+          return_type: [::OctridevGithub::Migration],
+          decoder: :json,
+          operation_id: 'migrations_list_for_authenticated_user',
+          request_options: request_options,
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
+        ).data
+      end
+
+      # Starts a migration for the authenticated user using the specified repositories. Set `org_metadata_only` to true to include only organization metadata; in this mode, `repositories` must be empty and other flags are ignored. A 201 response returns the created migration record.
+      #
+      # Initiates the generation of a user migration archive.
+      #
+      # @param lock_repositories [Boolean] Lock the repositories being migrated at
+      #   the start of the migration
+      # @param exclude_metadata [Boolean] Indicates whether metadata should be
+      #   excluded and only git source should be included for the migration.
+      # @param exclude_git_data [Boolean] Indicates whether the repository git data
+      #   should be excluded from the migration.
+      # @param exclude_attachments [Boolean] Do not include attachments in the
+      #   migration
+      # @param exclude_releases [Boolean] Do not include releases in the migration
+      # @param exclude_owner_projects [Boolean] Indicates whether projects owned by
+      #   the organization or users should be excluded.
+      # @param org_metadata_only [Boolean] Indicates whether this should only
+      #   include organization metadata (repositories array should be empty and will
+      #   ignore other flags).
+      # @param exclude [Array_of_MigrationsStartForAuthenticatedUserExcludeItem]
+      #   Exclude attributes from the API response to improve performance
+      def self.migrations_start_for_authenticated_user(
+        config:,
+        repositories:,
+        lock_repositories: NOT_GIVEN,
+        exclude_metadata: NOT_GIVEN,
+        exclude_git_data: NOT_GIVEN,
+        exclude_attachments: NOT_GIVEN,
+        exclude_releases: NOT_GIVEN,
+        exclude_owner_projects: NOT_GIVEN,
+        org_metadata_only: NOT_GIVEN,
+        exclude: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'POST',
+          '/user/migrations',
+          config: config,
+          body: {
+            'repositories' => repositories,
+            'lock_repositories' => lock_repositories,
+            'exclude_metadata' => exclude_metadata,
+            'exclude_git_data' => exclude_git_data,
+            'exclude_attachments' => exclude_attachments,
+            'exclude_releases' => exclude_releases,
+            'exclude_owner_projects' => exclude_owner_projects,
+            'org_metadata_only' => org_metadata_only,
+            'exclude' => exclude
+          },
+          return_type: ::OctridevGithub::Migration,
+          decoder: :json,
+          operation_id: 'migrations_start_for_authenticated_user',
+          request_options: request_options,
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+        ).data
+      end
+
+      # Retrieves the status and details of a user migration. Use `migration_id` to identify the migration, and check `state` to see whether it is pending, exporting, exported, or failed. Once the migration is exported, download its archive using the user migration archive endpoint.
+      #
+      # Fetches a single user migration. The response includes the `state` of the migration, which can be one of the following values: * `pending` - the migration hasn't started yet. * `exporting` - the migration is in progress. * `exported` - the migration finished successfully. * `failed` - the migration failed. Once the migration has been `exported` you can download the migration archive.
+      #
+      # @param migration_id [Integer] The unique identifier of the migration.
+      def self.migrations_get_status_for_authenticated_user(
+        config:,
         migration_id:,
+        exclude: NOT_GIVEN,
         request_options: nil
       )
         SdkClient.request(
           'GET',
           [
-            '/orgs/',
-            SdkClient.encode_path_segment(org),
-            '/migrations/',
-            SdkClient.encode_path_segment(migration_id),
-            '/archive'
+            '/user/migrations/',
+            SdkClient.encode_path_segment(migration_id)
           ].join,
           config: config,
-          decoder: :empty,
-          operation_id: 'migrations_download_archive_for_org',
+          query: {
+            'exclude' => QueryValue.new(exclude, style: 'form', explode: true)
+          },
+          return_type: ::OctridevGithub::Migration,
+          decoder: :json,
+          operation_id: 'migrations_get_status_for_authenticated_user',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError }
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end
   end
 end
 
-require_relative 'migrations_part_2'
-require_relative 'migrations_part_3'
+require_relative 'migrations_types'
+require_relative 'migrations_archive'
+require_relative 'migrations_repos'
+require_relative 'migrations_repositories'

@@ -9,488 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Teams SDK namespace.
     module Teams
-      # Internal model hydration metadata.
-      class SdkInternalTeamsCreateMetadata
-        FIELDS = {
-          name: 'name',
-          description: 'description',
-          maintainers: 'maintainers',
-          repo_names: 'repo_names',
-          privacy: 'privacy',
-          notification_setting: 'notification_setting',
-          permission: 'permission',
-          parent_team_id: 'parent_team_id',
-          parent_team_slug: 'parent_team_slug'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          name
-        ].freeze
-        DECODERS = {
-          privacy: lambda do |value|
-            ::OctridevGithub::Methods::Teams::TeamsCreatePrivacy.from_value(value)
-          end,
-          notification_setting: lambda do |value|
-            ::OctridevGithub::Methods::Teams::TeamsCreateNotificationSetting.from_value(value)
-          end,
-          permission: lambda do |value|
-            ::OctridevGithub::Methods::Teams::TeamsCreatePermission.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for TeamsCreate.
-      class TeamsCreate
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalTeamsCreateMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalTeamsCreateMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalTeamsCreateMetadata::DECODERS
-
-        # @return [String] The name of the team.
-        attr_reader :name
-        # @return [String] The description of the team.
-        attr_reader :description
-        # @return [Array_of_String] List GitHub usernames for organization members who will become team maintainers.
-        attr_reader :maintainers
-        # @return [Array_of_String] The full name (e.g., "organization-name/repository-name") of repositories to add the team to.
-        attr_reader :repo_names
-        # @return [TeamsCreatePrivacy] The level of privacy this team should have. The options are: **For a non-nested team:** * `secret` - only visible to organization owners and members of this team. * `closed` - visible to all members of this organization. Default: `secret` **For a parent or child team:** * `closed` - visible to all members of this organization. Default for child team: `closed`
-        attr_reader :privacy
-        # @return [TeamsCreateNotificationSetting] The notification setting the team has chosen. The options are: * `notifications_enabled` - team members receive notifications when the team is @mentioned. * `notifications_disabled` - no one receives notifications. Default: `notifications_enabled`
-        attr_reader :notification_setting
-        # @return [TeamsCreatePermission] **Closing down notice**. The permission that new repositories will be added to the team with when none is specified.
-        attr_reader :permission
-        # @return [Integer] The ID of a team to set as the parent team.
-        attr_reader :parent_team_id
-        # @return [String] The slug of a team to set as the parent team. Ignored when `parent_team_id` is also provided.
-        attr_reader :parent_team_slug
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalTeamsUpdateInOrgMetadata
-        FIELDS = {
-          name: 'name',
-          description: 'description',
-          privacy: 'privacy',
-          notification_setting: 'notification_setting',
-          permission: 'permission',
-          parent_team_id: 'parent_team_id',
-          parent_team_slug: 'parent_team_slug'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          privacy: lambda do |value|
-            ::OctridevGithub::Methods::Teams::TeamsUpdateInOrgPrivacy.from_value(value)
-          end,
-          notification_setting: lambda do |value|
-            ::OctridevGithub::Methods::Teams::TeamsUpdateInOrgNotificationSetting.from_value(value)
-          end,
-          permission: lambda do |value|
-            ::OctridevGithub::Methods::Teams::TeamsUpdateInOrgPermission.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for TeamsUpdateInOrg.
-      class TeamsUpdateInOrg
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalTeamsUpdateInOrgMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalTeamsUpdateInOrgMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalTeamsUpdateInOrgMetadata::DECODERS
-
-        # @return [String] The name of the team.
-        attr_reader :name
-        # @return [String] The description of the team.
-        attr_reader :description
-        # @return [TeamsUpdateInOrgPrivacy] The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. When a team is nested, the `privacy` for parent teams cannot be `secret`. The options are: **For a non-nested team:** * `secret` - only visible to organization owners and members of this team. * `closed` - visible to all members of this organization. **For a parent or child team:** * `closed` - visible to all members of this organization.
-        attr_reader :privacy
-        # @return [TeamsUpdateInOrgNotificationSetting] The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are: * `notifications_enabled` - team members receive notifications when the team is @mentioned. * `notifications_disabled` - no one receives notifications.
-        attr_reader :notification_setting
-        # @return [TeamsUpdateInOrgPermission] **Closing down notice**. The permission that new repositories will be added to the team with when none is specified.
-        attr_reader :permission
-        # @return [Integer] The ID of a team to set as the parent team.
-        attr_reader :parent_team_id
-        # @return [String] The slug of a team to set as the parent team. Ignored when `parent_team_id` is also provided.
-        attr_reader :parent_team_slug
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalTeamsAddOrUpdateMembershipForUserInOrgMetadata
-        FIELDS = {
-          role: 'role'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          role: lambda do |value|
-            ::OctridevGithub::Methods::Teams::TeamsAddOrUpdateMembershipForUserInOrgRole.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for TeamsAddOrUpdateMembershipForUserInOrg.
-      class TeamsAddOrUpdateMembershipForUserInOrg
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalTeamsAddOrUpdateMembershipForUserInOrgMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalTeamsAddOrUpdateMembershipForUserInOrgMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalTeamsAddOrUpdateMembershipForUserInOrgMetadata::DECODERS
-
-        # @return [TeamsAddOrUpdateMembershipForUserInOrgRole] The role that this user should have in the team.
-        attr_reader :role
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalTeamsAddOrUpdateRepoPermissionsInOrgMetadata
-        FIELDS = {
-          permission: 'permission'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
-      end
-
-      # API model for TeamsAddOrUpdateRepoPermissionsInOrg.
-      class TeamsAddOrUpdateRepoPermissionsInOrg
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalTeamsAddOrUpdateRepoPermissionsInOrgMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalTeamsAddOrUpdateRepoPermissionsInOrgMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalTeamsAddOrUpdateRepoPermissionsInOrgMetadata::DECODERS
-
-        # @return [String] The permission to grant the team on this repository. We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.
-        attr_reader :permission
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalTeamsUpdateLegacyMetadata
-        FIELDS = {
-          name: 'name',
-          description: 'description',
-          privacy: 'privacy',
-          notification_setting: 'notification_setting',
-          permission: 'permission',
-          parent_team_id: 'parent_team_id',
-          parent_team_slug: 'parent_team_slug'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          name
-        ].freeze
-        DECODERS = {
-          privacy: lambda do |value|
-            ::OctridevGithub::Methods::Teams::TeamsUpdateLegacyPrivacy.from_value(value)
-          end,
-          notification_setting: lambda do |value|
-            ::OctridevGithub::Methods::Teams::TeamsUpdateLegacyNotificationSetting.from_value(value)
-          end,
-          permission: lambda do |value|
-            ::OctridevGithub::Methods::Teams::TeamsUpdateLegacyPermission.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for TeamsUpdateLegacy.
-      class TeamsUpdateLegacy
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalTeamsUpdateLegacyMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalTeamsUpdateLegacyMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalTeamsUpdateLegacyMetadata::DECODERS
-
-        # @return [String] The name of the team.
-        attr_reader :name
-        # @return [String] The description of the team.
-        attr_reader :description
-        # @return [TeamsUpdateLegacyPrivacy] The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. The options are: **For a non-nested team:** * `secret` - only visible to organization owners and members of this team. * `closed` - visible to all members of this organization. **For a parent or child team:** * `closed` - visible to all members of this organization.
-        attr_reader :privacy
-        # @return [TeamsUpdateLegacyNotificationSetting] The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are: * `notifications_enabled` - team members receive notifications when the team is @mentioned. * `notifications_disabled` - no one receives notifications.
-        attr_reader :notification_setting
-        # @return [TeamsUpdateLegacyPermission] **Closing down notice**. The permission that new repositories will be added to the team with when none is specified.
-        attr_reader :permission
-        # @return [Integer] The ID of a team to set as the parent team.
-        attr_reader :parent_team_id
-        # @return [String] The slug of a team to set as the parent team. Ignored when `parent_team_id` is also provided.
-        attr_reader :parent_team_slug
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalTeamsAddOrUpdateMembershipForUserLegacyMetadata
-        FIELDS = {
-          role: 'role'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          role: lambda do |value|
-            ::OctridevGithub::Methods::Teams::TeamsAddOrUpdateMembershipForUserLegacyRole.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for TeamsAddOrUpdateMembershipForUserLegacy.
-      class TeamsAddOrUpdateMembershipForUserLegacy
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalTeamsAddOrUpdateMembershipForUserLegacyMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalTeamsAddOrUpdateMembershipForUserLegacyMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalTeamsAddOrUpdateMembershipForUserLegacyMetadata::DECODERS
-
-        # @return [TeamsAddOrUpdateMembershipForUserLegacyRole] The role that this user should have in the team.
-        attr_reader :role
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalTeamsAddOrUpdateRepoPermissionsLegacyMetadata
-        FIELDS = {
-          permission: 'permission'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          permission: lambda do |value|
-            ::OctridevGithub::Methods::Teams::TeamsAddOrUpdateRepoPermissionsLegacyPermission.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for TeamsAddOrUpdateRepoPermissionsLegacy.
-      class TeamsAddOrUpdateRepoPermissionsLegacy
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalTeamsAddOrUpdateRepoPermissionsLegacyMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalTeamsAddOrUpdateRepoPermissionsLegacyMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalTeamsAddOrUpdateRepoPermissionsLegacyMetadata::DECODERS
-
-        # @return [TeamsAddOrUpdateRepoPermissionsLegacyPermission] The permission to grant the team on this repository. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.
-        attr_reader :permission
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Defines the TeamsAddOrUpdateMembershipForUserInOrgRole SDK namespace.
-      module TeamsAddOrUpdateMembershipForUserInOrgRole
-        MEMBER = 'member'
-        MAINTAINER = 'maintainer'
-        VALUES = %w[member maintainer].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the TeamsUpdateLegacyPermission SDK namespace.
-      module TeamsUpdateLegacyPermission
-        PULL = 'pull'
-        PUSH = 'push'
-        ADMIN = 'admin'
-        VALUES = %w[pull push admin].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the TeamsAddOrUpdateRepoPermissionsLegacyPermission SDK namespace.
-      module TeamsAddOrUpdateRepoPermissionsLegacyPermission
-        PULL = 'pull'
-        PUSH = 'push'
-        ADMIN = 'admin'
-        VALUES = %w[pull push admin].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the TeamsUpdateLegacyNotificationSetting SDK namespace.
-      module TeamsUpdateLegacyNotificationSetting
-        NOTIFICATIONS_ENABLED = 'notifications_enabled'
-        NOTIFICATIONS_DISABLED = 'notifications_disabled'
-        VALUES = %w[notifications_enabled notifications_disabled].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the TeamsCreatePrivacy SDK namespace.
-      module TeamsCreatePrivacy
-        SECRET = 'secret'
-        CLOSED = 'closed'
-        VALUES = %w[secret closed].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the TeamsListMembersInOrgParameter SDK namespace.
-      module TeamsListMembersInOrgParameter
-        MEMBER = 'member'
-        MAINTAINER = 'maintainer'
-        ALL = 'all'
-        VALUES = %w[member maintainer all].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the TeamsUpdateInOrgNotificationSetting SDK namespace.
-      module TeamsUpdateInOrgNotificationSetting
-        NOTIFICATIONS_ENABLED = 'notifications_enabled'
-        NOTIFICATIONS_DISABLED = 'notifications_disabled'
-        VALUES = %w[notifications_enabled notifications_disabled].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the TeamsUpdateInOrgPrivacy SDK namespace.
-      module TeamsUpdateInOrgPrivacy
-        SECRET = 'secret'
-        CLOSED = 'closed'
-        VALUES = %w[secret closed].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the TeamsCreateNotificationSetting SDK namespace.
-      module TeamsCreateNotificationSetting
-        NOTIFICATIONS_ENABLED = 'notifications_enabled'
-        NOTIFICATIONS_DISABLED = 'notifications_disabled'
-        VALUES = %w[notifications_enabled notifications_disabled].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the TeamsUpdateInOrgPermission SDK namespace.
-      module TeamsUpdateInOrgPermission
-        PULL = 'pull'
-        PUSH = 'push'
-        ADMIN = 'admin'
-        VALUES = %w[pull push admin].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the TeamsUpdateLegacyPrivacy SDK namespace.
-      module TeamsUpdateLegacyPrivacy
-        SECRET = 'secret'
-        CLOSED = 'closed'
-        VALUES = %w[secret closed].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the TeamsCreatePermission SDK namespace.
-      module TeamsCreatePermission
-        PULL = 'pull'
-        PUSH = 'push'
-        VALUES = %w[pull push].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the TeamsListMembersLegacyParameter SDK namespace.
-      module TeamsListMembersLegacyParameter
-        MEMBER = 'member'
-        MAINTAINER = 'maintainer'
-        ALL = 'all'
-        VALUES = %w[member maintainer all].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the TeamsAddOrUpdateMembershipForUserLegacyRole SDK namespace.
-      module TeamsAddOrUpdateMembershipForUserLegacyRole
-        MEMBER = 'member'
-        MAINTAINER = 'maintainer'
-        VALUES = %w[member maintainer].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
       # Lists all teams in an organization that are visible to the authenticated user.
       #
       # @param org [String] The organization name. The name is not case sensitive.
@@ -528,10 +46,404 @@ module OctridevGithub
           errors: { '403' => ::OctridevGithub::BasicError }
         ).data
       end
+
+      # To create a team, the authenticated user must be a member or owner of `{org}`. By default, organization members can create teams. Organization owners can limit team creation to organization owners. For more information, see "Setting team creation permissions." When you create a new team, you automatically become a team maintainer without explicitly adding yourself to the optional array of `maintainers`. For more information, see "About teams".
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param name [String] The name of the team.
+      # @param description [String] The description of the team.
+      # @param maintainers [Array_of_String] List GitHub usernames for organization
+      #   members who will become team maintainers.
+      # @param repo_names [Array_of_String] The full name (e.g.,
+      #   "organization-name/repository-name") of repositories to add the team to.
+      # @param privacy [TeamsCreatePrivacy] The level of privacy this team should
+      #   have. The options are: **For a non-nested team:** * `secret` - only visible
+      #   to organization owners and members of this team. * `closed` - visible to all
+      #   members of this organization. Default: `secret` **For a parent or child
+      #   team:** * `closed` - visible to all members of this organization. Default
+      #   for child team: `closed`
+      # @param notification_setting [TeamsCreateNotificationSetting] The
+      #   notification setting the team has chosen. The options are: *
+      #   `notifications_enabled` - team members receive notifications when the team
+      #   is @mentioned. * `notifications_disabled` - no one receives notifications.
+      #   Default: `notifications_enabled`
+      # @param permission [TeamsCreatePermission] **Closing down notice**. The
+      #   permission that new repositories will be added to the team with when none is
+      #   specified.
+      # @param parent_team_id [Integer] The ID of a team to set as the parent team.
+      # @param parent_team_slug [String] The slug of a team to set as the parent
+      #   team. Ignored when `parent_team_id` is also provided.
+      def self.teams_create(
+        config:,
+        org:,
+        name:,
+        description: NOT_GIVEN,
+        maintainers: NOT_GIVEN,
+        repo_names: NOT_GIVEN,
+        privacy: NOT_GIVEN,
+        notification_setting: NOT_GIVEN,
+        permission: NOT_GIVEN,
+        parent_team_id: NOT_GIVEN,
+        parent_team_slug: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'POST',
+          [
+            '/orgs/',
+            SdkClient.encode_path_segment(org),
+            '/teams'
+          ].join,
+          config: config,
+          body: {
+            'name' => name,
+            'description' => description,
+            'maintainers' => maintainers,
+            'repo_names' => repo_names,
+            'privacy' => privacy,
+            'notification_setting' => notification_setting,
+            'permission' => permission,
+            'parent_team_id' => parent_team_id,
+            'parent_team_slug' => parent_team_slug
+          },
+          return_type: ::OctridevGithub::TeamFull,
+          decoder: :json,
+          operation_id: 'teams_create',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+        ).data
+      end
+
+      # Gets a team using the team's `slug`. To create the `slug`, GitHub replaces special characters in the `name` string, changes all words to lowercase, and replaces spaces with a `-` separator. For example, `"My TEam Näme"` would become `my-team-name`. > [!NOTE] > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}`.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param team_slug [String] The slug of the team name.
+      def self.teams_get_by_name(
+        config:,
+        org:,
+        team_slug:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/orgs/',
+            SdkClient.encode_path_segment(org),
+            '/teams/',
+            SdkClient.encode_path_segment(team_slug)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::TeamFull,
+          decoder: :json,
+          operation_id: 'teams_get_by_name',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError }
+        ).data
+      end
+
+      # To edit a team, the authenticated user must either be an organization owner or a team maintainer. > [!NOTE] > You can also specify a team by `org_id` and `team_id` using the route `PATCH /organizations/{org_id}/team/{team_id}`.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param team_slug [String] The slug of the team name.
+      # @param name [String] The name of the team.
+      # @param description [String] The description of the team.
+      # @param privacy [TeamsUpdateInOrgPrivacy] The level of privacy this team
+      #   should have. Editing teams without specifying this parameter leaves
+      #   `privacy` intact. When a team is nested, the `privacy` for parent teams
+      #   cannot be `secret`. The options are: **For a non-nested team:** * `secret` -
+      #   only visible to organization owners and members of this team. * `closed` -
+      #   visible to all members of this organization. **For a parent or child team:**
+      #   * `closed` - visible to all members of this organization.
+      # @param notification_setting [TeamsUpdateInOrgNotificationSetting] The
+      #   notification setting the team has chosen. Editing teams without specifying
+      #   this parameter leaves `notification_setting` intact. The options are: *
+      #   `notifications_enabled` - team members receive notifications when the team
+      #   is @mentioned. * `notifications_disabled` - no one receives notifications.
+      # @param permission [TeamsUpdateInOrgPermission] **Closing down notice**. The
+      #   permission that new repositories will be added to the team with when none is
+      #   specified.
+      # @param parent_team_id [Integer] The ID of a team to set as the parent team.
+      # @param parent_team_slug [String] The slug of a team to set as the parent
+      #   team. Ignored when `parent_team_id` is also provided.
+      def self.teams_update_in_org(
+        config:,
+        org:,
+        team_slug:,
+        name: NOT_GIVEN,
+        description: NOT_GIVEN,
+        privacy: NOT_GIVEN,
+        notification_setting: NOT_GIVEN,
+        permission: NOT_GIVEN,
+        parent_team_id: NOT_GIVEN,
+        parent_team_slug: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'PATCH',
+          [
+            '/orgs/',
+            SdkClient.encode_path_segment(org),
+            '/teams/',
+            SdkClient.encode_path_segment(team_slug)
+          ].join,
+          config: config,
+          body: {
+            'name' => name,
+            'description' => description,
+            'privacy' => privacy,
+            'notification_setting' => notification_setting,
+            'permission' => permission,
+            'parent_team_id' => parent_team_id,
+            'parent_team_slug' => parent_team_slug
+          },
+          return_type: ::OctridevGithub::TeamFull,
+          decoder: :json,
+          operation_id: 'teams_update_in_org',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+        ).data
+      end
+
+      # To delete a team, the authenticated user must be an organization owner or team maintainer. If you are an organization owner, deleting a parent team will delete all of its child teams as well. > [!NOTE] > You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}`.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param team_slug [String] The slug of the team name.
+      def self.teams_delete_in_org(
+        config:,
+        org:,
+        team_slug:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'DELETE',
+          [
+            '/orgs/',
+            SdkClient.encode_path_segment(org),
+            '/teams/',
+            SdkClient.encode_path_segment(team_slug)
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'teams_delete_in_org',
+          request_options: request_options
+        ).data
+      end
+
+      # Lists the child teams of the team specified by `{team_slug}`. > [!NOTE] > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/teams`.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param team_slug [String] The slug of the team name.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.teams_list_child_in_org(
+        config:,
+        org:,
+        team_slug:,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/orgs/',
+            SdkClient.encode_path_segment(org),
+            '/teams/',
+            SdkClient.encode_path_segment(team_slug),
+            '/teams'
+          ].join,
+          config: config,
+          query: {
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
+          },
+          return_type: [::OctridevGithub::Team],
+          decoder: :json,
+          operation_id: 'teams_list_child_in_org',
+          request_options: request_options
+        ).data
+      end
+
+      # > !WARNING] > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the [Get a team by name endpoint.
+      #
+      # @param team_id [Integer] The unique identifier of the team.
+      #
+      # @deprecated This operation is deprecated and may be removed in a future release.
+      def self.teams_get_legacy(
+        config:,
+        team_id:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/teams/',
+            SdkClient.encode_path_segment(team_id)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::TeamFull,
+          decoder: :json,
+          operation_id: 'teams_get_legacy',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError }
+        ).data
+      end
+
+      # > !WARNING] > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Update a team endpoint. To edit a team, the authenticated user must either be an organization owner or a team maintainer. > [!NOTE] > With nested teams, the `privacy` for parent teams cannot be `secret`.
+      #
+      # @param team_id [Integer] The unique identifier of the team.
+      # @param name [String] The name of the team.
+      # @param description [String] The description of the team.
+      # @param privacy [TeamsUpdateLegacyPrivacy] The level of privacy this team
+      #   should have. Editing teams without specifying this parameter leaves
+      #   `privacy` intact. The options are: **For a non-nested team:** * `secret` -
+      #   only visible to organization owners and members of this team. * `closed` -
+      #   visible to all members of this organization. **For a parent or child team:**
+      #   * `closed` - visible to all members of this organization.
+      # @param notification_setting [TeamsUpdateLegacyNotificationSetting] The
+      #   notification setting the team has chosen. Editing teams without specifying
+      #   this parameter leaves `notification_setting` intact. The options are: *
+      #   `notifications_enabled` - team members receive notifications when the team
+      #   is @mentioned. * `notifications_disabled` - no one receives notifications.
+      # @param permission [TeamsUpdateLegacyPermission] **Closing down notice**. The
+      #   permission that new repositories will be added to the team with when none is
+      #   specified.
+      # @param parent_team_id [Integer] The ID of a team to set as the parent team.
+      # @param parent_team_slug [String] The slug of a team to set as the parent
+      #   team. Ignored when `parent_team_id` is also provided.
+      #
+      # @deprecated This operation is deprecated and may be removed in a future release.
+      def self.teams_update_legacy(
+        config:,
+        team_id:,
+        name:,
+        description: NOT_GIVEN,
+        privacy: NOT_GIVEN,
+        notification_setting: NOT_GIVEN,
+        permission: NOT_GIVEN,
+        parent_team_id: NOT_GIVEN,
+        parent_team_slug: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'PATCH',
+          [
+            '/teams/',
+            SdkClient.encode_path_segment(team_id)
+          ].join,
+          config: config,
+          body: {
+            'name' => name,
+            'description' => description,
+            'privacy' => privacy,
+            'notification_setting' => notification_setting,
+            'permission' => permission,
+            'parent_team_id' => parent_team_id,
+            'parent_team_slug' => parent_team_slug
+          },
+          return_type: ::OctridevGithub::TeamFull,
+          decoder: :json,
+          operation_id: 'teams_update_legacy',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+        ).data
+      end
+
+      # > !WARNING] > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Delete a team endpoint. To delete a team, the authenticated user must be an organization owner or team maintainer. If you are an organization owner, deleting a parent team will delete all of its child teams as well.
+      #
+      # @param team_id [Integer] The unique identifier of the team.
+      #
+      # @deprecated This operation is deprecated and may be removed in a future release.
+      def self.teams_delete_legacy(
+        config:,
+        team_id:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'DELETE',
+          [
+            '/teams/',
+            SdkClient.encode_path_segment(team_id)
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'teams_delete_legacy',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+        ).data
+      end
+
+      # > !WARNING] > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List child teams` endpoint.
+      #
+      # @param team_id [Integer] The unique identifier of the team.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      #
+      # @deprecated This operation is deprecated and may be removed in a future release.
+      def self.teams_list_child_legacy(
+        config:,
+        team_id:,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/teams/',
+            SdkClient.encode_path_segment(team_id),
+            '/teams'
+          ].join,
+          config: config,
+          query: {
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
+          },
+          return_type: [::OctridevGithub::Team],
+          decoder: :json,
+          operation_id: 'teams_list_child_legacy',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+        ).data
+      end
+
+      # List all of the teams across all of the organizations to which the authenticated user belongs. OAuth app tokens and personal access tokens (classic) need the `user`, `repo`, or `read:org` scope to use this endpoint. When using a fine-grained personal access token, the resource owner of the token must be a single organization, and the response will only include the teams from that organization.
+      #
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.teams_list_for_authenticated_user(
+        config:,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          '/user/teams',
+          config: config,
+          query: {
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
+          },
+          return_type: [::OctridevGithub::TeamFull],
+          decoder: :json,
+          operation_id: 'teams_list_for_authenticated_user',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+        ).data
+      end
     end
   end
 end
 
-require_relative 'teams_part_2'
-require_relative 'teams_part_3'
-require_relative 'teams_part_4'
+require_relative 'teams_types'
+require_relative 'teams_invitations'
+require_relative 'teams_members'
+require_relative 'teams_memberships'
+require_relative 'teams_repos'

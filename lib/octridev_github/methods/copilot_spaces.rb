@@ -9,552 +9,405 @@ module OctridevGithub
   module Methods
     # Defines the CopilotSpaces SDK namespace.
     module CopilotSpaces
-      # Internal model hydration metadata.
-      class SdkInternalCopilotSpacesListForOrgResponseMetadata
-        FIELDS = {
-          spaces: 'spaces'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          spaces
-        ].freeze
-        DECODERS = {
-          spaces: lambda do |value|
-            value&.map { |item| ::OctridevGithub::CopilotSpace.from_hash(item) }
-          end
-        }.freeze
+      # Lists Copilot Spaces owned by an organization. The authenticated user must have read access to the organization's Copilot Spaces. Only Spaces that are readable by the authenticated user are returned. This includes public Spaces and internal Spaces if the user is a member of the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint. Fine-grained tokens and GitHub App user access tokens must have been granted access…
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param per_page [Integer] The number of results per page (max 100).
+      # @param before [String] A cursor, as given in the Link header. If specified,
+      #   the query only searches for results before this cursor.
+      # @param after [String] A cursor, as given in the Link header. If specified,
+      #   the query only searches for results after this cursor.
+      def self.copilot_spaces_list_for_org(
+        config:,
+        org:,
+        per_page: NOT_GIVEN,
+        before: NOT_GIVEN,
+        after: NOT_GIVEN,
+        request_options: nil
+      )
+        Validation.if_given(per_page) { Validation.validate_range('per_page', per_page, min: 1, max: 100) }
+
+        SdkClient.request(
+          'GET',
+          [
+            '/orgs/',
+            SdkClient.encode_path_segment(org),
+            '/copilot-spaces'
+          ].join,
+          config: config,
+          query: {
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'before' => QueryValue.new(before, style: 'form', explode: true),
+            'after' => QueryValue.new(after, style: 'form', explode: true)
+          },
+          return_type: ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesListForOrgResponse,
+          decoder: :json,
+          operation_id: 'copilot_spaces_list_for_org',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+        ).data
       end
 
-      # API model for CopilotSpacesListForOrgResponse.
-      class CopilotSpacesListForOrgResponse
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCopilotSpacesListForOrgResponseMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCopilotSpacesListForOrgResponseMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCopilotSpacesListForOrgResponseMetadata::DECODERS
-
-        # @return [Array_of_CopilotSpace] The list of Copilot Spaces on this page of results.
-        attr_reader :spaces
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
+      # Creates a new Copilot Space owned by an organization. The authenticated user must have permissions to create spaces in the organization. Organization members with appropriate permissions can create Copilot Spaces to be shared within their organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint. Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space.…
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param name [String] The name of the Copilot Space.
+      # @param description [String] A description of the Copilot Space.
+      # @param general_instructions [String] General instructions for the Copilot
+      #   Space.
+      # @param base_role [CopilotSpacesCreateForOrgBaseRole] The base role that
+      #   determines default permissions for organization members. - `no_access`: No
+      #   default access (default) - `reader`: Organization members can read the space
+      #   - `writer`: Organization members can read and edit the space - `admin`:
+      #   Organization members have full admin access to the space
+      # @param resources_attributes [Array_of_Hash] Resources to attach to the
+      #   space.
+      def self.copilot_spaces_create_for_org(
+        config:,
+        org:,
+        name:,
+        description: NOT_GIVEN,
+        general_instructions: NOT_GIVEN,
+        base_role: NOT_GIVEN,
+        resources_attributes: NOT_GIVEN,
+        request_options: nil
+      )
+        Validation.if_given(general_instructions) do
+          Validation.validate_length('general_instructions', general_instructions, max: 4000)
         end
 
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
+        SdkClient.request(
+          'POST',
+          [
+            '/orgs/',
+            SdkClient.encode_path_segment(org),
+            '/copilot-spaces'
+          ].join,
+          config: config,
+          body: {
+            'name' => name,
+            'description' => description,
+            'general_instructions' => general_instructions,
+            'base_role' => base_role,
+            'resources_attributes' => resources_attributes
+          },
+          return_type: ::OctridevGithub::CopilotSpace,
+          decoder: :json,
+          operation_id: 'copilot_spaces_create_for_org',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+        ).data
       end
 
-      # Internal model hydration metadata.
-      class SdkInternalCopilotSpacesCreateForOrgResourcesAttributesItemMetadataMetadata
-        FIELDS = {
-          repository_id: 'repository_id',
-          file_path: 'file_path',
-          text: 'text',
-          name: 'name',
-          number: 'number'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+      # Gets details about a specific Copilot Space owned by an organization. The authenticated user must have read access to the Space. Internal Spaces require the authenticated user to be a member of the organization or have been granted read permissions. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint. Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space.…
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param space_number [Integer] The unique identifier of the Copilot Space.
+      def self.copilot_spaces_get_for_org(
+        config:,
+        org:,
+        space_number:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/orgs/',
+            SdkClient.encode_path_segment(org),
+            '/copilot-spaces/',
+            SdkClient.encode_path_segment(space_number)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::CopilotSpace,
+          decoder: :json,
+          operation_id: 'copilot_spaces_get_for_org',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+        ).data
       end
 
-      # API model for CopilotSpacesCreateForOrgResourcesAttributesItemMetadata.
-      # Metadata specific to the resource type.
-      class CopilotSpacesCreateForOrgResourcesAttributesItemMetadata
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCopilotSpacesCreateForOrgResourcesAttributesItemMetadataMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCopilotSpacesCreateForOrgResourcesAttributesItemMetadataMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCopilotSpacesCreateForOrgResourcesAttributesItemMetadataMetadata::DECODERS
-
-        # @return [Integer] Repository ID for repository or file resources.
-        attr_reader :repository_id
-        # @return [String] File path for file resources.
-        attr_reader :file_path
-        # @return [String] Text content for free text resources.
-        attr_reader :text
-        # @return [String] Name for the resource.
-        attr_reader :name
-        # @return [Integer] Issue or PR number.
-        attr_reader :number
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
+      # Updates a Copilot Space owned by an organization. The authenticated user must have permissions to update spaces in the organization. Organization members with appropriate permissions can update Copilot Spaces owned by their organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint. Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also…
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param space_number [Integer] The unique identifier of the Copilot Space.
+      # @param name [String] The name of the Copilot Space.
+      # @param description [String] A description of the Copilot Space.
+      # @param general_instructions [String] General instructions for the Copilot
+      #   Space.
+      # @param base_role [CopilotSpacesUpdateForOrgBaseRole] The base role that
+      #   determines default permissions for organization members. Changing this field
+      #   requires admin permissions. - `no_access`: No default access (default) -
+      #   `reader`: Organization members can read the space - `writer`: Organization
+      #   members can read and edit the space - `admin`: Organization members have
+      #   full admin access to the space
+      # @param resources_attributes [Array_of_Hash] Resources to attach to the
+      #   space.
+      def self.copilot_spaces_update_for_org(
+        config:,
+        org:,
+        space_number:,
+        name: NOT_GIVEN,
+        description: NOT_GIVEN,
+        general_instructions: NOT_GIVEN,
+        base_role: NOT_GIVEN,
+        resources_attributes: NOT_GIVEN,
+        request_options: nil
+      )
+        Validation.if_given(general_instructions) do
+          Validation.validate_length('general_instructions', general_instructions, max: 4000)
         end
 
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
+        SdkClient.request(
+          'PUT',
+          [
+            '/orgs/',
+            SdkClient.encode_path_segment(org),
+            '/copilot-spaces/',
+            SdkClient.encode_path_segment(space_number)
+          ].join,
+          config: config,
+          body: {
+            'name' => name,
+            'description' => description,
+            'general_instructions' => general_instructions,
+            'base_role' => base_role,
+            'resources_attributes' => resources_attributes
+          },
+          return_type: ::OctridevGithub::CopilotSpace,
+          decoder: :json,
+          operation_id: 'copilot_spaces_update_for_org',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+        ).data
       end
 
-      # Internal model hydration metadata.
-      class SdkInternalCopilotSpacesCreateForOrgResourcesAttributesItemMetadata
-        FIELDS = {
-          resource_type: 'resource_type',
-          metadata: 'metadata'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          resource_type: lambda do |value|
-            ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesCreateForOrgResourcesAttributesItemResourceType.from_value(value)
-          end,
-          metadata: lambda do |value|
-            ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesCreateForOrgResourcesAttributesItemMetadata.from_hash(value)
-          end
-        }.freeze
+      # Deletes a Copilot Space owned by an organization. The authenticated user must have permissions to delete spaces in the organization. **Warning:** This action is permanent and cannot be undone. Deleting a Copilot Space will remove all associated resources and configurations. Organization members with appropriate permissions can delete Copilot Spaces owned by their organization. OAuth app tokens and personal access tokens (classic) need both the `read:org` and `repo` scopes to…
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param space_number [Integer] The unique identifier of the Copilot Space.
+      def self.copilot_spaces_delete_for_org(
+        config:,
+        org:,
+        space_number:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'DELETE',
+          [
+            '/orgs/',
+            SdkClient.encode_path_segment(org),
+            '/copilot-spaces/',
+            SdkClient.encode_path_segment(space_number)
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'copilot_spaces_delete_for_org',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+        ).data
       end
 
-      # API model for CopilotSpacesCreateForOrgResourcesAttributesItem.
-      class CopilotSpacesCreateForOrgResourcesAttributesItem
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCopilotSpacesCreateForOrgResourcesAttributesItemMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCopilotSpacesCreateForOrgResourcesAttributesItemMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCopilotSpacesCreateForOrgResourcesAttributesItemMetadata::DECODERS
+      # Lists Copilot Spaces owned by a user. The authenticated user must have read access to the user's Copilot Spaces. Only Spaces that are readable by the authenticated user are returned. This includes the user's own spaces, and public user spaces when accessing another user's spaces. OAuth app tokens and personal access tokens (classic) need the `read:user` scope to use this endpoint.
+      #
+      # @param username [String] The handle for the GitHub user account.
+      # @param per_page [Integer] The number of results per page (max 100).
+      # @param before [String] A cursor, as given in the Link header. If specified,
+      #   the query only searches for results before this cursor.
+      # @param after [String] A cursor, as given in the Link header. If specified,
+      #   the query only searches for results after this cursor.
+      def self.copilot_spaces_list_for_user(
+        config:,
+        username:,
+        per_page: NOT_GIVEN,
+        before: NOT_GIVEN,
+        after: NOT_GIVEN,
+        request_options: nil
+      )
+        Validation.if_given(per_page) { Validation.validate_range('per_page', per_page, min: 1, max: 100) }
 
-        # @return [CopilotSpacesCreateForOrgResourcesAttributesItemResourceType] The type of resource.
-        attr_reader :resource_type
-        # @return [CopilotSpacesCreateForOrgResourcesAttributesItemMetadata] Metadata specific to the resource type.
-        attr_reader :metadata
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
+        SdkClient.request(
+          'GET',
+          [
+            '/users/',
+            SdkClient.encode_path_segment(username),
+            '/copilot-spaces'
+          ].join,
+          config: config,
+          query: {
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'before' => QueryValue.new(before, style: 'form', explode: true),
+            'after' => QueryValue.new(after, style: 'form', explode: true)
+          },
+          return_type: ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesListForUserResponse,
+          decoder: :json,
+          operation_id: 'copilot_spaces_list_for_user',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+        ).data
       end
 
-      # Internal model hydration metadata.
-      class SdkInternalCopilotSpacesCreateForOrgMetadata
-        FIELDS = {
-          name: 'name',
-          description: 'description',
-          general_instructions: 'general_instructions',
-          base_role: 'base_role',
-          resources_attributes: 'resources_attributes'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          name
-        ].freeze
-        DECODERS = {
-          base_role: lambda do |value|
-            ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesCreateForOrgBaseRole.from_value(value)
-          end,
-          resources_attributes: lambda do |value|
-            value&.map { |item| ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesCreateForOrgResourcesAttributesItem.from_hash(item) }
-          end
-        }.freeze
+      # Creates a new Copilot Space owned by a user. Only the authenticated user can create spaces for their own account. Users can create personal Copilot Spaces for their individual use. OAuth app tokens and personal access tokens (classic) need the `read:user` scope to use this endpoint.
+      #
+      # @param username [String] The handle for the GitHub user account.
+      # @param name [String] The name of the Copilot Space.
+      # @param description [String] A description of the Copilot Space.
+      # @param general_instructions [String] General instructions for the Copilot
+      #   Space.
+      # @param base_role [CopilotSpacesCreateForUserBaseRole] The base role that
+      #   determines default permissions for the space. - `no_access`: No default
+      #   access (default) - `reader`: Makes the space publicly readable Note: User
+      #   spaces do not support writer or admin base roles.
+      # @param resources_attributes [Array_of_Hash] Resources to attach to the
+      #   space.
+      def self.copilot_spaces_create_for_user(
+        config:,
+        username:,
+        name:,
+        description: NOT_GIVEN,
+        general_instructions: NOT_GIVEN,
+        base_role: NOT_GIVEN,
+        resources_attributes: NOT_GIVEN,
+        request_options: nil
+      )
+        Validation.if_given(general_instructions) do
+          Validation.validate_length('general_instructions', general_instructions, max: 4000)
+        end
+
+        SdkClient.request(
+          'POST',
+          [
+            '/users/',
+            SdkClient.encode_path_segment(username),
+            '/copilot-spaces'
+          ].join,
+          config: config,
+          body: {
+            'name' => name,
+            'description' => description,
+            'general_instructions' => general_instructions,
+            'base_role' => base_role,
+            'resources_attributes' => resources_attributes
+          },
+          return_type: ::OctridevGithub::CopilotSpace,
+          decoder: :json,
+          operation_id: 'copilot_spaces_create_for_user',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+        ).data
       end
 
-      # API model for CopilotSpacesCreateForOrg.
-      class CopilotSpacesCreateForOrg
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCopilotSpacesCreateForOrgMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCopilotSpacesCreateForOrgMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCopilotSpacesCreateForOrgMetadata::DECODERS
-
-        # @return [String] The name of the Copilot Space.
-        attr_reader :name
-        # @return [String] A description of the Copilot Space.
-        attr_reader :description
-        # @return [String] General instructions for the Copilot Space.
-        attr_reader :general_instructions
-        # @return [CopilotSpacesCreateForOrgBaseRole] The base role that determines default permissions for organization members. - `no_access`: No default access (default) - `reader`: Organization members can read the space - `writer`: Organization members can read and edit the space - `admin`: Organization members have full admin access to the space
-        attr_reader :base_role
-        # @return [Array_of_CopilotSpacesCreateForOrgResourcesAttributesItem] Resources to attach to the space.
-        attr_reader :resources_attributes
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
+      # Gets details about a specific Copilot Space owned by a user. The authenticated user must have read access to the Space. Private user spaces require the authenticated user to be the owner of the space. Public user spaces are accessible to any authenticated user. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+      #
+      # @param username [String] The handle for the GitHub user account.
+      # @param space_number [Integer] The unique identifier of the Copilot Space.
+      def self.copilot_spaces_get_for_user(
+        config:,
+        username:,
+        space_number:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/users/',
+            SdkClient.encode_path_segment(username),
+            '/copilot-spaces/',
+            SdkClient.encode_path_segment(space_number)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::CopilotSpace,
+          decoder: :json,
+          operation_id: 'copilot_spaces_get_for_user',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+        ).data
       end
 
-      # Internal model hydration metadata.
-      class SdkInternalCopilotSpacesUpdateForOrgResourcesAttributesItemMetadataMetadata
-        FIELDS = {
-          repository_id: 'repository_id',
-          file_path: 'file_path',
-          text: 'text',
-          name: 'name',
-          number: 'number'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+      # Updates a Copilot Space owned by a user. Only the authenticated user can update spaces for their own account. Users can update their personal Copilot Spaces. OAuth app tokens and personal access tokens (classic) need the `read:user` scope to use this endpoint.
+      #
+      # @param username [String] The handle for the GitHub user account.
+      # @param space_number [Integer] The unique identifier of the Copilot Space.
+      # @param name [String] The name of the Copilot Space.
+      # @param description [String] A description of the Copilot Space.
+      # @param general_instructions [String] General instructions for the Copilot
+      #   Space.
+      # @param base_role [CopilotSpacesUpdateForUserBaseRole] The base role that
+      #   determines default permissions for the space. Changing this field requires
+      #   admin permissions. - `no_access`: No default access (default) - `reader`:
+      #   Makes the space publicly readable Note: User spaces do not support writer or
+      #   admin base roles.
+      # @param resources_attributes [Array_of_Hash] Resources to attach to the
+      #   space.
+      def self.copilot_spaces_update_for_user(
+        config:,
+        username:,
+        space_number:,
+        name: NOT_GIVEN,
+        description: NOT_GIVEN,
+        general_instructions: NOT_GIVEN,
+        base_role: NOT_GIVEN,
+        resources_attributes: NOT_GIVEN,
+        request_options: nil
+      )
+        Validation.if_given(general_instructions) do
+          Validation.validate_length('general_instructions', general_instructions, max: 4000)
+        end
+
+        SdkClient.request(
+          'PUT',
+          [
+            '/users/',
+            SdkClient.encode_path_segment(username),
+            '/copilot-spaces/',
+            SdkClient.encode_path_segment(space_number)
+          ].join,
+          config: config,
+          body: {
+            'name' => name,
+            'description' => description,
+            'general_instructions' => general_instructions,
+            'base_role' => base_role,
+            'resources_attributes' => resources_attributes
+          },
+          return_type: ::OctridevGithub::CopilotSpace,
+          decoder: :json,
+          operation_id: 'copilot_spaces_update_for_user',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+        ).data
       end
 
-      # API model for CopilotSpacesUpdateForOrgResourcesAttributesItemMetadata.
-      # Metadata specific to the resource type.
-      class CopilotSpacesUpdateForOrgResourcesAttributesItemMetadata
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCopilotSpacesUpdateForOrgResourcesAttributesItemMetadataMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCopilotSpacesUpdateForOrgResourcesAttributesItemMetadataMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCopilotSpacesUpdateForOrgResourcesAttributesItemMetadataMetadata::DECODERS
-
-        # @return [Integer] Repository ID for repository or file resources.
-        attr_reader :repository_id
-        # @return [String] File path for file resources.
-        attr_reader :file_path
-        # @return [String] Text content for free text resources.
-        attr_reader :text
-        # @return [String] Name for the resource.
-        attr_reader :name
-        # @return [Integer] Issue or PR number.
-        attr_reader :number
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalCopilotSpacesUpdateForOrgResourcesAttributesItemMetadata
-        FIELDS = {
-          resource_type: 'resource_type',
-          metadata: 'metadata'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          resource_type: lambda do |value|
-            ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesUpdateForOrgResourcesAttributesItemResourceType.from_value(value)
-          end,
-          metadata: lambda do |value|
-            ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesUpdateForOrgResourcesAttributesItemMetadata.from_hash(value)
-          end
-        }.freeze
-      end
-
-      # API model for CopilotSpacesUpdateForOrgResourcesAttributesItem.
-      class CopilotSpacesUpdateForOrgResourcesAttributesItem
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCopilotSpacesUpdateForOrgResourcesAttributesItemMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCopilotSpacesUpdateForOrgResourcesAttributesItemMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCopilotSpacesUpdateForOrgResourcesAttributesItemMetadata::DECODERS
-
-        # @return [CopilotSpacesUpdateForOrgResourcesAttributesItemResourceType] The type of resource.
-        attr_reader :resource_type
-        # @return [CopilotSpacesUpdateForOrgResourcesAttributesItemMetadata] Metadata specific to the resource type.
-        attr_reader :metadata
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalCopilotSpacesUpdateForOrgMetadata
-        FIELDS = {
-          name: 'name',
-          description: 'description',
-          general_instructions: 'general_instructions',
-          base_role: 'base_role',
-          resources_attributes: 'resources_attributes'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          base_role: lambda do |value|
-            ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesUpdateForOrgBaseRole.from_value(value)
-          end,
-          resources_attributes: lambda do |value|
-            value&.map { |item| ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesUpdateForOrgResourcesAttributesItem.from_hash(item) }
-          end
-        }.freeze
-      end
-
-      # API model for CopilotSpacesUpdateForOrg.
-      class CopilotSpacesUpdateForOrg
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCopilotSpacesUpdateForOrgMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCopilotSpacesUpdateForOrgMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCopilotSpacesUpdateForOrgMetadata::DECODERS
-
-        # @return [String] The name of the Copilot Space.
-        attr_reader :name
-        # @return [String] A description of the Copilot Space.
-        attr_reader :description
-        # @return [String] General instructions for the Copilot Space.
-        attr_reader :general_instructions
-        # @return [CopilotSpacesUpdateForOrgBaseRole] The base role that determines default permissions for organization members. Changing this field requires admin permissions. - `no_access`: No default access (default) - `reader`: Organization members can read the space - `writer`: Organization members can read and edit the space - `admin`: Organization members have full admin access to the space
-        attr_reader :base_role
-        # @return [Array_of_CopilotSpacesUpdateForOrgResourcesAttributesItem] Resources to attach to the space.
-        attr_reader :resources_attributes
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalCopilotSpacesListCollaboratorsForOrgResponseMetadata
-        FIELDS = {
-          collaborators: 'collaborators'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          collaborators
-        ].freeze
-        DECODERS = {
-          collaborators: lambda do |value|
-            value&.map { |item| ::OctridevGithub::CopilotSpaceCollaborator.from_hash(item) }
-          end
-        }.freeze
-      end
-
-      # API model for CopilotSpacesListCollaboratorsForOrgResponse.
-      class CopilotSpacesListCollaboratorsForOrgResponse
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCopilotSpacesListCollaboratorsForOrgResponseMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCopilotSpacesListCollaboratorsForOrgResponseMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCopilotSpacesListCollaboratorsForOrgResponseMetadata::DECODERS
-
-        # @return [Array_of_CopilotSpaceCollaborator] The list of collaborators for this Copilot Space.
-        attr_reader :collaborators
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalCopilotSpacesAddCollaboratorForOrgMetadata
-        FIELDS = {
-          actor_type: 'actor_type',
-          actor_identifier: 'actor_identifier',
-          role: 'role'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          actor_type
-          actor_identifier
-          role
-        ].freeze
-        DECODERS = {
-          actor_type: lambda do |value|
-            ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesAddCollaboratorForOrgActorType.from_value(value)
-          end,
-          role: lambda do |value|
-            ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesAddCollaboratorForOrgRole.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for CopilotSpacesAddCollaboratorForOrg.
-      class CopilotSpacesAddCollaboratorForOrg
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCopilotSpacesAddCollaboratorForOrgMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCopilotSpacesAddCollaboratorForOrgMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCopilotSpacesAddCollaboratorForOrgMetadata::DECODERS
-
-        # @return [CopilotSpacesAddCollaboratorForOrgActorType] The type of actor (user or team).
-        attr_reader :actor_type
-        # @return [String] The username (for users) or team slug (for teams). The numeric ID of a user or team is also accepted.
-        attr_reader :actor_identifier
-        # @return [CopilotSpacesAddCollaboratorForOrgRole] The role to grant to the collaborator.
-        attr_reader :role
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalCopilotSpacesUpdateCollaboratorForOrgMetadata
-        FIELDS = {
-          role: 'role'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          role
-        ].freeze
-        DECODERS = {
-          role: lambda do |value|
-            ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesUpdateCollaboratorForOrgRole.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for CopilotSpacesUpdateCollaboratorForOrg.
-      class CopilotSpacesUpdateCollaboratorForOrg
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCopilotSpacesUpdateCollaboratorForOrgMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCopilotSpacesUpdateCollaboratorForOrgMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCopilotSpacesUpdateCollaboratorForOrgMetadata::DECODERS
-
-        # @return [CopilotSpacesUpdateCollaboratorForOrgRole] The new role to grant to the collaborator. Use `no_access` to remove the collaborator.
-        attr_reader :role
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalCopilotSpacesListResourcesForOrgResponseMetadata
-        FIELDS = {
-          resources: 'resources'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          resources
-        ].freeze
-        DECODERS = {
-          resources: lambda do |value|
-            value&.map { |item| ::OctridevGithub::CopilotSpaceResource.from_hash(item) }
-          end
-        }.freeze
-      end
-
-      # API model for CopilotSpacesListResourcesForOrgResponse.
-      class CopilotSpacesListResourcesForOrgResponse
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCopilotSpacesListResourcesForOrgResponseMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCopilotSpacesListResourcesForOrgResponseMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCopilotSpacesListResourcesForOrgResponseMetadata::DECODERS
-
-        # @return [Array_of_CopilotSpaceResource] The list of resources attached to this Copilot Space.
-        attr_reader :resources
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalCopilotSpacesCreateResourceForOrgMetadata
-        FIELDS = {
-          resource_type: 'resource_type',
-          metadata: 'metadata'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          resource_type
-          metadata
-        ].freeze
-        DECODERS = {
-          resource_type: lambda do |value|
-            ::OctridevGithub::Methods::CopilotSpaces::CopilotSpacesCreateResourceForOrgResourceType.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for CopilotSpacesCreateResourceForOrg.
-      class CopilotSpacesCreateResourceForOrg
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCopilotSpacesCreateResourceForOrgMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCopilotSpacesCreateResourceForOrgMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCopilotSpacesCreateResourceForOrgMetadata::DECODERS
-
-        # @return [CopilotSpacesCreateResourceForOrgResourceType] The type of resource to create.
-        attr_reader :resource_type
-        # @return [Hash] Resource-specific metadata.
-        attr_reader :metadata
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalCopilotSpacesUpdateResourceForOrgMetadata
-        FIELDS = {
-          metadata: 'metadata'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {}.freeze
+      # Deletes a Copilot Space owned by a user. The authenticated user must be the owner of the space. **Warning:** This action is permanent and cannot be undone. Deleting a space will remove all associated resources and configurations. OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
+      #
+      # @param username [String] The handle for the GitHub user account.
+      # @param space_number [Integer] The unique identifier of the Copilot Space.
+      def self.copilot_spaces_delete_for_user(
+        config:,
+        username:,
+        space_number:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'DELETE',
+          [
+            '/users/',
+            SdkClient.encode_path_segment(username),
+            '/copilot-spaces/',
+            SdkClient.encode_path_segment(space_number)
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'copilot_spaces_delete_for_user',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
+        ).data
       end
     end
   end
 end
 
-require_relative 'copilot_spaces_part_2'
-require_relative 'copilot_spaces_part_3'
-require_relative 'copilot_spaces_part_4'
-require_relative 'copilot_spaces_part_5'
+require_relative 'copilot_spaces_types'
+require_relative 'copilot_spaces_update_resource_for_org'
+require_relative 'copilot_spaces_create_resource_for_user'
+require_relative 'copilot_spaces_collaborators'
+require_relative 'copilot_spaces_resources'

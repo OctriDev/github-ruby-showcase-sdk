@@ -9,549 +9,467 @@ module OctridevGithub
   module Methods
     # Defines the Codespaces SDK namespace.
     module Codespaces
-      # Internal model hydration metadata.
-      class SdkInternalCodespacesListInOrganizationResponseMetadata
-        FIELDS = {
-          total_count: 'total_count',
-          codespaces: 'codespaces'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          total_count
-          codespaces
-        ].freeze
-        DECODERS = {
-          codespaces: lambda do |value|
-            value&.map { |item| ::OctridevGithub::Codespace.from_hash(item) }
-          end
-        }.freeze
+      # Lists the codespaces associated to a specified organization. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.codespaces_list_in_organization(
+        config:,
+        org:,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/orgs/',
+            SdkClient.encode_path_segment(org),
+            '/codespaces'
+          ].join,
+          config: config,
+          query: {
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
+          },
+          return_type: ::OctridevGithub::Methods::Codespaces::CodespacesListInOrganizationResponse,
+          decoder: :json,
+          operation_id: 'codespaces_list_in_organization',
+          request_options: request_options,
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+        ).data
       end
 
-      # API model for CodespacesListInOrganizationResponse.
-      class CodespacesListInOrganizationResponse
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCodespacesListInOrganizationResponseMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCodespacesListInOrganizationResponseMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCodespacesListInOrganizationResponseMetadata::DECODERS
-
-        attr_reader :total_count, :codespaces
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
+      # Lists the codespaces that a member of an organization has for repositories in that organization. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param username [String] The handle for the GitHub user account.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.codespaces_get_codespaces_for_user_in_org(
+        config:,
+        org:,
+        username:,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/orgs/',
+            SdkClient.encode_path_segment(org),
+            '/members/',
+            SdkClient.encode_path_segment(username),
+            '/codespaces'
+          ].join,
+          config: config,
+          query: {
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
+          },
+          return_type: ::OctridevGithub::Methods::Codespaces::CodespacesGetCodespacesForUserInOrgResponse,
+          decoder: :json,
+          operation_id: 'codespaces_get_codespaces_for_user_in_org',
+          request_options: request_options,
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+        ).data
       end
 
-      # Internal model hydration metadata.
-      class SdkInternalCodespacesSetCodespacesAccessMetadata
-        FIELDS = {
-          visibility: 'visibility',
-          selected_usernames: 'selected_usernames'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          visibility
-        ].freeze
-        DECODERS = {
-          visibility: lambda do |value|
-            ::OctridevGithub::Methods::Codespaces::CodespacesSetCodespacesAccessVisibility.from_value(value)
-          end
-        }.freeze
+      # Deletes a user's codespace. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param username [String] The handle for the GitHub user account.
+      # @param codespace_name [String] The name of the codespace.
+      def self.codespaces_delete_from_organization(
+        config:,
+        org:,
+        username:,
+        codespace_name:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'DELETE',
+          [
+            '/orgs/',
+            SdkClient.encode_path_segment(org),
+            '/members/',
+            SdkClient.encode_path_segment(username),
+            '/codespaces/',
+            SdkClient.encode_path_segment(codespace_name)
+          ].join,
+          config: config,
+          decoder: :json,
+          operation_id: 'codespaces_delete_from_organization',
+          request_options: request_options,
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+        ).data
       end
 
-      # API model for CodespacesSetCodespacesAccess.
-      class CodespacesSetCodespacesAccess
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCodespacesSetCodespacesAccessMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCodespacesSetCodespacesAccessMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCodespacesSetCodespacesAccessMetadata::DECODERS
-
-        # @return [CodespacesSetCodespacesAccessVisibility] Which users can access codespaces in the organization. `disabled` means that no users can access codespaces in the organization.
-        attr_reader :visibility
-        # @return [Array_of_String] The usernames of the organization members who should have access to codespaces in the organization. Required when `visibility` is `selected_members`. The provided list of usernames will replace any existing value.
-        attr_reader :selected_usernames
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
+      # Lists the codespaces associated to a specified repository and the authenticated user. OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.codespaces_list_in_repository_for_authenticated_user(
+        config:,
+        owner:,
+        repo:,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/codespaces'
+          ].join,
+          config: config,
+          query: {
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
+          },
+          return_type: ::OctridevGithub::Methods::Codespaces::CodespacesListInRepositoryForAuthenticatedUserResponse,
+          decoder: :json,
+          operation_id: 'codespaces_list_in_repository_for_authenticated_user',
+          request_options: request_options,
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+        ).data
       end
 
-      # Internal model hydration metadata.
-      class SdkInternalCodespacesSetCodespacesAccessUsersMetadata
-        FIELDS = {
-          selected_usernames: 'selected_usernames'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          selected_usernames
-        ].freeze
-        DECODERS = {}.freeze
+      # Creates a codespace owned by the authenticated user in the specified repository. OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param ref [String] Git ref (typically a branch name) for this codespace
+      # @param location [String] The requested location for a new codespace. Best
+      #   efforts are made to respect this upon creation. Assigned by IP if not
+      #   provided.
+      # @param geo [CodespacesCreateWithRepoForAuthenticatedUserGeo] The geographic
+      #   area for this codespace. If not specified, the value is assigned by IP. This
+      #   property replaces `location`, which is closing down.
+      # @param client_ip [String] IP for location auto-detection when proxying a
+      #   request
+      # @param machine [String] Machine type to use for this codespace
+      # @param devcontainer_path [String] Path to devcontainer.json config to use
+      #   for this codespace
+      # @param multi_repo_permissions_opt_out [Boolean] Whether to authorize
+      #   requested permissions from devcontainer.json
+      # @param working_directory [String] Working directory for this codespace
+      # @param idle_timeout_minutes [Integer] Time in minutes before codespace stops
+      #   from inactivity
+      # @param display_name [String] Display name for this codespace
+      # @param retention_period_minutes [Integer] Duration in minutes after
+      #   codespace has gone idle in which it will be deleted. Must be integer minutes
+      #   between 0 and 43200 (30 days).
+      def self.codespaces_create_with_repo_for_authenticated_user(
+        config:,
+        owner:,
+        repo:,
+        ref: NOT_GIVEN,
+        location: NOT_GIVEN,
+        geo: NOT_GIVEN,
+        client_ip: NOT_GIVEN,
+        machine: NOT_GIVEN,
+        devcontainer_path: NOT_GIVEN,
+        multi_repo_permissions_opt_out: NOT_GIVEN,
+        working_directory: NOT_GIVEN,
+        idle_timeout_minutes: NOT_GIVEN,
+        display_name: NOT_GIVEN,
+        retention_period_minutes: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'POST',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/codespaces'
+          ].join,
+          config: config,
+          body: {
+            'ref' => ref,
+            'location' => location,
+            'geo' => geo,
+            'client_ip' => client_ip,
+            'machine' => machine,
+            'devcontainer_path' => devcontainer_path,
+            'multi_repo_permissions_opt_out' => multi_repo_permissions_opt_out,
+            'working_directory' => working_directory,
+            'idle_timeout_minutes' => idle_timeout_minutes,
+            'display_name' => display_name,
+            'retention_period_minutes' => retention_period_minutes
+          },
+          return_type: ::OctridevGithub::Codespace,
+          decoder: :json,
+          operation_id: 'codespaces_create_with_repo_for_authenticated_user',
+          request_options: request_options,
+          errors: { '400' => ::OctridevGithub::BasicError, '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+        ).data
       end
 
-      # API model for CodespacesSetCodespacesAccessUsers.
-      class CodespacesSetCodespacesAccessUsers
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCodespacesSetCodespacesAccessUsersMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCodespacesSetCodespacesAccessUsersMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCodespacesSetCodespacesAccessUsersMetadata::DECODERS
-
-        # @return [Array_of_String] The usernames of the organization members and outside collaborators whose codespaces should be billed to the organization.
-        attr_reader :selected_usernames
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
+      # Creates a codespace owned by the authenticated user for the specified pull request. OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param pull_number [Integer] The number that identifies the pull request.
+      # @param location [String] The requested location for a new codespace. Best
+      #   efforts are made to respect this upon creation. Assigned by IP if not
+      #   provided.
+      # @param geo [CodespacesCreateWithPrForAuthenticatedUserGeo] The geographic
+      #   area for this codespace. If not specified, the value is assigned by IP. This
+      #   property replaces `location`, which is closing down.
+      # @param client_ip [String] IP for location auto-detection when proxying a
+      #   request
+      # @param machine [String] Machine type to use for this codespace
+      # @param devcontainer_path [String] Path to devcontainer.json config to use
+      #   for this codespace
+      # @param multi_repo_permissions_opt_out [Boolean] Whether to authorize
+      #   requested permissions from devcontainer.json
+      # @param working_directory [String] Working directory for this codespace
+      # @param idle_timeout_minutes [Integer] Time in minutes before codespace stops
+      #   from inactivity
+      # @param display_name [String] Display name for this codespace
+      # @param retention_period_minutes [Integer] Duration in minutes after
+      #   codespace has gone idle in which it will be deleted. Must be integer minutes
+      #   between 0 and 43200 (30 days).
+      def self.codespaces_create_with_pr_for_authenticated_user(
+        config:,
+        owner:,
+        repo:,
+        pull_number:,
+        location: NOT_GIVEN,
+        geo: NOT_GIVEN,
+        client_ip: NOT_GIVEN,
+        machine: NOT_GIVEN,
+        devcontainer_path: NOT_GIVEN,
+        multi_repo_permissions_opt_out: NOT_GIVEN,
+        working_directory: NOT_GIVEN,
+        idle_timeout_minutes: NOT_GIVEN,
+        display_name: NOT_GIVEN,
+        retention_period_minutes: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'POST',
+          [
+            '/repos/',
+            SdkClient.encode_path_segment(owner),
+            '/',
+            SdkClient.encode_path_segment(repo),
+            '/pulls/',
+            SdkClient.encode_path_segment(pull_number),
+            '/codespaces'
+          ].join,
+          config: config,
+          body: {
+            'location' => location,
+            'geo' => geo,
+            'client_ip' => client_ip,
+            'machine' => machine,
+            'devcontainer_path' => devcontainer_path,
+            'multi_repo_permissions_opt_out' => multi_repo_permissions_opt_out,
+            'working_directory' => working_directory,
+            'idle_timeout_minutes' => idle_timeout_minutes,
+            'display_name' => display_name,
+            'retention_period_minutes' => retention_period_minutes
+          },
+          return_type: ::OctridevGithub::Codespace,
+          decoder: :json,
+          operation_id: 'codespaces_create_with_pr_for_authenticated_user',
+          request_options: request_options,
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+        ).data
       end
 
-      # Internal model hydration metadata.
-      class SdkInternalCodespacesDeleteCodespacesAccessUsersMetadata
-        FIELDS = {
-          selected_usernames: 'selected_usernames'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          selected_usernames
-        ].freeze
-        DECODERS = {}.freeze
+      # Lists the authenticated user's codespaces. OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+      #
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      # @param repository_id [Integer] ID of the Repository to filter on
+      def self.codespaces_list_for_authenticated_user(
+        config:,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        repository_id: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          '/user/codespaces',
+          config: config,
+          query: {
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'repository_id' => QueryValue.new(repository_id, style: 'form', explode: true)
+          },
+          return_type: ::OctridevGithub::Methods::Codespaces::CodespacesListForAuthenticatedUserResponse,
+          decoder: :json,
+          operation_id: 'codespaces_list_for_authenticated_user',
+          request_options: request_options,
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+        ).data
       end
 
-      # API model for CodespacesDeleteCodespacesAccessUsers.
-      class CodespacesDeleteCodespacesAccessUsers
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCodespacesDeleteCodespacesAccessUsersMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCodespacesDeleteCodespacesAccessUsersMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCodespacesDeleteCodespacesAccessUsersMetadata::DECODERS
-
-        # @return [Array_of_String] The usernames of the organization members and outside collaborators whose codespaces should not be billed to the organization.
-        attr_reader :selected_usernames
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
+      # Creates a codespace owned by the authenticated user for a repository or pull request. Provide either `repository_id` or `pull_request`, but not both, and use `geo` to select a region when needed. A 202 response indicates that creation partially failed and is being retried in the background.
+      #
+      # Creates a new codespace, owned by the authenticated user. This endpoint requires either a `repository_id` OR a `pull_request` but not both. OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+      def self.codespaces_create_for_authenticated_user(
+        config:,
+        body:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'POST',
+          '/user/codespaces',
+          config: config,
+          body: body,
+          return_type: ::OctridevGithub::Codespace,
+          decoder: :json,
+          operation_id: 'codespaces_create_for_authenticated_user',
+          request_options: request_options,
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
+        ).data
       end
 
-      # Internal model hydration metadata.
-      class SdkInternalCodespacesListOrgSecretsResponseMetadata
-        FIELDS = {
-          total_count: 'total_count',
-          secrets: 'secrets'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          total_count
-          secrets
-        ].freeze
-        DECODERS = {
-          secrets: lambda do |value|
-            value&.map { |item| ::OctridevGithub::CodespacesOrgSecret.from_hash(item) }
-          end
-        }.freeze
+      # Gets information about a user's codespace. OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+      #
+      # @param codespace_name [String] The name of the codespace.
+      def self.codespaces_get_for_authenticated_user(
+        config:,
+        codespace_name:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/user/codespaces/',
+            SdkClient.encode_path_segment(codespace_name)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::Codespace,
+          decoder: :json,
+          operation_id: 'codespaces_get_for_authenticated_user',
+          request_options: request_options,
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+        ).data
       end
 
-      # API model for CodespacesListOrgSecretsResponse.
-      class CodespacesListOrgSecretsResponse
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCodespacesListOrgSecretsResponseMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCodespacesListOrgSecretsResponseMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCodespacesListOrgSecretsResponseMetadata::DECODERS
-
-        attr_reader :total_count, :secrets
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
+      # Updates a codespace owned by the authenticated user. Currently only the codespace's machine type and recent folders can be modified using this endpoint. If you specify a new machine type it will be applied the next time your codespace is started. OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+      #
+      # @param codespace_name [String] The name of the codespace.
+      # @param machine [String] A valid machine to transition this codespace to.
+      # @param display_name [String] Display name for this codespace
+      # @param recent_folders [Array_of_String] Recently opened folders inside the
+      #   codespace. It is currently used by the clients to determine the folder path
+      #   to load the codespace in.
+      def self.codespaces_update_for_authenticated_user(
+        config:,
+        codespace_name:,
+        machine: NOT_GIVEN,
+        display_name: NOT_GIVEN,
+        recent_folders: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'PATCH',
+          [
+            '/user/codespaces/',
+            SdkClient.encode_path_segment(codespace_name)
+          ].join,
+          config: config,
+          body: {
+            'machine' => machine,
+            'display_name' => display_name,
+            'recent_folders' => recent_folders
+          },
+          return_type: ::OctridevGithub::Codespace,
+          decoder: :json,
+          operation_id: 'codespaces_update_for_authenticated_user',
+          request_options: request_options,
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+        ).data
       end
 
-      # Internal model hydration metadata.
-      class SdkInternalCodespacesCreateOrUpdateOrgSecretMetadata
-        FIELDS = {
-          encrypted_value: 'encrypted_value',
-          key_id: 'key_id',
-          visibility: 'visibility',
-          selected_repository_ids: 'selected_repository_ids'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          visibility
-        ].freeze
-        DECODERS = {
-          visibility: lambda do |value|
-            ::OctridevGithub::Methods::Codespaces::CodespacesCreateOrUpdateOrgSecretVisibility.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for CodespacesCreateOrUpdateOrgSecret.
-      class CodespacesCreateOrUpdateOrgSecret
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCodespacesCreateOrUpdateOrgSecretMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCodespacesCreateOrUpdateOrgSecretMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCodespacesCreateOrUpdateOrgSecretMetadata::DECODERS
-
-        # @return [String] The value for your secret, encrypted with LibSodium using the public key retrieved from the Get an organization public key endpoint.
-        attr_reader :encrypted_value
-        # @return [String] The ID of the key you used to encrypt the secret.
-        attr_reader :key_id
-        # @return [CodespacesCreateOrUpdateOrgSecretVisibility] Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret.
-        attr_reader :visibility
-        # @return [Array_of_Integer] An array of repository IDs that can access the organization secret. You can only provide a list of repository IDs when the `visibility` is set to `selected`. You can manage the list of selected repositories using the List selected repositories for an organization secret, Set selected repositories for an organization secret, and Remove selected repository from an organization secret endpoints.
-        attr_reader :selected_repository_ids
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalCodespacesListSelectedReposForOrgSecretResponseMetadata
-        FIELDS = {
-          total_count: 'total_count',
-          repositories: 'repositories'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          total_count
-          repositories
-        ].freeze
-        DECODERS = {
-          repositories: lambda do |value|
-            value&.map { |item| ::OctridevGithub::MinimalRepository.from_hash(item) }
-          end
-        }.freeze
-      end
-
-      # API model for CodespacesListSelectedReposForOrgSecretResponse.
-      class CodespacesListSelectedReposForOrgSecretResponse
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCodespacesListSelectedReposForOrgSecretResponseMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCodespacesListSelectedReposForOrgSecretResponseMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCodespacesListSelectedReposForOrgSecretResponseMetadata::DECODERS
-
-        attr_reader :total_count, :repositories
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalCodespacesSetSelectedReposForOrgSecretMetadata
-        FIELDS = {
-          selected_repository_ids: 'selected_repository_ids'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          selected_repository_ids
-        ].freeze
-        DECODERS = {}.freeze
-      end
-
-      # API model for CodespacesSetSelectedReposForOrgSecret.
-      class CodespacesSetSelectedReposForOrgSecret
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCodespacesSetSelectedReposForOrgSecretMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCodespacesSetSelectedReposForOrgSecretMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCodespacesSetSelectedReposForOrgSecretMetadata::DECODERS
-
-        # @return [Array_of_Integer] An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the Set selected repositories for an organization secret and Remove selected repository from an organization secret endpoints.
-        attr_reader :selected_repository_ids
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalCodespacesGetCodespacesForUserInOrgResponseMetadata
-        FIELDS = {
-          total_count: 'total_count',
-          codespaces: 'codespaces'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          total_count
-          codespaces
-        ].freeze
-        DECODERS = {
-          codespaces: lambda do |value|
-            value&.map { |item| ::OctridevGithub::Codespace.from_hash(item) }
-          end
-        }.freeze
-      end
-
-      # API model for CodespacesGetCodespacesForUserInOrgResponse.
-      class CodespacesGetCodespacesForUserInOrgResponse
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCodespacesGetCodespacesForUserInOrgResponseMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCodespacesGetCodespacesForUserInOrgResponseMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCodespacesGetCodespacesForUserInOrgResponseMetadata::DECODERS
-
-        attr_reader :total_count, :codespaces
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalCodespacesListInRepositoryForAuthenticatedUserResponseMetadata
-        FIELDS = {
-          total_count: 'total_count',
-          codespaces: 'codespaces'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          total_count
-          codespaces
-        ].freeze
-        DECODERS = {
-          codespaces: lambda do |value|
-            value&.map { |item| ::OctridevGithub::Codespace.from_hash(item) }
-          end
-        }.freeze
-      end
-
-      # API model for CodespacesListInRepositoryForAuthenticatedUserResponse.
-      class CodespacesListInRepositoryForAuthenticatedUserResponse
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCodespacesListInRepositoryForAuthenticatedUserResponseMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCodespacesListInRepositoryForAuthenticatedUserResponseMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCodespacesListInRepositoryForAuthenticatedUserResponseMetadata::DECODERS
-
-        attr_reader :total_count, :codespaces
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalCodespacesCreateWithRepoForAuthenticatedUserMetadata
-        FIELDS = {
-          ref: 'ref',
-          location: 'location',
-          geo: 'geo',
-          client_ip: 'client_ip',
-          machine: 'machine',
-          devcontainer_path: 'devcontainer_path',
-          multi_repo_permissions_opt_out: 'multi_repo_permissions_opt_out',
-          working_directory: 'working_directory',
-          idle_timeout_minutes: 'idle_timeout_minutes',
-          display_name: 'display_name',
-          retention_period_minutes: 'retention_period_minutes'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          geo: lambda do |value|
-            ::OctridevGithub::Methods::Codespaces::CodespacesCreateWithRepoForAuthenticatedUserGeo.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for CodespacesCreateWithRepoForAuthenticatedUser.
-      class CodespacesCreateWithRepoForAuthenticatedUser
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCodespacesCreateWithRepoForAuthenticatedUserMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCodespacesCreateWithRepoForAuthenticatedUserMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCodespacesCreateWithRepoForAuthenticatedUserMetadata::DECODERS
-
-        # @return [String] Git ref (typically a branch name) for this codespace
-        attr_reader :ref
-        # @return [String] The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.
-        attr_reader :location
-        # @return [CodespacesCreateWithRepoForAuthenticatedUserGeo] The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.
-        attr_reader :geo
-        # @return [String] IP for location auto-detection when proxying a request
-        attr_reader :client_ip
-        # @return [String] Machine type to use for this codespace
-        attr_reader :machine
-        # @return [String] Path to devcontainer.json config to use for this codespace
-        attr_reader :devcontainer_path
-        # @return [Boolean] Whether to authorize requested permissions from devcontainer.json
-        attr_reader :multi_repo_permissions_opt_out
-        # @return [String] Working directory for this codespace
-        attr_reader :working_directory
-        # @return [Integer] Time in minutes before codespace stops from inactivity
-        attr_reader :idle_timeout_minutes
-        # @return [String] Display name for this codespace
-        attr_reader :display_name
-        # @return [Integer] Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).
-        attr_reader :retention_period_minutes
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalCodespacesListDevcontainersInRepositoryForAuthenticatedUserReX81f06565f6Metadata
-        FIELDS = {
-          path: 'path',
-          name: 'name',
-          display_name: 'display_name'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          path
-        ].freeze
-        DECODERS = {}.freeze
-      end
-
-      # API model for CodespacesListDevcontainersInRepositoryForAuthenticatedUserReX81f06565f6.
-      class CodespacesListDevcontainersInRepositoryForAuthenticatedUserReX81f06565f6
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCodespacesListDevcontainersInRepositoryForAuthenticatedUserReX81f06565f6Metadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCodespacesListDevcontainersInRepositoryForAuthenticatedUserReX81f06565f6Metadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCodespacesListDevcontainersInRepositoryForAuthenticatedUserReX81f06565f6Metadata::DECODERS
-
-        attr_reader :path, :name, :display_name
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalCodespacesListDevcontainersInRepositoryForAuthenticatedUserResponseMetadata
-        FIELDS = {
-          total_count: 'total_count',
-          devcontainers: 'devcontainers'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          total_count
-          devcontainers
-        ].freeze
-        DECODERS = {
-          devcontainers: lambda do |value|
-            value&.map { |item| ::OctridevGithub::Methods::Codespaces::CodespacesListDevcontainersInRepositoryForAuthenticatedUserReX81f06565f6.from_hash(item) }
-          end
-        }.freeze
-      end
-
-      # API model for CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponse.
-      class CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponse
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCodespacesListDevcontainersInRepositoryForAuthenticatedUserResponseMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCodespacesListDevcontainersInRepositoryForAuthenticatedUserResponseMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCodespacesListDevcontainersInRepositoryForAuthenticatedUserResponseMetadata::DECODERS
-
-        attr_reader :total_count, :devcontainers
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
+      # Deletes a user's codespace. OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+      #
+      # @param codespace_name [String] The name of the codespace.
+      def self.codespaces_delete_for_authenticated_user(
+        config:,
+        codespace_name:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'DELETE',
+          [
+            '/user/codespaces/',
+            SdkClient.encode_path_segment(codespace_name)
+          ].join,
+          config: config,
+          decoder: :json,
+          operation_id: 'codespaces_delete_for_authenticated_user',
+          request_options: request_options,
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
+        ).data
       end
     end
   end
 end
 
-require_relative 'codespaces_part_2'
-require_relative 'codespaces_part_3'
-require_relative 'codespaces_part_4'
-require_relative 'codespaces_part_5'
-require_relative 'codespaces_part_6'
+require_relative 'codespaces_types'
+require_relative 'codespaces_sdk_internal_codespaces_repo_machines_for_authenticated_user_response_metadata'
+require_relative 'codespaces_sdk_internal_codespaces_publish_for_authenticated_user_metadata'
+require_relative 'codespaces_access'
+require_relative 'codespaces_list_org_secrets'
+require_relative 'codespaces_get_org_public_key'
+require_relative 'codespaces_get_org_secret'
+require_relative 'codespaces_create_or_update_org_secret'
+require_relative 'codespaces_delete_org_secret'
+require_relative 'codespaces_list_selected_repos_for_org_secret'
+require_relative 'codespaces_set_selected_repos_for_org_secret'
+require_relative 'codespaces_add_selected_repo_to_org_secret'
+require_relative 'codespaces_remove_selected_repo_from_org_secret'
+require_relative 'codespaces_list_repo_secrets'
+require_relative 'codespaces_get_repo_public_key'
+require_relative 'codespaces_get_repo_secret'
+require_relative 'codespaces_create_or_update_repo_secret'
+require_relative 'codespaces_delete_repo_secret'
+require_relative 'codespaces_list_secrets_for_authenticated_user'
+require_relative 'codespaces_get_public_key_for_authenticated_user'
+require_relative 'codespaces_get_secret_for_authenticated_user'
+require_relative 'codespaces_create_or_update_secret_for_authenticated_user'
+require_relative 'codespaces_delete_secret_for_authenticated_user'
+require_relative 'codespaces_list_repositories_for_secret_for_authenticated_user'
+require_relative 'codespaces_set_repositories_for_secret_for_authenticated_user'
+require_relative 'codespaces_add_repository_for_secret_for_authenticated_user'
+require_relative 'codespaces_remove_repository_for_secret_for_authenticated_user'
+require_relative 'codespaces_stop'
+require_relative 'codespaces_devcontainers'
+require_relative 'codespaces_machines'
+require_relative 'codespaces_new'
+require_relative 'codespaces_permissions_check'
+require_relative 'codespaces_exports'
+require_relative 'codespaces_publish'
+require_relative 'codespaces_start'

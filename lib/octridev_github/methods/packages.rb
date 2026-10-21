@@ -9,92 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Packages SDK namespace.
     module Packages
-      # Defines the PackagesGetAllPackageVersionsForPackageOwnedByOrgParameter SDK namespace.
-      module PackagesGetAllPackageVersionsForPackageOwnedByOrgParameter
-        ACTIVE = 'active'
-        DELETED = 'deleted'
-        VALUES = %w[active deleted].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the PackagesListPackagesForUserParameter SDK namespace.
-      module PackagesListPackagesForUserParameter
-        NPM = 'npm'
-        MAVEN = 'maven'
-        RUBYGEMS = 'rubygems'
-        DOCKER = 'docker'
-        NUGET = 'nuget'
-        CONTAINER = 'container'
-        VALUES = %w[npm maven rubygems docker nuget container].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the PackagesListPackagesForOrganizationParameter SDK namespace.
-      module PackagesListPackagesForOrganizationParameter
-        NPM = 'npm'
-        MAVEN = 'maven'
-        RUBYGEMS = 'rubygems'
-        DOCKER = 'docker'
-        NUGET = 'nuget'
-        CONTAINER = 'container'
-        VALUES = %w[npm maven rubygems docker nuget container].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the PackagesListPackagesForAuthenticatedUserParameter SDK namespace.
-      module PackagesListPackagesForAuthenticatedUserParameter
-        NPM = 'npm'
-        MAVEN = 'maven'
-        RUBYGEMS = 'rubygems'
-        DOCKER = 'docker'
-        NUGET = 'nuget'
-        CONTAINER = 'container'
-        VALUES = %w[npm maven rubygems docker nuget container].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParameter SDK namespace.
-      module PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParameter
-        ACTIVE = 'active'
-        DELETED = 'deleted'
-        VALUES = %w[active deleted].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Lists all packages that are in a specific organization, are readable by the requesting user, and that encountered a conflict during a Docker migration. OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint.
-      #
-      # @param org [String] The organization name. The name is not case sensitive.
-      def self.packages_list_docker_migration_conflicting_packages_for_organization(
-        config:,
-        org:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          [
-            '/orgs/',
-            SdkClient.encode_path_segment(org),
-            '/docker/conflicts'
-          ].join,
-          config: config,
-          return_type: [::OctridevGithub::Package],
-          decoder: :json,
-          operation_id: 'packages_list_docker_migration_conflicting_packages_for_organization',
-          request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
-        ).data
-      end
-
       # Lists packages in an organization readable by the user. OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "About permissions for GitHub Packages."
       #
       # @param org [String] The organization name. The name is not case sensitive.
@@ -216,235 +130,6 @@ module OctridevGithub
         ).data
       end
 
-      # Restores an entire package in an organization. You can restore a deleted package under the following conditions: - The package was deleted within the last 30 days. - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace…
-      #
-      # @param package_type [SchemaSchema5f6fac39] The type of supported package.
-      #   Packages in GitHub's Gradle registry have the type `maven`. Docker images
-      #   pushed to GitHub's Container registry (`ghcr.io`) have the type `container`.
-      #   You can use the type `docker` to find images that were pushed to GitHub's
-      #   Docker registry (`docker.pkg.github.com`), even if these have now been
-      #   migrated to the Container registry.
-      # @param package_name [String] The name of the package.
-      # @param org [String] The organization name. The name is not case sensitive.
-      # @param token [String] package token
-      def self.packages_restore_package_for_org(
-        config:,
-        package_type:,
-        package_name:,
-        org:,
-        token: NOT_GIVEN,
-        request_options: nil
-      )
-        SdkClient.request(
-          'POST',
-          [
-            '/orgs/',
-            SdkClient.encode_path_segment(org),
-            '/packages/',
-            SdkClient.encode_path_segment(package_type),
-            '/',
-            SdkClient.encode_path_segment(package_name),
-            '/restore'
-          ].join,
-          config: config,
-          query: {
-            'token' => QueryValue.new(token, style: 'form', explode: true)
-          },
-          decoder: :empty,
-          operation_id: 'packages_restore_package_for_org',
-          request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
-        ).data
-      end
-
-      # Lists package versions for a package owned by an organization. OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "About permissions for GitHub Packages."
-      #
-      # @param package_type [SchemaSchema5f6fac39] The type of supported package.
-      #   Packages in GitHub's Gradle registry have the type `maven`. Docker images
-      #   pushed to GitHub's Container registry (`ghcr.io`) have the type `container`.
-      #   You can use the type `docker` to find images that were pushed to GitHub's
-      #   Docker registry (`docker.pkg.github.com`), even if these have now been
-      #   migrated to the Container registry.
-      # @param package_name [String] The name of the package.
-      # @param org [String] The organization name. The name is not case sensitive.
-      # @param page [Integer] The page number of the results to fetch. For more
-      #   information, see "Using pagination in the REST API."
-      # @param per_page [Integer] The number of results per page (max 100). For more
-      #   information, see "Using pagination in the REST API."
-      # @param state [PackagesGetAllPackageVersionsForPackageOwnedByOrgParameter]
-      #   The state of the package, either active or deleted.
-      def self.packages_get_all_package_versions_for_package_owned_by_org(
-        config:,
-        package_type:,
-        package_name:,
-        org:,
-        page: NOT_GIVEN,
-        per_page: NOT_GIVEN,
-        state: NOT_GIVEN,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          [
-            '/orgs/',
-            SdkClient.encode_path_segment(org),
-            '/packages/',
-            SdkClient.encode_path_segment(package_type),
-            '/',
-            SdkClient.encode_path_segment(package_name),
-            '/versions'
-          ].join,
-          config: config,
-          query: {
-            'page' => QueryValue.new(page, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'state' => QueryValue.new(state, style: 'form', explode: true)
-          },
-          return_type: [::OctridevGithub::PackageVersion],
-          decoder: :json,
-          operation_id: 'packages_get_all_package_versions_for_package_owned_by_org',
-          request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
-        ).data
-      end
-
-      # Gets a specific package version in an organization. OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "About permissions for GitHub Packages."
-      #
-      # @param package_type [SchemaSchema5f6fac39] The type of supported package.
-      #   Packages in GitHub's Gradle registry have the type `maven`. Docker images
-      #   pushed to GitHub's Container registry (`ghcr.io`) have the type `container`.
-      #   You can use the type `docker` to find images that were pushed to GitHub's
-      #   Docker registry (`docker.pkg.github.com`), even if these have now been
-      #   migrated to the Container registry.
-      # @param package_name [String] The name of the package.
-      # @param org [String] The organization name. The name is not case sensitive.
-      # @param package_version_id [Integer] Unique identifier of the package
-      #   version.
-      def self.packages_get_package_version_for_organization(
-        config:,
-        package_type:,
-        package_name:,
-        org:,
-        package_version_id:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          [
-            '/orgs/',
-            SdkClient.encode_path_segment(org),
-            '/packages/',
-            SdkClient.encode_path_segment(package_type),
-            '/',
-            SdkClient.encode_path_segment(package_name),
-            '/versions/',
-            SdkClient.encode_path_segment(package_version_id)
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::PackageVersion,
-          decoder: :json,
-          operation_id: 'packages_get_package_version_for_organization',
-          request_options: request_options
-        ).data
-      end
-
-      # Deletes a specific package version in an organization. If the package is public and the package version has more than 5,000 downloads, you cannot delete the package version. In this scenario, contact GitHub support for further assistance. The authenticated user must have admin permissions in the organization to use this endpoint. If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must also have admin…
-      #
-      # @param package_type [SchemaSchema5f6fac39] The type of supported package.
-      #   Packages in GitHub's Gradle registry have the type `maven`. Docker images
-      #   pushed to GitHub's Container registry (`ghcr.io`) have the type `container`.
-      #   You can use the type `docker` to find images that were pushed to GitHub's
-      #   Docker registry (`docker.pkg.github.com`), even if these have now been
-      #   migrated to the Container registry.
-      # @param package_name [String] The name of the package.
-      # @param org [String] The organization name. The name is not case sensitive.
-      # @param package_version_id [Integer] Unique identifier of the package
-      #   version.
-      def self.packages_delete_package_version_for_org(
-        config:,
-        package_type:,
-        package_name:,
-        org:,
-        package_version_id:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'DELETE',
-          [
-            '/orgs/',
-            SdkClient.encode_path_segment(org),
-            '/packages/',
-            SdkClient.encode_path_segment(package_type),
-            '/',
-            SdkClient.encode_path_segment(package_name),
-            '/versions/',
-            SdkClient.encode_path_segment(package_version_id)
-          ].join,
-          config: config,
-          decoder: :empty,
-          operation_id: 'packages_delete_package_version_for_org',
-          request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
-        ).data
-      end
-
-      # Restores a specific package version in an organization. You can restore a deleted package under the following conditions: - The package was deleted within the last 30 days. - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's…
-      #
-      # @param package_type [SchemaSchema5f6fac39] The type of supported package.
-      #   Packages in GitHub's Gradle registry have the type `maven`. Docker images
-      #   pushed to GitHub's Container registry (`ghcr.io`) have the type `container`.
-      #   You can use the type `docker` to find images that were pushed to GitHub's
-      #   Docker registry (`docker.pkg.github.com`), even if these have now been
-      #   migrated to the Container registry.
-      # @param package_name [String] The name of the package.
-      # @param org [String] The organization name. The name is not case sensitive.
-      # @param package_version_id [Integer] Unique identifier of the package
-      #   version.
-      def self.packages_restore_package_version_for_org(
-        config:,
-        package_type:,
-        package_name:,
-        org:,
-        package_version_id:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'POST',
-          [
-            '/orgs/',
-            SdkClient.encode_path_segment(org),
-            '/packages/',
-            SdkClient.encode_path_segment(package_type),
-            '/',
-            SdkClient.encode_path_segment(package_name),
-            '/versions/',
-            SdkClient.encode_path_segment(package_version_id),
-            '/restore'
-          ].join,
-          config: config,
-          decoder: :empty,
-          operation_id: 'packages_restore_package_version_for_org',
-          request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
-        ).data
-      end
-
-      # Lists all packages that are owned by the authenticated user within the user's namespace, and that encountered a conflict during a Docker migration. OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint.
-      def self.packages_list_docker_migration_conflicting_packages_for_authenticated_user(
-        config:,
-        request_options: nil
-      )
-        SdkClient.request(
-          'GET',
-          '/user/docker/conflicts',
-          config: config,
-          return_type: [::OctridevGithub::Package],
-          decoder: :json,
-          operation_id: 'packages_list_docker_migration_conflicting_packages_for_authenticated_user',
-          request_options: request_options
-        ).data
-      end
-
       # Lists packages owned by the authenticated user within the user's namespace. OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "About permissions for GitHub Packages."
       #
       # @param package_type [PackagesListPackagesForAuthenticatedUserParameter] The
@@ -551,8 +236,134 @@ module OctridevGithub
           errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
+
+      # Lists all packages in a user's namespace for which the requesting user has access. OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "About permissions for GitHub Packages."
+      #
+      # @param username [String] The handle for the GitHub user account.
+      # @param package_type [PackagesListPackagesForUserParameter] The type of
+      #   supported package. Packages in GitHub's Gradle registry have the type
+      #   `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`)
+      #   have the type `container`. You can use the type `docker` to find images that
+      #   were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+      #   these have now been migrated to the Container registry.
+      # @param visibility [SchemaSchemaF67de18d] The selected visibility of the
+      #   packages. This parameter is optional and only filters an existing result
+      #   set. The `internal` visibility is only supported for GitHub Packages
+      #   registries that allow for granular permissions. For other ecosystems
+      #   `internal` is synonymous with `private`. For the list of GitHub Packages
+      #   registries that support granular permissions, see "About permissions for
+      #   GitHub Packages."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      def self.packages_list_packages_for_user(
+        config:,
+        username:,
+        package_type:,
+        visibility: NOT_GIVEN,
+        page: NOT_GIVEN,
+        per_page: NOT_GIVEN,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/users/',
+            SdkClient.encode_path_segment(username),
+            '/packages'
+          ].join,
+          config: config,
+          query: {
+            'package_type' => QueryValue.new(package_type, style: 'form', explode: true),
+            'visibility' => QueryValue.new(visibility, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
+          },
+          return_type: [::OctridevGithub::Package],
+          decoder: :json,
+          operation_id: 'packages_list_packages_for_user',
+          request_options: request_options,
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
+        ).data
+      end
+
+      # Gets a specific package metadata for a public package owned by a user. OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "About permissions for GitHub Packages."
+      #
+      # @param package_type [SchemaSchema5f6fac39] The type of supported package.
+      #   Packages in GitHub's Gradle registry have the type `maven`. Docker images
+      #   pushed to GitHub's Container registry (`ghcr.io`) have the type `container`.
+      #   You can use the type `docker` to find images that were pushed to GitHub's
+      #   Docker registry (`docker.pkg.github.com`), even if these have now been
+      #   migrated to the Container registry.
+      # @param package_name [String] The name of the package.
+      # @param username [String] The handle for the GitHub user account.
+      def self.packages_get_package_for_user(
+        config:,
+        package_type:,
+        package_name:,
+        username:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'GET',
+          [
+            '/users/',
+            SdkClient.encode_path_segment(username),
+            '/packages/',
+            SdkClient.encode_path_segment(package_type),
+            '/',
+            SdkClient.encode_path_segment(package_name)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::Package,
+          decoder: :json,
+          operation_id: 'packages_get_package_for_user',
+          request_options: request_options
+        ).data
+      end
+
+      # Deletes an entire package for a user. You cannot delete a public package if any version of the package has more than 5,000 downloads. In this scenario, contact GitHub support for further assistance. If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must have admin permissions to the package. For the list of these registries, see "About permissions for GitHub Packages." OAuth app tokens and personal access…
+      #
+      # @param package_type [SchemaSchema5f6fac39] The type of supported package.
+      #   Packages in GitHub's Gradle registry have the type `maven`. Docker images
+      #   pushed to GitHub's Container registry (`ghcr.io`) have the type `container`.
+      #   You can use the type `docker` to find images that were pushed to GitHub's
+      #   Docker registry (`docker.pkg.github.com`), even if these have now been
+      #   migrated to the Container registry.
+      # @param package_name [String] The name of the package.
+      # @param username [String] The handle for the GitHub user account.
+      def self.packages_delete_package_for_user(
+        config:,
+        package_type:,
+        package_name:,
+        username:,
+        request_options: nil
+      )
+        SdkClient.request(
+          'DELETE',
+          [
+            '/users/',
+            SdkClient.encode_path_segment(username),
+            '/packages/',
+            SdkClient.encode_path_segment(package_type),
+            '/',
+            SdkClient.encode_path_segment(package_name)
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'packages_delete_package_for_user',
+          request_options: request_options,
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
+        ).data
+      end
     end
   end
 end
 
-require_relative 'packages_part_2'
+require_relative 'packages_types'
+require_relative 'packages_orgs'
+require_relative 'packages_restore'
+require_relative 'packages_versions'
+require_relative 'packages_user'
+require_relative 'packages_users'
