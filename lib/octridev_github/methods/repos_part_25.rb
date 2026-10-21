@@ -21,20 +21,19 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/user/repository_invitations",
+          '/user/repository_invitations',
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::RepositoryInvitation],
           decoder: :json,
           operation_id: 'repos_list_invitations_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -46,18 +45,17 @@ module OctridevGithub
         invitation_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/user/repository_invitations/",
+            '/user/repository_invitations/',
             SdkClient.encode_path_segment(invitation_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_accept_invitation_for_authenticated_user',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -69,18 +67,17 @@ module OctridevGithub
         invitation_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/user/repository_invitations/",
+            '/user/repository_invitations/',
             SdkClient.encode_path_segment(invitation_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_decline_invitation_for_authenticated_user',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -109,13 +106,12 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/users/",
+            '/users/',
             SdkClient.encode_path_segment(username),
-            "/repos"
+            '/repos'
           ].join,
           config: config,
           query: {
@@ -123,12 +119,12 @@ module OctridevGithub
             'sort' => QueryValue.new(sort, style: 'form', explode: true),
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::MinimalRepository],
           decoder: :json,
           operation_id: 'repos_list_for_user',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

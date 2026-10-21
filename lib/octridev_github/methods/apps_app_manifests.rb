@@ -17,20 +17,19 @@ module OctridevGithub
         code:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/app-manifests/",
+            '/app-manifests/',
             SdkClient.encode_path_segment(code),
-            "/conversions"
+            '/conversions'
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::Apps::AppsCreateFromManifestResponse,
           decoder: :json,
           operation_id: 'apps_create_from_manifest',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple }
         ).data
       end
     end

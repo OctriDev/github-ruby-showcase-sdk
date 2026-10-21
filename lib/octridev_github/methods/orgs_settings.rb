@@ -17,19 +17,18 @@ module OctridevGithub
         org:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/settings/immutable-releases"
+            '/settings/immutable-releases'
           ].join,
           config: config,
           return_type: ::OctridevGithub::ImmutableReleasesOrganizationSettings,
           decoder: :json,
           operation_id: 'orgs_get_immutable_releases_settings',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -52,22 +51,21 @@ module OctridevGithub
         selected_repository_ids: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/settings/immutable-releases"
+            '/settings/immutable-releases'
           ].join,
           config: config,
           body: {
             'enforced_repositories' => enforced_repositories,
-            'selected_repository_ids' => selected_repository_ids,
+            'selected_repository_ids' => selected_repository_ids
           },
           decoder: :empty,
           operation_id: 'orgs_set_immutable_releases_settings',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -85,23 +83,22 @@ module OctridevGithub
         per_page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/settings/immutable-releases/repositories"
+            '/settings/immutable-releases/repositories'
           ].join,
           config: config,
           query: {
             'page' => QueryValue.new(page, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Orgs::OrgsGetImmutableReleasesSettingsRepositoriesResponse,
           decoder: :json,
           operation_id: 'orgs_get_immutable_releases_settings_repositories',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -120,21 +117,20 @@ module OctridevGithub
         selected_repository_ids:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/settings/immutable-releases/repositories"
+            '/settings/immutable-releases/repositories'
           ].join,
           config: config,
           body: {
-            'selected_repository_ids' => selected_repository_ids,
+            'selected_repository_ids' => selected_repository_ids
           },
           decoder: :empty,
           operation_id: 'orgs_set_immutable_releases_settings_repositories',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -148,19 +144,18 @@ module OctridevGithub
         repository_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/settings/immutable-releases/repositories/",
+            '/settings/immutable-releases/repositories/',
             SdkClient.encode_path_segment(repository_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'orgs_enable_selected_repository_immutable_releases_organization',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -174,19 +169,18 @@ module OctridevGithub
         repository_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/settings/immutable-releases/repositories/",
+            '/settings/immutable-releases/repositories/',
             SdkClient.encode_path_segment(repository_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'orgs_disable_selected_repository_immutable_releases_organization',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

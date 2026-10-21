@@ -22,22 +22,21 @@ module OctridevGithub
         repository_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/codespaces/secrets/",
+            '/codespaces/secrets/',
             SdkClient.encode_path_segment(secret_name),
-            "/repositories/",
+            '/repositories/',
             SdkClient.encode_path_segment(repository_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'codespaces_remove_selected_repo_from_org_secret',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
     end

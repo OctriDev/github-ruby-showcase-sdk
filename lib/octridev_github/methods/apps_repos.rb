@@ -21,22 +21,21 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/installation"
+            '/installation'
           ].join,
           config: config,
           return_type: ::OctridevGithub::Installation,
           decoder: :json,
           operation_id: 'apps_get_repo_installation',
           request_options: request_options,
-          errors: { '301' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '301' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

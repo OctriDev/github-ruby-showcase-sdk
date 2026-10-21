@@ -21,23 +21,22 @@ module OctridevGithub
         repo_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/migrations/",
+            '/migrations/',
             SdkClient.encode_path_segment(migration_id),
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(repo_name),
-            "/lock"
+            '/lock'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'migrations_unlock_repo_for_org',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -55,22 +54,21 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/import"
+            '/import'
           ].join,
           config: config,
           return_type: ::OctridevGithub::Import,
           decoder: :json,
           operation_id: 'migrations_get_import_status',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -104,15 +102,14 @@ module OctridevGithub
         tfvc_project: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/import"
+            '/import'
           ].join,
           config: config,
           body: {
@@ -120,13 +117,13 @@ module OctridevGithub
             'vcs' => vcs,
             'vcs_username' => vcs_username,
             'vcs_password' => vcs_password,
-            'tfvc_project' => tfvc_project,
+            'tfvc_project' => tfvc_project
           },
           return_type: ::OctridevGithub::Import,
           decoder: :json,
           operation_id: 'migrations_start_import',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -156,28 +153,27 @@ module OctridevGithub
         tfvc_project: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/import"
+            '/import'
           ].join,
           config: config,
           body: {
             'vcs_username' => vcs_username,
             'vcs_password' => vcs_password,
             'vcs' => vcs,
-            'tfvc_project' => tfvc_project,
+            'tfvc_project' => tfvc_project
           },
           return_type: ::OctridevGithub::Import,
           decoder: :json,
           operation_id: 'migrations_update_import',
           request_options: request_options,
-          errors: { '503' => ::OctridevGithub::BasicError },
+          errors: { '503' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -195,21 +191,20 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/import"
+            '/import'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'migrations_cancel_import',
           request_options: request_options,
-          errors: { '503' => ::OctridevGithub::BasicError },
+          errors: { '503' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -230,25 +225,24 @@ module OctridevGithub
         since: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/import/authors"
+            '/import/authors'
           ].join,
           config: config,
           query: {
-            'since' => QueryValue.new(since, style: 'form', explode: true),
+            'since' => QueryValue.new(since, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::PorterAuthor],
           decoder: :json,
           operation_id: 'migrations_get_commit_authors',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -273,27 +267,26 @@ module OctridevGithub
         name: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/import/authors/",
+            '/import/authors/',
             SdkClient.encode_path_segment(author_id)
           ].join,
           config: config,
           body: {
             'email' => email,
-            'name' => name,
+            'name' => name
           },
           return_type: ::OctridevGithub::PorterAuthor,
           decoder: :json,
           operation_id: 'migrations_map_commit_author',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -311,22 +304,21 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/import/large_files"
+            '/import/large_files'
           ].join,
           config: config,
           return_type: [::OctridevGithub::PorterLargeFile],
           decoder: :json,
           operation_id: 'migrations_get_large_files',
           request_options: request_options,
-          errors: { '503' => ::OctridevGithub::BasicError },
+          errors: { '503' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -348,25 +340,24 @@ module OctridevGithub
         use_lfs:,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/import/lfs"
+            '/import/lfs'
           ].join,
           config: config,
           body: {
-            'use_lfs' => use_lfs,
+            'use_lfs' => use_lfs
           },
           return_type: ::OctridevGithub::Import,
           decoder: :json,
           operation_id: 'migrations_set_lfs_preference',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::BasicError },
+          errors: { '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -380,21 +371,20 @@ module OctridevGithub
         repo_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/user/migrations/",
+            '/user/migrations/',
             SdkClient.encode_path_segment(migration_id),
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(repo_name),
-            "/lock"
+            '/lock'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'migrations_unlock_repo_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

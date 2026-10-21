@@ -5,676 +5,677 @@
 
 # repos_repository_rule domain models
 module OctridevGithub
-# API model for RepositoryRuleParamsRequiredReviewerConfiguration.
-# A reviewing team, and file patterns describing which files they must approve changes to.
-class RepositoryRuleParamsRequiredReviewerConfiguration
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleParamsRequiredReviewerConfigurationMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleParamsRequiredReviewerConfigurationMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleParamsRequiredReviewerConfigurationMetadata::DECODERS
+  # API model for RepositoryRuleParamsRequiredReviewerConfiguration.
+  # A reviewing team, and file patterns describing which files they must approve changes to.
+  class RepositoryRuleParamsRequiredReviewerConfiguration
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleParamsRequiredReviewerConfigurationMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleParamsRequiredReviewerConfigurationMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleParamsRequiredReviewerConfigurationMetadata::DECODERS
 
-  # @return [Array_of_String] Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use fnmatch syntax.
-  attr_reader :file_patterns
-  # @return [Integer] Minimum number of approvals required from the specified team. If set to zero, the team will be added to the pull request but approval is optional.
-  attr_reader :minimum_approvals
-  # @return [RepositoryRuleParamsReviewer] A required reviewing team
-  attr_reader :reviewer
+    # @return [Array_of_String] Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use fnmatch syntax.
+    attr_reader :file_patterns
+    # @return [Integer] Minimum number of approvals required from the specified team. If set to zero, the team will be added to the pull request but approval is optional.
+    attr_reader :minimum_approvals
+    # @return [RepositoryRuleParamsReviewer] A required reviewing team
+    attr_reader :reviewer
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleParamsReviewerMetadata
+    FIELDS = {
+      id: 'id',
+      type: 'type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleParamsReviewerType.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for RepositoryRuleParamsReviewer.
+  # A required reviewing team
+  class RepositoryRuleParamsReviewer
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleParamsReviewerMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleParamsReviewerMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleParamsReviewerMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleParamsReviewerMetadata
-  FIELDS = {
-    id: "id",
-    type: "type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleParamsReviewerType.from_value(value)
-    end,
-  }.freeze
-end
+    # @return [Integer] ID of the reviewer which must review changes to matching files.
+    attr_reader :id
+    # @return [RepositoryRuleParamsReviewerType] The type of the reviewer
+    attr_reader :type
 
-# API model for RepositoryRuleParamsReviewer.
-# A required reviewing team
-class RepositoryRuleParamsReviewer
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleParamsReviewerMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleParamsReviewerMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleParamsReviewerMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [Integer] ID of the reviewer which must review changes to matching files.
-  attr_reader :id
-  # @return [RepositoryRuleParamsReviewerType] The type of the reviewer
-  attr_reader :type
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the RepositoryRuleParamsReviewerType SDK namespace.
+  module RepositoryRuleParamsReviewerType
+    TEAM = 'Team'
+    VALUES = ['Team'].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the RepositoryRuleParamsReviewerType SDK namespace.
-module RepositoryRuleParamsReviewerType
-  TEAM = 'Team'
-  VALUES = ['Team'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleParamsStatusCheckConfigurationMetadata
-  FIELDS = {
-    context: "context",
-    integration_id: "integration_id",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    context
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for RepositoryRuleParamsStatusCheckConfiguration.
-# Required status check
-class RepositoryRuleParamsStatusCheckConfiguration
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleParamsStatusCheckConfigurationMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleParamsStatusCheckConfigurationMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleParamsStatusCheckConfigurationMetadata::DECODERS
-
-  # @return [String] The status check context name that must be present on the commit.
-  attr_reader :context
-  # @return [Integer] The optional integration ID that this status check must originate from.
-  attr_reader :integration_id
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleParamsStatusCheckConfigurationMetadata
+    FIELDS = {
+      context: 'context',
+      integration_id: 'integration_id'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      context
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RepositoryRuleParamsStatusCheckConfiguration.
+  # Required status check
+  class RepositoryRuleParamsStatusCheckConfiguration
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleParamsStatusCheckConfigurationMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleParamsStatusCheckConfigurationMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleParamsStatusCheckConfigurationMetadata::DECODERS
+
+    # @return [String] The status check context name that must be present on the commit.
+    attr_reader :context
+    # @return [Integer] The optional integration ID that this status check must originate from.
+    attr_reader :integration_id
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleParamsWorkflowFileReferenceMetadata
-  FIELDS = {
-    path: "path",
-    ref: "ref",
-    repository_id: "repository_id",
-    sha: "sha",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    path
-    repository_id
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for RepositoryRuleParamsWorkflowFileReference.
-# A workflow that must run for this rule to pass
-class RepositoryRuleParamsWorkflowFileReference
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleParamsWorkflowFileReferenceMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleParamsWorkflowFileReferenceMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleParamsWorkflowFileReferenceMetadata::DECODERS
-
-  # @return [String] The path to the workflow file
-  attr_reader :path
-  # @return [String] The ref (branch or tag) of the workflow file to use
-  attr_reader :ref
-  # @return [Integer] The ID of the repository where the workflow is defined
-  attr_reader :repository_id
-  # @return [String] The commit SHA of the workflow file to use
-  attr_reader :sha
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleParamsWorkflowFileReferenceMetadata
+    FIELDS = {
+      path: 'path',
+      ref: 'ref',
+      repository_id: 'repository_id',
+      sha: 'sha'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      path
+      repository_id
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RepositoryRuleParamsWorkflowFileReference.
+  # A workflow that must run for this rule to pass
+  class RepositoryRuleParamsWorkflowFileReference
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleParamsWorkflowFileReferenceMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleParamsWorkflowFileReferenceMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleParamsWorkflowFileReferenceMetadata::DECODERS
+
+    # @return [String] The path to the workflow file
+    attr_reader :path
+    # @return [String] The ref (branch or tag) of the workflow file to use
+    attr_reader :ref
+    # @return [Integer] The ID of the repository where the workflow is defined
+    attr_reader :repository_id
+    # @return [String] The commit SHA of the workflow file to use
+    attr_reader :sha
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRulePullRequestParametersMetadata
-  FIELDS = {
-    allowed_merge_methods: "allowed_merge_methods",
-    dismiss_stale_reviews_on_push: "dismiss_stale_reviews_on_push",
-    dismissal_restriction: "dismissal_restriction",
-    require_code_owner_review: "require_code_owner_review",
-    require_last_push_approval: "require_last_push_approval",
-    required_approving_review_count: "required_approving_review_count",
-    required_review_thread_resolution: "required_review_thread_resolution",
-    required_reviewers: "required_reviewers",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    dismiss_stale_reviews_on_push
-    require_code_owner_review
-    require_last_push_approval
-    required_approving_review_count
-    required_review_thread_resolution
-  ].freeze
-  DECODERS = {
-    allowed_merge_methods: lambda do |value|
-      value&.map { |item| ::OctridevGithub::RepositoryRulePullRequestParametersAllowedMergeMethodsItem.from_value(item) }
-    end,
-    dismissal_restriction: lambda do |value|
-      ::OctridevGithub::RepositoryRuleParamsDismissalRestriction.from_hash(value)
-    end,
-    required_reviewers: lambda do |value|
-      value&.map { |item| ::OctridevGithub::RepositoryRuleParamsRequiredReviewerConfiguration.from_hash(item) }
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRulePullRequestParameters.
-# Optional object value serialized in the `parameters` wire field.
-class RepositoryRulePullRequestParameters
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRulePullRequestParametersMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRulePullRequestParametersMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRulePullRequestParametersMetadata::DECODERS
-
-  # @return [Array_of_RepositoryRulePullRequestParametersAllowedMergeMethodsItem] Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled.
-  attr_reader :allowed_merge_methods
-  # @return [Boolean] New, reviewable commits pushed will dismiss previous pull request review approvals.
-  attr_reader :dismiss_stale_reviews_on_push
-  # @return [RepositoryRuleParamsDismissalRestriction] Specify people, teams, or apps allowed to dismiss pull request reviews.
-  attr_reader :dismissal_restriction
-  # @return [Boolean] Require an approving review in pull requests that modify files that have a designated code owner.
-  attr_reader :require_code_owner_review
-  # @return [Boolean] Whether the most recent reviewable push must be approved by someone other than the person who pushed it.
-  attr_reader :require_last_push_approval
-  # @return [Integer] The number of approving reviews that are required before a pull request can be merged.
-  attr_reader :required_approving_review_count
-  # @return [Boolean] All conversations on code must be resolved before a pull request can be merged.
-  attr_reader :required_review_thread_resolution
-  # @return [Array_of_RepositoryRuleParamsRequiredReviewerConfiguration] > [!NOTE] > `required_reviewers` is in beta and subject to change. A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.
-  attr_reader :required_reviewers
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRulePullRequestParametersMetadata
+    FIELDS = {
+      allowed_merge_methods: 'allowed_merge_methods',
+      dismiss_stale_reviews_on_push: 'dismiss_stale_reviews_on_push',
+      dismissal_restriction: 'dismissal_restriction',
+      require_code_owner_review: 'require_code_owner_review',
+      require_last_push_approval: 'require_last_push_approval',
+      required_approving_review_count: 'required_approving_review_count',
+      required_review_thread_resolution: 'required_review_thread_resolution',
+      required_reviewers: 'required_reviewers'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      dismiss_stale_reviews_on_push
+      require_code_owner_review
+      require_last_push_approval
+      required_approving_review_count
+      required_review_thread_resolution
+    ].freeze
+    DECODERS = {
+      allowed_merge_methods: lambda do |value|
+        value&.map { |item| ::OctridevGithub::RepositoryRulePullRequestParametersAllowedMergeMethodsItem.from_value(item) }
+      end,
+      dismissal_restriction: lambda do |value|
+        ::OctridevGithub::RepositoryRuleParamsDismissalRestriction.from_hash(value)
+      end,
+      required_reviewers: lambda do |value|
+        value&.map { |item| ::OctridevGithub::RepositoryRuleParamsRequiredReviewerConfiguration.from_hash(item) }
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RepositoryRulePullRequestParameters.
+  # Optional object value serialized in the `parameters` wire field.
+  class RepositoryRulePullRequestParameters
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRulePullRequestParametersMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRulePullRequestParametersMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRulePullRequestParametersMetadata::DECODERS
+
+    # @return [Array_of_RepositoryRulePullRequestParametersAllowedMergeMethodsItem] Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled.
+    attr_reader :allowed_merge_methods
+    # @return [Boolean] New, reviewable commits pushed will dismiss previous pull request review approvals.
+    attr_reader :dismiss_stale_reviews_on_push
+    # @return [RepositoryRuleParamsDismissalRestriction] Specify people, teams, or apps allowed to dismiss pull request reviews.
+    attr_reader :dismissal_restriction
+    # @return [Boolean] Require an approving review in pull requests that modify files that have a designated code owner.
+    attr_reader :require_code_owner_review
+    # @return [Boolean] Whether the most recent reviewable push must be approved by someone other than the person who pushed it.
+    attr_reader :require_last_push_approval
+    # @return [Integer] The number of approving reviews that are required before a pull request can be merged.
+    attr_reader :required_approving_review_count
+    # @return [Boolean] All conversations on code must be resolved before a pull request can be merged.
+    attr_reader :required_review_thread_resolution
+    # @return [Array_of_RepositoryRuleParamsRequiredReviewerConfiguration] > [!NOTE] > `required_reviewers` is in beta and subject to change. A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.
+    attr_reader :required_reviewers
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRulePullRequestMetadata
-  FIELDS = {
-    type: "type",
-    parameters: "parameters",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::RepositoryRulePullRequestType.from_value(value)
-    end,
-    parameters: lambda do |value|
-      ::OctridevGithub::RepositoryRulePullRequestParameters.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRulePullRequest.
-# Require all commits be made to a non-target branch and submitted via a pull request before they can be merged.
-class RepositoryRulePullRequest
-  include RepositoryRule
-  include OrgRules
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRulePullRequestMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRulePullRequestMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRulePullRequestMetadata::DECODERS
-
-  # @return [RepositoryRulePullRequestType] Required enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [RepositoryRulePullRequestParameters] Optional object value serialized in the `parameters` wire field.
-  attr_reader :parameters
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRulePullRequestMetadata
+    FIELDS = {
+      type: 'type',
+      parameters: 'parameters'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::RepositoryRulePullRequestType.from_value(value)
+      end,
+      parameters: lambda do |value|
+        ::OctridevGithub::RepositoryRulePullRequestParameters.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RepositoryRulePullRequest.
+  # Require all commits be made to a non-target branch and submitted via a pull request before they can be merged.
+  class RepositoryRulePullRequest
+    include RepositoryRule
+    include OrgRules
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRulePullRequestMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRulePullRequestMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRulePullRequestMetadata::DECODERS
+
+    # @return [RepositoryRulePullRequestType] Required enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [RepositoryRulePullRequestParameters] Optional object value serialized in the `parameters` wire field.
+    attr_reader :parameters
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the RepositoryRulePullRequestParametersAllowedMergeMethodsItem SDK namespace.
-module RepositoryRulePullRequestParametersAllowedMergeMethodsItem
-  MERGE = 'merge'
-  SQUASH = 'squash'
-  REBASE = 'rebase'
-  VALUES = ['merge', 'squash', 'rebase'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the RepositoryRulePullRequestType SDK namespace.
-module RepositoryRulePullRequestType
-  PULL_REQUEST = 'pull_request'
-  VALUES = ['pull_request'].freeze
-  def self.from_value(value)
-    return value if VALUES.include?(value)
-
-    raise SdkValidationError.new('RepositoryRulePullRequestType', 'enum', "Unknown RepositoryRulePullRequestType: #{value}")
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleRequiredDeploymentsParametersMetadata
-  FIELDS = {
-    required_deployment_environments: "required_deployment_environments",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    required_deployment_environments
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for RepositoryRuleRequiredDeploymentsParameters.
-# Optional object value serialized in the `parameters` wire field.
-class RepositoryRuleRequiredDeploymentsParameters
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleRequiredDeploymentsParametersMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleRequiredDeploymentsParametersMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleRequiredDeploymentsParametersMetadata::DECODERS
-
-  # @return [Array_of_String] The environments that must be successfully deployed to before branches can be merged.
-  attr_reader :required_deployment_environments
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the RepositoryRulePullRequestParametersAllowedMergeMethodsItem SDK namespace.
+  module RepositoryRulePullRequestParametersAllowedMergeMethodsItem
+    MERGE = 'merge'
+    SQUASH = 'squash'
+    REBASE = 'rebase'
+    VALUES = %w[merge squash rebase].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the RepositoryRulePullRequestType SDK namespace.
+  module RepositoryRulePullRequestType
+    PULL_REQUEST = 'pull_request'
+    VALUES = ['pull_request'].freeze
+    def self.from_value(value)
+      return value if VALUES.include?(value)
+
+      raise SdkValidationError.new('RepositoryRulePullRequestType', 'enum', "Unknown RepositoryRulePullRequestType: #{value}")
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleRequiredDeploymentsMetadata
-  FIELDS = {
-    type: "type",
-    parameters: "parameters",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleRequiredDeploymentsType.from_value(value)
-    end,
-    parameters: lambda do |value|
-      ::OctridevGithub::RepositoryRuleRequiredDeploymentsParameters.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleRequiredDeployments.
-# Choose which environments must be successfully deployed to before refs can be pushed into a ref that matches this rule.
-class RepositoryRuleRequiredDeployments
-  include RepositoryRule
-  include OrgRules
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleRequiredDeploymentsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleRequiredDeploymentsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleRequiredDeploymentsMetadata::DECODERS
-
-  # @return [RepositoryRuleRequiredDeploymentsType] Required enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [RepositoryRuleRequiredDeploymentsParameters] Optional object value serialized in the `parameters` wire field.
-  attr_reader :parameters
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleRequiredDeploymentsParametersMetadata
+    FIELDS = {
+      required_deployment_environments: 'required_deployment_environments'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      required_deployment_environments
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RepositoryRuleRequiredDeploymentsParameters.
+  # Optional object value serialized in the `parameters` wire field.
+  class RepositoryRuleRequiredDeploymentsParameters
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleRequiredDeploymentsParametersMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleRequiredDeploymentsParametersMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleRequiredDeploymentsParametersMetadata::DECODERS
+
+    # @return [Array_of_String] The environments that must be successfully deployed to before branches can be merged.
+    attr_reader :required_deployment_environments
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the RepositoryRuleRequiredDeploymentsType SDK namespace.
-module RepositoryRuleRequiredDeploymentsType
-  REQUIRED_DEPLOYMENTS = 'required_deployments'
-  VALUES = ['required_deployments'].freeze
-  def self.from_value(value)
-    return value if VALUES.include?(value)
-
-    raise SdkValidationError.new('RepositoryRuleRequiredDeploymentsType', 'enum', "Unknown RepositoryRuleRequiredDeploymentsType: #{value}")
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleRequiredLinearHistoryMetadata
-  FIELDS = {
-    type: "type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleRequiredLinearHistoryType.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleRequiredLinearHistory.
-# Prevent merge commits from being pushed to matching refs.
-class RepositoryRuleRequiredLinearHistory
-  include RepositoryRule
-  include OrgRules
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleRequiredLinearHistoryMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleRequiredLinearHistoryMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleRequiredLinearHistoryMetadata::DECODERS
-
-  # @return [RepositoryRuleRequiredLinearHistoryType] Required enumerated value serialized in the `type` wire field.
-  attr_reader :type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleRequiredDeploymentsMetadata
+    FIELDS = {
+      type: 'type',
+      parameters: 'parameters'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleRequiredDeploymentsType.from_value(value)
+      end,
+      parameters: lambda do |value|
+        ::OctridevGithub::RepositoryRuleRequiredDeploymentsParameters.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RepositoryRuleRequiredDeployments.
+  # Choose which environments must be successfully deployed to before refs can be pushed into a ref that matches this rule.
+  class RepositoryRuleRequiredDeployments
+    include RepositoryRule
+    include OrgRules
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleRequiredDeploymentsMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleRequiredDeploymentsMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleRequiredDeploymentsMetadata::DECODERS
+
+    # @return [RepositoryRuleRequiredDeploymentsType] Required enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [RepositoryRuleRequiredDeploymentsParameters] Optional object value serialized in the `parameters` wire field.
+    attr_reader :parameters
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # Defines the RepositoryRuleRequiredDeploymentsType SDK namespace.
+  module RepositoryRuleRequiredDeploymentsType
+    REQUIRED_DEPLOYMENTS = 'required_deployments'
+    VALUES = ['required_deployments'].freeze
+    def self.from_value(value)
+      return value if VALUES.include?(value)
 
-# Defines the RepositoryRuleRequiredLinearHistoryType SDK namespace.
-module RepositoryRuleRequiredLinearHistoryType
-  REQUIRED_LINEAR_HISTORY = 'required_linear_history'
-  VALUES = ['required_linear_history'].freeze
-  def self.from_value(value)
-    return value if VALUES.include?(value)
-
-    raise SdkValidationError.new('RepositoryRuleRequiredLinearHistoryType', 'enum', "Unknown RepositoryRuleRequiredLinearHistoryType: #{value}")
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleRequiredSignaturesMetadata
-  FIELDS = {
-    type: "type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleRequiredSignaturesType.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleRequiredSignatures.
-# Commits pushed to matching refs must have verified signatures.
-class RepositoryRuleRequiredSignatures
-  include RepositoryRule
-  include OrgRules
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleRequiredSignaturesMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleRequiredSignaturesMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleRequiredSignaturesMetadata::DECODERS
-
-  # @return [RepositoryRuleRequiredSignaturesType] Required enumerated value serialized in the `type` wire field.
-  attr_reader :type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+      raise SdkValidationError.new('RepositoryRuleRequiredDeploymentsType', 'enum', "Unknown RepositoryRuleRequiredDeploymentsType: #{value}")
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleRequiredLinearHistoryMetadata
+    FIELDS = {
+      type: 'type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleRequiredLinearHistoryType.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for RepositoryRuleRequiredLinearHistory.
+  # Prevent merge commits from being pushed to matching refs.
+  class RepositoryRuleRequiredLinearHistory
+    include RepositoryRule
+    include OrgRules
 
-# Defines the RepositoryRuleRequiredSignaturesType SDK namespace.
-module RepositoryRuleRequiredSignaturesType
-  REQUIRED_SIGNATURES = 'required_signatures'
-  VALUES = ['required_signatures'].freeze
-  def self.from_value(value)
-    return value if VALUES.include?(value)
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleRequiredLinearHistoryMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleRequiredLinearHistoryMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleRequiredLinearHistoryMetadata::DECODERS
 
-    raise SdkValidationError.new('RepositoryRuleRequiredSignaturesType', 'enum', "Unknown RepositoryRuleRequiredSignaturesType: #{value}")
-  end
-end
+    # @return [RepositoryRuleRequiredLinearHistoryType] Required enumerated value serialized in the `type` wire field.
+    attr_reader :type
 
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleRequiredStatusChecksParametersMetadata
-  FIELDS = {
-    do_not_enforce_on_create: "do_not_enforce_on_create",
-    required_status_checks: "required_status_checks",
-    strict_required_status_checks_policy: "strict_required_status_checks_policy",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    required_status_checks
-    strict_required_status_checks_policy
-  ].freeze
-  DECODERS = {
-    required_status_checks: lambda do |value|
-      value&.map { |item| ::OctridevGithub::RepositoryRuleParamsStatusCheckConfiguration.from_hash(item) }
-    end,
-  }.freeze
-end
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-# API model for RepositoryRuleRequiredStatusChecksParameters.
-# Optional object value serialized in the `parameters` wire field.
-class RepositoryRuleRequiredStatusChecksParameters
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleRequiredStatusChecksParametersMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleRequiredStatusChecksParametersMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleRequiredStatusChecksParametersMetadata::DECODERS
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  # @return [Boolean] Allow repositories and branches to be created if a check would otherwise prohibit it.
-  attr_reader :do_not_enforce_on_create
-  # @return [Array_of_RepositoryRuleParamsStatusCheckConfiguration] Status checks that are required.
-  attr_reader :required_status_checks
-  # @return [Boolean] Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled.
-  attr_reader :strict_required_status_checks_policy
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the RepositoryRuleRequiredLinearHistoryType SDK namespace.
+  module RepositoryRuleRequiredLinearHistoryType
+    REQUIRED_LINEAR_HISTORY = 'required_linear_history'
+    VALUES = ['required_linear_history'].freeze
+    def self.from_value(value)
+      return value if VALUES.include?(value)
+
+      raise SdkValidationError.new('RepositoryRuleRequiredLinearHistoryType', 'enum', "Unknown RepositoryRuleRequiredLinearHistoryType: #{value}")
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleRequiredStatusChecksMetadata
-  FIELDS = {
-    type: "type",
-    parameters: "parameters",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleRequiredStatusChecksType.from_value(value)
-    end,
-    parameters: lambda do |value|
-      ::OctridevGithub::RepositoryRuleRequiredStatusChecksParameters.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleRequiredStatusChecks.
-# Choose which status checks must pass before the ref is updated. When enabled, commits must first be pushed to another ref where the checks pass.
-class RepositoryRuleRequiredStatusChecks
-  include RepositoryRule
-  include OrgRules
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleRequiredStatusChecksMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleRequiredStatusChecksMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleRequiredStatusChecksMetadata::DECODERS
-
-  # @return [RepositoryRuleRequiredStatusChecksType] Required enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [RepositoryRuleRequiredStatusChecksParameters] Optional object value serialized in the `parameters` wire field.
-  attr_reader :parameters
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleRequiredSignaturesMetadata
+    FIELDS = {
+      type: 'type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleRequiredSignaturesType.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RepositoryRuleRequiredSignatures.
+  # Commits pushed to matching refs must have verified signatures.
+  class RepositoryRuleRequiredSignatures
+    include RepositoryRule
+    include OrgRules
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleRequiredSignaturesMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleRequiredSignaturesMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleRequiredSignaturesMetadata::DECODERS
+
+    # @return [RepositoryRuleRequiredSignaturesType] Required enumerated value serialized in the `type` wire field.
+    attr_reader :type
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # Defines the RepositoryRuleRequiredSignaturesType SDK namespace.
+  module RepositoryRuleRequiredSignaturesType
+    REQUIRED_SIGNATURES = 'required_signatures'
+    VALUES = ['required_signatures'].freeze
+    def self.from_value(value)
+      return value if VALUES.include?(value)
 
-# Defines the RepositoryRuleRequiredStatusChecksType SDK namespace.
-module RepositoryRuleRequiredStatusChecksType
-  REQUIRED_STATUS_CHECKS = 'required_status_checks'
-  VALUES = ['required_status_checks'].freeze
-  def self.from_value(value)
-    return value if VALUES.include?(value)
-
-    raise SdkValidationError.new('RepositoryRuleRequiredStatusChecksType', 'enum', "Unknown RepositoryRuleRequiredStatusChecksType: #{value}")
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleRulesetInfoMetadata
-  FIELDS = {
-    ruleset_source_type: "ruleset_source_type",
-    ruleset_source: "ruleset_source",
-    ruleset_id: "ruleset_id",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    ruleset_source_type: lambda do |value|
-      ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleRulesetInfo.
-# User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
-class RepositoryRuleRulesetInfo
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleRulesetInfoMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleRulesetInfoMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleRulesetInfoMetadata::DECODERS
-
-  # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
-  attr_reader :ruleset_source_type
-  # @return [String] The name of the source of the ruleset that includes this rule.
-  attr_reader :ruleset_source
-  # @return [Integer] The ID of the ruleset that includes this rule.
-  attr_reader :ruleset_id
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+      raise SdkValidationError.new('RepositoryRuleRequiredSignaturesType', 'enum', "Unknown RepositoryRuleRequiredSignaturesType: #{value}")
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleRequiredStatusChecksParametersMetadata
+    FIELDS = {
+      do_not_enforce_on_create: 'do_not_enforce_on_create',
+      required_status_checks: 'required_status_checks',
+      strict_required_status_checks_policy: 'strict_required_status_checks_policy'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      required_status_checks
+      strict_required_status_checks_policy
+    ].freeze
+    DECODERS = {
+      required_status_checks: lambda do |value|
+        value&.map { |item| ::OctridevGithub::RepositoryRuleParamsStatusCheckConfiguration.from_hash(item) }
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for RepositoryRuleRequiredStatusChecksParameters.
+  # Optional object value serialized in the `parameters` wire field.
+  class RepositoryRuleRequiredStatusChecksParameters
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleRequiredStatusChecksParametersMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleRequiredStatusChecksParametersMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleRequiredStatusChecksParametersMetadata::DECODERS
 
-# Defines the RepositoryRuleRulesetInfoRulesetSourceType SDK namespace.
-module RepositoryRuleRulesetInfoRulesetSourceType
-  REPOSITORY = 'Repository'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Repository', 'Organization'].freeze
-  def self.from_value(value)
-    value
+    # @return [Boolean] Allow repositories and branches to be created if a check would otherwise prohibit it.
+    attr_reader :do_not_enforce_on_create
+    # @return [Array_of_RepositoryRuleParamsStatusCheckConfiguration] Status checks that are required.
+    attr_reader :required_status_checks
+    # @return [Boolean] Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled.
+    attr_reader :strict_required_status_checks_policy
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
+
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleRequiredStatusChecksMetadata
+    FIELDS = {
+      type: 'type',
+      parameters: 'parameters'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleRequiredStatusChecksType.from_value(value)
+      end,
+      parameters: lambda do |value|
+        ::OctridevGithub::RepositoryRuleRequiredStatusChecksParameters.from_hash(value)
+      end
+    }.freeze
+  end
+
+  # API model for RepositoryRuleRequiredStatusChecks.
+  # Choose which status checks must pass before the ref is updated. When enabled, commits must first be pushed to another ref where the checks pass.
+  class RepositoryRuleRequiredStatusChecks
+    include RepositoryRule
+    include OrgRules
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleRequiredStatusChecksMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleRequiredStatusChecksMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleRequiredStatusChecksMetadata::DECODERS
+
+    # @return [RepositoryRuleRequiredStatusChecksType] Required enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [RepositoryRuleRequiredStatusChecksParameters] Optional object value serialized in the `parameters` wire field.
+    attr_reader :parameters
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Defines the RepositoryRuleRequiredStatusChecksType SDK namespace.
+  module RepositoryRuleRequiredStatusChecksType
+    REQUIRED_STATUS_CHECKS = 'required_status_checks'
+    VALUES = ['required_status_checks'].freeze
+    def self.from_value(value)
+      return value if VALUES.include?(value)
+
+      raise SdkValidationError.new('RepositoryRuleRequiredStatusChecksType', 'enum', "Unknown RepositoryRuleRequiredStatusChecksType: #{value}")
+    end
+  end
+
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleRulesetInfoMetadata
+    FIELDS = {
+      ruleset_source_type: 'ruleset_source_type',
+      ruleset_source: 'ruleset_source',
+      ruleset_id: 'ruleset_id'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      ruleset_source_type: lambda do |value|
+        ::OctridevGithub::RepositoryRuleRulesetInfoRulesetSourceType.from_value(value)
+      end
+    }.freeze
+  end
+
+  # API model for RepositoryRuleRulesetInfo.
+  # User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
+  class RepositoryRuleRulesetInfo
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleRulesetInfoMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleRulesetInfoMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleRulesetInfoMetadata::DECODERS
+
+    # @return [RepositoryRuleRulesetInfoRulesetSourceType] The type of source for the ruleset that includes this rule.
+    attr_reader :ruleset_source_type
+    # @return [String] The name of the source of the ruleset that includes this rule.
+    attr_reader :ruleset_source
+    # @return [Integer] The ID of the ruleset that includes this rule.
+    attr_reader :ruleset_id
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Defines the RepositoryRuleRulesetInfoRulesetSourceType SDK namespace.
+  module RepositoryRuleRulesetInfoRulesetSourceType
+    REPOSITORY = 'Repository'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Repository Organization].freeze
+    def self.from_value(value)
+      value
+    end
+  end
 end

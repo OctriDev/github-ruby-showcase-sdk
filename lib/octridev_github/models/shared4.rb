@@ -5,642 +5,636 @@
 
 # shared domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalLabelMetadata
-  FIELDS = {
-    id: "id",
-    node_id: "node_id",
-    url: "url",
-    name: "name",
-    description: "description",
-    color: "color",
-    default: "default",
-    archived_at: "archived_at",
-    archived_by: "archived_by",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    node_id
-    url
-    name
-    description
-    color
-    default
-    archived_at
-    archived_by
-  ].freeze
-  DECODERS = {
-    archived_by: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    description
-    archived_at
-    archived_by
-  ].freeze
-end
-
-# API model for Label.
-# Color-coded labels help you categorize and filter your issues (just like labels in Gmail).
-class Label
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalLabelMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalLabelMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalLabelMetadata::DECODERS
-
-  # @return [Integer] Unique identifier for the label.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] URL for the label
-  attr_reader :url
-  # @return [String] The name of the label.
-  attr_reader :name
-  # @return [String] Optional description of the label, such as its purpose.
-  attr_reader :description
-  # @return [String] 6-character hex code, without the leading #, identifying the color
-  attr_reader :color
-  # @return [Boolean] Whether this label comes by default in a new repository.
-  attr_reader :default
-  # @return [String] Timestamp indicating when the label was archived, or `null` if it has not been archived.
-  attr_reader :archived_at
-  # @return [SimpleUser] The user who archived the label, or `null` if it has not been archived.
-  attr_reader :archived_by
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalLabelMetadata
+    FIELDS = {
+      id: 'id',
+      node_id: 'node_id',
+      url: 'url',
+      name: 'name',
+      description: 'description',
+      color: 'color',
+      default: 'default',
+      archived_at: 'archived_at',
+      archived_by: 'archived_by'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      node_id
+      url
+      name
+      description
+      color
+      default
+      archived_at
+      archived_by
+    ].freeze
+    DECODERS = {
+      archived_by: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      description
+      archived_at
+      archived_by
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalLabelMetadata::NULLABLE_FIELDS)
+  # API model for Label.
+  # Color-coded labels help you categorize and filter your issues (just like labels in Gmail).
+  class Label
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalLabelMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalLabelMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalLabelMetadata::DECODERS
+
+    # @return [Integer] Unique identifier for the label.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] URL for the label
+    attr_reader :url
+    # @return [String] The name of the label.
+    attr_reader :name
+    # @return [String] Optional description of the label, such as its purpose.
+    attr_reader :description
+    # @return [String] 6-character hex code, without the leading #, identifying the color
+    attr_reader :color
+    # @return [Boolean] Whether this label comes by default in a new repository.
+    attr_reader :default
+    # @return [String] Timestamp indicating when the label was archived, or `null` if it has not been archived.
+    attr_reader :archived_at
+    # @return [SimpleUser] The user who archived the label, or `null` if it has not been archived.
+    attr_reader :archived_by
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalLabelMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalLinkMetadata
-  FIELDS = {
-    href: "href",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    href
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for Link.
-# Hypermedia Link
-class Link
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalLinkMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalLinkMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalLinkMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `href` wire field.
-  attr_reader :href
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalLinkMetadata
+    FIELDS = {
+      href: 'href'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      href
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for Link.
+  # Hypermedia Link
+  class Link
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalLinkMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalLinkMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalLinkMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `href` wire field.
+    attr_reader :href
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalMinimalRepositoryPermissionsMetadata
-  FIELDS = {
-    admin: "admin",
-    maintain: "maintain",
-    push: "push",
-    triage: "triage",
-    pull: "pull",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for MinimalRepositoryPermissions.
-# Optional object value serialized in the `permissions` wire field.
-class MinimalRepositoryPermissions
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalMinimalRepositoryPermissionsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalMinimalRepositoryPermissionsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalMinimalRepositoryPermissionsMetadata::DECODERS
-
-  # @return [Boolean] Optional `boolean` value serialized in the `admin` wire field.
-  attr_reader :admin
-  # @return [Boolean] Optional `boolean` value serialized in the `maintain` wire field.
-  attr_reader :maintain
-  # @return [Boolean] Optional `boolean` value serialized in the `push` wire field.
-  attr_reader :push
-  # @return [Boolean] Optional `boolean` value serialized in the `triage` wire field.
-  attr_reader :triage
-  # @return [Boolean] Optional `boolean` value serialized in the `pull` wire field.
-  attr_reader :pull
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalMinimalRepositoryPermissionsMetadata
+    FIELDS = {
+      admin: 'admin',
+      maintain: 'maintain',
+      push: 'push',
+      triage: 'triage',
+      pull: 'pull'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for MinimalRepositoryPermissions.
+  # Optional object value serialized in the `permissions` wire field.
+  class MinimalRepositoryPermissions
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalMinimalRepositoryPermissionsMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalMinimalRepositoryPermissionsMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalMinimalRepositoryPermissionsMetadata::DECODERS
+
+    # @return [Boolean] Optional `boolean` value serialized in the `admin` wire field.
+    attr_reader :admin
+    # @return [Boolean] Optional `boolean` value serialized in the `maintain` wire field.
+    attr_reader :maintain
+    # @return [Boolean] Optional `boolean` value serialized in the `push` wire field.
+    attr_reader :push
+    # @return [Boolean] Optional `boolean` value serialized in the `triage` wire field.
+    attr_reader :triage
+    # @return [Boolean] Optional `boolean` value serialized in the `pull` wire field.
+    attr_reader :pull
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalMinimalRepositoryLicenseMetadata
-  FIELDS = {
-    key: "key",
-    name: "name",
-    spdx_id: "spdx_id",
-    url: "url",
-    node_id: "node_id",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for MinimalRepositoryLicense.
-# Optional object value serialized in the `license` wire field.
-class MinimalRepositoryLicense
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalMinimalRepositoryLicenseMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalMinimalRepositoryLicenseMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalMinimalRepositoryLicenseMetadata::DECODERS
-
-  # @return [String] Optional `string` value serialized in the `key` wire field.
-  attr_reader :key
-  # @return [String] Optional `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Optional `string` value serialized in the `spdx_id` wire field.
-  attr_reader :spdx_id
-  # @return [String] Optional `string` value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalMinimalRepositoryLicenseMetadata
+    FIELDS = {
+      key: 'key',
+      name: 'name',
+      spdx_id: 'spdx_id',
+      url: 'url',
+      node_id: 'node_id'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for MinimalRepositoryLicense.
+  # Optional object value serialized in the `license` wire field.
+  class MinimalRepositoryLicense
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalMinimalRepositoryLicenseMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalMinimalRepositoryLicenseMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalMinimalRepositoryLicenseMetadata::DECODERS
+
+    # @return [String] Optional `string` value serialized in the `key` wire field.
+    attr_reader :key
+    # @return [String] Optional `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Optional `string` value serialized in the `spdx_id` wire field.
+    attr_reader :spdx_id
+    # @return [String] Optional `string` value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Optional `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalMinimalRepositoryMetadata
-  FIELDS = {
-    id: "id",
-    node_id: "node_id",
-    name: "name",
-    full_name: "full_name",
-    owner: "owner",
-    private: "private",
-    html_url: "html_url",
-    description: "description",
-    fork: "fork",
-    url: "url",
-    archive_url: "archive_url",
-    assignees_url: "assignees_url",
-    blobs_url: "blobs_url",
-    branches_url: "branches_url",
-    collaborators_url: "collaborators_url",
-    comments_url: "comments_url",
-    commits_url: "commits_url",
-    compare_url: "compare_url",
-    contents_url: "contents_url",
-    contributors_url: "contributors_url",
-    deployments_url: "deployments_url",
-    downloads_url: "downloads_url",
-    events_url: "events_url",
-    forks_url: "forks_url",
-    git_commits_url: "git_commits_url",
-    git_refs_url: "git_refs_url",
-    git_tags_url: "git_tags_url",
-    git_url: "git_url",
-    issue_comment_url: "issue_comment_url",
-    issue_events_url: "issue_events_url",
-    issues_url: "issues_url",
-    keys_url: "keys_url",
-    labels_url: "labels_url",
-    languages_url: "languages_url",
-    merges_url: "merges_url",
-    milestones_url: "milestones_url",
-    notifications_url: "notifications_url",
-    pulls_url: "pulls_url",
-    releases_url: "releases_url",
-    ssh_url: "ssh_url",
-    stargazers_url: "stargazers_url",
-    statuses_url: "statuses_url",
-    subscribers_url: "subscribers_url",
-    subscription_url: "subscription_url",
-    tags_url: "tags_url",
-    teams_url: "teams_url",
-    trees_url: "trees_url",
-    clone_url: "clone_url",
-    mirror_url: "mirror_url",
-    hooks_url: "hooks_url",
-    svn_url: "svn_url",
-    homepage: "homepage",
-    language: "language",
-    forks_count: "forks_count",
-    stargazers_count: "stargazers_count",
-    watchers_count: "watchers_count",
-    size: "size",
-    default_branch: "default_branch",
-    open_issues_count: "open_issues_count",
-    is_template: "is_template",
-    topics: "topics",
-    has_issues: "has_issues",
-    has_projects: "has_projects",
-    has_wiki: "has_wiki",
-    has_pages: "has_pages",
-    has_downloads: "has_downloads",
-    has_discussions: "has_discussions",
-    has_pull_requests: "has_pull_requests",
-    pull_request_creation_policy: "pull_request_creation_policy",
-    archived: "archived",
-    disabled: "disabled",
-    visibility: "visibility",
-    pushed_at: "pushed_at",
-    created_at: "created_at",
-    updated_at: "updated_at",
-    permissions: "permissions",
-    role_name: "role_name",
-    temp_clone_token: "temp_clone_token",
-    delete_branch_on_merge: "delete_branch_on_merge",
-    subscribers_count: "subscribers_count",
-    network_count: "network_count",
-    code_of_conduct: "code_of_conduct",
-    license: "license",
-    forks: "forks",
-    open_issues: "open_issues",
-    watchers: "watchers",
-    allow_forking: "allow_forking",
-    web_commit_signoff_required: "web_commit_signoff_required",
-    security_and_analysis: "security_and_analysis",
-    custom_properties: "custom_properties",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    node_id
-    name
-    full_name
-    owner
-    private
-    html_url
-    description
-    fork
-    url
-    archive_url
-    assignees_url
-    blobs_url
-    branches_url
-    collaborators_url
-    comments_url
-    commits_url
-    compare_url
-    contents_url
-    contributors_url
-    deployments_url
-    downloads_url
-    events_url
-    forks_url
-    git_commits_url
-    git_refs_url
-    git_tags_url
-    issue_comment_url
-    issue_events_url
-    issues_url
-    keys_url
-    labels_url
-    languages_url
-    merges_url
-    milestones_url
-    notifications_url
-    pulls_url
-    releases_url
-    stargazers_url
-    statuses_url
-    subscribers_url
-    subscription_url
-    tags_url
-    teams_url
-    trees_url
-    hooks_url
-  ].freeze
-  DECODERS = {
-    owner: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-    pull_request_creation_policy: lambda do |value|
-      ::OctridevGithub::MinimalRepositoryPullRequestCreationPolicy.from_value(value)
-    end,
-    permissions: lambda do |value|
-      ::OctridevGithub::MinimalRepositoryPermissions.from_hash(value)
-    end,
-    code_of_conduct: lambda do |value|
-      ::OctridevGithub::CodeOfConduct.from_hash(value)
-    end,
-    license: lambda do |value|
-      ::OctridevGithub::MinimalRepositoryLicense.from_hash(value)
-    end,
-    security_and_analysis: lambda do |value|
-      ::OctridevGithub::SecurityAndAnalysis.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    description
-  ].freeze
-end
-
-# API model for MinimalRepository.
-# Minimal Repository
-class MinimalRepository
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalMinimalRepositoryMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalMinimalRepositoryMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalMinimalRepositoryMetadata::DECODERS
-
-  # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Required `string` value serialized in the `full_name` wire field.
-  attr_reader :full_name
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :owner
-  # @return [Boolean] Required `boolean` value serialized in the `private` wire field.
-  attr_reader :private
-  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [String] Required `string` value serialized in the `description` wire field.
-  attr_reader :description
-  # @return [Boolean] Required `boolean` value serialized in the `fork` wire field.
-  attr_reader :fork
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Required `string` value serialized in the `archive_url` wire field.
-  attr_reader :archive_url
-  # @return [String] Required `string` value serialized in the `assignees_url` wire field.
-  attr_reader :assignees_url
-  # @return [String] Required `string` value serialized in the `blobs_url` wire field.
-  attr_reader :blobs_url
-  # @return [String] Required `string` value serialized in the `branches_url` wire field.
-  attr_reader :branches_url
-  # @return [String] Required `string` value serialized in the `collaborators_url` wire field.
-  attr_reader :collaborators_url
-  # @return [String] Required `string` value serialized in the `comments_url` wire field.
-  attr_reader :comments_url
-  # @return [String] Required `string` value serialized in the `commits_url` wire field.
-  attr_reader :commits_url
-  # @return [String] Required `string` value serialized in the `compare_url` wire field.
-  attr_reader :compare_url
-  # @return [String] Required `string` value serialized in the `contents_url` wire field.
-  attr_reader :contents_url
-  # @return [String] Required `uri`-formatted value serialized in the `contributors_url` wire field.
-  attr_reader :contributors_url
-  # @return [String] Required `uri`-formatted value serialized in the `deployments_url` wire field.
-  attr_reader :deployments_url
-  # @return [String] Required `uri`-formatted value serialized in the `downloads_url` wire field.
-  attr_reader :downloads_url
-  # @return [String] Required `uri`-formatted value serialized in the `events_url` wire field.
-  attr_reader :events_url
-  # @return [String] Required `uri`-formatted value serialized in the `forks_url` wire field.
-  attr_reader :forks_url
-  # @return [String] Required `string` value serialized in the `git_commits_url` wire field.
-  attr_reader :git_commits_url
-  # @return [String] Required `string` value serialized in the `git_refs_url` wire field.
-  attr_reader :git_refs_url
-  # @return [String] Required `string` value serialized in the `git_tags_url` wire field.
-  attr_reader :git_tags_url
-  # @return [String] Optional `string` value serialized in the `git_url` wire field.
-  attr_reader :git_url
-  # @return [String] Required `string` value serialized in the `issue_comment_url` wire field.
-  attr_reader :issue_comment_url
-  # @return [String] Required `string` value serialized in the `issue_events_url` wire field.
-  attr_reader :issue_events_url
-  # @return [String] Required `string` value serialized in the `issues_url` wire field.
-  attr_reader :issues_url
-  # @return [String] Required `string` value serialized in the `keys_url` wire field.
-  attr_reader :keys_url
-  # @return [String] Required `string` value serialized in the `labels_url` wire field.
-  attr_reader :labels_url
-  # @return [String] Required `uri`-formatted value serialized in the `languages_url` wire field.
-  attr_reader :languages_url
-  # @return [String] Required `uri`-formatted value serialized in the `merges_url` wire field.
-  attr_reader :merges_url
-  # @return [String] Required `string` value serialized in the `milestones_url` wire field.
-  attr_reader :milestones_url
-  # @return [String] Required `string` value serialized in the `notifications_url` wire field.
-  attr_reader :notifications_url
-  # @return [String] Required `string` value serialized in the `pulls_url` wire field.
-  attr_reader :pulls_url
-  # @return [String] Required `string` value serialized in the `releases_url` wire field.
-  attr_reader :releases_url
-  # @return [String] Optional `string` value serialized in the `ssh_url` wire field.
-  attr_reader :ssh_url
-  # @return [String] Required `uri`-formatted value serialized in the `stargazers_url` wire field.
-  attr_reader :stargazers_url
-  # @return [String] Required `string` value serialized in the `statuses_url` wire field.
-  attr_reader :statuses_url
-  # @return [String] Required `uri`-formatted value serialized in the `subscribers_url` wire field.
-  attr_reader :subscribers_url
-  # @return [String] Required `uri`-formatted value serialized in the `subscription_url` wire field.
-  attr_reader :subscription_url
-  # @return [String] Required `uri`-formatted value serialized in the `tags_url` wire field.
-  attr_reader :tags_url
-  # @return [String] Required `uri`-formatted value serialized in the `teams_url` wire field.
-  attr_reader :teams_url
-  # @return [String] Required `string` value serialized in the `trees_url` wire field.
-  attr_reader :trees_url
-  # @return [String] Optional `string` value serialized in the `clone_url` wire field.
-  attr_reader :clone_url
-  # @return [String] Optional `string` value serialized in the `mirror_url` wire field.
-  attr_reader :mirror_url
-  # @return [String] Required `uri`-formatted value serialized in the `hooks_url` wire field.
-  attr_reader :hooks_url
-  # @return [String] Optional `string` value serialized in the `svn_url` wire field.
-  attr_reader :svn_url
-  # @return [String] Optional `string` value serialized in the `homepage` wire field.
-  attr_reader :homepage
-  # @return [String] Optional `string` value serialized in the `language` wire field.
-  attr_reader :language
-  # @return [Integer] Optional `integer` value serialized in the `forks_count` wire field.
-  attr_reader :forks_count
-  # @return [Integer] Optional `integer` value serialized in the `stargazers_count` wire field.
-  attr_reader :stargazers_count
-  # @return [Integer] Optional `integer` value serialized in the `watchers_count` wire field.
-  attr_reader :watchers_count
-  # @return [Integer] The size of the repository, in kilobytes. Size is calculated hourly. When a repository is initially created, the size is 0.
-  attr_reader :size
-  # @return [String] Optional `string` value serialized in the `default_branch` wire field.
-  attr_reader :default_branch
-  # @return [Integer] Optional `integer` value serialized in the `open_issues_count` wire field.
-  attr_reader :open_issues_count
-  # @return [Boolean] Optional `boolean` value serialized in the `is_template` wire field.
-  attr_reader :is_template
-  # @return [Array_of_String] Optional array value serialized in the `topics` wire field.
-  attr_reader :topics
-  # @return [Boolean] Optional `boolean` value serialized in the `has_issues` wire field.
-  attr_reader :has_issues
-  # @return [Boolean] Optional `boolean` value serialized in the `has_projects` wire field.
-  attr_reader :has_projects
-  # @return [Boolean] Optional `boolean` value serialized in the `has_wiki` wire field.
-  attr_reader :has_wiki
-  # @return [Boolean] Optional `boolean` value serialized in the `has_pages` wire field.
-  attr_reader :has_pages
-  # @return [Boolean] Optional `boolean` value serialized in the `has_downloads` wire field.
-  attr_reader :has_downloads
-  # @return [Boolean] Optional `boolean` value serialized in the `has_discussions` wire field.
-  attr_reader :has_discussions
-  # @return [Boolean] Optional `boolean` value serialized in the `has_pull_requests` wire field.
-  attr_reader :has_pull_requests
-  # @return [MinimalRepositoryPullRequestCreationPolicy] The policy controlling who can create pull requests: all or collaborators_only.
-  attr_reader :pull_request_creation_policy
-  # @return [Boolean] Optional `boolean` value serialized in the `archived` wire field.
-  attr_reader :archived
-  # @return [Boolean] Optional `boolean` value serialized in the `disabled` wire field.
-  attr_reader :disabled
-  # @return [String] Optional `string` value serialized in the `visibility` wire field.
-  attr_reader :visibility
-  # @return [String] Optional `date-time`-formatted value serialized in the `pushed_at` wire field.
-  attr_reader :pushed_at
-  # @return [String] Optional `date-time`-formatted value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Optional `date-time`-formatted value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-  # @return [MinimalRepositoryPermissions] Optional object value serialized in the `permissions` wire field.
-  attr_reader :permissions
-  # @return [String] Optional `string` value serialized in the `role_name` wire field.
-  attr_reader :role_name
-  # @return [String] Optional `string` value serialized in the `temp_clone_token` wire field.
-  attr_reader :temp_clone_token
-  # @return [Boolean] Optional `boolean` value serialized in the `delete_branch_on_merge` wire field.
-  attr_reader :delete_branch_on_merge
-  # @return [Integer] Optional `integer` value serialized in the `subscribers_count` wire field.
-  attr_reader :subscribers_count
-  # @return [Integer] Optional `integer` value serialized in the `network_count` wire field.
-  attr_reader :network_count
-  # @return [CodeOfConduct] Code Of Conduct
-  attr_reader :code_of_conduct
-  # @return [MinimalRepositoryLicense] Optional object value serialized in the `license` wire field.
-  attr_reader :license
-  # @return [Integer] Optional `integer` value serialized in the `forks` wire field.
-  attr_reader :forks
-  # @return [Integer] Optional `integer` value serialized in the `open_issues` wire field.
-  attr_reader :open_issues
-  # @return [Integer] Optional `integer` value serialized in the `watchers` wire field.
-  attr_reader :watchers
-  # @return [Boolean] Optional `boolean` value serialized in the `allow_forking` wire field.
-  attr_reader :allow_forking
-  # @return [Boolean] Optional `boolean` value serialized in the `web_commit_signoff_required` wire field.
-  attr_reader :web_commit_signoff_required
-  # @return [SecurityAndAnalysis] Optional object value serialized in the `security_and_analysis` wire field.
-  attr_reader :security_and_analysis
-  # @return [Hash] The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values.
-  attr_reader :custom_properties
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalMinimalRepositoryMetadata
+    FIELDS = {
+      id: 'id',
+      node_id: 'node_id',
+      name: 'name',
+      full_name: 'full_name',
+      owner: 'owner',
+      private: 'private',
+      html_url: 'html_url',
+      description: 'description',
+      fork: 'fork',
+      url: 'url',
+      archive_url: 'archive_url',
+      assignees_url: 'assignees_url',
+      blobs_url: 'blobs_url',
+      branches_url: 'branches_url',
+      collaborators_url: 'collaborators_url',
+      comments_url: 'comments_url',
+      commits_url: 'commits_url',
+      compare_url: 'compare_url',
+      contents_url: 'contents_url',
+      contributors_url: 'contributors_url',
+      deployments_url: 'deployments_url',
+      downloads_url: 'downloads_url',
+      events_url: 'events_url',
+      forks_url: 'forks_url',
+      git_commits_url: 'git_commits_url',
+      git_refs_url: 'git_refs_url',
+      git_tags_url: 'git_tags_url',
+      git_url: 'git_url',
+      issue_comment_url: 'issue_comment_url',
+      issue_events_url: 'issue_events_url',
+      issues_url: 'issues_url',
+      keys_url: 'keys_url',
+      labels_url: 'labels_url',
+      languages_url: 'languages_url',
+      merges_url: 'merges_url',
+      milestones_url: 'milestones_url',
+      notifications_url: 'notifications_url',
+      pulls_url: 'pulls_url',
+      releases_url: 'releases_url',
+      ssh_url: 'ssh_url',
+      stargazers_url: 'stargazers_url',
+      statuses_url: 'statuses_url',
+      subscribers_url: 'subscribers_url',
+      subscription_url: 'subscription_url',
+      tags_url: 'tags_url',
+      teams_url: 'teams_url',
+      trees_url: 'trees_url',
+      clone_url: 'clone_url',
+      mirror_url: 'mirror_url',
+      hooks_url: 'hooks_url',
+      svn_url: 'svn_url',
+      homepage: 'homepage',
+      language: 'language',
+      forks_count: 'forks_count',
+      stargazers_count: 'stargazers_count',
+      watchers_count: 'watchers_count',
+      size: 'size',
+      default_branch: 'default_branch',
+      open_issues_count: 'open_issues_count',
+      is_template: 'is_template',
+      topics: 'topics',
+      has_issues: 'has_issues',
+      has_projects: 'has_projects',
+      has_wiki: 'has_wiki',
+      has_pages: 'has_pages',
+      has_downloads: 'has_downloads',
+      has_discussions: 'has_discussions',
+      has_pull_requests: 'has_pull_requests',
+      pull_request_creation_policy: 'pull_request_creation_policy',
+      archived: 'archived',
+      disabled: 'disabled',
+      visibility: 'visibility',
+      pushed_at: 'pushed_at',
+      created_at: 'created_at',
+      updated_at: 'updated_at',
+      permissions: 'permissions',
+      role_name: 'role_name',
+      temp_clone_token: 'temp_clone_token',
+      delete_branch_on_merge: 'delete_branch_on_merge',
+      subscribers_count: 'subscribers_count',
+      network_count: 'network_count',
+      code_of_conduct: 'code_of_conduct',
+      license: 'license',
+      forks: 'forks',
+      open_issues: 'open_issues',
+      watchers: 'watchers',
+      allow_forking: 'allow_forking',
+      web_commit_signoff_required: 'web_commit_signoff_required',
+      security_and_analysis: 'security_and_analysis',
+      custom_properties: 'custom_properties'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      node_id
+      name
+      full_name
+      owner
+      private
+      html_url
+      description
+      fork
+      url
+      archive_url
+      assignees_url
+      blobs_url
+      branches_url
+      collaborators_url
+      comments_url
+      commits_url
+      compare_url
+      contents_url
+      contributors_url
+      deployments_url
+      downloads_url
+      events_url
+      forks_url
+      git_commits_url
+      git_refs_url
+      git_tags_url
+      issue_comment_url
+      issue_events_url
+      issues_url
+      keys_url
+      labels_url
+      languages_url
+      merges_url
+      milestones_url
+      notifications_url
+      pulls_url
+      releases_url
+      stargazers_url
+      statuses_url
+      subscribers_url
+      subscription_url
+      tags_url
+      teams_url
+      trees_url
+      hooks_url
+    ].freeze
+    DECODERS = {
+      owner: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end,
+      pull_request_creation_policy: lambda do |value|
+        ::OctridevGithub::MinimalRepositoryPullRequestCreationPolicy.from_value(value)
+      end,
+      permissions: lambda do |value|
+        ::OctridevGithub::MinimalRepositoryPermissions.from_hash(value)
+      end,
+      code_of_conduct: lambda do |value|
+        ::OctridevGithub::CodeOfConduct.from_hash(value)
+      end,
+      license: lambda do |value|
+        ::OctridevGithub::MinimalRepositoryLicense.from_hash(value)
+      end,
+      security_and_analysis: lambda do |value|
+        ::OctridevGithub::SecurityAndAnalysis.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      description
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalMinimalRepositoryMetadata::NULLABLE_FIELDS)
+  # API model for MinimalRepository.
+  # Minimal Repository
+  class MinimalRepository
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalMinimalRepositoryMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalMinimalRepositoryMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalMinimalRepositoryMetadata::DECODERS
+
+    # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Required `string` value serialized in the `full_name` wire field.
+    attr_reader :full_name
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :owner
+    # @return [Boolean] Required `boolean` value serialized in the `private` wire field.
+    attr_reader :private
+    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [String] Required `string` value serialized in the `description` wire field.
+    attr_reader :description
+    # @return [Boolean] Required `boolean` value serialized in the `fork` wire field.
+    attr_reader :fork
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Required `string` value serialized in the `archive_url` wire field.
+    attr_reader :archive_url
+    # @return [String] Required `string` value serialized in the `assignees_url` wire field.
+    attr_reader :assignees_url
+    # @return [String] Required `string` value serialized in the `blobs_url` wire field.
+    attr_reader :blobs_url
+    # @return [String] Required `string` value serialized in the `branches_url` wire field.
+    attr_reader :branches_url
+    # @return [String] Required `string` value serialized in the `collaborators_url` wire field.
+    attr_reader :collaborators_url
+    # @return [String] Required `string` value serialized in the `comments_url` wire field.
+    attr_reader :comments_url
+    # @return [String] Required `string` value serialized in the `commits_url` wire field.
+    attr_reader :commits_url
+    # @return [String] Required `string` value serialized in the `compare_url` wire field.
+    attr_reader :compare_url
+    # @return [String] Required `string` value serialized in the `contents_url` wire field.
+    attr_reader :contents_url
+    # @return [String] Required `uri`-formatted value serialized in the `contributors_url` wire field.
+    attr_reader :contributors_url
+    # @return [String] Required `uri`-formatted value serialized in the `deployments_url` wire field.
+    attr_reader :deployments_url
+    # @return [String] Required `uri`-formatted value serialized in the `downloads_url` wire field.
+    attr_reader :downloads_url
+    # @return [String] Required `uri`-formatted value serialized in the `events_url` wire field.
+    attr_reader :events_url
+    # @return [String] Required `uri`-formatted value serialized in the `forks_url` wire field.
+    attr_reader :forks_url
+    # @return [String] Required `string` value serialized in the `git_commits_url` wire field.
+    attr_reader :git_commits_url
+    # @return [String] Required `string` value serialized in the `git_refs_url` wire field.
+    attr_reader :git_refs_url
+    # @return [String] Required `string` value serialized in the `git_tags_url` wire field.
+    attr_reader :git_tags_url
+    # @return [String] Optional `string` value serialized in the `git_url` wire field.
+    attr_reader :git_url
+    # @return [String] Required `string` value serialized in the `issue_comment_url` wire field.
+    attr_reader :issue_comment_url
+    # @return [String] Required `string` value serialized in the `issue_events_url` wire field.
+    attr_reader :issue_events_url
+    # @return [String] Required `string` value serialized in the `issues_url` wire field.
+    attr_reader :issues_url
+    # @return [String] Required `string` value serialized in the `keys_url` wire field.
+    attr_reader :keys_url
+    # @return [String] Required `string` value serialized in the `labels_url` wire field.
+    attr_reader :labels_url
+    # @return [String] Required `uri`-formatted value serialized in the `languages_url` wire field.
+    attr_reader :languages_url
+    # @return [String] Required `uri`-formatted value serialized in the `merges_url` wire field.
+    attr_reader :merges_url
+    # @return [String] Required `string` value serialized in the `milestones_url` wire field.
+    attr_reader :milestones_url
+    # @return [String] Required `string` value serialized in the `notifications_url` wire field.
+    attr_reader :notifications_url
+    # @return [String] Required `string` value serialized in the `pulls_url` wire field.
+    attr_reader :pulls_url
+    # @return [String] Required `string` value serialized in the `releases_url` wire field.
+    attr_reader :releases_url
+    # @return [String] Optional `string` value serialized in the `ssh_url` wire field.
+    attr_reader :ssh_url
+    # @return [String] Required `uri`-formatted value serialized in the `stargazers_url` wire field.
+    attr_reader :stargazers_url
+    # @return [String] Required `string` value serialized in the `statuses_url` wire field.
+    attr_reader :statuses_url
+    # @return [String] Required `uri`-formatted value serialized in the `subscribers_url` wire field.
+    attr_reader :subscribers_url
+    # @return [String] Required `uri`-formatted value serialized in the `subscription_url` wire field.
+    attr_reader :subscription_url
+    # @return [String] Required `uri`-formatted value serialized in the `tags_url` wire field.
+    attr_reader :tags_url
+    # @return [String] Required `uri`-formatted value serialized in the `teams_url` wire field.
+    attr_reader :teams_url
+    # @return [String] Required `string` value serialized in the `trees_url` wire field.
+    attr_reader :trees_url
+    # @return [String] Optional `string` value serialized in the `clone_url` wire field.
+    attr_reader :clone_url
+    # @return [String] Optional `string` value serialized in the `mirror_url` wire field.
+    attr_reader :mirror_url
+    # @return [String] Required `uri`-formatted value serialized in the `hooks_url` wire field.
+    attr_reader :hooks_url
+    # @return [String] Optional `string` value serialized in the `svn_url` wire field.
+    attr_reader :svn_url
+    # @return [String] Optional `string` value serialized in the `homepage` wire field.
+    attr_reader :homepage
+    # @return [String] Optional `string` value serialized in the `language` wire field.
+    attr_reader :language
+    # @return [Integer] Optional `integer` value serialized in the `forks_count` wire field.
+    attr_reader :forks_count
+    # @return [Integer] Optional `integer` value serialized in the `stargazers_count` wire field.
+    attr_reader :stargazers_count
+    # @return [Integer] Optional `integer` value serialized in the `watchers_count` wire field.
+    attr_reader :watchers_count
+    # @return [Integer] The size of the repository, in kilobytes. Size is calculated hourly. When a repository is initially created, the size is 0.
+    attr_reader :size
+    # @return [String] Optional `string` value serialized in the `default_branch` wire field.
+    attr_reader :default_branch
+    # @return [Integer] Optional `integer` value serialized in the `open_issues_count` wire field.
+    attr_reader :open_issues_count
+    # @return [Boolean] Optional `boolean` value serialized in the `is_template` wire field.
+    attr_reader :is_template
+    # @return [Array_of_String] Optional array value serialized in the `topics` wire field.
+    attr_reader :topics
+    # @return [Boolean] Optional `boolean` value serialized in the `has_issues` wire field.
+    attr_reader :has_issues
+    # @return [Boolean] Optional `boolean` value serialized in the `has_projects` wire field.
+    attr_reader :has_projects
+    # @return [Boolean] Optional `boolean` value serialized in the `has_wiki` wire field.
+    attr_reader :has_wiki
+    # @return [Boolean] Optional `boolean` value serialized in the `has_pages` wire field.
+    attr_reader :has_pages
+    # @return [Boolean] Optional `boolean` value serialized in the `has_downloads` wire field.
+    attr_reader :has_downloads
+    # @return [Boolean] Optional `boolean` value serialized in the `has_discussions` wire field.
+    attr_reader :has_discussions
+    # @return [Boolean] Optional `boolean` value serialized in the `has_pull_requests` wire field.
+    attr_reader :has_pull_requests
+    # @return [MinimalRepositoryPullRequestCreationPolicy] The policy controlling who can create pull requests: all or collaborators_only.
+    attr_reader :pull_request_creation_policy
+    # @return [Boolean] Optional `boolean` value serialized in the `archived` wire field.
+    attr_reader :archived
+    # @return [Boolean] Optional `boolean` value serialized in the `disabled` wire field.
+    attr_reader :disabled
+    # @return [String] Optional `string` value serialized in the `visibility` wire field.
+    attr_reader :visibility
+    # @return [String] Optional `date-time`-formatted value serialized in the `pushed_at` wire field.
+    attr_reader :pushed_at
+    # @return [String] Optional `date-time`-formatted value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Optional `date-time`-formatted value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+    # @return [MinimalRepositoryPermissions] Optional object value serialized in the `permissions` wire field.
+    attr_reader :permissions
+    # @return [String] Optional `string` value serialized in the `role_name` wire field.
+    attr_reader :role_name
+    # @return [String] Optional `string` value serialized in the `temp_clone_token` wire field.
+    attr_reader :temp_clone_token
+    # @return [Boolean] Optional `boolean` value serialized in the `delete_branch_on_merge` wire field.
+    attr_reader :delete_branch_on_merge
+    # @return [Integer] Optional `integer` value serialized in the `subscribers_count` wire field.
+    attr_reader :subscribers_count
+    # @return [Integer] Optional `integer` value serialized in the `network_count` wire field.
+    attr_reader :network_count
+    # @return [CodeOfConduct] Code Of Conduct
+    attr_reader :code_of_conduct
+    # @return [MinimalRepositoryLicense] Optional object value serialized in the `license` wire field.
+    attr_reader :license
+    # @return [Integer] Optional `integer` value serialized in the `forks` wire field.
+    attr_reader :forks
+    # @return [Integer] Optional `integer` value serialized in the `open_issues` wire field.
+    attr_reader :open_issues
+    # @return [Integer] Optional `integer` value serialized in the `watchers` wire field.
+    attr_reader :watchers
+    # @return [Boolean] Optional `boolean` value serialized in the `allow_forking` wire field.
+    attr_reader :allow_forking
+    # @return [Boolean] Optional `boolean` value serialized in the `web_commit_signoff_required` wire field.
+    attr_reader :web_commit_signoff_required
+    # @return [SecurityAndAnalysis] Optional object value serialized in the `security_and_analysis` wire field.
+    attr_reader :security_and_analysis
+    # @return [Hash] The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values.
+    attr_reader :custom_properties
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalMinimalRepositoryMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the MinimalRepositoryPullRequestCreationPolicy SDK namespace.
-module MinimalRepositoryPullRequestCreationPolicy
-  ALL = 'all'
-  COLLABORATORS_ONLY = 'collaborators_only'
-  VALUES = ['all', 'collaborators_only'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalPublicUserPlanMetadata
-  FIELDS = {
-    collaborators: "collaborators",
-    name: "name",
-    space: "space",
-    private_repos: "private_repos",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    collaborators
-    name
-    space
-    private_repos
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for PublicUserPlan.
-# Optional object value serialized in the `plan` wire field.
-class PublicUserPlan
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalPublicUserPlanMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalPublicUserPlanMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalPublicUserPlanMetadata::DECODERS
-
-  # @return [Integer] Required `integer` value serialized in the `collaborators` wire field.
-  attr_reader :collaborators
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [Integer] Required `integer` value serialized in the `space` wire field.
-  attr_reader :space
-  # @return [Integer] Required `integer` value serialized in the `private_repos` wire field.
-  attr_reader :private_repos
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the MinimalRepositoryPullRequestCreationPolicy SDK namespace.
+  module MinimalRepositoryPullRequestCreationPolicy
+    ALL = 'all'
+    COLLABORATORS_ONLY = 'collaborators_only'
+    VALUES = %w[all collaborators_only].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalPublicUserPlanMetadata
+    FIELDS = {
+      collaborators: 'collaborators',
+      name: 'name',
+      space: 'space',
+      private_repos: 'private_repos'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      collaborators
+      name
+      space
+      private_repos
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # API model for PublicUserPlan.
+  # Optional object value serialized in the `plan` wire field.
+  class PublicUserPlan
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalPublicUserPlanMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalPublicUserPlanMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalPublicUserPlanMetadata::DECODERS
+
+    # @return [Integer] Required `integer` value serialized in the `collaborators` wire field.
+    attr_reader :collaborators
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [Integer] Required `integer` value serialized in the `space` wire field.
+    attr_reader :space
+    # @return [Integer] Required `integer` value serialized in the `private_repos` wire field.
+    attr_reader :private_repos
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
 end

@@ -539,10 +539,7 @@ module OctridevGithub
     # Returns Octocat as ASCII art. Supply the optional `s` query parameter to set the words in Octocat's speech bubble.
     #
     # Get the octocat as ASCII art
-    define_method(:get_octocat) do |
-      s_value: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_octocat) do |s_value: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Meta.meta_get_octocat(config: @config, s_value: s_value, request_options: request_options)
     end
 
@@ -559,7 +556,6 @@ module OctridevGithub
     define_method(:get_zen) do |request_options: nil|
       ::OctridevGithub::Methods::Meta.meta_get_zen(config: @config, request_options: request_options)
     end
-
   end
 
   # Defines the SecurityAdvisoriesNamespace SDK type.
@@ -615,10 +611,7 @@ module OctridevGithub
     end
 
     # Gets a global security advisory using its GitHub Security Advisory (GHSA) identifier.
-    define_method(:get_global_advisory) do |
-      ghsa_id:,
-      request_options: nil
-    |
+    define_method(:get_global_advisory) do |ghsa_id:, request_options: nil|
       ::OctridevGithub::Methods::SecurityAdvisories.security_advisories_get_global_advisory(
         config: @config,
         ghsa_id: ghsa_id,
@@ -737,12 +730,7 @@ module OctridevGithub
     end
 
     # Get a repository security advisory using its GitHub Security Advisory (GHSA) identifier. Anyone can access any published security advisory on a public repository. The authenticated user can access an unpublished security advisory from a repository if they are a security manager or administrator of that repository, or if they are a collaborator on the security advisory. OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:read` scope…
-    define_method(:get_repository_advisory) do |
-      owner:,
-      repo:,
-      ghsa_id:,
-      request_options: nil
-    |
+    define_method(:get_repository_advisory) do |owner:, repo:, ghsa_id:, request_options: nil|
       ::OctridevGithub::Methods::SecurityAdvisories.security_advisories_get_repository_advisory(
         config: @config,
         owner: owner,
@@ -821,7 +809,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the AgentAutomationsNamespace SDK type.
@@ -863,10 +850,7 @@ module OctridevGithub
     end
 
     # Returns an automation by ID without requiring repository context when its `created_by` user is the authenticated caller and the caller can read its repository. This includes both user-owned and repository-owned automations created by the caller but excludes repository-owned automations created by someone else even if the caller has write access to the repository. Use the repository-scoped get operation for those automations. The response includes repository identity so…
-    define_method(:get_automation) do |
-      automation_id:,
-      request_options: nil
-    |
+    define_method(:get_automation) do |automation_id:, request_options: nil|
       ::OctridevGithub::Methods::AgentAutomations.agent_automations_get_automation(
         config: @config,
         automation_id: automation_id,
@@ -955,12 +939,7 @@ module OctridevGithub
     end
 
     # Returns an automation by ID in a repository. User-owned automations are visible only to their creator. Repository-owned automations are visible to anyone with read access to the repository. The `created_by` field identifies the creator and is distinct from the automation's `owner_type`. **Fine-grained access tokens for "Get an automation for a repository"** This endpoint works with the following fine-grained token types: * GitHub App user access tokens * Fine-grained…
-    define_method(:get_repo_automation) do |
-      owner:,
-      repo:,
-      automation_id:,
-      request_options: nil
-    |
+    define_method(:get_repo_automation) do |owner:, repo:, automation_id:, request_options: nil|
       ::OctridevGithub::Methods::AgentAutomations.agent_automations_get_repo_automation(
         config: @config,
         owner: owner,
@@ -1021,7 +1000,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the AgentTasksNamespace SDK type.
@@ -1087,12 +1065,7 @@ module OctridevGithub
     end
 
     # > !NOTE] > This endpoint is in public preview and is subject to change. Returns a task by ID scoped to an owner/repo path **Fine-grained access tokens for "Get a task by repo"** This endpoint works with the following fine-grained token types: * [GitHub App user access tokens * Fine-grained personal access tokens The fine-grained token must have the following permission set: * "Agent tasks" repository permissions (read) GitHub App installation access tokens are not supported…
-    define_method(:get_task_by_repo_and_id) do |
-      owner:,
-      repo:,
-      task_id:,
-      request_options: nil
-    |
+    define_method(:get_task_by_repo_and_id) do |owner:, repo:, task_id:, request_options: nil|
       ::OctridevGithub::Methods::AgentTasks.agent_tasks_get_task_by_repo_and_id(
         config: @config,
         owner: owner,
@@ -1127,17 +1100,13 @@ module OctridevGithub
     end
 
     # > !NOTE] > This endpoint is in public preview and is subject to change. Returns a task by ID with its associated sessions **Fine-grained access tokens for "Get a task by ID"** This endpoint works with the following fine-grained token types: * [GitHub App user access tokens * Fine-grained personal access tokens The fine-grained token must have the following permission set: * "Agent tasks" repository permissions (read) GitHub App installation access tokens are not supported…
-    define_method(:get_task_by_id) do |
-      task_id:,
-      request_options: nil
-    |
+    define_method(:get_task_by_id) do |task_id:, request_options: nil|
       ::OctridevGithub::Methods::AgentTasks.agent_tasks_get_task_by_id(
         config: @config,
         task_id: task_id,
         request_options: request_options
       )
     end
-
   end
 
   # Defines the AppsNamespace SDK type.
@@ -1205,10 +1174,7 @@ module OctridevGithub
     # Retrieves a delivery for a webhook configured for a GitHub App. Use `delivery_id` to identify the delivery whose request, response, and delivery status you need to inspect. Authenticate with a GitHub App JWT to access this endpoint.
     #
     # Returns a delivery for the webhook configured for a GitHub App. You must use a JWT to access this endpoint.
-    define_method(:get_webhook_delivery) do |
-      delivery_id:,
-      request_options: nil
-    |
+    define_method(:get_webhook_delivery) do |delivery_id:, request_options: nil|
       ::OctridevGithub::Methods::Apps.apps_get_webhook_delivery(
         config: @config,
         delivery_id: delivery_id,
@@ -1265,10 +1231,7 @@ module OctridevGithub
     end
 
     # Enables an authenticated GitHub App to find an installation's information using the installation id. You must use a JWT to access this endpoint.
-    define_method(:get_installation) do |
-      installation_id:,
-      request_options: nil
-    |
+    define_method(:get_installation) do |installation_id:, request_options: nil|
       ::OctridevGithub::Methods::Apps.apps_get_installation(
         config: @config,
         installation_id: installation_id,
@@ -1413,10 +1376,7 @@ module OctridevGithub
     # Retrieves a GitHub App by its URL-friendly slug. Use the `app_slug` path parameter shown in the app's settings URL to identify the app.
     #
     # > [!NOTE] > The `:app_slug` is just the URL-friendly name of your GitHub App. You can find this on the settings page for your GitHub App (e.g., `github.com).
-    define_method(:get_by_slug) do |
-      app_slug:,
-      request_options: nil
-    |
+    define_method(:get_by_slug) do |app_slug:, request_options: nil|
       ::OctridevGithub::Methods::Apps.apps_get_by_slug(config: @config, app_slug: app_slug, request_options: request_options)
     end
 
@@ -1440,10 +1400,7 @@ module OctridevGithub
     end
 
     # Shows whether the user or organization account actively subscribes to a plan listed by the authenticated GitHub App. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change. GitHub Apps must use a JWT to access this endpoint. OAuth apps must use basic authentication with their client ID and client secret to access this endpoint.
-    define_method(:get_subscription_plan_for_account) do |
-      account_id:,
-      request_options: nil
-    |
+    define_method(:get_subscription_plan_for_account) do |account_id:, request_options: nil|
       ::OctridevGithub::Methods::Apps.apps_get_subscription_plan_for_account(
         config: @config,
         account_id: account_id,
@@ -1486,10 +1443,7 @@ module OctridevGithub
     end
 
     # Shows whether the user or organization account actively subscribes to a plan listed by the authenticated GitHub App. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change. GitHub Apps must use a JWT to access this endpoint. OAuth apps must use basic authentication with their client ID and client secret to access this endpoint.
-    define_method(:get_subscription_plan_for_account_stubbed) do |
-      account_id:,
-      request_options: nil
-    |
+    define_method(:get_subscription_plan_for_account_stubbed) do |account_id:, request_options: nil|
       ::OctridevGithub::Methods::Apps.apps_get_subscription_plan_for_account_stubbed(
         config: @config,
         account_id: account_id,
@@ -1532,19 +1486,12 @@ module OctridevGithub
     end
 
     # Enables an authenticated GitHub App to find the organization's installation information. You must use a JWT to access this endpoint.
-    define_method(:get_org_installation) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_org_installation) do |org:, request_options: nil|
       ::OctridevGithub::Methods::Apps.apps_get_org_installation(config: @config, org: org, request_options: request_options)
     end
 
     # Enables an authenticated GitHub App to find the repository's installation information. The installation's account type will be either an organization or a user account, depending which account the repository belongs to. You must use a JWT to access this endpoint.
-    define_method(:get_repo_installation) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_repo_installation) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Apps.apps_get_repo_installation(
         config: @config,
         owner: owner,
@@ -1640,17 +1587,13 @@ module OctridevGithub
     end
 
     # Enables an authenticated GitHub App to find the user’s installation information. You must use a JWT to access this endpoint.
-    define_method(:get_user_installation) do |
-      username:,
-      request_options: nil
-    |
+    define_method(:get_user_installation) do |username:, request_options: nil|
       ::OctridevGithub::Methods::Apps.apps_get_user_installation(
         config: @config,
         username: username,
         request_options: request_options
       )
     end
-
   end
 
   # Defines the ClassroomNamespace SDK type.
@@ -1664,10 +1607,7 @@ module OctridevGithub
     # > !WARNING] > **Closed notice:** This operation is no longer available as of August 28, 2026. > For more information, see the [GitHub Classroom sunset notice.
     #
     # @deprecated This operation is deprecated and may be removed in a future release.
-    define_method(:get_an_assignment) do |
-      assignment_id:,
-      request_options: nil
-    |
+    define_method(:get_an_assignment) do |assignment_id:, request_options: nil|
       ::OctridevGithub::Methods::Classroom.classroom_get_an_assignment(
         config: @config,
         assignment_id: assignment_id,
@@ -1696,10 +1636,7 @@ module OctridevGithub
     # > !WARNING] > **Closed notice:** This operation is no longer available as of August 28, 2026. > For more information, see the [GitHub Classroom sunset notice.
     #
     # @deprecated This operation is deprecated and may be removed in a future release.
-    define_method(:get_assignment_grades) do |
-      assignment_id:,
-      request_options: nil
-    |
+    define_method(:get_assignment_grades) do |assignment_id:, request_options: nil|
       ::OctridevGithub::Methods::Classroom.classroom_get_assignment_grades(
         config: @config,
         assignment_id: assignment_id,
@@ -1721,10 +1658,7 @@ module OctridevGithub
     # > !WARNING] > **Closed notice:** This operation is no longer available as of August 28, 2026. > For more information, see the [GitHub Classroom sunset notice.
     #
     # @deprecated This operation is deprecated and may be removed in a future release.
-    define_method(:get_aclassroom) do |
-      classroom_id:,
-      request_options: nil
-    |
+    define_method(:get_aclassroom) do |classroom_id:, request_options: nil|
       ::OctridevGithub::Methods::Classroom.classroom_get_aclassroom(
         config: @config,
         classroom_id: classroom_id,
@@ -1747,7 +1681,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the CodesOfConductNamespace SDK type.
@@ -1769,17 +1702,13 @@ module OctridevGithub
     # Retrieves information about a specific code of conduct. Supply the code's `key` to select the code whose details you need.
     #
     # Returns information about the specified GitHub code of conduct.
-    define_method(:get_conduct_code) do |
-      key:,
-      request_options: nil
-    |
+    define_method(:get_conduct_code) do |key:, request_options: nil|
       ::OctridevGithub::Methods::CodesOfConduct.codes_of_conduct_get_conduct_code(
         config: @config,
         key: key,
         request_options: request_options
       )
     end
-
   end
 
   # Defines the CredentialsNamespace SDK type.
@@ -1799,7 +1728,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the EmojisNamespace SDK type.
@@ -1814,7 +1742,6 @@ module OctridevGithub
     def get(request_options: nil)
       ::OctridevGithub::Methods::Emojis.emojis_get(config: @config, request_options: request_options)
     end
-
   end
 
   # Defines the ActionsNamespace SDK type.
@@ -1824,10 +1751,7 @@ module OctridevGithub
     end
 
     # Gets GitHub Actions cache retention limit for an enterprise. All organizations and repositories under this enterprise may not set a higher cache retention limit. OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint. > [!NOTE] > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
-    define_method(:get_actions_cache_retention_limit_for_enterprise) do |
-      enterprise:,
-      request_options: nil
-    |
+    define_method(:get_actions_cache_retention_limit_for_enterprise) do |enterprise:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_actions_cache_retention_limit_for_enterprise(
         config: @config,
         enterprise: enterprise,
@@ -1850,10 +1774,7 @@ module OctridevGithub
     end
 
     # Gets GitHub Actions cache storage limit for an enterprise. All organizations and repositories under this enterprise may not set a higher cache storage limit. OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint. > [!NOTE] > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
-    define_method(:get_actions_cache_storage_limit_for_enterprise) do |
-      enterprise:,
-      request_options: nil
-    |
+    define_method(:get_actions_cache_storage_limit_for_enterprise) do |enterprise:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_actions_cache_storage_limit_for_enterprise(
         config: @config,
         enterprise: enterprise,
@@ -1876,10 +1797,7 @@ module OctridevGithub
     end
 
     # Gets GitHub Actions cache retention limit for an organization. All repositories under this organization may not set a higher cache retention limit. OAuth tokens and personal access tokens (classic) need the `admin:organization` scope to use this endpoint.
-    define_method(:get_actions_cache_retention_limit_for_organization) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_actions_cache_retention_limit_for_organization) do |org:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_actions_cache_retention_limit_for_organization(
         config: @config,
         org: org,
@@ -1902,10 +1820,7 @@ module OctridevGithub
     end
 
     # Gets GitHub Actions cache storage limit for an organization. All repositories under this organization may not set a higher cache storage limit. OAuth tokens and personal access tokens (classic) need the `admin:organization` scope to use this endpoint.
-    define_method(:get_actions_cache_storage_limit_for_organization) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_actions_cache_storage_limit_for_organization) do |org:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_actions_cache_storage_limit_for_organization(
         config: @config,
         org: org,
@@ -1928,10 +1843,7 @@ module OctridevGithub
     end
 
     # Gets the total GitHub Actions cache usage for an organization. The data fetched using this API is refreshed approximately every 5 minutes, so values returned from this endpoint may take at least 5 minutes to get updated. OAuth tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
-    define_method(:get_actions_cache_usage_for_org) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_actions_cache_usage_for_org) do |org:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_actions_cache_usage_for_org(
         config: @config,
         org: org,
@@ -1940,12 +1852,7 @@ module OctridevGithub
     end
 
     # Lists repositories and their GitHub Actions cache usage for an organization. The data fetched using this API is refreshed approximately every 5 minutes, so values returned from this endpoint may take at least 5 minutes to get updated. OAuth tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
-    define_method(:get_actions_cache_usage_by_repo_for_org) do |
-      org:,
-      per_page: NOT_GIVEN,
-      page: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_actions_cache_usage_by_repo_for_org) do |org:, per_page: NOT_GIVEN, page: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_actions_cache_usage_by_repo_for_org(
         config: @config,
         org: org,
@@ -2010,11 +1917,7 @@ module OctridevGithub
     end
 
     # Get a custom image definition for GitHub Actions Hosted Runners. OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
-    define_method(:get_custom_image_for_org) do |
-      org:,
-      image_definition_id:,
-      request_options: nil
-    |
+    define_method(:get_custom_image_for_org) do |org:, image_definition_id:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_custom_image_for_org(
         config: @config,
         org: org,
@@ -2052,12 +1955,7 @@ module OctridevGithub
     end
 
     # Get an image version of a custom image for GitHub Actions Hosted Runners. OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
-    define_method(:get_custom_image_version_for_org) do |
-      org:,
-      image_definition_id:,
-      version:,
-      request_options: nil
-    |
+    define_method(:get_custom_image_version_for_org) do |org:, image_definition_id:, version:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_custom_image_version_for_org(
         config: @config,
         org: org,
@@ -2084,10 +1982,7 @@ module OctridevGithub
     end
 
     # Get the list of GitHub-owned images available for GitHub-hosted runners for an organization.
-    define_method(:get_hosted_runners_github_owned_images_for_org) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_hosted_runners_github_owned_images_for_org) do |org:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_hosted_runners_github_owned_images_for_org(
         config: @config,
         org: org,
@@ -2096,10 +1991,7 @@ module OctridevGithub
     end
 
     # Get the list of partner images available for GitHub-hosted runners for an organization.
-    define_method(:get_hosted_runners_partner_images_for_org) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_hosted_runners_partner_images_for_org) do |org:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_hosted_runners_partner_images_for_org(
         config: @config,
         org: org,
@@ -2108,10 +2000,7 @@ module OctridevGithub
     end
 
     # Get the GitHub-hosted runners limits for an organization.
-    define_method(:get_hosted_runners_limits_for_org) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_hosted_runners_limits_for_org) do |org:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_hosted_runners_limits_for_org(
         config: @config,
         org: org,
@@ -2120,10 +2009,7 @@ module OctridevGithub
     end
 
     # Get the list of machine specs available for GitHub-hosted runners for an organization.
-    define_method(:get_hosted_runners_machine_specs_for_org) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_hosted_runners_machine_specs_for_org) do |org:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_hosted_runners_machine_specs_for_org(
         config: @config,
         org: org,
@@ -2132,10 +2018,7 @@ module OctridevGithub
     end
 
     # Get the list of platforms available for GitHub-hosted runners for an organization.
-    define_method(:get_hosted_runners_platforms_for_org) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_hosted_runners_platforms_for_org) do |org:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_hosted_runners_platforms_for_org(
         config: @config,
         org: org,
@@ -2144,11 +2027,7 @@ module OctridevGithub
     end
 
     # Gets a GitHub-hosted runner configured in an organization. OAuth app tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
-    define_method(:get_hosted_runner_for_org) do |
-      org:,
-      hosted_runner_id:,
-      request_options: nil
-    |
+    define_method(:get_hosted_runner_for_org) do |org:, hosted_runner_id:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_hosted_runner_for_org(
         config: @config,
         org: org,
@@ -2204,10 +2083,7 @@ module OctridevGithub
     end
 
     # Gets the GitHub Actions permissions policy for repositories and allowed actions and reusable workflows in an organization. OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-    define_method(:get_github_actions_permissions_organization) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_github_actions_permissions_organization) do |org:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_github_actions_permissions_organization(
         config: @config,
         org: org,
@@ -2234,10 +2110,7 @@ module OctridevGithub
     end
 
     # Gets retention settings for checks, workflow runs, commit statuses, artifacts, and logs for an organization. Checks include check suites, check runs, and check annotations. These settings also apply to checks and commit statuses created by third-party integrations, and are not limited to data created by GitHub Actions. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
-    define_method(:get_artifact_and_log_retention_settings_organization) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_artifact_and_log_retention_settings_organization) do |org:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_artifact_and_log_retention_settings_organization(
         config: @config,
         org: org,
@@ -2260,10 +2133,7 @@ module OctridevGithub
     end
 
     # Gets the fork PR contributor approval policy for an organization. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
-    define_method(:get_fork_pr_contributor_approval_permissions_organization) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_fork_pr_contributor_approval_permissions_organization) do |org:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_fork_pr_contributor_approval_permissions_organization(
         config: @config,
         org: org,
@@ -2286,10 +2156,7 @@ module OctridevGithub
     end
 
     # Gets the settings for whether workflows from fork pull requests can run on private repositories in an organization.
-    define_method(:get_private_repo_fork_pr_workflows_settings_organization) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_private_repo_fork_pr_workflows_settings_organization) do |org:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_private_repo_fork_pr_workflows_settings_organization(
         config: @config,
         org: org,
@@ -2376,10 +2243,7 @@ module OctridevGithub
     end
 
     # Gets the selected actions and reusable workflows that are allowed in an organization. To use this endpoint, the organization permission policy for `allowed_actions` must be configured to `selected`. For more information, see "Set GitHub Actions permissions for an organization." OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-    define_method(:get_allowed_actions_organization) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_allowed_actions_organization) do |org:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_allowed_actions_organization(
         config: @config,
         org: org,
@@ -2406,10 +2270,7 @@ module OctridevGithub
     end
 
     # Gets the settings for self-hosted runners for an organization. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
-    define_method(:get_self_hosted_runners_permissions_organization) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_self_hosted_runners_permissions_organization) do |org:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_self_hosted_runners_permissions_organization(
         config: @config,
         org: org,
@@ -2490,10 +2351,7 @@ module OctridevGithub
     end
 
     # Gets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in an organization, as well as whether GitHub Actions can submit approving pull request reviews. For more information, see "Setting the permissions of the GITHUB_TOKEN for your organization." OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-    define_method(:get_github_actions_default_workflow_permissions_organization) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_github_actions_default_workflow_permissions_organization) do |org:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_github_actions_default_workflow_permissions_organization(
         config: @config,
         org: org,
@@ -2520,13 +2378,7 @@ module OctridevGithub
     # Lists Actions policies configured for an organization. Set `has_parents` to include policies configured at higher levels that apply to the organization, and use `page` and `per_page` to paginate the results.
     #
     # List all Actions policies for an organization.
-    define_method(:get_org_actions_policies) do |
-      org:,
-      per_page: NOT_GIVEN,
-      page: NOT_GIVEN,
-      has_parents: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_org_actions_policies) do |org:, per_page: NOT_GIVEN, page: NOT_GIVEN, has_parents: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_org_actions_policies(
         config: @config,
         org: org,
@@ -2558,11 +2410,7 @@ module OctridevGithub
     end
 
     # Get a specific Actions policy for an organization.
-    define_method(:get_org_actions_policy) do |
-      org:,
-      policy_id:,
-      request_options: nil
-    |
+    define_method(:get_org_actions_policy) do |org:, policy_id:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_org_actions_policy(
         config: @config,
         org: org,
@@ -2656,11 +2504,7 @@ module OctridevGithub
     end
 
     # Gets a specific self-hosted runner group for an organization. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-    define_method(:get_self_hosted_runner_group_for_org) do |
-      org:,
-      runner_group_id:,
-      request_options: nil
-    |
+    define_method(:get_self_hosted_runner_group_for_org) do |org:, runner_group_id:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_self_hosted_runner_group_for_org(
         config: @config,
         org: org,
@@ -2878,11 +2722,7 @@ module OctridevGithub
     end
 
     # Gets the end-of-life schedule for a specific runner version in an organization. Returns the runner version and the dates when registration and runtime support will end. Authenticated users must have admin access to the organization to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-    define_method(:get_runner_version_deprecation_for_org) do |
-      org:,
-      version:,
-      request_options: nil
-    |
+    define_method(:get_runner_version_deprecation_for_org) do |org:, version:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_runner_version_deprecation_for_org(
         config: @config,
         org: org,
@@ -2948,11 +2788,7 @@ module OctridevGithub
     end
 
     # Gets a specific self-hosted runner configured in an organization. Authenticated users must have admin access to the organization to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
-    define_method(:get_self_hosted_runner_for_org) do |
-      org:,
-      runner_id:,
-      request_options: nil
-    |
+    define_method(:get_self_hosted_runner_for_org) do |org:, runner_id:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_self_hosted_runner_for_org(
         config: @config,
         org: org,
@@ -3068,10 +2904,7 @@ module OctridevGithub
     end
 
     # Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you can create or update secrets. The authenticated user must have collaborator access to a repository to create, update, or read secrets. OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_org_public_key) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_org_public_key) do |org:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_org_public_key(
         config: @config,
         org: org,
@@ -3080,11 +2913,7 @@ module OctridevGithub
     end
 
     # Gets a single organization secret without revealing its encrypted value. The authenticated user must have collaborator access to a repository to create, update, or read secrets OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_org_secret) do |
-      org:,
-      secret_name:,
-      request_options: nil
-    |
+    define_method(:get_org_secret) do |org:, secret_name:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_org_secret(
         config: @config,
         org: org,
@@ -3236,11 +3065,7 @@ module OctridevGithub
     end
 
     # Gets a specific variable in an organization. The authenticated user must have collaborator access to a repository to create, update, or read variables. OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_org_variable) do |
-      org:,
-      name:,
-      request_options: nil
-    |
+    define_method(:get_org_variable) do |org:, name:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_org_variable(
         config: @config,
         org: org,
@@ -3376,12 +3201,7 @@ module OctridevGithub
     end
 
     # Gets a specific artifact for a workflow run. Anyone with read access to the repository can use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_artifact) do |
-      owner:,
-      repo:,
-      artifact_id:,
-      request_options: nil
-    |
+    define_method(:get_artifact) do |owner:, repo:, artifact_id:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_artifact(
         config: @config,
         owner: owner,
@@ -3428,11 +3248,7 @@ module OctridevGithub
     end
 
     # Gets GitHub Actions cache retention limit for a repository. This determines how long caches will be retained for, if not manually removed or evicted due to size constraints. OAuth tokens and personal access tokens (classic) need the `admin:repository` scope to use this endpoint.
-    define_method(:get_actions_cache_retention_limit_for_repository) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_actions_cache_retention_limit_for_repository) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_actions_cache_retention_limit_for_repository(
         config: @config,
         owner: owner,
@@ -3458,11 +3274,7 @@ module OctridevGithub
     end
 
     # Gets GitHub Actions cache storage limit for a repository. This determines the maximum size of caches that can be stored before eviction occurs. OAuth tokens and personal access tokens (classic) need the `admin:repository` scope to use this endpoint.
-    define_method(:get_actions_cache_storage_limit_for_repository) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_actions_cache_storage_limit_for_repository) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_actions_cache_storage_limit_for_repository(
         config: @config,
         owner: owner,
@@ -3488,11 +3300,7 @@ module OctridevGithub
     end
 
     # Gets GitHub Actions cache usage for a repository. The data fetched using this API is refreshed approximately every 5 minutes, so values returned from this endpoint may take at least 5 minutes to get updated. Anyone with read access to the repository can use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_actions_cache_usage) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_actions_cache_usage) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_actions_cache_usage(
         config: @config,
         owner: owner,
@@ -3502,17 +3310,7 @@ module OctridevGithub
     end
 
     # Lists the GitHub Actions caches for a repository. OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_actions_cache_list) do |
-      owner:,
-      repo:,
-      per_page: NOT_GIVEN,
-      page: NOT_GIVEN,
-      ref: NOT_GIVEN,
-      key: NOT_GIVEN,
-      sort: NOT_GIVEN,
-      direction: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_actions_cache_list) do |owner:, repo:, per_page: NOT_GIVEN, page: NOT_GIVEN, ref: NOT_GIVEN, key: NOT_GIVEN, sort: NOT_GIVEN, direction: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_actions_cache_list(
         config: @config,
         owner: owner,
@@ -3580,14 +3378,7 @@ module OctridevGithub
     end
 
     # Gets a specific concurrency group for a repository, including all instances in the group's queue. Returns 404 if the group is inactive or does not exist. Optionally, pass `ahead_of_run` or `ahead_of_job` to filter the results to only the items ahead of the specified workflow run or job in the queue, plus the specified item itself (returned as the last element). This is useful for determining what is blocking a particular run or job. Returns 422 if the specified run or job is…
-    define_method(:get_concurrency_group_for_repository) do |
-      owner:,
-      repo:,
-      concurrency_group_name:,
-      ahead_of_run: NOT_GIVEN,
-      ahead_of_job: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_concurrency_group_for_repository) do |owner:, repo:, concurrency_group_name:, ahead_of_run: NOT_GIVEN, ahead_of_job: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_concurrency_group_for_repository(
         config: @config,
         owner: owner,
@@ -3600,12 +3391,7 @@ module OctridevGithub
     end
 
     # Gets a specific job in a workflow run. Anyone with read access to the repository can use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_job_for_workflow_run) do |
-      owner:,
-      repo:,
-      job_id:,
-      request_options: nil
-    |
+    define_method(:get_job_for_workflow_run) do |owner:, repo:, job_id:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_job_for_workflow_run(
         config: @config,
         owner: owner,
@@ -3670,11 +3456,7 @@ module OctridevGithub
     end
 
     # Gets the customization template for an OpenID Connect (OIDC) subject claim. OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_custom_oidc_sub_claim_for_repo) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_custom_oidc_sub_claim_for_repo) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_custom_oidc_sub_claim_for_repo(
         config: @config,
         owner: owner,
@@ -3740,11 +3522,7 @@ module OctridevGithub
     end
 
     # Gets the GitHub Actions permissions policy for a repository, including whether GitHub Actions is enabled and the actions and reusable workflows allowed to run in the repository. OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_github_actions_permissions_repository) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_github_actions_permissions_repository) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_github_actions_permissions_repository(
         config: @config,
         owner: owner,
@@ -3774,11 +3552,7 @@ module OctridevGithub
     end
 
     # Gets the level of access that workflows outside of the repository have to actions and reusable workflows in the repository. This endpoint only applies to private repositories. For more information, see "Allowing access to components in a private repository." OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_workflow_access_to_repository) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_workflow_access_to_repository) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_workflow_access_to_repository(
         config: @config,
         owner: owner,
@@ -3804,11 +3578,7 @@ module OctridevGithub
     end
 
     # Gets retention settings for checks, workflow runs, commit statuses, artifacts, and logs for a repository. Checks include check suites, check runs, and check annotations. These settings also apply to checks and commit statuses created by third-party integrations, and are not limited to data created by GitHub Actions. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_artifact_and_log_retention_settings_repository) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_artifact_and_log_retention_settings_repository) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_artifact_and_log_retention_settings_repository(
         config: @config,
         owner: owner,
@@ -3834,11 +3604,7 @@ module OctridevGithub
     end
 
     # Gets the fork PR contributor approval policy for a repository. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_fork_pr_contributor_approval_permissions_repository) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_fork_pr_contributor_approval_permissions_repository) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_fork_pr_contributor_approval_permissions_repository(
         config: @config,
         owner: owner,
@@ -3864,11 +3630,7 @@ module OctridevGithub
     end
 
     # Gets the settings for whether workflows from fork pull requests can run on a private repository. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_private_repo_fork_pr_workflows_settings_repository) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_private_repo_fork_pr_workflows_settings_repository) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_private_repo_fork_pr_workflows_settings_repository(
         config: @config,
         owner: owner,
@@ -3900,11 +3662,7 @@ module OctridevGithub
     end
 
     # Gets the settings for selected actions and reusable workflows that are allowed in a repository. To use this endpoint, the repository policy for `allowed_actions` must be configured to `selected`. For more information, see "Set GitHub Actions permissions for a repository." OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_allowed_actions_repository) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_allowed_actions_repository) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_allowed_actions_repository(
         config: @config,
         owner: owner,
@@ -3934,11 +3692,7 @@ module OctridevGithub
     end
 
     # Gets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in a repository, as well as if GitHub Actions can submit approving pull request reviews. For more information, see "Setting the permissions of the GITHUB_TOKEN for your repository." OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_github_actions_default_workflow_permissions_repository) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_github_actions_default_workflow_permissions_repository) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_github_actions_default_workflow_permissions_repository(
         config: @config,
         owner: owner,
@@ -3968,14 +3722,7 @@ module OctridevGithub
     # Lists Actions policies that apply to a repository. Use `has_parents` to include policies configured at higher levels, and `page` and `per_page` to paginate the results.
     #
     # List all Actions policies for a repository.
-    define_method(:get_repo_actions_policies) do |
-      owner:,
-      repo:,
-      per_page: NOT_GIVEN,
-      page: NOT_GIVEN,
-      has_parents: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_repo_actions_policies) do |owner:, repo:, per_page: NOT_GIVEN, page: NOT_GIVEN, has_parents: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_repo_actions_policies(
         config: @config,
         owner: owner,
@@ -4012,12 +3759,7 @@ module OctridevGithub
     # Retrieves a specific Actions policy for a repository. Use `policy_id` to identify the policy and inspect its target, source, enforcement level, and rules.
     #
     # Get a specific Actions policy for a repository.
-    define_method(:get_repo_actions_policy) do |
-      owner:,
-      repo:,
-      policy_id:,
-      request_options: nil
-    |
+    define_method(:get_repo_actions_policy) do |owner:, repo:, policy_id:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_repo_actions_policy(
         config: @config,
         owner: owner,
@@ -4090,12 +3832,7 @@ module OctridevGithub
     end
 
     # Gets the end-of-life schedule for a specific runner version in a repository. Returns the runner version and the dates when registration and runtime support will end. Authenticated users must have admin access to the repository to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_runner_version_deprecation_for_repo) do |
-      owner:,
-      repo:,
-      version:,
-      request_options: nil
-    |
+    define_method(:get_runner_version_deprecation_for_repo) do |owner:, repo:, version:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_runner_version_deprecation_for_repo(
         config: @config,
         owner: owner,
@@ -4170,12 +3907,7 @@ module OctridevGithub
     end
 
     # Gets a specific self-hosted runner configured in a repository. Authenticated users must have admin access to the repository to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_self_hosted_runner_for_repo) do |
-      owner:,
-      repo:,
-      runner_id:,
-      request_options: nil
-    |
+    define_method(:get_self_hosted_runner_for_repo) do |owner:, repo:, runner_id:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_self_hosted_runner_for_repo(
         config: @config,
         owner: owner,
@@ -4322,13 +4054,7 @@ module OctridevGithub
     end
 
     # Gets a specific workflow run. Anyone with read access to the repository can use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
-    define_method(:get_workflow_run) do |
-      owner:,
-      repo:,
-      run_id:,
-      exclude_pull_requests: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_workflow_run) do |owner:, repo:, run_id:, exclude_pull_requests: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_workflow_run(
         config: @config,
         owner: owner,
@@ -4356,12 +4082,7 @@ module OctridevGithub
     end
 
     # Anyone with read access to the repository can use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
-    define_method(:get_reviews_for_run) do |
-      owner:,
-      repo:,
-      run_id:,
-      request_options: nil
-    |
+    define_method(:get_reviews_for_run) do |owner:, repo:, run_id:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_reviews_for_run(
         config: @config,
         owner: owner,
@@ -4412,14 +4133,7 @@ module OctridevGithub
     end
 
     # Gets a specific workflow run attempt. Anyone with read access to the repository can use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
-    define_method(:get_workflow_run_attempt) do |
-      owner:,
-      repo:,
-      run_id:,
-      attempt_number:,
-      exclude_pull_requests: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_workflow_run_attempt) do |owner:, repo:, run_id:, attempt_number:, exclude_pull_requests: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_workflow_run_attempt(
         config: @config,
         owner: owner,
@@ -4600,12 +4314,7 @@ module OctridevGithub
     end
 
     # Get all deployment environments for a workflow run that are waiting for protection rules to pass. Anyone with read access to the repository can use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_pending_deployments_for_run) do |
-      owner:,
-      repo:,
-      run_id:,
-      request_options: nil
-    |
+    define_method(:get_pending_deployments_for_run) do |owner:, repo:, run_id:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_pending_deployments_for_run(
         config: @config,
         owner: owner,
@@ -4674,12 +4383,7 @@ module OctridevGithub
     end
 
     # > !WARNING] > This endpoint is in the process of closing down. Refer to "[Actions Get workflow usage and Get workflow run usage endpoints closing down" for more information. Gets the number of billable minutes and total run time for a specific workflow run. Billable minutes only apply to workflows in private repositories that use GitHub-hosted runners. Usage is listed for each GitHub-hosted runner operating system in milliseconds. Any job re-runs are also included in the…
-    define_method(:get_workflow_run_usage) do |
-      owner:,
-      repo:,
-      run_id:,
-      request_options: nil
-    |
+    define_method(:get_workflow_run_usage) do |owner:, repo:, run_id:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_workflow_run_usage(
         config: @config,
         owner: owner,
@@ -4708,11 +4412,7 @@ module OctridevGithub
     end
 
     # Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you can create or update secrets. Anyone with read access to the repository can use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_repo_public_key) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_repo_public_key) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_repo_public_key(
         config: @config,
         owner: owner,
@@ -4722,12 +4422,7 @@ module OctridevGithub
     end
 
     # Gets a single repository secret without revealing its encrypted value. The authenticated user must have collaborator access to the repository to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_repo_secret) do |
-      owner:,
-      repo:,
-      secret_name:,
-      request_options: nil
-    |
+    define_method(:get_repo_secret) do |owner:, repo:, secret_name:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_repo_secret(
         config: @config,
         owner: owner,
@@ -4810,12 +4505,7 @@ module OctridevGithub
     end
 
     # Gets a specific variable in a repository. The authenticated user must have collaborator access to the repository to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_repo_variable) do |
-      owner:,
-      repo:,
-      name:,
-      request_options: nil
-    |
+    define_method(:get_repo_variable) do |owner:, repo:, name:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_repo_variable(
         config: @config,
         owner: owner,
@@ -4880,12 +4570,7 @@ module OctridevGithub
     end
 
     # Gets a specific workflow. You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`. Anyone with read access to the repository can use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
-    define_method(:get_workflow) do |
-      owner:,
-      repo:,
-      workflow_id:,
-      request_options: nil
-    |
+    define_method(:get_workflow) do |owner:, repo:, workflow_id:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_workflow(
         config: @config,
         owner: owner,
@@ -4986,12 +4671,7 @@ module OctridevGithub
     end
 
     # > !WARNING] > This endpoint is in the process of closing down. Refer to "[Actions Get workflow usage and Get workflow run usage endpoints closing down" for more information. Gets the number of billable minutes used by a specific workflow during the current billing cycle. Billable minutes only apply to workflows in private repositories that use GitHub-hosted runners. Usage is listed for each GitHub-hosted runner operating system in milliseconds. Any job re-runs are also…
-    define_method(:get_workflow_usage) do |
-      owner:,
-      repo:,
-      workflow_id:,
-      request_options: nil
-    |
+    define_method(:get_workflow_usage) do |owner:, repo:, workflow_id:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_workflow_usage(
         config: @config,
         owner: owner,
@@ -5022,12 +4702,7 @@ module OctridevGithub
     end
 
     # Get the public key for an environment, which you need to encrypt environment secrets. You need to encrypt a secret before you can create or update secrets. Anyone with read access to the repository can use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_environment_public_key) do |
-      owner:,
-      repo:,
-      environment_name:,
-      request_options: nil
-    |
+    define_method(:get_environment_public_key) do |owner:, repo:, environment_name:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_environment_public_key(
         config: @config,
         owner: owner,
@@ -5038,13 +4713,7 @@ module OctridevGithub
     end
 
     # Gets a single environment secret without revealing its encrypted value. Authenticated users must have collaborator access to a repository to create, update, or read secrets. OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_environment_secret) do |
-      owner:,
-      repo:,
-      environment_name:,
-      secret_name:,
-      request_options: nil
-    |
+    define_method(:get_environment_secret) do |owner:, repo:, environment_name:, secret_name:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_environment_secret(
         config: @config,
         owner: owner,
@@ -5136,13 +4805,7 @@ module OctridevGithub
     end
 
     # Gets a specific variable in an environment. Authenticated users must have collaborator access to a repository to create, update, or read variables. OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_environment_variable) do |
-      owner:,
-      repo:,
-      environment_name:,
-      name:,
-      request_options: nil
-    |
+    define_method(:get_environment_variable) do |owner:, repo:, environment_name:, name:, request_options: nil|
       ::OctridevGithub::Methods::Actions.actions_get_environment_variable(
         config: @config,
         owner: owner,
@@ -5192,7 +4855,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the OidcNamespace SDK type.
@@ -5282,10 +4944,7 @@ module OctridevGithub
     end
 
     # Gets the customization template for an OpenID Connect (OIDC) subject claim. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
-    define_method(:get_oidc_custom_sub_template_for_org) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_oidc_custom_sub_template_for_org) do |org:, request_options: nil|
       ::OctridevGithub::Methods::Oidc.oidc_get_oidc_custom_sub_template_for_org(
         config: @config,
         org: org,
@@ -5308,7 +4967,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the CodeSecurityNamespace SDK type.
@@ -5318,13 +4976,7 @@ module OctridevGithub
     end
 
     # Lists all code security configurations available in an enterprise. The authenticated user must be an administrator of the enterprise in order to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
-    define_method(:get_configurations_for_enterprise) do |
-      enterprise:,
-      per_page: NOT_GIVEN,
-      before: NOT_GIVEN,
-      after: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_configurations_for_enterprise) do |enterprise:, per_page: NOT_GIVEN, before: NOT_GIVEN, after: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::CodeSecurity.code_security_get_configurations_for_enterprise(
         config: @config,
         enterprise: enterprise,
@@ -5394,10 +5046,7 @@ module OctridevGithub
     end
 
     # Lists the default code security configurations for an enterprise. The authenticated user must be an administrator of the enterprise in order to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
-    define_method(:get_default_configurations_for_enterprise) do |
-      enterprise:,
-      request_options: nil
-    |
+    define_method(:get_default_configurations_for_enterprise) do |enterprise:, request_options: nil|
       ::OctridevGithub::Methods::CodeSecurity.code_security_get_default_configurations_for_enterprise(
         config: @config,
         enterprise: enterprise,
@@ -5406,11 +5055,7 @@ module OctridevGithub
     end
 
     # Gets a code security configuration available in an enterprise. The authenticated user must be an administrator of the enterprise in order to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
-    define_method(:get_single_configuration_for_enterprise) do |
-      enterprise:,
-      configuration_id:,
-      request_options: nil
-    |
+    define_method(:get_single_configuration_for_enterprise) do |enterprise:, configuration_id:, request_options: nil|
       ::OctridevGithub::Methods::CodeSecurity.code_security_get_single_configuration_for_enterprise(
         config: @config,
         enterprise: enterprise,
@@ -5526,15 +5171,7 @@ module OctridevGithub
     end
 
     # Lists the repositories associated with an enterprise code security configuration in an organization. The authenticated user must be an administrator of the enterprise in order to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
-    define_method(:get_repositories_for_enterprise_configuration) do |
-      enterprise:,
-      configuration_id:,
-      per_page: NOT_GIVEN,
-      before: NOT_GIVEN,
-      after: NOT_GIVEN,
-      status: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_repositories_for_enterprise_configuration) do |enterprise:, configuration_id:, per_page: NOT_GIVEN, before: NOT_GIVEN, after: NOT_GIVEN, status: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::CodeSecurity.code_security_get_repositories_for_enterprise_configuration(
         config: @config,
         enterprise: enterprise,
@@ -5548,14 +5185,7 @@ module OctridevGithub
     end
 
     # Lists all code security configurations available in an organization. The authenticated user must be an administrator or security manager for the organization to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
-    define_method(:get_configurations_for_org) do |
-      org:,
-      target_type: NOT_GIVEN,
-      per_page: NOT_GIVEN,
-      before: NOT_GIVEN,
-      after: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_configurations_for_org) do |org:, target_type: NOT_GIVEN, per_page: NOT_GIVEN, before: NOT_GIVEN, after: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::CodeSecurity.code_security_get_configurations_for_org(
         config: @config,
         org: org,
@@ -5632,10 +5262,7 @@ module OctridevGithub
     end
 
     # Lists the default code security configurations for an organization. The authenticated user must be an administrator or security manager for the organization to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
-    define_method(:get_default_configurations) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_default_configurations) do |org:, request_options: nil|
       ::OctridevGithub::Methods::CodeSecurity.code_security_get_default_configurations(
         config: @config,
         org: org,
@@ -5658,11 +5285,7 @@ module OctridevGithub
     end
 
     # Gets a code security configuration available in an organization. The authenticated user must be an administrator or security manager for the organization to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
-    define_method(:get_configuration) do |
-      org:,
-      configuration_id:,
-      request_options: nil
-    |
+    define_method(:get_configuration) do |org:, configuration_id:, request_options: nil|
       ::OctridevGithub::Methods::CodeSecurity.code_security_get_configuration(
         config: @config,
         org: org,
@@ -5786,15 +5409,7 @@ module OctridevGithub
     end
 
     # Lists the repositories associated with a code security configuration in an organization. The authenticated user must be an administrator or security manager for the organization to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
-    define_method(:get_repositories_for_configuration) do |
-      org:,
-      configuration_id:,
-      per_page: NOT_GIVEN,
-      before: NOT_GIVEN,
-      after: NOT_GIVEN,
-      status: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_repositories_for_configuration) do |org:, configuration_id:, per_page: NOT_GIVEN, before: NOT_GIVEN, after: NOT_GIVEN, status: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::CodeSecurity.code_security_get_repositories_for_configuration(
         config: @config,
         org: org,
@@ -5808,11 +5423,7 @@ module OctridevGithub
     end
 
     # Get the code security configuration that manages a repository's code security settings. The authenticated user must be an administrator or security manager for the organization to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_configuration_for_repository) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_configuration_for_repository) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::CodeSecurity.code_security_get_configuration_for_repository(
         config: @config,
         owner: owner,
@@ -5820,7 +5431,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the CopilotNamespace SDK type.
@@ -5958,10 +5568,7 @@ module OctridevGithub
     # Retrieves an organization's Copilot subscription details, including its seat breakdown and feature policies. Use `org` to identify the organization; only organization owners can view these details. OAuth app tokens and classic personal access tokens need the `manage_billing:copilot` or `read:org` scope.
     #
     # > !NOTE] > This endpoint is in public preview and is subject to change. Gets information about an organization's Copilot subscription, including seat breakdown and feature policies. To configure these settings, go to your organization's settings on GitHub.com. For more information, see "[Managing policies for Copilot in your organization." Only organization owners can view details about the organization's Copilot Business or Copilot Enterprise subscription. OAuth app tokens…
-    define_method(:get_copilot_organization_details) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_copilot_organization_details) do |org:, request_options: nil|
       ::OctridevGithub::Methods::Copilot.copilot_get_copilot_organization_details(
         config: @config,
         org: org,
@@ -6050,10 +5657,7 @@ module OctridevGithub
     end
 
     # > [!NOTE] > This endpoint is in public preview and is subject to change. Gets information about which repositories in an organization have been enabled or disabled for the Copilot cloud agent. Organization owners can configure whether Copilot cloud agent is enabled for all repositories, selected repositories, or no repositories owned by organization. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-    define_method(:get_copilot_coding_agent_permissions_organization) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_copilot_coding_agent_permissions_organization) do |org:, request_options: nil|
       ::OctridevGithub::Methods::Copilot.copilot_get_copilot_coding_agent_permissions_organization(
         config: @config,
         org: org,
@@ -6244,11 +5848,7 @@ module OctridevGithub
     end
 
     # > !NOTE] > This endpoint is in public preview and is subject to change. Gets the GitHub Copilot seat details for a member of an organization who currently has access to GitHub Copilot. The seat object contains information about the user's most recent Copilot activity. Users must have telemetry enabled in their IDE for Copilot in the IDE activity to be reflected in `last_activity_at`. For more information about activity data, see [Metrics data properties for GitHub Copilot.…
-    define_method(:get_copilot_seat_details_for_user) do |
-      org:,
-      username:,
-      request_options: nil
-    |
+    define_method(:get_copilot_seat_details_for_user) do |org:, username:, request_options: nil|
       ::OctridevGithub::Methods::Copilot.copilot_get_copilot_seat_details_for_user(
         config: @config,
         org: org,
@@ -6258,11 +5858,7 @@ module OctridevGithub
     end
 
     # > [!NOTE] > This endpoint is in public preview and is subject to change. Gets the Copilot cloud agent configuration for a repository, including MCP server configuration, enabled review tools, Actions workflow approval settings, and firewall configuration. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_copilot_cloud_agent_configuration) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_copilot_cloud_agent_configuration) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Copilot.copilot_get_copilot_cloud_agent_configuration(
         config: @config,
         owner: owner,
@@ -6270,7 +5866,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the DependabotNamespace SDK type.
@@ -6478,10 +6073,7 @@ module OctridevGithub
     end
 
     # Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you can create or update secrets. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-    define_method(:get_org_public_key) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_org_public_key) do |org:, request_options: nil|
       ::OctridevGithub::Methods::Dependabot.dependabot_get_org_public_key(
         config: @config,
         org: org,
@@ -6490,11 +6082,7 @@ module OctridevGithub
     end
 
     # Gets a single organization secret without revealing its encrypted value. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-    define_method(:get_org_secret) do |
-      org:,
-      secret_name:,
-      request_options: nil
-    |
+    define_method(:get_org_secret) do |org:, secret_name:, request_options: nil|
       ::OctridevGithub::Methods::Dependabot.dependabot_get_org_secret(
         config: @config,
         org: org,
@@ -6658,12 +6246,7 @@ module OctridevGithub
     # Retrieves a Dependabot alert from a repository by its alert number. Use the `alert_number` value returned by the repository's Dependabot alerts listing, and provide a token with the required scope for the repository's visibility.
     #
     # OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
-    define_method(:get_alert) do |
-      owner:,
-      repo:,
-      alert_number:,
-      request_options: nil
-    |
+    define_method(:get_alert) do |owner:, repo:, alert_number:, request_options: nil|
       ::OctridevGithub::Methods::Dependabot.dependabot_get_alert(
         config: @config,
         owner: owner,
@@ -6720,11 +6303,7 @@ module OctridevGithub
     end
 
     # Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you can create or update secrets. Anyone with read access to the repository can use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint if the repository is private.
-    define_method(:get_repo_public_key) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_repo_public_key) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Dependabot.dependabot_get_repo_public_key(
         config: @config,
         owner: owner,
@@ -6734,12 +6313,7 @@ module OctridevGithub
     end
 
     # Gets a single repository secret without revealing its encrypted value. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_repo_secret) do |
-      owner:,
-      repo:,
-      secret_name:,
-      request_options: nil
-    |
+    define_method(:get_repo_secret) do |owner:, repo:, secret_name:, request_options: nil|
       ::OctridevGithub::Methods::Dependabot.dependabot_get_repo_secret(
         config: @config,
         owner: owner,
@@ -6784,7 +6358,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the ActivityNamespace SDK type.
@@ -6869,10 +6442,7 @@ module OctridevGithub
     # Retrieves a notification thread by its unique identifier. Use the `thread_id` value returned in a notification's `id` field to inspect the thread's repository, subject, unread state, and subscription URL.
     #
     # Gets information about a notification thread.
-    define_method(:get_thread) do |
-      thread_id:,
-      request_options: nil
-    |
+    define_method(:get_thread) do |thread_id:, request_options: nil|
       ::OctridevGithub::Methods::Activity.activity_get_thread(
         config: @config,
         thread_id: thread_id,
@@ -6905,10 +6475,7 @@ module OctridevGithub
     end
 
     # This checks to see if the current user is subscribed to a thread. You can also get a repository subscription. Note that subscriptions are only generated if a user is participating in a conversation--for example, they've replied to the thread, were **@mentioned**, or manually subscribe to a thread.
-    define_method(:get_thread_subscription_for_authenticated_user) do |
-      thread_id:,
-      request_options: nil
-    |
+    define_method(:get_thread_subscription_for_authenticated_user) do |thread_id:, request_options: nil|
       ::OctridevGithub::Methods::Activity.activity_get_thread_subscription_for_authenticated_user(
         config: @config,
         thread_id: thread_id,
@@ -7037,11 +6604,7 @@ module OctridevGithub
     end
 
     # Gets the current number of users who have starred the repository. Users who previously starred the repository but later removed their star are not included.
-    define_method(:get_stargazer_count_for_repo) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_stargazer_count_for_repo) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Activity.activity_get_stargazer_count_for_repo(
         config: @config,
         owner: owner,
@@ -7051,13 +6614,7 @@ module OctridevGithub
     end
 
     # Returns repository stars grouped by calendar weeks, most recent first. Pages move backward toward the repository's creation week, and weeks within a page are ordered newest to oldest, so concatenating pages produces one continuous series. Weeks without stars contain zero counts. Week and day boundaries are not guaranteed to align with UTC. The `days` array contains the number of stars created on each day of the week, starting on Sunday.
-    define_method(:get_stargazer_history_for_repo) do |
-      owner:,
-      repo:,
-      per_page: NOT_GIVEN,
-      page: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_stargazer_history_for_repo) do |owner:, repo:, per_page: NOT_GIVEN, page: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Activity.activity_get_stargazer_history_for_repo(
         config: @config,
         owner: owner,
@@ -7087,11 +6644,7 @@ module OctridevGithub
     end
 
     # Gets information about whether the authenticated user is subscribed to the repository.
-    define_method(:get_repo_subscription) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_repo_subscription) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Activity.activity_get_repo_subscription(
         config: @config,
         owner: owner,
@@ -7325,7 +6878,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the GistsNamespace SDK type.
@@ -7465,11 +7017,7 @@ module OctridevGithub
     end
 
     # Gets a comment on a gist. This endpoint supports the following custom media types. For more information, see "Media types." - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
-    define_method(:get_comment) do |
-      gist_id:,
-      comment_id:,
-      request_options: nil
-    |
+    define_method(:get_comment) do |gist_id:, comment_id:, request_options: nil|
       ::OctridevGithub::Methods::Gists.gists_get_comment(
         config: @config,
         gist_id: gist_id,
@@ -7579,11 +7127,7 @@ module OctridevGithub
     # Retrieves a specified revision of a gist. Supply `gist_id` and `sha` to identify the gist and revision; the `application/vnd.github.raw+json` media type returns the raw Markdown and is the default when you do not specify a media type.
     #
     # Gets a specified gist revision. This endpoint supports the following custom media types. For more information, see "Media types." - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
-    define_method(:get_revision) do |
-      gist_id:,
-      sha:,
-      request_options: nil
-    |
+    define_method(:get_revision) do |gist_id:, sha:, request_options: nil|
       ::OctridevGithub::Methods::Gists.gists_get_revision(
         config: @config,
         gist_id: gist_id,
@@ -7611,7 +7155,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the GitignoreNamespace SDK type.
@@ -7628,17 +7171,13 @@ module OctridevGithub
     # Retrieves the content of a gitignore template by name. The `application/vnd.github.raw+json` media type returns the raw `.gitignore` contents; the response object includes the template name and source.
     #
     # Get the content of a gitignore template. This endpoint supports the following custom media types. For more information, see "Media types." - **`application/vnd.github.raw+json`**: Returns the raw .gitignore contents.
-    define_method(:get_template) do |
-      name:,
-      request_options: nil
-    |
+    define_method(:get_template) do |name:, request_options: nil|
       ::OctridevGithub::Methods::Gitignore.gitignore_get_template(
         config: @config,
         name: name,
         request_options: request_options
       )
     end
-
   end
 
   # Defines the IssuesNamespace SDK type.
@@ -7848,12 +7387,7 @@ module OctridevGithub
     end
 
     # You can use the REST API to get comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request. This endpoint supports the following custom media types. For more information, see "Media types." - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type. - **`application/vnd.github.text+json`**: Returns a text only…
-    define_method(:get_comment) do |
-      owner:,
-      repo:,
-      comment_id:,
-      request_options: nil
-    |
+    define_method(:get_comment) do |owner:, repo:, comment_id:, request_options: nil|
       ::OctridevGithub::Methods::Issues.issues_get_comment(
         config: @config,
         owner: owner,
@@ -7956,12 +7490,7 @@ module OctridevGithub
     # Retrieves a single issue event from a repository by its event identifier. Use `event_id` to select the event and `owner` and `repo` to identify the repository.
     #
     # Gets a single event by the event id.
-    define_method(:get_event) do |
-      owner:,
-      repo:,
-      event_id:,
-      request_options: nil
-    |
+    define_method(:get_event) do |owner:, repo:, event_id:, request_options: nil|
       ::OctridevGithub::Methods::Issues.issues_get_event(
         config: @config,
         owner: owner,
@@ -8452,12 +7981,7 @@ module OctridevGithub
     # Retrieves the parent issue of a sub-issue in a repository. Use `owner`, `repo`, and `issue_number` to identify the sub-issue; the selected media type controls which representation of the parent's Markdown body is included.
     #
     # You can use the REST API to get the parent issue of a sub-issue. This endpoint supports the following custom media types. For more information, see Media types. - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type. - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`. -…
-    define_method(:get_parent) do |
-      owner:,
-      repo:,
-      issue_number:,
-      request_options: nil
-    |
+    define_method(:get_parent) do |owner:, repo:, issue_number:, request_options: nil|
       ::OctridevGithub::Methods::Issues.issues_get_parent(
         config: @config,
         owner: owner,
@@ -8740,12 +8264,7 @@ module OctridevGithub
     # Retrieves a label from a repository by its name. Use `owner` and `repo` to identify the repository and `name` to specify the label.
     #
     # Gets a label using the given name.
-    define_method(:get_label) do |
-      owner:,
-      repo:,
-      name:,
-      request_options: nil
-    |
+    define_method(:get_label) do |owner:, repo:, name:, request_options: nil|
       ::OctridevGithub::Methods::Issues.issues_get_label(
         config: @config,
         owner: owner,
@@ -8850,12 +8369,7 @@ module OctridevGithub
     end
 
     # Gets a milestone using the given milestone number.
-    define_method(:get_milestone) do |
-      owner:,
-      repo:,
-      milestone_number:,
-      request_options: nil
-    |
+    define_method(:get_milestone) do |owner:, repo:, milestone_number:, request_options: nil|
       ::OctridevGithub::Methods::Issues.issues_get_milestone(
         config: @config,
         owner: owner,
@@ -8950,7 +8464,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the LicensesNamespace SDK type.
@@ -8962,12 +8475,7 @@ module OctridevGithub
     # Lists commonly used licenses available on GitHub. Use `featured` to filter the results to featured licenses, and use `page` and `per_page` to paginate the results.
     #
     # Lists the most commonly used licenses on GitHub. For more information, see "Licensing a repository ."
-    define_method(:get_all_commonly_used) do |
-      featured: NOT_GIVEN,
-      per_page: NOT_GIVEN,
-      page: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_all_commonly_used) do |featured: NOT_GIVEN, per_page: NOT_GIVEN, page: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Licenses.licenses_get_all_commonly_used(
         config: @config,
         featured: featured,
@@ -8988,12 +8496,7 @@ module OctridevGithub
     end
 
     # This method returns the contents of the repository's license file, if one is detected. This endpoint supports the following custom media types. For more information, see "Media types." - **`application/vnd.github.raw+json`**: Returns the raw contents of the license. - **`application/vnd.github.html+json`**: Returns the license contents in HTML. Markup languages are rendered to HTML using GitHub's open-source Markup library.
-    define_method(:get_for_repo) do |
-      owner:,
-      repo:,
-      ref: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_for_repo) do |owner:, repo:, ref: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Licenses.licenses_get_for_repo(
         config: @config,
         owner: owner,
@@ -9002,7 +8505,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the MarkdownNamespace SDK type.
@@ -9042,7 +8544,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the OrgsNamespace SDK type.
@@ -9236,12 +8737,7 @@ module OctridevGithub
     end
 
     # Get the status and results of a previously created cluster deployment records job.
-    define_method(:get_cluster_deployment_records_job) do |
-      org:,
-      cluster:,
-      job_id:,
-      request_options: nil
-    |
+    define_method(:get_cluster_deployment_records_job) do |org:, cluster:, job_id:, request_options: nil|
       ::OctridevGithub::Methods::Orgs.orgs_get_cluster_deployment_records_job(
         config: @config,
         org: org,
@@ -9534,11 +9030,7 @@ module OctridevGithub
     end
 
     # Returns a webhook configured in an organization. To get only the webhook `config` properties, see "Get a webhook configuration for an organization. You must be an organization owner to use this endpoint. OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit webhooks that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
-    define_method(:get_webhook) do |
-      org:,
-      hook_id:,
-      request_options: nil
-    |
+    define_method(:get_webhook) do |org:, hook_id:, request_options: nil|
       ::OctridevGithub::Methods::Orgs.orgs_get_webhook(
         config: @config,
         org: org,
@@ -9586,11 +9078,7 @@ module OctridevGithub
     end
 
     # Returns the webhook configuration for an organization. To get more information about the webhook, including the `active` state and `events`, use "Get an organization webhook ." You must be an organization owner to use this endpoint. OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit webhooks that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
-    define_method(:get_webhook_config_for_org) do |
-      org:,
-      hook_id:,
-      request_options: nil
-    |
+    define_method(:get_webhook_config_for_org) do |org:, hook_id:, request_options: nil|
       ::OctridevGithub::Methods::Orgs.orgs_get_webhook_config_for_org(
         config: @config,
         org: org,
@@ -9646,12 +9134,7 @@ module OctridevGithub
     # Retrieves a delivery for a webhook configured in an organization. Use `hook_id` and `delivery_id` to identify the webhook and delivery whose details you need. You must be an organization owner, and OAuth app tokens and personal access tokens (classic) need the `admin:org_hook` scope.
     #
     # Returns a delivery for a webhook configured in an organization. You must be an organization owner to use this endpoint. OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit webhooks that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
-    define_method(:get_webhook_delivery) do |
-      org:,
-      hook_id:,
-      delivery_id:,
-      request_options: nil
-    |
+    define_method(:get_webhook_delivery) do |org:, hook_id:, delivery_id:, request_options: nil|
       ::OctridevGithub::Methods::Orgs.orgs_get_webhook_delivery(
         config: @config,
         org: org,
@@ -10158,11 +9641,7 @@ module OctridevGithub
     end
 
     # In order to get a user's membership with an organization, the authenticated user must be an organization member. The `state` parameter in the response can be used to identify the user's membership status.
-    define_method(:get_membership_for_user) do |
-      org:,
-      username:,
-      request_options: nil
-    |
+    define_method(:get_membership_for_user) do |org:, username:, request_options: nil|
       ::OctridevGithub::Methods::Orgs.orgs_get_membership_for_user(
         config: @config,
         org: org,
@@ -10302,11 +9781,7 @@ module OctridevGithub
     end
 
     # Gets an organization role that is available to this organization. For more information on organization roles, see "Using organization roles." To use this endpoint, the authenticated user must be one of: - An administrator for the organization. - An organization member (or a member of a team) assigned a custom organization role that includes the **View organization roles** (`read_organization_custom_org_role`) permission. For more information, see "Permissions for…
-    define_method(:get_org_role) do |
-      org:,
-      role_id:,
-      request_options: nil
-    |
+    define_method(:get_org_role) do |org:, role_id:, request_options: nil|
       ::OctridevGithub::Methods::Orgs.orgs_get_org_role(
         config: @config,
         org: org,
@@ -10830,13 +10305,7 @@ module OctridevGithub
     # Lists the historical versions of an organization ruleset. Use `org` and `ruleset_id` to identify the ruleset, and use `page` and `per_page` to paginate the results.
     #
     # Get the history of an organization ruleset.
-    define_method(:get_org_ruleset_history) do |
-      org:,
-      ruleset_id:,
-      per_page: NOT_GIVEN,
-      page: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_org_ruleset_history) do |org:, ruleset_id:, per_page: NOT_GIVEN, page: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Orgs.orgs_get_org_ruleset_history(
         config: @config,
         org: org,
@@ -10850,12 +10319,7 @@ module OctridevGithub
     # Retrieves a specific historical version of an organization ruleset. Use `org`, `ruleset_id`, and `version_id` to identify the organization, ruleset, and version to retrieve.
     #
     # Get a version of an organization ruleset.
-    define_method(:get_org_ruleset_version) do |
-      org:,
-      ruleset_id:,
-      version_id:,
-      request_options: nil
-    |
+    define_method(:get_org_ruleset_version) do |org:, ruleset_id:, version_id:, request_options: nil|
       ::OctridevGithub::Methods::Orgs.orgs_get_org_ruleset_version(
         config: @config,
         org: org,
@@ -10912,10 +10376,7 @@ module OctridevGithub
     end
 
     # Gets the immutable releases policy for repositories in an organization. OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-    define_method(:get_immutable_releases_settings) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_immutable_releases_settings) do |org:, request_options: nil|
       ::OctridevGithub::Methods::Orgs.orgs_get_immutable_releases_settings(
         config: @config,
         org: org,
@@ -10940,12 +10401,7 @@ module OctridevGithub
     end
 
     # List all of the repositories that have been selected for immutable releases enforcement in an organization. OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-    define_method(:get_immutable_releases_settings_repositories) do |
-      org:,
-      page: NOT_GIVEN,
-      per_page: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_immutable_releases_settings_repositories) do |org:, page: NOT_GIVEN, per_page: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Orgs.orgs_get_immutable_releases_settings_repositories(
         config: @config,
         org: org,
@@ -11034,10 +10490,7 @@ module OctridevGithub
     end
 
     # If the authenticated user is an active or pending member of the organization, this endpoint will return the user's membership. If the authenticated user is not affiliated with the organization, a `404` is returned. This endpoint will return a `403` if the request is made by a GitHub App that is blocked by the organization.
-    define_method(:get_membership_for_authenticated_user) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_membership_for_authenticated_user) do |org:, request_options: nil|
       ::OctridevGithub::Methods::Orgs.orgs_get_membership_for_authenticated_user(
         config: @config,
         org: org,
@@ -11088,7 +10541,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the BillingNamespace SDK type.
@@ -11098,16 +10550,7 @@ module OctridevGithub
     end
 
     # Gets a report of AI credit usage for an organization. To use this endpoint, you must be an administrator of an organization within an enterprise or an organization account. **Note:** Only data from the past 24 months is accessible via this endpoint.
-    define_method(:get_github_billing_ai_credit_usage_report_org) do |
-      org:,
-      year: NOT_GIVEN,
-      month: NOT_GIVEN,
-      day: NOT_GIVEN,
-      user: NOT_GIVEN,
-      model: NOT_GIVEN,
-      product: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_github_billing_ai_credit_usage_report_org) do |org:, year: NOT_GIVEN, month: NOT_GIVEN, day: NOT_GIVEN, user: NOT_GIVEN, model: NOT_GIVEN, product: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Billing.billing_get_github_billing_ai_credit_usage_report_org(
         config: @config,
         org: org,
@@ -11122,14 +10565,7 @@ module OctridevGithub
     end
 
     # Gets all budgets for an organization. The authenticated user must be an organization admin or billing manager. Each page returns up to 100 budgets.
-    define_method(:get_all_budgets_org) do |
-      org:,
-      page: NOT_GIVEN,
-      per_page: NOT_GIVEN,
-      scope: NOT_GIVEN,
-      user: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_all_budgets_org) do |org:, page: NOT_GIVEN, per_page: NOT_GIVEN, scope: NOT_GIVEN, user: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Billing.billing_get_all_budgets_org(
         config: @config,
         org: org,
@@ -11174,11 +10610,7 @@ module OctridevGithub
     end
 
     # Gets a budget by ID. The authenticated user must be an organization admin or billing manager.
-    define_method(:get_budget_org) do |
-      org:,
-      budget_id:,
-      request_options: nil
-    |
+    define_method(:get_budget_org) do |org:, budget_id:, request_options: nil|
       ::OctridevGithub::Methods::Billing.billing_get_budget_org(
         config: @config,
         org: org,
@@ -11226,16 +10658,7 @@ module OctridevGithub
     end
 
     # Gets a report of premium request usage for an organization. To use this endpoint, you must be an administrator of an organization within an enterprise or an organization account. **Note:** Only data from the past 24 months is accessible via this endpoint.
-    define_method(:get_github_billing_premium_request_usage_report_org) do |
-      org:,
-      year: NOT_GIVEN,
-      month: NOT_GIVEN,
-      day: NOT_GIVEN,
-      user: NOT_GIVEN,
-      model: NOT_GIVEN,
-      product: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_github_billing_premium_request_usage_report_org) do |org:, year: NOT_GIVEN, month: NOT_GIVEN, day: NOT_GIVEN, user: NOT_GIVEN, model: NOT_GIVEN, product: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Billing.billing_get_github_billing_premium_request_usage_report_org(
         config: @config,
         org: org,
@@ -11250,13 +10673,7 @@ module OctridevGithub
     end
 
     # Gets a report of the total usage for an organization. To use this endpoint, you must be an administrator of an organization within an enterprise or an organization account. **Note:** This endpoint is only available to organizations with access to the enhanced billing platform. For more information, see "About the enhanced billing platform."
-    define_method(:get_github_billing_usage_report_org) do |
-      org:,
-      year: NOT_GIVEN,
-      month: NOT_GIVEN,
-      day: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_github_billing_usage_report_org) do |org:, year: NOT_GIVEN, month: NOT_GIVEN, day: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Billing.billing_get_github_billing_usage_report_org(
         config: @config,
         org: org,
@@ -11268,16 +10685,7 @@ module OctridevGithub
     end
 
     # > [!NOTE] > This endpoint is in public preview and is subject to change. Gets a summary report of usage for an organization. To use this endpoint, you must be an administrator of an organization within an enterprise or an organization account. **Note:** Only data from the past 24 months is accessible via this endpoint.
-    define_method(:get_github_billing_usage_summary_report_org) do |
-      org:,
-      year: NOT_GIVEN,
-      month: NOT_GIVEN,
-      day: NOT_GIVEN,
-      repository: NOT_GIVEN,
-      product: NOT_GIVEN,
-      sku: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_github_billing_usage_summary_report_org) do |org:, year: NOT_GIVEN, month: NOT_GIVEN, day: NOT_GIVEN, repository: NOT_GIVEN, product: NOT_GIVEN, sku: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Billing.billing_get_github_billing_usage_summary_report_org(
         config: @config,
         org: org,
@@ -11292,15 +10700,7 @@ module OctridevGithub
     end
 
     # Gets a report of AI credit usage for a user. **Note:** Only data from the past 24 months is accessible via this endpoint.
-    define_method(:get_github_billing_ai_credit_usage_report_user) do |
-      username:,
-      year: NOT_GIVEN,
-      month: NOT_GIVEN,
-      day: NOT_GIVEN,
-      model: NOT_GIVEN,
-      product: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_github_billing_ai_credit_usage_report_user) do |username:, year: NOT_GIVEN, month: NOT_GIVEN, day: NOT_GIVEN, model: NOT_GIVEN, product: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Billing.billing_get_github_billing_ai_credit_usage_report_user(
         config: @config,
         username: username,
@@ -11314,15 +10714,7 @@ module OctridevGithub
     end
 
     # Gets a report of premium request usage for a user. **Note:** Only data from the past 24 months is accessible via this endpoint.
-    define_method(:get_github_billing_premium_request_usage_report_user) do |
-      username:,
-      year: NOT_GIVEN,
-      month: NOT_GIVEN,
-      day: NOT_GIVEN,
-      model: NOT_GIVEN,
-      product: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_github_billing_premium_request_usage_report_user) do |username:, year: NOT_GIVEN, month: NOT_GIVEN, day: NOT_GIVEN, model: NOT_GIVEN, product: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Billing.billing_get_github_billing_premium_request_usage_report_user(
         config: @config,
         username: username,
@@ -11336,13 +10728,7 @@ module OctridevGithub
     end
 
     # Gets a report of the total usage for a user. **Note:** This endpoint is only available to users with access to the enhanced billing platform.
-    define_method(:get_github_billing_usage_report_user) do |
-      username:,
-      year: NOT_GIVEN,
-      month: NOT_GIVEN,
-      day: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_github_billing_usage_report_user) do |username:, year: NOT_GIVEN, month: NOT_GIVEN, day: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Billing.billing_get_github_billing_usage_report_user(
         config: @config,
         username: username,
@@ -11354,16 +10740,7 @@ module OctridevGithub
     end
 
     # > [!NOTE] > This endpoint is in public preview and is subject to change. Gets a summary report of usage for a user. **Note:** Only data from the past 24 months is accessible via this endpoint.
-    define_method(:get_github_billing_usage_summary_report_user) do |
-      username:,
-      year: NOT_GIVEN,
-      month: NOT_GIVEN,
-      day: NOT_GIVEN,
-      repository: NOT_GIVEN,
-      product: NOT_GIVEN,
-      sku: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_github_billing_usage_summary_report_user) do |username:, year: NOT_GIVEN, month: NOT_GIVEN, day: NOT_GIVEN, repository: NOT_GIVEN, product: NOT_GIVEN, sku: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Billing.billing_get_github_billing_usage_summary_report_user(
         config: @config,
         username: username,
@@ -11376,7 +10753,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the AgentsNamespace SDK type.
@@ -11402,19 +10778,12 @@ module OctridevGithub
     end
 
     # Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you can create or update secrets. Authenticated users must have collaborator access to a repository to create, update, or read secrets. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
-    define_method(:get_org_public_key) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_org_public_key) do |org:, request_options: nil|
       ::OctridevGithub::Methods::Agents.agents_get_org_public_key(config: @config, org: org, request_options: request_options)
     end
 
     # Gets a single organization secret without revealing its encrypted value. The authenticated user must have collaborator access to a repository to create, update, or read secrets. OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_org_secret) do |
-      org:,
-      secret_name:,
-      request_options: nil
-    |
+    define_method(:get_org_secret) do |org:, secret_name:, request_options: nil|
       ::OctridevGithub::Methods::Agents.agents_get_org_secret(
         config: @config,
         org: org,
@@ -11566,11 +10935,7 @@ module OctridevGithub
     end
 
     # Gets a specific agent variable in an organization. The authenticated user must have collaborator access to a repository to create, update, or read variables. OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_org_variable) do |
-      org:,
-      name:,
-      request_options: nil
-    |
+    define_method(:get_org_variable) do |org:, name:, request_options: nil|
       ::OctridevGithub::Methods::Agents.agents_get_org_variable(
         config: @config,
         org: org,
@@ -11740,11 +11105,7 @@ module OctridevGithub
     end
 
     # Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you can create or update secrets. Anyone with read access to the repository can use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_repo_public_key) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_repo_public_key) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Agents.agents_get_repo_public_key(
         config: @config,
         owner: owner,
@@ -11754,12 +11115,7 @@ module OctridevGithub
     end
 
     # Gets a single repository secret without revealing its encrypted value. The authenticated user must have collaborator access to the repository to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_repo_secret) do |
-      owner:,
-      repo:,
-      secret_name:,
-      request_options: nil
-    |
+    define_method(:get_repo_secret) do |owner:, repo:, secret_name:, request_options: nil|
       ::OctridevGithub::Methods::Agents.agents_get_repo_secret(
         config: @config,
         owner: owner,
@@ -11842,12 +11198,7 @@ module OctridevGithub
     end
 
     # Gets a specific variable in a repository. The authenticated user must have collaborator access to the repository to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_repo_variable) do |
-      owner:,
-      repo:,
-      name:,
-      request_options: nil
-    |
+    define_method(:get_repo_variable) do |owner:, repo:, name:, request_options: nil|
       ::OctridevGithub::Methods::Agents.agents_get_repo_variable(
         config: @config,
         owner: owner,
@@ -11892,7 +11243,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the CampaignsNamespace SDK type.
@@ -11952,11 +11302,7 @@ module OctridevGithub
     end
 
     # Gets a campaign for an organization. The authenticated user must be an owner or security manager for the organization to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
-    define_method(:get_campaign_summary) do |
-      org:,
-      campaign_number:,
-      request_options: nil
-    |
+    define_method(:get_campaign_summary) do |org:, campaign_number:, request_options: nil|
       ::OctridevGithub::Methods::Campaigns.campaigns_get_campaign_summary(
         config: @config,
         org: org,
@@ -12006,7 +11352,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the CodeScanningNamespace SDK type.
@@ -12016,10 +11361,7 @@ module OctridevGithub
     end
 
     # Gets the AI Scan setting stored on an organization. The response reports the value stored on the organization. Organization respects enterprise policy. The authenticated user must be an owner or security manager for the organization to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `admin:org`, `repo`, or `write:org` scope to use this endpoint. Organization owners can use `admin:org` or `repo`; security managers need `write:org`.
-    define_method(:get_ai_scan_enablement_for_org) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_ai_scan_enablement_for_org) do |org:, request_options: nil|
       ::OctridevGithub::Methods::CodeScanning.code_scanning_get_ai_scan_enablement_for_org(
         config: @config,
         org: org,
@@ -12076,11 +11418,7 @@ module OctridevGithub
     end
 
     # Gets whether AI Scan is enabled for a repository. OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
-    define_method(:get_ai_scan_enablement) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_ai_scan_enablement) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::CodeScanning.code_scanning_get_ai_scan_enablement(
         config: @config,
         owner: owner,
@@ -12146,12 +11484,7 @@ module OctridevGithub
     end
 
     # Gets a single code scanning alert. OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
-    define_method(:get_alert) do |
-      owner:,
-      repo:,
-      alert_number:,
-      request_options: nil
-    |
+    define_method(:get_alert) do |owner:, repo:, alert_number:, request_options: nil|
       ::OctridevGithub::Methods::CodeScanning.code_scanning_get_alert(
         config: @config,
         owner: owner,
@@ -12188,12 +11521,7 @@ module OctridevGithub
     end
 
     # Gets the status and description of an autofix for a code scanning alert on the repository's default branch. OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
-    define_method(:get_autofix) do |
-      owner:,
-      repo:,
-      alert_number:,
-      request_options: nil
-    |
+    define_method(:get_autofix) do |owner:, repo:, alert_number:, request_options: nil|
       ::OctridevGithub::Methods::CodeScanning.code_scanning_get_autofix(
         config: @config,
         owner: owner,
@@ -12298,12 +11626,7 @@ module OctridevGithub
     end
 
     # Gets a specified code scanning analysis for a repository. The default JSON response contains fields that describe the analysis. This includes the Git reference and commit SHA to which the analysis relates, the datetime of the analysis, the name of the code scanning tool, and the number of alerts. The `rules_count` field in the default response give the number of rules that were run in the analysis. For very old analyses this data is not available, and `0` is returned in this…
-    define_method(:get_analysis) do |
-      owner:,
-      repo:,
-      analysis_id:,
-      request_options: nil
-    |
+    define_method(:get_analysis) do |owner:, repo:, analysis_id:, request_options: nil|
       ::OctridevGithub::Methods::CodeScanning.code_scanning_get_analysis(
         config: @config,
         owner: owner,
@@ -12346,12 +11669,7 @@ module OctridevGithub
     end
 
     # Gets a CodeQL database for a language in a repository. By default this endpoint returns JSON metadata about the CodeQL database. To download the CodeQL database binary content, set the `Accept` header of the request to `application/zip`, and make sure your HTTP client is configured to follow redirects or use the `Location` header to make a second request to get the redirect URL. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint…
-    define_method(:get_codeql_database) do |
-      owner:,
-      repo:,
-      language:,
-      request_options: nil
-    |
+    define_method(:get_codeql_database) do |owner:, repo:, language:, request_options: nil|
       ::OctridevGithub::Methods::CodeScanning.code_scanning_get_codeql_database(
         config: @config,
         owner: owner,
@@ -12402,12 +11720,7 @@ module OctridevGithub
     end
 
     # Gets the summary of a CodeQL variant analysis. OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
-    define_method(:get_variant_analysis) do |
-      owner:,
-      repo:,
-      codeql_variant_analysis_id:,
-      request_options: nil
-    |
+    define_method(:get_variant_analysis) do |owner:, repo:, codeql_variant_analysis_id:, request_options: nil|
       ::OctridevGithub::Methods::CodeScanning.code_scanning_get_variant_analysis(
         config: @config,
         owner: owner,
@@ -12418,14 +11731,7 @@ module OctridevGithub
     end
 
     # Gets the analysis status of a repository in a CodeQL variant analysis. OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
-    define_method(:get_variant_analysis_repo_task) do |
-      owner:,
-      repo:,
-      codeql_variant_analysis_id:,
-      repo_owner:,
-      repo_name:,
-      request_options: nil
-    |
+    define_method(:get_variant_analysis_repo_task) do |owner:, repo:, codeql_variant_analysis_id:, repo_owner:, repo_name:, request_options: nil|
       ::OctridevGithub::Methods::CodeScanning.code_scanning_get_variant_analysis_repo_task(
         config: @config,
         owner: owner,
@@ -12438,11 +11744,7 @@ module OctridevGithub
     end
 
     # Gets a code scanning default setup configuration. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
-    define_method(:get_default_setup) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_default_setup) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::CodeScanning.code_scanning_get_default_setup(
         config: @config,
         owner: owner,
@@ -12506,12 +11808,7 @@ module OctridevGithub
     end
 
     # Gets information about a SARIF upload, including the status and the URL of the analysis that was uploaded so that you can retrieve details of the analysis. For more information, see "Get a code scanning analysis for a repository." OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
-    define_method(:get_sarif) do |
-      owner:,
-      repo:,
-      sarif_id:,
-      request_options: nil
-    |
+    define_method(:get_sarif) do |owner:, repo:, sarif_id:, request_options: nil|
       ::OctridevGithub::Methods::CodeScanning.code_scanning_get_sarif(
         config: @config,
         owner: owner,
@@ -12520,7 +11817,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the CodespacesNamespace SDK type.
@@ -12612,10 +11908,7 @@ module OctridevGithub
     end
 
     # Gets a public key for an organization, which is required in order to encrypt secrets. You need to encrypt the value of a secret before you can create or update secrets. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-    define_method(:get_org_public_key) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_org_public_key) do |org:, request_options: nil|
       ::OctridevGithub::Methods::Codespaces.codespaces_get_org_public_key(
         config: @config,
         org: org,
@@ -12624,11 +11917,7 @@ module OctridevGithub
     end
 
     # Gets an organization development environment secret without revealing its encrypted value. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-    define_method(:get_org_secret) do |
-      org:,
-      secret_name:,
-      request_options: nil
-    |
+    define_method(:get_org_secret) do |org:, secret_name:, request_options: nil|
       ::OctridevGithub::Methods::Codespaces.codespaces_get_org_secret(
         config: @config,
         org: org,
@@ -12744,13 +12033,7 @@ module OctridevGithub
     end
 
     # Lists the codespaces that a member of an organization has for repositories in that organization. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-    define_method(:get_codespaces_for_user_in_org) do |
-      org:,
-      username:,
-      per_page: NOT_GIVEN,
-      page: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_codespaces_for_user_in_org) do |org:, username:, per_page: NOT_GIVEN, page: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Codespaces.codespaces_get_codespaces_for_user_in_org(
         config: @config,
         org: org,
@@ -12940,11 +12223,7 @@ module OctridevGithub
     end
 
     # Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you can create or update secrets. If the repository is private, OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_repo_public_key) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_repo_public_key) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Codespaces.codespaces_get_repo_public_key(
         config: @config,
         owner: owner,
@@ -12954,12 +12233,7 @@ module OctridevGithub
     end
 
     # Gets a single repository development environment secret without revealing its encrypted value. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_repo_secret) do |
-      owner:,
-      repo:,
-      secret_name:,
-      request_options: nil
-    |
+    define_method(:get_repo_secret) do |owner:, repo:, secret_name:, request_options: nil|
       ::OctridevGithub::Methods::Codespaces.codespaces_get_repo_secret(
         config: @config,
         owner: owner,
@@ -13094,10 +12368,7 @@ module OctridevGithub
     end
 
     # Gets a development environment secret available to a user's codespaces without revealing its encrypted value. The authenticated user must have Codespaces access to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
-    define_method(:get_secret_for_authenticated_user) do |
-      secret_name:,
-      request_options: nil
-    |
+    define_method(:get_secret_for_authenticated_user) do |secret_name:, request_options: nil|
       ::OctridevGithub::Methods::Codespaces.codespaces_get_secret_for_authenticated_user(
         config: @config,
         secret_name: secret_name,
@@ -13194,10 +12465,7 @@ module OctridevGithub
     end
 
     # Gets information about a user's codespace. OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
-    define_method(:get_for_authenticated_user) do |
-      codespace_name:,
-      request_options: nil
-    |
+    define_method(:get_for_authenticated_user) do |codespace_name:, request_options: nil|
       ::OctridevGithub::Methods::Codespaces.codespaces_get_for_authenticated_user(
         config: @config,
         codespace_name: codespace_name,
@@ -13248,11 +12516,7 @@ module OctridevGithub
     end
 
     # Gets information about an export of a codespace. OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
-    define_method(:get_export_details_for_authenticated_user) do |
-      codespace_name:,
-      export_id:,
-      request_options: nil
-    |
+    define_method(:get_export_details_for_authenticated_user) do |codespace_name:, export_id:, request_options: nil|
       ::OctridevGithub::Methods::Codespaces.codespaces_get_export_details_for_authenticated_user(
         config: @config,
         codespace_name: codespace_name,
@@ -13312,7 +12576,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the CopilotSpacesNamespace SDK type.
@@ -13362,11 +12625,7 @@ module OctridevGithub
     end
 
     # Gets details about a specific Copilot Space owned by an organization. The authenticated user must have read access to the Space. Internal Spaces require the authenticated user to be a member of the organization or have been granted read permissions. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint. Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space.…
-    define_method(:get_for_org) do |
-      org:,
-      space_number:,
-      request_options: nil
-    |
+    define_method(:get_for_org) do |org:, space_number:, request_options: nil|
       ::OctridevGithub::Methods::CopilotSpaces.copilot_spaces_get_for_org(
         config: @config,
         org: org,
@@ -13518,12 +12777,7 @@ module OctridevGithub
     end
 
     # Gets a specific resource attached to a Copilot Space owned by an organization. The authenticated user must have appropriate permissions to view the space. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint. Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in the space.
-    define_method(:get_resource_for_org) do |
-      org:,
-      space_number:,
-      space_resource_id:,
-      request_options: nil
-    |
+    define_method(:get_resource_for_org) do |org:, space_number:, space_resource_id:, request_options: nil|
       ::OctridevGithub::Methods::CopilotSpaces.copilot_spaces_get_resource_for_org(
         config: @config,
         org: org,
@@ -13608,11 +12862,7 @@ module OctridevGithub
     end
 
     # Gets details about a specific Copilot Space owned by a user. The authenticated user must have read access to the Space. Private user spaces require the authenticated user to be the owner of the space. Public user spaces are accessible to any authenticated user. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_for_user) do |
-      username:,
-      space_number:,
-      request_options: nil
-    |
+    define_method(:get_for_user) do |username:, space_number:, request_options: nil|
       ::OctridevGithub::Methods::CopilotSpaces.copilot_spaces_get_for_user(
         config: @config,
         username: username,
@@ -13764,12 +13014,7 @@ module OctridevGithub
     end
 
     # Gets a specific resource attached to a Copilot Space owned by a user. The authenticated user must have appropriate permissions to view the space. OAuth app tokens and personal access tokens (classic) need the `read:user` scope to use this endpoint.
-    define_method(:get_resource_for_user) do |
-      username:,
-      space_number:,
-      space_resource_id:,
-      request_options: nil
-    |
+    define_method(:get_resource_for_user) do |username:, space_number:, space_resource_id:, request_options: nil|
       ::OctridevGithub::Methods::CopilotSpaces.copilot_spaces_get_resource_for_user(
         config: @config,
         username: username,
@@ -13812,7 +13057,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the PackagesNamespace SDK type.
@@ -13854,12 +13098,7 @@ module OctridevGithub
     end
 
     # Gets a specific package in an organization. OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "About permissions for GitHub Packages."
-    define_method(:get_package_for_organization) do |
-      package_type:,
-      package_name:,
-      org:,
-      request_options: nil
-    |
+    define_method(:get_package_for_organization) do |package_type:, package_name:, org:, request_options: nil|
       ::OctridevGithub::Methods::Packages.packages_get_package_for_organization(
         config: @config,
         package_type: package_type,
@@ -13904,15 +13143,7 @@ module OctridevGithub
     end
 
     # Lists package versions for a package owned by an organization. OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "About permissions for GitHub Packages."
-    define_method(:get_all_package_versions_for_package_owned_by_org) do |
-      package_type:,
-      package_name:,
-      org:,
-      page: NOT_GIVEN,
-      per_page: NOT_GIVEN,
-      state: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_all_package_versions_for_package_owned_by_org) do |package_type:, package_name:, org:, page: NOT_GIVEN, per_page: NOT_GIVEN, state: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Packages.packages_get_all_package_versions_for_package_owned_by_org(
         config: @config,
         package_type: package_type,
@@ -13926,13 +13157,7 @@ module OctridevGithub
     end
 
     # Gets a specific package version in an organization. OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "About permissions for GitHub Packages."
-    define_method(:get_package_version_for_organization) do |
-      package_type:,
-      package_name:,
-      org:,
-      package_version_id:,
-      request_options: nil
-    |
+    define_method(:get_package_version_for_organization) do |package_type:, package_name:, org:, package_version_id:, request_options: nil|
       ::OctridevGithub::Methods::Packages.packages_get_package_version_for_organization(
         config: @config,
         package_type: package_type,
@@ -14006,11 +13231,7 @@ module OctridevGithub
     end
 
     # Gets a specific package for a package owned by the authenticated user. OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "About permissions for GitHub Packages."
-    define_method(:get_package_for_authenticated_user) do |
-      package_type:,
-      package_name:,
-      request_options: nil
-    |
+    define_method(:get_package_for_authenticated_user) do |package_type:, package_name:, request_options: nil|
       ::OctridevGithub::Methods::Packages.packages_get_package_for_authenticated_user(
         config: @config,
         package_type: package_type,
@@ -14050,14 +13271,7 @@ module OctridevGithub
     end
 
     # Lists package versions for a package owned by the authenticated user. OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "About permissions for GitHub Packages."
-    define_method(:get_all_package_versions_for_package_owned_by_authenticated_user) do |
-      package_type:,
-      package_name:,
-      page: NOT_GIVEN,
-      per_page: NOT_GIVEN,
-      state: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_all_package_versions_for_package_owned_by_authenticated_user) do |package_type:, package_name:, page: NOT_GIVEN, per_page: NOT_GIVEN, state: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Packages.packages_get_all_package_versions_for_package_owned_by_authenticated_user(
         config: @config,
         package_type: package_type,
@@ -14070,12 +13284,7 @@ module OctridevGithub
     end
 
     # Gets a specific package version for a package owned by the authenticated user. OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "About permissions for GitHub Packages."
-    define_method(:get_package_version_for_authenticated_user) do |
-      package_type:,
-      package_name:,
-      package_version_id:,
-      request_options: nil
-    |
+    define_method(:get_package_version_for_authenticated_user) do |package_type:, package_name:, package_version_id:, request_options: nil|
       ::OctridevGithub::Methods::Packages.packages_get_package_version_for_authenticated_user(
         config: @config,
         package_type: package_type,
@@ -14150,12 +13359,7 @@ module OctridevGithub
     end
 
     # Gets a specific package metadata for a public package owned by a user. OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "About permissions for GitHub Packages."
-    define_method(:get_package_for_user) do |
-      package_type:,
-      package_name:,
-      username:,
-      request_options: nil
-    |
+    define_method(:get_package_for_user) do |package_type:, package_name:, username:, request_options: nil|
       ::OctridevGithub::Methods::Packages.packages_get_package_for_user(
         config: @config,
         package_type: package_type,
@@ -14200,12 +13404,7 @@ module OctridevGithub
     end
 
     # Lists package versions for a public package owned by a specified user. OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "About permissions for GitHub Packages."
-    define_method(:get_all_package_versions_for_package_owned_by_user) do |
-      package_type:,
-      package_name:,
-      username:,
-      request_options: nil
-    |
+    define_method(:get_all_package_versions_for_package_owned_by_user) do |package_type:, package_name:, username:, request_options: nil|
       ::OctridevGithub::Methods::Packages.packages_get_all_package_versions_for_package_owned_by_user(
         config: @config,
         package_type: package_type,
@@ -14216,13 +13415,7 @@ module OctridevGithub
     end
 
     # Gets a specific package version for a public package owned by a specified user. OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "About permissions for GitHub Packages."
-    define_method(:get_package_version_for_user) do |
-      package_type:,
-      package_name:,
-      package_version_id:,
-      username:,
-      request_options: nil
-    |
+    define_method(:get_package_version_for_user) do |package_type:, package_name:, package_version_id:, username:, request_options: nil|
       ::OctridevGithub::Methods::Packages.packages_get_package_version_for_user(
         config: @config,
         package_type: package_type,
@@ -14268,7 +13461,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the InteractionsNamespace SDK type.
@@ -14278,10 +13470,7 @@ module OctridevGithub
     end
 
     # Shows which type of GitHub user can interact with this organization and when the restriction expires. If there is no restrictions, you will see an empty response.
-    define_method(:get_restrictions_for_org) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_restrictions_for_org) do |org:, request_options: nil|
       ::OctridevGithub::Methods::Interactions.interactions_get_restrictions_for_org(
         config: @config,
         org: org,
@@ -14318,10 +13507,7 @@ module OctridevGithub
     end
 
     # Gets the pull request creation cap configuration for an organization. The cap limits the total number of open pull requests a user can have across all public repositories in the organization at one time. Only users with admin access to the organization can view the cap configuration.
-    define_method(:get_pull_request_creation_cap_for_org) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_pull_request_creation_cap_for_org) do |org:, request_options: nil|
       ::OctridevGithub::Methods::Interactions.interactions_get_pull_request_creation_cap_for_org(
         config: @config,
         org: org,
@@ -14348,11 +13534,7 @@ module OctridevGithub
     end
 
     # Shows which type of GitHub user can interact with this repository and when the restriction expires. If there are no restrictions, you will see an empty response.
-    define_method(:get_restrictions_for_repo) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_restrictions_for_repo) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Interactions.interactions_get_restrictions_for_repo(
         config: @config,
         owner: owner,
@@ -14394,11 +13576,7 @@ module OctridevGithub
     end
 
     # Lists the users that are on the pull request creation cap bypass list for a repository. Users on this list can create pull requests regardless of any configured pull request creation cap. Only users with maintainer permissions can view the bypass list.
-    define_method(:get_pull_request_bypass_list_for_repo) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_pull_request_bypass_list_for_repo) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Interactions.interactions_get_pull_request_bypass_list_for_repo(
         config: @config,
         owner: owner,
@@ -14440,11 +13618,7 @@ module OctridevGithub
     end
 
     # Gets the pull request creation cap configuration for a repository. The cap limits the number of open pull requests a user can have at one time. Only users with admin access to the repository can view the cap configuration.
-    define_method(:get_pull_request_creation_cap_for_repo) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_pull_request_creation_cap_for_repo) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Interactions.interactions_get_pull_request_creation_cap_for_repo(
         config: @config,
         owner: owner,
@@ -14502,7 +13676,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the MigrationsNamespace SDK type.
@@ -14562,12 +13735,7 @@ module OctridevGithub
     end
 
     # Fetches the status of a migration. The `state` of a migration can be one of the following values: * `pending`, which means the migration hasn't started yet. * `exporting`, which means the migration is in progress. * `exported`, which means the migration finished successfully. * `failed`, which means the migration failed.
-    define_method(:get_status_for_org) do |
-      org:,
-      migration_id:,
-      exclude: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_status_for_org) do |org:, migration_id:, exclude: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Migrations.migrations_get_status_for_org(
         config: @config,
         org: org,
@@ -14644,11 +13812,7 @@ module OctridevGithub
     # View the progress of an import. > !WARNING] > **Endpoint closing down notice:** Due to very low levels of usage and available alternatives, this endpoint is closing down and will no longer be available from 00:00 UTC on April 12, 2024. For more details and alternatives, see the [changelog. **Import status** This section includes details about the possible values of the `status` field of the Import Progress response. An import that does not have errors will progress through…
     #
     # @deprecated This operation is deprecated and may be removed in a future release.
-    define_method(:get_import_status) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_import_status) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Migrations.migrations_get_import_status(
         config: @config,
         owner: owner,
@@ -14726,12 +13890,7 @@ module OctridevGithub
     # Each type of source control system represents authors in a different way. For example, a Git commit author has a display name and an email address, but a Subversion commit author just has a username. The GitHub Importer will make the author information valid, but the author might not be correct. For example, it will change the bare Subversion username `hubot` into something like `hubot <hubot@12341234-abab-fefe-8787-fedcba987654>`. This endpoint and the Map a commit author…
     #
     # @deprecated This operation is deprecated and may be removed in a future release.
-    define_method(:get_commit_authors) do |
-      owner:,
-      repo:,
-      since: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_commit_authors) do |owner:, repo:, since: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Migrations.migrations_get_commit_authors(
         config: @config,
         owner: owner,
@@ -14768,11 +13927,7 @@ module OctridevGithub
     # List files larger than 100MB found during the import > !WARNING] > **Endpoint closing down notice:** Due to very low levels of usage and available alternatives, this endpoint is closing down and will no longer be available from 00:00 UTC on April 12, 2024. For more details and alternatives, see the [changelog.
     #
     # @deprecated This operation is deprecated and may be removed in a future release.
-    define_method(:get_large_files) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_large_files) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Migrations.migrations_get_large_files(
         config: @config,
         owner: owner,
@@ -14848,11 +14003,7 @@ module OctridevGithub
     # Retrieves the status and details of a user migration. Use `migration_id` to identify the migration, and check `state` to see whether it is pending, exporting, exported, or failed. Once the migration is exported, download its archive using the user migration archive endpoint.
     #
     # Fetches a single user migration. The response includes the `state` of the migration, which can be one of the following values: * `pending` - the migration hasn't started yet. * `exporting` - the migration is in progress. * `exported` - the migration finished successfully. * `failed` - the migration failed. Once the migration has been `exported` you can download the migration archive.
-    define_method(:get_status_for_authenticated_user) do |
-      migration_id:,
-      exclude: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_status_for_authenticated_user) do |migration_id:, exclude: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Migrations.migrations_get_status_for_authenticated_user(
         config: @config,
         migration_id: migration_id,
@@ -14862,10 +14013,7 @@ module OctridevGithub
     end
 
     # Fetches the URL to download the migration archive as a `tar.gz` file. Depending on the resources your repository uses, the migration archive can contain JSON files with data for these objects: * attachments * bases * commit\_comments * issue\_comments * issue\_events * issues * milestones * organizations * projects * protected\_branches * pull\_request\_reviews * pull\_requests * releases * repositories * review\_comments * schema * users The archive will also contain an…
-    define_method(:get_archive_for_authenticated_user) do |
-      migration_id:,
-      request_options: nil
-    |
+    define_method(:get_archive_for_authenticated_user) do |migration_id:, request_options: nil|
       ::OctridevGithub::Methods::Migrations.migrations_get_archive_for_authenticated_user(
         config: @config,
         migration_id: migration_id,
@@ -14914,7 +14062,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the PrivateRegistriesNamespace SDK type.
@@ -15000,10 +14147,7 @@ module OctridevGithub
     end
 
     # Gets the org public key, which is needed to encrypt private registry secrets. You need to encrypt a secret before you can create or update secrets. OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-    define_method(:get_org_public_key) do |
-      org:,
-      request_options: nil
-    |
+    define_method(:get_org_public_key) do |org:, request_options: nil|
       ::OctridevGithub::Methods::PrivateRegistries.private_registries_get_org_public_key(
         config: @config,
         org: org,
@@ -15012,11 +14156,7 @@ module OctridevGithub
     end
 
     # Get the configuration of a single private registry defined for an organization, omitting its encrypted value. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-    define_method(:get_org_private_registry) do |
-      org:,
-      secret_name:,
-      request_options: nil
-    |
+    define_method(:get_org_private_registry) do |org:, secret_name:, request_options: nil|
       ::OctridevGithub::Methods::PrivateRegistries.private_registries_get_org_private_registry(
         config: @config,
         org: org,
@@ -15100,7 +14240,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the ProjectsNamespace SDK type.
@@ -15132,11 +14271,7 @@ module OctridevGithub
     # Retrieves a specific project owned by an organization. Use `org` and `project_number` to identify the organization and project. The response includes project details such as its title, owner, visibility, and state.
     #
     # Get a specific organization-owned project.
-    define_method(:get_for_org) do |
-      project_number:,
-      org:,
-      request_options: nil
-    |
+    define_method(:get_for_org) do |project_number:, org:, request_options: nil|
       ::OctridevGithub::Methods::Projects.projects_get_for_org(
         config: @config,
         project_number: project_number,
@@ -15202,12 +14337,7 @@ module OctridevGithub
     end
 
     # Get a specific field for an organization-owned project.
-    define_method(:get_field_for_org) do |
-      project_number:,
-      field_id:,
-      org:,
-      request_options: nil
-    |
+    define_method(:get_field_for_org) do |project_number:, field_id:, org:, request_options: nil|
       ::OctridevGithub::Methods::Projects.projects_get_field_for_org(
         config: @config,
         project_number: project_number,
@@ -15266,13 +14396,7 @@ module OctridevGithub
     end
 
     # Get a specific item from an organization-owned project.
-    define_method(:get_org_item) do |
-      project_number:,
-      org:,
-      item_id:,
-      fields: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_org_item) do |project_number:, org:, item_id:, fields: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Projects.projects_get_org_item(
         config: @config,
         project_number: project_number,
@@ -15438,11 +14562,7 @@ module OctridevGithub
     # Retrieves a Projects v2 project owned by a specified GitHub user. Use `username` and `project_number` to identify the user and project; the response includes project metadata and ownership details.
     #
     # Get a specific user-owned project.
-    define_method(:get_for_user) do |
-      project_number:,
-      username:,
-      request_options: nil
-    |
+    define_method(:get_for_user) do |project_number:, username:, request_options: nil|
       ::OctridevGithub::Methods::Projects.projects_get_for_user(
         config: @config,
         project_number: project_number,
@@ -15492,12 +14612,7 @@ module OctridevGithub
     # Retrieves a specific field from a project owned by the specified user. Use the project number and field identifier to select the field to inspect. The response includes the field's name, data type, project URL, and any field configuration.
     #
     # Get a specific field for a user-owned project.
-    define_method(:get_field_for_user) do |
-      project_number:,
-      field_id:,
-      username:,
-      request_options: nil
-    |
+    define_method(:get_field_for_user) do |project_number:, field_id:, username:, request_options: nil|
       ::OctridevGithub::Methods::Projects.projects_get_field_for_user(
         config: @config,
         project_number: project_number,
@@ -15558,13 +14673,7 @@ module OctridevGithub
     # Retrieves a specific item from a project owned by the specified user. Use `fields` to limit the returned field values; when omitted, the response includes the title field. The item response also identifies its content type and includes item and project details.
     #
     # Get a specific item from a user-owned project.
-    define_method(:get_user_item) do |
-      project_number:,
-      username:,
-      item_id:,
-      fields: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_user_item) do |project_number:, username:, item_id:, fields: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Projects.projects_get_user_item(
         config: @config,
         project_number: project_number,
@@ -15636,7 +14745,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the ReposNamespace SDK type.
@@ -15730,13 +14838,7 @@ module OctridevGithub
     end
 
     # Get all the repository rulesets for an organization.
-    define_method(:get_org_rulesets) do |
-      org:,
-      per_page: NOT_GIVEN,
-      page: NOT_GIVEN,
-      targets: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_org_rulesets) do |org:, per_page: NOT_GIVEN, page: NOT_GIVEN, targets: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_org_rulesets(
         config: @config,
         org: org,
@@ -15774,18 +14876,7 @@ module OctridevGithub
     end
 
     # Lists suites of rule evaluations at the organization level. For more information, see "Managing rulesets for repositories in your organization."
-    define_method(:get_org_rule_suites) do |
-      org:,
-      ref: NOT_GIVEN,
-      repository_name: NOT_GIVEN,
-      time_period: NOT_GIVEN,
-      actor_name: NOT_GIVEN,
-      rule_suite_result: NOT_GIVEN,
-      evaluate_status: NOT_GIVEN,
-      per_page: NOT_GIVEN,
-      page: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_org_rule_suites) do |org:, ref: NOT_GIVEN, repository_name: NOT_GIVEN, time_period: NOT_GIVEN, actor_name: NOT_GIVEN, rule_suite_result: NOT_GIVEN, evaluate_status: NOT_GIVEN, per_page: NOT_GIVEN, page: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_org_rule_suites(
         config: @config,
         org: org,
@@ -15802,12 +14893,7 @@ module OctridevGithub
     end
 
     # Gets information about a suite of rule evaluations from within an organization. For more information, see "Managing rulesets for repositories in your organization."
-    define_method(:get_org_rule_suite) do |
-      org:,
-      rule_suite_id:,
-      include_metadata: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_org_rule_suite) do |org:, rule_suite_id:, include_metadata: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_org_rule_suite(
         config: @config,
         org: org,
@@ -15818,11 +14904,7 @@ module OctridevGithub
     end
 
     # Get a repository ruleset for an organization. **Note:** To prevent leaking sensitive information, the `bypass_actors` property is only returned if the user making the API request has write access to the ruleset.
-    define_method(:get_org_ruleset) do |
-      org:,
-      ruleset_id:,
-      request_options: nil
-    |
+    define_method(:get_org_ruleset) do |org:, ruleset_id:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_org_ruleset(
         config: @config,
         org: org,
@@ -16071,12 +15153,7 @@ module OctridevGithub
     end
 
     # This returns a single autolink reference by ID that was configured for the given repository. Information about autolinks are only available to repository administrators.
-    define_method(:get_autolink) do |
-      owner:,
-      repo:,
-      autolink_id:,
-      request_options: nil
-    |
+    define_method(:get_autolink) do |owner:, repo:, autolink_id:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_autolink(
         config: @config,
         owner: owner,
@@ -16165,12 +15242,7 @@ module OctridevGithub
     end
 
     # Retrieves a branch and its protection details from a repository. Use `branch` to identify the branch; its name cannot contain wildcard characters.
-    define_method(:get_branch) do |
-      owner:,
-      repo:,
-      branch:,
-      request_options: nil
-    |
+    define_method(:get_branch) do |owner:, repo:, branch:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_branch(
         config: @config,
         owner: owner,
@@ -16181,12 +15253,7 @@ module OctridevGithub
     end
 
     # Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see GitHub's products in the GitHub Help documentation.
-    define_method(:get_branch_protection) do |
-      owner:,
-      repo:,
-      branch:,
-      request_options: nil
-    |
+    define_method(:get_branch_protection) do |owner:, repo:, branch:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_branch_protection(
         config: @config,
         owner: owner,
@@ -16251,12 +15318,7 @@ module OctridevGithub
     end
 
     # Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see GitHub's products in the GitHub Help documentation.
-    define_method(:get_admin_branch_protection) do |
-      owner:,
-      repo:,
-      branch:,
-      request_options: nil
-    |
+    define_method(:get_admin_branch_protection) do |owner:, repo:, branch:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_admin_branch_protection(
         config: @config,
         owner: owner,
@@ -16299,12 +15361,7 @@ module OctridevGithub
     end
 
     # Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see GitHub's products in the GitHub Help documentation.
-    define_method(:get_pull_request_review_protection) do |
-      owner:,
-      repo:,
-      branch:,
-      request_options: nil
-    |
+    define_method(:get_pull_request_review_protection) do |owner:, repo:, branch:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_pull_request_review_protection(
         config: @config,
         owner: owner,
@@ -16359,12 +15416,7 @@ module OctridevGithub
     end
 
     # Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see GitHub's products in the GitHub Help documentation. When authenticated with admin or owner permissions to the repository, you can use this endpoint to check whether a branch requires signed commits. An enabled status of…
-    define_method(:get_commit_signature_protection) do |
-      owner:,
-      repo:,
-      branch:,
-      request_options: nil
-    |
+    define_method(:get_commit_signature_protection) do |owner:, repo:, branch:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_commit_signature_protection(
         config: @config,
         owner: owner,
@@ -16407,12 +15459,7 @@ module OctridevGithub
     end
 
     # Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see GitHub's products in the GitHub Help documentation.
-    define_method(:get_status_checks_protection) do |
-      owner:,
-      repo:,
-      branch:,
-      request_options: nil
-    |
+    define_method(:get_status_checks_protection) do |owner:, repo:, branch:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_status_checks_protection(
         config: @config,
         owner: owner,
@@ -16461,12 +15508,7 @@ module OctridevGithub
     end
 
     # Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see GitHub's products in the GitHub Help documentation.
-    define_method(:get_all_status_check_contexts) do |
-      owner:,
-      repo:,
-      branch:,
-      request_options: nil
-    |
+    define_method(:get_all_status_check_contexts) do |owner:, repo:, branch:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_all_status_check_contexts(
         config: @config,
         owner: owner,
@@ -16537,12 +15579,7 @@ module OctridevGithub
     end
 
     # Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see GitHub's products in the GitHub Help documentation. Lists who has access to this protected branch. > [!NOTE] > Users, apps, and teams `restrictions` are only available for organization-owned repositories.
-    define_method(:get_access_restrictions) do |
-      owner:,
-      repo:,
-      branch:,
-      request_options: nil
-    |
+    define_method(:get_access_restrictions) do |owner:, repo:, branch:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_access_restrictions(
         config: @config,
         owner: owner,
@@ -16569,12 +15606,7 @@ module OctridevGithub
     end
 
     # Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see GitHub's products in the GitHub Help documentation. Lists the GitHub Apps that have push access to this branch. Only GitHub Apps that are installed on the repository and that have been granted write access to the…
-    define_method(:get_apps_with_access_to_protected_branch) do |
-      owner:,
-      repo:,
-      branch:,
-      request_options: nil
-    |
+    define_method(:get_apps_with_access_to_protected_branch) do |owner:, repo:, branch:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_apps_with_access_to_protected_branch(
         config: @config,
         owner: owner,
@@ -16639,12 +15671,7 @@ module OctridevGithub
     end
 
     # Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see GitHub's products in the GitHub Help documentation. Lists the teams who have push access to this branch. The list includes child teams.
-    define_method(:get_teams_with_access_to_protected_branch) do |
-      owner:,
-      repo:,
-      branch:,
-      request_options: nil
-    |
+    define_method(:get_teams_with_access_to_protected_branch) do |owner:, repo:, branch:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_teams_with_access_to_protected_branch(
         config: @config,
         owner: owner,
@@ -16715,12 +15742,7 @@ module OctridevGithub
     end
 
     # Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see GitHub's products in the GitHub Help documentation. Lists the people who have push access to this branch.
-    define_method(:get_users_with_access_to_protected_branch) do |
-      owner:,
-      repo:,
-      branch:,
-      request_options: nil
-    |
+    define_method(:get_users_with_access_to_protected_branch) do |owner:, repo:, branch:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_users_with_access_to_protected_branch(
         config: @config,
         owner: owner,
@@ -16891,12 +15913,7 @@ module OctridevGithub
     end
 
     # Checks the repository permission and role of a collaborator. The `permission` attribute provides the legacy base roles of `admin`, `write`, `read`, and `none`, where the `maintain` role is mapped to `write` and the `triage` role is mapped to `read`. The `role_name` attribute provides the name of the assigned role, including custom roles. The `permission` can also be used to determine which base level of access the collaborator has to the repository. The calculated…
-    define_method(:get_collaborator_permission_level) do |
-      owner:,
-      repo:,
-      username:,
-      request_options: nil
-    |
+    define_method(:get_collaborator_permission_level) do |owner:, repo:, username:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_collaborator_permission_level(
         config: @config,
         owner: owner,
@@ -16925,12 +15942,7 @@ module OctridevGithub
     end
 
     # Gets a specified commit comment. This endpoint supports the following custom media types. For more information, see "Media types." - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type. - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`. -…
-    define_method(:get_commit_comment) do |
-      owner:,
-      repo:,
-      comment_id:,
-      request_options: nil
-    |
+    define_method(:get_commit_comment) do |owner:, repo:, comment_id:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_commit_comment(
         config: @config,
         owner: owner,
@@ -17085,14 +16097,7 @@ module OctridevGithub
     end
 
     # Returns the contents of a single commit reference. You must have `read` access for the repository to use this endpoint. > !NOTE] > If there are more than 300 files in the commit diff and the default JSON media type is requested, the response will include pagination link headers for the remaining files, up to a limit of 3000 files. Each page contains the static commit information, and the only changes are to the file listing. This endpoint supports the following custom media…
-    define_method(:get_commit) do |
-      owner:,
-      repo:,
-      ref:,
-      page: NOT_GIVEN,
-      per_page: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_commit) do |owner:, repo:, ref:, page: NOT_GIVEN, per_page: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_commit(
         config: @config,
         owner: owner,
@@ -17105,14 +16110,7 @@ module OctridevGithub
     end
 
     # Users with pull access in a repository can access a combined view of commit statuses for a given ref. The ref can be a SHA, a branch name, or a tag name. Additionally, a combined `state` is returned. The `state` is one of: * **failure** if any of the contexts report as `error` or `failure` * **pending** if there are no statuses or a context is `pending` * **success** if the latest status for all contexts is `success`
-    define_method(:get_combined_status_for_ref) do |
-      owner:,
-      repo:,
-      ref:,
-      per_page: NOT_GIVEN,
-      page: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_combined_status_for_ref) do |owner:, repo:, ref:, per_page: NOT_GIVEN, page: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_combined_status_for_ref(
         config: @config,
         owner: owner,
@@ -17145,11 +16143,7 @@ module OctridevGithub
     end
 
     # Returns all community profile metrics for a repository. The repository cannot be a fork. The returned metrics include an overall health score, the repository description, the presence of documentation, the detected code of conduct, the detected license, and the presence of ISSUE\_TEMPLATE, PULL\_REQUEST\_TEMPLATE, README, and CONTRIBUTING files. The `health_percentage` score is defined as a percentage of how many of the recommended community health files are present. For…
-    define_method(:get_community_profile_metrics) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_community_profile_metrics) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_community_profile_metrics(
         config: @config,
         owner: owner,
@@ -17181,13 +16175,7 @@ module OctridevGithub
     # Retrieves a file or directory from a repository at the specified `path`. Use `ref` to select a commit, branch, or tag; it defaults to the repository's default branch when omitted. Directory responses are limited to 1,000 items, and files larger than 100 MB are not supported.
     #
     # Gets the contents of a file or directory in a repository. Specify the file path or directory with the `path` parameter. If you omit the `path` parameter, you will receive the contents of the repository's root directory. This endpoint supports the following custom media types. For more information, see "Media types." - **`application/vnd.github.raw+json`**: Returns the raw file contents for files and symlinks. - **`application/vnd.github.html+json`**: Returns the file…
-    define_method(:get_content) do |
-      owner:,
-      repo:,
-      path:,
-      ref: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_content) do |owner:, repo:, path:, ref: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_content(
         config: @config,
         owner: owner,
@@ -17333,12 +16321,7 @@ module OctridevGithub
     end
 
     # Retrieves a deployment from a repository by its deployment ID. Use this operation to inspect the deployment's ref, environment, task, and current record details.
-    define_method(:get_deployment) do |
-      owner:,
-      repo:,
-      deployment_id:,
-      request_options: nil
-    |
+    define_method(:get_deployment) do |owner:, repo:, deployment_id:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_deployment(
         config: @config,
         owner: owner,
@@ -17417,13 +16400,7 @@ module OctridevGithub
     # Retrieves a status record for a deployment in a repository. You must have pull access to the repository to view the deployment status.
     #
     # Users with pull access can view a deployment status for a deployment:
-    define_method(:get_deployment_status) do |
-      owner:,
-      repo:,
-      deployment_id:,
-      status_id:,
-      request_options: nil
-    |
+    define_method(:get_deployment_status) do |owner:, repo:, deployment_id:, status_id:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_deployment_status(
         config: @config,
         owner: owner,
@@ -17453,13 +16430,7 @@ module OctridevGithub
     end
 
     # Lists the environments for a repository. Anyone with read access to the repository can use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
-    define_method(:get_all_environments) do |
-      owner:,
-      repo:,
-      per_page: NOT_GIVEN,
-      page: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_all_environments) do |owner:, repo:, per_page: NOT_GIVEN, page: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_all_environments(
         config: @config,
         owner: owner,
@@ -17471,12 +16442,7 @@ module OctridevGithub
     end
 
     # > [!NOTE] > To get information about name patterns that branches must match in order to deploy to this environment, see "Get a deployment branch policy." Anyone with read access to the repository can use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
-    define_method(:get_environment) do |
-      owner:,
-      repo:,
-      environment_name:,
-      request_options: nil
-    |
+    define_method(:get_environment) do |owner:, repo:, environment_name:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_environment(
         config: @config,
         owner: owner,
@@ -17567,13 +16533,7 @@ module OctridevGithub
     end
 
     # Gets a deployment branch or tag policy for an environment. Anyone with read access to the repository can use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
-    define_method(:get_deployment_branch_policy) do |
-      owner:,
-      repo:,
-      environment_name:,
-      branch_policy_id:,
-      request_options: nil
-    |
+    define_method(:get_deployment_branch_policy) do |owner:, repo:, environment_name:, branch_policy_id:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_deployment_branch_policy(
         config: @config,
         owner: owner,
@@ -17623,12 +16583,7 @@ module OctridevGithub
     end
 
     # Gets all custom deployment protection rules that are enabled for an environment. Anyone with read access to the repository can use this endpoint. For more information about environments, see "Using environments for deployment." For more information about the app that is providing this custom deployment rule, see the documentation for the `GET /apps/{app_slug}` endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a…
-    define_method(:get_all_deployment_protection_rules) do |
-      environment_name:,
-      repo:,
-      owner:,
-      request_options: nil
-    |
+    define_method(:get_all_deployment_protection_rules) do |environment_name:, repo:, owner:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_all_deployment_protection_rules(
         config: @config,
         environment_name: environment_name,
@@ -17677,13 +16632,7 @@ module OctridevGithub
     end
 
     # Gets an enabled custom deployment protection rule for an environment. Anyone with read access to the repository can use this endpoint. For more information about environments, see "Using environments for deployment." For more information about the app that is providing this custom deployment rule, see `GET /apps/{app_slug}`. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
-    define_method(:get_custom_deployment_protection_rule) do |
-      owner:,
-      repo:,
-      environment_name:,
-      protection_rule_id:,
-      request_options: nil
-    |
+    define_method(:get_custom_deployment_protection_rule) do |owner:, repo:, environment_name:, protection_rule_id:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_custom_deployment_protection_rule(
         config: @config,
         owner: owner,
@@ -17753,11 +16702,7 @@ module OctridevGithub
     end
 
     # Returns the hash algorithm used to store repository objects.
-    define_method(:get_hash_algorithm) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_hash_algorithm) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_hash_algorithm(
         config: @config,
         owner: owner,
@@ -17807,12 +16752,7 @@ module OctridevGithub
     end
 
     # Returns a webhook configured in a repository. To get only the webhook `config` properties, see "Get a webhook configuration for a repository."
-    define_method(:get_webhook) do |
-      owner:,
-      repo:,
-      hook_id:,
-      request_options: nil
-    |
+    define_method(:get_webhook) do |owner:, repo:, hook_id:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_webhook(
         config: @config,
         owner: owner,
@@ -17865,12 +16805,7 @@ module OctridevGithub
     end
 
     # Returns the webhook configuration for a repository. To get more information about the webhook, including the `active` state and `events`, use "Get a repository webhook." OAuth app tokens and personal access tokens (classic) need the `read:repo_hook` or `repo` scope to use this endpoint.
-    define_method(:get_webhook_config_for_repo) do |
-      owner:,
-      repo:,
-      hook_id:,
-      request_options: nil
-    |
+    define_method(:get_webhook_config_for_repo) do |owner:, repo:, hook_id:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_webhook_config_for_repo(
         config: @config,
         owner: owner,
@@ -17931,13 +16866,7 @@ module OctridevGithub
     # Retrieves a delivery record for a webhook configured in a repository. Use the repository owner, repository name, hook ID, and delivery ID to inspect the delivery status, event metadata, and request and response details.
     #
     # Returns a delivery for a webhook configured in a repository.
-    define_method(:get_webhook_delivery) do |
-      owner:,
-      repo:,
-      hook_id:,
-      delivery_id:,
-      request_options: nil
-    |
+    define_method(:get_webhook_delivery) do |owner:, repo:, hook_id:, delivery_id:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_webhook_delivery(
         config: @config,
         owner: owner,
@@ -18149,12 +17078,7 @@ module OctridevGithub
     end
 
     # Retrieves a specific deploy key associated with a repository. Use `key_id` to identify the key whose details you need.
-    define_method(:get_deploy_key) do |
-      owner:,
-      repo:,
-      key_id:,
-      request_options: nil
-    |
+    define_method(:get_deploy_key) do |owner:, repo:, key_id:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_deploy_key(
         config: @config,
         owner: owner,
@@ -18231,11 +17155,7 @@ module OctridevGithub
     end
 
     # Gets information about a GitHub Pages site. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_pages) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_pages) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_pages(
         config: @config,
         owner: owner,
@@ -18333,11 +17253,7 @@ module OctridevGithub
     end
 
     # Gets information about the single most recent build of a GitHub Pages site. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_latest_pages_build) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_latest_pages_build) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_latest_pages_build(
         config: @config,
         owner: owner,
@@ -18349,12 +17265,7 @@ module OctridevGithub
     # Retrieves information about a GitHub Pages build in a repository. Use `owner`, `repo`, and `build_id` to identify the repository and build; the response includes the build status, commit, duration, timestamps, error details, and pusher.
     #
     # Gets information about a GitHub Pages build. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-    define_method(:get_pages_build) do |
-      owner:,
-      repo:,
-      build_id:,
-      request_options: nil
-    |
+    define_method(:get_pages_build) do |owner:, repo:, build_id:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_pages_build(
         config: @config,
         owner: owner,
@@ -18389,12 +17300,7 @@ module OctridevGithub
     end
 
     # Gets the current status of a GitHub Pages deployment. The authenticated user must have read permission for the GitHub Pages site.
-    define_method(:get_pages_deployment) do |
-      owner:,
-      repo:,
-      pages_deployment_id:,
-      request_options: nil
-    |
+    define_method(:get_pages_deployment) do |owner:, repo:, pages_deployment_id:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_pages_deployment(
         config: @config,
         owner: owner,
@@ -18421,11 +17327,7 @@ module OctridevGithub
     end
 
     # Gets a health check of the DNS settings for the `CNAME` record configured for a repository's GitHub Pages. The first request to this endpoint returns a `202 Accepted` status and starts an asynchronous background task to get the results for the domain. After the background task completes, subsequent requests to this endpoint return a `200 OK` status with the health check results in the response. The authenticated user must be a repository administrator, maintainer, or have…
-    define_method(:get_pages_health_check) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_pages_health_check) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_pages_health_check(
         config: @config,
         owner: owner,
@@ -18507,12 +17409,7 @@ module OctridevGithub
     end
 
     # Gets the preferred README for a repository. This endpoint supports the following custom media types. For more information, see "Media types." - **`application/vnd.github.raw+json`**: Returns the raw file contents. This is the default if you do not specify a media type. - **`application/vnd.github.html+json`**: Returns the README in HTML. Markup languages are rendered to HTML using GitHub's open-source Markup library.
-    define_method(:get_readme) do |
-      owner:,
-      repo:,
-      ref: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_readme) do |owner:, repo:, ref: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_readme(
         config: @config,
         owner: owner,
@@ -18523,13 +17420,7 @@ module OctridevGithub
     end
 
     # Gets the README from a repository directory. This endpoint supports the following custom media types. For more information, see "Media types." - **`application/vnd.github.raw+json`**: Returns the raw file contents. This is the default if you do not specify a media type. - **`application/vnd.github.html+json`**: Returns the README in HTML. Markup languages are rendered to HTML using GitHub's open-source Markup library.
-    define_method(:get_readme_in_directory) do |
-      owner:,
-      repo:,
-      dir:,
-      ref: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_readme_in_directory) do |owner:, repo:, dir:, ref: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_readme_in_directory(
         config: @config,
         owner: owner,
@@ -18591,12 +17482,7 @@ module OctridevGithub
     end
 
     # To download the asset's binary content: - If within a browser, fetch the location specified in the `browser_download_url` key provided in the response. - Alternatively, set the `Accept` header of the request to `application/octet-stream`. The API will either redirect the client to the location, or stream it directly if possible. API clients should handle both a `200` or `302` response.
-    define_method(:get_release_asset) do |
-      owner:,
-      repo:,
-      asset_id:,
-      request_options: nil
-    |
+    define_method(:get_release_asset) do |owner:, repo:, asset_id:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_release_asset(
         config: @config,
         owner: owner,
@@ -18669,11 +17555,7 @@ module OctridevGithub
     end
 
     # View the latest published full release for the repository. The latest release is the most recent non-prerelease, non-draft release, sorted by the `created_at` attribute. The `created_at` attribute is the date of the commit used for the release, and not the date when the release was drafted or published.
-    define_method(:get_latest_release) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_latest_release) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_latest_release(
         config: @config,
         owner: owner,
@@ -18685,12 +17567,7 @@ module OctridevGithub
     # Retrieves a published release from a repository by its tag name. Use `tag` to identify the release you want to retrieve.
     #
     # Get a published release with the specified tag.
-    define_method(:get_release_by_tag) do |
-      owner:,
-      repo:,
-      tag:,
-      request_options: nil
-    |
+    define_method(:get_release_by_tag) do |owner:, repo:, tag:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_release_by_tag(
         config: @config,
         owner: owner,
@@ -18701,12 +17578,7 @@ module OctridevGithub
     end
 
     # Gets a public release with the specified release ID. > !NOTE] > This returns an `upload_url` key corresponding to the endpoint for uploading release assets. This key is a hypermedia resource. For more information, see "[Getting started with the REST API."
-    define_method(:get_release) do |
-      owner:,
-      repo:,
-      release_id:,
-      request_options: nil
-    |
+    define_method(:get_release) do |owner:, repo:, release_id:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_release(
         config: @config,
         owner: owner,
@@ -18809,14 +17681,7 @@ module OctridevGithub
     end
 
     # Returns all active rules that apply to the specified branch. The branch does not need to exist; rules that would apply to a branch with that name will be returned. All active rules that apply will be returned, regardless of the level at which they are configured (e.g. repository or organization). Rules in rulesets with "evaluate" or "disabled" enforcement statuses are not returned.
-    define_method(:get_branch_rules) do |
-      owner:,
-      repo:,
-      branch:,
-      per_page: NOT_GIVEN,
-      page: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_branch_rules) do |owner:, repo:, branch:, per_page: NOT_GIVEN, page: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_branch_rules(
         config: @config,
         owner: owner,
@@ -18831,15 +17696,7 @@ module OctridevGithub
     # Lists the rulesets for a repository. Use `includes_parents` to include rulesets configured at higher levels and `targets` to filter by a comma-separated list of rule targets.
     #
     # Get all the rulesets for a repository.
-    define_method(:get_repo_rulesets) do |
-      owner:,
-      repo:,
-      per_page: NOT_GIVEN,
-      page: NOT_GIVEN,
-      includes_parents: NOT_GIVEN,
-      targets: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_repo_rulesets) do |owner:, repo:, per_page: NOT_GIVEN, page: NOT_GIVEN, includes_parents: NOT_GIVEN, targets: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_repo_rulesets(
         config: @config,
         owner: owner,
@@ -18881,18 +17738,7 @@ module OctridevGithub
     end
 
     # Lists suites of rule evaluations at the repository level. For more information, see "Managing rulesets for a repository."
-    define_method(:get_repo_rule_suites) do |
-      owner:,
-      repo:,
-      ref: NOT_GIVEN,
-      time_period: NOT_GIVEN,
-      actor_name: NOT_GIVEN,
-      rule_suite_result: NOT_GIVEN,
-      evaluate_status: NOT_GIVEN,
-      per_page: NOT_GIVEN,
-      page: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_repo_rule_suites) do |owner:, repo:, ref: NOT_GIVEN, time_period: NOT_GIVEN, actor_name: NOT_GIVEN, rule_suite_result: NOT_GIVEN, evaluate_status: NOT_GIVEN, per_page: NOT_GIVEN, page: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_repo_rule_suites(
         config: @config,
         owner: owner,
@@ -18909,13 +17755,7 @@ module OctridevGithub
     end
 
     # Gets information about a suite of rule evaluations from within a repository. For more information, see "Managing rulesets for a repository."
-    define_method(:get_repo_rule_suite) do |
-      owner:,
-      repo:,
-      rule_suite_id:,
-      include_metadata: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_repo_rule_suite) do |owner:, repo:, rule_suite_id:, include_metadata: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_repo_rule_suite(
         config: @config,
         owner: owner,
@@ -18927,13 +17767,7 @@ module OctridevGithub
     end
 
     # Get a ruleset for a repository. **Note:** To prevent leaking sensitive information, the `bypass_actors` property is only returned if the user making the API request has write access to the ruleset.
-    define_method(:get_repo_ruleset) do |
-      owner:,
-      repo:,
-      ruleset_id:,
-      includes_parents: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_repo_ruleset) do |owner:, repo:, ruleset_id:, includes_parents: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_repo_ruleset(
         config: @config,
         owner: owner,
@@ -18995,14 +17829,7 @@ module OctridevGithub
     # Lists historical versions of a repository ruleset. Use `ruleset_id` to select the ruleset and `page` and `per_page` to navigate its history. Each result identifies the version, the actor who updated it, and the update time.
     #
     # Get the history of a repository ruleset.
-    define_method(:get_repo_ruleset_history) do |
-      owner:,
-      repo:,
-      ruleset_id:,
-      per_page: NOT_GIVEN,
-      page: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_repo_ruleset_history) do |owner:, repo:, ruleset_id:, per_page: NOT_GIVEN, page: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_repo_ruleset_history(
         config: @config,
         owner: owner,
@@ -19017,13 +17844,7 @@ module OctridevGithub
     # Retrieves a specific historical version of a repository ruleset. Identify the repository and ruleset with `owner`, `repo`, and `ruleset_id`, then specify the version with `version_id`. The response includes the version details and the ruleset state for that version.
     #
     # Get a version of a repository ruleset.
-    define_method(:get_repo_ruleset_version) do |
-      owner:,
-      repo:,
-      ruleset_id:,
-      version_id:,
-      request_options: nil
-    |
+    define_method(:get_repo_ruleset_version) do |owner:, repo:, ruleset_id:, version_id:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_repo_ruleset_version(
         config: @config,
         owner: owner,
@@ -19035,11 +17856,7 @@ module OctridevGithub
     end
 
     # Returns a weekly aggregate of the number of additions and deletions pushed to a repository. > [!NOTE] > This endpoint can only be used for repositories with fewer than 10,000 commits. If the repository contains 10,000 or more commits, a 422 status code will be returned.
-    define_method(:get_code_frequency_stats) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_code_frequency_stats) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_code_frequency_stats(
         config: @config,
         owner: owner,
@@ -19049,11 +17866,7 @@ module OctridevGithub
     end
 
     # Returns the last year of commit activity grouped by week. The `days` array is a group of commits per day, starting on `Sunday`.
-    define_method(:get_commit_activity_stats) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_commit_activity_stats) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_commit_activity_stats(
         config: @config,
         owner: owner,
@@ -19063,11 +17876,7 @@ module OctridevGithub
     end
 
     # Returns the `total` number of commits authored by the contributor. In addition, the response includes a Weekly Hash (`weeks` array) with the following information: * `w` - Start of the week, given as a Unix timestamp. * `a` - Number of additions * `d` - Number of deletions * `c` - Number of commits > [!NOTE] > This endpoint will return `0` values for all addition and deletion counts in repositories with 10,000 or more commits.
-    define_method(:get_contributors_stats) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_contributors_stats) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_contributors_stats(
         config: @config,
         owner: owner,
@@ -19077,11 +17886,7 @@ module OctridevGithub
     end
 
     # Returns the total commit counts for the `owner` and total commit counts in `all`. `all` is everyone combined, including the `owner` in the last 52 weeks. If you'd like to get the commit counts for non-owners, you can subtract `owner` from `all`. The array order is oldest week (index 0) to most recent week. The most recent week is seven days ago at UTC midnight to today at UTC midnight.
-    define_method(:get_participation_stats) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_participation_stats) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_participation_stats(
         config: @config,
         owner: owner,
@@ -19091,11 +17896,7 @@ module OctridevGithub
     end
 
     # Each array contains the day number, hour number, and number of commits: * `0-6`: Sunday - Saturday * `0-23`: Hour of day * Number of commits For example, `[2, 14, 25]` indicates that there were 25 total commits, during the 2:00pm hour on Tuesdays. All times are based on the time zone of individual commits.
-    define_method(:get_punch_card_stats) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_punch_card_stats) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_punch_card_stats(
         config: @config,
         owner: owner,
@@ -19185,13 +17986,7 @@ module OctridevGithub
     end
 
     # Retrieves the topic names associated with a repository. Use `page` and `per_page` to paginate the results.
-    define_method(:get_all_topics) do |
-      owner:,
-      repo:,
-      page: NOT_GIVEN,
-      per_page: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_all_topics) do |owner:, repo:, page: NOT_GIVEN, per_page: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_all_topics(
         config: @config,
         owner: owner,
@@ -19219,12 +18014,7 @@ module OctridevGithub
     end
 
     # Get the total number of clones and breakdown per day or week for the last 14 days. Timestamps are aligned to UTC midnight of the beginning of the day or week. Week begins on Monday.
-    define_method(:get_clones) do |
-      owner:,
-      repo:,
-      per: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_clones) do |owner:, repo:, per: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_clones(
         config: @config,
         owner: owner,
@@ -19235,11 +18025,7 @@ module OctridevGithub
     end
 
     # Get the top 10 popular contents over the last 14 days.
-    define_method(:get_top_paths) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_top_paths) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_top_paths(
         config: @config,
         owner: owner,
@@ -19251,11 +18037,7 @@ module OctridevGithub
     # Retrieves the top 10 referral sources for a repository over the last 14 days. Use this endpoint to review which sources drive visits to the repository.
     #
     # Get the top 10 referrers over the last 14 days.
-    define_method(:get_top_referrers) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_top_referrers) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_top_referrers(
         config: @config,
         owner: owner,
@@ -19265,12 +18047,7 @@ module OctridevGithub
     end
 
     # Get the total number of views and breakdown per day or week for the last 14 days. Timestamps are aligned to UTC midnight of the beginning of the day or week. Week begins on Monday.
-    define_method(:get_views) do |
-      owner:,
-      repo:,
-      per: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_views) do |owner:, repo:, per: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Repos.repos_get_views(
         config: @config,
         owner: owner,
@@ -19537,7 +18314,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the SecretScanningNamespace SDK type.
@@ -19763,13 +18539,7 @@ module OctridevGithub
     end
 
     # Gets a single secret scanning alert detected in an eligible repository. The authenticated user must be an administrator for the repository or for the organization that owns the repository to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
-    define_method(:get_alert) do |
-      owner:,
-      repo:,
-      alert_number:,
-      hide_secret: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_alert) do |owner:, repo:, alert_number:, hide_secret: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::SecretScanning.secret_scanning_get_alert(
         config: @config,
         owner: owner,
@@ -19933,11 +18703,7 @@ module OctridevGithub
     end
 
     # Lists the latest default incremental and backfill scans by type for a repository. > !NOTE] > This endpoint requires [GitHub Advanced Security. OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
-    define_method(:get_scan_history) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_scan_history) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::SecretScanning.secret_scanning_get_scan_history(
         config: @config,
         owner: owner,
@@ -19945,7 +18711,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the HostedComputeNamespace SDK type.
@@ -19993,11 +18758,7 @@ module OctridevGithub
     end
 
     # Gets a hosted compute network configuration configured in an organization. OAuth app tokens and personal access tokens (classic) need the `read:network_configurations` scope to use this endpoint.
-    define_method(:get_network_configuration_for_org) do |
-      org:,
-      network_configuration_id:,
-      request_options: nil
-    |
+    define_method(:get_network_configuration_for_org) do |org:, network_configuration_id:, request_options: nil|
       ::OctridevGithub::Methods::HostedCompute.hosted_compute_get_network_configuration_for_org(
         config: @config,
         org: org,
@@ -20045,11 +18806,7 @@ module OctridevGithub
     end
 
     # Gets a hosted compute network settings resource configured for an organization. OAuth app tokens and personal access tokens (classic) need the `read:network_configurations` scope to use this endpoint.
-    define_method(:get_network_settings_for_org) do |
-      org:,
-      network_settings_id:,
-      request_options: nil
-    |
+    define_method(:get_network_settings_for_org) do |org:, network_settings_id:, request_options: nil|
       ::OctridevGithub::Methods::HostedCompute.hosted_compute_get_network_settings_for_org(
         config: @config,
         org: org,
@@ -20057,7 +18814,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the TeamsNamespace SDK type.
@@ -20115,11 +18871,7 @@ module OctridevGithub
     end
 
     # Gets a team using the team's `slug`. To create the `slug`, GitHub replaces special characters in the `name` string, changes all words to lowercase, and replaces spaces with a `-` separator. For example, `"My TEam Näme"` would become `my-team-name`. > [!NOTE] > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}`.
-    define_method(:get_by_name) do |
-      org:,
-      team_slug:,
-      request_options: nil
-    |
+    define_method(:get_by_name) do |org:, team_slug:, request_options: nil|
       ::OctridevGithub::Methods::Teams.teams_get_by_name(
         config: @config,
         org: org,
@@ -20209,12 +18961,7 @@ module OctridevGithub
     end
 
     # Team members will include the members of child teams. To get a user's membership with a team, the team must be visible to the authenticated user. > !NOTE] > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/memberships/{username}`. > [!NOTE] > The response contains the `state` of the membership and the member's `role`. The `role` for organization owners is set to `maintainer`. For more information about…
-    define_method(:get_membership_for_user_in_org) do |
-      org:,
-      team_slug:,
-      username:,
-      request_options: nil
-    |
+    define_method(:get_membership_for_user_in_org) do |org:, team_slug:, username:, request_options: nil|
       ::OctridevGithub::Methods::Teams.teams_get_membership_for_user_in_org(
         config: @config,
         org: org,
@@ -20353,10 +19100,7 @@ module OctridevGithub
     # > !WARNING] > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the [Get a team by name endpoint.
     #
     # @deprecated This operation is deprecated and may be removed in a future release.
-    define_method(:get_legacy) do |
-      team_id:,
-      request_options: nil
-    |
+    define_method(:get_legacy) do |team_id:, request_options: nil|
       ::OctridevGithub::Methods::Teams.teams_get_legacy(config: @config, team_id: team_id, request_options: request_options)
     end
 
@@ -20443,11 +19187,7 @@ module OctridevGithub
     # The "Get team member" endpoint (described below) is closing down. We recommend using the Get team membership for a user endpoint instead. It allows you to get both active and pending memberships. To list members in a team, the team must be visible to the authenticated user.
     #
     # @deprecated This operation is deprecated and may be removed in a future release.
-    define_method(:get_member_legacy) do |
-      team_id:,
-      username:,
-      request_options: nil
-    |
+    define_method(:get_member_legacy) do |team_id:, username:, request_options: nil|
       ::OctridevGithub::Methods::Teams.teams_get_member_legacy(
         config: @config,
         team_id: team_id,
@@ -20491,11 +19231,7 @@ module OctridevGithub
     # > !WARNING] > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Get team membership for a user endpoint. Team members will include the members of child teams. To get a user's membership with a team, the team must be visible to the authenticated user. **Note:** The response contains the `state` of the membership and the member's `role`. The `role` for…
     #
     # @deprecated This operation is deprecated and may be removed in a future release.
-    define_method(:get_membership_for_user_legacy) do |
-      team_id:,
-      username:,
-      request_options: nil
-    |
+    define_method(:get_membership_for_user_legacy) do |team_id:, username:, request_options: nil|
       ::OctridevGithub::Methods::Teams.teams_get_membership_for_user_legacy(
         config: @config,
         team_id: team_id,
@@ -20643,7 +19379,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the RateLimitNamespace SDK type.
@@ -20656,7 +19391,6 @@ module OctridevGithub
     def get(request_options: nil)
       ::OctridevGithub::Methods::RateLimit.rate_limit_get(config: @config, request_options: request_options)
     end
-
   end
 
   # Defines the ChecksNamespace SDK type.
@@ -20802,12 +19536,7 @@ module OctridevGithub
     end
 
     # Gets a single check suite using its `id`. > [!NOTE] > The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint on a private repository.
-    define_method(:get_suite) do |
-      owner:,
-      repo:,
-      check_suite_id:,
-      request_options: nil
-    |
+    define_method(:get_suite) do |owner:, repo:, check_suite_id:, request_options: nil|
       ::OctridevGithub::Methods::Checks.checks_get_suite(
         config: @config,
         owner: owner,
@@ -20912,7 +19641,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the CodeQualityNamespace SDK type.
@@ -20946,12 +19674,7 @@ module OctridevGithub
     end
 
     # Gets a single code quality finding. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
-    define_method(:get_finding) do |
-      owner:,
-      repo:,
-      finding_number:,
-      request_options: nil
-    |
+    define_method(:get_finding) do |owner:, repo:, finding_number:, request_options: nil|
       ::OctridevGithub::Methods::CodeQuality.code_quality_get_finding(
         config: @config,
         owner: owner,
@@ -20962,11 +19685,7 @@ module OctridevGithub
     end
 
     # Gets a code quality setup configuration. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
-    define_method(:get_setup) do |
-      owner:,
-      repo:,
-      request_options: nil
-    |
+    define_method(:get_setup) do |owner:, repo:, request_options: nil|
       ::OctridevGithub::Methods::CodeQuality.code_quality_get_setup(
         config: @config,
         owner: owner,
@@ -20998,7 +19717,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the ReactionsNamespace SDK type.
@@ -21298,7 +20016,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the DependencyGraphNamespace SDK type.
@@ -21402,7 +20119,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the GitNamespace SDK type.
@@ -21432,12 +20148,7 @@ module OctridevGithub
     # Retrieves a Git blob from a repository using its file SHA. The JSON response encodes `content` as Base64; request `application/vnd.github.raw+json` for raw blob data instead. Blobs can be up to 100 megabytes.
     #
     # The `content` in the response will always be Base64 encoded. This endpoint supports the following custom media types. For more information, see "Media types." - **`application/vnd.github.raw+json`**: Returns the raw blob data. - **`application/vnd.github+json`**: Returns a JSON representation of the blob with `content` as a base64 encoded string. This is the default if no media type is specified. **Note** This endpoint supports blobs up to 100 megabytes in size.
-    define_method(:get_blob) do |
-      owner:,
-      repo:,
-      file_sha:,
-      request_options: nil
-    |
+    define_method(:get_blob) do |owner:, repo:, file_sha:, request_options: nil|
       ::OctridevGithub::Methods::Git.git_get_blob(
         config: @config,
         owner: owner,
@@ -21474,12 +20185,7 @@ module OctridevGithub
     end
 
     # Gets a Git commit object. To get the contents of a commit, see "Get a commit." **Signature verification object** The response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object: | Name | Type | Description | | ---- | ---- | ----------- | | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. | | `reason` |…
-    define_method(:get_commit) do |
-      owner:,
-      repo:,
-      commit_sha:,
-      request_options: nil
-    |
+    define_method(:get_commit) do |owner:, repo:, commit_sha:, request_options: nil|
       ::OctridevGithub::Methods::Git.git_get_commit(
         config: @config,
         owner: owner,
@@ -21506,12 +20212,7 @@ module OctridevGithub
     end
 
     # Returns a single reference from your Git database. The `:ref` in the URL must be formatted as `heads/<branch name>` for branches and `tags/<tag name>` for tags. If the `:ref` doesn't match an existing ref, a `404` is returned. > !NOTE] > You need to explicitly [request a pull request to trigger a test merge commit, which checks the mergeability of pull requests. For more information, see "Checking mergeability of pull requests".
-    define_method(:get_ref) do |
-      owner:,
-      repo:,
-      ref:,
-      request_options: nil
-    |
+    define_method(:get_ref) do |owner:, repo:, ref:, request_options: nil|
       ::OctridevGithub::Methods::Git.git_get_ref(
         config: @config,
         owner: owner,
@@ -21604,12 +20305,7 @@ module OctridevGithub
     # Retrieves metadata for a Git tag in a repository, including its target object and signature-verification result. Use `tag_sha` to identify the tag and inspect `verification.reason` to understand why GitHub considers its signature verified or unverified.
     #
     # **Signature verification object** The response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object: | Name | Type | Description | | ---- | ---- | ----------- | | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. | | `reason` | `string` | The reason for verified value. Possible values and their meanings are…
-    define_method(:get_tag) do |
-      owner:,
-      repo:,
-      tag_sha:,
-      request_options: nil
-    |
+    define_method(:get_tag) do |owner:, repo:, tag_sha:, request_options: nil|
       ::OctridevGithub::Methods::Git.git_get_tag(
         config: @config,
         owner: owner,
@@ -21638,13 +20334,7 @@ module OctridevGithub
     end
 
     # Returns a single tree using the SHA1 value or ref name for that tree. If `truncated` is `true` in the response then the number of items in the `tree` array exceeded our maximum limit. If you need to fetch more items, use the non-recursive method of fetching trees, and fetch one sub-tree at a time. > [!NOTE] > The limit for the `tree` array is 100,000 entries with a maximum size of 7 MB when using the `recursive` parameter.
-    define_method(:get_tree) do |
-      owner:,
-      repo:,
-      tree_sha:,
-      recursive: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_tree) do |owner:, repo:, tree_sha:, recursive: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Git.git_get_tree(
         config: @config,
         owner: owner,
@@ -21654,7 +20344,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the PullsNamespace SDK type.
@@ -21748,12 +20437,7 @@ module OctridevGithub
     end
 
     # Provides details for a specified review comment. This endpoint supports the following custom media types. For more information, see "Media types." - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type. - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`. -…
-    define_method(:get_review_comment) do |
-      owner:,
-      repo:,
-      comment_id:,
-      request_options: nil
-    |
+    define_method(:get_review_comment) do |owner:, repo:, comment_id:, request_options: nil|
       ::OctridevGithub::Methods::Pulls.pulls_get_review_comment(
         config: @config,
         owner: owner,
@@ -22032,13 +20716,7 @@ module OctridevGithub
     end
 
     # Fetches the current result of an asynchronous merge request, identified by the UUID that was returned when the merge was requested. While the request's status is `pending`, the response includes the UUID, merge method, merge action, and expected head SHA of the request. Once the asynchronous request completes, its status is one of: - `merged`: The pull request was merged into the base branch. The response includes the merge commit OID. - `enqueued`: The pull request was…
-    define_method(:get_merge_async_result) do |
-      owner:,
-      repo:,
-      pull_number:,
-      uuid:,
-      request_options: nil
-    |
+    define_method(:get_merge_async_result) do |owner:, repo:, pull_number:, uuid:, request_options: nil|
       ::OctridevGithub::Methods::Pulls.pulls_get_merge_async_result(
         config: @config,
         owner: owner,
@@ -22170,13 +20848,7 @@ module OctridevGithub
     end
 
     # Retrieves a pull request review by its ID. This endpoint supports the following custom media types. For more information, see "Media types." - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type. - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`. -…
-    define_method(:get_review) do |
-      owner:,
-      repo:,
-      pull_number:,
-      review_id:,
-      request_options: nil
-    |
+    define_method(:get_review) do |owner:, repo:, pull_number:, review_id:, request_options: nil|
       ::OctridevGithub::Methods::Pulls.pulls_get_review(
         config: @config,
         owner: owner,
@@ -22398,7 +21070,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the SearchNamespace SDK type.
@@ -22548,7 +21219,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the UsersNamespace SDK type.
@@ -22771,10 +21441,7 @@ module OctridevGithub
     end
 
     # View extended details for a single GPG key. OAuth app tokens and personal access tokens (classic) need the `read:gpg_key` scope to use this endpoint.
-    define_method(:get_gpg_key_for_authenticated_user) do |
-      gpg_key_id:,
-      request_options: nil
-    |
+    define_method(:get_gpg_key_for_authenticated_user) do |gpg_key_id:, request_options: nil|
       ::OctridevGithub::Methods::Users.users_get_gpg_key_for_authenticated_user(
         config: @config,
         gpg_key_id: gpg_key_id,
@@ -22823,10 +21490,7 @@ module OctridevGithub
     end
 
     # View extended details for a single public SSH key. OAuth app tokens and personal access tokens (classic) need the `read:public_key` scope to use this endpoint.
-    define_method(:get_public_ssh_key_for_authenticated_user) do |
-      key_id:,
-      request_options: nil
-    |
+    define_method(:get_public_ssh_key_for_authenticated_user) do |key_id:, request_options: nil|
       ::OctridevGithub::Methods::Users.users_get_public_ssh_key_for_authenticated_user(
         config: @config,
         key_id: key_id,
@@ -22929,10 +21593,7 @@ module OctridevGithub
     end
 
     # Gets extended details for an SSH signing key. OAuth app tokens and personal access tokens (classic) need the `read:ssh_signing_key` scope to use this endpoint.
-    define_method(:get_ssh_signing_key_for_authenticated_user) do |
-      ssh_signing_key_id:,
-      request_options: nil
-    |
+    define_method(:get_ssh_signing_key_for_authenticated_user) do |ssh_signing_key_id:, request_options: nil|
       ::OctridevGithub::Methods::Users.users_get_ssh_signing_key_for_authenticated_user(
         config: @config,
         ssh_signing_key_id: ssh_signing_key_id,
@@ -22953,10 +21614,7 @@ module OctridevGithub
     end
 
     # Provides publicly available information about someone with a GitHub account. This method takes their durable user `ID` instead of their `login`, which can change over time. If you are requesting information about an Enterprise Managed User, or a GitHub App bot that is installed in an organization that uses Enterprise Managed Users, your requests must be authenticated as a user or GitHub App that has access to the organization to view that account's information. If you are…
-    define_method(:get_by_id) do |
-      account_id:,
-      request_options: nil
-    |
+    define_method(:get_by_id) do |account_id:, request_options: nil|
       ::OctridevGithub::Methods::Users.users_get_by_id(
         config: @config,
         account_id: account_id,
@@ -22979,10 +21637,7 @@ module OctridevGithub
     end
 
     # Provides publicly available information about someone with a GitHub account. If the specified user has a private profile, the `followers` and `following` values are `0` unless the request is authenticated as that user. A request authenticated as the specified user returns the actual values even if the token has no OAuth scopes. The `events_url` value is a URI template. Replace `{/privacy}` with `/public` to retrieve only public events. Omit it to retrieve public events and,…
-    define_method(:get_by_username) do |
-      username:,
-      request_options: nil
-    |
+    define_method(:get_by_username) do |username:, request_options: nil|
       ::OctridevGithub::Methods::Users.users_get_by_username(
         config: @config,
         username: username,
@@ -23143,12 +21798,7 @@ module OctridevGithub
     end
 
     # Provides hovercard information. You can find out more about someone in relation to their pull requests, issues, repositories, and organizations. The `subject_type` and `subject_id` parameters provide context for the person's hovercard, which returns more information than without the parameters. For example, if you wanted to find out more about `octocat` who owns the `Spoon-Knife` repository, you would use a `subject_type` value of `repository` and a `subject_id` value of…
-    define_method(:get_context_for_user) do |
-      username:,
-      subject_type: NOT_GIVEN,
-      subject_id: NOT_GIVEN,
-      request_options: nil
-    |
+    define_method(:get_context_for_user) do |username:, subject_type: NOT_GIVEN, subject_id: NOT_GIVEN, request_options: nil|
       ::OctridevGithub::Methods::Users.users_get_context_for_user(
         config: @config,
         username: username,
@@ -23205,7 +21855,6 @@ module OctridevGithub
         request_options: request_options
       )
     end
-
   end
 
   # Defines the GitHubV3REST SDK type.
@@ -23263,7 +21912,7 @@ module OctridevGithub
       git: GitNamespace,
       pulls: PullsNamespace,
       search: SearchNamespace,
-      users: UsersNamespace,
+      users: UsersNamespace
     }.freeze
     private_constant :SUB_NAMESPACES
 
@@ -23292,6 +21941,5 @@ module OctridevGithub
       end
       logging
     end
-
   end
 end

@@ -17,20 +17,19 @@ module OctridevGithub
         org:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/permissions/self-hosted-runners"
+            '/actions/permissions/self-hosted-runners'
           ].join,
           config: config,
           return_type: ::OctridevGithub::SelfHostedRunnersSettings,
           decoder: :json,
           operation_id: 'actions_get_self_hosted_runners_permissions_organization',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

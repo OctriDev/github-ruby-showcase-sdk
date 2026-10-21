@@ -21,19 +21,18 @@ module OctridevGithub
         per_page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/users",
+          '/users',
           config: config,
           query: {
             'since' => QueryValue.new(since, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::SimpleUser],
           decoder: :json,
           operation_id: 'users_list',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -45,18 +44,17 @@ module OctridevGithub
         username:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/users/",
+            '/users/',
             SdkClient.encode_path_segment(username)
           ].join,
           config: config,
           decoder: :json,
           operation_id: 'users_get_by_username',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

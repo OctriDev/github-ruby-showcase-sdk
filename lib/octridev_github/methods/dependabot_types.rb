@@ -12,13 +12,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalDependabotUpdateRepositoryAccessForEnterpriseMetadata
         FIELDS = {
-          repository_ids_to_add: "repository_ids_to_add",
-          repository_ids_to_remove: "repository_ids_to_remove",
+          repository_ids_to_add: 'repository_ids_to_add',
+          repository_ids_to_remove: 'repository_ids_to_remove'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for DependabotUpdateRepositoryAccessForEnterprise.
@@ -50,7 +48,7 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalDependabotSetRepositoryAccessDefaultLevelForEnterpriseMetadata
         FIELDS = {
-          default_level: "default_level",
+          default_level: 'default_level'
         }.freeze
         REQUIRED_FIELDS = %i[
           default_level
@@ -58,7 +56,7 @@ module OctridevGithub
         DECODERS = {
           default_level: lambda do |value|
             ::OctridevGithub::Methods::Dependabot::DependabotSetRepositoryAccessDefaultLevelForEnterpriseDefaultLevel.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -89,13 +87,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalDependabotUpdateRepositoryAccessForOrgMetadata
         FIELDS = {
-          repository_ids_to_add: "repository_ids_to_add",
-          repository_ids_to_remove: "repository_ids_to_remove",
+          repository_ids_to_add: 'repository_ids_to_add',
+          repository_ids_to_remove: 'repository_ids_to_remove'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for DependabotUpdateRepositoryAccessForOrg.
@@ -127,7 +123,7 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalDependabotSetRepositoryAccessDefaultLevelMetadata
         FIELDS = {
-          default_level: "default_level",
+          default_level: 'default_level'
         }.freeze
         REQUIRED_FIELDS = %i[
           default_level
@@ -135,7 +131,7 @@ module OctridevGithub
         DECODERS = {
           default_level: lambda do |value|
             ::OctridevGithub::Methods::Dependabot::DependabotSetRepositoryAccessDefaultLevelDefaultLevel.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -166,8 +162,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalDependabotListOrgSecretsResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          secrets: "secrets",
+          total_count: 'total_count',
+          secrets: 'secrets'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -176,7 +172,7 @@ module OctridevGithub
         DECODERS = {
           secrets: lambda do |value|
             value&.map { |item| ::OctridevGithub::OrganizationDependabotSecret.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -206,10 +202,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalDependabotCreateOrUpdateOrgSecretMetadata
         FIELDS = {
-          encrypted_value: "encrypted_value",
-          key_id: "key_id",
-          visibility: "visibility",
-          selected_repository_ids: "selected_repository_ids",
+          encrypted_value: 'encrypted_value',
+          key_id: 'key_id',
+          visibility: 'visibility',
+          selected_repository_ids: 'selected_repository_ids'
         }.freeze
         REQUIRED_FIELDS = %i[
           visibility
@@ -217,7 +213,7 @@ module OctridevGithub
         DECODERS = {
           visibility: lambda do |value|
             ::OctridevGithub::Methods::Dependabot::DependabotCreateOrUpdateOrgSecretVisibility.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -254,8 +250,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalDependabotListSelectedReposForOrgSecretResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          repositories: "repositories",
+          total_count: 'total_count',
+          repositories: 'repositories'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -264,7 +260,7 @@ module OctridevGithub
         DECODERS = {
           repositories: lambda do |value|
             value&.map { |item| ::OctridevGithub::MinimalRepository.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -294,13 +290,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalDependabotSetSelectedReposForOrgSecretMetadata
         FIELDS = {
-          selected_repository_ids: "selected_repository_ids",
+          selected_repository_ids: 'selected_repository_ids'
         }.freeze
         REQUIRED_FIELDS = %i[
           selected_repository_ids
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for DependabotSetSelectedReposForOrgSecret.
@@ -330,14 +325,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalDependabotUpdateAlertAgentAssignmentMetadata
         FIELDS = {
-          custom_instructions: "custom_instructions",
-          custom_agent: "custom_agent",
-          model: "model",
+          custom_instructions: 'custom_instructions',
+          custom_agent: 'custom_agent',
+          model: 'model'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for DependabotUpdateAlertAgentAssignment.
@@ -372,14 +365,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalDependabotUpdateAlertMetadata
         FIELDS = {
-          state: "state",
-          dismissed_reason: "dismissed_reason",
-          dismissed_comment: "dismissed_comment",
-          assignees: "assignees",
-          agent_assignment: "agent_assignment",
+          state: 'state',
+          dismissed_reason: 'dismissed_reason',
+          dismissed_comment: 'dismissed_comment',
+          assignees: 'assignees',
+          agent_assignment: 'agent_assignment'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           state: lambda do |value|
             ::OctridevGithub::Methods::Dependabot::DependabotUpdateAlertState.from_value(value)
@@ -389,7 +381,7 @@ module OctridevGithub
           end,
           agent_assignment: lambda do |value|
             ::OctridevGithub::Methods::Dependabot::DependabotUpdateAlertAgentAssignment.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -428,8 +420,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalDependabotListRepoSecretsResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          secrets: "secrets",
+          total_count: 'total_count',
+          secrets: 'secrets'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -438,7 +430,7 @@ module OctridevGithub
         DECODERS = {
           secrets: lambda do |value|
             value&.map { |item| ::OctridevGithub::DependabotSecret.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -468,13 +460,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalDependabotCreateOrUpdateRepoSecretMetadata
         FIELDS = {
-          encrypted_value: "encrypted_value",
-          key_id: "key_id",
+          encrypted_value: 'encrypted_value',
+          key_id: 'key_id'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for DependabotCreateOrUpdateRepoSecret.
@@ -507,7 +497,7 @@ module OctridevGithub
       module DependabotUpdateAlertState
         DISMISSED = 'dismissed'
         OPEN = 'open'
-        VALUES = ['dismissed', 'open'].freeze
+        VALUES = %w[dismissed open].freeze
         def self.from_value(value)
           value
         end
@@ -517,7 +507,7 @@ module OctridevGithub
       module DependabotSetRepositoryAccessDefaultLevelDefaultLevel
         PUBLIC = 'public'
         INTERNAL = 'internal'
-        VALUES = ['public', 'internal'].freeze
+        VALUES = %w[public internal].freeze
         def self.from_value(value)
           value
         end
@@ -530,7 +520,7 @@ module OctridevGithub
         NO_BANDWIDTH = 'no_bandwidth'
         NOT_USED = 'not_used'
         TOLERABLE_RISK = 'tolerable_risk'
-        VALUES = ['fix_started', 'inaccurate', 'no_bandwidth', 'not_used', 'tolerable_risk'].freeze
+        VALUES = %w[fix_started inaccurate no_bandwidth not_used tolerable_risk].freeze
         def self.from_value(value)
           value
         end
@@ -541,7 +531,7 @@ module OctridevGithub
         ALL = 'all'
         PRIVATE = 'private'
         SELECTED = 'selected'
-        VALUES = ['all', 'private', 'selected'].freeze
+        VALUES = %w[all private selected].freeze
         def self.from_value(value)
           value
         end
@@ -551,7 +541,7 @@ module OctridevGithub
       module DependabotSetRepositoryAccessDefaultLevelForEnterpriseDefaultLevel
         PUBLIC = 'public'
         INTERNAL = 'internal'
-        VALUES = ['public', 'internal'].freeze
+        VALUES = %w[public internal].freeze
         def self.from_value(value)
           value
         end

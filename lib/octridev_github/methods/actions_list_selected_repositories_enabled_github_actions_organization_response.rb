@@ -35,13 +35,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationMetadata
         FIELDS = {
-          selected_repository_ids: "selected_repository_ids",
+          selected_repository_ids: 'selected_repository_ids'
         }.freeze
         REQUIRED_FIELDS = %i[
           selected_repository_ids
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization.
@@ -71,7 +70,7 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsSetSelfHostedRunnersPermissionsOrganizationMetadata
         FIELDS = {
-          enabled_repositories: "enabled_repositories",
+          enabled_repositories: 'enabled_repositories'
         }.freeze
         REQUIRED_FIELDS = %i[
           enabled_repositories
@@ -79,7 +78,7 @@ module OctridevGithub
         DECODERS = {
           enabled_repositories: lambda do |value|
             ::OctridevGithub::Methods::Actions::ActionsSetSelfHostedRunnersPermissionsOrganizationEnabledRepositories.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -110,15 +109,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsListSelectedRepositoriesSelfHostedRunnersOrganizationResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          repositories: "repositories",
+          total_count: 'total_count',
+          repositories: 'repositories'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           repositories: lambda do |value|
             value&.map { |item| ::OctridevGithub::Repository.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -148,13 +146,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsSetSelectedRepositoriesSelfHostedRunnersOrganizationMetadata
         FIELDS = {
-          selected_repository_ids: "selected_repository_ids",
+          selected_repository_ids: 'selected_repository_ids'
         }.freeze
         REQUIRED_FIELDS = %i[
           selected_repository_ids
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ActionsSetSelectedRepositoriesSelfHostedRunnersOrganization.
@@ -184,8 +181,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsGetOrgActionsPoliciesResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          policies: "policies",
+          total_count: 'total_count',
+          policies: 'policies'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -194,7 +191,7 @@ module OctridevGithub
         DECODERS = {
           policies: lambda do |value|
             value&.map { |item| ::OctridevGithub::ActionsPolicy.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -227,10 +224,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsCreateOrgActionsPolicyMetadata
         FIELDS = {
-          name: "name",
-          enforcement: "enforcement",
-          conditions: "conditions",
-          rules: "rules",
+          name: 'name',
+          enforcement: 'enforcement',
+          conditions: 'conditions',
+          rules: 'rules'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
@@ -245,7 +242,7 @@ module OctridevGithub
           end,
           rules: lambda do |value|
             value&.map { |item| ::OctridevGithub::ActionsRule.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -282,13 +279,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsUpdateOrgActionsPolicyMetadata
         FIELDS = {
-          name: "name",
-          enforcement: "enforcement",
-          conditions: "conditions",
-          rules: "rules",
+          name: 'name',
+          enforcement: 'enforcement',
+          conditions: 'conditions',
+          rules: 'rules'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           enforcement: lambda do |value|
             ::OctridevGithub::RepositoryRuleEnforcement.from_value(value)
@@ -298,7 +294,7 @@ module OctridevGithub
           end,
           rules: lambda do |value|
             value&.map { |item| ::OctridevGithub::ActionsRule.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -335,8 +331,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsListSelfHostedRunnerGroupsForOrgResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          runner_groups: "runner_groups",
+          total_count: 'total_count',
+          runner_groups: 'runner_groups'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -345,7 +341,7 @@ module OctridevGithub
         DECODERS = {
           runner_groups: lambda do |value|
             value&.map { |item| ::OctridevGithub::RunnerGroupsOrg.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -375,14 +371,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsCreateSelfHostedRunnerGroupForOrgMetadata
         FIELDS = {
-          name: "name",
-          visibility: "visibility",
-          selected_repository_ids: "selected_repository_ids",
-          runners: "runners",
-          allows_public_repositories: "allows_public_repositories",
-          restricted_to_workflows: "restricted_to_workflows",
-          selected_workflows: "selected_workflows",
-          network_configuration_id: "network_configuration_id",
+          name: 'name',
+          visibility: 'visibility',
+          selected_repository_ids: 'selected_repository_ids',
+          runners: 'runners',
+          allows_public_repositories: 'allows_public_repositories',
+          restricted_to_workflows: 'restricted_to_workflows',
+          selected_workflows: 'selected_workflows',
+          network_configuration_id: 'network_configuration_id'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
@@ -390,7 +386,7 @@ module OctridevGithub
         DECODERS = {
           visibility: lambda do |value|
             ::OctridevGithub::Methods::Actions::ActionsCreateSelfHostedRunnerGroupForOrgVisibility.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -435,12 +431,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsUpdateSelfHostedRunnerGroupForOrgMetadata
         FIELDS = {
-          name: "name",
-          visibility: "visibility",
-          allows_public_repositories: "allows_public_repositories",
-          restricted_to_workflows: "restricted_to_workflows",
-          selected_workflows: "selected_workflows",
-          network_configuration_id: "network_configuration_id",
+          name: 'name',
+          visibility: 'visibility',
+          allows_public_repositories: 'allows_public_repositories',
+          restricted_to_workflows: 'restricted_to_workflows',
+          selected_workflows: 'selected_workflows',
+          network_configuration_id: 'network_configuration_id'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
@@ -448,7 +444,7 @@ module OctridevGithub
         DECODERS = {
           visibility: lambda do |value|
             ::OctridevGithub::Methods::Actions::ActionsUpdateSelfHostedRunnerGroupForOrgVisibility.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -489,8 +485,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsListGithubHostedRunnersInGroupForOrgResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          runners: "runners",
+          total_count: 'total_count',
+          runners: 'runners'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -499,7 +495,7 @@ module OctridevGithub
         DECODERS = {
           runners: lambda do |value|
             value&.map { |item| ::OctridevGithub::ActionsHostedRunner.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -529,8 +525,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          repositories: "repositories",
+          total_count: 'total_count',
+          repositories: 'repositories'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -539,7 +535,7 @@ module OctridevGithub
         DECODERS = {
           repositories: lambda do |value|
             value&.map { |item| ::OctridevGithub::MinimalRepository.from_hash(item) }
-          end,
+          end
         }.freeze
       end
     end

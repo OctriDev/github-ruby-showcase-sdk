@@ -5,677 +5,673 @@
 
 # webhook_package_updated domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalWebhookPackageUpdatedPackageOwnerMetadata
-  FIELDS = {
-    avatar_url: "avatar_url",
-    deleted: "deleted",
-    email: "email",
-    events_url: "events_url",
-    followers_url: "followers_url",
-    following_url: "following_url",
-    gists_url: "gists_url",
-    gravatar_id: "gravatar_id",
-    html_url: "html_url",
-    id: "id",
-    login: "login",
-    name: "name",
-    node_id: "node_id",
-    organizations_url: "organizations_url",
-    received_events_url: "received_events_url",
-    repos_url: "repos_url",
-    site_admin: "site_admin",
-    starred_url: "starred_url",
-    subscriptions_url: "subscriptions_url",
-    type: "type",
-    url: "url",
-    user_view_type: "user_view_type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    login
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::WebhookPackageUpdatedPackageOwnerType.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookPackageUpdatedPackageOwner.
-# Required object value serialized in the `owner` wire field.
-class WebhookPackageUpdatedPackageOwner
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPackageUpdatedPackageOwnerMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPackageUpdatedPackageOwnerMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPackageUpdatedPackageOwnerMetadata::DECODERS
-
-  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-  attr_reader :avatar_url
-  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-  attr_reader :deleted
-  # @return [String] Optional `string` value serialized in the `email` wire field.
-  attr_reader :email
-  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-  attr_reader :events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-  attr_reader :followers_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-  attr_reader :following_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-  attr_reader :gists_url
-  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-  attr_reader :gravatar_id
-  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `login` wire field.
-  attr_reader :login
-  # @return [String] Optional `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-  attr_reader :organizations_url
-  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-  attr_reader :received_events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-  attr_reader :repos_url
-  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-  attr_reader :site_admin
-  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-  attr_reader :starred_url
-  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-  attr_reader :subscriptions_url
-  # @return [WebhookPackageUpdatedPackageOwnerType] Optional enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-  attr_reader :user_view_type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPackageUpdatedPackageOwnerMetadata
+    FIELDS = {
+      avatar_url: 'avatar_url',
+      deleted: 'deleted',
+      email: 'email',
+      events_url: 'events_url',
+      followers_url: 'followers_url',
+      following_url: 'following_url',
+      gists_url: 'gists_url',
+      gravatar_id: 'gravatar_id',
+      html_url: 'html_url',
+      id: 'id',
+      login: 'login',
+      name: 'name',
+      node_id: 'node_id',
+      organizations_url: 'organizations_url',
+      received_events_url: 'received_events_url',
+      repos_url: 'repos_url',
+      site_admin: 'site_admin',
+      starred_url: 'starred_url',
+      subscriptions_url: 'subscriptions_url',
+      type: 'type',
+      url: 'url',
+      user_view_type: 'user_view_type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      login
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::WebhookPackageUpdatedPackageOwnerType.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookPackageUpdatedPackageOwner.
+  # Required object value serialized in the `owner` wire field.
+  class WebhookPackageUpdatedPackageOwner
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPackageUpdatedPackageOwnerMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPackageUpdatedPackageOwnerMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPackageUpdatedPackageOwnerMetadata::DECODERS
+
+    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+    attr_reader :avatar_url
+    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+    attr_reader :deleted
+    # @return [String] Optional `string` value serialized in the `email` wire field.
+    attr_reader :email
+    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+    attr_reader :events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+    attr_reader :followers_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+    attr_reader :following_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+    attr_reader :gists_url
+    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+    attr_reader :gravatar_id
+    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `login` wire field.
+    attr_reader :login
+    # @return [String] Optional `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Optional `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+    attr_reader :organizations_url
+    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+    attr_reader :received_events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+    attr_reader :repos_url
+    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+    attr_reader :site_admin
+    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+    attr_reader :starred_url
+    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+    attr_reader :subscriptions_url
+    # @return [WebhookPackageUpdatedPackageOwnerType] Optional enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+    attr_reader :user_view_type
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookPackageUpdatedPackagePackageVersionAuthorMetadata
-  FIELDS = {
-    avatar_url: "avatar_url",
-    deleted: "deleted",
-    email: "email",
-    events_url: "events_url",
-    followers_url: "followers_url",
-    following_url: "following_url",
-    gists_url: "gists_url",
-    gravatar_id: "gravatar_id",
-    html_url: "html_url",
-    id: "id",
-    login: "login",
-    name: "name",
-    node_id: "node_id",
-    organizations_url: "organizations_url",
-    received_events_url: "received_events_url",
-    repos_url: "repos_url",
-    site_admin: "site_admin",
-    starred_url: "starred_url",
-    subscriptions_url: "subscriptions_url",
-    type: "type",
-    url: "url",
-    user_view_type: "user_view_type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    login
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::WebhookPackageUpdatedPackagePackageVersionAuthorType.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookPackageUpdatedPackagePackageVersionAuthor.
-# Required object value serialized in the `author` wire field.
-class WebhookPackageUpdatedPackagePackageVersionAuthor
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPackageUpdatedPackagePackageVersionAuthorMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPackageUpdatedPackagePackageVersionAuthorMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPackageUpdatedPackagePackageVersionAuthorMetadata::DECODERS
-
-  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-  attr_reader :avatar_url
-  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-  attr_reader :deleted
-  # @return [String] Optional `string` value serialized in the `email` wire field.
-  attr_reader :email
-  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-  attr_reader :events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-  attr_reader :followers_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-  attr_reader :following_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-  attr_reader :gists_url
-  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-  attr_reader :gravatar_id
-  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `login` wire field.
-  attr_reader :login
-  # @return [String] Optional `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-  attr_reader :organizations_url
-  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-  attr_reader :received_events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-  attr_reader :repos_url
-  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-  attr_reader :site_admin
-  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-  attr_reader :starred_url
-  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-  attr_reader :subscriptions_url
-  # @return [WebhookPackageUpdatedPackagePackageVersionAuthorType] Optional enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-  attr_reader :user_view_type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPackageUpdatedPackagePackageVersionAuthorMetadata
+    FIELDS = {
+      avatar_url: 'avatar_url',
+      deleted: 'deleted',
+      email: 'email',
+      events_url: 'events_url',
+      followers_url: 'followers_url',
+      following_url: 'following_url',
+      gists_url: 'gists_url',
+      gravatar_id: 'gravatar_id',
+      html_url: 'html_url',
+      id: 'id',
+      login: 'login',
+      name: 'name',
+      node_id: 'node_id',
+      organizations_url: 'organizations_url',
+      received_events_url: 'received_events_url',
+      repos_url: 'repos_url',
+      site_admin: 'site_admin',
+      starred_url: 'starred_url',
+      subscriptions_url: 'subscriptions_url',
+      type: 'type',
+      url: 'url',
+      user_view_type: 'user_view_type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      login
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::WebhookPackageUpdatedPackagePackageVersionAuthorType.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookPackageUpdatedPackagePackageVersionAuthor.
+  # Required object value serialized in the `author` wire field.
+  class WebhookPackageUpdatedPackagePackageVersionAuthor
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPackageUpdatedPackagePackageVersionAuthorMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPackageUpdatedPackagePackageVersionAuthorMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPackageUpdatedPackagePackageVersionAuthorMetadata::DECODERS
+
+    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+    attr_reader :avatar_url
+    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+    attr_reader :deleted
+    # @return [String] Optional `string` value serialized in the `email` wire field.
+    attr_reader :email
+    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+    attr_reader :events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+    attr_reader :followers_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+    attr_reader :following_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+    attr_reader :gists_url
+    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+    attr_reader :gravatar_id
+    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `login` wire field.
+    attr_reader :login
+    # @return [String] Optional `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Optional `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+    attr_reader :organizations_url
+    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+    attr_reader :received_events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+    attr_reader :repos_url
+    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+    attr_reader :site_admin
+    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+    attr_reader :starred_url
+    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+    attr_reader :subscriptions_url
+    # @return [WebhookPackageUpdatedPackagePackageVersionAuthorType] Optional enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+    attr_reader :user_view_type
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookPackageUpdatedPackagePackageVersionDockerMetadataItemMetadata
-  FIELDS = {
-    tags: "tags",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookPackageUpdatedPackagePackageVersionDockerMetadataItem.
-# Required object value serialized in the `docker_metadata[]` wire field.
-class WebhookPackageUpdatedPackagePackageVersionDockerMetadataItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPackageUpdatedPackagePackageVersionDockerMetadataItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPackageUpdatedPackagePackageVersionDockerMetadataItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPackageUpdatedPackagePackageVersionDockerMetadataItemMetadata::DECODERS
-
-  # @return [Array_of_String] Optional array value serialized in the `tags` wire field.
-  attr_reader :tags
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPackageUpdatedPackagePackageVersionDockerMetadataItemMetadata
+    FIELDS = {
+      tags: 'tags'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookPackageUpdatedPackagePackageVersionDockerMetadataItem.
+  # Required object value serialized in the `docker_metadata[]` wire field.
+  class WebhookPackageUpdatedPackagePackageVersionDockerMetadataItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPackageUpdatedPackagePackageVersionDockerMetadataItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPackageUpdatedPackagePackageVersionDockerMetadataItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPackageUpdatedPackagePackageVersionDockerMetadataItemMetadata::DECODERS
+
+    # @return [Array_of_String] Optional array value serialized in the `tags` wire field.
+    attr_reader :tags
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookPackageUpdatedPackagePackageVersionPackageFilesItemMetadata
-  FIELDS = {
-    content_type: "content_type",
-    created_at: "created_at",
-    download_url: "download_url",
-    id: "id",
-    md5: "md5",
-    name: "name",
-    sha1: "sha1",
-    sha256: "sha256",
-    size: "size",
-    state: "state",
-    updated_at: "updated_at",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    content_type
-    created_at
-    download_url
-    id
-    md5
-    name
-    sha1
-    sha256
-    size
-    state
-    updated_at
-  ].freeze
-  DECODERS = {
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    md5
-    sha1
-  ].freeze
-end
-
-# API model for WebhookPackageUpdatedPackagePackageVersionPackageFilesItem.
-# Required object value serialized in the `package_files[]` wire field.
-class WebhookPackageUpdatedPackagePackageVersionPackageFilesItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPackageUpdatedPackagePackageVersionPackageFilesItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPackageUpdatedPackagePackageVersionPackageFilesItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPackageUpdatedPackagePackageVersionPackageFilesItemMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `content_type` wire field.
-  attr_reader :content_type
-  # @return [String] Required `string` value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Required `uri`-formatted value serialized in the `download_url` wire field.
-  attr_reader :download_url
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `md5` wire field.
-  attr_reader :md5
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Required `string` value serialized in the `sha1` wire field.
-  attr_reader :sha1
-  # @return [String] Required `string` value serialized in the `sha256` wire field.
-  attr_reader :sha256
-  # @return [Integer] Required `integer` value serialized in the `size` wire field.
-  attr_reader :size
-  # @return [String] Required `string` value serialized in the `state` wire field.
-  attr_reader :state
-  # @return [String] Required `string` value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPackageUpdatedPackagePackageVersionPackageFilesItemMetadata
+    FIELDS = {
+      content_type: 'content_type',
+      created_at: 'created_at',
+      download_url: 'download_url',
+      id: 'id',
+      md5: 'md5',
+      name: 'name',
+      sha1: 'sha1',
+      sha256: 'sha256',
+      size: 'size',
+      state: 'state',
+      updated_at: 'updated_at'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      content_type
+      created_at
+      download_url
+      id
+      md5
+      name
+      sha1
+      sha256
+      size
+      state
+      updated_at
+    ].freeze
+    DECODERS = {}.freeze
+    NULLABLE_FIELDS = %i[
+      md5
+      sha1
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPackageUpdatedPackagePackageVersionPackageFilesItemMetadata::NULLABLE_FIELDS)
+  # API model for WebhookPackageUpdatedPackagePackageVersionPackageFilesItem.
+  # Required object value serialized in the `package_files[]` wire field.
+  class WebhookPackageUpdatedPackagePackageVersionPackageFilesItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPackageUpdatedPackagePackageVersionPackageFilesItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPackageUpdatedPackagePackageVersionPackageFilesItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPackageUpdatedPackagePackageVersionPackageFilesItemMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `content_type` wire field.
+    attr_reader :content_type
+    # @return [String] Required `string` value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Required `uri`-formatted value serialized in the `download_url` wire field.
+    attr_reader :download_url
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `md5` wire field.
+    attr_reader :md5
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Required `string` value serialized in the `sha1` wire field.
+    attr_reader :sha1
+    # @return [String] Required `string` value serialized in the `sha256` wire field.
+    attr_reader :sha256
+    # @return [Integer] Required `integer` value serialized in the `size` wire field.
+    attr_reader :size
+    # @return [String] Required `string` value serialized in the `state` wire field.
+    attr_reader :state
+    # @return [String] Required `string` value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPackageUpdatedPackagePackageVersionPackageFilesItemMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookPackageUpdatedPackagePackageVersionReleaseAuthorMetadata
-  FIELDS = {
-    avatar_url: "avatar_url",
-    deleted: "deleted",
-    email: "email",
-    events_url: "events_url",
-    followers_url: "followers_url",
-    following_url: "following_url",
-    gists_url: "gists_url",
-    gravatar_id: "gravatar_id",
-    html_url: "html_url",
-    id: "id",
-    login: "login",
-    name: "name",
-    node_id: "node_id",
-    organizations_url: "organizations_url",
-    received_events_url: "received_events_url",
-    repos_url: "repos_url",
-    site_admin: "site_admin",
-    starred_url: "starred_url",
-    subscriptions_url: "subscriptions_url",
-    type: "type",
-    url: "url",
-    user_view_type: "user_view_type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    login
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::WebhookPackageUpdatedPackagePackageVersionReleaseAuthorType.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookPackageUpdatedPackagePackageVersionReleaseAuthor.
-# Required object value serialized in the `author` wire field.
-class WebhookPackageUpdatedPackagePackageVersionReleaseAuthor
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPackageUpdatedPackagePackageVersionReleaseAuthorMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPackageUpdatedPackagePackageVersionReleaseAuthorMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPackageUpdatedPackagePackageVersionReleaseAuthorMetadata::DECODERS
-
-  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-  attr_reader :avatar_url
-  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-  attr_reader :deleted
-  # @return [String] Optional `string` value serialized in the `email` wire field.
-  attr_reader :email
-  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-  attr_reader :events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-  attr_reader :followers_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-  attr_reader :following_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-  attr_reader :gists_url
-  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-  attr_reader :gravatar_id
-  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `login` wire field.
-  attr_reader :login
-  # @return [String] Optional `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-  attr_reader :organizations_url
-  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-  attr_reader :received_events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-  attr_reader :repos_url
-  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-  attr_reader :site_admin
-  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-  attr_reader :starred_url
-  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-  attr_reader :subscriptions_url
-  # @return [WebhookPackageUpdatedPackagePackageVersionReleaseAuthorType] Optional enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-  attr_reader :user_view_type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPackageUpdatedPackagePackageVersionReleaseAuthorMetadata
+    FIELDS = {
+      avatar_url: 'avatar_url',
+      deleted: 'deleted',
+      email: 'email',
+      events_url: 'events_url',
+      followers_url: 'followers_url',
+      following_url: 'following_url',
+      gists_url: 'gists_url',
+      gravatar_id: 'gravatar_id',
+      html_url: 'html_url',
+      id: 'id',
+      login: 'login',
+      name: 'name',
+      node_id: 'node_id',
+      organizations_url: 'organizations_url',
+      received_events_url: 'received_events_url',
+      repos_url: 'repos_url',
+      site_admin: 'site_admin',
+      starred_url: 'starred_url',
+      subscriptions_url: 'subscriptions_url',
+      type: 'type',
+      url: 'url',
+      user_view_type: 'user_view_type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      login
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::WebhookPackageUpdatedPackagePackageVersionReleaseAuthorType.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookPackageUpdatedPackagePackageVersionReleaseAuthor.
+  # Required object value serialized in the `author` wire field.
+  class WebhookPackageUpdatedPackagePackageVersionReleaseAuthor
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPackageUpdatedPackagePackageVersionReleaseAuthorMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPackageUpdatedPackagePackageVersionReleaseAuthorMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPackageUpdatedPackagePackageVersionReleaseAuthorMetadata::DECODERS
+
+    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+    attr_reader :avatar_url
+    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+    attr_reader :deleted
+    # @return [String] Optional `string` value serialized in the `email` wire field.
+    attr_reader :email
+    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+    attr_reader :events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+    attr_reader :followers_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+    attr_reader :following_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+    attr_reader :gists_url
+    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+    attr_reader :gravatar_id
+    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `login` wire field.
+    attr_reader :login
+    # @return [String] Optional `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Optional `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+    attr_reader :organizations_url
+    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+    attr_reader :received_events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+    attr_reader :repos_url
+    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+    attr_reader :site_admin
+    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+    attr_reader :starred_url
+    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+    attr_reader :subscriptions_url
+    # @return [WebhookPackageUpdatedPackagePackageVersionReleaseAuthorType] Optional enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+    attr_reader :user_view_type
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookPackageUpdatedPackagePackageVersionReleaseMetadata
-  FIELDS = {
-    author: "author",
-    created_at: "created_at",
-    draft: "draft",
-    html_url: "html_url",
-    id: "id",
-    name: "name",
-    prerelease: "prerelease",
-    published_at: "published_at",
-    tag_name: "tag_name",
-    target_commitish: "target_commitish",
-    url: "url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    author
-    created_at
-    draft
-    html_url
-    id
-    name
-    prerelease
-    published_at
-    tag_name
-    target_commitish
-    url
-  ].freeze
-  DECODERS = {
-    author: lambda do |value|
-      ::OctridevGithub::WebhookPackageUpdatedPackagePackageVersionReleaseAuthor.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    author
-  ].freeze
-end
-
-# API model for WebhookPackageUpdatedPackagePackageVersionRelease.
-# Optional object value serialized in the `release` wire field.
-class WebhookPackageUpdatedPackagePackageVersionRelease
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPackageUpdatedPackagePackageVersionReleaseMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPackageUpdatedPackagePackageVersionReleaseMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPackageUpdatedPackagePackageVersionReleaseMetadata::DECODERS
-
-  # @return [WebhookPackageUpdatedPackagePackageVersionReleaseAuthor] Required object value serialized in the `author` wire field.
-  attr_reader :author
-  # @return [String] Required `string` value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [Boolean] Required `boolean` value serialized in the `draft` wire field.
-  attr_reader :draft
-  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [Boolean] Required `boolean` value serialized in the `prerelease` wire field.
-  attr_reader :prerelease
-  # @return [String] Required `string` value serialized in the `published_at` wire field.
-  attr_reader :published_at
-  # @return [String] Required `string` value serialized in the `tag_name` wire field.
-  attr_reader :tag_name
-  # @return [String] Required `string` value serialized in the `target_commitish` wire field.
-  attr_reader :target_commitish
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPackageUpdatedPackagePackageVersionReleaseMetadata
+    FIELDS = {
+      author: 'author',
+      created_at: 'created_at',
+      draft: 'draft',
+      html_url: 'html_url',
+      id: 'id',
+      name: 'name',
+      prerelease: 'prerelease',
+      published_at: 'published_at',
+      tag_name: 'tag_name',
+      target_commitish: 'target_commitish',
+      url: 'url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      author
+      created_at
+      draft
+      html_url
+      id
+      name
+      prerelease
+      published_at
+      tag_name
+      target_commitish
+      url
+    ].freeze
+    DECODERS = {
+      author: lambda do |value|
+        ::OctridevGithub::WebhookPackageUpdatedPackagePackageVersionReleaseAuthor.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      author
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPackageUpdatedPackagePackageVersionReleaseMetadata::NULLABLE_FIELDS)
+  # API model for WebhookPackageUpdatedPackagePackageVersionRelease.
+  # Optional object value serialized in the `release` wire field.
+  class WebhookPackageUpdatedPackagePackageVersionRelease
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPackageUpdatedPackagePackageVersionReleaseMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPackageUpdatedPackagePackageVersionReleaseMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPackageUpdatedPackagePackageVersionReleaseMetadata::DECODERS
+
+    # @return [WebhookPackageUpdatedPackagePackageVersionReleaseAuthor] Required object value serialized in the `author` wire field.
+    attr_reader :author
+    # @return [String] Required `string` value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [Boolean] Required `boolean` value serialized in the `draft` wire field.
+    attr_reader :draft
+    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [Boolean] Required `boolean` value serialized in the `prerelease` wire field.
+    attr_reader :prerelease
+    # @return [String] Required `string` value serialized in the `published_at` wire field.
+    attr_reader :published_at
+    # @return [String] Required `string` value serialized in the `tag_name` wire field.
+    attr_reader :tag_name
+    # @return [String] Required `string` value serialized in the `target_commitish` wire field.
+    attr_reader :target_commitish
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPackageUpdatedPackagePackageVersionReleaseMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookPackageUpdatedPackagePackageVersionMetadata
-  FIELDS = {
-    author: "author",
-    body: "body",
-    body_html: "body_html",
-    created_at: "created_at",
-    description: "description",
-    docker_metadata: "docker_metadata",
-    draft: "draft",
-    html_url: "html_url",
-    id: "id",
-    installation_command: "installation_command",
-    manifest: "manifest",
-    metadata: "metadata",
-    name: "name",
-    package_files: "package_files",
-    package_url: "package_url",
-    prerelease: "prerelease",
-    release: "release",
-    rubygems_metadata: "rubygems_metadata",
-    source_url: "source_url",
-    summary: "summary",
-    tag_name: "tag_name",
-    target_commitish: "target_commitish",
-    target_oid: "target_oid",
-    updated_at: "updated_at",
-    version: "version",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    author
-    body
-    body_html
-    created_at
-    description
-    html_url
-    id
-    installation_command
-    metadata
-    name
-    package_files
-    summary
-    target_commitish
-    target_oid
-    updated_at
-    version
-  ].freeze
-  DECODERS = {
-    author: lambda do |value|
-      ::OctridevGithub::WebhookPackageUpdatedPackagePackageVersionAuthor.from_hash(value)
-    end,
-    docker_metadata: lambda do |value|
-      value&.map { |item| ::OctridevGithub::WebhookPackageUpdatedPackagePackageVersionDockerMetadataItem.from_hash(item) }
-    end,
-    package_files: lambda do |value|
-      value&.map { |item| ::OctridevGithub::WebhookPackageUpdatedPackagePackageVersionPackageFilesItem.from_hash(item) }
-    end,
-    release: lambda do |value|
-      ::OctridevGithub::WebhookPackageUpdatedPackagePackageVersionRelease.from_hash(value)
-    end,
-    rubygems_metadata: lambda do |value|
-      value&.map { |item| ::OctridevGithub::WebhookRubygemsMetadata.from_hash(item) }
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    author
-  ].freeze
-end
-
-# API model for WebhookPackageUpdatedPackagePackageVersion.
-# Required object value serialized in the `package_version` wire field.
-class WebhookPackageUpdatedPackagePackageVersion
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPackageUpdatedPackagePackageVersionMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPackageUpdatedPackagePackageVersionMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPackageUpdatedPackagePackageVersionMetadata::DECODERS
-
-  # @return [WebhookPackageUpdatedPackagePackageVersionAuthor] Required object value serialized in the `author` wire field.
-  attr_reader :author
-  # @return [String] Required `string` value serialized in the `body` wire field.
-  attr_reader :body
-  # @return [String] Required `string` value serialized in the `body_html` wire field.
-  attr_reader :body_html
-  # @return [String] Required `string` value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Required `string` value serialized in the `description` wire field.
-  attr_reader :description
-  # @return [Array_of_WebhookPackageUpdatedPackagePackageVersionDockerMetadataItem] Optional array value serialized in the `docker_metadata` wire field.
-  attr_reader :docker_metadata
-  # @return [Boolean] Optional `boolean` value serialized in the `draft` wire field.
-  attr_reader :draft
-  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `installation_command` wire field.
-  attr_reader :installation_command
-  # @return [String] Optional `string` value serialized in the `manifest` wire field.
-  attr_reader :manifest
-  # @return [Array_of_Hash] Required array value serialized in the `metadata` wire field.
-  attr_reader :metadata
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [Array_of_WebhookPackageUpdatedPackagePackageVersionPackageFilesItem] Required array value serialized in the `package_files` wire field.
-  attr_reader :package_files
-  # @return [String] Optional `string` value serialized in the `package_url` wire field.
-  attr_reader :package_url
-  # @return [Boolean] Optional `boolean` value serialized in the `prerelease` wire field.
-  attr_reader :prerelease
-  # @return [WebhookPackageUpdatedPackagePackageVersionRelease] Optional object value serialized in the `release` wire field.
-  attr_reader :release
-  # @return [Array_of_WebhookRubygemsMetadata] Optional array value serialized in the `rubygems_metadata` wire field.
-  attr_reader :rubygems_metadata
-  # @return [String] Optional `uri`-formatted value serialized in the `source_url` wire field.
-  attr_reader :source_url
-  # @return [String] Required `string` value serialized in the `summary` wire field.
-  attr_reader :summary
-  # @return [String] Optional `string` value serialized in the `tag_name` wire field.
-  attr_reader :tag_name
-  # @return [String] Required `string` value serialized in the `target_commitish` wire field.
-  attr_reader :target_commitish
-  # @return [String] Required `string` value serialized in the `target_oid` wire field.
-  attr_reader :target_oid
-  # @return [String] Required `string` value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-  # @return [String] Required `string` value serialized in the `version` wire field.
-  attr_reader :version
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPackageUpdatedPackagePackageVersionMetadata
+    FIELDS = {
+      author: 'author',
+      body: 'body',
+      body_html: 'body_html',
+      created_at: 'created_at',
+      description: 'description',
+      docker_metadata: 'docker_metadata',
+      draft: 'draft',
+      html_url: 'html_url',
+      id: 'id',
+      installation_command: 'installation_command',
+      manifest: 'manifest',
+      metadata: 'metadata',
+      name: 'name',
+      package_files: 'package_files',
+      package_url: 'package_url',
+      prerelease: 'prerelease',
+      release: 'release',
+      rubygems_metadata: 'rubygems_metadata',
+      source_url: 'source_url',
+      summary: 'summary',
+      tag_name: 'tag_name',
+      target_commitish: 'target_commitish',
+      target_oid: 'target_oid',
+      updated_at: 'updated_at',
+      version: 'version'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      author
+      body
+      body_html
+      created_at
+      description
+      html_url
+      id
+      installation_command
+      metadata
+      name
+      package_files
+      summary
+      target_commitish
+      target_oid
+      updated_at
+      version
+    ].freeze
+    DECODERS = {
+      author: lambda do |value|
+        ::OctridevGithub::WebhookPackageUpdatedPackagePackageVersionAuthor.from_hash(value)
+      end,
+      docker_metadata: lambda do |value|
+        value&.map { |item| ::OctridevGithub::WebhookPackageUpdatedPackagePackageVersionDockerMetadataItem.from_hash(item) }
+      end,
+      package_files: lambda do |value|
+        value&.map { |item| ::OctridevGithub::WebhookPackageUpdatedPackagePackageVersionPackageFilesItem.from_hash(item) }
+      end,
+      release: lambda do |value|
+        ::OctridevGithub::WebhookPackageUpdatedPackagePackageVersionRelease.from_hash(value)
+      end,
+      rubygems_metadata: lambda do |value|
+        value&.map { |item| ::OctridevGithub::WebhookRubygemsMetadata.from_hash(item) }
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      author
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPackageUpdatedPackagePackageVersionMetadata::NULLABLE_FIELDS)
+  # API model for WebhookPackageUpdatedPackagePackageVersion.
+  # Required object value serialized in the `package_version` wire field.
+  class WebhookPackageUpdatedPackagePackageVersion
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPackageUpdatedPackagePackageVersionMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPackageUpdatedPackagePackageVersionMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPackageUpdatedPackagePackageVersionMetadata::DECODERS
+
+    # @return [WebhookPackageUpdatedPackagePackageVersionAuthor] Required object value serialized in the `author` wire field.
+    attr_reader :author
+    # @return [String] Required `string` value serialized in the `body` wire field.
+    attr_reader :body
+    # @return [String] Required `string` value serialized in the `body_html` wire field.
+    attr_reader :body_html
+    # @return [String] Required `string` value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Required `string` value serialized in the `description` wire field.
+    attr_reader :description
+    # @return [Array_of_WebhookPackageUpdatedPackagePackageVersionDockerMetadataItem] Optional array value serialized in the `docker_metadata` wire field.
+    attr_reader :docker_metadata
+    # @return [Boolean] Optional `boolean` value serialized in the `draft` wire field.
+    attr_reader :draft
+    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `installation_command` wire field.
+    attr_reader :installation_command
+    # @return [String] Optional `string` value serialized in the `manifest` wire field.
+    attr_reader :manifest
+    # @return [Array_of_Hash] Required array value serialized in the `metadata` wire field.
+    attr_reader :metadata
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [Array_of_WebhookPackageUpdatedPackagePackageVersionPackageFilesItem] Required array value serialized in the `package_files` wire field.
+    attr_reader :package_files
+    # @return [String] Optional `string` value serialized in the `package_url` wire field.
+    attr_reader :package_url
+    # @return [Boolean] Optional `boolean` value serialized in the `prerelease` wire field.
+    attr_reader :prerelease
+    # @return [WebhookPackageUpdatedPackagePackageVersionRelease] Optional object value serialized in the `release` wire field.
+    attr_reader :release
+    # @return [Array_of_WebhookRubygemsMetadata] Optional array value serialized in the `rubygems_metadata` wire field.
+    attr_reader :rubygems_metadata
+    # @return [String] Optional `uri`-formatted value serialized in the `source_url` wire field.
+    attr_reader :source_url
+    # @return [String] Required `string` value serialized in the `summary` wire field.
+    attr_reader :summary
+    # @return [String] Optional `string` value serialized in the `tag_name` wire field.
+    attr_reader :tag_name
+    # @return [String] Required `string` value serialized in the `target_commitish` wire field.
+    attr_reader :target_commitish
+    # @return [String] Required `string` value serialized in the `target_oid` wire field.
+    attr_reader :target_oid
+    # @return [String] Required `string` value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+    # @return [String] Required `string` value serialized in the `version` wire field.
+    attr_reader :version
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPackageUpdatedPackagePackageVersionMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPackageUpdatedPackageRegistryMetadata
+    FIELDS = {
+      about_url: 'about_url',
+      name: 'name',
+      type: 'type',
+      url: 'url',
+      vendor: 'vendor'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      about_url
+      name
+      type
+      url
+      vendor
+    ].freeze
+    DECODERS = {}.freeze
   end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookPackageUpdatedPackageRegistryMetadata
-  FIELDS = {
-    about_url: "about_url",
-    name: "name",
-    type: "type",
-    url: "url",
-    vendor: "vendor",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    about_url
-    name
-    type
-    url
-    vendor
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
 end

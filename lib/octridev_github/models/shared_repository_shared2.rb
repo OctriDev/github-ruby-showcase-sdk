@@ -5,382 +5,377 @@
 
 # shared_repository domain models
 module OctridevGithub
-# API model for RepositoryRulesetConditionsRepositoryNameTargetRepositoryName.
-# Required object value serialized in the `repository_name` wire field.
-class RepositoryRulesetConditionsRepositoryNameTargetRepositoryName
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRulesetConditionsRepositoryNameTargetRepositoryNameMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRulesetConditionsRepositoryNameTargetRepositoryNameMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRulesetConditionsRepositoryNameTargetRepositoryNameMetadata::DECODERS
+  # API model for RepositoryRulesetConditionsRepositoryNameTargetRepositoryName.
+  # Required object value serialized in the `repository_name` wire field.
+  class RepositoryRulesetConditionsRepositoryNameTargetRepositoryName
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRulesetConditionsRepositoryNameTargetRepositoryNameMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRulesetConditionsRepositoryNameTargetRepositoryNameMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRulesetConditionsRepositoryNameTargetRepositoryNameMetadata::DECODERS
 
-  # @return [Array_of_String] Array of repository names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all repositories.
-  attr_reader :include
-  # @return [Array_of_String] Array of repository names or patterns to exclude. The condition will not pass if any of these patterns match.
-  attr_reader :exclude
-  # @return [Boolean] Whether renaming of target repositories is prevented.
-  attr_reader :protected
+    # @return [Array_of_String] Array of repository names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all repositories.
+    attr_reader :include
+    # @return [Array_of_String] Array of repository names or patterns to exclude. The condition will not pass if any of these patterns match.
+    attr_reader :exclude
+    # @return [Boolean] Whether renaming of target repositories is prevented.
+    attr_reader :protected
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRulesetConditionsRepositoryNameTargetMetadata
+    FIELDS = {
+      repository_name: 'repository_name'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      repository_name
+    ].freeze
+    DECODERS = {
+      repository_name: lambda do |value|
+        ::OctridevGithub::RepositoryRulesetConditionsRepositoryNameTargetRepositoryName.from_hash(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for RepositoryRulesetConditionsRepositoryNameTarget.
+  # Parameters for a repository name condition
+  class RepositoryRulesetConditionsRepositoryNameTarget
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRulesetConditionsRepositoryNameTargetMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRulesetConditionsRepositoryNameTargetMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRulesetConditionsRepositoryNameTargetMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalRepositoryRulesetConditionsRepositoryNameTargetMetadata
-  FIELDS = {
-    repository_name: "repository_name",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    repository_name
-  ].freeze
-  DECODERS = {
-    repository_name: lambda do |value|
-      ::OctridevGithub::RepositoryRulesetConditionsRepositoryNameTargetRepositoryName.from_hash(value)
-    end,
-  }.freeze
-end
+    # @return [RepositoryRulesetConditionsRepositoryNameTargetRepositoryName] Required object value serialized in the `repository_name` wire field.
+    attr_reader :repository_name
 
-# API model for RepositoryRulesetConditionsRepositoryNameTarget.
-# Parameters for a repository name condition
-class RepositoryRulesetConditionsRepositoryNameTarget
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRulesetConditionsRepositoryNameTargetMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRulesetConditionsRepositoryNameTargetMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRulesetConditionsRepositoryNameTargetMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [RepositoryRulesetConditionsRepositoryNameTargetRepositoryName] Required object value serialized in the `repository_name` wire field.
-  attr_reader :repository_name
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRulesetConditionsRepositoryPropertySpecMetadata
+    FIELDS = {
+      name: 'name',
+      property_values: 'property_values',
+      source: 'source'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      name
+      property_values
+    ].freeze
+    DECODERS = {
+      source: lambda do |value|
+        ::OctridevGithub::RepositoryRulesetConditionsRepositoryPropertySpecSource.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for RepositoryRulesetConditionsRepositoryPropertySpec.
+  # Parameters for a targeting a repository property
+  class RepositoryRulesetConditionsRepositoryPropertySpec
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRulesetConditionsRepositoryPropertySpecMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRulesetConditionsRepositoryPropertySpecMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRulesetConditionsRepositoryPropertySpecMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalRepositoryRulesetConditionsRepositoryPropertySpecMetadata
-  FIELDS = {
-    name: "name",
-    property_values: "property_values",
-    source: "source",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    name
-    property_values
-  ].freeze
-  DECODERS = {
-    source: lambda do |value|
-      ::OctridevGithub::RepositoryRulesetConditionsRepositoryPropertySpecSource.from_value(value)
-    end,
-  }.freeze
-end
+    # @return [String] The name of the repository property to target
+    attr_reader :name
+    # @return [Array_of_String] The values to match for the repository property
+    attr_reader :property_values
+    # @return [RepositoryRulesetConditionsRepositoryPropertySpecSource] The source of the repository property. Defaults to 'custom' if not specified.
+    attr_reader :source
 
-# API model for RepositoryRulesetConditionsRepositoryPropertySpec.
-# Parameters for a targeting a repository property
-class RepositoryRulesetConditionsRepositoryPropertySpec
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRulesetConditionsRepositoryPropertySpecMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRulesetConditionsRepositoryPropertySpecMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRulesetConditionsRepositoryPropertySpecMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [String] The name of the repository property to target
-  attr_reader :name
-  # @return [Array_of_String] The values to match for the repository property
-  attr_reader :property_values
-  # @return [RepositoryRulesetConditionsRepositoryPropertySpecSource] The source of the repository property. Defaults to 'custom' if not specified.
-  attr_reader :source
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the RepositoryRulesetConditionsRepositoryPropertySpecSource SDK namespace.
+  module RepositoryRulesetConditionsRepositoryPropertySpecSource
+    CUSTOM = 'custom'
+    SYSTEM = 'system'
+    VALUES = %w[custom system].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the RepositoryRulesetConditionsRepositoryPropertySpecSource SDK namespace.
-module RepositoryRulesetConditionsRepositoryPropertySpecSource
-  CUSTOM = 'custom'
-  SYSTEM = 'system'
-  VALUES = ['custom', 'system'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRulesetConditionsRepositoryPropertyTargetRepositoryPropertyMetadata
-  FIELDS = {
-    include: "include",
-    exclude: "exclude",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    include: lambda do |value|
-      value&.map { |item| ::OctridevGithub::RepositoryRulesetConditionsRepositoryPropertySpec.from_hash(item) }
-    end,
-    exclude: lambda do |value|
-      value&.map { |item| ::OctridevGithub::RepositoryRulesetConditionsRepositoryPropertySpec.from_hash(item) }
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRulesetConditionsRepositoryPropertyTargetRepositoryProperty.
-# Required object value serialized in the `repository_property` wire field.
-class RepositoryRulesetConditionsRepositoryPropertyTargetRepositoryProperty
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRulesetConditionsRepositoryPropertyTargetRepositoryPropertyMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRulesetConditionsRepositoryPropertyTargetRepositoryPropertyMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRulesetConditionsRepositoryPropertyTargetRepositoryPropertyMetadata::DECODERS
-
-  # @return [Array_of_RepositoryRulesetConditionsRepositoryPropertySpec] The repository properties and values to include. All of these properties must match for the condition to pass.
-  attr_reader :include
-  # @return [Array_of_RepositoryRulesetConditionsRepositoryPropertySpec] The repository properties and values to exclude. The condition will not pass if any of these properties match.
-  attr_reader :exclude
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRulesetConditionsRepositoryPropertyTargetRepositoryPropertyMetadata
+    FIELDS = {
+      include: 'include',
+      exclude: 'exclude'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      include: lambda do |value|
+        value&.map { |item| ::OctridevGithub::RepositoryRulesetConditionsRepositoryPropertySpec.from_hash(item) }
+      end,
+      exclude: lambda do |value|
+        value&.map { |item| ::OctridevGithub::RepositoryRulesetConditionsRepositoryPropertySpec.from_hash(item) }
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RepositoryRulesetConditionsRepositoryPropertyTargetRepositoryProperty.
+  # Required object value serialized in the `repository_property` wire field.
+  class RepositoryRulesetConditionsRepositoryPropertyTargetRepositoryProperty
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRulesetConditionsRepositoryPropertyTargetRepositoryPropertyMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRulesetConditionsRepositoryPropertyTargetRepositoryPropertyMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRulesetConditionsRepositoryPropertyTargetRepositoryPropertyMetadata::DECODERS
+
+    # @return [Array_of_RepositoryRulesetConditionsRepositoryPropertySpec] The repository properties and values to include. All of these properties must match for the condition to pass.
+    attr_reader :include
+    # @return [Array_of_RepositoryRulesetConditionsRepositoryPropertySpec] The repository properties and values to exclude. The condition will not pass if any of these properties match.
+    attr_reader :exclude
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRulesetConditionsRepositoryPropertyTargetMetadata
-  FIELDS = {
-    repository_property: "repository_property",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    repository_property
-  ].freeze
-  DECODERS = {
-    repository_property: lambda do |value|
-      ::OctridevGithub::RepositoryRulesetConditionsRepositoryPropertyTargetRepositoryProperty.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRulesetConditionsRepositoryPropertyTarget.
-# Parameters for a repository property condition
-class RepositoryRulesetConditionsRepositoryPropertyTarget
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRulesetConditionsRepositoryPropertyTargetMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRulesetConditionsRepositoryPropertyTargetMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRulesetConditionsRepositoryPropertyTargetMetadata::DECODERS
-
-  # @return [RepositoryRulesetConditionsRepositoryPropertyTargetRepositoryProperty] Required object value serialized in the `repository_property` wire field.
-  attr_reader :repository_property
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRulesetConditionsRepositoryPropertyTargetMetadata
+    FIELDS = {
+      repository_property: 'repository_property'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      repository_property
+    ].freeze
+    DECODERS = {
+      repository_property: lambda do |value|
+        ::OctridevGithub::RepositoryRulesetConditionsRepositoryPropertyTargetRepositoryProperty.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RepositoryRulesetConditionsRepositoryPropertyTarget.
+  # Parameters for a repository property condition
+  class RepositoryRulesetConditionsRepositoryPropertyTarget
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRulesetConditionsRepositoryPropertyTargetMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRulesetConditionsRepositoryPropertyTargetMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRulesetConditionsRepositoryPropertyTargetMetadata::DECODERS
+
+    # @return [RepositoryRulesetConditionsRepositoryPropertyTargetRepositoryProperty] Required object value serialized in the `repository_property` wire field.
+    attr_reader :repository_property
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleViolationErrorMetadataSecretScanningBypassPlaceholdersItemMetadata
-  FIELDS = {
-    placeholder_id: "placeholder_id",
-    token_type: "token_type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    placeholder_id: lambda do |value|
-      ::OctridevGithub::SecretScanningPushProtectionBypassPlaceholderId.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleViolationErrorMetadataSecretScanningBypassPlaceholdersItem.
-# Required object value serialized in the `bypass_placeholders[]` wire field.
-class RepositoryRuleViolationErrorMetadataSecretScanningBypassPlaceholdersItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleViolationErrorMetadataSecretScanningBypassPlaceholdersItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleViolationErrorMetadataSecretScanningBypassPlaceholdersItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleViolationErrorMetadataSecretScanningBypassPlaceholdersItemMetadata::DECODERS
-
-  # @return [SecretScanningPushProtectionBypassPlaceholderId] The ID of the push protection bypass placeholder. This value is returned on any push protected routes.
-  attr_reader :placeholder_id
-  # @return [String] Optional `string` value serialized in the `token_type` wire field.
-  attr_reader :token_type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleViolationErrorMetadataSecretScanningBypassPlaceholdersItemMetadata
+    FIELDS = {
+      placeholder_id: 'placeholder_id',
+      token_type: 'token_type'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      placeholder_id: lambda do |value|
+        ::OctridevGithub::SecretScanningPushProtectionBypassPlaceholderId.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RepositoryRuleViolationErrorMetadataSecretScanningBypassPlaceholdersItem.
+  # Required object value serialized in the `bypass_placeholders[]` wire field.
+  class RepositoryRuleViolationErrorMetadataSecretScanningBypassPlaceholdersItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleViolationErrorMetadataSecretScanningBypassPlaceholdersItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleViolationErrorMetadataSecretScanningBypassPlaceholdersItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleViolationErrorMetadataSecretScanningBypassPlaceholdersItemMetadata::DECODERS
+
+    # @return [SecretScanningPushProtectionBypassPlaceholderId] The ID of the push protection bypass placeholder. This value is returned on any push protected routes.
+    attr_reader :placeholder_id
+    # @return [String] Optional `string` value serialized in the `token_type` wire field.
+    attr_reader :token_type
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleViolationErrorMetadataSecretScanningMetadata
-  FIELDS = {
-    bypass_placeholders: "bypass_placeholders",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    bypass_placeholders: lambda do |value|
-      value&.map { |item| ::OctridevGithub::RepositoryRuleViolationErrorMetadataSecretScanningBypassPlaceholdersItem.from_hash(item) }
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleViolationErrorMetadataSecretScanning.
-# Optional object value serialized in the `secret_scanning` wire field.
-class RepositoryRuleViolationErrorMetadataSecretScanning
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleViolationErrorMetadataSecretScanningMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleViolationErrorMetadataSecretScanningMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleViolationErrorMetadataSecretScanningMetadata::DECODERS
-
-  # @return [Array_of_RepositoryRuleViolationErrorMetadataSecretScanningBypassPlaceholdersItem] Optional array value serialized in the `bypass_placeholders` wire field.
-  attr_reader :bypass_placeholders
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleViolationErrorMetadataSecretScanningMetadata
+    FIELDS = {
+      bypass_placeholders: 'bypass_placeholders'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      bypass_placeholders: lambda do |value|
+        value&.map { |item| ::OctridevGithub::RepositoryRuleViolationErrorMetadataSecretScanningBypassPlaceholdersItem.from_hash(item) }
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RepositoryRuleViolationErrorMetadataSecretScanning.
+  # Optional object value serialized in the `secret_scanning` wire field.
+  class RepositoryRuleViolationErrorMetadataSecretScanning
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleViolationErrorMetadataSecretScanningMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleViolationErrorMetadataSecretScanningMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleViolationErrorMetadataSecretScanningMetadata::DECODERS
+
+    # @return [Array_of_RepositoryRuleViolationErrorMetadataSecretScanningBypassPlaceholdersItem] Optional array value serialized in the `bypass_placeholders` wire field.
+    attr_reader :bypass_placeholders
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleViolationErrorMetadataMetadata
-  FIELDS = {
-    secret_scanning: "secret_scanning",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    secret_scanning: lambda do |value|
-      ::OctridevGithub::RepositoryRuleViolationErrorMetadataSecretScanning.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleViolationErrorMetadata.
-# Optional object value serialized in the `metadata` wire field.
-class RepositoryRuleViolationErrorMetadata
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleViolationErrorMetadataMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleViolationErrorMetadataMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleViolationErrorMetadataMetadata::DECODERS
-
-  # @return [RepositoryRuleViolationErrorMetadataSecretScanning] Optional object value serialized in the `secret_scanning` wire field.
-  attr_reader :secret_scanning
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleViolationErrorMetadataMetadata
+    FIELDS = {
+      secret_scanning: 'secret_scanning'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      secret_scanning: lambda do |value|
+        ::OctridevGithub::RepositoryRuleViolationErrorMetadataSecretScanning.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for RepositoryRuleViolationErrorMetadata.
+  # Optional object value serialized in the `metadata` wire field.
+  class RepositoryRuleViolationErrorMetadata
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleViolationErrorMetadataMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleViolationErrorMetadataMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleViolationErrorMetadataMetadata::DECODERS
+
+    # @return [RepositoryRuleViolationErrorMetadataSecretScanning] Optional object value serialized in the `secret_scanning` wire field.
+    attr_reader :secret_scanning
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositoryRuleViolationErrorMetadata
-  FIELDS = {
-    message: "message",
-    documentation_url: "documentation_url",
-    status: "status",
-    metadata: "metadata",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    metadata: lambda do |value|
-      ::OctridevGithub::RepositoryRuleViolationErrorMetadata.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for RepositoryRuleViolationError.
-# Repository rule violation was detected
-class RepositoryRuleViolationError
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositoryRuleViolationErrorMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositoryRuleViolationErrorMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositoryRuleViolationErrorMetadata::DECODERS
-
-  # @return [String] Optional `string` value serialized in the `message` wire field.
-  attr_reader :message
-  # @return [String] Optional `string` value serialized in the `documentation_url` wire field.
-  attr_reader :documentation_url
-  # @return [String] Optional `string` value serialized in the `status` wire field.
-  attr_reader :status
-  # @return [RepositoryRuleViolationErrorMetadata] Optional object value serialized in the `metadata` wire field.
-  attr_reader :metadata
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalRepositoryRuleViolationErrorMetadata
+    FIELDS = {
+      message: 'message',
+      documentation_url: 'documentation_url',
+      status: 'status',
+      metadata: 'metadata'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      metadata: lambda do |value|
+        ::OctridevGithub::RepositoryRuleViolationErrorMetadata.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
+  # API model for RepositoryRuleViolationError.
+  # Repository rule violation was detected
+  class RepositoryRuleViolationError
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositoryRuleViolationErrorMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositoryRuleViolationErrorMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositoryRuleViolationErrorMetadata::DECODERS
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+    # @return [String] Optional `string` value serialized in the `message` wire field.
+    attr_reader :message
+    # @return [String] Optional `string` value serialized in the `documentation_url` wire field.
+    attr_reader :documentation_url
+    # @return [String] Optional `string` value serialized in the `status` wire field.
+    attr_reader :status
+    # @return [RepositoryRuleViolationErrorMetadata] Optional object value serialized in the `metadata` wire field.
+    attr_reader :metadata
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
 end

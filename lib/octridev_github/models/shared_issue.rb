@@ -5,657 +5,653 @@
 
 # shared_issue domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalIssuePullRequestMetadata
-  FIELDS = {
-    merged_at: "merged_at",
-    diff_url: "diff_url",
-    html_url: "html_url",
-    patch_url: "patch_url",
-    url: "url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    diff_url
-    html_url
-    patch_url
-    url
-  ].freeze
-  DECODERS = {
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    diff_url
-    html_url
-    patch_url
-    url
-  ].freeze
-end
-
-# API model for IssuePullRequest.
-# Optional object value serialized in the `pull_request` wire field.
-class IssuePullRequest
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalIssuePullRequestMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalIssuePullRequestMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalIssuePullRequestMetadata::DECODERS
-
-  # @return [String] Optional `date-time`-formatted value serialized in the `merged_at` wire field.
-  attr_reader :merged_at
-  # @return [String] Required `uri`-formatted value serialized in the `diff_url` wire field.
-  attr_reader :diff_url
-  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [String] Required `uri`-formatted value serialized in the `patch_url` wire field.
-  attr_reader :patch_url
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalIssuePullRequestMetadata
+    FIELDS = {
+      merged_at: 'merged_at',
+      diff_url: 'diff_url',
+      html_url: 'html_url',
+      patch_url: 'patch_url',
+      url: 'url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      diff_url
+      html_url
+      patch_url
+      url
+    ].freeze
+    DECODERS = {}.freeze
+    NULLABLE_FIELDS = %i[
+      diff_url
+      html_url
+      patch_url
+      url
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalIssuePullRequestMetadata::NULLABLE_FIELDS)
+  # API model for IssuePullRequest.
+  # Optional object value serialized in the `pull_request` wire field.
+  class IssuePullRequest
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalIssuePullRequestMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalIssuePullRequestMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalIssuePullRequestMetadata::DECODERS
+
+    # @return [String] Optional `date-time`-formatted value serialized in the `merged_at` wire field.
+    attr_reader :merged_at
+    # @return [String] Required `uri`-formatted value serialized in the `diff_url` wire field.
+    attr_reader :diff_url
+    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [String] Required `uri`-formatted value serialized in the `patch_url` wire field.
+    attr_reader :patch_url
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalIssuePullRequestMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalIssueMetadata
-  FIELDS = {
-    id: "id",
-    node_id: "node_id",
-    url: "url",
-    repository_url: "repository_url",
-    labels_url: "labels_url",
-    comments_url: "comments_url",
-    events_url: "events_url",
-    html_url: "html_url",
-    number: "number",
-    state: "state",
-    state_reason: "state_reason",
-    title: "title",
-    body: "body",
-    user: "user",
-    labels: "labels",
-    assignee: "assignee",
-    assignees: "assignees",
-    milestone: "milestone",
-    locked: "locked",
-    active_lock_reason: "active_lock_reason",
-    comments: "comments",
-    pull_request: "pull_request",
-    closed_at: "closed_at",
-    created_at: "created_at",
-    updated_at: "updated_at",
-    draft: "draft",
-    closed_by: "closed_by",
-    body_html: "body_html",
-    body_text: "body_text",
-    timeline_url: "timeline_url",
-    type: "type",
-    repository: "repository",
-    performed_via_github_app: "performed_via_github_app",
-    author_association: "author_association",
-    reactions: "reactions",
-    sub_issues_summary: "sub_issues_summary",
-    parent_issue_url: "parent_issue_url",
-    pinned_comment: "pinned_comment",
-    issue_dependencies_summary: "issue_dependencies_summary",
-    issue_field_values: "issue_field_values",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    node_id
-    url
-    repository_url
-    labels_url
-    comments_url
-    events_url
-    html_url
-    number
-    state
-    title
-    user
-    labels
-    assignee
-    milestone
-    locked
-    comments
-    closed_at
-    created_at
-    updated_at
-  ].freeze
-  DECODERS = {
-    state_reason: lambda do |value|
-      ::OctridevGithub::IssueStateReason.from_value(value)
-    end,
-    user: lambda do |value|
-      ::OctridevGithub::NullableSimpleUser.from_hash(value)
-    end,
-    labels: lambda do |value|
-      value&.map { |item| ::OctridevGithub::IssueLabelsItem.from_hash(item) }
-    end,
-    assignee: lambda do |value|
-      ::OctridevGithub::NullableSimpleUser.from_hash(value)
-    end,
-    assignees: lambda do |value|
-      value&.map { |item| ::OctridevGithub::SimpleUser.from_hash(item) }
-    end,
-    milestone: lambda do |value|
-      ::OctridevGithub::NullableMilestone.from_hash(value)
-    end,
-    pull_request: lambda do |value|
-      ::OctridevGithub::IssuePullRequest.from_hash(value)
-    end,
-    closed_by: lambda do |value|
-      ::OctridevGithub::NullableSimpleUser.from_hash(value)
-    end,
-    type: lambda do |value|
-      ::OctridevGithub::IssueType.from_hash(value)
-    end,
-    repository: lambda do |value|
-      ::OctridevGithub::Repository.from_hash(value)
-    end,
-    performed_via_github_app: lambda do |value|
-      ::OctridevGithub::NullableIntegration.from_hash(value)
-    end,
-    author_association: lambda do |value|
-      ::OctridevGithub::AuthorAssociation.from_value(value)
-    end,
-    reactions: lambda do |value|
-      ::OctridevGithub::ReactionRollup.from_hash(value)
-    end,
-    sub_issues_summary: lambda do |value|
-      ::OctridevGithub::SubIssuesSummary.from_hash(value)
-    end,
-    pinned_comment: lambda do |value|
-      ::OctridevGithub::NullableIssueComment.from_hash(value)
-    end,
-    issue_dependencies_summary: lambda do |value|
-      ::OctridevGithub::IssueDependenciesSummary.from_hash(value)
-    end,
-    issue_field_values: lambda do |value|
-      value&.map { |item| ::OctridevGithub::IssueFieldValue.from_hash(item) }
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    user
-    assignee
-    milestone
-    closed_at
-  ].freeze
-end
-
-# API model for Issue.
-# Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.
-class Issue
-  include ProjectsV2ItemSimpleContent
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalIssueMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalIssueMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalIssueMetadata::DECODERS
-
-  # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] URL for the issue
-  attr_reader :url
-  # @return [String] Required `uri`-formatted value serialized in the `repository_url` wire field.
-  attr_reader :repository_url
-  # @return [String] Required `string` value serialized in the `labels_url` wire field.
-  attr_reader :labels_url
-  # @return [String] Required `uri`-formatted value serialized in the `comments_url` wire field.
-  attr_reader :comments_url
-  # @return [String] Required `uri`-formatted value serialized in the `events_url` wire field.
-  attr_reader :events_url
-  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Number uniquely identifying the issue within its repository
-  attr_reader :number
-  # @return [String] State of the issue; either 'open' or 'closed'
-  attr_reader :state
-  # @return [IssueStateReason] The reason for the current state
-  attr_reader :state_reason
-  # @return [String] Title of the issue
-  attr_reader :title
-  # @return [String] Contents of the issue
-  attr_reader :body
-  # @return [NullableSimpleUser] A GitHub user.
-  attr_reader :user
-  # @return [Array_of_IssueLabelsItem] Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository
-  attr_reader :labels
-  # @return [NullableSimpleUser] A GitHub user.
-  attr_reader :assignee
-  # @return [Array_of_SimpleUser] Optional array value serialized in the `assignees` wire field.
-  attr_reader :assignees
-  # @return [NullableMilestone] A collection of related issues and pull requests.
-  attr_reader :milestone
-  # @return [Boolean] Required `boolean` value serialized in the `locked` wire field.
-  attr_reader :locked
-  # @return [String] Optional `string` value serialized in the `active_lock_reason` wire field.
-  attr_reader :active_lock_reason
-  # @return [Integer] Required `integer` value serialized in the `comments` wire field.
-  attr_reader :comments
-  # @return [IssuePullRequest] Optional object value serialized in the `pull_request` wire field.
-  attr_reader :pull_request
-  # @return [String] Required `date-time`-formatted value serialized in the `closed_at` wire field.
-  attr_reader :closed_at
-  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-  # @return [Boolean] Optional `boolean` value serialized in the `draft` wire field.
-  attr_reader :draft
-  # @return [NullableSimpleUser] A GitHub user.
-  attr_reader :closed_by
-  # @return [String] Optional `string` value serialized in the `body_html` wire field.
-  attr_reader :body_html
-  # @return [String] Optional `string` value serialized in the `body_text` wire field.
-  attr_reader :body_text
-  # @return [String] Optional `uri`-formatted value serialized in the `timeline_url` wire field.
-  attr_reader :timeline_url
-  # @return [IssueType] The type assigned to the issue. This is only present for issues in repositories where issue types are supported.
-  attr_reader :type
-  # @return [Repository] A repository on GitHub.
-  attr_reader :repository
-  # @return [NullableIntegration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
-  attr_reader :performed_via_github_app
-  # @return [AuthorAssociation] How the author is associated with the repository.
-  attr_reader :author_association
-  # @return [ReactionRollup] Optional object value serialized in the `reactions` wire field.
-  attr_reader :reactions
-  # @return [SubIssuesSummary] Optional object value serialized in the `sub_issues_summary` wire field.
-  attr_reader :sub_issues_summary
-  # @return [String] URL to get the parent issue of this issue, if it is a sub-issue
-  attr_reader :parent_issue_url
-  # @return [NullableIssueComment] Comments provide a way for people to collaborate on an issue.
-  attr_reader :pinned_comment
-  # @return [IssueDependenciesSummary] Optional object value serialized in the `issue_dependencies_summary` wire field.
-  attr_reader :issue_dependencies_summary
-  # @return [Array_of_IssueFieldValue] Optional array value serialized in the `issue_field_values` wire field.
-  attr_reader :issue_field_values
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalIssueMetadata
+    FIELDS = {
+      id: 'id',
+      node_id: 'node_id',
+      url: 'url',
+      repository_url: 'repository_url',
+      labels_url: 'labels_url',
+      comments_url: 'comments_url',
+      events_url: 'events_url',
+      html_url: 'html_url',
+      number: 'number',
+      state: 'state',
+      state_reason: 'state_reason',
+      title: 'title',
+      body: 'body',
+      user: 'user',
+      labels: 'labels',
+      assignee: 'assignee',
+      assignees: 'assignees',
+      milestone: 'milestone',
+      locked: 'locked',
+      active_lock_reason: 'active_lock_reason',
+      comments: 'comments',
+      pull_request: 'pull_request',
+      closed_at: 'closed_at',
+      created_at: 'created_at',
+      updated_at: 'updated_at',
+      draft: 'draft',
+      closed_by: 'closed_by',
+      body_html: 'body_html',
+      body_text: 'body_text',
+      timeline_url: 'timeline_url',
+      type: 'type',
+      repository: 'repository',
+      performed_via_github_app: 'performed_via_github_app',
+      author_association: 'author_association',
+      reactions: 'reactions',
+      sub_issues_summary: 'sub_issues_summary',
+      parent_issue_url: 'parent_issue_url',
+      pinned_comment: 'pinned_comment',
+      issue_dependencies_summary: 'issue_dependencies_summary',
+      issue_field_values: 'issue_field_values'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      node_id
+      url
+      repository_url
+      labels_url
+      comments_url
+      events_url
+      html_url
+      number
+      state
+      title
+      user
+      labels
+      assignee
+      milestone
+      locked
+      comments
+      closed_at
+      created_at
+      updated_at
+    ].freeze
+    DECODERS = {
+      state_reason: lambda do |value|
+        ::OctridevGithub::IssueStateReason.from_value(value)
+      end,
+      user: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end,
+      labels: lambda do |value|
+        value&.map { |item| ::OctridevGithub::IssueLabelsItem.from_hash(item) }
+      end,
+      assignee: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end,
+      assignees: lambda do |value|
+        value&.map { |item| ::OctridevGithub::SimpleUser.from_hash(item) }
+      end,
+      milestone: lambda do |value|
+        ::OctridevGithub::NullableMilestone.from_hash(value)
+      end,
+      pull_request: lambda do |value|
+        ::OctridevGithub::IssuePullRequest.from_hash(value)
+      end,
+      closed_by: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end,
+      type: lambda do |value|
+        ::OctridevGithub::IssueType.from_hash(value)
+      end,
+      repository: lambda do |value|
+        ::OctridevGithub::Repository.from_hash(value)
+      end,
+      performed_via_github_app: lambda do |value|
+        ::OctridevGithub::NullableIntegration.from_hash(value)
+      end,
+      author_association: lambda do |value|
+        ::OctridevGithub::AuthorAssociation.from_value(value)
+      end,
+      reactions: lambda do |value|
+        ::OctridevGithub::ReactionRollup.from_hash(value)
+      end,
+      sub_issues_summary: lambda do |value|
+        ::OctridevGithub::SubIssuesSummary.from_hash(value)
+      end,
+      pinned_comment: lambda do |value|
+        ::OctridevGithub::NullableIssueComment.from_hash(value)
+      end,
+      issue_dependencies_summary: lambda do |value|
+        ::OctridevGithub::IssueDependenciesSummary.from_hash(value)
+      end,
+      issue_field_values: lambda do |value|
+        value&.map { |item| ::OctridevGithub::IssueFieldValue.from_hash(item) }
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      user
+      assignee
+      milestone
+      closed_at
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalIssueMetadata::NULLABLE_FIELDS)
+  # API model for Issue.
+  # Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.
+  class Issue
+    include ProjectsV2ItemSimpleContent
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalIssueMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalIssueMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalIssueMetadata::DECODERS
+
+    # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] URL for the issue
+    attr_reader :url
+    # @return [String] Required `uri`-formatted value serialized in the `repository_url` wire field.
+    attr_reader :repository_url
+    # @return [String] Required `string` value serialized in the `labels_url` wire field.
+    attr_reader :labels_url
+    # @return [String] Required `uri`-formatted value serialized in the `comments_url` wire field.
+    attr_reader :comments_url
+    # @return [String] Required `uri`-formatted value serialized in the `events_url` wire field.
+    attr_reader :events_url
+    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Number uniquely identifying the issue within its repository
+    attr_reader :number
+    # @return [String] State of the issue; either 'open' or 'closed'
+    attr_reader :state
+    # @return [IssueStateReason] The reason for the current state
+    attr_reader :state_reason
+    # @return [String] Title of the issue
+    attr_reader :title
+    # @return [String] Contents of the issue
+    attr_reader :body
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :user
+    # @return [Array_of_IssueLabelsItem] Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository
+    attr_reader :labels
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :assignee
+    # @return [Array_of_SimpleUser] Optional array value serialized in the `assignees` wire field.
+    attr_reader :assignees
+    # @return [NullableMilestone] A collection of related issues and pull requests.
+    attr_reader :milestone
+    # @return [Boolean] Required `boolean` value serialized in the `locked` wire field.
+    attr_reader :locked
+    # @return [String] Optional `string` value serialized in the `active_lock_reason` wire field.
+    attr_reader :active_lock_reason
+    # @return [Integer] Required `integer` value serialized in the `comments` wire field.
+    attr_reader :comments
+    # @return [IssuePullRequest] Optional object value serialized in the `pull_request` wire field.
+    attr_reader :pull_request
+    # @return [String] Required `date-time`-formatted value serialized in the `closed_at` wire field.
+    attr_reader :closed_at
+    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+    # @return [Boolean] Optional `boolean` value serialized in the `draft` wire field.
+    attr_reader :draft
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :closed_by
+    # @return [String] Optional `string` value serialized in the `body_html` wire field.
+    attr_reader :body_html
+    # @return [String] Optional `string` value serialized in the `body_text` wire field.
+    attr_reader :body_text
+    # @return [String] Optional `uri`-formatted value serialized in the `timeline_url` wire field.
+    attr_reader :timeline_url
+    # @return [IssueType] The type assigned to the issue. This is only present for issues in repositories where issue types are supported.
+    attr_reader :type
+    # @return [Repository] A repository on GitHub.
+    attr_reader :repository
+    # @return [NullableIntegration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+    attr_reader :performed_via_github_app
+    # @return [AuthorAssociation] How the author is associated with the repository.
+    attr_reader :author_association
+    # @return [ReactionRollup] Optional object value serialized in the `reactions` wire field.
+    attr_reader :reactions
+    # @return [SubIssuesSummary] Optional object value serialized in the `sub_issues_summary` wire field.
+    attr_reader :sub_issues_summary
+    # @return [String] URL to get the parent issue of this issue, if it is a sub-issue
+    attr_reader :parent_issue_url
+    # @return [NullableIssueComment] Comments provide a way for people to collaborate on an issue.
+    attr_reader :pinned_comment
+    # @return [IssueDependenciesSummary] Optional object value serialized in the `issue_dependencies_summary` wire field.
+    attr_reader :issue_dependencies_summary
+    # @return [Array_of_IssueFieldValue] Optional array value serialized in the `issue_field_values` wire field.
+    attr_reader :issue_field_values
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalIssueMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the IssueStateReason SDK namespace.
-module IssueStateReason
-  COMPLETED = 'completed'
-  REOPENED = 'reopened'
-  NOT_PLANNED = 'not_planned'
-  DUPLICATE = 'duplicate'
-  VALUES = ['completed', 'reopened', 'not_planned', 'duplicate'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalIssueCommentMetadata
-  FIELDS = {
-    id: "id",
-    node_id: "node_id",
-    url: "url",
-    body: "body",
-    body_text: "body_text",
-    body_html: "body_html",
-    html_url: "html_url",
-    user: "user",
-    created_at: "created_at",
-    updated_at: "updated_at",
-    issue_url: "issue_url",
-    author_association: "author_association",
-    performed_via_github_app: "performed_via_github_app",
-    reactions: "reactions",
-    pin: "pin",
-    minimized: "minimized",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    node_id
-    url
-    html_url
-    user
-    created_at
-    updated_at
-    issue_url
-  ].freeze
-  DECODERS = {
-    user: lambda do |value|
-      ::OctridevGithub::NullableSimpleUser.from_hash(value)
-    end,
-    author_association: lambda do |value|
-      ::OctridevGithub::AuthorAssociation.from_value(value)
-    end,
-    performed_via_github_app: lambda do |value|
-      ::OctridevGithub::NullableIntegration.from_hash(value)
-    end,
-    reactions: lambda do |value|
-      ::OctridevGithub::ReactionRollup.from_hash(value)
-    end,
-    pin: lambda do |value|
-      ::OctridevGithub::NullablePinnedIssueComment.from_hash(value)
-    end,
-    minimized: lambda do |value|
-      ::OctridevGithub::NullableIssueCommentMinimized.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    user
-  ].freeze
-end
-
-# API model for IssueComment.
-# Comments provide a way for people to collaborate on an issue.
-class IssueComment
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalIssueCommentMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalIssueCommentMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalIssueCommentMetadata::DECODERS
-
-  # @return [Integer] Unique identifier of the issue comment
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] URL for the issue comment
-  attr_reader :url
-  # @return [String] Contents of the issue comment
-  attr_reader :body
-  # @return [String] Optional `string` value serialized in the `body_text` wire field.
-  attr_reader :body_text
-  # @return [String] Optional `string` value serialized in the `body_html` wire field.
-  attr_reader :body_html
-  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [NullableSimpleUser] A GitHub user.
-  attr_reader :user
-  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-  # @return [String] Required `uri`-formatted value serialized in the `issue_url` wire field.
-  attr_reader :issue_url
-  # @return [AuthorAssociation] How the author is associated with the repository.
-  attr_reader :author_association
-  # @return [NullableIntegration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
-  attr_reader :performed_via_github_app
-  # @return [ReactionRollup] Optional object value serialized in the `reactions` wire field.
-  attr_reader :reactions
-  # @return [NullablePinnedIssueComment] Context around who pinned an issue comment and when it was pinned.
-  attr_reader :pin
-  # @return [NullableIssueCommentMinimized] Details about why an issue comment was minimized.
-  attr_reader :minimized
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the IssueStateReason SDK namespace.
+  module IssueStateReason
+    COMPLETED = 'completed'
+    REOPENED = 'reopened'
+    NOT_PLANNED = 'not_planned'
+    DUPLICATE = 'duplicate'
+    VALUES = %w[completed reopened not_planned duplicate].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalIssueCommentMetadata::NULLABLE_FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalIssueCommentMetadata
+    FIELDS = {
+      id: 'id',
+      node_id: 'node_id',
+      url: 'url',
+      body: 'body',
+      body_text: 'body_text',
+      body_html: 'body_html',
+      html_url: 'html_url',
+      user: 'user',
+      created_at: 'created_at',
+      updated_at: 'updated_at',
+      issue_url: 'issue_url',
+      author_association: 'author_association',
+      performed_via_github_app: 'performed_via_github_app',
+      reactions: 'reactions',
+      pin: 'pin',
+      minimized: 'minimized'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      node_id
+      url
+      html_url
+      user
+      created_at
+      updated_at
+      issue_url
+    ].freeze
+    DECODERS = {
+      user: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end,
+      author_association: lambda do |value|
+        ::OctridevGithub::AuthorAssociation.from_value(value)
+      end,
+      performed_via_github_app: lambda do |value|
+        ::OctridevGithub::NullableIntegration.from_hash(value)
+      end,
+      reactions: lambda do |value|
+        ::OctridevGithub::ReactionRollup.from_hash(value)
+      end,
+      pin: lambda do |value|
+        ::OctridevGithub::NullablePinnedIssueComment.from_hash(value)
+      end,
+      minimized: lambda do |value|
+        ::OctridevGithub::NullableIssueCommentMinimized.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      user
+    ].freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for IssueComment.
+  # Comments provide a way for people to collaborate on an issue.
+  class IssueComment
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalIssueCommentMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalIssueCommentMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalIssueCommentMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalIssueDependenciesSummaryMetadata
-  FIELDS = {
-    blocked_by: "blocked_by",
-    blocking: "blocking",
-    total_blocked_by: "total_blocked_by",
-    total_blocking: "total_blocking",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    blocked_by
-    blocking
-    total_blocked_by
-    total_blocking
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    # @return [Integer] Unique identifier of the issue comment
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] URL for the issue comment
+    attr_reader :url
+    # @return [String] Contents of the issue comment
+    attr_reader :body
+    # @return [String] Optional `string` value serialized in the `body_text` wire field.
+    attr_reader :body_text
+    # @return [String] Optional `string` value serialized in the `body_html` wire field.
+    attr_reader :body_html
+    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :user
+    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+    # @return [String] Required `uri`-formatted value serialized in the `issue_url` wire field.
+    attr_reader :issue_url
+    # @return [AuthorAssociation] How the author is associated with the repository.
+    attr_reader :author_association
+    # @return [NullableIntegration] GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+    attr_reader :performed_via_github_app
+    # @return [ReactionRollup] Optional object value serialized in the `reactions` wire field.
+    attr_reader :reactions
+    # @return [NullablePinnedIssueComment] Context around who pinned an issue comment and when it was pinned.
+    attr_reader :pin
+    # @return [NullableIssueCommentMinimized] Details about why an issue comment was minimized.
+    attr_reader :minimized
 
-# API model for IssueDependenciesSummary.
-# Typed representation of the `IssueDependenciesSummary` API schema.
-class IssueDependenciesSummary
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalIssueDependenciesSummaryMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalIssueDependenciesSummaryMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalIssueDependenciesSummaryMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [Integer] Required `integer` value serialized in the `blocked_by` wire field.
-  attr_reader :blocked_by
-  # @return [Integer] Required `integer` value serialized in the `blocking` wire field.
-  attr_reader :blocking
-  # @return [Integer] Required `integer` value serialized in the `total_blocked_by` wire field.
-  attr_reader :total_blocked_by
-  # @return [Integer] Required `integer` value serialized in the `total_blocking` wire field.
-  attr_reader :total_blocking
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalIssueCommentMetadata::NULLABLE_FIELDS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalIssueFieldValueSingleSelectOptionMetadata
-  FIELDS = {
-    id: "id",
-    name: "name",
-    color: "color",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    name
-    color
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for IssueFieldValueSingleSelectOption.
-# Details about the selected option (only present for single_select fields)
-class IssueFieldValueSingleSelectOption
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalIssueFieldValueSingleSelectOptionMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalIssueFieldValueSingleSelectOptionMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalIssueFieldValueSingleSelectOptionMetadata::DECODERS
-
-  # @return [Integer] Unique identifier for the option.
-  attr_reader :id
-  # @return [String] The name of the option
-  attr_reader :name
-  # @return [String] The color of the option
-  attr_reader :color
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalIssueDependenciesSummaryMetadata
+    FIELDS = {
+      blocked_by: 'blocked_by',
+      blocking: 'blocking',
+      total_blocked_by: 'total_blocked_by',
+      total_blocking: 'total_blocking'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      blocked_by
+      blocking
+      total_blocked_by
+      total_blocking
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for IssueDependenciesSummary.
+  # Typed representation of the `IssueDependenciesSummary` API schema.
+  class IssueDependenciesSummary
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalIssueDependenciesSummaryMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalIssueDependenciesSummaryMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalIssueDependenciesSummaryMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalIssueFieldValueMultiSelectOptionsItemMetadata
-  FIELDS = {
-    id: "id",
-    name: "name",
-    color: "color",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    name
-    color
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    # @return [Integer] Required `integer` value serialized in the `blocked_by` wire field.
+    attr_reader :blocked_by
+    # @return [Integer] Required `integer` value serialized in the `blocking` wire field.
+    attr_reader :blocking
+    # @return [Integer] Required `integer` value serialized in the `total_blocked_by` wire field.
+    attr_reader :total_blocked_by
+    # @return [Integer] Required `integer` value serialized in the `total_blocking` wire field.
+    attr_reader :total_blocking
 
-# API model for IssueFieldValueMultiSelectOptionsItem.
-# Required object value serialized in the `multi_select_options[]` wire field.
-class IssueFieldValueMultiSelectOptionsItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalIssueFieldValueMultiSelectOptionsItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalIssueFieldValueMultiSelectOptionsItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalIssueFieldValueMultiSelectOptionsItemMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [Integer] Unique identifier for the option.
-  attr_reader :id
-  # @return [String] The name of the option
-  attr_reader :name
-  # @return [String] The color of the option
-  attr_reader :color
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalIssueFieldValueSingleSelectOptionMetadata
+    FIELDS = {
+      id: 'id',
+      name: 'name',
+      color: 'color'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      name
+      color
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for IssueFieldValueSingleSelectOption.
+  # Details about the selected option (only present for single_select fields)
+  class IssueFieldValueSingleSelectOption
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalIssueFieldValueSingleSelectOptionMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalIssueFieldValueSingleSelectOptionMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalIssueFieldValueSingleSelectOptionMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalIssueFieldValueMetadata
-  FIELDS = {
-    issue_field_id: "issue_field_id",
-    issue_field_name: "issue_field_name",
-    node_id: "node_id",
-    data_type: "data_type",
-    value: "value",
-    single_select_option: "single_select_option",
-    multi_select_options: "multi_select_options",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    issue_field_id
-    node_id
-    data_type
-    value
-  ].freeze
-  DECODERS = {
-    data_type: lambda do |value|
-      ::OctridevGithub::IssueFieldValueDataType.from_value(value)
-    end,
-    single_select_option: lambda do |value|
-      ::OctridevGithub::IssueFieldValueSingleSelectOption.from_hash(value)
-    end,
-    multi_select_options: lambda do |value|
-      value&.map { |item| ::OctridevGithub::IssueFieldValueMultiSelectOptionsItem.from_hash(item) }
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    value
-  ].freeze
-end
+    # @return [Integer] Unique identifier for the option.
+    attr_reader :id
+    # @return [String] The name of the option
+    attr_reader :name
+    # @return [String] The color of the option
+    attr_reader :color
 
-# API model for IssueFieldValue.
-# A value assigned to an issue field
-class IssueFieldValue
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalIssueFieldValueMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalIssueFieldValueMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalIssueFieldValueMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [Integer] Unique identifier for the issue field.
-  attr_reader :issue_field_id
-  # @return [String] The human-readable name of the issue field.
-  attr_reader :issue_field_name
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [IssueFieldValueDataType] The data type of the issue field
-  attr_reader :data_type
-  # @return [Object] The value of the issue field
-  attr_reader :value
-  # @return [IssueFieldValueSingleSelectOption] Details about the selected option (only present for single_select fields)
-  attr_reader :single_select_option
-  # @return [Array_of_IssueFieldValueMultiSelectOptionsItem] Details about the selected options
-  attr_reader :multi_select_options
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalIssueFieldValueMetadata::NULLABLE_FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalIssueFieldValueMultiSelectOptionsItemMetadata
+    FIELDS = {
+      id: 'id',
+      name: 'name',
+      color: 'color'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      name
+      color
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for IssueFieldValueMultiSelectOptionsItem.
+  # Required object value serialized in the `multi_select_options[]` wire field.
+  class IssueFieldValueMultiSelectOptionsItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalIssueFieldValueMultiSelectOptionsItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalIssueFieldValueMultiSelectOptionsItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalIssueFieldValueMultiSelectOptionsItemMetadata::DECODERS
 
-# Defines the IssueFieldValueDataType SDK namespace.
-module IssueFieldValueDataType
-  TEXT = 'text'
-  SINGLE_SELECT = 'single_select'
-  MULTI_SELECT = 'multi_select'
-  NUMBER = 'number'
-  DATE = 'date'
-  VALUES = ['text', 'single_select', 'multi_select', 'number', 'date'].freeze
-  def self.from_value(value)
-    value
-  end
-end
+    # @return [Integer] Unique identifier for the option.
+    attr_reader :id
+    # @return [String] The name of the option
+    attr_reader :name
+    # @return [String] The color of the option
+    attr_reader :color
 
-# Internal model hydration metadata.
-class SdkInternalIssueLabelsItemVariant1Metadata
-  FIELDS = {
-    id: "id",
-    node_id: "node_id",
-    url: "url",
-    name: "name",
-    description: "description",
-    color: "color",
-    default: "default",
-    archived_by: "archived_by",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    archived_by: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-  }.freeze
-end
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Internal model hydration metadata.
+  class SdkInternalIssueFieldValueMetadata
+    FIELDS = {
+      issue_field_id: 'issue_field_id',
+      issue_field_name: 'issue_field_name',
+      node_id: 'node_id',
+      data_type: 'data_type',
+      value: 'value',
+      single_select_option: 'single_select_option',
+      multi_select_options: 'multi_select_options'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      issue_field_id
+      node_id
+      data_type
+      value
+    ].freeze
+    DECODERS = {
+      data_type: lambda do |value|
+        ::OctridevGithub::IssueFieldValueDataType.from_value(value)
+      end,
+      single_select_option: lambda do |value|
+        ::OctridevGithub::IssueFieldValueSingleSelectOption.from_hash(value)
+      end,
+      multi_select_options: lambda do |value|
+        value&.map { |item| ::OctridevGithub::IssueFieldValueMultiSelectOptionsItem.from_hash(item) }
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      value
+    ].freeze
+  end
+
+  # API model for IssueFieldValue.
+  # A value assigned to an issue field
+  class IssueFieldValue
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalIssueFieldValueMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalIssueFieldValueMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalIssueFieldValueMetadata::DECODERS
+
+    # @return [Integer] Unique identifier for the issue field.
+    attr_reader :issue_field_id
+    # @return [String] The human-readable name of the issue field.
+    attr_reader :issue_field_name
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [IssueFieldValueDataType] The data type of the issue field
+    attr_reader :data_type
+    # @return [Object] The value of the issue field
+    attr_reader :value
+    # @return [IssueFieldValueSingleSelectOption] Details about the selected option (only present for single_select fields)
+    attr_reader :single_select_option
+    # @return [Array_of_IssueFieldValueMultiSelectOptionsItem] Details about the selected options
+    attr_reader :multi_select_options
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalIssueFieldValueMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Defines the IssueFieldValueDataType SDK namespace.
+  module IssueFieldValueDataType
+    TEXT = 'text'
+    SINGLE_SELECT = 'single_select'
+    MULTI_SELECT = 'multi_select'
+    NUMBER = 'number'
+    DATE = 'date'
+    VALUES = %w[text single_select multi_select number date].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Internal model hydration metadata.
+  class SdkInternalIssueLabelsItemVariant1Metadata
+    FIELDS = {
+      id: 'id',
+      node_id: 'node_id',
+      url: 'url',
+      name: 'name',
+      description: 'description',
+      color: 'color',
+      default: 'default',
+      archived_by: 'archived_by'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      archived_by: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end
+    }.freeze
+  end
 end

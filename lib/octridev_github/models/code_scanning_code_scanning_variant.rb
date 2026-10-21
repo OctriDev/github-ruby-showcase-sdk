@@ -5,486 +5,484 @@
 
 # code_scanning_code_scanning_variant domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalCodeScanningVariantAnalysisScannedRepositoriesItemMetadata
-  FIELDS = {
-    repository: "repository",
-    analysis_status: "analysis_status",
-    result_count: "result_count",
-    artifact_size_in_bytes: "artifact_size_in_bytes",
-    failure_message: "failure_message",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    repository
-    analysis_status
-  ].freeze
-  DECODERS = {
-    repository: lambda do |value|
-      ::OctridevGithub::CodeScanningVariantAnalysisRepository.from_hash(value)
-    end,
-    analysis_status: lambda do |value|
-      ::OctridevGithub::CodeScanningVariantAnalysisStatus.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for CodeScanningVariantAnalysisScannedRepositoriesItem.
-# Required object value serialized in the `scanned_repositories[]` wire field.
-class CodeScanningVariantAnalysisScannedRepositoriesItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalCodeScanningVariantAnalysisScannedRepositoriesItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalCodeScanningVariantAnalysisScannedRepositoriesItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalCodeScanningVariantAnalysisScannedRepositoriesItemMetadata::DECODERS
-
-  # @return [CodeScanningVariantAnalysisRepository] Repository Identifier
-  attr_reader :repository
-  # @return [CodeScanningVariantAnalysisStatus] The new status of the CodeQL variant analysis repository task.
-  attr_reader :analysis_status
-  # @return [Integer] The number of results in the case of a successful analysis. This is only available for successful analyses.
-  attr_reader :result_count
-  # @return [Integer] The size of the artifact. This is only available for successful analyses.
-  attr_reader :artifact_size_in_bytes
-  # @return [String] The reason of the failure of this repo task. This is only available if the repository task has failed.
-  attr_reader :failure_message
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalCodeScanningVariantAnalysisScannedRepositoriesItemMetadata
+    FIELDS = {
+      repository: 'repository',
+      analysis_status: 'analysis_status',
+      result_count: 'result_count',
+      artifact_size_in_bytes: 'artifact_size_in_bytes',
+      failure_message: 'failure_message'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      repository
+      analysis_status
+    ].freeze
+    DECODERS = {
+      repository: lambda do |value|
+        ::OctridevGithub::CodeScanningVariantAnalysisRepository.from_hash(value)
+      end,
+      analysis_status: lambda do |value|
+        ::OctridevGithub::CodeScanningVariantAnalysisStatus.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for CodeScanningVariantAnalysisScannedRepositoriesItem.
+  # Required object value serialized in the `scanned_repositories[]` wire field.
+  class CodeScanningVariantAnalysisScannedRepositoriesItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalCodeScanningVariantAnalysisScannedRepositoriesItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalCodeScanningVariantAnalysisScannedRepositoriesItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalCodeScanningVariantAnalysisScannedRepositoriesItemMetadata::DECODERS
+
+    # @return [CodeScanningVariantAnalysisRepository] Repository Identifier
+    attr_reader :repository
+    # @return [CodeScanningVariantAnalysisStatus] The new status of the CodeQL variant analysis repository task.
+    attr_reader :analysis_status
+    # @return [Integer] The number of results in the case of a successful analysis. This is only available for successful analyses.
+    attr_reader :result_count
+    # @return [Integer] The size of the artifact. This is only available for successful analyses.
+    attr_reader :artifact_size_in_bytes
+    # @return [String] The reason of the failure of this repo task. This is only available if the repository task has failed.
+    attr_reader :failure_message
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalCodeScanningVariantAnalysisSkippedRepositoriesNotFoundReposMetadata
-  FIELDS = {
-    repository_count: "repository_count",
-    repository_full_names: "repository_full_names",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    repository_count
-    repository_full_names
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for CodeScanningVariantAnalysisSkippedRepositoriesNotFoundRepos.
-# Required object value serialized in the `not_found_repos` wire field.
-class CodeScanningVariantAnalysisSkippedRepositoriesNotFoundRepos
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalCodeScanningVariantAnalysisSkippedRepositoriesNotFoundReposMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalCodeScanningVariantAnalysisSkippedRepositoriesNotFoundReposMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalCodeScanningVariantAnalysisSkippedRepositoriesNotFoundReposMetadata::DECODERS
-
-  # @return [Integer] The total number of repositories that were skipped for this reason.
-  attr_reader :repository_count
-  # @return [Array_of_String] A list of full repository names that were skipped. This list may not include all repositories that were skipped.
-  attr_reader :repository_full_names
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalCodeScanningVariantAnalysisSkippedRepositoriesNotFoundReposMetadata
+    FIELDS = {
+      repository_count: 'repository_count',
+      repository_full_names: 'repository_full_names'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      repository_count
+      repository_full_names
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for CodeScanningVariantAnalysisSkippedRepositoriesNotFoundRepos.
+  # Required object value serialized in the `not_found_repos` wire field.
+  class CodeScanningVariantAnalysisSkippedRepositoriesNotFoundRepos
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalCodeScanningVariantAnalysisSkippedRepositoriesNotFoundReposMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalCodeScanningVariantAnalysisSkippedRepositoriesNotFoundReposMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalCodeScanningVariantAnalysisSkippedRepositoriesNotFoundReposMetadata::DECODERS
+
+    # @return [Integer] The total number of repositories that were skipped for this reason.
+    attr_reader :repository_count
+    # @return [Array_of_String] A list of full repository names that were skipped. This list may not include all repositories that were skipped.
+    attr_reader :repository_full_names
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalCodeScanningVariantAnalysisSkippedRepositoriesMetadata
-  FIELDS = {
-    access_mismatch_repos: "access_mismatch_repos",
-    not_found_repos: "not_found_repos",
-    no_codeql_db_repos: "no_codeql_db_repos",
-    over_limit_repos: "over_limit_repos",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    access_mismatch_repos
-    not_found_repos
-    no_codeql_db_repos
-    over_limit_repos
-  ].freeze
-  DECODERS = {
-    access_mismatch_repos: lambda do |value|
-      ::OctridevGithub::CodeScanningVariantAnalysisSkippedRepoGroup.from_hash(value)
-    end,
-    not_found_repos: lambda do |value|
-      ::OctridevGithub::CodeScanningVariantAnalysisSkippedRepositoriesNotFoundRepos.from_hash(value)
-    end,
-    no_codeql_db_repos: lambda do |value|
-      ::OctridevGithub::CodeScanningVariantAnalysisSkippedRepoGroup.from_hash(value)
-    end,
-    over_limit_repos: lambda do |value|
-      ::OctridevGithub::CodeScanningVariantAnalysisSkippedRepoGroup.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for CodeScanningVariantAnalysisSkippedRepositories.
-# Information about repositories that were skipped from processing. This information is only available to the user that initiated the variant analysis.
-class CodeScanningVariantAnalysisSkippedRepositories
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalCodeScanningVariantAnalysisSkippedRepositoriesMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalCodeScanningVariantAnalysisSkippedRepositoriesMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalCodeScanningVariantAnalysisSkippedRepositoriesMetadata::DECODERS
-
-  # @return [CodeScanningVariantAnalysisSkippedRepoGroup] Required object value serialized in the `access_mismatch_repos` wire field.
-  attr_reader :access_mismatch_repos
-  # @return [CodeScanningVariantAnalysisSkippedRepositoriesNotFoundRepos] Required object value serialized in the `not_found_repos` wire field.
-  attr_reader :not_found_repos
-  # @return [CodeScanningVariantAnalysisSkippedRepoGroup] Required object value serialized in the `no_codeql_db_repos` wire field.
-  attr_reader :no_codeql_db_repos
-  # @return [CodeScanningVariantAnalysisSkippedRepoGroup] Required object value serialized in the `over_limit_repos` wire field.
-  attr_reader :over_limit_repos
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalCodeScanningVariantAnalysisSkippedRepositoriesMetadata
+    FIELDS = {
+      access_mismatch_repos: 'access_mismatch_repos',
+      not_found_repos: 'not_found_repos',
+      no_codeql_db_repos: 'no_codeql_db_repos',
+      over_limit_repos: 'over_limit_repos'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      access_mismatch_repos
+      not_found_repos
+      no_codeql_db_repos
+      over_limit_repos
+    ].freeze
+    DECODERS = {
+      access_mismatch_repos: lambda do |value|
+        ::OctridevGithub::CodeScanningVariantAnalysisSkippedRepoGroup.from_hash(value)
+      end,
+      not_found_repos: lambda do |value|
+        ::OctridevGithub::CodeScanningVariantAnalysisSkippedRepositoriesNotFoundRepos.from_hash(value)
+      end,
+      no_codeql_db_repos: lambda do |value|
+        ::OctridevGithub::CodeScanningVariantAnalysisSkippedRepoGroup.from_hash(value)
+      end,
+      over_limit_repos: lambda do |value|
+        ::OctridevGithub::CodeScanningVariantAnalysisSkippedRepoGroup.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for CodeScanningVariantAnalysisSkippedRepositories.
+  # Information about repositories that were skipped from processing. This information is only available to the user that initiated the variant analysis.
+  class CodeScanningVariantAnalysisSkippedRepositories
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalCodeScanningVariantAnalysisSkippedRepositoriesMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalCodeScanningVariantAnalysisSkippedRepositoriesMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalCodeScanningVariantAnalysisSkippedRepositoriesMetadata::DECODERS
+
+    # @return [CodeScanningVariantAnalysisSkippedRepoGroup] Required object value serialized in the `access_mismatch_repos` wire field.
+    attr_reader :access_mismatch_repos
+    # @return [CodeScanningVariantAnalysisSkippedRepositoriesNotFoundRepos] Required object value serialized in the `not_found_repos` wire field.
+    attr_reader :not_found_repos
+    # @return [CodeScanningVariantAnalysisSkippedRepoGroup] Required object value serialized in the `no_codeql_db_repos` wire field.
+    attr_reader :no_codeql_db_repos
+    # @return [CodeScanningVariantAnalysisSkippedRepoGroup] Required object value serialized in the `over_limit_repos` wire field.
+    attr_reader :over_limit_repos
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalCodeScanningVariantAnalysisMetadata
-  FIELDS = {
-    id: "id",
-    controller_repo: "controller_repo",
-    actor: "actor",
-    query_language: "query_language",
-    query_pack_url: "query_pack_url",
-    created_at: "created_at",
-    updated_at: "updated_at",
-    completed_at: "completed_at",
-    status: "status",
-    actions_workflow_run_id: "actions_workflow_run_id",
-    failure_reason: "failure_reason",
-    scanned_repositories: "scanned_repositories",
-    skipped_repositories: "skipped_repositories",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    controller_repo
-    actor
-    query_language
-    query_pack_url
-    status
-  ].freeze
-  DECODERS = {
-    controller_repo: lambda do |value|
-      ::OctridevGithub::SimpleRepository.from_hash(value)
-    end,
-    actor: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-    query_language: lambda do |value|
-      ::OctridevGithub::CodeScanningVariantAnalysisLanguage.from_value(value)
-    end,
-    status: lambda do |value|
-      ::OctridevGithub::CodeScanningVariantAnalysisStatusB8ae78f8.from_value(value)
-    end,
-    failure_reason: lambda do |value|
-      ::OctridevGithub::CodeScanningVariantAnalysisFailureReason.from_value(value)
-    end,
-    scanned_repositories: lambda do |value|
-      value&.map { |item| ::OctridevGithub::CodeScanningVariantAnalysisScannedRepositoriesItem.from_hash(item) }
-    end,
-    skipped_repositories: lambda do |value|
-      ::OctridevGithub::CodeScanningVariantAnalysisSkippedRepositories.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for CodeScanningVariantAnalysis.
-# A run of a CodeQL query against one or more repositories.
-class CodeScanningVariantAnalysis
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalCodeScanningVariantAnalysisMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalCodeScanningVariantAnalysisMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalCodeScanningVariantAnalysisMetadata::DECODERS
-
-  # @return [Integer] The ID of the variant analysis.
-  attr_reader :id
-  # @return [SimpleRepository] A GitHub repository.
-  attr_reader :controller_repo
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :actor
-  # @return [CodeScanningVariantAnalysisLanguage] The language targeted by the CodeQL query
-  attr_reader :query_language
-  # @return [String] The download url for the query pack.
-  attr_reader :query_pack_url
-  # @return [String] The date and time at which the variant analysis was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
-  attr_reader :created_at
-  # @return [String] The date and time at which the variant analysis was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
-  attr_reader :updated_at
-  # @return [String] The date and time at which the variant analysis was completed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the variant analysis has not yet completed or this information is not available.
-  attr_reader :completed_at
-  # @return [CodeScanningVariantAnalysisStatusB8ae78f8] Required enumerated value serialized in the `status` wire field.
-  attr_reader :status
-  # @return [Integer] The GitHub Actions workflow run used to execute this variant analysis. This is only available if the workflow run has started.
-  attr_reader :actions_workflow_run_id
-  # @return [CodeScanningVariantAnalysisFailureReason] The reason for a failure of the variant analysis. This is only available if the variant analysis has failed.
-  attr_reader :failure_reason
-  # @return [Array_of_CodeScanningVariantAnalysisScannedRepositoriesItem] Optional array value serialized in the `scanned_repositories` wire field.
-  attr_reader :scanned_repositories
-  # @return [CodeScanningVariantAnalysisSkippedRepositories] Information about repositories that were skipped from processing. This information is only available to the user that initiated the variant analysis.
-  attr_reader :skipped_repositories
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalCodeScanningVariantAnalysisMetadata
+    FIELDS = {
+      id: 'id',
+      controller_repo: 'controller_repo',
+      actor: 'actor',
+      query_language: 'query_language',
+      query_pack_url: 'query_pack_url',
+      created_at: 'created_at',
+      updated_at: 'updated_at',
+      completed_at: 'completed_at',
+      status: 'status',
+      actions_workflow_run_id: 'actions_workflow_run_id',
+      failure_reason: 'failure_reason',
+      scanned_repositories: 'scanned_repositories',
+      skipped_repositories: 'skipped_repositories'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      controller_repo
+      actor
+      query_language
+      query_pack_url
+      status
+    ].freeze
+    DECODERS = {
+      controller_repo: lambda do |value|
+        ::OctridevGithub::SimpleRepository.from_hash(value)
+      end,
+      actor: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end,
+      query_language: lambda do |value|
+        ::OctridevGithub::CodeScanningVariantAnalysisLanguage.from_value(value)
+      end,
+      status: lambda do |value|
+        ::OctridevGithub::CodeScanningVariantAnalysisStatusB8ae78f8.from_value(value)
+      end,
+      failure_reason: lambda do |value|
+        ::OctridevGithub::CodeScanningVariantAnalysisFailureReason.from_value(value)
+      end,
+      scanned_repositories: lambda do |value|
+        value&.map { |item| ::OctridevGithub::CodeScanningVariantAnalysisScannedRepositoriesItem.from_hash(item) }
+      end,
+      skipped_repositories: lambda do |value|
+        ::OctridevGithub::CodeScanningVariantAnalysisSkippedRepositories.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for CodeScanningVariantAnalysis.
+  # A run of a CodeQL query against one or more repositories.
+  class CodeScanningVariantAnalysis
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalCodeScanningVariantAnalysisMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalCodeScanningVariantAnalysisMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalCodeScanningVariantAnalysisMetadata::DECODERS
+
+    # @return [Integer] The ID of the variant analysis.
+    attr_reader :id
+    # @return [SimpleRepository] A GitHub repository.
+    attr_reader :controller_repo
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :actor
+    # @return [CodeScanningVariantAnalysisLanguage] The language targeted by the CodeQL query
+    attr_reader :query_language
+    # @return [String] The download url for the query pack.
+    attr_reader :query_pack_url
+    # @return [String] The date and time at which the variant analysis was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
+    attr_reader :created_at
+    # @return [String] The date and time at which the variant analysis was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
+    attr_reader :updated_at
+    # @return [String] The date and time at which the variant analysis was completed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the variant analysis has not yet completed or this information is not available.
+    attr_reader :completed_at
+    # @return [CodeScanningVariantAnalysisStatusB8ae78f8] Required enumerated value serialized in the `status` wire field.
+    attr_reader :status
+    # @return [Integer] The GitHub Actions workflow run used to execute this variant analysis. This is only available if the workflow run has started.
+    attr_reader :actions_workflow_run_id
+    # @return [CodeScanningVariantAnalysisFailureReason] The reason for a failure of the variant analysis. This is only available if the variant analysis has failed.
+    attr_reader :failure_reason
+    # @return [Array_of_CodeScanningVariantAnalysisScannedRepositoriesItem] Optional array value serialized in the `scanned_repositories` wire field.
+    attr_reader :scanned_repositories
+    # @return [CodeScanningVariantAnalysisSkippedRepositories] Information about repositories that were skipped from processing. This information is only available to the user that initiated the variant analysis.
+    attr_reader :skipped_repositories
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the CodeScanningVariantAnalysisFailureReason SDK namespace.
-module CodeScanningVariantAnalysisFailureReason
-  NO_REPOS_QUERIED = 'no_repos_queried'
-  ACTIONS_WORKFLOW_RUN_FAILED = 'actions_workflow_run_failed'
-  INTERNAL_ERROR = 'internal_error'
-  VALUES = ['no_repos_queried', 'actions_workflow_run_failed', 'internal_error'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the CodeScanningVariantAnalysisStatusB8ae78f8 SDK namespace.
-module CodeScanningVariantAnalysisStatusB8ae78f8
-  IN_PROGRESS = 'in_progress'
-  SUCCEEDED = 'succeeded'
-  FAILED = 'failed'
-  CANCELLED = 'cancelled'
-  VALUES = ['in_progress', 'succeeded', 'failed', 'cancelled'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the CodeScanningVariantAnalysisLanguage SDK namespace.
-module CodeScanningVariantAnalysisLanguage
-  ACTIONS = 'actions'
-  CPP = 'cpp'
-  CSHARP = 'csharp'
-  GO = 'go'
-  JAVA = 'java'
-  JAVASCRIPT = 'javascript'
-  PYTHON = 'python'
-  RUBY = 'ruby'
-  RUST = 'rust'
-  SWIFT = 'swift'
-  VALUES = [
-    'actions', 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby', 'rust', 'swift'
-  ].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalCodeScanningVariantAnalysisRepositoryMetadata
-  FIELDS = {
-    id: "id",
-    name: "name",
-    full_name: "full_name",
-    private: "private",
-    stargazers_count: "stargazers_count",
-    updated_at: "updated_at",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    name
-    full_name
-    private
-    stargazers_count
-    updated_at
-  ].freeze
-  DECODERS = {
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    updated_at
-  ].freeze
-end
-
-# API model for CodeScanningVariantAnalysisRepository.
-# Repository Identifier
-class CodeScanningVariantAnalysisRepository
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalCodeScanningVariantAnalysisRepositoryMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalCodeScanningVariantAnalysisRepositoryMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalCodeScanningVariantAnalysisRepositoryMetadata::DECODERS
-
-  # @return [Integer] A unique identifier of the repository.
-  attr_reader :id
-  # @return [String] The name of the repository.
-  attr_reader :name
-  # @return [String] The full, globally unique, name of the repository.
-  attr_reader :full_name
-  # @return [Boolean] Whether the repository is private.
-  attr_reader :private
-  # @return [Integer] Required `integer` value serialized in the `stargazers_count` wire field.
-  attr_reader :stargazers_count
-  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the CodeScanningVariantAnalysisFailureReason SDK namespace.
+  module CodeScanningVariantAnalysisFailureReason
+    NO_REPOS_QUERIED = 'no_repos_queried'
+    ACTIONS_WORKFLOW_RUN_FAILED = 'actions_workflow_run_failed'
+    INTERNAL_ERROR = 'internal_error'
+    VALUES = %w[no_repos_queried actions_workflow_run_failed internal_error].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalCodeScanningVariantAnalysisRepositoryMetadata::NULLABLE_FIELDS)
+  # Defines the CodeScanningVariantAnalysisStatusB8ae78f8 SDK namespace.
+  module CodeScanningVariantAnalysisStatusB8ae78f8
+    IN_PROGRESS = 'in_progress'
+    SUCCEEDED = 'succeeded'
+    FAILED = 'failed'
+    CANCELLED = 'cancelled'
+    VALUES = %w[in_progress succeeded failed cancelled].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalCodeScanningVariantAnalysisRepoTaskMetadata
-  FIELDS = {
-    repository: "repository",
-    analysis_status: "analysis_status",
-    artifact_size_in_bytes: "artifact_size_in_bytes",
-    result_count: "result_count",
-    failure_message: "failure_message",
-    database_commit_sha: "database_commit_sha",
-    source_location_prefix: "source_location_prefix",
-    artifact_url: "artifact_url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    repository
-    analysis_status
-  ].freeze
-  DECODERS = {
-    repository: lambda do |value|
-      ::OctridevGithub::SimpleRepository.from_hash(value)
-    end,
-    analysis_status: lambda do |value|
-      ::OctridevGithub::CodeScanningVariantAnalysisStatus.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for CodeScanningVariantAnalysisRepoTask.
-# Typed representation of the `CodeScanningVariantAnalysisRepoTask` API schema.
-class CodeScanningVariantAnalysisRepoTask
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalCodeScanningVariantAnalysisRepoTaskMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalCodeScanningVariantAnalysisRepoTaskMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalCodeScanningVariantAnalysisRepoTaskMetadata::DECODERS
-
-  # @return [SimpleRepository] A GitHub repository.
-  attr_reader :repository
-  # @return [CodeScanningVariantAnalysisStatus] The new status of the CodeQL variant analysis repository task.
-  attr_reader :analysis_status
-  # @return [Integer] The size of the artifact. This is only available for successful analyses.
-  attr_reader :artifact_size_in_bytes
-  # @return [Integer] The number of results in the case of a successful analysis. This is only available for successful analyses.
-  attr_reader :result_count
-  # @return [String] The reason of the failure of this repo task. This is only available if the repository task has failed.
-  attr_reader :failure_message
-  # @return [String] The SHA of the commit the CodeQL database was built against. This is only available for successful analyses.
-  attr_reader :database_commit_sha
-  # @return [String] The source location prefix to use. This is only available for successful analyses.
-  attr_reader :source_location_prefix
-  # @return [String] The URL of the artifact. This is only available for successful analyses.
-  attr_reader :artifact_url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the CodeScanningVariantAnalysisLanguage SDK namespace.
+  module CodeScanningVariantAnalysisLanguage
+    ACTIONS = 'actions'
+    CPP = 'cpp'
+    CSHARP = 'csharp'
+    GO = 'go'
+    JAVA = 'java'
+    JAVASCRIPT = 'javascript'
+    PYTHON = 'python'
+    RUBY = 'ruby'
+    RUST = 'rust'
+    SWIFT = 'swift'
+    VALUES = %w[
+      actions cpp csharp go java javascript python ruby rust swift
+    ].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalCodeScanningVariantAnalysisRepositoryMetadata
+    FIELDS = {
+      id: 'id',
+      name: 'name',
+      full_name: 'full_name',
+      private: 'private',
+      stargazers_count: 'stargazers_count',
+      updated_at: 'updated_at'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      name
+      full_name
+      private
+      stargazers_count
+      updated_at
+    ].freeze
+    DECODERS = {}.freeze
+    NULLABLE_FIELDS = %i[
+      updated_at
+    ].freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for CodeScanningVariantAnalysisRepository.
+  # Repository Identifier
+  class CodeScanningVariantAnalysisRepository
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalCodeScanningVariantAnalysisRepositoryMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalCodeScanningVariantAnalysisRepositoryMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalCodeScanningVariantAnalysisRepositoryMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalCodeScanningVariantAnalysisSkippedRepoGroupMetadata
-  FIELDS = {
-    repository_count: "repository_count",
-    repositories: "repositories",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    repository_count
-    repositories
-  ].freeze
-  DECODERS = {
-    repositories: lambda do |value|
-      value&.map { |item| ::OctridevGithub::CodeScanningVariantAnalysisRepository.from_hash(item) }
-    end,
-  }.freeze
-end
+    # @return [Integer] A unique identifier of the repository.
+    attr_reader :id
+    # @return [String] The name of the repository.
+    attr_reader :name
+    # @return [String] The full, globally unique, name of the repository.
+    attr_reader :full_name
+    # @return [Boolean] Whether the repository is private.
+    attr_reader :private
+    # @return [Integer] Required `integer` value serialized in the `stargazers_count` wire field.
+    attr_reader :stargazers_count
+    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
 
-# API model for CodeScanningVariantAnalysisSkippedRepoGroup.
-# Typed representation of the `CodeScanningVariantAnalysisSkippedRepoGroup` API schema.
-class CodeScanningVariantAnalysisSkippedRepoGroup
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalCodeScanningVariantAnalysisSkippedRepoGroupMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalCodeScanningVariantAnalysisSkippedRepoGroupMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalCodeScanningVariantAnalysisSkippedRepoGroupMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [Integer] The total number of repositories that were skipped for this reason.
-  attr_reader :repository_count
-  # @return [Array_of_CodeScanningVariantAnalysisRepository] A list of repositories that were skipped. This list may not include all repositories that were skipped. This is only available when the repository was found and the user has access to it.
-  attr_reader :repositories
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalCodeScanningVariantAnalysisRepositoryMetadata::NULLABLE_FIELDS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalCodeScanningVariantAnalysisRepoTaskMetadata
+    FIELDS = {
+      repository: 'repository',
+      analysis_status: 'analysis_status',
+      artifact_size_in_bytes: 'artifact_size_in_bytes',
+      result_count: 'result_count',
+      failure_message: 'failure_message',
+      database_commit_sha: 'database_commit_sha',
+      source_location_prefix: 'source_location_prefix',
+      artifact_url: 'artifact_url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      repository
+      analysis_status
+    ].freeze
+    DECODERS = {
+      repository: lambda do |value|
+        ::OctridevGithub::SimpleRepository.from_hash(value)
+      end,
+      analysis_status: lambda do |value|
+        ::OctridevGithub::CodeScanningVariantAnalysisStatus.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for CodeScanningVariantAnalysisRepoTask.
+  # Typed representation of the `CodeScanningVariantAnalysisRepoTask` API schema.
+  class CodeScanningVariantAnalysisRepoTask
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalCodeScanningVariantAnalysisRepoTaskMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalCodeScanningVariantAnalysisRepoTaskMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalCodeScanningVariantAnalysisRepoTaskMetadata::DECODERS
 
-# Defines the CodeScanningVariantAnalysisStatus SDK namespace.
-module CodeScanningVariantAnalysisStatus
-  PENDING = 'pending'
-  IN_PROGRESS = 'in_progress'
-  SUCCEEDED = 'succeeded'
-  FAILED = 'failed'
-  CANCELED = 'canceled'
-  TIMED_OUT = 'timed_out'
-  VALUES = ['pending', 'in_progress', 'succeeded', 'failed', 'canceled', 'timed_out'].freeze
-  def self.from_value(value)
-    value
+    # @return [SimpleRepository] A GitHub repository.
+    attr_reader :repository
+    # @return [CodeScanningVariantAnalysisStatus] The new status of the CodeQL variant analysis repository task.
+    attr_reader :analysis_status
+    # @return [Integer] The size of the artifact. This is only available for successful analyses.
+    attr_reader :artifact_size_in_bytes
+    # @return [Integer] The number of results in the case of a successful analysis. This is only available for successful analyses.
+    attr_reader :result_count
+    # @return [String] The reason of the failure of this repo task. This is only available if the repository task has failed.
+    attr_reader :failure_message
+    # @return [String] The SHA of the commit the CodeQL database was built against. This is only available for successful analyses.
+    attr_reader :database_commit_sha
+    # @return [String] The source location prefix to use. This is only available for successful analyses.
+    attr_reader :source_location_prefix
+    # @return [String] The URL of the artifact. This is only available for successful analyses.
+    attr_reader :artifact_url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
+
+  # Internal model hydration metadata.
+  class SdkInternalCodeScanningVariantAnalysisSkippedRepoGroupMetadata
+    FIELDS = {
+      repository_count: 'repository_count',
+      repositories: 'repositories'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      repository_count
+      repositories
+    ].freeze
+    DECODERS = {
+      repositories: lambda do |value|
+        value&.map { |item| ::OctridevGithub::CodeScanningVariantAnalysisRepository.from_hash(item) }
+      end
+    }.freeze
+  end
+
+  # API model for CodeScanningVariantAnalysisSkippedRepoGroup.
+  # Typed representation of the `CodeScanningVariantAnalysisSkippedRepoGroup` API schema.
+  class CodeScanningVariantAnalysisSkippedRepoGroup
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalCodeScanningVariantAnalysisSkippedRepoGroupMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalCodeScanningVariantAnalysisSkippedRepoGroupMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalCodeScanningVariantAnalysisSkippedRepoGroupMetadata::DECODERS
+
+    # @return [Integer] The total number of repositories that were skipped for this reason.
+    attr_reader :repository_count
+    # @return [Array_of_CodeScanningVariantAnalysisRepository] A list of repositories that were skipped. This list may not include all repositories that were skipped. This is only available when the repository was found and the user has access to it.
+    attr_reader :repositories
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Defines the CodeScanningVariantAnalysisStatus SDK namespace.
+  module CodeScanningVariantAnalysisStatus
+    PENDING = 'pending'
+    IN_PROGRESS = 'in_progress'
+    SUCCEEDED = 'succeeded'
+    FAILED = 'failed'
+    CANCELED = 'canceled'
+    TIMED_OUT = 'timed_out'
+    VALUES = %w[pending in_progress succeeded failed canceled timed_out].freeze
+    def self.from_value(value)
+      value
+    end
+  end
 end

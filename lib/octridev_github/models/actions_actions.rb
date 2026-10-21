@@ -5,289 +5,288 @@
 
 # actions_actions domain models
 module OctridevGithub
-# Defines the ActionsCanApprovePullRequestReviews SDK value decoder.
-module ActionsCanApprovePullRequestReviews
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the ActionsDefaultWorkflowPermissions SDK namespace.
-module ActionsDefaultWorkflowPermissions
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the ActionsEnabled SDK value decoder.
-module ActionsEnabled
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalActionsGetDefaultWorkflowPermissionsMetadata
-  FIELDS = {
-    default_workflow_permissions: "default_workflow_permissions",
-    can_approve_pull_request_reviews: "can_approve_pull_request_reviews",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    default_workflow_permissions
-    can_approve_pull_request_reviews
-  ].freeze
-  DECODERS = {
-    default_workflow_permissions: lambda do |value|
-      ::OctridevGithub::ActionsDefaultWorkflowPermissions.from_value(value)
-    end,
-    can_approve_pull_request_reviews: lambda do |value|
-      ::OctridevGithub::ActionsCanApprovePullRequestReviews.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for ActionsGetDefaultWorkflowPermissions.
-# Typed representation of the `ActionsGetDefaultWorkflowPermissions` API schema.
-class ActionsGetDefaultWorkflowPermissions
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalActionsGetDefaultWorkflowPermissionsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalActionsGetDefaultWorkflowPermissionsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalActionsGetDefaultWorkflowPermissionsMetadata::DECODERS
-
-  # @return [ActionsDefaultWorkflowPermissions] The default workflow permissions granted to the GITHUB_TOKEN when running workflows.
-  attr_reader :default_workflow_permissions
-  # @return [ActionsCanApprovePullRequestReviews] Whether GitHub Actions can approve pull requests. Enabling this can be a security risk.
-  attr_reader :can_approve_pull_request_reviews
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the ActionsCanApprovePullRequestReviews SDK value decoder.
+  module ActionsCanApprovePullRequestReviews
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the ActionsDefaultWorkflowPermissions SDK namespace.
+  module ActionsDefaultWorkflowPermissions
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalActionsOrganizationPermissionsMetadata
-  FIELDS = {
-    enabled_repositories: "enabled_repositories",
-    selected_repositories_url: "selected_repositories_url",
-    allowed_actions: "allowed_actions",
-    selected_actions_url: "selected_actions_url",
-    sha_pinning_required: "sha_pinning_required",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    enabled_repositories
-  ].freeze
-  DECODERS = {
-    enabled_repositories: lambda do |value|
-      ::OctridevGithub::EnabledRepositories.from_value(value)
-    end,
-    allowed_actions: lambda do |value|
-      ::OctridevGithub::AllowedActions.from_value(value)
-    end,
-    selected_actions_url: lambda do |value|
-      ::OctridevGithub::SelectedActionsUrl.from_value(value)
-    end,
-    sha_pinning_required: lambda do |value|
-      ::OctridevGithub::ShaPinningRequired.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for ActionsOrganizationPermissions.
-# Typed representation of the `ActionsOrganizationPermissions` API schema.
-class ActionsOrganizationPermissions
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalActionsOrganizationPermissionsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalActionsOrganizationPermissionsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalActionsOrganizationPermissionsMetadata::DECODERS
-
-  # @return [EnabledRepositories] The policy that controls the repositories in the organization that are allowed to run GitHub Actions.
-  attr_reader :enabled_repositories
-  # @return [String] The API URL to use to get or set the selected repositories that are allowed to run GitHub Actions, when `enabled_repositories` is set to `selected`.
-  attr_reader :selected_repositories_url
-  # @return [AllowedActions] The permissions policy that controls the actions and reusable workflows that are allowed to run.
-  attr_reader :allowed_actions
-  # @return [SelectedActionsUrl] The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.
-  attr_reader :selected_actions_url
-  # @return [ShaPinningRequired] Whether actions must be pinned to a full-length commit SHA.
-  attr_reader :sha_pinning_required
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the ActionsEnabled SDK value decoder.
+  module ActionsEnabled
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalActionsGetDefaultWorkflowPermissionsMetadata
+    FIELDS = {
+      default_workflow_permissions: 'default_workflow_permissions',
+      can_approve_pull_request_reviews: 'can_approve_pull_request_reviews'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      default_workflow_permissions
+      can_approve_pull_request_reviews
+    ].freeze
+    DECODERS = {
+      default_workflow_permissions: lambda do |value|
+        ::OctridevGithub::ActionsDefaultWorkflowPermissions.from_value(value)
+      end,
+      can_approve_pull_request_reviews: lambda do |value|
+        ::OctridevGithub::ActionsCanApprovePullRequestReviews.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for ActionsGetDefaultWorkflowPermissions.
+  # Typed representation of the `ActionsGetDefaultWorkflowPermissions` API schema.
+  class ActionsGetDefaultWorkflowPermissions
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalActionsGetDefaultWorkflowPermissionsMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalActionsGetDefaultWorkflowPermissionsMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalActionsGetDefaultWorkflowPermissionsMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalActionsRepositoryPermissionsMetadata
-  FIELDS = {
-    enabled: "enabled",
-    allowed_actions: "allowed_actions",
-    selected_actions_url: "selected_actions_url",
-    sha_pinning_required: "sha_pinning_required",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    enabled
-  ].freeze
-  DECODERS = {
-    enabled: lambda do |value|
-      ::OctridevGithub::ActionsEnabled.from_value(value)
-    end,
-    allowed_actions: lambda do |value|
-      ::OctridevGithub::AllowedActions.from_value(value)
-    end,
-    selected_actions_url: lambda do |value|
-      ::OctridevGithub::SelectedActionsUrl.from_value(value)
-    end,
-    sha_pinning_required: lambda do |value|
-      ::OctridevGithub::ShaPinningRequired.from_value(value)
-    end,
-  }.freeze
-end
+    # @return [ActionsDefaultWorkflowPermissions] The default workflow permissions granted to the GITHUB_TOKEN when running workflows.
+    attr_reader :default_workflow_permissions
+    # @return [ActionsCanApprovePullRequestReviews] Whether GitHub Actions can approve pull requests. Enabling this can be a security risk.
+    attr_reader :can_approve_pull_request_reviews
 
-# API model for ActionsRepositoryPermissions.
-# Typed representation of the `ActionsRepositoryPermissions` API schema.
-class ActionsRepositoryPermissions
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalActionsRepositoryPermissionsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalActionsRepositoryPermissionsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalActionsRepositoryPermissionsMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [ActionsEnabled] Whether GitHub Actions is enabled on the repository.
-  attr_reader :enabled
-  # @return [AllowedActions] The permissions policy that controls the actions and reusable workflows that are allowed to run.
-  attr_reader :allowed_actions
-  # @return [SelectedActionsUrl] The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.
-  attr_reader :selected_actions_url
-  # @return [ShaPinningRequired] Whether actions must be pinned to a full-length commit SHA.
-  attr_reader :sha_pinning_required
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalActionsOrganizationPermissionsMetadata
+    FIELDS = {
+      enabled_repositories: 'enabled_repositories',
+      selected_repositories_url: 'selected_repositories_url',
+      allowed_actions: 'allowed_actions',
+      selected_actions_url: 'selected_actions_url',
+      sha_pinning_required: 'sha_pinning_required'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      enabled_repositories
+    ].freeze
+    DECODERS = {
+      enabled_repositories: lambda do |value|
+        ::OctridevGithub::EnabledRepositories.from_value(value)
+      end,
+      allowed_actions: lambda do |value|
+        ::OctridevGithub::AllowedActions.from_value(value)
+      end,
+      selected_actions_url: lambda do |value|
+        ::OctridevGithub::SelectedActionsUrl.from_value(value)
+      end,
+      sha_pinning_required: lambda do |value|
+        ::OctridevGithub::ShaPinningRequired.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for ActionsOrganizationPermissions.
+  # Typed representation of the `ActionsOrganizationPermissions` API schema.
+  class ActionsOrganizationPermissions
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalActionsOrganizationPermissionsMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalActionsOrganizationPermissionsMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalActionsOrganizationPermissionsMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalActionsSetDefaultWorkflowPermissionsMetadata
-  FIELDS = {
-    default_workflow_permissions: "default_workflow_permissions",
-    can_approve_pull_request_reviews: "can_approve_pull_request_reviews",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    default_workflow_permissions: lambda do |value|
-      ::OctridevGithub::ActionsDefaultWorkflowPermissions.from_value(value)
-    end,
-    can_approve_pull_request_reviews: lambda do |value|
-      ::OctridevGithub::ActionsCanApprovePullRequestReviews.from_value(value)
-    end,
-  }.freeze
-end
+    # @return [EnabledRepositories] The policy that controls the repositories in the organization that are allowed to run GitHub Actions.
+    attr_reader :enabled_repositories
+    # @return [String] The API URL to use to get or set the selected repositories that are allowed to run GitHub Actions, when `enabled_repositories` is set to `selected`.
+    attr_reader :selected_repositories_url
+    # @return [AllowedActions] The permissions policy that controls the actions and reusable workflows that are allowed to run.
+    attr_reader :allowed_actions
+    # @return [SelectedActionsUrl] The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.
+    attr_reader :selected_actions_url
+    # @return [ShaPinningRequired] Whether actions must be pinned to a full-length commit SHA.
+    attr_reader :sha_pinning_required
 
-# API model for ActionsSetDefaultWorkflowPermissions.
-# Typed representation of the `ActionsSetDefaultWorkflowPermissions` API schema.
-class ActionsSetDefaultWorkflowPermissions
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalActionsSetDefaultWorkflowPermissionsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalActionsSetDefaultWorkflowPermissionsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalActionsSetDefaultWorkflowPermissionsMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [ActionsDefaultWorkflowPermissions] The default workflow permissions granted to the GITHUB_TOKEN when running workflows.
-  attr_reader :default_workflow_permissions
-  # @return [ActionsCanApprovePullRequestReviews] Whether GitHub Actions can approve pull requests. Enabling this can be a security risk.
-  attr_reader :can_approve_pull_request_reviews
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalActionsRepositoryPermissionsMetadata
+    FIELDS = {
+      enabled: 'enabled',
+      allowed_actions: 'allowed_actions',
+      selected_actions_url: 'selected_actions_url',
+      sha_pinning_required: 'sha_pinning_required'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      enabled
+    ].freeze
+    DECODERS = {
+      enabled: lambda do |value|
+        ::OctridevGithub::ActionsEnabled.from_value(value)
+      end,
+      allowed_actions: lambda do |value|
+        ::OctridevGithub::AllowedActions.from_value(value)
+      end,
+      selected_actions_url: lambda do |value|
+        ::OctridevGithub::SelectedActionsUrl.from_value(value)
+      end,
+      sha_pinning_required: lambda do |value|
+        ::OctridevGithub::ShaPinningRequired.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for ActionsRepositoryPermissions.
+  # Typed representation of the `ActionsRepositoryPermissions` API schema.
+  class ActionsRepositoryPermissions
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalActionsRepositoryPermissionsMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalActionsRepositoryPermissionsMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalActionsRepositoryPermissionsMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalActionsWorkflowAccessToRepositoryMetadata
-  FIELDS = {
-    access_level: "access_level",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    access_level
-  ].freeze
-  DECODERS = {
-    access_level: lambda do |value|
-      ::OctridevGithub::ActionsWorkflowAccessToRepositoryAccessLevel.from_value(value)
-    end,
-  }.freeze
-end
+    # @return [ActionsEnabled] Whether GitHub Actions is enabled on the repository.
+    attr_reader :enabled
+    # @return [AllowedActions] The permissions policy that controls the actions and reusable workflows that are allowed to run.
+    attr_reader :allowed_actions
+    # @return [SelectedActionsUrl] The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.
+    attr_reader :selected_actions_url
+    # @return [ShaPinningRequired] Whether actions must be pinned to a full-length commit SHA.
+    attr_reader :sha_pinning_required
 
-# API model for ActionsWorkflowAccessToRepository.
-# Typed representation of the `ActionsWorkflowAccessToRepository` API schema.
-class ActionsWorkflowAccessToRepository
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalActionsWorkflowAccessToRepositoryMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalActionsWorkflowAccessToRepositoryMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalActionsWorkflowAccessToRepositoryMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [ActionsWorkflowAccessToRepositoryAccessLevel] Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the repository. `none` means the access is only possible from workflows in this repository. `user` level access allows sharing across user owned private repositories only. `organization` level access allows sharing across the organization.
-  attr_reader :access_level
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalActionsSetDefaultWorkflowPermissionsMetadata
+    FIELDS = {
+      default_workflow_permissions: 'default_workflow_permissions',
+      can_approve_pull_request_reviews: 'can_approve_pull_request_reviews'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      default_workflow_permissions: lambda do |value|
+        ::OctridevGithub::ActionsDefaultWorkflowPermissions.from_value(value)
+      end,
+      can_approve_pull_request_reviews: lambda do |value|
+        ::OctridevGithub::ActionsCanApprovePullRequestReviews.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for ActionsSetDefaultWorkflowPermissions.
+  # Typed representation of the `ActionsSetDefaultWorkflowPermissions` API schema.
+  class ActionsSetDefaultWorkflowPermissions
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalActionsSetDefaultWorkflowPermissionsMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalActionsSetDefaultWorkflowPermissionsMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalActionsSetDefaultWorkflowPermissionsMetadata::DECODERS
 
-# Defines the ActionsWorkflowAccessToRepositoryAccessLevel SDK namespace.
-module ActionsWorkflowAccessToRepositoryAccessLevel
-  NONE = 'none'
-  USER = 'user'
-  ORGANIZATION = 'organization'
-  VALUES = ['none', 'user', 'organization'].freeze
-  def self.from_value(value)
-    value
+    # @return [ActionsDefaultWorkflowPermissions] The default workflow permissions granted to the GITHUB_TOKEN when running workflows.
+    attr_reader :default_workflow_permissions
+    # @return [ActionsCanApprovePullRequestReviews] Whether GitHub Actions can approve pull requests. Enabling this can be a security risk.
+    attr_reader :can_approve_pull_request_reviews
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
+
+  # Internal model hydration metadata.
+  class SdkInternalActionsWorkflowAccessToRepositoryMetadata
+    FIELDS = {
+      access_level: 'access_level'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      access_level
+    ].freeze
+    DECODERS = {
+      access_level: lambda do |value|
+        ::OctridevGithub::ActionsWorkflowAccessToRepositoryAccessLevel.from_value(value)
+      end
+    }.freeze
+  end
+
+  # API model for ActionsWorkflowAccessToRepository.
+  # Typed representation of the `ActionsWorkflowAccessToRepository` API schema.
+  class ActionsWorkflowAccessToRepository
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalActionsWorkflowAccessToRepositoryMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalActionsWorkflowAccessToRepositoryMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalActionsWorkflowAccessToRepositoryMetadata::DECODERS
+
+    # @return [ActionsWorkflowAccessToRepositoryAccessLevel] Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the repository. `none` means the access is only possible from workflows in this repository. `user` level access allows sharing across user owned private repositories only. `organization` level access allows sharing across the organization.
+    attr_reader :access_level
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Defines the ActionsWorkflowAccessToRepositoryAccessLevel SDK namespace.
+  module ActionsWorkflowAccessToRepositoryAccessLevel
+    NONE = 'none'
+    USER = 'user'
+    ORGANIZATION = 'organization'
+    VALUES = %w[none user organization].freeze
+    def self.from_value(value)
+      value
+    end
+  end
 end

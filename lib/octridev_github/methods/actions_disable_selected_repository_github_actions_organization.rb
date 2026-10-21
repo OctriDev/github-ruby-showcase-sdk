@@ -19,19 +19,18 @@ module OctridevGithub
         repository_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/permissions/repositories/",
+            '/actions/permissions/repositories/',
             SdkClient.encode_path_segment(repository_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'actions_disable_selected_repository_github_actions_organization',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

@@ -28,26 +28,25 @@ module OctridevGithub
         ref: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/contents/",
+            '/contents/',
             SdkClient.encode_path_segment(path)
           ].join,
           config: config,
           query: {
-            'ref' => QueryValue.new(ref, style: 'form', explode: true),
+            'ref' => QueryValue.new(ref, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::ContentTree,
           decoder: :json,
           operation_id: 'repos_get_content',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -82,15 +81,14 @@ module OctridevGithub
         author: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/contents/",
+            '/contents/',
             SdkClient.encode_path_segment(path)
           ].join,
           config: config,
@@ -100,13 +98,13 @@ module OctridevGithub
             'sha' => sha,
             'branch' => branch,
             'committer' => committer,
-            'author' => author,
+            'author' => author
           },
           return_type: ::OctridevGithub::FileCommit,
           decoder: :json,
           operation_id: 'repos_create_or_update_file_contents',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -137,15 +135,14 @@ module OctridevGithub
         author: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/contents/",
+            '/contents/',
             SdkClient.encode_path_segment(path)
           ].join,
           config: config,
@@ -154,13 +151,13 @@ module OctridevGithub
             'sha' => sha,
             'branch' => branch,
             'committer' => committer,
-            'author' => author,
+            'author' => author
           },
           return_type: ::OctridevGithub::FileCommit,
           decoder: :json,
           operation_id: 'repos_delete_file',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable },
+          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
     end

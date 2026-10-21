@@ -25,26 +25,25 @@ module OctridevGithub
         body: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/user/",
+            '/user/',
             SdkClient.encode_path_segment(user_id),
-            "/projectsV2/",
+            '/projectsV2/',
             SdkClient.encode_path_segment(project_number),
-            "/drafts"
+            '/drafts'
           ].join,
           config: config,
           body: {
             'title' => title,
-            'body' => body,
+            'body' => body
           },
           return_type: ::OctridevGithub::ProjectsV2ItemSimple,
           decoder: :json,
           operation_id: 'projects_create_draft_item_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
         ).data
       end
     end

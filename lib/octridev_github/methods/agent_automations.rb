@@ -24,23 +24,22 @@ module OctridevGithub
         owner_type: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.if_given(page) { Validation.validate_range('page', page, min: 1) }
 
         Validation.if_given(per_page) { Validation.validate_range('per_page', per_page, min: 1, max: 100) }
 
         SdkClient.request(
           'GET',
-          "/agents/automations",
+          '/agents/automations',
           config: config,
           query: {
             'page' => QueryValue.new(page, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'owner_type' => QueryValue.new(owner_type, style: 'form', explode: true),
+            'owner_type' => QueryValue.new(owner_type, style: 'form', explode: true)
           },
           decoder: :json,
           operation_id: 'agent_automations_list_automations',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -52,18 +51,17 @@ module OctridevGithub
         automation_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/agents/automations/",
+            '/agents/automations/',
             SdkClient.encode_path_segment(automation_id)
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponse,
           decoder: :json,
           operation_id: 'agent_automations_get_automation',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -88,7 +86,6 @@ module OctridevGithub
         owner_type: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.if_given(page) { Validation.validate_range('page', page, min: 1) }
 
         Validation.if_given(per_page) { Validation.validate_range('per_page', per_page, min: 1, max: 100) }
@@ -96,22 +93,22 @@ module OctridevGithub
         SdkClient.request(
           'GET',
           [
-            "/agents/repos/",
+            '/agents/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/automations"
+            '/automations'
           ].join,
           config: config,
           query: {
             'page' => QueryValue.new(page, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'owner_type' => QueryValue.new(owner_type, style: 'form', explode: true),
+            'owner_type' => QueryValue.new(owner_type, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsListRepoAutomationsResponse,
           decoder: :json,
           operation_id: 'agent_automations_list_repo_automations',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -171,15 +168,14 @@ module OctridevGithub
         require_actor_write_permission: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/agents/repos/",
+            '/agents/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/automations"
+            '/automations'
           ].join,
           config: config,
           body: {
@@ -193,12 +189,12 @@ module OctridevGithub
             'enabled' => enabled,
             'owner_type' => owner_type,
             'write_scope' => write_scope,
-            'require_actor_write_permission' => require_actor_write_permission,
+            'require_actor_write_permission' => require_actor_write_permission
           },
           return_type: ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsCreateRepoAutomationResponse,
           decoder: :json,
           operation_id: 'agent_automations_create_repo_automation',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -216,22 +212,21 @@ module OctridevGithub
         automation_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/agents/repos/",
+            '/agents/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/automations/",
+            '/automations/',
             SdkClient.encode_path_segment(automation_id)
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetRepoAutomationResponse,
           decoder: :json,
           operation_id: 'agent_automations_get_repo_automation',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -288,15 +283,14 @@ module OctridevGithub
         allowed_custom_agents: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/agents/repos/",
+            '/agents/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/automations/",
+            '/automations/',
             SdkClient.encode_path_segment(automation_id)
           ].join,
           config: config,
@@ -310,12 +304,12 @@ module OctridevGithub
             'triggers' => triggers,
             'prompt' => prompt,
             'tools' => tools,
-            'allowed_custom_agents' => allowed_custom_agents,
+            'allowed_custom_agents' => allowed_custom_agents
           },
           return_type: ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsEditRepoAutomationResponse,
           decoder: :json,
           operation_id: 'agent_automations_edit_repo_automation',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -333,21 +327,20 @@ module OctridevGithub
         automation_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/agents/repos/",
+            '/agents/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/automations/",
+            '/automations/',
             SdkClient.encode_path_segment(automation_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'agent_automations_delete_repo_automation',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

@@ -34,15 +34,14 @@ module OctridevGithub
         tagger: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/git/tags"
+            '/git/tags'
           ].join,
           config: config,
           body: {
@@ -50,13 +49,13 @@ module OctridevGithub
             'message' => message,
             'object' => object,
             'type' => type,
-            'tagger' => tagger,
+            'tagger' => tagger
           },
           return_type: ::OctridevGithub::GitTag,
           decoder: :json,
           operation_id: 'git_create_tag',
           request_options: request_options,
-          errors: { '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -75,15 +74,14 @@ module OctridevGithub
         tag_sha:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/git/tags/",
+            '/git/tags/',
             SdkClient.encode_path_segment(tag_sha)
           ].join,
           config: config,
@@ -91,7 +89,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'git_get_tag',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError }
         ).data
       end
     end

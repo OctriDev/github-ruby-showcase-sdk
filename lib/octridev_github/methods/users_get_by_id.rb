@@ -17,18 +17,17 @@ module OctridevGithub
         account_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/user/",
+            '/user/',
             SdkClient.encode_path_segment(account_id)
           ].join,
           config: config,
           decoder: :json,
           operation_id: 'users_get_by_id',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

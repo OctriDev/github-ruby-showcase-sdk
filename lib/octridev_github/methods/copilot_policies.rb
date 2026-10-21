@@ -22,22 +22,21 @@ module OctridevGithub
         policy_state:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/enterprises/",
+            '/enterprises/',
             SdkClient.encode_path_segment(enterprise),
-            "/copilot/policies/coding_agent"
+            '/copilot/policies/coding_agent'
           ].join,
           config: config,
           body: {
-            'policy_state' => policy_state,
+            'policy_state' => policy_state
           },
           decoder: :empty,
           operation_id: 'copilot_set_enterprise_coding_agent_policy',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError },
+          errors: { '400' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -58,23 +57,22 @@ module OctridevGithub
         custom_properties: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/enterprises/",
+            '/enterprises/',
             SdkClient.encode_path_segment(enterprise),
-            "/copilot/policies/coding_agent/organizations"
+            '/copilot/policies/coding_agent/organizations'
           ].join,
           config: config,
           body: {
             'organizations' => organizations,
-            'custom_properties' => custom_properties,
+            'custom_properties' => custom_properties
           },
           decoder: :empty,
           operation_id: 'copilot_add_organizations_to_enterprise_coding_agent_policy',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError },
+          errors: { '400' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -95,23 +93,22 @@ module OctridevGithub
         custom_properties: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/enterprises/",
+            '/enterprises/',
             SdkClient.encode_path_segment(enterprise),
-            "/copilot/policies/coding_agent/organizations"
+            '/copilot/policies/coding_agent/organizations'
           ].join,
           config: config,
           body: {
             'organizations' => organizations,
-            'custom_properties' => custom_properties,
+            'custom_properties' => custom_properties
           },
           decoder: :empty,
           operation_id: 'copilot_remove_organizations_from_enterprise_coding_agent_policy',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError },
+          errors: { '400' => ::OctridevGithub::BasicError }
         ).data
       end
     end

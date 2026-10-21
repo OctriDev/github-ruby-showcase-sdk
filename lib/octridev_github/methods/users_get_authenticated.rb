@@ -14,15 +14,14 @@ module OctridevGithub
         config:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/user",
+          '/user',
           config: config,
           decoder: :json,
           operation_id: 'users_get_authenticated',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
         ).data
       end
     end

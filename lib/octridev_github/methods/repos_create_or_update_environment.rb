@@ -42,15 +42,14 @@ module OctridevGithub
         deployment_branch_policy: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name)
           ].join,
           config: config,
@@ -58,13 +57,13 @@ module OctridevGithub
             'wait_timer' => wait_timer,
             'prevent_self_review' => prevent_self_review,
             'reviewers' => reviewers,
-            'deployment_branch_policy' => deployment_branch_policy,
+            'deployment_branch_policy' => deployment_branch_policy
           },
           return_type: ::OctridevGithub::Environment,
           decoder: :json,
           operation_id: 'repos_create_or_update_environment',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::BasicError },
+          errors: { '422' => ::OctridevGithub::BasicError }
         ).data
       end
     end

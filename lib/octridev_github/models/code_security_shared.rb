@@ -5,687 +5,677 @@
 
 # code_security domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalCodeScanningDefaultSetupOptionsMetadata
-  FIELDS = {
-    runner_type: "runner_type",
-    runner_label: "runner_label",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    runner_type: lambda do |value|
-      ::OctridevGithub::CodeScanningDefaultSetupOptionsRunnerType.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for CodeScanningDefaultSetupOptions.
-# Feature options for code scanning default setup
-class CodeScanningDefaultSetupOptions
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalCodeScanningDefaultSetupOptionsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalCodeScanningDefaultSetupOptionsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalCodeScanningDefaultSetupOptionsMetadata::DECODERS
-
-  # @return [CodeScanningDefaultSetupOptionsRunnerType] Whether to use labeled runners or standard GitHub runners.
-  attr_reader :runner_type
-  # @return [String] The label of the runner to use for code scanning default setup when runner_type is 'labeled'.
-  attr_reader :runner_label
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalCodeScanningDefaultSetupOptionsMetadata
+    FIELDS = {
+      runner_type: 'runner_type',
+      runner_label: 'runner_label'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      runner_type: lambda do |value|
+        ::OctridevGithub::CodeScanningDefaultSetupOptionsRunnerType.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for CodeScanningDefaultSetupOptions.
+  # Feature options for code scanning default setup
+  class CodeScanningDefaultSetupOptions
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalCodeScanningDefaultSetupOptionsMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalCodeScanningDefaultSetupOptionsMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalCodeScanningDefaultSetupOptionsMetadata::DECODERS
+
+    # @return [CodeScanningDefaultSetupOptionsRunnerType] Whether to use labeled runners or standard GitHub runners.
+    attr_reader :runner_type
+    # @return [String] The label of the runner to use for code scanning default setup when runner_type is 'labeled'.
+    attr_reader :runner_label
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the CodeScanningDefaultSetupOptionsRunnerType SDK namespace.
-module CodeScanningDefaultSetupOptionsRunnerType
-  STANDARD = 'standard'
-  LABELED = 'labeled'
-  NOT_SET = 'not_set'
-  VALUES = ['standard', 'labeled', 'not_set'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalCodeScanningOptionsMetadata
-  FIELDS = {
-    allow_advanced: "allow_advanced",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for CodeScanningOptions.
-# Security Configuration feature options for code scanning
-class CodeScanningOptions
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalCodeScanningOptionsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalCodeScanningOptionsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalCodeScanningOptionsMetadata::DECODERS
-
-  # @return [Boolean] Whether to allow repos which use advanced setup
-  attr_reader :allow_advanced
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the CodeScanningDefaultSetupOptionsRunnerType SDK namespace.
+  module CodeScanningDefaultSetupOptionsRunnerType
+    STANDARD = 'standard'
+    LABELED = 'labeled'
+    NOT_SET = 'not_set'
+    VALUES = %w[standard labeled not_set].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalCodeScanningOptionsMetadata
+    FIELDS = {
+      allow_advanced: 'allow_advanced'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for CodeScanningOptions.
+  # Security Configuration feature options for code scanning
+  class CodeScanningOptions
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalCodeScanningOptionsMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalCodeScanningOptionsMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalCodeScanningOptionsMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalCodeSecurityConfigurationDependencyGraphAutosubmitActionOptionsMetadata
-  FIELDS = {
-    labeled_runners: "labeled_runners",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    # @return [Boolean] Whether to allow repos which use advanced setup
+    attr_reader :allow_advanced
 
-# API model for CodeSecurityConfigurationDependencyGraphAutosubmitActionOptions.
-# Feature options for Automatic dependency submission
-class CodeSecurityConfigurationDependencyGraphAutosubmitActionOptions
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalCodeSecurityConfigurationDependencyGraphAutosubmitActionOptionsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalCodeSecurityConfigurationDependencyGraphAutosubmitActionOptionsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalCodeSecurityConfigurationDependencyGraphAutosubmitActionOptionsMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [Boolean] Whether to use runners labeled with 'dependency-submission' or standard GitHub runners.
-  attr_reader :labeled_runners
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalCodeSecurityConfigurationDependencyGraphAutosubmitActionOptionsMetadata
+    FIELDS = {
+      labeled_runners: 'labeled_runners'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for CodeSecurityConfigurationDependencyGraphAutosubmitActionOptions.
+  # Feature options for Automatic dependency submission
+  class CodeSecurityConfigurationDependencyGraphAutosubmitActionOptions
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalCodeSecurityConfigurationDependencyGraphAutosubmitActionOptionsMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalCodeSecurityConfigurationDependencyGraphAutosubmitActionOptionsMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalCodeSecurityConfigurationDependencyGraphAutosubmitActionOptionsMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalCodeSecurityConfigurationCodeScanningOptionsMetadata
-  FIELDS = {
-    allow_advanced: "allow_advanced",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    # @return [Boolean] Whether to use runners labeled with 'dependency-submission' or standard GitHub runners.
+    attr_reader :labeled_runners
 
-# API model for CodeSecurityConfigurationCodeScanningOptions.
-# Feature options for code scanning
-class CodeSecurityConfigurationCodeScanningOptions
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalCodeSecurityConfigurationCodeScanningOptionsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalCodeSecurityConfigurationCodeScanningOptionsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalCodeSecurityConfigurationCodeScanningOptionsMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [Boolean] Whether to allow repos which use advanced setup
-  attr_reader :allow_advanced
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalCodeSecurityConfigurationCodeScanningOptionsMetadata
+    FIELDS = {
+      allow_advanced: 'allow_advanced'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for CodeSecurityConfigurationCodeScanningOptions.
+  # Feature options for code scanning
+  class CodeSecurityConfigurationCodeScanningOptions
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalCodeSecurityConfigurationCodeScanningOptionsMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalCodeSecurityConfigurationCodeScanningOptionsMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalCodeSecurityConfigurationCodeScanningOptionsMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalCodeSecurityConfigurationCodeScanningDefaultSetupOptionsMetadata
-  FIELDS = {
-    runner_type: "runner_type",
-    runner_label: "runner_label",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    runner_type: lambda do |value|
-      ::OctridevGithub::CodeSecurityConfigurationCodeScanningDefaultSetupOptionsRunnerType.from_value(value)
-    end,
-  }.freeze
-end
+    # @return [Boolean] Whether to allow repos which use advanced setup
+    attr_reader :allow_advanced
 
-# API model for CodeSecurityConfigurationCodeScanningDefaultSetupOptions.
-# Feature options for code scanning default setup
-class CodeSecurityConfigurationCodeScanningDefaultSetupOptions
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalCodeSecurityConfigurationCodeScanningDefaultSetupOptionsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalCodeSecurityConfigurationCodeScanningDefaultSetupOptionsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalCodeSecurityConfigurationCodeScanningDefaultSetupOptionsMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [CodeSecurityConfigurationCodeScanningDefaultSetupOptionsRunnerType] Whether to use labeled runners or standard GitHub runners.
-  attr_reader :runner_type
-  # @return [String] The label of the runner to use for code scanning when runner_type is 'labeled'.
-  attr_reader :runner_label
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalCodeSecurityConfigurationCodeScanningDefaultSetupOptionsMetadata
+    FIELDS = {
+      runner_type: 'runner_type',
+      runner_label: 'runner_label'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      runner_type: lambda do |value|
+        ::OctridevGithub::CodeSecurityConfigurationCodeScanningDefaultSetupOptionsRunnerType.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for CodeSecurityConfigurationCodeScanningDefaultSetupOptions.
+  # Feature options for code scanning default setup
+  class CodeSecurityConfigurationCodeScanningDefaultSetupOptions
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalCodeSecurityConfigurationCodeScanningDefaultSetupOptionsMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalCodeSecurityConfigurationCodeScanningDefaultSetupOptionsMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalCodeSecurityConfigurationCodeScanningDefaultSetupOptionsMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalCodeSecurityConfigurationSecretScanningDelegatedBypassOptionsX30443c4ec8Metadata
-  FIELDS = {
-    reviewer_id: "reviewer_id",
-    reviewer_type: "reviewer_type",
-    mode: "mode",
-    security_configuration_id: "security_configuration_id",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    reviewer_id
-    reviewer_type
-  ].freeze
-  DECODERS = {
-    reviewer_type: lambda do |value|
-      ::OctridevGithub::CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsX3255ac35ec.from_value(value)
-    end,
-    mode: lambda do |value|
-      ::OctridevGithub::CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsXf8ee57ead4.from_value(value)
-    end,
-  }.freeze
-end
+    # @return [CodeSecurityConfigurationCodeScanningDefaultSetupOptionsRunnerType] Whether to use labeled runners or standard GitHub runners.
+    attr_reader :runner_type
+    # @return [String] The label of the runner to use for code scanning when runner_type is 'labeled'.
+    attr_reader :runner_label
 
-# API model for CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsX30443c4ec8.
-# Required object value serialized in the `reviewers[]` wire field.
-class CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsX30443c4ec8
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalCodeSecurityConfigurationSecretScanningDelegatedBypassOptionsX30443c4ec8Metadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalCodeSecurityConfigurationSecretScanningDelegatedBypassOptionsX30443c4ec8Metadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalCodeSecurityConfigurationSecretScanningDelegatedBypassOptionsX30443c4ec8Metadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [Integer] The ID of the team or role selected as a bypass reviewer
-  attr_reader :reviewer_id
-  # @return [CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsX3255ac35ec] The type of the bypass reviewer
-  attr_reader :reviewer_type
-  # @return [CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsXf8ee57ead4] The bypass mode for the reviewer
-  attr_reader :mode
-  # @return [Integer] The ID of the security configuration associated with this bypass reviewer
-  attr_reader :security_configuration_id
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalCodeSecurityConfigurationSecretScanningDelegatedBypassOptionsX30443c4ec8Metadata
+    FIELDS = {
+      reviewer_id: 'reviewer_id',
+      reviewer_type: 'reviewer_type',
+      mode: 'mode',
+      security_configuration_id: 'security_configuration_id'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      reviewer_id
+      reviewer_type
+    ].freeze
+    DECODERS = {
+      reviewer_type: lambda do |value|
+        ::OctridevGithub::CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsX3255ac35ec.from_value(value)
+      end,
+      mode: lambda do |value|
+        ::OctridevGithub::CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsXf8ee57ead4.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsX30443c4ec8.
+  # Required object value serialized in the `reviewers[]` wire field.
+  class CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsX30443c4ec8
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalCodeSecurityConfigurationSecretScanningDelegatedBypassOptionsX30443c4ec8Metadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalCodeSecurityConfigurationSecretScanningDelegatedBypassOptionsX30443c4ec8Metadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalCodeSecurityConfigurationSecretScanningDelegatedBypassOptionsX30443c4ec8Metadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalCodeSecurityConfigurationSecretScanningDelegatedBypassOptionsMetadata
-  FIELDS = {
-    reviewers: "reviewers",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    reviewers: lambda do |value|
-      value&.map { |item| ::OctridevGithub::CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsX30443c4ec8.from_hash(item) }
-    end,
-  }.freeze
-end
+    # @return [Integer] The ID of the team or role selected as a bypass reviewer
+    attr_reader :reviewer_id
+    # @return [CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsX3255ac35ec] The type of the bypass reviewer
+    attr_reader :reviewer_type
+    # @return [CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsXf8ee57ead4] The bypass mode for the reviewer
+    attr_reader :mode
+    # @return [Integer] The ID of the security configuration associated with this bypass reviewer
+    attr_reader :security_configuration_id
 
-# API model for CodeSecurityConfigurationSecretScanningDelegatedBypassOptions.
-# Feature options for secret scanning delegated bypass
-class CodeSecurityConfigurationSecretScanningDelegatedBypassOptions
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalCodeSecurityConfigurationSecretScanningDelegatedBypassOptionsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalCodeSecurityConfigurationSecretScanningDelegatedBypassOptionsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalCodeSecurityConfigurationSecretScanningDelegatedBypassOptionsMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [Array_of_CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsX30443c4ec8] The bypass reviewers for secret scanning delegated bypass
-  attr_reader :reviewers
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalCodeSecurityConfigurationSecretScanningDelegatedBypassOptionsMetadata
+    FIELDS = {
+      reviewers: 'reviewers'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      reviewers: lambda do |value|
+        value&.map { |item| ::OctridevGithub::CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsX30443c4ec8.from_hash(item) }
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for CodeSecurityConfigurationSecretScanningDelegatedBypassOptions.
+  # Feature options for secret scanning delegated bypass
+  class CodeSecurityConfigurationSecretScanningDelegatedBypassOptions
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalCodeSecurityConfigurationSecretScanningDelegatedBypassOptionsMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalCodeSecurityConfigurationSecretScanningDelegatedBypassOptionsMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalCodeSecurityConfigurationSecretScanningDelegatedBypassOptionsMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalCodeSecurityConfigurationMetadata
-  FIELDS = {
-    id: "id",
-    name: "name",
-    target_type: "target_type",
-    description: "description",
-    advanced_security: "advanced_security",
-    dependency_graph: "dependency_graph",
-    dependency_graph_autosubmit_action: "dependency_graph_autosubmit_action",
-    dependency_graph_autosubmit_action_options: "dependency_graph_autosubmit_action_options",
-    dependabot_alerts: "dependabot_alerts",
-    dependabot_security_updates: "dependabot_security_updates",
-    dependabot_delegated_alert_dismissal: "dependabot_delegated_alert_dismissal",
-    code_scanning_options: "code_scanning_options",
-    code_scanning_default_setup: "code_scanning_default_setup",
-    code_scanning_default_setup_options: "code_scanning_default_setup_options",
-    code_scanning_delegated_alert_dismissal: "code_scanning_delegated_alert_dismissal",
-    secret_scanning: "secret_scanning",
-    secret_scanning_push_protection: "secret_scanning_push_protection",
-    secret_scanning_delegated_bypass: "secret_scanning_delegated_bypass",
-    secret_scanning_delegated_bypass_options: "secret_scanning_delegated_bypass_options",
-    secret_scanning_validity_checks: "secret_scanning_validity_checks",
-    secret_scanning_non_provider_patterns: "secret_scanning_non_provider_patterns",
-    secret_scanning_generic_secrets: "secret_scanning_generic_secrets",
-    secret_scanning_delegated_alert_dismissal: "secret_scanning_delegated_alert_dismissal",
-    secret_scanning_extended_metadata: "secret_scanning_extended_metadata",
-    private_vulnerability_reporting: "private_vulnerability_reporting",
-    enforcement: "enforcement",
-    url: "url",
-    html_url: "html_url",
-    created_at: "created_at",
-    updated_at: "updated_at",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    target_type: lambda do |value|
-      ::OctridevGithub::CodeSecurityConfigurationTargetType.from_value(value)
-    end,
-    advanced_security: lambda do |value|
-      ::OctridevGithub::CodeSecurityConfigurationAdvancedSecurity.from_value(value)
-    end,
-    dependency_graph: lambda do |value|
-      ::OctridevGithub::CodeSecurityConfigurationDependencyGraph.from_value(value)
-    end,
-    dependency_graph_autosubmit_action: lambda do |value|
-      ::OctridevGithub::CodeSecurityConfigurationDependencyGraphAutosubmitAction.from_value(value)
-    end,
-    dependency_graph_autosubmit_action_options: lambda do |value|
-      ::OctridevGithub::CodeSecurityConfigurationDependencyGraphAutosubmitActionOptions.from_hash(value)
-    end,
-    dependabot_alerts: lambda do |value|
-      ::OctridevGithub::CodeSecurityConfigurationDependabotAlerts.from_value(value)
-    end,
-    dependabot_security_updates: lambda do |value|
-      ::OctridevGithub::CodeSecurityConfigurationDependabotSecurityUpdates.from_value(value)
-    end,
-    dependabot_delegated_alert_dismissal: lambda do |value|
-      ::OctridevGithub::CodeSecurityConfigurationDependabotDelegatedAlertDismissal.from_value(value)
-    end,
-    code_scanning_options: lambda do |value|
-      ::OctridevGithub::CodeSecurityConfigurationCodeScanningOptions.from_hash(value)
-    end,
-    code_scanning_default_setup: lambda do |value|
-      ::OctridevGithub::CodeSecurityConfigurationCodeScanningDefaultSetup.from_value(value)
-    end,
-    code_scanning_default_setup_options: lambda do |value|
-      ::OctridevGithub::CodeSecurityConfigurationCodeScanningDefaultSetupOptions.from_hash(value)
-    end,
-    code_scanning_delegated_alert_dismissal: lambda do |value|
-      ::OctridevGithub::CodeSecurityConfigurationCodeScanningDelegatedAlertDismissal.from_value(value)
-    end,
-    secret_scanning: lambda do |value|
-      ::OctridevGithub::CodeSecurityConfigurationSecretScanning.from_value(value)
-    end,
-    secret_scanning_push_protection: lambda do |value|
-      ::OctridevGithub::CodeSecurityConfigurationSecretScanningPushProtection.from_value(value)
-    end,
-    secret_scanning_delegated_bypass: lambda do |value|
-      ::OctridevGithub::CodeSecurityConfigurationSecretScanningDelegatedBypass.from_value(value)
-    end,
-    secret_scanning_delegated_bypass_options: lambda do |value|
-      ::OctridevGithub::CodeSecurityConfigurationSecretScanningDelegatedBypassOptions.from_hash(value)
-    end,
-    secret_scanning_validity_checks: lambda do |value|
-      ::OctridevGithub::CodeSecurityConfigurationSecretScanningValidityChecks.from_value(value)
-    end,
-    secret_scanning_non_provider_patterns: lambda do |value|
-      ::OctridevGithub::CodeSecurityConfigurationSecretScanningNonProviderPatterns.from_value(value)
-    end,
-    secret_scanning_generic_secrets: lambda do |value|
-      ::OctridevGithub::CodeSecurityConfigurationSecretScanningGenericSecrets.from_value(value)
-    end,
-    secret_scanning_delegated_alert_dismissal: lambda do |value|
-      ::OctridevGithub::CodeSecurityConfigurationSecretScanningDelegatedAlertDismissal.from_value(value)
-    end,
-    secret_scanning_extended_metadata: lambda do |value|
-      ::OctridevGithub::CodeSecurityConfigurationSecretScanningExtendedMetadata.from_value(value)
-    end,
-    private_vulnerability_reporting: lambda do |value|
-      ::OctridevGithub::CodeSecurityConfigurationPrivateVulnerabilityReporting.from_value(value)
-    end,
-    enforcement: lambda do |value|
-      ::OctridevGithub::CodeSecurityConfigurationEnforcement.from_value(value)
-    end,
-  }.freeze
-end
+    # @return [Array_of_CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsX30443c4ec8] The bypass reviewers for secret scanning delegated bypass
+    attr_reader :reviewers
 
-# API model for CodeSecurityConfiguration.
-# A code security configuration
-class CodeSecurityConfiguration
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalCodeSecurityConfigurationMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalCodeSecurityConfigurationMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalCodeSecurityConfigurationMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [Integer] The ID of the code security configuration
-  attr_reader :id
-  # @return [String] The name of the code security configuration. Must be unique within the organization.
-  attr_reader :name
-  # @return [CodeSecurityConfigurationTargetType] The type of the code security configuration.
-  attr_reader :target_type
-  # @return [String] A description of the code security configuration
-  attr_reader :description
-  # @return [CodeSecurityConfigurationAdvancedSecurity] The enablement status of GitHub Advanced Security
-  attr_reader :advanced_security
-  # @return [CodeSecurityConfigurationDependencyGraph] The enablement status of Dependency Graph
-  attr_reader :dependency_graph
-  # @return [CodeSecurityConfigurationDependencyGraphAutosubmitAction] The enablement status of Automatic dependency submission
-  attr_reader :dependency_graph_autosubmit_action
-  # @return [CodeSecurityConfigurationDependencyGraphAutosubmitActionOptions] Feature options for Automatic dependency submission
-  attr_reader :dependency_graph_autosubmit_action_options
-  # @return [CodeSecurityConfigurationDependabotAlerts] The enablement status of Dependabot alerts
-  attr_reader :dependabot_alerts
-  # @return [CodeSecurityConfigurationDependabotSecurityUpdates] The enablement status of Dependabot security updates
-  attr_reader :dependabot_security_updates
-  # @return [CodeSecurityConfigurationDependabotDelegatedAlertDismissal] The enablement status of Dependabot delegated alert dismissal
-  attr_reader :dependabot_delegated_alert_dismissal
-  # @return [CodeSecurityConfigurationCodeScanningOptions] Feature options for code scanning
-  attr_reader :code_scanning_options
-  # @return [CodeSecurityConfigurationCodeScanningDefaultSetup] The enablement status of code scanning default setup
-  attr_reader :code_scanning_default_setup
-  # @return [CodeSecurityConfigurationCodeScanningDefaultSetupOptions] Feature options for code scanning default setup
-  attr_reader :code_scanning_default_setup_options
-  # @return [CodeSecurityConfigurationCodeScanningDelegatedAlertDismissal] The enablement status of code scanning delegated alert dismissal
-  attr_reader :code_scanning_delegated_alert_dismissal
-  # @return [CodeSecurityConfigurationSecretScanning] The enablement status of secret scanning
-  attr_reader :secret_scanning
-  # @return [CodeSecurityConfigurationSecretScanningPushProtection] The enablement status of secret scanning push protection
-  attr_reader :secret_scanning_push_protection
-  # @return [CodeSecurityConfigurationSecretScanningDelegatedBypass] The enablement status of secret scanning delegated bypass
-  attr_reader :secret_scanning_delegated_bypass
-  # @return [CodeSecurityConfigurationSecretScanningDelegatedBypassOptions] Feature options for secret scanning delegated bypass
-  attr_reader :secret_scanning_delegated_bypass_options
-  # @return [CodeSecurityConfigurationSecretScanningValidityChecks] The enablement status of secret scanning validity checks
-  attr_reader :secret_scanning_validity_checks
-  # @return [CodeSecurityConfigurationSecretScanningNonProviderPatterns] The enablement status of secret scanning non-provider patterns
-  attr_reader :secret_scanning_non_provider_patterns
-  # @return [CodeSecurityConfigurationSecretScanningGenericSecrets] The enablement status of Copilot secret scanning
-  attr_reader :secret_scanning_generic_secrets
-  # @return [CodeSecurityConfigurationSecretScanningDelegatedAlertDismissal] The enablement status of secret scanning delegated alert dismissal
-  attr_reader :secret_scanning_delegated_alert_dismissal
-  # @return [CodeSecurityConfigurationSecretScanningExtendedMetadata] The enablement status of secret scanning extended metadata
-  attr_reader :secret_scanning_extended_metadata
-  # @return [CodeSecurityConfigurationPrivateVulnerabilityReporting] The enablement status of private vulnerability reporting
-  attr_reader :private_vulnerability_reporting
-  # @return [CodeSecurityConfigurationEnforcement] The enforcement status for a security configuration
-  attr_reader :enforcement
-  # @return [String] The URL of the configuration
-  attr_reader :url
-  # @return [String] The URL of the configuration
-  attr_reader :html_url
-  # @return [String] Optional `date-time`-formatted value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Optional `date-time`-formatted value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalCodeSecurityConfigurationMetadata
+    FIELDS = {
+      id: 'id',
+      name: 'name',
+      target_type: 'target_type',
+      description: 'description',
+      advanced_security: 'advanced_security',
+      dependency_graph: 'dependency_graph',
+      dependency_graph_autosubmit_action: 'dependency_graph_autosubmit_action',
+      dependency_graph_autosubmit_action_options: 'dependency_graph_autosubmit_action_options',
+      dependabot_alerts: 'dependabot_alerts',
+      dependabot_security_updates: 'dependabot_security_updates',
+      dependabot_delegated_alert_dismissal: 'dependabot_delegated_alert_dismissal',
+      code_scanning_options: 'code_scanning_options',
+      code_scanning_default_setup: 'code_scanning_default_setup',
+      code_scanning_default_setup_options: 'code_scanning_default_setup_options',
+      code_scanning_delegated_alert_dismissal: 'code_scanning_delegated_alert_dismissal',
+      secret_scanning: 'secret_scanning',
+      secret_scanning_push_protection: 'secret_scanning_push_protection',
+      secret_scanning_delegated_bypass: 'secret_scanning_delegated_bypass',
+      secret_scanning_delegated_bypass_options: 'secret_scanning_delegated_bypass_options',
+      secret_scanning_validity_checks: 'secret_scanning_validity_checks',
+      secret_scanning_non_provider_patterns: 'secret_scanning_non_provider_patterns',
+      secret_scanning_generic_secrets: 'secret_scanning_generic_secrets',
+      secret_scanning_delegated_alert_dismissal: 'secret_scanning_delegated_alert_dismissal',
+      secret_scanning_extended_metadata: 'secret_scanning_extended_metadata',
+      private_vulnerability_reporting: 'private_vulnerability_reporting',
+      enforcement: 'enforcement',
+      url: 'url',
+      html_url: 'html_url',
+      created_at: 'created_at',
+      updated_at: 'updated_at'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      target_type: lambda do |value|
+        ::OctridevGithub::CodeSecurityConfigurationTargetType.from_value(value)
+      end,
+      advanced_security: lambda do |value|
+        ::OctridevGithub::CodeSecurityConfigurationAdvancedSecurity.from_value(value)
+      end,
+      dependency_graph: lambda do |value|
+        ::OctridevGithub::CodeSecurityConfigurationDependencyGraph.from_value(value)
+      end,
+      dependency_graph_autosubmit_action: lambda do |value|
+        ::OctridevGithub::CodeSecurityConfigurationDependencyGraphAutosubmitAction.from_value(value)
+      end,
+      dependency_graph_autosubmit_action_options: lambda do |value|
+        ::OctridevGithub::CodeSecurityConfigurationDependencyGraphAutosubmitActionOptions.from_hash(value)
+      end,
+      dependabot_alerts: lambda do |value|
+        ::OctridevGithub::CodeSecurityConfigurationDependabotAlerts.from_value(value)
+      end,
+      dependabot_security_updates: lambda do |value|
+        ::OctridevGithub::CodeSecurityConfigurationDependabotSecurityUpdates.from_value(value)
+      end,
+      dependabot_delegated_alert_dismissal: lambda do |value|
+        ::OctridevGithub::CodeSecurityConfigurationDependabotDelegatedAlertDismissal.from_value(value)
+      end,
+      code_scanning_options: lambda do |value|
+        ::OctridevGithub::CodeSecurityConfigurationCodeScanningOptions.from_hash(value)
+      end,
+      code_scanning_default_setup: lambda do |value|
+        ::OctridevGithub::CodeSecurityConfigurationCodeScanningDefaultSetup.from_value(value)
+      end,
+      code_scanning_default_setup_options: lambda do |value|
+        ::OctridevGithub::CodeSecurityConfigurationCodeScanningDefaultSetupOptions.from_hash(value)
+      end,
+      code_scanning_delegated_alert_dismissal: lambda do |value|
+        ::OctridevGithub::CodeSecurityConfigurationCodeScanningDelegatedAlertDismissal.from_value(value)
+      end,
+      secret_scanning: lambda do |value|
+        ::OctridevGithub::CodeSecurityConfigurationSecretScanning.from_value(value)
+      end,
+      secret_scanning_push_protection: lambda do |value|
+        ::OctridevGithub::CodeSecurityConfigurationSecretScanningPushProtection.from_value(value)
+      end,
+      secret_scanning_delegated_bypass: lambda do |value|
+        ::OctridevGithub::CodeSecurityConfigurationSecretScanningDelegatedBypass.from_value(value)
+      end,
+      secret_scanning_delegated_bypass_options: lambda do |value|
+        ::OctridevGithub::CodeSecurityConfigurationSecretScanningDelegatedBypassOptions.from_hash(value)
+      end,
+      secret_scanning_validity_checks: lambda do |value|
+        ::OctridevGithub::CodeSecurityConfigurationSecretScanningValidityChecks.from_value(value)
+      end,
+      secret_scanning_non_provider_patterns: lambda do |value|
+        ::OctridevGithub::CodeSecurityConfigurationSecretScanningNonProviderPatterns.from_value(value)
+      end,
+      secret_scanning_generic_secrets: lambda do |value|
+        ::OctridevGithub::CodeSecurityConfigurationSecretScanningGenericSecrets.from_value(value)
+      end,
+      secret_scanning_delegated_alert_dismissal: lambda do |value|
+        ::OctridevGithub::CodeSecurityConfigurationSecretScanningDelegatedAlertDismissal.from_value(value)
+      end,
+      secret_scanning_extended_metadata: lambda do |value|
+        ::OctridevGithub::CodeSecurityConfigurationSecretScanningExtendedMetadata.from_value(value)
+      end,
+      private_vulnerability_reporting: lambda do |value|
+        ::OctridevGithub::CodeSecurityConfigurationPrivateVulnerabilityReporting.from_value(value)
+      end,
+      enforcement: lambda do |value|
+        ::OctridevGithub::CodeSecurityConfigurationEnforcement.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for CodeSecurityConfiguration.
+  # A code security configuration
+  class CodeSecurityConfiguration
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalCodeSecurityConfigurationMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalCodeSecurityConfigurationMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalCodeSecurityConfigurationMetadata::DECODERS
 
-# Defines the CodeSecurityConfigurationAdvancedSecurity SDK namespace.
-module CodeSecurityConfigurationAdvancedSecurity
-  ENABLED = 'enabled'
-  DISABLED = 'disabled'
-  CODE_SECURITY = 'code_security'
-  SECRET_PROTECTION = 'secret_protection'
-  VALUES = ['enabled', 'disabled', 'code_security', 'secret_protection'].freeze
-  def self.from_value(value)
-    value
-  end
-end
+    # @return [Integer] The ID of the code security configuration
+    attr_reader :id
+    # @return [String] The name of the code security configuration. Must be unique within the organization.
+    attr_reader :name
+    # @return [CodeSecurityConfigurationTargetType] The type of the code security configuration.
+    attr_reader :target_type
+    # @return [String] A description of the code security configuration
+    attr_reader :description
+    # @return [CodeSecurityConfigurationAdvancedSecurity] The enablement status of GitHub Advanced Security
+    attr_reader :advanced_security
+    # @return [CodeSecurityConfigurationDependencyGraph] The enablement status of Dependency Graph
+    attr_reader :dependency_graph
+    # @return [CodeSecurityConfigurationDependencyGraphAutosubmitAction] The enablement status of Automatic dependency submission
+    attr_reader :dependency_graph_autosubmit_action
+    # @return [CodeSecurityConfigurationDependencyGraphAutosubmitActionOptions] Feature options for Automatic dependency submission
+    attr_reader :dependency_graph_autosubmit_action_options
+    # @return [CodeSecurityConfigurationDependabotAlerts] The enablement status of Dependabot alerts
+    attr_reader :dependabot_alerts
+    # @return [CodeSecurityConfigurationDependabotSecurityUpdates] The enablement status of Dependabot security updates
+    attr_reader :dependabot_security_updates
+    # @return [CodeSecurityConfigurationDependabotDelegatedAlertDismissal] The enablement status of Dependabot delegated alert dismissal
+    attr_reader :dependabot_delegated_alert_dismissal
+    # @return [CodeSecurityConfigurationCodeScanningOptions] Feature options for code scanning
+    attr_reader :code_scanning_options
+    # @return [CodeSecurityConfigurationCodeScanningDefaultSetup] The enablement status of code scanning default setup
+    attr_reader :code_scanning_default_setup
+    # @return [CodeSecurityConfigurationCodeScanningDefaultSetupOptions] Feature options for code scanning default setup
+    attr_reader :code_scanning_default_setup_options
+    # @return [CodeSecurityConfigurationCodeScanningDelegatedAlertDismissal] The enablement status of code scanning delegated alert dismissal
+    attr_reader :code_scanning_delegated_alert_dismissal
+    # @return [CodeSecurityConfigurationSecretScanning] The enablement status of secret scanning
+    attr_reader :secret_scanning
+    # @return [CodeSecurityConfigurationSecretScanningPushProtection] The enablement status of secret scanning push protection
+    attr_reader :secret_scanning_push_protection
+    # @return [CodeSecurityConfigurationSecretScanningDelegatedBypass] The enablement status of secret scanning delegated bypass
+    attr_reader :secret_scanning_delegated_bypass
+    # @return [CodeSecurityConfigurationSecretScanningDelegatedBypassOptions] Feature options for secret scanning delegated bypass
+    attr_reader :secret_scanning_delegated_bypass_options
+    # @return [CodeSecurityConfigurationSecretScanningValidityChecks] The enablement status of secret scanning validity checks
+    attr_reader :secret_scanning_validity_checks
+    # @return [CodeSecurityConfigurationSecretScanningNonProviderPatterns] The enablement status of secret scanning non-provider patterns
+    attr_reader :secret_scanning_non_provider_patterns
+    # @return [CodeSecurityConfigurationSecretScanningGenericSecrets] The enablement status of Copilot secret scanning
+    attr_reader :secret_scanning_generic_secrets
+    # @return [CodeSecurityConfigurationSecretScanningDelegatedAlertDismissal] The enablement status of secret scanning delegated alert dismissal
+    attr_reader :secret_scanning_delegated_alert_dismissal
+    # @return [CodeSecurityConfigurationSecretScanningExtendedMetadata] The enablement status of secret scanning extended metadata
+    attr_reader :secret_scanning_extended_metadata
+    # @return [CodeSecurityConfigurationPrivateVulnerabilityReporting] The enablement status of private vulnerability reporting
+    attr_reader :private_vulnerability_reporting
+    # @return [CodeSecurityConfigurationEnforcement] The enforcement status for a security configuration
+    attr_reader :enforcement
+    # @return [String] The URL of the configuration
+    attr_reader :url
+    # @return [String] The URL of the configuration
+    attr_reader :html_url
+    # @return [String] Optional `date-time`-formatted value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Optional `date-time`-formatted value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
 
-# Defines the CodeSecurityConfigurationCodeScanningDefaultSetup SDK namespace.
-module CodeSecurityConfigurationCodeScanningDefaultSetup
-  ENABLED = 'enabled'
-  DISABLED = 'disabled'
-  NOT_SET = 'not_set'
-  VALUES = ['enabled', 'disabled', 'not_set'].freeze
-  def self.from_value(value)
-    value
-  end
-end
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-# Defines the CodeSecurityConfigurationCodeScanningDefaultSetupOptionsRunnerType SDK namespace.
-module CodeSecurityConfigurationCodeScanningDefaultSetupOptionsRunnerType
-  STANDARD = 'standard'
-  LABELED = 'labeled'
-  NOT_SET = 'not_set'
-  VALUES = ['standard', 'labeled', 'not_set'].freeze
-  def self.from_value(value)
-    value
-  end
-end
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-# Defines the CodeSecurityConfigurationCodeScanningDelegatedAlertDismissal SDK namespace.
-module CodeSecurityConfigurationCodeScanningDelegatedAlertDismissal
-  ENABLED = 'enabled'
-  DISABLED = 'disabled'
-  NOT_SET = 'not_set'
-  VALUES = ['enabled', 'disabled', 'not_set'].freeze
-  def self.from_value(value)
-    value
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
 
-# Defines the CodeSecurityConfigurationDependabotAlerts SDK namespace.
-module CodeSecurityConfigurationDependabotAlerts
-  ENABLED = 'enabled'
-  DISABLED = 'disabled'
-  NOT_SET = 'not_set'
-  VALUES = ['enabled', 'disabled', 'not_set'].freeze
-  def self.from_value(value)
-    value
+  # Defines the CodeSecurityConfigurationAdvancedSecurity SDK namespace.
+  module CodeSecurityConfigurationAdvancedSecurity
+    ENABLED = 'enabled'
+    DISABLED = 'disabled'
+    CODE_SECURITY = 'code_security'
+    SECRET_PROTECTION = 'secret_protection'
+    VALUES = %w[enabled disabled code_security secret_protection].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the CodeSecurityConfigurationDependabotDelegatedAlertDismissal SDK namespace.
-module CodeSecurityConfigurationDependabotDelegatedAlertDismissal
-  ENABLED = 'enabled'
-  DISABLED = 'disabled'
-  NOT_SET = 'not_set'
-  VALUES = ['enabled', 'disabled', 'not_set'].freeze
-  def self.from_value(value)
-    value
+  # Defines the CodeSecurityConfigurationCodeScanningDefaultSetup SDK namespace.
+  module CodeSecurityConfigurationCodeScanningDefaultSetup
+    ENABLED = 'enabled'
+    DISABLED = 'disabled'
+    NOT_SET = 'not_set'
+    VALUES = %w[enabled disabled not_set].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the CodeSecurityConfigurationDependabotSecurityUpdates SDK namespace.
-module CodeSecurityConfigurationDependabotSecurityUpdates
-  ENABLED = 'enabled'
-  DISABLED = 'disabled'
-  NOT_SET = 'not_set'
-  VALUES = ['enabled', 'disabled', 'not_set'].freeze
-  def self.from_value(value)
-    value
+  # Defines the CodeSecurityConfigurationCodeScanningDefaultSetupOptionsRunnerType SDK namespace.
+  module CodeSecurityConfigurationCodeScanningDefaultSetupOptionsRunnerType
+    STANDARD = 'standard'
+    LABELED = 'labeled'
+    NOT_SET = 'not_set'
+    VALUES = %w[standard labeled not_set].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the CodeSecurityConfigurationDependencyGraph SDK namespace.
-module CodeSecurityConfigurationDependencyGraph
-  ENABLED = 'enabled'
-  DISABLED = 'disabled'
-  NOT_SET = 'not_set'
-  VALUES = ['enabled', 'disabled', 'not_set'].freeze
-  def self.from_value(value)
-    value
+  # Defines the CodeSecurityConfigurationCodeScanningDelegatedAlertDismissal SDK namespace.
+  module CodeSecurityConfigurationCodeScanningDelegatedAlertDismissal
+    ENABLED = 'enabled'
+    DISABLED = 'disabled'
+    NOT_SET = 'not_set'
+    VALUES = %w[enabled disabled not_set].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the CodeSecurityConfigurationDependencyGraphAutosubmitAction SDK namespace.
-module CodeSecurityConfigurationDependencyGraphAutosubmitAction
-  ENABLED = 'enabled'
-  DISABLED = 'disabled'
-  NOT_SET = 'not_set'
-  VALUES = ['enabled', 'disabled', 'not_set'].freeze
-  def self.from_value(value)
-    value
+  # Defines the CodeSecurityConfigurationDependabotAlerts SDK namespace.
+  module CodeSecurityConfigurationDependabotAlerts
+    ENABLED = 'enabled'
+    DISABLED = 'disabled'
+    NOT_SET = 'not_set'
+    VALUES = %w[enabled disabled not_set].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the CodeSecurityConfigurationEnforcement SDK namespace.
-module CodeSecurityConfigurationEnforcement
-  ENFORCED = 'enforced'
-  UNENFORCED = 'unenforced'
-  ENTERPRISE_ENFORCED = 'enterprise_enforced'
-  VALUES = ['enforced', 'unenforced', 'enterprise_enforced'].freeze
-  def self.from_value(value)
-    value
+  # Defines the CodeSecurityConfigurationDependabotDelegatedAlertDismissal SDK namespace.
+  module CodeSecurityConfigurationDependabotDelegatedAlertDismissal
+    ENABLED = 'enabled'
+    DISABLED = 'disabled'
+    NOT_SET = 'not_set'
+    VALUES = %w[enabled disabled not_set].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the CodeSecurityConfigurationPrivateVulnerabilityReporting SDK namespace.
-module CodeSecurityConfigurationPrivateVulnerabilityReporting
-  ENABLED = 'enabled'
-  DISABLED = 'disabled'
-  NOT_SET = 'not_set'
-  VALUES = ['enabled', 'disabled', 'not_set'].freeze
-  def self.from_value(value)
-    value
+  # Defines the CodeSecurityConfigurationDependabotSecurityUpdates SDK namespace.
+  module CodeSecurityConfigurationDependabotSecurityUpdates
+    ENABLED = 'enabled'
+    DISABLED = 'disabled'
+    NOT_SET = 'not_set'
+    VALUES = %w[enabled disabled not_set].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the CodeSecurityConfigurationSecretScanning SDK namespace.
-module CodeSecurityConfigurationSecretScanning
-  ENABLED = 'enabled'
-  DISABLED = 'disabled'
-  NOT_SET = 'not_set'
-  VALUES = ['enabled', 'disabled', 'not_set'].freeze
-  def self.from_value(value)
-    value
+  # Defines the CodeSecurityConfigurationDependencyGraph SDK namespace.
+  module CodeSecurityConfigurationDependencyGraph
+    ENABLED = 'enabled'
+    DISABLED = 'disabled'
+    NOT_SET = 'not_set'
+    VALUES = %w[enabled disabled not_set].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the CodeSecurityConfigurationSecretScanningDelegatedAlertDismissal SDK namespace.
-module CodeSecurityConfigurationSecretScanningDelegatedAlertDismissal
-  ENABLED = 'enabled'
-  DISABLED = 'disabled'
-  NOT_SET = 'not_set'
-  VALUES = ['enabled', 'disabled', 'not_set'].freeze
-  def self.from_value(value)
-    value
+  # Defines the CodeSecurityConfigurationDependencyGraphAutosubmitAction SDK namespace.
+  module CodeSecurityConfigurationDependencyGraphAutosubmitAction
+    ENABLED = 'enabled'
+    DISABLED = 'disabled'
+    NOT_SET = 'not_set'
+    VALUES = %w[enabled disabled not_set].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the CodeSecurityConfigurationSecretScanningDelegatedBypass SDK namespace.
-module CodeSecurityConfigurationSecretScanningDelegatedBypass
-  ENABLED = 'enabled'
-  DISABLED = 'disabled'
-  NOT_SET = 'not_set'
-  VALUES = ['enabled', 'disabled', 'not_set'].freeze
-  def self.from_value(value)
-    value
+  # Defines the CodeSecurityConfigurationEnforcement SDK namespace.
+  module CodeSecurityConfigurationEnforcement
+    ENFORCED = 'enforced'
+    UNENFORCED = 'unenforced'
+    ENTERPRISE_ENFORCED = 'enterprise_enforced'
+    VALUES = %w[enforced unenforced enterprise_enforced].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsXf8ee57ead4 SDK namespace.
-module CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsXf8ee57ead4
-  ALWAYS = 'ALWAYS'
-  EXEMPT = 'EXEMPT'
-  VALUES = ['ALWAYS', 'EXEMPT'].freeze
-  def self.from_value(value)
-    value
+  # Defines the CodeSecurityConfigurationPrivateVulnerabilityReporting SDK namespace.
+  module CodeSecurityConfigurationPrivateVulnerabilityReporting
+    ENABLED = 'enabled'
+    DISABLED = 'disabled'
+    NOT_SET = 'not_set'
+    VALUES = %w[enabled disabled not_set].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsX3255ac35ec SDK namespace.
-module CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsX3255ac35ec
-  TEAM = 'TEAM'
-  ROLE = 'ROLE'
-  VALUES = ['TEAM', 'ROLE'].freeze
-  def self.from_value(value)
-    value
+  # Defines the CodeSecurityConfigurationSecretScanning SDK namespace.
+  module CodeSecurityConfigurationSecretScanning
+    ENABLED = 'enabled'
+    DISABLED = 'disabled'
+    NOT_SET = 'not_set'
+    VALUES = %w[enabled disabled not_set].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the CodeSecurityConfigurationSecretScanningExtendedMetadata SDK namespace.
-module CodeSecurityConfigurationSecretScanningExtendedMetadata
-  ENABLED = 'enabled'
-  DISABLED = 'disabled'
-  NOT_SET = 'not_set'
-  VALUES = ['enabled', 'disabled', 'not_set'].freeze
-  def self.from_value(value)
-    value
+  # Defines the CodeSecurityConfigurationSecretScanningDelegatedAlertDismissal SDK namespace.
+  module CodeSecurityConfigurationSecretScanningDelegatedAlertDismissal
+    ENABLED = 'enabled'
+    DISABLED = 'disabled'
+    NOT_SET = 'not_set'
+    VALUES = %w[enabled disabled not_set].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the CodeSecurityConfigurationSecretScanningGenericSecrets SDK namespace.
-module CodeSecurityConfigurationSecretScanningGenericSecrets
-  ENABLED = 'enabled'
-  DISABLED = 'disabled'
-  NOT_SET = 'not_set'
-  VALUES = ['enabled', 'disabled', 'not_set'].freeze
-  def self.from_value(value)
-    value
+  # Defines the CodeSecurityConfigurationSecretScanningDelegatedBypass SDK namespace.
+  module CodeSecurityConfigurationSecretScanningDelegatedBypass
+    ENABLED = 'enabled'
+    DISABLED = 'disabled'
+    NOT_SET = 'not_set'
+    VALUES = %w[enabled disabled not_set].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
+
+  # Defines the CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsXf8ee57ead4 SDK namespace.
+  module CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsXf8ee57ead4
+    ALWAYS = 'ALWAYS'
+    EXEMPT = 'EXEMPT'
+    VALUES = %w[ALWAYS EXEMPT].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Defines the CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsX3255ac35ec SDK namespace.
+  module CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsX3255ac35ec
+    TEAM = 'TEAM'
+    ROLE = 'ROLE'
+    VALUES = %w[TEAM ROLE].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Defines the CodeSecurityConfigurationSecretScanningExtendedMetadata SDK namespace.
+  module CodeSecurityConfigurationSecretScanningExtendedMetadata
+    ENABLED = 'enabled'
+    DISABLED = 'disabled'
+    NOT_SET = 'not_set'
+    VALUES = %w[enabled disabled not_set].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Defines the CodeSecurityConfigurationSecretScanningGenericSecrets SDK namespace.
+  module CodeSecurityConfigurationSecretScanningGenericSecrets
+    ENABLED = 'enabled'
+    DISABLED = 'disabled'
+    NOT_SET = 'not_set'
+    VALUES = %w[enabled disabled not_set].freeze
+    def self.from_value(value)
+      value
+    end
+  end
 end

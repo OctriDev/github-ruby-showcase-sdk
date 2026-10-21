@@ -55,17 +55,16 @@ module OctridevGithub
         head_sha: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.if_given(created) { Validation.validate_date_time('created', created) }
 
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runs"
+            '/actions/runs'
           ].join,
           config: config,
           query: {
@@ -78,12 +77,12 @@ module OctridevGithub
             'created' => QueryValue.new(created, style: 'form', explode: true),
             'exclude_pull_requests' => QueryValue.new(exclude_pull_requests, style: 'form', explode: true),
             'check_suite_id' => QueryValue.new(check_suite_id, style: 'form', explode: true),
-            'head_sha' => QueryValue.new(head_sha, style: 'form', explode: true),
+            'head_sha' => QueryValue.new(head_sha, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Actions::ActionsListWorkflowRunsForRepoResponse,
           decoder: :json,
           operation_id: 'actions_list_workflow_runs_for_repo',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

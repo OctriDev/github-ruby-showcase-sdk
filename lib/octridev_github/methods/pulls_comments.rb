@@ -36,17 +36,16 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.if_given(since) { Validation.validate_date_time('since', since) }
 
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pulls/comments"
+            '/pulls/comments'
           ].join,
           config: config,
           query: {
@@ -54,12 +53,12 @@ module OctridevGithub
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'since' => QueryValue.new(since, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::PullRequestReviewComment],
           decoder: :json,
           operation_id: 'pulls_list_review_comments_for_repo',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -77,15 +76,14 @@ module OctridevGithub
         comment_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pulls/comments/",
+            '/pulls/comments/',
             SdkClient.encode_path_segment(comment_id)
           ].join,
           config: config,
@@ -93,7 +91,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'pulls_get_review_comment',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -113,25 +111,24 @@ module OctridevGithub
         body:,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pulls/comments/",
+            '/pulls/comments/',
             SdkClient.encode_path_segment(comment_id)
           ].join,
           config: config,
           body: {
-            'body' => body,
+            'body' => body
           },
           return_type: ::OctridevGithub::PullRequestReviewComment,
           decoder: :json,
           operation_id: 'pulls_update_review_comment',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -151,22 +148,21 @@ module OctridevGithub
         comment_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pulls/comments/",
+            '/pulls/comments/',
             SdkClient.encode_path_segment(comment_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'pulls_delete_review_comment',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -198,19 +194,18 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.if_given(since) { Validation.validate_date_time('since', since) }
 
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pulls/",
+            '/pulls/',
             SdkClient.encode_path_segment(pull_number),
-            "/comments"
+            '/comments'
           ].join,
           config: config,
           query: {
@@ -218,12 +213,12 @@ module OctridevGithub
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'since' => QueryValue.new(since, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::PullRequestReviewComment],
           decoder: :json,
           operation_id: 'pulls_list_review_comments',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -291,17 +286,16 @@ module OctridevGithub
         subject_type: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pulls/",
+            '/pulls/',
             SdkClient.encode_path_segment(pull_number),
-            "/comments"
+            '/comments'
           ].join,
           config: config,
           body: {
@@ -314,13 +308,13 @@ module OctridevGithub
             'start_line' => start_line,
             'start_side' => start_side,
             'in_reply_to' => in_reply_to,
-            'subject_type' => subject_type,
+            'subject_type' => subject_type
           },
           return_type: ::OctridevGithub::PullRequestReviewComment,
           decoder: :json,
           operation_id: 'pulls_create_review_comment',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -342,29 +336,28 @@ module OctridevGithub
         body:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/pulls/",
+            '/pulls/',
             SdkClient.encode_path_segment(pull_number),
-            "/comments/",
+            '/comments/',
             SdkClient.encode_path_segment(comment_id),
-            "/replies"
+            '/replies'
           ].join,
           config: config,
           body: {
-            'body' => body,
+            'body' => body
           },
           return_type: ::OctridevGithub::PullRequestReviewComment,
           decoder: :json,
           operation_id: 'pulls_create_reply_for_review_comment',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

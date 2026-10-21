@@ -24,23 +24,22 @@ module OctridevGithub
         branch:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/branches/",
+            '/branches/',
             SdkClient.encode_path_segment(branch),
-            "/protection/required_status_checks/contexts"
+            '/protection/required_status_checks/contexts'
           ].join,
           config: config,
           decoder: :json,
           operation_id: 'repos_get_all_status_check_contexts',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

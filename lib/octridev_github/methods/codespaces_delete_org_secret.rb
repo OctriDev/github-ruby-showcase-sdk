@@ -19,20 +19,19 @@ module OctridevGithub
         secret_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/codespaces/secrets/",
+            '/codespaces/secrets/',
             SdkClient.encode_path_segment(secret_name)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'codespaces_delete_org_secret',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

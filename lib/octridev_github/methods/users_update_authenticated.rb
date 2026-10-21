@@ -31,10 +31,9 @@ module OctridevGithub
         bio: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
-          "/user",
+          '/user',
           config: config,
           body: {
             'name' => name,
@@ -44,13 +43,13 @@ module OctridevGithub
             'company' => company,
             'location' => location,
             'hireable' => hireable,
-            'bio' => bio,
+            'bio' => bio
           },
           return_type: ::OctridevGithub::PrivateUser,
           decoder: :json,
           operation_id: 'users_update_authenticated',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
     end

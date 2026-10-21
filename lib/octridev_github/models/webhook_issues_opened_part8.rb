@@ -5,84 +5,84 @@
 
 # webhook_issues_opened domain models (part 8)
 module OctridevGithub
-# Defines the WebhookIssuesOpenedIssuePerformedViaGithubAppPermissionsSecurityEvents SDK namespace.
-module WebhookIssuesOpenedIssuePerformedViaGithubAppPermissionsSecurityEvents
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesOpenedIssuePerformedViaGithubAppPermissionsSecurityEvents SDK namespace.
+  module WebhookIssuesOpenedIssuePerformedViaGithubAppPermissionsSecurityEvents
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesOpenedIssuePerformedViaGithubAppPermissionsSecurXc60885b844 SDK namespace.
-module WebhookIssuesOpenedIssuePerformedViaGithubAppPermissionsSecurXc60885b844
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesOpenedIssuePerformedViaGithubAppPermissionsSecurXc60885b844 SDK namespace.
+  module WebhookIssuesOpenedIssuePerformedViaGithubAppPermissionsSecurXc60885b844
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesOpenedIssuePerformedViaGithubAppPermissionsSingleFile SDK namespace.
-module WebhookIssuesOpenedIssuePerformedViaGithubAppPermissionsSingleFile
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesOpenedIssuePerformedViaGithubAppPermissionsSingleFile SDK namespace.
+  module WebhookIssuesOpenedIssuePerformedViaGithubAppPermissionsSingleFile
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesOpenedIssuePerformedViaGithubAppPermissionsStatuses SDK namespace.
-module WebhookIssuesOpenedIssuePerformedViaGithubAppPermissionsStatuses
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesOpenedIssuePerformedViaGithubAppPermissionsStatuses SDK namespace.
+  module WebhookIssuesOpenedIssuePerformedViaGithubAppPermissionsStatuses
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesOpenedIssuePerformedViaGithubAppPermissionsVulneXad5beb3f53 SDK namespace.
-module WebhookIssuesOpenedIssuePerformedViaGithubAppPermissionsVulneXad5beb3f53
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesOpenedIssuePerformedViaGithubAppPermissionsVulneXad5beb3f53 SDK namespace.
+  module WebhookIssuesOpenedIssuePerformedViaGithubAppPermissionsVulneXad5beb3f53
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesOpenedIssuePerformedViaGithubAppPermissionsWorkflows SDK namespace.
-module WebhookIssuesOpenedIssuePerformedViaGithubAppPermissionsWorkflows
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesOpenedIssuePerformedViaGithubAppPermissionsWorkflows SDK namespace.
+  module WebhookIssuesOpenedIssuePerformedViaGithubAppPermissionsWorkflows
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesOpenedIssueState SDK namespace.
-module WebhookIssuesOpenedIssueState
-  OPEN = 'open'
-  CLOSED = 'closed'
-  VALUES = ['open', 'closed'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesOpenedIssueState SDK namespace.
+  module WebhookIssuesOpenedIssueState
+    OPEN = 'open'
+    CLOSED = 'closed'
+    VALUES = %w[open closed].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesOpenedIssueUserType SDK namespace.
-module WebhookIssuesOpenedIssueUserType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesOpenedIssueUserType SDK namespace.
+  module WebhookIssuesOpenedIssueUserType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 end

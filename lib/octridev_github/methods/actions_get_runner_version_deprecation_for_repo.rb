@@ -23,22 +23,21 @@ module OctridevGithub
         version:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runners/deprecations/",
+            '/actions/runners/deprecations/',
             SdkClient.encode_path_segment(version)
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::Actions::ActionsGetRunnerVersionDeprecationForRepoResponse,
           decoder: :json,
           operation_id: 'actions_get_runner_version_deprecation_for_repo',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

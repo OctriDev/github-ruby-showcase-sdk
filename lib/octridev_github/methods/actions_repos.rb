@@ -31,27 +31,26 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name),
-            "/secrets"
+            '/secrets'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Actions::ActionsListEnvironmentSecretsResponse,
           decoder: :json,
           operation_id: 'actions_list_environment_secrets',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -71,23 +70,22 @@ module OctridevGithub
         environment_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name),
-            "/secrets/public-key"
+            '/secrets/public-key'
           ].join,
           config: config,
           return_type: ::OctridevGithub::ActionsPublicKey,
           decoder: :json,
           operation_id: 'actions_get_environment_public_key',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -109,24 +107,23 @@ module OctridevGithub
         secret_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name),
-            "/secrets/",
+            '/secrets/',
             SdkClient.encode_path_segment(secret_name)
           ].join,
           config: config,
           return_type: ::OctridevGithub::ActionsSecret,
           decoder: :json,
           operation_id: 'actions_get_environment_secret',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -154,30 +151,29 @@ module OctridevGithub
         key_id:,
         request_options: nil
       )
-
         Validation.validate_pattern('encrypted_value', encrypted_value, '^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$')
 
         SdkClient.request(
           'PUT',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name),
-            "/secrets/",
+            '/secrets/',
             SdkClient.encode_path_segment(secret_name)
           ].join,
           config: config,
           body: {
             'encrypted_value' => encrypted_value,
-            'key_id' => key_id,
+            'key_id' => key_id
           },
           return_type: ::OctridevGithub::EmptyObject,
           decoder: :json,
           operation_id: 'actions_create_or_update_environment_secret',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -199,23 +195,22 @@ module OctridevGithub
         secret_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name),
-            "/secrets/",
+            '/secrets/',
             SdkClient.encode_path_segment(secret_name)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'actions_delete_environment_secret',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -241,27 +236,26 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name),
-            "/variables"
+            '/variables'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Actions::ActionsListEnvironmentVariablesResponse,
           decoder: :json,
           operation_id: 'actions_list_environment_variables',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -285,27 +279,26 @@ module OctridevGithub
         value:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name),
-            "/variables"
+            '/variables'
           ].join,
           config: config,
           body: {
             'name' => name,
-            'value' => value,
+            'value' => value
           },
           return_type: ::OctridevGithub::EmptyObject,
           decoder: :json,
           operation_id: 'actions_create_environment_variable',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -327,24 +320,23 @@ module OctridevGithub
         name:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name),
-            "/variables/",
+            '/variables/',
             SdkClient.encode_path_segment(name)
           ].join,
           config: config,
           return_type: ::OctridevGithub::ActionsVariable,
           decoder: :json,
           operation_id: 'actions_get_environment_variable',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -370,27 +362,26 @@ module OctridevGithub
         value: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name),
-            "/variables/",
+            '/variables/',
             SdkClient.encode_path_segment(name)
           ].join,
           config: config,
           body: {
             'name' => name2,
-            'value' => value,
+            'value' => value
           },
           decoder: :empty,
           operation_id: 'actions_update_environment_variable',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -412,23 +403,22 @@ module OctridevGithub
         environment_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name),
-            "/variables/",
+            '/variables/',
             SdkClient.encode_path_segment(name)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'actions_delete_environment_variable',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

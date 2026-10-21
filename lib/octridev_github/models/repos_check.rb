@@ -5,85 +5,83 @@
 
 # repos_check domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalCheckAutomatedSecurityFixesMetadata
-  FIELDS = {
-    enabled: "enabled",
-    paused: "paused",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    enabled
-    paused
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for CheckAutomatedSecurityFixes.
-# Check Dependabot security updates
-class CheckAutomatedSecurityFixes
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalCheckAutomatedSecurityFixesMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalCheckAutomatedSecurityFixesMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalCheckAutomatedSecurityFixesMetadata::DECODERS
-
-  # @return [Boolean] Whether Dependabot security updates are enabled for the repository.
-  attr_reader :enabled
-  # @return [Boolean] Whether Dependabot security updates are paused for the repository.
-  attr_reader :paused
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalCheckAutomatedSecurityFixesMetadata
+    FIELDS = {
+      enabled: 'enabled',
+      paused: 'paused'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      enabled
+      paused
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for CheckAutomatedSecurityFixes.
+  # Check Dependabot security updates
+  class CheckAutomatedSecurityFixes
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalCheckAutomatedSecurityFixesMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalCheckAutomatedSecurityFixesMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalCheckAutomatedSecurityFixesMetadata::DECODERS
+
+    # @return [Boolean] Whether Dependabot security updates are enabled for the repository.
+    attr_reader :enabled
+    # @return [Boolean] Whether Dependabot security updates are paused for the repository.
+    attr_reader :paused
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalCheckImmutableReleasesMetadata
-  FIELDS = {
-    enabled: "enabled",
-    enforced_by_owner: "enforced_by_owner",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    enabled
-    enforced_by_owner
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for CheckImmutableReleases.
-# Check immutable releases
-class CheckImmutableReleases
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalCheckImmutableReleasesMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalCheckImmutableReleasesMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalCheckImmutableReleasesMetadata::DECODERS
-
-  # @return [Boolean] Whether immutable releases are enabled for the repository.
-  attr_reader :enabled
-  # @return [Boolean] Whether immutable releases are enforced by the repository owner.
-  attr_reader :enforced_by_owner
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalCheckImmutableReleasesMetadata
+    FIELDS = {
+      enabled: 'enabled',
+      enforced_by_owner: 'enforced_by_owner'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      enabled
+      enforced_by_owner
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
+  # API model for CheckImmutableReleases.
+  # Check immutable releases
+  class CheckImmutableReleases
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalCheckImmutableReleasesMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalCheckImmutableReleasesMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalCheckImmutableReleasesMetadata::DECODERS
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+    # @return [Boolean] Whether immutable releases are enabled for the repository.
+    attr_reader :enabled
+    # @return [Boolean] Whether immutable releases are enforced by the repository owner.
+    attr_reader :enforced_by_owner
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
 end

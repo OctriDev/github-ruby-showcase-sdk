@@ -5,326 +5,326 @@
 
 # webhook_workflow_job_in_progress domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalWebhookWorkflowJobInProgressWorkflowJobStepsItemMetadata
-  FIELDS = {
-    completed_at: "completed_at",
-    conclusion: "conclusion",
-    name: "name",
-    number: "number",
-    started_at: "started_at",
-    status: "status",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    completed_at
-    conclusion
-    name
-    number
-    started_at
-    status
-  ].freeze
-  DECODERS = {
-    status: lambda do |value|
-      ::OctridevGithub::WebhookWorkflowJobInProgressWorkflowJobStepsItemStatus.from_value(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    completed_at
-    conclusion
-    started_at
-  ].freeze
-end
-
-# API model for WebhookWorkflowJobInProgressWorkflowJobStepsItem.
-# Required object value serialized in the `steps[]` wire field.
-class WebhookWorkflowJobInProgressWorkflowJobStepsItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookWorkflowJobInProgressWorkflowJobStepsItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookWorkflowJobInProgressWorkflowJobStepsItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookWorkflowJobInProgressWorkflowJobStepsItemMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `completed_at` wire field.
-  attr_reader :completed_at
-  # @return [String] Required `string` value serialized in the `conclusion` wire field.
-  attr_reader :conclusion
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [Integer] Required `integer` value serialized in the `number` wire field.
-  attr_reader :number
-  # @return [String] Required `string` value serialized in the `started_at` wire field.
-  attr_reader :started_at
-  # @return [WebhookWorkflowJobInProgressWorkflowJobStepsItemStatus] Required enumerated value serialized in the `status` wire field.
-  attr_reader :status
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookWorkflowJobInProgressWorkflowJobStepsItemMetadata
+    FIELDS = {
+      completed_at: 'completed_at',
+      conclusion: 'conclusion',
+      name: 'name',
+      number: 'number',
+      started_at: 'started_at',
+      status: 'status'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      completed_at
+      conclusion
+      name
+      number
+      started_at
+      status
+    ].freeze
+    DECODERS = {
+      status: lambda do |value|
+        ::OctridevGithub::WebhookWorkflowJobInProgressWorkflowJobStepsItemStatus.from_value(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      completed_at
+      conclusion
+      started_at
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookWorkflowJobInProgressWorkflowJobStepsItemMetadata::NULLABLE_FIELDS)
+  # API model for WebhookWorkflowJobInProgressWorkflowJobStepsItem.
+  # Required object value serialized in the `steps[]` wire field.
+  class WebhookWorkflowJobInProgressWorkflowJobStepsItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookWorkflowJobInProgressWorkflowJobStepsItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookWorkflowJobInProgressWorkflowJobStepsItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookWorkflowJobInProgressWorkflowJobStepsItemMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `completed_at` wire field.
+    attr_reader :completed_at
+    # @return [String] Required `string` value serialized in the `conclusion` wire field.
+    attr_reader :conclusion
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [Integer] Required `integer` value serialized in the `number` wire field.
+    attr_reader :number
+    # @return [String] Required `string` value serialized in the `started_at` wire field.
+    attr_reader :started_at
+    # @return [WebhookWorkflowJobInProgressWorkflowJobStepsItemStatus] Required enumerated value serialized in the `status` wire field.
+    attr_reader :status
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookWorkflowJobInProgressWorkflowJobStepsItemMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookWorkflowJobInProgressWorkflowJobMetadata
-  FIELDS = {
-    check_run_url: "check_run_url",
-    completed_at: "completed_at",
-    conclusion: "conclusion",
-    created_at: "created_at",
-    head_sha: "head_sha",
-    html_url: "html_url",
-    id: "id",
-    labels: "labels",
-    name: "name",
-    node_id: "node_id",
-    run_attempt: "run_attempt",
-    run_id: "run_id",
-    run_url: "run_url",
-    runner_group_id: "runner_group_id",
-    runner_group_name: "runner_group_name",
-    runner_id: "runner_id",
-    runner_name: "runner_name",
-    started_at: "started_at",
-    status: "status",
-    head_branch: "head_branch",
-    workflow_name: "workflow_name",
-    steps: "steps",
-    url: "url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    check_run_url
-    completed_at
-    conclusion
-    created_at
-    head_sha
-    html_url
-    id
-    labels
-    name
-    node_id
-    run_attempt
-    run_id
-    run_url
-    runner_group_id
-    runner_group_name
-    runner_id
-    runner_name
-    started_at
-    status
-    head_branch
-    workflow_name
-    steps
-    url
-  ].freeze
-  DECODERS = {
-    status: lambda do |value|
-      ::OctridevGithub::WebhookWorkflowJobInProgressWorkflowJobStatus.from_value(value)
-    end,
-    steps: lambda do |value|
-      value&.map { |item| ::OctridevGithub::WebhookWorkflowJobInProgressWorkflowJobStepsItem.from_hash(item) }
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    completed_at
-    conclusion
-    runner_group_id
-    runner_group_name
-    runner_id
-    runner_name
-    head_branch
-    workflow_name
-  ].freeze
-end
-
-# API model for WebhookWorkflowJobInProgressWorkflowJob.
-# Required object value serialized in the `workflow_job` wire field.
-class WebhookWorkflowJobInProgressWorkflowJob
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookWorkflowJobInProgressWorkflowJobMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookWorkflowJobInProgressWorkflowJobMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookWorkflowJobInProgressWorkflowJobMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `check_run_url` wire field.
-  attr_reader :check_run_url
-  # @return [String] Required `string` value serialized in the `completed_at` wire field.
-  attr_reader :completed_at
-  # @return [String] Required `string` value serialized in the `conclusion` wire field.
-  attr_reader :conclusion
-  # @return [String] The time that the job created.
-  attr_reader :created_at
-  # @return [String] Required `string` value serialized in the `head_sha` wire field.
-  attr_reader :head_sha
-  # @return [String] Required `string` value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [Array_of_String] Required array value serialized in the `labels` wire field.
-  attr_reader :labels
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [Integer] Required `integer` value serialized in the `run_attempt` wire field.
-  attr_reader :run_attempt
-  # @return [Integer] Required `integer` value serialized in the `run_id` wire field.
-  attr_reader :run_id
-  # @return [String] Required `string` value serialized in the `run_url` wire field.
-  attr_reader :run_url
-  # @return [Float] Required `number` value serialized in the `runner_group_id` wire field.
-  attr_reader :runner_group_id
-  # @return [String] Required `string` value serialized in the `runner_group_name` wire field.
-  attr_reader :runner_group_name
-  # @return [Float] Required `number` value serialized in the `runner_id` wire field.
-  attr_reader :runner_id
-  # @return [String] Required `string` value serialized in the `runner_name` wire field.
-  attr_reader :runner_name
-  # @return [String] Required `string` value serialized in the `started_at` wire field.
-  attr_reader :started_at
-  # @return [WebhookWorkflowJobInProgressWorkflowJobStatus] Required enumerated value serialized in the `status` wire field.
-  attr_reader :status
-  # @return [String] The name of the current branch.
-  attr_reader :head_branch
-  # @return [String] The name of the workflow.
-  attr_reader :workflow_name
-  # @return [Array_of_WebhookWorkflowJobInProgressWorkflowJobStepsItem] Required array value serialized in the `steps` wire field.
-  attr_reader :steps
-  # @return [String] Required `string` value serialized in the `url` wire field.
-  attr_reader :url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookWorkflowJobInProgressWorkflowJobMetadata
+    FIELDS = {
+      check_run_url: 'check_run_url',
+      completed_at: 'completed_at',
+      conclusion: 'conclusion',
+      created_at: 'created_at',
+      head_sha: 'head_sha',
+      html_url: 'html_url',
+      id: 'id',
+      labels: 'labels',
+      name: 'name',
+      node_id: 'node_id',
+      run_attempt: 'run_attempt',
+      run_id: 'run_id',
+      run_url: 'run_url',
+      runner_group_id: 'runner_group_id',
+      runner_group_name: 'runner_group_name',
+      runner_id: 'runner_id',
+      runner_name: 'runner_name',
+      started_at: 'started_at',
+      status: 'status',
+      head_branch: 'head_branch',
+      workflow_name: 'workflow_name',
+      steps: 'steps',
+      url: 'url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      check_run_url
+      completed_at
+      conclusion
+      created_at
+      head_sha
+      html_url
+      id
+      labels
+      name
+      node_id
+      run_attempt
+      run_id
+      run_url
+      runner_group_id
+      runner_group_name
+      runner_id
+      runner_name
+      started_at
+      status
+      head_branch
+      workflow_name
+      steps
+      url
+    ].freeze
+    DECODERS = {
+      status: lambda do |value|
+        ::OctridevGithub::WebhookWorkflowJobInProgressWorkflowJobStatus.from_value(value)
+      end,
+      steps: lambda do |value|
+        value&.map { |item| ::OctridevGithub::WebhookWorkflowJobInProgressWorkflowJobStepsItem.from_hash(item) }
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      completed_at
+      conclusion
+      runner_group_id
+      runner_group_name
+      runner_id
+      runner_name
+      head_branch
+      workflow_name
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookWorkflowJobInProgressWorkflowJobMetadata::NULLABLE_FIELDS)
+  # API model for WebhookWorkflowJobInProgressWorkflowJob.
+  # Required object value serialized in the `workflow_job` wire field.
+  class WebhookWorkflowJobInProgressWorkflowJob
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookWorkflowJobInProgressWorkflowJobMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookWorkflowJobInProgressWorkflowJobMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookWorkflowJobInProgressWorkflowJobMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `check_run_url` wire field.
+    attr_reader :check_run_url
+    # @return [String] Required `string` value serialized in the `completed_at` wire field.
+    attr_reader :completed_at
+    # @return [String] Required `string` value serialized in the `conclusion` wire field.
+    attr_reader :conclusion
+    # @return [String] The time that the job created.
+    attr_reader :created_at
+    # @return [String] Required `string` value serialized in the `head_sha` wire field.
+    attr_reader :head_sha
+    # @return [String] Required `string` value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [Array_of_String] Required array value serialized in the `labels` wire field.
+    attr_reader :labels
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [Integer] Required `integer` value serialized in the `run_attempt` wire field.
+    attr_reader :run_attempt
+    # @return [Integer] Required `integer` value serialized in the `run_id` wire field.
+    attr_reader :run_id
+    # @return [String] Required `string` value serialized in the `run_url` wire field.
+    attr_reader :run_url
+    # @return [Float] Required `number` value serialized in the `runner_group_id` wire field.
+    attr_reader :runner_group_id
+    # @return [String] Required `string` value serialized in the `runner_group_name` wire field.
+    attr_reader :runner_group_name
+    # @return [Float] Required `number` value serialized in the `runner_id` wire field.
+    attr_reader :runner_id
+    # @return [String] Required `string` value serialized in the `runner_name` wire field.
+    attr_reader :runner_name
+    # @return [String] Required `string` value serialized in the `started_at` wire field.
+    attr_reader :started_at
+    # @return [WebhookWorkflowJobInProgressWorkflowJobStatus] Required enumerated value serialized in the `status` wire field.
+    attr_reader :status
+    # @return [String] The name of the current branch.
+    attr_reader :head_branch
+    # @return [String] The name of the workflow.
+    attr_reader :workflow_name
+    # @return [Array_of_WebhookWorkflowJobInProgressWorkflowJobStepsItem] Required array value serialized in the `steps` wire field.
+    attr_reader :steps
+    # @return [String] Required `string` value serialized in the `url` wire field.
+    attr_reader :url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookWorkflowJobInProgressWorkflowJobMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookWorkflowJobInProgressMetadata
-  FIELDS = {
-    action: "action",
-    enterprise: "enterprise",
-    installation: "installation",
-    organization: "organization",
-    repository: "repository",
-    sender: "sender",
-    workflow_job: "workflow_job",
-    deployment: "deployment",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    action
-    repository
-    sender
-    workflow_job
-  ].freeze
-  DECODERS = {
-    action: lambda do |value|
-      ::OctridevGithub::WebhookWorkflowJobInProgressAction.from_value(value)
-    end,
-    enterprise: lambda do |value|
-      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-    end,
-    installation: lambda do |value|
-      ::OctridevGithub::SimpleInstallation.from_hash(value)
-    end,
-    organization: lambda do |value|
-      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-    end,
-    repository: lambda do |value|
-      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-    end,
-    sender: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-    workflow_job: lambda do |value|
-      ::OctridevGithub::WebhookWorkflowJobInProgressWorkflowJob.from_hash(value)
-    end,
-    deployment: lambda do |value|
-      ::OctridevGithub::Deployment.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookWorkflowJobInProgress.
-# Typed representation of the `WebhookWorkflowJobInProgress` API schema.
-class WebhookWorkflowJobInProgress
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookWorkflowJobInProgressMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookWorkflowJobInProgressMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookWorkflowJobInProgressMetadata::DECODERS
-
-  # @return [WebhookWorkflowJobInProgressAction] Required enumerated value serialized in the `action` wire field.
-  attr_reader :action
-  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-  attr_reader :enterprise
-  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-  attr_reader :installation
-  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-  attr_reader :organization
-  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-  attr_reader :repository
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :sender
-  # @return [WebhookWorkflowJobInProgressWorkflowJob] Required object value serialized in the `workflow_job` wire field.
-  attr_reader :workflow_job
-  # @return [Deployment] A request for a specific ref(branch,sha,tag) to be deployed
-  attr_reader :deployment
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookWorkflowJobInProgressMetadata
+    FIELDS = {
+      action: 'action',
+      enterprise: 'enterprise',
+      installation: 'installation',
+      organization: 'organization',
+      repository: 'repository',
+      sender: 'sender',
+      workflow_job: 'workflow_job',
+      deployment: 'deployment'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      action
+      repository
+      sender
+      workflow_job
+    ].freeze
+    DECODERS = {
+      action: lambda do |value|
+        ::OctridevGithub::WebhookWorkflowJobInProgressAction.from_value(value)
+      end,
+      enterprise: lambda do |value|
+        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+      end,
+      installation: lambda do |value|
+        ::OctridevGithub::SimpleInstallation.from_hash(value)
+      end,
+      organization: lambda do |value|
+        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+      end,
+      repository: lambda do |value|
+        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+      end,
+      sender: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end,
+      workflow_job: lambda do |value|
+        ::OctridevGithub::WebhookWorkflowJobInProgressWorkflowJob.from_hash(value)
+      end,
+      deployment: lambda do |value|
+        ::OctridevGithub::Deployment.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookWorkflowJobInProgress.
+  # Typed representation of the `WebhookWorkflowJobInProgress` API schema.
+  class WebhookWorkflowJobInProgress
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookWorkflowJobInProgressMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookWorkflowJobInProgressMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookWorkflowJobInProgressMetadata::DECODERS
+
+    # @return [WebhookWorkflowJobInProgressAction] Required enumerated value serialized in the `action` wire field.
+    attr_reader :action
+    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+    attr_reader :enterprise
+    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+    attr_reader :installation
+    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+    attr_reader :organization
+    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+    attr_reader :repository
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :sender
+    # @return [WebhookWorkflowJobInProgressWorkflowJob] Required object value serialized in the `workflow_job` wire field.
+    attr_reader :workflow_job
+    # @return [Deployment] A request for a specific ref(branch,sha,tag) to be deployed
+    attr_reader :deployment
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the WebhookWorkflowJobInProgressAction SDK namespace.
+  module WebhookWorkflowJobInProgressAction
+    IN_PROGRESS = 'in_progress'
+    VALUES = ['in_progress'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookWorkflowJobInProgressAction SDK namespace.
-module WebhookWorkflowJobInProgressAction
-  IN_PROGRESS = 'in_progress'
-  VALUES = ['in_progress'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookWorkflowJobInProgressWorkflowJobStatus SDK namespace.
+  module WebhookWorkflowJobInProgressWorkflowJobStatus
+    IN_PROGRESS = 'in_progress'
+    COMPLETED = 'completed'
+    QUEUED = 'queued'
+    VALUES = %w[in_progress completed queued].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookWorkflowJobInProgressWorkflowJobStatus SDK namespace.
-module WebhookWorkflowJobInProgressWorkflowJobStatus
-  IN_PROGRESS = 'in_progress'
-  COMPLETED = 'completed'
-  QUEUED = 'queued'
-  VALUES = ['in_progress', 'completed', 'queued'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookWorkflowJobInProgressWorkflowJobStepsItemStatus SDK namespace.
+  module WebhookWorkflowJobInProgressWorkflowJobStepsItemStatus
+    IN_PROGRESS = 'in_progress'
+    COMPLETED = 'completed'
+    PENDING = 'pending'
+    QUEUED = 'queued'
+    VALUES = %w[in_progress completed pending queued].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the WebhookWorkflowJobInProgressWorkflowJobStepsItemStatus SDK namespace.
-module WebhookWorkflowJobInProgressWorkflowJobStepsItemStatus
-  IN_PROGRESS = 'in_progress'
-  COMPLETED = 'completed'
-  PENDING = 'pending'
-  QUEUED = 'queued'
-  VALUES = ['in_progress', 'completed', 'pending', 'queued'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

@@ -24,25 +24,24 @@ module OctridevGithub
         bundle:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/attestations"
+            '/attestations'
           ].join,
           config: config,
           body: {
-            'bundle' => bundle,
+            'bundle' => bundle
           },
           return_type: ::OctridevGithub::Methods::Repos::ReposCreateAttestationResponse,
           decoder: :json,
           operation_id: 'repos_create_attestation',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -76,15 +75,14 @@ module OctridevGithub
         predicate_type: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/attestations/",
+            '/attestations/',
             SdkClient.encode_path_segment(subject_digest)
           ].join,
           config: config,
@@ -92,12 +90,12 @@ module OctridevGithub
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'before' => QueryValue.new(before, style: 'form', explode: true),
             'after' => QueryValue.new(after, style: 'form', explode: true),
-            'predicate_type' => QueryValue.new(predicate_type, style: 'form', explode: true),
+            'predicate_type' => QueryValue.new(predicate_type, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Repos::ReposListAttestationsResponse,
           decoder: :json,
           operation_id: 'repos_list_attestations',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

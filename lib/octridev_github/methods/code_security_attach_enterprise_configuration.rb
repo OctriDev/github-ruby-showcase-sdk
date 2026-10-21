@@ -23,24 +23,23 @@ module OctridevGithub
         scope:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/enterprises/",
+            '/enterprises/',
             SdkClient.encode_path_segment(enterprise),
-            "/code-security/configurations/",
+            '/code-security/configurations/',
             SdkClient.encode_path_segment(configuration_id),
-            "/attach"
+            '/attach'
           ].join,
           config: config,
           body: {
-            'scope' => scope,
+            'scope' => scope
           },
           decoder: :json,
           operation_id: 'code_security_attach_enterprise_configuration',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple }
         ).data
       end
     end

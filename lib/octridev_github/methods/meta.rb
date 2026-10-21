@@ -14,15 +14,14 @@ module OctridevGithub
         config:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/",
+          '/',
           config: config,
           return_type: ::OctridevGithub::Root,
           decoder: :json,
           operation_id: 'meta_root',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -31,15 +30,14 @@ module OctridevGithub
         config:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/meta",
+          '/meta',
           config: config,
           return_type: ::OctridevGithub::ApiOverview,
           decoder: :json,
           operation_id: 'meta_get',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -53,17 +51,16 @@ module OctridevGithub
         s_value: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/octocat",
+          '/octocat',
           config: config,
           query: {
-            's' => QueryValue.new(s_value, style: 'form', explode: true),
+            's' => QueryValue.new(s_value, style: 'form', explode: true)
           },
           decoder: :text,
           operation_id: 'meta_get_octocat',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -74,15 +71,14 @@ module OctridevGithub
         config:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/versions",
+          '/versions',
           config: config,
           decoder: :json,
           operation_id: 'meta_get_all_versions',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -93,14 +89,13 @@ module OctridevGithub
         config:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/zen",
+          '/zen',
           config: config,
           decoder: :text,
           operation_id: 'meta_get_zen',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

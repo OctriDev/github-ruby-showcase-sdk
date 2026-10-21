@@ -23,22 +23,21 @@ module OctridevGithub
         selected_repository_ids:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/user/codespaces/secrets/",
+            '/user/codespaces/secrets/',
             SdkClient.encode_path_segment(secret_name),
-            "/repositories"
+            '/repositories'
           ].join,
           config: config,
           body: {
-            'selected_repository_ids' => selected_repository_ids,
+            'selected_repository_ids' => selected_repository_ids
           },
           decoder: :empty,
           operation_id: 'codespaces_set_repositories_for_secret_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
     end

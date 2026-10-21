@@ -17,19 +17,18 @@ module OctridevGithub
         gist_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/gists/",
+            '/gists/',
             SdkClient.encode_path_segment(gist_id),
-            "/star"
+            '/star'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'gists_check_is_starred',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -41,19 +40,18 @@ module OctridevGithub
         gist_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/gists/",
+            '/gists/',
             SdkClient.encode_path_segment(gist_id),
-            "/star"
+            '/star'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'gists_star',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -65,19 +63,18 @@ module OctridevGithub
         gist_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/gists/",
+            '/gists/',
             SdkClient.encode_path_segment(gist_id),
-            "/star"
+            '/star'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'gists_unstar',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

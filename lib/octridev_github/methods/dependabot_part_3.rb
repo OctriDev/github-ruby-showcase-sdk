@@ -38,7 +38,6 @@ module OctridevGithub
         selected_repository_ids: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.if_given(encrypted_value) do
           Validation.validate_pattern('encrypted_value', encrypted_value, '^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$')
         end
@@ -46,9 +45,9 @@ module OctridevGithub
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/dependabot/secrets/",
+            '/dependabot/secrets/',
             SdkClient.encode_path_segment(secret_name)
           ].join,
           config: config,
@@ -56,12 +55,12 @@ module OctridevGithub
             'visibility' => visibility,
             'encrypted_value' => encrypted_value,
             'key_id' => key_id,
-            'selected_repository_ids' => selected_repository_ids,
+            'selected_repository_ids' => selected_repository_ids
           },
           return_type: ::OctridevGithub::EmptyObject,
           decoder: :json,
           operation_id: 'dependabot_create_or_update_org_secret',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -75,19 +74,18 @@ module OctridevGithub
         secret_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/dependabot/secrets/",
+            '/dependabot/secrets/',
             SdkClient.encode_path_segment(secret_name)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'dependabot_delete_org_secret',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -107,25 +105,24 @@ module OctridevGithub
         per_page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/dependabot/secrets/",
+            '/dependabot/secrets/',
             SdkClient.encode_path_segment(secret_name),
-            "/repositories"
+            '/repositories'
           ].join,
           config: config,
           query: {
             'page' => QueryValue.new(page, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Dependabot::DependabotListSelectedReposForOrgSecretResponse,
           decoder: :json,
           operation_id: 'dependabot_list_selected_repos_for_org_secret',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -146,23 +143,22 @@ module OctridevGithub
         selected_repository_ids:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/dependabot/secrets/",
+            '/dependabot/secrets/',
             SdkClient.encode_path_segment(secret_name),
-            "/repositories"
+            '/repositories'
           ].join,
           config: config,
           body: {
-            'selected_repository_ids' => selected_repository_ids,
+            'selected_repository_ids' => selected_repository_ids
           },
           decoder: :empty,
           operation_id: 'dependabot_set_selected_repos_for_org_secret',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -179,21 +175,20 @@ module OctridevGithub
         repository_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/dependabot/secrets/",
+            '/dependabot/secrets/',
             SdkClient.encode_path_segment(secret_name),
-            "/repositories/",
+            '/repositories/',
             SdkClient.encode_path_segment(repository_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'dependabot_add_selected_repo_to_org_secret',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -210,21 +205,20 @@ module OctridevGithub
         repository_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/dependabot/secrets/",
+            '/dependabot/secrets/',
             SdkClient.encode_path_segment(secret_name),
-            "/repositories/",
+            '/repositories/',
             SdkClient.encode_path_segment(repository_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'dependabot_remove_selected_repo_from_org_secret',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -306,15 +300,14 @@ module OctridevGithub
         per_page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/dependabot/alerts"
+            '/dependabot/alerts'
           ].join,
           config: config,
           query: {
@@ -333,13 +326,13 @@ module OctridevGithub
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'before' => QueryValue.new(before, style: 'form', explode: true),
             'after' => QueryValue.new(after, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::DependabotAlert],
           decoder: :json,
           operation_id: 'dependabot_list_alerts_for_repo',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple },
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple }
         ).data
       end
 
@@ -362,15 +355,14 @@ module OctridevGithub
         alert_number:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/dependabot/alerts/",
+            '/dependabot/alerts/',
             SdkClient.encode_path_segment(alert_number)
           ].join,
           config: config,
@@ -378,7 +370,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'dependabot_get_alert',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -420,7 +412,6 @@ module OctridevGithub
         agent_assignment: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.if_given(dismissed_comment) do
           Validation.validate_length('dismissed_comment', dismissed_comment, max: 280)
         end
@@ -428,11 +419,11 @@ module OctridevGithub
         SdkClient.request(
           'PATCH',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/dependabot/alerts/",
+            '/dependabot/alerts/',
             SdkClient.encode_path_segment(alert_number)
           ].join,
           config: config,
@@ -441,13 +432,13 @@ module OctridevGithub
             'dismissed_reason' => dismissed_reason,
             'dismissed_comment' => dismissed_comment,
             'assignees' => assignees,
-            'agent_assignment' => agent_assignment,
+            'agent_assignment' => agent_assignment
           },
           return_type: ::OctridevGithub::DependabotAlert,
           decoder: :json,
           operation_id: 'dependabot_update_alert',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple },
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationErrorSimple }
         ).data
       end
 
@@ -469,25 +460,24 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/dependabot/secrets"
+            '/dependabot/secrets'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Dependabot::DependabotListRepoSecretsResponse,
           decoder: :json,
           operation_id: 'dependabot_list_repo_secrets',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -503,21 +493,20 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/dependabot/secrets/public-key"
+            '/dependabot/secrets/public-key'
           ].join,
           config: config,
           return_type: ::OctridevGithub::DependabotPublicKey,
           decoder: :json,
           operation_id: 'dependabot_get_repo_public_key',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -535,22 +524,21 @@ module OctridevGithub
         secret_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/dependabot/secrets/",
+            '/dependabot/secrets/',
             SdkClient.encode_path_segment(secret_name)
           ].join,
           config: config,
           return_type: ::OctridevGithub::DependabotSecret,
           decoder: :json,
           operation_id: 'dependabot_get_repo_secret',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

@@ -17,19 +17,18 @@ module OctridevGithub
         org:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/runners/remove-token"
+            '/actions/runners/remove-token'
           ].join,
           config: config,
           return_type: ::OctridevGithub::AuthenticationToken,
           decoder: :json,
           operation_id: 'actions_create_remove_token_for_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

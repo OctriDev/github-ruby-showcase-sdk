@@ -19,13 +19,12 @@ module OctridevGithub
         username:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/memberships/",
+            '/memberships/',
             SdkClient.encode_path_segment(username)
           ].join,
           config: config,
@@ -33,7 +32,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'orgs_get_membership_for_user',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -52,24 +51,23 @@ module OctridevGithub
         role: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/memberships/",
+            '/memberships/',
             SdkClient.encode_path_segment(username)
           ].join,
           config: config,
           body: {
-            'role' => role,
+            'role' => role
           },
           return_type: ::OctridevGithub::OrgMembership,
           decoder: :json,
           operation_id: 'orgs_set_membership_for_user',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -83,20 +81,19 @@ module OctridevGithub
         username:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/memberships/",
+            '/memberships/',
             SdkClient.encode_path_segment(username)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'orgs_remove_membership_for_user',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -108,20 +105,19 @@ module OctridevGithub
         org:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/organization-roles"
+            '/organization-roles'
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::Orgs::OrgsListOrgRolesResponse,
           decoder: :json,
           operation_id: 'orgs_list_org_roles',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -135,19 +131,18 @@ module OctridevGithub
         team_slug:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/organization-roles/teams/",
+            '/organization-roles/teams/',
             SdkClient.encode_path_segment(team_slug)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'orgs_revoke_all_org_roles_team',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -163,21 +158,20 @@ module OctridevGithub
         role_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/organization-roles/teams/",
+            '/organization-roles/teams/',
             SdkClient.encode_path_segment(team_slug),
-            "/",
+            '/',
             SdkClient.encode_path_segment(role_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'orgs_assign_team_to_org_role',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -193,21 +187,20 @@ module OctridevGithub
         role_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/organization-roles/teams/",
+            '/organization-roles/teams/',
             SdkClient.encode_path_segment(team_slug),
-            "/",
+            '/',
             SdkClient.encode_path_segment(role_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'orgs_revoke_org_role_team',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -221,19 +214,18 @@ module OctridevGithub
         username:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/organization-roles/users/",
+            '/organization-roles/users/',
             SdkClient.encode_path_segment(username)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'orgs_revoke_all_org_roles_user',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -249,21 +241,20 @@ module OctridevGithub
         role_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/organization-roles/users/",
+            '/organization-roles/users/',
             SdkClient.encode_path_segment(username),
-            "/",
+            '/',
             SdkClient.encode_path_segment(role_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'orgs_assign_user_to_org_role',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -279,21 +270,20 @@ module OctridevGithub
         role_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/organization-roles/users/",
+            '/organization-roles/users/',
             SdkClient.encode_path_segment(username),
-            "/",
+            '/',
             SdkClient.encode_path_segment(role_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'orgs_revoke_org_role_user',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -307,13 +297,12 @@ module OctridevGithub
         role_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/organization-roles/",
+            '/organization-roles/',
             SdkClient.encode_path_segment(role_id)
           ].join,
           config: config,
@@ -321,7 +310,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'orgs_get_org_role',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -341,25 +330,24 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/organization-roles/",
+            '/organization-roles/',
             SdkClient.encode_path_segment(role_id),
-            "/teams"
+            '/teams'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::TeamRoleAssignment],
           decoder: :json,
           operation_id: 'orgs_list_org_role_teams',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -379,25 +367,24 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/organization-roles/",
+            '/organization-roles/',
             SdkClient.encode_path_segment(role_id),
-            "/users"
+            '/users'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::UserRoleAssignment],
           decoder: :json,
           operation_id: 'orgs_list_org_role_users',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -421,24 +408,23 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/outside_collaborators"
+            '/outside_collaborators'
           ].join,
           config: config,
           query: {
             'filter' => QueryValue.new(filter, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::SimpleUser],
           decoder: :json,
           operation_id: 'orgs_list_outside_collaborators',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -456,23 +442,22 @@ module OctridevGithub
         async: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/outside_collaborators/",
+            '/outside_collaborators/',
             SdkClient.encode_path_segment(username)
           ].join,
           config: config,
           body: {
-            'async' => async,
+            'async' => async
           },
           decoder: :json,
           operation_id: 'orgs_convert_member_to_outside_collaborator',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -486,19 +471,18 @@ module OctridevGithub
         username:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/outside_collaborators/",
+            '/outside_collaborators/',
             SdkClient.encode_path_segment(username)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'orgs_remove_outside_collaborator',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

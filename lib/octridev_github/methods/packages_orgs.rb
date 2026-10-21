@@ -17,20 +17,19 @@ module OctridevGithub
         org:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/docker/conflicts"
+            '/docker/conflicts'
           ].join,
           config: config,
           return_type: [::OctridevGithub::Package],
           decoder: :json,
           operation_id: 'packages_list_docker_migration_conflicting_packages_for_organization',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
         ).data
       end
     end

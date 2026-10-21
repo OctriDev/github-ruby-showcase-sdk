@@ -5,332 +5,335 @@
 
 # actions_actions_rule domain models
 module OctridevGithub
-# Defines the ActionsRule SDK namespace.
-module ActionsRule
-  DISCRIMINATOR_MAPPING = {
-    "restrict_actions_actors" => -> { ActionsRuleRestrictActionsActors },
-    "restrict_action_events" => -> { ActionsRuleRestrictActionEvents },
-  }.freeze
+  # Defines the ActionsRule SDK namespace.
+  module ActionsRule
+    DISCRIMINATOR_MAPPING = {
+      'restrict_actions_actors' => -> { ActionsRuleRestrictActionsActors },
+      'restrict_action_events' => -> { ActionsRuleRestrictActionEvents }
+    }.freeze
 
-  def self.from_hash(hash)
-    return hash unless hash.is_a?(::Hash)
-    type = DISCRIMINATOR_MAPPING[hash["type"]]&.call
-    return type.from_hash(hash) if type
+    def self.from_hash(hash)
+      return hash unless hash.is_a?(::Hash)
 
-    return SdkUnknownMember.new(hash) if hash["type"].is_a?(::String)
+      type = DISCRIMINATOR_MAPPING[hash['type']]&.call
+      return type.from_hash(hash) if type
 
-    raise SdkValidationError.new('ActionsRule', 'variant', "Unknown ActionsRule discriminator: #{hash["type"].inspect}")
-  end
-end
+      return SdkUnknownMember.new(hash) if hash['type'].is_a?(::String)
 
-# Internal model hydration metadata.
-class SdkInternalActionsRuleParamsActorMetadata
-  FIELDS = {
-    id: "id",
-    type: "type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::ActionsRuleParamsActorType.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for ActionsRuleParamsActor.
-# An actor authorized to trigger Actions workflows
-class ActionsRuleParamsActor
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalActionsRuleParamsActorMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalActionsRuleParamsActorMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalActionsRuleParamsActorMetadata::DECODERS
-
-  # @return [Integer] ID of the actor authorized to trigger Actions workflows.
-  attr_reader :id
-  # @return [ActionsRuleParamsActorType] The type of the actor
-  attr_reader :type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+      raise SdkValidationError.new('ActionsRule', 'variant', "Unknown ActionsRule discriminator: #{hash['type'].inspect}")
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalActionsRuleParamsActorMetadata
+    FIELDS = {
+      id: 'id',
+      type: 'type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::ActionsRuleParamsActorType.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for ActionsRuleParamsActor.
+  # An actor authorized to trigger Actions workflows
+  class ActionsRuleParamsActor
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalActionsRuleParamsActorMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalActionsRuleParamsActorMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalActionsRuleParamsActorMetadata::DECODERS
 
-# Defines the ActionsRuleParamsActorType SDK namespace.
-module ActionsRuleParamsActorType
-  USER = 'User'
-  BOT = 'Bot'
-  TEAM = 'Team'
-  BUSINESS_TEAM = 'BusinessTeam'
-  ENTERPRISE_TEAM = 'EnterpriseTeam'
-  INTEGRATION_INSTALLATION = 'IntegrationInstallation'
-  APP = 'App'
-  REPOSITORY_ROLE = 'RepositoryRole'
-  VALUES = [
-    'User', 'Bot', 'Team', 'BusinessTeam', 'EnterpriseTeam', 'IntegrationInstallation', 'App',
-    'RepositoryRole'
-  ].freeze
-  def self.from_value(value)
-    value
-  end
-end
+    # @return [Integer] ID of the actor authorized to trigger Actions workflows.
+    attr_reader :id
+    # @return [ActionsRuleParamsActorType] The type of the actor
+    attr_reader :type
 
-# Internal model hydration metadata.
-class SdkInternalActionsRuleRestrictActionEventsParametersMetadata
-  FIELDS = {
-    allowed_events: "allowed_events",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    allowed_events
-  ].freeze
-  DECODERS = {
-    allowed_events: lambda do |value|
-      value&.map { |item| ::OctridevGithub::ActionsRuleRestrictActionEventsParametersAllowedEventsItem.from_value(item) }
-    end,
-  }.freeze
-end
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-# API model for ActionsRuleRestrictActionEventsParameters.
-# Optional object value serialized in the `parameters` wire field.
-class ActionsRuleRestrictActionEventsParameters
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalActionsRuleRestrictActionEventsParametersMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalActionsRuleRestrictActionEventsParametersMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalActionsRuleRestrictActionEventsParametersMetadata::DECODERS
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  # @return [Array_of_ActionsRuleRestrictActionEventsParametersAllowedEventsItem] Select the events that can trigger Actions workflows.
-  attr_reader :allowed_events
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the ActionsRuleParamsActorType SDK namespace.
+  module ActionsRuleParamsActorType
+    USER = 'User'
+    BOT = 'Bot'
+    TEAM = 'Team'
+    BUSINESS_TEAM = 'BusinessTeam'
+    ENTERPRISE_TEAM = 'EnterpriseTeam'
+    INTEGRATION_INSTALLATION = 'IntegrationInstallation'
+    APP = 'App'
+    REPOSITORY_ROLE = 'RepositoryRole'
+    VALUES = %w[
+      User Bot Team BusinessTeam EnterpriseTeam IntegrationInstallation App
+      RepositoryRole
+    ].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalActionsRuleRestrictActionEventsMetadata
-  FIELDS = {
-    type: "type",
-    parameters: "parameters",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::ActionsRuleRestrictActionEventsType.from_value(value)
-    end,
-    parameters: lambda do |value|
-      ::OctridevGithub::ActionsRuleRestrictActionEventsParameters.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for ActionsRuleRestrictActionEvents.
-# Choose specific GitHub events that will trigger Actions workflows.
-class ActionsRuleRestrictActionEvents
-  include ActionsRule
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalActionsRuleRestrictActionEventsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalActionsRuleRestrictActionEventsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalActionsRuleRestrictActionEventsMetadata::DECODERS
-
-  # @return [ActionsRuleRestrictActionEventsType] Required enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [ActionsRuleRestrictActionEventsParameters] Optional object value serialized in the `parameters` wire field.
-  attr_reader :parameters
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalActionsRuleRestrictActionEventsParametersMetadata
+    FIELDS = {
+      allowed_events: 'allowed_events'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      allowed_events
+    ].freeze
+    DECODERS = {
+      allowed_events: lambda do |value|
+        value&.map { |item| ::OctridevGithub::ActionsRuleRestrictActionEventsParametersAllowedEventsItem.from_value(item) }
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ActionsRuleRestrictActionEventsParameters.
+  # Optional object value serialized in the `parameters` wire field.
+  class ActionsRuleRestrictActionEventsParameters
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalActionsRuleRestrictActionEventsParametersMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalActionsRuleRestrictActionEventsParametersMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalActionsRuleRestrictActionEventsParametersMetadata::DECODERS
+
+    # @return [Array_of_ActionsRuleRestrictActionEventsParametersAllowedEventsItem] Select the events that can trigger Actions workflows.
+    attr_reader :allowed_events
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the ActionsRuleRestrictActionEventsParametersAllowedEventsItem SDK namespace.
-module ActionsRuleRestrictActionEventsParametersAllowedEventsItem
-  BRANCH_PROTECTION_RULE = 'branch_protection_rule'
-  CHECK_RUN = 'check_run'
-  CHECK_SUITE = 'check_suite'
-  CREATE = 'create'
-  DELETE = 'delete'
-  DEPLOYMENT = 'deployment'
-  DEPLOYMENT_STATUS = 'deployment_status'
-  DISCUSSION = 'discussion'
-  DISCUSSION_COMMENT = 'discussion_comment'
-  FORK = 'fork'
-  GOLLUM = 'gollum'
-  IMAGE_VERSION = 'image_version'
-  ISSUE_COMMENT = 'issue_comment'
-  ISSUES = 'issues'
-  LABEL = 'label'
-  MERGE_GROUP = 'merge_group'
-  MILESTONE = 'milestone'
-  PAGE_BUILD = 'page_build'
-  PROJECT = 'project'
-  PROJECT_CARD = 'project_card'
-  PROJECT_COLUMN = 'project_column'
-  PUBLIC = 'public'
-  PULL_REQUEST = 'pull_request'
-  PULL_REQUEST_REVIEW = 'pull_request_review'
-  PULL_REQUEST_REVIEW_COMMENT = 'pull_request_review_comment'
-  PULL_REQUEST_TARGET = 'pull_request_target'
-  PUSH = 'push'
-  REGISTRY_PACKAGE = 'registry_package'
-  RELEASE = 'release'
-  REPOSITORY_DISPATCH = 'repository_dispatch'
-  SCHEDULE = 'schedule'
-  STATUS = 'status'
-  WATCH = 'watch'
-  WORKFLOW_CALL = 'workflow_call'
-  WORKFLOW_DISPATCH = 'workflow_dispatch'
-  WORKFLOW_RUN = 'workflow_run'
-  VALUES = [
-    'branch_protection_rule', 'check_run', 'check_suite', 'create', 'delete', 'deployment',
-    'deployment_status', 'discussion', 'discussion_comment', 'fork', 'gollum', 'image_version',
-    'issue_comment', 'issues', 'label', 'merge_group', 'milestone', 'page_build', 'project',
-    'project_card', 'project_column', 'public', 'pull_request', 'pull_request_review',
-    'pull_request_review_comment', 'pull_request_target', 'push', 'registry_package', 'release',
-    'repository_dispatch', 'schedule', 'status', 'watch', 'workflow_call', 'workflow_dispatch',
-    'workflow_run'
-  ].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the ActionsRuleRestrictActionEventsType SDK namespace.
-module ActionsRuleRestrictActionEventsType
-  RESTRICT_ACTION_EVENTS = 'restrict_action_events'
-  VALUES = ['restrict_action_events'].freeze
-  def self.from_value(value)
-    return value if VALUES.include?(value)
-
-    raise SdkValidationError.new('ActionsRuleRestrictActionEventsType', 'enum', "Unknown ActionsRuleRestrictActionEventsType: #{value}")
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalActionsRuleRestrictActionsActorsParametersMetadata
-  FIELDS = {
-    allowed_actors: "allowed_actors",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    allowed_actors
-  ].freeze
-  DECODERS = {
-    allowed_actors: lambda do |value|
-      value&.map { |item| ::OctridevGithub::ActionsRuleParamsActor.from_hash(item) }
-    end,
-  }.freeze
-end
-
-# API model for ActionsRuleRestrictActionsActorsParameters.
-# Optional object value serialized in the `parameters` wire field.
-class ActionsRuleRestrictActionsActorsParameters
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalActionsRuleRestrictActionsActorsParametersMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalActionsRuleRestrictActionsActorsParametersMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalActionsRuleRestrictActionsActorsParametersMetadata::DECODERS
-
-  # @return [Array_of_ActionsRuleParamsActor] Select the actors who can run Actions workflows.
-  attr_reader :allowed_actors
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalActionsRuleRestrictActionEventsMetadata
+    FIELDS = {
+      type: 'type',
+      parameters: 'parameters'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::ActionsRuleRestrictActionEventsType.from_value(value)
+      end,
+      parameters: lambda do |value|
+        ::OctridevGithub::ActionsRuleRestrictActionEventsParameters.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ActionsRuleRestrictActionEvents.
+  # Choose specific GitHub events that will trigger Actions workflows.
+  class ActionsRuleRestrictActionEvents
+    include ActionsRule
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalActionsRuleRestrictActionEventsMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalActionsRuleRestrictActionEventsMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalActionsRuleRestrictActionEventsMetadata::DECODERS
+
+    # @return [ActionsRuleRestrictActionEventsType] Required enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [ActionsRuleRestrictActionEventsParameters] Optional object value serialized in the `parameters` wire field.
+    attr_reader :parameters
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the ActionsRuleRestrictActionEventsParametersAllowedEventsItem SDK namespace.
+  module ActionsRuleRestrictActionEventsParametersAllowedEventsItem
+    BRANCH_PROTECTION_RULE = 'branch_protection_rule'
+    CHECK_RUN = 'check_run'
+    CHECK_SUITE = 'check_suite'
+    CREATE = 'create'
+    DELETE = 'delete'
+    DEPLOYMENT = 'deployment'
+    DEPLOYMENT_STATUS = 'deployment_status'
+    DISCUSSION = 'discussion'
+    DISCUSSION_COMMENT = 'discussion_comment'
+    FORK = 'fork'
+    GOLLUM = 'gollum'
+    IMAGE_VERSION = 'image_version'
+    ISSUE_COMMENT = 'issue_comment'
+    ISSUES = 'issues'
+    LABEL = 'label'
+    MERGE_GROUP = 'merge_group'
+    MILESTONE = 'milestone'
+    PAGE_BUILD = 'page_build'
+    PROJECT = 'project'
+    PROJECT_CARD = 'project_card'
+    PROJECT_COLUMN = 'project_column'
+    PUBLIC = 'public'
+    PULL_REQUEST = 'pull_request'
+    PULL_REQUEST_REVIEW = 'pull_request_review'
+    PULL_REQUEST_REVIEW_COMMENT = 'pull_request_review_comment'
+    PULL_REQUEST_TARGET = 'pull_request_target'
+    PUSH = 'push'
+    REGISTRY_PACKAGE = 'registry_package'
+    RELEASE = 'release'
+    REPOSITORY_DISPATCH = 'repository_dispatch'
+    SCHEDULE = 'schedule'
+    STATUS = 'status'
+    WATCH = 'watch'
+    WORKFLOW_CALL = 'workflow_call'
+    WORKFLOW_DISPATCH = 'workflow_dispatch'
+    WORKFLOW_RUN = 'workflow_run'
+    VALUES = %w[
+      branch_protection_rule check_run check_suite create delete deployment
+      deployment_status discussion discussion_comment fork gollum image_version
+      issue_comment issues label merge_group milestone page_build project
+      project_card project_column public pull_request pull_request_review
+      pull_request_review_comment pull_request_target push registry_package release
+      repository_dispatch schedule status watch workflow_call workflow_dispatch
+      workflow_run
+    ].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Internal model hydration metadata.
-class SdkInternalActionsRuleRestrictActionsActorsMetadata
-  FIELDS = {
-    type: "type",
-    parameters: "parameters",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::ActionsRuleRestrictActionsActorsType.from_value(value)
-    end,
-    parameters: lambda do |value|
-      ::OctridevGithub::ActionsRuleRestrictActionsActorsParameters.from_hash(value)
-    end,
-  }.freeze
-end
+  # Defines the ActionsRuleRestrictActionEventsType SDK namespace.
+  module ActionsRuleRestrictActionEventsType
+    RESTRICT_ACTION_EVENTS = 'restrict_action_events'
+    VALUES = ['restrict_action_events'].freeze
+    def self.from_value(value)
+      return value if VALUES.include?(value)
 
-# API model for ActionsRuleRestrictActionsActors.
-# Choose specific actors that are authorized to trigger Actions workflows.
-class ActionsRuleRestrictActionsActors
-  include ActionsRule
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalActionsRuleRestrictActionsActorsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalActionsRuleRestrictActionsActorsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalActionsRuleRestrictActionsActorsMetadata::DECODERS
-
-  # @return [ActionsRuleRestrictActionsActorsType] Required enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [ActionsRuleRestrictActionsActorsParameters] Optional object value serialized in the `parameters` wire field.
-  attr_reader :parameters
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+      raise SdkValidationError.new('ActionsRuleRestrictActionEventsType', 'enum', "Unknown ActionsRuleRestrictActionEventsType: #{value}")
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalActionsRuleRestrictActionsActorsParametersMetadata
+    FIELDS = {
+      allowed_actors: 'allowed_actors'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      allowed_actors
+    ].freeze
+    DECODERS = {
+      allowed_actors: lambda do |value|
+        value&.map { |item| ::OctridevGithub::ActionsRuleParamsActor.from_hash(item) }
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for ActionsRuleRestrictActionsActorsParameters.
+  # Optional object value serialized in the `parameters` wire field.
+  class ActionsRuleRestrictActionsActorsParameters
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalActionsRuleRestrictActionsActorsParametersMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalActionsRuleRestrictActionsActorsParametersMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalActionsRuleRestrictActionsActorsParametersMetadata::DECODERS
 
-# Defines the ActionsRuleRestrictActionsActorsType SDK namespace.
-module ActionsRuleRestrictActionsActorsType
-  RESTRICT_ACTIONS_ACTORS = 'restrict_actions_actors'
-  VALUES = ['restrict_actions_actors'].freeze
-  def self.from_value(value)
-    return value if VALUES.include?(value)
+    # @return [Array_of_ActionsRuleParamsActor] Select the actors who can run Actions workflows.
+    attr_reader :allowed_actors
 
-    raise SdkValidationError.new('ActionsRuleRestrictActionsActorsType', 'enum', "Unknown ActionsRuleRestrictActionsActorsType: #{value}")
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
+
+  # Internal model hydration metadata.
+  class SdkInternalActionsRuleRestrictActionsActorsMetadata
+    FIELDS = {
+      type: 'type',
+      parameters: 'parameters'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::ActionsRuleRestrictActionsActorsType.from_value(value)
+      end,
+      parameters: lambda do |value|
+        ::OctridevGithub::ActionsRuleRestrictActionsActorsParameters.from_hash(value)
+      end
+    }.freeze
+  end
+
+  # API model for ActionsRuleRestrictActionsActors.
+  # Choose specific actors that are authorized to trigger Actions workflows.
+  class ActionsRuleRestrictActionsActors
+    include ActionsRule
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalActionsRuleRestrictActionsActorsMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalActionsRuleRestrictActionsActorsMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalActionsRuleRestrictActionsActorsMetadata::DECODERS
+
+    # @return [ActionsRuleRestrictActionsActorsType] Required enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [ActionsRuleRestrictActionsActorsParameters] Optional object value serialized in the `parameters` wire field.
+    attr_reader :parameters
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Defines the ActionsRuleRestrictActionsActorsType SDK namespace.
+  module ActionsRuleRestrictActionsActorsType
+    RESTRICT_ACTIONS_ACTORS = 'restrict_actions_actors'
+    VALUES = ['restrict_actions_actors'].freeze
+    def self.from_value(value)
+      return value if VALUES.include?(value)
+
+      raise SdkValidationError.new('ActionsRuleRestrictActionsActorsType', 'enum', "Unknown ActionsRuleRestrictActionsActorsType: #{value}")
+    end
+  end
 end

@@ -5,40 +5,39 @@
 
 # webhook_check_run_rerequested_form_encoded domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalWebhookCheckRunRerequestedFormEncodedMetadata
-  FIELDS = {
-    payload: "payload",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    payload
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookCheckRunRerequestedFormEncoded.
-# The check_run.rerequested webhook encoded with URL encoding
-class WebhookCheckRunRerequestedFormEncoded
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookCheckRunRerequestedFormEncodedMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookCheckRunRerequestedFormEncodedMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookCheckRunRerequestedFormEncodedMetadata::DECODERS
-
-  # @return [String] A URL-encoded string of the check_run.rerequested JSON payload. The decoded payload is a JSON object.
-  attr_reader :payload
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookCheckRunRerequestedFormEncodedMetadata
+    FIELDS = {
+      payload: 'payload'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      payload
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
+  # API model for WebhookCheckRunRerequestedFormEncoded.
+  # The check_run.rerequested webhook encoded with URL encoding
+  class WebhookCheckRunRerequestedFormEncoded
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookCheckRunRerequestedFormEncodedMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookCheckRunRerequestedFormEncodedMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookCheckRunRerequestedFormEncodedMetadata::DECODERS
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+    # @return [String] A URL-encoded string of the check_run.rerequested JSON payload. The decoded payload is a JSON object.
+    attr_reader :payload
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
 end

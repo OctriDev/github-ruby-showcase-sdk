@@ -5,231 +5,229 @@
 
 # code_scanning_code_scanning_alert domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalCodeScanningAlertRuleMetadata
-  FIELDS = {
-    id: "id",
-    name: "name",
-    severity: "severity",
-    security_severity_level: "security_severity_level",
-    description: "description",
-    full_description: "full_description",
-    tags: "tags",
-    help: "help",
-    help_uri: "help_uri",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    severity: lambda do |value|
-      ::OctridevGithub::CodeScanningAlertRuleSeverity.from_value(value)
-    end,
-    security_severity_level: lambda do |value|
-      ::OctridevGithub::CodeScanningAlertRuleSecuritySeverityLevel.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for CodeScanningAlertRule.
-# Typed representation of the `CodeScanningAlertRule` API schema.
-class CodeScanningAlertRule
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalCodeScanningAlertRuleMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalCodeScanningAlertRuleMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalCodeScanningAlertRuleMetadata::DECODERS
-
-  # @return [String] A unique identifier for the rule used to detect the alert.
-  attr_reader :id
-  # @return [String] The name of the rule used to detect the alert.
-  attr_reader :name
-  # @return [CodeScanningAlertRuleSeverity] The severity of the alert.
-  attr_reader :severity
-  # @return [CodeScanningAlertRuleSecuritySeverityLevel] The security severity of the alert.
-  attr_reader :security_severity_level
-  # @return [String] A short description of the rule used to detect the alert.
-  attr_reader :description
-  # @return [String] A description of the rule used to detect the alert.
-  attr_reader :full_description
-  # @return [Array_of_String] A set of tags applicable for the rule.
-  attr_reader :tags
-  # @return [String] Detailed documentation for the rule as GitHub Flavored Markdown.
-  attr_reader :help
-  # @return [String] A link to the documentation for the rule used to detect the alert.
-  attr_reader :help_uri
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalCodeScanningAlertRuleMetadata
+    FIELDS = {
+      id: 'id',
+      name: 'name',
+      severity: 'severity',
+      security_severity_level: 'security_severity_level',
+      description: 'description',
+      full_description: 'full_description',
+      tags: 'tags',
+      help: 'help',
+      help_uri: 'help_uri'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      severity: lambda do |value|
+        ::OctridevGithub::CodeScanningAlertRuleSeverity.from_value(value)
+      end,
+      security_severity_level: lambda do |value|
+        ::OctridevGithub::CodeScanningAlertRuleSecuritySeverityLevel.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for CodeScanningAlertRule.
+  # Typed representation of the `CodeScanningAlertRule` API schema.
+  class CodeScanningAlertRule
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalCodeScanningAlertRuleMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalCodeScanningAlertRuleMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalCodeScanningAlertRuleMetadata::DECODERS
+
+    # @return [String] A unique identifier for the rule used to detect the alert.
+    attr_reader :id
+    # @return [String] The name of the rule used to detect the alert.
+    attr_reader :name
+    # @return [CodeScanningAlertRuleSeverity] The severity of the alert.
+    attr_reader :severity
+    # @return [CodeScanningAlertRuleSecuritySeverityLevel] The security severity of the alert.
+    attr_reader :security_severity_level
+    # @return [String] A short description of the rule used to detect the alert.
+    attr_reader :description
+    # @return [String] A description of the rule used to detect the alert.
+    attr_reader :full_description
+    # @return [Array_of_String] A set of tags applicable for the rule.
+    attr_reader :tags
+    # @return [String] Detailed documentation for the rule as GitHub Flavored Markdown.
+    attr_reader :help
+    # @return [String] A link to the documentation for the rule used to detect the alert.
+    attr_reader :help_uri
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the CodeScanningAlertRuleSecuritySeverityLevel SDK namespace.
-module CodeScanningAlertRuleSecuritySeverityLevel
-  LOW = 'low'
-  MEDIUM = 'medium'
-  HIGH = 'high'
-  CRITICAL = 'critical'
-  VALUES = ['low', 'medium', 'high', 'critical'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the CodeScanningAlertRuleSeverity SDK namespace.
-module CodeScanningAlertRuleSeverity
-  NONE = 'none'
-  NOTE = 'note'
-  WARNING = 'warning'
-  ERROR = 'error'
-  VALUES = ['none', 'note', 'warning', 'error'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalCodeScanningAlertRuleSummaryMetadata
-  FIELDS = {
-    id: "id",
-    name: "name",
-    severity: "severity",
-    security_severity_level: "security_severity_level",
-    description: "description",
-    full_description: "full_description",
-    tags: "tags",
-    help: "help",
-    help_uri: "help_uri",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    severity: lambda do |value|
-      ::OctridevGithub::CodeScanningAlertRuleSummarySeverity.from_value(value)
-    end,
-    security_severity_level: lambda do |value|
-      ::OctridevGithub::CodeScanningAlertRuleSummarySecuritySeverityLevel.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for CodeScanningAlertRuleSummary.
-# Typed representation of the `CodeScanningAlertRuleSummary` API schema.
-class CodeScanningAlertRuleSummary
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalCodeScanningAlertRuleSummaryMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalCodeScanningAlertRuleSummaryMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalCodeScanningAlertRuleSummaryMetadata::DECODERS
-
-  # @return [String] A unique identifier for the rule used to detect the alert.
-  attr_reader :id
-  # @return [String] The name of the rule used to detect the alert.
-  attr_reader :name
-  # @return [CodeScanningAlertRuleSummarySeverity] The severity of the alert.
-  attr_reader :severity
-  # @return [CodeScanningAlertRuleSummarySecuritySeverityLevel] The security severity of the alert.
-  attr_reader :security_severity_level
-  # @return [String] A short description of the rule used to detect the alert.
-  attr_reader :description
-  # @return [String] A description of the rule used to detect the alert.
-  attr_reader :full_description
-  # @return [Array_of_String] A set of tags applicable for the rule.
-  attr_reader :tags
-  # @return [String] Detailed documentation for the rule as GitHub Flavored Markdown.
-  attr_reader :help
-  # @return [String] A link to the documentation for the rule used to detect the alert.
-  attr_reader :help_uri
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the CodeScanningAlertRuleSecuritySeverityLevel SDK namespace.
+  module CodeScanningAlertRuleSecuritySeverityLevel
+    LOW = 'low'
+    MEDIUM = 'medium'
+    HIGH = 'high'
+    CRITICAL = 'critical'
+    VALUES = %w[low medium high critical].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the CodeScanningAlertRuleSeverity SDK namespace.
+  module CodeScanningAlertRuleSeverity
+    NONE = 'none'
+    NOTE = 'note'
+    WARNING = 'warning'
+    ERROR = 'error'
+    VALUES = %w[none note warning error].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalCodeScanningAlertRuleSummaryMetadata
+    FIELDS = {
+      id: 'id',
+      name: 'name',
+      severity: 'severity',
+      security_severity_level: 'security_severity_level',
+      description: 'description',
+      full_description: 'full_description',
+      tags: 'tags',
+      help: 'help',
+      help_uri: 'help_uri'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      severity: lambda do |value|
+        ::OctridevGithub::CodeScanningAlertRuleSummarySeverity.from_value(value)
+      end,
+      security_severity_level: lambda do |value|
+        ::OctridevGithub::CodeScanningAlertRuleSummarySecuritySeverityLevel.from_value(value)
+      end
+    }.freeze
   end
-end
 
-# Defines the CodeScanningAlertRuleSummarySecuritySeverityLevel SDK namespace.
-module CodeScanningAlertRuleSummarySecuritySeverityLevel
-  LOW = 'low'
-  MEDIUM = 'medium'
-  HIGH = 'high'
-  CRITICAL = 'critical'
-  VALUES = ['low', 'medium', 'high', 'critical'].freeze
-  def self.from_value(value)
-    value
-  end
-end
+  # API model for CodeScanningAlertRuleSummary.
+  # Typed representation of the `CodeScanningAlertRuleSummary` API schema.
+  class CodeScanningAlertRuleSummary
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalCodeScanningAlertRuleSummaryMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalCodeScanningAlertRuleSummaryMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalCodeScanningAlertRuleSummaryMetadata::DECODERS
 
-# Defines the CodeScanningAlertRuleSummarySeverity SDK namespace.
-module CodeScanningAlertRuleSummarySeverity
-  NONE = 'none'
-  NOTE = 'note'
-  WARNING = 'warning'
-  ERROR = 'error'
-  VALUES = ['none', 'note', 'warning', 'error'].freeze
-  def self.from_value(value)
-    value
-  end
-end
+    # @return [String] A unique identifier for the rule used to detect the alert.
+    attr_reader :id
+    # @return [String] The name of the rule used to detect the alert.
+    attr_reader :name
+    # @return [CodeScanningAlertRuleSummarySeverity] The severity of the alert.
+    attr_reader :severity
+    # @return [CodeScanningAlertRuleSummarySecuritySeverityLevel] The security severity of the alert.
+    attr_reader :security_severity_level
+    # @return [String] A short description of the rule used to detect the alert.
+    attr_reader :description
+    # @return [String] A description of the rule used to detect the alert.
+    attr_reader :full_description
+    # @return [Array_of_String] A set of tags applicable for the rule.
+    attr_reader :tags
+    # @return [String] Detailed documentation for the rule as GitHub Flavored Markdown.
+    attr_reader :help
+    # @return [String] A link to the documentation for the rule used to detect the alert.
+    attr_reader :help_uri
 
-# Defines the CodeScanningAlertSetState SDK namespace.
-module CodeScanningAlertSetState
-  OPEN = 'open'
-  DISMISSED = 'dismissed'
-  VALUES = ['open', 'dismissed'].freeze
-  def self.from_value(value)
-    value
-  end
-end
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-# Defines the CodeScanningAlertSeverity SDK namespace.
-module CodeScanningAlertSeverity
-  CRITICAL = 'critical'
-  HIGH = 'high'
-  MEDIUM = 'medium'
-  LOW = 'low'
-  WARNING = 'warning'
-  NOTE = 'note'
-  ERROR = 'error'
-  VALUES = ['critical', 'high', 'medium', 'low', 'warning', 'note', 'error'].freeze
-  def self.from_value(value)
-    value
-  end
-end
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-# Defines the CodeScanningAlertState SDK namespace.
-module CodeScanningAlertState
-  OPEN = 'open'
-  DISMISSED = 'dismissed'
-  FIXED = 'fixed'
-  VALUES = ['open', 'dismissed', 'fixed'].freeze
-  def self.from_value(value)
-    value
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
 
-# Defines the CodeScanningAlertStateQuery SDK namespace.
-module CodeScanningAlertStateQuery
-  OPEN = 'open'
-  CLOSED = 'closed'
-  DISMISSED = 'dismissed'
-  FIXED = 'fixed'
-  VALUES = ['open', 'closed', 'dismissed', 'fixed'].freeze
-  def self.from_value(value)
-    value
+  # Defines the CodeScanningAlertRuleSummarySecuritySeverityLevel SDK namespace.
+  module CodeScanningAlertRuleSummarySecuritySeverityLevel
+    LOW = 'low'
+    MEDIUM = 'medium'
+    HIGH = 'high'
+    CRITICAL = 'critical'
+    VALUES = %w[low medium high critical].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
+
+  # Defines the CodeScanningAlertRuleSummarySeverity SDK namespace.
+  module CodeScanningAlertRuleSummarySeverity
+    NONE = 'none'
+    NOTE = 'note'
+    WARNING = 'warning'
+    ERROR = 'error'
+    VALUES = %w[none note warning error].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Defines the CodeScanningAlertSetState SDK namespace.
+  module CodeScanningAlertSetState
+    OPEN = 'open'
+    DISMISSED = 'dismissed'
+    VALUES = %w[open dismissed].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Defines the CodeScanningAlertSeverity SDK namespace.
+  module CodeScanningAlertSeverity
+    CRITICAL = 'critical'
+    HIGH = 'high'
+    MEDIUM = 'medium'
+    LOW = 'low'
+    WARNING = 'warning'
+    NOTE = 'note'
+    ERROR = 'error'
+    VALUES = %w[critical high medium low warning note error].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Defines the CodeScanningAlertState SDK namespace.
+  module CodeScanningAlertState
+    OPEN = 'open'
+    DISMISSED = 'dismissed'
+    FIXED = 'fixed'
+    VALUES = %w[open dismissed fixed].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Defines the CodeScanningAlertStateQuery SDK namespace.
+  module CodeScanningAlertStateQuery
+    OPEN = 'open'
+    CLOSED = 'closed'
+    DISMISSED = 'dismissed'
+    FIXED = 'fixed'
+    VALUES = %w[open closed dismissed fixed].freeze
+    def self.from_value(value)
+      value
+    end
+  end
 end

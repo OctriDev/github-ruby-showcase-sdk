@@ -14,7 +14,7 @@ module OctridevGithub
         TABLE = 'table'
         BOARD = 'board'
         ROADMAP = 'roadmap'
-        VALUES = ['table', 'board', 'roadmap'].freeze
+        VALUES = %w[table board roadmap].freeze
         def self.from_value(value)
           value
         end

@@ -20,22 +20,21 @@ module OctridevGithub
         access_token:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/applications/",
+            '/applications/',
             SdkClient.encode_path_segment(client_id),
-            "/grant"
+            '/grant'
           ].join,
           config: config,
           body: {
-            'access_token' => access_token,
+            'access_token' => access_token
           },
           decoder: :empty,
           operation_id: 'apps_delete_authorization',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError },
+          errors: { '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -50,23 +49,22 @@ module OctridevGithub
         access_token:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/applications/",
+            '/applications/',
             SdkClient.encode_path_segment(client_id),
-            "/token"
+            '/token'
           ].join,
           config: config,
           body: {
-            'access_token' => access_token,
+            'access_token' => access_token
           },
           return_type: ::OctridevGithub::Authorization,
           decoder: :json,
           operation_id: 'apps_check_token',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -81,23 +79,22 @@ module OctridevGithub
         access_token:,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/applications/",
+            '/applications/',
             SdkClient.encode_path_segment(client_id),
-            "/token"
+            '/token'
           ].join,
           config: config,
           body: {
-            'access_token' => access_token,
+            'access_token' => access_token
           },
           return_type: ::OctridevGithub::Authorization,
           decoder: :json,
           operation_id: 'apps_reset_token',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError },
+          errors: { '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -112,22 +109,21 @@ module OctridevGithub
         access_token:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/applications/",
+            '/applications/',
             SdkClient.encode_path_segment(client_id),
-            "/token"
+            '/token'
           ].join,
           config: config,
           body: {
-            'access_token' => access_token,
+            'access_token' => access_token
           },
           decoder: :empty,
           operation_id: 'apps_delete_token',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError },
+          errors: { '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -159,13 +155,12 @@ module OctridevGithub
         permissions: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/applications/",
+            '/applications/',
             SdkClient.encode_path_segment(client_id),
-            "/token/scoped"
+            '/token/scoped'
           ].join,
           config: config,
           body: {
@@ -174,13 +169,13 @@ module OctridevGithub
             'target_id' => target_id,
             'repositories' => repositories,
             'repository_ids' => repository_ids,
-            'permissions' => permissions,
+            'permissions' => permissions
           },
           return_type: ::OctridevGithub::Authorization,
           decoder: :json,
           operation_id: 'apps_scope_token',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
     end

@@ -19,22 +19,21 @@ module OctridevGithub
         runner_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/runners/",
+            '/actions/runners/',
             SdkClient.encode_path_segment(runner_id),
-            "/labels"
+            '/labels'
           ].join,
           config: config,
           return_type: ::OctridevGithub::ActionsRunnerLabels,
           decoder: :json,
           operation_id: 'actions_list_labels_for_self_hosted_runner_for_org',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

@@ -28,27 +28,26 @@ module OctridevGithub
         exclude_pull_requests: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runs/",
+            '/actions/runs/',
             SdkClient.encode_path_segment(run_id),
-            "/attempts/",
+            '/attempts/',
             SdkClient.encode_path_segment(attempt_number)
           ].join,
           config: config,
           query: {
-            'exclude_pull_requests' => QueryValue.new(exclude_pull_requests, style: 'form', explode: true),
+            'exclude_pull_requests' => QueryValue.new(exclude_pull_requests, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::WorkflowRun,
           decoder: :json,
           operation_id: 'actions_get_workflow_run_attempt',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

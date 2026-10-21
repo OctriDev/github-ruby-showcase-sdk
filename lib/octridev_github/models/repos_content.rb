@@ -5,684 +5,679 @@
 
 # repos_content domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalContentDirectoryItemLinksMetadata
-  FIELDS = {
-    git: "git",
-    html: "html",
-    self_: "self",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    git
-    html
-    self_
-  ].freeze
-  DECODERS = {
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    git
-    html
-  ].freeze
-end
-
-# API model for ContentDirectoryItemLinks.
-class ContentDirectoryItemLinks
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalContentDirectoryItemLinksMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalContentDirectoryItemLinksMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalContentDirectoryItemLinksMetadata::DECODERS
-
-  attr_reader :git, :html, :self_
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalContentDirectoryItemLinksMetadata
+    FIELDS = {
+      git: 'git',
+      html: 'html',
+      self_: 'self'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      git
+      html
+      self_
+    ].freeze
+    DECODERS = {}.freeze
+    NULLABLE_FIELDS = %i[
+      git
+      html
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalContentDirectoryItemLinksMetadata::NULLABLE_FIELDS)
+  # API model for ContentDirectoryItemLinks.
+  class ContentDirectoryItemLinks
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalContentDirectoryItemLinksMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalContentDirectoryItemLinksMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalContentDirectoryItemLinksMetadata::DECODERS
+
+    attr_reader :git, :html, :self_
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalContentDirectoryItemLinksMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalContentDirectoryItemMetadata
-  FIELDS = {
-    type: "type",
-    size: "size",
-    name: "name",
-    path: "path",
-    content: "content",
-    sha: "sha",
-    url: "url",
-    git_url: "git_url",
-    html_url: "html_url",
-    download_url: "download_url",
-    links: "_links",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-    size
-    name
-    path
-    sha
-    url
-    git_url
-    html_url
-    download_url
-    links
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::ContentDirectoryItemType.from_value(value)
-    end,
-    links: lambda do |value|
-      ::OctridevGithub::ContentDirectoryItemLinks.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    git_url
-    html_url
-    download_url
-  ].freeze
-end
-
-# API model for ContentDirectoryItem.
-class ContentDirectoryItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalContentDirectoryItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalContentDirectoryItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalContentDirectoryItemMetadata::DECODERS
-
-  attr_reader :type, :size, :name, :path, :content, :sha, :url, :git_url, :html_url, :download_url,
-              :links
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalContentDirectoryItemMetadata
+    FIELDS = {
+      type: 'type',
+      size: 'size',
+      name: 'name',
+      path: 'path',
+      content: 'content',
+      sha: 'sha',
+      url: 'url',
+      git_url: 'git_url',
+      html_url: 'html_url',
+      download_url: 'download_url',
+      links: '_links'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+      size
+      name
+      path
+      sha
+      url
+      git_url
+      html_url
+      download_url
+      links
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::ContentDirectoryItemType.from_value(value)
+      end,
+      links: lambda do |value|
+        ::OctridevGithub::ContentDirectoryItemLinks.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      git_url
+      html_url
+      download_url
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalContentDirectoryItemMetadata::NULLABLE_FIELDS)
+  # API model for ContentDirectoryItem.
+  class ContentDirectoryItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalContentDirectoryItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalContentDirectoryItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalContentDirectoryItemMetadata::DECODERS
+
+    attr_reader :type, :size, :name, :path, :content, :sha, :url, :git_url, :html_url, :download_url,
+                :links
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalContentDirectoryItemMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # Defines the ContentDirectory SDK value decoder.
+  module ContentDirectory
+    def self.from_hash(value)
+      return nil if value.nil?
 
-# Defines the ContentDirectory SDK value decoder.
-module ContentDirectory
-  def self.from_hash(value)
-    return nil if value.nil?
-    value&.map { |item| ::OctridevGithub::ContentDirectoryItem.from_hash(item) }
-  end
-end
-
-# Defines the ContentDirectoryItemType SDK namespace.
-module ContentDirectoryItemType
-  DIR = 'dir'
-  FILE = 'file'
-  SUBMODULE = 'submodule'
-  SYMLINK = 'symlink'
-  VALUES = ['dir', 'file', 'submodule', 'symlink'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalContentFileLinksMetadata
-  FIELDS = {
-    git: "git",
-    html: "html",
-    self_: "self",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    git
-    html
-    self_
-  ].freeze
-  DECODERS = {
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    git
-    html
-  ].freeze
-end
-
-# API model for ContentFileLinks.
-# Required object value serialized in the `_links` wire field.
-class ContentFileLinks
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalContentFileLinksMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalContentFileLinksMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalContentFileLinksMetadata::DECODERS
-
-  # @return [String] Required `uri`-formatted value serialized in the `git` wire field.
-  attr_reader :git
-  # @return [String] Required `uri`-formatted value serialized in the `html` wire field.
-  attr_reader :html
-  # @return [String] Required `uri`-formatted value serialized in the `self` wire field.
-  attr_reader :self_
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+      value&.map { |item| ::OctridevGithub::ContentDirectoryItem.from_hash(item) }
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalContentFileLinksMetadata::NULLABLE_FIELDS)
+  # Defines the ContentDirectoryItemType SDK namespace.
+  module ContentDirectoryItemType
+    DIR = 'dir'
+    FILE = 'file'
+    SUBMODULE = 'submodule'
+    SYMLINK = 'symlink'
+    VALUES = %w[dir file submodule symlink].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalContentFileMetadata
-  FIELDS = {
-    type: "type",
-    encoding: "encoding",
-    size: "size",
-    name: "name",
-    path: "path",
-    content: "content",
-    sha: "sha",
-    url: "url",
-    git_url: "git_url",
-    html_url: "html_url",
-    download_url: "download_url",
-    links: "_links",
-    target: "target",
-    submodule_git_url: "submodule_git_url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-    encoding
-    size
-    name
-    path
-    content
-    sha
-    url
-    git_url
-    html_url
-    download_url
-    links
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::ContentFileType.from_value(value)
-    end,
-    links: lambda do |value|
-      ::OctridevGithub::ContentFileLinks.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    git_url
-    html_url
-    download_url
-  ].freeze
-end
-
-# API model for ContentFile.
-# Content File
-class ContentFile
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalContentFileMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalContentFileMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalContentFileMetadata::DECODERS
-
-  # @return [ContentFileType] Required enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [String] Required `string` value serialized in the `encoding` wire field.
-  attr_reader :encoding
-  # @return [Integer] Required `integer` value serialized in the `size` wire field.
-  attr_reader :size
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Required `string` value serialized in the `path` wire field.
-  attr_reader :path
-  # @return [String] Required `string` value serialized in the `content` wire field.
-  attr_reader :content
-  # @return [String] Required `string` value serialized in the `sha` wire field.
-  attr_reader :sha
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Required `uri`-formatted value serialized in the `git_url` wire field.
-  attr_reader :git_url
-  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [String] Required `uri`-formatted value serialized in the `download_url` wire field.
-  attr_reader :download_url
-  # @return [ContentFileLinks] Required object value serialized in the `_links` wire field.
-  attr_reader :links
-  # @return [String] Optional `string` value serialized in the `target` wire field.
-  attr_reader :target
-  # @return [String] Optional `string` value serialized in the `submodule_git_url` wire field.
-  attr_reader :submodule_git_url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalContentFileLinksMetadata
+    FIELDS = {
+      git: 'git',
+      html: 'html',
+      self_: 'self'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      git
+      html
+      self_
+    ].freeze
+    DECODERS = {}.freeze
+    NULLABLE_FIELDS = %i[
+      git
+      html
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalContentFileMetadata::NULLABLE_FIELDS)
+  # API model for ContentFileLinks.
+  # Required object value serialized in the `_links` wire field.
+  class ContentFileLinks
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalContentFileLinksMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalContentFileLinksMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalContentFileLinksMetadata::DECODERS
+
+    # @return [String] Required `uri`-formatted value serialized in the `git` wire field.
+    attr_reader :git
+    # @return [String] Required `uri`-formatted value serialized in the `html` wire field.
+    attr_reader :html
+    # @return [String] Required `uri`-formatted value serialized in the `self` wire field.
+    attr_reader :self_
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalContentFileLinksMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the ContentFileType SDK namespace.
-module ContentFileType
-  FILE = 'file'
-  VALUES = ['file'].freeze
-  def self.from_value(value)
-    return value if VALUES.include?(value)
-
-    raise SdkValidationError.new('ContentFileType', 'enum', "Unknown ContentFileType: #{value}")
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalContentSubmoduleLinksMetadata
-  FIELDS = {
-    git: "git",
-    html: "html",
-    self_: "self",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    git
-    html
-    self_
-  ].freeze
-  DECODERS = {
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    git
-    html
-  ].freeze
-end
-
-# API model for ContentSubmoduleLinks.
-# Required object value serialized in the `_links` wire field.
-class ContentSubmoduleLinks
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalContentSubmoduleLinksMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalContentSubmoduleLinksMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalContentSubmoduleLinksMetadata::DECODERS
-
-  # @return [String] Required `uri`-formatted value serialized in the `git` wire field.
-  attr_reader :git
-  # @return [String] Required `uri`-formatted value serialized in the `html` wire field.
-  attr_reader :html
-  # @return [String] Required `uri`-formatted value serialized in the `self` wire field.
-  attr_reader :self_
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalContentFileMetadata
+    FIELDS = {
+      type: 'type',
+      encoding: 'encoding',
+      size: 'size',
+      name: 'name',
+      path: 'path',
+      content: 'content',
+      sha: 'sha',
+      url: 'url',
+      git_url: 'git_url',
+      html_url: 'html_url',
+      download_url: 'download_url',
+      links: '_links',
+      target: 'target',
+      submodule_git_url: 'submodule_git_url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+      encoding
+      size
+      name
+      path
+      content
+      sha
+      url
+      git_url
+      html_url
+      download_url
+      links
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::ContentFileType.from_value(value)
+      end,
+      links: lambda do |value|
+        ::OctridevGithub::ContentFileLinks.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      git_url
+      html_url
+      download_url
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalContentSubmoduleLinksMetadata::NULLABLE_FIELDS)
+  # API model for ContentFile.
+  # Content File
+  class ContentFile
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalContentFileMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalContentFileMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalContentFileMetadata::DECODERS
+
+    # @return [ContentFileType] Required enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [String] Required `string` value serialized in the `encoding` wire field.
+    attr_reader :encoding
+    # @return [Integer] Required `integer` value serialized in the `size` wire field.
+    attr_reader :size
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Required `string` value serialized in the `path` wire field.
+    attr_reader :path
+    # @return [String] Required `string` value serialized in the `content` wire field.
+    attr_reader :content
+    # @return [String] Required `string` value serialized in the `sha` wire field.
+    attr_reader :sha
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Required `uri`-formatted value serialized in the `git_url` wire field.
+    attr_reader :git_url
+    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [String] Required `uri`-formatted value serialized in the `download_url` wire field.
+    attr_reader :download_url
+    # @return [ContentFileLinks] Required object value serialized in the `_links` wire field.
+    attr_reader :links
+    # @return [String] Optional `string` value serialized in the `target` wire field.
+    attr_reader :target
+    # @return [String] Optional `string` value serialized in the `submodule_git_url` wire field.
+    attr_reader :submodule_git_url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalContentFileMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # Defines the ContentFileType SDK namespace.
+  module ContentFileType
+    FILE = 'file'
+    VALUES = ['file'].freeze
+    def self.from_value(value)
+      return value if VALUES.include?(value)
 
-# Internal model hydration metadata.
-class SdkInternalContentSubmoduleMetadata
-  FIELDS = {
-    type: "type",
-    submodule_git_url: "submodule_git_url",
-    size: "size",
-    name: "name",
-    path: "path",
-    sha: "sha",
-    url: "url",
-    git_url: "git_url",
-    html_url: "html_url",
-    download_url: "download_url",
-    links: "_links",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-    submodule_git_url
-    size
-    name
-    path
-    sha
-    url
-    git_url
-    html_url
-    download_url
-    links
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::ContentSubmoduleType.from_value(value)
-    end,
-    links: lambda do |value|
-      ::OctridevGithub::ContentSubmoduleLinks.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    git_url
-    html_url
-    download_url
-  ].freeze
-end
-
-# API model for ContentSubmodule.
-# An object describing a submodule
-class ContentSubmodule
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalContentSubmoduleMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalContentSubmoduleMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalContentSubmoduleMetadata::DECODERS
-
-  # @return [ContentSubmoduleType] Required enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [String] Required `uri`-formatted value serialized in the `submodule_git_url` wire field.
-  attr_reader :submodule_git_url
-  # @return [Integer] Required `integer` value serialized in the `size` wire field.
-  attr_reader :size
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Required `string` value serialized in the `path` wire field.
-  attr_reader :path
-  # @return [String] Required `string` value serialized in the `sha` wire field.
-  attr_reader :sha
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Required `uri`-formatted value serialized in the `git_url` wire field.
-  attr_reader :git_url
-  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [String] Required `uri`-formatted value serialized in the `download_url` wire field.
-  attr_reader :download_url
-  # @return [ContentSubmoduleLinks] Required object value serialized in the `_links` wire field.
-  attr_reader :links
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+      raise SdkValidationError.new('ContentFileType', 'enum', "Unknown ContentFileType: #{value}")
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalContentSubmoduleMetadata::NULLABLE_FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalContentSubmoduleLinksMetadata
+    FIELDS = {
+      git: 'git',
+      html: 'html',
+      self_: 'self'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      git
+      html
+      self_
+    ].freeze
+    DECODERS = {}.freeze
+    NULLABLE_FIELDS = %i[
+      git
+      html
+    ].freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for ContentSubmoduleLinks.
+  # Required object value serialized in the `_links` wire field.
+  class ContentSubmoduleLinks
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalContentSubmoduleLinksMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalContentSubmoduleLinksMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalContentSubmoduleLinksMetadata::DECODERS
 
-# Defines the ContentSubmoduleType SDK namespace.
-module ContentSubmoduleType
-  SUBMODULE = 'submodule'
-  VALUES = ['submodule'].freeze
-  def self.from_value(value)
-    return value if VALUES.include?(value)
+    # @return [String] Required `uri`-formatted value serialized in the `git` wire field.
+    attr_reader :git
+    # @return [String] Required `uri`-formatted value serialized in the `html` wire field.
+    attr_reader :html
+    # @return [String] Required `uri`-formatted value serialized in the `self` wire field.
+    attr_reader :self_
 
-    raise SdkValidationError.new('ContentSubmoduleType', 'enum', "Unknown ContentSubmoduleType: #{value}")
-  end
-end
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-# Internal model hydration metadata.
-class SdkInternalContentSymlinkLinksMetadata
-  FIELDS = {
-    git: "git",
-    html: "html",
-    self_: "self",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    git
-    html
-    self_
-  ].freeze
-  DECODERS = {
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    git
-    html
-  ].freeze
-end
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalContentSubmoduleLinksMetadata::NULLABLE_FIELDS)
+    end
 
-# API model for ContentSymlinkLinks.
-# Required object value serialized in the `_links` wire field.
-class ContentSymlinkLinks
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalContentSymlinkLinksMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalContentSymlinkLinksMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalContentSymlinkLinksMetadata::DECODERS
-
-  # @return [String] Required `uri`-formatted value serialized in the `git` wire field.
-  attr_reader :git
-  # @return [String] Required `uri`-formatted value serialized in the `html` wire field.
-  attr_reader :html
-  # @return [String] Required `uri`-formatted value serialized in the `self` wire field.
-  attr_reader :self_
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalContentSymlinkLinksMetadata::NULLABLE_FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalContentSubmoduleMetadata
+    FIELDS = {
+      type: 'type',
+      submodule_git_url: 'submodule_git_url',
+      size: 'size',
+      name: 'name',
+      path: 'path',
+      sha: 'sha',
+      url: 'url',
+      git_url: 'git_url',
+      html_url: 'html_url',
+      download_url: 'download_url',
+      links: '_links'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+      submodule_git_url
+      size
+      name
+      path
+      sha
+      url
+      git_url
+      html_url
+      download_url
+      links
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::ContentSubmoduleType.from_value(value)
+      end,
+      links: lambda do |value|
+        ::OctridevGithub::ContentSubmoduleLinks.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      git_url
+      html_url
+      download_url
+    ].freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for ContentSubmodule.
+  # An object describing a submodule
+  class ContentSubmodule
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalContentSubmoduleMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalContentSubmoduleMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalContentSubmoduleMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalContentSymlinkMetadata
-  FIELDS = {
-    type: "type",
-    target: "target",
-    size: "size",
-    name: "name",
-    path: "path",
-    sha: "sha",
-    url: "url",
-    git_url: "git_url",
-    html_url: "html_url",
-    download_url: "download_url",
-    links: "_links",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    type
-    target
-    size
-    name
-    path
-    sha
-    url
-    git_url
-    html_url
-    download_url
-    links
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::ContentSymlinkType.from_value(value)
-    end,
-    links: lambda do |value|
-      ::OctridevGithub::ContentSymlinkLinks.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    git_url
-    html_url
-    download_url
-  ].freeze
-end
+    # @return [ContentSubmoduleType] Required enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [String] Required `uri`-formatted value serialized in the `submodule_git_url` wire field.
+    attr_reader :submodule_git_url
+    # @return [Integer] Required `integer` value serialized in the `size` wire field.
+    attr_reader :size
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Required `string` value serialized in the `path` wire field.
+    attr_reader :path
+    # @return [String] Required `string` value serialized in the `sha` wire field.
+    attr_reader :sha
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Required `uri`-formatted value serialized in the `git_url` wire field.
+    attr_reader :git_url
+    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [String] Required `uri`-formatted value serialized in the `download_url` wire field.
+    attr_reader :download_url
+    # @return [ContentSubmoduleLinks] Required object value serialized in the `_links` wire field.
+    attr_reader :links
 
-# API model for ContentSymlink.
-# An object describing a symlink
-class ContentSymlink
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalContentSymlinkMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalContentSymlinkMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalContentSymlinkMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [ContentSymlinkType] Required enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [String] Required `string` value serialized in the `target` wire field.
-  attr_reader :target
-  # @return [Integer] Required `integer` value serialized in the `size` wire field.
-  attr_reader :size
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Required `string` value serialized in the `path` wire field.
-  attr_reader :path
-  # @return [String] Required `string` value serialized in the `sha` wire field.
-  attr_reader :sha
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Required `uri`-formatted value serialized in the `git_url` wire field.
-  attr_reader :git_url
-  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [String] Required `uri`-formatted value serialized in the `download_url` wire field.
-  attr_reader :download_url
-  # @return [ContentSymlinkLinks] Required object value serialized in the `_links` wire field.
-  attr_reader :links
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalContentSubmoduleMetadata::NULLABLE_FIELDS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalContentSymlinkMetadata::NULLABLE_FIELDS)
+  # Defines the ContentSubmoduleType SDK namespace.
+  module ContentSubmoduleType
+    SUBMODULE = 'submodule'
+    VALUES = ['submodule'].freeze
+    def self.from_value(value)
+      return value if VALUES.include?(value)
+
+      raise SdkValidationError.new('ContentSubmoduleType', 'enum', "Unknown ContentSubmoduleType: #{value}")
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the ContentSymlinkType SDK namespace.
-module ContentSymlinkType
-  SYMLINK = 'symlink'
-  VALUES = ['symlink'].freeze
-  def self.from_value(value)
-    return value if VALUES.include?(value)
-
-    raise SdkValidationError.new('ContentSymlinkType', 'enum', "Unknown ContentSymlinkType: #{value}")
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalContentTrafficMetadata
-  FIELDS = {
-    path: "path",
-    title: "title",
-    count: "count",
-    uniques: "uniques",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    path
-    title
-    count
-    uniques
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for ContentTraffic.
-# Content Traffic
-class ContentTraffic
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalContentTrafficMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalContentTrafficMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalContentTrafficMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `path` wire field.
-  attr_reader :path
-  # @return [String] Required `string` value serialized in the `title` wire field.
-  attr_reader :title
-  # @return [Integer] Required `integer` value serialized in the `count` wire field.
-  attr_reader :count
-  # @return [Integer] Required `integer` value serialized in the `uniques` wire field.
-  attr_reader :uniques
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalContentSymlinkLinksMetadata
+    FIELDS = {
+      git: 'git',
+      html: 'html',
+      self_: 'self'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      git
+      html
+      self_
+    ].freeze
+    DECODERS = {}.freeze
+    NULLABLE_FIELDS = %i[
+      git
+      html
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ContentSymlinkLinks.
+  # Required object value serialized in the `_links` wire field.
+  class ContentSymlinkLinks
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalContentSymlinkLinksMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalContentSymlinkLinksMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalContentSymlinkLinksMetadata::DECODERS
+
+    # @return [String] Required `uri`-formatted value serialized in the `git` wire field.
+    attr_reader :git
+    # @return [String] Required `uri`-formatted value serialized in the `html` wire field.
+    attr_reader :html
+    # @return [String] Required `uri`-formatted value serialized in the `self` wire field.
+    attr_reader :self_
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalContentSymlinkLinksMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalContentTreeEntriesItemLinksMetadata
-  FIELDS = {
-    git: "git",
-    html: "html",
-    self_: "self",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    git
-    html
-    self_
-  ].freeze
-  DECODERS = {
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    git
-    html
-  ].freeze
-end
-
-# API model for ContentTreeEntriesItemLinks.
-# Required object value serialized in the `_links` wire field.
-class ContentTreeEntriesItemLinks
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalContentTreeEntriesItemLinksMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalContentTreeEntriesItemLinksMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalContentTreeEntriesItemLinksMetadata::DECODERS
-
-  # @return [String] Required `uri`-formatted value serialized in the `git` wire field.
-  attr_reader :git
-  # @return [String] Required `uri`-formatted value serialized in the `html` wire field.
-  attr_reader :html
-  # @return [String] Required `uri`-formatted value serialized in the `self` wire field.
-  attr_reader :self_
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalContentSymlinkMetadata
+    FIELDS = {
+      type: 'type',
+      target: 'target',
+      size: 'size',
+      name: 'name',
+      path: 'path',
+      sha: 'sha',
+      url: 'url',
+      git_url: 'git_url',
+      html_url: 'html_url',
+      download_url: 'download_url',
+      links: '_links'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      type
+      target
+      size
+      name
+      path
+      sha
+      url
+      git_url
+      html_url
+      download_url
+      links
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::ContentSymlinkType.from_value(value)
+      end,
+      links: lambda do |value|
+        ::OctridevGithub::ContentSymlinkLinks.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      git_url
+      html_url
+      download_url
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalContentTreeEntriesItemLinksMetadata::NULLABLE_FIELDS)
+  # API model for ContentSymlink.
+  # An object describing a symlink
+  class ContentSymlink
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalContentSymlinkMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalContentSymlinkMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalContentSymlinkMetadata::DECODERS
+
+    # @return [ContentSymlinkType] Required enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [String] Required `string` value serialized in the `target` wire field.
+    attr_reader :target
+    # @return [Integer] Required `integer` value serialized in the `size` wire field.
+    attr_reader :size
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Required `string` value serialized in the `path` wire field.
+    attr_reader :path
+    # @return [String] Required `string` value serialized in the `sha` wire field.
+    attr_reader :sha
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Required `uri`-formatted value serialized in the `git_url` wire field.
+    attr_reader :git_url
+    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [String] Required `uri`-formatted value serialized in the `download_url` wire field.
+    attr_reader :download_url
+    # @return [ContentSymlinkLinks] Required object value serialized in the `_links` wire field.
+    attr_reader :links
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalContentSymlinkMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the ContentSymlinkType SDK namespace.
+  module ContentSymlinkType
+    SYMLINK = 'symlink'
+    VALUES = ['symlink'].freeze
+    def self.from_value(value)
+      return value if VALUES.include?(value)
+
+      raise SdkValidationError.new('ContentSymlinkType', 'enum', "Unknown ContentSymlinkType: #{value}")
+    end
   end
-end
+
+  # Internal model hydration metadata.
+  class SdkInternalContentTrafficMetadata
+    FIELDS = {
+      path: 'path',
+      title: 'title',
+      count: 'count',
+      uniques: 'uniques'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      path
+      title
+      count
+      uniques
+    ].freeze
+    DECODERS = {}.freeze
+  end
+
+  # API model for ContentTraffic.
+  # Content Traffic
+  class ContentTraffic
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalContentTrafficMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalContentTrafficMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalContentTrafficMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `path` wire field.
+    attr_reader :path
+    # @return [String] Required `string` value serialized in the `title` wire field.
+    attr_reader :title
+    # @return [Integer] Required `integer` value serialized in the `count` wire field.
+    attr_reader :count
+    # @return [Integer] Required `integer` value serialized in the `uniques` wire field.
+    attr_reader :uniques
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Internal model hydration metadata.
+  class SdkInternalContentTreeEntriesItemLinksMetadata
+    FIELDS = {
+      git: 'git',
+      html: 'html',
+      self_: 'self'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      git
+      html
+      self_
+    ].freeze
+    DECODERS = {}.freeze
+    NULLABLE_FIELDS = %i[
+      git
+      html
+    ].freeze
+  end
+
+  # API model for ContentTreeEntriesItemLinks.
+  # Required object value serialized in the `_links` wire field.
+  class ContentTreeEntriesItemLinks
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalContentTreeEntriesItemLinksMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalContentTreeEntriesItemLinksMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalContentTreeEntriesItemLinksMetadata::DECODERS
+
+    # @return [String] Required `uri`-formatted value serialized in the `git` wire field.
+    attr_reader :git
+    # @return [String] Required `uri`-formatted value serialized in the `html` wire field.
+    attr_reader :html
+    # @return [String] Required `uri`-formatted value serialized in the `self` wire field.
+    attr_reader :self_
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalContentTreeEntriesItemLinksMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
 end

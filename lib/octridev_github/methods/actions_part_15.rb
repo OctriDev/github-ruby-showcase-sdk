@@ -36,27 +36,26 @@ module OctridevGithub
         require_approval_for_fork_pr_workflows: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/permissions/fork-pr-workflows-private-repos"
+            '/actions/permissions/fork-pr-workflows-private-repos'
           ].join,
           config: config,
           body: {
             'run_workflows_from_fork_pull_requests' => run_workflows_from_fork_pull_requests,
             'send_write_tokens_to_workflows' => send_write_tokens_to_workflows,
             'send_secrets_and_variables' => send_secrets_and_variables,
-            'require_approval_for_fork_pr_workflows' => require_approval_for_fork_pr_workflows,
+            'require_approval_for_fork_pr_workflows' => require_approval_for_fork_pr_workflows
           },
           decoder: :empty,
           operation_id: 'actions_set_private_repo_fork_pr_workflows_settings_repository',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -72,21 +71,20 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/permissions/selected-actions"
+            '/actions/permissions/selected-actions'
           ].join,
           config: config,
           return_type: ::OctridevGithub::SelectedActions,
           decoder: :json,
           operation_id: 'actions_get_allowed_actions_repository',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -116,25 +114,24 @@ module OctridevGithub
         patterns_allowed: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/permissions/selected-actions"
+            '/actions/permissions/selected-actions'
           ].join,
           config: config,
           body: {
             'github_owned_allowed' => github_owned_allowed,
             'verified_allowed' => verified_allowed,
-            'patterns_allowed' => patterns_allowed,
+            'patterns_allowed' => patterns_allowed
           },
           decoder: :empty,
           operation_id: 'actions_set_allowed_actions_repository',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -150,21 +147,20 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/permissions/workflow"
+            '/actions/permissions/workflow'
           ].join,
           config: config,
           return_type: ::OctridevGithub::ActionsGetDefaultWorkflowPermissions,
           decoder: :json,
           operation_id: 'actions_get_github_actions_default_workflow_permissions_repository',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -188,24 +184,23 @@ module OctridevGithub
         can_approve_pull_request_reviews: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/permissions/workflow"
+            '/actions/permissions/workflow'
           ].join,
           config: config,
           body: {
             'default_workflow_permissions' => default_workflow_permissions,
-            'can_approve_pull_request_reviews' => can_approve_pull_request_reviews,
+            'can_approve_pull_request_reviews' => can_approve_pull_request_reviews
           },
           decoder: :empty,
           operation_id: 'actions_set_github_actions_default_workflow_permissions_repository',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -232,27 +227,26 @@ module OctridevGithub
         has_parents: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/policies"
+            '/actions/policies'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'page' => QueryValue.new(page, style: 'form', explode: true),
-            'has_parents' => QueryValue.new(has_parents, style: 'form', explode: true),
+            'has_parents' => QueryValue.new(has_parents, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Actions::ActionsGetRepoActionsPoliciesResponse,
           decoder: :json,
           operation_id: 'actions_get_repo_actions_policies',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -281,28 +275,27 @@ module OctridevGithub
         rules: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/policies"
+            '/actions/policies'
           ].join,
           config: config,
           body: {
             'name' => name,
             'enforcement' => enforcement,
             'conditions' => conditions,
-            'rules' => rules,
+            'rules' => rules
           },
           return_type: ::OctridevGithub::ActionsPolicy,
           decoder: :json,
           operation_id: 'actions_create_repo_actions_policy',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -322,15 +315,14 @@ module OctridevGithub
         policy_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/policies/",
+            '/actions/policies/',
             SdkClient.encode_path_segment(policy_id)
           ].join,
           config: config,
@@ -338,7 +330,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'actions_get_repo_actions_policy',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -369,15 +361,14 @@ module OctridevGithub
         rules: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/policies/",
+            '/actions/policies/',
             SdkClient.encode_path_segment(policy_id)
           ].join,
           config: config,
@@ -385,13 +376,13 @@ module OctridevGithub
             'name' => name,
             'enforcement' => enforcement,
             'conditions' => conditions,
-            'rules' => rules,
+            'rules' => rules
           },
           return_type: ::OctridevGithub::ActionsPolicy,
           decoder: :json,
           operation_id: 'actions_update_repo_actions_policy',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -411,22 +402,21 @@ module OctridevGithub
         policy_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/policies/",
+            '/actions/policies/',
             SdkClient.encode_path_segment(policy_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'actions_delete_repo_actions_policy',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -450,26 +440,25 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runners"
+            '/actions/runners'
           ].join,
           config: config,
           query: {
             'name' => QueryValue.new(name, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Actions::ActionsListSelfHostedRunnersForRepoResponse,
           decoder: :json,
           operation_id: 'actions_list_self_hosted_runners_for_repo',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -487,22 +476,21 @@ module OctridevGithub
         version:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runners/deprecations/",
+            '/actions/runners/deprecations/',
             SdkClient.encode_path_segment(version)
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::Actions::ActionsGetRunnerVersionDeprecationForRepoResponse,
           decoder: :json,
           operation_id: 'actions_get_runner_version_deprecation_for_repo',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -518,21 +506,20 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runners/downloads"
+            '/actions/runners/downloads'
           ].join,
           config: config,
           return_type: [::OctridevGithub::RunnerApplication],
           decoder: :json,
           operation_id: 'actions_list_runner_applications_for_repo',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

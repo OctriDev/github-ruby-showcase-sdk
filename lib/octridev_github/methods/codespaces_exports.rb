@@ -17,20 +17,19 @@ module OctridevGithub
         codespace_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/user/codespaces/",
+            '/user/codespaces/',
             SdkClient.encode_path_segment(codespace_name),
-            "/exports"
+            '/exports'
           ].join,
           config: config,
           return_type: ::OctridevGithub::CodespaceExportDetails,
           decoder: :json,
           operation_id: 'codespaces_export_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -45,13 +44,12 @@ module OctridevGithub
         export_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/user/codespaces/",
+            '/user/codespaces/',
             SdkClient.encode_path_segment(codespace_name),
-            "/exports/",
+            '/exports/',
             SdkClient.encode_path_segment(export_id)
           ].join,
           config: config,
@@ -59,7 +57,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'codespaces_get_export_details_for_authenticated_user',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

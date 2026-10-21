@@ -5,45 +5,45 @@
 
 # pull_request domain models (part 3)
 module OctridevGithub
-# Defines the PullRequestWebhookVariant1MergeCommitMessage SDK namespace.
-module PullRequestWebhookVariant1MergeCommitMessage
-  PR_BODY = 'PR_BODY'
-  PR_TITLE = 'PR_TITLE'
-  BLANK = 'BLANK'
-  VALUES = ['PR_BODY', 'PR_TITLE', 'BLANK'].freeze
-  def self.from_value(value)
-    value
+  # Defines the PullRequestWebhookVariant1MergeCommitMessage SDK namespace.
+  module PullRequestWebhookVariant1MergeCommitMessage
+    PR_BODY = 'PR_BODY'
+    PR_TITLE = 'PR_TITLE'
+    BLANK = 'BLANK'
+    VALUES = %w[PR_BODY PR_TITLE BLANK].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the PullRequestWebhookVariant1MergeCommitTitle SDK namespace.
-module PullRequestWebhookVariant1MergeCommitTitle
-  PR_TITLE = 'PR_TITLE'
-  MERGE_MESSAGE = 'MERGE_MESSAGE'
-  VALUES = ['PR_TITLE', 'MERGE_MESSAGE'].freeze
-  def self.from_value(value)
-    value
+  # Defines the PullRequestWebhookVariant1MergeCommitTitle SDK namespace.
+  module PullRequestWebhookVariant1MergeCommitTitle
+    PR_TITLE = 'PR_TITLE'
+    MERGE_MESSAGE = 'MERGE_MESSAGE'
+    VALUES = %w[PR_TITLE MERGE_MESSAGE].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the PullRequestWebhookVariant1SquashMergeCommitMessage SDK namespace.
-module PullRequestWebhookVariant1SquashMergeCommitMessage
-  PR_BODY = 'PR_BODY'
-  COMMIT_MESSAGES = 'COMMIT_MESSAGES'
-  BLANK = 'BLANK'
-  VALUES = ['PR_BODY', 'COMMIT_MESSAGES', 'BLANK'].freeze
-  def self.from_value(value)
-    value
+  # Defines the PullRequestWebhookVariant1SquashMergeCommitMessage SDK namespace.
+  module PullRequestWebhookVariant1SquashMergeCommitMessage
+    PR_BODY = 'PR_BODY'
+    COMMIT_MESSAGES = 'COMMIT_MESSAGES'
+    BLANK = 'BLANK'
+    VALUES = %w[PR_BODY COMMIT_MESSAGES BLANK].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the PullRequestWebhookVariant1SquashMergeCommitTitle SDK namespace.
-module PullRequestWebhookVariant1SquashMergeCommitTitle
-  PR_TITLE = 'PR_TITLE'
-  COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
-  VALUES = ['PR_TITLE', 'COMMIT_OR_PR_TITLE'].freeze
-  def self.from_value(value)
-    value
+  # Defines the PullRequestWebhookVariant1SquashMergeCommitTitle SDK namespace.
+  module PullRequestWebhookVariant1SquashMergeCommitTitle
+    PR_TITLE = 'PR_TITLE'
+    COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
+    VALUES = %w[PR_TITLE COMMIT_OR_PR_TITLE].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 end

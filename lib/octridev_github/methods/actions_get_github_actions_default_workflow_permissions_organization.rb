@@ -17,19 +17,18 @@ module OctridevGithub
         org:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/permissions/workflow"
+            '/actions/permissions/workflow'
           ].join,
           config: config,
           return_type: ::OctridevGithub::ActionsGetDefaultWorkflowPermissions,
           decoder: :json,
           operation_id: 'actions_get_github_actions_default_workflow_permissions_organization',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

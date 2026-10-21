@@ -5,274 +5,274 @@
 
 # webhook_check_suite_rerequested domain models
 module OctridevGithub
-# Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsMergeQueues SDK namespace.
-module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsMergeQueues
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsMergeQueues SDK namespace.
+  module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsMergeQueues
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsMetadata SDK namespace.
-module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsMetadata
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsMetadata SDK namespace.
+  module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsMetadata
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsModels SDK namespace.
-module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsModels
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsModels SDK namespace.
+  module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsModels
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizatXce77842aea SDK namespace.
-module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizatXce77842aea
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizatXce77842aea SDK namespace.
+  module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizatXce77842aea
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizationHooks SDK namespace.
-module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizationHooks
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizationHooks SDK namespace.
+  module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizationHooks
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizationPackages SDK namespace.
-module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizationPackages
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizationPackages SDK namespace.
+  module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizationPackages
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizationPlan SDK namespace.
-module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizationPlan
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizationPlan SDK namespace.
+  module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizationPlan
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizationProjects SDK namespace.
-module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizationProjects
-  READ = 'read'
-  WRITE = 'write'
-  ADMIN = 'admin'
-  VALUES = ['read', 'write', 'admin'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizationProjects SDK namespace.
+  module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizationProjects
+    READ = 'read'
+    WRITE = 'write'
+    ADMIN = 'admin'
+    VALUES = %w[read write admin].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizationSecrets SDK namespace.
-module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizationSecrets
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizationSecrets SDK namespace.
+  module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizationSecrets
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizatXa7b17e815d SDK namespace.
-module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizatXa7b17e815d
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizatXa7b17e815d SDK namespace.
+  module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizatXa7b17e815d
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizatX3af983b870 SDK namespace.
-module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizatX3af983b870
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizatX3af983b870 SDK namespace.
+  module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsOrganizatX3af983b870
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsPackages SDK namespace.
-module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsPackages
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsPackages SDK namespace.
+  module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsPackages
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsPages SDK namespace.
-module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsPages
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsPages SDK namespace.
+  module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsPages
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsPullRequests SDK namespace.
-module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsPullRequests
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsPullRequests SDK namespace.
+  module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsPullRequests
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsRepositoryHooks SDK namespace.
-module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsRepositoryHooks
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsRepositoryHooks SDK namespace.
+  module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsRepositoryHooks
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsRepositoryProjects SDK namespace.
-module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsRepositoryProjects
-  READ = 'read'
-  WRITE = 'write'
-  ADMIN = 'admin'
-  VALUES = ['read', 'write', 'admin'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsRepositoryProjects SDK namespace.
+  module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsRepositoryProjects
+    READ = 'read'
+    WRITE = 'write'
+    ADMIN = 'admin'
+    VALUES = %w[read write admin].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsSecretScanningAlerts SDK namespace.
-module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsSecretScanningAlerts
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsSecretScanningAlerts SDK namespace.
+  module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsSecretScanningAlerts
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsSecrets SDK namespace.
-module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsSecrets
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsSecrets SDK namespace.
+  module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsSecrets
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsSecurityEvents SDK namespace.
-module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsSecurityEvents
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsSecurityEvents SDK namespace.
+  module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsSecurityEvents
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsSecuritySX71e37b76ea SDK namespace.
-module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsSecuritySX71e37b76ea
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsSecuritySX71e37b76ea SDK namespace.
+  module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsSecuritySX71e37b76ea
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsSingleFile SDK namespace.
-module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsSingleFile
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsSingleFile SDK namespace.
+  module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsSingleFile
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsStatuses SDK namespace.
-module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsStatuses
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsStatuses SDK namespace.
+  module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsStatuses
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsVulnerabilityAlerts SDK namespace.
-module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsVulnerabilityAlerts
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsVulnerabilityAlerts SDK namespace.
+  module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsVulnerabilityAlerts
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsWorkflows SDK namespace.
-module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsWorkflows
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsWorkflows SDK namespace.
+  module WebhookCheckSuiteRerequestedCheckSuiteAppPermissionsWorkflows
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCheckSuiteRerequestedCheckSuiteConclusion SDK namespace.
-module WebhookCheckSuiteRerequestedCheckSuiteConclusion
-  SUCCESS = 'success'
-  FAILURE = 'failure'
-  NEUTRAL = 'neutral'
-  CANCELLED = 'cancelled'
-  TIMED_OUT = 'timed_out'
-  ACTION_REQUIRED = 'action_required'
-  STALE = 'stale'
-  VALUES = [
-    'success', 'failure', 'neutral', 'cancelled', 'timed_out', 'action_required', 'stale'
-  ].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCheckSuiteRerequestedCheckSuiteConclusion SDK namespace.
+  module WebhookCheckSuiteRerequestedCheckSuiteConclusion
+    SUCCESS = 'success'
+    FAILURE = 'failure'
+    NEUTRAL = 'neutral'
+    CANCELLED = 'cancelled'
+    TIMED_OUT = 'timed_out'
+    ACTION_REQUIRED = 'action_required'
+    STALE = 'stale'
+    VALUES = %w[
+      success failure neutral cancelled timed_out action_required stale
+    ].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookCheckSuiteRerequestedCheckSuiteStatus SDK namespace.
-module WebhookCheckSuiteRerequestedCheckSuiteStatus
-  REQUESTED = 'requested'
-  IN_PROGRESS = 'in_progress'
-  COMPLETED = 'completed'
-  QUEUED = 'queued'
-  VALUES = ['requested', 'in_progress', 'completed', 'queued'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookCheckSuiteRerequestedCheckSuiteStatus SDK namespace.
+  module WebhookCheckSuiteRerequestedCheckSuiteStatus
+    REQUESTED = 'requested'
+    IN_PROGRESS = 'in_progress'
+    COMPLETED = 'completed'
+    QUEUED = 'queued'
+    VALUES = %w[requested in_progress completed queued].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 end

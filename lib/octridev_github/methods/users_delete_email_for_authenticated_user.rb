@@ -17,16 +17,15 @@ module OctridevGithub
         body: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
-          "/user/emails",
+          '/user/emails',
           config: config,
           body: body,
           decoder: :empty,
           operation_id: 'users_delete_email_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
     end

@@ -31,27 +31,26 @@ module OctridevGithub
         state: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/releases/assets/",
+            '/releases/assets/',
             SdkClient.encode_path_segment(asset_id)
           ].join,
           config: config,
           body: {
             'name' => name,
             'label' => label,
-            'state' => state,
+            'state' => state
           },
           return_type: ::OctridevGithub::ReleaseAsset,
           decoder: :json,
           operation_id: 'repos_update_release_asset',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

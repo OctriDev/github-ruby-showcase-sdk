@@ -26,24 +26,23 @@ module OctridevGithub
         visible_to_repository: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/runner-groups"
+            '/actions/runner-groups'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'page' => QueryValue.new(page, style: 'form', explode: true),
-            'visible_to_repository' => QueryValue.new(visible_to_repository, style: 'form', explode: true),
+            'visible_to_repository' => QueryValue.new(visible_to_repository, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Actions::ActionsListSelfHostedRunnerGroupsForOrgResponse,
           decoder: :json,
           operation_id: 'actions_list_self_hosted_runner_groups_for_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -81,13 +80,12 @@ module OctridevGithub
         network_configuration_id: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/runner-groups"
+            '/actions/runner-groups'
           ].join,
           config: config,
           body: {
@@ -98,12 +96,12 @@ module OctridevGithub
             'allows_public_repositories' => allows_public_repositories,
             'restricted_to_workflows' => restricted_to_workflows,
             'selected_workflows' => selected_workflows,
-            'network_configuration_id' => network_configuration_id,
+            'network_configuration_id' => network_configuration_id
           },
           return_type: ::OctridevGithub::RunnerGroupsOrg,
           decoder: :json,
           operation_id: 'actions_create_self_hosted_runner_group_for_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -118,20 +116,19 @@ module OctridevGithub
         runner_group_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/runner-groups/",
+            '/actions/runner-groups/',
             SdkClient.encode_path_segment(runner_group_id)
           ].join,
           config: config,
           return_type: ::OctridevGithub::RunnerGroupsOrg,
           decoder: :json,
           operation_id: 'actions_get_self_hosted_runner_group_for_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -166,13 +163,12 @@ module OctridevGithub
         network_configuration_id: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/runner-groups/",
+            '/actions/runner-groups/',
             SdkClient.encode_path_segment(runner_group_id)
           ].join,
           config: config,
@@ -182,12 +178,12 @@ module OctridevGithub
             'allows_public_repositories' => allows_public_repositories,
             'restricted_to_workflows' => restricted_to_workflows,
             'selected_workflows' => selected_workflows,
-            'network_configuration_id' => network_configuration_id,
+            'network_configuration_id' => network_configuration_id
           },
           return_type: ::OctridevGithub::RunnerGroupsOrg,
           decoder: :json,
           operation_id: 'actions_update_self_hosted_runner_group_for_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -202,19 +198,18 @@ module OctridevGithub
         runner_group_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/runner-groups/",
+            '/actions/runner-groups/',
             SdkClient.encode_path_segment(runner_group_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'actions_delete_self_hosted_runner_group_from_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -235,25 +230,24 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/runner-groups/",
+            '/actions/runner-groups/',
             SdkClient.encode_path_segment(runner_group_id),
-            "/hosted-runners"
+            '/hosted-runners'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Actions::ActionsListGithubHostedRunnersInGroupForOrgResponse,
           decoder: :json,
           operation_id: 'actions_list_github_hosted_runners_in_group_for_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -274,25 +268,24 @@ module OctridevGithub
         per_page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/runner-groups/",
+            '/actions/runner-groups/',
             SdkClient.encode_path_segment(runner_group_id),
-            "/repositories"
+            '/repositories'
           ].join,
           config: config,
           query: {
             'page' => QueryValue.new(page, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Actions::ActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse,
           decoder: :json,
           operation_id: 'actions_list_repo_access_to_self_hosted_runner_group_in_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -310,23 +303,22 @@ module OctridevGithub
         selected_repository_ids:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/runner-groups/",
+            '/actions/runner-groups/',
             SdkClient.encode_path_segment(runner_group_id),
-            "/repositories"
+            '/repositories'
           ].join,
           config: config,
           body: {
-            'selected_repository_ids' => selected_repository_ids,
+            'selected_repository_ids' => selected_repository_ids
           },
           decoder: :empty,
           operation_id: 'actions_set_repo_access_to_self_hosted_runner_group_in_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -343,21 +335,20 @@ module OctridevGithub
         repository_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/runner-groups/",
+            '/actions/runner-groups/',
             SdkClient.encode_path_segment(runner_group_id),
-            "/repositories/",
+            '/repositories/',
             SdkClient.encode_path_segment(repository_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'actions_add_repo_access_to_self_hosted_runner_group_in_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -374,21 +365,20 @@ module OctridevGithub
         repository_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/runner-groups/",
+            '/actions/runner-groups/',
             SdkClient.encode_path_segment(runner_group_id),
-            "/repositories/",
+            '/repositories/',
             SdkClient.encode_path_segment(repository_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'actions_remove_repo_access_to_self_hosted_runner_group_in_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -409,25 +399,24 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/runner-groups/",
+            '/actions/runner-groups/',
             SdkClient.encode_path_segment(runner_group_id),
-            "/runners"
+            '/runners'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Actions::ActionsListSelfHostedRunnersInGroupForOrgResponse,
           decoder: :json,
           operation_id: 'actions_list_self_hosted_runners_in_group_for_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -445,23 +434,22 @@ module OctridevGithub
         runners:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/runner-groups/",
+            '/actions/runner-groups/',
             SdkClient.encode_path_segment(runner_group_id),
-            "/runners"
+            '/runners'
           ].join,
           config: config,
           body: {
-            'runners' => runners,
+            'runners' => runners
           },
           decoder: :empty,
           operation_id: 'actions_set_self_hosted_runners_in_group_for_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -478,21 +466,20 @@ module OctridevGithub
         runner_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/runner-groups/",
+            '/actions/runner-groups/',
             SdkClient.encode_path_segment(runner_group_id),
-            "/runners/",
+            '/runners/',
             SdkClient.encode_path_segment(runner_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'actions_add_self_hosted_runner_to_group_for_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -509,21 +496,20 @@ module OctridevGithub
         runner_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/runner-groups/",
+            '/actions/runner-groups/',
             SdkClient.encode_path_segment(runner_group_id),
-            "/runners/",
+            '/runners/',
             SdkClient.encode_path_segment(runner_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'actions_remove_self_hosted_runner_from_group_for_org',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

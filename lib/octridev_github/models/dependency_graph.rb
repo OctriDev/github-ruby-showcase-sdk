@@ -5,673 +5,665 @@
 
 # dependency_graph domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalDependencyMetadata
-  FIELDS = {
-    package_url: "package_url",
-    metadata: "metadata",
-    relationship: "relationship",
-    scope: "scope",
-    dependencies: "dependencies",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    metadata: lambda do |value|
-      ::OctridevGithub::Metadata.from_hash(value)
-    end,
-    relationship: lambda do |value|
-      ::OctridevGithub::DependencyRelationship.from_value(value)
-    end,
-    scope: lambda do |value|
-      ::OctridevGithub::DependencyScope.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for Dependency.
-# Typed representation of the `Dependency` API schema.
-class Dependency
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalDependencyMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalDependencyMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalDependencyMetadata::DECODERS
-
-  # @return [String] Package-url (PURL) of dependency. See github.com for more details.
-  attr_reader :package_url
-  # @return [Metadata] User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
-  attr_reader :metadata
-  # @return [DependencyRelationship] A notation of whether a dependency is requested directly by this manifest or is a dependency of another dependency.
-  attr_reader :relationship
-  # @return [DependencyScope] A notation of whether the dependency is required for the primary build artifact (runtime) or is only used for development. Future versions of this specification may allow for more granular scopes.
-  attr_reader :scope
-  # @return [Array_of_String] Array of package-url (PURLs) of direct child dependencies.
-  attr_reader :dependencies
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalDependencyMetadata
+    FIELDS = {
+      package_url: 'package_url',
+      metadata: 'metadata',
+      relationship: 'relationship',
+      scope: 'scope',
+      dependencies: 'dependencies'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      metadata: lambda do |value|
+        ::OctridevGithub::Metadata.from_hash(value)
+      end,
+      relationship: lambda do |value|
+        ::OctridevGithub::DependencyRelationship.from_value(value)
+      end,
+      scope: lambda do |value|
+        ::OctridevGithub::DependencyScope.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for Dependency.
+  # Typed representation of the `Dependency` API schema.
+  class Dependency
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalDependencyMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalDependencyMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalDependencyMetadata::DECODERS
+
+    # @return [String] Package-url (PURL) of dependency. See github.com for more details.
+    attr_reader :package_url
+    # @return [Metadata] User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
+    attr_reader :metadata
+    # @return [DependencyRelationship] A notation of whether a dependency is requested directly by this manifest or is a dependency of another dependency.
+    attr_reader :relationship
+    # @return [DependencyScope] A notation of whether the dependency is required for the primary build artifact (runtime) or is only used for development. Future versions of this specification may allow for more granular scopes.
+    attr_reader :scope
+    # @return [Array_of_String] Array of package-url (PURLs) of direct child dependencies.
+    attr_reader :dependencies
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the DependencyRelationship SDK namespace.
-module DependencyRelationship
-  DIRECT = 'direct'
-  INDIRECT = 'indirect'
-  VALUES = ['direct', 'indirect'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the DependencyScope SDK namespace.
-module DependencyScope
-  RUNTIME = 'runtime'
-  DEVELOPMENT = 'development'
-  VALUES = ['runtime', 'development'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalDependencyGraphDiffItemVulnerabilitiesItemMetadata
-  FIELDS = {
-    severity: "severity",
-    advisory_ghsa_id: "advisory_ghsa_id",
-    advisory_summary: "advisory_summary",
-    advisory_url: "advisory_url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    severity
-    advisory_ghsa_id
-    advisory_summary
-    advisory_url
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for DependencyGraphDiffItemVulnerabilitiesItem.
-class DependencyGraphDiffItemVulnerabilitiesItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalDependencyGraphDiffItemVulnerabilitiesItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalDependencyGraphDiffItemVulnerabilitiesItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalDependencyGraphDiffItemVulnerabilitiesItemMetadata::DECODERS
-
-  attr_reader :severity, :advisory_ghsa_id, :advisory_summary, :advisory_url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the DependencyRelationship SDK namespace.
+  module DependencyRelationship
+    DIRECT = 'direct'
+    INDIRECT = 'indirect'
+    VALUES = %w[direct indirect].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the DependencyScope SDK namespace.
+  module DependencyScope
+    RUNTIME = 'runtime'
+    DEVELOPMENT = 'development'
+    VALUES = %w[runtime development].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalDependencyGraphDiffItemMetadata
-  FIELDS = {
-    change_type: "change_type",
-    manifest: "manifest",
-    ecosystem: "ecosystem",
-    name: "name",
-    version: "version",
-    package_url: "package_url",
-    license: "license",
-    source_repository_url: "source_repository_url",
-    vulnerabilities: "vulnerabilities",
-    scope: "scope",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    change_type
-    manifest
-    ecosystem
-    name
-    version
-    package_url
-    license
-    source_repository_url
-    vulnerabilities
-    scope
-  ].freeze
-  DECODERS = {
-    change_type: lambda do |value|
-      ::OctridevGithub::DependencyGraphDiffItemChangeType.from_value(value)
-    end,
-    vulnerabilities: lambda do |value|
-      value&.map { |item| ::OctridevGithub::DependencyGraphDiffItemVulnerabilitiesItem.from_hash(item) }
-    end,
-    scope: lambda do |value|
-      ::OctridevGithub::DependencyGraphDiffItemScope.from_value(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    package_url
-    license
-    source_repository_url
-  ].freeze
-end
-
-# API model for DependencyGraphDiffItem.
-class DependencyGraphDiffItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalDependencyGraphDiffItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalDependencyGraphDiffItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalDependencyGraphDiffItemMetadata::DECODERS
-
-  attr_reader :change_type, :manifest, :ecosystem, :name, :version, :package_url, :license,
-              :source_repository_url, :vulnerabilities
-  # @return [DependencyGraphDiffItemScope] Where the dependency is utilized. `development` means that the dependency is only utilized in the development environment. `runtime` means that the dependency is utilized at runtime and in the development environment.
-  attr_reader :scope
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalDependencyGraphDiffItemVulnerabilitiesItemMetadata
+    FIELDS = {
+      severity: 'severity',
+      advisory_ghsa_id: 'advisory_ghsa_id',
+      advisory_summary: 'advisory_summary',
+      advisory_url: 'advisory_url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      severity
+      advisory_ghsa_id
+      advisory_summary
+      advisory_url
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalDependencyGraphDiffItemMetadata::NULLABLE_FIELDS)
+  # API model for DependencyGraphDiffItemVulnerabilitiesItem.
+  class DependencyGraphDiffItemVulnerabilitiesItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalDependencyGraphDiffItemVulnerabilitiesItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalDependencyGraphDiffItemVulnerabilitiesItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalDependencyGraphDiffItemVulnerabilitiesItemMetadata::DECODERS
+
+    attr_reader :severity, :advisory_ghsa_id, :advisory_summary, :advisory_url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the DependencyGraphDiff SDK value decoder.
-module DependencyGraphDiff
-  def self.from_hash(value)
-    return nil if value.nil?
-    value&.map { |item| ::OctridevGithub::DependencyGraphDiffItem.from_hash(item) }
-  end
-end
-
-# Defines the DependencyGraphDiffItemChangeType SDK namespace.
-module DependencyGraphDiffItemChangeType
-  ADDED = 'added'
-  REMOVED = 'removed'
-  VALUES = ['added', 'removed'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the DependencyGraphDiffItemScope SDK namespace.
-module DependencyGraphDiffItemScope
-  UNKNOWN = 'unknown'
-  RUNTIME = 'runtime'
-  DEVELOPMENT = 'development'
-  VALUES = ['unknown', 'runtime', 'development'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalDependencyGraphSpdxSbomSbomCreationInfoMetadata
-  FIELDS = {
-    created: "created",
-    creators: "creators",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    created
-    creators
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for DependencyGraphSpdxSbomSbomCreationInfo.
-# Required object value serialized in the `creationInfo` wire field.
-class DependencyGraphSpdxSbomSbomCreationInfo
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalDependencyGraphSpdxSbomSbomCreationInfoMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalDependencyGraphSpdxSbomSbomCreationInfoMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalDependencyGraphSpdxSbomSbomCreationInfoMetadata::DECODERS
-
-  # @return [String] The date and time the SPDX document was created.
-  attr_reader :created
-  # @return [Array_of_String] The tools that were used to generate the SPDX document.
-  attr_reader :creators
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalDependencyGraphDiffItemMetadata
+    FIELDS = {
+      change_type: 'change_type',
+      manifest: 'manifest',
+      ecosystem: 'ecosystem',
+      name: 'name',
+      version: 'version',
+      package_url: 'package_url',
+      license: 'license',
+      source_repository_url: 'source_repository_url',
+      vulnerabilities: 'vulnerabilities',
+      scope: 'scope'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      change_type
+      manifest
+      ecosystem
+      name
+      version
+      package_url
+      license
+      source_repository_url
+      vulnerabilities
+      scope
+    ].freeze
+    DECODERS = {
+      change_type: lambda do |value|
+        ::OctridevGithub::DependencyGraphDiffItemChangeType.from_value(value)
+      end,
+      vulnerabilities: lambda do |value|
+        value&.map { |item| ::OctridevGithub::DependencyGraphDiffItemVulnerabilitiesItem.from_hash(item) }
+      end,
+      scope: lambda do |value|
+        ::OctridevGithub::DependencyGraphDiffItemScope.from_value(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      package_url
+      license
+      source_repository_url
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for DependencyGraphDiffItem.
+  class DependencyGraphDiffItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalDependencyGraphDiffItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalDependencyGraphDiffItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalDependencyGraphDiffItemMetadata::DECODERS
+
+    attr_reader :change_type, :manifest, :ecosystem, :name, :version, :package_url, :license,
+                :source_repository_url, :vulnerabilities
+    # @return [DependencyGraphDiffItemScope] Where the dependency is utilized. `development` means that the dependency is only utilized in the development environment. `runtime` means that the dependency is utilized at runtime and in the development environment.
+    attr_reader :scope
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalDependencyGraphDiffItemMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # Defines the DependencyGraphDiff SDK value decoder.
+  module DependencyGraphDiff
+    def self.from_hash(value)
+      return nil if value.nil?
 
-# Internal model hydration metadata.
-class SdkInternalDependencyGraphSpdxSbomSbomPackagesItemExternalRefsItemMetadata
-  FIELDS = {
-    reference_category: "referenceCategory",
-    reference_locator: "referenceLocator",
-    reference_type: "referenceType",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    reference_category
-    reference_locator
-    reference_type
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for DependencyGraphSpdxSbomSbomPackagesItemExternalRefsItem.
-# Required object value serialized in the `externalRefs[]` wire field.
-class DependencyGraphSpdxSbomSbomPackagesItemExternalRefsItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalDependencyGraphSpdxSbomSbomPackagesItemExternalRefsItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalDependencyGraphSpdxSbomSbomPackagesItemExternalRefsItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalDependencyGraphSpdxSbomSbomPackagesItemExternalRefsItemMetadata::DECODERS
-
-  # @return [String] The category of reference to an external resource this reference refers to.
-  attr_reader :reference_category
-  # @return [String] A locator for the particular external resource this reference refers to.
-  attr_reader :reference_locator
-  # @return [String] The category of reference to an external resource this reference refers to.
-  attr_reader :reference_type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+      value&.map { |item| ::OctridevGithub::DependencyGraphDiffItem.from_hash(item) }
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the DependencyGraphDiffItemChangeType SDK namespace.
+  module DependencyGraphDiffItemChangeType
+    ADDED = 'added'
+    REMOVED = 'removed'
+    VALUES = %w[added removed].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalDependencyGraphSpdxSbomSbomPackagesItemMetadata
-  FIELDS = {
-    spdxid: "SPDXID",
-    name: "name",
-    version_info: "versionInfo",
-    download_location: "downloadLocation",
-    files_analyzed: "filesAnalyzed",
-    license_concluded: "licenseConcluded",
-    license_declared: "licenseDeclared",
-    supplier: "supplier",
-    copyright_text: "copyrightText",
-    external_refs: "externalRefs",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    external_refs: lambda do |value|
-      value&.map { |item| ::OctridevGithub::DependencyGraphSpdxSbomSbomPackagesItemExternalRefsItem.from_hash(item) }
-    end,
-  }.freeze
-end
-
-# API model for DependencyGraphSpdxSbomSbomPackagesItem.
-# Required object value serialized in the `packages[]` wire field.
-class DependencyGraphSpdxSbomSbomPackagesItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalDependencyGraphSpdxSbomSbomPackagesItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalDependencyGraphSpdxSbomSbomPackagesItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalDependencyGraphSpdxSbomSbomPackagesItemMetadata::DECODERS
-
-  # @return [String] A unique SPDX identifier for the package.
-  attr_reader :spdxid
-  # @return [String] The name of the package.
-  attr_reader :name
-  # @return [String] The version of the package. If the package does not have an exact version specified, a version range is given.
-  attr_reader :version_info
-  # @return [String] The location where the package can be downloaded, or NOASSERTION if this has not been determined.
-  attr_reader :download_location
-  # @return [Boolean] Whether the package's file content has been subjected to analysis during the creation of the SPDX document.
-  attr_reader :files_analyzed
-  # @return [String] The license of the package as determined while creating the SPDX document.
-  attr_reader :license_concluded
-  # @return [String] The license of the package as declared by its author, or NOASSERTION if this information was not available when the SPDX document was created.
-  attr_reader :license_declared
-  # @return [String] The distribution source of this package, or NOASSERTION if this was not determined.
-  attr_reader :supplier
-  # @return [String] The copyright holders of the package, and any dates present with those notices, if available.
-  attr_reader :copyright_text
-  # @return [Array_of_DependencyGraphSpdxSbomSbomPackagesItemExternalRefsItem] Optional array value serialized in the `externalRefs` wire field.
-  attr_reader :external_refs
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the DependencyGraphDiffItemScope SDK namespace.
+  module DependencyGraphDiffItemScope
+    UNKNOWN = 'unknown'
+    RUNTIME = 'runtime'
+    DEVELOPMENT = 'development'
+    VALUES = %w[unknown runtime development].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalDependencyGraphSpdxSbomSbomCreationInfoMetadata
+    FIELDS = {
+      created: 'created',
+      creators: 'creators'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      created
+      creators
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for DependencyGraphSpdxSbomSbomCreationInfo.
+  # Required object value serialized in the `creationInfo` wire field.
+  class DependencyGraphSpdxSbomSbomCreationInfo
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalDependencyGraphSpdxSbomSbomCreationInfoMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalDependencyGraphSpdxSbomSbomCreationInfoMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalDependencyGraphSpdxSbomSbomCreationInfoMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalDependencyGraphSpdxSbomSbomRelationshipsItemMetadata
-  FIELDS = {
-    relationship_type: "relationshipType",
-    spdx_element_id: "spdxElementId",
-    related_spdx_element: "relatedSpdxElement",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    # @return [String] The date and time the SPDX document was created.
+    attr_reader :created
+    # @return [Array_of_String] The tools that were used to generate the SPDX document.
+    attr_reader :creators
 
-# API model for DependencyGraphSpdxSbomSbomRelationshipsItem.
-# Required object value serialized in the `relationships[]` wire field.
-class DependencyGraphSpdxSbomSbomRelationshipsItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalDependencyGraphSpdxSbomSbomRelationshipsItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalDependencyGraphSpdxSbomSbomRelationshipsItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalDependencyGraphSpdxSbomSbomRelationshipsItemMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [String] The type of relationship between the two SPDX elements.
-  attr_reader :relationship_type
-  # @return [String] The SPDX identifier of the package that is the source of the relationship.
-  attr_reader :spdx_element_id
-  # @return [String] The SPDX identifier of the package that is the target of the relationship.
-  attr_reader :related_spdx_element
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalDependencyGraphSpdxSbomSbomPackagesItemExternalRefsItemMetadata
+    FIELDS = {
+      reference_category: 'referenceCategory',
+      reference_locator: 'referenceLocator',
+      reference_type: 'referenceType'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      reference_category
+      reference_locator
+      reference_type
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for DependencyGraphSpdxSbomSbomPackagesItemExternalRefsItem.
+  # Required object value serialized in the `externalRefs[]` wire field.
+  class DependencyGraphSpdxSbomSbomPackagesItemExternalRefsItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalDependencyGraphSpdxSbomSbomPackagesItemExternalRefsItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalDependencyGraphSpdxSbomSbomPackagesItemExternalRefsItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalDependencyGraphSpdxSbomSbomPackagesItemExternalRefsItemMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalDependencyGraphSpdxSbomSbomMetadata
-  FIELDS = {
-    spdxid: "SPDXID",
-    spdx_version: "spdxVersion",
-    comment: "comment",
-    creation_info: "creationInfo",
-    name: "name",
-    data_license: "dataLicense",
-    document_namespace: "documentNamespace",
-    packages: "packages",
-    relationships: "relationships",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    spdxid
-    spdx_version
-    creation_info
-    name
-    data_license
-    document_namespace
-    packages
-  ].freeze
-  DECODERS = {
-    creation_info: lambda do |value|
-      ::OctridevGithub::DependencyGraphSpdxSbomSbomCreationInfo.from_hash(value)
-    end,
-    packages: lambda do |value|
-      value&.map { |item| ::OctridevGithub::DependencyGraphSpdxSbomSbomPackagesItem.from_hash(item) }
-    end,
-    relationships: lambda do |value|
-      value&.map { |item| ::OctridevGithub::DependencyGraphSpdxSbomSbomRelationshipsItem.from_hash(item) }
-    end,
-  }.freeze
-end
+    # @return [String] The category of reference to an external resource this reference refers to.
+    attr_reader :reference_category
+    # @return [String] A locator for the particular external resource this reference refers to.
+    attr_reader :reference_locator
+    # @return [String] The category of reference to an external resource this reference refers to.
+    attr_reader :reference_type
 
-# API model for DependencyGraphSpdxSbomSbom.
-# Required object value serialized in the `sbom` wire field.
-class DependencyGraphSpdxSbomSbom
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalDependencyGraphSpdxSbomSbomMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalDependencyGraphSpdxSbomSbomMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalDependencyGraphSpdxSbomSbomMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [String] The SPDX identifier for the SPDX document.
-  attr_reader :spdxid
-  # @return [String] The version of the SPDX specification that this document conforms to.
-  attr_reader :spdx_version
-  # @return [String] An optional comment about the SPDX document.
-  attr_reader :comment
-  # @return [DependencyGraphSpdxSbomSbomCreationInfo] Required object value serialized in the `creationInfo` wire field.
-  attr_reader :creation_info
-  # @return [String] The name of the SPDX document.
-  attr_reader :name
-  # @return [String] The license under which the SPDX document is licensed.
-  attr_reader :data_license
-  # @return [String] The namespace for the SPDX document.
-  attr_reader :document_namespace
-  # @return [Array_of_DependencyGraphSpdxSbomSbomPackagesItem] Required array value serialized in the `packages` wire field.
-  attr_reader :packages
-  # @return [Array_of_DependencyGraphSpdxSbomSbomRelationshipsItem] Optional array value serialized in the `relationships` wire field.
-  attr_reader :relationships
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalDependencyGraphSpdxSbomSbomPackagesItemMetadata
+    FIELDS = {
+      spdxid: 'SPDXID',
+      name: 'name',
+      version_info: 'versionInfo',
+      download_location: 'downloadLocation',
+      files_analyzed: 'filesAnalyzed',
+      license_concluded: 'licenseConcluded',
+      license_declared: 'licenseDeclared',
+      supplier: 'supplier',
+      copyright_text: 'copyrightText',
+      external_refs: 'externalRefs'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      external_refs: lambda do |value|
+        value&.map { |item| ::OctridevGithub::DependencyGraphSpdxSbomSbomPackagesItemExternalRefsItem.from_hash(item) }
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for DependencyGraphSpdxSbomSbomPackagesItem.
+  # Required object value serialized in the `packages[]` wire field.
+  class DependencyGraphSpdxSbomSbomPackagesItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalDependencyGraphSpdxSbomSbomPackagesItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalDependencyGraphSpdxSbomSbomPackagesItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalDependencyGraphSpdxSbomSbomPackagesItemMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalDependencyGraphSpdxSbomMetadata
-  FIELDS = {
-    sbom: "sbom",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    sbom
-  ].freeze
-  DECODERS = {
-    sbom: lambda do |value|
-      ::OctridevGithub::DependencyGraphSpdxSbomSbom.from_hash(value)
-    end,
-  }.freeze
-end
+    # @return [String] A unique SPDX identifier for the package.
+    attr_reader :spdxid
+    # @return [String] The name of the package.
+    attr_reader :name
+    # @return [String] The version of the package. If the package does not have an exact version specified, a version range is given.
+    attr_reader :version_info
+    # @return [String] The location where the package can be downloaded, or NOASSERTION if this has not been determined.
+    attr_reader :download_location
+    # @return [Boolean] Whether the package's file content has been subjected to analysis during the creation of the SPDX document.
+    attr_reader :files_analyzed
+    # @return [String] The license of the package as determined while creating the SPDX document.
+    attr_reader :license_concluded
+    # @return [String] The license of the package as declared by its author, or NOASSERTION if this information was not available when the SPDX document was created.
+    attr_reader :license_declared
+    # @return [String] The distribution source of this package, or NOASSERTION if this was not determined.
+    attr_reader :supplier
+    # @return [String] The copyright holders of the package, and any dates present with those notices, if available.
+    attr_reader :copyright_text
+    # @return [Array_of_DependencyGraphSpdxSbomSbomPackagesItemExternalRefsItem] Optional array value serialized in the `externalRefs` wire field.
+    attr_reader :external_refs
 
-# API model for DependencyGraphSpdxSbom.
-# A schema for the SPDX JSON format returned by the Dependency Graph.
-class DependencyGraphSpdxSbom
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalDependencyGraphSpdxSbomMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalDependencyGraphSpdxSbomMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalDependencyGraphSpdxSbomMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [DependencyGraphSpdxSbomSbom] Required object value serialized in the `sbom` wire field.
-  attr_reader :sbom
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalManifestFileMetadata
-  FIELDS = {
-    source_location: "source_location",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for ManifestFile.
-# Optional object value serialized in the `file` wire field.
-class ManifestFile
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalManifestFileMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalManifestFileMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalManifestFileMetadata::DECODERS
-
-  # @return [String] The path of the manifest file relative to the root of the Git repository.
-  attr_reader :source_location
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalDependencyGraphSpdxSbomSbomRelationshipsItemMetadata
+    FIELDS = {
+      relationship_type: 'relationshipType',
+      spdx_element_id: 'spdxElementId',
+      related_spdx_element: 'relatedSpdxElement'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for DependencyGraphSpdxSbomSbomRelationshipsItem.
+  # Required object value serialized in the `relationships[]` wire field.
+  class DependencyGraphSpdxSbomSbomRelationshipsItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalDependencyGraphSpdxSbomSbomRelationshipsItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalDependencyGraphSpdxSbomSbomRelationshipsItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalDependencyGraphSpdxSbomSbomRelationshipsItemMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalManifestMetadata
-  FIELDS = {
-    name: "name",
-    file: "file",
-    metadata: "metadata",
-    resolved: "resolved",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    name
-  ].freeze
-  DECODERS = {
-    file: lambda do |value|
-      ::OctridevGithub::ManifestFile.from_hash(value)
-    end,
-    metadata: lambda do |value|
-      ::OctridevGithub::Metadata.from_hash(value)
-    end,
-    resolved: lambda do |value|
-      value&.transform_values { |item| ::OctridevGithub::Dependency.from_hash(item) }
-    end,
-  }.freeze
-end
+    # @return [String] The type of relationship between the two SPDX elements.
+    attr_reader :relationship_type
+    # @return [String] The SPDX identifier of the package that is the source of the relationship.
+    attr_reader :spdx_element_id
+    # @return [String] The SPDX identifier of the package that is the target of the relationship.
+    attr_reader :related_spdx_element
 
-# API model for Manifest.
-# Typed representation of the `Manifest` API schema.
-class Manifest
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalManifestMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalManifestMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalManifestMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [String] The name of the manifest.
-  attr_reader :name
-  # @return [ManifestFile] Optional object value serialized in the `file` wire field.
-  attr_reader :file
-  # @return [Metadata] User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
-  attr_reader :metadata
-  # @return [Hash] A collection of resolved package dependencies.
-  attr_reader :resolved
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalDependencyGraphSpdxSbomSbomMetadata
+    FIELDS = {
+      spdxid: 'SPDXID',
+      spdx_version: 'spdxVersion',
+      comment: 'comment',
+      creation_info: 'creationInfo',
+      name: 'name',
+      data_license: 'dataLicense',
+      document_namespace: 'documentNamespace',
+      packages: 'packages',
+      relationships: 'relationships'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      spdxid
+      spdx_version
+      creation_info
+      name
+      data_license
+      document_namespace
+      packages
+    ].freeze
+    DECODERS = {
+      creation_info: lambda do |value|
+        ::OctridevGithub::DependencyGraphSpdxSbomSbomCreationInfo.from_hash(value)
+      end,
+      packages: lambda do |value|
+        value&.map { |item| ::OctridevGithub::DependencyGraphSpdxSbomSbomPackagesItem.from_hash(item) }
+      end,
+      relationships: lambda do |value|
+        value&.map { |item| ::OctridevGithub::DependencyGraphSpdxSbomSbomRelationshipsItem.from_hash(item) }
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for DependencyGraphSpdxSbomSbom.
+  # Required object value serialized in the `sbom` wire field.
+  class DependencyGraphSpdxSbomSbom
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalDependencyGraphSpdxSbomSbomMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalDependencyGraphSpdxSbomSbomMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalDependencyGraphSpdxSbomSbomMetadata::DECODERS
 
-# Defines the Metadata SDK value decoder.
-module Metadata
-  def self.from_hash(value)
-    return nil if value.nil?
-    value&.transform_values { |item| item }
-  end
-end
+    # @return [String] The SPDX identifier for the SPDX document.
+    attr_reader :spdxid
+    # @return [String] The version of the SPDX specification that this document conforms to.
+    attr_reader :spdx_version
+    # @return [String] An optional comment about the SPDX document.
+    attr_reader :comment
+    # @return [DependencyGraphSpdxSbomSbomCreationInfo] Required object value serialized in the `creationInfo` wire field.
+    attr_reader :creation_info
+    # @return [String] The name of the SPDX document.
+    attr_reader :name
+    # @return [String] The license under which the SPDX document is licensed.
+    attr_reader :data_license
+    # @return [String] The namespace for the SPDX document.
+    attr_reader :document_namespace
+    # @return [Array_of_DependencyGraphSpdxSbomSbomPackagesItem] Required array value serialized in the `packages` wire field.
+    attr_reader :packages
+    # @return [Array_of_DependencyGraphSpdxSbomSbomRelationshipsItem] Optional array value serialized in the `relationships` wire field.
+    attr_reader :relationships
 
-# Internal model hydration metadata.
-class SdkInternalSnapshotJobMetadata
-  FIELDS = {
-    id: "id",
-    correlator: "correlator",
-    html_url: "html_url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    correlator
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-# API model for SnapshotJob.
-# Required object value serialized in the `job` wire field.
-class SnapshotJob
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalSnapshotJobMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalSnapshotJobMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalSnapshotJobMetadata::DECODERS
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  # @return [String] The external ID of the job.
-  attr_reader :id
-  # @return [String] Correlator provides a key that is used to group snapshots submitted over time. Only the "latest" submitted snapshot for a given combination of `job.correlator` and `detector.name` will be considered when calculating a repository's current dependencies. Correlator should be as unique as it takes to distinguish all detection runs for a given "wave" of CI workflow you run. If you're using GitHub Actions, a good default value for this could be the environment variables…
-  attr_reader :correlator
-  # @return [String] The url for the job.
-  attr_reader :html_url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalDependencyGraphSpdxSbomMetadata
+    FIELDS = {
+      sbom: 'sbom'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      sbom
+    ].freeze
+    DECODERS = {
+      sbom: lambda do |value|
+        ::OctridevGithub::DependencyGraphSpdxSbomSbom.from_hash(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # API model for DependencyGraphSpdxSbom.
+  # A schema for the SPDX JSON format returned by the Dependency Graph.
+  class DependencyGraphSpdxSbom
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalDependencyGraphSpdxSbomMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalDependencyGraphSpdxSbomMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalDependencyGraphSpdxSbomMetadata::DECODERS
+
+    # @return [DependencyGraphSpdxSbomSbom] Required object value serialized in the `sbom` wire field.
+    attr_reader :sbom
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
+
+  # Internal model hydration metadata.
+  class SdkInternalManifestFileMetadata
+    FIELDS = {
+      source_location: 'source_location'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
+  end
+
+  # API model for ManifestFile.
+  # Optional object value serialized in the `file` wire field.
+  class ManifestFile
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalManifestFileMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalManifestFileMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalManifestFileMetadata::DECODERS
+
+    # @return [String] The path of the manifest file relative to the root of the Git repository.
+    attr_reader :source_location
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Internal model hydration metadata.
+  class SdkInternalManifestMetadata
+    FIELDS = {
+      name: 'name',
+      file: 'file',
+      metadata: 'metadata',
+      resolved: 'resolved'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      name
+    ].freeze
+    DECODERS = {
+      file: lambda do |value|
+        ::OctridevGithub::ManifestFile.from_hash(value)
+      end,
+      metadata: lambda do |value|
+        ::OctridevGithub::Metadata.from_hash(value)
+      end,
+      resolved: lambda do |value|
+        value&.transform_values { |item| ::OctridevGithub::Dependency.from_hash(item) }
+      end
+    }.freeze
+  end
+
+  # API model for Manifest.
+  # Typed representation of the `Manifest` API schema.
+  class Manifest
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalManifestMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalManifestMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalManifestMetadata::DECODERS
+
+    # @return [String] The name of the manifest.
+    attr_reader :name
+    # @return [ManifestFile] Optional object value serialized in the `file` wire field.
+    attr_reader :file
+    # @return [Metadata] User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
+    attr_reader :metadata
+    # @return [Hash] A collection of resolved package dependencies.
+    attr_reader :resolved
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
+
+  # Defines the Metadata SDK value decoder.
+  module Metadata
+    def self.from_hash(value)
+      return nil if value.nil?
+
+      value&.transform_values { |item| item }
+    end
+  end
+
+  # Internal model hydration metadata.
+  class SdkInternalSnapshotJobMetadata
+    FIELDS = {
+      id: 'id',
+      correlator: 'correlator',
+      html_url: 'html_url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      correlator
+    ].freeze
+    DECODERS = {}.freeze
+  end
+
+  # API model for SnapshotJob.
+  # Required object value serialized in the `job` wire field.
+  class SnapshotJob
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalSnapshotJobMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalSnapshotJobMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalSnapshotJobMetadata::DECODERS
+
+    # @return [String] The external ID of the job.
+    attr_reader :id
+    # @return [String] Correlator provides a key that is used to group snapshots submitted over time. Only the "latest" submitted snapshot for a given combination of `job.correlator` and `detector.name` will be considered when calculating a repository's current dependencies. Correlator should be as unique as it takes to distinguish all detection runs for a given "wave" of CI workflow you run. If you're using GitHub Actions, a good default value for this could be the environment variables…
+    attr_reader :correlator
+    # @return [String] The url for the job.
+    attr_reader :html_url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
 end

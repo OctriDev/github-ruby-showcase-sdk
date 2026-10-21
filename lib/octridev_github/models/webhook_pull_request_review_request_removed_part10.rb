@@ -5,517 +5,517 @@
 
 # webhook_pull_request_review_request_removed domain models (part 10)
 module OctridevGithub
-# Defines the WebhookPullRequestReviewRequestRemovedVariant0PullRequestHeadUserType SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant0PullRequestHeadUserType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant0PullRequestHeadUserType SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant0PullRequestHeadUserType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant0PullRequestMergedByType SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant0PullRequestMergedByType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant0PullRequestMergedByType SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant0PullRequestMergedByType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant0PullRequestMileX06ea1cf1e2 SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant0PullRequestMileX06ea1cf1e2
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant0PullRequestMileX06ea1cf1e2 SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant0PullRequestMileX06ea1cf1e2
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant0PullRequestMilestoneState SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant0PullRequestMilestoneState
-  OPEN = 'open'
-  CLOSED = 'closed'
-  VALUES = ['open', 'closed'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant0PullRequestMilestoneState SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant0PullRequestMilestoneState
+    OPEN = 'open'
+    CLOSED = 'closed'
+    VALUES = %w[open closed].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant0PullRequestRequXf3171b58c3 SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant0PullRequestRequXf3171b58c3
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant0PullRequestRequXf3171b58c3 SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant0PullRequestRequXf3171b58c3
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant0PullRequestRequX5c6137f1a4 SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant0PullRequestRequX5c6137f1a4
-  OPEN = 'open'
-  CLOSED = 'closed'
-  SECRET = 'secret'
-  VALUES = ['open', 'closed', 'secret'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant0PullRequestRequX5c6137f1a4 SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant0PullRequestRequX5c6137f1a4
+    OPEN = 'open'
+    CLOSED = 'closed'
+    SECRET = 'secret'
+    VALUES = %w[open closed secret].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant0PullRequestRequX0556677514 SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant0PullRequestRequX0556677514
-  OPEN = 'open'
-  CLOSED = 'closed'
-  SECRET = 'secret'
-  VALUES = ['open', 'closed', 'secret'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant0PullRequestRequX0556677514 SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant0PullRequestRequX0556677514
+    OPEN = 'open'
+    CLOSED = 'closed'
+    SECRET = 'secret'
+    VALUES = %w[open closed secret].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant0PullRequestRequX8845221b1f SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant0PullRequestRequX8845221b1f
-  OPEN = 'open'
-  CLOSED = 'closed'
-  SECRET = 'secret'
-  VALUES = ['open', 'closed', 'secret'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant0PullRequestRequX8845221b1f SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant0PullRequestRequX8845221b1f
+    OPEN = 'open'
+    CLOSED = 'closed'
+    SECRET = 'secret'
+    VALUES = %w[open closed secret].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant0PullRequestRequX997378c27f SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant0PullRequestRequX997378c27f
-  OPEN = 'open'
-  CLOSED = 'closed'
-  SECRET = 'secret'
-  VALUES = ['open', 'closed', 'secret'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant0PullRequestRequX997378c27f SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant0PullRequestRequX997378c27f
+    OPEN = 'open'
+    CLOSED = 'closed'
+    SECRET = 'secret'
+    VALUES = %w[open closed secret].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant0PullRequestState SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant0PullRequestState
-  OPEN = 'open'
-  CLOSED = 'closed'
-  VALUES = ['open', 'closed'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant0PullRequestState SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant0PullRequestState
+    OPEN = 'open'
+    CLOSED = 'closed'
+    VALUES = %w[open closed].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant0PullRequestUserType SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant0PullRequestUserType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant0PullRequestUserType SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant0PullRequestUserType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant0RequestedReviewerType SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant0RequestedReviewerType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant0RequestedReviewerType SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant0RequestedReviewerType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1Action SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1Action
-  REVIEW_REQUEST_REMOVED = 'review_request_removed'
-  VALUES = ['review_request_removed'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1Action SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1Action
+    REVIEW_REQUEST_REMOVED = 'review_request_removed'
+    VALUES = ['review_request_removed'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestActiXd9a665d50e SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestActiXd9a665d50e
-  RESOLVED = 'resolved'
-  OFF_TOPIC = 'off-topic'
-  TOO_HEATED = 'too heated'
-  SPAM = 'spam'
-  VALUES = ['resolved', 'off-topic', 'too heated', 'spam'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestActiXd9a665d50e SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestActiXd9a665d50e
+    RESOLVED = 'resolved'
+    OFF_TOPIC = 'off-topic'
+    TOO_HEATED = 'too heated'
+    SPAM = 'spam'
+    VALUES = ['resolved', 'off-topic', 'too heated', 'spam'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestAssigneeType SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestAssigneeType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestAssigneeType SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestAssigneeType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestAssiX01e63b5417 SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestAssiX01e63b5417
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestAssiX01e63b5417 SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestAssiX01e63b5417
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestAuthX5a7a1fde66 SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestAuthX5a7a1fde66
-  COLLABORATOR = 'COLLABORATOR'
-  CONTRIBUTOR = 'CONTRIBUTOR'
-  FIRST_TIMER = 'FIRST_TIMER'
-  FIRST_TIME_CONTRIBUTOR = 'FIRST_TIME_CONTRIBUTOR'
-  MANNEQUIN = 'MANNEQUIN'
-  MEMBER = 'MEMBER'
-  NONE = 'NONE'
-  OWNER = 'OWNER'
-  VALUES = [
-    'COLLABORATOR', 'CONTRIBUTOR', 'FIRST_TIMER', 'FIRST_TIME_CONTRIBUTOR', 'MANNEQUIN', 'MEMBER',
-    'NONE', 'OWNER'
-  ].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestAuthX5a7a1fde66 SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestAuthX5a7a1fde66
+    COLLABORATOR = 'COLLABORATOR'
+    CONTRIBUTOR = 'CONTRIBUTOR'
+    FIRST_TIMER = 'FIRST_TIMER'
+    FIRST_TIME_CONTRIBUTOR = 'FIRST_TIME_CONTRIBUTOR'
+    MANNEQUIN = 'MANNEQUIN'
+    MEMBER = 'MEMBER'
+    NONE = 'NONE'
+    OWNER = 'OWNER'
+    VALUES = %w[
+      COLLABORATOR CONTRIBUTOR FIRST_TIMER FIRST_TIME_CONTRIBUTOR MANNEQUIN MEMBER
+      NONE OWNER
+    ].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestAutoXb29d0f5ea8 SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestAutoXb29d0f5ea8
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestAutoXb29d0f5ea8 SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestAutoXb29d0f5ea8
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestAutoX0dcdf458fa SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestAutoX0dcdf458fa
-  MERGE = 'merge'
-  SQUASH = 'squash'
-  REBASE = 'rebase'
-  VALUES = ['merge', 'squash', 'rebase'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestAutoX0dcdf458fa SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestAutoX0dcdf458fa
+    MERGE = 'merge'
+    SQUASH = 'squash'
+    REBASE = 'rebase'
+    VALUES = %w[merge squash rebase].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseX6b85112056 SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseX6b85112056
-  PR_BODY = 'PR_BODY'
-  PR_TITLE = 'PR_TITLE'
-  BLANK = 'BLANK'
-  VALUES = ['PR_BODY', 'PR_TITLE', 'BLANK'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseX6b85112056 SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseX6b85112056
+    PR_BODY = 'PR_BODY'
+    PR_TITLE = 'PR_TITLE'
+    BLANK = 'BLANK'
+    VALUES = %w[PR_BODY PR_TITLE BLANK].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseX9eb750dae1 SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseX9eb750dae1
-  PR_TITLE = 'PR_TITLE'
-  MERGE_MESSAGE = 'MERGE_MESSAGE'
-  VALUES = ['PR_TITLE', 'MERGE_MESSAGE'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseX9eb750dae1 SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseX9eb750dae1
+    PR_TITLE = 'PR_TITLE'
+    MERGE_MESSAGE = 'MERGE_MESSAGE'
+    VALUES = %w[PR_TITLE MERGE_MESSAGE].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseX39989e2594 SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseX39989e2594
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseX39989e2594 SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseX39989e2594
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseX395ef42e84 SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseX395ef42e84
-  ALL = 'all'
-  COLLABORATORS_ONLY = 'collaborators_only'
-  VALUES = ['all', 'collaborators_only'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseX395ef42e84 SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseX395ef42e84
+    ALL = 'all'
+    COLLABORATORS_ONLY = 'collaborators_only'
+    VALUES = %w[all collaborators_only].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseX236e9d4c32 SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseX236e9d4c32
-  PR_BODY = 'PR_BODY'
-  COMMIT_MESSAGES = 'COMMIT_MESSAGES'
-  BLANK = 'BLANK'
-  VALUES = ['PR_BODY', 'COMMIT_MESSAGES', 'BLANK'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseX236e9d4c32 SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseX236e9d4c32
+    PR_BODY = 'PR_BODY'
+    COMMIT_MESSAGES = 'COMMIT_MESSAGES'
+    BLANK = 'BLANK'
+    VALUES = %w[PR_BODY COMMIT_MESSAGES BLANK].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseX93011ef4aa SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseX93011ef4aa
-  PR_TITLE = 'PR_TITLE'
-  COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
-  VALUES = ['PR_TITLE', 'COMMIT_OR_PR_TITLE'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseX93011ef4aa SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseX93011ef4aa
+    PR_TITLE = 'PR_TITLE'
+    COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
+    VALUES = %w[PR_TITLE COMMIT_OR_PR_TITLE].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseXf289b22bc2 SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseXf289b22bc2
-  PUBLIC = 'public'
-  PRIVATE = 'private'
-  INTERNAL = 'internal'
-  VALUES = ['public', 'private', 'internal'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseXf289b22bc2 SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseXf289b22bc2
+    PUBLIC = 'public'
+    PRIVATE = 'private'
+    INTERNAL = 'internal'
+    VALUES = %w[public private internal].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseUserType SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseUserType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseUserType SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestBaseUserType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadX701d14d8a5 SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadX701d14d8a5
-  PR_BODY = 'PR_BODY'
-  PR_TITLE = 'PR_TITLE'
-  BLANK = 'BLANK'
-  VALUES = ['PR_BODY', 'PR_TITLE', 'BLANK'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadX701d14d8a5 SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadX701d14d8a5
+    PR_BODY = 'PR_BODY'
+    PR_TITLE = 'PR_TITLE'
+    BLANK = 'BLANK'
+    VALUES = %w[PR_BODY PR_TITLE BLANK].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadX8452b34a6b SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadX8452b34a6b
-  PR_TITLE = 'PR_TITLE'
-  MERGE_MESSAGE = 'MERGE_MESSAGE'
-  VALUES = ['PR_TITLE', 'MERGE_MESSAGE'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadX8452b34a6b SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadX8452b34a6b
+    PR_TITLE = 'PR_TITLE'
+    MERGE_MESSAGE = 'MERGE_MESSAGE'
+    VALUES = %w[PR_TITLE MERGE_MESSAGE].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadX845c01965a SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadX845c01965a
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadX845c01965a SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadX845c01965a
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadXa5f1b86786 SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadXa5f1b86786
-  ALL = 'all'
-  COLLABORATORS_ONLY = 'collaborators_only'
-  VALUES = ['all', 'collaborators_only'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadXa5f1b86786 SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadXa5f1b86786
+    ALL = 'all'
+    COLLABORATORS_ONLY = 'collaborators_only'
+    VALUES = %w[all collaborators_only].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadXae330905ad SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadXae330905ad
-  PR_BODY = 'PR_BODY'
-  COMMIT_MESSAGES = 'COMMIT_MESSAGES'
-  BLANK = 'BLANK'
-  VALUES = ['PR_BODY', 'COMMIT_MESSAGES', 'BLANK'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadXae330905ad SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadXae330905ad
+    PR_BODY = 'PR_BODY'
+    COMMIT_MESSAGES = 'COMMIT_MESSAGES'
+    BLANK = 'BLANK'
+    VALUES = %w[PR_BODY COMMIT_MESSAGES BLANK].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadXcf1bf72a97 SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadXcf1bf72a97
-  PR_TITLE = 'PR_TITLE'
-  COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
-  VALUES = ['PR_TITLE', 'COMMIT_OR_PR_TITLE'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadXcf1bf72a97 SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadXcf1bf72a97
+    PR_TITLE = 'PR_TITLE'
+    COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
+    VALUES = %w[PR_TITLE COMMIT_OR_PR_TITLE].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadX62b0c2ba5d SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadX62b0c2ba5d
-  PUBLIC = 'public'
-  PRIVATE = 'private'
-  INTERNAL = 'internal'
-  VALUES = ['public', 'private', 'internal'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadX62b0c2ba5d SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadX62b0c2ba5d
+    PUBLIC = 'public'
+    PRIVATE = 'private'
+    INTERNAL = 'internal'
+    VALUES = %w[public private internal].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadUserType SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadUserType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadUserType SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestHeadUserType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestMergedByType SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestMergedByType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestMergedByType SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestMergedByType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestMileX838932e3cc SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestMileX838932e3cc
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestMileX838932e3cc SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestMileX838932e3cc
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestMilestoneState SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestMilestoneState
-  OPEN = 'open'
-  CLOSED = 'closed'
-  VALUES = ['open', 'closed'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestMilestoneState SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestMilestoneState
+    OPEN = 'open'
+    CLOSED = 'closed'
+    VALUES = %w[open closed].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestRequX8246645e71 SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestRequX8246645e71
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestRequX8246645e71 SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestRequX8246645e71
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestRequXca419d8a0b SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestRequXca419d8a0b
-  OPEN = 'open'
-  CLOSED = 'closed'
-  SECRET = 'secret'
-  VALUES = ['open', 'closed', 'secret'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestRequXca419d8a0b SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestRequXca419d8a0b
+    OPEN = 'open'
+    CLOSED = 'closed'
+    SECRET = 'secret'
+    VALUES = %w[open closed secret].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestRequXc6ed03acb1 SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestRequXc6ed03acb1
-  OPEN = 'open'
-  CLOSED = 'closed'
-  SECRET = 'secret'
-  VALUES = ['open', 'closed', 'secret'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestRequXc6ed03acb1 SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestRequXc6ed03acb1
+    OPEN = 'open'
+    CLOSED = 'closed'
+    SECRET = 'secret'
+    VALUES = %w[open closed secret].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestRequXc8c1c9801c SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestRequXc8c1c9801c
-  OPEN = 'open'
-  CLOSED = 'closed'
-  SECRET = 'secret'
-  VALUES = ['open', 'closed', 'secret'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestRequXc8c1c9801c SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestRequXc8c1c9801c
+    OPEN = 'open'
+    CLOSED = 'closed'
+    SECRET = 'secret'
+    VALUES = %w[open closed secret].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestRequX58da3fc034 SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestRequX58da3fc034
-  OPEN = 'open'
-  CLOSED = 'closed'
-  SECRET = 'secret'
-  VALUES = ['open', 'closed', 'secret'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestRequX58da3fc034 SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestRequX58da3fc034
+    OPEN = 'open'
+    CLOSED = 'closed'
+    SECRET = 'secret'
+    VALUES = %w[open closed secret].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestState SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestState
-  OPEN = 'open'
-  CLOSED = 'closed'
-  VALUES = ['open', 'closed'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestState SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestState
+    OPEN = 'open'
+    CLOSED = 'closed'
+    VALUES = %w[open closed].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestUserType SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1PullRequestUserType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1PullRequestUserType SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1PullRequestUserType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1RequestedTeamParentPrivacy SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1RequestedTeamParentPrivacy
-  OPEN = 'open'
-  CLOSED = 'closed'
-  SECRET = 'secret'
-  VALUES = ['open', 'closed', 'secret'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1RequestedTeamParentPrivacy SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1RequestedTeamParentPrivacy
+    OPEN = 'open'
+    CLOSED = 'closed'
+    SECRET = 'secret'
+    VALUES = %w[open closed secret].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookPullRequestReviewRequestRemovedVariant1RequestedTeamPrivacy SDK namespace.
-module WebhookPullRequestReviewRequestRemovedVariant1RequestedTeamPrivacy
-  OPEN = 'open'
-  CLOSED = 'closed'
-  SECRET = 'secret'
-  VALUES = ['open', 'closed', 'secret'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestReviewRequestRemovedVariant1RequestedTeamPrivacy SDK namespace.
+  module WebhookPullRequestReviewRequestRemovedVariant1RequestedTeamPrivacy
+    OPEN = 'open'
+    CLOSED = 'closed'
+    SECRET = 'secret'
+    VALUES = %w[open closed secret].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 end

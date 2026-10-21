@@ -25,23 +25,22 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/blocks"
+            '/blocks'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::SimpleUser],
           decoder: :json,
           operation_id: 'orgs_list_blocked_users',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -55,20 +54,19 @@ module OctridevGithub
         username:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/blocks/",
+            '/blocks/',
             SdkClient.encode_path_segment(username)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'orgs_check_blocked_user',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -82,20 +80,19 @@ module OctridevGithub
         username:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/blocks/",
+            '/blocks/',
             SdkClient.encode_path_segment(username)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'orgs_block_user',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError },
+          errors: { '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -109,19 +106,18 @@ module OctridevGithub
         username:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/blocks/",
+            '/blocks/',
             SdkClient.encode_path_segment(username)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'orgs_unblock_user',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

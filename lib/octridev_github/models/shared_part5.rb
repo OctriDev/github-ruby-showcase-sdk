@@ -5,586 +5,579 @@
 
 # shared domain models (part 5)
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalPublicUserMetadata
-  FIELDS = {
-    login: "login",
-    id: "id",
-    user_view_type: "user_view_type",
-    node_id: "node_id",
-    avatar_url: "avatar_url",
-    gravatar_id: "gravatar_id",
-    url: "url",
-    html_url: "html_url",
-    followers_url: "followers_url",
-    following_url: "following_url",
-    gists_url: "gists_url",
-    starred_url: "starred_url",
-    subscriptions_url: "subscriptions_url",
-    organizations_url: "organizations_url",
-    repos_url: "repos_url",
-    events_url: "events_url",
-    received_events_url: "received_events_url",
-    type: "type",
-    site_admin: "site_admin",
-    name: "name",
-    company: "company",
-    blog: "blog",
-    location: "location",
-    email: "email",
-    notification_email: "notification_email",
-    hireable: "hireable",
-    bio: "bio",
-    twitter_username: "twitter_username",
-    public_repos: "public_repos",
-    public_gists: "public_gists",
-    followers: "followers",
-    following: "following",
-    created_at: "created_at",
-    updated_at: "updated_at",
-    plan: "plan",
-    private_gists: "private_gists",
-    total_private_repos: "total_private_repos",
-    owned_private_repos: "owned_private_repos",
-    disk_usage: "disk_usage",
-    collaborators: "collaborators",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    login
-    id
-    node_id
-    avatar_url
-    gravatar_id
-    url
-    html_url
-    followers_url
-    following_url
-    gists_url
-    starred_url
-    subscriptions_url
-    organizations_url
-    repos_url
-    events_url
-    received_events_url
-    type
-    site_admin
-    name
-    company
-    blog
-    location
-    email
-    hireable
-    bio
-    public_repos
-    public_gists
-    followers
-    following
-    created_at
-    updated_at
-  ].freeze
-  DECODERS = {
-    plan: lambda do |value|
-      ::OctridevGithub::PublicUserPlan.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    gravatar_id
-    name
-    company
-    blog
-    location
-    email
-    hireable
-    bio
-  ].freeze
-end
-
-# API model for PublicUser.
-# Public User
-class PublicUser
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalPublicUserMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalPublicUserMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalPublicUserMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `login` wire field.
-  attr_reader :login
-  # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-  attr_reader :user_view_type
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Required `uri`-formatted value serialized in the `avatar_url` wire field.
-  attr_reader :avatar_url
-  # @return [String] Required `string` value serialized in the `gravatar_id` wire field.
-  attr_reader :gravatar_id
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [String] Required `uri`-formatted value serialized in the `followers_url` wire field.
-  attr_reader :followers_url
-  # @return [String] Required `string` value serialized in the `following_url` wire field.
-  attr_reader :following_url
-  # @return [String] Required `string` value serialized in the `gists_url` wire field.
-  attr_reader :gists_url
-  # @return [String] Required `string` value serialized in the `starred_url` wire field.
-  attr_reader :starred_url
-  # @return [String] Required `uri`-formatted value serialized in the `subscriptions_url` wire field.
-  attr_reader :subscriptions_url
-  # @return [String] Required `uri`-formatted value serialized in the `organizations_url` wire field.
-  attr_reader :organizations_url
-  # @return [String] Required `uri`-formatted value serialized in the `repos_url` wire field.
-  attr_reader :repos_url
-  # @return [String] Required `string` value serialized in the `events_url` wire field.
-  attr_reader :events_url
-  # @return [String] Required `uri`-formatted value serialized in the `received_events_url` wire field.
-  attr_reader :received_events_url
-  # @return [String] Required `string` value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [Boolean] Required `boolean` value serialized in the `site_admin` wire field.
-  attr_reader :site_admin
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Required `string` value serialized in the `company` wire field.
-  attr_reader :company
-  # @return [String] Required `string` value serialized in the `blog` wire field.
-  attr_reader :blog
-  # @return [String] Required `string` value serialized in the `location` wire field.
-  attr_reader :location
-  # @return [String] Required `email`-formatted value serialized in the `email` wire field.
-  attr_reader :email
-  # @return [String] Optional `email`-formatted value serialized in the `notification_email` wire field.
-  attr_reader :notification_email
-  # @return [Boolean] Required `boolean` value serialized in the `hireable` wire field.
-  attr_reader :hireable
-  # @return [String] Required `string` value serialized in the `bio` wire field.
-  attr_reader :bio
-  # @return [String] Optional `string` value serialized in the `twitter_username` wire field.
-  attr_reader :twitter_username
-  # @return [Integer] Required `integer` value serialized in the `public_repos` wire field.
-  attr_reader :public_repos
-  # @return [Integer] Required `integer` value serialized in the `public_gists` wire field.
-  attr_reader :public_gists
-  # @return [Integer] Required `integer` value serialized in the `followers` wire field.
-  attr_reader :followers
-  # @return [Integer] Required `integer` value serialized in the `following` wire field.
-  attr_reader :following
-  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-  # @return [PublicUserPlan] Optional object value serialized in the `plan` wire field.
-  attr_reader :plan
-  # @return [Integer] Optional `integer` value serialized in the `private_gists` wire field.
-  attr_reader :private_gists
-  # @return [Integer] Optional `integer` value serialized in the `total_private_repos` wire field.
-  attr_reader :total_private_repos
-  # @return [Integer] Optional `integer` value serialized in the `owned_private_repos` wire field.
-  attr_reader :owned_private_repos
-  # @return [Integer] Optional `integer` value serialized in the `disk_usage` wire field.
-  attr_reader :disk_usage
-  # @return [Integer] Optional `integer` value serialized in the `collaborators` wire field.
-  attr_reader :collaborators
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalPublicUserMetadata
+    FIELDS = {
+      login: 'login',
+      id: 'id',
+      user_view_type: 'user_view_type',
+      node_id: 'node_id',
+      avatar_url: 'avatar_url',
+      gravatar_id: 'gravatar_id',
+      url: 'url',
+      html_url: 'html_url',
+      followers_url: 'followers_url',
+      following_url: 'following_url',
+      gists_url: 'gists_url',
+      starred_url: 'starred_url',
+      subscriptions_url: 'subscriptions_url',
+      organizations_url: 'organizations_url',
+      repos_url: 'repos_url',
+      events_url: 'events_url',
+      received_events_url: 'received_events_url',
+      type: 'type',
+      site_admin: 'site_admin',
+      name: 'name',
+      company: 'company',
+      blog: 'blog',
+      location: 'location',
+      email: 'email',
+      notification_email: 'notification_email',
+      hireable: 'hireable',
+      bio: 'bio',
+      twitter_username: 'twitter_username',
+      public_repos: 'public_repos',
+      public_gists: 'public_gists',
+      followers: 'followers',
+      following: 'following',
+      created_at: 'created_at',
+      updated_at: 'updated_at',
+      plan: 'plan',
+      private_gists: 'private_gists',
+      total_private_repos: 'total_private_repos',
+      owned_private_repos: 'owned_private_repos',
+      disk_usage: 'disk_usage',
+      collaborators: 'collaborators'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      login
+      id
+      node_id
+      avatar_url
+      gravatar_id
+      url
+      html_url
+      followers_url
+      following_url
+      gists_url
+      starred_url
+      subscriptions_url
+      organizations_url
+      repos_url
+      events_url
+      received_events_url
+      type
+      site_admin
+      name
+      company
+      blog
+      location
+      email
+      hireable
+      bio
+      public_repos
+      public_gists
+      followers
+      following
+      created_at
+      updated_at
+    ].freeze
+    DECODERS = {
+      plan: lambda do |value|
+        ::OctridevGithub::PublicUserPlan.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      gravatar_id
+      name
+      company
+      blog
+      location
+      email
+      hireable
+      bio
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalPublicUserMetadata::NULLABLE_FIELDS)
+  # API model for PublicUser.
+  # Public User
+  class PublicUser
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalPublicUserMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalPublicUserMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalPublicUserMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `login` wire field.
+    attr_reader :login
+    # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+    attr_reader :user_view_type
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Required `uri`-formatted value serialized in the `avatar_url` wire field.
+    attr_reader :avatar_url
+    # @return [String] Required `string` value serialized in the `gravatar_id` wire field.
+    attr_reader :gravatar_id
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [String] Required `uri`-formatted value serialized in the `followers_url` wire field.
+    attr_reader :followers_url
+    # @return [String] Required `string` value serialized in the `following_url` wire field.
+    attr_reader :following_url
+    # @return [String] Required `string` value serialized in the `gists_url` wire field.
+    attr_reader :gists_url
+    # @return [String] Required `string` value serialized in the `starred_url` wire field.
+    attr_reader :starred_url
+    # @return [String] Required `uri`-formatted value serialized in the `subscriptions_url` wire field.
+    attr_reader :subscriptions_url
+    # @return [String] Required `uri`-formatted value serialized in the `organizations_url` wire field.
+    attr_reader :organizations_url
+    # @return [String] Required `uri`-formatted value serialized in the `repos_url` wire field.
+    attr_reader :repos_url
+    # @return [String] Required `string` value serialized in the `events_url` wire field.
+    attr_reader :events_url
+    # @return [String] Required `uri`-formatted value serialized in the `received_events_url` wire field.
+    attr_reader :received_events_url
+    # @return [String] Required `string` value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [Boolean] Required `boolean` value serialized in the `site_admin` wire field.
+    attr_reader :site_admin
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Required `string` value serialized in the `company` wire field.
+    attr_reader :company
+    # @return [String] Required `string` value serialized in the `blog` wire field.
+    attr_reader :blog
+    # @return [String] Required `string` value serialized in the `location` wire field.
+    attr_reader :location
+    # @return [String] Required `email`-formatted value serialized in the `email` wire field.
+    attr_reader :email
+    # @return [String] Optional `email`-formatted value serialized in the `notification_email` wire field.
+    attr_reader :notification_email
+    # @return [Boolean] Required `boolean` value serialized in the `hireable` wire field.
+    attr_reader :hireable
+    # @return [String] Required `string` value serialized in the `bio` wire field.
+    attr_reader :bio
+    # @return [String] Optional `string` value serialized in the `twitter_username` wire field.
+    attr_reader :twitter_username
+    # @return [Integer] Required `integer` value serialized in the `public_repos` wire field.
+    attr_reader :public_repos
+    # @return [Integer] Required `integer` value serialized in the `public_gists` wire field.
+    attr_reader :public_gists
+    # @return [Integer] Required `integer` value serialized in the `followers` wire field.
+    attr_reader :followers
+    # @return [Integer] Required `integer` value serialized in the `following` wire field.
+    attr_reader :following
+    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+    # @return [PublicUserPlan] Optional object value serialized in the `plan` wire field.
+    attr_reader :plan
+    # @return [Integer] Optional `integer` value serialized in the `private_gists` wire field.
+    attr_reader :private_gists
+    # @return [Integer] Optional `integer` value serialized in the `total_private_repos` wire field.
+    attr_reader :total_private_repos
+    # @return [Integer] Optional `integer` value serialized in the `owned_private_repos` wire field.
+    attr_reader :owned_private_repos
+    # @return [Integer] Optional `integer` value serialized in the `disk_usage` wire field.
+    attr_reader :disk_usage
+    # @return [Integer] Optional `integer` value serialized in the `collaborators` wire field.
+    attr_reader :collaborators
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalPublicUserMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalReactionRollupMetadata
-  FIELDS = {
-    url: "url",
-    total_count: "total_count",
-    plus1: "+1",
-    minus1: "-1",
-    laugh: "laugh",
-    confused: "confused",
-    heart: "heart",
-    hooray: "hooray",
-    eyes: "eyes",
-    rocket: "rocket",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    url
-    total_count
-    plus1
-    minus1
-    laugh
-    confused
-    heart
-    hooray
-    eyes
-    rocket
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for ReactionRollup.
-# Typed representation of the `ReactionRollup` API schema.
-class ReactionRollup
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalReactionRollupMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalReactionRollupMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalReactionRollupMetadata::DECODERS
-
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [Integer] Required `integer` value serialized in the `total_count` wire field.
-  attr_reader :total_count
-  # @return [Integer] Required `integer` value serialized in the `+1` wire field.
-  attr_reader :plus1
-  # @return [Integer] Required `integer` value serialized in the `-1` wire field.
-  attr_reader :minus1
-  # @return [Integer] Required `integer` value serialized in the `laugh` wire field.
-  attr_reader :laugh
-  # @return [Integer] Required `integer` value serialized in the `confused` wire field.
-  attr_reader :confused
-  # @return [Integer] Required `integer` value serialized in the `heart` wire field.
-  attr_reader :heart
-  # @return [Integer] Required `integer` value serialized in the `hooray` wire field.
-  attr_reader :hooray
-  # @return [Integer] Required `integer` value serialized in the `eyes` wire field.
-  attr_reader :eyes
-  # @return [Integer] Required `integer` value serialized in the `rocket` wire field.
-  attr_reader :rocket
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalReactionRollupMetadata
+    FIELDS = {
+      url: 'url',
+      total_count: 'total_count',
+      plus1: '+1',
+      minus1: '-1',
+      laugh: 'laugh',
+      confused: 'confused',
+      heart: 'heart',
+      hooray: 'hooray',
+      eyes: 'eyes',
+      rocket: 'rocket'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      url
+      total_count
+      plus1
+      minus1
+      laugh
+      confused
+      heart
+      hooray
+      eyes
+      rocket
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ReactionRollup.
+  # Typed representation of the `ReactionRollup` API schema.
+  class ReactionRollup
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalReactionRollupMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalReactionRollupMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalReactionRollupMetadata::DECODERS
+
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [Integer] Required `integer` value serialized in the `total_count` wire field.
+    attr_reader :total_count
+    # @return [Integer] Required `integer` value serialized in the `+1` wire field.
+    attr_reader :plus1
+    # @return [Integer] Required `integer` value serialized in the `-1` wire field.
+    attr_reader :minus1
+    # @return [Integer] Required `integer` value serialized in the `laugh` wire field.
+    attr_reader :laugh
+    # @return [Integer] Required `integer` value serialized in the `confused` wire field.
+    attr_reader :confused
+    # @return [Integer] Required `integer` value serialized in the `heart` wire field.
+    attr_reader :heart
+    # @return [Integer] Required `integer` value serialized in the `hooray` wire field.
+    attr_reader :hooray
+    # @return [Integer] Required `integer` value serialized in the `eyes` wire field.
+    attr_reader :eyes
+    # @return [Integer] Required `integer` value serialized in the `rocket` wire field.
+    attr_reader :rocket
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalReleaseAssetMetadata
-  FIELDS = {
-    url: "url",
-    browser_download_url: "browser_download_url",
-    id: "id",
-    node_id: "node_id",
-    name: "name",
-    label: "label",
-    state: "state",
-    content_type: "content_type",
-    size: "size",
-    digest: "digest",
-    download_count: "download_count",
-    created_at: "created_at",
-    updated_at: "updated_at",
-    uploader: "uploader",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    url
-    browser_download_url
-    id
-    node_id
-    name
-    label
-    state
-    content_type
-    size
-    digest
-    download_count
-    created_at
-    updated_at
-    uploader
-  ].freeze
-  DECODERS = {
-    state: lambda do |value|
-      ::OctridevGithub::ReleaseAssetState.from_value(value)
-    end,
-    uploader: lambda do |value|
-      ::OctridevGithub::NullableSimpleUser.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    label
-    digest
-    uploader
-  ].freeze
-end
-
-# API model for ReleaseAsset.
-# Data related to a release.
-class ReleaseAsset
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalReleaseAssetMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalReleaseAssetMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalReleaseAssetMetadata::DECODERS
-
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Required `uri`-formatted value serialized in the `browser_download_url` wire field.
-  attr_reader :browser_download_url
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] The file name of the asset.
-  attr_reader :name
-  # @return [String] Required `string` value serialized in the `label` wire field.
-  attr_reader :label
-  # @return [ReleaseAssetState] State of the release asset.
-  attr_reader :state
-  # @return [String] Required `string` value serialized in the `content_type` wire field.
-  attr_reader :content_type
-  # @return [Integer] Required `integer` value serialized in the `size` wire field.
-  attr_reader :size
-  # @return [String] Required `string` value serialized in the `digest` wire field.
-  attr_reader :digest
-  # @return [Integer] Required `integer` value serialized in the `download_count` wire field.
-  attr_reader :download_count
-  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-  # @return [NullableSimpleUser] A GitHub user.
-  attr_reader :uploader
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalReleaseAssetMetadata
+    FIELDS = {
+      url: 'url',
+      browser_download_url: 'browser_download_url',
+      id: 'id',
+      node_id: 'node_id',
+      name: 'name',
+      label: 'label',
+      state: 'state',
+      content_type: 'content_type',
+      size: 'size',
+      digest: 'digest',
+      download_count: 'download_count',
+      created_at: 'created_at',
+      updated_at: 'updated_at',
+      uploader: 'uploader'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      url
+      browser_download_url
+      id
+      node_id
+      name
+      label
+      state
+      content_type
+      size
+      digest
+      download_count
+      created_at
+      updated_at
+      uploader
+    ].freeze
+    DECODERS = {
+      state: lambda do |value|
+        ::OctridevGithub::ReleaseAssetState.from_value(value)
+      end,
+      uploader: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      label
+      digest
+      uploader
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalReleaseAssetMetadata::NULLABLE_FIELDS)
+  # API model for ReleaseAsset.
+  # Data related to a release.
+  class ReleaseAsset
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalReleaseAssetMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalReleaseAssetMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalReleaseAssetMetadata::DECODERS
+
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Required `uri`-formatted value serialized in the `browser_download_url` wire field.
+    attr_reader :browser_download_url
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] The file name of the asset.
+    attr_reader :name
+    # @return [String] Required `string` value serialized in the `label` wire field.
+    attr_reader :label
+    # @return [ReleaseAssetState] State of the release asset.
+    attr_reader :state
+    # @return [String] Required `string` value serialized in the `content_type` wire field.
+    attr_reader :content_type
+    # @return [Integer] Required `integer` value serialized in the `size` wire field.
+    attr_reader :size
+    # @return [String] Required `string` value serialized in the `digest` wire field.
+    attr_reader :digest
+    # @return [Integer] Required `integer` value serialized in the `download_count` wire field.
+    attr_reader :download_count
+    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :uploader
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalReleaseAssetMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the ReleaseAssetState SDK namespace.
-module ReleaseAssetState
-  UPLOADED = 'uploaded'
-  OPEN = 'open'
-  VALUES = ['uploaded', 'open'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalScimErrorMetadata
-  FIELDS = {
-    message: "message",
-    documentation_url: "documentation_url",
-    detail: "detail",
-    status: "status",
-    scim_type: "scimType",
-    schemas: "schemas",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for ScimError.
-# Scim Error
-class ScimError
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalScimErrorMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalScimErrorMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalScimErrorMetadata::DECODERS
-
-  # @return [String] Optional `string` value serialized in the `message` wire field.
-  attr_reader :message
-  # @return [String] Optional `string` value serialized in the `documentation_url` wire field.
-  attr_reader :documentation_url
-  # @return [String] Optional `string` value serialized in the `detail` wire field.
-  attr_reader :detail
-  # @return [Integer] Optional `integer` value serialized in the `status` wire field.
-  attr_reader :status
-  # @return [String] Optional `string` value serialized in the `scimType` wire field.
-  attr_reader :scim_type
-  # @return [Array_of_String] Optional array value serialized in the `schemas` wire field.
-  attr_reader :schemas
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the ReleaseAssetState SDK namespace.
+  module ReleaseAssetState
+    UPLOADED = 'uploaded'
+    OPEN = 'open'
+    VALUES = %w[uploaded open].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalScimErrorMetadata
+    FIELDS = {
+      message: 'message',
+      documentation_url: 'documentation_url',
+      detail: 'detail',
+      status: 'status',
+      scim_type: 'scimType',
+      schemas: 'schemas'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for ScimError.
+  # Scim Error
+  class ScimError
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalScimErrorMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalScimErrorMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalScimErrorMetadata::DECODERS
 
-# Defines the SecretScanningPushProtectionBypassPlaceholderId SDK value decoder.
-module SecretScanningPushProtectionBypassPlaceholderId
-  def self.from_value(value)
-    value
-  end
-end
+    # @return [String] Optional `string` value serialized in the `message` wire field.
+    attr_reader :message
+    # @return [String] Optional `string` value serialized in the `documentation_url` wire field.
+    attr_reader :documentation_url
+    # @return [String] Optional `string` value serialized in the `detail` wire field.
+    attr_reader :detail
+    # @return [Integer] Optional `integer` value serialized in the `status` wire field.
+    attr_reader :status
+    # @return [String] Optional `string` value serialized in the `scimType` wire field.
+    attr_reader :scim_type
+    # @return [Array_of_String] Optional array value serialized in the `schemas` wire field.
+    attr_reader :schemas
 
-# Internal model hydration metadata.
-class SdkInternalServiceUnavailableMetadata
-  FIELDS = {
-    code: "code",
-    message: "message",
-    documentation_url: "documentation_url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-# API model for ServiceUnavailable.
-# Typed representation of the `ServiceUnavailable` API schema.
-class ServiceUnavailable
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalServiceUnavailableMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalServiceUnavailableMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalServiceUnavailableMetadata::DECODERS
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  # @return [String] Optional `string` value serialized in the `code` wire field.
-  attr_reader :code
-  # @return [String] Optional `string` value serialized in the `message` wire field.
-  attr_reader :message
-  # @return [String] Optional `string` value serialized in the `documentation_url` wire field.
-  attr_reader :documentation_url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the SecretScanningPushProtectionBypassPlaceholderId SDK value decoder.
+  module SecretScanningPushProtectionBypassPlaceholderId
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalSubIssuesSummaryMetadata
-  FIELDS = {
-    total: "total",
-    completed: "completed",
-    percent_completed: "percent_completed",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    total
-    completed
-    percent_completed
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for SubIssuesSummary.
-# Typed representation of the `SubIssuesSummary` API schema.
-class SubIssuesSummary
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalSubIssuesSummaryMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalSubIssuesSummaryMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalSubIssuesSummaryMetadata::DECODERS
-
-  # @return [Integer] Required `integer` value serialized in the `total` wire field.
-  attr_reader :total
-  # @return [Integer] Required `integer` value serialized in the `completed` wire field.
-  attr_reader :completed
-  # @return [Integer] Required `integer` value serialized in the `percent_completed` wire field.
-  attr_reader :percent_completed
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalServiceUnavailableMetadata
+    FIELDS = {
+      code: 'code',
+      message: 'message',
+      documentation_url: 'documentation_url'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ServiceUnavailable.
+  # Typed representation of the `ServiceUnavailable` API schema.
+  class ServiceUnavailable
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalServiceUnavailableMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalServiceUnavailableMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalServiceUnavailableMetadata::DECODERS
+
+    # @return [String] Optional `string` value serialized in the `code` wire field.
+    attr_reader :code
+    # @return [String] Optional `string` value serialized in the `message` wire field.
+    attr_reader :message
+    # @return [String] Optional `string` value serialized in the `documentation_url` wire field.
+    attr_reader :documentation_url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalVerificationMetadata
-  FIELDS = {
-    verified: "verified",
-    reason: "reason",
-    payload: "payload",
-    signature: "signature",
-    verified_at: "verified_at",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    verified
-    reason
-    payload
-    signature
-    verified_at
-  ].freeze
-  DECODERS = {
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    payload
-    signature
-    verified_at
-  ].freeze
-end
-
-# API model for Verification.
-# Typed representation of the `Verification` API schema.
-class Verification
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalVerificationMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalVerificationMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalVerificationMetadata::DECODERS
-
-  # @return [Boolean] Required `boolean` value serialized in the `verified` wire field.
-  attr_reader :verified
-  # @return [String] Required `string` value serialized in the `reason` wire field.
-  attr_reader :reason
-  # @return [String] Required `string` value serialized in the `payload` wire field.
-  attr_reader :payload
-  # @return [String] Required `string` value serialized in the `signature` wire field.
-  attr_reader :signature
-  # @return [String] Required `string` value serialized in the `verified_at` wire field.
-  attr_reader :verified_at
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalSubIssuesSummaryMetadata
+    FIELDS = {
+      total: 'total',
+      completed: 'completed',
+      percent_completed: 'percent_completed'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      total
+      completed
+      percent_completed
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalVerificationMetadata::NULLABLE_FIELDS)
+  # API model for SubIssuesSummary.
+  # Typed representation of the `SubIssuesSummary` API schema.
+  class SubIssuesSummary
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalSubIssuesSummaryMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalSubIssuesSummaryMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalSubIssuesSummaryMetadata::DECODERS
+
+    # @return [Integer] Required `integer` value serialized in the `total` wire field.
+    attr_reader :total
+    # @return [Integer] Required `integer` value serialized in the `completed` wire field.
+    attr_reader :completed
+    # @return [Integer] Required `integer` value serialized in the `percent_completed` wire field.
+    attr_reader :percent_completed
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalVerificationMetadata
+    FIELDS = {
+      verified: 'verified',
+      reason: 'reason',
+      payload: 'payload',
+      signature: 'signature',
+      verified_at: 'verified_at'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      verified
+      reason
+      payload
+      signature
+      verified_at
+    ].freeze
+    DECODERS = {}.freeze
+    NULLABLE_FIELDS = %i[
+      payload
+      signature
+      verified_at
+    ].freeze
   end
-end
+
+  # API model for Verification.
+  # Typed representation of the `Verification` API schema.
+  class Verification
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalVerificationMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalVerificationMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalVerificationMetadata::DECODERS
+
+    # @return [Boolean] Required `boolean` value serialized in the `verified` wire field.
+    attr_reader :verified
+    # @return [String] Required `string` value serialized in the `reason` wire field.
+    attr_reader :reason
+    # @return [String] Required `string` value serialized in the `payload` wire field.
+    attr_reader :payload
+    # @return [String] Required `string` value serialized in the `signature` wire field.
+    attr_reader :signature
+    # @return [String] Required `string` value serialized in the `verified_at` wire field.
+    attr_reader :verified_at
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalVerificationMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+  end
 end

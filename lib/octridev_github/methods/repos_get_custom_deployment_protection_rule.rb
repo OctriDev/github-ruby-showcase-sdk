@@ -28,24 +28,23 @@ module OctridevGithub
         protection_rule_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name),
-            "/deployment_protection_rules/",
+            '/deployment_protection_rules/',
             SdkClient.encode_path_segment(protection_rule_id)
           ].join,
           config: config,
           return_type: ::OctridevGithub::DeploymentProtectionRule,
           decoder: :json,
           operation_id: 'repos_get_custom_deployment_protection_rule',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

@@ -29,26 +29,25 @@ module OctridevGithub
         team_ids: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/transfer"
+            '/transfer'
           ].join,
           config: config,
           body: {
             'new_owner' => new_owner,
             'new_name' => new_name,
-            'team_ids' => team_ids,
+            'team_ids' => team_ids
           },
           return_type: ::OctridevGithub::MinimalRepository,
           decoder: :json,
           operation_id: 'repos_transfer',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

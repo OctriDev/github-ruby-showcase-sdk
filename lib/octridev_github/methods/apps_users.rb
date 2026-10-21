@@ -17,19 +17,18 @@ module OctridevGithub
         username:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/users/",
+            '/users/',
             SdkClient.encode_path_segment(username),
-            "/installation"
+            '/installation'
           ].join,
           config: config,
           return_type: ::OctridevGithub::Installation,
           decoder: :json,
           operation_id: 'apps_get_user_installation',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

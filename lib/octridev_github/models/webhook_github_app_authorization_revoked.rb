@@ -5,59 +5,59 @@
 
 # webhook_github_app_authorization_revoked domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalWebhookGithubAppAuthorizationRevokedMetadata
-  FIELDS = {
-    action: "action",
-    sender: "sender",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    action
-    sender
-  ].freeze
-  DECODERS = {
-    action: lambda do |value|
-      ::OctridevGithub::WebhookGithubAppAuthorizationRevokedAction.from_value(value)
-    end,
-    sender: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookGithubAppAuthorizationRevoked.
-# Typed representation of the `WebhookGithubAppAuthorizationRevoked` API schema.
-class WebhookGithubAppAuthorizationRevoked
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookGithubAppAuthorizationRevokedMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookGithubAppAuthorizationRevokedMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookGithubAppAuthorizationRevokedMetadata::DECODERS
-
-  # @return [WebhookGithubAppAuthorizationRevokedAction] Required enumerated value serialized in the `action` wire field.
-  attr_reader :action
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :sender
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookGithubAppAuthorizationRevokedMetadata
+    FIELDS = {
+      action: 'action',
+      sender: 'sender'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      action
+      sender
+    ].freeze
+    DECODERS = {
+      action: lambda do |value|
+        ::OctridevGithub::WebhookGithubAppAuthorizationRevokedAction.from_value(value)
+      end,
+      sender: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookGithubAppAuthorizationRevoked.
+  # Typed representation of the `WebhookGithubAppAuthorizationRevoked` API schema.
+  class WebhookGithubAppAuthorizationRevoked
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookGithubAppAuthorizationRevokedMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookGithubAppAuthorizationRevokedMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookGithubAppAuthorizationRevokedMetadata::DECODERS
+
+    # @return [WebhookGithubAppAuthorizationRevokedAction] Required enumerated value serialized in the `action` wire field.
+    attr_reader :action
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :sender
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the WebhookGithubAppAuthorizationRevokedAction SDK namespace.
+  module WebhookGithubAppAuthorizationRevokedAction
+    REVOKED = 'revoked'
+    VALUES = ['revoked'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the WebhookGithubAppAuthorizationRevokedAction SDK namespace.
-module WebhookGithubAppAuthorizationRevokedAction
-  REVOKED = 'revoked'
-  VALUES = ['revoked'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

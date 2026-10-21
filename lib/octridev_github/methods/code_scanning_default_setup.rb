@@ -21,22 +21,21 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/code-scanning/default-setup"
+            '/code-scanning/default-setup'
           ].join,
           config: config,
           return_type: ::OctridevGithub::CodeScanningDefaultSetup,
           decoder: :json,
           operation_id: 'code_scanning_get_default_setup',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
 
@@ -73,15 +72,14 @@ module OctridevGithub
         languages: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/code-scanning/default-setup"
+            '/code-scanning/default-setup'
           ].join,
           config: config,
           body: {
@@ -90,13 +88,13 @@ module OctridevGithub
             'runner_label' => runner_label,
             'query_suite' => query_suite,
             'threat_model' => threat_model,
-            'languages' => languages,
+            'languages' => languages
           },
           return_type: ::OctridevGithub::EmptyObject,
           decoder: :json,
           operation_id: 'code_scanning_update_default_setup',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::BasicError, '503' => ::OctridevGithub::ServiceUnavailable }
         ).data
       end
     end

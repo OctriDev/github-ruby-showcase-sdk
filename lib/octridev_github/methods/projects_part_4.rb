@@ -23,22 +23,21 @@ module OctridevGithub
         item_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/users/",
+            '/users/',
             SdkClient.encode_path_segment(username),
-            "/projectsV2/",
+            '/projectsV2/',
             SdkClient.encode_path_segment(project_number),
-            "/items/",
+            '/items/',
             SdkClient.encode_path_segment(item_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'projects_delete_item_for_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -69,30 +68,29 @@ module OctridevGithub
         per_page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/users/",
+            '/users/',
             SdkClient.encode_path_segment(username),
-            "/projectsV2/",
+            '/projectsV2/',
             SdkClient.encode_path_segment(project_number),
-            "/views/",
+            '/views/',
             SdkClient.encode_path_segment(view_number),
-            "/items"
+            '/items'
           ].join,
           config: config,
           query: {
             'fields' => QueryValue.new(fields, style: 'form', explode: true),
             'before' => QueryValue.new(before, style: 'form', explode: true),
             'after' => QueryValue.new(after, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::ProjectsV2ItemWithContent],
           decoder: :json,
           operation_id: 'projects_list_view_items_for_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

@@ -17,20 +17,19 @@ module OctridevGithub
         org:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/secret-scanning/pattern-configurations"
+            '/secret-scanning/pattern-configurations'
           ].join,
           config: config,
           return_type: ::OctridevGithub::SecretScanningPatternConfiguration,
           decoder: :json,
           operation_id: 'secret_scanning_list_org_pattern_configs',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -52,25 +51,24 @@ module OctridevGithub
         custom_pattern_settings: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/secret-scanning/pattern-configurations"
+            '/secret-scanning/pattern-configurations'
           ].join,
           config: config,
           body: {
             'pattern_config_version' => pattern_config_version,
             'provider_pattern_settings' => provider_pattern_settings,
-            'custom_pattern_settings' => custom_pattern_settings,
+            'custom_pattern_settings' => custom_pattern_settings
           },
           return_type: ::OctridevGithub::Methods::SecretScanning::SecretScanningUpdateOrgPatternConfigsResponse,
           decoder: :json,
           operation_id: 'secret_scanning_update_org_pattern_configs',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
     end

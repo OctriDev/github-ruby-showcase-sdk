@@ -30,27 +30,26 @@ module OctridevGithub
         ref: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/codespaces/machines"
+            '/codespaces/machines'
           ].join,
           config: config,
           query: {
             'location' => QueryValue.new(location, style: 'form', explode: true),
             'client_ip' => QueryValue.new(client_ip, style: 'form', explode: true),
-            'ref' => QueryValue.new(ref, style: 'form', explode: true),
+            'ref' => QueryValue.new(ref, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Codespaces::CodespacesRepoMachinesForAuthenticatedUserResponse,
           decoder: :json,
           operation_id: 'codespaces_repo_machines_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -62,20 +61,19 @@ module OctridevGithub
         codespace_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/user/codespaces/",
+            '/user/codespaces/',
             SdkClient.encode_path_segment(codespace_name),
-            "/machines"
+            '/machines'
           ].join,
           config: config,
           return_type: ::OctridevGithub::Methods::Codespaces::CodespacesCodespaceMachinesForAuthenticatedUserResponse,
           decoder: :json,
           operation_id: 'codespaces_codespace_machines_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
     end

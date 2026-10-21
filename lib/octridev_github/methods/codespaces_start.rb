@@ -17,20 +17,19 @@ module OctridevGithub
         codespace_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/user/codespaces/",
+            '/user/codespaces/',
             SdkClient.encode_path_segment(codespace_name),
-            "/start"
+            '/start'
           ].join,
           config: config,
           return_type: ::OctridevGithub::Codespace,
           decoder: :json,
           operation_id: 'codespaces_start_for_authenticated_user',
           request_options: request_options,
-          errors: { '400' => ::OctridevGithub::BasicError, '401' => ::OctridevGithub::BasicError, '402' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
+          errors: { '400' => ::OctridevGithub::BasicError, '401' => ::OctridevGithub::BasicError, '402' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
     end

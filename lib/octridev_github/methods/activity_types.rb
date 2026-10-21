@@ -12,13 +12,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActivityMarkNotificationsAsReadMetadata
         FIELDS = {
-          last_read_at: "last_read_at",
-          read: "read",
+          last_read_at: 'last_read_at',
+          read: 'read'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ActivityMarkNotificationsAsRead.
@@ -50,12 +48,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActivityMarkNotificationsAsReadResponseMetadata
         FIELDS = {
-          message: "message",
+          message: 'message'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ActivityMarkNotificationsAsReadResponse.
@@ -84,12 +80,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActivitySetThreadSubscriptionMetadata
         FIELDS = {
-          ignored: "ignored",
+          ignored: 'ignored'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ActivitySetThreadSubscription.
@@ -119,12 +113,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActivityMarkRepoNotificationsAsReadMetadata
         FIELDS = {
-          last_read_at: "last_read_at",
+          last_read_at: 'last_read_at'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ActivityMarkRepoNotificationsAsRead.
@@ -154,13 +146,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActivityMarkRepoNotificationsAsReadResponseMetadata
         FIELDS = {
-          message: "message",
-          url: "url",
+          message: 'message',
+          url: 'url'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ActivityMarkRepoNotificationsAsReadResponse.
@@ -189,13 +179,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActivityGetStargazerCountForRepoResponseMetadata
         FIELDS = {
-          count: "count",
+          count: 'count'
         }.freeze
         REQUIRED_FIELDS = %i[
           count
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ActivityGetStargazerCountForRepoResponse.
@@ -224,13 +213,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalActivitySetRepoSubscriptionMetadata
         FIELDS = {
-          subscribed: "subscribed",
-          ignored: "ignored",
+          subscribed: 'subscribed',
+          ignored: 'ignored'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ActivitySetRepoSubscription.

@@ -20,22 +20,21 @@ module OctridevGithub
         days:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/permissions/artifact-and-log-retention"
+            '/actions/permissions/artifact-and-log-retention'
           ].join,
           config: config,
           body: {
-            'days' => days,
+            'days' => days
           },
           decoder: :empty,
           operation_id: 'actions_set_artifact_and_log_retention_settings_organization',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
     end

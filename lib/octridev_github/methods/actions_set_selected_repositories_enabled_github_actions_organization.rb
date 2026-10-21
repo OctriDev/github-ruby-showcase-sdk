@@ -20,21 +20,20 @@ module OctridevGithub
         selected_repository_ids:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/permissions/repositories"
+            '/actions/permissions/repositories'
           ].join,
           config: config,
           body: {
-            'selected_repository_ids' => selected_repository_ids,
+            'selected_repository_ids' => selected_repository_ids
           },
           decoder: :empty,
           operation_id: 'actions_set_selected_repositories_enabled_github_actions_organization',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

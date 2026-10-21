@@ -5,630 +5,622 @@
 
 # webhook_pull_request_review_thread_unresolved domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksCommentsMetadata
-  FIELDS = {
-    href: "href",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    href
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookPullRequestReviewThreadUnresolvedPullRequestLinksComments.
-# Required object value serialized in the `comments` wire field.
-class WebhookPullRequestReviewThreadUnresolvedPullRequestLinksComments
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksCommentsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksCommentsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksCommentsMetadata::DECODERS
-
-  # @return [String] Required `uri-template`-formatted value serialized in the `href` wire field.
-  attr_reader :href
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksCommentsMetadata
+    FIELDS = {
+      href: 'href'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      href
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookPullRequestReviewThreadUnresolvedPullRequestLinksComments.
+  # Required object value serialized in the `comments` wire field.
+  class WebhookPullRequestReviewThreadUnresolvedPullRequestLinksComments
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksCommentsMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksCommentsMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksCommentsMetadata::DECODERS
+
+    # @return [String] Required `uri-template`-formatted value serialized in the `href` wire field.
+    attr_reader :href
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksCommitsMetadata
-  FIELDS = {
-    href: "href",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    href
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookPullRequestReviewThreadUnresolvedPullRequestLinksCommits.
-# Required object value serialized in the `commits` wire field.
-class WebhookPullRequestReviewThreadUnresolvedPullRequestLinksCommits
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksCommitsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksCommitsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksCommitsMetadata::DECODERS
-
-  # @return [String] Required `uri-template`-formatted value serialized in the `href` wire field.
-  attr_reader :href
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksCommitsMetadata
+    FIELDS = {
+      href: 'href'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      href
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookPullRequestReviewThreadUnresolvedPullRequestLinksCommits.
+  # Required object value serialized in the `commits` wire field.
+  class WebhookPullRequestReviewThreadUnresolvedPullRequestLinksCommits
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksCommitsMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksCommitsMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksCommitsMetadata::DECODERS
+
+    # @return [String] Required `uri-template`-formatted value serialized in the `href` wire field.
+    attr_reader :href
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksHtmlMetadata
-  FIELDS = {
-    href: "href",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    href
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookPullRequestReviewThreadUnresolvedPullRequestLinksHtml.
-# Required object value serialized in the `html` wire field.
-class WebhookPullRequestReviewThreadUnresolvedPullRequestLinksHtml
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksHtmlMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksHtmlMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksHtmlMetadata::DECODERS
-
-  # @return [String] Required `uri-template`-formatted value serialized in the `href` wire field.
-  attr_reader :href
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksHtmlMetadata
+    FIELDS = {
+      href: 'href'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      href
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookPullRequestReviewThreadUnresolvedPullRequestLinksHtml.
+  # Required object value serialized in the `html` wire field.
+  class WebhookPullRequestReviewThreadUnresolvedPullRequestLinksHtml
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksHtmlMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksHtmlMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksHtmlMetadata::DECODERS
+
+    # @return [String] Required `uri-template`-formatted value serialized in the `href` wire field.
+    attr_reader :href
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksIssueMetadata
-  FIELDS = {
-    href: "href",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    href
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookPullRequestReviewThreadUnresolvedPullRequestLinksIssue.
-# Required object value serialized in the `issue` wire field.
-class WebhookPullRequestReviewThreadUnresolvedPullRequestLinksIssue
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksIssueMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksIssueMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksIssueMetadata::DECODERS
-
-  # @return [String] Required `uri-template`-formatted value serialized in the `href` wire field.
-  attr_reader :href
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksIssueMetadata
+    FIELDS = {
+      href: 'href'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      href
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookPullRequestReviewThreadUnresolvedPullRequestLinksIssue.
+  # Required object value serialized in the `issue` wire field.
+  class WebhookPullRequestReviewThreadUnresolvedPullRequestLinksIssue
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksIssueMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksIssueMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksIssueMetadata::DECODERS
+
+    # @return [String] Required `uri-template`-formatted value serialized in the `href` wire field.
+    attr_reader :href
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewCommentMetadata
-  FIELDS = {
-    href: "href",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    href
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewComment.
-# Required object value serialized in the `review_comment` wire field.
-class WebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewComment
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewCommentMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewCommentMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewCommentMetadata::DECODERS
-
-  # @return [String] Required `uri-template`-formatted value serialized in the `href` wire field.
-  attr_reader :href
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewCommentMetadata
+    FIELDS = {
+      href: 'href'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      href
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewComment.
+  # Required object value serialized in the `review_comment` wire field.
+  class WebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewComment
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewCommentMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewCommentMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewCommentMetadata::DECODERS
+
+    # @return [String] Required `uri-template`-formatted value serialized in the `href` wire field.
+    attr_reader :href
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewCommentsMetadata
-  FIELDS = {
-    href: "href",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    href
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewComments.
-# Required object value serialized in the `review_comments` wire field.
-class WebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewComments
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewCommentsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewCommentsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewCommentsMetadata::DECODERS
-
-  # @return [String] Required `uri-template`-formatted value serialized in the `href` wire field.
-  attr_reader :href
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewCommentsMetadata
+    FIELDS = {
+      href: 'href'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      href
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewComments.
+  # Required object value serialized in the `review_comments` wire field.
+  class WebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewComments
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewCommentsMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewCommentsMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewCommentsMetadata::DECODERS
+
+    # @return [String] Required `uri-template`-formatted value serialized in the `href` wire field.
+    attr_reader :href
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksSelfMetadata
-  FIELDS = {
-    href: "href",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    href
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookPullRequestReviewThreadUnresolvedPullRequestLinksSelf.
-# Required object value serialized in the `self` wire field.
-class WebhookPullRequestReviewThreadUnresolvedPullRequestLinksSelf
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksSelfMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksSelfMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksSelfMetadata::DECODERS
-
-  # @return [String] Required `uri-template`-formatted value serialized in the `href` wire field.
-  attr_reader :href
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksSelfMetadata
+    FIELDS = {
+      href: 'href'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      href
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookPullRequestReviewThreadUnresolvedPullRequestLinksSelf.
+  # Required object value serialized in the `self` wire field.
+  class WebhookPullRequestReviewThreadUnresolvedPullRequestLinksSelf
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksSelfMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksSelfMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksSelfMetadata::DECODERS
+
+    # @return [String] Required `uri-template`-formatted value serialized in the `href` wire field.
+    attr_reader :href
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksStatusesMetadata
-  FIELDS = {
-    href: "href",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    href
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookPullRequestReviewThreadUnresolvedPullRequestLinksStatuses.
-# Required object value serialized in the `statuses` wire field.
-class WebhookPullRequestReviewThreadUnresolvedPullRequestLinksStatuses
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksStatusesMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksStatusesMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksStatusesMetadata::DECODERS
-
-  # @return [String] Required `uri-template`-formatted value serialized in the `href` wire field.
-  attr_reader :href
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksStatusesMetadata
+    FIELDS = {
+      href: 'href'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      href
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookPullRequestReviewThreadUnresolvedPullRequestLinksStatuses.
+  # Required object value serialized in the `statuses` wire field.
+  class WebhookPullRequestReviewThreadUnresolvedPullRequestLinksStatuses
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksStatusesMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksStatusesMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksStatusesMetadata::DECODERS
+
+    # @return [String] Required `uri-template`-formatted value serialized in the `href` wire field.
+    attr_reader :href
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksMetadata
-  FIELDS = {
-    comments: "comments",
-    commits: "commits",
-    html: "html",
-    issue: "issue",
-    review_comment: "review_comment",
-    review_comments: "review_comments",
-    self_: "self",
-    statuses: "statuses",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    comments
-    commits
-    html
-    issue
-    review_comment
-    review_comments
-    self_
-    statuses
-  ].freeze
-  DECODERS = {
-    comments: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedPullRequestLinksComments.from_hash(value)
-    end,
-    commits: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedPullRequestLinksCommits.from_hash(value)
-    end,
-    html: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedPullRequestLinksHtml.from_hash(value)
-    end,
-    issue: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedPullRequestLinksIssue.from_hash(value)
-    end,
-    review_comment: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewComment.from_hash(value)
-    end,
-    review_comments: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewComments.from_hash(value)
-    end,
-    self_: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedPullRequestLinksSelf.from_hash(value)
-    end,
-    statuses: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedPullRequestLinksStatuses.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookPullRequestReviewThreadUnresolvedPullRequestLinks.
-# Required object value serialized in the `_links` wire field.
-class WebhookPullRequestReviewThreadUnresolvedPullRequestLinks
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksMetadata::DECODERS
-
-  # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestLinksComments] Required object value serialized in the `comments` wire field.
-  attr_reader :comments
-  # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestLinksCommits] Required object value serialized in the `commits` wire field.
-  attr_reader :commits
-  # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestLinksHtml] Required object value serialized in the `html` wire field.
-  attr_reader :html
-  # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestLinksIssue] Required object value serialized in the `issue` wire field.
-  attr_reader :issue
-  # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewComment] Required object value serialized in the `review_comment` wire field.
-  attr_reader :review_comment
-  # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewComments] Required object value serialized in the `review_comments` wire field.
-  attr_reader :review_comments
-  # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestLinksSelf] Required object value serialized in the `self` wire field.
-  attr_reader :self_
-  # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestLinksStatuses] Required object value serialized in the `statuses` wire field.
-  attr_reader :statuses
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksMetadata
+    FIELDS = {
+      comments: 'comments',
+      commits: 'commits',
+      html: 'html',
+      issue: 'issue',
+      review_comment: 'review_comment',
+      review_comments: 'review_comments',
+      self_: 'self',
+      statuses: 'statuses'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      comments
+      commits
+      html
+      issue
+      review_comment
+      review_comments
+      self_
+      statuses
+    ].freeze
+    DECODERS = {
+      comments: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedPullRequestLinksComments.from_hash(value)
+      end,
+      commits: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedPullRequestLinksCommits.from_hash(value)
+      end,
+      html: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedPullRequestLinksHtml.from_hash(value)
+      end,
+      issue: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedPullRequestLinksIssue.from_hash(value)
+      end,
+      review_comment: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewComment.from_hash(value)
+      end,
+      review_comments: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewComments.from_hash(value)
+      end,
+      self_: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedPullRequestLinksSelf.from_hash(value)
+      end,
+      statuses: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedPullRequestLinksStatuses.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookPullRequestReviewThreadUnresolvedPullRequestLinks.
+  # Required object value serialized in the `_links` wire field.
+  class WebhookPullRequestReviewThreadUnresolvedPullRequestLinks
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestLinksMetadata::DECODERS
+
+    # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestLinksComments] Required object value serialized in the `comments` wire field.
+    attr_reader :comments
+    # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestLinksCommits] Required object value serialized in the `commits` wire field.
+    attr_reader :commits
+    # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestLinksHtml] Required object value serialized in the `html` wire field.
+    attr_reader :html
+    # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestLinksIssue] Required object value serialized in the `issue` wire field.
+    attr_reader :issue
+    # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewComment] Required object value serialized in the `review_comment` wire field.
+    attr_reader :review_comment
+    # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestLinksReviewComments] Required object value serialized in the `review_comments` wire field.
+    attr_reader :review_comments
+    # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestLinksSelf] Required object value serialized in the `self` wire field.
+    attr_reader :self_
+    # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestLinksStatuses] Required object value serialized in the `statuses` wire field.
+    attr_reader :statuses
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestAssigneeMetadata
-  FIELDS = {
-    avatar_url: "avatar_url",
-    deleted: "deleted",
-    email: "email",
-    events_url: "events_url",
-    followers_url: "followers_url",
-    following_url: "following_url",
-    gists_url: "gists_url",
-    gravatar_id: "gravatar_id",
-    html_url: "html_url",
-    id: "id",
-    login: "login",
-    name: "name",
-    node_id: "node_id",
-    organizations_url: "organizations_url",
-    received_events_url: "received_events_url",
-    repos_url: "repos_url",
-    site_admin: "site_admin",
-    starred_url: "starred_url",
-    subscriptions_url: "subscriptions_url",
-    type: "type",
-    url: "url",
-    user_view_type: "user_view_type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    login
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedPullRequestAssigneeType.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookPullRequestReviewThreadUnresolvedPullRequestAssignee.
-# Required object value serialized in the `assignee` wire field.
-class WebhookPullRequestReviewThreadUnresolvedPullRequestAssignee
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestAssigneeMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestAssigneeMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestAssigneeMetadata::DECODERS
-
-  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-  attr_reader :avatar_url
-  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-  attr_reader :deleted
-  # @return [String] Optional `string` value serialized in the `email` wire field.
-  attr_reader :email
-  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-  attr_reader :events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-  attr_reader :followers_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-  attr_reader :following_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-  attr_reader :gists_url
-  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-  attr_reader :gravatar_id
-  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `login` wire field.
-  attr_reader :login
-  # @return [String] Optional `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-  attr_reader :organizations_url
-  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-  attr_reader :received_events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-  attr_reader :repos_url
-  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-  attr_reader :site_admin
-  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-  attr_reader :starred_url
-  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-  attr_reader :subscriptions_url
-  # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestAssigneeType] Optional enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-  attr_reader :user_view_type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestAssigneeMetadata
+    FIELDS = {
+      avatar_url: 'avatar_url',
+      deleted: 'deleted',
+      email: 'email',
+      events_url: 'events_url',
+      followers_url: 'followers_url',
+      following_url: 'following_url',
+      gists_url: 'gists_url',
+      gravatar_id: 'gravatar_id',
+      html_url: 'html_url',
+      id: 'id',
+      login: 'login',
+      name: 'name',
+      node_id: 'node_id',
+      organizations_url: 'organizations_url',
+      received_events_url: 'received_events_url',
+      repos_url: 'repos_url',
+      site_admin: 'site_admin',
+      starred_url: 'starred_url',
+      subscriptions_url: 'subscriptions_url',
+      type: 'type',
+      url: 'url',
+      user_view_type: 'user_view_type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      login
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedPullRequestAssigneeType.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookPullRequestReviewThreadUnresolvedPullRequestAssignee.
+  # Required object value serialized in the `assignee` wire field.
+  class WebhookPullRequestReviewThreadUnresolvedPullRequestAssignee
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestAssigneeMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestAssigneeMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestAssigneeMetadata::DECODERS
+
+    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+    attr_reader :avatar_url
+    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+    attr_reader :deleted
+    # @return [String] Optional `string` value serialized in the `email` wire field.
+    attr_reader :email
+    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+    attr_reader :events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+    attr_reader :followers_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+    attr_reader :following_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+    attr_reader :gists_url
+    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+    attr_reader :gravatar_id
+    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `login` wire field.
+    attr_reader :login
+    # @return [String] Optional `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Optional `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+    attr_reader :organizations_url
+    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+    attr_reader :received_events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+    attr_reader :repos_url
+    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+    attr_reader :site_admin
+    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+    attr_reader :starred_url
+    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+    attr_reader :subscriptions_url
+    # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestAssigneeType] Optional enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+    attr_reader :user_view_type
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestAssigneesItemMetadata
-  FIELDS = {
-    avatar_url: "avatar_url",
-    deleted: "deleted",
-    email: "email",
-    events_url: "events_url",
-    followers_url: "followers_url",
-    following_url: "following_url",
-    gists_url: "gists_url",
-    gravatar_id: "gravatar_id",
-    html_url: "html_url",
-    id: "id",
-    login: "login",
-    name: "name",
-    node_id: "node_id",
-    organizations_url: "organizations_url",
-    received_events_url: "received_events_url",
-    repos_url: "repos_url",
-    site_admin: "site_admin",
-    starred_url: "starred_url",
-    subscriptions_url: "subscriptions_url",
-    type: "type",
-    url: "url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    login
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedPullRequestAssigneesItemType.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookPullRequestReviewThreadUnresolvedPullRequestAssigneesItem.
-# Required object value serialized in the `assignees[]` wire field.
-class WebhookPullRequestReviewThreadUnresolvedPullRequestAssigneesItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestAssigneesItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestAssigneesItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestAssigneesItemMetadata::DECODERS
-
-  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-  attr_reader :avatar_url
-  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-  attr_reader :deleted
-  # @return [String] Optional `string` value serialized in the `email` wire field.
-  attr_reader :email
-  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-  attr_reader :events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-  attr_reader :followers_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-  attr_reader :following_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-  attr_reader :gists_url
-  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-  attr_reader :gravatar_id
-  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `login` wire field.
-  attr_reader :login
-  # @return [String] Optional `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-  attr_reader :organizations_url
-  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-  attr_reader :received_events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-  attr_reader :repos_url
-  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-  attr_reader :site_admin
-  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-  attr_reader :starred_url
-  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-  attr_reader :subscriptions_url
-  # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestAssigneesItemType] Optional enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestAssigneesItemMetadata
+    FIELDS = {
+      avatar_url: 'avatar_url',
+      deleted: 'deleted',
+      email: 'email',
+      events_url: 'events_url',
+      followers_url: 'followers_url',
+      following_url: 'following_url',
+      gists_url: 'gists_url',
+      gravatar_id: 'gravatar_id',
+      html_url: 'html_url',
+      id: 'id',
+      login: 'login',
+      name: 'name',
+      node_id: 'node_id',
+      organizations_url: 'organizations_url',
+      received_events_url: 'received_events_url',
+      repos_url: 'repos_url',
+      site_admin: 'site_admin',
+      starred_url: 'starred_url',
+      subscriptions_url: 'subscriptions_url',
+      type: 'type',
+      url: 'url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      login
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedPullRequestAssigneesItemType.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookPullRequestReviewThreadUnresolvedPullRequestAssigneesItem.
+  # Required object value serialized in the `assignees[]` wire field.
+  class WebhookPullRequestReviewThreadUnresolvedPullRequestAssigneesItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestAssigneesItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestAssigneesItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestAssigneesItemMetadata::DECODERS
+
+    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+    attr_reader :avatar_url
+    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+    attr_reader :deleted
+    # @return [String] Optional `string` value serialized in the `email` wire field.
+    attr_reader :email
+    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+    attr_reader :events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+    attr_reader :followers_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+    attr_reader :following_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+    attr_reader :gists_url
+    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+    attr_reader :gravatar_id
+    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `login` wire field.
+    attr_reader :login
+    # @return [String] Optional `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Optional `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+    attr_reader :organizations_url
+    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+    attr_reader :received_events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+    attr_reader :repos_url
+    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+    attr_reader :site_admin
+    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+    attr_reader :starred_url
+    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+    attr_reader :subscriptions_url
+    # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestAssigneesItemType] Optional enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestAutoMergeEnabledByMetadata
+    FIELDS = {
+      avatar_url: 'avatar_url',
+      deleted: 'deleted',
+      email: 'email',
+      events_url: 'events_url',
+      followers_url: 'followers_url',
+      following_url: 'following_url',
+      gists_url: 'gists_url',
+      gravatar_id: 'gravatar_id',
+      html_url: 'html_url',
+      id: 'id',
+      login: 'login',
+      name: 'name',
+      node_id: 'node_id',
+      organizations_url: 'organizations_url',
+      received_events_url: 'received_events_url',
+      repos_url: 'repos_url',
+      site_admin: 'site_admin',
+      starred_url: 'starred_url',
+      subscriptions_url: 'subscriptions_url',
+      type: 'type',
+      url: 'url',
+      user_view_type: 'user_view_type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      login
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedPullRequestAutoMergeEX6bfa606e7a.from_value(value)
+      end
+    }.freeze
   end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestAutoMergeEnabledByMetadata
-  FIELDS = {
-    avatar_url: "avatar_url",
-    deleted: "deleted",
-    email: "email",
-    events_url: "events_url",
-    followers_url: "followers_url",
-    following_url: "following_url",
-    gists_url: "gists_url",
-    gravatar_id: "gravatar_id",
-    html_url: "html_url",
-    id: "id",
-    login: "login",
-    name: "name",
-    node_id: "node_id",
-    organizations_url: "organizations_url",
-    received_events_url: "received_events_url",
-    repos_url: "repos_url",
-    site_admin: "site_admin",
-    starred_url: "starred_url",
-    subscriptions_url: "subscriptions_url",
-    type: "type",
-    url: "url",
-    user_view_type: "user_view_type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    login
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedPullRequestAutoMergeEX6bfa606e7a.from_value(value)
-    end,
-  }.freeze
-end
 end

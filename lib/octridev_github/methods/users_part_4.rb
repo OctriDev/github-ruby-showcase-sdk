@@ -23,23 +23,22 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/users/",
+            '/users/',
             SdkClient.encode_path_segment(username),
-            "/followers"
+            '/followers'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::SimpleUser],
           decoder: :json,
           operation_id: 'users_list_followers_for_user',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -57,23 +56,22 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/users/",
+            '/users/',
             SdkClient.encode_path_segment(username),
-            "/following"
+            '/following'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::SimpleUser],
           decoder: :json,
           operation_id: 'users_list_following_for_user',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -86,19 +84,18 @@ module OctridevGithub
         target_user:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/users/",
+            '/users/',
             SdkClient.encode_path_segment(username),
-            "/following/",
+            '/following/',
             SdkClient.encode_path_segment(target_user)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'users_check_following_for_user',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -116,23 +113,22 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/users/",
+            '/users/',
             SdkClient.encode_path_segment(username),
-            "/gpg_keys"
+            '/gpg_keys'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::GpgKey],
           decoder: :json,
           operation_id: 'users_list_gpg_keys_for_user',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -152,24 +148,23 @@ module OctridevGithub
         subject_id: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/users/",
+            '/users/',
             SdkClient.encode_path_segment(username),
-            "/hovercard"
+            '/hovercard'
           ].join,
           config: config,
           query: {
             'subject_type' => QueryValue.new(subject_type, style: 'form', explode: true),
-            'subject_id' => QueryValue.new(subject_id, style: 'form', explode: true),
+            'subject_id' => QueryValue.new(subject_id, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Hovercard,
           decoder: :json,
           operation_id: 'users_get_context_for_user',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -187,23 +182,22 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/users/",
+            '/users/',
             SdkClient.encode_path_segment(username),
-            "/keys"
+            '/keys'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::KeySimple],
           decoder: :json,
           operation_id: 'users_list_public_keys_for_user',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -221,23 +215,22 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/users/",
+            '/users/',
             SdkClient.encode_path_segment(username),
-            "/social_accounts"
+            '/social_accounts'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::SocialAccount],
           decoder: :json,
           operation_id: 'users_list_social_accounts_for_user',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -255,23 +248,22 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/users/",
+            '/users/',
             SdkClient.encode_path_segment(username),
-            "/ssh_signing_keys"
+            '/ssh_signing_keys'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::SshSigningKey],
           decoder: :json,
           operation_id: 'users_list_ssh_signing_keys_for_user',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

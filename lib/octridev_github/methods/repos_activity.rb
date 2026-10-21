@@ -51,15 +51,14 @@ module OctridevGithub
         activity_type: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/activity"
+            '/activity'
           ].join,
           config: config,
           query: {
@@ -70,13 +69,13 @@ module OctridevGithub
             'ref' => QueryValue.new(ref, style: 'form', explode: true),
             'actor' => QueryValue.new(actor, style: 'form', explode: true),
             'time_period' => QueryValue.new(time_period, style: 'form', explode: true),
-            'activity_type' => QueryValue.new(activity_type, style: 'form', explode: true),
+            'activity_type' => QueryValue.new(activity_type, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::Activity],
           decoder: :json,
           operation_id: 'repos_list_activities',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationErrorSimple },
+          errors: { '422' => ::OctridevGithub::ValidationErrorSimple }
         ).data
       end
     end

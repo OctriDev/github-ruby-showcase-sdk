@@ -21,24 +21,23 @@ module OctridevGithub
         codespace_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/members/",
+            '/members/',
             SdkClient.encode_path_segment(username),
-            "/codespaces/",
+            '/codespaces/',
             SdkClient.encode_path_segment(codespace_name),
-            "/stop"
+            '/stop'
           ].join,
           config: config,
           return_type: ::OctridevGithub::Codespace,
           decoder: :json,
           operation_id: 'codespaces_stop_in_organization',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -50,20 +49,19 @@ module OctridevGithub
         codespace_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/user/codespaces/",
+            '/user/codespaces/',
             SdkClient.encode_path_segment(codespace_name),
-            "/stop"
+            '/stop'
           ].join,
           config: config,
           return_type: ::OctridevGithub::Codespace,
           decoder: :json,
           operation_id: 'codespaces_stop_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
         ).data
       end
     end

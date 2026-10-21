@@ -18,19 +18,18 @@ module OctridevGithub
         since: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/repositories",
+          '/repositories',
           config: config,
           query: {
-            'since' => QueryValue.new(since, style: 'form', explode: true),
+            'since' => QueryValue.new(since, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::MinimalRepository],
           decoder: :json,
           operation_id: 'repos_list_public',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError },
+          errors: { '422' => ::OctridevGithub::ValidationError }
         ).data
       end
     end

@@ -27,17 +27,16 @@ module OctridevGithub
         body: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/branches/",
+            '/branches/',
             SdkClient.encode_path_segment(branch),
-            "/protection/restrictions/teams"
+            '/protection/restrictions/teams'
           ].join,
           config: config,
           body: body,
@@ -45,7 +44,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'repos_remove_team_access_restrictions',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError },
+          errors: { '422' => ::OctridevGithub::ValidationError }
         ).data
       end
     end

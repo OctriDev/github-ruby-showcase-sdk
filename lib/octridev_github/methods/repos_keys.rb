@@ -27,25 +27,24 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/keys"
+            '/keys'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::DeployKey],
           decoder: :json,
           operation_id: 'repos_list_deploy_keys',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -74,27 +73,26 @@ module OctridevGithub
         read_only: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/keys"
+            '/keys'
           ].join,
           config: config,
           body: {
             'key' => key,
             'title' => title,
-            'read_only' => read_only,
+            'read_only' => read_only
           },
           return_type: ::OctridevGithub::DeployKey,
           decoder: :json,
           operation_id: 'repos_create_deploy_key',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError },
+          errors: { '422' => ::OctridevGithub::ValidationError }
         ).data
       end
 
@@ -112,15 +110,14 @@ module OctridevGithub
         key_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/keys/",
+            '/keys/',
             SdkClient.encode_path_segment(key_id)
           ].join,
           config: config,
@@ -128,7 +125,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'repos_get_deploy_key',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).data
       end
 
@@ -146,21 +143,20 @@ module OctridevGithub
         key_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/keys/",
+            '/keys/',
             SdkClient.encode_path_segment(key_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_delete_deploy_key',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

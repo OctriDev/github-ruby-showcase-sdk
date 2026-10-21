@@ -30,27 +30,26 @@ module OctridevGithub
         commit_message: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/merges"
+            '/merges'
           ].join,
           config: config,
           body: {
             'base' => base,
             'head' => head,
-            'commit_message' => commit_message,
+            'commit_message' => commit_message
           },
           return_type: ::OctridevGithub::Commit,
           decoder: :json,
           operation_id: 'repos_merge',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).data
       end
     end

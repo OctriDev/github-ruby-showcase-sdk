@@ -5,396 +5,396 @@
 
 # pulls domain models (part 3)
 module OctridevGithub
-# API model for PullRequestStackMinimal.
-# Typed representation of the `PullRequestStackMinimal` API schema.
-class PullRequestStackMinimal
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalPullRequestStackMinimalMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalPullRequestStackMinimalMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalPullRequestStackMinimalMetadata::DECODERS
+  # API model for PullRequestStackMinimal.
+  # Typed representation of the `PullRequestStackMinimal` API schema.
+  class PullRequestStackMinimal
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalPullRequestStackMinimalMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalPullRequestStackMinimalMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalPullRequestStackMinimalMetadata::DECODERS
 
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [Integer] Required `integer` value serialized in the `number` wire field.
-  attr_reader :number
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [PullRequestStackMinimalBase] Required object value serialized in the `base` wire field.
-  attr_reader :base
-  # @return [Boolean] Whether the stack has any open pull request. False when all pull requests are merged or closed.
-  attr_reader :open
-  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [Array_of_PullRequestStackMinimalPullRequestsItem] Required array value serialized in the `pull_requests` wire field.
-  attr_reader :pull_requests
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [Integer] Required `integer` value serialized in the `number` wire field.
+    attr_reader :number
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [PullRequestStackMinimalBase] Required object value serialized in the `base` wire field.
+    attr_reader :base
+    # @return [Boolean] Whether the stack has any open pull request. False when all pull requests are merged or closed.
+    attr_reader :open
+    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [Array_of_PullRequestStackMinimalPullRequestsItem] Required array value serialized in the `pull_requests` wire field.
+    attr_reader :pull_requests
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the PullRequestStackMinimalPullRequestsItemState SDK namespace.
+  module PullRequestStackMinimalPullRequestsItemState
+    OPEN = 'open'
+    CLOSED = 'closed'
+    VALUES = %w[open closed].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the PullRequestStackMinimalPullRequestsItemState SDK namespace.
-module PullRequestStackMinimalPullRequestsItemState
-  OPEN = 'open'
-  CLOSED = 'closed'
-  VALUES = ['open', 'closed'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalPullRequestStackPullRequestMetadata
-  FIELDS = {
-    id: "id",
-    number: "number",
-    url: "url",
-    head: "head",
-    base: "base",
-    node_id: "node_id",
-    title: "title",
-    state: "state",
-    merged_at: "merged_at",
-    draft: "draft",
-    html_url: "html_url",
-    user: "user",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    number
-    url
-    head
-    base
-    node_id
-    title
-    state
-    merged_at
-    draft
-    html_url
-    user
-  ].freeze
-  DECODERS = {
-    head: lambda do |value|
-      ::OctridevGithub::PullRequestMinimalHead.from_hash(value)
-    end,
-    base: lambda do |value|
-      ::OctridevGithub::PullRequestMinimalBase.from_hash(value)
-    end,
-    state: lambda do |value|
-      ::OctridevGithub::PullRequestStackPullRequestVariant1State.from_value(value)
-    end,
-    user: lambda do |value|
-      ::OctridevGithub::NullableSimpleUser.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    merged_at
-    user
-  ].freeze
-end
-
-# API model for PullRequestStackPullRequest.
-# Typed representation of the `PullRequestStackPullRequest` API schema.
-class PullRequestStackPullRequest
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalPullRequestStackPullRequestMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalPullRequestStackPullRequestMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalPullRequestStackPullRequestMetadata::DECODERS
-
-  attr_reader :node_id, :title, :state, :merged_at, :draft, :html_url
-  # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [Integer] Required `integer` value serialized in the `number` wire field.
-  attr_reader :number
-  # @return [String] Required `string` value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [PullRequestMinimalHead] Required object value serialized in the `head` wire field.
-  attr_reader :head
-  # @return [PullRequestMinimalBase] Required object value serialized in the `base` wire field.
-  attr_reader :base
-  # @return [NullableSimpleUser] A GitHub user.
-  attr_reader :user
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalPullRequestStackPullRequestMetadata
+    FIELDS = {
+      id: 'id',
+      number: 'number',
+      url: 'url',
+      head: 'head',
+      base: 'base',
+      node_id: 'node_id',
+      title: 'title',
+      state: 'state',
+      merged_at: 'merged_at',
+      draft: 'draft',
+      html_url: 'html_url',
+      user: 'user'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      number
+      url
+      head
+      base
+      node_id
+      title
+      state
+      merged_at
+      draft
+      html_url
+      user
+    ].freeze
+    DECODERS = {
+      head: lambda do |value|
+        ::OctridevGithub::PullRequestMinimalHead.from_hash(value)
+      end,
+      base: lambda do |value|
+        ::OctridevGithub::PullRequestMinimalBase.from_hash(value)
+      end,
+      state: lambda do |value|
+        ::OctridevGithub::PullRequestStackPullRequestVariant1State.from_value(value)
+      end,
+      user: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      merged_at
+      user
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalPullRequestStackPullRequestMetadata::NULLABLE_FIELDS)
+  # API model for PullRequestStackPullRequest.
+  # Typed representation of the `PullRequestStackPullRequest` API schema.
+  class PullRequestStackPullRequest
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalPullRequestStackPullRequestMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalPullRequestStackPullRequestMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalPullRequestStackPullRequestMetadata::DECODERS
+
+    attr_reader :node_id, :title, :state, :merged_at, :draft, :html_url
+    # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [Integer] Required `integer` value serialized in the `number` wire field.
+    attr_reader :number
+    # @return [String] Required `string` value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [PullRequestMinimalHead] Required object value serialized in the `head` wire field.
+    attr_reader :head
+    # @return [PullRequestMinimalBase] Required object value serialized in the `base` wire field.
+    attr_reader :base
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :user
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalPullRequestStackPullRequestMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Defines the PullRequestStackPullRequestVariant1State SDK namespace.
-module PullRequestStackPullRequestVariant1State
-  OPEN = 'open'
-  CLOSED = 'closed'
-  VALUES = ['open', 'closed'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalReviewCommentLinksMetadata
-  FIELDS = {
-    self_: "self",
-    html: "html",
-    pull_request: "pull_request",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    self_
-    html
-    pull_request
-  ].freeze
-  DECODERS = {
-    self_: lambda do |value|
-      ::OctridevGithub::Link.from_hash(value)
-    end,
-    html: lambda do |value|
-      ::OctridevGithub::Link.from_hash(value)
-    end,
-    pull_request: lambda do |value|
-      ::OctridevGithub::Link.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for ReviewCommentLinks.
-# Required object value serialized in the `_links` wire field.
-class ReviewCommentLinks
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalReviewCommentLinksMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalReviewCommentLinksMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalReviewCommentLinksMetadata::DECODERS
-
-  # @return [Link] Hypermedia Link
-  attr_reader :self_
-  # @return [Link] Hypermedia Link
-  attr_reader :html
-  # @return [Link] Hypermedia Link
-  attr_reader :pull_request
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Defines the PullRequestStackPullRequestVariant1State SDK namespace.
+  module PullRequestStackPullRequestVariant1State
+    OPEN = 'open'
+    CLOSED = 'closed'
+    VALUES = %w[open closed].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalReviewCommentLinksMetadata
+    FIELDS = {
+      self_: 'self',
+      html: 'html',
+      pull_request: 'pull_request'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      self_
+      html
+      pull_request
+    ].freeze
+    DECODERS = {
+      self_: lambda do |value|
+        ::OctridevGithub::Link.from_hash(value)
+      end,
+      html: lambda do |value|
+        ::OctridevGithub::Link.from_hash(value)
+      end,
+      pull_request: lambda do |value|
+        ::OctridevGithub::Link.from_hash(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for ReviewCommentLinks.
+  # Required object value serialized in the `_links` wire field.
+  class ReviewCommentLinks
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalReviewCommentLinksMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalReviewCommentLinksMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalReviewCommentLinksMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalReviewCommentMetadata
-  FIELDS = {
-    url: "url",
-    pull_request_review_id: "pull_request_review_id",
-    id: "id",
-    node_id: "node_id",
-    diff_hunk: "diff_hunk",
-    path: "path",
-    position: "position",
-    original_position: "original_position",
-    commit_id: "commit_id",
-    original_commit_id: "original_commit_id",
-    in_reply_to_id: "in_reply_to_id",
-    user: "user",
-    body: "body",
-    created_at: "created_at",
-    updated_at: "updated_at",
-    html_url: "html_url",
-    pull_request_url: "pull_request_url",
-    author_association: "author_association",
-    links: "_links",
-    body_text: "body_text",
-    body_html: "body_html",
-    reactions: "reactions",
-    side: "side",
-    start_side: "start_side",
-    line: "line",
-    original_line: "original_line",
-    start_line: "start_line",
-    original_start_line: "original_start_line",
-    subject_type: "subject_type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    url
-    pull_request_review_id
-    id
-    node_id
-    diff_hunk
-    path
-    position
-    original_position
-    commit_id
-    original_commit_id
-    user
-    body
-    created_at
-    updated_at
-    html_url
-    pull_request_url
-    author_association
-    links
-  ].freeze
-  DECODERS = {
-    user: lambda do |value|
-      ::OctridevGithub::NullableSimpleUser.from_hash(value)
-    end,
-    author_association: lambda do |value|
-      ::OctridevGithub::AuthorAssociation.from_value(value)
-    end,
-    links: lambda do |value|
-      ::OctridevGithub::ReviewCommentLinks.from_hash(value)
-    end,
-    reactions: lambda do |value|
-      ::OctridevGithub::ReactionRollup.from_hash(value)
-    end,
-    side: lambda do |value|
-      ::OctridevGithub::ReviewCommentSide.from_value(value)
-    end,
-    start_side: lambda do |value|
-      ::OctridevGithub::ReviewCommentStartSide.from_value(value)
-    end,
-    subject_type: lambda do |value|
-      ::OctridevGithub::ReviewCommentSubjectType.from_value(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    pull_request_review_id
-    position
-    user
-  ].freeze
-end
+    # @return [Link] Hypermedia Link
+    attr_reader :self_
+    # @return [Link] Hypermedia Link
+    attr_reader :html
+    # @return [Link] Hypermedia Link
+    attr_reader :pull_request
 
-# API model for ReviewComment.
-# Legacy Review Comment
-class ReviewComment
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalReviewCommentMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalReviewCommentMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalReviewCommentMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [Integer] Required `int64`-formatted value serialized in the `pull_request_review_id` wire field.
-  attr_reader :pull_request_review_id
-  # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Required `string` value serialized in the `diff_hunk` wire field.
-  attr_reader :diff_hunk
-  # @return [String] Required `string` value serialized in the `path` wire field.
-  attr_reader :path
-  # @return [Integer] Required `integer` value serialized in the `position` wire field.
-  attr_reader :position
-  # @return [Integer] Required `integer` value serialized in the `original_position` wire field.
-  attr_reader :original_position
-  # @return [String] Required `string` value serialized in the `commit_id` wire field.
-  attr_reader :commit_id
-  # @return [String] Required `string` value serialized in the `original_commit_id` wire field.
-  attr_reader :original_commit_id
-  # @return [Integer] Optional `integer` value serialized in the `in_reply_to_id` wire field.
-  attr_reader :in_reply_to_id
-  # @return [NullableSimpleUser] A GitHub user.
-  attr_reader :user
-  # @return [String] Required `string` value serialized in the `body` wire field.
-  attr_reader :body
-  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [String] Required `uri`-formatted value serialized in the `pull_request_url` wire field.
-  attr_reader :pull_request_url
-  # @return [AuthorAssociation] How the author is associated with the repository.
-  attr_reader :author_association
-  # @return [ReviewCommentLinks] Required object value serialized in the `_links` wire field.
-  attr_reader :links
-  # @return [String] Optional `string` value serialized in the `body_text` wire field.
-  attr_reader :body_text
-  # @return [String] Optional `string` value serialized in the `body_html` wire field.
-  attr_reader :body_html
-  # @return [ReactionRollup] Optional object value serialized in the `reactions` wire field.
-  attr_reader :reactions
-  # @return [ReviewCommentSide] The side of the first line of the range for a multi-line comment.
-  attr_reader :side
-  # @return [ReviewCommentStartSide] The side of the first line of the range for a multi-line comment.
-  attr_reader :start_side
-  # @return [Integer] The line of the blob to which the comment applies. The last line of the range for a multi-line comment
-  attr_reader :line
-  # @return [Integer] The original line of the blob to which the comment applies. The last line of the range for a multi-line comment
-  attr_reader :original_line
-  # @return [Integer] The first line of the range for a multi-line comment.
-  attr_reader :start_line
-  # @return [Integer] The original first line of the range for a multi-line comment.
-  attr_reader :original_start_line
-  # @return [ReviewCommentSubjectType] The level at which the comment is targeted, can be a diff line or a file.
-  attr_reader :subject_type
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalReviewCommentMetadata::NULLABLE_FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalReviewCommentMetadata
+    FIELDS = {
+      url: 'url',
+      pull_request_review_id: 'pull_request_review_id',
+      id: 'id',
+      node_id: 'node_id',
+      diff_hunk: 'diff_hunk',
+      path: 'path',
+      position: 'position',
+      original_position: 'original_position',
+      commit_id: 'commit_id',
+      original_commit_id: 'original_commit_id',
+      in_reply_to_id: 'in_reply_to_id',
+      user: 'user',
+      body: 'body',
+      created_at: 'created_at',
+      updated_at: 'updated_at',
+      html_url: 'html_url',
+      pull_request_url: 'pull_request_url',
+      author_association: 'author_association',
+      links: '_links',
+      body_text: 'body_text',
+      body_html: 'body_html',
+      reactions: 'reactions',
+      side: 'side',
+      start_side: 'start_side',
+      line: 'line',
+      original_line: 'original_line',
+      start_line: 'start_line',
+      original_start_line: 'original_start_line',
+      subject_type: 'subject_type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      url
+      pull_request_review_id
+      id
+      node_id
+      diff_hunk
+      path
+      position
+      original_position
+      commit_id
+      original_commit_id
+      user
+      body
+      created_at
+      updated_at
+      html_url
+      pull_request_url
+      author_association
+      links
+    ].freeze
+    DECODERS = {
+      user: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end,
+      author_association: lambda do |value|
+        ::OctridevGithub::AuthorAssociation.from_value(value)
+      end,
+      links: lambda do |value|
+        ::OctridevGithub::ReviewCommentLinks.from_hash(value)
+      end,
+      reactions: lambda do |value|
+        ::OctridevGithub::ReactionRollup.from_hash(value)
+      end,
+      side: lambda do |value|
+        ::OctridevGithub::ReviewCommentSide.from_value(value)
+      end,
+      start_side: lambda do |value|
+        ::OctridevGithub::ReviewCommentStartSide.from_value(value)
+      end,
+      subject_type: lambda do |value|
+        ::OctridevGithub::ReviewCommentSubjectType.from_value(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      pull_request_review_id
+      position
+      user
+    ].freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
+  # API model for ReviewComment.
+  # Legacy Review Comment
+  class ReviewComment
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalReviewCommentMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalReviewCommentMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalReviewCommentMetadata::DECODERS
 
-# Defines the ReviewCommentSide SDK namespace.
-module ReviewCommentSide
-  LEFT = 'LEFT'
-  RIGHT = 'RIGHT'
-  VALUES = ['LEFT', 'RIGHT'].freeze
-  def self.from_value(value)
-    value
-  end
-end
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [Integer] Required `int64`-formatted value serialized in the `pull_request_review_id` wire field.
+    attr_reader :pull_request_review_id
+    # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Required `string` value serialized in the `diff_hunk` wire field.
+    attr_reader :diff_hunk
+    # @return [String] Required `string` value serialized in the `path` wire field.
+    attr_reader :path
+    # @return [Integer] Required `integer` value serialized in the `position` wire field.
+    attr_reader :position
+    # @return [Integer] Required `integer` value serialized in the `original_position` wire field.
+    attr_reader :original_position
+    # @return [String] Required `string` value serialized in the `commit_id` wire field.
+    attr_reader :commit_id
+    # @return [String] Required `string` value serialized in the `original_commit_id` wire field.
+    attr_reader :original_commit_id
+    # @return [Integer] Optional `integer` value serialized in the `in_reply_to_id` wire field.
+    attr_reader :in_reply_to_id
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :user
+    # @return [String] Required `string` value serialized in the `body` wire field.
+    attr_reader :body
+    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [String] Required `uri`-formatted value serialized in the `pull_request_url` wire field.
+    attr_reader :pull_request_url
+    # @return [AuthorAssociation] How the author is associated with the repository.
+    attr_reader :author_association
+    # @return [ReviewCommentLinks] Required object value serialized in the `_links` wire field.
+    attr_reader :links
+    # @return [String] Optional `string` value serialized in the `body_text` wire field.
+    attr_reader :body_text
+    # @return [String] Optional `string` value serialized in the `body_html` wire field.
+    attr_reader :body_html
+    # @return [ReactionRollup] Optional object value serialized in the `reactions` wire field.
+    attr_reader :reactions
+    # @return [ReviewCommentSide] The side of the first line of the range for a multi-line comment.
+    attr_reader :side
+    # @return [ReviewCommentStartSide] The side of the first line of the range for a multi-line comment.
+    attr_reader :start_side
+    # @return [Integer] The line of the blob to which the comment applies. The last line of the range for a multi-line comment
+    attr_reader :line
+    # @return [Integer] The original line of the blob to which the comment applies. The last line of the range for a multi-line comment
+    attr_reader :original_line
+    # @return [Integer] The first line of the range for a multi-line comment.
+    attr_reader :start_line
+    # @return [Integer] The original first line of the range for a multi-line comment.
+    attr_reader :original_start_line
+    # @return [ReviewCommentSubjectType] The level at which the comment is targeted, can be a diff line or a file.
+    attr_reader :subject_type
 
-# Defines the ReviewCommentStartSide SDK namespace.
-module ReviewCommentStartSide
-  LEFT = 'LEFT'
-  RIGHT = 'RIGHT'
-  VALUES = ['LEFT', 'RIGHT'].freeze
-  def self.from_value(value)
-    value
-  end
-end
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-# Defines the ReviewCommentSubjectType SDK namespace.
-module ReviewCommentSubjectType
-  LINE = 'line'
-  FILE = 'file'
-  VALUES = ['line', 'file'].freeze
-  def self.from_value(value)
-    value
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalReviewCommentMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
+
+  # Defines the ReviewCommentSide SDK namespace.
+  module ReviewCommentSide
+    LEFT = 'LEFT'
+    RIGHT = 'RIGHT'
+    VALUES = %w[LEFT RIGHT].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Defines the ReviewCommentStartSide SDK namespace.
+  module ReviewCommentStartSide
+    LEFT = 'LEFT'
+    RIGHT = 'RIGHT'
+    VALUES = %w[LEFT RIGHT].freeze
+    def self.from_value(value)
+      value
+    end
+  end
+
+  # Defines the ReviewCommentSubjectType SDK namespace.
+  module ReviewCommentSubjectType
+    LINE = 'line'
+    FILE = 'file'
+    VALUES = %w[line file].freeze
+    def self.from_value(value)
+      value
+    end
+  end
 end

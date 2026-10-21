@@ -28,25 +28,24 @@ module OctridevGithub
         after: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/enterprises/",
+            '/enterprises/',
             SdkClient.encode_path_segment(enterprise),
-            "/code-security/configurations"
+            '/code-security/configurations'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'before' => QueryValue.new(before, style: 'form', explode: true),
-            'after' => QueryValue.new(after, style: 'form', explode: true),
+            'after' => QueryValue.new(after, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::CodeSecurityConfiguration],
           decoder: :json,
           operation_id: 'code_security_get_configurations_for_enterprise',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

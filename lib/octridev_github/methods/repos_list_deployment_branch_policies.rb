@@ -31,27 +31,26 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/environments/",
+            '/environments/',
             SdkClient.encode_path_segment(environment_name),
-            "/deployment-branch-policies"
+            '/deployment-branch-policies'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Repos::ReposListDeploymentBranchPoliciesResponse,
           decoder: :json,
           operation_id: 'repos_list_deployment_branch_policies',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

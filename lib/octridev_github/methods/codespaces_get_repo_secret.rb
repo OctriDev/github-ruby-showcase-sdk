@@ -23,22 +23,21 @@ module OctridevGithub
         secret_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/codespaces/secrets/",
+            '/codespaces/secrets/',
             SdkClient.encode_path_segment(secret_name)
           ].join,
           config: config,
           return_type: ::OctridevGithub::RepoCodespacesSecret,
           decoder: :json,
           operation_id: 'codespaces_get_repo_secret',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

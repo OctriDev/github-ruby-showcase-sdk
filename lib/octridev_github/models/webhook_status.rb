@@ -5,654 +5,647 @@
 
 # webhook_status domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalWebhookStatusBranchesItemCommitMetadata
-  FIELDS = {
-    sha: "sha",
-    url: "url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    sha
-    url
-  ].freeze
-  DECODERS = {
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    sha
-    url
-  ].freeze
-end
-
-# API model for WebhookStatusBranchesItemCommit.
-# Required object value serialized in the `commit` wire field.
-class WebhookStatusBranchesItemCommit
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookStatusBranchesItemCommitMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookStatusBranchesItemCommitMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookStatusBranchesItemCommitMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `sha` wire field.
-  attr_reader :sha
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookStatusBranchesItemCommitMetadata
+    FIELDS = {
+      sha: 'sha',
+      url: 'url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      sha
+      url
+    ].freeze
+    DECODERS = {}.freeze
+    NULLABLE_FIELDS = %i[
+      sha
+      url
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookStatusBranchesItemCommitMetadata::NULLABLE_FIELDS)
+  # API model for WebhookStatusBranchesItemCommit.
+  # Required object value serialized in the `commit` wire field.
+  class WebhookStatusBranchesItemCommit
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookStatusBranchesItemCommitMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookStatusBranchesItemCommitMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookStatusBranchesItemCommitMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `sha` wire field.
+    attr_reader :sha
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookStatusBranchesItemCommitMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookStatusBranchesItemMetadata
-  FIELDS = {
-    commit: "commit",
-    name: "name",
-    protected: "protected",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    commit
-    name
-    protected
-  ].freeze
-  DECODERS = {
-    commit: lambda do |value|
-      ::OctridevGithub::WebhookStatusBranchesItemCommit.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookStatusBranchesItem.
-# Required object value serialized in the `branches[]` wire field.
-class WebhookStatusBranchesItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookStatusBranchesItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookStatusBranchesItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookStatusBranchesItemMetadata::DECODERS
-
-  # @return [WebhookStatusBranchesItemCommit] Required object value serialized in the `commit` wire field.
-  attr_reader :commit
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [Boolean] Required `boolean` value serialized in the `protected` wire field.
-  attr_reader :protected
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookStatusBranchesItemMetadata
+    FIELDS = {
+      commit: 'commit',
+      name: 'name',
+      protected: 'protected'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      commit
+      name
+      protected
+    ].freeze
+    DECODERS = {
+      commit: lambda do |value|
+        ::OctridevGithub::WebhookStatusBranchesItemCommit.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookStatusBranchesItem.
+  # Required object value serialized in the `branches[]` wire field.
+  class WebhookStatusBranchesItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookStatusBranchesItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookStatusBranchesItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookStatusBranchesItemMetadata::DECODERS
+
+    # @return [WebhookStatusBranchesItemCommit] Required object value serialized in the `commit` wire field.
+    attr_reader :commit
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [Boolean] Required `boolean` value serialized in the `protected` wire field.
+    attr_reader :protected
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookStatusCommitAuthorMetadata
-  FIELDS = {
-    avatar_url: "avatar_url",
-    deleted: "deleted",
-    email: "email",
-    events_url: "events_url",
-    followers_url: "followers_url",
-    following_url: "following_url",
-    gists_url: "gists_url",
-    gravatar_id: "gravatar_id",
-    html_url: "html_url",
-    id: "id",
-    login: "login",
-    name: "name",
-    node_id: "node_id",
-    organizations_url: "organizations_url",
-    received_events_url: "received_events_url",
-    repos_url: "repos_url",
-    site_admin: "site_admin",
-    starred_url: "starred_url",
-    subscriptions_url: "subscriptions_url",
-    type: "type",
-    url: "url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::WebhookStatusCommitAuthorType.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookStatusCommitAuthor.
-# Required object value serialized in the `author` wire field.
-class WebhookStatusCommitAuthor
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookStatusCommitAuthorMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookStatusCommitAuthorMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookStatusCommitAuthorMetadata::DECODERS
-
-  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-  attr_reader :avatar_url
-  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-  attr_reader :deleted
-  # @return [String] Optional `string` value serialized in the `email` wire field.
-  attr_reader :email
-  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-  attr_reader :events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-  attr_reader :followers_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-  attr_reader :following_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-  attr_reader :gists_url
-  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-  attr_reader :gravatar_id
-  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Optional `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Optional `string` value serialized in the `login` wire field.
-  attr_reader :login
-  # @return [String] Optional `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-  attr_reader :organizations_url
-  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-  attr_reader :received_events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-  attr_reader :repos_url
-  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-  attr_reader :site_admin
-  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-  attr_reader :starred_url
-  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-  attr_reader :subscriptions_url
-  # @return [WebhookStatusCommitAuthorType] Optional enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookStatusCommitAuthorMetadata
+    FIELDS = {
+      avatar_url: 'avatar_url',
+      deleted: 'deleted',
+      email: 'email',
+      events_url: 'events_url',
+      followers_url: 'followers_url',
+      following_url: 'following_url',
+      gists_url: 'gists_url',
+      gravatar_id: 'gravatar_id',
+      html_url: 'html_url',
+      id: 'id',
+      login: 'login',
+      name: 'name',
+      node_id: 'node_id',
+      organizations_url: 'organizations_url',
+      received_events_url: 'received_events_url',
+      repos_url: 'repos_url',
+      site_admin: 'site_admin',
+      starred_url: 'starred_url',
+      subscriptions_url: 'subscriptions_url',
+      type: 'type',
+      url: 'url'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::WebhookStatusCommitAuthorType.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookStatusCommitAuthor.
+  # Required object value serialized in the `author` wire field.
+  class WebhookStatusCommitAuthor
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookStatusCommitAuthorMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookStatusCommitAuthorMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookStatusCommitAuthorMetadata::DECODERS
+
+    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+    attr_reader :avatar_url
+    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+    attr_reader :deleted
+    # @return [String] Optional `string` value serialized in the `email` wire field.
+    attr_reader :email
+    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+    attr_reader :events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+    attr_reader :followers_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+    attr_reader :following_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+    attr_reader :gists_url
+    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+    attr_reader :gravatar_id
+    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Optional `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Optional `string` value serialized in the `login` wire field.
+    attr_reader :login
+    # @return [String] Optional `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Optional `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+    attr_reader :organizations_url
+    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+    attr_reader :received_events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+    attr_reader :repos_url
+    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+    attr_reader :site_admin
+    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+    attr_reader :starred_url
+    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+    attr_reader :subscriptions_url
+    # @return [WebhookStatusCommitAuthorType] Optional enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookStatusCommitCommitAuthorMetadata
-  FIELDS = {
-    date: "date",
-    email: "email",
-    name: "name",
-    username: "username",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    date
-    email
-    name
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookStatusCommitCommitAuthor.
-# Required object value serialized in the `author` wire field.
-class WebhookStatusCommitCommitAuthor
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookStatusCommitCommitAuthorMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookStatusCommitCommitAuthorMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookStatusCommitCommitAuthorMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `date` wire field.
-  attr_reader :date
-  # @return [String] Required `string` value serialized in the `email` wire field.
-  attr_reader :email
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Optional `string` value serialized in the `username` wire field.
-  attr_reader :username
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookStatusCommitCommitAuthorMetadata
+    FIELDS = {
+      date: 'date',
+      email: 'email',
+      name: 'name',
+      username: 'username'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      date
+      email
+      name
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookStatusCommitCommitAuthor.
+  # Required object value serialized in the `author` wire field.
+  class WebhookStatusCommitCommitAuthor
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookStatusCommitCommitAuthorMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookStatusCommitCommitAuthorMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookStatusCommitCommitAuthorMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `date` wire field.
+    attr_reader :date
+    # @return [String] Required `string` value serialized in the `email` wire field.
+    attr_reader :email
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Optional `string` value serialized in the `username` wire field.
+    attr_reader :username
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookStatusCommitCommitCommitterMetadata
-  FIELDS = {
-    date: "date",
-    email: "email",
-    name: "name",
-    username: "username",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    date
-    email
-    name
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookStatusCommitCommitCommitter.
-# Required object value serialized in the `committer` wire field.
-class WebhookStatusCommitCommitCommitter
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookStatusCommitCommitCommitterMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookStatusCommitCommitCommitterMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookStatusCommitCommitCommitterMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `date` wire field.
-  attr_reader :date
-  # @return [String] Required `string` value serialized in the `email` wire field.
-  attr_reader :email
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Optional `string` value serialized in the `username` wire field.
-  attr_reader :username
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookStatusCommitCommitCommitterMetadata
+    FIELDS = {
+      date: 'date',
+      email: 'email',
+      name: 'name',
+      username: 'username'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      date
+      email
+      name
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookStatusCommitCommitCommitter.
+  # Required object value serialized in the `committer` wire field.
+  class WebhookStatusCommitCommitCommitter
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookStatusCommitCommitCommitterMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookStatusCommitCommitCommitterMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookStatusCommitCommitCommitterMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `date` wire field.
+    attr_reader :date
+    # @return [String] Required `string` value serialized in the `email` wire field.
+    attr_reader :email
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Optional `string` value serialized in the `username` wire field.
+    attr_reader :username
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookStatusCommitCommitTreeMetadata
-  FIELDS = {
-    sha: "sha",
-    url: "url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    sha
-    url
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookStatusCommitCommitTree.
-# Required object value serialized in the `tree` wire field.
-class WebhookStatusCommitCommitTree
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookStatusCommitCommitTreeMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookStatusCommitCommitTreeMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookStatusCommitCommitTreeMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `sha` wire field.
-  attr_reader :sha
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookStatusCommitCommitTreeMetadata
+    FIELDS = {
+      sha: 'sha',
+      url: 'url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      sha
+      url
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookStatusCommitCommitTree.
+  # Required object value serialized in the `tree` wire field.
+  class WebhookStatusCommitCommitTree
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookStatusCommitCommitTreeMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookStatusCommitCommitTreeMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookStatusCommitCommitTreeMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `sha` wire field.
+    attr_reader :sha
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookStatusCommitCommitVerificationMetadata
-  FIELDS = {
-    payload: "payload",
-    reason: "reason",
-    signature: "signature",
-    verified: "verified",
-    verified_at: "verified_at",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    payload
-    reason
-    signature
-    verified
-    verified_at
-  ].freeze
-  DECODERS = {
-    reason: lambda do |value|
-      ::OctridevGithub::WebhookStatusCommitCommitVerificationReason.from_value(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    payload
-    signature
-    verified_at
-  ].freeze
-end
-
-# API model for WebhookStatusCommitCommitVerification.
-# Required object value serialized in the `verification` wire field.
-class WebhookStatusCommitCommitVerification
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookStatusCommitCommitVerificationMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookStatusCommitCommitVerificationMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookStatusCommitCommitVerificationMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `payload` wire field.
-  attr_reader :payload
-  # @return [WebhookStatusCommitCommitVerificationReason] Required enumerated value serialized in the `reason` wire field.
-  attr_reader :reason
-  # @return [String] Required `string` value serialized in the `signature` wire field.
-  attr_reader :signature
-  # @return [Boolean] Required `boolean` value serialized in the `verified` wire field.
-  attr_reader :verified
-  # @return [String] Required `string` value serialized in the `verified_at` wire field.
-  attr_reader :verified_at
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookStatusCommitCommitVerificationMetadata
+    FIELDS = {
+      payload: 'payload',
+      reason: 'reason',
+      signature: 'signature',
+      verified: 'verified',
+      verified_at: 'verified_at'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      payload
+      reason
+      signature
+      verified
+      verified_at
+    ].freeze
+    DECODERS = {
+      reason: lambda do |value|
+        ::OctridevGithub::WebhookStatusCommitCommitVerificationReason.from_value(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      payload
+      signature
+      verified_at
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookStatusCommitCommitVerificationMetadata::NULLABLE_FIELDS)
+  # API model for WebhookStatusCommitCommitVerification.
+  # Required object value serialized in the `verification` wire field.
+  class WebhookStatusCommitCommitVerification
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookStatusCommitCommitVerificationMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookStatusCommitCommitVerificationMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookStatusCommitCommitVerificationMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `payload` wire field.
+    attr_reader :payload
+    # @return [WebhookStatusCommitCommitVerificationReason] Required enumerated value serialized in the `reason` wire field.
+    attr_reader :reason
+    # @return [String] Required `string` value serialized in the `signature` wire field.
+    attr_reader :signature
+    # @return [Boolean] Required `boolean` value serialized in the `verified` wire field.
+    attr_reader :verified
+    # @return [String] Required `string` value serialized in the `verified_at` wire field.
+    attr_reader :verified_at
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookStatusCommitCommitVerificationMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookStatusCommitCommitMetadata
-  FIELDS = {
-    author: "author",
-    comment_count: "comment_count",
-    committer: "committer",
-    message: "message",
-    tree: "tree",
-    url: "url",
-    verification: "verification",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    author
-    comment_count
-    committer
-    message
-    tree
-    url
-    verification
-  ].freeze
-  DECODERS = {
-    author: lambda do |value|
-      ::OctridevGithub::WebhookStatusCommitCommitAuthor.from_hash(value)
-    end,
-    committer: lambda do |value|
-      ::OctridevGithub::WebhookStatusCommitCommitCommitter.from_hash(value)
-    end,
-    tree: lambda do |value|
-      ::OctridevGithub::WebhookStatusCommitCommitTree.from_hash(value)
-    end,
-    verification: lambda do |value|
-      ::OctridevGithub::WebhookStatusCommitCommitVerification.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookStatusCommitCommit.
-# Required object value serialized in the `commit` wire field.
-class WebhookStatusCommitCommit
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookStatusCommitCommitMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookStatusCommitCommitMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookStatusCommitCommitMetadata::DECODERS
-
-  # @return [WebhookStatusCommitCommitAuthor] Required object value serialized in the `author` wire field.
-  attr_reader :author
-  # @return [Integer] Required `integer` value serialized in the `comment_count` wire field.
-  attr_reader :comment_count
-  # @return [WebhookStatusCommitCommitCommitter] Required object value serialized in the `committer` wire field.
-  attr_reader :committer
-  # @return [String] Required `string` value serialized in the `message` wire field.
-  attr_reader :message
-  # @return [WebhookStatusCommitCommitTree] Required object value serialized in the `tree` wire field.
-  attr_reader :tree
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [WebhookStatusCommitCommitVerification] Required object value serialized in the `verification` wire field.
-  attr_reader :verification
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookStatusCommitCommitMetadata
+    FIELDS = {
+      author: 'author',
+      comment_count: 'comment_count',
+      committer: 'committer',
+      message: 'message',
+      tree: 'tree',
+      url: 'url',
+      verification: 'verification'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      author
+      comment_count
+      committer
+      message
+      tree
+      url
+      verification
+    ].freeze
+    DECODERS = {
+      author: lambda do |value|
+        ::OctridevGithub::WebhookStatusCommitCommitAuthor.from_hash(value)
+      end,
+      committer: lambda do |value|
+        ::OctridevGithub::WebhookStatusCommitCommitCommitter.from_hash(value)
+      end,
+      tree: lambda do |value|
+        ::OctridevGithub::WebhookStatusCommitCommitTree.from_hash(value)
+      end,
+      verification: lambda do |value|
+        ::OctridevGithub::WebhookStatusCommitCommitVerification.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookStatusCommitCommit.
+  # Required object value serialized in the `commit` wire field.
+  class WebhookStatusCommitCommit
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookStatusCommitCommitMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookStatusCommitCommitMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookStatusCommitCommitMetadata::DECODERS
+
+    # @return [WebhookStatusCommitCommitAuthor] Required object value serialized in the `author` wire field.
+    attr_reader :author
+    # @return [Integer] Required `integer` value serialized in the `comment_count` wire field.
+    attr_reader :comment_count
+    # @return [WebhookStatusCommitCommitCommitter] Required object value serialized in the `committer` wire field.
+    attr_reader :committer
+    # @return [String] Required `string` value serialized in the `message` wire field.
+    attr_reader :message
+    # @return [WebhookStatusCommitCommitTree] Required object value serialized in the `tree` wire field.
+    attr_reader :tree
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [WebhookStatusCommitCommitVerification] Required object value serialized in the `verification` wire field.
+    attr_reader :verification
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookStatusCommitCommitterMetadata
-  FIELDS = {
-    avatar_url: "avatar_url",
-    deleted: "deleted",
-    email: "email",
-    events_url: "events_url",
-    followers_url: "followers_url",
-    following_url: "following_url",
-    gists_url: "gists_url",
-    gravatar_id: "gravatar_id",
-    html_url: "html_url",
-    id: "id",
-    login: "login",
-    name: "name",
-    node_id: "node_id",
-    organizations_url: "organizations_url",
-    received_events_url: "received_events_url",
-    repos_url: "repos_url",
-    site_admin: "site_admin",
-    starred_url: "starred_url",
-    subscriptions_url: "subscriptions_url",
-    type: "type",
-    url: "url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::WebhookStatusCommitCommitterType.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookStatusCommitCommitter.
-# Required object value serialized in the `committer` wire field.
-class WebhookStatusCommitCommitter
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookStatusCommitCommitterMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookStatusCommitCommitterMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookStatusCommitCommitterMetadata::DECODERS
-
-  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-  attr_reader :avatar_url
-  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-  attr_reader :deleted
-  # @return [String] Optional `string` value serialized in the `email` wire field.
-  attr_reader :email
-  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-  attr_reader :events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-  attr_reader :followers_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-  attr_reader :following_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-  attr_reader :gists_url
-  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-  attr_reader :gravatar_id
-  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Optional `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Optional `string` value serialized in the `login` wire field.
-  attr_reader :login
-  # @return [String] Optional `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-  attr_reader :organizations_url
-  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-  attr_reader :received_events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-  attr_reader :repos_url
-  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-  attr_reader :site_admin
-  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-  attr_reader :starred_url
-  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-  attr_reader :subscriptions_url
-  # @return [WebhookStatusCommitCommitterType] Optional enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookStatusCommitCommitterMetadata
+    FIELDS = {
+      avatar_url: 'avatar_url',
+      deleted: 'deleted',
+      email: 'email',
+      events_url: 'events_url',
+      followers_url: 'followers_url',
+      following_url: 'following_url',
+      gists_url: 'gists_url',
+      gravatar_id: 'gravatar_id',
+      html_url: 'html_url',
+      id: 'id',
+      login: 'login',
+      name: 'name',
+      node_id: 'node_id',
+      organizations_url: 'organizations_url',
+      received_events_url: 'received_events_url',
+      repos_url: 'repos_url',
+      site_admin: 'site_admin',
+      starred_url: 'starred_url',
+      subscriptions_url: 'subscriptions_url',
+      type: 'type',
+      url: 'url'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::WebhookStatusCommitCommitterType.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookStatusCommitCommitter.
+  # Required object value serialized in the `committer` wire field.
+  class WebhookStatusCommitCommitter
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookStatusCommitCommitterMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookStatusCommitCommitterMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookStatusCommitCommitterMetadata::DECODERS
+
+    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+    attr_reader :avatar_url
+    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+    attr_reader :deleted
+    # @return [String] Optional `string` value serialized in the `email` wire field.
+    attr_reader :email
+    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+    attr_reader :events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+    attr_reader :followers_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+    attr_reader :following_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+    attr_reader :gists_url
+    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+    attr_reader :gravatar_id
+    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Optional `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Optional `string` value serialized in the `login` wire field.
+    attr_reader :login
+    # @return [String] Optional `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Optional `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+    attr_reader :organizations_url
+    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+    attr_reader :received_events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+    attr_reader :repos_url
+    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+    attr_reader :site_admin
+    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+    attr_reader :starred_url
+    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+    attr_reader :subscriptions_url
+    # @return [WebhookStatusCommitCommitterType] Optional enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookStatusCommitParentsItemMetadata
-  FIELDS = {
-    html_url: "html_url",
-    sha: "sha",
-    url: "url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    html_url
-    sha
-    url
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookStatusCommitParentsItem.
-# Required object value serialized in the `parents[]` wire field.
-class WebhookStatusCommitParentsItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookStatusCommitParentsItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookStatusCommitParentsItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookStatusCommitParentsItemMetadata::DECODERS
-
-  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [String] Required `string` value serialized in the `sha` wire field.
-  attr_reader :sha
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookStatusCommitParentsItemMetadata
+    FIELDS = {
+      html_url: 'html_url',
+      sha: 'sha',
+      url: 'url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      html_url
+      sha
+      url
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookStatusCommitParentsItem.
+  # Required object value serialized in the `parents[]` wire field.
+  class WebhookStatusCommitParentsItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookStatusCommitParentsItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookStatusCommitParentsItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookStatusCommitParentsItemMetadata::DECODERS
+
+    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [String] Required `string` value serialized in the `sha` wire field.
+    attr_reader :sha
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalWebhookStatusCommitMetadata
+    FIELDS = {
+      author: 'author',
+      comments_url: 'comments_url',
+      commit: 'commit',
+      committer: 'committer',
+      html_url: 'html_url',
+      node_id: 'node_id',
+      parents: 'parents',
+      sha: 'sha',
+      url: 'url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      author
+      comments_url
+      commit
+      committer
+      html_url
+      node_id
+      parents
+      sha
+      url
+    ].freeze
+    DECODERS = {
+      author: lambda do |value|
+        ::OctridevGithub::WebhookStatusCommitAuthor.from_hash(value)
+      end,
+      commit: lambda do |value|
+        ::OctridevGithub::WebhookStatusCommitCommit.from_hash(value)
+      end,
+      committer: lambda do |value|
+        ::OctridevGithub::WebhookStatusCommitCommitter.from_hash(value)
+      end,
+      parents: lambda do |value|
+        value&.map { |item| ::OctridevGithub::WebhookStatusCommitParentsItem.from_hash(item) }
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      author
+      committer
+    ].freeze
   end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookStatusCommitMetadata
-  FIELDS = {
-    author: "author",
-    comments_url: "comments_url",
-    commit: "commit",
-    committer: "committer",
-    html_url: "html_url",
-    node_id: "node_id",
-    parents: "parents",
-    sha: "sha",
-    url: "url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    author
-    comments_url
-    commit
-    committer
-    html_url
-    node_id
-    parents
-    sha
-    url
-  ].freeze
-  DECODERS = {
-    author: lambda do |value|
-      ::OctridevGithub::WebhookStatusCommitAuthor.from_hash(value)
-    end,
-    commit: lambda do |value|
-      ::OctridevGithub::WebhookStatusCommitCommit.from_hash(value)
-    end,
-    committer: lambda do |value|
-      ::OctridevGithub::WebhookStatusCommitCommitter.from_hash(value)
-    end,
-    parents: lambda do |value|
-      value&.map { |item| ::OctridevGithub::WebhookStatusCommitParentsItem.from_hash(item) }
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    author
-    committer
-  ].freeze
-end
 end

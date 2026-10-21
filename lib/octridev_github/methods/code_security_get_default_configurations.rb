@@ -17,20 +17,19 @@ module OctridevGithub
         org:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/code-security/configurations/defaults"
+            '/code-security/configurations/defaults'
           ].join,
           config: config,
           return_type: ::OctridevGithub::CodeSecurityDefaultConfigurations,
           decoder: :json,
           operation_id: 'code_security_get_default_configurations',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).data
       end
     end

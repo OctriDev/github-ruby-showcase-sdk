@@ -26,23 +26,22 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.if_given(since) { Validation.validate_date_time('since', since) }
 
         SdkClient.request(
           'GET',
-          "/gists/starred",
+          '/gists/starred',
           config: config,
           query: {
             'since' => QueryValue.new(since, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::BaseGist],
           decoder: :json,
           operation_id: 'gists_list_starred',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError }
         ).data
       end
     end

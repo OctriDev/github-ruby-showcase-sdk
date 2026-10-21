@@ -12,9 +12,9 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalSearchCodeResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          incomplete_results: "incomplete_results",
-          items: "items",
+          total_count: 'total_count',
+          incomplete_results: 'incomplete_results',
+          items: 'items'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -24,7 +24,7 @@ module OctridevGithub
         DECODERS = {
           items: lambda do |value|
             value&.map { |item| ::OctridevGithub::CodeSearchResultItem.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -54,9 +54,9 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalSearchCommitsResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          incomplete_results: "incomplete_results",
-          items: "items",
+          total_count: 'total_count',
+          incomplete_results: 'incomplete_results',
+          items: 'items'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -66,7 +66,7 @@ module OctridevGithub
         DECODERS = {
           items: lambda do |value|
             value&.map { |item| ::OctridevGithub::CommitSearchResultItem.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -96,11 +96,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalSearchIssuesAndPullRequestsResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          incomplete_results: "incomplete_results",
-          items: "items",
-          search_type: "search_type",
-          lexical_fallback_reason: "lexical_fallback_reason",
+          total_count: 'total_count',
+          incomplete_results: 'incomplete_results',
+          items: 'items',
+          search_type: 'search_type',
+          lexical_fallback_reason: 'lexical_fallback_reason'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -117,7 +117,7 @@ module OctridevGithub
           end,
           lexical_fallback_reason: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Search::SearchIssuesAndPullRequestsResponseLexicalFallbackReasonItem.from_value(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -151,9 +151,9 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalSearchLabelsResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          incomplete_results: "incomplete_results",
-          items: "items",
+          total_count: 'total_count',
+          incomplete_results: 'incomplete_results',
+          items: 'items'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -163,7 +163,7 @@ module OctridevGithub
         DECODERS = {
           items: lambda do |value|
             value&.map { |item| ::OctridevGithub::LabelSearchResultItem.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -193,9 +193,9 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalSearchReposResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          incomplete_results: "incomplete_results",
-          items: "items",
+          total_count: 'total_count',
+          incomplete_results: 'incomplete_results',
+          items: 'items'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -205,7 +205,7 @@ module OctridevGithub
         DECODERS = {
           items: lambda do |value|
             value&.map { |item| ::OctridevGithub::RepoSearchResultItem.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -235,9 +235,9 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalSearchTopicsResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          incomplete_results: "incomplete_results",
-          items: "items",
+          total_count: 'total_count',
+          incomplete_results: 'incomplete_results',
+          items: 'items'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -247,7 +247,7 @@ module OctridevGithub
         DECODERS = {
           items: lambda do |value|
             value&.map { |item| ::OctridevGithub::TopicSearchResultItem.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -277,9 +277,9 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalSearchUsersResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          incomplete_results: "incomplete_results",
-          items: "items",
+          total_count: 'total_count',
+          incomplete_results: 'incomplete_results',
+          items: 'items'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -289,7 +289,7 @@ module OctridevGithub
         DECODERS = {
           items: lambda do |value|
             value&.map { |item| ::OctridevGithub::UserSearchResultItem.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -320,7 +320,7 @@ module OctridevGithub
       module SearchCodeParameter73682240
         DESC = 'desc'
         ASC = 'asc'
-        VALUES = ['desc', 'asc'].freeze
+        VALUES = %w[desc asc].freeze
         def self.from_value(value)
           value
         end
@@ -332,7 +332,7 @@ module OctridevGithub
         FORKS = 'forks'
         HELP_WANTED_ISSUES = 'help-wanted-issues'
         UPDATED = 'updated'
-        VALUES = ['stars', 'forks', 'help-wanted-issues', 'updated'].freeze
+        VALUES = %w[stars forks help-wanted-issues updated].freeze
         def self.from_value(value)
           value
         end
@@ -351,7 +351,7 @@ module OctridevGithub
       module SearchCommitsParameter
         AUTHOR_DATE = 'author-date'
         COMMITTER_DATE = 'committer-date'
-        VALUES = ['author-date', 'committer-date'].freeze
+        VALUES = %w[author-date committer-date].freeze
         def self.from_value(value)
           value
         end
@@ -367,10 +367,10 @@ module OctridevGithub
         SERVER_ERROR = 'server_error'
         ONLY_NON_SEMANTIC_FIELDS_REQUESTED = 'only_non_semantic_fields_requested'
         SERVICE_UNAVAILABLE = 'service_unavailable'
-        VALUES = [
-          'no_text_terms', 'quoted_text', 'non_issue_target', 'or_boolean_not_supported',
-          'no_accessible_repos', 'server_error', 'only_non_semantic_fields_requested',
-          'service_unavailable'
+        VALUES = %w[
+          no_text_terms quoted_text non_issue_target or_boolean_not_supported
+          no_accessible_repos server_error only_non_semantic_fields_requested
+          service_unavailable
         ].freeze
         def self.from_value(value)
           value
@@ -382,7 +382,7 @@ module OctridevGithub
         LEXICAL = 'lexical'
         SEMANTIC = 'semantic'
         HYBRID = 'hybrid'
-        VALUES = ['lexical', 'semantic', 'hybrid'].freeze
+        VALUES = %w[lexical semantic hybrid].freeze
         def self.from_value(value)
           value
         end
@@ -415,7 +415,7 @@ module OctridevGithub
       module SearchLabelsParameter
         CREATED = 'created'
         UPDATED = 'updated'
-        VALUES = ['created', 'updated'].freeze
+        VALUES = %w[created updated].freeze
         def self.from_value(value)
           value
         end
@@ -426,7 +426,7 @@ module OctridevGithub
         FOLLOWERS = 'followers'
         REPOSITORIES = 'repositories'
         JOINED = 'joined'
-        VALUES = ['followers', 'repositories', 'joined'].freeze
+        VALUES = %w[followers repositories joined].freeze
         def self.from_value(value)
           value
         end
