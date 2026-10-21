@@ -9,552 +9,508 @@ module OctridevGithub
   module Methods
     # Defines the Issues SDK namespace.
     module Issues
-      # Internal model hydration metadata.
-      class SdkInternalIssuesCreateIssueFieldValuesItemMetadata
-        FIELDS = {
-          field_id: "field_id",
-          value: "value",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          field_id
-          value
-        ].freeze
-        DECODERS = {
-        }.freeze
+      # Lists issues assigned to the authenticated user across repositories the user can access, including owned, member, and organization repositories. Use `filter`, `state`, and `labels` to narrow the results, and use `page` and `per_page` to paginate the results. Responses can include pull requests; identify them by the `pull_request` key, and use the pull requests endpoint to retrieve a pull request ID.
+      #
+      # List issues assigned to the authenticated user across all visible repositories including owned repositories, member repositories, and organization repositories. You can use the `filter` query parameter to fetch issues that are not necessarily assigned to you. > !NOTE] > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify…
+      #
+      # @param filter [IssuesListParameter] Indicates which sorts of issues to
+      #   return. `assigned` means issues assigned to you. `created` means issues
+      #   created by you. `mentioned` means issues mentioning you. `subscribed` means
+      #   issues you're subscribed to updates for. `all` or `repos` means all issues
+      #   you can see, regardless of participation or creation.
+      # @param state [IssuesListParameter8cbd4dc2] Indicates the state of the issues
+      #   to return.
+      # @param labels [String] A list of comma separated label names. Example:
+      #   `bug,ui,@high`
+      # @param sort [IssuesListParameter56183a23] What to sort results by.
+      # @param direction [SchemaSchema0df64690] The direction to sort the results
+      #   by.
+      # @param since [String] Only show results that were last updated after the
+      #   given time. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.issues_list(
+        config:,
+        filter: NOT_GIVEN,
+        state: NOT_GIVEN,
+        labels: NOT_GIVEN,
+        sort: NOT_GIVEN,
+        direction: NOT_GIVEN,
+        since: NOT_GIVEN,
+        collab: NOT_GIVEN,
+        orgs: NOT_GIVEN,
+        owned: NOT_GIVEN,
+        pulls: NOT_GIVEN,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
+
+        Validation.if_given(since) { Validation.validate_date_time('since', since) }
+
+        SdkClient.request(
+          'GET',
+          "/issues",
+          config: config,
+          query: {
+            'filter' => QueryValue.new(filter, style: 'form', explode: true),
+            'state' => QueryValue.new(state, style: 'form', explode: true),
+            'labels' => QueryValue.new(labels, style: 'form', explode: true),
+            'sort' => QueryValue.new(sort, style: 'form', explode: true),
+            'direction' => QueryValue.new(direction, style: 'form', explode: true),
+            'since' => QueryValue.new(since, style: 'form', explode: true),
+            'collab' => QueryValue.new(collab, style: 'form', explode: true),
+            'orgs' => QueryValue.new(orgs, style: 'form', explode: true),
+            'owned' => QueryValue.new(owned, style: 'form', explode: true),
+            'pulls' => QueryValue.new(pulls, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true),
+          },
+          return_type: [::OctridevGithub::Issue],
+          decoder: :json,
+          operation_id: 'issues_list',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+        ).data
       end
 
-      # API model for IssuesCreateIssueFieldValuesItem.
-      class IssuesCreateIssueFieldValuesItem
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalIssuesCreateIssueFieldValuesItemMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalIssuesCreateIssueFieldValuesItemMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalIssuesCreateIssueFieldValuesItemMetadata::DECODERS
+      # List issues in an organization assigned to the authenticated user. > !NOTE] > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull…
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param filter [IssuesListForOrgParameter] Indicates which sorts of issues to
+      #   return. `assigned` means issues assigned to you. `created` means issues
+      #   created by you. `mentioned` means issues mentioning you. `subscribed` means
+      #   issues you're subscribed to updates for. `all` or `repos` means all issues
+      #   you can see, regardless of participation or creation.
+      # @param state [IssuesListForOrgParameter809ee8ab] Indicates the state of the
+      #   issues to return.
+      # @param labels [String] A list of comma separated label names. Example:
+      #   `bug,ui,@high`
+      # @param type [String] Can be the name of an issue type.
+      # @param sort [IssuesListForOrgParameter3784845c] What to sort results by.
+      # @param direction [SchemaSchema0df64690] The direction to sort the results
+      #   by.
+      # @param since [String] Only show results that were last updated after the
+      #   given time. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.issues_list_for_org(
+        config:,
+        org:,
+        filter: NOT_GIVEN,
+        state: NOT_GIVEN,
+        labels: NOT_GIVEN,
+        type: NOT_GIVEN,
+        sort: NOT_GIVEN,
+        direction: NOT_GIVEN,
+        since: NOT_GIVEN,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
 
-        # @return [Integer] The ID of the issue field to set
-        attr_reader :field_id
-        # @return [Object] The value to set for the field. For multi-select fields, provide an array of option names.
-        attr_reader :value
+        Validation.if_given(since) { Validation.validate_date_time('since', since) }
 
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
+        SdkClient.request(
+          'GET',
+          [
+            "/orgs/",
+            SdkClient.encode_path_segment(org),
+            "/issues"
+          ].join,
+          config: config,
+          query: {
+            'filter' => QueryValue.new(filter, style: 'form', explode: true),
+            'state' => QueryValue.new(state, style: 'form', explode: true),
+            'labels' => QueryValue.new(labels, style: 'form', explode: true),
+            'type' => QueryValue.new(type, style: 'form', explode: true),
+            'sort' => QueryValue.new(sort, style: 'form', explode: true),
+            'direction' => QueryValue.new(direction, style: 'form', explode: true),
+            'since' => QueryValue.new(since, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true),
+          },
+          return_type: [::OctridevGithub::Issue],
+          decoder: :json,
+          operation_id: 'issues_list_for_org',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError },
+        ).data
       end
 
-      # Internal model hydration metadata.
-      class SdkInternalIssuesCreateMetadata
-        FIELDS = {
-          title: "title",
-          body: "body",
-          assignee: "assignee",
-          milestone: "milestone",
-          labels: "labels",
-          assignees: "assignees",
-          issue_field_values: "issue_field_values",
-          type: "type",
-          parent_issue_id: "parent_issue_id",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          title
-        ].freeze
-        DECODERS = {
-          labels: lambda do |value|
-            value&.map { |item| ::OctridevGithub::IssuesCreateRequestLabelsItem.from_hash(item) }
-          end,
-          issue_field_values: lambda do |value|
-            value&.map { |item| ::OctridevGithub::Methods::Issues::IssuesCreateIssueFieldValuesItem.from_hash(item) }
-          end,
-        }.freeze
+      # List issues in a repository. Only open issues will be listed. > !NOTE] > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull…
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param milestone [String] If an `integer` is passed, it should refer to a
+      #   milestone by its `number` field. If the string `*` is passed, issues with
+      #   any milestone are accepted. If the string `none` is passed, issues without
+      #   milestones are returned.
+      # @param state [IssuesListForRepoParameterCa0683ce] Indicates the state of the
+      #   issues to return.
+      # @param assignee [String] Can be the name of a user. Pass in `none` for
+      #   issues with no assigned user, and `*` for issues assigned to any user.
+      # @param type [String] Can be the name of an issue type. If the string `*` is
+      #   passed, issues with any type are accepted. If the string `none` is passed,
+      #   issues without type are returned.
+      # @param creator [String] The user that created the issue.
+      # @param mentioned [String] A user that's mentioned in the issue.
+      # @param issue_field_values [String] A comma-separated list of issue field
+      #   filters in `field_slug:value` format. Only issues matching all specified
+      #   field values are returned. Requires issue fields to be enabled for the
+      #   repository. Issue fields are not available for user-owned repositories, and
+      #   field availability for organization-owned public repositories depends on the
+      #   organization's visibility settings. For example,
+      #   `priority:Urgent,severity:High` filters issues where the `priority` field is
+      #   `Urgent` AND the…
+      # @param labels [String] A list of comma separated label names. Example:
+      #   `bug,ui,@high`
+      # @param sort [IssuesListForRepoParameter] What to sort results by.
+      # @param direction [SchemaSchema0df64690] The direction to sort the results
+      #   by.
+      # @param since [String] Only show results that were last updated after the
+      #   given time. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.issues_list_for_repo(
+        config:,
+        owner:,
+        repo:,
+        milestone: NOT_GIVEN,
+        state: NOT_GIVEN,
+        assignee: NOT_GIVEN,
+        type: NOT_GIVEN,
+        creator: NOT_GIVEN,
+        mentioned: NOT_GIVEN,
+        issue_field_values: NOT_GIVEN,
+        labels: NOT_GIVEN,
+        sort: NOT_GIVEN,
+        direction: NOT_GIVEN,
+        since: NOT_GIVEN,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
+
+        Validation.if_given(since) { Validation.validate_date_time('since', since) }
+
+        SdkClient.request(
+          'GET',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/issues"
+          ].join,
+          config: config,
+          query: {
+            'milestone' => QueryValue.new(milestone, style: 'form', explode: true),
+            'state' => QueryValue.new(state, style: 'form', explode: true),
+            'assignee' => QueryValue.new(assignee, style: 'form', explode: true),
+            'type' => QueryValue.new(type, style: 'form', explode: true),
+            'creator' => QueryValue.new(creator, style: 'form', explode: true),
+            'mentioned' => QueryValue.new(mentioned, style: 'form', explode: true),
+            'issue_field_values' => QueryValue.new(issue_field_values, style: 'form', explode: true),
+            'labels' => QueryValue.new(labels, style: 'form', explode: true),
+            'sort' => QueryValue.new(sort, style: 'form', explode: true),
+            'direction' => QueryValue.new(direction, style: 'form', explode: true),
+            'since' => QueryValue.new(since, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true),
+          },
+          return_type: [::OctridevGithub::Issue],
+          decoder: :json,
+          operation_id: 'issues_list_for_repo',
+          request_options: request_options,
+          errors: { '301' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+        ).data
       end
 
-      # API model for IssuesCreate.
-      class IssuesCreate
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalIssuesCreateMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalIssuesCreateMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalIssuesCreateMetadata::DECODERS
+      # Creates an issue in a repository. Provide a `title`; you can also include a body, labels, assignees, milestone, issue type, parent issue, or issue field values. Creating an issue triggers notifications, and creating content too quickly may result in secondary rate limiting.
+      #
+      # Any user with pull access to a repository can create an issue. If issues are disabled in the repository, the API returns a `410 Gone` status. This endpoint triggers notifications. Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "Rate limits for the API" and "Best practices for using the REST API." This endpoint supports the following custom media types. For more information, see "Media types." -…
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param title [Object] The title of the issue.
+      # @param body [String] The contents of the issue.
+      # @param assignee [String] Login for the user that this issue should be
+      #   assigned to. _NOTE: Only users with push access can set the assignee for new
+      #   issues. The assignee is silently dropped otherwise. **This field is closing
+      #   down.**_
+      # @param labels [Array_of_IssuesCreateRequestLabelsItem] Labels to associate
+      #   with this issue. _NOTE: Only users with push access can set labels for new
+      #   issues. Labels are silently dropped otherwise._
+      # @param assignees [Array_of_String] Logins for Users to assign to this issue.
+      #   _NOTE: Only users with push access can set assignees for new issues.
+      #   Assignees are silently dropped otherwise._
+      # @param issue_field_values [Array_of_Hash] An array of issue field values to
+      #   set on this issue. Each field value must include the field ID and the value
+      #   to set. Issue fields are only available for organization-owned repositories
+      #   with the feature enabled. Field values are silently dropped otherwise.
+      # @param type [String] The name of the issue type to associate with this
+      #   issue. _NOTE: Only users with push access can set the type for new issues.
+      #   The type is silently dropped otherwise._
+      # @param parent_issue_id [Integer] The id of the parent issue to add this
+      #   issue to as a sub-issue. _NOTE: Only users with triage access to both the
+      #   parent issue's repository and this repository can set the parent issue._
+      def self.issues_create(
+        config:,
+        owner:,
+        repo:,
+        title:,
+        body: NOT_GIVEN,
+        assignee: NOT_GIVEN,
+        milestone: NOT_GIVEN,
+        labels: NOT_GIVEN,
+        assignees: NOT_GIVEN,
+        issue_field_values: NOT_GIVEN,
+        type: NOT_GIVEN,
+        parent_issue_id: NOT_GIVEN,
+        request_options: nil
+      )
 
-        attr_reader :milestone
-        # @return [Object] The title of the issue.
-        attr_reader :title
-        # @return [String] The contents of the issue.
-        attr_reader :body
-        # @return [String] Login for the user that this issue should be assigned to. _NOTE: Only users with push access can set the assignee for new issues. The assignee is silently dropped otherwise. **This field is closing down.**_
-        attr_reader :assignee
-        # @return [Array_of_IssuesCreateRequestLabelsItem] Labels to associate with this issue. _NOTE: Only users with push access can set labels for new issues. Labels are silently dropped otherwise._
-        attr_reader :labels
-        # @return [Array_of_String] Logins for Users to assign to this issue. _NOTE: Only users with push access can set assignees for new issues. Assignees are silently dropped otherwise._
-        attr_reader :assignees
-        # @return [Array_of_IssuesCreateIssueFieldValuesItem] An array of issue field values to set on this issue. Each field value must include the field ID and the value to set. Issue fields are only available for organization-owned repositories with the feature enabled. Field values are silently dropped otherwise.
-        attr_reader :issue_field_values
-        # @return [String] The name of the issue type to associate with this issue. _NOTE: Only users with push access can set the type for new issues. The type is silently dropped otherwise._
-        attr_reader :type
-        # @return [Integer] The id of the parent issue to add this issue to as a sub-issue. _NOTE: Only users with triage access to both the parent issue's repository and this repository can set the parent issue._
-        attr_reader :parent_issue_id
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
+        SdkClient.request(
+          'POST',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/issues"
+          ].join,
+          config: config,
+          body: {
+            'title' => title,
+            'body' => body,
+            'assignee' => assignee,
+            'milestone' => milestone,
+            'labels' => labels,
+            'assignees' => assignees,
+            'issue_field_values' => issue_field_values,
+            'type' => type,
+            'parent_issue_id' => parent_issue_id,
+          },
+          return_type: ::OctridevGithub::Issue,
+          decoder: :json,
+          operation_id: 'issues_create',
+          request_options: request_options,
+          errors: { '400' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable },
+        ).data
       end
 
-      # Internal model hydration metadata.
-      class SdkInternalIssuesUpdateCommentMetadata
-        FIELDS = {
-          body: "body",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          body
-        ].freeze
-        DECODERS = {
-        }.freeze
+      # Retrieves an issue from a repository by its issue number. Use `owner`, `repo`, and `issue_number` to identify the repository and issue; the response may also represent a pull request. Transferred issues return a 301 redirect, while deleted issues return 404 or 410 depending on the authenticated user's read access.
+      #
+      # The API returns a `301 Moved Permanently` status if the issue was transferred to another repository. If the issue was transferred to or deleted from a repository where the authenticated user lacks read access, the API returns a `404 Not Found` status. If the issue was deleted from a repository where the authenticated user has read access, the API returns a `410 Gone` status. To receive webhook events for transferred and deleted issues, subscribe to the `issues` webhook. >…
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param issue_number [Integer] The number that identifies the issue.
+      def self.issues_get(
+        config:,
+        owner:,
+        repo:,
+        issue_number:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/issues/",
+            SdkClient.encode_path_segment(issue_number)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::Issue,
+          decoder: :json,
+          operation_id: 'issues_get',
+          request_options: request_options,
+          errors: { '301' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError },
+        ).data
       end
 
-      # API model for IssuesUpdateComment.
-      class IssuesUpdateComment
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalIssuesUpdateCommentMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalIssuesUpdateCommentMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalIssuesUpdateCommentMetadata::DECODERS
+      # Updates the title, body, state, assignees, labels, milestone, type, or field values of an issue. Supply only the properties you want to change; `state_reason` applies only when you change `state`, and `duplicate_issue_id` applies only when `state_reason` is `duplicate`. Users with push access or the Triage role can edit issues, but milestone, label, type, and field-value changes require push access.
+      #
+      # Issue owners and users with push access or Triage role can edit an issue. This endpoint supports the following custom media types. For more information, see "Media types." - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type. - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`. -…
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param issue_number [Integer] The number that identifies the issue.
+      # @param title [Object] The title of the issue.
+      # @param body [String] The contents of the issue.
+      # @param assignee [String] Username to assign to this issue. **This field is
+      #   closing down.**
+      # @param state [IssuesUpdateState] The open or closed state of the issue.
+      # @param state_reason [IssuesUpdateStateReason] The reason for the state
+      #   change. Ignored unless `state` is changed.
+      # @param duplicate_issue_id [Integer] The ID of the issue to mark as the
+      #   canonical duplicate when `state_reason` is `duplicate`. The issue must exist
+      #   and be accessible to the authenticated user. Ignored when `state_reason` is
+      #   not `duplicate`.
+      # @param labels [Array_of_IssuesUpdateRequestLabelsItem] Labels to associate
+      #   with this issue. Pass one or more labels to _replace_ the set of labels on
+      #   this issue. Send an empty array (`[]`) to clear all labels from the issue.
+      #   Only users with push access can set labels for issues. Without push access
+      #   to the repository, label changes are silently dropped.
+      # @param assignees [Array_of_IssuesUpdateRequestAssigneesItem] Usernames to
+      #   assign to this issue. Pass one or more user logins to _replace_ the set of
+      #   assignees on this issue. Send an empty array (`[]`) to clear all assignees
+      #   from the issue. Only users with push access can set assignees for new
+      #   issues. Without push access to the repository, assignee changes are silently
+      #   dropped.
+      # @param issue_field_values [Array_of_Hash] An array of issue field values to
+      #   set on this issue. Each field value must include the field ID and the value
+      #   to set. Only users with push access can set field values for issues
+      # @param type [IssuesUpdateRequestType] The issue type to associate with this
+      #   issue. Only users with push access can set the type for issues. Without push
+      #   access to the repository, type changes are silently dropped.
+      def self.issues_update(
+        config:,
+        owner:,
+        repo:,
+        issue_number:,
+        title: NOT_GIVEN,
+        body: NOT_GIVEN,
+        assignee: NOT_GIVEN,
+        state: NOT_GIVEN,
+        state_reason: NOT_GIVEN,
+        duplicate_issue_id: NOT_GIVEN,
+        milestone: NOT_GIVEN,
+        labels: NOT_GIVEN,
+        assignees: NOT_GIVEN,
+        issue_field_values: NOT_GIVEN,
+        type: NOT_GIVEN,
+        request_options: nil
+      )
 
-        # @return [String] The contents of the comment.
-        attr_reader :body
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
+        SdkClient.request(
+          'PATCH',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/issues/",
+            SdkClient.encode_path_segment(issue_number)
+          ].join,
+          config: config,
+          body: {
+            'title' => title,
+            'body' => body,
+            'assignee' => assignee,
+            'state' => state,
+            'state_reason' => state_reason,
+            'duplicate_issue_id' => duplicate_issue_id,
+            'milestone' => milestone,
+            'labels' => labels,
+            'assignees' => assignees,
+            'issue_field_values' => issue_field_values,
+            'type' => type,
+          },
+          return_type: ::OctridevGithub::Methods::Issues::IssuesUpdateResponse,
+          decoder: :json,
+          operation_id: 'issues_update',
+          request_options: request_options,
+          errors: { '301' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '410' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError, '503' => ::OctridevGithub::ServiceUnavailable },
+        ).data
       end
 
-      # Internal model hydration metadata.
-      class SdkInternalIssuesUpdateIssueFieldValuesItemMetadata
-        FIELDS = {
-          field_id: "field_id",
-          value: "value",
-          rationale: "rationale",
-          suggest: "suggest",
-          confidence: "confidence",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          field_id
-          value
-        ].freeze
-        DECODERS = {
-          confidence: lambda do |value|
-            ::OctridevGithub::Methods::Issues::IssuesUpdateIssueFieldValuesItemConfidence.from_value(value)
-          end,
-        }.freeze
-      end
+      # List issues across owned and member repositories assigned to the authenticated user. > !NOTE] > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use…
+      #
+      # @param filter [IssuesListForAuthenticatedUserParameter] Indicates which
+      #   sorts of issues to return. `assigned` means issues assigned to you.
+      #   `created` means issues created by you. `mentioned` means issues mentioning
+      #   you. `subscribed` means issues you're subscribed to updates for. `all` or
+      #   `repos` means all issues you can see, regardless of participation or
+      #   creation.
+      # @param state [IssuesListForAuthenticatedUserParameter5800f286] Indicates the
+      #   state of the issues to return.
+      # @param labels [String] A list of comma separated label names. Example:
+      #   `bug,ui,@high`
+      # @param sort [IssuesListForAuthenticatedUserParameterE3e0be62] What to sort
+      #   results by.
+      # @param direction [SchemaSchema0df64690] The direction to sort the results
+      #   by.
+      # @param since [String] Only show results that were last updated after the
+      #   given time. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.issues_list_for_authenticated_user(
+        config:,
+        filter: NOT_GIVEN,
+        state: NOT_GIVEN,
+        labels: NOT_GIVEN,
+        sort: NOT_GIVEN,
+        direction: NOT_GIVEN,
+        since: NOT_GIVEN,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
 
-      # API model for IssuesUpdateIssueFieldValuesItem.
-      class IssuesUpdateIssueFieldValuesItem
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalIssuesUpdateIssueFieldValuesItemMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalIssuesUpdateIssueFieldValuesItemMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalIssuesUpdateIssueFieldValuesItemMetadata::DECODERS
+        Validation.if_given(since) { Validation.validate_date_time('since', since) }
 
-        # @return [Integer] The ID of the issue field to set
-        attr_reader :field_id
-        # @return [Object] The value to set for the field. For multi-select fields, provide an array of option names.
-        attr_reader :value
-        # @return [String] Optional reasoning for setting this field value.
-        attr_reader :rationale
-        # @return [Boolean] If `true`, the change is stored as a pending suggestion for human review rather than applied directly.
-        attr_reader :suggest
-        # @return [IssuesUpdateIssueFieldValuesItemConfidence] The confidence level for this field value choice.
-        attr_reader :confidence
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalIssuesUpdateMetadata
-        FIELDS = {
-          title: "title",
-          body: "body",
-          assignee: "assignee",
-          state: "state",
-          state_reason: "state_reason",
-          duplicate_issue_id: "duplicate_issue_id",
-          milestone: "milestone",
-          labels: "labels",
-          assignees: "assignees",
-          issue_field_values: "issue_field_values",
-          type: "type",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-          state: lambda do |value|
-            ::OctridevGithub::Methods::Issues::IssuesUpdateState.from_value(value)
-          end,
-          state_reason: lambda do |value|
-            ::OctridevGithub::Methods::Issues::IssuesUpdateStateReason.from_value(value)
-          end,
-          labels: lambda do |value|
-            value&.map { |item| ::OctridevGithub::IssuesUpdateRequestLabelsItem.from_hash(item) }
-          end,
-          assignees: lambda do |value|
-            value&.map { |item| ::OctridevGithub::IssuesUpdateRequestAssigneesItem.from_hash(item) }
-          end,
-          issue_field_values: lambda do |value|
-            value&.map { |item| ::OctridevGithub::Methods::Issues::IssuesUpdateIssueFieldValuesItem.from_hash(item) }
-          end,
-          type: lambda do |value|
-            ::OctridevGithub::IssuesUpdateRequestType.from_hash(value)
-          end,
-        }.freeze
-      end
-
-      # API model for IssuesUpdate.
-      class IssuesUpdate
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalIssuesUpdateMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalIssuesUpdateMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalIssuesUpdateMetadata::DECODERS
-
-        attr_reader :milestone
-        # @return [Object] The title of the issue.
-        attr_reader :title
-        # @return [String] The contents of the issue.
-        attr_reader :body
-        # @return [String] Username to assign to this issue. **This field is closing down.**
-        attr_reader :assignee
-        # @return [IssuesUpdateState] The open or closed state of the issue.
-        attr_reader :state
-        # @return [IssuesUpdateStateReason] The reason for the state change. Ignored unless `state` is changed.
-        attr_reader :state_reason
-        # @return [Integer] The ID of the issue to mark as the canonical duplicate when `state_reason` is `duplicate`. The issue must exist and be accessible to the authenticated user. Ignored when `state_reason` is not `duplicate`.
-        attr_reader :duplicate_issue_id
-        # @return [Array_of_IssuesUpdateRequestLabelsItem] Labels to associate with this issue. Pass one or more labels to _replace_ the set of labels on this issue. Send an empty array (`[]`) to clear all labels from the issue. Only users with push access can set labels for issues. Without push access to the repository, label changes are silently dropped.
-        attr_reader :labels
-        # @return [Array_of_IssuesUpdateRequestAssigneesItem] Usernames to assign to this issue. Pass one or more user logins to _replace_ the set of assignees on this issue. Send an empty array (`[]`) to clear all assignees from the issue. Only users with push access can set assignees for new issues. Without push access to the repository, assignee changes are silently dropped.
-        attr_reader :assignees
-        # @return [Array_of_IssuesUpdateIssueFieldValuesItem] An array of issue field values to set on this issue. Each field value must include the field ID and the value to set. Only users with push access can set field values for issues
-        attr_reader :issue_field_values
-        # @return [IssuesUpdateRequestType] The issue type to associate with this issue. Only users with push access can set the type for issues. Without push access to the repository, type changes are silently dropped.
-        attr_reader :type
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalIssuePullRequestMetadata
-        FIELDS = {
-          merged_at: "merged_at",
-          diff_url: "diff_url",
-          html_url: "html_url",
-          patch_url: "patch_url",
-          url: "url",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          diff_url
-          html_url
-          patch_url
-          url
-        ].freeze
-        DECODERS = {
-        }.freeze
-        NULLABLE_FIELDS = %i[
-          diff_url
-          html_url
-          patch_url
-          url
-        ].freeze
-      end
-
-      # API model for IssuePullRequest.
-      # Optional object value serialized in the `pull_request` wire field.
-      class IssuePullRequest
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalIssuePullRequestMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalIssuePullRequestMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalIssuePullRequestMetadata::DECODERS
-
-        # @return [String] Optional `date-time`-formatted value serialized in the `merged_at` wire field.
-        attr_reader :merged_at
-        # @return [String] Required `uri`-formatted value serialized in the `diff_url` wire field.
-        attr_reader :diff_url
-        # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-        attr_reader :html_url
-        # @return [String] Required `uri`-formatted value serialized in the `patch_url` wire field.
-        attr_reader :patch_url
-        # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-        attr_reader :url
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalIssuePullRequestMetadata::NULLABLE_FIELDS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalIssuesUpdateResponseVariant1SuggestionsTypeItemMetadata
-        FIELDS = {
-          value: "value",
-          rationale: "rationale",
-          suggest: "suggest",
-          confidence: "confidence",
-          ignored: "ignored",
-          ignored_reason: "ignored_reason",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-          confidence: lambda do |value|
-            ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsTypeItemConfidence.from_value(value)
-          end,
-          ignored_reason: lambda do |value|
-            ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsTypeItemIgnoredReason.from_value(value)
-          end,
-        }.freeze
-      end
-
-      # API model for IssuesUpdateResponseVariant1SuggestionsTypeItem.
-      class IssuesUpdateResponseVariant1SuggestionsTypeItem
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalIssuesUpdateResponseVariant1SuggestionsTypeItemMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalIssuesUpdateResponseVariant1SuggestionsTypeItemMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalIssuesUpdateResponseVariant1SuggestionsTypeItemMetadata::DECODERS
-
-        attr_reader :value, :rationale, :suggest, :confidence, :ignored, :ignored_reason
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalIssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItemMetadata
-        FIELDS = {
-          field_id: "field_id",
-          value: "value",
-          rationale: "rationale",
-          suggest: "suggest",
-          confidence: "confidence",
-          ignored: "ignored",
-          ignored_reason: "ignored_reason",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-          confidence: lambda do |value|
-            ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItemConfidence.from_value(value)
-          end,
-          ignored_reason: lambda do |value|
-            ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItemIgnoredReason.from_value(value)
-          end,
-        }.freeze
-      end
-
-      # API model for IssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItem.
-      class IssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItem
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalIssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItemMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalIssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItemMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalIssuesUpdateResponseVariant1SuggestionsIssueFieldValuesItemMetadata::DECODERS
-
-        attr_reader :field_id, :value, :rationale, :suggest, :confidence, :ignored, :ignored_reason
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalIssuesUpdateResponseVariant1SuggestionsLabelsItemMetadata
-        FIELDS = {
-          name: "name",
-          rationale: "rationale",
-          suggest: "suggest",
-          confidence: "confidence",
-          ignored: "ignored",
-          ignored_reason: "ignored_reason",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-          confidence: lambda do |value|
-            ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsLabelsItemConfidence.from_value(value)
-          end,
-          ignored_reason: lambda do |value|
-            ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsLabelsItemIgnoredReason.from_value(value)
-          end,
-        }.freeze
-      end
-
-      # API model for IssuesUpdateResponseVariant1SuggestionsLabelsItem.
-      class IssuesUpdateResponseVariant1SuggestionsLabelsItem
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalIssuesUpdateResponseVariant1SuggestionsLabelsItemMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalIssuesUpdateResponseVariant1SuggestionsLabelsItemMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalIssuesUpdateResponseVariant1SuggestionsLabelsItemMetadata::DECODERS
-
-        attr_reader :name, :rationale, :suggest, :confidence, :ignored, :ignored_reason
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalIssuesUpdateResponseVariant1SuggestionsAssigneesItemMetadata
-        FIELDS = {
-          login: "login",
-          rationale: "rationale",
-          suggest: "suggest",
-          confidence: "confidence",
-          ignored: "ignored",
-          ignored_reason: "ignored_reason",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-          confidence: lambda do |value|
-            ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsAssigneesItemConfidence.from_value(value)
-          end,
-          ignored_reason: lambda do |value|
-            ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsAssigneesItemIgnoredReason.from_value(value)
-          end,
-        }.freeze
-      end
-
-      # API model for IssuesUpdateResponseVariant1SuggestionsAssigneesItem.
-      class IssuesUpdateResponseVariant1SuggestionsAssigneesItem
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalIssuesUpdateResponseVariant1SuggestionsAssigneesItemMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalIssuesUpdateResponseVariant1SuggestionsAssigneesItemMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalIssuesUpdateResponseVariant1SuggestionsAssigneesItemMetadata::DECODERS
-
-        attr_reader :login, :rationale, :suggest, :confidence, :ignored, :ignored_reason
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalIssuesUpdateResponseVariant1SuggestionsStateItemMetadata
-        FIELDS = {
-          value: "value",
-          state_reason: "state_reason",
-          duplicate_issue_id: "duplicate_issue_id",
-          rationale: "rationale",
-          suggest: "suggest",
-          confidence: "confidence",
-          ignored: "ignored",
-          ignored_reason: "ignored_reason",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-          confidence: lambda do |value|
-            ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsStateItemConfidence.from_value(value)
-          end,
-          ignored_reason: lambda do |value|
-            ::OctridevGithub::Methods::Issues::IssuesUpdateResponseVariant1SuggestionsStateItemIgnoredReason.from_value(value)
-          end,
-        }.freeze
+        SdkClient.request(
+          'GET',
+          "/user/issues",
+          config: config,
+          query: {
+            'filter' => QueryValue.new(filter, style: 'form', explode: true),
+            'state' => QueryValue.new(state, style: 'form', explode: true),
+            'labels' => QueryValue.new(labels, style: 'form', explode: true),
+            'sort' => QueryValue.new(sort, style: 'form', explode: true),
+            'direction' => QueryValue.new(direction, style: 'form', explode: true),
+            'since' => QueryValue.new(since, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true),
+          },
+          return_type: [::OctridevGithub::Issue],
+          decoder: :json,
+          operation_id: 'issues_list_for_authenticated_user',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError },
+        ).data
       end
     end
   end
 end
 
-require_relative 'issues_part_2'
-require_relative 'issues_part_3'
-require_relative 'issues_part_4'
-require_relative 'issues_part_5'
-require_relative 'issues_part_6'
-require_relative 'issues_part_7'
-require_relative 'issues_part_8'
-require_relative 'issues_part_9'
+require_relative 'issues_types'
+require_relative 'issues_update_response_variant1_suggestions_state_item'
+require_relative 'issues_set_issue_field_values_issue_field_values_item'
+require_relative 'issues_update_response_variant1_suggestions_assignees_item_ignored_reason'
+require_relative 'issues_repos'
+require_relative 'issues_comments'
+require_relative 'issues_events'
+require_relative 'issues_assignees'
+require_relative 'issues_dependencies'
+require_relative 'issues_issue_field_values'
+require_relative 'issues_labels'
+require_relative 'issues_lock'
+require_relative 'issues_parent'
+require_relative 'issues_relates_to'
+require_relative 'issues_sub_issue'
+require_relative 'issues_sub_issues'
+require_relative 'issues_suggestions'
+require_relative 'issues_timeline'

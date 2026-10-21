@@ -9,88 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the SecurityAdvisories SDK namespace.
     module SecurityAdvisories
-      # Defines the SecurityAdvisoriesListRepositoryAdvisoriesParameter SDK namespace.
-      module SecurityAdvisoriesListRepositoryAdvisoriesParameter
-        CREATED = 'created'
-        UPDATED = 'updated'
-        PUBLISHED = 'published'
-        VALUES = ['created', 'updated', 'published'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the SecurityAdvisoriesListGlobalAdvisoriesParameter74b20036 SDK namespace.
-      module SecurityAdvisoriesListGlobalAdvisoriesParameter74b20036
-        UPDATED = 'updated'
-        PUBLISHED = 'published'
-        EPSS_PERCENTAGE = 'epss_percentage'
-        EPSS_PERCENTILE = 'epss_percentile'
-        VALUES = ['updated', 'published', 'epss_percentage', 'epss_percentile'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the SecurityAdvisoriesListOrgRepositoryAdvisoriesParameterAa450507 SDK namespace.
-      module SecurityAdvisoriesListOrgRepositoryAdvisoriesParameterAa450507
-        TRIAGE = 'triage'
-        DRAFT = 'draft'
-        PUBLISHED = 'published'
-        CLOSED = 'closed'
-        VALUES = ['triage', 'draft', 'published', 'closed'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the SecurityAdvisoriesListRepositoryAdvisoriesParameter6dd59c7a SDK namespace.
-      module SecurityAdvisoriesListRepositoryAdvisoriesParameter6dd59c7a
-        TRIAGE = 'triage'
-        DRAFT = 'draft'
-        PUBLISHED = 'published'
-        CLOSED = 'closed'
-        VALUES = ['triage', 'draft', 'published', 'closed'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the SecurityAdvisoriesListGlobalAdvisoriesParameter SDK namespace.
-      module SecurityAdvisoriesListGlobalAdvisoriesParameter
-        REVIEWED = 'reviewed'
-        MALWARE = 'malware'
-        UNREVIEWED = 'unreviewed'
-        VALUES = ['reviewed', 'malware', 'unreviewed'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the SecurityAdvisoriesListGlobalAdvisoriesParameter09a84eec SDK namespace.
-      module SecurityAdvisoriesListGlobalAdvisoriesParameter09a84eec
-        UNKNOWN = 'unknown'
-        LOW = 'low'
-        MEDIUM = 'medium'
-        HIGH = 'high'
-        CRITICAL = 'critical'
-        VALUES = ['unknown', 'low', 'medium', 'high', 'critical'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the SecurityAdvisoriesListOrgRepositoryAdvisoriesParameter SDK namespace.
-      module SecurityAdvisoriesListOrgRepositoryAdvisoriesParameter
-        CREATED = 'created'
-        UPDATED = 'updated'
-        PUBLISHED = 'published'
-        VALUES = ['created', 'updated', 'published'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
       # Lists all global security advisories that match the specified parameters. If no other parameters are defined, the request will return only GitHub-reviewed advisories that are not malware. By default, all responses will exclude advisories for malware, because malware are not standard vulnerabilities. To list advisories for malware, you must include the `type` parameter in your request, with the value `malware`. For more information about the different types of security…
       #
       # @param ghsa_id [String] If specified, only advisories with this GHSA (GitHub
@@ -418,74 +336,6 @@ module OctridevGithub
         ).data
       end
 
-      # Report a security vulnerability to the maintainers of the repository. See "Privately reporting a security vulnerability" for more information about private vulnerability reporting.
-      #
-      # @param owner [String] The account owner of the repository. The name is not
-      #   case sensitive.
-      # @param repo [String] The name of the repository without the `.git`
-      #   extension. The name is not case sensitive.
-      # @param summary [String] A short summary of the advisory.
-      # @param description [String] A detailed description of what the advisory
-      #   impacts.
-      # @param vulnerabilities [Array_of_Hash] An array of products affected by the
-      #   vulnerability detailed in a repository security advisory.
-      # @param cwe_ids [Array_of_String] A list of Common Weakness Enumeration (CWE)
-      #   IDs.
-      # @param severity [PrivateVulnerabilityReportCreateSeverity] The severity of
-      #   the advisory. You must choose between setting this field or
-      #   `cvss_vector_string`.
-      # @param cvss_vector_string [String] The CVSS vector that calculates the
-      #   severity of the advisory. You must choose between setting this field or
-      #   `severity`.
-      # @param start_private_fork [Boolean] Whether to create a temporary private
-      #   fork of the repository to collaborate on a fix. The fork is created only if
-      #   you are permitted to create one; otherwise, this parameter is ignored and
-      #   the report is still created.
-      def self.security_advisories_create_private_vulnerability_report(
-        config:,
-        owner:,
-        repo:,
-        summary:,
-        description:,
-        vulnerabilities: NOT_GIVEN,
-        cwe_ids: NOT_GIVEN,
-        severity: NOT_GIVEN,
-        cvss_vector_string: NOT_GIVEN,
-        start_private_fork: NOT_GIVEN,
-        request_options: nil
-      )
-
-        Validation.validate_length('summary', summary, max: 1024)
-
-        Validation.validate_length('description', description, max: 65535)
-
-        SdkClient.request(
-          'POST',
-          [
-            "/repos/",
-            SdkClient.encode_path_segment(owner),
-            "/",
-            SdkClient.encode_path_segment(repo),
-            "/security-advisories/reports"
-          ].join,
-          config: config,
-          body: {
-            'summary' => summary,
-            'description' => description,
-            'vulnerabilities' => vulnerabilities,
-            'cwe_ids' => cwe_ids,
-            'severity' => severity,
-            'cvss_vector_string' => cvss_vector_string,
-            'start_private_fork' => start_private_fork,
-          },
-          return_type: ::OctridevGithub::RepositoryAdvisory,
-          decoder: :json,
-          operation_id: 'security_advisories_create_private_vulnerability_report',
-          request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::RepositoryAdvisoryDescriptionValidationError },
-        ).data
-      end
-
       # Get a repository security advisory using its GitHub Security Advisory (GHSA) identifier. Anyone can access any published security advisory on a public repository. The authenticated user can access an unpublished security advisory from a repository if they are a security manager or administrator of that repository, or if they are a collaborator on the security advisory. OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:read` scope…
       #
       # @param owner [String] The account owner of the repository. The name is not
@@ -520,8 +370,95 @@ module OctridevGithub
           errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
         ).data
       end
+
+      # Update a repository security advisory using its GitHub Security Advisory (GHSA) identifier. In order to update any security advisory, the authenticated user must be a security manager or administrator of that repository, or a collaborator on the repository security advisory. OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:write` scope to use this endpoint.
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository without the `.git`
+      #   extension. The name is not case sensitive.
+      # @param ghsa_id [String] The GHSA (GitHub Security Advisory) identifier of
+      #   the advisory.
+      # @param summary [String] A short summary of the advisory.
+      # @param description [String] A detailed description of what the advisory
+      #   impacts.
+      # @param cve_id [String] The Common Vulnerabilities and Exposures (CVE) ID.
+      # @param vulnerabilities [Array_of_Hash] A product affected by the
+      #   vulnerability detailed in a repository security advisory.
+      # @param cwe_ids [Array_of_String] A list of Common Weakness Enumeration (CWE)
+      #   IDs.
+      # @param credits [Array_of_Hash] A list of users receiving credit for their
+      #   participation in the security advisory.
+      # @param severity [RepositoryAdvisoryUpdateSeverity] The severity of the
+      #   advisory. You must choose between setting this field or
+      #   `cvss_vector_string`.
+      # @param cvss_vector_string [String] The CVSS vector that calculates the
+      #   severity of the advisory. You must choose between setting this field or
+      #   `severity`.
+      # @param state [RepositoryAdvisoryUpdateState] The state of the advisory.
+      # @param collaborating_users [Array_of_String] A list of usernames who have
+      #   been granted write access to the advisory.
+      # @param collaborating_teams [Array_of_String] A list of team slugs which have
+      #   been granted write access to the advisory.
+      def self.security_advisories_update_repository_advisory(
+        config:,
+        owner:,
+        repo:,
+        ghsa_id:,
+        summary: NOT_GIVEN,
+        description: NOT_GIVEN,
+        cve_id: NOT_GIVEN,
+        vulnerabilities: NOT_GIVEN,
+        cwe_ids: NOT_GIVEN,
+        credits: NOT_GIVEN,
+        severity: NOT_GIVEN,
+        cvss_vector_string: NOT_GIVEN,
+        state: NOT_GIVEN,
+        collaborating_users: NOT_GIVEN,
+        collaborating_teams: NOT_GIVEN,
+        request_options: nil
+      )
+
+        Validation.if_given(summary) { Validation.validate_length('summary', summary, max: 1024) }
+
+        Validation.if_given(description) { Validation.validate_length('description', description, max: 65535) }
+
+        SdkClient.request(
+          'PATCH',
+          [
+            "/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/security-advisories/",
+            SdkClient.encode_path_segment(ghsa_id)
+          ].join,
+          config: config,
+          body: {
+            'summary' => summary,
+            'description' => description,
+            'cve_id' => cve_id,
+            'vulnerabilities' => vulnerabilities,
+            'cwe_ids' => cwe_ids,
+            'credits' => credits,
+            'severity' => severity,
+            'cvss_vector_string' => cvss_vector_string,
+            'state' => state,
+            'collaborating_users' => collaborating_users,
+            'collaborating_teams' => collaborating_teams,
+          },
+          return_type: ::OctridevGithub::RepositoryAdvisory,
+          decoder: :json,
+          operation_id: 'security_advisories_update_repository_advisory',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+        ).data
+      end
     end
   end
 end
 
-require_relative 'security_advisories_part_2'
+require_relative 'security_advisories_types'
+require_relative 'security_advisories_reports'
+require_relative 'security_advisories_cve'
+require_relative 'security_advisories_forks'

@@ -10,7 +10,7 @@ module OctridevGithub
     # Defines the Gitignore SDK namespace.
     module Gitignore
       # List all templates available to pass as an option when creating a repository.
-      def self.gitignore_get_all_templates(
+      def self.list_templates(
         config:,
         request_options: nil
       )
@@ -20,7 +20,7 @@ module OctridevGithub
           "/gitignore/templates",
           config: config,
           decoder: :json,
-          operation_id: 'gitignore_get_all_templates',
+          operation_id: 'list_templates',
           request_options: request_options,
         ).data
       end

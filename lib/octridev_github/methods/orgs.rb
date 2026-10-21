@@ -9,573 +9,523 @@ module OctridevGithub
   module Methods
     # Defines the Orgs SDK namespace.
     module Orgs
-      # Internal model hydration metadata.
-      class SdkInternalOrgsUpdateMetadata
-        FIELDS = {
-          billing_email: "billing_email",
-          company: "company",
-          email: "email",
-          twitter_username: "twitter_username",
-          location: "location",
-          name: "name",
-          description: "description",
-          has_organization_projects: "has_organization_projects",
-          has_repository_projects: "has_repository_projects",
-          default_repository_permission: "default_repository_permission",
-          members_can_create_repositories: "members_can_create_repositories",
-          members_can_create_internal_repositories: "members_can_create_internal_repositories",
-          members_can_create_private_repositories: "members_can_create_private_repositories",
-          members_can_create_public_repositories: "members_can_create_public_repositories",
-          members_allowed_repository_creation_type: "members_allowed_repository_creation_type",
-          members_can_create_pages: "members_can_create_pages",
-          members_can_create_public_pages: "members_can_create_public_pages",
-          members_can_create_private_pages: "members_can_create_private_pages",
-          members_can_fork_private_repositories: "members_can_fork_private_repositories",
-          web_commit_signoff_required: "web_commit_signoff_required",
-          blog: "blog",
-          advanced_security_enabled_for_new_repositories: "advanced_security_enabled_for_new_repositories",
-          dependabot_alerts_enabled_for_new_repositories: "dependabot_alerts_enabled_for_new_repositories",
-          dependabot_security_updates_enabled_for_new_repositories: "dependabot_security_updates_enabled_for_new_repositories",
-          dependency_graph_enabled_for_new_repositories: "dependency_graph_enabled_for_new_repositories",
-          secret_scanning_enabled_for_new_repositories: "secret_scanning_enabled_for_new_repositories",
-          secret_scanning_push_protection_enabled_for_new_repositories: "secret_scanning_push_protection_enabled_for_new_repositories",
-          secret_scanning_push_protection_custom_link_enabled: "secret_scanning_push_protection_custom_link_enabled",
-          secret_scanning_push_protection_custom_link: "secret_scanning_push_protection_custom_link",
-          deploy_keys_enabled_for_repositories: "deploy_keys_enabled_for_repositories",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-          default_repository_permission: lambda do |value|
-            ::OctridevGithub::Methods::Orgs::OrgsUpdateDefaultRepositoryPermission.from_value(value)
-          end,
-          members_allowed_repository_creation_type: lambda do |value|
-            ::OctridevGithub::Methods::Orgs::OrgsUpdateMembersAllowedRepositoryCreationType.from_value(value)
-          end,
-        }.freeze
+      # Gets information about an organization. When the value of `two_factor_requirement_enabled` is `true`, the organization requires all members, billing managers, outside collaborators, guest collaborators, repository collaborators, or everyone with access to any repository within the organization to enable two-factor authentication. To see the full details about an organization, the authenticated user must be an organization owner. OAuth app tokens and personal access tokens…
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      def self.orgs_get(
+        config:,
+        org:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/orgs/",
+            SdkClient.encode_path_segment(org)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::OrganizationFull,
+          decoder: :json,
+          operation_id: 'orgs_get',
+          request_options: request_options,
+          errors: { '404' => ::OctridevGithub::BasicError },
+        ).data
       end
 
-      # API model for OrgsUpdate.
-      class OrgsUpdate
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalOrgsUpdateMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalOrgsUpdateMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalOrgsUpdateMetadata::DECODERS
+      # Updates an organization's profile and member privileges. Use the profile fields and repository-creation settings to change organization details and member permissions; `members_allowed_repository_creation_type` is closing down in favor of more granular settings. The authenticated user must be an organization owner, and OAuth app tokens and personal access tokens (classic) must have the `admin:org` or `repo` scope.
+      #
+      # > !WARNING] > **Closing down notice:** GitHub will replace and discontinue `members_allowed_repository_creation_type` in favor of more granular permissions. The new input parameters are `members_can_create_public_repositories`, `members_can_create_private_repositories` for all organizations and `members_can_create_internal_repositories` for organizations associated with an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+. For more…
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param billing_email [String] Billing email address. This address is not
+      #   publicized.
+      # @param company [String] The company name.
+      # @param email [String] The publicly visible email address.
+      # @param twitter_username [String] The Twitter username of the company.
+      # @param location [String] The location.
+      # @param name [String] The shorthand name of the company.
+      # @param description [String] The description of the company. The maximum size
+      #   is 160 characters.
+      # @param has_organization_projects [Boolean] Whether an organization can use
+      #   organization projects.
+      # @param has_repository_projects [Boolean] Whether repositories that belong to
+      #   the organization can use repository projects.
+      # @param default_repository_permission [OrgsUpdateDefaultRepositoryPermission]
+      #   Default permission level members have for organization repositories.
+      # @param members_can_create_repositories [Boolean] Whether of non-admin
+      #   organization members can create repositories. **Note:** A parameter can
+      #   override this parameter. See `members_allowed_repository_creation_type` in
+      #   this table for details.
+      # @param members_can_create_internal_repositories [Boolean] Whether
+      #   organization members can create internal repositories, which are visible to
+      #   all enterprise members. You can only allow members to create internal
+      #   repositories if your organization is associated with an enterprise account
+      #   using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+. For more
+      #   information, see "Restricting repository creation in your organization" in
+      #   the GitHub Help documentation.
+      # @param members_can_create_private_repositories [Boolean] Whether
+      #   organization members can create private repositories, which are visible to
+      #   organization members with permission. For more information, see "Restricting
+      #   repository creation in your organization" in the GitHub Help documentation.
+      # @param members_can_create_public_repositories [Boolean] Whether organization
+      #   members can create public repositories, which are visible to anyone. For
+      #   more information, see "Restricting repository creation in your organization"
+      #   in the GitHub Help documentation.
+      # @param members_allowed_repository_creation_type
+      #   [OrgsUpdateMembersAllowedRepositoryCreationType] Specifies which types of
+      #   repositories non-admin organization members can create. `private` is only
+      #   available to repositories that are part of an organization on GitHub
+      #   Enterprise Cloud. **Note:** This parameter is closing down and will be
+      #   removed in the future. Its return value ignores internal repositories. Using
+      #   this parameter overrides values set in `members_can_create_repositories`.
+      #   See the parameter deprecation notice in the operation description for
+      #   details.
+      # @param members_can_create_pages [Boolean] Whether organization members can
+      #   create GitHub Pages sites. Existing published sites will not be impacted.
+      # @param members_can_create_public_pages [Boolean] Whether organization
+      #   members can create public GitHub Pages sites. Existing published sites will
+      #   not be impacted.
+      # @param members_can_create_private_pages [Boolean] Whether organization
+      #   members can create private GitHub Pages sites. Existing published sites will
+      #   not be impacted.
+      # @param members_can_fork_private_repositories [Boolean] Whether organization
+      #   members can fork private organization repositories.
+      # @param web_commit_signoff_required [Boolean] Whether contributors to
+      #   organization repositories are required to sign off on commits they make
+      #   through GitHub's web interface.
+      # @param advanced_security_enabled_for_new_repositories [Boolean] **Endpoint
+      #   closing down notice.** Please use code security configurations instead.
+      #   Whether GitHub Advanced Security is automatically enabled for new
+      #   repositories and repositories transferred to this organization. To use this
+      #   parameter, you must have admin permissions for the repository or be an owner
+      #   or security manager for the organization that owns the repository. For more
+      #   information, see "Managing security managers in your organization." You can
+      #   check which security and…
+      # @param dependabot_alerts_enabled_for_new_repositories [Boolean] **Endpoint
+      #   closing down notice.** Please use code security configurations instead.
+      #   Whether Dependabot alerts are automatically enabled for new repositories and
+      #   repositories transferred to this organization. To use this parameter, you
+      #   must have admin permissions for the repository or be an owner or security
+      #   manager for the organization that owns the repository. For more information,
+      #   see "Managing security managers in your organization." You can check which
+      #   security and…
+      # @param dependabot_security_updates_enabled_for_new_repositories [Boolean]
+      #   **Endpoint closing down notice.** Please use code security configurations
+      #   instead. Whether Dependabot security updates are automatically enabled for
+      #   new repositories and repositories transferred to this organization. To use
+      #   this parameter, you must have admin permissions for the repository or be an
+      #   owner or security manager for the organization that owns the repository. For
+      #   more information, see "Managing security managers in your organization." You
+      #   can check which security…
+      # @param dependency_graph_enabled_for_new_repositories [Boolean] **Endpoint
+      #   closing down notice.** Please use code security configurations instead.
+      #   Whether dependency graph is automatically enabled for new repositories and
+      #   repositories transferred to this organization. To use this parameter, you
+      #   must have admin permissions for the repository or be an owner or security
+      #   manager for the organization that owns the repository. For more information,
+      #   see "Managing security managers in your organization." You can check which
+      #   security and analysis…
+      # @param secret_scanning_enabled_for_new_repositories [Boolean] **Endpoint
+      #   closing down notice.** Please use code security configurations instead.
+      #   Whether secret scanning is automatically enabled for new repositories and
+      #   repositories transferred to this organization. To use this parameter, you
+      #   must have admin permissions for the repository or be an owner or security
+      #   manager for the organization that owns the repository. For more information,
+      #   see "Managing security managers in your organization." You can check which
+      #   security and analysis…
+      # @param secret_scanning_push_protection_enabled_for_new_repositories
+      #   [Boolean] **Endpoint closing down notice.** Please use code security
+      #   configurations instead. Whether secret scanning push protection is
+      #   automatically enabled for new repositories and repositories transferred to
+      #   this organization. To use this parameter, you must have admin permissions
+      #   for the repository or be an owner or security manager for the organization
+      #   that owns the repository. For more information, see "Managing security
+      #   managers in your organization." You can check which…
+      # @param secret_scanning_push_protection_custom_link_enabled [Boolean] Whether
+      #   a custom link is shown to contributors who are blocked from pushing a secret
+      #   by push protection.
+      # @param secret_scanning_push_protection_custom_link [String] If
+      #   `secret_scanning_push_protection_custom_link_enabled` is true, the URL that
+      #   will be displayed to contributors who are blocked from pushing a secret.
+      # @param deploy_keys_enabled_for_repositories [Boolean] Controls whether or
+      #   not deploy keys may be added and used for repositories in the organization.
+      def self.orgs_update(
+        config:,
+        org:,
+        billing_email: NOT_GIVEN,
+        company: NOT_GIVEN,
+        email: NOT_GIVEN,
+        twitter_username: NOT_GIVEN,
+        location: NOT_GIVEN,
+        name: NOT_GIVEN,
+        description: NOT_GIVEN,
+        has_organization_projects: NOT_GIVEN,
+        has_repository_projects: NOT_GIVEN,
+        default_repository_permission: NOT_GIVEN,
+        members_can_create_repositories: NOT_GIVEN,
+        members_can_create_internal_repositories: NOT_GIVEN,
+        members_can_create_private_repositories: NOT_GIVEN,
+        members_can_create_public_repositories: NOT_GIVEN,
+        members_allowed_repository_creation_type: NOT_GIVEN,
+        members_can_create_pages: NOT_GIVEN,
+        members_can_create_public_pages: NOT_GIVEN,
+        members_can_create_private_pages: NOT_GIVEN,
+        members_can_fork_private_repositories: NOT_GIVEN,
+        web_commit_signoff_required: NOT_GIVEN,
+        blog: NOT_GIVEN,
+        advanced_security_enabled_for_new_repositories: NOT_GIVEN,
+        dependabot_alerts_enabled_for_new_repositories: NOT_GIVEN,
+        dependabot_security_updates_enabled_for_new_repositories: NOT_GIVEN,
+        dependency_graph_enabled_for_new_repositories: NOT_GIVEN,
+        secret_scanning_enabled_for_new_repositories: NOT_GIVEN,
+        secret_scanning_push_protection_enabled_for_new_repositories: NOT_GIVEN,
+        secret_scanning_push_protection_custom_link_enabled: NOT_GIVEN,
+        secret_scanning_push_protection_custom_link: NOT_GIVEN,
+        deploy_keys_enabled_for_repositories: NOT_GIVEN,
+        request_options: nil
+      )
 
-        attr_reader :blog
-        # @return [String] Billing email address. This address is not publicized.
-        attr_reader :billing_email
-        # @return [String] The company name.
-        attr_reader :company
-        # @return [String] The publicly visible email address.
-        attr_reader :email
-        # @return [String] The Twitter username of the company.
-        attr_reader :twitter_username
-        # @return [String] The location.
-        attr_reader :location
-        # @return [String] The shorthand name of the company.
-        attr_reader :name
-        # @return [String] The description of the company. The maximum size is 160 characters.
-        attr_reader :description
-        # @return [Boolean] Whether an organization can use organization projects.
-        attr_reader :has_organization_projects
-        # @return [Boolean] Whether repositories that belong to the organization can use repository projects.
-        attr_reader :has_repository_projects
-        # @return [OrgsUpdateDefaultRepositoryPermission] Default permission level members have for organization repositories.
-        attr_reader :default_repository_permission
-        # @return [Boolean] Whether of non-admin organization members can create repositories. **Note:** A parameter can override this parameter. See `members_allowed_repository_creation_type` in this table for details.
-        attr_reader :members_can_create_repositories
-        # @return [Boolean] Whether organization members can create internal repositories, which are visible to all enterprise members. You can only allow members to create internal repositories if your organization is associated with an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+. For more information, see "Restricting repository creation in your organization" in the GitHub Help documentation.
-        attr_reader :members_can_create_internal_repositories
-        # @return [Boolean] Whether organization members can create private repositories, which are visible to organization members with permission. For more information, see "Restricting repository creation in your organization" in the GitHub Help documentation.
-        attr_reader :members_can_create_private_repositories
-        # @return [Boolean] Whether organization members can create public repositories, which are visible to anyone. For more information, see "Restricting repository creation in your organization" in the GitHub Help documentation.
-        attr_reader :members_can_create_public_repositories
-        # @return [OrgsUpdateMembersAllowedRepositoryCreationType] Specifies which types of repositories non-admin organization members can create. `private` is only available to repositories that are part of an organization on GitHub Enterprise Cloud. **Note:** This parameter is closing down and will be removed in the future. Its return value ignores internal repositories. Using this parameter overrides values set in `members_can_create_repositories`. See the parameter deprecation notice in the operation description for details.
-        attr_reader :members_allowed_repository_creation_type
-        # @return [Boolean] Whether organization members can create GitHub Pages sites. Existing published sites will not be impacted.
-        attr_reader :members_can_create_pages
-        # @return [Boolean] Whether organization members can create public GitHub Pages sites. Existing published sites will not be impacted.
-        attr_reader :members_can_create_public_pages
-        # @return [Boolean] Whether organization members can create private GitHub Pages sites. Existing published sites will not be impacted.
-        attr_reader :members_can_create_private_pages
-        # @return [Boolean] Whether organization members can fork private organization repositories.
-        attr_reader :members_can_fork_private_repositories
-        # @return [Boolean] Whether contributors to organization repositories are required to sign off on commits they make through GitHub's web interface.
-        attr_reader :web_commit_signoff_required
-        # @return [Boolean] **Endpoint closing down notice.** Please use code security configurations instead. Whether GitHub Advanced Security is automatically enabled for new repositories and repositories transferred to this organization. To use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "Managing security managers in your organization." You can check which security and…
-        attr_reader :advanced_security_enabled_for_new_repositories
-        # @return [Boolean] **Endpoint closing down notice.** Please use code security configurations instead. Whether Dependabot alerts are automatically enabled for new repositories and repositories transferred to this organization. To use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "Managing security managers in your organization." You can check which security and…
-        attr_reader :dependabot_alerts_enabled_for_new_repositories
-        # @return [Boolean] **Endpoint closing down notice.** Please use code security configurations instead. Whether Dependabot security updates are automatically enabled for new repositories and repositories transferred to this organization. To use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "Managing security managers in your organization." You can check which security…
-        attr_reader :dependabot_security_updates_enabled_for_new_repositories
-        # @return [Boolean] **Endpoint closing down notice.** Please use code security configurations instead. Whether dependency graph is automatically enabled for new repositories and repositories transferred to this organization. To use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "Managing security managers in your organization." You can check which security and analysis…
-        attr_reader :dependency_graph_enabled_for_new_repositories
-        # @return [Boolean] **Endpoint closing down notice.** Please use code security configurations instead. Whether secret scanning is automatically enabled for new repositories and repositories transferred to this organization. To use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "Managing security managers in your organization." You can check which security and analysis…
-        attr_reader :secret_scanning_enabled_for_new_repositories
-        # @return [Boolean] **Endpoint closing down notice.** Please use code security configurations instead. Whether secret scanning push protection is automatically enabled for new repositories and repositories transferred to this organization. To use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "Managing security managers in your organization." You can check which…
-        attr_reader :secret_scanning_push_protection_enabled_for_new_repositories
-        # @return [Boolean] Whether a custom link is shown to contributors who are blocked from pushing a secret by push protection.
-        attr_reader :secret_scanning_push_protection_custom_link_enabled
-        # @return [String] If `secret_scanning_push_protection_custom_link_enabled` is true, the URL that will be displayed to contributors who are blocked from pushing a secret.
-        attr_reader :secret_scanning_push_protection_custom_link
-        # @return [Boolean] Controls whether or not deploy keys may be added and used for repositories in the organization.
-        attr_reader :deploy_keys_enabled_for_repositories
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
+        SdkClient.request(
+          'PATCH',
+          [
+            "/orgs/",
+            SdkClient.encode_path_segment(org)
+          ].join,
+          config: config,
+          body: __sdk_body_orgs_update_part1(billing_email: billing_email, company: company, email: email, twitter_username: twitter_username, location: location, name: name, description: description, has_organization_projects: has_organization_projects, has_repository_projects: has_repository_projects, default_repository_permission: default_repository_permission, members_can_create_repositories: members_can_create_repositories, members_can_create_internal_repositories: members_can_create_internal_repositories, members_can_create_private_repositories: members_can_create_private_repositories, members_can_create_public_repositories: members_can_create_public_repositories, members_allowed_repository_creation_type: members_allowed_repository_creation_type, members_can_create_pages: members_can_create_pages, members_can_create_public_pages: members_can_create_public_pages, members_can_create_private_pages: members_can_create_private_pages).merge(
+            __sdk_body_orgs_update_part2(members_can_fork_private_repositories: members_can_fork_private_repositories, web_commit_signoff_required: web_commit_signoff_required, blog: blog, advanced_security_enabled_for_new_repositories: advanced_security_enabled_for_new_repositories, dependabot_alerts_enabled_for_new_repositories: dependabot_alerts_enabled_for_new_repositories, dependabot_security_updates_enabled_for_new_repositories: dependabot_security_updates_enabled_for_new_repositories, dependency_graph_enabled_for_new_repositories: dependency_graph_enabled_for_new_repositories, secret_scanning_enabled_for_new_repositories: secret_scanning_enabled_for_new_repositories, secret_scanning_push_protection_enabled_for_new_repositories: secret_scanning_push_protection_enabled_for_new_repositories, secret_scanning_push_protection_custom_link_enabled: secret_scanning_push_protection_custom_link_enabled, secret_scanning_push_protection_custom_link: secret_scanning_push_protection_custom_link, deploy_keys_enabled_for_repositories: deploy_keys_enabled_for_repositories)),
+          return_type: ::OctridevGithub::OrganizationFull,
+          decoder: :json,
+          operation_id: 'orgs_update',
+          request_options: request_options,
+          errors: { '409' => ::OctridevGithub::BasicError },
+        ).data
       end
 
-      # Internal model hydration metadata.
-      class SdkInternalOrgsCreateArtifactDeploymentRecordMetadata
-        FIELDS = {
-          name: "name",
-          digest: "digest",
-          version: "version",
-          status: "status",
-          logical_environment: "logical_environment",
-          physical_environment: "physical_environment",
-          cluster: "cluster",
-          deployment_name: "deployment_name",
-          tags: "tags",
-          runtime_risks: "runtime_risks",
-          github_repository: "github_repository",
-          return_records: "return_records",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          name
-          digest
-          status
-          logical_environment
-          deployment_name
-        ].freeze
-        DECODERS = {
-          status: lambda do |value|
-            ::OctridevGithub::Methods::Orgs::OrgsCreateArtifactDeploymentRecordStatus.from_value(value)
-          end,
-          runtime_risks: lambda do |value|
-            value&.map { |item| ::OctridevGithub::Methods::Orgs::OrgsCreateArtifactDeploymentRecordRuntimeRisksItem.from_value(item) }
-          end,
-        }.freeze
+      def self.__sdk_body_orgs_update_part1(
+        billing_email:,
+        company:,
+        email:,
+        twitter_username:,
+        location:,
+        name:,
+        description:,
+        has_organization_projects:,
+        has_repository_projects:,
+        default_repository_permission:,
+        members_can_create_repositories:,
+        members_can_create_internal_repositories:,
+        members_can_create_private_repositories:,
+        members_can_create_public_repositories:,
+        members_allowed_repository_creation_type:,
+        members_can_create_pages:,
+        members_can_create_public_pages:,
+        members_can_create_private_pages:
+      )
+        {
+          'billing_email' => billing_email,
+          'company' => company,
+          'email' => email,
+          'twitter_username' => twitter_username,
+          'location' => location,
+          'name' => name,
+          'description' => description,
+          'has_organization_projects' => has_organization_projects,
+          'has_repository_projects' => has_repository_projects,
+          'default_repository_permission' => default_repository_permission,
+          'members_can_create_repositories' => members_can_create_repositories,
+          'members_can_create_internal_repositories' => members_can_create_internal_repositories,
+          'members_can_create_private_repositories' => members_can_create_private_repositories,
+          'members_can_create_public_repositories' => members_can_create_public_repositories,
+          'members_allowed_repository_creation_type' => members_allowed_repository_creation_type,
+          'members_can_create_pages' => members_can_create_pages,
+          'members_can_create_public_pages' => members_can_create_public_pages,
+          'members_can_create_private_pages' => members_can_create_private_pages,
+        }
+      end
+      private_class_method :__sdk_body_orgs_update_part1
+
+      def self.__sdk_body_orgs_update_part2(
+        members_can_fork_private_repositories:,
+        web_commit_signoff_required:,
+        blog:,
+        advanced_security_enabled_for_new_repositories:,
+        dependabot_alerts_enabled_for_new_repositories:,
+        dependabot_security_updates_enabled_for_new_repositories:,
+        dependency_graph_enabled_for_new_repositories:,
+        secret_scanning_enabled_for_new_repositories:,
+        secret_scanning_push_protection_enabled_for_new_repositories:,
+        secret_scanning_push_protection_custom_link_enabled:,
+        secret_scanning_push_protection_custom_link:,
+        deploy_keys_enabled_for_repositories:
+      )
+        {
+          'members_can_fork_private_repositories' => members_can_fork_private_repositories,
+          'web_commit_signoff_required' => web_commit_signoff_required,
+          'blog' => blog,
+          'advanced_security_enabled_for_new_repositories' => advanced_security_enabled_for_new_repositories,
+          'dependabot_alerts_enabled_for_new_repositories' => dependabot_alerts_enabled_for_new_repositories,
+          'dependabot_security_updates_enabled_for_new_repositories' => dependabot_security_updates_enabled_for_new_repositories,
+          'dependency_graph_enabled_for_new_repositories' => dependency_graph_enabled_for_new_repositories,
+          'secret_scanning_enabled_for_new_repositories' => secret_scanning_enabled_for_new_repositories,
+          'secret_scanning_push_protection_enabled_for_new_repositories' => secret_scanning_push_protection_enabled_for_new_repositories,
+          'secret_scanning_push_protection_custom_link_enabled' => secret_scanning_push_protection_custom_link_enabled,
+          'secret_scanning_push_protection_custom_link' => secret_scanning_push_protection_custom_link,
+          'deploy_keys_enabled_for_repositories' => deploy_keys_enabled_for_repositories,
+        }
+      end
+      private_class_method :__sdk_body_orgs_update_part2
+
+      # Deletes an organization and all its repositories. The organization login will be unavailable for 90 days after deletion. Please review the Terms of Service regarding account deletion before using this endpoint: docs.github.com
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      def self.orgs_delete(
+        config:,
+        org:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'DELETE',
+          [
+            "/orgs/",
+            SdkClient.encode_path_segment(org)
+          ].join,
+          config: config,
+          decoder: :json,
+          operation_id: 'orgs_delete',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+        ).data
       end
 
-      # API model for OrgsCreateArtifactDeploymentRecord.
-      class OrgsCreateArtifactDeploymentRecord
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalOrgsCreateArtifactDeploymentRecordMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalOrgsCreateArtifactDeploymentRecordMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalOrgsCreateArtifactDeploymentRecordMetadata::DECODERS
+      # > !WARNING] > **Closing down notice:** The ability to enable or disable a security feature for all eligible repositories in an organization is closing down. Please use [code security configurations instead. For more information, see the changelog. Enables or disables the specified security feature for all eligible repositories in an organization. For more information, see "Managing security managers in your organization." The authenticated user must be an organization owner…
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param security_product [SchemaSchemaE123ddd7] The security feature to
+      #   enable or disable.
+      # @param enablement [SchemaSchemaD185c506] The action to take. `enable_all`
+      #   means to enable the specified security feature for all repositories in the
+      #   organization. `disable_all` means to disable the specified security feature
+      #   for all repositories in the organization.
+      # @param query_suite
+      #   [OrgsEnableOrDisableSecurityProductOnAllOrgReposQuerySuite] CodeQL query
+      #   suite to be used. If you specify the `query_suite` parameter, the default
+      #   setup will be configured with this query suite only on all repositories that
+      #   didn't have default setup already configured. It will not change the query
+      #   suite on repositories that already have default setup configured. If you
+      #   don't specify any `query_suite` in your request, the preferred query suite
+      #   of the organization will be applied.
+      #
+      # @deprecated This operation is deprecated and may be removed in a future release.
+      def self.orgs_enable_or_disable_security_product_on_all_org_repos(
+        config:,
+        org:,
+        security_product:,
+        enablement:,
+        query_suite: NOT_GIVEN,
+        request_options: nil
+      )
 
-        # @return [String] The name of the artifact.
-        attr_reader :name
-        # @return [String] The hex encoded digest of the artifact.
-        attr_reader :digest
-        # @return [String] The artifact version.
-        attr_reader :version
-        # @return [OrgsCreateArtifactDeploymentRecordStatus] The status of the artifact. Can be either deployed or decommissioned.
-        attr_reader :status
-        # @return [String] The stage of the deployment.
-        attr_reader :logical_environment
-        # @return [String] The physical region of the deployment.
-        attr_reader :physical_environment
-        # @return [String] The deployment cluster.
-        attr_reader :cluster
-        # @return [String] The unique identifier for the deployment represented by the new record. To accommodate differing containers and namespaces within a cluster, the following format is recommended: {namespaceName}-{deploymentName}-{containerName}.
-        attr_reader :deployment_name
-        # @return [Hash] The tags associated with the deployment.
-        attr_reader :tags
-        # @return [Array_of_OrgsCreateArtifactDeploymentRecordRuntimeRisksItem] A list of runtime risks associated with the deployment.
-        attr_reader :runtime_risks
-        # @return [String] The name of the GitHub repository associated with the artifact. This should be used when there are no provenance attestations available for the artifact. The repository must belong to the organization specified in the path parameter. If a provenance attestation is available for the artifact, the API will use the repository information from the attestation instead of this parameter.
-        attr_reader :github_repository
-        # @return [Boolean] If true, the endpoint will return the created or updated record in the response body.
-        attr_reader :return_records
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
+        SdkClient.request(
+          'POST',
+          [
+            "/orgs/",
+            SdkClient.encode_path_segment(org),
+            "/",
+            SdkClient.encode_path_segment(security_product),
+            "/",
+            SdkClient.encode_path_segment(enablement)
+          ].join,
+          config: config,
+          body: {
+            'query_suite' => query_suite,
+          },
+          decoder: :empty,
+          operation_id: 'orgs_enable_or_disable_security_product_on_all_org_repos',
+          request_options: request_options,
+        ).data
       end
 
-      # Internal model hydration metadata.
-      class SdkInternalOrgsCreateArtifactDeploymentRecordResponseMetadata
-        FIELDS = {
-          total_count: "total_count",
-          deployment_records: "deployment_records",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          total_count
-        ].freeze
-        DECODERS = {
-          deployment_records: lambda do |value|
-            value&.map { |item| ::OctridevGithub::ArtifactDeploymentRecord.from_hash(item) }
-          end,
-        }.freeze
+      # Lists all of the authenticated user's organization memberships.
+      #
+      # @param state [OrgsListMembershipsForAuthenticatedUserParameter] Indicates
+      #   the state of the memberships to return. If not specified, the API returns
+      #   both active and pending memberships.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.orgs_list_memberships_for_authenticated_user(
+        config:,
+        state: NOT_GIVEN,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          "/user/memberships/orgs",
+          config: config,
+          query: {
+            'state' => QueryValue.new(state, style: 'form', explode: true),
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true),
+          },
+          return_type: [::OctridevGithub::OrgMembership],
+          decoder: :json,
+          operation_id: 'orgs_list_memberships_for_authenticated_user',
+          request_options: request_options,
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+        ).data
       end
 
-      # API model for OrgsCreateArtifactDeploymentRecordResponse.
-      class OrgsCreateArtifactDeploymentRecordResponse
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalOrgsCreateArtifactDeploymentRecordResponseMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalOrgsCreateArtifactDeploymentRecordResponseMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalOrgsCreateArtifactDeploymentRecordResponseMetadata::DECODERS
+      # If the authenticated user is an active or pending member of the organization, this endpoint will return the user's membership. If the authenticated user is not affiliated with the organization, a `404` is returned. This endpoint will return a `403` if the request is made by a GitHub App that is blocked by the organization.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      def self.orgs_get_membership_for_authenticated_user(
+        config:,
+        org:,
+        request_options: nil
+      )
 
-        attr_reader :deployment_records
-        # @return [Integer] The number of deployment records created
-        attr_reader :total_count
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
+        SdkClient.request(
+          'GET',
+          [
+            "/user/memberships/orgs/",
+            SdkClient.encode_path_segment(org)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::OrgMembership,
+          decoder: :json,
+          operation_id: 'orgs_get_membership_for_authenticated_user',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+        ).data
       end
 
-      # Internal model hydration metadata.
-      class SdkInternalOrgsSetClusterDeploymentRecordsDeploymentsItemMetadata
-        FIELDS = {
-          name: "name",
-          digest: "digest",
-          version: "version",
-          status: "status",
-          deployment_name: "deployment_name",
-          github_repository: "github_repository",
-          tags: "tags",
-          runtime_risks: "runtime_risks",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          name
-          digest
-          deployment_name
-        ].freeze
-        DECODERS = {
-          status: lambda do |value|
-            ::OctridevGithub::Methods::Orgs::OrgsSetClusterDeploymentRecordsDeploymentsItemStatus.from_value(value)
-          end,
-          runtime_risks: lambda do |value|
-            value&.map { |item| ::OctridevGithub::Methods::Orgs::OrgsSetClusterDeploymentRecordsDeploymentsItemRuntimeRisksItem.from_value(item) }
-          end,
-        }.freeze
+      # Converts the authenticated user to an active member of the organization, if that user has a pending invitation from the organization.
+      #
+      # @param org [String] The organization name. The name is not case sensitive.
+      # @param state [OrgsUpdateMembershipForAuthenticatedUserState] The state that
+      #   the membership should be in. Only `"active"` will be accepted.
+      def self.orgs_update_membership_for_authenticated_user(
+        config:,
+        org:,
+        state:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'PATCH',
+          [
+            "/user/memberships/orgs/",
+            SdkClient.encode_path_segment(org)
+          ].join,
+          config: config,
+          body: {
+            'state' => state,
+          },
+          return_type: ::OctridevGithub::OrgMembership,
+          decoder: :json,
+          operation_id: 'orgs_update_membership_for_authenticated_user',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+        ).data
       end
 
-      # API model for OrgsSetClusterDeploymentRecordsDeploymentsItem.
-      class OrgsSetClusterDeploymentRecordsDeploymentsItem
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalOrgsSetClusterDeploymentRecordsDeploymentsItemMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalOrgsSetClusterDeploymentRecordsDeploymentsItemMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalOrgsSetClusterDeploymentRecordsDeploymentsItemMetadata::DECODERS
+      # List organizations for the authenticated user. For OAuth app tokens and personal access tokens (classic), this endpoint only lists organizations that your authorization allows you to operate on in some way (e.g., you can list teams with `read:org` scope, you can publicize your organization membership with `user` scope, etc.). Therefore, this API requires at least `user` or `read:org` scope for OAuth app tokens and personal access tokens (classic). Requests with insufficient…
+      #
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.orgs_list_for_authenticated_user(
+        config:,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
 
-        # @return [String] The name of the artifact.
-        attr_reader :name
-        # @return [String] The hex encoded digest of the artifact.
-        attr_reader :digest
-        # @return [String] The artifact version.
-        attr_reader :version
-        # @return [OrgsSetClusterDeploymentRecordsDeploymentsItemStatus] The deployment status of the artifact.
-        attr_reader :status
-        # @return [String] The unique identifier for the deployment represented by the new record. To accommodate differing containers and namespaces within a record set, the following format is recommended: {namespaceName}-{deploymentName}-{containerName}. The deployment_name must be unique across all entries in the deployments array.
-        attr_reader :deployment_name
-        # @return [String] The name of the GitHub repository associated with the artifact. This should be used when there are no provenance attestations available for the artifact. The repository must belong to the organization specified in the path parameter. If a provenance attestation is available for the artifact, the API will use the repository information from the attestation instead of this parameter.
-        attr_reader :github_repository
-        # @return [Hash] Key-value pairs to tag the deployment record.
-        attr_reader :tags
-        # @return [Array_of_OrgsSetClusterDeploymentRecordsDeploymentsItemRuntimeRisksItem] A list of runtime risks associated with the deployment.
-        attr_reader :runtime_risks
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
+        SdkClient.request(
+          'GET',
+          "/user/orgs",
+          config: config,
+          query: {
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true),
+          },
+          return_type: [::OctridevGithub::OrganizationSimple],
+          decoder: :json,
+          operation_id: 'orgs_list_for_authenticated_user',
+          request_options: request_options,
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
+        ).data
       end
 
-      # Internal model hydration metadata.
-      class SdkInternalOrgsSetClusterDeploymentRecordsMetadata
-        FIELDS = {
-          logical_environment: "logical_environment",
-          physical_environment: "physical_environment",
-          deployments: "deployments",
-          partial_success: "partial_success",
-          return_records: "return_records",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          logical_environment
-          deployments
-        ].freeze
-        DECODERS = {
-          deployments: lambda do |value|
-            value&.map { |item| ::OctridevGithub::Methods::Orgs::OrgsSetClusterDeploymentRecordsDeploymentsItem.from_hash(item) }
-          end,
-        }.freeze
-      end
+      # List public organization memberships for the specified user. This method only lists _public_ memberships, regardless of authentication. If you need to fetch all of the organization memberships (public and private) for the authenticated user, use the List organizations for the authenticated user API instead.
+      #
+      # @param username [String] The handle for the GitHub user account.
+      # @param per_page [Integer] The number of results per page (max 100). For more
+      #   information, see "Using pagination in the REST API."
+      # @param page [Integer] The page number of the results to fetch. For more
+      #   information, see "Using pagination in the REST API."
+      def self.orgs_list_for_user(
+        config:,
+        username:,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        request_options: nil
+      )
 
-      # API model for OrgsSetClusterDeploymentRecords.
-      class OrgsSetClusterDeploymentRecords
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalOrgsSetClusterDeploymentRecordsMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalOrgsSetClusterDeploymentRecordsMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalOrgsSetClusterDeploymentRecordsMetadata::DECODERS
-
-        # @return [String] The stage of the deployment.
-        attr_reader :logical_environment
-        # @return [String] The physical region of the deployment.
-        attr_reader :physical_environment
-        # @return [Array_of_OrgsSetClusterDeploymentRecordsDeploymentsItem] The list of deployments to record.
-        attr_reader :deployments
-        # @return [Boolean] When enabled, deployments associated with repositories the actor can write to are processed while deployments associated with repositories that cannot be resolved or written to by the actor are skipped and reported in the `errors` array. When false (the default), the endpoint returns an error if any targeted repository cannot be resolved, the actor lacks write access, or no matching attestation can be found.
-        attr_reader :partial_success
-        # @return [Boolean] If true, the endpoint will return the set records in the response body
-        attr_reader :return_records
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalOrgsSetClusterDeploymentRecordsResponseMetadata
-        FIELDS = {
-          total_count: "total_count",
-          deployment_records: "deployment_records",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          total_count
-        ].freeze
-        DECODERS = {
-          deployment_records: lambda do |value|
-            value&.map { |item| ::OctridevGithub::ArtifactDeploymentRecord.from_hash(item) }
-          end,
-        }.freeze
-      end
-
-      # API model for OrgsSetClusterDeploymentRecordsResponse.
-      class OrgsSetClusterDeploymentRecordsResponse
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalOrgsSetClusterDeploymentRecordsResponseMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalOrgsSetClusterDeploymentRecordsResponseMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalOrgsSetClusterDeploymentRecordsResponseMetadata::DECODERS
-
-        attr_reader :deployment_records
-        # @return [Integer] The number of deployment records created
-        attr_reader :total_count
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalOrgsCreateClusterDeploymentRecordsJobDeploymentsItemMetadata
-        FIELDS = {
-          name: "name",
-          digest: "digest",
-          version: "version",
-          status: "status",
-          deployment_name: "deployment_name",
-          github_repository: "github_repository",
-          tags: "tags",
-          runtime_risks: "runtime_risks",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          name
-          digest
-          deployment_name
-        ].freeze
-        DECODERS = {
-          status: lambda do |value|
-            ::OctridevGithub::Methods::Orgs::OrgsCreateClusterDeploymentRecordsJobDeploymentsItemStatus.from_value(value)
-          end,
-          runtime_risks: lambda do |value|
-            value&.map { |item| ::OctridevGithub::Methods::Orgs::OrgsCreateClusterDeploymentRecordsJobDeploymentsItemRuntimeRisksItem.from_value(item) }
-          end,
-        }.freeze
-      end
-
-      # API model for OrgsCreateClusterDeploymentRecordsJobDeploymentsItem.
-      class OrgsCreateClusterDeploymentRecordsJobDeploymentsItem
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalOrgsCreateClusterDeploymentRecordsJobDeploymentsItemMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalOrgsCreateClusterDeploymentRecordsJobDeploymentsItemMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalOrgsCreateClusterDeploymentRecordsJobDeploymentsItemMetadata::DECODERS
-
-        # @return [String] The name of the artifact.
-        attr_reader :name
-        # @return [String] The hex encoded digest of the artifact.
-        attr_reader :digest
-        # @return [String] The artifact version.
-        attr_reader :version
-        # @return [OrgsCreateClusterDeploymentRecordsJobDeploymentsItemStatus] The deployment status of the artifact.
-        attr_reader :status
-        # @return [String] The unique identifier for the deployment represented by the new record.
-        attr_reader :deployment_name
-        # @return [String] The name of the GitHub repository associated with the artifact.
-        attr_reader :github_repository
-        # @return [Hash] Key-value pairs to tag the deployment record.
-        attr_reader :tags
-        # @return [Array_of_OrgsCreateClusterDeploymentRecordsJobDeploymentsItemRuntimeRisksItem] A list of runtime risks associated with the deployment.
-        attr_reader :runtime_risks
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalOrgsCreateClusterDeploymentRecordsJobMetadata
-        FIELDS = {
-          logical_environment: "logical_environment",
-          physical_environment: "physical_environment",
-          deployments: "deployments",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          logical_environment
-          deployments
-        ].freeze
-        DECODERS = {
-          deployments: lambda do |value|
-            value&.map { |item| ::OctridevGithub::Methods::Orgs::OrgsCreateClusterDeploymentRecordsJobDeploymentsItem.from_hash(item) }
-          end,
-        }.freeze
-      end
-
-      # API model for OrgsCreateClusterDeploymentRecordsJob.
-      class OrgsCreateClusterDeploymentRecordsJob
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalOrgsCreateClusterDeploymentRecordsJobMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalOrgsCreateClusterDeploymentRecordsJobMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalOrgsCreateClusterDeploymentRecordsJobMetadata::DECODERS
-
-        # @return [String] The stage of the deployment.
-        attr_reader :logical_environment
-        # @return [String] The physical region of the deployment.
-        attr_reader :physical_environment
-        # @return [Array_of_OrgsCreateClusterDeploymentRecordsJobDeploymentsItem] The list of deployments to record.
-        attr_reader :deployments
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalOrgsCreateClusterDeploymentRecordsJobResponseMetadata
-        FIELDS = {
-          job_id: "job_id",
-          errors: "errors",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          job_id
-        ].freeze
-        DECODERS = {
-        }.freeze
-      end
-
-      # API model for OrgsCreateClusterDeploymentRecordsJobResponse.
-      class OrgsCreateClusterDeploymentRecordsJobResponse
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalOrgsCreateClusterDeploymentRecordsJobResponseMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalOrgsCreateClusterDeploymentRecordsJobResponseMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalOrgsCreateClusterDeploymentRecordsJobResponseMetadata::DECODERS
-
-        # @return [Integer] The ID of the created job.
-        attr_reader :job_id
-        # @return [Array_of_Hash] Deployments that were rejected during authorization.
-        attr_reader :errors
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
+        SdkClient.request(
+          'GET',
+          [
+            "/users/",
+            SdkClient.encode_path_segment(username),
+            "/orgs"
+          ].join,
+          config: config,
+          query: {
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true),
+          },
+          return_type: [::OctridevGithub::OrganizationSimple],
+          decoder: :json,
+          operation_id: 'orgs_list_for_user',
+          request_options: request_options,
+        ).data
       end
     end
   end
 end
 
-require_relative 'orgs_part_2'
-require_relative 'orgs_part_3'
-require_relative 'orgs_part_4'
-require_relative 'orgs_part_5'
-require_relative 'orgs_part_6'
-require_relative 'orgs_part_7'
-require_relative 'orgs_part_8'
-require_relative 'orgs_part_9'
-require_relative 'orgs_part_10'
-require_relative 'orgs_part_11'
-require_relative 'orgs_part_12'
-require_relative 'orgs_part_13'
+require_relative 'orgs_types'
+require_relative 'orgs_sdk_internal_orgs_get_cluster_deployment_records_job_response_metadata'
+require_relative 'orgs_list_attestations_response'
+require_relative 'orgs_review_pat_grant_request'
+require_relative 'orgs_create_artifact_deployment_record_runtime_risks_item'
+require_relative 'orgs_organizations'
+require_relative 'orgs_artifacts'
+require_relative 'orgs_attestations'
+require_relative 'orgs_blocks'
+require_relative 'orgs_failed_invitations'
+require_relative 'orgs_hooks'
+require_relative 'orgs_insights'
+require_relative 'orgs_installations'
+require_relative 'orgs_invitations'
+require_relative 'orgs_issue_fields'
+require_relative 'orgs_issue_types'
+require_relative 'orgs_members'
+require_relative 'orgs_memberships'
+require_relative 'orgs_organization_roles'
+require_relative 'orgs_outside_collaborators'
+require_relative 'orgs_personal_access_token_requests'
+require_relative 'orgs_personal_access_tokens'
+require_relative 'orgs_properties'
+require_relative 'orgs_public_members'
+require_relative 'orgs_rulesets'
+require_relative 'orgs_security_managers'
+require_relative 'orgs_settings'

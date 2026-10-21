@@ -9,557 +9,251 @@ module OctridevGithub
   module Methods
     # Defines the AgentTasks SDK namespace.
     module AgentTasks
-      # Internal model hydration metadata.
-      class SdkInternalAgentTasksListTasksForRepoResponseTasksItemCreatorMetadata
-        FIELDS = {
-          id: "id",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+      # > !NOTE] > This endpoint is in public preview and is subject to change. Returns a list of tasks for a specific repository **Fine-grained access tokens for "List tasks for repository"** This endpoint works with the following fine-grained token types: * [GitHub App user access tokens * Fine-grained personal access tokens The fine-grained token must have the following permission set: * "Agent tasks" repository permissions (read) GitHub App installation access tokens are not…
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository. The name is not case
+      #   sensitive.
+      # @param per_page [Integer] The number of results per page (max 100).
+      # @param page [Integer] The page number of the results to fetch.
+      # @param sort [AgentTasksListTasksForRepoParameter] The field to sort results
+      #   by. Can be `updated_at` or `created_at`.
+      # @param direction [AgentTasksListTasksForRepoParameter56f15bd4] The direction
+      #   to sort results. Can be `asc` or `desc`.
+      # @param state [String] Comma-separated list of task states to filter by. Can
+      #   be any combination of: `queued`, `in_progress`, `completed`, `failed`,
+      #   `idle`, `waiting_for_user`, `timed_out`, `cancelled`.
+      # @param is_archived [Boolean] Filter by archived status. When `true`, returns
+      #   only archived tasks. When `false` or omitted, returns only non-archived
+      #   tasks. Defaults to `false`.
+      # @param since [String] Only show tasks updated at or after this time (ISO
+      #   8601 timestamp)
+      # @param creator_id [Array_of_Integer] Filter tasks by creator user ID.
+      #   Accepts one or more user IDs.
+      def self.agent_tasks_list_tasks_for_repo(
+        config:,
+        owner:,
+        repo:,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        sort: NOT_GIVEN,
+        direction: NOT_GIVEN,
+        state: NOT_GIVEN,
+        is_archived: NOT_GIVEN,
+        since: NOT_GIVEN,
+        creator_id: NOT_GIVEN,
+        request_options: nil
+      )
+
+        Validation.if_given(per_page) { Validation.validate_range('per_page', per_page, min: 1, max: 100) }
+
+        Validation.if_given(page) { Validation.validate_range('page', page, min: 1) }
+
+        Validation.if_given(since) { Validation.validate_date_time('since', since) }
+
+        SdkClient.request(
+          'GET',
+          [
+            "/agents/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/tasks"
+          ].join,
+          config: config,
+          query: {
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'sort' => QueryValue.new(sort, style: 'form', explode: true),
+            'direction' => QueryValue.new(direction, style: 'form', explode: true),
+            'state' => QueryValue.new(state, style: 'form', explode: true),
+            'is_archived' => QueryValue.new(is_archived, style: 'form', explode: true),
+            'since' => QueryValue.new(since, style: 'form', explode: true),
+            'creator_id' => QueryValue.new(creator_id, style: 'form', explode: true),
+          },
+          return_type: ::OctridevGithub::Methods::AgentTasks::AgentTasksListTasksForRepoResponse,
+          decoder: :json,
+          operation_id: 'agent_tasks_list_tasks_for_repo',
+          request_options: request_options,
+        ).data
       end
 
-      # API model for AgentTasksListTasksForRepoResponseTasksItemCreator.
-      # The entity who created this task
-      class AgentTasksListTasksForRepoResponseTasksItemCreator
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemCreatorMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemCreatorMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemCreatorMetadata::DECODERS
+      # > !NOTE] > This endpoint is in public preview and is subject to change. Starts a new Copilot cloud agent task for a repository. This endpoint is only available to users with a Copilot Business or Copilot Enterprise subscription. **Fine-grained access tokens for "Start a task"** This endpoint works with the following fine-grained token types: * [GitHub App user access tokens * Fine-grained personal access tokens The fine-grained token must have the following permission set: *…
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository. The name is not case
+      #   sensitive.
+      # @param prompt [String] The user's prompt for the agent
+      # @param model [String] The model to use for this task. The allowed models may
+      #   change over time and depend on the user's GitHub Copilot plan and
+      #   organization policies. Currently supported values: `claude-sonnet-4.6`,
+      #   `claude-opus-4.6`, `gpt-5.2-codex`, `gpt-5.3-codex`, `gpt-5.4`,
+      #   `claude-sonnet-4.5`, `claude-opus-4.5`
+      # @param custom_agent [String] Optional identifier for a custom agent to use
+      #   for this task. Use the custom agent's filename without the extension - for
+      #   example, for a `.github/agents/performance-optimizer.agent.md` custom agent,
+      #   use `performance-optimizer`.
+      # @param create_pull_request [Boolean] Whether to create a PR.
+      # @param base_ref [String] Base ref for new branch/PR
+      # @param head_ref [String] Head ref for existing branch/PR. If provided with
+      #   `base_ref`, the agent looks up open PR context for `head_ref` targeting
+      #   `base_ref` and commits to `head_ref` instead of creating a new branch.
+      def self.agent_tasks_create_task_in_repo(
+        config:,
+        owner:,
+        repo:,
+        prompt:,
+        model: NOT_GIVEN,
+        custom_agent: NOT_GIVEN,
+        create_pull_request: NOT_GIVEN,
+        base_ref: NOT_GIVEN,
+        head_ref: NOT_GIVEN,
+        request_options: nil
+      )
 
-        # @return [Integer] The unique identifier of the user
-        attr_reader :id
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
+        SdkClient.request(
+          'POST',
+          [
+            "/agents/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/tasks"
+          ].join,
+          config: config,
+          body: {
+            'prompt' => prompt,
+            'model' => model,
+            'custom_agent' => custom_agent,
+            'create_pull_request' => create_pull_request,
+            'base_ref' => base_ref,
+            'head_ref' => head_ref,
+          },
+          return_type: ::OctridevGithub::Methods::AgentTasks::AgentTasksCreateTaskInRepoResponse,
+          decoder: :json,
+          operation_id: 'agent_tasks_create_task_in_repo',
+          request_options: request_options,
+        ).data
       end
 
-      # Internal model hydration metadata.
-      class SdkInternalAgentTasksListTasksForRepoResponseTasksItemUserCollaboratorsItemMetadata
-        FIELDS = {
-          id: "id",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+      # > !NOTE] > This endpoint is in public preview and is subject to change. Returns a task by ID scoped to an owner/repo path **Fine-grained access tokens for "Get a task by repo"** This endpoint works with the following fine-grained token types: * [GitHub App user access tokens * Fine-grained personal access tokens The fine-grained token must have the following permission set: * "Agent tasks" repository permissions (read) GitHub App installation access tokens are not supported…
+      #
+      # @param owner [String] The account owner of the repository. The name is not
+      #   case sensitive.
+      # @param repo [String] The name of the repository. The name is not case
+      #   sensitive.
+      # @param task_id [String] The unique identifier of the task.
+      def self.agent_tasks_get_task_by_repo_and_id(
+        config:,
+        owner:,
+        repo:,
+        task_id:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/agents/repos/",
+            SdkClient.encode_path_segment(owner),
+            "/",
+            SdkClient.encode_path_segment(repo),
+            "/tasks/",
+            SdkClient.encode_path_segment(task_id)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::Methods::AgentTasks::AgentTasksGetTaskByRepoAndIdResponse,
+          decoder: :json,
+          operation_id: 'agent_tasks_get_task_by_repo_and_id',
+          request_options: request_options,
+        ).data
       end
 
-      # API model for AgentTasksListTasksForRepoResponseTasksItemUserCollaboratorsItem.
-      # A GitHub user
-      class AgentTasksListTasksForRepoResponseTasksItemUserCollaboratorsItem
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemUserCollaboratorsItemMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemUserCollaboratorsItemMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemUserCollaboratorsItemMetadata::DECODERS
+      # > !NOTE] > This endpoint is in public preview and is subject to change. Returns a list of tasks for the authenticated user **Fine-grained access tokens for "List tasks"** This endpoint works with the following fine-grained token types: * [GitHub App user access tokens * Fine-grained personal access tokens The fine-grained token must have the following permission set: * "Agent tasks" repository permissions (read) GitHub App installation access tokens are not supported for…
+      #
+      # @param per_page [Integer] The number of results per page (max 100).
+      # @param page [Integer] The page number of the results to fetch.
+      # @param sort [AgentTasksListTasksParameter] The field to sort results by. Can
+      #   be `updated_at` or `created_at`.
+      # @param direction [AgentTasksListTasksParameterDd4142b9] The direction to
+      #   sort results. Can be `asc` or `desc`.
+      # @param state [String] Comma-separated list of task states to filter by. Can
+      #   be any combination of: `queued`, `in_progress`, `completed`, `failed`,
+      #   `idle`, `waiting_for_user`, `timed_out`, `cancelled`.
+      # @param is_archived [Boolean] Filter by archived status. When `true`, returns
+      #   only archived tasks. When `false` or omitted, returns only non-archived
+      #   tasks. Defaults to `false`.
+      # @param since [String] Only show tasks updated at or after this time (ISO
+      #   8601 timestamp)
+      def self.agent_tasks_list_tasks(
+        config:,
+        per_page: NOT_GIVEN,
+        page: NOT_GIVEN,
+        sort: NOT_GIVEN,
+        direction: NOT_GIVEN,
+        state: NOT_GIVEN,
+        is_archived: NOT_GIVEN,
+        since: NOT_GIVEN,
+        request_options: nil
+      )
 
-        # @return [Integer] The unique identifier of the user
-        attr_reader :id
+        Validation.if_given(per_page) { Validation.validate_range('per_page', per_page, min: 1, max: 100) }
 
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
+        Validation.if_given(page) { Validation.validate_range('page', page, min: 1) }
 
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
+        Validation.if_given(since) { Validation.validate_date_time('since', since) }
 
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
+        SdkClient.request(
+          'GET',
+          "/agents/tasks",
+          config: config,
+          query: {
+            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'sort' => QueryValue.new(sort, style: 'form', explode: true),
+            'direction' => QueryValue.new(direction, style: 'form', explode: true),
+            'state' => QueryValue.new(state, style: 'form', explode: true),
+            'is_archived' => QueryValue.new(is_archived, style: 'form', explode: true),
+            'since' => QueryValue.new(since, style: 'form', explode: true),
+          },
+          return_type: ::OctridevGithub::Methods::AgentTasks::AgentTasksListTasksResponse,
+          decoder: :json,
+          operation_id: 'agent_tasks_list_tasks',
+          request_options: request_options,
+        ).data
       end
 
-      # Internal model hydration metadata.
-      class SdkInternalAgentTasksListTasksForRepoResponseTasksItemOwnerMetadata
-        FIELDS = {
-          id: "id",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
-      end
+      # > !NOTE] > This endpoint is in public preview and is subject to change. Returns a task by ID with its associated sessions **Fine-grained access tokens for "Get a task by ID"** This endpoint works with the following fine-grained token types: * [GitHub App user access tokens * Fine-grained personal access tokens The fine-grained token must have the following permission set: * "Agent tasks" repository permissions (read) GitHub App installation access tokens are not supported…
+      #
+      # @param task_id [String] The unique identifier of the task.
+      def self.agent_tasks_get_task_by_id(
+        config:,
+        task_id:,
+        request_options: nil
+      )
 
-      # API model for AgentTasksListTasksForRepoResponseTasksItemOwner.
-      # The owner of the repository
-      class AgentTasksListTasksForRepoResponseTasksItemOwner
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemOwnerMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemOwnerMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemOwnerMetadata::DECODERS
-
-        # @return [Integer] The unique identifier of the user
-        attr_reader :id
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalAgentTasksListTasksForRepoResponseTasksItemRepositoryMetadata
-        FIELDS = {
-          id: "id",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
-      end
-
-      # API model for AgentTasksListTasksForRepoResponseTasksItemRepository.
-      # The repository this task belongs to
-      class AgentTasksListTasksForRepoResponseTasksItemRepository
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemRepositoryMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemRepositoryMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemRepositoryMetadata::DECODERS
-
-        # @return [Integer] The unique identifier of the repository
-        attr_reader :id
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalAgentTasksListTasksForRepoResponseTasksItemArtifactsItemMetadata
-        FIELDS = {
-          provider: "provider",
-          type: "type",
-          data: "data",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          provider
-          type
-          data
-        ].freeze
-        DECODERS = {
-          provider: lambda do |value|
-            ::OctridevGithub::Methods::AgentTasks::AgentTasksListTasksForRepoResponseTasksItemArtifactsItemProvider.from_value(value)
-          end,
-          type: lambda do |value|
-            ::OctridevGithub::Methods::AgentTasks::AgentTasksListTasksForRepoResponseTasksItemArtifactsItemType.from_value(value)
-          end,
-          data: lambda do |value|
-            ::OctridevGithub::AgentTasksListTasksForRepoResponseTasksItemArtifactsItemData.from_hash(value)
-          end,
-        }.freeze
-      end
-
-      # API model for AgentTasksListTasksForRepoResponseTasksItemArtifactsItem.
-      # A resource generated by the task
-      class AgentTasksListTasksForRepoResponseTasksItemArtifactsItem
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemArtifactsItemMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemArtifactsItemMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemArtifactsItemMetadata::DECODERS
-
-        # @return [AgentTasksListTasksForRepoResponseTasksItemArtifactsItemProvider] Provider namespace
-        attr_reader :provider
-        # @return [AgentTasksListTasksForRepoResponseTasksItemArtifactsItemType] Type of artifact. Available Values: `pull`, `branch`.
-        attr_reader :type
-        # @return [AgentTasksListTasksForRepoResponseTasksItemArtifactsItemData] Resource data (shape depends on type)
-        attr_reader :data
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalAgentTasksListTasksForRepoResponseTasksItemCustomAgentMetadata
-        FIELDS = {
-          id: "id",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
-      end
-
-      # API model for AgentTasksListTasksForRepoResponseTasksItemCustomAgent.
-      # Custom agent metadata associated with this task
-      class AgentTasksListTasksForRepoResponseTasksItemCustomAgent
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemCustomAgentMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemCustomAgentMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemCustomAgentMetadata::DECODERS
-
-        # @return [String] The custom agent's filename without the extension - for example, `performance-optimizer` for a `.github/agents/performance-optimizer.agent.md` custom agent.
-        attr_reader :id
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalAgentTasksListTasksForRepoResponseTasksItemMetadata
-        FIELDS = {
-          id: "id",
-          url: "url",
-          html_url: "html_url",
-          name: "name",
-          creator: "creator",
-          creator_type: "creator_type",
-          user_collaborators: "user_collaborators",
-          owner: "owner",
-          repository: "repository",
-          state: "state",
-          session_count: "session_count",
-          artifacts: "artifacts",
-          archived_at: "archived_at",
-          updated_at: "updated_at",
-          created_at: "created_at",
-          custom_agent: "custom_agent",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          id
-          state
-          created_at
-        ].freeze
-        DECODERS = {
-          creator: lambda do |value|
-            ::OctridevGithub::Methods::AgentTasks::AgentTasksListTasksForRepoResponseTasksItemCreator.from_hash(value)
-          end,
-          creator_type: lambda do |value|
-            ::OctridevGithub::Methods::AgentTasks::AgentTasksListTasksForRepoResponseTasksItemCreatorType.from_value(value)
-          end,
-          user_collaborators: lambda do |value|
-            value&.map { |item| ::OctridevGithub::Methods::AgentTasks::AgentTasksListTasksForRepoResponseTasksItemUserCollaboratorsItem.from_hash(item) }
-          end,
-          owner: lambda do |value|
-            ::OctridevGithub::Methods::AgentTasks::AgentTasksListTasksForRepoResponseTasksItemOwner.from_hash(value)
-          end,
-          repository: lambda do |value|
-            ::OctridevGithub::Methods::AgentTasks::AgentTasksListTasksForRepoResponseTasksItemRepository.from_hash(value)
-          end,
-          state: lambda do |value|
-            ::OctridevGithub::Methods::AgentTasks::AgentTasksListTasksForRepoResponseTasksItemState.from_value(value)
-          end,
-          artifacts: lambda do |value|
-            value&.map { |item| ::OctridevGithub::Methods::AgentTasks::AgentTasksListTasksForRepoResponseTasksItemArtifactsItem.from_hash(item) }
-          end,
-          custom_agent: lambda do |value|
-            ::OctridevGithub::Methods::AgentTasks::AgentTasksListTasksForRepoResponseTasksItemCustomAgent.from_hash(value)
-          end,
-        }.freeze
-      end
-
-      # API model for AgentTasksListTasksForRepoResponseTasksItem.
-      class AgentTasksListTasksForRepoResponseTasksItem
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentTasksListTasksForRepoResponseTasksItemMetadata::DECODERS
-
-        # @return [String] Unique task identifier
-        attr_reader :id
-        # @return [String] API URL for this task
-        attr_reader :url
-        # @return [String] Web URL for this task
-        attr_reader :html_url
-        # @return [String] Human-readable name derived from the task prompt
-        attr_reader :name
-        # @return [AgentTasksListTasksForRepoResponseTasksItemCreator] The entity who created this task
-        attr_reader :creator
-        # @return [AgentTasksListTasksForRepoResponseTasksItemCreatorType] Type of the task creator
-        attr_reader :creator_type
-        # @return [Array_of_AgentTasksListTasksForRepoResponseTasksItemUserCollaboratorsItem] User objects of collaborators on this task
-        attr_reader :user_collaborators
-        # @return [AgentTasksListTasksForRepoResponseTasksItemOwner] The owner of the repository
-        attr_reader :owner
-        # @return [AgentTasksListTasksForRepoResponseTasksItemRepository] The repository this task belongs to
-        attr_reader :repository
-        # @return [AgentTasksListTasksForRepoResponseTasksItemState] Current state of the task, derived from its most recent session
-        attr_reader :state
-        # @return [Integer] Number of sessions in this task
-        attr_reader :session_count
-        # @return [Array_of_AgentTasksListTasksForRepoResponseTasksItemArtifactsItem] Resources created by this task (PRs, branches, etc.)
-        attr_reader :artifacts
-        # @return [String] Timestamp when the task was archived, null if not archived
-        attr_reader :archived_at
-        # @return [String] Timestamp of the most recent update
-        attr_reader :updated_at
-        # @return [String] Timestamp when the task was created
-        attr_reader :created_at
-        # @return [AgentTasksListTasksForRepoResponseTasksItemCustomAgent] Custom agent metadata associated with this task
-        attr_reader :custom_agent
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalAgentTasksListTasksForRepoResponseMetadata
-        FIELDS = {
-          tasks: "tasks",
-          total_active_count: "total_active_count",
-          total_archived_count: "total_archived_count",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          tasks
-        ].freeze
-        DECODERS = {
-          tasks: lambda do |value|
-            value&.map { |item| ::OctridevGithub::Methods::AgentTasks::AgentTasksListTasksForRepoResponseTasksItem.from_hash(item) }
-          end,
-        }.freeze
-      end
-
-      # API model for AgentTasksListTasksForRepoResponse.
-      class AgentTasksListTasksForRepoResponse
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentTasksListTasksForRepoResponseMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentTasksListTasksForRepoResponseMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentTasksListTasksForRepoResponseMetadata::DECODERS
-
-        # @return [Array_of_AgentTasksListTasksForRepoResponseTasksItem] List of tasks
-        attr_reader :tasks
-        # @return [Integer] Total count of active (non-archived) tasks
-        attr_reader :total_active_count
-        # @return [Integer] Total count of archived tasks
-        attr_reader :total_archived_count
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalAgentTasksCreateTaskInRepoMetadata
-        FIELDS = {
-          prompt: "prompt",
-          model: "model",
-          custom_agent: "custom_agent",
-          create_pull_request: "create_pull_request",
-          base_ref: "base_ref",
-          head_ref: "head_ref",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          prompt
-        ].freeze
-        DECODERS = {
-        }.freeze
-      end
-
-      # API model for AgentTasksCreateTaskInRepo.
-      class AgentTasksCreateTaskInRepo
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentTasksCreateTaskInRepoMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentTasksCreateTaskInRepoMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentTasksCreateTaskInRepoMetadata::DECODERS
-
-        # @return [String] The user's prompt for the agent
-        attr_reader :prompt
-        # @return [String] The model to use for this task. The allowed models may change over time and depend on the user's GitHub Copilot plan and organization policies. Currently supported values: `claude-sonnet-4.6`, `claude-opus-4.6`, `gpt-5.2-codex`, `gpt-5.3-codex`, `gpt-5.4`, `claude-sonnet-4.5`, `claude-opus-4.5`
-        attr_reader :model
-        # @return [String] Optional identifier for a custom agent to use for this task. Use the custom agent's filename without the extension - for example, for a `.github/agents/performance-optimizer.agent.md` custom agent, use `performance-optimizer`.
-        attr_reader :custom_agent
-        # @return [Boolean] Whether to create a PR.
-        attr_reader :create_pull_request
-        # @return [String] Base ref for new branch/PR
-        attr_reader :base_ref
-        # @return [String] Head ref for existing branch/PR. If provided with `base_ref`, the agent looks up open PR context for `head_ref` targeting `base_ref` and commits to `head_ref` instead of creating a new branch.
-        attr_reader :head_ref
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalAgentTasksCreateTaskInRepoResponseCreatorMetadata
-        FIELDS = {
-          id: "id",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
-      end
-
-      # API model for AgentTasksCreateTaskInRepoResponseCreator.
-      # The entity who created this task
-      class AgentTasksCreateTaskInRepoResponseCreator
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentTasksCreateTaskInRepoResponseCreatorMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentTasksCreateTaskInRepoResponseCreatorMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentTasksCreateTaskInRepoResponseCreatorMetadata::DECODERS
-
-        # @return [Integer] The unique identifier of the user
-        attr_reader :id
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalAgentTasksCreateTaskInRepoResponseUserCollaboratorsItemMetadata
-        FIELDS = {
-          id: "id",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
-      end
-
-      # API model for AgentTasksCreateTaskInRepoResponseUserCollaboratorsItem.
-      # A GitHub user
-      class AgentTasksCreateTaskInRepoResponseUserCollaboratorsItem
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentTasksCreateTaskInRepoResponseUserCollaboratorsItemMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentTasksCreateTaskInRepoResponseUserCollaboratorsItemMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentTasksCreateTaskInRepoResponseUserCollaboratorsItemMetadata::DECODERS
-
-        # @return [Integer] The unique identifier of the user
-        attr_reader :id
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalAgentTasksCreateTaskInRepoResponseOwnerMetadata
-        FIELDS = {
-          id: "id",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
-      end
-
-      # API model for AgentTasksCreateTaskInRepoResponseOwner.
-      # The owner of the repository
-      class AgentTasksCreateTaskInRepoResponseOwner
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalAgentTasksCreateTaskInRepoResponseOwnerMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalAgentTasksCreateTaskInRepoResponseOwnerMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalAgentTasksCreateTaskInRepoResponseOwnerMetadata::DECODERS
-
-        # @return [Integer] The unique identifier of the user
-        attr_reader :id
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
+        SdkClient.request(
+          'GET',
+          [
+            "/agents/tasks/",
+            SdkClient.encode_path_segment(task_id)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::Methods::AgentTasks::AgentTasksGetTaskByIdResponse,
+          decoder: :json,
+          operation_id: 'agent_tasks_get_task_by_id',
+          request_options: request_options,
+        ).data
       end
     end
   end
 end
 
-require_relative 'agent_tasks_part_2'
-require_relative 'agent_tasks_part_3'
-require_relative 'agent_tasks_part_4'
-require_relative 'agent_tasks_part_5'
-require_relative 'agent_tasks_part_6'
-require_relative 'agent_tasks_part_7'
+require_relative 'agent_tasks_types'
+require_relative 'agent_tasks_sdk_internal_agent_tasks_create_task_in_repo_response_repository_metadata'
+require_relative 'agent_tasks_sdk_internal_agent_tasks_get_task_by_repo_and_id_response_variant1_sessions_item_use'
+require_relative 'agent_tasks_sdk_internal_agent_tasks_list_tasks_response_tasks_item_artifacts_item_metadata'
+require_relative 'agent_tasks_sdk_internal_agent_tasks_get_task_by_id_response_variant1_sessions_item_user_metadat'
+require_relative 'agent_tasks_list_tasks_for_repo_parameter'

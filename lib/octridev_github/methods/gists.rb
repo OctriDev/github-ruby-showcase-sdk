@@ -9,167 +9,6 @@ module OctridevGithub
   module Methods
     # Defines the Gists SDK namespace.
     module Gists
-      # Internal model hydration metadata.
-      class SdkInternalGistsCreateMetadata
-        FIELDS = {
-          description: "description",
-          files: "files",
-          public: "public",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          files
-        ].freeze
-        DECODERS = {
-        }.freeze
-      end
-
-      # API model for GistsCreate.
-      class GistsCreate
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalGistsCreateMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalGistsCreateMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalGistsCreateMetadata::DECODERS
-
-        attr_reader :public
-        # @return [String] Description of the gist
-        attr_reader :description
-        # @return [Hash] Names and content for the files that make up the gist
-        attr_reader :files
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalGistsUpdateMetadata
-        FIELDS = {
-          description: "description",
-          files: "files",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
-      end
-
-      # API model for GistsUpdate.
-      class GistsUpdate
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalGistsUpdateMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalGistsUpdateMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalGistsUpdateMetadata::DECODERS
-
-        # @return [String] The description of the gist.
-        attr_reader :description
-        # @return [Hash] The gist files to be updated, renamed, or deleted. Each `key` must match the current filename (including extension) of the targeted gist file. For example: `hello.py`. To delete a file, set the whole file to null. For example: `hello.py : null`. The file will also be deleted if the specified object does not contain at least one of `content` or `filename`.
-        attr_reader :files
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalGistsCreateCommentMetadata
-        FIELDS = {
-          body: "body",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          body
-        ].freeze
-        DECODERS = {
-        }.freeze
-      end
-
-      # API model for GistsCreateComment.
-      class GistsCreateComment
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalGistsCreateCommentMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalGistsCreateCommentMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalGistsCreateCommentMetadata::DECODERS
-
-        # @return [String] The comment text.
-        attr_reader :body
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalGistsUpdateCommentMetadata
-        FIELDS = {
-          body: "body",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          body
-        ].freeze
-        DECODERS = {
-        }.freeze
-      end
-
-      # API model for GistsUpdateComment.
-      class GistsUpdateComment
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalGistsUpdateCommentMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalGistsUpdateCommentMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalGistsUpdateCommentMetadata::DECODERS
-
-        # @return [String] The comment text.
-        attr_reader :body
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Defines the GistsCreatePublicVariant1 SDK namespace.
-      module GistsCreatePublicVariant1
-        TRUE = 'true'
-        FALSE = 'false'
-        VALUES = ['true', 'false'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
       # Lists the authenticated user's gists or if called anonymously, this endpoint returns all public gists:
       #
       # @param since [String] Only show results that were last updated after the
@@ -233,78 +72,6 @@ module OctridevGithub
           operation_id: 'gists_create',
           request_options: request_options,
           errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
-        ).data
-      end
-
-      # List public gists sorted by most recently updated to least recently updated. Note: With pagination, you can fetch up to 3000 gists. For example, you can fetch 100 pages with 30 gists per page or 30 pages with 100 gists per page.
-      #
-      # @param since [String] Only show results that were last updated after the
-      #   given time. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-      # @param per_page [Integer] The number of results per page (max 100). For more
-      #   information, see "Using pagination in the REST API."
-      # @param page [Integer] The page number of the results to fetch. For more
-      #   information, see "Using pagination in the REST API."
-      def self.gists_list_public(
-        config:,
-        since: NOT_GIVEN,
-        per_page: NOT_GIVEN,
-        page: NOT_GIVEN,
-        request_options: nil
-      )
-
-        Validation.if_given(since) { Validation.validate_date_time('since', since) }
-
-        SdkClient.request(
-          'GET',
-          "/gists/public",
-          config: config,
-          query: {
-            'since' => QueryValue.new(since, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
-          },
-          return_type: [::OctridevGithub::BaseGist],
-          decoder: :json,
-          operation_id: 'gists_list_public',
-          request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
-        ).data
-      end
-
-      # Lists gists starred by the authenticated user. Use `since` to filter by the last-updated timestamp and `page` with `per_page` to paginate the results.
-      #
-      # List the authenticated user's starred gists:
-      #
-      # @param since [String] Only show results that were last updated after the
-      #   given time. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-      # @param per_page [Integer] The number of results per page (max 100). For more
-      #   information, see "Using pagination in the REST API."
-      # @param page [Integer] The page number of the results to fetch. For more
-      #   information, see "Using pagination in the REST API."
-      def self.gists_list_starred(
-        config:,
-        since: NOT_GIVEN,
-        per_page: NOT_GIVEN,
-        page: NOT_GIVEN,
-        request_options: nil
-      )
-
-        Validation.if_given(since) { Validation.validate_date_time('since', since) }
-
-        SdkClient.request(
-          'GET',
-          "/gists/starred",
-          config: config,
-          query: {
-            'since' => QueryValue.new(since, style: 'form', explode: true),
-            'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
-          },
-          return_type: [::OctridevGithub::BaseGist],
-          decoder: :json,
-          operation_id: 'gists_list_starred',
-          request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError },
         ).data
       end
 
@@ -391,164 +158,85 @@ module OctridevGithub
         ).data
       end
 
-      # Lists the comments on a gist. This endpoint supports the following custom media types. For more information, see "Media types." - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
+      # Retrieves a specified revision of a gist. Supply `gist_id` and `sha` to identify the gist and revision; the `application/vnd.github.raw+json` media type returns the raw Markdown and is the default when you do not specify a media type.
+      #
+      # Gets a specified gist revision. This endpoint supports the following custom media types. For more information, see "Media types." - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
       #
       # @param gist_id [String] The unique identifier of the gist.
+      def self.gists_get_revision(
+        config:,
+        gist_id:,
+        sha:,
+        request_options: nil
+      )
+
+        SdkClient.request(
+          'GET',
+          [
+            "/gists/",
+            SdkClient.encode_path_segment(gist_id),
+            "/",
+            SdkClient.encode_path_segment(sha)
+          ].join,
+          config: config,
+          return_type: ::OctridevGithub::GistSimple,
+          decoder: :json,
+          operation_id: 'gists_get_revision',
+          request_options: request_options,
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+        ).data
+      end
+
+      # Lists public gists for the specified user. Use `since` to filter by last-updated time, and use `page` and `per_page` to paginate the results. `per_page` accepts up to 100 results per page.
+      #
+      # Lists public gists for the specified user:
+      #
+      # @param username [String] The handle for the GitHub user account.
+      # @param since [String] Only show results that were last updated after the
+      #   given time. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
       # @param per_page [Integer] The number of results per page (max 100). For more
       #   information, see "Using pagination in the REST API."
       # @param page [Integer] The page number of the results to fetch. For more
       #   information, see "Using pagination in the REST API."
-      def self.gists_list_comments(
+      def self.gists_list_for_user(
         config:,
-        gist_id:,
+        username:,
+        since: NOT_GIVEN,
         per_page: NOT_GIVEN,
         page: NOT_GIVEN,
         request_options: nil
       )
 
+        Validation.if_given(since) { Validation.validate_date_time('since', since) }
+
         SdkClient.request(
           'GET',
           [
-            "/gists/",
-            SdkClient.encode_path_segment(gist_id),
-            "/comments"
+            "/users/",
+            SdkClient.encode_path_segment(username),
+            "/gists"
           ].join,
           config: config,
           query: {
+            'since' => QueryValue.new(since, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'page' => QueryValue.new(page, style: 'form', explode: true),
           },
-          return_type: [::OctridevGithub::GistComment],
+          return_type: [::OctridevGithub::BaseGist],
           decoder: :json,
-          operation_id: 'gists_list_comments',
+          operation_id: 'gists_list_for_user',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
-        ).data
-      end
-
-      # Creates a comment on a gist. This endpoint supports the following custom media types. For more information, see "Media types." - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
-      #
-      # @param gist_id [String] The unique identifier of the gist.
-      # @param body [String] The comment text.
-      def self.gists_create_comment(
-        config:,
-        gist_id:,
-        body:,
-        request_options: nil
-      )
-
-        Validation.validate_length('body', body, max: 65535)
-
-        SdkClient.request(
-          'POST',
-          [
-            "/gists/",
-            SdkClient.encode_path_segment(gist_id),
-            "/comments"
-          ].join,
-          config: config,
-          body: {
-            'body' => body,
-          },
-          return_type: ::OctridevGithub::GistComment,
-          decoder: :json,
-          operation_id: 'gists_create_comment',
-          request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
-        ).data
-      end
-
-      # Gets a comment on a gist. This endpoint supports the following custom media types. For more information, see "Media types." - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
-      #
-      # @param gist_id [String] The unique identifier of the gist.
-      # @param comment_id [Integer] The unique identifier of the comment.
-      def self.gists_get_comment(
-        config:,
-        gist_id:,
-        comment_id:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'GET',
-          [
-            "/gists/",
-            SdkClient.encode_path_segment(gist_id),
-            "/comments/",
-            SdkClient.encode_path_segment(comment_id)
-          ].join,
-          config: config,
-          return_type: ::OctridevGithub::GistComment,
-          decoder: :json,
-          operation_id: 'gists_get_comment',
-          request_options: request_options,
-          errors: { '403' => ::OctridevGithub::ForbiddenGist, '404' => ::OctridevGithub::BasicError },
-        ).data
-      end
-
-      # Updates a comment on a gist. This endpoint supports the following custom media types. For more information, see "Media types." - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
-      #
-      # @param gist_id [String] The unique identifier of the gist.
-      # @param comment_id [Integer] The unique identifier of the comment.
-      # @param body [String] The comment text.
-      def self.gists_update_comment(
-        config:,
-        gist_id:,
-        comment_id:,
-        body:,
-        request_options: nil
-      )
-
-        Validation.validate_length('body', body, max: 65535)
-
-        SdkClient.request(
-          'PATCH',
-          [
-            "/gists/",
-            SdkClient.encode_path_segment(gist_id),
-            "/comments/",
-            SdkClient.encode_path_segment(comment_id)
-          ].join,
-          config: config,
-          body: {
-            'body' => body,
-          },
-          return_type: ::OctridevGithub::GistComment,
-          decoder: :json,
-          operation_id: 'gists_update_comment',
-          request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
-        ).data
-      end
-
-      # Removes a specific comment from a gist. Use `gist_id` and `comment_id` to identify the gist-comment pair; the operation returns no content when the comment is deleted.
-      #
-      # @param gist_id [String] The unique identifier of the gist.
-      # @param comment_id [Integer] The unique identifier of the comment.
-      def self.gists_delete_comment(
-        config:,
-        gist_id:,
-        comment_id:,
-        request_options: nil
-      )
-
-        SdkClient.request(
-          'DELETE',
-          [
-            "/gists/",
-            SdkClient.encode_path_segment(gist_id),
-            "/comments/",
-            SdkClient.encode_path_segment(comment_id)
-          ].join,
-          config: config,
-          decoder: :empty,
-          operation_id: 'gists_delete_comment',
-          request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '422' => ::OctridevGithub::ValidationError },
         ).data
       end
     end
   end
 end
 
-require_relative 'gists_part_2'
+require_relative 'gists_types'
+require_relative 'gists_public'
+require_relative 'gists_starred'
+require_relative 'gists_comments'
+require_relative 'gists_commits'
+require_relative 'gists_forks'
+require_relative 'gists_star'

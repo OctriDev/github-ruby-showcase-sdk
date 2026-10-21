@@ -7621,8 +7621,8 @@ module OctridevGithub
     end
 
     # List all templates available to pass as an option when creating a repository.
-    define_method(:get_all_templates) do |request_options: nil|
-      ::OctridevGithub::Methods::Gitignore.gitignore_get_all_templates(config: @config, request_options: request_options)
+    def list_templates(request_options: nil)
+      ::OctridevGithub::Methods::Gitignore.list_templates(config: @config, request_options: request_options)
     end
 
     # Retrieves the content of a gitignore template by name. The `application/vnd.github.raw+json` media type returns the raw `.gitignore` contents; the response object includes the template name and source.
