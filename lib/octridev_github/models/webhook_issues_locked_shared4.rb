@@ -5,144 +5,144 @@
 
 # webhook_issues_locked domain models
 module OctridevGithub
-# Defines the WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsPages SDK namespace.
-module WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsPages
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsPages SDK namespace.
+  module WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsPages
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsPullRequests SDK namespace.
-module WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsPullRequests
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsPullRequests SDK namespace.
+  module WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsPullRequests
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsRepositoryHooks SDK namespace.
-module WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsRepositoryHooks
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsRepositoryHooks SDK namespace.
+  module WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsRepositoryHooks
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsReposX46c3065bfb SDK namespace.
-module WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsReposX46c3065bfb
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsReposX46c3065bfb SDK namespace.
+  module WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsReposX46c3065bfb
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsSecreXf293505b06 SDK namespace.
-module WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsSecreXf293505b06
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsSecreXf293505b06 SDK namespace.
+  module WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsSecreXf293505b06
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsSecrets SDK namespace.
-module WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsSecrets
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsSecrets SDK namespace.
+  module WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsSecrets
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsSecurityEvents SDK namespace.
-module WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsSecurityEvents
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsSecurityEvents SDK namespace.
+  module WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsSecurityEvents
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsSecurX27bc993d7b SDK namespace.
-module WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsSecurX27bc993d7b
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsSecurX27bc993d7b SDK namespace.
+  module WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsSecurX27bc993d7b
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsSingleFile SDK namespace.
-module WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsSingleFile
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsSingleFile SDK namespace.
+  module WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsSingleFile
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsStatuses SDK namespace.
-module WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsStatuses
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsStatuses SDK namespace.
+  module WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsStatuses
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsVulneX0f50207186 SDK namespace.
-module WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsVulneX0f50207186
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsVulneX0f50207186 SDK namespace.
+  module WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsVulneX0f50207186
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsWorkflows SDK namespace.
-module WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsWorkflows
-  READ = 'read'
-  WRITE = 'write'
-  VALUES = ['read', 'write'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsWorkflows SDK namespace.
+  module WebhookIssuesLockedIssuePerformedViaGithubAppPermissionsWorkflows
+    READ = 'read'
+    WRITE = 'write'
+    VALUES = %w[read write].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesLockedIssueState SDK namespace.
-module WebhookIssuesLockedIssueState
-  OPEN = 'open'
-  CLOSED = 'closed'
-  VALUES = ['open', 'closed'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesLockedIssueState SDK namespace.
+  module WebhookIssuesLockedIssueState
+    OPEN = 'open'
+    CLOSED = 'closed'
+    VALUES = %w[open closed].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssuesLockedIssueUserType SDK namespace.
-module WebhookIssuesLockedIssueUserType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssuesLockedIssueUserType SDK namespace.
+  module WebhookIssuesLockedIssueUserType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 end

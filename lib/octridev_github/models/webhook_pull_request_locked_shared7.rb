@@ -5,15 +5,15 @@
 
 # webhook_pull_request_locked domain models
 module OctridevGithub
-# Defines the WebhookPullRequestLockedPullRequestUserType SDK namespace.
-module WebhookPullRequestLockedPullRequestUserType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  MANNEQUIN = 'Mannequin'
-  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestLockedPullRequestUserType SDK namespace.
+  module WebhookPullRequestLockedPullRequestUserType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    MANNEQUIN = 'Mannequin'
+    VALUES = %w[Bot User Organization Mannequin].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 end

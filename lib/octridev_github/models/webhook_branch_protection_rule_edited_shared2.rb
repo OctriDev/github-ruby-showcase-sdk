@@ -5,56 +5,56 @@
 
 # webhook_branch_protection_rule_edited domain models
 module OctridevGithub
-# Defines the WebhookBranchProtectionRuleEditedAction SDK namespace.
-module WebhookBranchProtectionRuleEditedAction
-  EDITED = 'edited'
-  VALUES = ['edited'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookBranchProtectionRuleEditedAction SDK namespace.
+  module WebhookBranchProtectionRuleEditedAction
+    EDITED = 'edited'
+    VALUES = ['edited'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookBranchProtectionRuleEditedChangesLinearHistoryRequiremX6df53cb28e SDK namespace.
-module WebhookBranchProtectionRuleEditedChangesLinearHistoryRequiremX6df53cb28e
-  OFF = 'off'
-  NON_ADMINS = 'non_admins'
-  EVERYONE = 'everyone'
-  VALUES = ['off', 'non_admins', 'everyone'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookBranchProtectionRuleEditedChangesLinearHistoryRequiremX6df53cb28e SDK namespace.
+  module WebhookBranchProtectionRuleEditedChangesLinearHistoryRequiremX6df53cb28e
+    OFF = 'off'
+    NON_ADMINS = 'non_admins'
+    EVERYONE = 'everyone'
+    VALUES = %w[off non_admins everyone].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookBranchProtectionRuleEditedChangesLockBranchEnforcementLevelFrom SDK namespace.
-module WebhookBranchProtectionRuleEditedChangesLockBranchEnforcementLevelFrom
-  OFF = 'off'
-  NON_ADMINS = 'non_admins'
-  EVERYONE = 'everyone'
-  VALUES = ['off', 'non_admins', 'everyone'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookBranchProtectionRuleEditedChangesLockBranchEnforcementLevelFrom SDK namespace.
+  module WebhookBranchProtectionRuleEditedChangesLockBranchEnforcementLevelFrom
+    OFF = 'off'
+    NON_ADMINS = 'non_admins'
+    EVERYONE = 'everyone'
+    VALUES = %w[off non_admins everyone].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookBranchProtectionRuleEditedChangesPullRequestReviewsEnfXe03f63e174 SDK namespace.
-module WebhookBranchProtectionRuleEditedChangesPullRequestReviewsEnfXe03f63e174
-  OFF = 'off'
-  NON_ADMINS = 'non_admins'
-  EVERYONE = 'everyone'
-  VALUES = ['off', 'non_admins', 'everyone'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookBranchProtectionRuleEditedChangesPullRequestReviewsEnfXe03f63e174 SDK namespace.
+  module WebhookBranchProtectionRuleEditedChangesPullRequestReviewsEnfXe03f63e174
+    OFF = 'off'
+    NON_ADMINS = 'non_admins'
+    EVERYONE = 'everyone'
+    VALUES = %w[off non_admins everyone].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookBranchProtectionRuleEditedChangesRequiredStatusChecksEX6f404586a2 SDK namespace.
-module WebhookBranchProtectionRuleEditedChangesRequiredStatusChecksEX6f404586a2
-  OFF = 'off'
-  NON_ADMINS = 'non_admins'
-  EVERYONE = 'everyone'
-  VALUES = ['off', 'non_admins', 'everyone'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookBranchProtectionRuleEditedChangesRequiredStatusChecksEX6f404586a2 SDK namespace.
+  module WebhookBranchProtectionRuleEditedChangesRequiredStatusChecksEX6f404586a2
+    OFF = 'off'
+    NON_ADMINS = 'non_admins'
+    EVERYONE = 'everyone'
+    VALUES = %w[off non_admins everyone].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 end

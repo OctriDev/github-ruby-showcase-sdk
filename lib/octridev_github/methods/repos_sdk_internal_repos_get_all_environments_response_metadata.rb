@@ -12,15 +12,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposGetAllEnvironmentsResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          environments: "environments",
+          total_count: 'total_count',
+          environments: 'environments'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           environments: lambda do |value|
             value&.map { |item| ::OctridevGithub::Environment.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -56,15 +55,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreateOrUpdateEnvironmentReviewersItemMetadata
         FIELDS = {
-          type: "type",
-          id: "id",
+          type: 'type',
+          id: 'id'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           type: lambda do |value|
             ::OctridevGithub::DeploymentReviewerType.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -101,13 +99,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreateOrUpdateEnvironmentMetadata
         FIELDS = {
-          wait_timer: "wait_timer",
-          prevent_self_review: "prevent_self_review",
-          reviewers: "reviewers",
-          deployment_branch_policy: "deployment_branch_policy",
+          wait_timer: 'wait_timer',
+          prevent_self_review: 'prevent_self_review',
+          reviewers: 'reviewers',
+          deployment_branch_policy: 'deployment_branch_policy'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           wait_timer: lambda do |value|
             ::OctridevGithub::WaitTimer.from_value(value)
@@ -120,7 +117,7 @@ module OctridevGithub
           end,
           deployment_branch_policy: lambda do |value|
             ::OctridevGithub::DeploymentBranchPolicySettings.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -161,8 +158,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposListDeploymentBranchPoliciesResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          branch_policies: "branch_policies",
+          total_count: 'total_count',
+          branch_policies: 'branch_policies'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -171,7 +168,7 @@ module OctridevGithub
         DECODERS = {
           branch_policies: lambda do |value|
             value&.map { |item| ::OctridevGithub::DeploymentBranchPolicy.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -207,15 +204,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposGetAllDeploymentProtectionRulesResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          custom_deployment_protection_rules: "custom_deployment_protection_rules",
+          total_count: 'total_count',
+          custom_deployment_protection_rules: 'custom_deployment_protection_rules'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           custom_deployment_protection_rules: lambda do |value|
             value&.map { |item| ::OctridevGithub::DeploymentProtectionRule.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -251,12 +247,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreateDeploymentProtectionRuleMetadata
         FIELDS = {
-          integration_id: "integration_id",
+          integration_id: 'integration_id'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposCreateDeploymentProtectionRule.
@@ -290,15 +284,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposListCustomDeploymentRuleIntegrationsResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          available_custom_deployment_protection_rule_integrations: "available_custom_deployment_protection_rule_integrations",
+          total_count: 'total_count',
+          available_custom_deployment_protection_rule_integrations: 'available_custom_deployment_protection_rule_integrations'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           available_custom_deployment_protection_rule_integrations: lambda do |value|
             value&.map { |item| ::OctridevGithub::CustomDeploymentRuleApp.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -334,14 +327,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreateForkMetadata
         FIELDS = {
-          organization: "organization",
-          name: "name",
-          default_branch_only: "default_branch_only",
+          organization: 'organization',
+          name: 'name',
+          default_branch_only: 'default_branch_only'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposCreateFork.
@@ -379,13 +370,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreateWebhookConfigMetadata
         FIELDS = {
-          url: "url",
-          content_type: "content_type",
-          secret: "secret",
-          insecure_ssl: "insecure_ssl",
+          url: 'url',
+          content_type: 'content_type',
+          secret: 'secret',
+          insecure_ssl: 'insecure_ssl'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           url: lambda do |value|
             ::OctridevGithub::WebhookConfigUrl.from_value(value)
@@ -398,7 +388,7 @@ module OctridevGithub
           end,
           insecure_ssl: lambda do |value|
             ::OctridevGithub::WebhookConfigInsecureSsl.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -439,17 +429,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreateWebhookMetadata
         FIELDS = {
-          name: "name",
-          config: "config",
-          events: "events",
-          active: "active",
+          name: 'name',
+          config: 'config',
+          events: 'events',
+          active: 'active'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           config: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposCreateWebhookConfig.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -490,18 +479,17 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateWebhookMetadata
         FIELDS = {
-          config: "config",
-          events: "events",
-          add_events: "add_events",
-          remove_events: "remove_events",
-          active: "active",
+          config: 'config',
+          events: 'events',
+          add_events: 'add_events',
+          remove_events: 'remove_events',
+          active: 'active'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           config: lambda do |value|
             ::OctridevGithub::WebhookConfig.from_hash(value)
-          end,
+          end
         }.freeze
       end
 

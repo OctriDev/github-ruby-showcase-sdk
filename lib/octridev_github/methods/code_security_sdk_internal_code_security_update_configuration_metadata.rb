@@ -12,35 +12,34 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodeSecurityUpdateConfigurationMetadata
         FIELDS = {
-          name: "name",
-          description: "description",
-          advanced_security: "advanced_security",
-          code_security: "code_security",
-          dependency_graph: "dependency_graph",
-          dependency_graph_autosubmit_action: "dependency_graph_autosubmit_action",
-          dependency_graph_autosubmit_action_options: "dependency_graph_autosubmit_action_options",
-          dependabot_alerts: "dependabot_alerts",
-          dependabot_security_updates: "dependabot_security_updates",
-          dependabot_delegated_alert_dismissal: "dependabot_delegated_alert_dismissal",
-          code_scanning_default_setup: "code_scanning_default_setup",
-          code_scanning_default_setup_options: "code_scanning_default_setup_options",
-          code_scanning_options: "code_scanning_options",
-          code_scanning_delegated_alert_dismissal: "code_scanning_delegated_alert_dismissal",
-          secret_protection: "secret_protection",
-          secret_scanning: "secret_scanning",
-          secret_scanning_push_protection: "secret_scanning_push_protection",
-          secret_scanning_delegated_bypass: "secret_scanning_delegated_bypass",
-          secret_scanning_delegated_bypass_options: "secret_scanning_delegated_bypass_options",
-          secret_scanning_validity_checks: "secret_scanning_validity_checks",
-          secret_scanning_non_provider_patterns: "secret_scanning_non_provider_patterns",
-          secret_scanning_generic_secrets: "secret_scanning_generic_secrets",
-          secret_scanning_delegated_alert_dismissal: "secret_scanning_delegated_alert_dismissal",
-          secret_scanning_extended_metadata: "secret_scanning_extended_metadata",
-          private_vulnerability_reporting: "private_vulnerability_reporting",
-          enforcement: "enforcement",
+          name: 'name',
+          description: 'description',
+          advanced_security: 'advanced_security',
+          code_security: 'code_security',
+          dependency_graph: 'dependency_graph',
+          dependency_graph_autosubmit_action: 'dependency_graph_autosubmit_action',
+          dependency_graph_autosubmit_action_options: 'dependency_graph_autosubmit_action_options',
+          dependabot_alerts: 'dependabot_alerts',
+          dependabot_security_updates: 'dependabot_security_updates',
+          dependabot_delegated_alert_dismissal: 'dependabot_delegated_alert_dismissal',
+          code_scanning_default_setup: 'code_scanning_default_setup',
+          code_scanning_default_setup_options: 'code_scanning_default_setup_options',
+          code_scanning_options: 'code_scanning_options',
+          code_scanning_delegated_alert_dismissal: 'code_scanning_delegated_alert_dismissal',
+          secret_protection: 'secret_protection',
+          secret_scanning: 'secret_scanning',
+          secret_scanning_push_protection: 'secret_scanning_push_protection',
+          secret_scanning_delegated_bypass: 'secret_scanning_delegated_bypass',
+          secret_scanning_delegated_bypass_options: 'secret_scanning_delegated_bypass_options',
+          secret_scanning_validity_checks: 'secret_scanning_validity_checks',
+          secret_scanning_non_provider_patterns: 'secret_scanning_non_provider_patterns',
+          secret_scanning_generic_secrets: 'secret_scanning_generic_secrets',
+          secret_scanning_delegated_alert_dismissal: 'secret_scanning_delegated_alert_dismissal',
+          secret_scanning_extended_metadata: 'secret_scanning_extended_metadata',
+          private_vulnerability_reporting: 'private_vulnerability_reporting',
+          enforcement: 'enforcement'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           advanced_security: lambda do |value|
             ::OctridevGithub::Methods::CodeSecurity::CodeSecurityUpdateConfigurationAdvancedSecurity.from_value(value)
@@ -113,7 +112,7 @@ module OctridevGithub
           end,
           enforcement: lambda do |value|
             ::OctridevGithub::Methods::CodeSecurity::CodeSecurityUpdateConfigurationEnforcement.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -198,8 +197,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodeSecurityAttachConfigurationMetadata
         FIELDS = {
-          scope: "scope",
-          selected_repository_ids: "selected_repository_ids",
+          scope: 'scope',
+          selected_repository_ids: 'selected_repository_ids'
         }.freeze
         REQUIRED_FIELDS = %i[
           scope
@@ -207,7 +206,7 @@ module OctridevGithub
         DECODERS = {
           scope: lambda do |value|
             ::OctridevGithub::Methods::CodeSecurity::CodeSecurityAttachConfigurationScope.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -244,14 +243,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodeSecuritySetConfigurationAsDefaultMetadata
         FIELDS = {
-          default_for_new_repos: "default_for_new_repos",
+          default_for_new_repos: 'default_for_new_repos'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           default_for_new_repos: lambda do |value|
             ::OctridevGithub::Methods::CodeSecurity::CodeSecuritySetConfigurationAsDefaultDefaultForNewRepos.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -286,18 +284,17 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodeSecuritySetConfigurationAsDefaultResponseMetadata
         FIELDS = {
-          default_for_new_repos: "default_for_new_repos",
-          configuration: "configuration",
+          default_for_new_repos: 'default_for_new_repos',
+          configuration: 'configuration'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           default_for_new_repos: lambda do |value|
             ::OctridevGithub::Methods::CodeSecurity::CodeSecuritySetConfigurationAsDefaultResponseDefaultForNewRepos.from_value(value)
           end,
           configuration: lambda do |value|
             ::OctridevGithub::CodeSecurityConfiguration.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -336,7 +333,7 @@ module OctridevGithub
         ENABLED = 'enabled'
         DISABLED = 'disabled'
         NOT_SET = 'not_set'
-        VALUES = ['enabled', 'disabled', 'not_set'].freeze
+        VALUES = %w[enabled disabled not_set].freeze
         def self.from_value(value)
           value
         end
@@ -347,7 +344,7 @@ module OctridevGithub
         ENABLED = 'enabled'
         DISABLED = 'disabled'
         NOT_SET = 'not_set'
-        VALUES = ['enabled', 'disabled', 'not_set'].freeze
+        VALUES = %w[enabled disabled not_set].freeze
         def self.from_value(value)
           value
         end
@@ -358,7 +355,7 @@ module OctridevGithub
         ENABLED = 'enabled'
         DISABLED = 'disabled'
         NOT_SET = 'not_set'
-        VALUES = ['enabled', 'disabled', 'not_set'].freeze
+        VALUES = %w[enabled disabled not_set].freeze
         def self.from_value(value)
           value
         end
@@ -370,7 +367,7 @@ module OctridevGithub
         DISABLED = 'disabled'
         CODE_SECURITY = 'code_security'
         SECRET_PROTECTION = 'secret_protection'
-        VALUES = ['enabled', 'disabled', 'code_security', 'secret_protection'].freeze
+        VALUES = %w[enabled disabled code_security secret_protection].freeze
         def self.from_value(value)
           value
         end
@@ -382,7 +379,7 @@ module OctridevGithub
         NONE = 'none'
         PRIVATE_AND_INTERNAL = 'private_and_internal'
         PUBLIC = 'public'
-        VALUES = ['all', 'none', 'private_and_internal', 'public'].freeze
+        VALUES = %w[all none private_and_internal public].freeze
         def self.from_value(value)
           value
         end
@@ -392,7 +389,7 @@ module OctridevGithub
       module CodeSecurityUpdateConfigurationEnforcement
         ENFORCED = 'enforced'
         UNENFORCED = 'unenforced'
-        VALUES = ['enforced', 'unenforced'].freeze
+        VALUES = %w[enforced unenforced].freeze
         def self.from_value(value)
           value
         end
@@ -403,7 +400,7 @@ module OctridevGithub
         ENABLED = 'enabled'
         DISABLED = 'disabled'
         NOT_SET = 'not_set'
-        VALUES = ['enabled', 'disabled', 'not_set'].freeze
+        VALUES = %w[enabled disabled not_set].freeze
         def self.from_value(value)
           value
         end
@@ -414,7 +411,7 @@ module OctridevGithub
         ENABLED = 'enabled'
         DISABLED = 'disabled'
         NOT_SET = 'not_set'
-        VALUES = ['enabled', 'disabled', 'not_set'].freeze
+        VALUES = %w[enabled disabled not_set].freeze
         def self.from_value(value)
           value
         end
@@ -425,7 +422,7 @@ module OctridevGithub
         ENABLED = 'enabled'
         DISABLED = 'disabled'
         NOT_SET = 'not_set'
-        VALUES = ['enabled', 'disabled', 'not_set'].freeze
+        VALUES = %w[enabled disabled not_set].freeze
         def self.from_value(value)
           value
         end
@@ -435,7 +432,7 @@ module OctridevGithub
       module CodeSecurityAttachEnterpriseConfigurationScope
         ALL = 'all'
         ALL_WITHOUT_CONFIGURATIONS = 'all_without_configurations'
-        VALUES = ['all', 'all_without_configurations'].freeze
+        VALUES = %w[all all_without_configurations].freeze
         def self.from_value(value)
           value
         end
@@ -446,7 +443,7 @@ module OctridevGithub
         ENABLED = 'enabled'
         DISABLED = 'disabled'
         NOT_SET = 'not_set'
-        VALUES = ['enabled', 'disabled', 'not_set'].freeze
+        VALUES = %w[enabled disabled not_set].freeze
         def self.from_value(value)
           value
         end
@@ -457,7 +454,7 @@ module OctridevGithub
         ENABLED = 'enabled'
         DISABLED = 'disabled'
         NOT_SET = 'not_set'
-        VALUES = ['enabled', 'disabled', 'not_set'].freeze
+        VALUES = %w[enabled disabled not_set].freeze
         def self.from_value(value)
           value
         end
@@ -468,7 +465,7 @@ module OctridevGithub
         ENABLED = 'enabled'
         DISABLED = 'disabled'
         NOT_SET = 'not_set'
-        VALUES = ['enabled', 'disabled', 'not_set'].freeze
+        VALUES = %w[enabled disabled not_set].freeze
         def self.from_value(value)
           value
         end
@@ -479,7 +476,7 @@ module OctridevGithub
         ENABLED = 'enabled'
         DISABLED = 'disabled'
         NOT_SET = 'not_set'
-        VALUES = ['enabled', 'disabled', 'not_set'].freeze
+        VALUES = %w[enabled disabled not_set].freeze
         def self.from_value(value)
           value
         end
@@ -490,7 +487,7 @@ module OctridevGithub
         ENABLED = 'enabled'
         DISABLED = 'disabled'
         NOT_SET = 'not_set'
-        VALUES = ['enabled', 'disabled', 'not_set'].freeze
+        VALUES = %w[enabled disabled not_set].freeze
         def self.from_value(value)
           value
         end
@@ -501,7 +498,7 @@ module OctridevGithub
         ENABLED = 'enabled'
         DISABLED = 'disabled'
         NOT_SET = 'not_set'
-        VALUES = ['enabled', 'disabled', 'not_set'].freeze
+        VALUES = %w[enabled disabled not_set].freeze
         def self.from_value(value)
           value
         end
@@ -512,7 +509,7 @@ module OctridevGithub
         ENABLED = 'enabled'
         DISABLED = 'disabled'
         NOT_SET = 'not_set'
-        VALUES = ['enabled', 'disabled', 'not_set'].freeze
+        VALUES = %w[enabled disabled not_set].freeze
         def self.from_value(value)
           value
         end
@@ -523,7 +520,7 @@ module OctridevGithub
         ENABLED = 'enabled'
         DISABLED = 'disabled'
         NOT_SET = 'not_set'
-        VALUES = ['enabled', 'disabled', 'not_set'].freeze
+        VALUES = %w[enabled disabled not_set].freeze
         def self.from_value(value)
           value
         end
@@ -533,7 +530,7 @@ module OctridevGithub
       module CodeSecurityCreateConfigurationEnforcement
         ENFORCED = 'enforced'
         UNENFORCED = 'unenforced'
-        VALUES = ['enforced', 'unenforced'].freeze
+        VALUES = %w[enforced unenforced].freeze
         def self.from_value(value)
           value
         end
@@ -546,8 +543,8 @@ module OctridevGithub
         PUBLIC = 'public'
         PRIVATE_OR_INTERNAL = 'private_or_internal'
         SELECTED = 'selected'
-        VALUES = [
-          'all', 'all_without_configurations', 'public', 'private_or_internal', 'selected'
+        VALUES = %w[
+          all all_without_configurations public private_or_internal selected
         ].freeze
         def self.from_value(value)
           value
@@ -559,7 +556,7 @@ module OctridevGithub
         ENABLED = 'enabled'
         DISABLED = 'disabled'
         NOT_SET = 'not_set'
-        VALUES = ['enabled', 'disabled', 'not_set'].freeze
+        VALUES = %w[enabled disabled not_set].freeze
         def self.from_value(value)
           value
         end
@@ -571,7 +568,7 @@ module OctridevGithub
         DISABLED = 'disabled'
         CODE_SECURITY = 'code_security'
         SECRET_PROTECTION = 'secret_protection'
-        VALUES = ['enabled', 'disabled', 'code_security', 'secret_protection'].freeze
+        VALUES = %w[enabled disabled code_security secret_protection].freeze
         def self.from_value(value)
           value
         end

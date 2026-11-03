@@ -5,660 +5,656 @@
 
 # webhook_pull_request_review_thread_unresolved domain models
 module OctridevGithub
-# API model for WebhookPullRequestReviewThreadUnresolvedPullRequest.
-# Required object value serialized in the `pull_request` wire field.
-class WebhookPullRequestReviewThreadUnresolvedPullRequest
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestMetadata::DECODERS
+  # API model for WebhookPullRequestReviewThreadUnresolvedPullRequest.
+  # Required object value serialized in the `pull_request` wire field.
+  class WebhookPullRequestReviewThreadUnresolvedPullRequest
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestMetadata::DECODERS
 
-  # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestLinks] Required object value serialized in the `_links` wire field.
-  attr_reader :links
-  # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestActiveLockReason] Required enumerated value serialized in the `active_lock_reason` wire field.
-  attr_reader :active_lock_reason
-  # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestAssignee] Required object value serialized in the `assignee` wire field.
-  attr_reader :assignee
-  # @return [Array_of_WebhookPullRequestReviewThreadUnresolvedPullRequestAssigneesItem] Required array value serialized in the `assignees` wire field.
-  attr_reader :assignees
-  # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestAuthorAssociation] How the author is associated with the repository.
-  attr_reader :author_association
-  # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestAutoMerge] The status of auto merging a pull request.
-  attr_reader :auto_merge
-  # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestBase] Required object value serialized in the `base` wire field.
-  attr_reader :base
-  # @return [String] Required `string` value serialized in the `body` wire field.
-  attr_reader :body
-  # @return [String] Required `string` value serialized in the `closed_at` wire field.
-  attr_reader :closed_at
-  # @return [String] Required `uri`-formatted value serialized in the `comments_url` wire field.
-  attr_reader :comments_url
-  # @return [String] Required `uri`-formatted value serialized in the `commits_url` wire field.
-  attr_reader :commits_url
-  # @return [String] Required `string` value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Required `uri`-formatted value serialized in the `diff_url` wire field.
-  attr_reader :diff_url
-  # @return [Boolean] Required `boolean` value serialized in the `draft` wire field.
-  attr_reader :draft
-  # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestHead] Required object value serialized in the `head` wire field.
-  attr_reader :head
-  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `uri`-formatted value serialized in the `issue_url` wire field.
-  attr_reader :issue_url
-  # @return [Array_of_WebhookPullRequestReviewThreadUnresolvedPullRequestLabelsItem] Required array value serialized in the `labels` wire field.
-  attr_reader :labels
-  # @return [Boolean] Required `boolean` value serialized in the `locked` wire field.
-  attr_reader :locked
-  # @return [String] Required `string` value serialized in the `merge_commit_sha` wire field.
-  attr_reader :merge_commit_sha
-  # @return [String] Required `string` value serialized in the `merged_at` wire field.
-  attr_reader :merged_at
-  # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestMilestone] A collection of related issues and pull requests.
-  attr_reader :milestone
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [Integer] Required `integer` value serialized in the `number` wire field.
-  attr_reader :number
-  # @return [String] Required `uri`-formatted value serialized in the `patch_url` wire field.
-  attr_reader :patch_url
-  # @return [Array_of_WebhookPullRequestReviewThreadUnresolvedPullRequestRequestedRX0bac14bff6] Required array value serialized in the `requested_reviewers` wire field.
-  attr_reader :requested_reviewers
-  # @return [Array_of_WebhookPullRequestReviewThreadUnresolvedPullRequestRequestedTeamsItem] Required array value serialized in the `requested_teams` wire field.
-  attr_reader :requested_teams
-  # @return [String] Required `uri-template`-formatted value serialized in the `review_comment_url` wire field.
-  attr_reader :review_comment_url
-  # @return [String] Required `uri`-formatted value serialized in the `review_comments_url` wire field.
-  attr_reader :review_comments_url
-  # @return [PullRequestStack] The stack information associated with a pull request.
-  attr_reader :stack
-  # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestState] Required enumerated value serialized in the `state` wire field.
-  attr_reader :state
-  # @return [String] Required `uri`-formatted value serialized in the `statuses_url` wire field.
-  attr_reader :statuses_url
-  # @return [String] Required `string` value serialized in the `title` wire field.
-  attr_reader :title
-  # @return [String] Required `string` value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestUser] Required object value serialized in the `user` wire field.
-  attr_reader :user
+    # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestLinks] Required object value serialized in the `_links` wire field.
+    attr_reader :links
+    # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestActiveLockReason] Required enumerated value serialized in the `active_lock_reason` wire field.
+    attr_reader :active_lock_reason
+    # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestAssignee] Required object value serialized in the `assignee` wire field.
+    attr_reader :assignee
+    # @return [Array_of_WebhookPullRequestReviewThreadUnresolvedPullRequestAssigneesItem] Required array value serialized in the `assignees` wire field.
+    attr_reader :assignees
+    # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestAuthorAssociation] How the author is associated with the repository.
+    attr_reader :author_association
+    # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestAutoMerge] The status of auto merging a pull request.
+    attr_reader :auto_merge
+    # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestBase] Required object value serialized in the `base` wire field.
+    attr_reader :base
+    # @return [String] Required `string` value serialized in the `body` wire field.
+    attr_reader :body
+    # @return [String] Required `string` value serialized in the `closed_at` wire field.
+    attr_reader :closed_at
+    # @return [String] Required `uri`-formatted value serialized in the `comments_url` wire field.
+    attr_reader :comments_url
+    # @return [String] Required `uri`-formatted value serialized in the `commits_url` wire field.
+    attr_reader :commits_url
+    # @return [String] Required `string` value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Required `uri`-formatted value serialized in the `diff_url` wire field.
+    attr_reader :diff_url
+    # @return [Boolean] Required `boolean` value serialized in the `draft` wire field.
+    attr_reader :draft
+    # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestHead] Required object value serialized in the `head` wire field.
+    attr_reader :head
+    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `uri`-formatted value serialized in the `issue_url` wire field.
+    attr_reader :issue_url
+    # @return [Array_of_WebhookPullRequestReviewThreadUnresolvedPullRequestLabelsItem] Required array value serialized in the `labels` wire field.
+    attr_reader :labels
+    # @return [Boolean] Required `boolean` value serialized in the `locked` wire field.
+    attr_reader :locked
+    # @return [String] Required `string` value serialized in the `merge_commit_sha` wire field.
+    attr_reader :merge_commit_sha
+    # @return [String] Required `string` value serialized in the `merged_at` wire field.
+    attr_reader :merged_at
+    # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestMilestone] A collection of related issues and pull requests.
+    attr_reader :milestone
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [Integer] Required `integer` value serialized in the `number` wire field.
+    attr_reader :number
+    # @return [String] Required `uri`-formatted value serialized in the `patch_url` wire field.
+    attr_reader :patch_url
+    # @return [Array_of_WebhookPullRequestReviewThreadUnresolvedPullRequestRequestedRX0bac14bff6] Required array value serialized in the `requested_reviewers` wire field.
+    attr_reader :requested_reviewers
+    # @return [Array_of_WebhookPullRequestReviewThreadUnresolvedPullRequestRequestedTeamsItem] Required array value serialized in the `requested_teams` wire field.
+    attr_reader :requested_teams
+    # @return [String] Required `uri-template`-formatted value serialized in the `review_comment_url` wire field.
+    attr_reader :review_comment_url
+    # @return [String] Required `uri`-formatted value serialized in the `review_comments_url` wire field.
+    attr_reader :review_comments_url
+    # @return [PullRequestStack] The stack information associated with a pull request.
+    attr_reader :stack
+    # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestState] Required enumerated value serialized in the `state` wire field.
+    attr_reader :state
+    # @return [String] Required `uri`-formatted value serialized in the `statuses_url` wire field.
+    attr_reader :statuses_url
+    # @return [String] Required `string` value serialized in the `title` wire field.
+    attr_reader :title
+    # @return [String] Required `string` value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [WebhookPullRequestReviewThreadUnresolvedPullRequestUser] Required object value serialized in the `user` wire field.
+    attr_reader :user
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPullRequestReviewThreadUnresolvedPullRequestMetadata::NULLABLE_FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksHtmlMetadata
+    FIELDS = {
+      href: 'href'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      href
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # API model for WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksHtml.
+  # Required object value serialized in the `html` wire field.
+  class WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksHtml
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksHtmlMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksHtmlMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksHtmlMetadata::DECODERS
+
+    # @return [String] Required `uri-template`-formatted value serialized in the `href` wire field.
+    attr_reader :href
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksHtmlMetadata
-  FIELDS = {
-    href: "href",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    href
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksHtml.
-# Required object value serialized in the `html` wire field.
-class WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksHtml
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksHtmlMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksHtmlMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksHtmlMetadata::DECODERS
-
-  # @return [String] Required `uri-template`-formatted value serialized in the `href` wire field.
-  attr_reader :href
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinXa547953f3fMetadata
+    FIELDS = {
+      href: 'href'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      href
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinXa547953f3f.
+  # Required object value serialized in the `pull_request` wire field.
+  class WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinXa547953f3f
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinXa547953f3fMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinXa547953f3fMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinXa547953f3fMetadata::DECODERS
+
+    # @return [String] Required `uri-template`-formatted value serialized in the `href` wire field.
+    attr_reader :href
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksSelfMetadata
+    FIELDS = {
+      href: 'href'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      href
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
+  # API model for WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksSelf.
+  # Required object value serialized in the `self` wire field.
+  class WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksSelf
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksSelfMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksSelfMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksSelfMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinXa547953f3fMetadata
-  FIELDS = {
-    href: "href",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    href
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    # @return [String] Required `uri-template`-formatted value serialized in the `href` wire field.
+    attr_reader :href
 
-# API model for WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinXa547953f3f.
-# Required object value serialized in the `pull_request` wire field.
-class WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinXa547953f3f
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinXa547953f3fMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinXa547953f3fMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinXa547953f3fMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [String] Required `uri-template`-formatted value serialized in the `href` wire field.
-  attr_reader :href
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksMetadata
+    FIELDS = {
+      html: 'html',
+      pull_request: 'pull_request',
+      self_: 'self'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      html
+      pull_request
+      self_
+    ].freeze
+    DECODERS = {
+      html: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksHtml.from_hash(value)
+      end,
+      pull_request: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinXa547953f3f.from_hash(value)
+      end,
+      self_: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksSelf.from_hash(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # API model for WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinks.
+  # Required object value serialized in the `_links` wire field.
+  class WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinks
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksMetadata::DECODERS
+
+    # @return [WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksHtml] Required object value serialized in the `html` wire field.
+    attr_reader :html
+    # @return [WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinXa547953f3f] Required object value serialized in the `pull_request` wire field.
+    attr_reader :pull_request
+    # @return [WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksSelf] Required object value serialized in the `self` wire field.
+    attr_reader :self_
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksSelfMetadata
-  FIELDS = {
-    href: "href",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    href
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksSelf.
-# Required object value serialized in the `self` wire field.
-class WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksSelf
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksSelfMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksSelfMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksSelfMetadata::DECODERS
-
-  # @return [String] Required `uri-template`-formatted value serialized in the `href` wire field.
-  attr_reader :href
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemReactionsMetadata
+    FIELDS = {
+      plus1: '+1',
+      minus1: '-1',
+      confused: 'confused',
+      eyes: 'eyes',
+      heart: 'heart',
+      hooray: 'hooray',
+      laugh: 'laugh',
+      rocket: 'rocket',
+      total_count: 'total_count',
+      url: 'url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      plus1
+      minus1
+      confused
+      eyes
+      heart
+      hooray
+      laugh
+      rocket
+      total_count
+      url
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemReactions.
+  # Required object value serialized in the `reactions` wire field.
+  class WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemReactions
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemReactionsMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemReactionsMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemReactionsMetadata::DECODERS
+
+    # @return [Integer] Required `integer` value serialized in the `+1` wire field.
+    attr_reader :plus1
+    # @return [Integer] Required `integer` value serialized in the `-1` wire field.
+    attr_reader :minus1
+    # @return [Integer] Required `integer` value serialized in the `confused` wire field.
+    attr_reader :confused
+    # @return [Integer] Required `integer` value serialized in the `eyes` wire field.
+    attr_reader :eyes
+    # @return [Integer] Required `integer` value serialized in the `heart` wire field.
+    attr_reader :heart
+    # @return [Integer] Required `integer` value serialized in the `hooray` wire field.
+    attr_reader :hooray
+    # @return [Integer] Required `integer` value serialized in the `laugh` wire field.
+    attr_reader :laugh
+    # @return [Integer] Required `integer` value serialized in the `rocket` wire field.
+    attr_reader :rocket
+    # @return [Integer] Required `integer` value serialized in the `total_count` wire field.
+    attr_reader :total_count
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemUserMetadata
+    FIELDS = {
+      avatar_url: 'avatar_url',
+      deleted: 'deleted',
+      email: 'email',
+      events_url: 'events_url',
+      followers_url: 'followers_url',
+      following_url: 'following_url',
+      gists_url: 'gists_url',
+      gravatar_id: 'gravatar_id',
+      html_url: 'html_url',
+      id: 'id',
+      login: 'login',
+      name: 'name',
+      node_id: 'node_id',
+      organizations_url: 'organizations_url',
+      received_events_url: 'received_events_url',
+      repos_url: 'repos_url',
+      site_admin: 'site_admin',
+      starred_url: 'starred_url',
+      subscriptions_url: 'subscriptions_url',
+      type: 'type',
+      url: 'url',
+      user_view_type: 'user_view_type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      login
+    ].freeze
+    DECODERS = {
+      type: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemUserType.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
+  # API model for WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemUser.
+  # Required object value serialized in the `user` wire field.
+  class WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemUser
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemUserMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemUserMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemUserMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksMetadata
-  FIELDS = {
-    html: "html",
-    pull_request: "pull_request",
-    self_: "self",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    html
-    pull_request
-    self_
-  ].freeze
-  DECODERS = {
-    html: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksHtml.from_hash(value)
-    end,
-    pull_request: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinXa547953f3f.from_hash(value)
-    end,
-    self_: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksSelf.from_hash(value)
-    end,
-  }.freeze
-end
+    # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
+    attr_reader :avatar_url
+    # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
+    attr_reader :deleted
+    # @return [String] Optional `string` value serialized in the `email` wire field.
+    attr_reader :email
+    # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
+    attr_reader :events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
+    attr_reader :followers_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
+    attr_reader :following_url
+    # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
+    attr_reader :gists_url
+    # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
+    attr_reader :gravatar_id
+    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `login` wire field.
+    attr_reader :login
+    # @return [String] Optional `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Optional `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
+    attr_reader :organizations_url
+    # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
+    attr_reader :received_events_url
+    # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
+    attr_reader :repos_url
+    # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
+    attr_reader :site_admin
+    # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
+    attr_reader :starred_url
+    # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
+    attr_reader :subscriptions_url
+    # @return [WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemUserType] Optional enumerated value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+    attr_reader :user_view_type
 
-# API model for WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinks.
-# Required object value serialized in the `_links` wire field.
-class WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinks
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksHtml] Required object value serialized in the `html` wire field.
-  attr_reader :html
-  # @return [WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinXa547953f3f] Required object value serialized in the `pull_request` wire field.
-  attr_reader :pull_request
-  # @return [WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinksSelf] Required object value serialized in the `self` wire field.
-  attr_reader :self_
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemReactionsMetadata
-  FIELDS = {
-    plus1: "+1",
-    minus1: "-1",
-    confused: "confused",
-    eyes: "eyes",
-    heart: "heart",
-    hooray: "hooray",
-    laugh: "laugh",
-    rocket: "rocket",
-    total_count: "total_count",
-    url: "url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    plus1
-    minus1
-    confused
-    eyes
-    heart
-    hooray
-    laugh
-    rocket
-    total_count
-    url
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemReactions.
-# Required object value serialized in the `reactions` wire field.
-class WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemReactions
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemReactionsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemReactionsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemReactionsMetadata::DECODERS
-
-  # @return [Integer] Required `integer` value serialized in the `+1` wire field.
-  attr_reader :plus1
-  # @return [Integer] Required `integer` value serialized in the `-1` wire field.
-  attr_reader :minus1
-  # @return [Integer] Required `integer` value serialized in the `confused` wire field.
-  attr_reader :confused
-  # @return [Integer] Required `integer` value serialized in the `eyes` wire field.
-  attr_reader :eyes
-  # @return [Integer] Required `integer` value serialized in the `heart` wire field.
-  attr_reader :heart
-  # @return [Integer] Required `integer` value serialized in the `hooray` wire field.
-  attr_reader :hooray
-  # @return [Integer] Required `integer` value serialized in the `laugh` wire field.
-  attr_reader :laugh
-  # @return [Integer] Required `integer` value serialized in the `rocket` wire field.
-  attr_reader :rocket
-  # @return [Integer] Required `integer` value serialized in the `total_count` wire field.
-  attr_reader :total_count
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemMetadata
+    FIELDS = {
+      links: '_links',
+      author_association: 'author_association',
+      body: 'body',
+      commit_id: 'commit_id',
+      created_at: 'created_at',
+      diff_hunk: 'diff_hunk',
+      html_url: 'html_url',
+      id: 'id',
+      in_reply_to_id: 'in_reply_to_id',
+      line: 'line',
+      node_id: 'node_id',
+      original_commit_id: 'original_commit_id',
+      original_line: 'original_line',
+      original_position: 'original_position',
+      original_start_line: 'original_start_line',
+      path: 'path',
+      position: 'position',
+      pull_request_review_id: 'pull_request_review_id',
+      pull_request_url: 'pull_request_url',
+      reactions: 'reactions',
+      side: 'side',
+      start_line: 'start_line',
+      start_side: 'start_side',
+      subject_type: 'subject_type',
+      updated_at: 'updated_at',
+      url: 'url',
+      user: 'user'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      links
+      author_association
+      body
+      commit_id
+      created_at
+      diff_hunk
+      html_url
+      id
+      line
+      node_id
+      original_commit_id
+      original_line
+      original_position
+      original_start_line
+      path
+      position
+      pull_request_review_id
+      pull_request_url
+      reactions
+      side
+      start_line
+      start_side
+      updated_at
+      url
+      user
+    ].freeze
+    DECODERS = {
+      links: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinks.from_hash(value)
+      end,
+      author_association: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemAutX3c12200ffd.from_value(value)
+      end,
+      reactions: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemReactions.from_hash(value)
+      end,
+      side: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemSide.from_value(value)
+      end,
+      start_side: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemStartSide.from_value(value)
+      end,
+      subject_type: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemSubjectType.from_value(value)
+      end,
+      user: lambda do |value|
+        ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemUser.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      line
+      original_start_line
+      position
+      pull_request_review_id
+      start_line
+      start_side
+      user
+    ].freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # API model for WebhookPullRequestReviewThreadUnresolvedThreadCommentsItem.
+  # The comment itself.
+  class WebhookPullRequestReviewThreadUnresolvedThreadCommentsItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemMetadata::DECODERS
+
+    # @return [WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinks] Required object value serialized in the `_links` wire field.
+    attr_reader :links
+    # @return [WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemAutX3c12200ffd] How the author is associated with the repository.
+    attr_reader :author_association
+    # @return [String] The text of the comment.
+    attr_reader :body
+    # @return [String] The SHA of the commit to which the comment applies.
+    attr_reader :commit_id
+    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] The diff of the line that the comment refers to.
+    attr_reader :diff_hunk
+    # @return [String] HTML URL for the pull request review comment.
+    attr_reader :html_url
+    # @return [Integer] The ID of the pull request review comment.
+    attr_reader :id
+    # @return [Integer] The comment ID to reply to.
+    attr_reader :in_reply_to_id
+    # @return [Integer] The line of the blob to which the comment applies. The last line of the range for a multi-line comment
+    attr_reader :line
+    # @return [String] The node ID of the pull request review comment.
+    attr_reader :node_id
+    # @return [String] The SHA of the original commit to which the comment applies.
+    attr_reader :original_commit_id
+    # @return [Integer] The line of the blob to which the comment applies. The last line of the range for a multi-line comment
+    attr_reader :original_line
+    # @return [Integer] The index of the original line in the diff to which the comment applies.
+    attr_reader :original_position
+    # @return [Integer] The first line of the range for a multi-line comment.
+    attr_reader :original_start_line
+    # @return [String] The relative path of the file to which the comment applies.
+    attr_reader :path
+    # @return [Integer] The line index in the diff to which the comment applies.
+    attr_reader :position
+    # @return [Integer] The ID of the pull request review to which the comment belongs.
+    attr_reader :pull_request_review_id
+    # @return [String] URL for the pull request that the review comment belongs to.
+    attr_reader :pull_request_url
+    # @return [WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemReactions] Required object value serialized in the `reactions` wire field.
+    attr_reader :reactions
+    # @return [WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemSide] The side of the first line of the range for a multi-line comment.
+    attr_reader :side
+    # @return [Integer] The first line of the range for a multi-line comment.
+    attr_reader :start_line
+    # @return [WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemStartSide] The side of the first line of the range for a multi-line comment.
+    attr_reader :start_side
+    # @return [WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemSubjectType] The level at which the comment is targeted, can be a diff line or a file.
+    attr_reader :subject_type
+    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+    # @return [String] URL for the pull request review comment
+    attr_reader :url
+    # @return [WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemUser] Required object value serialized in the `user` wire field.
+    attr_reader :user
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
+  # Internal model hydration metadata.
+  class SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadMetadata
+    FIELDS = {
+      comments: 'comments',
+      node_id: 'node_id'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      comments
+      node_id
+    ].freeze
+    DECODERS = {
+      comments: lambda do |value|
+        value&.map { |item| ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedThreadCommentsItem.from_hash(item) }
+      end
+    }.freeze
   end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemUserMetadata
-  FIELDS = {
-    avatar_url: "avatar_url",
-    deleted: "deleted",
-    email: "email",
-    events_url: "events_url",
-    followers_url: "followers_url",
-    following_url: "following_url",
-    gists_url: "gists_url",
-    gravatar_id: "gravatar_id",
-    html_url: "html_url",
-    id: "id",
-    login: "login",
-    name: "name",
-    node_id: "node_id",
-    organizations_url: "organizations_url",
-    received_events_url: "received_events_url",
-    repos_url: "repos_url",
-    site_admin: "site_admin",
-    starred_url: "starred_url",
-    subscriptions_url: "subscriptions_url",
-    type: "type",
-    url: "url",
-    user_view_type: "user_view_type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    login
-  ].freeze
-  DECODERS = {
-    type: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemUserType.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemUser.
-# Required object value serialized in the `user` wire field.
-class WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemUser
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemUserMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemUserMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemUserMetadata::DECODERS
-
-  # @return [String] Optional `uri`-formatted value serialized in the `avatar_url` wire field.
-  attr_reader :avatar_url
-  # @return [Boolean] Optional `boolean` value serialized in the `deleted` wire field.
-  attr_reader :deleted
-  # @return [String] Optional `string` value serialized in the `email` wire field.
-  attr_reader :email
-  # @return [String] Optional `uri-template`-formatted value serialized in the `events_url` wire field.
-  attr_reader :events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `followers_url` wire field.
-  attr_reader :followers_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `following_url` wire field.
-  attr_reader :following_url
-  # @return [String] Optional `uri-template`-formatted value serialized in the `gists_url` wire field.
-  attr_reader :gists_url
-  # @return [String] Optional `string` value serialized in the `gravatar_id` wire field.
-  attr_reader :gravatar_id
-  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `login` wire field.
-  attr_reader :login
-  # @return [String] Optional `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Optional `uri`-formatted value serialized in the `organizations_url` wire field.
-  attr_reader :organizations_url
-  # @return [String] Optional `uri`-formatted value serialized in the `received_events_url` wire field.
-  attr_reader :received_events_url
-  # @return [String] Optional `uri`-formatted value serialized in the `repos_url` wire field.
-  attr_reader :repos_url
-  # @return [Boolean] Optional `boolean` value serialized in the `site_admin` wire field.
-  attr_reader :site_admin
-  # @return [String] Optional `uri-template`-formatted value serialized in the `starred_url` wire field.
-  attr_reader :starred_url
-  # @return [String] Optional `uri`-formatted value serialized in the `subscriptions_url` wire field.
-  attr_reader :subscriptions_url
-  # @return [WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemUserType] Optional enumerated value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-  attr_reader :user_view_type
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemMetadata
-  FIELDS = {
-    links: "_links",
-    author_association: "author_association",
-    body: "body",
-    commit_id: "commit_id",
-    created_at: "created_at",
-    diff_hunk: "diff_hunk",
-    html_url: "html_url",
-    id: "id",
-    in_reply_to_id: "in_reply_to_id",
-    line: "line",
-    node_id: "node_id",
-    original_commit_id: "original_commit_id",
-    original_line: "original_line",
-    original_position: "original_position",
-    original_start_line: "original_start_line",
-    path: "path",
-    position: "position",
-    pull_request_review_id: "pull_request_review_id",
-    pull_request_url: "pull_request_url",
-    reactions: "reactions",
-    side: "side",
-    start_line: "start_line",
-    start_side: "start_side",
-    subject_type: "subject_type",
-    updated_at: "updated_at",
-    url: "url",
-    user: "user",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    links
-    author_association
-    body
-    commit_id
-    created_at
-    diff_hunk
-    html_url
-    id
-    line
-    node_id
-    original_commit_id
-    original_line
-    original_position
-    original_start_line
-    path
-    position
-    pull_request_review_id
-    pull_request_url
-    reactions
-    side
-    start_line
-    start_side
-    updated_at
-    url
-    user
-  ].freeze
-  DECODERS = {
-    links: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinks.from_hash(value)
-    end,
-    author_association: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemAutX3c12200ffd.from_value(value)
-    end,
-    reactions: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemReactions.from_hash(value)
-    end,
-    side: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemSide.from_value(value)
-    end,
-    start_side: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemStartSide.from_value(value)
-    end,
-    subject_type: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemSubjectType.from_value(value)
-    end,
-    user: lambda do |value|
-      ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemUser.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    line
-    original_start_line
-    position
-    pull_request_review_id
-    start_line
-    start_side
-    user
-  ].freeze
-end
-
-# API model for WebhookPullRequestReviewThreadUnresolvedThreadCommentsItem.
-# The comment itself.
-class WebhookPullRequestReviewThreadUnresolvedThreadCommentsItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemMetadata::DECODERS
-
-  # @return [WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemLinks] Required object value serialized in the `_links` wire field.
-  attr_reader :links
-  # @return [WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemAutX3c12200ffd] How the author is associated with the repository.
-  attr_reader :author_association
-  # @return [String] The text of the comment.
-  attr_reader :body
-  # @return [String] The SHA of the commit to which the comment applies.
-  attr_reader :commit_id
-  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] The diff of the line that the comment refers to.
-  attr_reader :diff_hunk
-  # @return [String] HTML URL for the pull request review comment.
-  attr_reader :html_url
-  # @return [Integer] The ID of the pull request review comment.
-  attr_reader :id
-  # @return [Integer] The comment ID to reply to.
-  attr_reader :in_reply_to_id
-  # @return [Integer] The line of the blob to which the comment applies. The last line of the range for a multi-line comment
-  attr_reader :line
-  # @return [String] The node ID of the pull request review comment.
-  attr_reader :node_id
-  # @return [String] The SHA of the original commit to which the comment applies.
-  attr_reader :original_commit_id
-  # @return [Integer] The line of the blob to which the comment applies. The last line of the range for a multi-line comment
-  attr_reader :original_line
-  # @return [Integer] The index of the original line in the diff to which the comment applies.
-  attr_reader :original_position
-  # @return [Integer] The first line of the range for a multi-line comment.
-  attr_reader :original_start_line
-  # @return [String] The relative path of the file to which the comment applies.
-  attr_reader :path
-  # @return [Integer] The line index in the diff to which the comment applies.
-  attr_reader :position
-  # @return [Integer] The ID of the pull request review to which the comment belongs.
-  attr_reader :pull_request_review_id
-  # @return [String] URL for the pull request that the review comment belongs to.
-  attr_reader :pull_request_url
-  # @return [WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemReactions] Required object value serialized in the `reactions` wire field.
-  attr_reader :reactions
-  # @return [WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemSide] The side of the first line of the range for a multi-line comment.
-  attr_reader :side
-  # @return [Integer] The first line of the range for a multi-line comment.
-  attr_reader :start_line
-  # @return [WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemStartSide] The side of the first line of the range for a multi-line comment.
-  attr_reader :start_side
-  # @return [WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemSubjectType] The level at which the comment is targeted, can be a diff line or a file.
-  attr_reader :subject_type
-  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-  # @return [String] URL for the pull request review comment
-  attr_reader :url
-  # @return [WebhookPullRequestReviewThreadUnresolvedThreadCommentsItemUser] Required object value serialized in the `user` wire field.
-  attr_reader :user
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadCommentsItemMetadata::NULLABLE_FIELDS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookPullRequestReviewThreadUnresolvedThreadMetadata
-  FIELDS = {
-    comments: "comments",
-    node_id: "node_id",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    comments
-    node_id
-  ].freeze
-  DECODERS = {
-    comments: lambda do |value|
-      value&.map { |item| ::OctridevGithub::WebhookPullRequestReviewThreadUnresolvedThreadCommentsItem.from_hash(item) }
-    end,
-  }.freeze
-end
 end

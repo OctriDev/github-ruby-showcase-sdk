@@ -42,7 +42,7 @@ module OctridevGithub
         REPOSITORY = 'repository'
         ISSUE = 'issue'
         PULL_REQUEST = 'pull_request'
-        VALUES = ['organization', 'repository', 'issue', 'pull_request'].freeze
+        VALUES = %w[organization repository issue pull_request].freeze
         def self.from_value(value)
           value
         end
@@ -52,7 +52,7 @@ module OctridevGithub
       module UsersSetPrimaryEmailVisibilityForAuthenticatedUserVisibility
         PUBLIC = 'public'
         PRIVATE = 'private'
-        VALUES = ['public', 'private'].freeze
+        VALUES = %w[public private].freeze
         def self.from_value(value)
           value
         end

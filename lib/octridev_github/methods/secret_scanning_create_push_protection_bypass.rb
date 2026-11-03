@@ -43,7 +43,7 @@ module OctridevGithub
       module SecretScanningUpdateAlertValidity
         ACTIVE = 'active'
         INACTIVE = 'inactive'
-        VALUES = ['active', 'inactive'].freeze
+        VALUES = %w[active inactive].freeze
         def self.from_value(value)
           value
         end
@@ -53,7 +53,7 @@ module OctridevGithub
       module SecretScanningBulkDeleteOrgCustomPatternsPostDeleteAction
         DELETE_ALERTS = 'delete_alerts'
         RESOLVE_ALERTS = 'resolve_alerts'
-        VALUES = ['delete_alerts', 'resolve_alerts'].freeze
+        VALUES = %w[delete_alerts resolve_alerts].freeze
         def self.from_value(value)
           value
         end
@@ -63,7 +63,7 @@ module OctridevGithub
       module SecretScanningUpdateOrgPatternConfigsCustomPatternSettingsIteXcb824b0d13
         DISABLED = 'disabled'
         ENABLED = 'enabled'
-        VALUES = ['disabled', 'enabled'].freeze
+        VALUES = %w[disabled enabled].freeze
         def self.from_value(value)
           value
         end
@@ -74,7 +74,7 @@ module OctridevGithub
         NOT_SET = 'not-set'
         DISABLED = 'disabled'
         ENABLED = 'enabled'
-        VALUES = ['not-set', 'disabled', 'enabled'].freeze
+        VALUES = %w[not-set disabled enabled].freeze
         def self.from_value(value)
           value
         end
@@ -84,7 +84,7 @@ module OctridevGithub
       module SecretScanningBulkDeleteRepoCustomPatternsPostDeleteAction
         DELETE_ALERTS = 'delete_alerts'
         RESOLVE_ALERTS = 'resolve_alerts'
-        VALUES = ['delete_alerts', 'resolve_alerts'].freeze
+        VALUES = %w[delete_alerts resolve_alerts].freeze
         def self.from_value(value)
           value
         end

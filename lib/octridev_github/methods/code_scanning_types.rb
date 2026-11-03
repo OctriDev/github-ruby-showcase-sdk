@@ -12,14 +12,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodeScanningUpdateAlertMetadata
         FIELDS = {
-          state: "state",
-          dismissed_reason: "dismissed_reason",
-          dismissed_comment: "dismissed_comment",
-          create_request: "create_request",
-          assignees: "assignees",
+          state: 'state',
+          dismissed_reason: 'dismissed_reason',
+          dismissed_comment: 'dismissed_comment',
+          create_request: 'create_request',
+          assignees: 'assignees'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           state: lambda do |value|
             ::OctridevGithub::CodeScanningAlertSetState.from_value(value)
@@ -35,7 +34,7 @@ module OctridevGithub
           end,
           assignees: lambda do |value|
             ::OctridevGithub::CodeScanningAlertAssignees.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -78,11 +77,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodeScanningCreateVariantAnalysisMetadata
         FIELDS = {
-          language: "language",
-          query_pack: "query_pack",
-          repositories: "repositories",
-          repository_lists: "repository_lists",
-          repository_owners: "repository_owners",
+          language: 'language',
+          query_pack: 'query_pack',
+          repositories: 'repositories',
+          repository_lists: 'repository_lists',
+          repository_owners: 'repository_owners'
         }.freeze
         REQUIRED_FIELDS = %i[
           language
@@ -91,7 +90,7 @@ module OctridevGithub
         DECODERS = {
           language: lambda do |value|
             ::OctridevGithub::CodeScanningVariantAnalysisLanguage.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -134,13 +133,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodeScanningUploadSarifMetadata
         FIELDS = {
-          commit_sha: "commit_sha",
-          ref: "ref",
-          sarif: "sarif",
-          checkout_uri: "checkout_uri",
-          started_at: "started_at",
-          tool_name: "tool_name",
-          validate: "validate",
+          commit_sha: 'commit_sha',
+          ref: 'ref',
+          sarif: 'sarif',
+          checkout_uri: 'checkout_uri',
+          started_at: 'started_at',
+          tool_name: 'tool_name',
+          validate: 'validate'
         }.freeze
         REQUIRED_FIELDS = %i[
           commit_sha
@@ -156,7 +155,7 @@ module OctridevGithub
           end,
           sarif: lambda do |value|
             ::OctridevGithub::CodeScanningAnalysisSarifFile.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -204,7 +203,7 @@ module OctridevGithub
       module CodeScanningListAlertsForOrgParameter
         CREATED = 'created'
         UPDATED = 'updated'
-        VALUES = ['created', 'updated'].freeze
+        VALUES = %w[created updated].freeze
         def self.from_value(value)
           value
         end
@@ -223,7 +222,7 @@ module OctridevGithub
       module CodeScanningListAlertsForRepoParameter
         CREATED = 'created'
         UPDATED = 'updated'
-        VALUES = ['created', 'updated'].freeze
+        VALUES = %w[created updated].freeze
         def self.from_value(value)
           value
         end

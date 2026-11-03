@@ -41,7 +41,7 @@ module OctridevGithub
         PR_BODY = 'PR_BODY'
         COMMIT_MESSAGES = 'COMMIT_MESSAGES'
         BLANK = 'BLANK'
-        VALUES = ['PR_BODY', 'COMMIT_MESSAGES', 'BLANK'].freeze
+        VALUES = %w[PR_BODY COMMIT_MESSAGES BLANK].freeze
         def self.from_value(value)
           value
         end
@@ -51,7 +51,7 @@ module OctridevGithub
       module AppsListInstallationReposForAuthenticatedUserResponseRepositoX7d8fa4489f
         ALL = 'all'
         COLLABORATORS_ONLY = 'collaborators_only'
-        VALUES = ['all', 'collaborators_only'].freeze
+        VALUES = %w[all collaborators_only].freeze
         def self.from_value(value)
           value
         end
@@ -61,7 +61,7 @@ module OctridevGithub
       module AppsListAccountsForPlanParameter
         ASC = 'asc'
         DESC = 'desc'
-        VALUES = ['asc', 'desc'].freeze
+        VALUES = %w[asc desc].freeze
         def self.from_value(value)
           value
         end
@@ -72,7 +72,7 @@ module OctridevGithub
         PR_BODY = 'PR_BODY'
         COMMIT_MESSAGES = 'COMMIT_MESSAGES'
         BLANK = 'BLANK'
-        VALUES = ['PR_BODY', 'COMMIT_MESSAGES', 'BLANK'].freeze
+        VALUES = %w[PR_BODY COMMIT_MESSAGES BLANK].freeze
         def self.from_value(value)
           value
         end
@@ -82,7 +82,7 @@ module OctridevGithub
       module AppsListInstallationReposForAuthenticatedUserResponseRepositoXe6dfe6af0c
         PR_TITLE = 'PR_TITLE'
         COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
-        VALUES = ['PR_TITLE', 'COMMIT_OR_PR_TITLE'].freeze
+        VALUES = %w[PR_TITLE COMMIT_OR_PR_TITLE].freeze
         def self.from_value(value)
           value
         end
@@ -93,7 +93,7 @@ module OctridevGithub
         PR_BODY = 'PR_BODY'
         PR_TITLE = 'PR_TITLE'
         BLANK = 'BLANK'
-        VALUES = ['PR_BODY', 'PR_TITLE', 'BLANK'].freeze
+        VALUES = %w[PR_BODY PR_TITLE BLANK].freeze
         def self.from_value(value)
           value
         end
@@ -103,7 +103,7 @@ module OctridevGithub
       module AppsListReposAccessibleToInstallationResponseRepositoriesItemX5dafed43da
         PR_TITLE = 'PR_TITLE'
         COMMIT_OR_PR_TITLE = 'COMMIT_OR_PR_TITLE'
-        VALUES = ['PR_TITLE', 'COMMIT_OR_PR_TITLE'].freeze
+        VALUES = %w[PR_TITLE COMMIT_OR_PR_TITLE].freeze
         def self.from_value(value)
           value
         end
@@ -113,7 +113,7 @@ module OctridevGithub
       module AppsListInstallationReposForAuthenticatedUserResponseRepositoX55612d4937
         PR_TITLE = 'PR_TITLE'
         MERGE_MESSAGE = 'MERGE_MESSAGE'
-        VALUES = ['PR_TITLE', 'MERGE_MESSAGE'].freeze
+        VALUES = %w[PR_TITLE MERGE_MESSAGE].freeze
         def self.from_value(value)
           value
         end
@@ -124,7 +124,7 @@ module OctridevGithub
         PR_BODY = 'PR_BODY'
         PR_TITLE = 'PR_TITLE'
         BLANK = 'BLANK'
-        VALUES = ['PR_BODY', 'PR_TITLE', 'BLANK'].freeze
+        VALUES = %w[PR_BODY PR_TITLE BLANK].freeze
         def self.from_value(value)
           value
         end
@@ -134,7 +134,7 @@ module OctridevGithub
       module AppsListAccountsForPlanStubbedParameter
         ASC = 'asc'
         DESC = 'desc'
-        VALUES = ['asc', 'desc'].freeze
+        VALUES = %w[asc desc].freeze
         def self.from_value(value)
           value
         end
@@ -144,7 +144,7 @@ module OctridevGithub
       module AppsListReposAccessibleToInstallationResponseRepositoriesItemXd3df6a5cde
         ALL = 'all'
         COLLABORATORS_ONLY = 'collaborators_only'
-        VALUES = ['all', 'collaborators_only'].freeze
+        VALUES = %w[all collaborators_only].freeze
         def self.from_value(value)
           value
         end
@@ -154,7 +154,7 @@ module OctridevGithub
       module AppsListReposAccessibleToInstallationResponseRepositoriesItemX6025c9444b
         PR_TITLE = 'PR_TITLE'
         MERGE_MESSAGE = 'MERGE_MESSAGE'
-        VALUES = ['PR_TITLE', 'MERGE_MESSAGE'].freeze
+        VALUES = %w[PR_TITLE MERGE_MESSAGE].freeze
         def self.from_value(value)
           value
         end

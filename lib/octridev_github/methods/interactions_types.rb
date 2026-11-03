@@ -12,16 +12,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalInteractionsGetPullRequestCreationCapForOrgResponseMetadata
         FIELDS = {
-          enabled: "enabled",
-          max_open_pull_requests: "max_open_pull_requests",
-          include_drafts: "include_drafts",
+          enabled: 'enabled',
+          max_open_pull_requests: 'max_open_pull_requests',
+          include_drafts: 'include_drafts'
         }.freeze
         REQUIRED_FIELDS = %i[
           enabled
           max_open_pull_requests
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for InteractionsGetPullRequestCreationCapForOrgResponse.
@@ -59,15 +58,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalInteractionsUpdatePullRequestCreationCapForOrgMetadata
         FIELDS = {
-          enabled: "enabled",
-          max_open_pull_requests: "max_open_pull_requests",
-          include_drafts: "include_drafts",
+          enabled: 'enabled',
+          max_open_pull_requests: 'max_open_pull_requests',
+          include_drafts: 'include_drafts'
         }.freeze
         REQUIRED_FIELDS = %i[
           enabled
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for InteractionsUpdatePullRequestCreationCapForOrg.
@@ -105,16 +103,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalInteractionsUpdatePullRequestCreationCapForOrgResponseMetadata
         FIELDS = {
-          enabled: "enabled",
-          max_open_pull_requests: "max_open_pull_requests",
-          include_drafts: "include_drafts",
+          enabled: 'enabled',
+          max_open_pull_requests: 'max_open_pull_requests',
+          include_drafts: 'include_drafts'
         }.freeze
         REQUIRED_FIELDS = %i[
           enabled
           max_open_pull_requests
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for InteractionsUpdatePullRequestCreationCapForOrgResponse.
@@ -152,16 +149,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalInteractionsGetPullRequestCreationCapForRepoResponseMetadata
         FIELDS = {
-          enabled: "enabled",
-          max_open_pull_requests: "max_open_pull_requests",
-          include_drafts: "include_drafts",
+          enabled: 'enabled',
+          max_open_pull_requests: 'max_open_pull_requests',
+          include_drafts: 'include_drafts'
         }.freeze
         REQUIRED_FIELDS = %i[
           enabled
           max_open_pull_requests
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for InteractionsGetPullRequestCreationCapForRepoResponse.
@@ -199,15 +195,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalInteractionsUpdatePullRequestCreationCapForRepoMetadata
         FIELDS = {
-          enabled: "enabled",
-          max_open_pull_requests: "max_open_pull_requests",
-          include_drafts: "include_drafts",
+          enabled: 'enabled',
+          max_open_pull_requests: 'max_open_pull_requests',
+          include_drafts: 'include_drafts'
         }.freeze
         REQUIRED_FIELDS = %i[
           enabled
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for InteractionsUpdatePullRequestCreationCapForRepo.
@@ -245,16 +240,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalInteractionsUpdatePullRequestCreationCapForRepoResponseMetadata
         FIELDS = {
-          enabled: "enabled",
-          max_open_pull_requests: "max_open_pull_requests",
-          include_drafts: "include_drafts",
+          enabled: 'enabled',
+          max_open_pull_requests: 'max_open_pull_requests',
+          include_drafts: 'include_drafts'
         }.freeze
         REQUIRED_FIELDS = %i[
           enabled
           max_open_pull_requests
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for InteractionsUpdatePullRequestCreationCapForRepoResponse.

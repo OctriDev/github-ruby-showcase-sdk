@@ -13,7 +13,7 @@ module OctridevGithub
       module DependabotSetRepositoryAccessDefaultLevelDefaultLevel
         PUBLIC = 'public'
         INTERNAL = 'internal'
-        VALUES = ['public', 'internal'].freeze
+        VALUES = %w[public internal].freeze
         def self.from_value(value)
           value
         end
@@ -26,7 +26,7 @@ module OctridevGithub
         NO_BANDWIDTH = 'no_bandwidth'
         NOT_USED = 'not_used'
         TOLERABLE_RISK = 'tolerable_risk'
-        VALUES = ['fix_started', 'inaccurate', 'no_bandwidth', 'not_used', 'tolerable_risk'].freeze
+        VALUES = %w[fix_started inaccurate no_bandwidth not_used tolerable_risk].freeze
         def self.from_value(value)
           value
         end
@@ -37,7 +37,7 @@ module OctridevGithub
         ALL = 'all'
         PRIVATE = 'private'
         SELECTED = 'selected'
-        VALUES = ['all', 'private', 'selected'].freeze
+        VALUES = %w[all private selected].freeze
         def self.from_value(value)
           value
         end
@@ -47,7 +47,7 @@ module OctridevGithub
       module DependabotSetRepositoryAccessDefaultLevelForEnterpriseDefaultLevel
         PUBLIC = 'public'
         INTERNAL = 'internal'
-        VALUES = ['public', 'internal'].freeze
+        VALUES = %w[public internal].freeze
         def self.from_value(value)
           value
         end

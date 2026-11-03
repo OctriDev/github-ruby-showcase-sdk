@@ -12,15 +12,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentsCreateOrUpdateRepoSecretMetadata
         FIELDS = {
-          encrypted_value: "encrypted_value",
-          key_id: "key_id",
+          encrypted_value: 'encrypted_value',
+          key_id: 'key_id'
         }.freeze
         REQUIRED_FIELDS = %i[
           encrypted_value
           key_id
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for AgentsCreateOrUpdateRepoSecret.
@@ -56,8 +55,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentsListRepoVariablesResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          variables: "variables",
+          total_count: 'total_count',
+          variables: 'variables'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -66,7 +65,7 @@ module OctridevGithub
         DECODERS = {
           variables: lambda do |value|
             value&.map { |item| ::OctridevGithub::ActionsVariable.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -100,15 +99,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentsCreateRepoVariableMetadata
         FIELDS = {
-          name: "name",
-          value: "value",
+          name: 'name',
+          value: 'value'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
           value
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for AgentsCreateRepoVariable.
@@ -144,13 +142,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentsUpdateRepoVariableMetadata
         FIELDS = {
-          name: "name",
-          value: "value",
+          name: 'name',
+          value: 'value'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for AgentsUpdateRepoVariable.
@@ -188,7 +184,7 @@ module OctridevGithub
         ALL = 'all'
         PRIVATE = 'private'
         SELECTED = 'selected'
-        VALUES = ['all', 'private', 'selected'].freeze
+        VALUES = %w[all private selected].freeze
         def self.from_value(value)
           value
         end
@@ -199,7 +195,7 @@ module OctridevGithub
         ALL = 'all'
         PRIVATE = 'private'
         SELECTED = 'selected'
-        VALUES = ['all', 'private', 'selected'].freeze
+        VALUES = %w[all private selected].freeze
         def self.from_value(value)
           value
         end
@@ -210,7 +206,7 @@ module OctridevGithub
         ALL = 'all'
         PRIVATE = 'private'
         SELECTED = 'selected'
-        VALUES = ['all', 'private', 'selected'].freeze
+        VALUES = %w[all private selected].freeze
         def self.from_value(value)
           value
         end

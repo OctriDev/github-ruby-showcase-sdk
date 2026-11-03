@@ -12,30 +12,29 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsGetAutomationResponseTriggersMetadata
         FIELDS = {
-          interval: "interval",
-          issue_opened: "issue_opened",
-          issue_labeled: "issue_labeled",
-          workflow_run: "workflow_run",
-          pull_request_opened: "pull_request_opened",
-          pull_request_synchronize: "pull_request_synchronize",
-          pull_request_merged: "pull_request_merged",
-          issue_comment: "issue_comment",
-          pull_request_comment: "pull_request_comment",
-          discussion_opened: "discussion_opened",
-          discussion_updated: "discussion_updated",
-          discussion_comment: "discussion_comment",
-          issue_assigned: "issue_assigned",
-          pull_request_assigned: "pull_request_assigned",
-          sub_issue_added: "sub_issue_added",
-          pull_request_ready_for_review: "pull_request_ready_for_review",
-          pull_request_labeled: "pull_request_labeled",
-          pull_request_merge_conflict: "pull_request_merge_conflict",
-          pull_request_review_submitted: "pull_request_review_submitted",
-          pull_request_review_requested: "pull_request_review_requested",
-          automation_completed: "automation_completed",
+          interval: 'interval',
+          issue_opened: 'issue_opened',
+          issue_labeled: 'issue_labeled',
+          workflow_run: 'workflow_run',
+          pull_request_opened: 'pull_request_opened',
+          pull_request_synchronize: 'pull_request_synchronize',
+          pull_request_merged: 'pull_request_merged',
+          issue_comment: 'issue_comment',
+          pull_request_comment: 'pull_request_comment',
+          discussion_opened: 'discussion_opened',
+          discussion_updated: 'discussion_updated',
+          discussion_comment: 'discussion_comment',
+          issue_assigned: 'issue_assigned',
+          pull_request_assigned: 'pull_request_assigned',
+          sub_issue_added: 'sub_issue_added',
+          pull_request_ready_for_review: 'pull_request_ready_for_review',
+          pull_request_labeled: 'pull_request_labeled',
+          pull_request_merge_conflict: 'pull_request_merge_conflict',
+          pull_request_review_submitted: 'pull_request_review_submitted',
+          pull_request_review_requested: 'pull_request_review_requested',
+          automation_completed: 'automation_completed'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           interval: lambda do |value|
             ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersInterval.from_hash(value)
@@ -99,7 +98,7 @@ module OctridevGithub
           end,
           automation_completed: lambda do |value|
             ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseTriggersAutomationCompleted.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -140,12 +139,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsGetAutomationResponseCreatedByMetadata
         FIELDS = {
-          id: "id",
+          id: 'id'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for AgentAutomationsGetAutomationResponseCreatedBy.
@@ -180,22 +177,22 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsGetAutomationResponseMetadata
         FIELDS = {
-          id: "id",
-          repository: "repository",
-          name: "name",
-          enabled: "enabled",
-          owner_type: "owner_type",
-          write_scope: "write_scope",
-          require_actor_write_permission: "require_actor_write_permission",
-          triggers: "triggers",
-          prompt: "prompt",
-          tools: "tools",
-          allowed_custom_agents: "allowed_custom_agents",
-          model: "model",
-          reasoning_effort: "reasoning_effort",
-          created_at: "created_at",
-          updated_at: "updated_at",
-          created_by: "created_by",
+          id: 'id',
+          repository: 'repository',
+          name: 'name',
+          enabled: 'enabled',
+          owner_type: 'owner_type',
+          write_scope: 'write_scope',
+          require_actor_write_permission: 'require_actor_write_permission',
+          triggers: 'triggers',
+          prompt: 'prompt',
+          tools: 'tools',
+          allowed_custom_agents: 'allowed_custom_agents',
+          model: 'model',
+          reasoning_effort: 'reasoning_effort',
+          created_at: 'created_at',
+          updated_at: 'updated_at',
+          created_by: 'created_by'
         }.freeze
         REQUIRED_FIELDS = %i[
           id
@@ -221,7 +218,7 @@ module OctridevGithub
           end,
           created_by: lambda do |value|
             ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsGetAutomationResponseCreatedBy.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -287,12 +284,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemCreatorMetadata
         FIELDS = {
-          id: "id",
+          id: 'id'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for AgentAutomationsListAutomationTasksResponseTasksItemCreator.
@@ -327,12 +322,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemUserCollaXae830d1721Metadata
         FIELDS = {
-          id: "id",
+          id: 'id'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for AgentAutomationsListAutomationTasksResponseTasksItemUserCollaXae830d1721.
@@ -367,12 +360,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemOwnerMetadata
         FIELDS = {
-          id: "id",
+          id: 'id'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for AgentAutomationsListAutomationTasksResponseTasksItemOwner.
@@ -407,12 +398,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemRepositoryMetadata
         FIELDS = {
-          id: "id",
+          id: 'id'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for AgentAutomationsListAutomationTasksResponseTasksItemRepository.
@@ -447,9 +436,9 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemArtifactsItemMetadata
         FIELDS = {
-          provider: "provider",
-          type: "type",
-          data: "data",
+          provider: 'provider',
+          type: 'type',
+          data: 'data'
         }.freeze
         REQUIRED_FIELDS = %i[
           provider
@@ -465,7 +454,7 @@ module OctridevGithub
           end,
           data: lambda do |value|
             ::OctridevGithub::AgentAutomationsListAutomationTasksResponseTasksItemArtifactsItemData.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -505,12 +494,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsListAutomationTasksResponseTasksItemCustomAgentMetadata
         FIELDS = {
-          id: "id",
+          id: 'id'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for AgentAutomationsListAutomationTasksResponseTasksItemCustomAgent.

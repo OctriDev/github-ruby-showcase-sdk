@@ -40,17 +40,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsListAttestationsResponseAttestationsItemMetadata
         FIELDS = {
-          bundle: "bundle",
-          repository_id: "repository_id",
-          bundle_url: "bundle_url",
-          initiator: "initiator",
+          bundle: 'bundle',
+          repository_id: 'repository_id',
+          bundle_url: 'bundle_url',
+          initiator: 'initiator'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           bundle: lambda do |value|
             ::OctridevGithub::Methods::Orgs::OrgsListAttestationsResponseAttestationsItemBundle.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -86,14 +85,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsListAttestationsResponseMetadata
         FIELDS = {
-          attestations: "attestations",
+          attestations: 'attestations'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           attestations: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Orgs::OrgsListAttestationsResponseAttestationsItem.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -127,12 +125,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsCreateWebhookConfigMetadata
         FIELDS = {
-          url: "url",
-          content_type: "content_type",
-          secret: "secret",
-          insecure_ssl: "insecure_ssl",
-          username: "username",
-          password: "password",
+          url: 'url',
+          content_type: 'content_type',
+          secret: 'secret',
+          insecure_ssl: 'insecure_ssl',
+          username: 'username',
+          password: 'password'
         }.freeze
         REQUIRED_FIELDS = %i[
           url
@@ -149,7 +147,7 @@ module OctridevGithub
           end,
           insecure_ssl: lambda do |value|
             ::OctridevGithub::WebhookConfigInsecureSsl.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -190,10 +188,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsCreateWebhookMetadata
         FIELDS = {
-          name: "name",
-          config: "config",
-          events: "events",
-          active: "active",
+          name: 'name',
+          config: 'config',
+          events: 'events',
+          active: 'active'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
@@ -202,7 +200,7 @@ module OctridevGithub
         DECODERS = {
           config: lambda do |value|
             ::OctridevGithub::Methods::Orgs::OrgsCreateWebhookConfig.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -243,10 +241,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsUpdateWebhookConfigMetadata
         FIELDS = {
-          url: "url",
-          content_type: "content_type",
-          secret: "secret",
-          insecure_ssl: "insecure_ssl",
+          url: 'url',
+          content_type: 'content_type',
+          secret: 'secret',
+          insecure_ssl: 'insecure_ssl'
         }.freeze
         REQUIRED_FIELDS = %i[
           url
@@ -263,7 +261,7 @@ module OctridevGithub
           end,
           insecure_ssl: lambda do |value|
             ::OctridevGithub::WebhookConfigInsecureSsl.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -304,17 +302,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsUpdateWebhookMetadata
         FIELDS = {
-          config: "config",
-          events: "events",
-          active: "active",
-          name: "name",
+          config: 'config',
+          events: 'events',
+          active: 'active',
+          name: 'name'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           config: lambda do |value|
             ::OctridevGithub::Methods::Orgs::OrgsUpdateWebhookConfig.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -354,13 +351,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsUpdateWebhookConfigForOrgMetadata
         FIELDS = {
-          url: "url",
-          content_type: "content_type",
-          secret: "secret",
-          insecure_ssl: "insecure_ssl",
+          url: 'url',
+          content_type: 'content_type',
+          secret: 'secret',
+          insecure_ssl: 'insecure_ssl'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           url: lambda do |value|
             ::OctridevGithub::WebhookConfigUrl.from_value(value)
@@ -373,7 +369,7 @@ module OctridevGithub
           end,
           insecure_ssl: lambda do |value|
             ::OctridevGithub::WebhookConfigInsecureSsl.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -413,8 +409,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsListAppInstallationsResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          installations: "installations",
+          total_count: 'total_count',
+          installations: 'installations'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -423,7 +419,7 @@ module OctridevGithub
         DECODERS = {
           installations: lambda do |value|
             value&.map { |item| ::OctridevGithub::Installation.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -457,17 +453,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsCreateInvitationMetadata
         FIELDS = {
-          invitee_id: "invitee_id",
-          email: "email",
-          role: "role",
-          team_ids: "team_ids",
+          invitee_id: 'invitee_id',
+          email: 'email',
+          role: 'role',
+          team_ids: 'team_ids'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           role: lambda do |value|
             ::OctridevGithub::Methods::Orgs::OrgsCreateInvitationRole.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -508,14 +503,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsSetMembershipForUserMetadata
         FIELDS = {
-          role: "role",
+          role: 'role'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           role: lambda do |value|
             ::OctridevGithub::Methods::Orgs::OrgsSetMembershipForUserRole.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -550,15 +544,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsListOrgRolesResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          roles: "roles",
+          total_count: 'total_count',
+          roles: 'roles'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           roles: lambda do |value|
             value&.map { |item| ::OctridevGithub::OrganizationRole.from_hash(item) }
-          end,
+          end
         }.freeze
       end
     end

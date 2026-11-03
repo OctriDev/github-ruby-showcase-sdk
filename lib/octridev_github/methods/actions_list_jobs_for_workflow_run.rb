@@ -34,28 +34,27 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runs/",
+            '/actions/runs/',
             SdkClient.encode_path_segment(run_id),
-            "/jobs"
+            '/jobs'
           ].join,
           config: config,
           query: {
             'filter' => QueryValue.new(filter, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Actions::ActionsListJobsForWorkflowRunResponse,
           decoder: :json,
           operation_id: 'actions_list_jobs_for_workflow_run',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
 
@@ -73,22 +72,21 @@ module OctridevGithub
         run_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runs/",
+            '/actions/runs/',
             SdkClient.encode_path_segment(run_id),
-            "/logs"
+            '/logs'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'actions_download_workflow_run_logs',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
 
@@ -106,23 +104,22 @@ module OctridevGithub
         run_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runs/",
+            '/actions/runs/',
             SdkClient.encode_path_segment(run_id),
-            "/logs"
+            '/logs'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'actions_delete_workflow_run_logs',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '500' => ::OctridevGithub::BasicError }
         ).result
       end
 
@@ -140,23 +137,22 @@ module OctridevGithub
         run_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runs/",
+            '/actions/runs/',
             SdkClient.encode_path_segment(run_id),
-            "/pending_deployments"
+            '/pending_deployments'
           ].join,
           config: config,
           return_type: [::OctridevGithub::PendingDeployment],
           decoder: :json,
           operation_id: 'actions_get_pending_deployments_for_run',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
 
@@ -182,28 +178,27 @@ module OctridevGithub
         comment:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runs/",
+            '/actions/runs/',
             SdkClient.encode_path_segment(run_id),
-            "/pending_deployments"
+            '/pending_deployments'
           ].join,
           config: config,
           body: {
             'environment_ids' => environment_ids,
             'state' => state,
-            'comment' => comment,
+            'comment' => comment
           },
           return_type: [::OctridevGithub::Deployment],
           decoder: :json,
           operation_id: 'actions_review_pending_deployments_for_run',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
 
@@ -224,26 +219,25 @@ module OctridevGithub
         enable_debug_logging: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runs/",
+            '/actions/runs/',
             SdkClient.encode_path_segment(run_id),
-            "/rerun"
+            '/rerun'
           ].join,
           config: config,
           body: {
-            'enable_debug_logging' => enable_debug_logging,
+            'enable_debug_logging' => enable_debug_logging
           },
           return_type: ::OctridevGithub::EmptyObject,
           decoder: :json,
           operation_id: 'actions_re_run_workflow',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
 
@@ -264,26 +258,25 @@ module OctridevGithub
         enable_debug_logging: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runs/",
+            '/actions/runs/',
             SdkClient.encode_path_segment(run_id),
-            "/rerun-failed-jobs"
+            '/rerun-failed-jobs'
           ].join,
           config: config,
           body: {
-            'enable_debug_logging' => enable_debug_logging,
+            'enable_debug_logging' => enable_debug_logging
           },
           return_type: ::OctridevGithub::EmptyObject,
           decoder: :json,
           operation_id: 'actions_re_run_workflow_failed_jobs',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
 
@@ -301,23 +294,22 @@ module OctridevGithub
         run_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/actions/runs/",
+            '/actions/runs/',
             SdkClient.encode_path_segment(run_id),
-            "/timing"
+            '/timing'
           ].join,
           config: config,
           return_type: ::OctridevGithub::WorkflowRunUsage,
           decoder: :json,
           operation_id: 'actions_get_workflow_run_usage',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
     end

@@ -12,15 +12,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsCreateRepoAutomationTriggersSubIssueAddedMetadata
         FIELDS = {
-          query: "query",
-          write_scope: "write_scope",
+          query: 'query',
+          write_scope: 'write_scope'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           write_scope: lambda do |value|
             ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsCreateRepoAutomationTriggersSubIssueAddedWriteScope.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -57,16 +56,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsCreateRepoAutomationTriggersPullRequestReadyForReviewMetadata
         FIELDS = {
-          query: "query",
-          paths: "paths",
-          write_scope: "write_scope",
+          query: 'query',
+          paths: 'paths',
+          write_scope: 'write_scope'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           write_scope: lambda do |value|
             ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsCreateRepoAutomationTriggersPullRequestReadyFX24f54d0015.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -105,17 +103,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsCreateRepoAutomationTriggersPullRequestLabeledMetadata
         FIELDS = {
-          query: "query",
-          paths: "paths",
-          labels: "labels",
-          write_scope: "write_scope",
+          query: 'query',
+          paths: 'paths',
+          labels: 'labels',
+          write_scope: 'write_scope'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           write_scope: lambda do |value|
             ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsCreateRepoAutomationTriggersPullRequestLabeledWriteScope.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -156,16 +153,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsCreateRepoAutomationTriggersPullRequestMergeConflictMetadata
         FIELDS = {
-          query: "query",
-          paths: "paths",
-          write_scope: "write_scope",
+          query: 'query',
+          paths: 'paths',
+          write_scope: 'write_scope'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           write_scope: lambda do |value|
             ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsCreateRepoAutomationTriggersPullRequestMergeCX49785913f3.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -204,10 +200,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsCreateRepoAutomationTriggersPullRequestReviewSubmittedMetadata
         FIELDS = {
-          query: "query",
-          paths: "paths",
-          states: "states",
-          write_scope: "write_scope",
+          query: 'query',
+          paths: 'paths',
+          states: 'states',
+          write_scope: 'write_scope'
         }.freeze
         REQUIRED_FIELDS = %i[
           states
@@ -218,7 +214,7 @@ module OctridevGithub
           end,
           write_scope: lambda do |value|
             ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsCreateRepoAutomationTriggersPullRequestReviewXd1ece22c37.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -259,16 +255,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsCreateRepoAutomationTriggersPullRequestReviewRequestedMetadata
         FIELDS = {
-          query: "query",
-          paths: "paths",
-          write_scope: "write_scope",
+          query: 'query',
+          paths: 'paths',
+          write_scope: 'write_scope'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           write_scope: lambda do |value|
             ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsCreateRepoAutomationTriggersPullRequestReviewX6ba4170ee7.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -307,8 +302,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsCreateRepoAutomationTriggersAutomationCompletedMetadata
         FIELDS = {
-          automation_ids: "automation_ids",
-          write_scope: "write_scope",
+          automation_ids: 'automation_ids',
+          write_scope: 'write_scope'
         }.freeze
         REQUIRED_FIELDS = %i[
           automation_ids
@@ -316,7 +311,7 @@ module OctridevGithub
         DECODERS = {
           write_scope: lambda do |value|
             ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsCreateRepoAutomationTriggersAutomationCompletX02fe3e7f4f.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -353,30 +348,29 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsCreateRepoAutomationTriggersMetadata
         FIELDS = {
-          interval: "interval",
-          issue_opened: "issue_opened",
-          issue_labeled: "issue_labeled",
-          workflow_run: "workflow_run",
-          pull_request_opened: "pull_request_opened",
-          pull_request_synchronize: "pull_request_synchronize",
-          pull_request_merged: "pull_request_merged",
-          issue_comment: "issue_comment",
-          pull_request_comment: "pull_request_comment",
-          discussion_opened: "discussion_opened",
-          discussion_updated: "discussion_updated",
-          discussion_comment: "discussion_comment",
-          issue_assigned: "issue_assigned",
-          pull_request_assigned: "pull_request_assigned",
-          sub_issue_added: "sub_issue_added",
-          pull_request_ready_for_review: "pull_request_ready_for_review",
-          pull_request_labeled: "pull_request_labeled",
-          pull_request_merge_conflict: "pull_request_merge_conflict",
-          pull_request_review_submitted: "pull_request_review_submitted",
-          pull_request_review_requested: "pull_request_review_requested",
-          automation_completed: "automation_completed",
+          interval: 'interval',
+          issue_opened: 'issue_opened',
+          issue_labeled: 'issue_labeled',
+          workflow_run: 'workflow_run',
+          pull_request_opened: 'pull_request_opened',
+          pull_request_synchronize: 'pull_request_synchronize',
+          pull_request_merged: 'pull_request_merged',
+          issue_comment: 'issue_comment',
+          pull_request_comment: 'pull_request_comment',
+          discussion_opened: 'discussion_opened',
+          discussion_updated: 'discussion_updated',
+          discussion_comment: 'discussion_comment',
+          issue_assigned: 'issue_assigned',
+          pull_request_assigned: 'pull_request_assigned',
+          sub_issue_added: 'sub_issue_added',
+          pull_request_ready_for_review: 'pull_request_ready_for_review',
+          pull_request_labeled: 'pull_request_labeled',
+          pull_request_merge_conflict: 'pull_request_merge_conflict',
+          pull_request_review_submitted: 'pull_request_review_submitted',
+          pull_request_review_requested: 'pull_request_review_requested',
+          automation_completed: 'automation_completed'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           interval: lambda do |value|
             ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsCreateRepoAutomationTriggersInterval.from_hash(value)
@@ -440,7 +434,7 @@ module OctridevGithub
           end,
           automation_completed: lambda do |value|
             ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsCreateRepoAutomationTriggersAutomationCompleted.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -486,7 +480,7 @@ module OctridevGithub
         HIGH = 'high'
         XHIGH = 'xhigh'
         MAX = 'max'
-        VALUES = ['none', 'low', 'medium', 'high', 'xhigh', 'max'].freeze
+        VALUES = %w[none low medium high xhigh max].freeze
         def self.from_value(value)
           value
         end
@@ -495,17 +489,17 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentAutomationsCreateRepoAutomationMetadata
         FIELDS = {
-          name: "name",
-          triggers: "triggers",
-          prompt: "prompt",
-          model: "model",
-          reasoning_effort: "reasoning_effort",
-          tools: "tools",
-          allowed_custom_agents: "allowed_custom_agents",
-          enabled: "enabled",
-          owner_type: "owner_type",
-          write_scope: "write_scope",
-          require_actor_write_permission: "require_actor_write_permission",
+          name: 'name',
+          triggers: 'triggers',
+          prompt: 'prompt',
+          model: 'model',
+          reasoning_effort: 'reasoning_effort',
+          tools: 'tools',
+          allowed_custom_agents: 'allowed_custom_agents',
+          enabled: 'enabled',
+          owner_type: 'owner_type',
+          write_scope: 'write_scope',
+          require_actor_write_permission: 'require_actor_write_permission'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
@@ -523,7 +517,7 @@ module OctridevGithub
           end,
           write_scope: lambda do |value|
             ::OctridevGithub::Methods::AgentAutomations::AgentAutomationsCreateRepoAutomationWriteScope.from_value(value)
-          end,
+          end
         }.freeze
       end
     end

@@ -12,12 +12,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateSecurityAndAnalysisSecretScanningDelegatedBypassMetadata
         FIELDS = {
-          status: "status",
+          status: 'status'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposUpdateSecurityAndAnalysisSecretScanningDelegatedBypass.
@@ -52,9 +50,9 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateSecurityAndAnalysisSecretScanningDelegatedBypassOpX642aa586a2Metadata
         FIELDS = {
-          reviewer_id: "reviewer_id",
-          reviewer_type: "reviewer_type",
-          mode: "mode",
+          reviewer_id: 'reviewer_id',
+          reviewer_type: 'reviewer_type',
+          mode: 'mode'
         }.freeze
         REQUIRED_FIELDS = %i[
           reviewer_id
@@ -66,7 +64,7 @@ module OctridevGithub
           end,
           mode: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposUpdateSecurityAndAnalysisSecretScanningDelegatedBypassOpX7ef3ce56ec.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -105,14 +103,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateSecurityAndAnalysisSecretScanningDelegatedBypassOptionsMetadata
         FIELDS = {
-          reviewers: "reviewers",
+          reviewers: 'reviewers'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           reviewers: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Repos::ReposUpdateSecurityAndAnalysisSecretScanningDelegatedBypassOpX642aa586a2.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -148,18 +145,17 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateSecurityAndAnalysisMetadata
         FIELDS = {
-          advanced_security: "advanced_security",
-          code_security: "code_security",
-          secret_scanning: "secret_scanning",
-          secret_scanning_push_protection: "secret_scanning_push_protection",
-          secret_scanning_ai_detection: "secret_scanning_ai_detection",
-          secret_scanning_non_provider_patterns: "secret_scanning_non_provider_patterns",
-          secret_scanning_delegated_alert_dismissal: "secret_scanning_delegated_alert_dismissal",
-          secret_scanning_delegated_bypass: "secret_scanning_delegated_bypass",
-          secret_scanning_delegated_bypass_options: "secret_scanning_delegated_bypass_options",
+          advanced_security: 'advanced_security',
+          code_security: 'code_security',
+          secret_scanning: 'secret_scanning',
+          secret_scanning_push_protection: 'secret_scanning_push_protection',
+          secret_scanning_ai_detection: 'secret_scanning_ai_detection',
+          secret_scanning_non_provider_patterns: 'secret_scanning_non_provider_patterns',
+          secret_scanning_delegated_alert_dismissal: 'secret_scanning_delegated_alert_dismissal',
+          secret_scanning_delegated_bypass: 'secret_scanning_delegated_bypass',
+          secret_scanning_delegated_bypass_options: 'secret_scanning_delegated_bypass_options'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           advanced_security: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposUpdateSecurityAndAnalysisAdvancedSecurity.from_hash(value)
@@ -187,7 +183,7 @@ module OctridevGithub
           end,
           secret_scanning_delegated_bypass_options: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposUpdateSecurityAndAnalysisSecretScanningDelegatedBypassOptions.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -239,36 +235,35 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateMetadata
         FIELDS = {
-          name: "name",
-          description: "description",
-          homepage: "homepage",
-          private: "private",
-          visibility: "visibility",
-          security_and_analysis: "security_and_analysis",
-          has_issues: "has_issues",
-          has_projects: "has_projects",
-          has_wiki: "has_wiki",
-          has_pull_requests: "has_pull_requests",
-          pull_request_creation_policy: "pull_request_creation_policy",
-          is_template: "is_template",
-          default_branch: "default_branch",
-          allow_squash_merge: "allow_squash_merge",
-          allow_merge_commit: "allow_merge_commit",
-          allow_rebase_merge: "allow_rebase_merge",
-          allow_auto_merge: "allow_auto_merge",
-          delete_branch_on_merge: "delete_branch_on_merge",
-          allow_update_branch: "allow_update_branch",
-          use_squash_pr_title_as_default: "use_squash_pr_title_as_default",
-          squash_merge_commit_title: "squash_merge_commit_title",
-          squash_merge_commit_message: "squash_merge_commit_message",
-          merge_commit_title: "merge_commit_title",
-          merge_commit_message: "merge_commit_message",
-          archived: "archived",
-          allow_forking: "allow_forking",
-          web_commit_signoff_required: "web_commit_signoff_required",
+          name: 'name',
+          description: 'description',
+          homepage: 'homepage',
+          private: 'private',
+          visibility: 'visibility',
+          security_and_analysis: 'security_and_analysis',
+          has_issues: 'has_issues',
+          has_projects: 'has_projects',
+          has_wiki: 'has_wiki',
+          has_pull_requests: 'has_pull_requests',
+          pull_request_creation_policy: 'pull_request_creation_policy',
+          is_template: 'is_template',
+          default_branch: 'default_branch',
+          allow_squash_merge: 'allow_squash_merge',
+          allow_merge_commit: 'allow_merge_commit',
+          allow_rebase_merge: 'allow_rebase_merge',
+          allow_auto_merge: 'allow_auto_merge',
+          delete_branch_on_merge: 'delete_branch_on_merge',
+          allow_update_branch: 'allow_update_branch',
+          use_squash_pr_title_as_default: 'use_squash_pr_title_as_default',
+          squash_merge_commit_title: 'squash_merge_commit_title',
+          squash_merge_commit_message: 'squash_merge_commit_message',
+          merge_commit_title: 'merge_commit_title',
+          merge_commit_message: 'merge_commit_message',
+          archived: 'archived',
+          allow_forking: 'allow_forking',
+          web_commit_signoff_required: 'web_commit_signoff_required'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           visibility: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposUpdateVisibility.from_value(value)
@@ -290,7 +285,7 @@ module OctridevGithub
           end,
           merge_commit_message: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposUpdateMergeCommitMessage.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -377,14 +372,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreateAttestationBundleMetadata
         FIELDS = {
-          media_type: "mediaType",
-          verification_material: "verificationMaterial",
-          dsse_envelope: "dsseEnvelope",
+          media_type: 'mediaType',
+          verification_material: 'verificationMaterial',
+          dsse_envelope: 'dsseEnvelope'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposCreateAttestationBundle.
@@ -418,7 +411,7 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreateAttestationMetadata
         FIELDS = {
-          bundle: "bundle",
+          bundle: 'bundle'
         }.freeze
         REQUIRED_FIELDS = %i[
           bundle
@@ -426,7 +419,7 @@ module OctridevGithub
         DECODERS = {
           bundle: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposCreateAttestationBundle.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -461,12 +454,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreateAttestationResponseMetadata
         FIELDS = {
-          id: "id",
+          id: 'id'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposCreateAttestationResponse.
@@ -500,14 +491,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposListAttestationsResponseAttestationsItemBundleMetadata
         FIELDS = {
-          media_type: "mediaType",
-          verification_material: "verificationMaterial",
-          dsse_envelope: "dsseEnvelope",
+          media_type: 'mediaType',
+          verification_material: 'verificationMaterial',
+          dsse_envelope: 'dsseEnvelope'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposListAttestationsResponseAttestationsItemBundle.
@@ -541,17 +530,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposListAttestationsResponseAttestationsItemMetadata
         FIELDS = {
-          bundle: "bundle",
-          repository_id: "repository_id",
-          bundle_url: "bundle_url",
-          initiator: "initiator",
+          bundle: 'bundle',
+          repository_id: 'repository_id',
+          bundle_url: 'bundle_url',
+          initiator: 'initiator'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           bundle: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposListAttestationsResponseAttestationsItemBundle.from_hash(value)
-          end,
+          end
         }.freeze
       end
     end

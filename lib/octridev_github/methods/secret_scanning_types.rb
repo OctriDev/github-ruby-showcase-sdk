@@ -12,7 +12,7 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalSecretScanningBulkCreateOrgCustomPatternsMetadata
         FIELDS = {
-          patterns: "patterns",
+          patterns: 'patterns'
         }.freeze
         REQUIRED_FIELDS = %i[
           patterns
@@ -20,7 +20,7 @@ module OctridevGithub
         DECODERS = {
           patterns: lambda do |value|
             value&.map { |item| ::OctridevGithub::SecretScanningCustomPatternToCreate.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -55,14 +55,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalSecretScanningBulkCreateOrgCustomPatternsResponseMetadata
         FIELDS = {
-          created_patterns: "created_patterns",
+          created_patterns: 'created_patterns'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           created_patterns: lambda do |value|
             value&.map { |item| ::OctridevGithub::SecretScanningCustomPattern.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -97,8 +96,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalSecretScanningBulkDeleteOrgCustomPatternsMetadata
         FIELDS = {
-          patterns: "patterns",
-          post_delete_action: "post_delete_action",
+          patterns: 'patterns',
+          post_delete_action: 'post_delete_action'
         }.freeze
         REQUIRED_FIELDS = %i[
           patterns
@@ -109,7 +108,7 @@ module OctridevGithub
           end,
           post_delete_action: lambda do |value|
             ::OctridevGithub::Methods::SecretScanning::SecretScanningBulkDeleteOrgCustomPatternsPostDeleteAction.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -146,15 +145,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalSecretScanningUpdateOrgPatternConfigsProviderPatternSettingsItemMetadata
         FIELDS = {
-          token_type: "token_type",
-          push_protection_setting: "push_protection_setting",
+          token_type: 'token_type',
+          push_protection_setting: 'push_protection_setting'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           push_protection_setting: lambda do |value|
             ::OctridevGithub::Methods::SecretScanning::SecretScanningUpdateOrgPatternConfigsProviderPatternSettingsIXa406af402d.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -191,19 +189,18 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalSecretScanningUpdateOrgPatternConfigsCustomPatternSettingsItemMetadata
         FIELDS = {
-          token_type: "token_type",
-          custom_pattern_version: "custom_pattern_version",
-          push_protection_setting: "push_protection_setting",
+          token_type: 'token_type',
+          custom_pattern_version: 'custom_pattern_version',
+          push_protection_setting: 'push_protection_setting'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           custom_pattern_version: lambda do |value|
             ::OctridevGithub::SecretScanningRowVersion.from_value(value)
           end,
           push_protection_setting: lambda do |value|
             ::OctridevGithub::Methods::SecretScanning::SecretScanningUpdateOrgPatternConfigsCustomPatternSettingsIteXcb824b0d13.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -242,12 +239,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalSecretScanningUpdateOrgPatternConfigsMetadata
         FIELDS = {
-          pattern_config_version: "pattern_config_version",
-          provider_pattern_settings: "provider_pattern_settings",
-          custom_pattern_settings: "custom_pattern_settings",
+          pattern_config_version: 'pattern_config_version',
+          provider_pattern_settings: 'provider_pattern_settings',
+          custom_pattern_settings: 'custom_pattern_settings'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           pattern_config_version: lambda do |value|
             ::OctridevGithub::SecretScanningRowVersion.from_value(value)
@@ -257,7 +253,7 @@ module OctridevGithub
           end,
           custom_pattern_settings: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::SecretScanning::SecretScanningUpdateOrgPatternConfigsCustomPatternSettingsItem.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -296,12 +292,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalSecretScanningUpdateOrgPatternConfigsResponseMetadata
         FIELDS = {
-          pattern_config_version: "pattern_config_version",
+          pattern_config_version: 'pattern_config_version'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for SecretScanningUpdateOrgPatternConfigsResponse.
@@ -335,14 +329,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalSecretScanningUpdateAlertMetadata
         FIELDS = {
-          state: "state",
-          resolution: "resolution",
-          resolution_comment: "resolution_comment",
-          assignee: "assignee",
-          validity: "validity",
+          state: 'state',
+          resolution: 'resolution',
+          resolution_comment: 'resolution_comment',
+          assignee: 'assignee',
+          validity: 'validity'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           state: lambda do |value|
             ::OctridevGithub::SecretScanningAlertState.from_value(value)
@@ -358,7 +351,7 @@ module OctridevGithub
           end,
           validity: lambda do |value|
             ::OctridevGithub::Methods::SecretScanning::SecretScanningUpdateAlertValidity.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -401,7 +394,7 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalSecretScanningBulkCreateRepoCustomPatternsMetadata
         FIELDS = {
-          patterns: "patterns",
+          patterns: 'patterns'
         }.freeze
         REQUIRED_FIELDS = %i[
           patterns
@@ -409,7 +402,7 @@ module OctridevGithub
         DECODERS = {
           patterns: lambda do |value|
             value&.map { |item| ::OctridevGithub::SecretScanningCustomPatternToCreate.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -444,14 +437,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalSecretScanningBulkCreateRepoCustomPatternsResponseMetadata
         FIELDS = {
-          created_patterns: "created_patterns",
+          created_patterns: 'created_patterns'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           created_patterns: lambda do |value|
             value&.map { |item| ::OctridevGithub::SecretScanningCustomPattern.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -486,8 +478,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalSecretScanningBulkDeleteRepoCustomPatternsMetadata
         FIELDS = {
-          patterns: "patterns",
-          post_delete_action: "post_delete_action",
+          patterns: 'patterns',
+          post_delete_action: 'post_delete_action'
         }.freeze
         REQUIRED_FIELDS = %i[
           patterns
@@ -498,7 +490,7 @@ module OctridevGithub
           end,
           post_delete_action: lambda do |value|
             ::OctridevGithub::Methods::SecretScanning::SecretScanningBulkDeleteRepoCustomPatternsPostDeleteAction.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -535,8 +527,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalSecretScanningCreatePushProtectionBypassMetadata
         FIELDS = {
-          reason: "reason",
-          placeholder_id: "placeholder_id",
+          reason: 'reason',
+          placeholder_id: 'placeholder_id'
         }.freeze
         REQUIRED_FIELDS = %i[
           reason
@@ -548,7 +540,7 @@ module OctridevGithub
           end,
           placeholder_id: lambda do |value|
             ::OctridevGithub::SecretScanningPushProtectionBypassPlaceholderId.from_value(value)
-          end,
+          end
         }.freeze
       end
     end

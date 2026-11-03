@@ -32,13 +32,12 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/repos"
+            '/repos'
           ].join,
           config: config,
           query: {
@@ -46,12 +45,12 @@ module OctridevGithub
             'sort' => QueryValue.new(sort, style: 'form', explode: true),
             'direction' => QueryValue.new(direction, style: 'form', explode: true),
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::MinimalRepository],
           decoder: :json,
           operation_id: 'repos_list_for_org',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
 
@@ -155,22 +154,22 @@ module OctridevGithub
         custom_properties: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/repos"
+            '/repos'
           ].join,
           config: config,
           body: __sdk_body_repos_create_in_org_part1(name: name, description: description, homepage: homepage, private: private, visibility: visibility, has_issues: has_issues, has_projects: has_projects, has_wiki: has_wiki, has_downloads: has_downloads, is_template: is_template, team_id: team_id, auto_init: auto_init, gitignore_template: gitignore_template, license_template: license_template, allow_squash_merge: allow_squash_merge, allow_merge_commit: allow_merge_commit, allow_rebase_merge: allow_rebase_merge, allow_auto_merge: allow_auto_merge).merge(
-            __sdk_body_repos_create_in_org_part2(delete_branch_on_merge: delete_branch_on_merge, use_squash_pr_title_as_default: use_squash_pr_title_as_default, squash_merge_commit_title: squash_merge_commit_title, squash_merge_commit_message: squash_merge_commit_message, merge_commit_title: merge_commit_title, merge_commit_message: merge_commit_message, custom_properties: custom_properties)),
+            __sdk_body_repos_create_in_org_part2(delete_branch_on_merge: delete_branch_on_merge, use_squash_pr_title_as_default: use_squash_pr_title_as_default, squash_merge_commit_title: squash_merge_commit_title, squash_merge_commit_message: squash_merge_commit_message, merge_commit_title: merge_commit_title, merge_commit_message: merge_commit_message, custom_properties: custom_properties)
+          ),
           return_type: ::OctridevGithub::FullRepository,
           decoder: :json,
           operation_id: 'repos_create_in_org',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).result
       end
 
@@ -212,7 +211,7 @@ module OctridevGithub
           'allow_squash_merge' => allow_squash_merge,
           'allow_merge_commit' => allow_merge_commit,
           'allow_rebase_merge' => allow_rebase_merge,
-          'allow_auto_merge' => allow_auto_merge,
+          'allow_auto_merge' => allow_auto_merge
         }
       end
       private_class_method :__sdk_body_repos_create_in_org_part1
@@ -233,7 +232,7 @@ module OctridevGithub
           'squash_merge_commit_message' => squash_merge_commit_message,
           'merge_commit_title' => merge_commit_title,
           'merge_commit_message' => merge_commit_message,
-          'custom_properties' => custom_properties,
+          'custom_properties' => custom_properties
         }
       end
       private_class_method :__sdk_body_repos_create_in_org_part2
@@ -250,13 +249,12 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo)
           ].join,
           config: config,
@@ -264,7 +262,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'repos_get',
           request_options: request_options,
-          errors: { '301' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '301' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).result
       end
 
@@ -384,23 +382,23 @@ module OctridevGithub
         web_commit_signoff_required: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo)
           ].join,
           config: config,
           body: __sdk_body_repos_update_part1(name: name, description: description, homepage: homepage, private: private, visibility: visibility, security_and_analysis: security_and_analysis, has_issues: has_issues, has_projects: has_projects, has_wiki: has_wiki, has_pull_requests: has_pull_requests, pull_request_creation_policy: pull_request_creation_policy, is_template: is_template, default_branch: default_branch, allow_squash_merge: allow_squash_merge, allow_merge_commit: allow_merge_commit, allow_rebase_merge: allow_rebase_merge, allow_auto_merge: allow_auto_merge, delete_branch_on_merge: delete_branch_on_merge).merge(
-            __sdk_body_repos_update_part2(allow_update_branch: allow_update_branch, use_squash_pr_title_as_default: use_squash_pr_title_as_default, squash_merge_commit_title: squash_merge_commit_title, squash_merge_commit_message: squash_merge_commit_message, merge_commit_title: merge_commit_title, merge_commit_message: merge_commit_message, archived: archived, allow_forking: allow_forking, web_commit_signoff_required: web_commit_signoff_required)),
+            __sdk_body_repos_update_part2(allow_update_branch: allow_update_branch, use_squash_pr_title_as_default: use_squash_pr_title_as_default, squash_merge_commit_title: squash_merge_commit_title, squash_merge_commit_message: squash_merge_commit_message, merge_commit_title: merge_commit_title, merge_commit_message: merge_commit_message, archived: archived, allow_forking: allow_forking, web_commit_signoff_required: web_commit_signoff_required)
+          ),
           return_type: ::OctridevGithub::FullRepository,
           decoder: :json,
           operation_id: 'repos_update',
           request_options: request_options,
-          errors: { '307' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '307' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).result
       end
 
@@ -442,7 +440,7 @@ module OctridevGithub
           'allow_merge_commit' => allow_merge_commit,
           'allow_rebase_merge' => allow_rebase_merge,
           'allow_auto_merge' => allow_auto_merge,
-          'delete_branch_on_merge' => delete_branch_on_merge,
+          'delete_branch_on_merge' => delete_branch_on_merge
         }
       end
       private_class_method :__sdk_body_repos_update_part1
@@ -467,7 +465,7 @@ module OctridevGithub
           'merge_commit_message' => merge_commit_message,
           'archived' => archived,
           'allow_forking' => allow_forking,
-          'web_commit_signoff_required' => web_commit_signoff_required,
+          'web_commit_signoff_required' => web_commit_signoff_required
         }
       end
       private_class_method :__sdk_body_repos_update_part2
@@ -484,20 +482,19 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_delete',
           request_options: request_options,
-          errors: { '307' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError },
+          errors: { '307' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError }
         ).result
       end
 
@@ -539,14 +536,13 @@ module OctridevGithub
         before: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.if_given(since) { Validation.validate_date_time('since', since) }
 
         Validation.if_given(before) { Validation.validate_date_time('before', before) }
 
         SdkClient.request(
           'GET',
-          "/user/repos",
+          '/user/repos',
           config: config,
           query: {
             'visibility' => QueryValue.new(visibility, style: 'form', explode: true),
@@ -557,13 +553,13 @@ module OctridevGithub
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
             'page' => QueryValue.new(page, style: 'form', explode: true),
             'since' => QueryValue.new(since, style: 'form', explode: true),
-            'before' => QueryValue.new(before, style: 'form', explode: true),
+            'before' => QueryValue.new(before, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::Repository],
           decoder: :json,
           operation_id: 'repos_list_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).result
       end
     end

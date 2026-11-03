@@ -5,251 +5,247 @@
 
 # git domain models
 module OctridevGithub
-# API model for GitTag.
-# Metadata for a Git tag
-class GitTag
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalGitTagMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalGitTagMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalGitTagMetadata::DECODERS
+  # API model for GitTag.
+  # Metadata for a Git tag
+  class GitTag
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalGitTagMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalGitTagMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalGitTagMetadata::DECODERS
 
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Name of the tag
-  attr_reader :tag
-  # @return [String] Required `string` value serialized in the `sha` wire field.
-  attr_reader :sha
-  # @return [String] URL for the tag
-  attr_reader :url
-  # @return [String] Message describing the purpose of the tag
-  attr_reader :message
-  # @return [GitTagTagger] Required object value serialized in the `tagger` wire field.
-  attr_reader :tagger
-  # @return [GitTagObject] Required object value serialized in the `object` wire field.
-  attr_reader :object
-  # @return [Verification] Optional object value serialized in the `verification` wire field.
-  attr_reader :verification
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Name of the tag
+    attr_reader :tag
+    # @return [String] Required `string` value serialized in the `sha` wire field.
+    attr_reader :sha
+    # @return [String] URL for the tag
+    attr_reader :url
+    # @return [String] Message describing the purpose of the tag
+    attr_reader :message
+    # @return [GitTagTagger] Required object value serialized in the `tagger` wire field.
+    attr_reader :tagger
+    # @return [GitTagObject] Required object value serialized in the `object` wire field.
+    attr_reader :object
+    # @return [Verification] Optional object value serialized in the `verification` wire field.
+    attr_reader :verification
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalGitTreeTreeItemMetadata
+    FIELDS = {
+      path: 'path',
+      mode: 'mode',
+      type: 'type',
+      sha: 'sha',
+      size: 'size',
+      url: 'url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      path
+      mode
+      type
+      sha
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # API model for GitTreeTreeItem.
+  # Required object value serialized in the `tree[]` wire field.
+  class GitTreeTreeItem
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalGitTreeTreeItemMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalGitTreeTreeItemMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalGitTreeTreeItemMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `path` wire field.
+    attr_reader :path
+    # @return [String] Required `string` value serialized in the `mode` wire field.
+    attr_reader :mode
+    # @return [String] Required `string` value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [String] Required `string` value serialized in the `sha` wire field.
+    attr_reader :sha
+    # @return [Integer] Optional `integer` value serialized in the `size` wire field.
+    attr_reader :size
+    # @return [String] Optional `string` value serialized in the `url` wire field.
+    attr_reader :url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalGitTreeTreeItemMetadata
-  FIELDS = {
-    path: "path",
-    mode: "mode",
-    type: "type",
-    sha: "sha",
-    size: "size",
-    url: "url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    path
-    mode
-    type
-    sha
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for GitTreeTreeItem.
-# Required object value serialized in the `tree[]` wire field.
-class GitTreeTreeItem
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalGitTreeTreeItemMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalGitTreeTreeItemMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalGitTreeTreeItemMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `path` wire field.
-  attr_reader :path
-  # @return [String] Required `string` value serialized in the `mode` wire field.
-  attr_reader :mode
-  # @return [String] Required `string` value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [String] Required `string` value serialized in the `sha` wire field.
-  attr_reader :sha
-  # @return [Integer] Optional `integer` value serialized in the `size` wire field.
-  attr_reader :size
-  # @return [String] Optional `string` value serialized in the `url` wire field.
-  attr_reader :url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalGitTreeMetadata
+    FIELDS = {
+      sha: 'sha',
+      url: 'url',
+      truncated: 'truncated',
+      tree: 'tree'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      sha
+      truncated
+      tree
+    ].freeze
+    DECODERS = {
+      tree: lambda do |value|
+        value&.map { |item| ::OctridevGithub::GitTreeTreeItem.from_hash(item) }
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for GitTree.
+  # The hierarchy between files in a Git repository.
+  class GitTree
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalGitTreeMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalGitTreeMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalGitTreeMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `sha` wire field.
+    attr_reader :sha
+    # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [Boolean] Required `boolean` value serialized in the `truncated` wire field.
+    attr_reader :truncated
+    # @return [Array_of_GitTreeTreeItem] Objects specifying a tree structure
+    attr_reader :tree
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalGitUserMetadata
+    FIELDS = {
+      name: 'name',
+      email: 'email',
+      date: 'date'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
+  # API model for GitUser.
+  # Metaproperties for Git author/committer information.
+  class GitUser
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalGitUserMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalGitUserMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalGitUserMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalGitTreeMetadata
-  FIELDS = {
-    sha: "sha",
-    url: "url",
-    truncated: "truncated",
-    tree: "tree",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    sha
-    truncated
-    tree
-  ].freeze
-  DECODERS = {
-    tree: lambda do |value|
-      value&.map { |item| ::OctridevGithub::GitTreeTreeItem.from_hash(item) }
-    end,
-  }.freeze
-end
+    # @return [String] Optional `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Optional `string` value serialized in the `email` wire field.
+    attr_reader :email
+    # @return [String] Optional `date-time`-formatted value serialized in the `date` wire field.
+    attr_reader :date
 
-# API model for GitTree.
-# The hierarchy between files in a Git repository.
-class GitTree
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalGitTreeMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalGitTreeMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalGitTreeMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [String] Required `string` value serialized in the `sha` wire field.
-  attr_reader :sha
-  # @return [String] Optional `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [Boolean] Required `boolean` value serialized in the `truncated` wire field.
-  attr_reader :truncated
-  # @return [Array_of_GitTreeTreeItem] Objects specifying a tree structure
-  attr_reader :tree
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalShortBlobMetadata
+    FIELDS = {
+      url: 'url',
+      sha: 'sha'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      url
+      sha
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # API model for ShortBlob.
+  # Short Blob
+  class ShortBlob
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalShortBlobMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalShortBlobMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalShortBlobMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Required `string` value serialized in the `sha` wire field.
+    attr_reader :sha
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
-
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalGitUserMetadata
-  FIELDS = {
-    name: "name",
-    email: "email",
-    date: "date",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for GitUser.
-# Metaproperties for Git author/committer information.
-class GitUser
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalGitUserMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalGitUserMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalGitUserMetadata::DECODERS
-
-  # @return [String] Optional `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Optional `string` value serialized in the `email` wire field.
-  attr_reader :email
-  # @return [String] Optional `date-time`-formatted value serialized in the `date` wire field.
-  attr_reader :date
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalShortBlobMetadata
-  FIELDS = {
-    url: "url",
-    sha: "sha",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    url
-    sha
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for ShortBlob.
-# Short Blob
-class ShortBlob
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalShortBlobMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalShortBlobMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalShortBlobMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Required `string` value serialized in the `sha` wire field.
-  attr_reader :sha
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
 end

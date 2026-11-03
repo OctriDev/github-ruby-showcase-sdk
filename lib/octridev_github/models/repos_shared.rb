@@ -5,648 +5,641 @@
 
 # repos domain models
 module OctridevGithub
-# API model for FileCommit.
-# File Commit
-class FileCommit
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalFileCommitMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalFileCommitMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalFileCommitMetadata::DECODERS
+  # API model for FileCommit.
+  # File Commit
+  class FileCommit
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalFileCommitMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalFileCommitMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalFileCommitMetadata::DECODERS
 
-  # @return [FileCommitContent] Required object value serialized in the `content` wire field.
-  attr_reader :content
-  # @return [FileCommitCommit] Required object value serialized in the `commit` wire field.
-  attr_reader :commit
+    # @return [FileCommitContent] Required object value serialized in the `content` wire field.
+    attr_reader :content
+    # @return [FileCommitCommit] Required object value serialized in the `commit` wire field.
+    attr_reader :commit
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalFileCommitMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalFileCommitMetadata::NULLABLE_FIELDS)
+  # Defines the Language SDK value decoder.
+  module Language
+    def self.from_hash(value)
+      return nil if value.nil?
+
+      value&.transform_values { |item| item }
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalMergedUpstreamMetadata
+    FIELDS = {
+      message: 'message',
+      merge_type: 'merge_type',
+      base_branch: 'base_branch'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      merge_type: lambda do |value|
+        ::OctridevGithub::MergedUpstreamMergeType.from_value(value)
+      end
+    }.freeze
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
+  # API model for MergedUpstream.
+  # Results of a successful merge upstream request
+  class MergedUpstream
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalMergedUpstreamMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalMergedUpstreamMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalMergedUpstreamMetadata::DECODERS
 
-# Defines the Language SDK value decoder.
-module Language
-  def self.from_hash(value)
-    return nil if value.nil?
-    value&.transform_values { |item| item }
-  end
-end
+    # @return [String] Optional `string` value serialized in the `message` wire field.
+    attr_reader :message
+    # @return [MergedUpstreamMergeType] Optional enumerated value serialized in the `merge_type` wire field.
+    attr_reader :merge_type
+    # @return [String] Optional `string` value serialized in the `base_branch` wire field.
+    attr_reader :base_branch
 
-# Internal model hydration metadata.
-class SdkInternalMergedUpstreamMetadata
-  FIELDS = {
-    message: "message",
-    merge_type: "merge_type",
-    base_branch: "base_branch",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    merge_type: lambda do |value|
-      ::OctridevGithub::MergedUpstreamMergeType.from_value(value)
-    end,
-  }.freeze
-end
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-# API model for MergedUpstream.
-# Results of a successful merge upstream request
-class MergedUpstream
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalMergedUpstreamMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalMergedUpstreamMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalMergedUpstreamMetadata::DECODERS
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  # @return [String] Optional `string` value serialized in the `message` wire field.
-  attr_reader :message
-  # @return [MergedUpstreamMergeType] Optional enumerated value serialized in the `merge_type` wire field.
-  attr_reader :merge_type
-  # @return [String] Optional `string` value serialized in the `base_branch` wire field.
-  attr_reader :base_branch
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the MergedUpstreamMergeType SDK namespace.
+  module MergedUpstreamMergeType
+    MERGE = 'merge'
+    FAST_FORWARD = 'fast-forward'
+    NONE = 'none'
+    VALUES = %w[merge fast-forward none].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalParticipationStatsMetadata
+    FIELDS = {
+      all: 'all',
+      owner: 'owner'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      all
+      owner
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
+  # API model for ParticipationStats.
+  # Typed representation of the `ParticipationStats` API schema.
+  class ParticipationStats
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalParticipationStatsMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalParticipationStatsMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalParticipationStatsMetadata::DECODERS
 
-# Defines the MergedUpstreamMergeType SDK namespace.
-module MergedUpstreamMergeType
-  MERGE = 'merge'
-  FAST_FORWARD = 'fast-forward'
-  NONE = 'none'
-  VALUES = ['merge', 'fast-forward', 'none'].freeze
-  def self.from_value(value)
-    value
-  end
-end
+    # @return [Array_of_Integer] Required array value serialized in the `all` wire field.
+    attr_reader :all
+    # @return [Array_of_Integer] Required array value serialized in the `owner` wire field.
+    attr_reader :owner
 
-# Internal model hydration metadata.
-class SdkInternalParticipationStatsMetadata
-  FIELDS = {
-    all: "all",
-    owner: "owner",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    all
-    owner
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-# API model for ParticipationStats.
-# Typed representation of the `ParticipationStats` API schema.
-class ParticipationStats
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalParticipationStatsMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalParticipationStatsMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalParticipationStatsMetadata::DECODERS
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  # @return [Array_of_Integer] Required array value serialized in the `all` wire field.
-  attr_reader :all
-  # @return [Array_of_Integer] Required array value serialized in the `owner` wire field.
-  attr_reader :owner
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the PreventSelfReview SDK value decoder.
+  module PreventSelfReview
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalReferrerTrafficMetadata
+    FIELDS = {
+      referrer: 'referrer',
+      count: 'count',
+      uniques: 'uniques'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      referrer
+      count
+      uniques
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
+  # API model for ReferrerTraffic.
+  # Referrer Traffic
+  class ReferrerTraffic
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalReferrerTrafficMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalReferrerTrafficMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalReferrerTrafficMetadata::DECODERS
 
-# Defines the PreventSelfReview SDK value decoder.
-module PreventSelfReview
-  def self.from_value(value)
-    value
-  end
-end
+    # @return [String] Required `string` value serialized in the `referrer` wire field.
+    attr_reader :referrer
+    # @return [Integer] Required `integer` value serialized in the `count` wire field.
+    attr_reader :count
+    # @return [Integer] Required `integer` value serialized in the `uniques` wire field.
+    attr_reader :uniques
 
-# Internal model hydration metadata.
-class SdkInternalReferrerTrafficMetadata
-  FIELDS = {
-    referrer: "referrer",
-    count: "count",
-    uniques: "uniques",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    referrer
-    count
-    uniques
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-# API model for ReferrerTraffic.
-# Referrer Traffic
-class ReferrerTraffic
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalReferrerTrafficMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalReferrerTrafficMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalReferrerTrafficMetadata::DECODERS
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  # @return [String] Required `string` value serialized in the `referrer` wire field.
-  attr_reader :referrer
-  # @return [Integer] Required `integer` value serialized in the `count` wire field.
-  attr_reader :count
-  # @return [Integer] Required `integer` value serialized in the `uniques` wire field.
-  attr_reader :uniques
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalShortBranchCommitMetadata
+    FIELDS = {
+      sha: 'sha',
+      url: 'url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      sha
+      url
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # API model for ShortBranchCommit.
+  # Required object value serialized in the `commit` wire field.
+  class ShortBranchCommit
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalShortBranchCommitMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalShortBranchCommitMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalShortBranchCommitMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `sha` wire field.
+    attr_reader :sha
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalShortBranchCommitMetadata
-  FIELDS = {
-    sha: "sha",
-    url: "url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    sha
-    url
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for ShortBranchCommit.
-# Required object value serialized in the `commit` wire field.
-class ShortBranchCommit
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalShortBranchCommitMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalShortBranchCommitMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalShortBranchCommitMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `sha` wire field.
-  attr_reader :sha
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalShortBranchMetadata
+    FIELDS = {
+      name: 'name',
+      commit: 'commit',
+      protected: 'protected',
+      protection: 'protection',
+      protection_url: 'protection_url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      name
+      commit
+      protected
+    ].freeze
+    DECODERS = {
+      commit: lambda do |value|
+        ::OctridevGithub::ShortBranchCommit.from_hash(value)
+      end,
+      protection: lambda do |value|
+        ::OctridevGithub::BranchProtection.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ShortBranch.
+  # Short Branch
+  class ShortBranch
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalShortBranchMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalShortBranchMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalShortBranchMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [ShortBranchCommit] Required object value serialized in the `commit` wire field.
+    attr_reader :commit
+    # @return [Boolean] Required `boolean` value serialized in the `protected` wire field.
+    attr_reader :protected
+    # @return [BranchProtection] Branch Protection
+    attr_reader :protection
+    # @return [String] Optional `uri`-formatted value serialized in the `protection_url` wire field.
+    attr_reader :protection_url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalSimpleCommitStatusMetadata
+    FIELDS = {
+      description: 'description',
+      id: 'id',
+      node_id: 'node_id',
+      state: 'state',
+      context: 'context',
+      target_url: 'target_url',
+      required: 'required',
+      avatar_url: 'avatar_url',
+      url: 'url',
+      created_at: 'created_at',
+      updated_at: 'updated_at'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      description
+      id
+      node_id
+      state
+      context
+      target_url
+      avatar_url
+      url
+      created_at
+      updated_at
+    ].freeze
+    DECODERS = {}.freeze
+    NULLABLE_FIELDS = %i[
+      description
+      target_url
+      avatar_url
+    ].freeze
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
+  # API model for SimpleCommitStatus.
+  # Typed representation of the `SimpleCommitStatus` API schema.
+  class SimpleCommitStatus
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalSimpleCommitStatusMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalSimpleCommitStatusMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalSimpleCommitStatusMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalShortBranchMetadata
-  FIELDS = {
-    name: "name",
-    commit: "commit",
-    protected: "protected",
-    protection: "protection",
-    protection_url: "protection_url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    name
-    commit
-    protected
-  ].freeze
-  DECODERS = {
-    commit: lambda do |value|
-      ::OctridevGithub::ShortBranchCommit.from_hash(value)
-    end,
-    protection: lambda do |value|
-      ::OctridevGithub::BranchProtection.from_hash(value)
-    end,
-  }.freeze
-end
+    # @return [String] Required `string` value serialized in the `description` wire field.
+    attr_reader :description
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Required `string` value serialized in the `state` wire field.
+    attr_reader :state
+    # @return [String] Required `string` value serialized in the `context` wire field.
+    attr_reader :context
+    # @return [String] Required `uri`-formatted value serialized in the `target_url` wire field.
+    attr_reader :target_url
+    # @return [Boolean] Optional `boolean` value serialized in the `required` wire field.
+    attr_reader :required
+    # @return [String] Required `uri`-formatted value serialized in the `avatar_url` wire field.
+    attr_reader :avatar_url
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
 
-# API model for ShortBranch.
-# Short Branch
-class ShortBranch
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalShortBranchMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalShortBranchMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalShortBranchMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [ShortBranchCommit] Required object value serialized in the `commit` wire field.
-  attr_reader :commit
-  # @return [Boolean] Required `boolean` value serialized in the `protected` wire field.
-  attr_reader :protected
-  # @return [BranchProtection] Branch Protection
-  attr_reader :protection
-  # @return [String] Optional `uri`-formatted value serialized in the `protection_url` wire field.
-  attr_reader :protection_url
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalSimpleCommitStatusMetadata::NULLABLE_FIELDS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalTagCommitMetadata
+    FIELDS = {
+      sha: 'sha',
+      url: 'url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      sha
+      url
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # API model for TagCommit.
+  # Required object value serialized in the `commit` wire field.
+  class TagCommit
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalTagCommitMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalTagCommitMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalTagCommitMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `sha` wire field.
+    attr_reader :sha
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalSimpleCommitStatusMetadata
-  FIELDS = {
-    description: "description",
-    id: "id",
-    node_id: "node_id",
-    state: "state",
-    context: "context",
-    target_url: "target_url",
-    required: "required",
-    avatar_url: "avatar_url",
-    url: "url",
-    created_at: "created_at",
-    updated_at: "updated_at",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    description
-    id
-    node_id
-    state
-    context
-    target_url
-    avatar_url
-    url
-    created_at
-    updated_at
-  ].freeze
-  DECODERS = {
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    description
-    target_url
-    avatar_url
-  ].freeze
-end
-
-# API model for SimpleCommitStatus.
-# Typed representation of the `SimpleCommitStatus` API schema.
-class SimpleCommitStatus
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalSimpleCommitStatusMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalSimpleCommitStatusMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalSimpleCommitStatusMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `description` wire field.
-  attr_reader :description
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Required `string` value serialized in the `state` wire field.
-  attr_reader :state
-  # @return [String] Required `string` value serialized in the `context` wire field.
-  attr_reader :context
-  # @return [String] Required `uri`-formatted value serialized in the `target_url` wire field.
-  attr_reader :target_url
-  # @return [Boolean] Optional `boolean` value serialized in the `required` wire field.
-  attr_reader :required
-  # @return [String] Required `uri`-formatted value serialized in the `avatar_url` wire field.
-  attr_reader :avatar_url
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalTagMetadata
+    FIELDS = {
+      name: 'name',
+      commit: 'commit',
+      zipball_url: 'zipball_url',
+      tarball_url: 'tarball_url',
+      node_id: 'node_id'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      name
+      commit
+      zipball_url
+      tarball_url
+      node_id
+    ].freeze
+    DECODERS = {
+      commit: lambda do |value|
+        ::OctridevGithub::TagCommit.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalSimpleCommitStatusMetadata::NULLABLE_FIELDS)
+  # API model for Tag.
+  # Tag
+  class Tag
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalTagMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalTagMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalTagMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [TagCommit] Required object value serialized in the `commit` wire field.
+    attr_reader :commit
+    # @return [String] Required `uri`-formatted value serialized in the `zipball_url` wire field.
+    attr_reader :zipball_url
+    # @return [String] Required `uri`-formatted value serialized in the `tarball_url` wire field.
+    attr_reader :tarball_url
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalTopicMetadata
+    FIELDS = {
+      names: 'names'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      names
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
+  # API model for Topic.
+  # A topic aggregates entities that are related to a subject.
+  class Topic
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalTopicMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalTopicMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalTopicMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalTagCommitMetadata
-  FIELDS = {
-    sha: "sha",
-    url: "url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    sha
-    url
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    # @return [Array_of_String] Required array value serialized in the `names` wire field.
+    attr_reader :names
 
-# API model for TagCommit.
-# Required object value serialized in the `commit` wire field.
-class TagCommit
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalTagCommitMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalTagCommitMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalTagCommitMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [String] Required `string` value serialized in the `sha` wire field.
-  attr_reader :sha
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalTrafficMetadata
+    FIELDS = {
+      timestamp: 'timestamp',
+      uniques: 'uniques',
+      count: 'count'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      timestamp
+      uniques
+      count
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # API model for Traffic.
+  # Typed representation of the `Traffic` API schema.
+  class Traffic
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalTrafficMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalTrafficMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalTrafficMetadata::DECODERS
+
+    # @return [String] Required `date-time`-formatted value serialized in the `timestamp` wire field.
+    attr_reader :timestamp
+    # @return [Integer] Required `integer` value serialized in the `uniques` wire field.
+    attr_reader :uniques
+    # @return [Integer] Required `integer` value serialized in the `count` wire field.
+    attr_reader :count
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalTagMetadata
-  FIELDS = {
-    name: "name",
-    commit: "commit",
-    zipball_url: "zipball_url",
-    tarball_url: "tarball_url",
-    node_id: "node_id",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    name
-    commit
-    zipball_url
-    tarball_url
-    node_id
-  ].freeze
-  DECODERS = {
-    commit: lambda do |value|
-      ::OctridevGithub::TagCommit.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for Tag.
-# Tag
-class Tag
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalTagMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalTagMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalTagMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [TagCommit] Required object value serialized in the `commit` wire field.
-  attr_reader :commit
-  # @return [String] Required `uri`-formatted value serialized in the `zipball_url` wire field.
-  attr_reader :zipball_url
-  # @return [String] Required `uri`-formatted value serialized in the `tarball_url` wire field.
-  attr_reader :tarball_url
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalViewTrafficMetadata
+    FIELDS = {
+      count: 'count',
+      uniques: 'uniques',
+      views: 'views'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      count
+      uniques
+      views
+    ].freeze
+    DECODERS = {
+      views: lambda do |value|
+        value&.map { |item| ::OctridevGithub::Traffic.from_hash(item) }
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ViewTraffic.
+  # View Traffic
+  class ViewTraffic
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalViewTrafficMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalViewTrafficMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalViewTrafficMetadata::DECODERS
+
+    # @return [Integer] Required `integer` value serialized in the `count` wire field.
+    attr_reader :count
+    # @return [Integer] Required `integer` value serialized in the `uniques` wire field.
+    attr_reader :uniques
+    # @return [Array_of_Traffic] Required array value serialized in the `views` wire field.
+    attr_reader :views
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the WaitTimer SDK value decoder.
+  module WaitTimer
+    def self.from_value(value)
+      value
+    end
   end
-
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalTopicMetadata
-  FIELDS = {
-    names: "names",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    names
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for Topic.
-# A topic aggregates entities that are related to a subject.
-class Topic
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalTopicMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalTopicMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalTopicMetadata::DECODERS
-
-  # @return [Array_of_String] Required array value serialized in the `names` wire field.
-  attr_reader :names
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalTrafficMetadata
-  FIELDS = {
-    timestamp: "timestamp",
-    uniques: "uniques",
-    count: "count",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    timestamp
-    uniques
-    count
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for Traffic.
-# Typed representation of the `Traffic` API schema.
-class Traffic
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalTrafficMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalTrafficMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalTrafficMetadata::DECODERS
-
-  # @return [String] Required `date-time`-formatted value serialized in the `timestamp` wire field.
-  attr_reader :timestamp
-  # @return [Integer] Required `integer` value serialized in the `uniques` wire field.
-  attr_reader :uniques
-  # @return [Integer] Required `integer` value serialized in the `count` wire field.
-  attr_reader :count
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalViewTrafficMetadata
-  FIELDS = {
-    count: "count",
-    uniques: "uniques",
-    views: "views",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    count
-    uniques
-    views
-  ].freeze
-  DECODERS = {
-    views: lambda do |value|
-      value&.map { |item| ::OctridevGithub::Traffic.from_hash(item) }
-    end,
-  }.freeze
-end
-
-# API model for ViewTraffic.
-# View Traffic
-class ViewTraffic
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalViewTrafficMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalViewTrafficMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalViewTrafficMetadata::DECODERS
-
-  # @return [Integer] Required `integer` value serialized in the `count` wire field.
-  attr_reader :count
-  # @return [Integer] Required `integer` value serialized in the `uniques` wire field.
-  attr_reader :uniques
-  # @return [Array_of_Traffic] Required array value serialized in the `views` wire field.
-  attr_reader :views
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Defines the WaitTimer SDK value decoder.
-module WaitTimer
-  def self.from_value(value)
-    value
-  end
-end
 end

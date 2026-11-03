@@ -12,15 +12,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalTeamsCreateMetadata
         FIELDS = {
-          name: "name",
-          description: "description",
-          maintainers: "maintainers",
-          repo_names: "repo_names",
-          privacy: "privacy",
-          notification_setting: "notification_setting",
-          permission: "permission",
-          parent_team_id: "parent_team_id",
-          parent_team_slug: "parent_team_slug",
+          name: 'name',
+          description: 'description',
+          maintainers: 'maintainers',
+          repo_names: 'repo_names',
+          privacy: 'privacy',
+          notification_setting: 'notification_setting',
+          permission: 'permission',
+          parent_team_id: 'parent_team_id',
+          parent_team_slug: 'parent_team_slug'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
@@ -34,7 +34,7 @@ module OctridevGithub
           end,
           permission: lambda do |value|
             ::OctridevGithub::Methods::Teams::TeamsCreatePermission.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -85,16 +85,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalTeamsUpdateInOrgMetadata
         FIELDS = {
-          name: "name",
-          description: "description",
-          privacy: "privacy",
-          notification_setting: "notification_setting",
-          permission: "permission",
-          parent_team_id: "parent_team_id",
-          parent_team_slug: "parent_team_slug",
+          name: 'name',
+          description: 'description',
+          privacy: 'privacy',
+          notification_setting: 'notification_setting',
+          permission: 'permission',
+          parent_team_id: 'parent_team_id',
+          parent_team_slug: 'parent_team_slug'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           privacy: lambda do |value|
             ::OctridevGithub::Methods::Teams::TeamsUpdateInOrgPrivacy.from_value(value)
@@ -104,7 +103,7 @@ module OctridevGithub
           end,
           permission: lambda do |value|
             ::OctridevGithub::Methods::Teams::TeamsUpdateInOrgPermission.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -151,14 +150,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalTeamsAddOrUpdateMembershipForUserInOrgMetadata
         FIELDS = {
-          role: "role",
+          role: 'role'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           role: lambda do |value|
             ::OctridevGithub::Methods::Teams::TeamsAddOrUpdateMembershipForUserInOrgRole.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -193,12 +191,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalTeamsAddOrUpdateRepoPermissionsInOrgMetadata
         FIELDS = {
-          permission: "permission",
+          permission: 'permission'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for TeamsAddOrUpdateRepoPermissionsInOrg.
@@ -232,13 +228,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalTeamsUpdateLegacyMetadata
         FIELDS = {
-          name: "name",
-          description: "description",
-          privacy: "privacy",
-          notification_setting: "notification_setting",
-          permission: "permission",
-          parent_team_id: "parent_team_id",
-          parent_team_slug: "parent_team_slug",
+          name: 'name',
+          description: 'description',
+          privacy: 'privacy',
+          notification_setting: 'notification_setting',
+          permission: 'permission',
+          parent_team_id: 'parent_team_id',
+          parent_team_slug: 'parent_team_slug'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
@@ -252,7 +248,7 @@ module OctridevGithub
           end,
           permission: lambda do |value|
             ::OctridevGithub::Methods::Teams::TeamsUpdateLegacyPermission.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -299,14 +295,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalTeamsAddOrUpdateMembershipForUserLegacyMetadata
         FIELDS = {
-          role: "role",
+          role: 'role'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           role: lambda do |value|
             ::OctridevGithub::Methods::Teams::TeamsAddOrUpdateMembershipForUserLegacyRole.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -341,14 +336,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalTeamsAddOrUpdateRepoPermissionsLegacyMetadata
         FIELDS = {
-          permission: "permission",
+          permission: 'permission'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           permission: lambda do |value|
             ::OctridevGithub::Methods::Teams::TeamsAddOrUpdateRepoPermissionsLegacyPermission.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -384,7 +378,7 @@ module OctridevGithub
       module TeamsAddOrUpdateMembershipForUserInOrgRole
         MEMBER = 'member'
         MAINTAINER = 'maintainer'
-        VALUES = ['member', 'maintainer'].freeze
+        VALUES = %w[member maintainer].freeze
         def self.from_value(value)
           value
         end
@@ -395,7 +389,7 @@ module OctridevGithub
         PULL = 'pull'
         PUSH = 'push'
         ADMIN = 'admin'
-        VALUES = ['pull', 'push', 'admin'].freeze
+        VALUES = %w[pull push admin].freeze
         def self.from_value(value)
           value
         end
@@ -406,7 +400,7 @@ module OctridevGithub
         PULL = 'pull'
         PUSH = 'push'
         ADMIN = 'admin'
-        VALUES = ['pull', 'push', 'admin'].freeze
+        VALUES = %w[pull push admin].freeze
         def self.from_value(value)
           value
         end
@@ -416,7 +410,7 @@ module OctridevGithub
       module TeamsUpdateLegacyNotificationSetting
         NOTIFICATIONS_ENABLED = 'notifications_enabled'
         NOTIFICATIONS_DISABLED = 'notifications_disabled'
-        VALUES = ['notifications_enabled', 'notifications_disabled'].freeze
+        VALUES = %w[notifications_enabled notifications_disabled].freeze
         def self.from_value(value)
           value
         end
@@ -426,7 +420,7 @@ module OctridevGithub
       module TeamsCreatePrivacy
         SECRET = 'secret'
         CLOSED = 'closed'
-        VALUES = ['secret', 'closed'].freeze
+        VALUES = %w[secret closed].freeze
         def self.from_value(value)
           value
         end
@@ -437,7 +431,7 @@ module OctridevGithub
         MEMBER = 'member'
         MAINTAINER = 'maintainer'
         ALL = 'all'
-        VALUES = ['member', 'maintainer', 'all'].freeze
+        VALUES = %w[member maintainer all].freeze
         def self.from_value(value)
           value
         end
@@ -447,7 +441,7 @@ module OctridevGithub
       module TeamsUpdateInOrgNotificationSetting
         NOTIFICATIONS_ENABLED = 'notifications_enabled'
         NOTIFICATIONS_DISABLED = 'notifications_disabled'
-        VALUES = ['notifications_enabled', 'notifications_disabled'].freeze
+        VALUES = %w[notifications_enabled notifications_disabled].freeze
         def self.from_value(value)
           value
         end
@@ -457,7 +451,7 @@ module OctridevGithub
       module TeamsUpdateInOrgPrivacy
         SECRET = 'secret'
         CLOSED = 'closed'
-        VALUES = ['secret', 'closed'].freeze
+        VALUES = %w[secret closed].freeze
         def self.from_value(value)
           value
         end
@@ -467,7 +461,7 @@ module OctridevGithub
       module TeamsCreateNotificationSetting
         NOTIFICATIONS_ENABLED = 'notifications_enabled'
         NOTIFICATIONS_DISABLED = 'notifications_disabled'
-        VALUES = ['notifications_enabled', 'notifications_disabled'].freeze
+        VALUES = %w[notifications_enabled notifications_disabled].freeze
         def self.from_value(value)
           value
         end
@@ -478,7 +472,7 @@ module OctridevGithub
         PULL = 'pull'
         PUSH = 'push'
         ADMIN = 'admin'
-        VALUES = ['pull', 'push', 'admin'].freeze
+        VALUES = %w[pull push admin].freeze
         def self.from_value(value)
           value
         end
@@ -488,7 +482,7 @@ module OctridevGithub
       module TeamsUpdateLegacyPrivacy
         SECRET = 'secret'
         CLOSED = 'closed'
-        VALUES = ['secret', 'closed'].freeze
+        VALUES = %w[secret closed].freeze
         def self.from_value(value)
           value
         end
@@ -498,7 +492,7 @@ module OctridevGithub
       module TeamsCreatePermission
         PULL = 'pull'
         PUSH = 'push'
-        VALUES = ['pull', 'push'].freeze
+        VALUES = %w[pull push].freeze
         def self.from_value(value)
           value
         end
@@ -509,7 +503,7 @@ module OctridevGithub
         MEMBER = 'member'
         MAINTAINER = 'maintainer'
         ALL = 'all'
-        VALUES = ['member', 'maintainer', 'all'].freeze
+        VALUES = %w[member maintainer all].freeze
         def self.from_value(value)
           value
         end
@@ -519,7 +513,7 @@ module OctridevGithub
       module TeamsAddOrUpdateMembershipForUserLegacyRole
         MEMBER = 'member'
         MAINTAINER = 'maintainer'
-        VALUES = ['member', 'maintainer'].freeze
+        VALUES = %w[member maintainer].freeze
         def self.from_value(value)
           value
         end

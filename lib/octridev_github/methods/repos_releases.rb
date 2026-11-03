@@ -27,26 +27,25 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/releases"
+            '/releases'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::Release],
           decoder: :json,
           operation_id: 'repos_list_releases',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).result
       end
 
@@ -96,15 +95,14 @@ module OctridevGithub
         make_latest: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/releases"
+            '/releases'
           ].join,
           config: config,
           body: {
@@ -116,13 +114,13 @@ module OctridevGithub
             'prerelease' => prerelease,
             'discussion_category_name' => discussion_category_name,
             'generate_release_notes' => generate_release_notes,
-            'make_latest' => make_latest,
+            'make_latest' => make_latest
           },
           return_type: ::OctridevGithub::Release,
           decoder: :json,
           operation_id: 'repos_create_release',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).result
       end
 
@@ -140,15 +138,14 @@ module OctridevGithub
         asset_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/releases/assets/",
+            '/releases/assets/',
             SdkClient.encode_path_segment(asset_id)
           ].join,
           config: config,
@@ -156,7 +153,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'repos_get_release_asset',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).result
       end
 
@@ -182,27 +179,26 @@ module OctridevGithub
         state: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/releases/assets/",
+            '/releases/assets/',
             SdkClient.encode_path_segment(asset_id)
           ].join,
           config: config,
           body: {
             'name' => name,
             'label' => label,
-            'state' => state,
+            'state' => state
           },
           return_type: ::OctridevGithub::ReleaseAsset,
           decoder: :json,
           operation_id: 'repos_update_release_asset',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
 
@@ -220,22 +216,21 @@ module OctridevGithub
         asset_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/releases/assets/",
+            '/releases/assets/',
             SdkClient.encode_path_segment(asset_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_delete_release_asset',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).result
       end
 
@@ -268,28 +263,27 @@ module OctridevGithub
         configuration_file_path: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/releases/generate-notes"
+            '/releases/generate-notes'
           ].join,
           config: config,
           body: {
             'tag_name' => tag_name,
             'target_commitish' => target_commitish,
             'previous_tag_name' => previous_tag_name,
-            'configuration_file_path' => configuration_file_path,
+            'configuration_file_path' => configuration_file_path
           },
           return_type: ::OctridevGithub::ReleaseNotesContent,
           decoder: :json,
           operation_id: 'repos_generate_release_notes',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).result
       end
 
@@ -305,22 +299,21 @@ module OctridevGithub
         repo:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/releases/latest"
+            '/releases/latest'
           ].join,
           config: config,
           return_type: ::OctridevGithub::Release,
           decoder: :json,
           operation_id: 'repos_get_latest_release',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).result
       end
 
@@ -340,15 +333,14 @@ module OctridevGithub
         tag:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/releases/tags/",
+            '/releases/tags/',
             SdkClient.encode_path_segment(tag)
           ].join,
           config: config,
@@ -356,7 +348,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'repos_get_release_by_tag',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).result
       end
 
@@ -374,22 +366,21 @@ module OctridevGithub
         release_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/releases/",
+            '/releases/',
             SdkClient.encode_path_segment(release_id)
           ].join,
           config: config,
           return_type: ::OctridevGithub::Release,
           decoder: :json,
           operation_id: 'repos_get_release',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
 
@@ -436,15 +427,14 @@ module OctridevGithub
         discussion_category_name: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PATCH',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/releases/",
+            '/releases/',
             SdkClient.encode_path_segment(release_id)
           ].join,
           config: config,
@@ -456,13 +446,13 @@ module OctridevGithub
             'draft' => draft,
             'prerelease' => prerelease,
             'make_latest' => make_latest,
-            'discussion_category_name' => discussion_category_name,
+            'discussion_category_name' => discussion_category_name
           },
           return_type: ::OctridevGithub::Release,
           decoder: :json,
           operation_id: 'repos_update_release',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).result
       end
 
@@ -480,22 +470,21 @@ module OctridevGithub
         release_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/releases/",
+            '/releases/',
             SdkClient.encode_path_segment(release_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'repos_delete_release',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).result
       end
 
@@ -519,27 +508,26 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/releases/",
+            '/releases/',
             SdkClient.encode_path_segment(release_id),
-            "/assets"
+            '/assets'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::ReleaseAsset],
           decoder: :json,
           operation_id: 'repos_list_release_assets',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
     end

@@ -12,7 +12,7 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReactionsCreateForCommitCommentMetadata
         FIELDS = {
-          content: "content",
+          content: 'content'
         }.freeze
         REQUIRED_FIELDS = %i[
           content
@@ -20,7 +20,7 @@ module OctridevGithub
         DECODERS = {
           content: lambda do |value|
             ::OctridevGithub::Methods::Reactions::ReactionsCreateForCommitCommentContent.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -55,7 +55,7 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReactionsCreateForIssueCommentMetadata
         FIELDS = {
-          content: "content",
+          content: 'content'
         }.freeze
         REQUIRED_FIELDS = %i[
           content
@@ -63,7 +63,7 @@ module OctridevGithub
         DECODERS = {
           content: lambda do |value|
             ::OctridevGithub::Methods::Reactions::ReactionsCreateForIssueCommentContent.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -98,7 +98,7 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReactionsCreateForIssueMetadata
         FIELDS = {
-          content: "content",
+          content: 'content'
         }.freeze
         REQUIRED_FIELDS = %i[
           content
@@ -106,7 +106,7 @@ module OctridevGithub
         DECODERS = {
           content: lambda do |value|
             ::OctridevGithub::Methods::Reactions::ReactionsCreateForIssueContent.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -141,7 +141,7 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReactionsCreateForPullRequestReviewCommentMetadata
         FIELDS = {
-          content: "content",
+          content: 'content'
         }.freeze
         REQUIRED_FIELDS = %i[
           content
@@ -149,7 +149,7 @@ module OctridevGithub
         DECODERS = {
           content: lambda do |value|
             ::OctridevGithub::Methods::Reactions::ReactionsCreateForPullRequestReviewCommentContent.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -184,7 +184,7 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReactionsCreateForReleaseMetadata
         FIELDS = {
-          content: "content",
+          content: 'content'
         }.freeze
         REQUIRED_FIELDS = %i[
           content
@@ -192,7 +192,7 @@ module OctridevGithub
         DECODERS = {
           content: lambda do |value|
             ::OctridevGithub::Methods::Reactions::ReactionsCreateForReleaseContent.from_value(value)
-          end,
+          end
         }.freeze
       end
 

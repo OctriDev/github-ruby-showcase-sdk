@@ -13,7 +13,7 @@ module OctridevGithub
       module ProjectsAddItemForOrgType
         ISSUE = 'Issue'
         PULL_REQUEST = 'PullRequest'
-        VALUES = ['Issue', 'PullRequest'].freeze
+        VALUES = %w[Issue PullRequest].freeze
         def self.from_value(value)
           value
         end
@@ -42,7 +42,7 @@ module OctridevGithub
         TEXT = 'text'
         NUMBER = 'number'
         DATE = 'date'
-        VALUES = ['text', 'number', 'date'].freeze
+        VALUES = %w[text number date].freeze
         def self.from_value(value)
           value
         end
@@ -53,7 +53,7 @@ module OctridevGithub
         TABLE = 'table'
         BOARD = 'board'
         ROADMAP = 'roadmap'
-        VALUES = ['table', 'board', 'roadmap'].freeze
+        VALUES = %w[table board roadmap].freeze
         def self.from_value(value)
           value
         end

@@ -17,19 +17,18 @@ module OctridevGithub
         org:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/permissions"
+            '/actions/permissions'
           ].join,
           config: config,
           return_type: ::OctridevGithub::ActionsOrganizationPermissions,
           decoder: :json,
           operation_id: 'actions_get_github_actions_permissions_organization',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
 
@@ -50,23 +49,22 @@ module OctridevGithub
         sha_pinning_required: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/permissions"
+            '/actions/permissions'
           ].join,
           config: config,
           body: {
             'enabled_repositories' => enabled_repositories,
             'allowed_actions' => allowed_actions,
-            'sha_pinning_required' => sha_pinning_required,
+            'sha_pinning_required' => sha_pinning_required
           },
           decoder: :empty,
           operation_id: 'actions_set_github_actions_permissions_organization',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
 
@@ -78,20 +76,19 @@ module OctridevGithub
         org:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/permissions/artifact-and-log-retention"
+            '/actions/permissions/artifact-and-log-retention'
           ].join,
           config: config,
           return_type: ::OctridevGithub::ActionsArtifactAndLogRetentionResponse,
           decoder: :json,
           operation_id: 'actions_get_artifact_and_log_retention_settings_organization',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).result
       end
 
@@ -106,22 +103,21 @@ module OctridevGithub
         days:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/permissions/artifact-and-log-retention"
+            '/actions/permissions/artifact-and-log-retention'
           ].join,
           config: config,
           body: {
-            'days' => days,
+            'days' => days
           },
           decoder: :empty,
           operation_id: 'actions_set_artifact_and_log_retention_settings_organization',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).result
       end
 
@@ -133,20 +129,19 @@ module OctridevGithub
         org:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/permissions/fork-pr-contributor-approval"
+            '/actions/permissions/fork-pr-contributor-approval'
           ].join,
           config: config,
           return_type: ::OctridevGithub::ActionsForkPrContributorApproval,
           decoder: :json,
           operation_id: 'actions_get_fork_pr_contributor_approval_permissions_organization',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).result
       end
 
@@ -162,22 +157,21 @@ module OctridevGithub
         approval_policy:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/permissions/fork-pr-contributor-approval"
+            '/actions/permissions/fork-pr-contributor-approval'
           ].join,
           config: config,
           body: {
-            'approval_policy' => approval_policy,
+            'approval_policy' => approval_policy
           },
           decoder: :empty,
           operation_id: 'actions_set_fork_pr_contributor_approval_permissions_organization',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).result
       end
 
@@ -189,20 +183,19 @@ module OctridevGithub
         org:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/permissions/fork-pr-workflows-private-repos"
+            '/actions/permissions/fork-pr-workflows-private-repos'
           ].join,
           config: config,
           return_type: ::OctridevGithub::ActionsForkPrWorkflowsPrivateRepos,
           decoder: :json,
           operation_id: 'actions_get_private_repo_fork_pr_workflows_settings_organization',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).result
       end
 
@@ -229,25 +222,24 @@ module OctridevGithub
         require_approval_for_fork_pr_workflows: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/permissions/fork-pr-workflows-private-repos"
+            '/actions/permissions/fork-pr-workflows-private-repos'
           ].join,
           config: config,
           body: {
             'run_workflows_from_fork_pull_requests' => run_workflows_from_fork_pull_requests,
             'send_write_tokens_to_workflows' => send_write_tokens_to_workflows,
             'send_secrets_and_variables' => send_secrets_and_variables,
-            'require_approval_for_fork_pr_workflows' => require_approval_for_fork_pr_workflows,
+            'require_approval_for_fork_pr_workflows' => require_approval_for_fork_pr_workflows
           },
           decoder: :empty,
           operation_id: 'actions_set_private_repo_fork_pr_workflows_settings_organization',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).result
       end
 
@@ -265,23 +257,22 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/permissions/repositories"
+            '/actions/permissions/repositories'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Actions::ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse,
           decoder: :json,
           operation_id: 'actions_list_selected_repositories_enabled_github_actions_organization',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
 
@@ -296,21 +287,20 @@ module OctridevGithub
         selected_repository_ids:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/permissions/repositories"
+            '/actions/permissions/repositories'
           ].join,
           config: config,
           body: {
-            'selected_repository_ids' => selected_repository_ids,
+            'selected_repository_ids' => selected_repository_ids
           },
           decoder: :empty,
           operation_id: 'actions_set_selected_repositories_enabled_github_actions_organization',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
 
@@ -324,19 +314,18 @@ module OctridevGithub
         repository_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/permissions/repositories/",
+            '/actions/permissions/repositories/',
             SdkClient.encode_path_segment(repository_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'actions_enable_selected_repository_github_actions_organization',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
 
@@ -350,19 +339,18 @@ module OctridevGithub
         repository_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/permissions/repositories/",
+            '/actions/permissions/repositories/',
             SdkClient.encode_path_segment(repository_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'actions_disable_selected_repository_github_actions_organization',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
 
@@ -374,19 +362,18 @@ module OctridevGithub
         org:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/permissions/selected-actions"
+            '/actions/permissions/selected-actions'
           ].join,
           config: config,
           return_type: ::OctridevGithub::SelectedActions,
           decoder: :json,
           operation_id: 'actions_get_allowed_actions_organization',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
 
@@ -412,23 +399,22 @@ module OctridevGithub
         patterns_allowed: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/permissions/selected-actions"
+            '/actions/permissions/selected-actions'
           ].join,
           config: config,
           body: {
             'github_owned_allowed' => github_owned_allowed,
             'verified_allowed' => verified_allowed,
-            'patterns_allowed' => patterns_allowed,
+            'patterns_allowed' => patterns_allowed
           },
           decoder: :empty,
           operation_id: 'actions_set_allowed_actions_organization',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
 
@@ -440,20 +426,19 @@ module OctridevGithub
         org:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/permissions/self-hosted-runners"
+            '/actions/permissions/self-hosted-runners'
           ].join,
           config: config,
           return_type: ::OctridevGithub::SelfHostedRunnersSettings,
           decoder: :json,
           operation_id: 'actions_get_self_hosted_runners_permissions_organization',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).result
       end
 
@@ -470,22 +455,21 @@ module OctridevGithub
         enabled_repositories:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/permissions/self-hosted-runners"
+            '/actions/permissions/self-hosted-runners'
           ].join,
           config: config,
           body: {
-            'enabled_repositories' => enabled_repositories,
+            'enabled_repositories' => enabled_repositories
           },
           decoder: :empty,
           operation_id: 'actions_set_self_hosted_runners_permissions_organization',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '409' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).result
       end
 
@@ -503,24 +487,23 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/permissions/self-hosted-runners/repositories"
+            '/actions/permissions/self-hosted-runners/repositories'
           ].join,
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: ::OctridevGithub::Methods::Actions::ActionsListSelectedRepositoriesSelfHostedRunnersOrganizationResponse,
           decoder: :json,
           operation_id: 'actions_list_selected_repositories_self_hosted_runners_organization',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).result
       end
 
@@ -535,22 +518,21 @@ module OctridevGithub
         selected_repository_ids:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/orgs/",
+            '/orgs/',
             SdkClient.encode_path_segment(org),
-            "/actions/permissions/self-hosted-runners/repositories"
+            '/actions/permissions/self-hosted-runners/repositories'
           ].join,
           config: config,
           body: {
-            'selected_repository_ids' => selected_repository_ids,
+            'selected_repository_ids' => selected_repository_ids
           },
           decoder: :empty,
           operation_id: 'actions_set_selected_repositories_self_hosted_runners_organization',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).result
       end
     end

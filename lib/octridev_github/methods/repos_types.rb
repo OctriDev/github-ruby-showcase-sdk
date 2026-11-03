@@ -12,31 +12,31 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreateInOrgMetadata
         FIELDS = {
-          name: "name",
-          description: "description",
-          homepage: "homepage",
-          private: "private",
-          visibility: "visibility",
-          has_issues: "has_issues",
-          has_projects: "has_projects",
-          has_wiki: "has_wiki",
-          has_downloads: "has_downloads",
-          is_template: "is_template",
-          team_id: "team_id",
-          auto_init: "auto_init",
-          gitignore_template: "gitignore_template",
-          license_template: "license_template",
-          allow_squash_merge: "allow_squash_merge",
-          allow_merge_commit: "allow_merge_commit",
-          allow_rebase_merge: "allow_rebase_merge",
-          allow_auto_merge: "allow_auto_merge",
-          delete_branch_on_merge: "delete_branch_on_merge",
-          use_squash_pr_title_as_default: "use_squash_pr_title_as_default",
-          squash_merge_commit_title: "squash_merge_commit_title",
-          squash_merge_commit_message: "squash_merge_commit_message",
-          merge_commit_title: "merge_commit_title",
-          merge_commit_message: "merge_commit_message",
-          custom_properties: "custom_properties",
+          name: 'name',
+          description: 'description',
+          homepage: 'homepage',
+          private: 'private',
+          visibility: 'visibility',
+          has_issues: 'has_issues',
+          has_projects: 'has_projects',
+          has_wiki: 'has_wiki',
+          has_downloads: 'has_downloads',
+          is_template: 'is_template',
+          team_id: 'team_id',
+          auto_init: 'auto_init',
+          gitignore_template: 'gitignore_template',
+          license_template: 'license_template',
+          allow_squash_merge: 'allow_squash_merge',
+          allow_merge_commit: 'allow_merge_commit',
+          allow_rebase_merge: 'allow_rebase_merge',
+          allow_auto_merge: 'allow_auto_merge',
+          delete_branch_on_merge: 'delete_branch_on_merge',
+          use_squash_pr_title_as_default: 'use_squash_pr_title_as_default',
+          squash_merge_commit_title: 'squash_merge_commit_title',
+          squash_merge_commit_message: 'squash_merge_commit_message',
+          merge_commit_title: 'merge_commit_title',
+          merge_commit_message: 'merge_commit_message',
+          custom_properties: 'custom_properties'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
@@ -56,7 +56,7 @@ module OctridevGithub
           end,
           merge_commit_message: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposCreateInOrgMergeCommitMessage.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -139,12 +139,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreateOrgRulesetMetadata
         FIELDS = {
-          name: "name",
-          target: "target",
-          enforcement: "enforcement",
-          bypass_actors: "bypass_actors",
-          conditions: "conditions",
-          rules: "rules",
+          name: 'name',
+          target: 'target',
+          enforcement: 'enforcement',
+          bypass_actors: 'bypass_actors',
+          conditions: 'conditions',
+          rules: 'rules'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
@@ -165,7 +165,7 @@ module OctridevGithub
           end,
           rules: lambda do |value|
             value&.map { |item| ::OctridevGithub::OrgRules.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -210,15 +210,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateOrgRulesetMetadata
         FIELDS = {
-          name: "name",
-          target: "target",
-          enforcement: "enforcement",
-          bypass_actors: "bypass_actors",
-          conditions: "conditions",
-          rules: "rules",
+          name: 'name',
+          target: 'target',
+          enforcement: 'enforcement',
+          bypass_actors: 'bypass_actors',
+          conditions: 'conditions',
+          rules: 'rules'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           target: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposUpdateOrgRulesetTarget.from_value(value)
@@ -234,7 +233,7 @@ module OctridevGithub
           end,
           rules: lambda do |value|
             value&.map { |item| ::OctridevGithub::OrgRules.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -279,12 +278,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateSecurityAndAnalysisAdvancedSecurityMetadata
         FIELDS = {
-          status: "status",
+          status: 'status'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposUpdateSecurityAndAnalysisAdvancedSecurity.
@@ -319,12 +316,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateSecurityAndAnalysisCodeSecurityMetadata
         FIELDS = {
-          status: "status",
+          status: 'status'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposUpdateSecurityAndAnalysisCodeSecurity.
@@ -359,12 +354,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateSecurityAndAnalysisSecretScanningMetadata
         FIELDS = {
-          status: "status",
+          status: 'status'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposUpdateSecurityAndAnalysisSecretScanning.
@@ -399,12 +392,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateSecurityAndAnalysisSecretScanningPushProtectionMetadata
         FIELDS = {
-          status: "status",
+          status: 'status'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposUpdateSecurityAndAnalysisSecretScanningPushProtection.
@@ -439,12 +430,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateSecurityAndAnalysisSecretScanningAiDetectionMetadata
         FIELDS = {
-          status: "status",
+          status: 'status'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposUpdateSecurityAndAnalysisSecretScanningAiDetection.
@@ -479,12 +468,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateSecurityAndAnalysisSecretScanningNonProviderPatternsMetadata
         FIELDS = {
-          status: "status",
+          status: 'status'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposUpdateSecurityAndAnalysisSecretScanningNonProviderPatterns.
@@ -519,12 +506,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateSecurityAndAnalysisSecretScanningDelegatedAlertDismissalMetadata
         FIELDS = {
-          status: "status",
+          status: 'status'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposUpdateSecurityAndAnalysisSecretScanningDelegatedAlertDismissal.

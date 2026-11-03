@@ -28,27 +28,26 @@ module OctridevGithub
         apps:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/branches/",
+            '/branches/',
             SdkClient.encode_path_segment(branch),
-            "/protection/restrictions/apps"
+            '/protection/restrictions/apps'
           ].join,
           config: config,
           body: {
-            'apps' => apps,
+            'apps' => apps
           },
           return_type: [::OctridevGithub::Integration],
           decoder: :json,
           operation_id: 'repos_remove_app_access_restrictions',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError },
+          errors: { '422' => ::OctridevGithub::ValidationError }
         ).result
       end
 
@@ -67,24 +66,23 @@ module OctridevGithub
         branch:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/branches/",
+            '/branches/',
             SdkClient.encode_path_segment(branch),
-            "/protection/restrictions/teams"
+            '/protection/restrictions/teams'
           ].join,
           config: config,
           return_type: [::OctridevGithub::Team],
           decoder: :json,
           operation_id: 'repos_get_teams_with_access_to_protected_branch',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).result
       end
 
@@ -106,17 +104,16 @@ module OctridevGithub
         body: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/branches/",
+            '/branches/',
             SdkClient.encode_path_segment(branch),
-            "/protection/restrictions/teams"
+            '/protection/restrictions/teams'
           ].join,
           config: config,
           body: body,
@@ -124,7 +121,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'repos_add_team_access_restrictions',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError },
+          errors: { '422' => ::OctridevGithub::ValidationError }
         ).result
       end
 
@@ -146,17 +143,16 @@ module OctridevGithub
         body: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/branches/",
+            '/branches/',
             SdkClient.encode_path_segment(branch),
-            "/protection/restrictions/teams"
+            '/protection/restrictions/teams'
           ].join,
           config: config,
           body: body,
@@ -164,7 +160,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'repos_set_team_access_restrictions',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError },
+          errors: { '422' => ::OctridevGithub::ValidationError }
         ).result
       end
 
@@ -186,17 +182,16 @@ module OctridevGithub
         body: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/branches/",
+            '/branches/',
             SdkClient.encode_path_segment(branch),
-            "/protection/restrictions/teams"
+            '/protection/restrictions/teams'
           ].join,
           config: config,
           body: body,
@@ -204,7 +199,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'repos_remove_team_access_restrictions',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError },
+          errors: { '422' => ::OctridevGithub::ValidationError }
         ).result
       end
 
@@ -223,24 +218,23 @@ module OctridevGithub
         branch:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/branches/",
+            '/branches/',
             SdkClient.encode_path_segment(branch),
-            "/protection/restrictions/users"
+            '/protection/restrictions/users'
           ].join,
           config: config,
           return_type: [::OctridevGithub::SimpleUser],
           decoder: :json,
           operation_id: 'repos_get_users_with_access_to_protected_branch',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).result
       end
 
@@ -261,27 +255,26 @@ module OctridevGithub
         users:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/branches/",
+            '/branches/',
             SdkClient.encode_path_segment(branch),
-            "/protection/restrictions/users"
+            '/protection/restrictions/users'
           ].join,
           config: config,
           body: {
-            'users' => users,
+            'users' => users
           },
           return_type: [::OctridevGithub::SimpleUser],
           decoder: :json,
           operation_id: 'repos_add_user_access_restrictions',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError },
+          errors: { '422' => ::OctridevGithub::ValidationError }
         ).result
       end
 
@@ -302,27 +295,26 @@ module OctridevGithub
         users:,
         request_options: nil
       )
-
         SdkClient.request(
           'PUT',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/branches/",
+            '/branches/',
             SdkClient.encode_path_segment(branch),
-            "/protection/restrictions/users"
+            '/protection/restrictions/users'
           ].join,
           config: config,
           body: {
-            'users' => users,
+            'users' => users
           },
           return_type: [::OctridevGithub::SimpleUser],
           decoder: :json,
           operation_id: 'repos_set_user_access_restrictions',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError },
+          errors: { '422' => ::OctridevGithub::ValidationError }
         ).result
       end
 
@@ -343,27 +335,26 @@ module OctridevGithub
         users:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/branches/",
+            '/branches/',
             SdkClient.encode_path_segment(branch),
-            "/protection/restrictions/users"
+            '/protection/restrictions/users'
           ].join,
           config: config,
           body: {
-            'users' => users,
+            'users' => users
           },
           return_type: [::OctridevGithub::SimpleUser],
           decoder: :json,
           operation_id: 'repos_remove_user_access_restrictions',
           request_options: request_options,
-          errors: { '422' => ::OctridevGithub::ValidationError },
+          errors: { '422' => ::OctridevGithub::ValidationError }
         ).result
       end
 
@@ -384,27 +375,26 @@ module OctridevGithub
         new_name:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
           [
-            "/repos/",
+            '/repos/',
             SdkClient.encode_path_segment(owner),
-            "/",
+            '/',
             SdkClient.encode_path_segment(repo),
-            "/branches/",
+            '/branches/',
             SdkClient.encode_path_segment(branch),
-            "/rename"
+            '/rename'
           ].join,
           config: config,
           body: {
-            'new_name' => new_name,
+            'new_name' => new_name
           },
           return_type: ::OctridevGithub::BranchWithProtection,
           decoder: :json,
           operation_id: 'repos_rename_branch',
           request_options: request_options,
-          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).result
       end
     end

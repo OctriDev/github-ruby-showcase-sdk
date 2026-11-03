@@ -56,14 +56,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateReleaseAssetMetadata
         FIELDS = {
-          name: "name",
-          label: "label",
-          state: "state",
+          name: 'name',
+          label: 'label',
+          state: 'state'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposUpdateReleaseAsset.
@@ -100,16 +98,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposGenerateReleaseNotesMetadata
         FIELDS = {
-          tag_name: "tag_name",
-          target_commitish: "target_commitish",
-          previous_tag_name: "previous_tag_name",
-          configuration_file_path: "configuration_file_path",
+          tag_name: 'tag_name',
+          target_commitish: 'target_commitish',
+          previous_tag_name: 'previous_tag_name',
+          configuration_file_path: 'configuration_file_path'
         }.freeze
         REQUIRED_FIELDS = %i[
           tag_name
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposGenerateReleaseNotes.
@@ -149,21 +146,20 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateReleaseMetadata
         FIELDS = {
-          tag_name: "tag_name",
-          target_commitish: "target_commitish",
-          name: "name",
-          body: "body",
-          draft: "draft",
-          prerelease: "prerelease",
-          make_latest: "make_latest",
-          discussion_category_name: "discussion_category_name",
+          tag_name: 'tag_name',
+          target_commitish: 'target_commitish',
+          name: 'name',
+          body: 'body',
+          draft: 'draft',
+          prerelease: 'prerelease',
+          make_latest: 'make_latest',
+          discussion_category_name: 'discussion_category_name'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           make_latest: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposUpdateReleaseMakeLatest.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -212,12 +208,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreateRepoRulesetMetadata
         FIELDS = {
-          name: "name",
-          target: "target",
-          enforcement: "enforcement",
-          bypass_actors: "bypass_actors",
-          conditions: "conditions",
-          rules: "rules",
+          name: 'name',
+          target: 'target',
+          enforcement: 'enforcement',
+          bypass_actors: 'bypass_actors',
+          conditions: 'conditions',
+          rules: 'rules'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
@@ -238,7 +234,7 @@ module OctridevGithub
           end,
           rules: lambda do |value|
             value&.map { |item| ::OctridevGithub::RepositoryRule.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -283,15 +279,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposUpdateRepoRulesetMetadata
         FIELDS = {
-          name: "name",
-          target: "target",
-          enforcement: "enforcement",
-          bypass_actors: "bypass_actors",
-          conditions: "conditions",
-          rules: "rules",
+          name: 'name',
+          target: 'target',
+          enforcement: 'enforcement',
+          bypass_actors: 'bypass_actors',
+          conditions: 'conditions',
+          rules: 'rules'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           target: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposUpdateRepoRulesetTarget.from_value(value)
@@ -307,7 +302,7 @@ module OctridevGithub
           end,
           rules: lambda do |value|
             value&.map { |item| ::OctridevGithub::RepositoryRule.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -352,10 +347,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreateCommitStatusMetadata
         FIELDS = {
-          state: "state",
-          target_url: "target_url",
-          description: "description",
-          context: "context",
+          state: 'state',
+          target_url: 'target_url',
+          description: 'description',
+          context: 'context'
         }.freeze
         REQUIRED_FIELDS = %i[
           state
@@ -363,7 +358,7 @@ module OctridevGithub
         DECODERS = {
           state: lambda do |value|
             ::OctridevGithub::Methods::Repos::ReposCreateCommitStatusState.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -404,13 +399,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposReplaceAllTopicsMetadata
         FIELDS = {
-          names: "names",
+          names: 'names'
         }.freeze
         REQUIRED_FIELDS = %i[
           names
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposReplaceAllTopics.
@@ -444,15 +438,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposTransferMetadata
         FIELDS = {
-          new_owner: "new_owner",
-          new_name: "new_name",
-          team_ids: "team_ids",
+          new_owner: 'new_owner',
+          new_name: 'new_name',
+          team_ids: 'team_ids'
         }.freeze
         REQUIRED_FIELDS = %i[
           new_owner
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposTransfer.
@@ -490,17 +483,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalReposCreateUsingTemplateMetadata
         FIELDS = {
-          owner: "owner",
-          name: "name",
-          description: "description",
-          include_all_branches: "include_all_branches",
-          private: "private",
+          owner: 'owner',
+          name: 'name',
+          description: 'description',
+          include_all_branches: 'include_all_branches',
+          private: 'private'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for ReposCreateUsingTemplate.

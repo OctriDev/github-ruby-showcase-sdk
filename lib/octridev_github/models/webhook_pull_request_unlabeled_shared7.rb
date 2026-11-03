@@ -5,15 +5,15 @@
 
 # webhook_pull_request_unlabeled domain models
 module OctridevGithub
-# Defines the WebhookPullRequestUnlabeledPullRequestUserType SDK namespace.
-module WebhookPullRequestUnlabeledPullRequestUserType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  MANNEQUIN = 'Mannequin'
-  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestUnlabeledPullRequestUserType SDK namespace.
+  module WebhookPullRequestUnlabeledPullRequestUserType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    MANNEQUIN = 'Mannequin'
+    VALUES = %w[Bot User Organization Mannequin].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 end

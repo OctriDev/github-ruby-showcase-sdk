@@ -5,25 +5,25 @@
 
 # webhook_issue_comment_unpinned domain models
 module OctridevGithub
-# Defines the WebhookIssueCommentUnpinnedIssueAssigneeType SDK namespace.
-module WebhookIssueCommentUnpinnedIssueAssigneeType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  MANNEQUIN = 'Mannequin'
-  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueAssigneeType SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueAssigneeType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    MANNEQUIN = 'Mannequin'
+    VALUES = %w[Bot User Organization Mannequin].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentUnpinnedIssueState SDK namespace.
-module WebhookIssueCommentUnpinnedIssueState
-  OPEN = 'open'
-  CLOSED = 'closed'
-  VALUES = ['open', 'closed'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentUnpinnedIssueState SDK namespace.
+  module WebhookIssueCommentUnpinnedIssueState
+    OPEN = 'open'
+    CLOSED = 'closed'
+    VALUES = %w[open closed].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 end

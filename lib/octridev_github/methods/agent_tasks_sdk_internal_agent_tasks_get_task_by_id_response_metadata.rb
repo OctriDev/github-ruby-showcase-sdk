@@ -12,23 +12,23 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalAgentTasksGetTaskByIdResponseMetadata
         FIELDS = {
-          id: "id",
-          url: "url",
-          html_url: "html_url",
-          name: "name",
-          creator: "creator",
-          creator_type: "creator_type",
-          user_collaborators: "user_collaborators",
-          owner: "owner",
-          repository: "repository",
-          state: "state",
-          session_count: "session_count",
-          artifacts: "artifacts",
-          archived_at: "archived_at",
-          updated_at: "updated_at",
-          created_at: "created_at",
-          custom_agent: "custom_agent",
-          sessions: "sessions",
+          id: 'id',
+          url: 'url',
+          html_url: 'html_url',
+          name: 'name',
+          creator: 'creator',
+          creator_type: 'creator_type',
+          user_collaborators: 'user_collaborators',
+          owner: 'owner',
+          repository: 'repository',
+          state: 'state',
+          session_count: 'session_count',
+          artifacts: 'artifacts',
+          archived_at: 'archived_at',
+          updated_at: 'updated_at',
+          created_at: 'created_at',
+          custom_agent: 'custom_agent',
+          sessions: 'sessions'
         }.freeze
         REQUIRED_FIELDS = %i[
           id
@@ -62,7 +62,7 @@ module OctridevGithub
           end,
           sessions: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::AgentTasks::AgentTasksGetTaskByIdResponseVariant1SessionsItem.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -134,8 +134,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = [
-          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
+        VALUES = %w[
+          missing missing_field invalid already_exists unprocessable custom
         ].freeze
         def self.from_value(value)
           value
@@ -146,7 +146,7 @@ module OctridevGithub
       module AgentTasksListTasksForRepoResponseTasksItemCreatorType
         USER = 'user'
         ORGANIZATION = 'organization'
-        VALUES = ['user', 'organization'].freeze
+        VALUES = %w[user organization].freeze
         def self.from_value(value)
           value
         end
@@ -160,8 +160,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = [
-          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
+        VALUES = %w[
+          missing missing_field invalid already_exists unprocessable custom
         ].freeze
         def self.from_value(value)
           value
@@ -176,8 +176,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = [
-          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
+        VALUES = %w[
+          missing missing_field invalid already_exists unprocessable custom
         ].freeze
         def self.from_value(value)
           value
@@ -192,8 +192,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = [
-          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
+        VALUES = %w[
+          missing missing_field invalid already_exists unprocessable custom
         ].freeze
         def self.from_value(value)
           value
@@ -213,7 +213,7 @@ module OctridevGithub
       module AgentTasksGetTaskByIdResponseVariant1SessionsItemUsageType
         AI_CREDITS = 'ai_credits'
         PREMIUM_REQUESTS = 'premium_requests'
-        VALUES = ['ai_credits', 'premium_requests'].freeze
+        VALUES = %w[ai_credits premium_requests].freeze
         def self.from_value(value)
           value
         end
@@ -223,7 +223,7 @@ module OctridevGithub
       module AgentTasksGetTaskByRepoAndIdResponseVariant0CreatorType
         USER = 'user'
         ORGANIZATION = 'organization'
-        VALUES = ['user', 'organization'].freeze
+        VALUES = %w[user organization].freeze
         def self.from_value(value)
           value
         end
@@ -246,8 +246,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = [
-          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
+        VALUES = %w[
+          missing missing_field invalid already_exists unprocessable custom
         ].freeze
         def self.from_value(value)
           value
@@ -262,8 +262,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = [
-          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
+        VALUES = %w[
+          missing missing_field invalid already_exists unprocessable custom
         ].freeze
         def self.from_value(value)
           value
@@ -278,8 +278,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = [
-          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
+        VALUES = %w[
+          missing missing_field invalid already_exists unprocessable custom
         ].freeze
         def self.from_value(value)
           value
@@ -290,7 +290,7 @@ module OctridevGithub
       module AgentTasksListTasksForRepoParameter
         UPDATED_AT = 'updated_at'
         CREATED_AT = 'created_at'
-        VALUES = ['updated_at', 'created_at'].freeze
+        VALUES = %w[updated_at created_at].freeze
         def self.from_value(value)
           value
         end
@@ -306,9 +306,9 @@ module OctridevGithub
         WAITING_FOR_USER = 'waiting_for_user'
         TIMED_OUT = 'timed_out'
         CANCELLED = 'cancelled'
-        VALUES = [
-          'queued', 'in_progress', 'completed', 'failed', 'idle', 'waiting_for_user', 'timed_out',
-          'cancelled'
+        VALUES = %w[
+          queued in_progress completed failed idle waiting_for_user timed_out
+          cancelled
         ].freeze
         def self.from_value(value)
           value
@@ -323,8 +323,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = [
-          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
+        VALUES = %w[
+          missing missing_field invalid already_exists unprocessable custom
         ].freeze
         def self.from_value(value)
           value
@@ -339,8 +339,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = [
-          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
+        VALUES = %w[
+          missing missing_field invalid already_exists unprocessable custom
         ].freeze
         def self.from_value(value)
           value
@@ -355,8 +355,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = [
-          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
+        VALUES = %w[
+          missing missing_field invalid already_exists unprocessable custom
         ].freeze
         def self.from_value(value)
           value
@@ -373,9 +373,9 @@ module OctridevGithub
         WAITING_FOR_USER = 'waiting_for_user'
         TIMED_OUT = 'timed_out'
         CANCELLED = 'cancelled'
-        VALUES = [
-          'queued', 'in_progress', 'completed', 'failed', 'idle', 'waiting_for_user', 'timed_out',
-          'cancelled'
+        VALUES = %w[
+          queued in_progress completed failed idle waiting_for_user timed_out
+          cancelled
         ].freeze
         def self.from_value(value)
           value
@@ -386,7 +386,7 @@ module OctridevGithub
       module AgentTasksGetTaskByIdResponseVariant0ArtifactsItemType
         PULL = 'pull'
         BRANCH = 'branch'
-        VALUES = ['pull', 'branch'].freeze
+        VALUES = %w[pull branch].freeze
         def self.from_value(value)
           value
         end
@@ -400,8 +400,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = [
-          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
+        VALUES = %w[
+          missing missing_field invalid already_exists unprocessable custom
         ].freeze
         def self.from_value(value)
           value
@@ -416,8 +416,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = [
-          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
+        VALUES = %w[
+          missing missing_field invalid already_exists unprocessable custom
         ].freeze
         def self.from_value(value)
           value
@@ -434,9 +434,9 @@ module OctridevGithub
         WAITING_FOR_USER = 'waiting_for_user'
         TIMED_OUT = 'timed_out'
         CANCELLED = 'cancelled'
-        VALUES = [
-          'queued', 'in_progress', 'completed', 'failed', 'idle', 'waiting_for_user', 'timed_out',
-          'cancelled'
+        VALUES = %w[
+          queued in_progress completed failed idle waiting_for_user timed_out
+          cancelled
         ].freeze
         def self.from_value(value)
           value
@@ -447,7 +447,7 @@ module OctridevGithub
       module AgentTasksCreateTaskInRepoResponseArtifactsItemType
         PULL = 'pull'
         BRANCH = 'branch'
-        VALUES = ['pull', 'branch'].freeze
+        VALUES = %w[pull branch].freeze
         def self.from_value(value)
           value
         end
@@ -461,8 +461,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = [
-          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
+        VALUES = %w[
+          missing missing_field invalid already_exists unprocessable custom
         ].freeze
         def self.from_value(value)
           value
@@ -477,8 +477,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = [
-          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
+        VALUES = %w[
+          missing missing_field invalid already_exists unprocessable custom
         ].freeze
         def self.from_value(value)
           value
@@ -489,7 +489,7 @@ module OctridevGithub
       module AgentTasksCreateTaskInRepoResponseCreatorType
         USER = 'user'
         ORGANIZATION = 'organization'
-        VALUES = ['user', 'organization'].freeze
+        VALUES = %w[user organization].freeze
         def self.from_value(value)
           value
         end
@@ -505,9 +505,9 @@ module OctridevGithub
         WAITING_FOR_USER = 'waiting_for_user'
         TIMED_OUT = 'timed_out'
         CANCELLED = 'cancelled'
-        VALUES = [
-          'queued', 'in_progress', 'completed', 'failed', 'idle', 'waiting_for_user', 'timed_out',
-          'cancelled'
+        VALUES = %w[
+          queued in_progress completed failed idle waiting_for_user timed_out
+          cancelled
         ].freeze
         def self.from_value(value)
           value
@@ -518,7 +518,7 @@ module OctridevGithub
       module AgentTasksListTasksForRepoResponseTasksItemArtifactsItemType
         PULL = 'pull'
         BRANCH = 'branch'
-        VALUES = ['pull', 'branch'].freeze
+        VALUES = %w[pull branch].freeze
         def self.from_value(value)
           value
         end
@@ -528,7 +528,7 @@ module OctridevGithub
       module AgentTasksGetTaskByRepoAndIdResponseVariant1SessionsItemUsageType
         AI_CREDITS = 'ai_credits'
         PREMIUM_REQUESTS = 'premium_requests'
-        VALUES = ['ai_credits', 'premium_requests'].freeze
+        VALUES = %w[ai_credits premium_requests].freeze
         def self.from_value(value)
           value
         end
@@ -542,8 +542,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = [
-          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
+        VALUES = %w[
+          missing missing_field invalid already_exists unprocessable custom
         ].freeze
         def self.from_value(value)
           value
@@ -567,8 +567,8 @@ module OctridevGithub
         ALREADY_EXISTS = 'already_exists'
         UNPROCESSABLE = 'unprocessable'
         CUSTOM = 'custom'
-        VALUES = [
-          'missing', 'missing_field', 'invalid', 'already_exists', 'unprocessable', 'custom'
+        VALUES = %w[
+          missing missing_field invalid already_exists unprocessable custom
         ].freeze
         def self.from_value(value)
           value
@@ -579,7 +579,7 @@ module OctridevGithub
       module AgentTasksListTasksForRepoParameter56f15bd4
         ASC = 'asc'
         DESC = 'desc'
-        VALUES = ['asc', 'desc'].freeze
+        VALUES = %w[asc desc].freeze
         def self.from_value(value)
           value
         end

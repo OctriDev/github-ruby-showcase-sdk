@@ -42,12 +42,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsConvertMemberToOutsideCollaboratorMetadata
         FIELDS = {
-          async: "async",
+          async: 'async'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for OrgsConvertMemberToOutsideCollaborator.
@@ -81,9 +79,9 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsReviewPatGrantRequestsInBulkMetadata
         FIELDS = {
-          pat_request_ids: "pat_request_ids",
-          action: "action",
-          reason: "reason",
+          pat_request_ids: 'pat_request_ids',
+          action: 'action',
+          reason: 'reason'
         }.freeze
         REQUIRED_FIELDS = %i[
           action
@@ -91,7 +89,7 @@ module OctridevGithub
         DECODERS = {
           action: lambda do |value|
             ::OctridevGithub::Methods::Orgs::OrgsReviewPatGrantRequestsInBulkAction.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -130,8 +128,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsReviewPatGrantRequestMetadata
         FIELDS = {
-          action: "action",
-          reason: "reason",
+          action: 'action',
+          reason: 'reason'
         }.freeze
         REQUIRED_FIELDS = %i[
           action
@@ -139,7 +137,7 @@ module OctridevGithub
         DECODERS = {
           action: lambda do |value|
             ::OctridevGithub::Methods::Orgs::OrgsReviewPatGrantRequestAction.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -176,8 +174,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsUpdatePatAccessesMetadata
         FIELDS = {
-          action: "action",
-          pat_ids: "pat_ids",
+          action: 'action',
+          pat_ids: 'pat_ids'
         }.freeze
         REQUIRED_FIELDS = %i[
           action
@@ -186,7 +184,7 @@ module OctridevGithub
         DECODERS = {
           action: lambda do |value|
             ::OctridevGithub::Methods::Orgs::OrgsUpdatePatAccessesAction.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -223,7 +221,7 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsUpdatePatAccessMetadata
         FIELDS = {
-          action: "action",
+          action: 'action'
         }.freeze
         REQUIRED_FIELDS = %i[
           action
@@ -231,7 +229,7 @@ module OctridevGithub
         DECODERS = {
           action: lambda do |value|
             ::OctridevGithub::Methods::Orgs::OrgsUpdatePatAccessAction.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -266,14 +264,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsExternalPropertiesForReposRegisterOrganizationAppInstallationMetadata
         FIELDS = {
-          installation_id: "installation_id",
-          display_name: "display_name",
+          installation_id: 'installation_id',
+          display_name: 'display_name'
         }.freeze
         REQUIRED_FIELDS = %i[
           display_name
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for OrgsExternalPropertiesForReposRegisterOrganizationAppInstallation.
@@ -309,8 +306,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsExternalPropertiesForReposCreateOrUpdateOrganizationValuesMetadata
         FIELDS = {
-          repository_names: "repository_names",
-          properties: "properties",
+          repository_names: 'repository_names',
+          properties: 'properties'
         }.freeze
         REQUIRED_FIELDS = %i[
           repository_names
@@ -319,7 +316,7 @@ module OctridevGithub
         DECODERS = {
           properties: lambda do |value|
             value&.map { |item| ::OctridevGithub::CustomPropertyValue.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -356,7 +353,7 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsExternalPropertiesForReposCreateOrUpdateValuesForOrganizaXb758e28f9dMetadata
         FIELDS = {
-          repository_values: "repository_values",
+          repository_values: 'repository_values'
         }.freeze
         REQUIRED_FIELDS = %i[
           repository_values
@@ -364,7 +361,7 @@ module OctridevGithub
         DECODERS = {
           repository_values: lambda do |value|
             value&.map { |item| ::OctridevGithub::RepositoryExternalPropertyPayload.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -399,7 +396,7 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsCustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsMetadata
         FIELDS = {
-          properties: "properties",
+          properties: 'properties'
         }.freeze
         REQUIRED_FIELDS = %i[
           properties
@@ -407,7 +404,7 @@ module OctridevGithub
         DECODERS = {
           properties: lambda do |value|
             value&.map { |item| ::OctridevGithub::CustomProperty.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -442,8 +439,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsCustomPropertiesForReposCreateOrUpdateOrganizationValuesMetadata
         FIELDS = {
-          repository_names: "repository_names",
-          properties: "properties",
+          repository_names: 'repository_names',
+          properties: 'properties'
         }.freeze
         REQUIRED_FIELDS = %i[
           repository_names
@@ -452,7 +449,7 @@ module OctridevGithub
         DECODERS = {
           properties: lambda do |value|
             value&.map { |item| ::OctridevGithub::CustomPropertyValue.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -489,8 +486,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsSetImmutableReleasesSettingsMetadata
         FIELDS = {
-          enforced_repositories: "enforced_repositories",
-          selected_repository_ids: "selected_repository_ids",
+          enforced_repositories: 'enforced_repositories',
+          selected_repository_ids: 'selected_repository_ids'
         }.freeze
         REQUIRED_FIELDS = %i[
           enforced_repositories
@@ -498,7 +495,7 @@ module OctridevGithub
         DECODERS = {
           enforced_repositories: lambda do |value|
             ::OctridevGithub::Methods::Orgs::OrgsSetImmutableReleasesSettingsEnforcedRepositories.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -535,8 +532,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalOrgsGetImmutableReleasesSettingsRepositoriesResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          repositories: "repositories",
+          total_count: 'total_count',
+          repositories: 'repositories'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -545,7 +542,7 @@ module OctridevGithub
         DECODERS = {
           repositories: lambda do |value|
             value&.map { |item| ::OctridevGithub::MinimalRepository.from_hash(item) }
-          end,
+          end
         }.freeze
       end
     end

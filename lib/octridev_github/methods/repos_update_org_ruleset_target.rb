@@ -15,7 +15,7 @@ module OctridevGithub
         TAG = 'tag'
         PUSH = 'push'
         REPOSITORY = 'repository'
-        VALUES = ['branch', 'tag', 'push', 'repository'].freeze
+        VALUES = %w[branch tag push repository].freeze
         def self.from_value(value)
           value
         end
@@ -30,8 +30,8 @@ module OctridevGithub
         QUEUED = 'queued'
         PENDING = 'pending'
         SUCCESS = 'success'
-        VALUES = [
-          'error', 'failure', 'inactive', 'in_progress', 'queued', 'pending', 'success'
+        VALUES = %w[
+          error failure inactive in_progress queued pending success
         ].freeze
         def self.from_value(value)
           value
@@ -44,7 +44,7 @@ module OctridevGithub
         UPDATED = 'updated'
         PUSHED = 'pushed'
         FULL_NAME = 'full_name'
-        VALUES = ['created', 'updated', 'pushed', 'full_name'].freeze
+        VALUES = %w[created updated pushed full_name].freeze
         def self.from_value(value)
           value
         end
@@ -54,7 +54,7 @@ module OctridevGithub
       module ReposUpdateInformationAboutPagesSiteBuildType
         LEGACY = 'legacy'
         WORKFLOW = 'workflow'
-        VALUES = ['legacy', 'workflow'].freeze
+        VALUES = %w[legacy workflow].freeze
         def self.from_value(value)
           value
         end

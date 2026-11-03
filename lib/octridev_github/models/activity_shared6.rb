@@ -5,295 +5,293 @@
 
 # activity domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalStarredRepositoryMetadata
-  FIELDS = {
-    starred_at: "starred_at",
-    repo: "repo",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    starred_at
-    repo
-  ].freeze
-  DECODERS = {
-    repo: lambda do |value|
-      ::OctridevGithub::Repository.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for StarredRepository.
-# Starred Repository
-class StarredRepository
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalStarredRepositoryMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalStarredRepositoryMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalStarredRepositoryMetadata::DECODERS
-
-  # @return [String] Required `date-time`-formatted value serialized in the `starred_at` wire field.
-  attr_reader :starred_at
-  # @return [Repository] A repository on GitHub.
-  attr_reader :repo
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalStarredRepositoryMetadata
+    FIELDS = {
+      starred_at: 'starred_at',
+      repo: 'repo'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      starred_at
+      repo
+    ].freeze
+    DECODERS = {
+      repo: lambda do |value|
+        ::OctridevGithub::Repository.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for StarredRepository.
+  # Starred Repository
+  class StarredRepository
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalStarredRepositoryMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalStarredRepositoryMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalStarredRepositoryMetadata::DECODERS
+
+    # @return [String] Required `date-time`-formatted value serialized in the `starred_at` wire field.
+    attr_reader :starred_at
+    # @return [Repository] A repository on GitHub.
+    attr_reader :repo
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalThreadSubjectMetadata
+    FIELDS = {
+      title: 'title',
+      url: 'url',
+      latest_comment_url: 'latest_comment_url',
+      type: 'type'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      title
+      url
+      latest_comment_url
+      type
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
+  # API model for ThreadSubject.
+  # Required object value serialized in the `subject` wire field.
+  class ThreadSubject
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalThreadSubjectMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalThreadSubjectMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalThreadSubjectMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalThreadSubjectMetadata
-  FIELDS = {
-    title: "title",
-    url: "url",
-    latest_comment_url: "latest_comment_url",
-    type: "type",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    title
-    url
-    latest_comment_url
-    type
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    # @return [String] Required `string` value serialized in the `title` wire field.
+    attr_reader :title
+    # @return [String] Required `string` value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Required `string` value serialized in the `latest_comment_url` wire field.
+    attr_reader :latest_comment_url
+    # @return [String] Required `string` value serialized in the `type` wire field.
+    attr_reader :type
 
-# API model for ThreadSubject.
-# Required object value serialized in the `subject` wire field.
-class ThreadSubject
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalThreadSubjectMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalThreadSubjectMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalThreadSubjectMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [String] Required `string` value serialized in the `title` wire field.
-  attr_reader :title
-  # @return [String] Required `string` value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Required `string` value serialized in the `latest_comment_url` wire field.
-  attr_reader :latest_comment_url
-  # @return [String] Required `string` value serialized in the `type` wire field.
-  attr_reader :type
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalThreadMetadata
+    FIELDS = {
+      id: 'id',
+      repository: 'repository',
+      subject: 'subject',
+      reason: 'reason',
+      unread: 'unread',
+      updated_at: 'updated_at',
+      last_read_at: 'last_read_at',
+      url: 'url',
+      subscription_url: 'subscription_url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      id
+      repository
+      subject
+      reason
+      unread
+      updated_at
+      last_read_at
+      url
+      subscription_url
+    ].freeze
+    DECODERS = {
+      repository: lambda do |value|
+        ::OctridevGithub::MinimalRepository.from_hash(value)
+      end,
+      subject: lambda do |value|
+        ::OctridevGithub::ThreadSubject.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      last_read_at
+    ].freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # API model for Thread.
+  # Thread
+  class Thread
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalThreadMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalThreadMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalThreadMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [MinimalRepository] Minimal Repository
+    attr_reader :repository
+    # @return [ThreadSubject] Required object value serialized in the `subject` wire field.
+    attr_reader :subject
+    # @return [String] Required `string` value serialized in the `reason` wire field.
+    attr_reader :reason
+    # @return [Boolean] Required `boolean` value serialized in the `unread` wire field.
+    attr_reader :unread
+    # @return [String] Required `string` value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+    # @return [String] Required `string` value serialized in the `last_read_at` wire field.
+    attr_reader :last_read_at
+    # @return [String] Required `string` value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Required `string` value serialized in the `subscription_url` wire field.
+    attr_reader :subscription_url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalThreadMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalThreadMetadata
-  FIELDS = {
-    id: "id",
-    repository: "repository",
-    subject: "subject",
-    reason: "reason",
-    unread: "unread",
-    updated_at: "updated_at",
-    last_read_at: "last_read_at",
-    url: "url",
-    subscription_url: "subscription_url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    id
-    repository
-    subject
-    reason
-    unread
-    updated_at
-    last_read_at
-    url
-    subscription_url
-  ].freeze
-  DECODERS = {
-    repository: lambda do |value|
-      ::OctridevGithub::MinimalRepository.from_hash(value)
-    end,
-    subject: lambda do |value|
-      ::OctridevGithub::ThreadSubject.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    last_read_at
-  ].freeze
-end
-
-# API model for Thread.
-# Thread
-class Thread
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalThreadMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalThreadMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalThreadMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [MinimalRepository] Minimal Repository
-  attr_reader :repository
-  # @return [ThreadSubject] Required object value serialized in the `subject` wire field.
-  attr_reader :subject
-  # @return [String] Required `string` value serialized in the `reason` wire field.
-  attr_reader :reason
-  # @return [Boolean] Required `boolean` value serialized in the `unread` wire field.
-  attr_reader :unread
-  # @return [String] Required `string` value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-  # @return [String] Required `string` value serialized in the `last_read_at` wire field.
-  attr_reader :last_read_at
-  # @return [String] Required `string` value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Required `string` value serialized in the `subscription_url` wire field.
-  attr_reader :subscription_url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalThreadSubscriptionMetadata
+    FIELDS = {
+      subscribed: 'subscribed',
+      ignored: 'ignored',
+      reason: 'reason',
+      created_at: 'created_at',
+      url: 'url',
+      thread_url: 'thread_url',
+      repository_url: 'repository_url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      subscribed
+      ignored
+      reason
+      created_at
+      url
+    ].freeze
+    DECODERS = {}.freeze
+    NULLABLE_FIELDS = %i[
+      reason
+      created_at
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalThreadMetadata::NULLABLE_FIELDS)
+  # API model for ThreadSubscription.
+  # Thread Subscription
+  class ThreadSubscription
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalThreadSubscriptionMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalThreadSubscriptionMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalThreadSubscriptionMetadata::DECODERS
+
+    # @return [Boolean] Required `boolean` value serialized in the `subscribed` wire field.
+    attr_reader :subscribed
+    # @return [Boolean] Required `boolean` value serialized in the `ignored` wire field.
+    attr_reader :ignored
+    # @return [String] Required `string` value serialized in the `reason` wire field.
+    attr_reader :reason
+    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Optional `uri`-formatted value serialized in the `thread_url` wire field.
+    attr_reader :thread_url
+    # @return [String] Optional `uri`-formatted value serialized in the `repository_url` wire field.
+    attr_reader :repository_url
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalThreadSubscriptionMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalWatchEventMetadata
+    FIELDS = {
+      action: 'action'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      action
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
+  # API model for WatchEvent.
+  # Typed representation of the `WatchEvent` API schema.
+  class WatchEvent
+    include EventPayload
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWatchEventMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWatchEventMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWatchEventMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `action` wire field.
+    attr_reader :action
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
-end
-
-# Internal model hydration metadata.
-class SdkInternalThreadSubscriptionMetadata
-  FIELDS = {
-    subscribed: "subscribed",
-    ignored: "ignored",
-    reason: "reason",
-    created_at: "created_at",
-    url: "url",
-    thread_url: "thread_url",
-    repository_url: "repository_url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    subscribed
-    ignored
-    reason
-    created_at
-    url
-  ].freeze
-  DECODERS = {
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    reason
-    created_at
-  ].freeze
-end
-
-# API model for ThreadSubscription.
-# Thread Subscription
-class ThreadSubscription
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalThreadSubscriptionMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalThreadSubscriptionMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalThreadSubscriptionMetadata::DECODERS
-
-  # @return [Boolean] Required `boolean` value serialized in the `subscribed` wire field.
-  attr_reader :subscribed
-  # @return [Boolean] Required `boolean` value serialized in the `ignored` wire field.
-  attr_reader :ignored
-  # @return [String] Required `string` value serialized in the `reason` wire field.
-  attr_reader :reason
-  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Optional `uri`-formatted value serialized in the `thread_url` wire field.
-  attr_reader :thread_url
-  # @return [String] Optional `uri`-formatted value serialized in the `repository_url` wire field.
-  attr_reader :repository_url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalThreadSubscriptionMetadata::NULLABLE_FIELDS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWatchEventMetadata
-  FIELDS = {
-    action: "action",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    action
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for WatchEvent.
-# Typed representation of the `WatchEvent` API schema.
-class WatchEvent
-  include EventPayload
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWatchEventMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWatchEventMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWatchEventMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `action` wire field.
-  attr_reader :action
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
 end

@@ -14,7 +14,7 @@ module OctridevGithub
         CREATED = 'created'
         UPDATED = 'updated'
         PUBLISHED = 'published'
-        VALUES = ['created', 'updated', 'published'].freeze
+        VALUES = %w[created updated published].freeze
         def self.from_value(value)
           value
         end
@@ -26,7 +26,7 @@ module OctridevGithub
         PUBLISHED = 'published'
         EPSS_PERCENTAGE = 'epss_percentage'
         EPSS_PERCENTILE = 'epss_percentile'
-        VALUES = ['updated', 'published', 'epss_percentage', 'epss_percentile'].freeze
+        VALUES = %w[updated published epss_percentage epss_percentile].freeze
         def self.from_value(value)
           value
         end
@@ -38,7 +38,7 @@ module OctridevGithub
         DRAFT = 'draft'
         PUBLISHED = 'published'
         CLOSED = 'closed'
-        VALUES = ['triage', 'draft', 'published', 'closed'].freeze
+        VALUES = %w[triage draft published closed].freeze
         def self.from_value(value)
           value
         end
@@ -50,7 +50,7 @@ module OctridevGithub
         DRAFT = 'draft'
         PUBLISHED = 'published'
         CLOSED = 'closed'
-        VALUES = ['triage', 'draft', 'published', 'closed'].freeze
+        VALUES = %w[triage draft published closed].freeze
         def self.from_value(value)
           value
         end
@@ -61,7 +61,7 @@ module OctridevGithub
         REVIEWED = 'reviewed'
         MALWARE = 'malware'
         UNREVIEWED = 'unreviewed'
-        VALUES = ['reviewed', 'malware', 'unreviewed'].freeze
+        VALUES = %w[reviewed malware unreviewed].freeze
         def self.from_value(value)
           value
         end
@@ -74,7 +74,7 @@ module OctridevGithub
         MEDIUM = 'medium'
         HIGH = 'high'
         CRITICAL = 'critical'
-        VALUES = ['unknown', 'low', 'medium', 'high', 'critical'].freeze
+        VALUES = %w[unknown low medium high critical].freeze
         def self.from_value(value)
           value
         end
@@ -85,7 +85,7 @@ module OctridevGithub
         CREATED = 'created'
         UPDATED = 'updated'
         PUBLISHED = 'published'
-        VALUES = ['created', 'updated', 'published'].freeze
+        VALUES = %w[created updated published].freeze
         def self.from_value(value)
           value
         end

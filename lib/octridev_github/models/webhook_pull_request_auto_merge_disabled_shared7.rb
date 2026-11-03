@@ -5,15 +5,15 @@
 
 # webhook_pull_request_auto_merge_disabled domain models
 module OctridevGithub
-# Defines the WebhookPullRequestAutoMergeDisabledPullRequestUserType SDK namespace.
-module WebhookPullRequestAutoMergeDisabledPullRequestUserType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  MANNEQUIN = 'Mannequin'
-  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookPullRequestAutoMergeDisabledPullRequestUserType SDK namespace.
+  module WebhookPullRequestAutoMergeDisabledPullRequestUserType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    MANNEQUIN = 'Mannequin'
+    VALUES = %w[Bot User Organization Mannequin].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 end

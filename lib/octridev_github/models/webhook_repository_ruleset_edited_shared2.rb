@@ -5,194 +5,193 @@
 
 # webhook_repository_ruleset_edited domain models
 module OctridevGithub
-# API model for WebhookRepositoryRulesetEditedChangesRules.
-# Optional object value serialized in the `rules` wire field.
-class WebhookRepositoryRulesetEditedChangesRules
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesMetadata::DECODERS
+  # API model for WebhookRepositoryRulesetEditedChangesRules.
+  # Optional object value serialized in the `rules` wire field.
+  class WebhookRepositoryRulesetEditedChangesRules
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesRulesMetadata::DECODERS
 
-  # @return [Array_of_RepositoryRule] Optional array value serialized in the `added` wire field.
-  attr_reader :added
-  # @return [Array_of_RepositoryRule] Optional array value serialized in the `deleted` wire field.
-  attr_reader :deleted
-  # @return [Array_of_WebhookRepositoryRulesetEditedChangesRulesUpdatedItem] Optional array value serialized in the `updated` wire field.
-  attr_reader :updated
+    # @return [Array_of_RepositoryRule] Optional array value serialized in the `added` wire field.
+    attr_reader :added
+    # @return [Array_of_RepositoryRule] Optional array value serialized in the `deleted` wire field.
+    attr_reader :deleted
+    # @return [Array_of_WebhookRepositoryRulesetEditedChangesRulesUpdatedItem] Optional array value serialized in the `updated` wire field.
+    attr_reader :updated
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalWebhookRepositoryRulesetEditedChangesMetadata
+    FIELDS = {
+      name: 'name',
+      enforcement: 'enforcement',
+      conditions: 'conditions',
+      rules: 'rules'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      name: lambda do |value|
+        ::OctridevGithub::WebhookRepositoryRulesetEditedChangesName.from_hash(value)
+      end,
+      enforcement: lambda do |value|
+        ::OctridevGithub::WebhookRepositoryRulesetEditedChangesEnforcement.from_hash(value)
+      end,
+      conditions: lambda do |value|
+        ::OctridevGithub::WebhookRepositoryRulesetEditedChangesConditions.from_hash(value)
+      end,
+      rules: lambda do |value|
+        ::OctridevGithub::WebhookRepositoryRulesetEditedChangesRules.from_hash(value)
+      end
+    }.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # API model for WebhookRepositoryRulesetEditedChanges.
+  # Optional object value serialized in the `changes` wire field.
+  class WebhookRepositoryRulesetEditedChanges
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesMetadata::DECODERS
+
+    # @return [WebhookRepositoryRulesetEditedChangesName] Optional object value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [WebhookRepositoryRulesetEditedChangesEnforcement] Optional object value serialized in the `enforcement` wire field.
+    attr_reader :enforcement
+    # @return [WebhookRepositoryRulesetEditedChangesConditions] Optional object value serialized in the `conditions` wire field.
+    attr_reader :conditions
+    # @return [WebhookRepositoryRulesetEditedChangesRules] Optional object value serialized in the `rules` wire field.
+    attr_reader :rules
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookRepositoryRulesetEditedChangesMetadata
-  FIELDS = {
-    name: "name",
-    enforcement: "enforcement",
-    conditions: "conditions",
-    rules: "rules",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    name: lambda do |value|
-      ::OctridevGithub::WebhookRepositoryRulesetEditedChangesName.from_hash(value)
-    end,
-    enforcement: lambda do |value|
-      ::OctridevGithub::WebhookRepositoryRulesetEditedChangesEnforcement.from_hash(value)
-    end,
-    conditions: lambda do |value|
-      ::OctridevGithub::WebhookRepositoryRulesetEditedChangesConditions.from_hash(value)
-    end,
-    rules: lambda do |value|
-      ::OctridevGithub::WebhookRepositoryRulesetEditedChangesRules.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookRepositoryRulesetEditedChanges.
-# Optional object value serialized in the `changes` wire field.
-class WebhookRepositoryRulesetEditedChanges
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedChangesMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookRepositoryRulesetEditedChangesMetadata::DECODERS
-
-  # @return [WebhookRepositoryRulesetEditedChangesName] Optional object value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [WebhookRepositoryRulesetEditedChangesEnforcement] Optional object value serialized in the `enforcement` wire field.
-  attr_reader :enforcement
-  # @return [WebhookRepositoryRulesetEditedChangesConditions] Optional object value serialized in the `conditions` wire field.
-  attr_reader :conditions
-  # @return [WebhookRepositoryRulesetEditedChangesRules] Optional object value serialized in the `rules` wire field.
-  attr_reader :rules
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalWebhookRepositoryRulesetEditedMetadata
+    FIELDS = {
+      action: 'action',
+      enterprise: 'enterprise',
+      installation: 'installation',
+      organization: 'organization',
+      repository: 'repository',
+      repository_ruleset: 'repository_ruleset',
+      changes: 'changes',
+      sender: 'sender'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      action
+      repository_ruleset
+      sender
+    ].freeze
+    DECODERS = {
+      action: lambda do |value|
+        ::OctridevGithub::WebhookRepositoryRulesetEditedAction.from_value(value)
+      end,
+      enterprise: lambda do |value|
+        ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
+      end,
+      installation: lambda do |value|
+        ::OctridevGithub::SimpleInstallation.from_hash(value)
+      end,
+      organization: lambda do |value|
+        ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
+      end,
+      repository: lambda do |value|
+        ::OctridevGithub::RepositoryWebhooks.from_hash(value)
+      end,
+      repository_ruleset: lambda do |value|
+        ::OctridevGithub::RepositoryRuleset.from_hash(value)
+      end,
+      changes: lambda do |value|
+        ::OctridevGithub::WebhookRepositoryRulesetEditedChanges.from_hash(value)
+      end,
+      sender: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for WebhookRepositoryRulesetEdited.
+  # Typed representation of the `WebhookRepositoryRulesetEdited` API schema.
+  class WebhookRepositoryRulesetEdited
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookRepositoryRulesetEditedMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookRepositoryRulesetEditedMetadata::DECODERS
+
+    # @return [WebhookRepositoryRulesetEditedAction] Required enumerated value serialized in the `action` wire field.
+    attr_reader :action
+    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+    attr_reader :enterprise
+    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+    attr_reader :installation
+    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+    attr_reader :organization
+    # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
+    attr_reader :repository
+    # @return [RepositoryRuleset] A set of rules to apply when specified conditions are met.
+    attr_reader :repository_ruleset
+    # @return [WebhookRepositoryRulesetEditedChanges] Optional object value serialized in the `changes` wire field.
+    attr_reader :changes
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :sender
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the WebhookRepositoryRulesetEditedAction SDK namespace.
+  module WebhookRepositoryRulesetEditedAction
+    EDITED = 'edited'
+    VALUES = ['edited'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalWebhookRepositoryRulesetEditedMetadata
-  FIELDS = {
-    action: "action",
-    enterprise: "enterprise",
-    installation: "installation",
-    organization: "organization",
-    repository: "repository",
-    repository_ruleset: "repository_ruleset",
-    changes: "changes",
-    sender: "sender",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    action
-    repository_ruleset
-    sender
-  ].freeze
-  DECODERS = {
-    action: lambda do |value|
-      ::OctridevGithub::WebhookRepositoryRulesetEditedAction.from_value(value)
-    end,
-    enterprise: lambda do |value|
-      ::OctridevGithub::EnterpriseWebhooks.from_hash(value)
-    end,
-    installation: lambda do |value|
-      ::OctridevGithub::SimpleInstallation.from_hash(value)
-    end,
-    organization: lambda do |value|
-      ::OctridevGithub::OrganizationSimpleWebhooks.from_hash(value)
-    end,
-    repository: lambda do |value|
-      ::OctridevGithub::RepositoryWebhooks.from_hash(value)
-    end,
-    repository_ruleset: lambda do |value|
-      ::OctridevGithub::RepositoryRuleset.from_hash(value)
-    end,
-    changes: lambda do |value|
-      ::OctridevGithub::WebhookRepositoryRulesetEditedChanges.from_hash(value)
-    end,
-    sender: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for WebhookRepositoryRulesetEdited.
-# Typed representation of the `WebhookRepositoryRulesetEdited` API schema.
-class WebhookRepositoryRulesetEdited
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookRepositoryRulesetEditedMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookRepositoryRulesetEditedMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookRepositoryRulesetEditedMetadata::DECODERS
-
-  # @return [WebhookRepositoryRulesetEditedAction] Required enumerated value serialized in the `action` wire field.
-  attr_reader :action
-  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-  attr_reader :enterprise
-  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-  attr_reader :installation
-  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-  attr_reader :organization
-  # @return [RepositoryWebhooks] The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property when the event occurs from activity in a repository.
-  attr_reader :repository
-  # @return [RepositoryRuleset] A set of rules to apply when specified conditions are met.
-  attr_reader :repository_ruleset
-  # @return [WebhookRepositoryRulesetEditedChanges] Optional object value serialized in the `changes` wire field.
-  attr_reader :changes
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :sender
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Defines the WebhookRepositoryRulesetEditedAction SDK namespace.
-module WebhookRepositoryRulesetEditedAction
-  EDITED = 'edited'
-  VALUES = ['edited'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

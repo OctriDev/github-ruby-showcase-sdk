@@ -5,48 +5,47 @@
 
 # gitignore domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalGitignoreTemplateMetadata
-  FIELDS = {
-    name: "name",
-    source: "source",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    name
-    source
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for GitignoreTemplate.
-# Gitignore Template
-class GitignoreTemplate
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalGitignoreTemplateMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalGitignoreTemplateMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalGitignoreTemplateMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Required `string` value serialized in the `source` wire field.
-  attr_reader :source
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalGitignoreTemplateMetadata
+    FIELDS = {
+      name: 'name',
+      source: 'source'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      name
+      source
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
+  # API model for GitignoreTemplate.
+  # Gitignore Template
+  class GitignoreTemplate
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalGitignoreTemplateMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalGitignoreTemplateMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalGitignoreTemplateMetadata::DECODERS
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Required `string` value serialized in the `source` wire field.
+    attr_reader :source
 
-  def to_json(*args)
-    to_h.to_json(*args)
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
-end
 end

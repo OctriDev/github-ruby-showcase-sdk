@@ -5,677 +5,675 @@
 
 # activity domain models
 module OctridevGithub
-# API model for PullRequestReviewEventReviewLinksHtml.
-# Required object value serialized in the `html` wire field.
-class PullRequestReviewEventReviewLinksHtml
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalPullRequestReviewEventReviewLinksHtmlMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalPullRequestReviewEventReviewLinksHtmlMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalPullRequestReviewEventReviewLinksHtmlMetadata::DECODERS
+  # API model for PullRequestReviewEventReviewLinksHtml.
+  # Required object value serialized in the `html` wire field.
+  class PullRequestReviewEventReviewLinksHtml
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalPullRequestReviewEventReviewLinksHtmlMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalPullRequestReviewEventReviewLinksHtmlMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalPullRequestReviewEventReviewLinksHtmlMetadata::DECODERS
 
-  # @return [String] Required `string` value serialized in the `href` wire field.
-  attr_reader :href
+    # @return [String] Required `string` value serialized in the `href` wire field.
+    attr_reader :href
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalPullRequestReviewEventReviewLinksPullRequestMetadata
+    FIELDS = {
+      href: 'href'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      href
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # API model for PullRequestReviewEventReviewLinksPullRequest.
+  # Required object value serialized in the `pull_request` wire field.
+  class PullRequestReviewEventReviewLinksPullRequest
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalPullRequestReviewEventReviewLinksPullRequestMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalPullRequestReviewEventReviewLinksPullRequestMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalPullRequestReviewEventReviewLinksPullRequestMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `href` wire field.
+    attr_reader :href
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalPullRequestReviewEventReviewLinksPullRequestMetadata
-  FIELDS = {
-    href: "href",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    href
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for PullRequestReviewEventReviewLinksPullRequest.
-# Required object value serialized in the `pull_request` wire field.
-class PullRequestReviewEventReviewLinksPullRequest
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalPullRequestReviewEventReviewLinksPullRequestMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalPullRequestReviewEventReviewLinksPullRequestMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalPullRequestReviewEventReviewLinksPullRequestMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `href` wire field.
-  attr_reader :href
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalPullRequestReviewEventReviewLinksMetadata
+    FIELDS = {
+      html: 'html',
+      pull_request: 'pull_request'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      html
+      pull_request
+    ].freeze
+    DECODERS = {
+      html: lambda do |value|
+        ::OctridevGithub::PullRequestReviewEventReviewLinksHtml.from_hash(value)
+      end,
+      pull_request: lambda do |value|
+        ::OctridevGithub::PullRequestReviewEventReviewLinksPullRequest.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for PullRequestReviewEventReviewLinks.
+  # Optional object value serialized in the `_links` wire field.
+  class PullRequestReviewEventReviewLinks
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalPullRequestReviewEventReviewLinksMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalPullRequestReviewEventReviewLinksMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalPullRequestReviewEventReviewLinksMetadata::DECODERS
+
+    # @return [PullRequestReviewEventReviewLinksHtml] Required object value serialized in the `html` wire field.
+    attr_reader :html
+    # @return [PullRequestReviewEventReviewLinksPullRequest] Required object value serialized in the `pull_request` wire field.
+    attr_reader :pull_request
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalPullRequestReviewEventReviewMetadata
+    FIELDS = {
+      id: 'id',
+      node_id: 'node_id',
+      user: 'user',
+      body: 'body',
+      commit_id: 'commit_id',
+      submitted_at: 'submitted_at',
+      state: 'state',
+      html_url: 'html_url',
+      pull_request_url: 'pull_request_url',
+      links: '_links',
+      updated_at: 'updated_at'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      user: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end,
+      links: lambda do |value|
+        ::OctridevGithub::PullRequestReviewEventReviewLinks.from_hash(value)
+      end
+    }.freeze
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
+  # API model for PullRequestReviewEventReview.
+  # Required object value serialized in the `review` wire field.
+  class PullRequestReviewEventReview
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalPullRequestReviewEventReviewMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalPullRequestReviewEventReviewMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalPullRequestReviewEventReviewMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalPullRequestReviewEventReviewLinksMetadata
-  FIELDS = {
-    html: "html",
-    pull_request: "pull_request",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    html
-    pull_request
-  ].freeze
-  DECODERS = {
-    html: lambda do |value|
-      ::OctridevGithub::PullRequestReviewEventReviewLinksHtml.from_hash(value)
-    end,
-    pull_request: lambda do |value|
-      ::OctridevGithub::PullRequestReviewEventReviewLinksPullRequest.from_hash(value)
-    end,
-  }.freeze
-end
+    # @return [Integer] Optional `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Optional `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :user
+    # @return [String] Optional `string` value serialized in the `body` wire field.
+    attr_reader :body
+    # @return [String] Optional `string` value serialized in the `commit_id` wire field.
+    attr_reader :commit_id
+    # @return [String] Optional `string` value serialized in the `submitted_at` wire field.
+    attr_reader :submitted_at
+    # @return [String] Optional `string` value serialized in the `state` wire field.
+    attr_reader :state
+    # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [String] Optional `uri`-formatted value serialized in the `pull_request_url` wire field.
+    attr_reader :pull_request_url
+    # @return [PullRequestReviewEventReviewLinks] Optional object value serialized in the `_links` wire field.
+    attr_reader :links
+    # @return [String] Optional `string` value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
 
-# API model for PullRequestReviewEventReviewLinks.
-# Optional object value serialized in the `_links` wire field.
-class PullRequestReviewEventReviewLinks
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalPullRequestReviewEventReviewLinksMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalPullRequestReviewEventReviewLinksMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalPullRequestReviewEventReviewLinksMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [PullRequestReviewEventReviewLinksHtml] Required object value serialized in the `html` wire field.
-  attr_reader :html
-  # @return [PullRequestReviewEventReviewLinksPullRequest] Required object value serialized in the `pull_request` wire field.
-  attr_reader :pull_request
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalPullRequestReviewEventReviewMetadata
-  FIELDS = {
-    id: "id",
-    node_id: "node_id",
-    user: "user",
-    body: "body",
-    commit_id: "commit_id",
-    submitted_at: "submitted_at",
-    state: "state",
-    html_url: "html_url",
-    pull_request_url: "pull_request_url",
-    links: "_links",
-    updated_at: "updated_at",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    user: lambda do |value|
-      ::OctridevGithub::NullableSimpleUser.from_hash(value)
-    end,
-    links: lambda do |value|
-      ::OctridevGithub::PullRequestReviewEventReviewLinks.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for PullRequestReviewEventReview.
-# Required object value serialized in the `review` wire field.
-class PullRequestReviewEventReview
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalPullRequestReviewEventReviewMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalPullRequestReviewEventReviewMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalPullRequestReviewEventReviewMetadata::DECODERS
-
-  # @return [Integer] Optional `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Optional `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [NullableSimpleUser] A GitHub user.
-  attr_reader :user
-  # @return [String] Optional `string` value serialized in the `body` wire field.
-  attr_reader :body
-  # @return [String] Optional `string` value serialized in the `commit_id` wire field.
-  attr_reader :commit_id
-  # @return [String] Optional `string` value serialized in the `submitted_at` wire field.
-  attr_reader :submitted_at
-  # @return [String] Optional `string` value serialized in the `state` wire field.
-  attr_reader :state
-  # @return [String] Optional `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [String] Optional `uri`-formatted value serialized in the `pull_request_url` wire field.
-  attr_reader :pull_request_url
-  # @return [PullRequestReviewEventReviewLinks] Optional object value serialized in the `_links` wire field.
-  attr_reader :links
-  # @return [String] Optional `string` value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalPullRequestReviewEventMetadata
+    FIELDS = {
+      action: 'action',
+      review: 'review',
+      pull_request: 'pull_request'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      action
+      review
+      pull_request
+    ].freeze
+    DECODERS = {
+      review: lambda do |value|
+        ::OctridevGithub::PullRequestReviewEventReview.from_hash(value)
+      end,
+      pull_request: lambda do |value|
+        ::OctridevGithub::PullRequestMinimal.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for PullRequestReviewEvent.
+  # Typed representation of the `PullRequestReviewEvent` API schema.
+  class PullRequestReviewEvent
+    include EventPayload
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalPullRequestReviewEventMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalPullRequestReviewEventMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalPullRequestReviewEventMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `action` wire field.
+    attr_reader :action
+    # @return [PullRequestReviewEventReview] Required object value serialized in the `review` wire field.
+    attr_reader :review
+    # @return [PullRequestMinimal] Required object value serialized in the `pull_request` wire field.
+    attr_reader :pull_request
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalPushEventMetadata
+    FIELDS = {
+      repository_id: 'repository_id',
+      push_id: 'push_id',
+      ref: 'ref',
+      head: 'head',
+      before: 'before'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      repository_id
+      push_id
+      ref
+      head
+      before
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
+  # API model for PushEvent.
+  # Typed representation of the `PushEvent` API schema.
+  class PushEvent
+    include EventPayload
 
-# Internal model hydration metadata.
-class SdkInternalPullRequestReviewEventMetadata
-  FIELDS = {
-    action: "action",
-    review: "review",
-    pull_request: "pull_request",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    action
-    review
-    pull_request
-  ].freeze
-  DECODERS = {
-    review: lambda do |value|
-      ::OctridevGithub::PullRequestReviewEventReview.from_hash(value)
-    end,
-    pull_request: lambda do |value|
-      ::OctridevGithub::PullRequestMinimal.from_hash(value)
-    end,
-  }.freeze
-end
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalPushEventMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalPushEventMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalPushEventMetadata::DECODERS
 
-# API model for PullRequestReviewEvent.
-# Typed representation of the `PullRequestReviewEvent` API schema.
-class PullRequestReviewEvent
-  include EventPayload
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalPullRequestReviewEventMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalPullRequestReviewEventMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalPullRequestReviewEventMetadata::DECODERS
+    # @return [Integer] Required `integer` value serialized in the `repository_id` wire field.
+    attr_reader :repository_id
+    # @return [Integer] Required `integer` value serialized in the `push_id` wire field.
+    attr_reader :push_id
+    # @return [String] Required `string` value serialized in the `ref` wire field.
+    attr_reader :ref
+    # @return [String] Required `string` value serialized in the `head` wire field.
+    attr_reader :head
+    # @return [String] Required `string` value serialized in the `before` wire field.
+    attr_reader :before
 
-  # @return [String] Required `string` value serialized in the `action` wire field.
-  attr_reader :action
-  # @return [PullRequestReviewEventReview] Required object value serialized in the `review` wire field.
-  attr_reader :review
-  # @return [PullRequestMinimal] Required object value serialized in the `pull_request` wire field.
-  attr_reader :pull_request
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalReleaseEventReleaseMetadata
+    FIELDS = {
+      url: 'url',
+      html_url: 'html_url',
+      assets_url: 'assets_url',
+      upload_url: 'upload_url',
+      tarball_url: 'tarball_url',
+      zipball_url: 'zipball_url',
+      id: 'id',
+      node_id: 'node_id',
+      tag_name: 'tag_name',
+      target_commitish: 'target_commitish',
+      name: 'name',
+      body: 'body',
+      draft: 'draft',
+      prerelease: 'prerelease',
+      immutable: 'immutable',
+      created_at: 'created_at',
+      published_at: 'published_at',
+      updated_at: 'updated_at',
+      author: 'author',
+      assets: 'assets',
+      body_html: 'body_html',
+      body_text: 'body_text',
+      mentions_count: 'mentions_count',
+      discussion_url: 'discussion_url',
+      reactions: 'reactions',
+      is_short_description_html_truncated: 'is_short_description_html_truncated',
+      short_description_html: 'short_description_html'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      url
+      html_url
+      assets_url
+      upload_url
+      tarball_url
+      zipball_url
+      id
+      node_id
+      tag_name
+      target_commitish
+      name
+      draft
+      prerelease
+      created_at
+      published_at
+      author
+      assets
+    ].freeze
+    DECODERS = {
+      author: lambda do |value|
+        ::OctridevGithub::SimpleUser.from_hash(value)
+      end,
+      assets: lambda do |value|
+        value&.map { |item| ::OctridevGithub::ReleaseAsset.from_hash(item) }
+      end,
+      reactions: lambda do |value|
+        ::OctridevGithub::ReactionRollup.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      tarball_url
+      zipball_url
+      name
+      published_at
+    ].freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # API model for ReleaseEventRelease.
+  # Required object value serialized in the `release` wire field.
+  class ReleaseEventRelease
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalReleaseEventReleaseMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalReleaseEventReleaseMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalReleaseEventReleaseMetadata::DECODERS
+
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [String] Required `uri`-formatted value serialized in the `assets_url` wire field.
+    attr_reader :assets_url
+    # @return [String] Required `string` value serialized in the `upload_url` wire field.
+    attr_reader :upload_url
+    # @return [String] Required `uri`-formatted value serialized in the `tarball_url` wire field.
+    attr_reader :tarball_url
+    # @return [String] Required `uri`-formatted value serialized in the `zipball_url` wire field.
+    attr_reader :zipball_url
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] The name of the tag.
+    attr_reader :tag_name
+    # @return [String] Specifies the commitish value that determines where the Git tag is created from.
+    attr_reader :target_commitish
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Optional `string` value serialized in the `body` wire field.
+    attr_reader :body
+    # @return [Boolean] true to create a draft (unpublished) release, false to create a published one.
+    attr_reader :draft
+    # @return [Boolean] Whether to identify the release as a prerelease or a full release.
+    attr_reader :prerelease
+    # @return [Boolean] Whether or not the release is immutable.
+    attr_reader :immutable
+    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Required `date-time`-formatted value serialized in the `published_at` wire field.
+    attr_reader :published_at
+    # @return [String] Optional `date-time`-formatted value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :author
+    # @return [Array_of_ReleaseAsset] Required array value serialized in the `assets` wire field.
+    attr_reader :assets
+    # @return [String] Optional `string` value serialized in the `body_html` wire field.
+    attr_reader :body_html
+    # @return [String] Optional `string` value serialized in the `body_text` wire field.
+    attr_reader :body_text
+    # @return [Integer] Optional `integer` value serialized in the `mentions_count` wire field.
+    attr_reader :mentions_count
+    # @return [String] The URL of the release discussion.
+    attr_reader :discussion_url
+    # @return [ReactionRollup] Optional object value serialized in the `reactions` wire field.
+    attr_reader :reactions
+    # @return [Boolean] Optional `boolean` value serialized in the `is_short_description_html_truncated` wire field.
+    attr_reader :is_short_description_html_truncated
+    # @return [String] Optional `string` value serialized in the `short_description_html` wire field.
+    attr_reader :short_description_html
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalReleaseEventReleaseMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalPushEventMetadata
-  FIELDS = {
-    repository_id: "repository_id",
-    push_id: "push_id",
-    ref: "ref",
-    head: "head",
-    before: "before",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    repository_id
-    push_id
-    ref
-    head
-    before
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for PushEvent.
-# Typed representation of the `PushEvent` API schema.
-class PushEvent
-  include EventPayload
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalPushEventMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalPushEventMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalPushEventMetadata::DECODERS
-
-  # @return [Integer] Required `integer` value serialized in the `repository_id` wire field.
-  attr_reader :repository_id
-  # @return [Integer] Required `integer` value serialized in the `push_id` wire field.
-  attr_reader :push_id
-  # @return [String] Required `string` value serialized in the `ref` wire field.
-  attr_reader :ref
-  # @return [String] Required `string` value serialized in the `head` wire field.
-  attr_reader :head
-  # @return [String] Required `string` value serialized in the `before` wire field.
-  attr_reader :before
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalReleaseEventMetadata
+    FIELDS = {
+      action: 'action',
+      release: 'release'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      action
+      release
+    ].freeze
+    DECODERS = {
+      release: lambda do |value|
+        ::OctridevGithub::ReleaseEventRelease.from_hash(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ReleaseEvent.
+  # Typed representation of the `ReleaseEvent` API schema.
+  class ReleaseEvent
+    include EventPayload
+
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalReleaseEventMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalReleaseEventMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalReleaseEventMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `action` wire field.
+    attr_reader :action
+    # @return [ReleaseEventRelease] Required object value serialized in the `release` wire field.
+    attr_reader :release
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalRepositorySubscriptionMetadata
+    FIELDS = {
+      subscribed: 'subscribed',
+      ignored: 'ignored',
+      reason: 'reason',
+      created_at: 'created_at',
+      url: 'url',
+      repository_url: 'repository_url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      subscribed
+      ignored
+      reason
+      created_at
+      url
+      repository_url
+    ].freeze
+    DECODERS = {}.freeze
+    NULLABLE_FIELDS = %i[
+      reason
+    ].freeze
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
+  # API model for RepositorySubscription.
+  # Repository invitations let you manage who you collaborate with.
+  class RepositorySubscription
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalRepositorySubscriptionMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalRepositorySubscriptionMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalRepositorySubscriptionMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalReleaseEventReleaseMetadata
-  FIELDS = {
-    url: "url",
-    html_url: "html_url",
-    assets_url: "assets_url",
-    upload_url: "upload_url",
-    tarball_url: "tarball_url",
-    zipball_url: "zipball_url",
-    id: "id",
-    node_id: "node_id",
-    tag_name: "tag_name",
-    target_commitish: "target_commitish",
-    name: "name",
-    body: "body",
-    draft: "draft",
-    prerelease: "prerelease",
-    immutable: "immutable",
-    created_at: "created_at",
-    published_at: "published_at",
-    updated_at: "updated_at",
-    author: "author",
-    assets: "assets",
-    body_html: "body_html",
-    body_text: "body_text",
-    mentions_count: "mentions_count",
-    discussion_url: "discussion_url",
-    reactions: "reactions",
-    is_short_description_html_truncated: "is_short_description_html_truncated",
-    short_description_html: "short_description_html",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    url
-    html_url
-    assets_url
-    upload_url
-    tarball_url
-    zipball_url
-    id
-    node_id
-    tag_name
-    target_commitish
-    name
-    draft
-    prerelease
-    created_at
-    published_at
-    author
-    assets
-  ].freeze
-  DECODERS = {
-    author: lambda do |value|
-      ::OctridevGithub::SimpleUser.from_hash(value)
-    end,
-    assets: lambda do |value|
-      value&.map { |item| ::OctridevGithub::ReleaseAsset.from_hash(item) }
-    end,
-    reactions: lambda do |value|
-      ::OctridevGithub::ReactionRollup.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    tarball_url
-    zipball_url
-    name
-    published_at
-  ].freeze
-end
+    # @return [Boolean] Determines if notifications should be received from this repository.
+    attr_reader :subscribed
+    # @return [Boolean] Determines if all notifications should be blocked from this repository.
+    attr_reader :ignored
+    # @return [String] Required `string` value serialized in the `reason` wire field.
+    attr_reader :reason
+    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Required `uri`-formatted value serialized in the `repository_url` wire field.
+    attr_reader :repository_url
 
-# API model for ReleaseEventRelease.
-# Required object value serialized in the `release` wire field.
-class ReleaseEventRelease
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalReleaseEventReleaseMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalReleaseEventReleaseMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalReleaseEventReleaseMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [String] Required `uri`-formatted value serialized in the `assets_url` wire field.
-  attr_reader :assets_url
-  # @return [String] Required `string` value serialized in the `upload_url` wire field.
-  attr_reader :upload_url
-  # @return [String] Required `uri`-formatted value serialized in the `tarball_url` wire field.
-  attr_reader :tarball_url
-  # @return [String] Required `uri`-formatted value serialized in the `zipball_url` wire field.
-  attr_reader :zipball_url
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] The name of the tag.
-  attr_reader :tag_name
-  # @return [String] Specifies the commitish value that determines where the Git tag is created from.
-  attr_reader :target_commitish
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Optional `string` value serialized in the `body` wire field.
-  attr_reader :body
-  # @return [Boolean] true to create a draft (unpublished) release, false to create a published one.
-  attr_reader :draft
-  # @return [Boolean] Whether to identify the release as a prerelease or a full release.
-  attr_reader :prerelease
-  # @return [Boolean] Whether or not the release is immutable.
-  attr_reader :immutable
-  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Required `date-time`-formatted value serialized in the `published_at` wire field.
-  attr_reader :published_at
-  # @return [String] Optional `date-time`-formatted value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :author
-  # @return [Array_of_ReleaseAsset] Required array value serialized in the `assets` wire field.
-  attr_reader :assets
-  # @return [String] Optional `string` value serialized in the `body_html` wire field.
-  attr_reader :body_html
-  # @return [String] Optional `string` value serialized in the `body_text` wire field.
-  attr_reader :body_text
-  # @return [Integer] Optional `integer` value serialized in the `mentions_count` wire field.
-  attr_reader :mentions_count
-  # @return [String] The URL of the release discussion.
-  attr_reader :discussion_url
-  # @return [ReactionRollup] Optional object value serialized in the `reactions` wire field.
-  attr_reader :reactions
-  # @return [Boolean] Optional `boolean` value serialized in the `is_short_description_html_truncated` wire field.
-  attr_reader :is_short_description_html_truncated
-  # @return [String] Optional `string` value serialized in the `short_description_html` wire field.
-  attr_reader :short_description_html
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalRepositorySubscriptionMetadata::NULLABLE_FIELDS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalReleaseEventReleaseMetadata::NULLABLE_FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalStargazerMetadata
+    FIELDS = {
+      starred_at: 'starred_at',
+      user: 'user'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      starred_at
+      user
+    ].freeze
+    DECODERS = {
+      user: lambda do |value|
+        ::OctridevGithub::NullableSimpleUser.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      user
+    ].freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # API model for Stargazer.
+  # Stargazer
+  class Stargazer
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalStargazerMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalStargazerMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalStargazerMetadata::DECODERS
+
+    # @return [String] Required `date-time`-formatted value serialized in the `starred_at` wire field.
+    attr_reader :starred_at
+    # @return [NullableSimpleUser] A GitHub user.
+    attr_reader :user
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalStargazerMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalReleaseEventMetadata
-  FIELDS = {
-    action: "action",
-    release: "release",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    action
-    release
-  ].freeze
-  DECODERS = {
-    release: lambda do |value|
-      ::OctridevGithub::ReleaseEventRelease.from_hash(value)
-    end,
-  }.freeze
-end
-
-# API model for ReleaseEvent.
-# Typed representation of the `ReleaseEvent` API schema.
-class ReleaseEvent
-  include EventPayload
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalReleaseEventMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalReleaseEventMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalReleaseEventMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `action` wire field.
-  attr_reader :action
-  # @return [ReleaseEventRelease] Required object value serialized in the `release` wire field.
-  attr_reader :release
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalStargazerHistoryMetadata
+    FIELDS = {
+      days: 'days',
+      total: 'total',
+      week: 'week'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      days
+      total
+      week
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for StargazerHistory.
+  # Stargazer History
+  class StargazerHistory
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalStargazerHistoryMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalStargazerHistoryMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalStargazerHistoryMetadata::DECODERS
+
+    # @return [Array_of_Integer] The number of stars created on each day of the week, starting on Sunday.
+    attr_reader :days
+    # @return [Integer] The number of stars created during the week.
+    attr_reader :total
+    # @return [Integer] The start of the week, given as a Unix timestamp.
+    attr_reader :week
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalRepositorySubscriptionMetadata
-  FIELDS = {
-    subscribed: "subscribed",
-    ignored: "ignored",
-    reason: "reason",
-    created_at: "created_at",
-    url: "url",
-    repository_url: "repository_url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    subscribed
-    ignored
-    reason
-    created_at
-    url
-    repository_url
-  ].freeze
-  DECODERS = {
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    reason
-  ].freeze
-end
-
-# API model for RepositorySubscription.
-# Repository invitations let you manage who you collaborate with.
-class RepositorySubscription
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalRepositorySubscriptionMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalRepositorySubscriptionMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalRepositorySubscriptionMetadata::DECODERS
-
-  # @return [Boolean] Determines if notifications should be received from this repository.
-  attr_reader :subscribed
-  # @return [Boolean] Determines if all notifications should be blocked from this repository.
-  attr_reader :ignored
-  # @return [String] Required `string` value serialized in the `reason` wire field.
-  attr_reader :reason
-  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Required `uri`-formatted value serialized in the `repository_url` wire field.
-  attr_reader :repository_url
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalRepositorySubscriptionMetadata::NULLABLE_FIELDS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalStargazerMetadata
-  FIELDS = {
-    starred_at: "starred_at",
-    user: "user",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    starred_at
-    user
-  ].freeze
-  DECODERS = {
-    user: lambda do |value|
-      ::OctridevGithub::NullableSimpleUser.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    user
-  ].freeze
-end
-
-# API model for Stargazer.
-# Stargazer
-class Stargazer
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalStargazerMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalStargazerMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalStargazerMetadata::DECODERS
-
-  # @return [String] Required `date-time`-formatted value serialized in the `starred_at` wire field.
-  attr_reader :starred_at
-  # @return [NullableSimpleUser] A GitHub user.
-  attr_reader :user
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalStargazerMetadata::NULLABLE_FIELDS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalStargazerHistoryMetadata
-  FIELDS = {
-    days: "days",
-    total: "total",
-    week: "week",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    days
-    total
-    week
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for StargazerHistory.
-# Stargazer History
-class StargazerHistory
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalStargazerHistoryMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalStargazerHistoryMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalStargazerHistoryMetadata::DECODERS
-
-  # @return [Array_of_Integer] The number of stars created on each day of the week, starting on Sunday.
-  attr_reader :days
-  # @return [Integer] The number of stars created during the week.
-  attr_reader :total
-  # @return [Integer] The start of the week, given as a Unix timestamp.
-  attr_reader :week
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
 end

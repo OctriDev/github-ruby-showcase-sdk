@@ -5,317 +5,315 @@
 
 # users domain models
 module OctridevGithub
-# Internal model hydration metadata.
-class SdkInternalPrivateUserMetadata
-  FIELDS = {
-    login: "login",
-    id: "id",
-    user_view_type: "user_view_type",
-    node_id: "node_id",
-    avatar_url: "avatar_url",
-    gravatar_id: "gravatar_id",
-    url: "url",
-    html_url: "html_url",
-    followers_url: "followers_url",
-    following_url: "following_url",
-    gists_url: "gists_url",
-    starred_url: "starred_url",
-    subscriptions_url: "subscriptions_url",
-    organizations_url: "organizations_url",
-    repos_url: "repos_url",
-    events_url: "events_url",
-    received_events_url: "received_events_url",
-    type: "type",
-    site_admin: "site_admin",
-    name: "name",
-    company: "company",
-    blog: "blog",
-    location: "location",
-    email: "email",
-    notification_email: "notification_email",
-    hireable: "hireable",
-    bio: "bio",
-    twitter_username: "twitter_username",
-    public_repos: "public_repos",
-    public_gists: "public_gists",
-    followers: "followers",
-    following: "following",
-    created_at: "created_at",
-    updated_at: "updated_at",
-    private_gists: "private_gists",
-    total_private_repos: "total_private_repos",
-    owned_private_repos: "owned_private_repos",
-    disk_usage: "disk_usage",
-    collaborators: "collaborators",
-    two_factor_authentication: "two_factor_authentication",
-    plan: "plan",
-    business_plus: "business_plus",
-    ldap_dn: "ldap_dn",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    login
-    id
-    node_id
-    avatar_url
-    gravatar_id
-    url
-    html_url
-    followers_url
-    following_url
-    gists_url
-    starred_url
-    subscriptions_url
-    organizations_url
-    repos_url
-    events_url
-    received_events_url
-    type
-    site_admin
-    name
-    company
-    blog
-    location
-    email
-    hireable
-    bio
-    public_repos
-    public_gists
-    followers
-    following
-    created_at
-    updated_at
-    private_gists
-    total_private_repos
-    owned_private_repos
-    disk_usage
-    collaborators
-    two_factor_authentication
-  ].freeze
-  DECODERS = {
-    plan: lambda do |value|
-      ::OctridevGithub::PrivateUserPlan.from_hash(value)
-    end,
-  }.freeze
-  NULLABLE_FIELDS = %i[
-    gravatar_id
-    name
-    company
-    blog
-    location
-    email
-    hireable
-    bio
-  ].freeze
-end
-
-# API model for PrivateUser.
-# Private User
-class PrivateUser
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalPrivateUserMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalPrivateUserMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalPrivateUserMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `login` wire field.
-  attr_reader :login
-  # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
-  attr_reader :user_view_type
-  # @return [String] Required `string` value serialized in the `node_id` wire field.
-  attr_reader :node_id
-  # @return [String] Required `uri`-formatted value serialized in the `avatar_url` wire field.
-  attr_reader :avatar_url
-  # @return [String] Required `string` value serialized in the `gravatar_id` wire field.
-  attr_reader :gravatar_id
-  # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
-  attr_reader :url
-  # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
-  attr_reader :html_url
-  # @return [String] Required `uri`-formatted value serialized in the `followers_url` wire field.
-  attr_reader :followers_url
-  # @return [String] Required `string` value serialized in the `following_url` wire field.
-  attr_reader :following_url
-  # @return [String] Required `string` value serialized in the `gists_url` wire field.
-  attr_reader :gists_url
-  # @return [String] Required `string` value serialized in the `starred_url` wire field.
-  attr_reader :starred_url
-  # @return [String] Required `uri`-formatted value serialized in the `subscriptions_url` wire field.
-  attr_reader :subscriptions_url
-  # @return [String] Required `uri`-formatted value serialized in the `organizations_url` wire field.
-  attr_reader :organizations_url
-  # @return [String] Required `uri`-formatted value serialized in the `repos_url` wire field.
-  attr_reader :repos_url
-  # @return [String] Required `string` value serialized in the `events_url` wire field.
-  attr_reader :events_url
-  # @return [String] Required `uri`-formatted value serialized in the `received_events_url` wire field.
-  attr_reader :received_events_url
-  # @return [String] Required `string` value serialized in the `type` wire field.
-  attr_reader :type
-  # @return [Boolean] Required `boolean` value serialized in the `site_admin` wire field.
-  attr_reader :site_admin
-  # @return [String] Required `string` value serialized in the `name` wire field.
-  attr_reader :name
-  # @return [String] Required `string` value serialized in the `company` wire field.
-  attr_reader :company
-  # @return [String] Required `string` value serialized in the `blog` wire field.
-  attr_reader :blog
-  # @return [String] Required `string` value serialized in the `location` wire field.
-  attr_reader :location
-  # @return [String] Required `email`-formatted value serialized in the `email` wire field.
-  attr_reader :email
-  # @return [String] Optional `email`-formatted value serialized in the `notification_email` wire field.
-  attr_reader :notification_email
-  # @return [Boolean] Required `boolean` value serialized in the `hireable` wire field.
-  attr_reader :hireable
-  # @return [String] Required `string` value serialized in the `bio` wire field.
-  attr_reader :bio
-  # @return [String] Optional `string` value serialized in the `twitter_username` wire field.
-  attr_reader :twitter_username
-  # @return [Integer] Required `integer` value serialized in the `public_repos` wire field.
-  attr_reader :public_repos
-  # @return [Integer] Required `integer` value serialized in the `public_gists` wire field.
-  attr_reader :public_gists
-  # @return [Integer] Required `integer` value serialized in the `followers` wire field.
-  attr_reader :followers
-  # @return [Integer] Required `integer` value serialized in the `following` wire field.
-  attr_reader :following
-  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-  attr_reader :created_at
-  # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
-  attr_reader :updated_at
-  # @return [Integer] Required `integer` value serialized in the `private_gists` wire field.
-  attr_reader :private_gists
-  # @return [Integer] Required `integer` value serialized in the `total_private_repos` wire field.
-  attr_reader :total_private_repos
-  # @return [Integer] Required `integer` value serialized in the `owned_private_repos` wire field.
-  attr_reader :owned_private_repos
-  # @return [Integer] Required `integer` value serialized in the `disk_usage` wire field.
-  attr_reader :disk_usage
-  # @return [Integer] Required `integer` value serialized in the `collaborators` wire field.
-  attr_reader :collaborators
-  # @return [Boolean] Required `boolean` value serialized in the `two_factor_authentication` wire field.
-  attr_reader :two_factor_authentication
-  # @return [PrivateUserPlan] Optional object value serialized in the `plan` wire field.
-  attr_reader :plan
-  # @return [Boolean] Optional `boolean` value serialized in the `business_plus` wire field.
-  attr_reader :business_plus
-  # @return [String] Optional `string` value serialized in the `ldap_dn` wire field.
-  attr_reader :ldap_dn
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalPrivateUserMetadata
+    FIELDS = {
+      login: 'login',
+      id: 'id',
+      user_view_type: 'user_view_type',
+      node_id: 'node_id',
+      avatar_url: 'avatar_url',
+      gravatar_id: 'gravatar_id',
+      url: 'url',
+      html_url: 'html_url',
+      followers_url: 'followers_url',
+      following_url: 'following_url',
+      gists_url: 'gists_url',
+      starred_url: 'starred_url',
+      subscriptions_url: 'subscriptions_url',
+      organizations_url: 'organizations_url',
+      repos_url: 'repos_url',
+      events_url: 'events_url',
+      received_events_url: 'received_events_url',
+      type: 'type',
+      site_admin: 'site_admin',
+      name: 'name',
+      company: 'company',
+      blog: 'blog',
+      location: 'location',
+      email: 'email',
+      notification_email: 'notification_email',
+      hireable: 'hireable',
+      bio: 'bio',
+      twitter_username: 'twitter_username',
+      public_repos: 'public_repos',
+      public_gists: 'public_gists',
+      followers: 'followers',
+      following: 'following',
+      created_at: 'created_at',
+      updated_at: 'updated_at',
+      private_gists: 'private_gists',
+      total_private_repos: 'total_private_repos',
+      owned_private_repos: 'owned_private_repos',
+      disk_usage: 'disk_usage',
+      collaborators: 'collaborators',
+      two_factor_authentication: 'two_factor_authentication',
+      plan: 'plan',
+      business_plus: 'business_plus',
+      ldap_dn: 'ldap_dn'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      login
+      id
+      node_id
+      avatar_url
+      gravatar_id
+      url
+      html_url
+      followers_url
+      following_url
+      gists_url
+      starred_url
+      subscriptions_url
+      organizations_url
+      repos_url
+      events_url
+      received_events_url
+      type
+      site_admin
+      name
+      company
+      blog
+      location
+      email
+      hireable
+      bio
+      public_repos
+      public_gists
+      followers
+      following
+      created_at
+      updated_at
+      private_gists
+      total_private_repos
+      owned_private_repos
+      disk_usage
+      collaborators
+      two_factor_authentication
+    ].freeze
+    DECODERS = {
+      plan: lambda do |value|
+        ::OctridevGithub::PrivateUserPlan.from_hash(value)
+      end
+    }.freeze
+    NULLABLE_FIELDS = %i[
+      gravatar_id
+      name
+      company
+      blog
+      location
+      email
+      hireable
+      bio
+    ].freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalPrivateUserMetadata::NULLABLE_FIELDS)
+  # API model for PrivateUser.
+  # Private User
+  class PrivateUser
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalPrivateUserMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalPrivateUserMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalPrivateUserMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `login` wire field.
+    attr_reader :login
+    # @return [Integer] Required `int64`-formatted value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Optional `string` value serialized in the `user_view_type` wire field.
+    attr_reader :user_view_type
+    # @return [String] Required `string` value serialized in the `node_id` wire field.
+    attr_reader :node_id
+    # @return [String] Required `uri`-formatted value serialized in the `avatar_url` wire field.
+    attr_reader :avatar_url
+    # @return [String] Required `string` value serialized in the `gravatar_id` wire field.
+    attr_reader :gravatar_id
+    # @return [String] Required `uri`-formatted value serialized in the `url` wire field.
+    attr_reader :url
+    # @return [String] Required `uri`-formatted value serialized in the `html_url` wire field.
+    attr_reader :html_url
+    # @return [String] Required `uri`-formatted value serialized in the `followers_url` wire field.
+    attr_reader :followers_url
+    # @return [String] Required `string` value serialized in the `following_url` wire field.
+    attr_reader :following_url
+    # @return [String] Required `string` value serialized in the `gists_url` wire field.
+    attr_reader :gists_url
+    # @return [String] Required `string` value serialized in the `starred_url` wire field.
+    attr_reader :starred_url
+    # @return [String] Required `uri`-formatted value serialized in the `subscriptions_url` wire field.
+    attr_reader :subscriptions_url
+    # @return [String] Required `uri`-formatted value serialized in the `organizations_url` wire field.
+    attr_reader :organizations_url
+    # @return [String] Required `uri`-formatted value serialized in the `repos_url` wire field.
+    attr_reader :repos_url
+    # @return [String] Required `string` value serialized in the `events_url` wire field.
+    attr_reader :events_url
+    # @return [String] Required `uri`-formatted value serialized in the `received_events_url` wire field.
+    attr_reader :received_events_url
+    # @return [String] Required `string` value serialized in the `type` wire field.
+    attr_reader :type
+    # @return [Boolean] Required `boolean` value serialized in the `site_admin` wire field.
+    attr_reader :site_admin
+    # @return [String] Required `string` value serialized in the `name` wire field.
+    attr_reader :name
+    # @return [String] Required `string` value serialized in the `company` wire field.
+    attr_reader :company
+    # @return [String] Required `string` value serialized in the `blog` wire field.
+    attr_reader :blog
+    # @return [String] Required `string` value serialized in the `location` wire field.
+    attr_reader :location
+    # @return [String] Required `email`-formatted value serialized in the `email` wire field.
+    attr_reader :email
+    # @return [String] Optional `email`-formatted value serialized in the `notification_email` wire field.
+    attr_reader :notification_email
+    # @return [Boolean] Required `boolean` value serialized in the `hireable` wire field.
+    attr_reader :hireable
+    # @return [String] Required `string` value serialized in the `bio` wire field.
+    attr_reader :bio
+    # @return [String] Optional `string` value serialized in the `twitter_username` wire field.
+    attr_reader :twitter_username
+    # @return [Integer] Required `integer` value serialized in the `public_repos` wire field.
+    attr_reader :public_repos
+    # @return [Integer] Required `integer` value serialized in the `public_gists` wire field.
+    attr_reader :public_gists
+    # @return [Integer] Required `integer` value serialized in the `followers` wire field.
+    attr_reader :followers
+    # @return [Integer] Required `integer` value serialized in the `following` wire field.
+    attr_reader :following
+    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+    attr_reader :created_at
+    # @return [String] Required `date-time`-formatted value serialized in the `updated_at` wire field.
+    attr_reader :updated_at
+    # @return [Integer] Required `integer` value serialized in the `private_gists` wire field.
+    attr_reader :private_gists
+    # @return [Integer] Required `integer` value serialized in the `total_private_repos` wire field.
+    attr_reader :total_private_repos
+    # @return [Integer] Required `integer` value serialized in the `owned_private_repos` wire field.
+    attr_reader :owned_private_repos
+    # @return [Integer] Required `integer` value serialized in the `disk_usage` wire field.
+    attr_reader :disk_usage
+    # @return [Integer] Required `integer` value serialized in the `collaborators` wire field.
+    attr_reader :collaborators
+    # @return [Boolean] Required `boolean` value serialized in the `two_factor_authentication` wire field.
+    attr_reader :two_factor_authentication
+    # @return [PrivateUserPlan] Optional object value serialized in the `plan` wire field.
+    attr_reader :plan
+    # @return [Boolean] Optional `boolean` value serialized in the `business_plus` wire field.
+    attr_reader :business_plus
+    # @return [String] Optional `string` value serialized in the `ldap_dn` wire field.
+    attr_reader :ldap_dn
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, SdkInternalPrivateUserMetadata::NULLABLE_FIELDS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Internal model hydration metadata.
+  class SdkInternalSocialAccountMetadata
+    FIELDS = {
+      provider: 'provider',
+      url: 'url'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      provider
+      url
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
+  # API model for SocialAccount.
+  # Social media account
+  class SocialAccount
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalSocialAccountMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalSocialAccountMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalSocialAccountMetadata::DECODERS
 
-# Internal model hydration metadata.
-class SdkInternalSocialAccountMetadata
-  FIELDS = {
-    provider: "provider",
-    url: "url",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    provider
-    url
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
+    # @return [String] Required `string` value serialized in the `provider` wire field.
+    attr_reader :provider
+    # @return [String] Required `string` value serialized in the `url` wire field.
+    attr_reader :url
 
-# API model for SocialAccount.
-# Social media account
-class SocialAccount
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalSocialAccountMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalSocialAccountMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalSocialAccountMetadata::DECODERS
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
 
-  # @return [String] Required `string` value serialized in the `provider` wire field.
-  attr_reader :provider
-  # @return [String] Required `string` value serialized in the `url` wire field.
-  attr_reader :url
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Internal model hydration metadata.
+  class SdkInternalSshSigningKeyMetadata
+    FIELDS = {
+      key: 'key',
+      id: 'id',
+      title: 'title',
+      created_at: 'created_at'
+    }.freeze
+    REQUIRED_FIELDS = %i[
+      key
+      id
+      title
+      created_at
+    ].freeze
+    DECODERS = {}.freeze
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # API model for SshSigningKey.
+  # A public SSH key used to sign Git commits
+  class SshSigningKey
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalSshSigningKeyMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalSshSigningKeyMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalSshSigningKeyMetadata::DECODERS
+
+    # @return [String] Required `string` value serialized in the `key` wire field.
+    attr_reader :key
+    # @return [Integer] Required `integer` value serialized in the `id` wire field.
+    attr_reader :id
+    # @return [String] Required `string` value serialized in the `title` wire field.
+    attr_reader :title
+    # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
+    attr_reader :created_at
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
-
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalSshSigningKeyMetadata
-  FIELDS = {
-    key: "key",
-    id: "id",
-    title: "title",
-    created_at: "created_at",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-    key
-    id
-    title
-    created_at
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for SshSigningKey.
-# A public SSH key used to sign Git commits
-class SshSigningKey
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalSshSigningKeyMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalSshSigningKeyMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalSshSigningKeyMetadata::DECODERS
-
-  # @return [String] Required `string` value serialized in the `key` wire field.
-  attr_reader :key
-  # @return [Integer] Required `integer` value serialized in the `id` wire field.
-  attr_reader :id
-  # @return [String] Required `string` value serialized in the `title` wire field.
-  attr_reader :title
-  # @return [String] Required `date-time`-formatted value serialized in the `created_at` wire field.
-  attr_reader :created_at
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
-  end
-
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
-
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-
-  def to_json(*args)
-    to_h.to_json(*args)
-  end
-end
 end

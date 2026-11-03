@@ -12,14 +12,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodespacesUpdateForAuthenticatedUserMetadata
         FIELDS = {
-          machine: "machine",
-          display_name: "display_name",
-          recent_folders: "recent_folders",
+          machine: 'machine',
+          display_name: 'display_name',
+          recent_folders: 'recent_folders'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for CodespacesUpdateForAuthenticatedUser.
@@ -57,8 +55,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodespacesCodespaceMachinesForAuthenticatedUserResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          machines: "machines",
+          total_count: 'total_count',
+          machines: 'machines'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -67,7 +65,7 @@ module OctridevGithub
         DECODERS = {
           machines: lambda do |value|
             value&.map { |item| ::OctridevGithub::CodespaceMachine.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -101,13 +99,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodespacesPublishForAuthenticatedUserMetadata
         FIELDS = {
-          name: "name",
-          private: "private",
+          name: 'name',
+          private: 'private'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for CodespacesPublishForAuthenticatedUser.
@@ -146,7 +142,7 @@ module OctridevGithub
         SOUTHEAST_ASIA = 'SoutheastAsia'
         US_EAST = 'UsEast'
         US_WEST = 'UsWest'
-        VALUES = ['EuropeWest', 'SoutheastAsia', 'UsEast', 'UsWest'].freeze
+        VALUES = %w[EuropeWest SoutheastAsia UsEast UsWest].freeze
         def self.from_value(value)
           value
         end
@@ -158,7 +154,7 @@ module OctridevGithub
         SOUTHEAST_ASIA = 'SoutheastAsia'
         US_EAST = 'UsEast'
         US_WEST = 'UsWest'
-        VALUES = ['EuropeWest', 'SoutheastAsia', 'UsEast', 'UsWest'].freeze
+        VALUES = %w[EuropeWest SoutheastAsia UsEast UsWest].freeze
         def self.from_value(value)
           value
         end
@@ -169,7 +165,7 @@ module OctridevGithub
         ALL = 'all'
         PRIVATE = 'private'
         SELECTED = 'selected'
-        VALUES = ['all', 'private', 'selected'].freeze
+        VALUES = %w[all private selected].freeze
         def self.from_value(value)
           value
         end
@@ -181,8 +177,8 @@ module OctridevGithub
         SELECTED_MEMBERS = 'selected_members'
         ALL_MEMBERS = 'all_members'
         ALL_MEMBERS_AND_OUTSIDE_COLLABORATORS = 'all_members_and_outside_collaborators'
-        VALUES = [
-          'disabled', 'selected_members', 'all_members', 'all_members_and_outside_collaborators'
+        VALUES = %w[
+          disabled selected_members all_members all_members_and_outside_collaborators
         ].freeze
         def self.from_value(value)
           value
@@ -195,7 +191,7 @@ module OctridevGithub
         SOUTHEAST_ASIA = 'SoutheastAsia'
         US_EAST = 'UsEast'
         US_WEST = 'UsWest'
-        VALUES = ['EuropeWest', 'SoutheastAsia', 'UsEast', 'UsWest'].freeze
+        VALUES = %w[EuropeWest SoutheastAsia UsEast UsWest].freeze
         def self.from_value(value)
           value
         end
@@ -207,7 +203,7 @@ module OctridevGithub
         SOUTHEAST_ASIA = 'SoutheastAsia'
         US_EAST = 'UsEast'
         US_WEST = 'UsWest'
-        VALUES = ['EuropeWest', 'SoutheastAsia', 'UsEast', 'UsWest'].freeze
+        VALUES = %w[EuropeWest SoutheastAsia UsEast UsWest].freeze
         def self.from_value(value)
           value
         end

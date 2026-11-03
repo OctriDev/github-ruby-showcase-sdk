@@ -41,9 +41,9 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodeSecurityCreateConfigurationSecretScanningDelegatedBypassOX64a5cf1267Metadata
         FIELDS = {
-          reviewer_id: "reviewer_id",
-          reviewer_type: "reviewer_type",
-          mode: "mode",
+          reviewer_id: 'reviewer_id',
+          reviewer_type: 'reviewer_type',
+          mode: 'mode'
         }.freeze
         REQUIRED_FIELDS = %i[
           reviewer_id
@@ -55,7 +55,7 @@ module OctridevGithub
           end,
           mode: lambda do |value|
             ::OctridevGithub::Methods::CodeSecurity::CodeSecurityCreateConfigurationSecretScanningDelegatedBypassOX4ab46a666d.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -94,14 +94,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodeSecurityCreateConfigurationSecretScanningDelegatedBypassOptionsMetadata
         FIELDS = {
-          reviewers: "reviewers",
+          reviewers: 'reviewers'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           reviewers: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::CodeSecurity::CodeSecurityCreateConfigurationSecretScanningDelegatedBypassOX64a5cf1267.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -137,32 +136,32 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodeSecurityCreateConfigurationMetadata
         FIELDS = {
-          name: "name",
-          description: "description",
-          advanced_security: "advanced_security",
-          code_security: "code_security",
-          dependency_graph: "dependency_graph",
-          dependency_graph_autosubmit_action: "dependency_graph_autosubmit_action",
-          dependency_graph_autosubmit_action_options: "dependency_graph_autosubmit_action_options",
-          dependabot_alerts: "dependabot_alerts",
-          dependabot_security_updates: "dependabot_security_updates",
-          dependabot_delegated_alert_dismissal: "dependabot_delegated_alert_dismissal",
-          code_scanning_options: "code_scanning_options",
-          code_scanning_default_setup: "code_scanning_default_setup",
-          code_scanning_default_setup_options: "code_scanning_default_setup_options",
-          code_scanning_delegated_alert_dismissal: "code_scanning_delegated_alert_dismissal",
-          secret_protection: "secret_protection",
-          secret_scanning: "secret_scanning",
-          secret_scanning_push_protection: "secret_scanning_push_protection",
-          secret_scanning_delegated_bypass: "secret_scanning_delegated_bypass",
-          secret_scanning_delegated_bypass_options: "secret_scanning_delegated_bypass_options",
-          secret_scanning_validity_checks: "secret_scanning_validity_checks",
-          secret_scanning_non_provider_patterns: "secret_scanning_non_provider_patterns",
-          secret_scanning_generic_secrets: "secret_scanning_generic_secrets",
-          secret_scanning_delegated_alert_dismissal: "secret_scanning_delegated_alert_dismissal",
-          secret_scanning_extended_metadata: "secret_scanning_extended_metadata",
-          private_vulnerability_reporting: "private_vulnerability_reporting",
-          enforcement: "enforcement",
+          name: 'name',
+          description: 'description',
+          advanced_security: 'advanced_security',
+          code_security: 'code_security',
+          dependency_graph: 'dependency_graph',
+          dependency_graph_autosubmit_action: 'dependency_graph_autosubmit_action',
+          dependency_graph_autosubmit_action_options: 'dependency_graph_autosubmit_action_options',
+          dependabot_alerts: 'dependabot_alerts',
+          dependabot_security_updates: 'dependabot_security_updates',
+          dependabot_delegated_alert_dismissal: 'dependabot_delegated_alert_dismissal',
+          code_scanning_options: 'code_scanning_options',
+          code_scanning_default_setup: 'code_scanning_default_setup',
+          code_scanning_default_setup_options: 'code_scanning_default_setup_options',
+          code_scanning_delegated_alert_dismissal: 'code_scanning_delegated_alert_dismissal',
+          secret_protection: 'secret_protection',
+          secret_scanning: 'secret_scanning',
+          secret_scanning_push_protection: 'secret_scanning_push_protection',
+          secret_scanning_delegated_bypass: 'secret_scanning_delegated_bypass',
+          secret_scanning_delegated_bypass_options: 'secret_scanning_delegated_bypass_options',
+          secret_scanning_validity_checks: 'secret_scanning_validity_checks',
+          secret_scanning_non_provider_patterns: 'secret_scanning_non_provider_patterns',
+          secret_scanning_generic_secrets: 'secret_scanning_generic_secrets',
+          secret_scanning_delegated_alert_dismissal: 'secret_scanning_delegated_alert_dismissal',
+          secret_scanning_extended_metadata: 'secret_scanning_extended_metadata',
+          private_vulnerability_reporting: 'private_vulnerability_reporting',
+          enforcement: 'enforcement'
         }.freeze
         REQUIRED_FIELDS = %i[
           name
@@ -239,7 +238,7 @@ module OctridevGithub
           end,
           enforcement: lambda do |value|
             ::OctridevGithub::Methods::CodeSecurity::CodeSecurityCreateConfigurationEnforcement.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -324,13 +323,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodeSecurityDetachConfigurationMetadata
         FIELDS = {
-          selected_repository_ids: "selected_repository_ids",
+          selected_repository_ids: 'selected_repository_ids'
         }.freeze
         REQUIRED_FIELDS = %i[
           selected_repository_ids
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for CodeSecurityDetachConfiguration.
@@ -364,12 +362,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodeSecurityUpdateConfigurationDependencyGraphAutosubmitActionOptionsMetadata
         FIELDS = {
-          labeled_runners: "labeled_runners",
+          labeled_runners: 'labeled_runners'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for CodeSecurityUpdateConfigurationDependencyGraphAutosubmitActionOptions.
@@ -404,9 +400,9 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodeSecurityUpdateConfigurationSecretScanningDelegatedBypassOX70af8910aaMetadata
         FIELDS = {
-          reviewer_id: "reviewer_id",
-          reviewer_type: "reviewer_type",
-          mode: "mode",
+          reviewer_id: 'reviewer_id',
+          reviewer_type: 'reviewer_type',
+          mode: 'mode'
         }.freeze
         REQUIRED_FIELDS = %i[
           reviewer_id
@@ -418,7 +414,7 @@ module OctridevGithub
           end,
           mode: lambda do |value|
             ::OctridevGithub::Methods::CodeSecurity::CodeSecurityUpdateConfigurationSecretScanningDelegatedBypassOXf1f088a095.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -457,14 +453,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodeSecurityUpdateConfigurationSecretScanningDelegatedBypassOptionsMetadata
         FIELDS = {
-          reviewers: "reviewers",
+          reviewers: 'reviewers'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           reviewers: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::CodeSecurity::CodeSecurityUpdateConfigurationSecretScanningDelegatedBypassOX70af8910aa.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 

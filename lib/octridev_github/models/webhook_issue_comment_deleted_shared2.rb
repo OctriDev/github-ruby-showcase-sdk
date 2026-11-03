@@ -5,25 +5,25 @@
 
 # webhook_issue_comment_deleted domain models
 module OctridevGithub
-# Defines the WebhookIssueCommentDeletedIssueAssigneeType SDK namespace.
-module WebhookIssueCommentDeletedIssueAssigneeType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  MANNEQUIN = 'Mannequin'
-  VALUES = ['Bot', 'User', 'Organization', 'Mannequin'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentDeletedIssueAssigneeType SDK namespace.
+  module WebhookIssueCommentDeletedIssueAssigneeType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    MANNEQUIN = 'Mannequin'
+    VALUES = %w[Bot User Organization Mannequin].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the WebhookIssueCommentDeletedIssueState SDK namespace.
-module WebhookIssueCommentDeletedIssueState
-  OPEN = 'open'
-  CLOSED = 'closed'
-  VALUES = ['open', 'closed'].freeze
-  def self.from_value(value)
-    value
+  # Defines the WebhookIssueCommentDeletedIssueState SDK namespace.
+  module WebhookIssueCommentDeletedIssueState
+    OPEN = 'open'
+    CLOSED = 'closed'
+    VALUES = %w[open closed].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 end

@@ -17,11 +17,10 @@ module OctridevGithub
         key_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/user/keys/",
+            '/user/keys/',
             SdkClient.encode_path_segment(key_id)
           ].join,
           config: config,
@@ -29,7 +28,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'users_get_public_ssh_key_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).result
       end
 
@@ -41,18 +40,17 @@ module OctridevGithub
         key_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/user/keys/",
+            '/user/keys/',
             SdkClient.encode_path_segment(key_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'users_delete_public_ssh_key_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).result
       end
 
@@ -68,20 +66,19 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/user/public_emails",
+          '/user/public_emails',
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::Email],
           decoder: :json,
           operation_id: 'users_list_public_emails_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).result
       end
 
@@ -99,20 +96,19 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/user/social_accounts",
+          '/user/social_accounts',
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::SocialAccount],
           decoder: :json,
           operation_id: 'users_list_social_accounts_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).result
       end
 
@@ -125,19 +121,18 @@ module OctridevGithub
         account_urls:,
         request_options: nil
       )
-
         SdkClient.request(
           'POST',
-          "/user/social_accounts",
+          '/user/social_accounts',
           config: config,
           body: {
-            'account_urls' => account_urls,
+            'account_urls' => account_urls
           },
           return_type: [::OctridevGithub::SocialAccount],
           decoder: :json,
           operation_id: 'users_add_social_account_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).result
       end
 
@@ -150,18 +145,17 @@ module OctridevGithub
         account_urls:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
-          "/user/social_accounts",
+          '/user/social_accounts',
           config: config,
           body: {
-            'account_urls' => account_urls,
+            'account_urls' => account_urls
           },
           decoder: :empty,
           operation_id: 'users_delete_social_account_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).result
       end
 
@@ -177,20 +171,19 @@ module OctridevGithub
         page: NOT_GIVEN,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
-          "/user/ssh_signing_keys",
+          '/user/ssh_signing_keys',
           config: config,
           query: {
             'per_page' => QueryValue.new(per_page, style: 'form', explode: true),
-            'page' => QueryValue.new(page, style: 'form', explode: true),
+            'page' => QueryValue.new(page, style: 'form', explode: true)
           },
           return_type: [::OctridevGithub::SshSigningKey],
           decoder: :json,
           operation_id: 'users_list_ssh_signing_keys_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).result
       end
 
@@ -205,22 +198,21 @@ module OctridevGithub
         title: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_pattern('key', key, '^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) |^(sk-ssh-ed25519|sk-ecdsa-sha2-nistp256)@openssh.com ')
 
         SdkClient.request(
           'POST',
-          "/user/ssh_signing_keys",
+          '/user/ssh_signing_keys',
           config: config,
           body: {
             'key' => key,
-            'title' => title,
+            'title' => title
           },
           return_type: ::OctridevGithub::SshSigningKey,
           decoder: :json,
           operation_id: 'users_create_ssh_signing_key_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError, '422' => ::OctridevGithub::ValidationError }
         ).result
       end
 
@@ -233,11 +225,10 @@ module OctridevGithub
         ssh_signing_key_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/user/ssh_signing_keys/",
+            '/user/ssh_signing_keys/',
             SdkClient.encode_path_segment(ssh_signing_key_id)
           ].join,
           config: config,
@@ -245,7 +236,7 @@ module OctridevGithub
           decoder: :json,
           operation_id: 'users_get_ssh_signing_key_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).result
       end
 
@@ -258,18 +249,17 @@ module OctridevGithub
         ssh_signing_key_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'DELETE',
           [
-            "/user/ssh_signing_keys/",
+            '/user/ssh_signing_keys/',
             SdkClient.encode_path_segment(ssh_signing_key_id)
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'users_delete_ssh_signing_key_for_authenticated_user',
           request_options: request_options,
-          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError },
+          errors: { '401' => ::OctridevGithub::BasicError, '403' => ::OctridevGithub::BasicError, '404' => ::OctridevGithub::BasicError }
         ).result
       end
 
@@ -281,18 +271,17 @@ module OctridevGithub
         account_id:,
         request_options: nil
       )
-
         SdkClient.request(
           'GET',
           [
-            "/user/",
+            '/user/',
             SdkClient.encode_path_segment(account_id)
           ].join,
           config: config,
           decoder: :json,
           operation_id: 'users_get_by_id',
           request_options: request_options,
-          errors: { '404' => ::OctridevGithub::BasicError },
+          errors: { '404' => ::OctridevGithub::BasicError }
         ).result
       end
     end

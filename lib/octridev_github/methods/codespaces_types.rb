@@ -12,8 +12,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodespacesListInOrganizationResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          codespaces: "codespaces",
+          total_count: 'total_count',
+          codespaces: 'codespaces'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -22,7 +22,7 @@ module OctridevGithub
         DECODERS = {
           codespaces: lambda do |value|
             value&.map { |item| ::OctridevGithub::Codespace.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -56,8 +56,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodespacesSetCodespacesAccessMetadata
         FIELDS = {
-          visibility: "visibility",
-          selected_usernames: "selected_usernames",
+          visibility: 'visibility',
+          selected_usernames: 'selected_usernames'
         }.freeze
         REQUIRED_FIELDS = %i[
           visibility
@@ -65,7 +65,7 @@ module OctridevGithub
         DECODERS = {
           visibility: lambda do |value|
             ::OctridevGithub::Methods::Codespaces::CodespacesSetCodespacesAccessVisibility.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -102,13 +102,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodespacesSetCodespacesAccessUsersMetadata
         FIELDS = {
-          selected_usernames: "selected_usernames",
+          selected_usernames: 'selected_usernames'
         }.freeze
         REQUIRED_FIELDS = %i[
           selected_usernames
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for CodespacesSetCodespacesAccessUsers.
@@ -142,13 +141,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodespacesDeleteCodespacesAccessUsersMetadata
         FIELDS = {
-          selected_usernames: "selected_usernames",
+          selected_usernames: 'selected_usernames'
         }.freeze
         REQUIRED_FIELDS = %i[
           selected_usernames
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for CodespacesDeleteCodespacesAccessUsers.
@@ -182,8 +180,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodespacesListOrgSecretsResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          secrets: "secrets",
+          total_count: 'total_count',
+          secrets: 'secrets'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -192,7 +190,7 @@ module OctridevGithub
         DECODERS = {
           secrets: lambda do |value|
             value&.map { |item| ::OctridevGithub::CodespacesOrgSecret.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -226,10 +224,10 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodespacesCreateOrUpdateOrgSecretMetadata
         FIELDS = {
-          encrypted_value: "encrypted_value",
-          key_id: "key_id",
-          visibility: "visibility",
-          selected_repository_ids: "selected_repository_ids",
+          encrypted_value: 'encrypted_value',
+          key_id: 'key_id',
+          visibility: 'visibility',
+          selected_repository_ids: 'selected_repository_ids'
         }.freeze
         REQUIRED_FIELDS = %i[
           visibility
@@ -237,7 +235,7 @@ module OctridevGithub
         DECODERS = {
           visibility: lambda do |value|
             ::OctridevGithub::Methods::Codespaces::CodespacesCreateOrUpdateOrgSecretVisibility.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -278,8 +276,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodespacesListSelectedReposForOrgSecretResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          repositories: "repositories",
+          total_count: 'total_count',
+          repositories: 'repositories'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -288,7 +286,7 @@ module OctridevGithub
         DECODERS = {
           repositories: lambda do |value|
             value&.map { |item| ::OctridevGithub::MinimalRepository.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -322,13 +320,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodespacesSetSelectedReposForOrgSecretMetadata
         FIELDS = {
-          selected_repository_ids: "selected_repository_ids",
+          selected_repository_ids: 'selected_repository_ids'
         }.freeze
         REQUIRED_FIELDS = %i[
           selected_repository_ids
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for CodespacesSetSelectedReposForOrgSecret.
@@ -362,8 +359,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodespacesGetCodespacesForUserInOrgResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          codespaces: "codespaces",
+          total_count: 'total_count',
+          codespaces: 'codespaces'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -372,7 +369,7 @@ module OctridevGithub
         DECODERS = {
           codespaces: lambda do |value|
             value&.map { |item| ::OctridevGithub::Codespace.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -406,8 +403,8 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodespacesListInRepositoryForAuthenticatedUserResponseMetadata
         FIELDS = {
-          total_count: "total_count",
-          codespaces: "codespaces",
+          total_count: 'total_count',
+          codespaces: 'codespaces'
         }.freeze
         REQUIRED_FIELDS = %i[
           total_count
@@ -416,7 +413,7 @@ module OctridevGithub
         DECODERS = {
           codespaces: lambda do |value|
             value&.map { |item| ::OctridevGithub::Codespace.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -450,24 +447,23 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodespacesCreateWithRepoForAuthenticatedUserMetadata
         FIELDS = {
-          ref: "ref",
-          location: "location",
-          geo: "geo",
-          client_ip: "client_ip",
-          machine: "machine",
-          devcontainer_path: "devcontainer_path",
-          multi_repo_permissions_opt_out: "multi_repo_permissions_opt_out",
-          working_directory: "working_directory",
-          idle_timeout_minutes: "idle_timeout_minutes",
-          display_name: "display_name",
-          retention_period_minutes: "retention_period_minutes",
+          ref: 'ref',
+          location: 'location',
+          geo: 'geo',
+          client_ip: 'client_ip',
+          machine: 'machine',
+          devcontainer_path: 'devcontainer_path',
+          multi_repo_permissions_opt_out: 'multi_repo_permissions_opt_out',
+          working_directory: 'working_directory',
+          idle_timeout_minutes: 'idle_timeout_minutes',
+          display_name: 'display_name',
+          retention_period_minutes: 'retention_period_minutes'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           geo: lambda do |value|
             ::OctridevGithub::Methods::Codespaces::CodespacesCreateWithRepoForAuthenticatedUserGeo.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -522,15 +518,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalCodespacesListDevcontainersInRepositoryForAuthenticatedUserReX81f06565f6Metadata
         FIELDS = {
-          path: "path",
-          name: "name",
-          display_name: "display_name",
+          path: 'path',
+          name: 'name',
+          display_name: 'display_name'
         }.freeze
         REQUIRED_FIELDS = %i[
           path
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for CodespacesListDevcontainersInRepositoryForAuthenticatedUserReX81f06565f6.

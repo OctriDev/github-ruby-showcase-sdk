@@ -12,15 +12,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalMigrationsStartForOrgMetadata
         FIELDS = {
-          repositories: "repositories",
-          lock_repositories: "lock_repositories",
-          exclude_metadata: "exclude_metadata",
-          exclude_git_data: "exclude_git_data",
-          exclude_attachments: "exclude_attachments",
-          exclude_releases: "exclude_releases",
-          exclude_owner_projects: "exclude_owner_projects",
-          org_metadata_only: "org_metadata_only",
-          exclude: "exclude",
+          repositories: 'repositories',
+          lock_repositories: 'lock_repositories',
+          exclude_metadata: 'exclude_metadata',
+          exclude_git_data: 'exclude_git_data',
+          exclude_attachments: 'exclude_attachments',
+          exclude_releases: 'exclude_releases',
+          exclude_owner_projects: 'exclude_owner_projects',
+          org_metadata_only: 'org_metadata_only',
+          exclude: 'exclude'
         }.freeze
         REQUIRED_FIELDS = %i[
           repositories
@@ -28,7 +28,7 @@ module OctridevGithub
         DECODERS = {
           exclude: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Migrations::MigrationsStartForOrgExcludeItem.from_value(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -79,11 +79,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalMigrationsStartImportMetadata
         FIELDS = {
-          vcs_url: "vcs_url",
-          vcs: "vcs",
-          vcs_username: "vcs_username",
-          vcs_password: "vcs_password",
-          tfvc_project: "tfvc_project",
+          vcs_url: 'vcs_url',
+          vcs: 'vcs',
+          vcs_username: 'vcs_username',
+          vcs_password: 'vcs_password',
+          tfvc_project: 'tfvc_project'
         }.freeze
         REQUIRED_FIELDS = %i[
           vcs_url
@@ -91,7 +91,7 @@ module OctridevGithub
         DECODERS = {
           vcs: lambda do |value|
             ::OctridevGithub::Methods::Migrations::MigrationsStartImportVcs.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -134,17 +134,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalMigrationsUpdateImportMetadata
         FIELDS = {
-          vcs_username: "vcs_username",
-          vcs_password: "vcs_password",
-          vcs: "vcs",
-          tfvc_project: "tfvc_project",
+          vcs_username: 'vcs_username',
+          vcs_password: 'vcs_password',
+          vcs: 'vcs',
+          tfvc_project: 'tfvc_project'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           vcs: lambda do |value|
             ::OctridevGithub::Methods::Migrations::MigrationsUpdateImportVcs.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -185,13 +184,11 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalMigrationsMapCommitAuthorMetadata
         FIELDS = {
-          email: "email",
-          name: "name",
+          email: 'email',
+          name: 'name'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for MigrationsMapCommitAuthor.
@@ -227,7 +224,7 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalMigrationsSetLfsPreferenceMetadata
         FIELDS = {
-          use_lfs: "use_lfs",
+          use_lfs: 'use_lfs'
         }.freeze
         REQUIRED_FIELDS = %i[
           use_lfs
@@ -235,7 +232,7 @@ module OctridevGithub
         DECODERS = {
           use_lfs: lambda do |value|
             ::OctridevGithub::Methods::Migrations::MigrationsSetLfsPreferenceUseLfs.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -270,15 +267,15 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalMigrationsStartForAuthenticatedUserMetadata
         FIELDS = {
-          lock_repositories: "lock_repositories",
-          exclude_metadata: "exclude_metadata",
-          exclude_git_data: "exclude_git_data",
-          exclude_attachments: "exclude_attachments",
-          exclude_releases: "exclude_releases",
-          exclude_owner_projects: "exclude_owner_projects",
-          org_metadata_only: "org_metadata_only",
-          exclude: "exclude",
-          repositories: "repositories",
+          lock_repositories: 'lock_repositories',
+          exclude_metadata: 'exclude_metadata',
+          exclude_git_data: 'exclude_git_data',
+          exclude_attachments: 'exclude_attachments',
+          exclude_releases: 'exclude_releases',
+          exclude_owner_projects: 'exclude_owner_projects',
+          org_metadata_only: 'org_metadata_only',
+          exclude: 'exclude',
+          repositories: 'repositories'
         }.freeze
         REQUIRED_FIELDS = %i[
           repositories
@@ -286,7 +283,7 @@ module OctridevGithub
         DECODERS = {
           exclude: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Migrations::MigrationsStartForAuthenticatedUserExcludeItem.from_value(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -346,7 +343,7 @@ module OctridevGithub
       module MigrationsSetLfsPreferenceUseLfs
         OPT_IN = 'opt_in'
         OPT_OUT = 'opt_out'
-        VALUES = ['opt_in', 'opt_out'].freeze
+        VALUES = %w[opt_in opt_out].freeze
         def self.from_value(value)
           value
         end
@@ -367,7 +364,7 @@ module OctridevGithub
         TFVC = 'tfvc'
         GIT = 'git'
         MERCURIAL = 'mercurial'
-        VALUES = ['subversion', 'tfvc', 'git', 'mercurial'].freeze
+        VALUES = %w[subversion tfvc git mercurial].freeze
         def self.from_value(value)
           value
         end
@@ -379,7 +376,7 @@ module OctridevGithub
         GIT = 'git'
         MERCURIAL = 'mercurial'
         TFVC = 'tfvc'
-        VALUES = ['subversion', 'git', 'mercurial', 'tfvc'].freeze
+        VALUES = %w[subversion git mercurial tfvc].freeze
         def self.from_value(value)
           value
         end

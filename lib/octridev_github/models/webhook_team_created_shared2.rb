@@ -5,75 +5,75 @@
 
 # webhook_team_created domain models
 module OctridevGithub
-# API model for WebhookTeamCreated.
-# Typed representation of the `WebhookTeamCreated` API schema.
-class WebhookTeamCreated
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalWebhookTeamCreatedMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalWebhookTeamCreatedMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalWebhookTeamCreatedMetadata::DECODERS
+  # API model for WebhookTeamCreated.
+  # Typed representation of the `WebhookTeamCreated` API schema.
+  class WebhookTeamCreated
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalWebhookTeamCreatedMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalWebhookTeamCreatedMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalWebhookTeamCreatedMetadata::DECODERS
 
-  # @return [WebhookTeamCreatedAction] Required enumerated value serialized in the `action` wire field.
-  attr_reader :action
-  # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
-  attr_reader :enterprise
-  # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
-  attr_reader :installation
-  # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
-  attr_reader :organization
-  # @return [WebhookTeamCreatedRepository] A git repository
-  attr_reader :repository
-  # @return [SimpleUser] A GitHub user.
-  attr_reader :sender
-  # @return [WebhooksTeam1] Groups of organization members that gives permissions on specified repositories.
-  attr_reader :team
+    # @return [WebhookTeamCreatedAction] Required enumerated value serialized in the `action` wire field.
+    attr_reader :action
+    # @return [EnterpriseWebhooks] An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured on an enterprise account or an organization that's part of an enterprise account. For more information, see "About enterprise accounts."
+    attr_reader :enterprise
+    # @return [SimpleInstallation] The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App. For more information, see "Using webhooks with GitHub Apps."
+    attr_reader :installation
+    # @return [OrganizationSimpleWebhooks] A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
+    attr_reader :organization
+    # @return [WebhookTeamCreatedRepository] A git repository
+    attr_reader :repository
+    # @return [SimpleUser] A GitHub user.
+    attr_reader :sender
+    # @return [WebhooksTeam1] Groups of organization members that gives permissions on specified repositories.
+    attr_reader :team
 
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
+
+    def to_json(*args)
+      to_h.to_json(*args)
+    end
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # Defines the WebhookTeamCreatedAction SDK namespace.
+  module WebhookTeamCreatedAction
+    CREATED = 'created'
+    VALUES = ['created'].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the WebhookTeamCreatedRepositoryOwnerType SDK namespace.
+  module WebhookTeamCreatedRepositoryOwnerType
+    BOT = 'Bot'
+    USER = 'User'
+    ORGANIZATION = 'Organization'
+    VALUES = %w[Bot User Organization].freeze
+    def self.from_value(value)
+      value
+    end
   end
 
-  def to_json(*args)
-    to_h.to_json(*args)
+  # Defines the WebhookTeamCreatedRepositoryVisibility SDK namespace.
+  module WebhookTeamCreatedRepositoryVisibility
+    PUBLIC = 'public'
+    PRIVATE = 'private'
+    INTERNAL = 'internal'
+    VALUES = %w[public private internal].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the WebhookTeamCreatedAction SDK namespace.
-module WebhookTeamCreatedAction
-  CREATED = 'created'
-  VALUES = ['created'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookTeamCreatedRepositoryOwnerType SDK namespace.
-module WebhookTeamCreatedRepositoryOwnerType
-  BOT = 'Bot'
-  USER = 'User'
-  ORGANIZATION = 'Organization'
-  VALUES = ['Bot', 'User', 'Organization'].freeze
-  def self.from_value(value)
-    value
-  end
-end
-
-# Defines the WebhookTeamCreatedRepositoryVisibility SDK namespace.
-module WebhookTeamCreatedRepositoryVisibility
-  PUBLIC = 'public'
-  PRIVATE = 'private'
-  INTERNAL = 'internal'
-  VALUES = ['public', 'private', 'internal'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

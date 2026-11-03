@@ -12,19 +12,17 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalUsersUpdateAuthenticatedMetadata
         FIELDS = {
-          name: "name",
-          email: "email",
-          blog: "blog",
-          twitter_username: "twitter_username",
-          company: "company",
-          location: "location",
-          hireable: "hireable",
-          bio: "bio",
+          name: 'name',
+          email: 'email',
+          blog: 'blog',
+          twitter_username: 'twitter_username',
+          company: 'company',
+          location: 'location',
+          hireable: 'hireable',
+          bio: 'bio'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for UsersUpdateAuthenticated.
@@ -72,7 +70,7 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalUsersSetPrimaryEmailVisibilityForAuthenticatedUserMetadata
         FIELDS = {
-          visibility: "visibility",
+          visibility: 'visibility'
         }.freeze
         REQUIRED_FIELDS = %i[
           visibility
@@ -80,7 +78,7 @@ module OctridevGithub
         DECODERS = {
           visibility: lambda do |value|
             ::OctridevGithub::Methods::Users::UsersSetPrimaryEmailVisibilityForAuthenticatedUserVisibility.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -115,14 +113,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalUsersCreateGpgKeyForAuthenticatedUserMetadata
         FIELDS = {
-          name: "name",
-          armored_public_key: "armored_public_key",
+          name: 'name',
+          armored_public_key: 'armored_public_key'
         }.freeze
         REQUIRED_FIELDS = %i[
           armored_public_key
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for UsersCreateGpgKeyForAuthenticatedUser.
@@ -158,14 +155,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalUsersCreatePublicSshKeyForAuthenticatedUserMetadata
         FIELDS = {
-          title: "title",
-          key: "key",
+          title: 'title',
+          key: 'key'
         }.freeze
         REQUIRED_FIELDS = %i[
           key
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for UsersCreatePublicSshKeyForAuthenticatedUser.
@@ -201,13 +197,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalUsersAddSocialAccountForAuthenticatedUserMetadata
         FIELDS = {
-          account_urls: "account_urls",
+          account_urls: 'account_urls'
         }.freeze
         REQUIRED_FIELDS = %i[
           account_urls
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for UsersAddSocialAccountForAuthenticatedUser.
@@ -241,13 +236,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalUsersDeleteSocialAccountForAuthenticatedUserMetadata
         FIELDS = {
-          account_urls: "account_urls",
+          account_urls: 'account_urls'
         }.freeze
         REQUIRED_FIELDS = %i[
           account_urls
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for UsersDeleteSocialAccountForAuthenticatedUser.
@@ -281,14 +275,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalUsersCreateSshSigningKeyForAuthenticatedUserMetadata
         FIELDS = {
-          title: "title",
-          key: "key",
+          title: 'title',
+          key: 'key'
         }.freeze
         REQUIRED_FIELDS = %i[
           key
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for UsersCreateSshSigningKeyForAuthenticatedUser.
@@ -324,14 +317,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalUsersListAttestationsBulkMetadata
         FIELDS = {
-          subject_digests: "subject_digests",
-          predicate_type: "predicate_type",
+          subject_digests: 'subject_digests',
+          predicate_type: 'predicate_type'
         }.freeze
         REQUIRED_FIELDS = %i[
           subject_digests
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for UsersListAttestationsBulk.
@@ -367,15 +359,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalUsersListAttestationsBulkResponsePageInfoMetadata
         FIELDS = {
-          has_next: "has_next",
-          has_previous: "has_previous",
-          next_: "next",
-          previous: "previous",
+          has_next: 'has_next',
+          has_previous: 'has_previous',
+          next_: 'next',
+          previous: 'previous'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for UsersListAttestationsBulkResponsePageInfo.
@@ -416,15 +406,14 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalUsersListAttestationsBulkResponseMetadata
         FIELDS = {
-          attestations_subject_digests: "attestations_subject_digests",
-          page_info: "page_info",
+          attestations_subject_digests: 'attestations_subject_digests',
+          page_info: 'page_info'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           page_info: lambda do |value|
             ::OctridevGithub::Methods::Users::UsersListAttestationsBulkResponsePageInfo.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -461,14 +450,12 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalUsersListAttestationsResponseAttestationsItemBundleMetadata
         FIELDS = {
-          media_type: "mediaType",
-          verification_material: "verificationMaterial",
-          dsse_envelope: "dsseEnvelope",
+          media_type: 'mediaType',
+          verification_material: 'verificationMaterial',
+          dsse_envelope: 'dsseEnvelope'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for UsersListAttestationsResponseAttestationsItemBundle.
@@ -502,17 +489,16 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalUsersListAttestationsResponseAttestationsItemMetadata
         FIELDS = {
-          bundle: "bundle",
-          repository_id: "repository_id",
-          bundle_url: "bundle_url",
-          initiator: "initiator",
+          bundle: 'bundle',
+          repository_id: 'repository_id',
+          bundle_url: 'bundle_url',
+          initiator: 'initiator'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           bundle: lambda do |value|
             ::OctridevGithub::Methods::Users::UsersListAttestationsResponseAttestationsItemBundle.from_hash(value)
-          end,
+          end
         }.freeze
       end
 
@@ -548,14 +534,13 @@ module OctridevGithub
       # Internal model hydration metadata.
       class SdkInternalUsersListAttestationsResponseMetadata
         FIELDS = {
-          attestations: "attestations",
+          attestations: 'attestations'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           attestations: lambda do |value|
             value&.map { |item| ::OctridevGithub::Methods::Users::UsersListAttestationsResponseAttestationsItem.from_hash(item) }
-          end,
+          end
         }.freeze
       end
     end
